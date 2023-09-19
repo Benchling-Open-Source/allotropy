@@ -1,0 +1,216 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "allotropy"
+dynamic = ["version"]
+description = 'Converts to ASM (Allotrope Simple Model) from various file formats.'
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
+authors = [
+  { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
+  { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
+  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
+  { name = "Brian Worth", email = "brian@benchling.com" },
+  { name = "Benchling Open Source", email = "opensource@benchling.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+  "cattrs >= 23.0.0",
+  "chardet >= 5.2.0",
+  "jsonschema >= 4.19.0",
+  "numpy >= 1.25.0",
+  "openpyxl >= 3.1.0",
+  "pandas >= 2.1.0",
+  "xlrd >= 2.0.0",
+]
+
+[project.urls]
+Documentation = "https://github.com/Benchling-Open-Source/allotropy#readme"
+Issues = "https://github.com/Benchling-Open-Source/allotropy/issues"
+Source = "https://github.com/Benchling-Open-Source/allotropy"
+
+[tool.black]
+target-version = ["py39"]
+skip-string-normalization = true
+
+[tool.coverage.run]
+source_pkgs = ["allotropy", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/allotropy/__about__.py",
+]
+
+[tool.coverage.paths]
+allotropy = ["src/allotropy", "*/allotropy/src/allotropy"]
+tests = ["tests", "*/allotropy/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/allotropy"]
+
+[tool.hatch.version]
+path = "src/allotropy/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "autoflake >= 2.2.0",
+  # Required because we lint files during autogeneration, keep in sync with envs.lint
+  "black == 22.3.0",
+  "datamodel-code-generator >= 0.21.5",
+  # Required because we lint files during autogeneration, keep in sync with envs.lint
+  "flake8 >= 6.1.0",
+  # Without this, pydantic spews a bunch of errors when parsing schemas
+  "jsonschema-specifications >= 2023.7.1",
+  # Without this, pydantic spews a bunch of errors when parsing schemas
+  "pydantic == 1.10.9",
+]
+
+[tool.hatch.envs.default.scripts]
+setup-env = "scripts/dev/bootstrap"
+setup-pre-push-hook = "scripts/dev/setup-pre-push-hook"
+generate-schemas = "scripts/dev/generate_schemas.py"
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  # black pinned for compatability with datamodel-code-generator
+  "black == 22.3.0",
+  # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
+  "cattrs >= 23.0.0",
+  "datamodel-code-generator >= 0.21.5",
+  "flake8 >= 6.1.0",
+  "mypy >= 1.5.1",
+  "pytest >= 7.4.0",
+  "ruff >= 0.0.289",
+]
+
+[tool.hatch.envs.lint.scripts]
+typing = "mypy --install-types --non-interactive {args:src/allotropy tests}"
+style = [
+  "ruff {args:.}",
+  "black --check --diff {args:.}",
+  "flake8 .",
+]
+fix = [
+  "black {args:.}",
+  "ruff --fix {args:.}",
+  "style",
+]
+all = [
+  "style",
+  "typing",
+]
+
+[tool.hatch.envs.test]
+extra-dependencies = [
+  # Required because we lint files during autogeneration, keep in sync with envs.lint
+  "black == 22.3.0",
+  "coverage[toml] >= 6.5",
+  "deepdiff >= 6.5.0",
+  # Required because we lint files during autogeneration, keep in sync with envs.lint
+  "flake8 >= 6.1.0",
+  # Without this, pydantic spews a bunch of errors when parsing schemas
+  "jsonschema-specifications >= 2023.7.1",
+  # Without this, pydantic spews a bunch of errors when parsing schemas
+  "pydantic == 1.10.9",
+  "pytest >= 7.4.0",
+  # Required because we lint files during autogeneration, keep in sync with envs.lint
+  "ruff >= 0.0.289",
+]
+
+[tool.hatch.envs.test.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+markers = [
+  "short: mark a test as running quickly",
+]
+
+[tool.ruff]
+target-version = "py39"
+select = [
+  "A",
+  "ARG",
+  "B",
+  "C",
+  "DTZ",
+  "E",
+  "EM",
+  "F",
+  "FBT",
+  "I",
+  "ICN",
+  "ISC",
+  "N",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "Q",
+  "RUF",
+  "S",
+  "T",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+ignore = [
+  # Ignore complexity
+  "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+  # Ignore line length, black does it better and actually fixes it.
+  "E501",
+]
+
+[tool.ruff.isort]
+known-first-party = ["allotropy"]
+combine-as-imports = true
+force-sort-within-sections = true
+order-by-type = false
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values and assertions
+"tests/**/*" = ["PLR2004", "S101"]
+"src/allotropy/allotrope/models/**/*.py" = [
+  # Allow mixedCase variables
+  "N815",
+]
+
+[tool.ruff.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true

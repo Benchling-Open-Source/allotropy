@@ -1,0 +1,5484 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.manifest",
+    "measurement aggregate document": {
+      "measurement identifier": "7c29a45f-26b7-47ac-a3c8-918d23df8df1",
+      "plate well count": {
+        "value": 96,
+        "unit": "#"
+      },
+      "measurement document": [
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.01,
+                  0.02,
+                  0.03
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.01
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.02,
+                  0.04,
+                  0.06
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.02
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.03,
+                  0.06,
+                  0.09
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.03
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.04,
+                  0.08,
+                  0.12
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.04
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.05,
+                  0.1,
+                  0.15
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.05
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.06,
+                  0.12,
+                  0.18
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.06
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.07,
+                  0.14,
+                  0.21
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.07
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.08,
+                  0.16,
+                  0.24
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.08
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.09,
+                  0.18,
+                  0.27
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.09
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.1,
+                  0.2,
+                  0.3
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.1
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.11,
+                  0.22,
+                  0.33
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.11
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "A12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.12,
+                  0.24,
+                  0.36
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.12
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.13,
+                  0.26,
+                  0.39
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.13
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.14,
+                  0.28,
+                  0.42
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.14
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.15,
+                  0.3,
+                  0.45
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.15
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.16,
+                  0.32,
+                  0.48
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.16
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.17,
+                  0.34,
+                  0.51
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.17
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.18,
+                  0.36,
+                  0.54
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.18
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.19,
+                  0.38,
+                  0.57
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.19
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.2,
+                  0.4,
+                  0.6
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.2
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.21,
+                  0.42,
+                  0.63
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.21
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.22,
+                  0.44,
+                  0.66
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.22
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.23,
+                  0.46,
+                  0.69
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.23
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "B12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.24,
+                  0.48,
+                  0.72
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.24
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.25
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.26,
+                  0.52,
+                  0.78
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.26
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.27,
+                  0.54,
+                  0.81
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.27
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.28,
+                  0.56,
+                  0.84
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.28
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.29,
+                  0.58,
+                  0.87
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.29
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.3,
+                  0.6,
+                  0.9
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.3
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.31,
+                  0.62,
+                  0.93
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.31
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.32,
+                  0.64,
+                  0.96
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.32
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.33,
+                  0.66,
+                  0.99
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.33
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.34,
+                  0.68,
+                  1.02
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.34
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.35,
+                  0.7,
+                  1.05
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.35
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "C12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.36,
+                  0.72,
+                  1.08
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.36
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.37,
+                  0.74,
+                  1.11
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.37
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.38,
+                  0.76,
+                  1.14
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.38
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.39,
+                  0.78,
+                  1.17
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.39
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.4,
+                  0.8,
+                  1.2
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.4
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.41,
+                  0.82,
+                  1.23
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.41
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.42,
+                  0.84,
+                  1.26
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.42
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.43,
+                  0.86,
+                  1.29
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.43
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.44,
+                  0.88,
+                  1.32
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.44
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.45,
+                  0.9,
+                  1.35
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.45
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.46,
+                  0.92,
+                  1.38
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.46
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.47,
+                  0.94,
+                  1.41
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.47
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "D12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.48,
+                  0.96,
+                  1.44
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.48
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.49,
+                  0.98,
+                  1.47
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.49
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.5,
+                  1,
+                  1.5
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.5
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.51,
+                  1.02,
+                  1.53
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.51
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.52,
+                  1.04,
+                  1.56
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.52
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.53,
+                  1.06,
+                  1.59
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.53
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.54,
+                  1.08,
+                  1.62
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.54
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.55,
+                  1.1,
+                  1.65
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.55
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.56,
+                  1.12,
+                  1.68
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.56
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.57,
+                  1.14,
+                  1.71
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.57
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.58,
+                  1.16,
+                  1.74
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.58
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.59,
+                  1.18,
+                  1.77
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.59
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "E12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.6,
+                  1.2,
+                  1.8
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.6
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.61,
+                  1.22,
+                  1.83
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.61
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.62,
+                  1.24,
+                  1.86
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.62
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.63,
+                  1.26,
+                  1.89
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.63
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.64,
+                  1.28,
+                  1.92
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.64
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.65,
+                  1.3,
+                  1.95
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.65
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.66,
+                  1.32,
+                  1.98
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.66
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.67,
+                  1.34,
+                  2.01
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.67
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.68,
+                  1.36,
+                  2.04
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.68
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.69,
+                  1.38,
+                  2.07
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.69
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.7,
+                  1.4,
+                  2.1
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.7
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.71,
+                  1.42,
+                  2.13
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.71
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "F12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.72,
+                  1.44,
+                  2.16
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.72
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.73,
+                  1.46,
+                  2.19
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.73
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.74,
+                  1.48,
+                  2.22
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.74
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.75,
+                  1.5,
+                  2.25
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.75
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.76,
+                  1.52,
+                  2.28
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.76
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.77,
+                  1.54,
+                  2.31
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.77
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.78,
+                  1.56,
+                  2.34
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.78
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.79,
+                  1.58,
+                  2.37
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.79
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.8,
+                  1.6,
+                  2.4
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.8
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.81,
+                  1.62,
+                  2.43
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.81
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.82,
+                  1.64,
+                  2.46
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.82
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.83,
+                  1.66,
+                  2.49
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.83
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "G12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.84,
+                  1.68,
+                  2.52
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.84
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H1",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.85,
+                  1.7,
+                  2.55
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.85
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H2",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.86,
+                  1.72,
+                  2.58
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.86
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H3",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.87,
+                  1.74,
+                  2.61
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.87
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H4",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.88,
+                  1.76,
+                  2.64
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.88
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H5",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.89,
+                  1.78,
+                  2.67
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.89
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H6",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.9,
+                  1.8,
+                  2.7
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.9
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H7",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.91,
+                  1.82,
+                  2.73
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.91
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H8",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.92,
+                  1.84,
+                  2.76
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.92
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H9",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.93,
+                  1.86,
+                  2.79
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.93
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H10",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.94,
+                  1.88,
+                  2.82
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.94
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H11",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.95,
+                  1.9,
+                  2.85
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.95
+              }
+            ]
+          }
+        },
+        {
+          "device control aggregate document": {
+            "device control document": [
+              {}
+            ]
+          },
+          "sample document": {
+            "well location identifier": "H12",
+            "plate barcode": "Plate1"
+          },
+          "compartment temperature": {
+            "value": 35.0,
+            "unit": "degC"
+          },
+          "data cube": {
+            "cube-structure": {
+              "dimensions": [
+                {
+                  "@componentDatatype": "int",
+                  "concept": "wavelength",
+                  "unit": "nm"
+                }
+              ],
+              "measures": [
+                {
+                  "@componentDatatype": "double",
+                  "concept": "absorbance",
+                  "unit": "mAU"
+                }
+              ]
+            },
+            "data": {
+              "dimensions": [
+                [
+                  426,
+                  426,
+                  426
+                ]
+              ],
+              "measures": [
+                [
+                  0.96,
+                  1.92,
+                  2.88
+                ]
+              ]
+            }
+          },
+          "processed data aggregate document": {
+            "processed data document": [
+              {
+                "data processing description": "processed data",
+                "processed data": 0.96
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

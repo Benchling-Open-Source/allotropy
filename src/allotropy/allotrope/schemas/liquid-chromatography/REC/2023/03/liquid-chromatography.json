@@ -1,0 +1,1089 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/BENCHLING/2023/09/liquid-chromatography.tabular.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "liquid chromatography aggregate document": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002524",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "device system document": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
+          "$asm.pattern": "aggregate datum",
+          "required": [
+            "asset management identifier"
+          ],
+          "properties": {
+            "asset management identifier": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001976",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "description": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
+              "$asm.pattern": "any datum"
+            },
+            "brand name": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "product manufacturer": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "pump model number": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002530",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "detector model number": {
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002489",
+              "$asm.pattern": "value datum",
+              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+              "$ref": "#/$defs/tStringValue"
+            },
+            "device document": {
+              "type": "array",
+              "$asm.array-ordered": true,
+              "$asm.array-mixed": false,
+              "$asm.pattern": "indexed datum",
+              "items": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002567",
+                    "$asm.pattern": "aggregate datum",
+                    "required": [
+                      "device type"
+                    ],
+                    "properties": {
+                      "device identifier": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
+                        "$asm.pattern": "value datum",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "#/$defs/tStringValue"
+                      },
+                      "device type": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                        "$asm.pattern": "value datum",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "#/$defs/tStringValue"
+                      },
+                      "model number": {
+                        "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
+                        "$asm.pattern": "value datum",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "#/$defs/tStringValue"
+                      }
+                    }
+                  },
+                  {
+                    "properties": {
+                      "@index": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    }
+                  }
+                ]
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "liquid chromatography document": {
+          "type": "array",
+          "$asm.array-ordered": false,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002525",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "analyst": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001116",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              },
+              "submitter": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002531",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              },
+              "measurement aggregate document": {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002374",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "measurement document": {
+                    "type": "array",
+                    "$asm.array-ordered": false,
+                    "$asm.array-mixed": false,
+                    "$asm.pattern": "indexed datum",
+                    "items": {
+                      "type": "object",
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+                      "$asm.pattern": "aggregate datum",
+                      "properties": {
+                        "measurement identifier": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+                          "$asm.pattern": "value datum",
+                          "$ref": "#/$defs/tStringValue"
+                        },
+                        "chromatography column document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002607",
+                          "$asm.pattern": "aggregate datum",
+                          "properties": {
+                            "chromatography column particle size": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002561",
+                              "$asm.pattern": "quantity datum",
+                              "$ref": "#/$custom/tQuantityValueMicrometer"
+                            },
+                            "chromatography column chemistry type": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002026",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "chromatography column serial number": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002533",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "column inner diameter": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002030",
+                              "$asm.pattern": "quantity datum",
+                              "$ref": "#/$custom/tQuantityValueMillimeter"
+                            },
+                            "product manufacturer": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "chromatography column length": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002029",
+                              "$asm.pattern": "quantity datum",
+                              "$ref": "#/$custom/tQuantityValueCentimeter"
+                            },
+                            "chromatography column part number": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002532",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            }
+                          }
+                        },
+                        "device control aggregate document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+                          "$asm.pattern": "aggregate datum",
+                          "properties": {
+                            "device control document": {
+                              "type": "array",
+                              "$asm.array-ordered": true,
+                              "$asm.array-mixed": false,
+                              "$asm.pattern": "indexed datum",
+                              "items": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+                                    "$asm.pattern": "aggregate datum",
+                                    "properties": {
+                                      "device identifier": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "device type": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "product manufacturer": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "brand name": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "equipment serial number": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "model number": {
+                                        "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "firmware version": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001259",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "detection type": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+                                        "$asm.pattern": "value datum",
+                                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                        "$ref": "#/$defs/tStringValue"
+                                      },
+                                      "electronic absorbance wavelength setting": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001254",
+                                        "$asm.pattern": "quantity datum",
+                                        "$ref": "#/$custom/tQuantityValueNanometer"
+                                      },
+                                      "electronic absorbance bandwidth setting": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001253",
+                                        "$asm.pattern": "quantity datum",
+                                        "$ref": "#/$custom/tQuantityValueNanometer"
+                                      },
+                                      "electronic absorbance reference bandwidth setting": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001251",
+                                        "$asm.pattern": "quantity datum",
+                                        "$ref": "#/$custom/tQuantityValueNanometer"
+                                      },
+                                      "electronic absorbance reference wavelength setting": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001252",
+                                        "$asm.pattern": "quantity datum",
+                                        "$ref": "#/$custom/tQuantityValueNanometer"
+                                      },
+                                      "detector offset setting": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001249",
+                                        "$asm.pattern": "quantity datum",
+                                        "$ref": "#/$defs/tQuantityValue"
+                                      },
+                                      "detector sampling rate setting": {
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001250",
+                                        "$asm.pattern": "quantity datum",
+                                        "$ref": "#/$custom/tQuantityValueHertz"
+                                      }
+                                    },
+                                    "required": [
+                                      "device type"
+                                    ]
+                                  },
+                                  {
+                                    "properties": {
+                                      "@index": {
+                                        "type": "integer",
+                                        "minimum": 1,
+                                        "maximum": 2147483647
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "minItems": 1
+                            }
+                          },
+                          "required": [
+                            "device control document"
+                          ]
+                        },
+                        "sample document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002083",
+                          "$asm.pattern": "aggregate datum",
+                          "properties": {
+                            "description": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
+                              "$asm.pattern": "any datum"
+                            },
+                            "sample identifier": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001118",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "written name": {
+                              "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000590",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            }
+                          },
+                          "required": [
+                            "sample identifier"
+                          ]
+                        },
+                        "injection document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002529",
+                          "$asm.pattern": "aggregate datum",
+                          "required": [
+                            "autosampler injection volume setting (chromatography)",
+                            "injection identifier",
+                            "injection time"
+                          ],
+                          "properties": {
+                            "autosampler injection volume setting (chromatography)": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001267",
+                              "$asm.pattern": "quantity datum",
+                              "$ref": "#/$custom/tQuantityValueCubicMillimeter"
+                            },
+                            "injection identifier": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002535",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "injection time": {
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002536",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+                              "$ref": "#/$defs/tDateTimeValue"
+                            }
+                          }
+                        },
+                        "detection type": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+                          "$asm.pattern": "value datum",
+                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                          "$ref": "#/$defs/tStringValue"
+                        },
+                        "chromatogram data cube": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002550",
+                          "$asm.pattern": "datacube",
+                          "$ref": "#/$defs/tDatacube"
+                        },
+                        "three-dimensional ultraviolet spectrum data cube": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002551",
+                          "$asm.pattern": "datacube",
+                          "$ref": "#/$defs/tDatacube"
+                        },
+                        "processed data document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
+                          "$asm.pattern": "aggregate datum",
+                          "properties": {
+                            "peak list": {
+                              "type": "object",
+                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+                              "$asm.pattern": "aggregate datum",
+                              "properties": {
+                                "peak": {
+                                  "type": "array",
+                                  "$asm.array-ordered": true,
+                                  "$asm.array-mixed": false,
+                                  "$asm.pattern": "indexed datum",
+                                  "items": {
+                                    "allOf": [
+                                      {
+                                        "type": "object",
+                                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+                                        "$asm.pattern": "aggregate datum",
+                                        "properties": {
+                                          "peak end": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValueSecondTime"
+                                          },
+                                          "identifier": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000917",
+                                            "$asm.pattern": "value datum",
+                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                            "$ref": "#/$defs/tStringValue"
+                                          },
+                                          "relative peak height": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000949",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValuePercent"
+                                          },
+                                          "written name": {
+                                            "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000590",
+                                            "$asm.pattern": "value datum",
+                                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                            "$ref": "#/$defs/tStringValue"
+                                          },
+                                          "peak height": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$defs/tQuantityValue"
+                                          },
+                                          "capacity factor (chromatography)": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001234",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValueUnitless"
+                                          },
+                                          "peak area": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                                            "$asm.pattern": "quantity datum",
+                                            "type": "object",
+                                            "$ref": "#/$defs/tQuantityValue"
+                                          },
+                                          "relative peak area": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001165",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValuePercent"
+                                          },
+                                          "retention time": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001089",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValueSecondTime"
+                                          },
+                                          "peak start": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001178",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValueSecondTime"
+                                          },
+                                          "peak selectivity (chromatography)": {
+                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001235",
+                                            "$asm.pattern": "quantity datum",
+                                            "$ref": "#/$custom/tQuantityValueUnitless"
+                                          }
+                                        },
+                                        "required": [
+                                          "retention time"
+                                        ],
+                                        "anyOf": [
+                                          {
+                                            "properties": {
+                                              "peak width at 4.4 % of height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002784",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at 13.4 % of height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002785",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at 32.4 % of height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002786",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at 60.7 % of height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002787",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at half height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001266",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at 5 % of height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001265",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at baseline": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001264",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at inflection": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002761",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width at 10 % of height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002511",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "peak width": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001075",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueSecondTime"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "statistical skew (chromatography)": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001238",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "asymmetry factor measured at 5 % height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001237",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "asymmetry factor measured at 10 % height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002512",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "asymmetry factor squared measured at 10 % height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002778",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "asymmetry factor squared measured at 4.4 % height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002777",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "asymmetry factor measured at 4.4 % height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002776",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "chromatographic peak asymmetry factor": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001236",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "asymmetry factor measured at baseline": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002779",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "chromatographic peak resolution": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001230",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "chromatographic peak resolution using baseline peak widths": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001231",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "chromatographic peak resolution using peak width at half-height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001232",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "chromatographic peak resolution using statistical moments": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates (chromatography)": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001239",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates measured at 60.7 % of peak height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002780",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates measured at 32.4 % of peak height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002781",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates measured at 13.4 % of peak height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002782",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates measured at 4.4 % of peak height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002783",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates by tangent method": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001240",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates by peak width at half height": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001241",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "properties": {
+                                              "number of theoretical plates by peak width at half height (JP14)": {
+                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002807",
+                                                "$asm.pattern": "quantity datum",
+                                                "$ref": "#/$custom/tQuantityValueUnitless"
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "properties": {
+                                          "@index": {
+                                            "type": "integer",
+                                            "minimum": 1,
+                                            "maximum": 2147483647
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "minItems": 0
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "diagnostic trace aggregate document": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002705",
+                          "$asm.pattern": "aggregate datum",
+                          "properties": {
+                            "diagnostic trace document": {
+                              "type": "array",
+                              "$asm.array-ordered": false,
+                              "$asm.array-mixed": false,
+                              "$asm.pattern": "indexed datum",
+                              "items": {
+                                "type": "object",
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002706",
+                                "$asm.pattern": "aggregate datum",
+                                "required": [
+                                  "description"
+                                ],
+                                "properties": {
+                                  "description": {
+                                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
+                                    "$asm.pattern": "any datum"
+                                  },
+                                  "data cube": {
+                                    "$ref": "#/$defs/tDatacube"
+                                  }
+                                }
+                              },
+                              "minItems": 0
+                            }
+                          }
+                        }
+                      },
+                      "if": {
+                        "properties": {
+                          "chromatogram data cube": {
+                            "properties": {
+                              "cube-structure": {
+                                "properties": {
+                                  "measures": {
+                                    "items": {
+                                      "properties": {
+                                        "unit": {
+                                          "const": "mV"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "processed data document": {
+                            "properties": {
+                              "peak list": {
+                                "properties": {
+                                  "peak": {
+                                    "items": {
+                                      "properties": {
+                                        "peak height": {
+                                          "properties": {
+                                            "unit": {
+                                              "const": "mV"
+                                            }
+                                          }
+                                        },
+                                        "peak area": {
+                                          "properties": {
+                                            "unit": {
+                                              "const": "mV.s"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "else": {
+                        "if": {
+                          "properties": {
+                            "chromatogram data cube": {
+                              "properties": {
+                                "cube-structure": {
+                                  "properties": {
+                                    "measures": {
+                                      "items": {
+                                        "properties": {
+                                          "unit": {
+                                            "const": "mAU"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "then": {
+                          "properties": {
+                            "processed data document": {
+                              "properties": {
+                                "peak list": {
+                                  "properties": {
+                                    "peak": {
+                                      "items": {
+                                        "properties": {
+                                          "peak height": {
+                                            "properties": {
+                                              "unit": {
+                                                "const": "mAU"
+                                              }
+                                            }
+                                          },
+                                          "peak area": {
+                                            "properties": {
+                                              "unit": {
+                                                "const": "mAU.s"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "else": {
+                          "if": {
+                            "properties": {
+                              "chromatogram data cube": {
+                                "properties": {
+                                  "cube-structure": {
+                                    "properties": {
+                                      "measures": {
+                                        "items": {
+                                          "properties": {
+                                            "unit": {
+                                              "const": "S/m"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "then": {
+                            "properties": {
+                              "processed data document": {
+                                "properties": {
+                                  "peak list": {
+                                    "properties": {
+                                      "peak": {
+                                        "items": {
+                                          "properties": {
+                                            "peak height": {
+                                              "properties": {
+                                                "unit": {
+                                                  "const": "S/m"
+                                                }
+                                              }
+                                            },
+                                            "peak area": {
+                                              "properties": {
+                                                "unit": {
+                                                  "const": "[S/m].s"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "else": {
+                            "if": {
+                              "properties": {
+                                "chromatogram data cube": {
+                                  "properties": {
+                                    "cube-structure": {
+                                      "properties": {
+                                        "measures": {
+                                          "items": {
+                                            "properties": {
+                                              "unit": {
+                                                "const": "pA"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "then": {
+                              "properties": {
+                                "processed data document": {
+                                  "properties": {
+                                    "peak list": {
+                                      "properties": {
+                                        "peak": {
+                                          "items": {
+                                            "properties": {
+                                              "peak height": {
+                                                "properties": {
+                                                  "unit": {
+                                                    "const": "pA"
+                                                  }
+                                                }
+                                              },
+                                              "peak area": {
+                                                "properties": {
+                                                  "unit": {
+                                                    "const": "pA.s"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "else": {
+                              "if": {
+                                "properties": {
+                                  "chromatogram data cube": {
+                                    "properties": {
+                                      "cube-structure": {
+                                        "properties": {
+                                          "measures": {
+                                            "items": {
+                                              "properties": {
+                                                "unit": {
+                                                  "const": "nC"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "then": {
+                                "properties": {
+                                  "processed data document": {
+                                    "properties": {
+                                      "peak list": {
+                                        "properties": {
+                                          "peak": {
+                                            "items": {
+                                              "properties": {
+                                                "peak height": {
+                                                  "properties": {
+                                                    "unit": {
+                                                      "const": "nC"
+                                                    }
+                                                  }
+                                                },
+                                                "peak area": {
+                                                  "properties": {
+                                                    "unit": {
+                                                      "const": "nC.s"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "sample document",
+                        "injection document",
+                        "chromatography column document",
+                        "device control aggregate document",
+                        "detection type",
+                        "chromatogram data cube"
+                      ]
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "measurement document"
+                ]
+              }
+            },
+            "required": [
+              "analyst",
+              "measurement aggregate document"
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "device system document",
+        "liquid chromatography document"
+      ]
+    }
+  }
+}
