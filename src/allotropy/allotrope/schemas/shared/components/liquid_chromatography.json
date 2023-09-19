@@ -1,0 +1,369 @@
+{
+  "peak list": {
+    "type": "object",
+    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000432",
+    "$asm.pattern": "aggregate datum",
+    "properties": {
+      "peak": {
+        "type": "array",
+        "$asm.array-ordered": true,
+        "$asm.array-mixed": false,
+        "$asm.pattern": "indexed datum",
+        "items": {
+          "allOf": [
+            {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000413",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "peak end": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValueSecondTime"
+                },
+                "identifier": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000917",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "relative peak height": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000949",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValuePercent"
+                },
+                "written name": {
+                  "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000590",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "peak height": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000948",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$defs/tQuantityValue"
+                },
+                "capacity factor (chromatography)": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001234",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValueUnitless"
+                },
+                "peak area": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001073",
+                  "$asm.pattern": "quantity datum",
+                  "type": "object",
+                  "$ref": "#/$defs/tQuantityValue"
+                },
+                "relative peak area": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001165",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValuePercent"
+                },
+                "retention time": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001089",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValueSecondTime"
+                },
+                "peak start": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001178",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValueSecondTime"
+                },
+                "peak selectivity (chromatography)": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001235",
+                  "$asm.pattern": "quantity datum",
+                  "$ref": "#/$custom/tQuantityValueUnitless"
+                }
+              },
+              "required": [
+                "retention time"
+              ],
+              "anyOf": [
+                {
+                  "properties": {
+                    "peak width at 4.4 % of height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002784",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at 13.4 % of height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002785",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at 32.4 % of height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002786",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at 60.7 % of height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002787",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at half height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001266",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at 5 % of height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001265",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at baseline": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001264",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at inflection": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002761",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width at 10 % of height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002511",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "peak width": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001075",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueSecondTime"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "statistical skew (chromatography)": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001238",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "asymmetry factor measured at 5 % height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001237",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "asymmetry factor measured at 10 % height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002512",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "asymmetry factor squared measured at 10 % height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002778",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "asymmetry factor squared measured at 4.4 % height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002777",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "asymmetry factor measured at 4.4 % height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002776",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "chromatographic peak asymmetry factor": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001236",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "asymmetry factor measured at baseline": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002779",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "chromatographic peak resolution": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001230",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "chromatographic peak resolution using baseline peak widths": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001231",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "chromatographic peak resolution using peak width at half-height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001232",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "chromatographic peak resolution using statistical moments": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates (chromatography)": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001239",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates measured at 60.7 % of peak height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002780",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates measured at 32.4 % of peak height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002781",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates measured at 13.4 % of peak height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002782",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates measured at 4.4 % of peak height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002783",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates by tangent method": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001240",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates by peak width at half height": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001241",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "number of theoretical plates by peak width at half height (JP14)": {
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002807",
+                      "$asm.pattern": "quantity datum",
+                      "$ref": "#/$custom/tQuantityValueUnitless"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "properties": {
+                "@index": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2147483647
+                }
+              }
+            }
+          ]
+        },
+        "minItems": 0
+      }
+    }
+  }
+}

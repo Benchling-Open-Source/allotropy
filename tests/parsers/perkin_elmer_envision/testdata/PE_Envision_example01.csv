@@ -1,0 +1,218 @@
+Plate information 
+Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Chamber temperature at end,Humidity at start,Humidity at end,Ambient temperature at start,Ambient temperature at end,Formula,Measurement date,
+1,1,"=""""",N/A,N/A,N/A,N/A,N/A,N/A,N/A,Calc 1: General = (X / Y) * Z where X = AC HTRF Laser [Eu](1) channel 1 window 1  Y = AC HTRF Laser [Eu](1) channel 2 window 1  Z = 10000,10/13/2022 3:08:06 PM,
+
+Background information
+Plate,Label,Result,Signal,Flashes/Time,Meastime,MeasInfo,
+1,AC HTRF Laser [Eu],0,162,50,00:00:00.000,De=1st Ex=Top Em=Top Wdw=1 (14),
+1,AC HTRF Laser [Eu],0,260,50,00:00:00.000,De=2nd Ex=Top Em=Top Wdw=1 (142),
+
+Calculated results: Calc 1: General = (X / Y) * Z where X = AC HTRF Laser [Eu](1) channel 1 window 1  Y = AC HTRF Laser [Eu](1) channel 2 window 1  Z = 10000
+,01,02,03,04,05,06,07,08,09,10,11,12,
+A,3912.12920565,3923.92517971,3948.45245355,,3933.03506298,4061.92827247,3996.61746992,,,,,,
+B,2385.72193555,2384.42487617,2396.10683014,,2390.61028269,2396.68321027,2424.70697585,,,,,,
+C,1497.6939597,1488.29789767,1474.23429335,,1513.01294815,1487.52148035,1471.02712185,,,,,,
+D,1004.96752006,997.698002862,984.957281601,,1017.18554813,968.985790113,1005.07749543,,,,,,
+E,707.203907204,697.464104756,703.487537674,,726.238246392,701.399029629,721.275009761,,,,,,
+F,562.804988252,557.881619938,559.664129137,,573.562254074,567.634735212,563.983204482,,,,,,
+G,481.189418042,482.180558541,480.169042819,,478.930200648,482.450907876,491.042828331,,,,,,
+H,403.155127082,414.191684058,399.233942251,,403.302222012,406.559451108,409.025761641,,,,,,
+
+Plate information 
+Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Chamber temperature at end,Humidity at start,Humidity at end,Ambient temperature at start,Ambient temperature at end,Group,Label,ScanX,ScanY,Measinfo,Kinetics,Measurement date,
+1,1,"=""""",11.9,23.17,23.19,100,100,23.47,23.59,1,AC HTRF Laser [Eu](1),0,0,De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,
+
+Background information
+Plate,Label,Result,Signal,Flashes/Time,Meastime,MeasInfo,
+1,AC HTRF Laser [Eu],0,162,50,00:00:00.000,De=1st Ex=Top Em=Top Wdw=1 (14),
+1,AC HTRF Laser [Eu],0,260,50,00:00:00.000,De=2nd Ex=Top Em=Top Wdw=1 (142),
+
+Results for AC HTRF Laser [Eu](1) - channel 1 window 1 (Counts)
+,01,02,03,04,05,06,07,08,09,10,11,12,
+A,31441,31278,31727,,32350,32415,32847,,,,,,
+B,19603,19063,19621,,19543,19799,20087,,,,,,
+C,12762,12502,12582,,12842,13071,12914,,,,,,
+D,8153,8018,8093,,8387,8142,8294,,,,,,
+E,5792,5630,5882,,6063,5956,6096,,,,,,
+F,4671,4477,4639,,4854,4728,4822,,,,,,
+G,3887,3814,3954,,3979,4044,4139,,,,,,
+H,3266,3354,3252,,3405,3342,3339,,,,,,
+
+Plate information 
+Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Chamber temperature at end,Humidity at start,Humidity at end,Ambient temperature at start,Ambient temperature at end,Group,Label,ScanX,ScanY,Measinfo,Kinetics,Measurement date,
+1,1,"=""""",11.9,23.17,23.19,100,100,23.47,23.59,1,AC HTRF Laser [Eu](1),0,0,De=2nd Ex=Top Em=Top Wdw=1 (142),0,10/13/2022 3:08:06 PM,
+
+Background information
+Plate,Label,Result,Signal,Flashes/Time,Meastime,MeasInfo,
+1,AC HTRF Laser [Eu],0,162,50,00:00:00.000,De=1st Ex=Top Em=Top Wdw=1 (14),
+1,AC HTRF Laser [Eu],0,260,50,00:00:00.000,De=2nd Ex=Top Em=Top Wdw=1 (142),
+
+Results for AC HTRF Laser [Eu](1) - channel 2 window 1 (Counts)
+,01,02,03,04,05,06,07,08,09,10,11,12,
+A,80368,79711,80353,,82252,79802,82187,,,,,,
+B,82168,79948,81887,,81749,82610,82843,,,,,,
+C,85211,84002,85346,,84877,87871,87789,,,,,,
+D,81127,80365,82166,,82453,84026,82521,,,,,,
+E,81900,80721,83612,,83485,84916,84517,,,,,,
+F,82995,80250,82889,,84629,83293,85499,,,,,,
+G,80779,79099,82346,,83081,83822,84290,,,,,,
+H,81011,80977,81456,,84428,82202,81633,,,,,,
+
+
+Basic assay information 
+Assay ID: ,,,,3134
+Assay Started: ,,,,10/13/2022 3:06:23 PM
+Assay Finished: ,,,,10/13/2022 3:08:15 PM
+Assay Exported: ,,,,10/13/2022 3:08:15 PM
+Protocol ID: ,,,,100302
+Protocol Name: ,,,,HTRF LASER Eu 665/620
+Serial#: ,,,,="1050209"
+
+
+
+Protocol information
+Protocol:
+Protocol name,,,,HTRF LASER Eu 665/620
+Number of assay repeats,,,,1
+Start assay repeat each,,,,N/A
+Number of plate repeats,,,,1
+Start plate repeat each,,,,N/A
+Is label meas. height used,,,,Yes
+Height of measurement,,,,Defined in label
+Is gripper height used,,,,No
+Mode of measurement,,,,By Columns  bi-directional
+Rotated plate,,,,No
+Soft move,,,,No
+Protocol notes,,,, 
+
+Plate type:
+Name of the plate type,,,,cisbio 96well low volume
+Number of rows,,,,8
+Number of columns,,,,12
+Number of the wells in the plate,,,,96
+Height of the plate,,,,12 mm
+
+Coordinates of corners:
+cisbio 96well low volume
+14.3 mm x------------------------------------------------------- x 113.3 mm
+11.2 mm                                                            11.2 mm
+
+14.3 mm x------------------------------------------------------- x 113.3 mm
+74.2 mm                                                            74.2 mm
+
+Platemap:
+Plate,,,,1
+Group,,,,1
+
+,01,02,03,04,05,06,07,08,09,10,11,12,
+A,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+B,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+C,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+D,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+E,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+F,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+G,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+H,- ,- ,- ,  ,- ,- ,- ,  ,  ,  ,  ,  
+
+ - - Undefined
+
+Calculations:
+Plate,,,,1
+ Formula index,,,,Calc 1
+ Formula name,,,,General
+ Formula,,,,(X / Y) * Z where X = AC HTRF Laser [Eu](1) channel 1 window 1  Y = AC HTRF Laser [Eu](1) channel 2 window 1  Z = 10000
+
+Auto export parameters:
+Export format,,,,Plate2
+Include basic assay information,,,,Yes
+Place assay information at,,,,End of file
+Include basic plate information,,,,Yes
+Place plate information at,,,,Beginning of plate
+Include protocol information,,,,Yes
+Protocol info level,,,,Large
+Include error and warning information,,,,Yes
+Include background information,,,,Yes
+Add plate number to the file name,,,,Yes
+Each plate to separate file,,,,No
+Field separator to use,,,,System
+File name format,,,,C:\Users\MMD-User\Desktop\Keith\<AssayID><ProtocolName><Date><Time>.csv
+
+Operations:
+Plate 1
+  Group 1
+    Measurement
+      Label,,,,AC HTRF Laser [Eu](1)
+
+Labels:
+AC HTRF Laser [Eu],,,,6000028
+Light source,,,,Laser
+Top mirror,,,,LANCE/DELFIA Dual / Bias
+Bottom mirror,,,,N/A
+Exc. filter,,,,UV2 (TRF) 320
+Using of excitation filter,,,,Top
+Ems. filter,,,,APC 665
+Using of emission filter,,,,Top
+2nd ems. filter,,,,Cy5 620
+Using of 2nd emission filter,,,,Top
+Measurement height,,,,6.5 mm
+Cycle,,,,16600
+Delay,,,,50
+Number of flashes,,,,50
+Number of flashes for 2nd detector,,,,50
+Number of sequence windows,,,,1
+Total time of windows,,,,400
+Excitation light,,,,100%
+Reference excitation light,,,,100%
+Reference AD gain,,,,2
+Reference signal,,,,307063
+Last edited,,,,10/12/2022 3:55:14 PM
+Last edited by,,,,EnVision
+Factory preset,,,,No
+
+Filters:
+UV2 (TRF) 320,,,,111
+Filter type,,,,Excitation
+Description,,,,X320 CWL=320nm BW=75nm Tmin=70%
+Used with,,,,DELFIA - Time-resolved Fluorescence Fluorescence Intensity Fluorescence Polarization LANCE - Time-resolved Fluorescence
+Last edited,,,,3/30/2021 12:27:43 PM
+Last edited by,,,,Installation
+Factory preset,,,,Yes
+
+APC 665,,,,205
+Filter type,,,,Emission
+Description,,,,M665 CWL=665nm BW=75nm Tmin=75%
+Used with,,,,DELFIA - Time-resolved Fluorescence Fluorescence Intensity Fluorescence Polarization LANCE - Time-resolved FluorescenceLuminescence DELFIA - Time-resolved Fluorescence Fluorescence Intensity LANCE - Time-resolved Fluorescence
+Last edited,,,,3/30/2021 12:27:43 PM
+Last edited by,,,,Installation
+Factory preset,,,,Yes
+
+Cy5 620,,,,118
+Filter type,,,,Excitation
+Description,,,,X620 CWL=620nm BW=10nm Tmin=65%
+Used with,,,,DELFIA - Time-resolved Fluorescence Fluorescence Intensity Fluorescence Polarization LANCE - Time-resolved FluorescenceLuminescence DELFIA - Time-resolved Fluorescence Fluorescence Intensity LANCE - Time-resolved FluorescenceDELFIA - Time-resolved Fluorescence Fluorescence Intensity Fluorescence Polarization LANCE - Time-resolved Fluorescence
+Last edited,,,,3/30/2021 12:27:43 PM
+Last edited by,,,,Installation
+Factory preset,,,,Yes
+
+Mirror modules:
+LANCE/DELFIA Dual / Bias,,,,446
+Used by,,,,Top
+Dual,,,,Yes
+Bias,,,,Yes
+Description,,,,D400/D630
+Used with,,,,Luminescence DELFIA - Time-resolved Fluorescence Fluorescence Intensity LANCE - Time-resolved Fluorescence
+Last edited,,,,3/30/2021 12:27:43 PM
+Last edited by,,,,Installation
+Factory preset,,,,Yes
+
+Instrument:
+Serial number,,,,1050209
+Nickname,,,,EnVision
+
+Normalization:
+
+
+
+
+
+Exported with EnVision Workstation version 1.14.3049.1193

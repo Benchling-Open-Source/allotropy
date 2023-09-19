@@ -1,0 +1,153 @@
+Plate information 
+Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Chamber temperature at end,Humidity at start,Humidity at end,Ambient temperature at start,Ambient temperature at end,Group,Label,ScanX,ScanY,Measinfo,Kinetics,Measurement date,
+1,1,"=""LoP_pool""",14.67,23.17,23.47,50.7,48,23.49,23.19,1,GENE - HTS Screen 384 Plate(1),0,0,De=1st Ex=N/A Em=Top Wdw=N/A (14),0,7/10/2023 2:10:15 PM,
+
+Background information
+Plate,Label,Result,Signal,Flashes/Time,Meastime,MeasInfo,
+1,GENE - HTS Screen 384 Plate,0,4,0.55,00:00:00.000,De=1st Ex=N/A Em=Top Wdw=N/A (14),
+
+512740,43140,27244,26600,28196,27196,25632,26780,27820,25996,27444,28504,26408,26804,25936,26040,26856,27108,25632,27200,26776,26076,25920,554048,
+428912,30412,25536,28388,28224,28680,28912,29128,26852,28040,27996,28564,27412,30156,26908,28860,27264,27592,27728,28296,27772,29212,27936,442244,
+237744,29704,27556,29540,30036,28712,28276,29656,31664,29096,30260,30252,30028,29296,28600,28668,29328,30380,29908,27620,31916,28036,28300,232476,
+97864,29616,28172,29772,28672,30872,30420,29760,30940,30864,30992,29768,29412,29804,31096,30044,29072,29668,31256,30512,28872,30224,26964,100992,
+36408,29492,28672,29776,29844,28024,28976,28880,29608,29376,31416,31792,31088,31668,30864,27808,31400,28620,27288,29012,27312,28548,27676,38020,
+15992,31352,31384,29508,31524,30128,32948,31144,30136,30908,28484,30288,29304,30700,29240,28512,30108,28760,28356,27880,28336,30052,27896,15440,
+7016,29056,31840,35172,32160,32108,31496,30676,29128,30628,30268,31128,31340,31892,29064,29940,30572,30492,27056,28712,29596,30540,30340,7164,
+4368,31500,30348,35664,29604,28716,30248,32280,32496,32980,30008,32144,27316,28596,29464,24620,31952,29580,28808,30872,29040,31704,31304,4240,
+3092,29852,31676,31460,31220,29788,30732,32552,32472,29600,27768,25788,31896,31736,29632,32292,29752,31412,29996,30664,29972,29596,30292,2940,
+2804,32428,32308,31204,31232,30396,31364,29044,31716,31616,31452,32824,31396,30424,32984,31660,32688,33516,30004,32056,31720,31744,29184,2884,
+2808,27288,31016,31368,31828,30320,31596,31012,35044,32948,31692,30488,34116,32176,32824,30696,31880,33096,27436,29680,34788,30928,30364,2780,
+2608,31380,30656,32144,33308,30044,31088,30840,32332,32088,32132,32948,35416,37084,31048,35832,35624,31432,29284,32272,31040,31504,31952,2668,
+2556,30964,27216,32488,32464,35180,32944,33900,31704,35612,31420,33700,32888,31216,32188,33092,32620,32360,32760,31944,33604,31424,30580,2568,
+2452,31136,29300,32952,30712,31308,33508,32192,30948,33448,31080,32808,33528,32112,33248,31176,32816,32480,31108,31884,32528,30696,29296,2636,
+2488,28752,32684,30888,32848,31916,30976,31320,32456,33784,32096,31780,32716,33732,32784,31420,30364,32488,32792,33048,30320,31384,31400,2596,
+2600,28884,31564,30208,31324,31328,32692,29580,28996,34300,35692,32328,33936,33324,31872,32100,33284,33368,31500,34380,33668,30996,30812,2692,
+
+
+Basic assay information 
+Assay ID: ,,,,2801
+Assay Started: ,,,,7/10/2023 2:05:28 PM
+Assay Finished: ,,,,7/10/2023 2:10:21 PM
+Assay Exported: ,,,,7/10/2023 2:10:21 PM
+Protocol ID: ,,,,100130
+Protocol Name: ,,,,GENE AlphaLISA 384 Proxi Final - higher gain
+Serial#: ,,,,="1051017"
+
+
+
+Protocol information
+Protocol:
+Protocol name,,,,GENE AlphaLISA 384 Proxi Final - higher gain
+Number of assay repeats,,,,1
+Start assay repeat each,,,,N/A
+Number of plate repeats,,,,1
+Start plate repeat each,,,,N/A
+Is label meas. height used,,,,Yes
+Height of measurement,,,,Defined in label
+Is gripper height used,,,,No
+Mode of measurement,,,,By Rows  bi-directional
+Rotated plate,,,,No
+Soft move,,,,No
+Protocol notes,,,, 
+
+Plate type:
+Name of the plate type,,,,384 Plate
+Number of rows,,,,16
+Number of columns,,,,24
+Number of the wells in the plate,,,,384
+Height of the plate,,,,14.4 mm
+
+Coordinates of corners:
+384 Plate
+12.15 mm x------------------------------------------------------ x 115.65 mm
+9.05 mm                                                            9.05 mm
+
+12.15 mm x------------------------------------------------------ x 115.65 mm
+76.55 mm                                                           76.55 mm
+
+Platemap:
+Plate,,,,1
+Group,,,,1
+
+,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,
+A,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+B,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+C,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+D,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+E,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+F,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+G,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+H,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+I,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+J,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+K,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+L,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+M,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+N,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+O,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+P,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- ,- 
+
+ - - Undefined
+
+Calculations:
+Plate,,,,1
+ Formula index,,,,Calc 1
+ Formula name,,,,Crosstalk
+ Formula,,,,Crosstalk where Label : GENE - HTS Screen 384 Plate(1)
+
+Auto export parameters:
+Export format,,,,Plate
+Include basic assay information,,,,Yes
+Place assay information at,,,,End of file
+Include basic plate information,,,,Yes
+Place plate information at,,,,Beginning of plate
+Include protocol information,,,,Yes
+Protocol info level,,,,Large
+Include error and warning information,,,,Yes
+Include background information,,,,Yes
+Add plate number to the file name,,,,Yes
+Each plate to separate file,,,,No
+Field separator to use,,,,System
+File name format,,,,G:\Shared drives\HiTS\Envision Data\AlphaLISA\AlphaLISA Screens\<PlateBarcode><Date><Time>.csv
+
+Operations:
+Plate 1
+  Group 1
+    Measurement
+      Label,,,,GENE - HTS Screen 384 Plate(1)
+
+Labels:
+GENE - HTS Screen 384 Plate,,,,8000005
+Measurement height,,,,0 mm
+Excitation time,,,,0.18 s
+Emission time,,,,0.37 s
+CT1,,,,(0 0) (0 0) (0 0) (0 0) (0 0) (0 0) (0 0) (0 0)
+CT2,,,,0
+CT3,,,,0 0 0
+Reference AD gain,,,,1
+Reference signal,,,,242464
+Aperture,,,,384 Plate HTS Screen aperture
+Last edited,,,,1/25/2023 11:54:58 AM
+Last edited by,,,,EnVision
+Factory preset,,,,No
+
+Aperture:
+384 Plate HTS Screen aperture,,,,5
+Height,,,,4.2 mm
+Diameter,,,,3.7 mm
+Description,,,,Can also be used in 96 plate
+Last edited,,,,11/25/2021 2:03:43 PM
+Last edited by,,,,Installation
+Factory preset,,,,Yes
+
+Instrument:
+Serial number,,,,1051017
+Nickname,,,,EnVision#Alpha_680nm
+
+Normalization:
+
+
+
+
+
+Exported with EnVision Workstation version 1.14.3049.1193

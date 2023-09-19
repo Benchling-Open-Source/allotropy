@@ -1,0 +1,36 @@
+name: test
+
+# Taken from https://github.com/actions/starter-workflows/blob/main/ci/python-app.yml
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [opened, edited, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-20.04
+    name: Quality Checks + Tests
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.9.11"
+    - name: Install hatch
+      run: |
+        pip install hatch
+    - name: Lint
+      run: |
+        hatch run lint:style
+    - name: Run mypy
+      run: |
+        hatch run lint:typing
+    - name: Run Tests
+      run: |
+        hatch run test:test
