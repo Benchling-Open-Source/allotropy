@@ -264,10 +264,7 @@ class PlateMap:
 
 
 def create_plate_maps(reader: LinesReader) -> dict[str, PlateMap]:
-    if reader.drop_until("^Platemap") is None:
-        msg = "Unable to get plate map information"
-        raise Exception(msg)
-
+    assert_not_none(reader.drop_until("^Platemap"), "PlateMap")
     reader.pop()  # remove title
 
     maps: dict[str, PlateMap] = {}
@@ -296,29 +293,25 @@ class Filter:
 
         description = str(series.get("Description"))
 
-        search_result = search("CWL=\\d*nm", description)
-        if search_result is None:
-            msg = f"Unable to find wavelength for filter {name}"
-            raise Exception(msg)
-        wavelength = float(
-            search_result.group().removeprefix("CWL=").removesuffix("nm")
-        )
+        search_result = assert_not_none(
+            search("CWL=\\d*nm", description),
+            msg=f"Unable to find wavelength for filter {name}"
+        ).group()
+        wavelength = float(search_result.removeprefix("CWL=").removesuffix("nm"))
 
-        search_result = search("BW=\\d*nm", description)
-        if search_result is None:
-            msg = f"Unable to find bandwidth for filter {name}"
-            raise Exception(msg)
-        bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
+        search_result = assert_not_none(
+            search("BW=\\d*nm", description),
+            msg=f"Unable to find bandwidth for filter {name}"
+        ).group()
+        bandwidth = float(search_result.removeprefix("BW=").removesuffix("nm"))
 
         return Filter(name, wavelength, bandwidth)
 
 
 def create_filters(reader: LinesReader) -> dict[str, Filter]:
     reader.drop_until("(^Filters:)|^Instrument:")
-
     if reader.match("^Instrument"):
         return {}
-
     reader.pop()  # remove title
 
     filters = {}
@@ -375,10 +368,7 @@ class Instrument:
 
     @staticmethod
     def create(reader: LinesReader) -> Instrument:
-        if reader.drop_until("^Instrument") is None:
-            msg = "Unable to find instrument information"
-            raise Exception(msg)
-
+        assert_not_none(reader.drop_until("^Instrument"), "Instrument")
         reader.pop()  # remove title
 
         serial_number = assert_not_none(reader.pop(), "serial number").split(",")[-1]

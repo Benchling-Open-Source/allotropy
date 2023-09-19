@@ -17,7 +17,7 @@ class LinesReader:
         self.current_line = 0
         self.read_csv_kwargs: dict[str, Any] = {}
 
-    def current_line_exists(self) -> bool:
+    def  current_line_exists(self) -> bool:
         return 0 <= self.current_line < self.n_lines
 
     def get(self) -> Optional[str]:
@@ -76,7 +76,7 @@ class LinesReader:
         self,
         start_pattern: Optional[str] = None,
         end_pattern: Optional[str] = None,
-        q: Optional[dict[str, Any]] = None,
+        read_csv_kwargs: Optional[dict[str, Any]] = None,
     ) -> Optional[pd.DataFrame]:
         self.drop_empty()
         if start_pattern:
@@ -95,7 +95,7 @@ class LinesReader:
 
         csv_stream = StringIO("\n".join(lines))
         kwargs = {**self.read_csv_kwargs, **(read_csv_kwargs or {})}
-        data: pd.DataFrame = pd.read_csv(csv_stream, header=None, **kwargs)
+        data: pd.DataFrame = pd.read_csv(csv_stream, **kwargs)
         return data
 
     def drop_sections(self, pattern: str) -> None:
