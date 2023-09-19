@@ -52,6 +52,11 @@ asm_schema = allotrope_from_io(bytes_io, VendorType.MOLDEV_SOFTMAX_PRO)
 
 Install Hatch: https://hatch.pypa.io/latest/
 
+First time setup:
+```sh
+scripts/dev/bootstrap
+```
+
 #### Dependencies
 
 To add requirements used by the library, update `dependencies` in `pyproject.toml`:
