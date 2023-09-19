@@ -619,7 +619,7 @@ def get_model() -> Model:
             ],
             data_system_document=DataSystemDocument(
                 data_system_instance_identifier="localhost",
-                file_name="Thermo_QuantStudio_test01.txt",
+                file_name="appbio_quantstudio_test01.txt",
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
@@ -881,7 +881,7 @@ def get_model2() -> Model:
             ],
             data_system_document=DataSystemDocument(
                 data_system_instance_identifier="localhost",
-                file_name="Thermo_QuantStudio_test02.txt",
+                file_name="appbio_quantstudio_test02.txt",
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
@@ -1179,7 +1179,7 @@ def get_genotyping_model() -> Model:
             ],
             data_system_document=DataSystemDocument(
                 data_system_instance_identifier="localhost",
-                file_name="Thermo_QuantStudio_test03.txt",
+                file_name="appbio_quantstudio_test03.txt",
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
