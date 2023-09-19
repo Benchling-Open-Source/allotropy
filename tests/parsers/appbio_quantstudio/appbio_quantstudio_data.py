@@ -38,7 +38,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     MeltCurveRawData,
     MulticomponentData,
-    RawData,
     Result,
     Well,
     WellItem,
@@ -64,8 +63,8 @@ def get_data() -> Data:
         wells=[
             Well(
                 identifier=1,
-                items={
-                    "IPC": WellItem(
+                items=[
+                    WellItem(
                         identifier=1,
                         position="A1",
                         target_dna_description="IPC",
@@ -74,13 +73,13 @@ def get_data() -> Data:
                         reporter_dye_setting="VIC",
                         quencher_dye_setting="NFQ-MGB",
                         sample_role_type="BlockedIPC",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=1,
+                        _amplification_data=AmplificationData(
+                            total_cycle_number_setting=1.0,
                             cycle=[1],
                             rn=[1.064],
                             delta_rn=[-0.002],
                         ),
-                        result_obj=Result(
+                        _result=Result(
                             cycle_threshold_value_setting=0.2,
                             cycle_threshold_result=None,
                             automatic_cycle_threshold_enabled_setting=False,
@@ -91,7 +90,7 @@ def get_data() -> Data:
                             genotyping_determination_method_setting=0.0,
                         ),
                     ),
-                    "TGFb": WellItem(
+                    WellItem(
                         identifier=1,
                         position="A1",
                         target_dna_description="TGFb",
@@ -100,13 +99,13 @@ def get_data() -> Data:
                         reporter_dye_setting="FAM",
                         quencher_dye_setting="NFQ-MGB",
                         sample_role_type="NTC",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=1,
+                        _amplification_data=AmplificationData(
+                            total_cycle_number_setting=1.0,
                             cycle=[1],
                             rn=[0.343],
                             delta_rn=[-0.007],
                         ),
-                        result_obj=Result(
+                        _result=Result(
                             cycle_threshold_value_setting=0.2,
                             cycle_threshold_result=None,
                             automatic_cycle_threshold_enabled_setting=False,
@@ -117,8 +116,8 @@ def get_data() -> Data:
                             genotyping_determination_method_setting=0.0,
                         ),
                     ),
-                },
-                multicomponent_data=MulticomponentData(
+                ],
+                _multicomponent_data=MulticomponentData(
                     cycle=[1],
                     columns={
                         "FAM": [502840.900],
@@ -126,17 +125,9 @@ def get_data() -> Data:
                         "VIC": [1654662.500],
                     },
                 ),
-                melt_curve_raw_data=None,
+                _melt_curve_raw_data=None,
             ),
         ],
-        raw_data=RawData(
-            [
-                "Well\tWell Position\tCycle\tx1-m1\tx2-m2\tx3-m3\tx4-m4\tx5-m5",
-                "1\t      A1\t1\t882,830.500\t1,748,809.500\t1,648,195.400\t1,513,508.200\t3,796.012",
-                "",
-                "",
-            ]
-        ),
     )
 
 
@@ -159,8 +150,8 @@ def get_data2() -> Data:
         wells=[
             Well(
                 identifier=1,
-                items={
-                    "B2M-Qiagen": WellItem(
+                items=[
+                    WellItem(
                         identifier=1,
                         position="A1",
                         target_dna_description="B2M-Qiagen",
@@ -169,13 +160,13 @@ def get_data2() -> Data:
                         reporter_dye_setting="SYBR",
                         quencher_dye_setting=None,
                         sample_role_type="UNKNOWN",
-                        amplification_data_obj=AmplificationData(
+                        _amplification_data=AmplificationData(
                             total_cycle_number_setting=1,
                             cycle=[1],
                             rn=[0.612],
                             delta_rn=[-0.007],
                         ),
-                        result_obj=Result(
+                        _result=Result(
                             cycle_threshold_value_setting=0.277,
                             cycle_threshold_result=18.717,
                             automatic_cycle_threshold_enabled_setting=True,
@@ -186,29 +177,21 @@ def get_data2() -> Data:
                             genotyping_determination_method_setting=None,
                         ),
                     ),
-                },
-                multicomponent_data=MulticomponentData(
+                ],
+                _multicomponent_data=MulticomponentData(
                     cycle=[1],
                     columns={
                         "ROX": [55573.94],
                         "SYBR": [34014.32],
                     },
                 ),
-                melt_curve_raw_data=MeltCurveRawData(
+                _melt_curve_raw_data=MeltCurveRawData(
                     reading=[1],
                     fluorescence=[3.478],
                     derivative=[0.093],
                 ),
             ),
         ],
-        raw_data=RawData(
-            [
-                "Well\tWell Position\tCycle\tx1-m1\tx2-m2\tx3-m3\tx4-m4\tx5-m5",
-                "1\t      A1\t1\t36,431.130\t4,790.476\t4,560.821\t56,089.960\t-387.130",
-                "",
-                "",
-            ]
-        ),
     )
 
 
@@ -912,8 +895,8 @@ def get_genotyping_data() -> Data:
         wells=[
             Well(
                 identifier=1,
-                items={
-                    "CYP19_2-Allele 1": WellItem(
+                items=[
+                    WellItem(
                         identifier=1,
                         position="A1",
                         target_dna_description="CYP19_2-Allele 1",
@@ -922,13 +905,13 @@ def get_genotyping_data() -> Data:
                         reporter_dye_setting="SYBR",
                         quencher_dye_setting=None,
                         sample_role_type="PC_ALLELE_1",
-                        amplification_data_obj=AmplificationData(
+                        _amplification_data=AmplificationData(
                             total_cycle_number_setting=2,
                             cycle=[1, 2],
                             rn=[0.275, 0.277],
                             delta_rn=[-0.003, -0.001],
                         ),
-                        result_obj=Result(
+                        _result=Result(
                             cycle_threshold_value_setting=0.219,
                             cycle_threshold_result=None,
                             automatic_cycle_threshold_enabled_setting=True,
@@ -939,7 +922,7 @@ def get_genotyping_data() -> Data:
                             genotyping_determination_method_setting=None,
                         ),
                     ),
-                    "CYP19_2-Allele 2": WellItem(
+                    WellItem(
                         identifier=1,
                         position="A1",
                         target_dna_description="CYP19_2-Allele 2",
@@ -948,13 +931,13 @@ def get_genotyping_data() -> Data:
                         reporter_dye_setting="SYBR",
                         quencher_dye_setting=None,
                         sample_role_type="PC_ALLELE_1",
-                        amplification_data_obj=AmplificationData(
+                        _amplification_data=AmplificationData(
                             total_cycle_number_setting=2,
                             cycle=[1, 2],
                             rn=[0.825, 0.831],
                             delta_rn=[-0.016, -0.011],
                         ),
-                        result_obj=Result(
+                        _result=Result(
                             cycle_threshold_value_setting=0.132,
                             cycle_threshold_result=None,
                             automatic_cycle_threshold_enabled_setting=True,
@@ -965,10 +948,9 @@ def get_genotyping_data() -> Data:
                             genotyping_determination_method_setting=None,
                         ),
                     ),
-                },
+                ],
             ),
         ],
-        raw_data=None,
     )
 
 

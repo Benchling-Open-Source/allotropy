@@ -9,16 +9,21 @@ PrimitiveValue = Union[str, int, float]
 
 def try_int(value: Optional[str]) -> Optional[int]:
     try:
-        return int(value or "")
+        return int(value) if value is not None else None
     except ValueError:
         return None
 
 
 def try_float(value: Optional[str]) -> Optional[float]:
+
     try:
-        return float(value or "")
+        return float(value) if value is not None else None
     except ValueError:
         return None
+
+
+def try_bool(value: Optional[str]) -> Optional[bool]:
+    return bool(value) if value is not None else None
 
 
 def natural_sort_key(key: str) -> list[str]:
@@ -29,12 +34,14 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
-T = TypeVar("T", bound=PrimitiveValue)
+T = TypeVar("T")
 
 
-def assert_not_none(value: Optional[T], name: str) -> T:
+def assert_not_none(
+    value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
+) -> T:
     if value is None:
-        error = f"Expected non-null value for {name}"
+        error = msg or f"Expected non-null value{f' for {name}' if name else ''}"
         raise AllotropeConversionError(error)
     return value
 

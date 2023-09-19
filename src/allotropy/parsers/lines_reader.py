@@ -71,18 +71,26 @@ class LinesReader:
             if line is not None:
                 yield line
 
-    def pop_csv_block(self, pattern: Optional[str] = None) -> pd.DataFrame:
+    def pop_csv_block(
+        self,
+        start_pattern: Optional[str] = None,
+        end_pattern: Optional[str] = None,
+        sep: Optional[str] = None,
+    ) -> pd.DataFrame:
         self.drop_empty()
-        if pattern:
-            if not self.match(pattern):
-                msg = f"Did not find {pattern}"
+        if start_pattern:
+            if not self.match(start_pattern):
+                msg = f"Did not find {start_pattern}"
                 raise Exception(msg)
             self.pop()  # remove title
 
-        csv_stream = StringIO("\n".join(self.pop_until_empty()))
+        lines = list(
+            self.pop_until(end_pattern) if end_pattern else self.pop_until_empty()
+        )
+        csv_stream = StringIO("\n".join(lines))
         self.drop_empty()
 
-        return pd.read_csv(csv_stream, header=None)
+        return pd.read_csv(csv_stream, sep=sep)
 
     def drop_sections(self, pattern: str) -> None:
         self.drop_empty()

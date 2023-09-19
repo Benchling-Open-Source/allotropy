@@ -3,30 +3,16 @@ from __future__ import annotations
 from io import BytesIO
 from typing import Optional
 
-import pandas as pd
 import pytest
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
-    DataBuilder,
-    HeaderBuilder,
-    ResultsBuilder,
-)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    Data,
     Header,
-    Result,
-    WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, get_data2
-
-
-@pytest.mark.short
-def test_header_builder_returns_header_instance() -> None:
-    header_contents = get_raw_header_contents()
-
-    assert isinstance(HeaderBuilder.build(LinesReader(header_contents)), Header)
 
 
 def test_header_builder() -> None:
@@ -51,7 +37,7 @@ def test_header_builder() -> None:
         experimental_data_identifier=experimental_data_identifier,
     )
 
-    assert HeaderBuilder.build(LinesReader(header_contents)) == Header(
+    assert Header.create(LinesReader(header_contents)) == Header(
         measurement_time="2010-10-01 01:44:54",
         plate_well_count=96,
         experiment_type=ExperimentType.genotyping_qPCR_experiment,
@@ -68,27 +54,22 @@ def test_header_builder() -> None:
 
 
 @pytest.mark.parametrize(
-    "parameter,expected_error",
+    "parameter",
     [
-        ("device_identifier", "Unable to get device identifier"),
-        ("model_number", "Unable to get model number"),
-        ("device_serial_number", "Unable to get device serial number"),
-        (
-            "measurement_method_identifier",
-            "Unable to get measurement method identifier",
-        ),
-        ("qpcr_detection_chemistry", "Unable to get qpcr detection chemistry"),
-        ("plate_well_count", "Unable to get plate well count"),
+        "device_identifier",
+        "model_number",
+        "device_serial_number",
+        "measurement_method_identifier",
+        "qpcr_detection_chemistry",
+        "plate_well_count",
     ],
 )
 @pytest.mark.short
-def test_header_builder_required_parameter_none_then_raise(
-    parameter: str, expected_error: str
-) -> None:
+def test_header_builder_required_parameter_none_then_raise(parameter: str) -> None:
     header_contents = get_raw_header_contents(**{parameter: None})
 
-    with pytest.raises(AllotropeConversionError, match=expected_error):
-        HeaderBuilder.build(LinesReader(header_contents))
+    with pytest.raises(AllotropeConversionError, match="Expected non-null value"):
+        Header.create(LinesReader(header_contents))
 
 
 @pytest.mark.short
@@ -96,7 +77,7 @@ def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
 
     with pytest.raises(AllotropeConversionError):
-        HeaderBuilder.build(LinesReader(header_contents))
+        Header.create(LinesReader(header_contents))
 
 
 @pytest.mark.short
@@ -104,39 +85,7 @@ def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
 
     with pytest.raises(AllotropeConversionError):
-        HeaderBuilder.build(LinesReader(header_contents))
-
-
-@pytest.mark.short
-def test_results_builder() -> None:
-
-    data = pd.DataFrame(
-        {
-            "Well": [1],
-            "SNP Assay Name": ["CYP19_2"],
-            "Allele1 Automatic Ct Threshold": [True],
-            "Allele1 Ct Threshold": [0.219],
-            "Allele2 Ct Threshold": [9999],
-            "Allele1 Ct": ["Undetermined"],
-        }
-    )
-    well_item = WellItem(
-        identifier=1,
-        position="A1",
-        target_dna_description="CYP19_2-Allele 1",
-        sample_identifier="NTC",
-        well_location_identifier="A1",
-        reporter_dye_setting="SYBR",
-        quencher_dye_setting=None,
-        sample_role_type="PC_ALLELE_1",
-    )
-    result = ResultsBuilder.build(
-        data, well_item, ExperimentType.genotyping_qPCR_experiment
-    )
-    assert isinstance(result, Result)
-    assert result.cycle_threshold_value_setting == 0.219
-    assert result.cycle_threshold_result is None
-    assert result.automatic_cycle_threshold_enabled_setting is True
+        Header.create(LinesReader(header_contents))
 
 
 @pytest.mark.short
@@ -147,7 +96,8 @@ def test_data_builder() -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
 
-    assert DataBuilder.build(reader) == get_data()
+    result = Data.create(reader)
+    assert result == get_data()
 
     test_filepath = (
         "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt"
@@ -155,7 +105,8 @@ def test_data_builder() -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
 
-    assert DataBuilder.build(reader) == get_data2()
+    result = Data.create(reader)
+    assert result == get_data2()
 
 
 def get_raw_header_contents(
