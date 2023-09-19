@@ -17,29 +17,17 @@ import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils import assert_not_none, get_timestamp, try_float, try_int
+from allotropy.parsers.utils.pandas import (
+    assert_str_from_series,
+    bool_or_none,
+    get_str_from_series,
+)
+from allotropy.parsers.utils.timestamp import get_timestamp
+from allotropy.parsers.utils.values import assert_not_none, try_float, try_int
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
     return pd.Series(df.iloc[0], index=df.columns)
-
-
-def get_str_from_series(
-    series: pd.Series, key: str, default: Optional[str] = None
-) -> Optional[str]:
-    value = series.get(key)
-    return str(value) if value not in ("", None) else default
-
-
-def assert_str_from_series(series: pd.Series, key: str) -> str:
-    return assert_not_none(get_str_from_series(series, key), key)
-
-
-def bool_or_none(series: pd.Series, key: str) -> Optional[bool]:
-    value = series.get(key)
-    if isinstance(value, np.bool_):
-        return bool(value)
-    return None
 
 
 T = TypeVar("T")
@@ -251,7 +239,16 @@ class AmplificationData:
     delta_rn: list[Optional[float]]
 
     @staticmethod
-    def create(reader: LinesReader) -> dict[int, dict[str, AmplificationData]]:
+    def create(data: pd.DataFrame) -> AmplificationData:
+        return AmplificationData(
+            total_cycle_number_setting=float(data["Cycle"].max()),
+            cycle=data["Cycle"].tolist(),
+            rn=data["Rn"].tolist(),
+            delta_rn=data["Delta Rn"].tolist(),
+        )
+
+    @staticmethod
+    def map_data(reader: LinesReader) -> dict[int, dict[str, AmplificationData]]:
         data = assert_not_none(
             reader.pop_csv_block(start_pattern=r"^\[Amplification Data\]"),
             "Amplification Data",
@@ -259,12 +256,7 @@ class AmplificationData:
         return map_well_data_dict(
             data,
             lambda well_data: {
-                str(target_name): AmplificationData(
-                    total_cycle_number_setting=float(target_data["Cycle"].max()),
-                    cycle=target_data["Cycle"].tolist(),
-                    rn=target_data["Rn"].tolist(),
-                    delta_rn=target_data["Delta Rn"].tolist(),
-                )
+                str(target_name): AmplificationData.create(target_data)
                 for target_name, target_data in well_data.groupby("Target Name")
             },
         )
@@ -276,21 +268,22 @@ class MulticomponentData:
     columns: dict[str, list[Optional[float]]]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[dict[int, MulticomponentData]]:
+    def create(data: pd.DataFrame) -> MulticomponentData:
+        return MulticomponentData(
+            cycle=data["Cycle"].tolist(),
+            columns={
+                name: data[name].str.replace(",", "").astype(float).tolist()  # type: ignore[misc]
+                for name in data
+                if name not in ["Well", "Cycle", "Well Position"]
+            },
+        )
+
+    @staticmethod
+    def map_data(reader: LinesReader) -> Optional[dict[int, MulticomponentData]]:
         data = reader.pop_csv_block(start_pattern=r"^\[Multicomponent Data\]")
         if data is None:
             return None
-        return map_well_data_dict(
-            data,
-            lambda well_data: MulticomponentData(
-                cycle=well_data["Cycle"].tolist(),
-                columns={
-                    name: well_data[name].str.replace(",", "").astype(float).tolist()  # type: ignore[misc]
-                    for name in well_data
-                    if name not in ["Well", "Cycle", "Well Position"]
-                },
-            ),
-        )
+        return map_well_data_dict(data, MulticomponentData.create)
 
     def get_column(self, name: str) -> list[Optional[float]]:
         return assert_not_none(
@@ -336,35 +329,35 @@ class Result:
             ),
         )
 
+    @staticmethod
+    def map_data(
+        reader: LinesReader, experiment_type: ExperimentType
+    ) -> dict[int, dict[str, Result]]:
+        data = assert_not_none(reader.pop_csv_block(r"^\[Results\]"), "Results")
 
-def get_results(
-    reader: LinesReader, experiment_type: ExperimentType
-) -> dict[int, dict[str, Result]]:
-    data = assert_not_none(reader.pop_csv_block(r"^\[Results\]"), "Results")
-
-    if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-        return map_well_data_dict(
-            data,
-            lambda well_data: {
-                f"{target_name}-{allele}": Result.create(
-                    df_to_series(target_data), allele
-                )
-                for target_name, target_data in well_data.groupby("SNP Assay Name")
-                for allele in {
-                    col[:-13]
-                    for col in target_data.columns
-                    if re.match(r"\w+ Ct Threshold", col)
-                }
-            },
-        )
-    else:
-        return map_well_data_dict(
-            data,
-            lambda well_data: {
-                str(target_name): Result.create(df_to_series(target_data))
-                for target_name, target_data in well_data.groupby("Target Name")
-            },
-        )
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            return map_well_data_dict(
+                data,
+                lambda well_data: {
+                    f"{target_name}-{allele}": Result.create(
+                        df_to_series(target_data), allele
+                    )
+                    for target_name, target_data in well_data.groupby("SNP Assay Name")
+                    for allele in {
+                        col[:-13]
+                        for col in target_data.columns
+                        if re.match(r"\w+ Ct Threshold", col)
+                    }
+                },
+            )
+        else:
+            return map_well_data_dict(
+                data,
+                lambda well_data: {
+                    str(target_name): Result.create(df_to_series(target_data))
+                    for target_name, target_data in well_data.groupby("Target Name")
+                },
+            )
 
 
 @dataclass
@@ -374,19 +367,20 @@ class MeltCurveRawData:
     derivative: list[Optional[float]]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[dict[int, MeltCurveRawData]]:
+    def create(data: pd.DataFrame) -> MeltCurveRawData:
+        return MeltCurveRawData(
+            reading=data["Reading"].tolist(),
+            fluorescence=data["Fluorescence"].tolist(),
+            derivative=data["Derivative"].tolist(),
+        )
+
+    @staticmethod
+    def map_data(reader: LinesReader) -> Optional[dict[int, MeltCurveRawData]]:
         reader.drop_until(r"^\[Melt Curve Raw Data\]")
         data = reader.pop_csv_block(r"^\[Melt Curve Raw Data\]")
         if data is None:
             return None
-        return map_well_data_dict(
-            data,
-            lambda well_data: MeltCurveRawData(
-                reading=well_data["Reading"].tolist(),
-                fluorescence=well_data["Fluorescence"].tolist(),
-                derivative=well_data["Derivative"].tolist(),
-            ),
-        )
+        return map_well_data_dict(data, MeltCurveRawData.create)
 
 
 @dataclass
@@ -402,10 +396,10 @@ class Data:
 
         reader.drop_sections(r"^\[Raw Data\]")
 
-        amp_data = AmplificationData.create(reader)
-        multi_data = MulticomponentData.create(reader)
-        results_data = get_results(reader, header.experiment_type)
-        melt_data = MeltCurveRawData.create(reader)
+        amp_data = AmplificationData.map_data(reader)
+        multi_data = MulticomponentData.map_data(reader)
+        results_data = Result.map_data(reader, header.experiment_type)
+        melt_data = MeltCurveRawData.map_data(reader)
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = multi_data[well.identifier]

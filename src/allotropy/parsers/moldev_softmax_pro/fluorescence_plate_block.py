@@ -18,7 +18,7 @@ from allotropy.parsers.moldev_softmax_pro.plate_block import (
     split_wavelengths,
     WellData,
 )
-from allotropy.parsers.utils import assert_not_none, natural_sort_key, try_int
+from allotropy.parsers.utils.values import assert_not_none, natural_sort_key, try_int
 
 
 class FluorescenceOrLuminescencePlateBlock(PlateBlock):

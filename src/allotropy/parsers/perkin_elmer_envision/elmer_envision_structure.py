@@ -30,7 +30,9 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils import assert_not_none, get_timestamp, try_float
+from allotropy.parsers.utils.pandas import assert_str_from_series, get_str_from_series
+from allotropy.parsers.utils.timestamp import get_timestamp
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -60,22 +62,20 @@ class PlateInfo:
         series = df_to_series(data).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
 
-        plate_number = assert_not_none(
-            str(series.get("Plate")), "Plate information: Plate"
-        )
+        plate_number = assert_str_from_series(series, "Plate")
         barcode = (
             str(series.get("Barcode") or '=""').removeprefix('="').removesuffix('"')
             or f"Plate {plate_number}"
         )
 
-        search_result = search("De=...", str(series.get("Measinfo", "")))
-        if not search_result:
-            msg = f"Unable to get emition filter id from plate {barcode}"
-            raise Exception(msg)
-        emission_filter_id = search_result.group().removeprefix("De=")
+        search_result = assert_not_none(
+            search("De=...", str(series.get("Measinfo", ""))),
+            msg=f"Unable to get emition filter id from plate {barcode}",
+        ).group()
+        emission_filter_id = search_result.removeprefix("De=")
 
         measurement_time = get_timestamp(
-            str(series.get("Measurement date", "")), "%m/%d/%Y %I:%M:%S %p"
+            get_str_from_series(series, "Measurement date", ""), "%m/%d/%Y %I:%M:%S %p"
         )
 
         return PlateInfo(
@@ -83,8 +83,8 @@ class PlateInfo:
             barcode,
             emission_filter_id,
             measurement_time,
-            try_float(str(series.get("Measured height"))),
-            try_float(str(series.get("Chamber temperature at start"))),
+            try_float(get_str_from_series(series, "Measured height")),
+            try_float(get_str_from_series(series, "Chamber temperature at start")),
         )
 
 
@@ -161,8 +161,8 @@ class BasicAssayInfo:
         data.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data)
         return BasicAssayInfo(
-            str(series.get("Protocol ID")),
-            str(series.get("Assay ID")),
+            assert_str_from_series(series, "Protocol ID"),
+            assert_str_from_series(series, "Assay ID"),
         )
 
 
@@ -291,7 +291,7 @@ class Filter:
 
         name = str(series.index[0])
 
-        description = str(series.get("Description"))
+        description = assert_str_from_series(series, "Description")
 
         search_result = assert_not_none(
             search("CWL=\\d*nm", description),
@@ -353,8 +353,10 @@ class Labels:
             excitation_filter,
             emission_filters,
             filter_position_map.get(str(series.get("Using of emission filter")), None),
-            number_of_flashes=try_float(str(series.get("Number of flashes"))),
-            detector_gain_setting=str(series.get("Reference AD gain")),
+            number_of_flashes=try_float(
+                get_str_from_series(series, "Number of flashes")
+            ),
+            detector_gain_setting=get_str_from_series(series, "Reference AD gain"),
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:
