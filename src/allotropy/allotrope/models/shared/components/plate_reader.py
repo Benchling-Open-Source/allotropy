@@ -4,26 +4,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 
-from allotropy.allotrope.models.shared.definitions.definitions import TDatacube
-
-
-# TODO: it seems like we could identify and refactor these simple definitions out.
-@dataclass
-class SampleIdentifierItem:
-    value: str
-    field_type: str
-
-
-@dataclass
-class BatchIdentifierItem:
-    value: str
-    field_type: str
-
-
-@dataclass
-class WellLocationIdentifierItem:
-    value: str
-    field_type: str
+from allotropy.allotrope.models.shared.definitions.definitions import TDatacube, TStringValue
 
 
 class SampleRoleType(Enum):
@@ -45,35 +26,19 @@ class SampleRoleType(Enum):
 
 @dataclass
 class SampleDocument:
-    well_location_identifier: Union[str, WellLocationIdentifierItem]
-    sample_identifier: Optional[Union[str, SampleIdentifierItem]] = None
-    batch_identifier: Optional[Union[str, BatchIdentifierItem]] = None
+    well_location_identifier: TStringValue
+    sample_identifier: Optional[TStringValue] = None
+    batch_identifier: Optional[TStringValue] = None
     sample_role_type: Optional[SampleRoleType] = None
     # TODO: plate_barcode isn't actually in the schema yet, needs to be modified to add it.
     plate_barcode: Optional[str] = None
 
 
 @dataclass
-class DataFormatSpecificationTypeItem:
-    value: str
-    field_type: str
-
-
-@dataclass
-class DataProcessingDescriptionItem:
-    value: str
-    field_type: str
-
-
-@dataclass
 class ProcessedDataDocumentItem:
     processed_data: Union[float, str, TDatacube]
-    data_format_specification_type: Optional[
-        Union[str, DataFormatSpecificationTypeItem]
-    ] = None
-    data_processing_description: Optional[
-        Union[str, DataProcessingDescriptionItem]
-    ] = None
+    data_format_specification_type: Optional[TStringValue] = None
+    data_processing_description: Optional[TStringValue] = None
 
 
 @dataclass
