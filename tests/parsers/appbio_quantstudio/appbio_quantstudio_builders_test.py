@@ -142,7 +142,7 @@ def test_results_builder() -> None:
 @pytest.mark.short
 def test_data_builder() -> None:
     test_filepath = (
-        "tests/parsers/appbio_quantstudio/testdata/Thermo_QuantStudio_test01.txt"
+        "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt"
     )
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
@@ -150,7 +150,7 @@ def test_data_builder() -> None:
     assert DataBuilder.build(reader) == get_data()
 
     test_filepath = (
-        "tests/parsers/appbio_quantstudio/testdata/Thermo_QuantStudio_test02.txt"
+        "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt"
     )
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
