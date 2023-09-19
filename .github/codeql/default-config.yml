@@ -1,0 +1,7 @@
+name: "Default CodeQL config"
+
+# We disable the built in queries to run the modified verisions from our fork
+disable-default-queries: true
+
+packs:
+  - benchling/builtin-python-queries
