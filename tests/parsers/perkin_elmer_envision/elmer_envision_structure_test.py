@@ -21,7 +21,9 @@ from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
 
 
 def get_reader_from_lines(lines: list[str]) -> LinesReader:
-    return LinesReader(StringIO("\n".join(lines)))
+    reader = LinesReader(StringIO("\n".join(lines)))
+    reader.read_csv_kwargs = {"header": None, "sep": ","}
+    return reader
 
 
 def test_create_plate_info() -> None:

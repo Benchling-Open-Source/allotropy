@@ -9,7 +9,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from io import StringIO
 import re
 from typing import Callable, Optional, TypeVar
 
@@ -72,12 +71,14 @@ class Header:
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
+        raw_data = assert_not_none(
+            reader.pop_csv_block(
+                end_pattern=r"^\[.+\]", read_csv_kwargs={"sep": "=", "header": None}
+            ),
+            msg="Expected non-empty header",
         )
-        data = pd.Series(raw_data["values"].values, index=raw_data["index"])
+        raw_data[0].replace(r"\*", "", regex=True, inplace=True)
+        data = pd.Series(raw_data[1].values, index=raw_data[0])
         data.index = data.index.str.strip()
         data = data.str.strip().replace("NA", None)
 
@@ -246,10 +247,10 @@ class GenotypingWell(Well):
 
 
 def create_wells(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
-    raw_data = reader.pop_csv_block(r"^\[Sample Setup\]", sep="\t").replace(
-        np.nan, None
+    raw_data = assert_not_none(
+        reader.pop_csv_block(r"^\[Sample Setup\]"), "Sample Setup"
     )
-    data = raw_data[raw_data["Sample Name"].notnull()]
+    data = raw_data[raw_data["Sample Name"].notnull()].replace(np.nan, None)
 
     if experiment_type == ExperimentType.genotyping_qPCR_experiment:
         return GenotypingWell.create(data)
@@ -266,7 +267,10 @@ class AmplificationData:
 
     @staticmethod
     def create(reader: LinesReader) -> dict[int, dict[str, AmplificationData]]:
-        data = reader.pop_csv_block(start_pattern=r"^\[Amplification Data\]", sep="\t")
+        data = assert_not_none(
+            reader.pop_csv_block(start_pattern=r"^\[Amplification Data\]"),
+            "Amplification Data",
+        )
         return map_well_data(
             data,
             lambda well_data: {
@@ -288,9 +292,9 @@ class MulticomponentData:
 
     @staticmethod
     def create(reader: LinesReader) -> Optional[dict[int, MulticomponentData]]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
+        data = reader.pop_csv_block(start_pattern=r"^\[Multicomponent Data\]")
+        if data is None:
             return None
-        data = reader.pop_csv_block(start_pattern=r"^\[Multicomponent Data\]", sep="\t")
         return map_well_data(
             data,
             lambda well_data: MulticomponentData(
@@ -351,7 +355,7 @@ class Result:
 def get_results(
     reader: LinesReader, experiment_type: ExperimentType
 ) -> dict[int, dict[str, Result]]:
-    data = reader.pop_csv_block(r"^\[Results\]", sep="\t")
+    data = assert_not_none(reader.pop_csv_block(r"^\[Results\]"), "Results")
 
     if experiment_type == ExperimentType.genotyping_qPCR_experiment:
         return map_well_data(
@@ -387,9 +391,9 @@ class MeltCurveRawData:
     @staticmethod
     def create(reader: LinesReader) -> Optional[dict[int, MeltCurveRawData]]:
         reader.drop_until(r"^\[Melt Curve Raw Data\]")
-        if not reader.match(r"^\[Melt Curve Raw Data\]"):
+        data = reader.pop_csv_block(r"^\[Melt Curve Raw Data\]")
+        if data is None:
             return None
-        data = reader.pop_csv_block(r"^\[Melt Curve Raw Data\]", sep="\t")
         return map_well_data(
             data,
             lambda well_data: MeltCurveRawData(
@@ -407,6 +411,7 @@ class Data:
 
     @staticmethod
     def create(reader: LinesReader) -> Data:
+        reader.read_csv_kwargs = {"sep": "\t"}
         header = Header.create(reader)
         wells = create_wells(reader, header.experiment_type)
 

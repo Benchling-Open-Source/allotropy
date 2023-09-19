@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from io import IOBase, StringIO
 from re import search
-from typing import Optional
+from typing import Any, Optional
 
 import pandas as pd
 
@@ -15,6 +15,7 @@ class LinesReader:
         self.lines: list[str] = self.contents.split("\n")
         self.n_lines = len(self.lines)
         self.current_line = 0
+        self.read_csv_kwargs: dict[str, Any] = {}
 
     def current_line_exists(self) -> bool:
         return 0 <= self.current_line < self.n_lines
@@ -75,22 +76,27 @@ class LinesReader:
         self,
         start_pattern: Optional[str] = None,
         end_pattern: Optional[str] = None,
-        sep: Optional[str] = None,
-    ) -> pd.DataFrame:
+        q: Optional[dict[str, Any]] = None,
+    ) -> Optional[pd.DataFrame]:
         self.drop_empty()
         if start_pattern:
             if not self.match(start_pattern):
-                msg = f"Did not find {start_pattern}"
-                raise Exception(msg)
+                return None
             self.pop()  # remove title
 
-        lines = list(
+        line_generator = (
             self.pop_until(end_pattern) if end_pattern else self.pop_until_empty()
         )
-        csv_stream = StringIO("\n".join(lines))
+        lines = [line for line in line_generator if line]
         self.drop_empty()
 
-        return pd.read_csv(csv_stream, sep=sep)
+        if not lines:
+            return None
+
+        csv_stream = StringIO("\n".join(lines))
+        kwargs = {**self.read_csv_kwargs, **(read_csv_kwargs or {})}
+        data: pd.DataFrame = pd.read_csv(csv_stream, header=None, **kwargs)
+        return data
 
     def drop_sections(self, pattern: str) -> None:
         self.drop_empty()
