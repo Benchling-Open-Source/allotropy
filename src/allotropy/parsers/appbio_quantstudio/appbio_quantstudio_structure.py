@@ -91,7 +91,8 @@ class Header:
 
         block_type = assert_str_from_series(data, "Block Type")
         number_match = assert_not_none(
-            re.match("[1-9][0-9]+", block_type), msg="Block type missing number prefix"
+            re.match("[1-9][0-9]+", block_type),
+            msg="Block Type has invalid number prefix",
         )
         plate_well_count = assert_not_none(try_int(number_match.group()))
 
@@ -137,11 +138,11 @@ class WellItem:
     identifier: int
     target_dna_description: str
     sample_identifier: str
-    reporter_dye_setting: Optional[str]
-    position: Optional[str]
-    well_location_identifier: Optional[str]
-    quencher_dye_setting: Optional[str]
-    sample_role_type: Optional[str]
+    reporter_dye_setting: Optional[str] = None
+    position: Optional[str] = None
+    well_location_identifier: Optional[str] = None
+    quencher_dye_setting: Optional[str] = None
+    sample_role_type: Optional[str] = None
     _amplification_data: Optional[AmplificationData] = None
     _result: Optional[Result] = None
 
@@ -294,13 +295,13 @@ class MulticomponentData:
 @dataclass
 class Result:
     cycle_threshold_value_setting: float
-    cycle_threshold_result: Optional[float]
-    automatic_cycle_threshold_enabled_setting: Optional[bool]
-    automatic_baseline_determination_enabled_setting: Optional[bool]
-    normalized_reporter_result: Optional[float]
-    baseline_corrected_reporter_result: Optional[float]
-    genotyping_determination_result: Optional[str]
-    genotyping_determination_method_setting: Optional[float]
+    cycle_threshold_result: Optional[float] = None
+    automatic_cycle_threshold_enabled_setting: Optional[bool] = None
+    automatic_baseline_determination_enabled_setting: Optional[bool] = None
+    normalized_reporter_result: Optional[float] = None
+    baseline_corrected_reporter_result: Optional[float] = None
+    genotyping_determination_result: Optional[str] = None
+    genotyping_determination_method_setting: Optional[float] = None
 
     @staticmethod
     def create(series: pd.Series, allele: Optional[str] = None) -> Result:
