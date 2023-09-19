@@ -15,7 +15,7 @@ def try_int(value: Optional[str]) -> Optional[int]:
 
 
 def try_float(value: Optional[str]) -> Optional[float]:
-    
+
     try:
         return float(value) if value is not None else None
     except ValueError:
@@ -37,7 +37,9 @@ def natural_sort_key(key: str) -> list[str]:
 T = TypeVar("T")
 
 
-def assert_not_none(value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None) -> T:
+def assert_not_none(
+    value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
+) -> T:
     if value is None:
         error = msg or f"Expected non-null value{f' for {name}' if name else ''}"
         raise AllotropeConversionError(error)

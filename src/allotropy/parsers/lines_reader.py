@@ -75,7 +75,7 @@ class LinesReader:
         self,
         start_pattern: Optional[str] = None,
         end_pattern: Optional[str] = None,
-        sep: Optional[str] = None
+        sep: Optional[str] = None,
     ) -> pd.DataFrame:
         self.drop_empty()
         if start_pattern:
@@ -84,7 +84,9 @@ class LinesReader:
                 raise Exception(msg)
             self.pop()  # remove title
 
-        lines = list(self.pop_until(end_pattern) if end_pattern else self.pop_until_empty())
+        lines = list(
+            self.pop_until(end_pattern) if end_pattern else self.pop_until_empty()
+        )
         csv_stream = StringIO("\n".join(lines))
         self.drop_empty()
 

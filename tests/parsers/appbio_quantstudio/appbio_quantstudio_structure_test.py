@@ -3,14 +3,13 @@ from __future__ import annotations
 from io import BytesIO
 from typing import Optional
 
-import pandas as pd
 import pytest
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
-    Header,
     Data,
+    Header,
 )
 from allotropy.parsers.lines_reader import LinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, get_data2
@@ -55,26 +54,21 @@ def test_header_builder() -> None:
 
 
 @pytest.mark.parametrize(
-    "parameter,expected_error",
+    "parameter",
     [
-        ("device_identifier", "Unable to get device identifier"),
-        ("model_number", "Unable to get model number"),
-        ("device_serial_number", "Unable to get device serial number"),
-        (
-            "measurement_method_identifier",
-            "Unable to get measurement method identifier",
-        ),
-        ("qpcr_detection_chemistry", "Unable to get qpcr detection chemistry"),
-        ("plate_well_count", "Unable to get plate well count"),
+        "device_identifier",
+        "model_number",
+        "device_serial_number",
+        "measurement_method_identifier",
+        "qpcr_detection_chemistry",
+        "plate_well_count",
     ],
 )
 @pytest.mark.short
-def test_header_builder_required_parameter_none_then_raise(
-    parameter: str, expected_error: str
-) -> None:
+def test_header_builder_required_parameter_none_then_raise(parameter: str) -> None:
     header_contents = get_raw_header_contents(**{parameter: None})
 
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError, match="Expected non-null value"):
         Header.create(LinesReader(header_contents))
 
 
@@ -103,8 +97,6 @@ def test_data_builder() -> None:
         reader = LinesReader(raw_contents)
 
     result = Data.create(reader)
-    print(result)
-    print(get_data())
     assert result == get_data()
 
     test_filepath = (
@@ -114,8 +106,6 @@ def test_data_builder() -> None:
         reader = LinesReader(raw_contents)
 
     result = Data.create(reader)
-    print(result)
-    print(get_data2())
     assert result == get_data2()
 
 
