@@ -295,13 +295,13 @@ class Filter:
 
         search_result = assert_not_none(
             search("CWL=\\d*nm", description),
-            msg=f"Unable to find wavelength for filter {name}"
+            msg=f"Unable to find wavelength for filter {name}",
         ).group()
         wavelength = float(search_result.removeprefix("CWL=").removesuffix("nm"))
 
         search_result = assert_not_none(
             search("BW=\\d*nm", description),
-            msg=f"Unable to find bandwidth for filter {name}"
+            msg=f"Unable to find bandwidth for filter {name}",
         ).group()
         bandwidth = float(search_result.removeprefix("BW=").removesuffix("nm"))
 

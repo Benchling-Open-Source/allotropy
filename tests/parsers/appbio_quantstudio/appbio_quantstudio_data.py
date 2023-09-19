@@ -117,7 +117,7 @@ def get_data() -> Data:
                         ),
                     ),
                 ],
-                _multicomponent_data=MulticomponentData(
+                multicomponent_data=MulticomponentData(
                     cycle=[1],
                     columns={
                         "FAM": [502840.900],
@@ -125,7 +125,6 @@ def get_data() -> Data:
                         "VIC": [1654662.500],
                     },
                 ),
-                _melt_curve_raw_data=None,
             ),
         ],
     )
@@ -178,14 +177,14 @@ def get_data2() -> Data:
                         ),
                     ),
                 ],
-                _multicomponent_data=MulticomponentData(
+                multicomponent_data=MulticomponentData(
                     cycle=[1],
                     columns={
                         "ROX": [55573.94],
                         "SYBR": [34014.32],
                     },
                 ),
-                _melt_curve_raw_data=MeltCurveRawData(
+                melt_curve_raw_data=MeltCurveRawData(
                     reading=[1],
                     fluorescence=[3.478],
                     derivative=[0.093],

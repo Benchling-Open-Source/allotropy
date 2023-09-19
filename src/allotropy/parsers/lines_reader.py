@@ -17,7 +17,7 @@ class LinesReader:
         self.current_line = 0
         self.read_csv_kwargs: dict[str, Any] = {}
 
-    def  current_line_exists(self) -> bool:
+    def current_line_exists(self) -> bool:
         return 0 <= self.current_line < self.n_lines
 
     def get(self) -> Optional[str]:

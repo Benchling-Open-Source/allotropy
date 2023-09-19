@@ -46,6 +46,15 @@ T = TypeVar("T")
 
 
 def map_well_data(
+    data: pd.DataFrame, data_fn: Callable[[int, pd.DataFrame], T]
+) -> list[T]:
+    return [
+        data_fn(assert_not_none(try_int(str(well_id))), well_data)
+        for well_id, well_data in data.groupby("Well")
+    ]
+
+
+def map_well_data_dict(
     data: pd.DataFrame, data_fn: Callable[[pd.DataFrame], T]
 ) -> dict[int, T]:
     return {
@@ -187,42 +196,21 @@ class WellItem:
 class Well:
     identifier: int
     items: list[WellItem]
-    _multicomponent_data: Optional[MulticomponentData] = None
-    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    multicomponent_data: Optional[MulticomponentData] = None
+    melt_curve_raw_data: Optional[MeltCurveRawData] = None
 
     @staticmethod
-    def create(data: pd.DataFrame) -> list[Well]:
-        return [
-            Well(
-                identifier=assert_not_none(try_int(str(well_id)), "Well id"),
-                items=[
-                    WellItem.create(item_data) for _, item_data in well_data.iterrows()
-                ],
-            )
-            for well_id, well_data in data.groupby("Well")
-        ]
-
-    @property
-    def multicomponent_data(self) -> Optional[MulticomponentData]:
-        return self._multicomponent_data
-
-    @multicomponent_data.setter
-    def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
-        self._multicomponent_data = multicomponent_data
-
-    @property
-    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
-        return self._melt_curve_raw_data
-
-    @melt_curve_raw_data.setter
-    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self._melt_curve_raw_data = melt_curve_raw_data
+    def create(well_id: int, well_data: pd.DataFrame) -> Well:
+        return Well(
+            identifier=well_id,
+            items=[WellItem.create(item_data) for _, item_data in well_data.iterrows()],
+        )
 
 
 @dataclass
 class GenotypingWell(Well):
     @staticmethod
-    def create(data: pd.DataFrame) -> list[Well]:
+    def create(well_id: int, well_data: pd.DataFrame) -> Well:
         def get_well_items(well_data: pd.Series) -> list[WellItem]:
             snp_assay_name = assert_str_from_series(well_data, "SNP Assay Name")
             alleles = [
@@ -237,13 +225,10 @@ class GenotypingWell(Well):
                 for allele in alleles
             ]
 
-        return [
-            Well(
-                identifier=assert_not_none(try_int(str(well_id)), "Well id"),
-                items=get_well_items(well_data),
-            )
-            for well_id, well_data in data.iterrows()
-        ]
+        return Well(
+            identifier=well_id,
+            items=get_well_items(df_to_series(well_data)),
+        )
 
 
 def create_wells(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
@@ -252,10 +237,10 @@ def create_wells(reader: LinesReader, experiment_type: ExperimentType) -> list[W
     )
     data = raw_data[raw_data["Sample Name"].notnull()].replace(np.nan, None)
 
+    well_type = Well
     if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-        return GenotypingWell.create(data)
-    else:
-        return Well.create(data)
+        well_type = GenotypingWell
+    return map_well_data(data, well_type.create)
 
 
 @dataclass
@@ -271,7 +256,7 @@ class AmplificationData:
             reader.pop_csv_block(start_pattern=r"^\[Amplification Data\]"),
             "Amplification Data",
         )
-        return map_well_data(
+        return map_well_data_dict(
             data,
             lambda well_data: {
                 str(target_name): AmplificationData(
@@ -295,7 +280,7 @@ class MulticomponentData:
         data = reader.pop_csv_block(start_pattern=r"^\[Multicomponent Data\]")
         if data is None:
             return None
-        return map_well_data(
+        return map_well_data_dict(
             data,
             lambda well_data: MulticomponentData(
                 cycle=well_data["Cycle"].tolist(),
@@ -358,7 +343,7 @@ def get_results(
     data = assert_not_none(reader.pop_csv_block(r"^\[Results\]"), "Results")
 
     if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-        return map_well_data(
+        return map_well_data_dict(
             data,
             lambda well_data: {
                 f"{target_name}-{allele}": Result.create(
@@ -373,7 +358,7 @@ def get_results(
             },
         )
     else:
-        return map_well_data(
+        return map_well_data_dict(
             data,
             lambda well_data: {
                 str(target_name): Result.create(df_to_series(target_data))
@@ -394,7 +379,7 @@ class MeltCurveRawData:
         data = reader.pop_csv_block(r"^\[Melt Curve Raw Data\]")
         if data is None:
             return None
-        return map_well_data(
+        return map_well_data_dict(
             data,
             lambda well_data: MeltCurveRawData(
                 reading=well_data["Reading"].tolist(),
