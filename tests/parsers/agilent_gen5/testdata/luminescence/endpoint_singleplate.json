@@ -1,0 +1,3658 @@
+{
+  "$asm.manifest": "http://purl.allotrope.org/manifests/luminescence/BENCHLING/2023/09/luminescence.manifest",
+  "measurement aggregate document": {
+    "measurement identifier": "75fbdd68-be90-48f1-a93c-af99f9941662",
+    "measurement time": "2022-10-10T21:15:37",
+    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_LUMread_POS-NEG-CON-Normalization_defaultExport.prt",
+    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_LUMread_POS-NEG-CON_Norm_singlePlate.xpt",
+    "container type": "well plate",
+    "plate well count": { "value": 96, "unit": "#" },
+    "measurement document": [
+      {
+        "sample document": {
+          "well location identifier": "A1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8718.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 99.846
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL1"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3118.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 34.111
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL9"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3507.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 38.678
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL17"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5574.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 62.947
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL25"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2931.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 31.918
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL33"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[1221.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 11.843
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL41"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2769.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 30.02
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL49"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5747.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 64.973
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL57"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8081.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 92.372
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL65"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7764.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 88.651
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL73"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[9215.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 105.684
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "A12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[210.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": -0.02
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8782.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 100.601
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL2"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[9406.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 107.927
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL10"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8372.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 95.79
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL18"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3696.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 40.897
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL26"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[1389.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 13.815
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL34"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8758.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 100.317
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL42"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4504.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 50.379
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL50"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[9335.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 107.09
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL58"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4342.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 48.485
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL66"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6291.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 71.363
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL74"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5215.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 58.732
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "B12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[213.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 0.015
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8747.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 100.187
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL3"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7099.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 80.85
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL11"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5630.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 63.605
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL19"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6148.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 69.679
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL27"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4025.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 44.758
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL35"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[788.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 6.758
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL43"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7432.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 84.76
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL51"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7409.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 84.485
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL59"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8279.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 94.694
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL67"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6756.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 76.824
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL75"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7635.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 87.142
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "C12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[209.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": -0.034
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8905.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 102.043
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL4"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3067.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 33.511
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL12"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4650.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 52.097
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL20"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6572.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 74.66
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL28"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5779.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 65.345
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL36"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6313.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 71.623
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL44"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7406.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 84.45
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL52"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6347.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 72.018
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL60"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2017.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 21.188
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL68"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[637.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 4.991
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL76"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6139.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 69.574
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "D12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[211.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": -0.012
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[215.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 0.036
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL5"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7964.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 91.005
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL13"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2899.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 31.543
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL21"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2593.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 27.945
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL29"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3175.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 34.78
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL37"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7041.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 80.16
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL45"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5795.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 65.537
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL53"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3219.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 35.296
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL61"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3532.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 38.976
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL69"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4786.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 53.697
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL77"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2111.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 22.296
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "E12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8826.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 101.123
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[218.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 0.072
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL6"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3461.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 38.134
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL14"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6364.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 72.217
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL22"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[507.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 3.461
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL30"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3247.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 35.626
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL38"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3352.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 36.864
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL46"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6466.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 73.413
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL54"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6984.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 79.492
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL62"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7172.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 81.705
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL70"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4322.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 48.251
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL78"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5312.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 59.862
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "F12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8716.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 99.83
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[210.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": -0.027
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL7"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8969.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 102.797
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL15"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2049.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 21.567
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL23"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4265.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 47.577
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL31"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5958.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 67.452
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL39"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5409.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 61.007
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL47"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6971.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 79.338
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL55"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[3026.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 33.038
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL63"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4669.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 52.321
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL71"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7990.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 91.311
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL79"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[4385.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 48.985
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "G12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8663.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 99.202
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H1",
+          "plate barcode": "Plate 1",
+          "sample identifier": "NEGCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[210.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": -0.03
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H2",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL8"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6942.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 78.997
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H3",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL16"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7026.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 79.989
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H4",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL24"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[9139.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 104.788
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H5",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL32"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[1138.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 10.863
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H6",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL40"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[5623.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 63.522
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H7",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL48"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[920.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            { "data processing description": "NormLum", "processed data": 8.31 }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H8",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL56"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[6086.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 68.953
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H9",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL64"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[2329.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 24.845
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H10",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL72"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[715.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 5.901
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H11",
+          "plate barcode": "Plate 1",
+          "sample identifier": "SPL80"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[7069.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 80.498
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "well location identifier": "H12",
+          "plate barcode": "Plate 1",
+          "sample identifier": "POSCON"
+        },
+        "device control aggregate document": {
+          "device control document": [{}]
+        },
+        "data cube": {
+          "label": "endpoint data",
+          "cube-structure": {
+            "dimensions": [
+              {
+                "@componentDatatype": "int",
+                "concept": "wavelength",
+                "unit": "nm"
+              }
+            ],
+            "measures": [
+              {
+                "@componentDatatype": "double",
+                "concept": "luminescence",
+                "unit": "RLU"
+              }
+            ]
+          },
+          "data": { "dimensions": [["Lum"]], "measures": [[8490.0]] }
+        },
+        "processed data aggregate document": {
+          "processed data document": [
+            {
+              "data processing description": "NormLum",
+              "processed data": 97.17
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

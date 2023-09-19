@@ -1,0 +1,270 @@
+{
+    "Centimeter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "cm",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#Centimeter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Millimeter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "mm",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#Millimeter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Nanometer": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "nm",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanometer"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Micrometer": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "μm",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Hertz": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "Hz",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#Hertz"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "CubicMillimeter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "mm^3",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#CubicMillimeter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Unitless": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "(unitless)",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Unitless"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "SecondTime": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "s",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#SecondTime"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "MilliSecond": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "ms",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#MilliSecond"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Percent": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "%",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#Percent"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Microliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "μL",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "MillionCellsPerMilliliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "10^6 cells/mL",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#MillionCellsPerMilliliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "Cell": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "cell",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Cell"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "TODO": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "TODO",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#TODO"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "GramPerLiter": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "g/L",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerLiter"
+           }
+        },
+        "required": ["unit"]
+     },
+     "UnitPerLiter": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "U/L",
+              "$asm.unit-iri": "TODO"
+           }
+        },
+        "required": ["unit"]
+     },
+     "MillimeterOfMercury": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "mmHg",
+              "$asm.unit-iri": "http://qudt.org/vocab/unit#MillimeterOfMercury"
+           }
+        },
+        "required": ["unit"]
+     },
+     "OpticalDensity": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "OD",
+              "$asm.unit-iri": "TODO"
+           }
+        },
+        "required": ["unit"]
+     },
+     "PH": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "pH",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
+           }
+        },
+        "required": ["unit"]
+     },
+     "MilliOsmolesPerKilogram": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "mosm/kg",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliOsmolesPerKilogram"
+           }
+        },
+        "required": ["unit"]
+     },
+     "MillimolePerLiter": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "mmol/L",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillimolePerLiter"
+           }
+        },
+        "required": ["unit"]
+     },
+     "Number": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "#",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Number"
+           }
+        },
+        "required": ["unit"]
+     },
+     "PicogramPerMilliliter": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "pg/mL",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMilliliter"
+           }
+        },
+        "required": ["unit"]
+     },
+     "DegreeCelsius": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "degC",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#DegreeCelsius"
+           }
+        },
+        "required": ["unit"]
+     }
+}

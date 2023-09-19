@@ -1,0 +1,382 @@
+{
+    "tQuantityValueCentimeter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Centimeter"
+            }
+        ]
+    },
+    "tQuantityValueMillimeter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Millimeter"
+            }
+        ]
+    },
+    "tQuantityValueNanometer": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Nanometer"
+            }
+        ]
+    },
+    "tQuantityValueMicrometer": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Micrometer"
+            }
+        ]
+    },
+    "tQuantityValueHertz": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Hertz"
+            }
+        ]
+    },
+    "tQuantityValueCubicMillimeter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/CubicMillimeter"
+            }
+        ]
+    },
+    "tQuantityValueUnitless": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Unitless"
+            }
+        ]
+    },
+    "tQuantityValueSecondTime": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/SecondTime"
+            }
+        ]
+    },
+    "tQuantityValueMilliSecond": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/MilliSecond"
+            }
+        ]
+    },
+    "tQuantityValuePercent": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Percent"
+            }
+        ]
+    },
+    "tQuantityValueMicroliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Microliter"
+            }
+        ]
+    },
+    "tQuantityValueMillionCellsPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/MillionCellsPerMilliliter"
+            }
+        ]
+    },
+    "tQuantityValueCell": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Cell"
+            }
+        ]
+    },
+    "tQuantityValueTODO": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/TODO"
+            }
+        ]
+    },
+    "tQuantityValueGramPerLiter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/GramPerLiter"
+            }
+        ]
+    },
+    "tQuantityValueUnitPerLiter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/UnitPerLiter"
+            }
+        ]
+    },
+    "tQuantityValueMillimeterOfMercury": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/MillimeterOfMercury"
+            }
+        ]
+    },
+    "tQuantityValueOpticalDensity": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/OpticalDensity"
+            }
+        ]
+    },
+    "tQuantityValuePH": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/PH"
+            }
+        ]
+    },
+    "tQuantityValueMilliOsmolesPerKilogram": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/MilliOsmolesPerKilogram"
+            }
+        ]
+    },
+    "tQuantityValueMillimolePerLiter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/MillimolePerLiter"
+            }
+        ]
+    },
+    "tNullableQuantityValueMicrometer": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Micrometer"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValuePercent": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Percent"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueCubicMillimeter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/CubicMillimeter"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueCell": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Cell"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueTODO": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/TODO"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueGramPerLiter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/GramPerLiter"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueUnitPerLiter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/UnitPerLiter"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueMillimeterOfMercury": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MillimeterOfMercury"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueOpticalDensity": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/OpticalDensity"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValuePH": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/PH"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueMilliOsmolesPerKilogram": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MilliOsmolesPerKilogram"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueMillimolePerLiter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MillimolePerLiter"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueMillionCellsPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MillionCellsPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueNumber": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Number"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValuePicogramPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/PicogramPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueDegreeCelsius": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/DegreeCelsius"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tNullableQuantityValueUnitless": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Unitless"
+            },
+            {
+                "$ref": "#/$defs/tNullableQuantityValue"
+            }
+        ]
+    }
+}

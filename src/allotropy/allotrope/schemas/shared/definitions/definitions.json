@@ -1,0 +1,524 @@
+{
+    "tClass": {
+        "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+        "type": "string",
+        "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+    },
+    "tUnit": {
+        "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+        "type": "string",
+        "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+        "$asm.type": "http://qudt.org/schema/qudt#Unit"
+    },
+    "tStringValue": {
+        "description": "A literal string in UTF-8 encoding.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
+    "tBooleanValue": {
+        "description": "A boolean value.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+        "oneOf": [
+            {
+                "type": "boolean"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
+    "tDateTimeValue": {
+        "description": "All timestamps MUST be in ISO8601 date/time format.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "oneOf": [
+            {
+                "type": "string",
+                "format": "date-time"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
+    "tStatisticDatumRole": {
+        "description": "A statistic datum role.",
+        "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+        "type": "string",
+        "enum": [
+            "arithmetic mean role",
+            "median role",
+            "relative standard deviation role",
+            "skewness role",
+            "standard deviation role",
+            "variance role",
+            "maximum value role",
+            "minimum value role"
+        ],
+        "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000328"
+    },
+    "tQuantityValue": {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": "number"
+            },
+            "unit": {
+                "$ref": "#/$defs/tUnit"
+            },
+            "has statistic datum role": {
+                "$ref": "#/$defs/tStatisticDatumRole"
+            },
+            "@type": {
+                "$ref": "#/$defs/tClass"
+            }
+        },
+        "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+        "required": [
+            "value",
+            "unit"
+        ]
+    },
+    "tNullableQuantityValue": {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "unit": {
+                "$ref": "#/$defs/tUnit"
+            },
+            "has statistic datum role": {
+                "$ref": "#/$defs/tStatisticDatumRole"
+            },
+            "@type": {
+                "$ref": "#/$defs/tClass"
+            }
+        },
+        "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+        "required": [
+            "value",
+            "unit"
+        ]
+    },
+    "tDatacube": {
+        "type": "object",
+        "properties": {
+            "label": {
+                "type": "string"
+            },
+            "cube-structure": {
+                "$ref": "#/$defs/tDatacubeStructure"
+            },
+            "data": {
+                "$ref": "#/$defs/tDatacubeData"
+            }
+        }
+    },
+    "tDatacubeStructure": {
+        "type": "object",
+        "properties": {
+            "dimensions": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/$defs/tDatacubeComponent"
+                },
+                "unique": true
+            },
+            "measures": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/$defs/tDatacubeComponent"
+                },
+                "unique": true,
+                "minItems": 1
+            }
+        },
+        "required": [
+            "dimensions",
+            "measures"
+        ]
+    },
+    "tDatacubeComponent": {
+        "type": "object",
+        "properties": {
+            "@componentDatatype": {
+                "description": "Subset of XSD datatypes supported in simple models",
+                "default": "double",
+                "enum": [
+                    "double",
+                    "float",
+                    "decimal",
+                    "integer",
+                    "byte",
+                    "int",
+                    "short",
+                    "long",
+                    "string",
+                    "boolean",
+                    "dateTime"
+                ]
+            },
+            "concept": {
+                "$ref": "#/$defs/tClass"
+            },
+            "unit": {
+                "$ref": "#/$defs/tUnit"
+            },
+            "scale": {
+                "enum": [
+                    "nominal",
+                    "ordinal",
+                    "cardinal",
+                    "interval",
+                    "range"
+                ]
+            },
+            "$asm.fill-value": {
+                "type": [
+                    "string",
+                    "number",
+                    "integer",
+                    "boolean"
+                ]
+            }
+        },
+        "required": [
+            "@componentDatatype",
+            "concept"
+        ],
+        "allOf": [
+            {
+                "$ref": "#/$defs/cFillValueIEEE"
+            },
+            {
+                "$ref": "#/$defs/cFillValueDecimal"
+            },
+            {
+                "$ref": "#/$defs/cFillValueBoolean"
+            },
+            {
+                "$ref": "#/$defs/cFillValueString"
+            }
+        ]
+    },
+    "cFillValueBoolean": {
+        "$comment": "constraint on fill values if component data type is boolean",
+        "if": {
+            "properties": {
+                "@componentDatatype": {
+                    "const": "boolean"
+                }
+            }
+        },
+        "then": {
+            "$asm.fill-value": {
+                "type": "boolean",
+                "default": false
+            }
+        }
+    },
+    "cFillValueIEEE": {
+        "$comment": "constraint on fill values if component data type is any numeric type",
+        "if": {
+            "properties": {
+                "@componentDatatype": {
+                    "pattern": "double|float"
+                }
+            }
+        },
+        "then": {
+            "$asm.fill-value": {
+                "oneOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "const": "NaN"
+                    },
+                    {
+                        "const": "+Infinity"
+                    },
+                    {
+                        "const": "-Infinity"
+                    }
+                ],
+                "default": 0.0
+            }
+        }
+    },
+    "cFillValueDecimal": {
+        "$comment": "constraint on fill values if component data type is any numeric type",
+        "if": {
+            "properties": {
+                "@componentDatatype": {
+                    "pattern": "integer|decimal|long|int|short|byte"
+                }
+            }
+        },
+        "then": {
+            "$asm.fill-value": {
+                "type": "number",
+                "default": 0
+            }
+        }
+    },
+    "cFillValueString": {
+        "$comment": "constraint on fill values if component data type is string",
+        "if": {
+            "properties": {
+                "@componentDatatype": {
+                    "pattern": "string|dateTime|date"
+                }
+            }
+        },
+        "then": {
+            "$asm.fill-value": {
+                "type": "string",
+                "default": ""
+            }
+        }
+    },
+    "tDatacubeData": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tDimensionData"
+            },
+            {
+                "$ref": "#/$defs/tMeasureData"
+            }
+        ]
+    },
+    "tDimensionData": {
+        "properties": {
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/tDimensionArray"
+                },
+                {
+                  "$ref": "#/$defs/tFunction"
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "dimensions"
+        ]
+      },
+      "tMeasureData": {
+        "oneOf": [
+          {
+            "properties": {
+              "measures": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/tMeasureArray"
+                }
+              }
+            },
+            "required": [
+              "measures"
+            ]
+          },
+          {
+            "properties": {
+              "points": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/tTupleData"
+                }
+              }
+            },
+            "required": [
+              "points"
+            ]
+          }
+        ]
+      },
+    "tTupleData": {
+        "$comment": "heterogenous array of data used in point arrays",
+        "type": "array",
+        "items": {
+            "oneOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "tDimensionArray": {
+        "$comment": "homogenous array of data used in explicit dimension arrays",
+        "oneOf": [
+            {
+                "$ref": "#/$defs/tNumberArray"
+            },
+            {
+                "$ref": "#/$defs/tBooleanArray"
+            },
+            {
+                "$ref": "#/$defs/tStringArray"
+            }
+        ]
+    },
+    "tMeasureArray": {
+        "$comment": "homogenous array of data used in explicit measure arrays, may contain null values",
+        "oneOf": [
+            {
+                "$ref": "#/$defs/tNumberOrNullArray"
+            },
+            {
+                "$ref": "#/$defs/tBooleanOrNullArray"
+            },
+            {
+                "$ref": "#/$defs/tStringOrNullArray"
+            }
+        ]
+    },
+    "tNumberArray": {
+        "$comment": "homogenous array of numbers",
+        "type": "array",
+        "items": {
+            "type": "number"
+        }
+    },
+    "tNumberOrNullArray": {
+        "$comment": "homogenous array of numbers, may contain null values",
+        "type": "array",
+        "items": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "tBooleanArray": {
+        "$comment": "homogenous array of booleans",
+        "type": "array",
+        "items": {
+            "type": "boolean"
+        }
+    },
+    "tBooleanOrNullArray": {
+        "$comment": "homogenous array of booleans, may contain null values",
+        "type": "array",
+        "items": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "tStringArray": {
+        "$comment": "homogenous array of strings",
+        "type": "array",
+        "items": {
+            "type": "string"
+        }
+    },
+    "tStringOrNullArray": {
+        "$comment": "homogenous array of strings, may contain null values",
+        "type": "array",
+        "items": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "tFunction": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "enum": [
+                    "linear",
+                    "logarithmic"
+                ],
+                "default": "linear"
+            },
+            "start": {
+                "type": "number",
+                "default": 1
+            },
+            "length": {
+                "type": "number"
+            },
+            "incr": {
+                "type": "number",
+                "default": 1
+            }
+        }
+    }
+}

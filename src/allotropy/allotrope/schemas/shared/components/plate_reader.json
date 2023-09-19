@@ -1,0 +1,103 @@
+{
+    "sample document": {
+        "type": "object",
+        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002083",
+        "$asm.pattern": "aggregate datum",
+        "properties": {
+            "sample identifier": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001118",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+            },
+            "batch identifier": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001120",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+            },
+            "sample role type": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002242",
+                "$asm.pattern": "class datum",
+                "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                "type": "string",
+                "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+                "enum": [
+                    "control sample role",
+                    "standard sample role",
+                    "validation sample role",
+                    "experiment sample role",
+                    "sample role",
+                    "spiked sample role",
+                    "blank role",
+                    "unknown sample role",
+                    "undefined sample role",
+                    "calibration sample role",
+                    "unspiked sample role",
+                    "specimen role",
+                    "quality control sample role",
+                    "reference sample role"
+                ],
+                "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000035"
+            },
+            "well location identifier": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002240",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+            }
+        },
+        "required": [
+            "well location identifier"
+        ]
+    },
+    "processed data aggregate document": {
+        "type": "object",
+        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
+        "$asm.pattern": "aggregate datum",
+        "properties": {
+            "processed data document": {
+                "type": "array",
+                "$asm.array-ordered": false,
+                "$asm.array-mixed": false,
+                "$asm.pattern": "indexed datum",
+                "items": {
+                    "type": "object",
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
+                    "$asm.pattern": "aggregate datum",
+                    "required": [
+                        "processed data"
+                    ],
+                    "properties": {
+                        "data format specification type": {
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002657",
+                            "$asm.pattern": "value datum",
+                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                            "$ref": "#/$defs/tStringValue"
+                        },
+                        "data processing description": {
+                            "$asm.pattern": "value datum",
+                            "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                            "$ref": "#/$defs/tStringValue"
+                        },
+                        "processed data": {
+                            "oneOf": [
+                                {
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "$ref": "#/$defs/tDatacube"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "minItems": 1
+            }
+        }
+    }
+}
