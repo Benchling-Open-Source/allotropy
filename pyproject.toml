@@ -99,6 +99,7 @@ generate-schemas = "scripts/generate_schemas.py"
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs >= 23.0.0",
+  "mypy >= 1.5.1",
 ]
 
 [tool.hatch.envs.lint.scripts]
