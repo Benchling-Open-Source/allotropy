@@ -16,6 +16,7 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
 
 @dataclass
@@ -35,7 +36,7 @@ class Header:
 
 
 @dataclass
-class WellItem:
+class WellItem(Referenceable):
     uuid: str
     identifier: int
     target_dna_description: str
