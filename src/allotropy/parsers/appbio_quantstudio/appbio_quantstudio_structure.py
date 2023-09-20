@@ -140,36 +140,6 @@ class Result:
     genotyping_determination_result: Optional[str]
     genotyping_determination_method_setting: Optional[float]
 
-    def __init__(
-        self,
-        cycle_threshold_value_setting: float,
-        cycle_threshold_result: Optional[float],
-        automatic_cycle_threshold_enabled_setting: Optional[bool],
-        automatic_baseline_determination_enabled_setting: Optional[bool],
-        normalized_reporter_result: Optional[float],
-        baseline_corrected_reporter_result: Optional[float],
-        genotyping_determination_result: Optional[str],
-        genotyping_determination_method_setting: Optional[float],
-    ):
-        self.cycle_threshold_value_setting = cycle_threshold_value_setting
-        self.cycle_threshold_result = cycle_threshold_result
-        self.automatic_cycle_threshold_enabled_setting = (
-            None
-            if automatic_cycle_threshold_enabled_setting is None
-            else bool(automatic_cycle_threshold_enabled_setting)
-        )
-        self.automatic_baseline_determination_enabled_setting = (
-            None
-            if automatic_baseline_determination_enabled_setting is None
-            else bool(automatic_baseline_determination_enabled_setting)
-        )
-        self.normalized_reporter_result = normalized_reporter_result
-        self.baseline_corrected_reporter_result = baseline_corrected_reporter_result
-        self.genotyping_determination_result = genotyping_determination_result
-        self.genotyping_determination_method_setting = (
-            genotyping_determination_method_setting
-        )
-
 
 @dataclass
 class MeltCurveRawData:

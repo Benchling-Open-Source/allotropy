@@ -358,11 +358,21 @@ class GenericResultsBuilder:
             msg = "Unable to get cycle threshold result"
             raise AllotropeConversionError(msg)
 
+        auto_ct_threshold = target_data.get("Automatic Ct Threshold")
+        automatic_cycle_threshold_enabled_setting = (
+            None if auto_ct_threshold is None else bool(auto_ct_threshold)
+        )
+
+        auto_baseline = target_data.get("Automatic Baseline")
+        automatic_baseline_determination_enabled_setting = (
+            None if auto_baseline is None else bool(auto_baseline)
+        )
+
         return Result(
             cycle_threshold_value_setting=cycle_threshold_value_setting,  # type: ignore[arg-type]
             cycle_threshold_result=float_or_none(cycle_threshold_result),
-            automatic_cycle_threshold_enabled_setting=target_data.get("Automatic Ct Threshold"),  # type: ignore[arg-type]
-            automatic_baseline_determination_enabled_setting=target_data.get("Automatic Baseline"),  # type: ignore[arg-type]
+            automatic_cycle_threshold_enabled_setting=automatic_cycle_threshold_enabled_setting,
+            automatic_baseline_determination_enabled_setting=automatic_baseline_determination_enabled_setting,
             normalized_reporter_result=target_data.get("Rn"),  # type: ignore[arg-type]
             baseline_corrected_reporter_result=target_data.get("Delta Rn"),  # type: ignore[arg-type]
             genotyping_determination_result=target_data.get("Call"),  # type: ignore[arg-type]
@@ -407,11 +417,21 @@ class GenotypingResultsBuilder:
             msg = "Unable to get cycle threshold result"
             raise AllotropeConversionError(msg)
 
+        auto_ct_threshold = target_data.get(f"{allele} Automatic Ct Threshold")
+        automatic_cycle_threshold_enabled_setting = (
+            None if auto_ct_threshold is None else bool(auto_ct_threshold)
+        )
+
+        auto_baseline = target_data.get(f"{allele} Automatic Baseline")
+        automatic_baseline_determination_enabled_setting = (
+            None if auto_baseline is None else bool(auto_baseline)
+        )
+
         return Result(
             cycle_threshold_value_setting=cycle_threshold_value_setting,  # type: ignore[arg-type]
             cycle_threshold_result=float_or_none(cycle_threshold_result),
-            automatic_cycle_threshold_enabled_setting=target_data.get(f"{allele} Automatic Ct Threshold"),  # type: ignore[arg-type]
-            automatic_baseline_determination_enabled_setting=target_data.get(f"{allele} Automatic Baseline"),  # type: ignore[arg-type]
+            automatic_cycle_threshold_enabled_setting=automatic_cycle_threshold_enabled_setting,
+            automatic_baseline_determination_enabled_setting=automatic_baseline_determination_enabled_setting,
             normalized_reporter_result=target_data.get("Rn"),  # type: ignore[arg-type]
             baseline_corrected_reporter_result=target_data.get(f"{allele} Delta Rn"),  # type: ignore[arg-type]
             genotyping_determination_result=target_data.get("Call"),  # type: ignore[arg-type]
