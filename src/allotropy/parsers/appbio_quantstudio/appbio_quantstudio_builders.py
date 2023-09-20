@@ -18,6 +18,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     Well,
     WellItem,
+    WellList,
 )
 from allotropy.parsers.lines_reader import LinesReader
 
@@ -125,19 +126,21 @@ class HeaderBuilder:
 
 class GenericWellBuilder:
     @staticmethod
-    def build(data: pd.DataFrame) -> list[Well]:
-        return [
-            Well(
-                identifier=identifier,  # type: ignore[arg-type]
-                items={
-                    well_item_data["Target Name"]: GenericWellBuilder.build_well_item(
-                        well_item_data
-                    )
-                    for _, well_item_data in well_data.iterrows()
-                },
-            )
-            for identifier, well_data in data.groupby("Well")
-        ]
+    def build(data: pd.DataFrame) -> WellList:
+        return WellList(
+            [
+                Well(
+                    identifier=identifier,  # type: ignore[arg-type]
+                    items={
+                        item_data["Target Name"]: GenericWellBuilder.build_well_item(
+                            item_data
+                        )
+                        for _, item_data in well_data.iterrows()
+                    },
+                )
+                for identifier, well_data in data.groupby("Well")
+            ]
+        )
 
     @staticmethod
     def build_well_item(data: pd.Series) -> WellItem:
@@ -170,17 +173,21 @@ class GenericWellBuilder:
 
 class GenotypingWellBuilder:
     @staticmethod
-    def build(data: pd.DataFrame) -> list[Well]:
-        return [
-            Well(
-                identifier=well_id,  # type: ignore[arg-type]
-                items={
-                    well_item.target_dna_description: well_item
-                    for well_item in GenotypingWellBuilder.build_well_items(well_data)
-                },
-            )
-            for well_id, well_data in data.iterrows()
-        ]
+    def build(data: pd.DataFrame) -> WellList:
+        return WellList(
+            [
+                Well(
+                    identifier=well_id,  # type: ignore[arg-type]
+                    items={
+                        well_item.target_dna_description: well_item
+                        for well_item in GenotypingWellBuilder.build_well_items(
+                            well_data
+                        )
+                    },
+                )
+                for well_id, well_data in data.iterrows()
+            ]
+        )
 
     @staticmethod
     def build_well_items(data: pd.Series) -> list[WellItem]:
@@ -226,7 +233,7 @@ class GenotypingWellBuilder:
 
 class WellBuilder:
     @staticmethod
-    def build(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
+    def build(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
         raw_data = WellBuilder.get_data(reader)
         data = raw_data[raw_data["Sample Name"].notnull()]
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:

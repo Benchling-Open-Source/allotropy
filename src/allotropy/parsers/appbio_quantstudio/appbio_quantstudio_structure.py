@@ -8,6 +8,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
 from typing import Optional
 
@@ -89,6 +90,18 @@ class Well:
 
 
 @dataclass
+class WellList:
+    wells: list[Well]
+
+    def iter_well_items(self) -> Iterator[WellItem]:
+        for well in self.wells:
+            yield from well.items.values()
+
+    def __iter__(self) -> Iterator[Well]:
+        return iter(self.wells)
+
+
+@dataclass
 class RawData:
     lines: list[str]
 
@@ -166,5 +179,5 @@ class MeltCurveRawData:
 @dataclass
 class Data:
     header: Header
-    wells: list[Well]
+    wells: WellList
     raw_data: Optional[RawData]
