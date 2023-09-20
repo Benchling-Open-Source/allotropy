@@ -37,6 +37,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Data,
+    Header,
+    MeltCurveRawData,
+    MulticomponentData,
     Well,
     WellItem,
 )
@@ -79,7 +82,7 @@ class AppBioQuantStudioParser(VendorParser):
                             ),
                             measurement_document=[
                                 self.get_measurement_document_item(
-                                    data, well, well_item
+                                    data.header, well, well_item
                                 )
                                 for well_item in well.items
                             ],
@@ -91,21 +94,21 @@ class AppBioQuantStudioParser(VendorParser):
         )
 
     def get_measurement_document_item(
-        self, data: Data, well: Well, well_item: WellItem
+        self, header: Header, well: Well, well_item: WellItem
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=str(uuid.uuid4()),
-            measurement_time=data.header.measurement_time,
+            measurement_time=header.measurement_time,
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(
                 sample_identifier=well_item.sample_identifier,
                 sample_role_type=well_item.sample_role_type,
                 well_location_identifier=well_item.well_location_identifier,
-                well_plate_identifier=data.header.barcode,
+                well_plate_identifier=header.barcode,
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    self.get_device_control_document_item(data, well_item),
+                    self.get_device_control_document_item(header, well_item),
                 ],
             ),
             processed_data_aggregate_document=ProcessedDataAggregateDocument(
@@ -113,26 +116,30 @@ class AppBioQuantStudioParser(VendorParser):
                     self.get_processed_data_document(well_item),
                 ]
             ),
-            reporter_dye_data_cube=self.get_reporter_dye_data_cube(well, well_item),
-            passive_reference_dye_data_cube=self.get_passive_reference_dye_data_cube(
-                data, well
+            reporter_dye_data_cube=self.get_reporter_dye_data_cube(
+                well.multicomponent_data, well_item.reporter_dye_setting
             ),
-            melting_curve_data_cube=self.get_melting_curve_data_cube(well),
+            passive_reference_dye_data_cube=self.get_passive_reference_dye_data_cube(
+                well.multicomponent_data, header.passive_reference_dye_setting
+            ),
+            melting_curve_data_cube=self.get_melting_curve_data_cube(
+                well.melt_curve_raw_data
+            ),
         )
 
     def get_device_control_document_item(
-        self, data: Data, well_item: WellItem
+        self, header: Header, well_item: WellItem
     ) -> DeviceControlDocumentItem:
         return DeviceControlDocumentItem(
             device_type="qPCR",
-            measurement_method_identifier=data.header.measurement_method_identifier,
+            measurement_method_identifier=header.measurement_method_identifier,
             total_cycle_number_setting=TQuantityValueNumber(
                 value=well_item.amplification_data.total_cycle_number_setting,
             ),
-            qPCR_detection_chemistry=data.header.qpcr_detection_chemistry,
+            qPCR_detection_chemistry=header.qpcr_detection_chemistry,
             reporter_dye_setting=well_item.reporter_dye_setting,
             quencher_dye_setting=well_item.quencher_dye_setting,
-            passive_reference_dye_setting=data.header.passive_reference_dye_setting,
+            passive_reference_dye_setting=header.passive_reference_dye_setting,
         )
 
     def get_processed_data_document(
@@ -226,9 +233,11 @@ class AppBioQuantStudioParser(VendorParser):
         )
 
     def get_reporter_dye_data_cube(
-        self, well: Well, well_item: WellItem
+        self,
+        multicomponent_data: Optional[MulticomponentData],
+        reporter_dye_setting: Optional[str] = None,
     ) -> Optional[ReporterDyeDataCube]:
-        if well.multicomponent_data is None or well_item.reporter_dye_setting is None:
+        if not multicomponent_data or reporter_dye_setting is None:
             return None
 
         return ReporterDyeDataCube(
@@ -250,20 +259,17 @@ class AppBioQuantStudioParser(VendorParser):
                 ],
             ),
             data=TDatacubeData(
-                dimensions=[well.multicomponent_data.cycle],
-                measures=[
-                    well.multicomponent_data.get_column(well_item.reporter_dye_setting)
-                ],
+                dimensions=[multicomponent_data.cycle],
+                measures=[multicomponent_data.get_column(reporter_dye_setting)],
             ),
         )
 
     def get_passive_reference_dye_data_cube(
-        self, data: Data, well: Well
+        self,
+        multicomponent_data: Optional[MulticomponentData],
+        passive_reference_dye_setting: Optional[str] = None,
     ) -> Optional[PassiveReferenceDyeDataCube]:
-        if (
-            well.multicomponent_data is None
-            or data.header.passive_reference_dye_setting is None
-        ):
+        if not multicomponent_data or passive_reference_dye_setting is None:
             return None
 
         return PassiveReferenceDyeDataCube(
@@ -285,17 +291,17 @@ class AppBioQuantStudioParser(VendorParser):
                 ],
             ),
             data=TDatacubeData(
-                dimensions=[well.multicomponent_data.cycle],
+                dimensions=[multicomponent_data.cycle],
                 measures=[
-                    well.multicomponent_data.get_column(
-                        data.header.passive_reference_dye_setting
-                    )
+                    multicomponent_data.get_column(passive_reference_dye_setting)
                 ],
             ),
         )
 
-    def get_melting_curve_data_cube(self, well: Well) -> Optional[MeltingCurveDataCube]:
-        if well.melt_curve_raw_data is None:
+    def get_melting_curve_data_cube(
+        self, melt_curve_raw_data: Optional[MeltCurveRawData]
+    ) -> Optional[MeltingCurveDataCube]:
+        if not melt_curve_raw_data:
             return None
 
         return MeltingCurveDataCube(
@@ -322,10 +328,10 @@ class AppBioQuantStudioParser(VendorParser):
                 ],
             ),
             data=TDatacubeData(
-                dimensions=[well.melt_curve_raw_data.reading],
+                dimensions=[melt_curve_raw_data.reading],
                 measures=[
-                    well.melt_curve_raw_data.fluorescence,
-                    well.melt_curve_raw_data.derivative,
+                    melt_curve_raw_data.fluorescence,
+                    melt_curve_raw_data.derivative,
                 ],
             ),
         )
