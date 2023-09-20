@@ -14,12 +14,20 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
     ResultsBuilder,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    Data,
     Header,
     Result,
     WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, get_data2
+
+
+def rm_uuid(data: Data) -> Data:
+    for well in data.wells:
+        for well_item in well.items.values():
+            well_item.uuid = ""
+    return data
 
 
 @pytest.mark.short
@@ -121,6 +129,7 @@ def test_results_builder() -> None:
         }
     )
     well_item = WellItem(
+        uuid="be566c58-41f3-40f8-900b-ef1dff20d264",
         identifier=1,
         position="A1",
         target_dna_description="CYP19_2-Allele 1",
@@ -147,7 +156,9 @@ def test_data_builder() -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
 
-    assert DataBuilder.build(reader) == get_data()
+    generated = DataBuilder.build(reader)
+    expected = get_data()
+    assert rm_uuid(generated) == rm_uuid(expected)
 
     test_filepath = (
         "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt"
@@ -155,7 +166,9 @@ def test_data_builder() -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
 
-    assert DataBuilder.build(reader) == get_data2()
+    generated2 = DataBuilder.build(reader)
+    expected2 = get_data2()
+    assert rm_uuid(generated2) == rm_uuid(expected2)
 
 
 def get_raw_header_contents(

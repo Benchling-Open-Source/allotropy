@@ -1,6 +1,5 @@
 from io import IOBase
 from typing import Optional
-import uuid
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     BaselineCorrectedReporterDataCube,
@@ -97,7 +96,7 @@ class AppBioQuantStudioParser(VendorParser):
         self, data: Data, well: Well, well_item: WellItem
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
-            measurement_identifier=str(uuid.uuid4()),
+            measurement_identifier=well_item.uuid,
             measurement_time=self.get_date_time(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(

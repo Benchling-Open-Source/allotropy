@@ -1,5 +1,6 @@
 from io import StringIO
 from typing import Any, Optional
+import uuid
 
 import numpy as np
 import pandas as pd
@@ -160,6 +161,7 @@ class GenericWellBuilder:
             raise AllotropeConversionError(msg)
 
         return WellItem(
+            uuid=str(uuid.uuid4()),
             identifier=identifier,  # type: ignore[arg-type]
             target_dna_description=target_dna_description,  # type: ignore[arg-type]
             sample_identifier=sample_identifier,  # type: ignore[arg-type]
@@ -218,6 +220,7 @@ class GenotypingWellBuilder:
 
         return [
             WellItem(
+                uuid=str(uuid.uuid4()),
                 identifier=identifier,  # type: ignore[arg-type]
                 target_dna_description=f"{snp_name}-{allele}",
                 sample_identifier=sample_identifier,  # type: ignore[arg-type]

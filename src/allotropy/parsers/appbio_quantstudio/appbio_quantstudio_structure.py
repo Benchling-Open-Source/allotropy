@@ -36,6 +36,7 @@ class Header:
 
 @dataclass
 class WellItem:
+    uuid: str
     identifier: int
     target_dna_description: str
     sample_identifier: str

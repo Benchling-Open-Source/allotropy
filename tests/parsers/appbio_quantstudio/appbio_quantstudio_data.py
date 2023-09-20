@@ -68,6 +68,7 @@ def get_data() -> Data:
                     identifier=1,
                     items={
                         "IPC": WellItem(
+                            uuid="d170f2df-7ff8-4978-b13d-a7ad19fab824",
                             identifier=1,
                             position="A1",
                             target_dna_description="IPC",
@@ -94,6 +95,7 @@ def get_data() -> Data:
                             ),
                         ),
                         "TGFb": WellItem(
+                            uuid="ba281c64-0605-4e76-8e9c-2a183be3cc08",
                             identifier=1,
                             position="A1",
                             target_dna_description="TGFb",
@@ -165,6 +167,7 @@ def get_data2() -> Data:
                     identifier=1,
                     items={
                         "B2M-Qiagen": WellItem(
+                            uuid="1e572828d-45fd-49bd-ab66-2a7f06aea3b6",
                             identifier=1,
                             position="A1",
                             target_dna_description="B2M-Qiagen",
@@ -240,7 +243,7 @@ def get_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
                                 measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="IPC",
                                 sample_document=SampleDocument(
@@ -426,7 +429,7 @@ def get_model() -> Model:
                                 melting_curve_data_cube=None,
                             ),
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
                                 measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="TGFb",
                                 sample_document=SampleDocument(
@@ -659,7 +662,7 @@ def get_model2() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="1e572828d-45fd-49bd-ab66-2a7f06aea3b6",
                                 measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="B2M-Qiagen",
                                 sample_document=SampleDocument(
@@ -920,6 +923,7 @@ def get_genotyping_data() -> Data:
                     identifier=1,
                     items={
                         "CYP19_2-Allele 1": WellItem(
+                            uuid="3c40d2c2-0a64-433f-b639-e9c6e896313e",
                             identifier=1,
                             position="A1",
                             target_dna_description="CYP19_2-Allele 1",
@@ -946,6 +950,7 @@ def get_genotyping_data() -> Data:
                             ),
                         ),
                         "CYP19_2-Allele 2": WellItem(
+                            uuid="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
                             identifier=1,
                             position="A1",
                             target_dna_description="CYP19_2-Allele 2",
@@ -995,7 +1000,7 @@ def get_genotyping_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="3c40d2c2-0a64-433f-b639-e9c6e896313e",
                                 measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="CYP19_2-Allele 1",
                                 sample_document=SampleDocument(
@@ -1086,7 +1091,7 @@ def get_genotyping_model() -> Model:
                                 ),
                             ),
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
                                 measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="CYP19_2-Allele 2",
                                 sample_document=SampleDocument(
