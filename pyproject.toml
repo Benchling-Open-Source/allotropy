@@ -91,6 +91,9 @@ dependencies = [
   "ruff >= 0.0.289",
 ]
 
+[tool.hatch.envs.scripts]
+detached = true
+
 
 [tool.hatch.envs.scripts.scripts]
 setup-env = "scripts/dev/bootstrap"
