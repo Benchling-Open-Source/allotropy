@@ -92,6 +92,10 @@ dependencies = [
 [tool.hatch.envs.default.scripts]
 setup-env = "scripts/dev/bootstrap"
 setup-pre-push-hook = "scripts/dev/setup-pre-push-hook"
+setup = [
+  "setup-env",
+  "setup-pre-push-hook",
+]
 generate-schemas = "scripts/dev/generate_schemas.py"
 
 [tool.hatch.envs.lint]
@@ -126,6 +130,7 @@ all = [
 ]
 
 [tool.hatch.envs.test]
+detached = true
 extra-dependencies = [
   # Required because we lint files during autogeneration, keep in sync with envs.lint
   "black == 22.3.0",
@@ -144,6 +149,7 @@ extra-dependencies = [
 
 [tool.hatch.envs.test.scripts]
 test = "pytest {args:tests}"
+short = "pytest -m short {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
   "- coverage combine",
