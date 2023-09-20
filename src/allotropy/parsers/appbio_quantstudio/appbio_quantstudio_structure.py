@@ -37,7 +37,7 @@ def map_well_data(
     data: pd.DataFrame, data_fn: Callable[[int, pd.DataFrame], T]
 ) -> list[T]:
     return [
-        data_fn(assert_not_none(try_int(str(well_id))), well_data)
+        data_fn(assert_not_none(try_int(str(well_id)), "Well column"), well_data)
         for well_id, well_data in data.groupby("Well")
     ]
 
@@ -46,7 +46,7 @@ def map_well_data_dict(
     data: pd.DataFrame, data_fn: Callable[[pd.DataFrame], T]
 ) -> dict[int, T]:
     return {
-        assert_not_none(try_int(str(well_id))): data_fn(well_data)
+        assert_not_none(try_int(str(well_id)), "Well column"): data_fn(well_data)
         for well_id, well_data in data.groupby("Well")
     }
 
@@ -225,7 +225,6 @@ def create_wells(
         reader.pop_csv_block(r"^\[Sample Setup\]"), "Sample Setup"
     )
     data = raw_data[raw_data["Sample Name"].notnull()].replace(np.nan, None)
-
     well_type = Well
     if experiment_type == ExperimentType.genotyping_qPCR_experiment:
         well_type = GenotypingWell
@@ -318,7 +317,7 @@ class Result:
         return Result(
             cycle_threshold_value_setting=assert_not_none(
                 try_float(get_str_from_series(series, f"{prefix}Ct Threshold")),
-                "Ct Threshold",
+                f"{prefix}Ct Threshold",
             ),
             cycle_threshold_result=try_float(
                 get_str_from_series(series, f"{prefix}Ct" if prefix else "CT")
@@ -343,7 +342,9 @@ class Result:
     def map_data(
         reader: CSVBlockLinesReader, experiment_type: ExperimentType
     ) -> dict[int, dict[str, Result]]:
-        data = assert_not_none(reader.pop_csv_block(r"^\[Results\]"), "Results")
+        data = assert_not_none(
+            reader.pop_csv_block(r"^\[Results\]"), "Results"
+        ).replace(np.nan, None)
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             return map_well_data_dict(
@@ -356,7 +357,7 @@ class Result:
                     for allele in {
                         col[:-13]
                         for col in target_data.columns
-                        if re.match(r"\w+ Ct Threshold", col)
+                        if re.match(r"\w+(?<!Automatic) Ct Threshold", col)
                     }
                 },
             )

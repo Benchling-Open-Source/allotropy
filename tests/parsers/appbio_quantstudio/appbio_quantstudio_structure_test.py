@@ -9,8 +9,12 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
+    create_wells,
     Data,
+    GenotypingWell,
     Header,
+    MeltCurveRawData,
+    MulticomponentData,
     Result,
     Well,
     WellItem,
@@ -21,7 +25,7 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, g
 
 def get_reader_from_lines(lines: list[str]) -> CSVBlockLinesReader:
     reader = CSVBlockLinesReader(StringIO("\n".join(lines)))
-    reader.default_read_csv_kwargs = {"header": None, "sep": ","}
+    reader.default_read_csv_kwargs = {"sep": "\t"}
     return reader
 
 
@@ -192,6 +196,221 @@ def test_create_well() -> None:
     assert well.items[1].sample_identifier == "S2"
     assert well.items[1].reporter_dye_setting == "ME"
     assert not well.items[1].quencher_dye_setting
+
+
+@pytest.mark.short
+def test_create_genotyping_well() -> None:
+    data = pd.DataFrame(
+        {
+            "Well": ["1"],
+            "Sample Name": ["S1"],
+            "SNP Assay Name": ["ASSAY_1"],
+            "Allele1 Name": ["AL1"],
+            "Allele2 Name": ["AL2"],
+        }
+    )
+    well = GenotypingWell.create(1, data)
+
+    assert well.identifier == 1
+    assert len(well.items) == 2
+    assert well.items[0].identifier == 1
+    assert well.items[0].target_dna_description == "ASSAY_1-AL1"
+    assert well.items[0].sample_identifier == "S1"
+    assert well.items[1].identifier == 1
+    assert well.items[1].target_dna_description == "ASSAY_1-AL2"
+    assert well.items[1].sample_identifier == "S1"
+
+
+@pytest.mark.short
+def test_create_wells() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Sample Setup]",
+            "Well	Well Position	Sample Name	Target Name",
+            "1	A1	S1	T1",
+        ]
+    )
+
+    wells = create_wells(
+        reader, experiment_type=ExperimentType.standard_curve_qPCR_experiment
+    )
+    assert len(wells) == 1
+    well = wells[0]
+    assert well.identifier == 1
+    assert len(well.items) == 1
+    assert well.items[0].identifier == 1
+    assert well.items[0].target_dna_description == "T1"
+    assert well.items[0].sample_identifier == "S1"
+
+
+@pytest.mark.short
+def test_create_genotyping_wells() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Sample Setup]",
+            "Well	Well Position	Sample Name	SNP Assay Name	Allele1 Name	Allele2 Name",
+            "1	A1	S1	ASSAY_1	AL1	AL2",
+        ]
+    )
+
+    wells = create_wells(
+        reader, experiment_type=ExperimentType.genotyping_qPCR_experiment
+    )
+    assert len(wells) == 1
+    well = wells[0]
+    assert well.identifier == 1
+    assert len(well.items) == 2
+    assert well.items[0].identifier == 1
+    assert well.items[0].target_dna_description == "ASSAY_1-AL1"
+    assert well.items[0].sample_identifier == "S1"
+    assert well.items[1].identifier == 1
+    assert well.items[1].target_dna_description == "ASSAY_1-AL2"
+    assert well.items[1].sample_identifier == "S1"
+
+
+@pytest.mark.short
+def test_create_amplification_data() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Amplification Data]",
+            "Well	Cycle	Target Name	Rn	Delta Rn",
+            "1	1	TARGET_1.1	1.1	1.111",
+            "1	2	TARGET_1.1	1.12	-1.112",
+            "1	1	TARGET_1.2	2.1	-2.2",
+            "3	1	TARGET_3.1	3.12	-3",
+        ]
+    )
+    assert AmplificationData.map_data(reader) == {
+        1: {
+            "TARGET_1.1": AmplificationData(2, [1, 2], [1.1, 1.12], [1.111, -1.112]),
+            "TARGET_1.2": AmplificationData(1, [1], [2.1], [-2.2]),
+        },
+        3: {
+            "TARGET_3.1": AmplificationData(1, [1], [3.12], [-3.0]),
+        },
+    }
+
+
+@pytest.mark.short
+def test_create_multicomponent_data() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Multicomponent Data]",
+            "Well	Well Position	Cycle	ROX	SYBR",
+            "1	      A1	1	111.11	222.22",
+            "1	      A1	2	333.33	444.44",
+            "2	      A2	3	55,555.555	66,666.666",
+        ]
+    )
+    assert MulticomponentData.map_data(reader) == {
+        1: MulticomponentData(
+            cycle=[1, 2], columns={"ROX": [111.11, 333.33], "SYBR": [222.22, 444.44]}
+        ),
+        2: MulticomponentData(
+            cycle=[3], columns={"ROX": [55555.555], "SYBR": [66666.666]}
+        ),
+    }
+
+
+@pytest.mark.short
+def test_create_results() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Results]",
+            "Well	Target Name	CT	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Rn	Delta Rn	Call	Threshold Value	Baseline Start",
+            "1	TARGET_1	1.0	false	2.0	true					1",
+            "1	TARGET_2	0.3	true	0.4	false					1",
+            "2	TARGET_1	500	true	600	true	100	200	200	200	1",
+        ]
+    )
+    assert Result.map_data(
+        reader, experiment_type=ExperimentType.standard_curve_qPCR_experiment
+    ) == {
+        1: {
+            "TARGET_1": Result(
+                cycle_threshold_value_setting=2.0,
+                cycle_threshold_result=1.0,
+                automatic_cycle_threshold_enabled_setting=False,
+                automatic_baseline_determination_enabled_setting=True,
+            ),
+            "TARGET_2": Result(
+                cycle_threshold_value_setting=0.4,
+                cycle_threshold_result=0.3,
+                automatic_cycle_threshold_enabled_setting=True,
+                automatic_baseline_determination_enabled_setting=False,
+            ),
+        },
+        2: {
+            "TARGET_1": Result(
+                cycle_threshold_value_setting=600.0,
+                cycle_threshold_result=500.0,
+                automatic_cycle_threshold_enabled_setting=True,
+                automatic_baseline_determination_enabled_setting=True,
+                normalized_reporter_result=100.0,
+                baseline_corrected_reporter_result=200.0,
+                genotyping_determination_result="200.0",
+                genotyping_determination_method_setting=200.0,
+            )
+        },
+    }
+
+
+@pytest.mark.short
+def test_create_genotyping_results() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Results]",
+            "Well	SNP Assay Name	Allele1 Name	Allele2 Name	AL1 Ct	AL2 Ct	AL1 Automatic Ct Threshold	AL1 Ct Threshold	AL2 Ct Threshold	AL2 Automatic Baseline	Rn	AL2 Delta Rn	Call	Threshold Value	Baseline Start",
+            "1	ASSAY_1	AL1	AL2	1.0	2.0	false	20.0	21.0	true	0.01	0.001			1",
+        ]
+    )
+    result = Result.map_data(
+        reader, experiment_type=ExperimentType.genotyping_qPCR_experiment
+    )
+    expected = {
+        1: {
+            "ASSAY_1-AL1": Result(
+                cycle_threshold_value_setting=20.0,
+                cycle_threshold_result=1.0,
+                automatic_cycle_threshold_enabled_setting=False,
+                automatic_baseline_determination_enabled_setting=None,
+                normalized_reporter_result=0.01,
+                baseline_corrected_reporter_result=None,
+                genotyping_determination_result=None,
+                genotyping_determination_method_setting=None,
+            ),
+            "ASSAY_1-AL2": Result(
+                cycle_threshold_value_setting=21.0,
+                cycle_threshold_result=2.0,
+                automatic_cycle_threshold_enabled_setting=None,
+                automatic_baseline_determination_enabled_setting=True,
+                normalized_reporter_result=0.01,
+                baseline_corrected_reporter_result=0.001,
+                genotyping_determination_result=None,
+                genotyping_determination_method_setting=None,
+            ),
+        }
+    }
+    assert result == expected
+
+
+@pytest.mark.short
+def test_create_melt_curve_raw_data() -> None:
+    reader = get_reader_from_lines(
+        [
+            "[Melt Curve Raw Data]",
+            "Well	Well Position	Reading	Temperature	Fluorescence	Derivative",
+            "1	A1	1	60.403	1.1	0.1",
+            "1	A1	2	60.403	2.2	0.2",
+            "2	A1	1	60.403	3.3	0.3",
+        ]
+    )
+    assert MeltCurveRawData.map_data(reader) == {
+        1: MeltCurveRawData(
+            reading=[1, 2], fluorescence=[1.1, 2.2], derivative=[0.1, 0.2]
+        ),
+        2: MeltCurveRawData(reading=[1], fluorescence=[3.3], derivative=[0.3]),
+    }
 
 
 @pytest.mark.short

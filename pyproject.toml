@@ -58,6 +58,12 @@ allotropy = ["src/allotropy", "*/allotropy/src/allotropy"]
 tests = ["tests", "*/allotropy/tests"]
 
 [tool.coverage.report]
+omit =[
+   "tests/*",
+   "*/__init__.py",
+   # Autogenrated dataclass models are not unit tested
+   "src/allotropy/allotrope/models/*",
+]
 exclude_lines = [
   "no cov",
   "if __name__ == .__main__.:",
