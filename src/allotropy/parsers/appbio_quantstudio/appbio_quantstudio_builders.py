@@ -409,6 +409,23 @@ class GenericResultsBuilder:
             genotyping_determination_method_setting=get_float(
                 target_data, "Threshold Value"
             ),
+            quantity=get_float(target_data, "Quantity"),
+            quantity_mean=get_float(target_data, "Quantity Mean"),
+            quantity_sd=get_float(target_data, "Quantity SD"),
+            ct_mean=get_float(target_data, "Ct Mean"),
+            ct_sd=get_float(target_data, "Ct SD"),
+            delta_ct_mean=get_float(target_data, "Delta Ct Mean"),
+            delta_ct_se=get_float(target_data, "Delta Ct SE"),
+            delta_delta_ct=get_float(target_data, "Delta Delta Ct"),
+            rq=get_float(target_data, "RQ"),
+            rq_min=get_float(target_data, "RQ Min"),
+            rq_max=get_float(target_data, "RQ Max"),
+            rn_mean=get_float(target_data, "Rn Mean"),
+            rn_sd=get_float(target_data, "Rn SD"),
+            y_intercept=get_float(target_data, "Y-Intercept"),
+            r_squared=get_float(target_data, "R(superscript 2)"),
+            slope=get_float(target_data, "Slope"),
+            efficiency=get_float(target_data, "Efficiency"),
         )
 
     @staticmethod
@@ -466,6 +483,23 @@ class GenotypingResultsBuilder:
             genotyping_determination_method_setting=get_float(
                 target_data, "Threshold Value"
             ),
+            quantity=get_float(target_data, "Quantity"),
+            quantity_mean=get_float(target_data, "Quantity Mean"),
+            quantity_sd=get_float(target_data, "Quantity SD"),
+            ct_mean=get_float(target_data, "Ct Mean"),
+            ct_sd=get_float(target_data, "Ct SD"),
+            delta_ct_mean=get_float(target_data, "Delta Ct Mean"),
+            delta_ct_se=get_float(target_data, "Delta Ct SE"),
+            delta_delta_ct=get_float(target_data, "Delta Delta Ct"),
+            rq=get_float(target_data, "RQ"),
+            rq_min=get_float(target_data, "RQ Min"),
+            rq_max=get_float(target_data, "RQ Max"),
+            rn_mean=get_float(target_data, "Rn Mean"),
+            rn_sd=get_float(target_data, "Rn SD"),
+            y_intercept=get_float(target_data, "Y-Intercept"),
+            r_squared=get_float(target_data, "R(superscript 2)"),
+            slope=get_float(target_data, "Slope"),
+            efficiency=get_float(target_data, "Efficiency"),
         )
 
     @staticmethod
@@ -507,7 +541,7 @@ class ResultsBuilder:
         reader.pop()  # remove title
         data_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(data_lines))
-        data = pd.read_csv(csv_stream, sep="\t")
+        data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
         reader.drop_empty()
 

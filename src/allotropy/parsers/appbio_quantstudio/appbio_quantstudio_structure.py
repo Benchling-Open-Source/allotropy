@@ -139,6 +139,23 @@ class Result:
     baseline_corrected_reporter_result: Optional[float]
     genotyping_determination_result: Optional[str]
     genotyping_determination_method_setting: Optional[float]
+    quantity: Optional[float]
+    quantity_mean: Optional[float]
+    quantity_sd: Optional[float]
+    ct_mean: Optional[float]
+    ct_sd: Optional[float]
+    delta_ct_mean: Optional[float]
+    delta_ct_se: Optional[float]
+    delta_delta_ct: Optional[float]
+    rq: Optional[float]
+    rq_min: Optional[float]
+    rq_max: Optional[float]
+    rn_mean: Optional[float]
+    rn_sd: Optional[float]
+    y_intercept: Optional[float]
+    r_squared: Optional[float]
+    slope: Optional[float]
+    efficiency: Optional[float]
 
 
 @dataclass
