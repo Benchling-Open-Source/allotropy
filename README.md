@@ -51,10 +51,11 @@ asm_schema = allotrope_from_io(bytes_io, VendorType.MOLDEV_SOFTMAX_PRO)
 ### Setup
 
 Install Hatch: https://hatch.pypa.io/latest/
+Install python: https://www.python.org/downloads/
 
-First time setup:
+Add pre-push checks to your repo:
 ```sh
-scripts/dev/bootstrap
+hatch run scripts:setup-pre-push
 ```
 
 #### Dependencies

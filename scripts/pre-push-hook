@@ -1,0 +1,12 @@
+#!/bin/sh
+if [[ "${SKIP_PRE_PUSH_CHECKS:-}" == "1" ]]
+then
+  exit 0
+fi
+hatch run lint:all
+if [ $? -ne 0 ]
+then
+  exit 1
+fi
+
+exit 0

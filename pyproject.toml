@@ -76,36 +76,31 @@ packages = ["src/allotropy"]
 path = "src/allotropy/__about__.py"
 
 [tool.hatch.envs.default]
+# We define dependencies for linting and datamodel codegen in the default environment because we lint in
+# the generation script, and we test generation in tests, so we need them everywhere except the actual project.
 dependencies = [
   "autoflake >= 2.2.0",
-  # Required because we lint files during autogeneration, keep in sync with envs.lint
-  "black == 22.3.0",
-  "datamodel-code-generator >= 0.21.5",
-  # Required because we lint files during autogeneration, keep in sync with envs.lint
-  "flake8 >= 6.1.0",
-  # Without this, pydantic spews a bunch of errors when parsing schemas
-  "jsonschema-specifications >= 2023.7.1",
-  # Without this, pydantic spews a bunch of errors when parsing schemas
-  "pydantic == 1.10.9",
-]
-
-[tool.hatch.envs.default.scripts]
-setup-env = "scripts/dev/bootstrap"
-setup-pre-push-hook = "scripts/dev/setup-pre-push-hook"
-generate-schemas = "scripts/dev/generate_schemas.py"
-
-[tool.hatch.envs.lint]
-detached = true
-dependencies = [
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
-  # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
-  "cattrs >= 23.0.0",
   "datamodel-code-generator >= 0.21.5",
   "flake8 >= 6.1.0",
-  "mypy >= 1.5.1",
-  "pytest >= 7.4.0",
+  # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
+  "jsonschema-specifications >= 2023.7.1",
+  "pydantic == 1.10.9",
   "ruff >= 0.0.289",
+]
+
+[tool.hatch.envs.scripts.scripts]
+setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
+generate-schemas = "scripts/generate_schemas.py"
+
+[tool.hatch.envs.lint]
+extra-dependencies = [
+  # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
+  "cattrs >= 23.0.0",
+  "mypy >= 1.5.1",
+  # For pytest types
+  "pytest >= 7.4.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
@@ -127,23 +122,14 @@ all = [
 
 [tool.hatch.envs.test]
 extra-dependencies = [
-  # Required because we lint files during autogeneration, keep in sync with envs.lint
-  "black == 22.3.0",
   "coverage[toml] >= 6.5",
   "deepdiff >= 6.5.0",
-  # Required because we lint files during autogeneration, keep in sync with envs.lint
-  "flake8 >= 6.1.0",
-  # Without this, pydantic spews a bunch of errors when parsing schemas
-  "jsonschema-specifications >= 2023.7.1",
-  # Without this, pydantic spews a bunch of errors when parsing schemas
-  "pydantic == 1.10.9",
   "pytest >= 7.4.0",
-  # Required because we lint files during autogeneration, keep in sync with envs.lint
-  "ruff >= 0.0.289",
 ]
 
 [tool.hatch.envs.test.scripts]
 test = "pytest {args:tests}"
+short = "pytest -m short {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
   "- coverage combine",
