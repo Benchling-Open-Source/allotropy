@@ -275,7 +275,12 @@ class MulticomponentData:
         return MulticomponentData(
             cycle=data["Cycle"].tolist(),
             columns={
-                name: data[name].str.replace(",", "").astype(float).tolist()  # type: ignore[misc]
+                str(name): [
+                    assert_not_none(
+                        val, msg="Failed to parse float MutliComponentData item {val}"
+                    )
+                    for val in data[name].str.replace(",", "").astype(float).tolist()
+                ]
                 for name in data
                 if name not in ["Well", "Cycle", "Well Position"]
             },

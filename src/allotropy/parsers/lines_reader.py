@@ -27,7 +27,7 @@ class LinesReader:
         return False if line is None else bool(search(pattern, line))
 
     def is_empty(self) -> bool:
-        return self.match("^\\s*$")
+        return not self.current_line_exists() or self.match("^\\s*$")
 
     def pop(self) -> Optional[str]:
         line = self.get()
