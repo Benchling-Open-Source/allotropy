@@ -76,7 +76,7 @@ packages = ["src/allotropy"]
 path = "src/allotropy/__about__.py"
 
 
-[tool.hatch.envs.lint_base]
+[tool.hatch.envs.default]
 # We define dependencies for linting and datamodel codegen in the default environment because we lint in
 # the generation script, and we test generation in tests, so we need them everywhere except the actual project.
 dependencies = [
@@ -91,20 +91,11 @@ dependencies = [
   "ruff >= 0.0.289",
 ]
 
-[tool.hatch.envs.detached_lint_base]
-# Defining detached separately lets test use lint_base without detatching, with lint and script use this.
-template = "lint_base"
-detached = true
-
-[tool.hatch.envs.scripts]
-template = "detached_lint_base"
-
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py"
 
 [tool.hatch.envs.lint]
-template = "detached_lint_base"
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs >= 23.0.0",
@@ -131,8 +122,6 @@ all = [
 ]
 
 [tool.hatch.envs.test]
-# We inherit from lint_base to get linting requirements, but do not detatch from project.
-template = "lint_base"
 extra-dependencies = [
   "coverage[toml] >= 6.5",
   "deepdiff >= 6.5.0",
