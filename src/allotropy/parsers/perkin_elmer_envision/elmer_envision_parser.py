@@ -22,7 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
 )
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CSVBlockLinesReader
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import Data, Plate
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -35,7 +35,7 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 class ElmerEnvisionParser(VendorParser):
     def _parse(self, raw_contents: IOBase, _: str) -> Model:
-        reader = LinesReader(raw_contents)
+        reader = CSVBlockLinesReader(raw_contents)
         return self._get_model(Data.create(reader))
 
     def _get_model(self, data: Data) -> Model:

@@ -15,7 +15,6 @@ class LinesReader:
         self.lines: list[str] = self.contents.split("\n")
         self.n_lines = len(self.lines)
         self.current_line = 0
-        self.read_csv_kwargs: dict[str, Any] = {}
 
     def current_line_exists(self) -> bool:
         return 0 <= self.current_line < self.n_lines
@@ -72,32 +71,6 @@ class LinesReader:
             if line is not None:
                 yield line
 
-    def pop_csv_block(
-        self,
-        start_pattern: Optional[str] = None,
-        end_pattern: Optional[str] = None,
-        read_csv_kwargs: Optional[dict[str, Any]] = None,
-    ) -> Optional[pd.DataFrame]:
-        self.drop_empty()
-        if start_pattern:
-            if not self.match(start_pattern):
-                return None
-            self.pop()  # remove title
-
-        line_generator = (
-            self.pop_until(end_pattern) if end_pattern else self.pop_until_empty()
-        )
-        lines = [line for line in line_generator if line]
-        self.drop_empty()
-
-        if not lines:
-            return None
-
-        csv_stream = StringIO("\n".join(lines))
-        kwargs = {**self.read_csv_kwargs, **(read_csv_kwargs or {})}
-        data: pd.DataFrame = pd.read_csv(csv_stream, **kwargs)
-        return data
-
     def drop_sections(self, pattern: str) -> None:
         self.drop_empty()
         while True:
@@ -105,3 +78,30 @@ class LinesReader:
                 return
             self.drop_until_empty()
             self.drop_empty()
+
+
+class CSVBlockLinesReader(LinesReader):
+    def __init__(self, io_: IOBase):
+        super().__init__(io_)
+        self.default_read_csv_kwargs: dict[str, Any] = {}
+
+    def pop_csv_block(
+        self,
+        start_pattern: Optional[str] = None,
+        **kwargs: Any,
+    ) -> Optional[pd.DataFrame]:
+        self.drop_empty()
+        if start_pattern:
+            if not self.match(start_pattern):
+                return None
+            self.pop()  # remove title
+
+        lines = [line for line in self.pop_until_empty() if line]
+        self.drop_empty()
+
+        if not lines:
+            return None
+
+        kwargs = {**self.default_read_csv_kwargs, **(kwargs or {})}
+        data: pd.DataFrame = pd.read_csv(StringIO("\n".join(lines)), **kwargs)
+        return data

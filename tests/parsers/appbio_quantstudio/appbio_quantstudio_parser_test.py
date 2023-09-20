@@ -24,14 +24,14 @@ VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
 @pytest.mark.parametrize("output_file", output_files)
-def test_parse_thermo_quantstudio_to_asm_schema(output_file: str) -> None:
+def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(allotrope_dict, "pcr/BENCHLING/2023/09/qpcr.json")
 
 
 @pytest.mark.parametrize("output_file", output_files)
-def test_parse_thermo_quantstudio_to_asm_contents(output_file: str) -> None:
+def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
     expected_filepath = test_filepath.replace(".txt", ".json")
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)

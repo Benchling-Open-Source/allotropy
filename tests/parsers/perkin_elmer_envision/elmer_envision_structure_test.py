@@ -5,7 +5,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CSVBlockLinesReader
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
     BasicAssayInfo,
     create_plate_maps,
@@ -20,9 +20,9 @@ from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
 )
 
 
-def get_reader_from_lines(lines: list[str]) -> LinesReader:
-    reader = LinesReader(StringIO("\n".join(lines)))
-    reader.read_csv_kwargs = {"header": None, "sep": ","}
+def get_reader_from_lines(lines: list[str]) -> CSVBlockLinesReader:
+    reader = CSVBlockLinesReader(StringIO("\n".join(lines)))
+    reader.default_read_csv_kwargs = {"header": None, "sep": ","}
     return reader
 
 

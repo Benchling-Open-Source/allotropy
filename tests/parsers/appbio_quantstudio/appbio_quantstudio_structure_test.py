@@ -15,13 +15,13 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
 )
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CSVBlockLinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, get_data2
 
 
-def get_reader_from_lines(lines: list[str]) -> LinesReader:
-    reader = LinesReader(StringIO("\n".join(lines)))
-    reader.read_csv_kwargs = {"header": None, "sep": ","}
+def get_reader_from_lines(lines: list[str]) -> CSVBlockLinesReader:
+    reader = CSVBlockLinesReader(StringIO("\n".join(lines)))
+    reader.default_read_csv_kwargs = {"header": None, "sep": ","}
     return reader
 
 
@@ -199,8 +199,8 @@ def test_data_builder() -> None:
     test_filepath = (
         "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt"
     )
-    with open(test_filepath, "rb") as raw_contents:
-        reader = LinesReader(raw_contents)
+    with open(test_filepath) as raw_contents:
+        reader = get_reader_from_lines(raw_contents.read().split("\n"))
 
     result = Data.create(reader)
     assert result == get_data()
@@ -208,8 +208,8 @@ def test_data_builder() -> None:
     test_filepath = (
         "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt"
     )
-    with open(test_filepath, "rb") as raw_contents:
-        reader = LinesReader(raw_contents)
+    with open(test_filepath) as raw_contents:
+        reader = get_reader_from_lines(raw_contents.read().split("\n"))
 
     result = Data.create(reader)
     assert result == get_data2()

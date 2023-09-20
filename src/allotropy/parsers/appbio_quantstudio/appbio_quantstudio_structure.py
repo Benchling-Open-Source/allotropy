@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CSVBlockLinesReader
 from allotropy.parsers.utils.pandas import (
     assert_str_from_series,
     bool_or_none,
@@ -67,11 +67,9 @@ class Header:
     experimental_data_identifier: Optional[str]
 
     @staticmethod
-    def create(reader: LinesReader) -> Header:
+    def create(reader: CSVBlockLinesReader) -> Header:
         raw_data = assert_not_none(
-            reader.pop_csv_block(
-                end_pattern=r"^\[.+\]", read_csv_kwargs={"sep": "=", "header": None}
-            ),
+            reader.pop_csv_block(sep="=", header=None),
             msg="Expected non-empty header",
         )
         raw_data[0].replace(r"\*", "", regex=True, inplace=True)
@@ -220,7 +218,9 @@ class GenotypingWell(Well):
         )
 
 
-def create_wells(reader: LinesReader, experiment_type: ExperimentType) -> list[Well]:
+def create_wells(
+    reader: CSVBlockLinesReader, experiment_type: ExperimentType
+) -> list[Well]:
     raw_data = assert_not_none(
         reader.pop_csv_block(r"^\[Sample Setup\]"), "Sample Setup"
     )
@@ -249,7 +249,9 @@ class AmplificationData:
         )
 
     @staticmethod
-    def map_data(reader: LinesReader) -> dict[int, dict[str, AmplificationData]]:
+    def map_data(
+        reader: CSVBlockLinesReader,
+    ) -> dict[int, dict[str, AmplificationData]]:
         data = assert_not_none(
             reader.pop_csv_block(start_pattern=r"^\[Amplification Data\]"),
             "Amplification Data",
@@ -280,7 +282,9 @@ class MulticomponentData:
         )
 
     @staticmethod
-    def map_data(reader: LinesReader) -> Optional[dict[int, MulticomponentData]]:
+    def map_data(
+        reader: CSVBlockLinesReader,
+    ) -> Optional[dict[int, MulticomponentData]]:
         data = reader.pop_csv_block(start_pattern=r"^\[Multicomponent Data\]")
         if data is None:
             return None
@@ -332,7 +336,7 @@ class Result:
 
     @staticmethod
     def map_data(
-        reader: LinesReader, experiment_type: ExperimentType
+        reader: CSVBlockLinesReader, experiment_type: ExperimentType
     ) -> dict[int, dict[str, Result]]:
         data = assert_not_none(reader.pop_csv_block(r"^\[Results\]"), "Results")
 
@@ -376,7 +380,7 @@ class MeltCurveRawData:
         )
 
     @staticmethod
-    def map_data(reader: LinesReader) -> Optional[dict[int, MeltCurveRawData]]:
+    def map_data(reader: CSVBlockLinesReader) -> Optional[dict[int, MeltCurveRawData]]:
         reader.drop_until(r"^\[Melt Curve Raw Data\]")
         data = reader.pop_csv_block(r"^\[Melt Curve Raw Data\]")
         if data is None:
@@ -390,8 +394,8 @@ class Data:
     wells: list[Well]
 
     @staticmethod
-    def create(reader: LinesReader) -> Data:
-        reader.read_csv_kwargs = {"sep": "\t"}
+    def create(reader: CSVBlockLinesReader) -> Data:
+        reader.default_read_csv_kwargs = {"sep": "\t"}
         header = Header.create(reader)
         wells = create_wells(reader, header.experiment_type)
 

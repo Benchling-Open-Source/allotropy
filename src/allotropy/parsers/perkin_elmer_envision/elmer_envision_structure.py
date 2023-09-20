@@ -29,7 +29,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CSVBlockLinesReader
 from allotropy.parsers.utils.pandas import assert_str_from_series, get_str_from_series
 from allotropy.parsers.utils.timestamp import get_timestamp
 from allotropy.parsers.utils.values import assert_not_none, try_float
@@ -55,7 +55,7 @@ class PlateInfo:
     chamber_temperature_at_start: Optional[float]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[PlateInfo]:
+    def create(reader: CSVBlockLinesReader) -> Optional[PlateInfo]:
         data = assert_not_none(
             reader.pop_csv_block("^Plate information"), "Plate information"
         )
@@ -95,7 +95,7 @@ class Result:
     value: int
 
     @staticmethod
-    def create(reader: LinesReader) -> list[Result]:
+    def create(reader: CSVBlockLinesReader) -> list[Result]:
         if not reader.current_line_exists() or reader.match(
             "(^Plate information)|(^Basic assay information)"
         ):
@@ -124,7 +124,7 @@ class Plate:
     results: list[Result]
 
     @staticmethod
-    def create(reader: LinesReader) -> list[Plate]:
+    def create(reader: CSVBlockLinesReader) -> list[Plate]:
         plates: list[Plate] = []
 
         while True:
@@ -153,7 +153,7 @@ class BasicAssayInfo:
     assay_id: str
 
     @staticmethod
-    def create(reader: LinesReader) -> BasicAssayInfo:
+    def create(reader: CSVBlockLinesReader) -> BasicAssayInfo:
         reader.drop_until("^Basic assay information")
         data = assert_not_none(
             reader.pop_csv_block("^Basic assay information"), "Basic assay information"
@@ -171,7 +171,7 @@ class PlateType:
     number_of_wells: Optional[float] = None
 
     @staticmethod
-    def create(reader: LinesReader) -> PlateType:
+    def create(reader: CSVBlockLinesReader) -> PlateType:
         reader.drop_until("^Plate type")
         data = assert_not_none(reader.pop_csv_block("^Plate type"), "Plate type").T
         return PlateType(
@@ -219,7 +219,7 @@ class PlateMap:
     sample_role_type_mapping: dict[str, dict[str, SampleRoleType]]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[PlateMap]:
+    def create(reader: CSVBlockLinesReader) -> Optional[PlateMap]:
         if not reader.current_line_exists() or reader.match("^Calculations"):
             return None
 
@@ -263,7 +263,7 @@ class PlateMap:
             raise Exception(msg) from e
 
 
-def create_plate_maps(reader: LinesReader) -> dict[str, PlateMap]:
+def create_plate_maps(reader: CSVBlockLinesReader) -> dict[str, PlateMap]:
     assert_not_none(reader.drop_until("^Platemap"), "PlateMap")
     reader.pop()  # remove title
 
@@ -280,7 +280,7 @@ class Filter:
     bandwidth: float
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[Filter]:
+    def create(reader: CSVBlockLinesReader) -> Optional[Filter]:
         if not reader.current_line_exists() or reader.match(
             "(^Mirror modules)|(^Instrument:)"
         ):
@@ -308,7 +308,7 @@ class Filter:
         return Filter(name, wavelength, bandwidth)
 
 
-def create_filters(reader: LinesReader) -> dict[str, Filter]:
+def create_filters(reader: CSVBlockLinesReader) -> dict[str, Filter]:
     reader.drop_until("(^Filters:)|^Instrument:")
     if reader.match("^Instrument"):
         return {}
@@ -330,7 +330,7 @@ class Labels:
     detector_gain_setting: Optional[str] = None
 
     @staticmethod
-    def create(reader: LinesReader) -> Labels:
+    def create(reader: CSVBlockLinesReader) -> Labels:
         reader.drop_until("^Labels")
         data = assert_not_none(reader.pop_csv_block("^Labels"), "Labels").T
         series = df_to_series(data).replace(np.nan, None)
@@ -369,7 +369,7 @@ class Instrument:
     nickname: str
 
     @staticmethod
-    def create(reader: LinesReader) -> Instrument:
+    def create(reader: CSVBlockLinesReader) -> Instrument:
         assert_not_none(reader.drop_until("^Instrument"), "Instrument")
         reader.pop()  # remove title
 
@@ -389,8 +389,8 @@ class Data:
     instrument: Instrument
 
     @staticmethod
-    def create(reader: LinesReader) -> Data:
-        reader.read_csv_kwargs = {"header": None, "sep": ","}
+    def create(reader: CSVBlockLinesReader) -> Data:
+        reader.default_read_csv_kwargs = {"header": None, "sep": ","}
         return Data(
             plates=Plate.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
