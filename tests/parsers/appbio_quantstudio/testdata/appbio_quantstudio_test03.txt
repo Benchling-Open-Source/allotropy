@@ -1,0 +1,48 @@
+* Block Type = 96-Well Block (0.2mL)
+* Calibration Background is expired  = No
+* Calibration Background performed on = 09-12-2010
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 09-12-2010
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 09-12-2010
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 09-12-2010
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 09-12-2010
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 09-12-2010
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 09-12-2010
+* Chemistry = TAQMAN
+* Date Created = 2014-09-21 22:05:31 PM EDT
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = C:\Program Files (x86)\Applied BioSystems\QuantStudio Real-Time PCR Software\examples\QS7Flex\QS7_96-Well SNP Genotyping Example.eds
+* Experiment Name = QuantStudio 96-Well SNP Genotyping Example
+* Experiment Run End Time = 2010-09-16 07:35:29 AM EDT
+* Experiment Type = Genotyping
+* Instrument Name = Sponge_Bob_32
+* Instrument Serial Number = 123456789
+* Instrument Type = QuantStudio(TM) 7 Flex System
+* Passive Reference = ROX
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage/ Cycle where Analysis is performed = Stage 3, Step 2
+* User Name = NA
+
+[Sample Setup]
+Well	Well Position	Sample Name	Sample Color	SNP Assay Name	SNP Assay Color	Task	Allele1 Name	Allele1 Color	Allele1 Reporter	Allele1 Quencher	Allele2 Name	Allele2 Color	Allele2 Reporter	Allele2 Quencher	Comments
+1	A1	NTC	"RGB(238,238,0)"	CYP19_2	"RGB(176,23,31)"	NTC	Allele 1	"RGB(0,0,255)"	VIC	NFQ-MGB	Allele 2	"RGB(0,139,69)"	FAM	NFQ-MGB	
+
+
+[Amplification Data]
+Well	Cycle	Target Name	Rn	Delta Rn
+1	1	CYP19_2-Allele 2	0.825	-0.016
+1	2	CYP19_2-Allele 2	0.831	-0.011
+1	1	CYP19_2-Allele 1	0.275	-0.003
+1	2	CYP19_2-Allele 1	0.277	-0.001
+
+
+[Results]
+Well	Well Position	Omit	Sample Name	SNP Assay Name	Task	Allele1 Delta Rn	Allele2 Delta Rn	Pass.Ref	Quality(%)	Call	Method	Allele1 Automatic Ct Threshold	Allele1 Ct Threshold	Allele1 Automatic Baseline	Allele1 Baseline Start	Allele1 Baseline End	Allele2 Automatic Ct Threshold	Allele2 Ct Threshold	Allele2 Automatic Baseline	Allele2 Baseline Start	Allele2 Baseline End	Allele1 Ct	Allele2 Ct	Comments	Allele1 Amp Score	Allele2 Amp Score	Allele1 Cq Conf	Allele2 Cq Conf
+1	A1	false	NTC	CYP19_2	NTC	0.016	0.029	846,041.750	100.000	Negative Control (NC)	Auto	true	0.219	true	3	39	true	0.132	true	3	39	Undetermined	Undetermined		0.000	0.000	0.000	0.000

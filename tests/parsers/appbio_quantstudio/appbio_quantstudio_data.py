@@ -959,12 +959,12 @@ def get_model2() -> Model:
 def get_genotyping_data() -> Data:
     return Data(
         header=Header(
-            measurement_time="2001-12-31T21:09:19-05:00",
+            measurement_time="2010-09-16 07:35:29 AM EDT",
             plate_well_count=96,
             barcode=None,
             device_identifier="Sponge_Bob_32",
             model_number="QuantStudio(TM) 7 Flex System",
-            device_serial_number="278880032",
+            device_serial_number="123456789",
             analyst=None,
             experimental_data_identifier="QuantStudio 96-Well SNP Genotyping Example",
             experiment_type=ExperimentType.genotyping_qPCR_experiment,
@@ -975,7 +975,7 @@ def get_genotyping_data() -> Data:
         wells=WellList(
             [
                 Well(
-                    identifier=1,
+                    identifier=0,
                     items={
                         "CYP19_2-Allele 1": WellItem(
                             uuid="3c40d2c2-0a64-433f-b639-e9c6e896313e",
@@ -984,9 +984,9 @@ def get_genotyping_data() -> Data:
                             target_dna_description="CYP19_2-Allele 1",
                             sample_identifier="NTC",
                             well_location_identifier="A1",
-                            reporter_dye_setting="SYBR",
+                            reporter_dye_setting=None,
                             quencher_dye_setting=None,
-                            sample_role_type="PC_ALLELE_1",
+                            sample_role_type="NTC",
                             amplification_data_obj=AmplificationData(
                                 total_cycle_number_setting=2,
                                 cycle=[1, 2],
@@ -1013,8 +1013,8 @@ def get_genotyping_data() -> Data:
                                 rq=None,
                                 rq_min=None,
                                 rq_max=None,
-                                rn_mean=1.261,
-                                rn_sd=0.088,
+                                rn_mean=None,
+                                rn_sd=None,
                                 y_intercept=None,
                                 r_squared=None,
                                 slope=None,
@@ -1028,9 +1028,9 @@ def get_genotyping_data() -> Data:
                             target_dna_description="CYP19_2-Allele 2",
                             sample_identifier="NTC",
                             well_location_identifier="A1",
-                            reporter_dye_setting="SYBR",
+                            reporter_dye_setting=None,
                             quencher_dye_setting=None,
-                            sample_role_type="PC_ALLELE_1",
+                            sample_role_type="NTC",
                             amplification_data_obj=AmplificationData(
                                 total_cycle_number_setting=2,
                                 cycle=[1, 2],
@@ -1057,8 +1057,8 @@ def get_genotyping_data() -> Data:
                                 rq=None,
                                 rq_min=None,
                                 rq_max=None,
-                                rn_mean=1.261,
-                                rn_sd=0.088,
+                                rn_mean=None,
+                                rn_sd=None,
                                 y_intercept=None,
                                 r_squared=None,
                                 slope=None,
@@ -1081,7 +1081,7 @@ def get_genotyping_model() -> Model:
             device_system_document=DeviceSystemDocument(
                 device_identifier="Sponge_Bob_32",
                 model_number="QuantStudio(TM) 7 Flex System",
-                device_serial_number="278880032",
+                device_serial_number="123456789",
             ),
             qPCR_document=[
                 QPCRDocumentItem(
@@ -1092,11 +1092,11 @@ def get_genotyping_model() -> Model:
                         measurement_document=[
                             MeasurementDocumentItem(
                                 measurement_identifier="3c40d2c2-0a64-433f-b639-e9c6e896313e",
-                                measurement_time="2001-12-31T21:09:19-05:00",
+                                measurement_time="2010-09-16T07:35:29-04:00",
                                 target_DNA_description="CYP19_2-Allele 1",
                                 sample_document=SampleDocument(
                                     sample_identifier="NTC",
-                                    sample_role_type="PC_ALLELE_1",
+                                    sample_role_type="NTC",
                                     well_location_identifier="A1",
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -1108,7 +1108,7 @@ def get_genotyping_model() -> Model:
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
-                                            reporter_dye_setting="SYBR",
+                                            reporter_dye_setting=None,
                                             passive_reference_dye_setting="ROX",
                                         )
                                     ]
@@ -1183,11 +1183,11 @@ def get_genotyping_model() -> Model:
                             ),
                             MeasurementDocumentItem(
                                 measurement_identifier="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
-                                measurement_time="2001-12-31T21:09:19-05:00",
+                                measurement_time="2010-09-16T07:35:29-04:00",
                                 target_DNA_description="CYP19_2-Allele 2",
                                 sample_document=SampleDocument(
                                     sample_identifier="NTC",
-                                    sample_role_type="PC_ALLELE_1",
+                                    sample_role_type="NTC",
                                     well_location_identifier="A1",
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -1199,7 +1199,7 @@ def get_genotyping_model() -> Model:
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
-                                            reporter_dye_setting="SYBR",
+                                            reporter_dye_setting=None,
                                             passive_reference_dye_setting="ROX",
                                         )
                                     ]

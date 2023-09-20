@@ -20,7 +20,11 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader
-from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, get_data2
+from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
+    get_data,
+    get_data2,
+    get_genotyping_data,
+)
 
 
 def rm_uuid(data: Data) -> Data:
@@ -159,6 +163,10 @@ def test_results_builder() -> None:
         (
             "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt",
             get_data2(),
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test03.txt",
+            get_genotyping_data(),
         ),
     ],
 )
