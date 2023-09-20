@@ -96,12 +96,7 @@ detached = true
 
 
 [tool.hatch.envs.scripts.scripts]
-setup-env = "scripts/dev/bootstrap"
-setup-pre-push-hook = "scripts/dev/setup-pre-push-hook"
-setup = [
-  "setup-env",
-  "setup-pre-push-hook",
-]
+setup-pre-push = "echo 'Copying to .git/hooks/pre-push'; cp scripts/git_pre_push_hook .git/hooks/pre-push"
 generate-schemas = "scripts/dev/generate_schemas.py"
 
 [tool.hatch.envs.lint]

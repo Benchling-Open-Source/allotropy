@@ -52,17 +52,10 @@ asm_schema = allotrope_from_io(bytes_io, VendorType.MOLDEV_SOFTMAX_PRO)
 
 Install Hatch: https://hatch.pypa.io/latest/
 Install python: https://www.python.org/downloads/
-Install pyenv: https://github.com/pyenv/pyenv#getting-pyenv
-Install pyenv-virtualenv: https://github.com/pyenv/pyenv-virtualenv
 
-On Mac/Linux consider using `brew`:
+Add pre-push checks to your repo:
 ```sh
-brew install hatch; brew install python; brew install pyenv; brew install py
-```
-
-First-time setup:
-```sh
-hatch run scripts:setup
+hatch run scripts:setup-pre-push
 ```
 
 #### Dependencies
