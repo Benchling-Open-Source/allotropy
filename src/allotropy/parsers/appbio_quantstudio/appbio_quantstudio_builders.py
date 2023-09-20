@@ -35,32 +35,64 @@ def float_or_none(value: Any) -> Optional[float]:
         return None
 
 
+def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optional[str]:
+    value = data.get(key, default)
+    return None if value is None else str(value)
+
+
+def get_int(data: pd.Series, key: str) -> Optional[int]:
+    try:
+        value = data.get(key)
+        return None if value is None else int(value)  # type: ignore[arg-type]
+    except Exception as e:
+        msg = f"Unable to convert {key} to integer value"
+        raise AllotropeConversionError(msg) from e
+
+
+def get_float(data: pd.Series, key: str) -> Optional[float]:
+    try:
+        value = data.get(key)
+        return None if value is None else float(value)  # type: ignore[arg-type]
+    except Exception as e:
+        msg = f"Unable to convert {key} to float value"
+        raise AllotropeConversionError(msg) from e
+
+
+def get_bool(data: pd.Series, key: str) -> Optional[bool]:
+    try:
+        value = data.get(key)
+        return None if value is None else bool(value)
+    except Exception as e:
+        msg = f"Unable to convert {key} to bool value"
+        raise AllotropeConversionError(msg) from e
+
+
 class HeaderBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Header:
         data = HeaderBuilder.get_data(reader)
 
-        device_identifier = data.get("Instrument Name")
+        device_identifier = get_str(data, "Instrument Name")
         if device_identifier is None:
             msg = "Unable to get device identifier"
             raise AllotropeConversionError(msg)
 
-        model_number = data.get("Instrument Type")
+        model_number = get_str(data, "Instrument Type")
         if model_number is None:
             msg = "Unable to get model number"
             raise AllotropeConversionError(msg)
 
-        device_serial_number = data.get("Instrument Serial Number")
+        device_serial_number = get_str(data, "Instrument Serial Number")
         if device_serial_number is None:
             msg = "Unable to get device serial number"
             raise AllotropeConversionError(msg)
 
-        measurement_method_identifier = data.get("Quantification Cycle Method")
+        measurement_method_identifier = get_str(data, "Quantification Cycle Method")
         if measurement_method_identifier is None:
             msg = "Unable to get measurement method identifier"
             raise AllotropeConversionError(msg)
 
-        qpcr_detection_chemistry = data.get("Chemistry")
+        qpcr_detection_chemistry = get_str(data, "Chemistry")
         if qpcr_detection_chemistry is None:
             msg = "Unable to get qpcr detection chemistry"
             raise AllotropeConversionError(msg)
@@ -69,15 +101,15 @@ class HeaderBuilder:
             measurement_time=HeaderBuilder.get_measurement_time(data),
             plate_well_count=HeaderBuilder.get_plate_well_count(data),
             experiment_type=HeaderBuilder.get_experiment_type(data),
-            device_identifier=device_identifier,  # type: ignore[arg-type]
-            model_number=model_number,  # type: ignore[arg-type]
-            device_serial_number=device_serial_number,  # type: ignore[arg-type]
-            measurement_method_identifier=measurement_method_identifier,  # type: ignore[arg-type]
-            qpcr_detection_chemistry=qpcr_detection_chemistry,  # type: ignore[arg-type]
-            passive_reference_dye_setting=data.get("Passive Reference"),  # type: ignore[arg-type]
-            barcode=data.get("Experiment Barcode"),  # type: ignore[arg-type]
-            analyst=data.get("Experiment User Name"),  # type: ignore[arg-type]
-            experimental_data_identifier=data.get("Experiment Name"),  # type: ignore[arg-type]
+            device_identifier=device_identifier,
+            model_number=model_number,
+            device_serial_number=device_serial_number,
+            measurement_method_identifier=measurement_method_identifier,
+            qpcr_detection_chemistry=qpcr_detection_chemistry,
+            passive_reference_dye_setting=get_str(data, "Passive Reference"),
+            barcode=get_str(data, "Experiment Barcode"),
+            analyst=get_str(data, "Experiment User Name"),
+            experimental_data_identifier=get_str(data, "Experiment Name"),
         )
 
     @staticmethod
@@ -114,14 +146,18 @@ class HeaderBuilder:
 
     @staticmethod
     def get_plate_well_count(data: pd.Series) -> int:
-        block_type = data.get("Block Type", "")
+        block_type = get_str(data, "Block Type", default="")
 
-        if block_type.startswith("96"):  # type: ignore[union-attr]
+        if block_type is None:
+            msg = "Unable to get plate well count"
+            raise AllotropeConversionError(msg)
+
+        if block_type.startswith("96"):
             return 96
-        elif block_type.startswith("384"):  # type: ignore[union-attr]
+        elif block_type.startswith("384"):
             return 384
 
-        msg = "Unable to get plate well count"
+        msg = "Unable to interpret plate well count"
         raise AllotropeConversionError(msg)
 
 
@@ -145,31 +181,31 @@ class GenericWellBuilder:
 
     @staticmethod
     def build_well_item(data: pd.Series) -> WellItem:
-        identifier = data.get("Well")
+        identifier = get_int(data, "Well")
         if identifier is None:
             msg = "Unable to get well identifier"
             raise AllotropeConversionError(msg)
 
-        target_dna_description = data.get("Target Name")
+        target_dna_description = get_str(data, "Target Name")
         if target_dna_description is None:
             msg = f"Unable to get target dna description for well {identifier}"
             raise AllotropeConversionError(msg)
 
-        sample_identifier = data.get("Sample Name")
+        sample_identifier = get_str(data, "Sample Name")
         if sample_identifier is None:
             msg = f"Unable to get sample identifier for well {identifier}"
             raise AllotropeConversionError(msg)
 
         return WellItem(
             uuid=str(uuid.uuid4()),
-            identifier=identifier,  # type: ignore[arg-type]
-            target_dna_description=target_dna_description,  # type: ignore[arg-type]
-            sample_identifier=sample_identifier,  # type: ignore[arg-type]
-            reporter_dye_setting=data.get("Reporter"),  # type: ignore[arg-type]
-            position=data.get("Well Position", "UNDEFINED"),  # type: ignore[arg-type]
-            well_location_identifier=data.get("Well Position"),  # type: ignore[arg-type]
-            quencher_dye_setting=data.get("Quencher"),  # type: ignore[arg-type]
-            sample_role_type=data.get("Task"),  # type: ignore[arg-type]
+            identifier=identifier,
+            target_dna_description=target_dna_description,
+            sample_identifier=sample_identifier,
+            reporter_dye_setting=get_str(data, "Reporter"),
+            position=get_str(data, "Well Position", default="UNDEFINED"),
+            well_location_identifier=get_str(data, "Well Position"),
+            quencher_dye_setting=get_str(data, "Quencher"),
+            sample_role_type=get_str(data, "Task"),
         )
 
 
@@ -193,27 +229,27 @@ class GenotypingWellBuilder:
 
     @staticmethod
     def build_well_items(data: pd.Series) -> list[WellItem]:
-        identifier = data.get("Well")
+        identifier = get_int(data, "Well")
         if identifier is None:
             msg = "Unable to get well identifier"
             raise AllotropeConversionError(msg)
 
-        snp_name = data.get("SNP Assay Name")
+        snp_name = get_str(data, "SNP Assay Name")
         if snp_name is None:
             msg = f"Unable to get snp name for well {identifier}"
             raise AllotropeConversionError(msg)
 
-        allele1 = data.get("Allele1 Name")
+        allele1 = get_str(data, "Allele1 Name")
         if allele1 is None:
             msg = f"Unable to get allele 1 for well {identifier}"
             raise AllotropeConversionError(msg)
 
-        allele2 = data.get("Allele2 Name")
+        allele2 = get_str(data, "Allele2 Name")
         if allele2 is None:
             msg = f"Unable to get allele 2 for well {identifier}"
             raise AllotropeConversionError(msg)
 
-        sample_identifier = data.get("Sample Name")
+        sample_identifier = get_str(data, "Sample Name")
         if sample_identifier is None:
             msg = "Unable to get sample identifier"
             raise AllotropeConversionError(msg)
@@ -221,14 +257,14 @@ class GenotypingWellBuilder:
         return [
             WellItem(
                 uuid=str(uuid.uuid4()),
-                identifier=identifier,  # type: ignore[arg-type]
+                identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele}",
-                sample_identifier=sample_identifier,  # type: ignore[arg-type]
-                reporter_dye_setting=data.get("Reporter"),  # type: ignore[arg-type]
-                position=data.get("Well Position", "UNDEFINED"),  # type: ignore[arg-type]
-                well_location_identifier=data.get("Well Position"),  # type: ignore[arg-type]
-                quencher_dye_setting=data.get("Quencher"),  # type: ignore[arg-type]
-                sample_role_type=data.get("Task"),  # type: ignore[arg-type]
+                sample_identifier=sample_identifier,
+                reporter_dye_setting=get_str(data, "Reporter"),
+                position=get_str(data, "Well Position", default="UNDEFINED"),
+                well_location_identifier=get_str(data, "Well Position"),
+                quencher_dye_setting=get_str(data, "Quencher"),
+                sample_role_type=get_str(data, "Task"),
             )
             for allele in [allele1, allele2]
         ]
@@ -348,7 +384,7 @@ class GenericResultsBuilder:
     @staticmethod
     def build(data: pd.DataFrame, well_item: WellItem) -> Result:
         target_data = GenericResultsBuilder.filter_target_data(data, well_item)
-        cycle_threshold_value_setting = target_data.get("Ct Threshold")
+        cycle_threshold_value_setting = get_float(target_data, "Ct Threshold")
         if cycle_threshold_value_setting is None:
             msg = "Unable to get cycle threshold value setting"
             raise AllotropeConversionError(msg)
@@ -358,25 +394,21 @@ class GenericResultsBuilder:
             msg = "Unable to get cycle threshold result"
             raise AllotropeConversionError(msg)
 
-        auto_ct_threshold = target_data.get("Automatic Ct Threshold")
-        automatic_cycle_threshold_enabled_setting = (
-            None if auto_ct_threshold is None else bool(auto_ct_threshold)
-        )
-
-        auto_baseline = target_data.get("Automatic Baseline")
-        automatic_baseline_determination_enabled_setting = (
-            None if auto_baseline is None else bool(auto_baseline)
-        )
-
         return Result(
-            cycle_threshold_value_setting=cycle_threshold_value_setting,  # type: ignore[arg-type]
+            cycle_threshold_value_setting=cycle_threshold_value_setting,
             cycle_threshold_result=float_or_none(cycle_threshold_result),
-            automatic_cycle_threshold_enabled_setting=automatic_cycle_threshold_enabled_setting,
-            automatic_baseline_determination_enabled_setting=automatic_baseline_determination_enabled_setting,
-            normalized_reporter_result=target_data.get("Rn"),  # type: ignore[arg-type]
-            baseline_corrected_reporter_result=target_data.get("Delta Rn"),  # type: ignore[arg-type]
-            genotyping_determination_result=target_data.get("Call"),  # type: ignore[arg-type]
-            genotyping_determination_method_setting=target_data.get("Threshold Value"),  # type: ignore[arg-type]
+            automatic_cycle_threshold_enabled_setting=get_bool(
+                target_data, "Automatic Ct Threshold"
+            ),
+            automatic_baseline_determination_enabled_setting=get_bool(
+                target_data, "Automatic Baseline"
+            ),
+            normalized_reporter_result=get_float(target_data, "Rn"),
+            baseline_corrected_reporter_result=get_float(target_data, "Delta Rn"),
+            genotyping_determination_result=get_str(target_data, "Call"),
+            genotyping_determination_method_setting=get_float(
+                target_data, "Threshold Value"
+            ),
         )
 
     @staticmethod
@@ -407,7 +439,7 @@ class GenotypingResultsBuilder:
         target_data = GenotypingResultsBuilder.filter_target_data(data, well_item)
         _, raw_allele = well_item.target_dna_description.split("-")
         allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = target_data.get(f"{allele} Ct Threshold")
+        cycle_threshold_value_setting = get_float(target_data, f"{allele} Ct Threshold")
         if cycle_threshold_value_setting is None:
             msg = f"Unable to get cycle threshold value setting for well {well_item.identifier}"
             raise AllotropeConversionError(msg)
@@ -417,25 +449,23 @@ class GenotypingResultsBuilder:
             msg = "Unable to get cycle threshold result"
             raise AllotropeConversionError(msg)
 
-        auto_ct_threshold = target_data.get(f"{allele} Automatic Ct Threshold")
-        automatic_cycle_threshold_enabled_setting = (
-            None if auto_ct_threshold is None else bool(auto_ct_threshold)
-        )
-
-        auto_baseline = target_data.get(f"{allele} Automatic Baseline")
-        automatic_baseline_determination_enabled_setting = (
-            None if auto_baseline is None else bool(auto_baseline)
-        )
-
         return Result(
-            cycle_threshold_value_setting=cycle_threshold_value_setting,  # type: ignore[arg-type]
+            cycle_threshold_value_setting=cycle_threshold_value_setting,
             cycle_threshold_result=float_or_none(cycle_threshold_result),
-            automatic_cycle_threshold_enabled_setting=automatic_cycle_threshold_enabled_setting,
-            automatic_baseline_determination_enabled_setting=automatic_baseline_determination_enabled_setting,
-            normalized_reporter_result=target_data.get("Rn"),  # type: ignore[arg-type]
-            baseline_corrected_reporter_result=target_data.get(f"{allele} Delta Rn"),  # type: ignore[arg-type]
-            genotyping_determination_result=target_data.get("Call"),  # type: ignore[arg-type]
-            genotyping_determination_method_setting=target_data.get("Threshold Value"),  # type: ignore[arg-type]
+            automatic_cycle_threshold_enabled_setting=get_bool(
+                target_data, f"{allele} Automatic Ct Threshold"
+            ),
+            automatic_baseline_determination_enabled_setting=get_bool(
+                target_data, f"{allele} Automatic Baseline"
+            ),
+            normalized_reporter_result=get_float(target_data, "Rn"),
+            baseline_corrected_reporter_result=get_float(
+                target_data, f"{allele} Delta Rn"
+            ),
+            genotyping_determination_result=get_str(target_data, "Call"),
+            genotyping_determination_method_setting=get_float(
+                target_data, "Threshold Value"
+            ),
         )
 
     @staticmethod
@@ -556,10 +586,13 @@ class DataBuilder:
                     )
                 )
 
+        endogenous_control = get_str(results_metadata, "Endogenous Control")
+        reference_sample = get_str(results_metadata, "Reference Sample")
+
         return Data(
             header,
             wells,
             raw_data,
-            endogenous_control=results_metadata.get("Endogenous Control", ""),  # type: ignore[arg-type]
-            reference_sample=results_metadata.get("Reference Sample", ""),  # type: ignore[arg-type]
+            endogenous_control or "",
+            reference_sample or "",
         )

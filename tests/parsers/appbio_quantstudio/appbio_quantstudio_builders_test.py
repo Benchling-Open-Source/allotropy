@@ -86,7 +86,7 @@ def test_header_builder() -> None:
             "Unable to get measurement method identifier",
         ),
         ("qpcr_detection_chemistry", "Unable to get qpcr detection chemistry"),
-        ("plate_well_count", "Unable to get plate well count"),
+        ("plate_well_count", "Unable to interpret plate well count"),
     ],
 )
 @pytest.mark.short
