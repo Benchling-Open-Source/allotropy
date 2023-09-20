@@ -149,26 +149,23 @@ def test_results_builder() -> None:
 
 
 @pytest.mark.short
-def test_data_builder() -> None:
-    test_filepath = (
-        "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt"
-    )
+@pytest.mark.parametrize(
+    "test_filepath,expected_data",
+    [
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt",
+            get_data(),
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt",
+            get_data2(),
+        ),
+    ],
+)
+def test_data_builder(test_filepath: str, expected_data: Data) -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
-
-    generated = DataBuilder.build(reader)
-    expected = get_data()
-    assert rm_uuid(generated) == rm_uuid(expected)
-
-    test_filepath = (
-        "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt"
-    )
-    with open(test_filepath, "rb") as raw_contents:
-        reader = LinesReader(raw_contents)
-
-    generated2 = DataBuilder.build(reader)
-    expected2 = get_data2()
-    assert rm_uuid(generated2) == rm_uuid(expected2)
+    assert rm_uuid(DataBuilder.build(reader)) == rm_uuid(expected_data)
 
 
 def get_raw_header_contents(
