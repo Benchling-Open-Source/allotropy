@@ -91,16 +91,11 @@ dependencies = [
   "ruff >= 0.0.289",
 ]
 
-[tool.hatch.envs.scripts]
-detached = true
-
-
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py"
 
 [tool.hatch.envs.lint]
-detached = true
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs >= 23.0.0",
