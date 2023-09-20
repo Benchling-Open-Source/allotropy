@@ -142,6 +142,8 @@ def get_data() -> Data:
                 "",
             ]
         ),
+        endogenous_control="",
+        reference_sample="",
     )
 
 
@@ -217,6 +219,8 @@ def get_data2() -> Data:
                 "",
             ]
         ),
+        endogenous_control="",
+        reference_sample="",
     )
 
 
@@ -981,6 +985,8 @@ def get_genotyping_data() -> Data:
             ],
         ),
         raw_data=None,
+        endogenous_control="",
+        reference_sample="",
     )
 
 

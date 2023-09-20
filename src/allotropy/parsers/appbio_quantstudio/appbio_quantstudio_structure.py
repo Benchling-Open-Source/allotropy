@@ -183,3 +183,5 @@ class Data:
     header: Header
     wells: WellList
     raw_data: Optional[RawData]
+    endogenous_control: str
+    reference_sample: str

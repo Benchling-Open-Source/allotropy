@@ -449,16 +449,32 @@ class ResultsBuilder:
         return GenericResultsBuilder.build(data, well_item)
 
     @staticmethod
-    def get_data(reader: LinesReader) -> pd.DataFrame:
+    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series]:
         if not reader.match(r"^\[Results\]"):
             msg = "Unable to find Results section in input file"
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
-        lines = list(reader.pop_until_empty())
-        reader.drop_until(r"^\[Melt Curve Raw Data\]")
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t")
+        data_lines = list(reader.pop_until_empty())
+        csv_stream = StringIO("\n".join(data_lines))
+        data = pd.read_csv(csv_stream, sep="\t")
+
+        reader.drop_empty()
+
+        if reader.match(r"\[.+\]"):
+            return data, pd.Series()
+
+        metadata_lines = list(reader.pop_until_empty())
+        csv_stream = StringIO("\n".join(metadata_lines))
+        raw_data = pd.read_csv(
+            csv_stream, header=None, sep="=", names=["index", "values"]
+        )
+        metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
+        metadata.index = metadata.index.str.strip()
+
+        reader.drop_empty()
+
+        return data, metadata.str.strip()
 
 
 class MeltCurveRawDataBuilder:
@@ -499,7 +515,7 @@ class DataBuilder:
 
         amp_data = AmplificationDataBuilder.get_data(reader)
         multi_data = MulticomponentDataBuilder.get_data(reader)
-        results_data = ResultsBuilder.get_data(reader)
+        results_data, results_metadata = ResultsBuilder.get_data(reader)
         melt_data = MeltCurveRawDataBuilder.get_data(reader)
         for well in wells:
             if multi_data is not None:
@@ -519,8 +535,11 @@ class DataBuilder:
                         results_data, well_item, header.experiment_type
                     )
                 )
+
         return Data(
             header,
             wells,
             raw_data,
+            endogenous_control=results_metadata.get("Endogenous Control", ""),  # type: ignore[arg-type]
+            reference_sample=results_metadata.get("Reference Sample", ""),  # type: ignore[arg-type]
         )
