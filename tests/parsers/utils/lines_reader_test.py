@@ -199,6 +199,7 @@ def test_csv_reader_pop_csv_block_with_title() -> None:
         )
     )
     data = reader.pop_csv_block("Results")
+    assert data is not None
     assert data["COL_1"][0] == 1
     assert data["COL_2"][1] == 3
     assert data["COL_3"][0] == 2
@@ -213,6 +214,7 @@ def test_csv_reader_pop_csv_block_without_title() -> None:
         )
     )
     data = reader.pop_csv_block()
+    assert data is not None
     assert data["COL_1"][0] == 1
     assert data["COL_2"][1] == 3
     assert data["COL_3"][0] == 2
@@ -235,12 +237,31 @@ def test_csv_reader_csv_kwargs() -> None:
     )
     reader.default_read_csv_kwargs = {"sep": "=", "header": None}
     data = reader.pop_csv_block("Field section")
+    assert data is not None
     assert data[0][0] == "KEY1"
     assert data[1][0] == 1
     assert data[0][1] == "KEY2"
     assert data[1][1] == 2
 
     data = reader.pop_csv_block(sep=",")
+    assert data is not None
     assert data[0][0] == 1
     assert data[1][1] == 3
     assert data[2][0] == 2
+
+
+@pytest.mark.short
+def test_csv_reader_pop_csv_block_empty_blocks() -> None:
+    reader = CSVBlockLinesReader(
+        io_from_lines(
+            [
+                "Section1",
+                "1,2,3",
+                "",
+                "Empty",
+            ]
+        )
+    )
+    assert reader.pop_csv_block("OTHER") is None
+    assert reader.pop_csv_block("Section1") is not None
+    assert reader.pop_csv_block("Empty") is None
