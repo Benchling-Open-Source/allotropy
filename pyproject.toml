@@ -100,6 +100,8 @@ extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs >= 23.0.0",
   "mypy >= 1.5.1",
+  # For pytest types
+  "pytest >= 7.4.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
