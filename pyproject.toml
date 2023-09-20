@@ -101,7 +101,7 @@ generate-schemas = "scripts/generate_schemas.py"
 
 [tool.hatch.envs.lint]
 detached = true
-extra_dependencies = [
+extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs >= 23.0.0",
 ]
