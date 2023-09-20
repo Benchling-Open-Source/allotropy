@@ -23,14 +23,8 @@ jobs:
       with:
         python-version: "3.9.11"
     - name: Install hatch
-      run: |
-        pip install hatch
+      run: pip install hatch
     - name: Lint
-      run: |
-        hatch run lint:style
-    - name: Run mypy
-      run: |
-        hatch run lint:typing
+      run: hatch run lint:all
     - name: Run Tests
-      run: |
-        hatch run test:test
+      run: hatch run test:test

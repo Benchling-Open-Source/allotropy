@@ -3,14 +3,7 @@ if [[ "${SKIP_PRE_PUSH_CHECKS:-}" == "1" ]]
 then
   exit 0
 fi
-echo "Running lint..."
-hatch run lint:style
-if [ $? -ne 0 ]
-then
-  exit 1
-fi
-echo "Running mypy..."
-hatch run lint:typing
+hatch run lint:all
 if [ $? -ne 0 ]
 then
   exit 1

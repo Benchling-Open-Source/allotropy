@@ -75,7 +75,6 @@ packages = ["src/allotropy"]
 [tool.hatch.version]
 path = "src/allotropy/__about__.py"
 
-
 [tool.hatch.envs.default]
 # We define dependencies for linting and datamodel codegen in the default environment because we lint in
 # the generation script, and we test generation in tests, so we need them everywhere except the actual project.
