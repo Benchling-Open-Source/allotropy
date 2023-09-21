@@ -92,7 +92,9 @@ class ViCellBluParser(VendorParser):
                 measurement_document=[
                     MeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=sample.get("Analysis date/time"),  # type: ignore[arg-type]
+                        measurement_time=self.get_date_time(
+                            sample.get("Analysis date/time")
+                        ),
                         sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=DeviceControlAggregateDocument(
                             device_control_document=[

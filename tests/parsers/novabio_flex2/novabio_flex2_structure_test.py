@@ -25,10 +25,10 @@ from tests.parsers.novabio_flex2.novabio_flex2_data import (
 @pytest.mark.parametrize(
     "filename,processing_time,device_identifier",
     [
-        ("SampleResults2022-06-28_142558.csv", "2022-06-28 14:25:58", None),
+        ("SampleResults2022-06-28_142558.csv", "2022-06-28 142558", None),
         (
             "SampleResultsT26918070C2021-02-18_104838.csv",
-            "2021-02-18 10:48:38",
+            "2021-02-18 104838",
             "T26918070C",
         ),
     ],
@@ -95,7 +95,7 @@ def test_create_sample() -> None:
 
     assert sample.identifier == "BP_R10_KP_008_D0"
     assert sample.role_type == "Spent Media"
-    assert sample.measurement_time == "2022-06-24 14:34:52"
+    assert sample.measurement_time == "2022-06-24T14:34:52"
     assert sample.batch_identifier == "KP_008"
     assert sorted(sample.analytes) == sorted(
         [

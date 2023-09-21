@@ -52,7 +52,7 @@ def test_header_builder() -> None:
     )
 
     assert HeaderBuilder.build(LinesReader(header_contents)) == Header(
-        measurement_time="2010-10-01 01:44:54",
+        measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
         experiment_type=ExperimentType.genotyping_qPCR_experiment,
         device_identifier=device_identifier,

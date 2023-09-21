@@ -1,4 +1,3 @@
-from datetime import datetime
 import io
 from typing import Any, Optional
 import uuid
@@ -104,15 +103,15 @@ class ViCellXRParser(VendorParser):
             error = f"required value not found {e}"
             raise AllotropeConversionError(error) from e
 
-        measurement_time: datetime = sample.get(DATE_HEADER[file_version])  # type: ignore[assignment]
-
         return CellCountingDocumentItem(
             analyst=DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     MeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=measurement_time.isoformat(sep=" "),
+                        measurement_time=self.get_date_time(
+                            sample.get(DATE_HEADER[file_version])
+                        ),
                         sample_document=SampleDocument(
                             sample_identifier=sample["Sample ID"]
                         ),

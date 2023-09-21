@@ -48,7 +48,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 def get_data() -> Data:
     return Data(
         header=Header(
-            measurement_time="2010-10-01 01:44:54",
+            measurement_time="2010-10-01 01:44:54 AM EDT",
             plate_well_count=96,
             barcode=None,
             device_identifier="278880034",
@@ -143,7 +143,7 @@ def get_data() -> Data:
 def get_data2() -> Data:
     return Data(
         header=Header(
-            measurement_time="2001-12-31 21:09:19",
+            measurement_time="2001-12-31 09:09:19 PM EST",
             plate_well_count=384,
             barcode=None,
             device_identifier="278880086",
@@ -236,7 +236,7 @@ def get_model() -> Model:
                         measurement_document=[
                             MeasurementDocumentItem(
                                 measurement_identifier="",
-                                measurement_time="2010-10-01 01:44:54",
+                                measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="IPC",
                                 sample_document=SampleDocument(
                                     sample_identifier="NAC",
@@ -422,7 +422,7 @@ def get_model() -> Model:
                             ),
                             MeasurementDocumentItem(
                                 measurement_identifier="",
-                                measurement_time="2010-10-01 01:44:54",
+                                measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="TGFb",
                                 sample_document=SampleDocument(
                                     sample_identifier="NAC",
@@ -655,7 +655,7 @@ def get_model2() -> Model:
                         measurement_document=[
                             MeasurementDocumentItem(
                                 measurement_identifier="",
-                                measurement_time="2001-12-31 21:09:19",
+                                measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="B2M-Qiagen",
                                 sample_document=SampleDocument(
                                     sample_identifier="1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
@@ -896,7 +896,7 @@ def get_model2() -> Model:
 def get_genotyping_data() -> Data:
     return Data(
         header=Header(
-            measurement_time="2001-12-31 21:09:19",
+            measurement_time="2001-12-31T21:09:19-05:00",
             plate_well_count=96,
             barcode=None,
             device_identifier="Sponge_Bob_32",
@@ -989,7 +989,7 @@ def get_genotyping_model() -> Model:
                         measurement_document=[
                             MeasurementDocumentItem(
                                 measurement_identifier="",
-                                measurement_time="2001-12-31 21:09:19",
+                                measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="CYP19_2-Allele 1",
                                 sample_document=SampleDocument(
                                     sample_identifier="NTC",
@@ -1080,7 +1080,7 @@ def get_genotyping_model() -> Model:
                             ),
                             MeasurementDocumentItem(
                                 measurement_identifier="",
-                                measurement_time="2001-12-31 21:09:19",
+                                measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="CYP19_2-Allele 2",
                                 sample_document=SampleDocument(
                                     sample_identifier="NTC",

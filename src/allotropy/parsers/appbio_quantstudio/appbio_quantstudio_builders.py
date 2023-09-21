@@ -1,6 +1,4 @@
-from datetime import datetime
 from io import StringIO
-import re
 from typing import Any, Optional
 
 import numpy as np
@@ -110,15 +108,7 @@ class HeaderBuilder:
 
     @staticmethod
     def get_measurement_time(data: pd.Series) -> str:
-        raw_time = data.get("Experiment Run End Time")
-        result = re.search(r"\d\d\d\d-\d\d-\d\d \d\d:\d\d:\d\d (AM|PM)", raw_time)  # type: ignore[arg-type]
-        if result is None:
-            msg = f"Unable to understand time format {raw_time}"
-            raise AllotropeConversionError(msg)
-
-        time_str = result.group()
-        time = datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S %p")  # noqa: DTZ007
-        return time.strftime("%Y-%m-%d %H:%M:%S")
+        return str(data.get("Experiment Run End Time"))
 
     @staticmethod
     def get_plate_well_count(data: pd.Series) -> int:

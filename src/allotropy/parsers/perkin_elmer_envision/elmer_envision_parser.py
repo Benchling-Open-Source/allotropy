@@ -22,6 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import Data, Plate
 from allotropy.parsers.vendor_parser import VendorParser
@@ -73,7 +74,7 @@ class ElmerEnvisionParser(VendorParser):
 
         return True
 
-    def _get_measurement_time(self, data: Data) -> str:
+    def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
             plate.plate_info.measurement_time
             for plate in data.plates
@@ -81,7 +82,7 @@ class ElmerEnvisionParser(VendorParser):
         ]
 
         if dates:
-            return min(dates).strftime("%Y-%m-%d %X")
+            return self.get_date_time(min(dates))
 
         msg = "Unable to find valid measurement date"
         raise Exception(msg)

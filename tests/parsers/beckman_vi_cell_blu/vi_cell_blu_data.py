@@ -93,7 +93,7 @@ def get_model() -> Model:
                         measurement_document=[
                             MeasurementDocumentItem(
                                 measurement_identifier="",
-                                measurement_time=sample.get("Analysis date/time"),  # type: ignore[arg-type]
+                                measurement_time="2022-03-21T16:56:00+00:00",
                                 sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
                                     device_control_document=[

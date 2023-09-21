@@ -2,7 +2,7 @@
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     "measurement aggregate document": {
         "measurement identifier": "978d9525-2684-4df2-ab53-6f38294f6df7",
-        "data processing time": "2022-06-28 14:25:58",
+        "data processing time": "2022-06-28T14:25:58+00:00",
         "analyst": "ANALYST1",
         "device system document": {
             "model number": "NovaBio Flex2"
@@ -14,7 +14,7 @@
                     "sample role type": "Spent Media",
                     "batch identifier": "BATCH_123"
                 },
-                "measurement time": "2022-06-24 14:34:52",
+                "measurement time": "2022-06-24T14:34:52+00:00",
                 "analyte aggregate document": {
                     "analyte document": [
                         {

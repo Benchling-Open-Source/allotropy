@@ -1,5 +1,3 @@
-from datetime import datetime, timezone
-
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -43,9 +41,7 @@ def get_data() -> Data:
                     number="1",
                     barcode="Plate 1",
                     emission_filter_id="1st",
-                    measurement_time=datetime(
-                        2022, 10, 13, 15, 8, 6, tzinfo=timezone.utc
-                    ),
+                    measurement_time="10/13/2022 3:08:06 PM",
                     measured_height=11.9,
                     chamber_temperature_at_start=23.17,
                 ),
@@ -56,9 +52,7 @@ def get_data() -> Data:
                     number="1",
                     barcode="Plate 1",
                     emission_filter_id="2nd",
-                    measurement_time=datetime(
-                        2022, 10, 13, 15, 8, 6, tzinfo=timezone.utc
-                    ),
+                    measurement_time="10/13/2022 3:08:06 PM",
                     measured_height=11.9,
                     chamber_temperature_at_start=23.17,
                 ),
@@ -99,7 +93,7 @@ def get_model() -> Model:
         manifest="http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
         measurement_aggregate_document=MeasurementAggregateDocument(
             measurement_identifier="",
-            measurement_time="2022-10-13 15:08:06",
+            measurement_time="2022-10-13T15:08:06+00:00",
             analytical_method_identifier="100302",
             experimental_data_identifier="3134",
             container_type=ContainerType.well_plate,

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
 import io
 import re
 from typing import Any, Optional
@@ -16,7 +15,6 @@ from allotropy.parsers.novabio_flex2.constants import (
     INVALID_FILENAME_MESSAGE,
     MOLAR_CONCENTRATION_CLASSES,
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
-    PROCESSING_TIME_FORMAT,
     PROPERTY_MAPPINGS,
 )
 
@@ -36,11 +34,8 @@ class Title:
             )
 
         matches_dict = matches.groupdict()
-        processing_time = datetime.strptime(  # noqa: DTZ007
-            matches_dict["processing_time"], PROCESSING_TIME_FORMAT
-        )
         return Title(
-            processing_time=processing_time.isoformat(sep=" "),
+            processing_time=matches_dict["processing_time"].replace("_", " "),
             device_identifier=matches_dict["device_identifier"] or None,
         )
 
@@ -92,7 +87,7 @@ class Sample:
         return Sample(
             identifier=data["Sample ID"],
             role_type=data["Sample Type"],
-            measurement_time=data["Date & Time"].isoformat(sep=" "),
+            measurement_time=data["Date & Time"].isoformat(),
             batch_identifier=str(batch_identifier) if batch_identifier else None,
             analytes=sorted(
                 [
