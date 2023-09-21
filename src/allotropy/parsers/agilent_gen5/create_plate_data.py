@@ -6,7 +6,7 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.fluorescence_plate_data import FluorescencePlateData
 from allotropy.parsers.agilent_gen5.luminescence_plate_data import LuminescencePlateData
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
-from allotropy.parsers.utils import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none
 
 
 def create_plate_data(

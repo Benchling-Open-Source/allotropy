@@ -1,5 +1,6 @@
+from datetime import timezone
 from enum import Enum
-from typing import Union
+from typing import Optional, Union
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
@@ -14,6 +15,7 @@ from allotropy.parsers.perkin_elmer_envision.elmer_envision_parser import (
     ElmerEnvisionParser,
 )
 from allotropy.parsers.roche_cedex_bioht.cedex_bioht_parser import CedexBiohtParser
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -47,9 +49,10 @@ class ParserFactory:
     def __init__(self) -> None:
         pass
 
-    def create(self, vendor_type: VendorType) -> VendorParser:
+    def create(self, vendor_type: VendorType, default_timezone: Optional[timezone] = None) -> VendorParser:
         try:
-            return _VENDOR_TO_PARSER[Vendor(vendor_type)]()
+            timestamp_parser = TimestampParser(default_timezone)
+            return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
         except (ValueError, KeyError) as e:
             error = f"Failed to create parser, unregistered vendor: {vendor_type}"
             raise AllotropeConversionError(error) from e

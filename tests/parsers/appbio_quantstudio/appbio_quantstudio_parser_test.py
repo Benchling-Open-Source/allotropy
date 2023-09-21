@@ -1,9 +1,6 @@
 import pytest
 
-from allotropy.parser_factory import Vendor
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
-    AppBioQuantStudioParser,
-)
+from allotropy.parser_factory import PARSER_FACTORY, Vendor
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_data,
     get_data2,
@@ -41,7 +38,7 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
 
 @pytest.mark.short
 def test_get_model() -> None:
-    parser = AppBioQuantStudioParser()
+    parser = PARSER_FACTORY.create(Vendor.APPBIO_QUANTSTUDIO)
     model = parser._get_model(get_data(), "appbio_quantstudio_test01.txt")
 
     assert model.qPCR_aggregate_document is not None
@@ -67,7 +64,7 @@ def test_get_model() -> None:
 
 @pytest.mark.short
 def test_get_genotyping_model() -> None:
-    parser = AppBioQuantStudioParser()
+    parser = PARSER_FACTORY.create(Vendor.APPBIO_QUANTSTUDIO)
     model = parser._get_model(get_genotyping_data(), "appbio_quantstudio_test03.txt")
 
     assert model.qPCR_aggregate_document is not None

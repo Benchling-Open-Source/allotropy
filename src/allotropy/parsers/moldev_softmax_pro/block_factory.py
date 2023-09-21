@@ -14,7 +14,7 @@ from allotropy.parsers.moldev_softmax_pro.plate_block import (
     NoteBlock,
     PlateBlock,
 )
-from allotropy.parsers.utils import value_or_none
+from allotropy.parsers.utils.values import value_or_none
 
 DELIMITER = "\t"
 

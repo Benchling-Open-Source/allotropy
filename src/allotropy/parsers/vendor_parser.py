@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import io
-from typing import Any
+from typing import Any, Optional
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 import chardet
 
@@ -8,6 +9,9 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 
 
 class VendorParser(ABC):
+    def __init__(self, timestamp_parser: TimestampParser):
+        self.timestamp_parser = timestamp_parser
+
     @abstractmethod
     def _parse(self, contents: io.IOBase, filename: str) -> Any:
         raise NotImplementedError
@@ -22,3 +26,6 @@ class VendorParser(ABC):
             error = "Did not detect encoding in input file"
             raise AllotropeConversionError(error)
         return file_bytes.decode(encoding)
+
+    def parse_timestamp(self, time: Optional[str]) -> Optional[str]:
+        return self.timestamp_parser.parse(time)

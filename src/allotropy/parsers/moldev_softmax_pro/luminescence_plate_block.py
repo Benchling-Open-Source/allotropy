@@ -17,7 +17,7 @@ from allotropy.parsers.moldev_softmax_pro.fluorescence_plate_block import (
     FluorescenceOrLuminescencePlateBlock,
 )
 from allotropy.parsers.moldev_softmax_pro.plate_block import WellData
-from allotropy.parsers.utils import natural_sort_key
+from allotropy.parsers.utils.values import natural_sort_key
 
 
 class LuminescencePlateBlock(FluorescenceOrLuminescencePlateBlock):

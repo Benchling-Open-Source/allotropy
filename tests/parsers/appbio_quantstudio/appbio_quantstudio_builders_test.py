@@ -39,7 +39,7 @@ def test_header_builder() -> None:
     experimental_data_identifier = "data Identifier"
 
     header_contents = get_raw_header_contents(
-        measurement_time="2010-10-01 01:44:54 AM EDT",
+        measurement_time="2010-10-01 01:44:54-04:00 AM EDT",
         plate_well_count="96 plates",
         experiment_type="Genotyping",
         device_identifier=device_identifier,
@@ -52,7 +52,7 @@ def test_header_builder() -> None:
     )
 
     assert HeaderBuilder.build(LinesReader(header_contents)) == Header(
-        measurement_time="2010-10-01 01:44:54",
+        measurement_time="2010-10-01 01:44:54-04:00 AM EDT",
         plate_well_count=96,
         experiment_type=ExperimentType.genotyping_qPCR_experiment,
         device_identifier=device_identifier,
@@ -160,7 +160,7 @@ def test_data_builder() -> None:
 
 def get_raw_header_contents(
     raw_text: Optional[str] = None,
-    measurement_time: Optional[str] = "2010-10-01 01:44:54 AM EDT",
+    measurement_time: Optional[str] = "2010-10-01 01:44:54-04:00 AM EDT",
     plate_well_count: Optional[str] = "96-Well Block (0.2mL)",
     experiment_type: Optional[str] = "Presence/Absence",
     device_identifier: Optional[str] = "278880034",

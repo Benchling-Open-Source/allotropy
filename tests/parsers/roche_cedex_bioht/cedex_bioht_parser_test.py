@@ -1,7 +1,6 @@
 import pytest
 
-from allotropy.parser_factory import Vendor
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_parser import CedexBiohtParser
+from allotropy.parser_factory import PARSER_FACTORY, Vendor
 from tests.parsers.roche_cedex_bioht.cedex_bioht_data import get_data, get_model
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
@@ -27,7 +26,7 @@ def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
 
 @pytest.mark.short
 def test_get_model() -> None:
-    parser = CedexBiohtParser()
+    parser = PARSER_FACTORY.create(Vendor.ROCHE_CEDEX_BIOHT)
     model = parser._get_model(get_data())
 
     if model.measurement_aggregate_document:

@@ -14,7 +14,7 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     Model,
 )
 from allotropy.parsers.moldev_softmax_pro.plate_block import PlateBlock, WellData
-from allotropy.parsers.utils import assert_not_none, natural_sort_key, try_int
+from allotropy.parsers.utils.values import assert_not_none, natural_sort_key, try_int
 
 
 class AbsorbancePlateBlock(PlateBlock):

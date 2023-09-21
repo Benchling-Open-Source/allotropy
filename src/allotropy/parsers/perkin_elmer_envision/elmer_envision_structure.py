@@ -30,7 +30,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils import assert_not_none, get_timestamp, try_float
+from allotropy.parsers.utils.values import assert_not_none, get_timestamp, try_float
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:

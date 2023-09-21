@@ -32,9 +32,11 @@ def natural_sort_key(key: str) -> list[str]:
 T = TypeVar("T", bound=PrimitiveValue)
 
 
-def assert_not_none(value: Optional[T], name: str) -> T:
+def assert_not_none(
+    value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
+) -> T:
     if value is None:
-        error = f"Expected non-null value for {name}"
+        error = msg or f"Expected non-null value{f' for {name}' if name else ''}"
         raise AllotropeConversionError(error)
     return value
 

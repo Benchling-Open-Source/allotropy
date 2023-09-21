@@ -1,7 +1,6 @@
 import pytest
 
-from allotropy.parser_factory import Vendor
-from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
+from allotropy.parser_factory import PARSER_FACTORY, Vendor
 from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_data,
     get_filename,
@@ -34,7 +33,7 @@ def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
 
 
 def test_get_model() -> None:
-    parser = ViCellBluParser()
+    parser = PARSER_FACTORY.create(Vendor.BECKMAN_VI_CELL_BLU)
     result = parser._get_model(get_data(), get_filename())
 
     cell_counting_document_item = (

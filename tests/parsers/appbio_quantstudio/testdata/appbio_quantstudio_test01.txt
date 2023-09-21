@@ -23,7 +23,7 @@
 * Experiment Comment = NA
 * Experiment File Name = C:\Program Files (x86)\Applied BioSystems\QuantStudio Real-Time PCR Software\examples\QS6Flex\QS6_96-Well Presence-Absence Example.eds
 * Experiment Name = QuantStudio 96-Well Presence-Absence Example
-* Experiment Run End Time = 2010-10-01 01:44:54 AM EDT
+* Experiment Run End Time = 2010-10-01 01:44:54-04:00 AM EDT
 * Experiment Type = Presence/Absence
 * Instrument Name = 278880034
 * Instrument Serial Number = 278880034
@@ -36,8 +36,8 @@
 
 [Sample Setup]
 Well	Well Position	Sample Name	Sample Color	Target Name	Target Color	Task	Reporter	Quencher	Comments
-1	A1	NAC	"RGB(176,23,31)"	IPC	"RGB(0,0,255)"	BlockedIPC	VIC	NFQ-MGB	
-1	A1	NAC	"RGB(176,23,31)"	TGFb	"RGB(176,23,31)"	NTC	FAM	NFQ-MGB	
+1	A1	NAC	"RGB(176,23,31)"	IPC	"RGB(0,0,255)"	BlockedIPC	VIC	NFQ-MGB
+1	A1	NAC	"RGB(176,23,31)"	TGFb	"RGB(176,23,31)"	NTC	FAM	NFQ-MGB
 
 [Raw Data]
 Well	Well Position	Cycle	x1-m1	x2-m2	x3-m3	x4-m4	x5-m5
