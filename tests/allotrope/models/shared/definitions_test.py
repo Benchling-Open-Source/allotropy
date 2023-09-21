@@ -20,7 +20,9 @@ def test_data_cube_data() -> None:
 
 
 def test_data_cube_data_oneof_post_init() -> None:
-    with pytest.raises(ValueError, match="Exactly one of measures or points must be set"):
+    with pytest.raises(
+        ValueError, match="Exactly one of measures or points must be set"
+    ):
         TDatacubeData(dimensions=[["A", "B"]])
         TDatacubeData(dimensions=[["A", "B"]], measures=[], points=[])
 
