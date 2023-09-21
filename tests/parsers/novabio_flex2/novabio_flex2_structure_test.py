@@ -25,10 +25,10 @@ from tests.parsers.novabio_flex2.novabio_flex2_data import (
 @pytest.mark.parametrize(
     "filename,processing_time,device_identifier",
     [
-        ("SampleResults2022-06-28_142558.csv", "2022-06-28T14:25:58", None),
+        ("SampleResults2022-06-28_142558.csv", "2022-06-28 142558", None),
         (
             "SampleResultsT26918070C2021-02-18_104838.csv",
-            "2021-02-18T10:48:38",
+            "2021-02-18 104838",
             "T26918070C",
         ),
     ],

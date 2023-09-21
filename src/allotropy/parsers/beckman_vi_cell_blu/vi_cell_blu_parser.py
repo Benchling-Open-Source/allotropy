@@ -32,7 +32,6 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     VICELL_BLU_SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
-from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 property_lookup = {
@@ -93,9 +92,8 @@ class ViCellBluParser(VendorParser):
                 measurement_document=[
                     MeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=assert_not_none(
-                            self.parse_timestamp(str(sample.get("Analysis date/time"))),
-                            "Analysis date/time",
+                        measurement_time=self.get_date_time(
+                            sample.get("Analysis date/time")
                         ),
                         sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=DeviceControlAggregateDocument(

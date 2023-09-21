@@ -73,7 +73,7 @@ def get_input_stream() -> StringIO:
 def get_data() -> Data:
     return Data(
         title=Title(
-            processing_time="2022-06-28T14:25:58",
+            processing_time="2022-06-28 142558",
             device_identifier=None,
         ),
         sample_list=SampleList(

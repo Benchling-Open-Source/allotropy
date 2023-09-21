@@ -44,7 +44,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -99,10 +98,7 @@ class AppBioQuantStudioParser(VendorParser):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=str(uuid.uuid4()),
-            measurement_time=assert_not_none(
-                self.parse_timestamp(data.header.measurement_time),
-                msg=f"Invalid timestamp '{data.header.measurement_time}'",
-            ),
+            measurement_time=self.get_date_time(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(
                 sample_identifier=well_item.sample_identifier,

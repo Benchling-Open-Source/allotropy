@@ -55,7 +55,7 @@ class AgilentGen5Parser(VendorParser):
             itertools.chain.from_iterable([plate.measurement_docs for plate in plates])
         )
         model = first_plate.to_allotrope(measurement_docs)
-        model.measurement_aggregate_document.measurement_time = self.parse_timestamp(
+        model.measurement_aggregate_document.measurement_time = self.get_date_time(
             model.measurement_aggregate_document.measurement_time
         )
         return model

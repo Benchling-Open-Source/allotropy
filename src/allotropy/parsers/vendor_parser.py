@@ -5,7 +5,9 @@ from typing import Any, Optional
 import chardet
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.parsers.utils.values import assert_not_none
 
 
 class VendorParser(ABC):
@@ -29,3 +31,8 @@ class VendorParser(ABC):
 
     def parse_timestamp(self, time: Optional[str]) -> Optional[str]:
         return self.timestamp_parser.parse(time)
+
+    def get_date_time(self, time: Any) -> TDateTimeValue:
+        return assert_not_none(
+            self.parse_timestamp(str(time)), msg=f"Invalid timestamp: '{time}'"
+        )

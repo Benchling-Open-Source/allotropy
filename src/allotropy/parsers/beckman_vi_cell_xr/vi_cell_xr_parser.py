@@ -35,7 +35,6 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
-from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 property_lookup = {
@@ -104,21 +103,14 @@ class ViCellXRParser(VendorParser):
             error = f"required value not found {e}"
             raise AllotropeConversionError(error) from e
 
-        raw_time = str(
-            assert_not_none(
-                sample.get(DATE_HEADER[file_version]), DATE_HEADER[file_version]
-            )
-        )
-
         return CellCountingDocumentItem(
             analyst=DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     MeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=assert_not_none(
-                            self.parse_timestamp(raw_time),
-                            msg=f"Invalid timestamp: '{raw_time}",
+                        measurement_time=self.get_date_time(
+                            sample.get(DATE_HEADER[file_version])
                         ),
                         sample_document=SampleDocument(
                             sample_identifier=sample["Sample ID"]
