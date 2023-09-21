@@ -5,6 +5,7 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
     AppBioQuantStudioParser,
 )
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import Data
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_data,
@@ -52,22 +53,19 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
 
 
 @pytest.mark.short
-def test_get_model() -> None:
+@pytest.mark.parametrize(
+    "file_name,data,model",
+    [
+        ("appbio_quantstudio_test01.txt", get_data(), get_model()),
+        ("appbio_quantstudio_test02.txt", get_data2(), get_model2()),
+        (
+            "appbio_quantstudio_test03.txt",
+            get_genotyping_data(),
+            get_genotyping_model(),
+        ),
+    ],
+)
+def test_get_model(file_name: str, data: Data, model: Model) -> None:
     parser = AppBioQuantStudioParser(TimestampParser())
-    generated = parser._get_model(get_data(), "appbio_quantstudio_test01.txt")
-    expected = get_model()
-    assert rm_measurement_identifier(generated) == rm_measurement_identifier(expected)
-
-    generated2 = parser._get_model(get_data2(), "appbio_quantstudio_test02.txt")
-    expected2 = get_model2()
-    assert rm_measurement_identifier(generated2) == rm_measurement_identifier(expected2)
-
-
-@pytest.mark.short
-def test_get_genotyping_model() -> None:
-    parser = AppBioQuantStudioParser(TimestampParser())
-    generated = parser._get_model(
-        get_genotyping_data(), "appbio_quantstudio_test03.txt"
-    )
-    expected = get_genotyping_model()
-    assert rm_measurement_identifier(generated) == rm_measurement_identifier(expected)
+    generated = parser._get_model(data, file_name)
+    assert rm_measurement_identifier(generated) == rm_measurement_identifier(model)
