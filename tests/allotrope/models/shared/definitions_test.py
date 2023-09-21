@@ -12,10 +12,10 @@ def test_data_cube_data() -> None:
     assert cube.measures == [[1.0, None]]
 
     cube = TDatacubeData(
-        dimensions=[[1, 2]],
+        dimensions=[[1.0, 2.0]],
         points=[[True, False]],
     )
-    assert cube.dimensions == [[1, 2]]
+    assert cube.dimensions == [[1.0, 2.0]]
     assert cube.points == [[True, False]]
 
 
