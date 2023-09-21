@@ -1,7 +1,6 @@
-
-
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta, timezone
 from typing import Optional
+
 from dateutil import parser
 
 
@@ -17,7 +16,7 @@ class TimestampParser:
             "PDT": timezone(timedelta(hours=-8), "EST"),
         }
 
-    def parse(self, time: Optional[str]) -> Optional[datetime]:
+    def parse(self, time: Optional[str]) -> Optional[str]:
         if not time:
             return None
         try:

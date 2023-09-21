@@ -1,7 +1,8 @@
 import pytest
 
-from allotropy.parser_factory import PARSER_FACTORY, Vendor
+from allotropy.parser_factory import Vendor
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.novabio_flex2.novabio_flex2_data import get_data, get_model
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
@@ -27,7 +28,7 @@ def test_parse_novabio_flex_to_asm(output_file: str) -> None:
 
 @pytest.mark.short
 def test_get_model() -> None:
-    parser = PARSER_FACTORY.create(Vendor.NOVABIO_FLEX2)
+    parser = NovaBioFlexParser(TimestampParser())
     model = parser._get_model(get_data())
 
     if model.measurement_aggregate_document:

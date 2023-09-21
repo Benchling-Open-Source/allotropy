@@ -12,6 +12,7 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 )
 from allotropy.parsers.roche_cedex_bioht.cedex_bioht_reader import CedexBiohtReader
 from allotropy.parsers.roche_cedex_bioht.cedex_bioht_structure import Data, Sample
+from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -24,7 +25,9 @@ class CedexBiohtParser(VendorParser):
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                data_processing_time=self.parse_timestamp(data.title.data_processing_time),
+                data_processing_time=self.parse_timestamp(
+                    data.title.data_processing_time
+                ),
                 analyst=data.title.analyst,
                 device_system_document=DeviceSystemDocument(
                     model_number=data.title.model_number,
@@ -75,6 +78,9 @@ class CedexBiohtParser(VendorParser):
                 sample_role_type=sample.role_type,
                 batch_identifier=sample.batch,
             ),
-            measurement_time=self.parse_timestamp(sample.measurement_time),
+            measurement_time=assert_not_none(
+                self.parse_timestamp(sample.measurement_time),
+                msg=f"Invalid timestamp: {sample.measurement_time}'",
+            ),
             analyte_aggregate_document=AnalyteAggregateDocument(analyte_document=[]),
         )

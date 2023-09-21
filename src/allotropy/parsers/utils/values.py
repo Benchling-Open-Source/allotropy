@@ -29,7 +29,7 @@ def natural_sort_key(key: str) -> list[str]:
     ]
 
 
-T = TypeVar("T", bound=PrimitiveValue)
+T = TypeVar("T")
 
 
 def assert_not_none(

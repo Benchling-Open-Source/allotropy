@@ -40,7 +40,11 @@ def from_file(test_file: str, vendor_type: VendorType) -> dict[str, Any]:
 
 def validate_schema(allotrope_dict: dict[str, Any], schema_relative_path: str) -> None:
     allotrope_schema = get_schema(schema_relative_path)
-    jsonschema.validate(allotrope_dict, allotrope_schema, format_checker=jsonschema.validators.Draft202012Validator.FORMAT_CHECKER)
+    jsonschema.validate(
+        allotrope_dict,
+        allotrope_schema,
+        format_checker=jsonschema.validators.Draft202012Validator.FORMAT_CHECKER,
+    )
 
 
 def validate_contents(allotrope_dict: dict[str, Any], expected_file: str) -> None:

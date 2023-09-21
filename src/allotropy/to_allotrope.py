@@ -13,22 +13,16 @@ def allotrope_from_io(
     vendor_type: VendorType,
     default_timezone: Optional[timezone] = None,
 ) -> dict[str, Any]:
-    parser = PARSER_FACTORY.create(
-        vendor_type,
-        default_timezone=default_timezone
-    )
+    parser = PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
     return serialize_allotrope(parser.to_allotrope(contents, filename))
 
 
 def allotrope_from_file(
-        filepath: str,
-        vendor_type: VendorType,
-        default_timezone: Optional[timezone] = None,
-    ) -> dict[str, Any]:
+    filepath: str,
+    vendor_type: VendorType,
+    default_timezone: Optional[timezone] = None,
+) -> dict[str, Any]:
     with open(filepath, "rb") as f:
         return allotrope_from_io(
-            f,
-            Path(filepath).name,
-            vendor_type,
-            default_timezone=default_timezone
+            f, Path(filepath).name, vendor_type, default_timezone=default_timezone
         )

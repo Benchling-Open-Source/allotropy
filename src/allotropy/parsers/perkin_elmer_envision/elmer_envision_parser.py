@@ -24,6 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import Data, Plate
+from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
@@ -81,7 +82,10 @@ class ElmerEnvisionParser(VendorParser):
         ]
 
         if dates:
-            return self.parse_timestamp(min(dates).isoformat())
+            time = min(dates).isoformat()
+            return assert_not_none(
+                self.parse_timestamp(time), msg="Invalid timestamp: '{time}'"
+            )
 
         msg = "Unable to find valid measurement date"
         raise Exception(msg)

@@ -1,6 +1,10 @@
 import pytest
 
-from allotropy.parser_factory import PARSER_FACTORY, Vendor
+from allotropy.parser_factory import Vendor
+from allotropy.parsers.perkin_elmer_envision.elmer_envision_parser import (
+    ElmerEnvisionParser,
+)
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.perkin_elmer_envision.elmer_envision_data import get_data, get_model
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
@@ -26,7 +30,7 @@ def test_parse_elmer_envision_to_asm(output_file: str) -> None:
 
 @pytest.mark.short
 def test_get_model() -> None:
-    parser = PARSER_FACTORY.create(Vendor.PERKIN_ELMER_ENVISION)
+    parser = ElmerEnvisionParser(TimestampParser())
     model = parser._get_model(get_data())
 
     if model.measurement_aggregate_document:

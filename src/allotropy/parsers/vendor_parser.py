@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 import io
 from typing import Any, Optional
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 import chardet
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 
 class VendorParser(ABC):

@@ -99,7 +99,10 @@ class AppBioQuantStudioParser(VendorParser):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=str(uuid.uuid4()),
-            measurement_time=assert_not_none(self.parse_timestamp(data.header.measurement_time), msg=f"Invalid timestamp '{data.header.measurement_time}'"),
+            measurement_time=assert_not_none(
+                self.parse_timestamp(data.header.measurement_time),
+                msg=f"Invalid timestamp '{data.header.measurement_time}'",
+            ),
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(
                 sample_identifier=well_item.sample_identifier,

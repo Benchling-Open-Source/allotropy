@@ -49,7 +49,9 @@ class ParserFactory:
     def __init__(self) -> None:
         pass
 
-    def create(self, vendor_type: VendorType, default_timezone: Optional[timezone] = None) -> VendorParser:
+    def create(
+        self, vendor_type: VendorType, default_timezone: Optional[timezone] = None
+    ) -> VendorParser:
         try:
             timestamp_parser = TimestampParser(default_timezone)
             return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
