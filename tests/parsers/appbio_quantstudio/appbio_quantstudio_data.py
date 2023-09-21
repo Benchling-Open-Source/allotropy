@@ -48,7 +48,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 def get_data() -> Data:
     return Data(
         header=Header(
-            measurement_time="2010-10-01 01:44:54-04:00 AM EDT",
+            measurement_time="2010-10-01 01:44:54 AM EDT",
             plate_well_count=96,
             barcode=None,
             device_identifier="278880034",

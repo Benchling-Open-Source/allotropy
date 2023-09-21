@@ -40,7 +40,7 @@ class Title:
             matches_dict["processing_time"], PROCESSING_TIME_FORMAT
         )
         return Title(
-            processing_time=processing_time.isoformat(sep=" "),
+            processing_time=processing_time.isoformat(),
             device_identifier=matches_dict["device_identifier"] or None,
         )
 
@@ -92,7 +92,7 @@ class Sample:
         return Sample(
             identifier=data["Sample ID"],
             role_type=data["Sample Type"],
-            measurement_time=data["Date & Time"].isoformat(sep=" "),
+            measurement_time=data["Date & Time"].isoformat(),
             batch_identifier=str(batch_identifier) if batch_identifier else None,
             analytes=sorted(
                 [

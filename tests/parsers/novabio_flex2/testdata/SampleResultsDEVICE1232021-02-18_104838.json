@@ -2,7 +2,7 @@
     "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     "measurement aggregate document": {
         "measurement identifier": "4398251f-cdd2-498d-8e46-ed660df33fc5",
-        "data processing time": "2021-02-18 10:48:38",
+        "data processing time": "2021-02-18T10:48:38+00:00",
         "analyst": "Unither",
         "device system document": {
             "model number": "NovaBio Flex2",
@@ -14,7 +14,7 @@
                     "sample identifier": "SAMPLE 0001",
                     "sample role type": "Default"
                 },
-                "measurement time": "2021-02-18 10:28:04",
+                "measurement time": "2021-02-18T10:28:04+00:00",
                 "analyte aggregate document": {
                     "analyte document":[
                     {
@@ -131,7 +131,7 @@
                     "sample identifier": "SAMPLE 0002",
                     "sample role type": "Default"
                 },
-                "measurement time": "2021-02-18 10:33:17",
+                "measurement time": "2021-02-18T10:33:17+00:00",
                 "analyte aggregate document": {
                     "analyte document":[
                     {
@@ -248,7 +248,7 @@
                     "sample identifier": "SAMPLE 0003",
                     "sample role type": "Simple"
                 },
-                "measurement time": "2021-02-18 10:38:33",
+                "measurement time": "2021-02-18T10:38:33+00:00",
                 "analyte aggregate document": {
                     "analyte document":[
                     {
@@ -341,7 +341,7 @@
                     "sample identifier": "SAMPLE 0004",
                     "sample role type": "Simple"
                 },
-                "measurement time": "2021-02-18 10:41:08",
+                "measurement time": "2021-02-18T10:41:08+00:00",
                 "analyte aggregate document": {
                     "analyte document":[
                     {
@@ -434,7 +434,7 @@
                     "sample identifier": "SAMPLE 0005",
                     "sample role type": "Simple"
                 },
-                "measurement time": "2021-02-18 10:43:33",
+                "measurement time": "2021-02-18T10:43:33+00:00",
                 "analyte aggregate document": {
                     "analyte document":[
                     {
@@ -527,7 +527,7 @@
                     "sample identifier": "SAMPLE 0006",
                     "sample role type": "Simple"
                 },
-                "measurement time": "2021-02-18 10:46:05",
+                "measurement time": "2021-02-18T10:46:05+00:00",
                 "analyte aggregate document": {
                     "analyte document":[
                     {

@@ -24,7 +24,7 @@ class CedexBiohtParser(VendorParser):
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                data_processing_time=data.title.data_processing_time,
+                data_processing_time=self.parse_timestamp(data.title.data_processing_time),
                 analyst=data.title.analyst,
                 device_system_document=DeviceSystemDocument(
                     model_number=data.title.model_number,
@@ -75,6 +75,6 @@ class CedexBiohtParser(VendorParser):
                 sample_role_type=sample.role_type,
                 batch_identifier=sample.batch,
             ),
-            measurement_time=sample.measurement_time,
+            measurement_time=self.parse_timestamp(sample.measurement_time),
             analyte_aggregate_document=AnalyteAggregateDocument(analyte_document=[]),
         )

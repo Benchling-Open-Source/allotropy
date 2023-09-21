@@ -2,7 +2,7 @@ import json
 from typing import Any
 
 from deepdiff import DeepDiff
-from jsonschema import validate
+import jsonschema
 import numpy as np
 import pandas as pd
 
@@ -40,7 +40,7 @@ def from_file(test_file: str, vendor_type: VendorType) -> dict[str, Any]:
 
 def validate_schema(allotrope_dict: dict[str, Any], schema_relative_path: str) -> None:
     allotrope_schema = get_schema(schema_relative_path)
-    validate(allotrope_dict, allotrope_schema)
+    jsonschema.validate(allotrope_dict, allotrope_schema, format_checker=jsonschema.validators.Draft202012Validator.FORMAT_CHECKER)
 
 
 def validate_contents(allotrope_dict: dict[str, Any], expected_file: str) -> None:

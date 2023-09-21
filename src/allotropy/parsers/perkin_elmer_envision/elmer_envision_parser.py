@@ -81,7 +81,7 @@ class ElmerEnvisionParser(VendorParser):
         ]
 
         if dates:
-            return min(dates).strftime("%Y-%m-%d %X")
+            return self.parse_timestamp(min(dates).isoformat())
 
         msg = "Unable to find valid measurement date"
         raise Exception(msg)

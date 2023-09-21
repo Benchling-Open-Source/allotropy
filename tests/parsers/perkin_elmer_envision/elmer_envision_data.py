@@ -99,7 +99,7 @@ def get_model() -> Model:
         manifest="http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
         measurement_aggregate_document=MeasurementAggregateDocument(
             measurement_identifier="",
-            measurement_time="2022-10-13 15:08:06",
+            measurement_time="2022-10-13T15:08:06+00:00",
             analytical_method_identifier="100302",
             experimental_data_identifier="3134",
             container_type=ContainerType.well_plate,

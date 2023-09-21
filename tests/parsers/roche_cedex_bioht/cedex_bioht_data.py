@@ -205,7 +205,7 @@ def get_model() -> Model:
                         batch_identifier=None,
                         sample_role_type="Sample",
                     ),
-                    measurement_time="2021-05-20 16:55:51",
+                    measurement_time="2021-05-20T16:55:51+00:00",
                     analyte_aggregate_document=AnalyteAggregateDocument(
                         analyte_document=[
                             AnalyteDocumentItem(
@@ -239,7 +239,7 @@ def get_model() -> Model:
                     total_cell_count__cell_counter_=None,
                 )
             ],
-            data_processing_time="2021-06-01 13:04:06",
+            data_processing_time="2021-06-01T13:04:06+00:00",
         ),
         manifest="http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     )
