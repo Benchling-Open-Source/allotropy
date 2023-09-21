@@ -195,11 +195,7 @@ class TDatacubeData:
 
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
-        if (
-            self.measures
-            and self.points
-            or (self.measures is None and self.points is None)
-        ):
+        if not (self.measures is None) ^ (self.points is None):
             error = "Exactly one of measures or points must be set"
             raise ValueError(error)
 

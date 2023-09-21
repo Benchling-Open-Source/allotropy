@@ -11,13 +11,21 @@ def test_data_cube_data() -> None:
     assert cube.dimensions == [["A", "B"]]
     assert cube.measures == [[1.0, None]]
 
+    cube = TDatacubeData(
+        dimensions=[[1, 2]],
+        points=[[True, False]],
+    )
+    assert cube.dimensions == [[1, 2]]
+    assert cube.points == [[True, False]]
 
-def test_data_cube_data_invalid_when_measures_and_points_missing() -> None:
-    with pytest.raises(ValueError):
+
+def test_data_cube_data_oneof_post_init() -> None:
+    with pytest.raises(ValueError, match="Exactly one of measures or points must be set"):
         TDatacubeData(dimensions=[["A", "B"]])
+        TDatacubeData(dimensions=[["A", "B"]], measures=[], points=[])
 
 
-def test_data_cube_data_valid_when_points_or_measures_are_empty() -> None:
+def test_data_cube_data_oneof_post_init_empty_list_ok() -> None:
     cube = TDatacubeData(dimensions=[["A", "B"]], measures=[])
     assert cube.measures == []
     assert cube.points is None
