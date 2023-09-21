@@ -73,7 +73,7 @@ def get_input_stream() -> StringIO:
 def get_data() -> Data:
     return Data(
         title=Title(
-            processing_time="2022-06-28 14:25:58",
+            processing_time="2022-06-28 142558",
             device_identifier=None,
         ),
         sample_list=SampleList(
@@ -82,7 +82,7 @@ def get_data() -> Data:
                 Sample(
                     identifier="BP_R10_KP_008_D0",
                     role_type="Spent Media",
-                    measurement_time="2022-06-24 14:34:52",
+                    measurement_time="2022-06-24T14:34:52",
                     batch_identifier="KP_008",
                     analytes=sorted(
                         [
@@ -131,7 +131,7 @@ def get_model() -> Model:
                         batch_identifier="KP_008",
                         sample_role_type="Spent Media",
                     ),
-                    measurement_time="2022-06-24 14:34:52",
+                    measurement_time="2022-06-24T14:34:52+00:00",
                     analyte_aggregate_document=AnalyteAggregateDocument(
                         analyte_document=[
                             AnalyteDocumentItem(
@@ -259,7 +259,7 @@ def get_model() -> Model:
                     total_cell_count__cell_counter_=None,
                 )
             ],
-            data_processing_time="2022-06-28 14:25:58",
+            data_processing_time="2022-06-28T14:25:58+00:00",
         ),
         manifest="http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     )

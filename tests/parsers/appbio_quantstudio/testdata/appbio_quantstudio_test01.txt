@@ -36,8 +36,8 @@
 
 [Sample Setup]
 Well	Well Position	Sample Name	Sample Color	Target Name	Target Color	Task	Reporter	Quencher	Comments
-1	A1	NAC	"RGB(176,23,31)"	IPC	"RGB(0,0,255)"	BlockedIPC	VIC	NFQ-MGB	
-1	A1	NAC	"RGB(176,23,31)"	TGFb	"RGB(176,23,31)"	NTC	FAM	NFQ-MGB	
+1	A1	NAC	"RGB(176,23,31)"	IPC	"RGB(0,0,255)"	BlockedIPC	VIC	NFQ-MGB
+1	A1	NAC	"RGB(176,23,31)"	TGFb	"RGB(176,23,31)"	NTC	FAM	NFQ-MGB
 
 [Raw Data]
 Well	Well Position	Cycle	x1-m1	x2-m2	x3-m3	x4-m4	x5-m5

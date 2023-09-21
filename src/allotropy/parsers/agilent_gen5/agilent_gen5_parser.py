@@ -54,7 +54,11 @@ class AgilentGen5Parser(VendorParser):
         measurement_docs = list(
             itertools.chain.from_iterable([plate.measurement_docs for plate in plates])
         )
-        return first_plate.to_allotrope(measurement_docs)
+        model = first_plate.to_allotrope(measurement_docs)
+        model.measurement_aggregate_document.measurement_time = self.get_date_time(
+            model.measurement_aggregate_document.measurement_time
+        )
+        return model
 
         # TODO stats docs
         # statistics_docs = [plate.statistics_doc for plate in plates]

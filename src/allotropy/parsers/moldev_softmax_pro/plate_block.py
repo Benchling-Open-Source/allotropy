@@ -18,7 +18,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.parsers.utils import assert_not_none, PrimitiveValue, try_int
+from allotropy.parsers.utils.values import assert_not_none, PrimitiveValue, try_int
 
 START_LETTER_CODE = ord("A")
 EXPORT_VERSION = "1.3"

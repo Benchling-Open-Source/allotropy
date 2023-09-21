@@ -17,7 +17,7 @@
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002095",
                     "$asm.pattern": "value datum",
                     "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
-                    "$ref": "#/$defs/tStringValue"
+                    "$ref": "#/$defs/tDateTimeValue"
                 },
                 "analyst": {
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001116",
