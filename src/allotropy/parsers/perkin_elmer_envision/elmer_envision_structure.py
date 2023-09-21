@@ -17,7 +17,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
 import logging
 from re import search
 from typing import Optional
