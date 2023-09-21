@@ -43,13 +43,3 @@ def assert_not_none(
 
 def value_or_none(value: str) -> Optional[str]:
     return value.strip() or None
-
-
-# TODO(nstender): accept tzinfo into parser to determine timezone of machine.
-def get_timestamp(
-    time: Optional[str], fmt: str, tzinfo: Optional[timezone] = None
-) -> Optional[datetime]:
-    try:
-        return datetime.strptime(time or "", fmt).replace(tzinfo=tzinfo or timezone.utc)
-    except ValueError:
-        return None

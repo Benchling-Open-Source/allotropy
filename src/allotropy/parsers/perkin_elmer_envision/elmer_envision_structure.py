@@ -30,7 +30,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import assert_not_none, get_timestamp, try_float
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -48,7 +48,7 @@ class PlateInfo:
     number: str
     barcode: str
     emission_filter_id: str
-    measurement_time: Optional[datetime]
+    measurement_time: Optional[str]
     measured_height: Optional[float]
     chamber_temperature_at_start: Optional[float]
 
@@ -72,9 +72,7 @@ class PlateInfo:
             raise Exception(msg)
         emission_filter_id = search_result.group().removeprefix("De=")
 
-        measurement_time = get_timestamp(
-            str(series.get("Measurement date", "")), "%m/%d/%Y %I:%M:%S %p"
-        )
+        measurement_time = str(series.get("Measurement date", ""))
 
         return PlateInfo(
             plate_number,

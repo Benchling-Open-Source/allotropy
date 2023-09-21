@@ -43,9 +43,7 @@ def get_data() -> Data:
                     number="1",
                     barcode="Plate 1",
                     emission_filter_id="1st",
-                    measurement_time=datetime(
-                        2022, 10, 13, 15, 8, 6, tzinfo=timezone.utc
-                    ),
+                    measurement_time="10/13/2022 3:08:06 PM",
                     measured_height=11.9,
                     chamber_temperature_at_start=23.17,
                 ),
@@ -56,9 +54,7 @@ def get_data() -> Data:
                     number="1",
                     barcode="Plate 1",
                     emission_filter_id="2nd",
-                    measurement_time=datetime(
-                        2022, 10, 13, 15, 8, 6, tzinfo=timezone.utc
-                    ),
+                    measurement_time="10/13/2022 3:08:06 PM",
                     measured_height=11.9,
                     chamber_temperature_at_start=23.17,
                 ),

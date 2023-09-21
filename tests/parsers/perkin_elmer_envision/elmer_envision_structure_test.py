@@ -37,7 +37,7 @@ def test_create_plate_info() -> None:
         number="1",
         barcode="BAR_123",
         emission_filter_id="1st",
-        measurement_time=datetime(2022, 10, 13, 15, 8, 6, tzinfo=timezone.utc),
+        measurement_time="10/13/2022 3:08:06 PM",
         measured_height=11.9,
         chamber_temperature_at_start=23.17,
     )
@@ -126,7 +126,7 @@ def test_create_plates() -> None:
                 number="2",
                 barcode="Plate 2",
                 emission_filter_id="2nd",
-                measurement_time=datetime(2022, 10, 13, 15, 8, 6, tzinfo=timezone.utc),
+                measurement_time="10/13/2022 3:08:06 PM",
                 measured_height=1.1,
                 chamber_temperature_at_start=14.5,
             ),

@@ -82,7 +82,7 @@ class ElmerEnvisionParser(VendorParser):
         ]
 
         if dates:
-            time = min(dates).isoformat()
+            time = min(dates)
             return assert_not_none(
                 self.parse_timestamp(time), msg="Invalid timestamp: '{time}'"
             )
