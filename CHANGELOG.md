@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.1.1] - 2023-09-22
+### Added
+### Fixed
+### Changed
+- Loosened requirement for jsonschema package to make allotropy compatible with datamodel-code-generator
+### Deprecated
+### Removed
+### Security
+
 ## [0.1.0] - 2023-09-18
 ### Added
 - Initial commit, includes support for:
