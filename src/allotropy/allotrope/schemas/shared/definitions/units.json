@@ -131,6 +131,18 @@
             "unit"
         ]
     },
+    "NumberPerMicroliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "#/μL",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#NumberPerMicroliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
     "MillionCellsPerMilliliter": {
         "properties": {
             "unit": {

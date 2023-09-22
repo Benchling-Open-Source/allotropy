@@ -58,6 +58,11 @@ class Microliter:
 
 
 @dataclass
+class NumberPerMicroliter:
+    unit: Optional[str] = "#/μL"
+
+
+@dataclass
 class MilliSecond:
     unit: Optional[str] = "ms"
 
