@@ -31,6 +31,8 @@ def rm_uuid(data: Data) -> Data:
     for well in data.wells:
         for well_item in well.items.values():
             well_item.uuid = ""
+    for calc_doc in data.calculated_documents:
+        calc_doc.uuid = ""
     return data
 
 

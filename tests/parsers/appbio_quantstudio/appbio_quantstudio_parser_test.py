@@ -33,6 +33,13 @@ def rm_measurement_identifier(model: Model) -> Model:
                 measurement_doc
             ) in qpcr_doc.measurement_aggregate_document.measurement_document:
                 measurement_doc.measurement_identifier = ""
+
+        if model.qPCR_aggregate_document.calculated_data_aggregate_document:
+            for calc_doc in (
+                model.qPCR_aggregate_document.calculated_data_aggregate_document.calculated_data_document
+                or []
+            ):
+                calc_doc.calculated_data_identifier = ""
     return model
 
 

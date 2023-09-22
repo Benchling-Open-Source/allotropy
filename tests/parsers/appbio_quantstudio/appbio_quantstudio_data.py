@@ -1,7 +1,10 @@
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     BaselineCorrectedReporterDataCube,
+    CalculatedDataDocumentItem,
     ContainerType,
     DataProcessingDocument,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -19,6 +22,7 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     QPCRDocumentItem,
     ReporterDyeDataCube,
     SampleDocument,
+    TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueUnitless,
@@ -43,6 +47,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
     WellList,
+)
+from allotropy.parsers.appbio_quantstudio.calculated_document import (
+    CalculatedDocument,
+    DataSource,
 )
 
 
@@ -148,6 +156,7 @@ def get_data() -> Data:
             },
         ),
         melt_curve_raw_data=None,
+        calculated_document=None,
     )
 
     return Data(
@@ -176,6 +185,56 @@ def get_data() -> Data:
         ),
         endogenous_control="",
         reference_sample="",
+        calculated_documents=[
+            CalculatedDocument(
+                uuid="d006e7e7-fbe4-47cf-821b-904e85202803",
+                name="rn mean",
+                value=1.261,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["IPC"],
+                    ),
+                ],
+            ),
+            CalculatedDocument(
+                uuid="f4fee39c-5861-4203-afcf-94ee755ac0b4",
+                name="rn sd",
+                value=0.088,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["IPC"],
+                    ),
+                ],
+            ),
+            CalculatedDocument(
+                uuid="e6707b0c-4494-412f-8a8e-ef51d01f25b3",
+                name="rn mean",
+                value=0.397,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["TGFb"],
+                    ),
+                ],
+            ),
+            CalculatedDocument(
+                uuid="da78a225-2c34-40b3-b487-97893bfe491a",
+                name="rn sd",
+                value=0.006,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["TGFb"],
+                    ),
+                ],
+            ),
+        ],
     )
 
 
@@ -268,6 +327,7 @@ def get_data2() -> Data:
         ),
         endogenous_control="",
         reference_sample="",
+        calculated_documents=[],
     )
 
 
@@ -685,6 +745,90 @@ def get_model() -> Model:
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
+            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                calculated_data_document=[
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="3bd75f5b-d108-485f-b658-4241b2799f11",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn mean",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=1.261,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="c97a989a-464e-4776-8c50-cc42d7ecd01e",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn sd",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.088,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="b41977c9-8da0-4dc7-891a-2834576a0823",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn mean",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.397,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="bd5f29a3-ad92-4e5c-8db9-9fdb6dec0f68",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn sd",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.006,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                ]
+            ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
@@ -947,6 +1091,9 @@ def get_model2() -> Model:
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
+            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                calculated_data_document=[],
+            ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
@@ -1066,6 +1213,7 @@ def get_genotyping_data() -> Data:
         raw_data=None,
         endogenous_control="",
         reference_sample="",
+        calculated_documents=[],
     )
 
 
@@ -1282,6 +1430,9 @@ def get_genotyping_model() -> Model:
                 software_version="1.0",
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
+            ),
+            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                calculated_data_document=[],
             ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",

@@ -16,6 +16,7 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
 
@@ -76,6 +77,7 @@ class Well:
     items: dict[str, WellItem]
     multicomponent_data: Optional[MulticomponentData] = None
     melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    calculated_document: Optional[CalculatedDocument] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -172,3 +174,4 @@ class Data:
     raw_data: Optional[RawData]
     endogenous_control: str
     reference_sample: str
+    calculated_documents: list[CalculatedDocument]
