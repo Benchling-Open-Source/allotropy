@@ -408,9 +408,9 @@
                           }
                         },
                         "total partition count": {
-                          "type": "integer",
                           "$asm.property-class": "TODO",
-                          "$asm.pattern": "value datum"
+                          "$asm.pattern": "quantity datum",
+                          "$ref": "#/$custom/tQuantityValueNumber"
                         },
                         "processed data aggregate document": {
                           "type": "object",
@@ -456,14 +456,14 @@
                                     "$ref": "#/$custom/tQuantityValueNumberPerMicroliter"
                                   },
                                   "positive partition count": {
-                                    "type": "integer",
                                     "$asm.property-class": "TODO",
-                                    "$asm.pattern": "value datum"
+                                    "$asm.pattern": "quantity datum",
+                                    "$ref": "#/$custom/tQuantityValueNumber"
                                   },
                                   "negative partition count": {
-                                    "type": "integer",
                                     "$asm.property-class": "TODO",
-                                    "$asm.pattern": "value datum"
+                                    "$asm.pattern": "quantity datum",
+                                    "$ref": "#/$custom/tQuantityValueNumber"
                                   }
                                 }
                               },
