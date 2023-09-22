@@ -423,62 +423,23 @@ class CalculatedDocumentBuilder:
                 yield from calc_doc.iter_struct()
 
     def iter_presence_absence_calc_docs(self) -> Iterator[CalculatedDocument]:
-        # Ct Mean, Ct SD, Rn Mean, Rn SD
+        # Rn Mean, Rn SD
         for sample, target in self.view_st_data.iter_keys():
-            if calc_doc := self.build_ct_mean(sample, target):
-                yield from calc_doc.iter_struct()
-
-            if calc_doc := self.build_ct_sd(sample, target):
-                yield from calc_doc.iter_struct()
-
             if calc_doc := self.build_rn_mean(sample, target):
                 yield from calc_doc.iter_struct()
 
             if calc_doc := self.build_rn_sd(sample, target):
                 yield from calc_doc.iter_struct()
 
-    def iter_genotyping_calc_docs(self) -> Iterator[CalculatedDocument]:
-        # Ct Mean, Ct SD
-        for sample, target in self.view_st_data.iter_keys():
-            if calc_doc := self.build_ct_mean(sample, target):
-                yield from calc_doc.iter_struct()
-
-            if calc_doc := self.build_ct_sd(sample, target):
-                yield from calc_doc.iter_struct()
-
-    def iter_melt_curve_calc_docs(self) -> Iterator[CalculatedDocument]:
-        # Ct Mean, Ct SD
-        for sample, target in self.view_st_data.iter_keys():
-            if calc_doc := self.build_ct_mean(sample, target):
-                yield from calc_doc.iter_struct()
-
-            if calc_doc := self.build_ct_sd(sample, target):
-                yield from calc_doc.iter_struct()
-
-    def iter_qpcr_calc_docs(self) -> Iterator[CalculatedDocument]:
-        # Ct Mean, Ct SD
-        for sample, target in self.view_st_data.iter_keys():
-            if calc_doc := self.build_ct_mean(sample, target):
-                yield from calc_doc.iter_struct()
-
-            if calc_doc := self.build_ct_sd(sample, target):
-                yield from calc_doc.iter_struct()
-
     def iter_calculated_data_documents(self) -> Iterator[CalculatedDocument]:
-        if self.experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            yield from self.iter_genotyping_calc_docs()
-        elif (
+        if (
             self.experiment_type
             == ExperimentType.relative_standard_curve_qPCR_experiment
         ):
             yield from self.iter_relative_standard_curve_calc_docs()
-        elif self.experiment_type == ExperimentType.melt_curve_qPCR_experiment:
-            yield from self.iter_melt_curve_calc_docs()
         elif self.experiment_type == ExperimentType.comparative_CT_qPCR_experiment:
             yield from self.iter_comparative_ct_calc_docs()
         elif self.experiment_type == ExperimentType.standard_curve_qPCR_experiment:
             yield from self.iter_standard_curve_calc_docs()
-        elif self.experiment_type == ExperimentType.qPCR_experiment:
-            yield from self.iter_qpcr_calc_docs()
         elif self.experiment_type == ExperimentType.presence_absence_qPCR_experiment:
             yield from self.iter_presence_absence_calc_docs()
