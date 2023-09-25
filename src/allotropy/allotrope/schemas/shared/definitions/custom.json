@@ -109,6 +109,16 @@
             }
         ]
     },
+    "tQuantityValueNumberPerMicroliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/NumberPerMicroliter"
+            }
+        ]
+    },
     "tQuantityValueMillionCellsPerMilliliter": {
         "allOf": [
             {

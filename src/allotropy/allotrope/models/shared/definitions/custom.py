@@ -21,6 +21,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilliSecond,
     Nanometer,
     Number,
+    NumberPerMicroliter,
     OpticalDensity,
     Percent,
     PH,
@@ -84,6 +85,12 @@ class TQuantityValueCell(Cell, TQuantityValueWithOptionalUnit):
 
 @dataclass
 class TQuantityValueMicroliter(Microliter, TQuantityValueWithOptionalUnit):
+    pass
+
+
+class TQuantityValueNumberPerMicroliter(
+    NumberPerMicroliter, TQuantityValueWithOptionalUnit
+):
     pass
 
 
