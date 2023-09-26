@@ -26,23 +26,6 @@ output_files = (
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
-def rm_measurement_identifier(model: Model) -> Model:
-    if model.qPCR_aggregate_document:
-        for qpcr_doc in model.qPCR_aggregate_document.qPCR_document:
-            for (
-                measurement_doc
-            ) in qpcr_doc.measurement_aggregate_document.measurement_document:
-                measurement_doc.measurement_identifier = ""
-
-        if model.qPCR_aggregate_document.calculated_data_aggregate_document:
-            for calc_doc in (
-                model.qPCR_aggregate_document.calculated_data_aggregate_document.calculated_data_document
-                or []
-            ):
-                calc_doc.calculated_data_identifier = ""
-    return model
-
-
 @pytest.mark.parametrize("output_file", output_files)
 def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
@@ -75,4 +58,4 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
 def test_get_model(file_name: str, data: Data, model: Model) -> None:
     parser = AppBioQuantStudioParser(TimestampParser())
     generated = parser._get_model(data, file_name)
-    assert rm_measurement_identifier(generated) == rm_measurement_identifier(model)
+    assert generated == model
