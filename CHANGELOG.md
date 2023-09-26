@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Changed
 - Typing ignore tags are removed from the construction of AppBio Quantstudio structure
+- Redefinition of AppBio Quantstudio get model test to take into account calculated documents references
 
 ### Deprecated
 ### Removed
