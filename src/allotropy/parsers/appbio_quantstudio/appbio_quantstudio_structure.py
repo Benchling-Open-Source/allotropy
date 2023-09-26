@@ -8,6 +8,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
 from typing import Optional
 
@@ -15,6 +16,8 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
+from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
 
 @dataclass
@@ -34,7 +37,8 @@ class Header:
 
 
 @dataclass
-class WellItem:
+class WellItem(Referenceable):
+    uuid: str
     identifier: int
     target_dna_description: str
     sample_identifier: str
@@ -73,6 +77,7 @@ class Well:
     items: dict[str, WellItem]
     multicomponent_data: Optional[MulticomponentData] = None
     melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    calculated_document: Optional[CalculatedDocument] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -86,6 +91,18 @@ class Well:
 
     def add_melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
         self.melt_curve_raw_data = melt_curve_raw_data
+
+
+@dataclass
+class WellList:
+    wells: list[Well]
+
+    def iter_well_items(self) -> Iterator[WellItem]:
+        for well in self.wells:
+            yield from well.items.values()
+
+    def __iter__(self) -> Iterator[Well]:
+        return iter(self.wells)
 
 
 @dataclass
@@ -124,36 +141,23 @@ class Result:
     baseline_corrected_reporter_result: Optional[float]
     genotyping_determination_result: Optional[str]
     genotyping_determination_method_setting: Optional[float]
-
-    def __init__(
-        self,
-        cycle_threshold_value_setting: float,
-        cycle_threshold_result: Optional[float],
-        automatic_cycle_threshold_enabled_setting: Optional[bool],
-        automatic_baseline_determination_enabled_setting: Optional[bool],
-        normalized_reporter_result: Optional[float],
-        baseline_corrected_reporter_result: Optional[float],
-        genotyping_determination_result: Optional[str],
-        genotyping_determination_method_setting: Optional[float],
-    ):
-        self.cycle_threshold_value_setting = cycle_threshold_value_setting
-        self.cycle_threshold_result = cycle_threshold_result
-        self.automatic_cycle_threshold_enabled_setting = (
-            None
-            if automatic_cycle_threshold_enabled_setting is None
-            else bool(automatic_cycle_threshold_enabled_setting)
-        )
-        self.automatic_baseline_determination_enabled_setting = (
-            None
-            if automatic_baseline_determination_enabled_setting is None
-            else bool(automatic_baseline_determination_enabled_setting)
-        )
-        self.normalized_reporter_result = normalized_reporter_result
-        self.baseline_corrected_reporter_result = baseline_corrected_reporter_result
-        self.genotyping_determination_result = genotyping_determination_result
-        self.genotyping_determination_method_setting = (
-            genotyping_determination_method_setting
-        )
+    quantity: Optional[float]
+    quantity_mean: Optional[float]
+    quantity_sd: Optional[float]
+    ct_mean: Optional[float]
+    ct_sd: Optional[float]
+    delta_ct_mean: Optional[float]
+    delta_ct_se: Optional[float]
+    delta_delta_ct: Optional[float]
+    rq: Optional[float]
+    rq_min: Optional[float]
+    rq_max: Optional[float]
+    rn_mean: Optional[float]
+    rn_sd: Optional[float]
+    y_intercept: Optional[float]
+    r_squared: Optional[float]
+    slope: Optional[float]
+    efficiency: Optional[float]
 
 
 @dataclass
@@ -166,5 +170,8 @@ class MeltCurveRawData:
 @dataclass
 class Data:
     header: Header
-    wells: list[Well]
+    wells: WellList
     raw_data: Optional[RawData]
+    endogenous_control: str
+    reference_sample: str
+    calculated_documents: list[CalculatedDocument]

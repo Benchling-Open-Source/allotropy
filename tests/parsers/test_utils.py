@@ -23,7 +23,11 @@ def replace_asm_converter_name_and_version(allotrope_dict: dict) -> None:
 
 def assert_allotrope_dicts_equal(expected: dict, actual: dict) -> None:
     replace_asm_converter_name_and_version(expected)
-    exclude_regex = [r"\['measurement identifier'\]"]
+    exclude_regex = [
+        r"\['measurement identifier'\]",
+        r"\['data source identifier'\]",
+        r"\['calculated data identifier'\]",
+    ]
     # Uncomment for more info
     # print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
     assert not DeepDiff(

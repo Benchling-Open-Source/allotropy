@@ -1,7 +1,10 @@
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     BaselineCorrectedReporterDataCube,
+    CalculatedDataDocumentItem,
     ContainerType,
     DataProcessingDocument,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -19,6 +22,7 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     QPCRDocumentItem,
     ReporterDyeDataCube,
     SampleDocument,
+    TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueUnitless,
@@ -42,10 +46,119 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     Well,
     WellItem,
+    WellList,
+)
+from allotropy.parsers.appbio_quantstudio.calculated_document import (
+    CalculatedDocument,
+    DataSource,
 )
 
 
 def get_data() -> Data:
+    well = Well(
+        identifier=1,
+        items={
+            "IPC": WellItem(
+                uuid="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                identifier=1,
+                position="A1",
+                target_dna_description="IPC",
+                sample_identifier="NAC",
+                well_location_identifier="A1",
+                reporter_dye_setting="VIC",
+                quencher_dye_setting="NFQ-MGB",
+                sample_role_type="BlockedIPC",
+                amplification_data_obj=AmplificationData(
+                    total_cycle_number_setting=1,
+                    cycle=[1],
+                    rn=[1.064],
+                    delta_rn=[-0.002],
+                ),
+                result_obj=Result(
+                    cycle_threshold_value_setting=0.2,
+                    cycle_threshold_result=None,
+                    automatic_cycle_threshold_enabled_setting=False,
+                    automatic_baseline_determination_enabled_setting=False,
+                    normalized_reporter_result=1.13,
+                    baseline_corrected_reporter_result=None,
+                    genotyping_determination_result="Blocked IPC Control",
+                    genotyping_determination_method_setting=0.0,
+                    quantity=None,
+                    quantity_mean=None,
+                    quantity_sd=None,
+                    ct_mean=None,
+                    ct_sd=None,
+                    delta_ct_mean=None,
+                    delta_ct_se=None,
+                    delta_delta_ct=None,
+                    rq=None,
+                    rq_min=None,
+                    rq_max=None,
+                    rn_mean=1.261,
+                    rn_sd=0.088,
+                    y_intercept=None,
+                    r_squared=None,
+                    slope=None,
+                    efficiency=None,
+                ),
+            ),
+            "TGFb": WellItem(
+                uuid="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                identifier=1,
+                position="A1",
+                target_dna_description="TGFb",
+                sample_identifier="NAC",
+                well_location_identifier="A1",
+                reporter_dye_setting="FAM",
+                quencher_dye_setting="NFQ-MGB",
+                sample_role_type="NTC",
+                amplification_data_obj=AmplificationData(
+                    total_cycle_number_setting=1,
+                    cycle=[1],
+                    rn=[0.343],
+                    delta_rn=[-0.007],
+                ),
+                result_obj=Result(
+                    cycle_threshold_value_setting=0.2,
+                    cycle_threshold_result=None,
+                    automatic_cycle_threshold_enabled_setting=False,
+                    automatic_baseline_determination_enabled_setting=False,
+                    normalized_reporter_result=0.402,
+                    baseline_corrected_reporter_result=None,
+                    genotyping_determination_result="Negative Control",
+                    genotyping_determination_method_setting=0.0,
+                    quantity=None,
+                    quantity_mean=None,
+                    quantity_sd=None,
+                    ct_mean=None,
+                    ct_sd=None,
+                    delta_ct_mean=None,
+                    delta_ct_se=None,
+                    delta_delta_ct=None,
+                    rq=None,
+                    rq_min=None,
+                    rq_max=None,
+                    rn_mean=0.397,
+                    rn_sd=0.006,
+                    y_intercept=None,
+                    r_squared=None,
+                    slope=None,
+                    efficiency=None,
+                ),
+            ),
+        },
+        multicomponent_data=MulticomponentData(
+            cycle=[1],
+            columns={
+                "FAM": [502840.900],
+                "ROX": [1591197.500],
+                "VIC": [1654662.500],
+            },
+        ),
+        melt_curve_raw_data=None,
+        calculated_document=None,
+    )
+
     return Data(
         header=Header(
             measurement_time="2010-10-01 01:44:54 AM EDT",
@@ -61,74 +174,7 @@ def get_data() -> Data:
             qpcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
         ),
-        wells=[
-            Well(
-                identifier=1,
-                items={
-                    "IPC": WellItem(
-                        identifier=1,
-                        position="A1",
-                        target_dna_description="IPC",
-                        sample_identifier="NAC",
-                        well_location_identifier="A1",
-                        reporter_dye_setting="VIC",
-                        quencher_dye_setting="NFQ-MGB",
-                        sample_role_type="BlockedIPC",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=1,
-                            cycle=[1],
-                            rn=[1.064],
-                            delta_rn=[-0.002],
-                        ),
-                        result_obj=Result(
-                            cycle_threshold_value_setting=0.2,
-                            cycle_threshold_result=None,
-                            automatic_cycle_threshold_enabled_setting=False,
-                            automatic_baseline_determination_enabled_setting=False,
-                            normalized_reporter_result=1.13,
-                            baseline_corrected_reporter_result=None,
-                            genotyping_determination_result="Blocked IPC Control",
-                            genotyping_determination_method_setting=0.0,
-                        ),
-                    ),
-                    "TGFb": WellItem(
-                        identifier=1,
-                        position="A1",
-                        target_dna_description="TGFb",
-                        sample_identifier="NAC",
-                        well_location_identifier="A1",
-                        reporter_dye_setting="FAM",
-                        quencher_dye_setting="NFQ-MGB",
-                        sample_role_type="NTC",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=1,
-                            cycle=[1],
-                            rn=[0.343],
-                            delta_rn=[-0.007],
-                        ),
-                        result_obj=Result(
-                            cycle_threshold_value_setting=0.2,
-                            cycle_threshold_result=None,
-                            automatic_cycle_threshold_enabled_setting=False,
-                            automatic_baseline_determination_enabled_setting=False,
-                            normalized_reporter_result=0.402,
-                            baseline_corrected_reporter_result=None,
-                            genotyping_determination_result="Negative Control",
-                            genotyping_determination_method_setting=0.0,
-                        ),
-                    ),
-                },
-                multicomponent_data=MulticomponentData(
-                    cycle=[1],
-                    columns={
-                        "FAM": [502840.900],
-                        "ROX": [1591197.500],
-                        "VIC": [1654662.500],
-                    },
-                ),
-                melt_curve_raw_data=None,
-            ),
-        ],
+        wells=WellList([well]),
         raw_data=RawData(
             [
                 "Well\tWell Position\tCycle\tx1-m1\tx2-m2\tx3-m3\tx4-m4\tx5-m5",
@@ -137,10 +183,124 @@ def get_data() -> Data:
                 "",
             ]
         ),
+        endogenous_control="",
+        reference_sample="",
+        calculated_documents=[
+            CalculatedDocument(
+                uuid="d006e7e7-fbe4-47cf-821b-904e85202803",
+                name="rn mean",
+                value=1.261,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["IPC"],
+                    ),
+                ],
+            ),
+            CalculatedDocument(
+                uuid="f4fee39c-5861-4203-afcf-94ee755ac0b4",
+                name="rn sd",
+                value=0.088,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["IPC"],
+                    ),
+                ],
+            ),
+            CalculatedDocument(
+                uuid="e6707b0c-4494-412f-8a8e-ef51d01f25b3",
+                name="rn mean",
+                value=0.397,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["TGFb"],
+                    ),
+                ],
+            ),
+            CalculatedDocument(
+                uuid="da78a225-2c34-40b3-b487-97893bfe491a",
+                name="rn sd",
+                value=0.006,
+                iterated=True,
+                data_sources=[
+                    DataSource(
+                        feature="normalized reporter result",
+                        reference=well.items["TGFb"],
+                    ),
+                ],
+            ),
+        ],
     )
 
 
 def get_data2() -> Data:
+    well = Well(
+        identifier=1,
+        items={
+            "B2M-Qiagen": WellItem(
+                uuid="1e572828d-45fd-49bd-ab66-2a7f06aea3b6",
+                identifier=1,
+                position="A1",
+                target_dna_description="B2M-Qiagen",
+                sample_identifier="1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
+                well_location_identifier="A1",
+                reporter_dye_setting="SYBR",
+                quencher_dye_setting=None,
+                sample_role_type="UNKNOWN",
+                amplification_data_obj=AmplificationData(
+                    total_cycle_number_setting=1,
+                    cycle=[1],
+                    rn=[0.612],
+                    delta_rn=[-0.007],
+                ),
+                result_obj=Result(
+                    cycle_threshold_value_setting=0.277,
+                    cycle_threshold_result=18.717,
+                    automatic_cycle_threshold_enabled_setting=True,
+                    automatic_baseline_determination_enabled_setting=True,
+                    normalized_reporter_result=None,
+                    baseline_corrected_reporter_result=None,
+                    genotyping_determination_result=None,
+                    genotyping_determination_method_setting=None,
+                    quantity=None,
+                    quantity_mean=None,
+                    quantity_sd=None,
+                    ct_mean=18.717,
+                    ct_sd=None,
+                    delta_ct_mean=None,
+                    delta_ct_se=None,
+                    delta_delta_ct=None,
+                    rq=None,
+                    rq_min=None,
+                    rq_max=None,
+                    rn_mean=None,
+                    rn_sd=None,
+                    y_intercept=None,
+                    r_squared=None,
+                    slope=None,
+                    efficiency=None,
+                ),
+            ),
+        },
+        multicomponent_data=MulticomponentData(
+            cycle=[1],
+            columns={
+                "ROX": [55573.94],
+                "SYBR": [34014.32],
+            },
+        ),
+        melt_curve_raw_data=MeltCurveRawData(
+            reading=[1],
+            fluorescence=[3.478],
+            derivative=[0.093],
+        ),
+    )
+
     return Data(
         header=Header(
             measurement_time="2001-12-31 09:09:19 PM EST",
@@ -156,51 +316,7 @@ def get_data2() -> Data:
             qpcr_detection_chemistry="SYBR_GREEN",
             passive_reference_dye_setting="ROX",
         ),
-        wells=[
-            Well(
-                identifier=1,
-                items={
-                    "B2M-Qiagen": WellItem(
-                        identifier=1,
-                        position="A1",
-                        target_dna_description="B2M-Qiagen",
-                        sample_identifier="1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1",
-                        well_location_identifier="A1",
-                        reporter_dye_setting="SYBR",
-                        quencher_dye_setting=None,
-                        sample_role_type="UNKNOWN",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=1,
-                            cycle=[1],
-                            rn=[0.612],
-                            delta_rn=[-0.007],
-                        ),
-                        result_obj=Result(
-                            cycle_threshold_value_setting=0.277,
-                            cycle_threshold_result=18.717,
-                            automatic_cycle_threshold_enabled_setting=True,
-                            automatic_baseline_determination_enabled_setting=True,
-                            normalized_reporter_result=None,
-                            baseline_corrected_reporter_result=None,
-                            genotyping_determination_result=None,
-                            genotyping_determination_method_setting=None,
-                        ),
-                    ),
-                },
-                multicomponent_data=MulticomponentData(
-                    cycle=[1],
-                    columns={
-                        "ROX": [55573.94],
-                        "SYBR": [34014.32],
-                    },
-                ),
-                melt_curve_raw_data=MeltCurveRawData(
-                    reading=[1],
-                    fluorescence=[3.478],
-                    derivative=[0.093],
-                ),
-            ),
-        ],
+        wells=WellList([well]),
         raw_data=RawData(
             [
                 "Well\tWell Position\tCycle\tx1-m1\tx2-m2\tx3-m3\tx4-m4\tx5-m5",
@@ -209,6 +325,9 @@ def get_data2() -> Data:
                 "",
             ]
         ),
+        endogenous_control="",
+        reference_sample="",
+        calculated_documents=[],
     )
 
 
@@ -235,7 +354,7 @@ def get_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
                                 measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="IPC",
                                 sample_document=SampleDocument(
@@ -421,7 +540,7 @@ def get_model() -> Model:
                                 melting_curve_data_cube=None,
                             ),
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
                                 measurement_time="2010-10-01T01:44:54-04:00",
                                 target_DNA_description="TGFb",
                                 sample_document=SampleDocument(
@@ -626,6 +745,90 @@ def get_model() -> Model:
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
+            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                calculated_data_document=[
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="3bd75f5b-d108-485f-b658-4241b2799f11",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn mean",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=1.261,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="c97a989a-464e-4776-8c50-cc42d7ecd01e",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="d170f2df-7ff8-4978-b13d-a7ad19fab824",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn sd",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.088,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="b41977c9-8da0-4dc7-891a-2834576a0823",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn mean",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.397,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="bd5f29a3-ad92-4e5c-8db9-9fdb6dec0f68",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="ba281c64-0605-4e76-8e9c-2a183be3cc08",
+                                    data_source_feature="normalized reporter result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=None,
+                        calculated_data_name="rn sd",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=0.006,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                ]
+            ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
@@ -654,7 +857,7 @@ def get_model2() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="",
+                                measurement_identifier="1e572828d-45fd-49bd-ab66-2a7f06aea3b6",
                                 measurement_time="2001-12-31T21:09:19-05:00",
                                 target_DNA_description="B2M-Qiagen",
                                 sample_document=SampleDocument(
@@ -888,20 +1091,117 @@ def get_model2() -> Model:
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
+            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                calculated_data_document=[],
+            ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",
     )
 
 
 def get_genotyping_data() -> Data:
+    well = Well(
+        identifier=0,
+        items={
+            "CYP19_2-Allele 1": WellItem(
+                uuid="3c40d2c2-0a64-433f-b639-e9c6e896313e",
+                identifier=1,
+                position="A1",
+                target_dna_description="CYP19_2-Allele 1",
+                sample_identifier="NTC",
+                well_location_identifier="A1",
+                reporter_dye_setting=None,
+                quencher_dye_setting=None,
+                sample_role_type="NTC",
+                amplification_data_obj=AmplificationData(
+                    total_cycle_number_setting=2,
+                    cycle=[1, 2],
+                    rn=[0.275, 0.277],
+                    delta_rn=[-0.003, -0.001],
+                ),
+                result_obj=Result(
+                    cycle_threshold_value_setting=0.219,
+                    cycle_threshold_result=None,
+                    automatic_cycle_threshold_enabled_setting=True,
+                    automatic_baseline_determination_enabled_setting=True,
+                    normalized_reporter_result=None,
+                    baseline_corrected_reporter_result=0.016,
+                    genotyping_determination_result="Negative Control (NC)",
+                    genotyping_determination_method_setting=None,
+                    quantity=None,
+                    quantity_mean=None,
+                    quantity_sd=None,
+                    ct_mean=None,
+                    ct_sd=None,
+                    delta_ct_mean=None,
+                    delta_ct_se=None,
+                    delta_delta_ct=None,
+                    rq=None,
+                    rq_min=None,
+                    rq_max=None,
+                    rn_mean=None,
+                    rn_sd=None,
+                    y_intercept=None,
+                    r_squared=None,
+                    slope=None,
+                    efficiency=None,
+                ),
+            ),
+            "CYP19_2-Allele 2": WellItem(
+                uuid="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
+                identifier=1,
+                position="A1",
+                target_dna_description="CYP19_2-Allele 2",
+                sample_identifier="NTC",
+                well_location_identifier="A1",
+                reporter_dye_setting=None,
+                quencher_dye_setting=None,
+                sample_role_type="NTC",
+                amplification_data_obj=AmplificationData(
+                    total_cycle_number_setting=2,
+                    cycle=[1, 2],
+                    rn=[0.825, 0.831],
+                    delta_rn=[-0.016, -0.011],
+                ),
+                result_obj=Result(
+                    cycle_threshold_value_setting=0.132,
+                    cycle_threshold_result=None,
+                    automatic_cycle_threshold_enabled_setting=True,
+                    automatic_baseline_determination_enabled_setting=True,
+                    normalized_reporter_result=None,
+                    baseline_corrected_reporter_result=0.029,
+                    genotyping_determination_result="Negative Control (NC)",
+                    genotyping_determination_method_setting=None,
+                    quantity=None,
+                    quantity_mean=None,
+                    quantity_sd=None,
+                    ct_mean=None,
+                    ct_sd=None,
+                    delta_ct_mean=None,
+                    delta_ct_se=None,
+                    delta_delta_ct=None,
+                    rq=None,
+                    rq_min=None,
+                    rq_max=None,
+                    rn_mean=None,
+                    rn_sd=None,
+                    y_intercept=None,
+                    r_squared=None,
+                    slope=None,
+                    efficiency=None,
+                ),
+            ),
+        },
+    )
+
     return Data(
         header=Header(
-            measurement_time="2001-12-31T21:09:19-05:00",
+            measurement_time="2010-09-16 07:35:29 AM EDT",
             plate_well_count=96,
             barcode=None,
             device_identifier="Sponge_Bob_32",
             model_number="QuantStudio(TM) 7 Flex System",
-            device_serial_number="278880032",
+            device_serial_number="123456789",
             analyst=None,
             experimental_data_identifier="QuantStudio 96-Well SNP Genotyping Example",
             experiment_type=ExperimentType.genotyping_qPCR_experiment,
@@ -909,66 +1209,11 @@ def get_genotyping_data() -> Data:
             qpcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
         ),
-        wells=[
-            Well(
-                identifier=1,
-                items={
-                    "CYP19_2-Allele 1": WellItem(
-                        identifier=1,
-                        position="A1",
-                        target_dna_description="CYP19_2-Allele 1",
-                        sample_identifier="NTC",
-                        well_location_identifier="A1",
-                        reporter_dye_setting="SYBR",
-                        quencher_dye_setting=None,
-                        sample_role_type="PC_ALLELE_1",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=2,
-                            cycle=[1, 2],
-                            rn=[0.275, 0.277],
-                            delta_rn=[-0.003, -0.001],
-                        ),
-                        result_obj=Result(
-                            cycle_threshold_value_setting=0.219,
-                            cycle_threshold_result=None,
-                            automatic_cycle_threshold_enabled_setting=True,
-                            automatic_baseline_determination_enabled_setting=True,
-                            normalized_reporter_result=None,
-                            baseline_corrected_reporter_result=0.016,
-                            genotyping_determination_result="Negative Control (NC)",
-                            genotyping_determination_method_setting=None,
-                        ),
-                    ),
-                    "CYP19_2-Allele 2": WellItem(
-                        identifier=1,
-                        position="A1",
-                        target_dna_description="CYP19_2-Allele 2",
-                        sample_identifier="NTC",
-                        well_location_identifier="A1",
-                        reporter_dye_setting="SYBR",
-                        quencher_dye_setting=None,
-                        sample_role_type="PC_ALLELE_1",
-                        amplification_data_obj=AmplificationData(
-                            total_cycle_number_setting=2,
-                            cycle=[1, 2],
-                            rn=[0.825, 0.831],
-                            delta_rn=[-0.016, -0.011],
-                        ),
-                        result_obj=Result(
-                            cycle_threshold_value_setting=0.132,
-                            cycle_threshold_result=None,
-                            automatic_cycle_threshold_enabled_setting=True,
-                            automatic_baseline_determination_enabled_setting=True,
-                            normalized_reporter_result=None,
-                            baseline_corrected_reporter_result=0.029,
-                            genotyping_determination_result="Negative Control (NC)",
-                            genotyping_determination_method_setting=None,
-                        ),
-                    ),
-                },
-            ),
-        ],
+        wells=WellList([well]),
         raw_data=None,
+        endogenous_control="",
+        reference_sample="",
+        calculated_documents=[],
     )
 
 
@@ -978,7 +1223,7 @@ def get_genotyping_model() -> Model:
             device_system_document=DeviceSystemDocument(
                 device_identifier="Sponge_Bob_32",
                 model_number="QuantStudio(TM) 7 Flex System",
-                device_serial_number="278880032",
+                device_serial_number="123456789",
             ),
             qPCR_document=[
                 QPCRDocumentItem(
@@ -988,12 +1233,12 @@ def get_genotyping_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="",
-                                measurement_time="2001-12-31T21:09:19-05:00",
+                                measurement_identifier="3c40d2c2-0a64-433f-b639-e9c6e896313e",
+                                measurement_time="2010-09-16T07:35:29-04:00",
                                 target_DNA_description="CYP19_2-Allele 1",
                                 sample_document=SampleDocument(
                                     sample_identifier="NTC",
-                                    sample_role_type="PC_ALLELE_1",
+                                    sample_role_type="NTC",
                                     well_location_identifier="A1",
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -1005,7 +1250,7 @@ def get_genotyping_model() -> Model:
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
-                                            reporter_dye_setting="SYBR",
+                                            reporter_dye_setting=None,
                                             passive_reference_dye_setting="ROX",
                                         )
                                     ]
@@ -1079,12 +1324,12 @@ def get_genotyping_model() -> Model:
                                 ),
                             ),
                             MeasurementDocumentItem(
-                                measurement_identifier="",
-                                measurement_time="2001-12-31T21:09:19-05:00",
+                                measurement_identifier="cba0ba82-1486-4e0c-90ec-2abdfaf254b0",
+                                measurement_time="2010-09-16T07:35:29-04:00",
                                 target_DNA_description="CYP19_2-Allele 2",
                                 sample_document=SampleDocument(
                                     sample_identifier="NTC",
-                                    sample_role_type="PC_ALLELE_1",
+                                    sample_role_type="NTC",
                                     well_location_identifier="A1",
                                 ),
                                 device_control_aggregate_document=DeviceControlAggregateDocument(
@@ -1096,7 +1341,7 @@ def get_genotyping_model() -> Model:
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
-                                            reporter_dye_setting="SYBR",
+                                            reporter_dye_setting=None,
                                             passive_reference_dye_setting="ROX",
                                         )
                                     ]
@@ -1185,6 +1430,9 @@ def get_genotyping_model() -> Model:
                 software_version="1.0",
                 ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
+            ),
+            calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                calculated_data_document=[],
             ),
         ),
         manifest="http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest",

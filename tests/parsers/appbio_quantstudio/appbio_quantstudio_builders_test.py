@@ -14,12 +14,26 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
     ResultsBuilder,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
+    Data,
     Header,
     Result,
     WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader
-from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import get_data, get_data2
+from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
+    get_data,
+    get_data2,
+    get_genotyping_data,
+)
+
+
+def rm_uuid(data: Data) -> Data:
+    for well in data.wells:
+        for well_item in well.items.values():
+            well_item.uuid = ""
+    for calc_doc in data.calculated_documents:
+        calc_doc.uuid = ""
+    return data
 
 
 @pytest.mark.short
@@ -78,7 +92,7 @@ def test_header_builder() -> None:
             "Unable to get measurement method identifier",
         ),
         ("qpcr_detection_chemistry", "Unable to get qpcr detection chemistry"),
-        ("plate_well_count", "Unable to get plate well count"),
+        ("plate_well_count", "Unable to interpret plate well count"),
     ],
 )
 @pytest.mark.short
@@ -121,6 +135,7 @@ def test_results_builder() -> None:
         }
     )
     well_item = WellItem(
+        uuid="be566c58-41f3-40f8-900b-ef1dff20d264",
         identifier=1,
         position="A1",
         target_dna_description="CYP19_2-Allele 1",
@@ -140,22 +155,27 @@ def test_results_builder() -> None:
 
 
 @pytest.mark.short
-def test_data_builder() -> None:
-    test_filepath = (
-        "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt"
-    )
+@pytest.mark.parametrize(
+    "test_filepath,expected_data",
+    [
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test01.txt",
+            get_data(),
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt",
+            get_data2(),
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test03.txt",
+            get_genotyping_data(),
+        ),
+    ],
+)
+def test_data_builder(test_filepath: str, expected_data: Data) -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
-
-    assert DataBuilder.build(reader) == get_data()
-
-    test_filepath = (
-        "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test02.txt"
-    )
-    with open(test_filepath, "rb") as raw_contents:
-        reader = LinesReader(raw_contents)
-
-    assert DataBuilder.build(reader) == get_data2()
+    assert rm_uuid(DataBuilder.build(reader)) == rm_uuid(expected_data)
 
 
 def get_raw_header_contents(

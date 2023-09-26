@@ -8,8 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add Allotrope Simple Model schema for Digital PCR (dPCR) documents
 - Autogenerate Models for dPCR
+- Calculated documents are introduced in the AppBio Quantstudio parser
+- Genotyping data structure test for AppBio Quantstudio parser
 ### Fixed
 ### Changed
+- Typing ignore tags are removed from the construction of AppBio Quantstudio structure
+
 ### Deprecated
 ### Removed
 ### Security
