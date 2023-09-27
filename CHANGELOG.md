@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Calculated documents are introduced in the AppBio Quantstudio parser
 - Genotyping data structure test for AppBio Quantstudio parser
 ### Fixed
+- Ignore unexpected sections in AppBio Quantstudio input file
+- Accept comma as thousand indicator in AppBio Quantstudio results section
 ### Changed
 - Typing ignore tags are removed from the construction of AppBio Quantstudio structure
 - Redefinition of AppBio Quantstudio get model test to take into account calculated documents references
