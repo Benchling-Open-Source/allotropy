@@ -748,7 +748,7 @@ def get_model() -> Model:
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="3bd75f5b-d108-485f-b658-4241b2799f11",
+                        calculated_data_identifier="d006e7e7-fbe4-47cf-821b-904e85202803",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -768,7 +768,7 @@ def get_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="c97a989a-464e-4776-8c50-cc42d7ecd01e",
+                        calculated_data_identifier="f4fee39c-5861-4203-afcf-94ee755ac0b4",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -788,7 +788,7 @@ def get_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="b41977c9-8da0-4dc7-891a-2834576a0823",
+                        calculated_data_identifier="e6707b0c-4494-412f-8a8e-ef51d01f25b3",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
@@ -808,7 +808,7 @@ def get_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="bd5f29a3-ad92-4e5c-8db9-9fdb6dec0f68",
+                        calculated_data_identifier="da78a225-2c34-40b3-b487-97893bfe491a",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
