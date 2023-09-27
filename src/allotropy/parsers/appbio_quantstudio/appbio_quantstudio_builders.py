@@ -55,7 +55,7 @@ def get_int(data: pd.Series, key: str) -> Optional[int]:
 def get_float(data: pd.Series, key: str) -> Optional[float]:
     try:
         value = data.get(key)
-        return None if value is None else float(value)  # type: ignore[arg-type]
+        return float_or_none(value)
     except Exception as e:
         msg = f"Unable to convert {key} to float value"
         raise AllotropeConversionError(msg) from e
@@ -544,7 +544,7 @@ class ResultsBuilder:
         reader.pop()  # remove title
         data_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(data_lines))
-        data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
+        data = pd.read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
 
         reader.drop_empty()
 
