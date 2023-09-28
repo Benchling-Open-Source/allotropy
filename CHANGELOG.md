@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Test for relative standard curve in AppBio QuantStudio
 ### Fixed
+- Redefine way to construct calculated documents for relative standard curve in AppBio QuantStudio
 ### Changed
 - Accept comma as thousand indicator in all sections with numeric values of AppBio Quantstudio
 - Decouple calculated document builder in AppBio QuantStudio
