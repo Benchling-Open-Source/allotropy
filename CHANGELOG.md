@@ -6,29 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add Allotrope Simple Model schema for Digital PCR (dPCR) documents
-- Autogenerate Models for dPCR
-- Calculated documents are introduced in the AppBio Quantstudio parser
+### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.2] - 2023-09-27
+### Added
+- Allotrope Simple Model schema for Digital PCR (dPCR) documents
+- Calculated documents for the AppBio Quantstudio parser
 - Genotyping data structure test for AppBio Quantstudio parser
 ### Fixed
+- Typing ignore tags removed from the construction of AppBio Quantstudio structure
 - Ignore unexpected sections in AppBio Quantstudio input file
 - Accept comma as thousand indicator in AppBio Quantstudio results section
-### Changed
-- Typing ignore tags are removed from the construction of AppBio Quantstudio structure
-- Redefinition of AppBio Quantstudio get model test to take into account calculated documents references
-
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.1] - 2023-09-22
-### Added
-### Fixed
 ### Changed
 - Loosened requirement for jsonschema package to make allotropy compatible with datamodel-code-generator
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.0] - 2023-09-18
 ### Added
@@ -41,8 +37,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - NovaBio Flex2
   - PerkinElmer Envision
   - Roche Cedex BioHT
-### Fixed
-### Changed
-### Deprecated
-### Removed
-### Security
