@@ -19,21 +19,38 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     WellItem,
 )
+from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
+from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_data,
     get_data2,
     get_genotyping_data,
+    get_rel_std_curve_data,
 )
 
 
 def rm_uuid(data: Data) -> Data:
     for well in data.wells:
+        if well.calculated_document:
+            rm_uuid_calc_doc(well.calculated_document)
+
         for well_item in well.items.values():
             well_item.uuid = ""
+
     for calc_doc in data.calculated_documents:
-        calc_doc.uuid = ""
+        rm_uuid_calc_doc(calc_doc)
+
     return data
+
+
+def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
+    calc_doc.uuid = ""
+    for source in calc_doc.data_sources:
+        if isinstance(source.reference, CalculatedDocument):
+            rm_uuid_calc_doc(source.reference)
+        elif isinstance(source.reference, Referenceable):
+            source.reference.uuid = ""
 
 
 @pytest.mark.short
@@ -169,6 +186,10 @@ def test_results_builder() -> None:
         (
             "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test03.txt",
             get_genotyping_data(),
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test04.txt",
+            get_rel_std_curve_data(),
         ),
     ],
 )
