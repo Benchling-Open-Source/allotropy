@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Genotyping data structure test for AppBio Quantstudio parser
 ### Fixed
 - Typing ignore tags removed from the construction of AppBio Quantstudio structure
+- Ignore unexpected sections in AppBio Quantstudio input file
+- Accept comma as thousand indicator in AppBio Quantstudio results section
 
 ## [0.1.1] - 2023-09-22
 ### Changed
