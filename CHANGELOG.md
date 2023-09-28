@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ### Fixed
 ### Changed
+- Accept comma as thousand indicator in all sections with numeric values of AppBio Quantstudio
 ### Deprecated
 ### Removed
 ### Security
