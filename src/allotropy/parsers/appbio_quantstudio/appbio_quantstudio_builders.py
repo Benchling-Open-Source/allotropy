@@ -348,7 +348,7 @@ class AmplificationDataBuilder:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t")
+        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
 
 
 class MulticomponentDataBuilder:
@@ -358,7 +358,7 @@ class MulticomponentDataBuilder:
         return MulticomponentData(
             cycle=well_data["Cycle"].tolist(),
             columns={
-                name: well_data[name].str.replace(",", "").astype(float).tolist()  # type: ignore[misc]
+                name: well_data[name].tolist()  # type: ignore[misc]
                 for name in well_data
                 if name not in ["Well", "Cycle", "Well Position"]
             },
@@ -380,7 +380,7 @@ class MulticomponentDataBuilder:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t")
+        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
 
 
 class GenericResultsBuilder:
@@ -590,7 +590,7 @@ class MeltCurveRawDataBuilder:
         reader.pop()  # remove title
         lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t")
+        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
 
 
 class DataBuilder:
