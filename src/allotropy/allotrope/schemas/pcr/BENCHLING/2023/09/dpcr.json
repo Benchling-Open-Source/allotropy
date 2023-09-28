@@ -438,9 +438,6 @@
                                     "type": "object",
                                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
                                     "$asm.pattern": "aggregate datum",
-                                    "required": [
-                                      "flourescence intensity threshold setting"
-                                    ],
                                     "properties": {
                                       "flourescence intensity threshold setting": {
                                         "$asm.property-class": "TODO",
