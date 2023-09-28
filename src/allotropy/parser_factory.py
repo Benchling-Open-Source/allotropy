@@ -4,6 +4,9 @@ from typing import Optional, Union
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
+from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_parser import (
+    AppbioAbsoluteQParser,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
     AppBioQuantStudioParser,
 )
@@ -22,6 +25,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
+    APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
@@ -36,6 +40,7 @@ VendorType = Union[Vendor, str]
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
+    Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,

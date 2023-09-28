@@ -1,0 +1,770 @@
+{
+    "dPCR aggregate document": {
+        "device system document": {
+            "device identifier": "Absolute Q 0140",
+            "brand name": "QuantStudio Absolute Q Digital PCR System",
+            "product manufacturer": "ThermoFisher Scientific"
+        },
+        "dPCR document": [
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a9aac174-ed58-4d96-ab39-60b740ea3cdd",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20413.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "48e96390-41eb-4e82-a2a4-887738eae8ce",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20452.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ccf3f734-424e-4124-aca1-91b1c713d6d5",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20424.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 39.21,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 343.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "63cf8e8b-a6a2-49c5-9084-aeaa76debe0a",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20466.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 38.78,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 340.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f532fbac-b6ef-4834-8148-0d846aa4c3a1",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20449.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3.85,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 34.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "814baac8-49ae-4cb4-9e74-596423158f68",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20447.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4.08,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 36.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0eaa0a91-c051-4731-a4f8-fa51b65f2457",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20456.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 177.63,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 1511.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "879a34b6-fe90-401c-a011-06a4fe9f3eba",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20442.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 166.17,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 1416.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5687128d-0021-4f7c-aa6d-9fd04fbd16be",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20449.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 9.07,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 80.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ae8af637-7080-4593-a92d-d5f955805501",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20422.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 10.91,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 96.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a74922fa-9d39-4590-9b73-84583556a0cf",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20449.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 615.58,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 4775.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c4e3e84b-c129-4b80-84e3-a893310e4a5d",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20443.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 634.18,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 4899.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "e820ce99-034e-44cf-9366-4b832de2e36d",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20370.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 18.83,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 165.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "008d94e7-fbfa-4dee-b6df-11b51bbf9c36",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20299.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 17.05,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 149.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "11a49b5e-52fb-41f6-8e39-34a436b66432",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20409.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 2667.86,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 13963.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "96139156-b0f2-4e49-a4b5-0115cef9b2d3",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20425.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 1600.77,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 10196.0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example02"
+                }
+            }
+        ],
+        "data system document": {
+            "file name": "Thermo_AbsoluteQ_example02_instrumentOutput_PUBLIC.csv",
+            "software name": "QuantStudio Absolute Q Digital PCR Software",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.1"
+        }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
+}
