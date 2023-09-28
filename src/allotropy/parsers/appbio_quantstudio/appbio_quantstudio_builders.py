@@ -10,7 +10,8 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
-    CalculatedDocumentBuilder,
+    build_quantity,
+    iter_calculated_data_documents,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -623,25 +624,23 @@ class DataBuilder:
                     )
                 )
 
-            well.calculated_document = CalculatedDocumentBuilder.build_quantity(
-                well_item
-            )
+            well.calculated_document = build_quantity(well_item)
 
-        endogenous_control = get_str(results_metadata, "Endogenous Control")
-        reference_sample = get_str(results_metadata, "Reference Sample")
-
-        calc_doc_builder = CalculatedDocumentBuilder(
-            wells=wells,
-            experiment_type=header.experiment_type,
-            r_target=endogenous_control or "",
-            r_sample=reference_sample or "",
-        )
+        endogenous_control = get_str(results_metadata, "Endogenous Control") or ""
+        reference_sample = get_str(results_metadata, "Reference Sample") or ""
 
         return Data(
             header,
             wells,
             raw_data,
-            endogenous_control or "",
-            reference_sample or "",
-            list(calc_doc_builder.iter_calculated_data_documents()),
+            endogenous_control,
+            reference_sample,
+            list(
+                iter_calculated_data_documents(
+                    wells,
+                    header.experiment_type,
+                    reference_sample,
+                    endogenous_control,
+                )
+            ),
         )
