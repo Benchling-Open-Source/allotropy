@@ -430,7 +430,6 @@
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
                                 "$asm.pattern": "aggregate datum",
                                 "required": [
-                                  "data processing document",
                                   "number concentration",
                                   "positive partition count"
                                 ],
@@ -555,11 +554,11 @@
                     "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                     "$ref": "#/$defs/tStringValue"
                   },
-                  "reference sample description": {
+                  "reference DNA copy number setting": {
                     "$asm.property-class": "TODO",
                     "$asm.pattern": "value datum",
-                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                    "$ref": "#/$defs/tStringValue"
+                    "$asm.pattern": "quantity datum",
+                    "$ref": "#/$custom/tQuantityValueNumber"
                   }
                 }
               },
