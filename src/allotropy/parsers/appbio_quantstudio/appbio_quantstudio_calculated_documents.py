@@ -46,17 +46,24 @@ def build_quantity_mean(
     if (quantity_mean := well_items[0].result.quantity_mean) is None:
         return None
 
+    data_sources = []
+    for well_item in well_items:
+        quantity_ref = build_quantity(well_item)
+        if quantity_ref is None:
+            return None
+
+        data_sources.append(
+            DataSource(
+                feature="quantity",
+                reference=quantity_ref,
+            )
+        )
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="quantity mean",
         value=quantity_mean,
-        data_sources=[
-            DataSource(
-                feature="quantity",
-                reference=build_quantity(well_item),
-            )
-            for well_item in well_items
-        ],
+        data_sources=data_sources,
     )
 
 
@@ -67,17 +74,24 @@ def build_quantity_sd(
     if (quantity_sd := well_items[0].result.quantity_sd) is None:
         return None
 
+    data_sources = []
+    for well_item in well_items:
+        quantity_ref = build_quantity(well_item)
+        if quantity_ref is None:
+            return None
+
+        data_sources.append(
+            DataSource(
+                feature="quantity",
+                reference=quantity_ref,
+            )
+        )
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="quantity sd",
         value=quantity_sd,
-        data_sources=[
-            DataSource(
-                feature="quantity",
-                reference=build_quantity(well_item),
-            )
-            for well_item in well_items
-        ],
+        data_sources=data_sources,
     )
 
 
@@ -128,6 +142,14 @@ def build_delta_ct_mean(
     if (delta_ct_mean := well_items[0].result.delta_ct_mean) is None:
         return None
 
+    ct_mean_ref = build_ct_mean(view_data, sample, target)
+    if ct_mean_ref is None:
+        return None
+
+    r_ct_mean_ref = build_ct_mean(view_data, sample, r_target)
+    if r_ct_mean_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="delta ct mean",
@@ -135,11 +157,11 @@ def build_delta_ct_mean(
         data_sources=[
             DataSource(
                 feature="ct mean",
-                reference=build_ct_mean(view_data, sample, target),
+                reference=ct_mean_ref,
             ),
             DataSource(
                 feature="ct mean",
-                reference=build_ct_mean(view_data, sample, r_target),
+                reference=r_ct_mean_ref,
             ),
         ],
     )
@@ -180,6 +202,14 @@ def build_delta_delta_ct(
     if (delta_delta_ct := well_items[0].result.delta_delta_ct) is None:
         return None
 
+    delta_ct_mean_ref = build_delta_ct_mean(view_data, sample, target, r_target)
+    if delta_ct_mean_ref is None:
+        return None
+
+    r_delta_ct_mean_ref = build_delta_ct_mean(view_data, r_sample, target, r_target)
+    if r_delta_ct_mean_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="delta delta ct",
@@ -187,11 +217,11 @@ def build_delta_delta_ct(
         data_sources=[
             DataSource(
                 feature="delta ct mean",
-                reference=build_delta_ct_mean(view_data, sample, target, r_target),
+                reference=delta_ct_mean_ref,
             ),
             DataSource(
                 feature="delta ct mean",
-                reference=build_delta_ct_mean(view_data, r_sample, target, r_target),
+                reference=r_delta_ct_mean_ref,
             ),
         ],
     )
@@ -209,6 +239,12 @@ def build_rq(
     if (rq := well_items[0].result.rq) is None:
         return None
 
+    delta_delta_ct_ref = build_delta_delta_ct(
+        view_data, sample, target, r_sample, r_target
+    )
+    if delta_delta_ct_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="rq",
@@ -216,9 +252,7 @@ def build_rq(
         data_sources=[
             DataSource(
                 feature="delta delta ct",
-                reference=build_delta_delta_ct(
-                    view_data, sample, target, r_sample, r_target
-                ),
+                reference=delta_delta_ct_ref,
             )
         ],
     )
@@ -235,6 +269,10 @@ def build_rq_min(
     if (rq_min := well_items[0].result.rq_min) is None:
         return None
 
+    rq_ref = build_rq(view_data, sample, target, r_sample, r_target)
+    if rq_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="rq min",
@@ -242,7 +280,7 @@ def build_rq_min(
         data_sources=[
             DataSource(
                 feature="rq",
-                reference=build_rq(view_data, sample, target, r_sample, r_target),
+                reference=rq_ref,
             )
         ],
     )
@@ -259,6 +297,10 @@ def build_rq_max(
     if (rq_max := well_items[0].result.rq_max) is None:
         return None
 
+    rq_ref = build_rq(view_data, sample, target, r_sample, r_target)
+    if rq_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="rq max",
@@ -266,7 +308,7 @@ def build_rq_max(
         data_sources=[
             DataSource(
                 feature="rq",
-                reference=build_rq(view_data, sample, target, r_sample, r_target),
+                reference=rq_ref,
             ),
         ],
     )
@@ -282,6 +324,10 @@ def build_relative_rq(
     if (rq := well_items[0].result.rq) is None:
         return None
 
+    quantity_mean_ref = build_quantity_mean(view_data, sample, target)
+    if quantity_mean_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="rq",
@@ -289,7 +335,7 @@ def build_relative_rq(
         data_sources=[
             DataSource(
                 feature="quantity mean",
-                reference=build_quantity_mean(view_data, sample, target),
+                reference=quantity_mean_ref,
             )
         ],
     )
@@ -304,6 +350,10 @@ def build_relative_rq_min(
     if (rq_min := well_items[0].result.rq_min) is None:
         return None
 
+    relative_rq_ref = build_relative_rq(view_data, sample, target)
+    if relative_rq_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="rq min",
@@ -311,7 +361,7 @@ def build_relative_rq_min(
         data_sources=[
             DataSource(
                 feature="rq",
-                reference=build_relative_rq(view_data, sample, target),
+                reference=relative_rq_ref,
             )
         ],
     )
@@ -326,6 +376,10 @@ def build_relative_rq_max(
     if (rq_max := well_items[0].result.rq_max) is None:
         return None
 
+    relative_rq_ref = build_relative_rq(view_data, sample, target)
+    if relative_rq_ref is None:
+        return None
+
     return CalculatedDocument(
         uuid=str(uuid4()),
         name="rq max",
@@ -333,7 +387,7 @@ def build_relative_rq_max(
         data_sources=[
             DataSource(
                 feature="rq",
-                reference=build_relative_rq(view_data, sample, target),
+                reference=relative_rq_ref,
             ),
         ],
     )
