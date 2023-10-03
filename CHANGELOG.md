@@ -13,15 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 
 ## [0.1.3]
-### Added
 ### Fixed
 - Redefine the way calculated documents are structured for relative standard curve in AppBio QuantStudio
 - Fixed some issues in dPCR schema and corresponding model updates
 - Accept comma as thousand indicator in all sections of AppBio Quantstudio
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.2] - 2023-09-27
 ### Added
