@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Security
 
-## [0.1.3]
+## [0.1.3] - 2023-10-03
 ### Fixed
 - Redefine the way calculated documents are structured for relative standard curve in AppBio QuantStudio
 - Fixed some issues in dPCR schema and corresponding model updates
