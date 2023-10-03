@@ -172,7 +172,7 @@ def get_data() -> Data:
             experimental_data_identifier="QuantStudio 96-Well Presence-Absence Example",
             experiment_type=ExperimentType.presence_absence_qPCR_experiment,
             measurement_method_identifier="Ct",
-            qpcr_detection_chemistry="TAQMAN",
+            pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
         ),
         wells=WellList([well]),
@@ -314,7 +314,7 @@ def get_data2() -> Data:
             experimental_data_identifier="200224 U251p14 200217_14v9_SEMA3F_trial 1",
             experiment_type=ExperimentType.comparative_CT_qPCR_experiment,
             measurement_method_identifier="Ct",
-            qpcr_detection_chemistry="SYBR_GREEN",
+            pcr_detection_chemistry="SYBR_GREEN",
             passive_reference_dye_setting="ROX",
         ),
         wells=WellList([well]),
@@ -371,7 +371,7 @@ def get_model() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="TAQMAN",
+                                            PCR_detection_chemistry="TAQMAN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
@@ -557,7 +557,7 @@ def get_model() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="TAQMAN",
+                                            PCR_detection_chemistry="TAQMAN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
@@ -874,7 +874,7 @@ def get_model2() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="SYBR_GREEN",
+                                            PCR_detection_chemistry="SYBR_GREEN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
@@ -1207,7 +1207,7 @@ def get_genotyping_data() -> Data:
             experimental_data_identifier="QuantStudio 96-Well SNP Genotyping Example",
             experiment_type=ExperimentType.genotyping_qPCR_experiment,
             measurement_method_identifier="Ct",
-            qpcr_detection_chemistry="TAQMAN",
+            pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
         ),
         wells=WellList([well]),
@@ -1247,7 +1247,7 @@ def get_genotyping_model() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="TAQMAN",
+                                            PCR_detection_chemistry="TAQMAN",
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
@@ -1338,7 +1338,7 @@ def get_genotyping_model() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="TAQMAN",
+                                            PCR_detection_chemistry="TAQMAN",
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
@@ -1450,7 +1450,7 @@ def get_rel_std_curve_data() -> Data:
             model_number="QuantStudio(TM) 7 Flex System",
             device_serial_number="278880034",
             measurement_method_identifier="Ct",
-            qpcr_detection_chemistry="TAQMAN",
+            pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
             barcode="",
             analyst=None,
@@ -2731,7 +2731,7 @@ def get_rel_std_curve_model() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="TAQMAN",
+                                            PCR_detection_chemistry="TAQMAN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
@@ -2901,7 +2901,7 @@ def get_rel_std_curve_model() -> Model:
                                         DeviceControlDocumentItem(
                                             device_type="qPCR",
                                             measurement_method_identifier="Ct",
-                                            qPCR_detection_chemistry="TAQMAN",
+                                            PCR_detection_chemistry="TAQMAN",
                                             device_identifier=None,
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
