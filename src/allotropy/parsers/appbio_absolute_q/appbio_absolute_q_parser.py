@@ -95,6 +95,7 @@ class AppbioAbsoluteQParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 experimental_data_identifier=well_data.iloc[0]["Run"],
                 plate_well_count=TQuantityValueNumber(value=16),
+                container_type=ContainerType.well_plate,
                 measurement_document=measurement_documents,
             )
         )
