@@ -86,6 +86,12 @@ class Well:
             raise AllotropeConversionError(msg)
         return well_item
 
+    def get_an_well_item(self) -> Optional[WellItem]:
+        if not self.items:
+            return None
+        target, *_ = self.items.keys()
+        return self.items[target]
+
     def add_multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
         self.multicomponent_data = multicomponent_data
 
