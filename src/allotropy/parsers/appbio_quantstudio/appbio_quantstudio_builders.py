@@ -96,9 +96,9 @@ class HeaderBuilder:
             msg = "Unable to get measurement method identifier"
             raise AllotropeConversionError(msg)
 
-        qpcr_detection_chemistry = get_str(data, "Chemistry")
-        if qpcr_detection_chemistry is None:
-            msg = "Unable to get qpcr detection chemistry"
+        pcr_detection_chemistry = get_str(data, "Chemistry")
+        if pcr_detection_chemistry is None:
+            msg = "Unable to get PCR detection chemistry"
             raise AllotropeConversionError(msg)
 
         return Header(
@@ -109,7 +109,7 @@ class HeaderBuilder:
             model_number=model_number,
             device_serial_number=device_serial_number,
             measurement_method_identifier=measurement_method_identifier,
-            qpcr_detection_chemistry=qpcr_detection_chemistry,
+            pcr_detection_chemistry=pcr_detection_chemistry,
             passive_reference_dye_setting=get_str(data, "Passive Reference"),
             barcode=get_str(data, "Experiment Barcode"),
             analyst=get_str(data, "Experiment User Name"),

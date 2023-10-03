@@ -88,6 +88,7 @@ class TQuantityValueMicroliter(Microliter, TQuantityValueWithOptionalUnit):
     pass
 
 
+@dataclass
 class TQuantityValueNumberPerMicroliter(
     NumberPerMicroliter, TQuantityValueWithOptionalUnit
 ):

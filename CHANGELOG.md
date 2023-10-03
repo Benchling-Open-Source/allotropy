@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
-- Remove duplication of calculated documents related to quantity measurements in AppBio QuantStudio
 ### Changed
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.4] - 2023-10-03
+### Fixed
+- Remove duplication of calculated documents related to quantity measurements in AppBio QuantStudio
+- Rename "qPRC detection chemistry" to "PRC detection chemistry" in PCR schemas
+- Add missing @dataclass annotation to TQuantityValueNumberPerMicroliter
+
 
 ## [0.1.3] - 2023-10-03
 ### Fixed
