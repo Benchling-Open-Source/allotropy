@@ -1,9 +1,17 @@
+from __future__ import annotations
+
+from collections import defaultdict
 from io import IOBase
 import uuid
 
 import pandas as pd
+from typing import Any
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_dpcr import (
+    CalculatedDataDocumentItem,
+    ContainerType,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -16,23 +24,42 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_dpcr import (
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueNumberPerMicroliter,
+    TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_reader import AbsoluteQReader
+from allotropy.parsers.appbio_absolute_q.constants import (
+    AGGREGATION_LOOKUP,
+    CALCULATED_DATA_REFERENCE,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppbioAbsoluteQParser(VendorParser):
     def _parse(self, raw_contents: IOBase, filename: str) -> Model:
         reader = AbsoluteQReader(raw_contents)
-        return self._get_model(reader.wells, filename)
+        return self._get_model(reader.wells, reader.group_rows, filename)
 
-    def _get_model(self, wells: pd.DataFrame, filename: str) -> Model:
+    def _get_model(
+        self, wells: pd.DataFrame, group_rows: pd.DataFrame, filename: str
+    ) -> Model:
         well_groups = wells.groupby(["Well"]).groups.keys()
+        group_ids: dict[Any, list] = defaultdict(list)
+
+        dPCR_document = [
+            self._get_dpcr_document(wells[wells["Well"] == well_name], group_ids)
+            for well_name in well_groups
+        ]
+
+        calculated_data_document = self.get_calculated_data_document(
+            group_ids, group_rows
+        )
+
         return Model(
             dPCR_aggregate_document=DPCRAggregateDocument(
                 device_system_document=DeviceSystemDocument(
@@ -46,19 +73,26 @@ class AppbioAbsoluteQParser(VendorParser):
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
-                dPCR_document=[
-                    self._get_dpcr_document(wells[wells["Well"] == well])
-                    for well in well_groups
-                ],
+                dPCR_document=dPCR_document,
+                calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
+                    calculated_data_document=calculated_data_document
+                ),
             )
         )
 
-    def _get_dpcr_document(self, well_data: pd.DataFrame) -> DPCRDocumentItem:
+    def _get_dpcr_document(
+        self, well_data: pd.DataFrame, group_ids: dict[Any, list]
+    ) -> DPCRDocumentItem:
         measurement_documents = []
         for _, well_item in well_data.iterrows():
+            measurement_identifier = str(uuid.uuid4())
+
+            key = str((well_item["Group"], well_item["Target"]))
+            group_ids[key].append(measurement_identifier)
+
             measurement_documents.append(
                 MeasurementDocumentItem(
-                    measurement_identifier=str(uuid.uuid4()),
+                    measurement_identifier=measurement_identifier,
                     measurement_time=self.get_date_time(str(well_item["Date"])),
                     target_DNA_description=well_item["Target"],
                     total_partition_count=TQuantityValueNumber(
@@ -99,3 +133,46 @@ class AppbioAbsoluteQParser(VendorParser):
                 measurement_document=measurement_documents,
             )
         )
+
+    @staticmethod
+    def get_calculated_data_document(
+        group_ids: dict, group_rows: pd.DataFrame
+    ) -> list[CalculatedDataDocumentItem]:
+        calculated_data_document: list[CalculatedDataDocumentItem] = []
+
+        for _, group in group_rows.iterrows():
+            aggregation_type = AGGREGATION_LOOKUP[group["Well"]]
+
+            # Samples designated as "Individual" include no calculated data
+            if aggregation_type not in CALCULATED_DATA_REFERENCE:
+                continue
+
+            group_name = group["Group"].split('(')[0].strip()
+            key = str((group_name, group["Target"]))
+
+            ids = group_ids[key]
+            for calculated_data_item in CALCULATED_DATA_REFERENCE[aggregation_type]:
+                # TODO: if aggregation type is Replicate(Average), check for required columns
+                # Raise if column does not exists
+                data_source_document = [
+                    DataSourceDocumentItem(
+                        data_source_identifier=identifier,
+                        data_source_feature=calculated_data_item.source_feature,
+                    )
+                    for identifier in ids
+                ]
+                calculated_data_document.append(
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier=str(uuid.uuid4()),
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=data_source_document
+                        ),
+                        calculated_data_name=calculated_data_item.name,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=group.get(calculated_data_item.column),
+                            unit=calculated_data_item.unit,
+                        ),
+                    )
+                )
+
+        return calculated_data_document
