@@ -6,23 +6,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Added adapter for the Absolute Q dPCR exports
 ### Fixed
-- Redefine calculated data documents references as required in AppBio QuantStudio
-- Updated dPCR schema "experiement type" enum to have correct values
 ### Changed
-- Made "flourescence intensity threshold setting" optional in the dPCR schema
-- Changed the "calculated datum" property on the calculated data documents so it can have different units depending on the source feature.
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.5] - 2023-10-04
+### Added
+- Parser for AppBio Absoute Q dPCR exports
+### Fixed
+- Redefine calculated data documents references as required in AppBio QuantStudio parser
+- Updated dPCR schema "experiement type" enum to have correct values
+### Changed
+- Made "flourescence intensity threshold setting" optional in the dPCR schema
+- Changed the "calculated datum" property on the calculated data documents to allow different units
 
 ## [0.1.4] - 2023-10-03
 ### Fixed
 - Remove duplication of calculated documents related to quantity measurements in AppBio QuantStudio
 - Rename "qPRC detection chemistry" to "PRC detection chemistry" in PCR schemas
 - Add missing @dataclass annotation to TQuantityValueNumberPerMicroliter
-
 
 ## [0.1.3] - 2023-10-03
 ### Fixed
