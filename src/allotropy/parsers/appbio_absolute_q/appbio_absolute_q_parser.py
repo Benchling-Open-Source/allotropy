@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from collections import defaultdict
 from io import IOBase
+from typing import Any
 import uuid
 
 import pandas as pd
-from typing import Any
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_dpcr import (
     CalculatedDataDocumentItem,
@@ -51,7 +51,7 @@ class AppbioAbsoluteQParser(VendorParser):
         well_groups = wells.groupby(["Well"]).groups.keys()
         group_ids: dict[Any, list] = defaultdict(list)
 
-        dPCR_document = [
+        dpcr_document = [
             self._get_dpcr_document(wells[wells["Well"] == well_name], group_ids)
             for well_name in well_groups
         ]
@@ -73,7 +73,7 @@ class AppbioAbsoluteQParser(VendorParser):
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
-                dPCR_document=dPCR_document,
+                dPCR_document=dpcr_document,
                 calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                     calculated_data_document=calculated_data_document
                 ),
@@ -147,7 +147,7 @@ class AppbioAbsoluteQParser(VendorParser):
             if aggregation_type not in CALCULATED_DATA_REFERENCE:
                 continue
 
-            group_name = group["Group"].split('(')[0].strip()
+            group_name = group["Group"].split("(")[0].strip()
             key = str((group_name, group["Target"]))
 
             ids = group_ids[key]
