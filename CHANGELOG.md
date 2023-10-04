@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added adapter for the Absolute Q dPCR exports
 ### Fixed
 - Redefine calculated data documents references as required in AppBio QuantStudio
+- Updated dPCR schema "experiement type" enum to have correct values
 ### Changed
 - Made "flourescence intensity threshold setting" optional in the dPCR schema
 - Changed the "calculated datum" property on the calculated data documents so it can have different units depending on the source feature.
