@@ -1,0 +1,1182 @@
+{
+    "dPCR aggregate document": {
+        "device system document": {
+            "device identifier": "Absolute Q 0140",
+            "brand name": "QuantStudio Absolute Q Digital PCR System",
+            "product manufacturer": "ThermoFisher Scientific"
+        },
+        "dPCR document": [
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d0815ebc-c7be-4b81-85da-aba887ac457a",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20413.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c0912da0-cf32-4f79-a7ac-f95b0094fd23",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20452.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 0.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 0,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5d92e60b-592e-4a83-8a9d-18881d256bc8",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20424.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 39.21,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 343,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "023c6852-04af-41f9-9e5b-5c65259c3788",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "A4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20466.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 38.78,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 340,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "04379d5b-a1cf-4270-a048-5b4731a10e59",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20449.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 3.85,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 34,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "35c5e3c5-6fe2-454d-84f2-66ca8417d362",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20447.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 4.08,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 36,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "75a01ce3-506e-4462-aead-81ee2c9967a2",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20456.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 177.63,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 1511,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d732da17-46a7-450a-b855-8c30287b8feb",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene A",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate A",
+                                "well location identifier": "B4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20442.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 166.17,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 1416,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c138b514-aade-4c46-848a-630fa46d85bb",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20449.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 9.07,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 80,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5233675f-d656-4170-ae8b-e2d486de9a48",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20422.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 10.91,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 96,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "2bdcc497-8d00-4f11-a5c1-f939d747d8ba",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20449.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 615.58,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 4775,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "18a127b7-28bc-4df4-a531-a6365692bb51",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "C4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20443.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 634.18,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 4899,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "60825d33-3e21-4e27-9739-3d11e404d925",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D1",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20370.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 18.83,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 165,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "da6d7a42-2b2b-4cd3-a8ff-f711dd77e624",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D2",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20299.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 17.05,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 149,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b34de5de-e33f-4a49-88ce-a05028aed3a4",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D3",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20409.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 2667.86,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 13963,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 16,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "e7da3b45-8710-4c83-bf70-173acba5262b",
+                            "measurement time": "2023-05-19T00:00:00+00:00",
+                            "target DNA description": "Gene B",
+                            "sample document": {
+                                "sample identifier": "Cell Lysate B",
+                                "well location identifier": "D4",
+                                "well plate identifier": "M01KM220700391"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "reporter dye setting": "VIC"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 20425.0,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 1600.77,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 10196,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "AbsoluteQ_example01",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "data system document": {
+            "file name": "Appbio_AbsoluteQ_example01.csv",
+            "software name": "QuantStudio Absolute Q Digital PCR Software",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.4"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data identifier": "9eaff328-5691-4c95-a359-0f476adc450b",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d0815ebc-c7be-4b81-85da-aba887ac457a",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "c0912da0-cf32-4f79-a7ac-f95b0094fd23",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "5d92e60b-592e-4a83-8a9d-18881d256bc8",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "023c6852-04af-41f9-9e5b-5c65259c3788",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "04379d5b-a1cf-4270-a048-5b4731a10e59",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "35c5e3c5-6fe2-454d-84f2-66ca8417d362",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "75a01ce3-506e-4462-aead-81ee2c9967a2",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "d732da17-46a7-450a-b855-8c30287b8feb",
+                                "data source feature": "total partition count"
+                            }
+                        ]
+                    },
+                    "calculated data name": "Average Total",
+                    "calculated datum": {
+                        "value": 20443.63,
+                        "unit": "#"
+                    }
+                },
+                {
+                    "calculated data identifier": "4e5d0f20-833b-4720-a9e2-455f68d33193",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d0815ebc-c7be-4b81-85da-aba887ac457a",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "c0912da0-cf32-4f79-a7ac-f95b0094fd23",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "5d92e60b-592e-4a83-8a9d-18881d256bc8",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "023c6852-04af-41f9-9e5b-5c65259c3788",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "04379d5b-a1cf-4270-a048-5b4731a10e59",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "35c5e3c5-6fe2-454d-84f2-66ca8417d362",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "75a01ce3-506e-4462-aead-81ee2c9967a2",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "d732da17-46a7-450a-b855-8c30287b8feb",
+                                "data source feature": "number concentration"
+                            }
+                        ]
+                    },
+                    "calculated data name": "Average Concentration",
+                    "calculated datum": {
+                        "value": 53.71,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "5af7a1b8-6cba-48a6-8dc1-1a6dc9ae5f4e",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d0815ebc-c7be-4b81-85da-aba887ac457a",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "c0912da0-cf32-4f79-a7ac-f95b0094fd23",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "5d92e60b-592e-4a83-8a9d-18881d256bc8",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "023c6852-04af-41f9-9e5b-5c65259c3788",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "04379d5b-a1cf-4270-a048-5b4731a10e59",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "35c5e3c5-6fe2-454d-84f2-66ca8417d362",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "75a01ce3-506e-4462-aead-81ee2c9967a2",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "d732da17-46a7-450a-b855-8c30287b8feb",
+                                "data source feature": "number concentration"
+                            }
+                        ]
+                    },
+                    "calculated data name": "SD Concentration",
+                    "calculated datum": {
+                        "value": 69.96,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "9c688587-f66b-41d8-8bbc-64d5073bcbd2",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d0815ebc-c7be-4b81-85da-aba887ac457a",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "c0912da0-cf32-4f79-a7ac-f95b0094fd23",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "5d92e60b-592e-4a83-8a9d-18881d256bc8",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "023c6852-04af-41f9-9e5b-5c65259c3788",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "04379d5b-a1cf-4270-a048-5b4731a10e59",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "35c5e3c5-6fe2-454d-84f2-66ca8417d362",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "75a01ce3-506e-4462-aead-81ee2c9967a2",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "d732da17-46a7-450a-b855-8c30287b8feb",
+                                "data source feature": "positive partition count"
+                            }
+                        ]
+                    },
+                    "calculated data name": "Average Positives",
+                    "calculated datum": {
+                        "value": 460.0,
+                        "unit": "#"
+                    }
+                },
+                {
+                    "calculated data identifier": "93e188c3-f92f-4968-9cec-750e981841fd",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "4e5d0f20-833b-4720-a9e2-455f68d33193",
+                                "data source feature": "Average Concentration"
+                            },
+                            {
+                                "data source identifier": "5af7a1b8-6cba-48a6-8dc1-1a6dc9ae5f4e",
+                                "data source feature": "SD Concentration"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CV",
+                    "calculated datum": {
+                        "value": 130.24,
+                        "unit": "%"
+                    }
+                },
+                {
+                    "calculated data identifier": "c9c9436d-54f0-4ba4-8119-8129a424df60",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c138b514-aade-4c46-848a-630fa46d85bb",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "5233675f-d656-4170-ae8b-e2d486de9a48",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "2bdcc497-8d00-4f11-a5c1-f939d747d8ba",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "18a127b7-28bc-4df4-a531-a6365692bb51",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "60825d33-3e21-4e27-9739-3d11e404d925",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "da6d7a42-2b2b-4cd3-a8ff-f711dd77e624",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "b34de5de-e33f-4a49-88ce-a05028aed3a4",
+                                "data source feature": "total partition count"
+                            },
+                            {
+                                "data source identifier": "e7da3b45-8710-4c83-bf70-173acba5262b",
+                                "data source feature": "total partition count"
+                            }
+                        ]
+                    },
+                    "calculated data name": "Average Total",
+                    "calculated datum": {
+                        "value": 20408.25,
+                        "unit": "#"
+                    }
+                },
+                {
+                    "calculated data identifier": "b7f28a2b-1486-4e4d-9587-53e79be4f739",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c138b514-aade-4c46-848a-630fa46d85bb",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "5233675f-d656-4170-ae8b-e2d486de9a48",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "2bdcc497-8d00-4f11-a5c1-f939d747d8ba",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "18a127b7-28bc-4df4-a531-a6365692bb51",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "60825d33-3e21-4e27-9739-3d11e404d925",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "da6d7a42-2b2b-4cd3-a8ff-f711dd77e624",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "b34de5de-e33f-4a49-88ce-a05028aed3a4",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "e7da3b45-8710-4c83-bf70-173acba5262b",
+                                "data source feature": "number concentration"
+                            }
+                        ]
+                    },
+                    "calculated data name": "Average Concentration",
+                    "calculated datum": {
+                        "value": 696.78,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "2a0cbdd4-0867-4af6-b8c4-d502b4762401",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c138b514-aade-4c46-848a-630fa46d85bb",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "5233675f-d656-4170-ae8b-e2d486de9a48",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "2bdcc497-8d00-4f11-a5c1-f939d747d8ba",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "18a127b7-28bc-4df4-a531-a6365692bb51",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "60825d33-3e21-4e27-9739-3d11e404d925",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "da6d7a42-2b2b-4cd3-a8ff-f711dd77e624",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "b34de5de-e33f-4a49-88ce-a05028aed3a4",
+                                "data source feature": "number concentration"
+                            },
+                            {
+                                "data source identifier": "e7da3b45-8710-4c83-bf70-173acba5262b",
+                                "data source feature": "number concentration"
+                            }
+                        ]
+                    },
+                    "calculated data name": "SD Concentration",
+                    "calculated datum": {
+                        "value": 906.77,
+                        "unit": "#/μL"
+                    }
+                },
+                {
+                    "calculated data identifier": "e0669f28-f566-48cb-9a26-34ede402ba49",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c138b514-aade-4c46-848a-630fa46d85bb",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "5233675f-d656-4170-ae8b-e2d486de9a48",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "2bdcc497-8d00-4f11-a5c1-f939d747d8ba",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "18a127b7-28bc-4df4-a531-a6365692bb51",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "60825d33-3e21-4e27-9739-3d11e404d925",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "da6d7a42-2b2b-4cd3-a8ff-f711dd77e624",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "b34de5de-e33f-4a49-88ce-a05028aed3a4",
+                                "data source feature": "positive partition count"
+                            },
+                            {
+                                "data source identifier": "e7da3b45-8710-4c83-bf70-173acba5262b",
+                                "data source feature": "positive partition count"
+                            }
+                        ]
+                    },
+                    "calculated data name": "Average Positives",
+                    "calculated datum": {
+                        "value": 4290.0,
+                        "unit": "#"
+                    }
+                },
+                {
+                    "calculated data identifier": "3f94be7a-1b4a-4db6-87ce-baab28fd74ca",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "b7f28a2b-1486-4e4d-9587-53e79be4f739",
+                                "data source feature": "Average Concentration"
+                            },
+                            {
+                                "data source identifier": "2a0cbdd4-0867-4af6-b8c4-d502b4762401",
+                                "data source feature": "SD Concentration"
+                            }
+                        ]
+                    },
+                    "calculated data name": "CV",
+                    "calculated datum": {
+                        "value": 130.14,
+                        "unit": "%"
+                    }
+                }
+            ]
+        }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
+}

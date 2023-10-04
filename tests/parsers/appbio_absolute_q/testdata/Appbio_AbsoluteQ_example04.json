@@ -14,7 +14,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "a9aac174-ed58-4d96-ab39-60b740ea3cdd",
+                            "measurement identifier": "c816a30d-00b3-4911-93ff-a04a7e7493c6",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -50,7 +50,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -61,7 +62,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "48e96390-41eb-4e82-a2a4-887738eae8ce",
+                            "measurement identifier": "7e7c49fc-c24b-4969-93fc-aa5b0ee8bb67",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -97,7 +98,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -108,7 +110,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "ccf3f734-424e-4124-aca1-91b1c713d6d5",
+                            "measurement identifier": "3e21bbec-f863-4e93-8cf5-7c49409c37bf",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -144,7 +146,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -155,7 +158,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "63cf8e8b-a6a2-49c5-9084-aeaa76debe0a",
+                            "measurement identifier": "8e17c351-7ebf-4cea-81b2-7e0f9986f581",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -191,7 +194,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -202,7 +206,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "f532fbac-b6ef-4834-8148-0d846aa4c3a1",
+                            "measurement identifier": "8a460a1b-a3bc-459d-97f2-e8ce85943629",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -238,7 +242,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -249,7 +254,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "814baac8-49ae-4cb4-9e74-596423158f68",
+                            "measurement identifier": "caee4f25-fdab-43c9-a00e-13ab1bb70841",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -285,7 +290,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -296,7 +302,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "0eaa0a91-c051-4731-a4f8-fa51b65f2457",
+                            "measurement identifier": "b178826a-635d-4d2b-8033-337aecac00f3",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -332,7 +338,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -343,7 +350,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "879a34b6-fe90-401c-a011-06a4fe9f3eba",
+                            "measurement identifier": "32eefb13-0135-4a44-bec4-ffb005102c41",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -379,7 +386,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -390,11 +398,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "5687128d-0021-4f7c-aa6d-9fd04fbd16be",
+                            "measurement identifier": "65450120-206d-4c39-ba0f-bf724b3a7e92",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "C1",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -426,7 +434,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -437,11 +446,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "ae8af637-7080-4593-a92d-d5f955805501",
+                            "measurement identifier": "7493eaec-11c3-401d-9314-3bf2e81b443a",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "C2",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -473,7 +482,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -484,11 +494,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "a74922fa-9d39-4590-9b73-84583556a0cf",
+                            "measurement identifier": "cde6f1de-08ae-45bb-b0a6-eae1d9893a88",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "C3",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -520,7 +530,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -531,11 +542,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "c4e3e84b-c129-4b80-84e3-a893310e4a5d",
+                            "measurement identifier": "ea4e34a9-d2cc-4ddf-bedf-36be7bc8b545",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "C4",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -567,7 +578,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -578,11 +590,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "e820ce99-034e-44cf-9366-4b832de2e36d",
+                            "measurement identifier": "4363fc7d-2e8f-4c6f-99e8-df427b718ced",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "D1",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -614,7 +626,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -625,11 +638,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "008d94e7-fbfa-4dee-b6df-11b51bbf9c36",
+                            "measurement identifier": "a67310c7-c571-4cb7-8b9f-e40bdf2724ef",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "D2",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -661,7 +674,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -672,11 +686,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "11a49b5e-52fb-41f6-8e39-34a436b66432",
+                            "measurement identifier": "b87c05ce-0272-407e-a252-e43571b4c127",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "D3",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -708,7 +722,8 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             },
             {
@@ -719,11 +734,11 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "96139156-b0f2-4e49-a4b5-0115cef9b2d3",
+                            "measurement identifier": "5ad30dc0-d335-42d1-b76f-f7179b908dd7",
                             "measurement time": "2023-05-19T00:00:00+00:00",
-                            "target DNA description": "Gene B",
+                            "target DNA description": "Gene A",
                             "sample document": {
-                                "sample identifier": "Cell Lysate B",
+                                "sample identifier": "Cell Lysate A",
                                 "well location identifier": "D4",
                                 "well plate identifier": "M01KM220700391"
                             },
@@ -755,15 +770,16 @@
                             }
                         }
                     ],
-                    "experimental data identifier": "AbsoluteQ_example02"
+                    "experimental data identifier": "AbsoluteQ_example04",
+                    "container type": "well plate"
                 }
             }
         ],
         "data system document": {
-            "file name": "Thermo_AbsoluteQ_example02_instrumentOutput_PUBLIC.csv",
+            "file name": "Appbio_AbsoluteQ_example04.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.1"
+            "ASM converter version": "0.1.4"
         }
     },
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"

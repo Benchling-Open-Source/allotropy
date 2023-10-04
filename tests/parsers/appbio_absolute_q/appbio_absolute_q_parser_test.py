@@ -4,9 +4,11 @@ from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
 output_files = (
-    "Thermo_AbsoluteQ_example01_instrumentOutput_PUBLIC.csv",
-    "Thermo_AbsoluteQ_example02_instrumentOutput_PUBLIC.csv",
-    "Thermo_AbsoluteQ_example05_instrumentOutput_PUBLIC.csv",
+    "Appbio_AbsoluteQ_example01.csv",
+    "Appbio_AbsoluteQ_example02.csv",
+    "Appbio_AbsoluteQ_example03.csv",
+    "Appbio_AbsoluteQ_example04.csv",
+    "Appbio_AbsoluteQ_example05.csv",
 )
 
 VENDOR_TYPE = Vendor.APPBIO_ABSOLUTE_Q

@@ -29,8 +29,8 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_dpcr import (
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueNumberPerMicroliter,
-    TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_reader import AbsoluteQReader
 from allotropy.parsers.appbio_absolute_q.constants import (
@@ -188,7 +188,7 @@ class AppbioAbsoluteQParser(VendorParser):
                             data_source_document=data_source_document
                         ),
                         calculated_data_name=calculated_data_item.name,
-                        calculated_datum=TQuantityValueUnitless(
+                        calculated_datum=TQuantityValue(
                             value=datum_value,
                             unit=calculated_data_item.unit,
                         ),
@@ -215,7 +215,7 @@ class AppbioAbsoluteQParser(VendorParser):
                             data_source_document=data_source_document
                         ),
                         calculated_data_name=calculated_data_item.name,
-                        calculated_datum=TQuantityValueUnitless(
+                        calculated_datum=TQuantityValue(
                             value=datum_value,
                             unit=calculated_data_item.unit,
                         ),

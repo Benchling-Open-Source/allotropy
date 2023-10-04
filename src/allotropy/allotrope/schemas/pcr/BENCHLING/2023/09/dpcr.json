@@ -553,7 +553,6 @@
                   },
                   "reference DNA copy number setting": {
                     "$asm.property-class": "TODO",
-                    "$asm.pattern": "value datum",
                     "$asm.pattern": "quantity datum",
                     "$ref": "#/$custom/tQuantityValueNumber"
                   }
@@ -574,7 +573,7 @@
               "calculated datum": {
                 "$asm.property-class": "TODO",
                 "$asm.pattern": "quantity datum",
-                "$ref": "#/$custom/tQuantityValueUnitless"
+                "$ref": "#/$defs/tQuantityValue"
               }
             }
           }
