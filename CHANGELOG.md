@@ -21,9 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Made "flourescence intensity threshold setting" optional in the dPCR schema
 - Changed the "calculated datum" property on the calculated data documents to allow different units
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.4] - 2023-10-03
 ### Fixed
