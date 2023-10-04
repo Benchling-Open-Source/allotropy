@@ -377,7 +377,7 @@
                                     "$asm.pattern": "quantity datum",
                                     "$ref": "#/$custom/tQuantityValueSecondTime"
                                   },
-                                  "qPCR detection chemistry": {
+                                  "PCR detection chemistry": {
                                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002233",
                                     "$asm.pattern": "value datum",
                                     "$asm.type": "http://www.w3.org/2001/XMLSchema#string",

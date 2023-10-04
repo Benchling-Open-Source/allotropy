@@ -10,7 +10,8 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
-    CalculatedDocumentBuilder,
+    build_quantity,
+    iter_calculated_data_documents,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
@@ -95,9 +96,9 @@ class HeaderBuilder:
             msg = "Unable to get measurement method identifier"
             raise AllotropeConversionError(msg)
 
-        qpcr_detection_chemistry = get_str(data, "Chemistry")
-        if qpcr_detection_chemistry is None:
-            msg = "Unable to get qpcr detection chemistry"
+        pcr_detection_chemistry = get_str(data, "Chemistry")
+        if pcr_detection_chemistry is None:
+            msg = "Unable to get PCR detection chemistry"
             raise AllotropeConversionError(msg)
 
         return Header(
@@ -108,7 +109,7 @@ class HeaderBuilder:
             model_number=model_number,
             device_serial_number=device_serial_number,
             measurement_method_identifier=measurement_method_identifier,
-            qpcr_detection_chemistry=qpcr_detection_chemistry,
+            pcr_detection_chemistry=pcr_detection_chemistry,
             passive_reference_dye_setting=get_str(data, "Passive Reference"),
             barcode=get_str(data, "Experiment Barcode"),
             analyst=get_str(data, "Experiment User Name"),
@@ -623,25 +624,24 @@ class DataBuilder:
                     )
                 )
 
-            well.calculated_document = CalculatedDocumentBuilder.build_quantity(
-                well_item
-            )
+            if an_well_item := well.get_an_well_item():
+                well.calculated_document = build_quantity(an_well_item)
 
-        endogenous_control = get_str(results_metadata, "Endogenous Control")
-        reference_sample = get_str(results_metadata, "Reference Sample")
-
-        calc_doc_builder = CalculatedDocumentBuilder(
-            wells=wells,
-            experiment_type=header.experiment_type,
-            r_target=endogenous_control or "",
-            r_sample=reference_sample or "",
-        )
+        endogenous_control = get_str(results_metadata, "Endogenous Control") or ""
+        reference_sample = get_str(results_metadata, "Reference Sample") or ""
 
         return Data(
             header,
             wells,
             raw_data,
-            endogenous_control or "",
-            reference_sample or "",
-            list(calc_doc_builder.iter_calculated_data_documents()),
+            endogenous_control,
+            reference_sample,
+            list(
+                iter_calculated_data_documents(
+                    wells,
+                    header.experiment_type,
+                    reference_sample,
+                    endogenous_control,
+                )
+            ),
         )

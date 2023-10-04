@@ -117,11 +117,7 @@ class AppBioQuantStudioParser(VendorParser):
                     data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[
                             DataSourceDocumentItem(
-                                data_source_identifier=(
-                                    data_source.reference.uuid
-                                    if data_source.reference
-                                    else None
-                                ),
+                                data_source_identifier=data_source.reference.uuid,
                                 data_source_feature=data_source.feature,
                             )
                             for data_source in well.calculated_document.data_sources
@@ -215,7 +211,7 @@ class AppBioQuantStudioParser(VendorParser):
             total_cycle_number_setting=TQuantityValueNumber(
                 value=well_item.amplification_data.total_cycle_number_setting,
             ),
-            qPCR_detection_chemistry=data.header.qpcr_detection_chemistry,
+            PCR_detection_chemistry=data.header.pcr_detection_chemistry,
             reporter_dye_setting=well_item.reporter_dye_setting,
             quencher_dye_setting=well_item.quencher_dye_setting,
             passive_reference_dye_setting=data.header.passive_reference_dye_setting,

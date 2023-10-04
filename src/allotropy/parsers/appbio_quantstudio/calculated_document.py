@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import Union
 
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
@@ -10,7 +10,7 @@ from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 @dataclass
 class DataSource:
     feature: str
-    reference: Optional[Union[CalculatedDocument, Referenceable]]
+    reference: Union[CalculatedDocument, Referenceable]
 
 
 @dataclass

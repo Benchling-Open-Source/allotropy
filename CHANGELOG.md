@@ -7,11 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Redefine calculated data documents references as required in AppBio QuantStudio
 ### Changed
-- Accept comma as thousand indicator in all sections with numeric values of AppBio Quantstudio
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.4] - 2023-10-03
+### Fixed
+- Remove duplication of calculated documents related to quantity measurements in AppBio QuantStudio
+- Rename "qPRC detection chemistry" to "PRC detection chemistry" in PCR schemas
+- Add missing @dataclass annotation to TQuantityValueNumberPerMicroliter
+
+
+## [0.1.3] - 2023-10-03
+### Fixed
+- Redefine the way calculated documents are structured for relative standard curve in AppBio QuantStudio
+- Fixed some issues in dPCR schema and corresponding model updates
+- Accept comma as thousand indicator in all sections of AppBio Quantstudio
 
 ## [0.1.2] - 2023-09-27
 ### Added

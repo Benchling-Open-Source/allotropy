@@ -19,21 +19,38 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     WellItem,
 )
+from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
+from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_data,
     get_data2,
     get_genotyping_data,
+    get_rel_std_curve_data,
 )
 
 
 def rm_uuid(data: Data) -> Data:
     for well in data.wells:
+        if well.calculated_document:
+            rm_uuid_calc_doc(well.calculated_document)
+
         for well_item in well.items.values():
             well_item.uuid = ""
+
     for calc_doc in data.calculated_documents:
-        calc_doc.uuid = ""
+        rm_uuid_calc_doc(calc_doc)
+
     return data
+
+
+def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
+    calc_doc.uuid = ""
+    for source in calc_doc.data_sources:
+        if isinstance(source.reference, CalculatedDocument):
+            rm_uuid_calc_doc(source.reference)
+        elif isinstance(source.reference, Referenceable):
+            source.reference.uuid = ""
 
 
 @pytest.mark.short
@@ -48,7 +65,7 @@ def test_header_builder() -> None:
     model_number = "123"
     device_serial_number = "1234"
     measurement_method_identifier = "measurement ID"
-    qpcr_detection_chemistry = "detection1"
+    pcr_detection_chemistry = "detection1"
     passive_reference_dye_setting = "blue"
     experimental_data_identifier = "data Identifier"
 
@@ -60,7 +77,7 @@ def test_header_builder() -> None:
         model_number=model_number,
         device_serial_number=device_serial_number,
         measurement_method_identifier=measurement_method_identifier,
-        qpcr_detection_chemistry=qpcr_detection_chemistry,
+        pcr_detection_chemistry=pcr_detection_chemistry,
         passive_reference_dye_setting=passive_reference_dye_setting,
         experimental_data_identifier=experimental_data_identifier,
     )
@@ -73,7 +90,7 @@ def test_header_builder() -> None:
         model_number=model_number,
         device_serial_number=device_serial_number,
         measurement_method_identifier=measurement_method_identifier,
-        qpcr_detection_chemistry=qpcr_detection_chemistry,
+        pcr_detection_chemistry=pcr_detection_chemistry,
         passive_reference_dye_setting=passive_reference_dye_setting,
         barcode=None,
         analyst=None,
@@ -91,7 +108,7 @@ def test_header_builder() -> None:
             "measurement_method_identifier",
             "Unable to get measurement method identifier",
         ),
-        ("qpcr_detection_chemistry", "Unable to get qpcr detection chemistry"),
+        ("pcr_detection_chemistry", "Unable to get PCR detection chemistry"),
         ("plate_well_count", "Unable to interpret plate well count"),
     ],
 )
@@ -170,6 +187,10 @@ def test_results_builder() -> None:
             "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test03.txt",
             get_genotyping_data(),
         ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test04.txt",
+            get_rel_std_curve_data(),
+        ),
     ],
 )
 def test_data_builder(test_filepath: str, expected_data: Data) -> None:
@@ -187,7 +208,7 @@ def get_raw_header_contents(
     model_number: Optional[str] = "QuantStudio(TM) 6 Flex System",
     device_serial_number: Optional[str] = "278880034",
     measurement_method_identifier: Optional[str] = "Ct",
-    qpcr_detection_chemistry: Optional[str] = "TAQMAN",
+    pcr_detection_chemistry: Optional[str] = "TAQMAN",
     passive_reference_dye_setting: Optional[str] = "ROX",
     barcode: Optional[str] = "NA",
     analyst: Optional[str] = "NA",
@@ -206,7 +227,7 @@ def get_raw_header_contents(
         "Instrument Type": model_number,
         "Instrument Serial Number": device_serial_number,
         "Quantification Cycle Method": measurement_method_identifier,
-        "Chemistry": qpcr_detection_chemistry,
+        "Chemistry": pcr_detection_chemistry,
         "Passive Reference": passive_reference_dye_setting,
         "Experiment Barcode": barcode,
         "Experiment User Name": analyst,

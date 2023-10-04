@@ -14,6 +14,8 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_genotyping_model,
     get_model,
     get_model2,
+    get_rel_std_curve_data,
+    get_rel_std_curve_model,
 )
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
@@ -52,6 +54,11 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
             "appbio_quantstudio_test03.txt",
             get_genotyping_data(),
             get_genotyping_model(),
+        ),
+        (
+            "appbio_quantstudio_test04.txt",
+            get_rel_std_curve_data(),
+            get_rel_std_curve_model(),
         ),
     ],
 )

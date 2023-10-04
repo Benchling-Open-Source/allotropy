@@ -29,7 +29,7 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    qpcr_detection_chemistry: str
+    pcr_detection_chemistry: str
     passive_reference_dye_setting: Optional[str]
     barcode: Optional[str]
     analyst: Optional[str]
@@ -85,6 +85,12 @@ class Well:
             msg = f"Unable to find target dna {target} for well {self.identifier}"
             raise AllotropeConversionError(msg)
         return well_item
+
+    def get_an_well_item(self) -> Optional[WellItem]:
+        if not self.items:
+            return None
+        target, *_ = self.items.keys()
+        return self.items[target]
 
     def add_multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
         self.multicomponent_data = multicomponent_data
