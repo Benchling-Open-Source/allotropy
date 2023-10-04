@@ -36,6 +36,8 @@ from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_reader import Absolut
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
     CALCULATED_DATA_REFERENCE,
+    CalculatedDataItem,
+    CalculatedDataSource,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -56,9 +58,15 @@ class AppbioAbsoluteQParser(VendorParser):
             for well_name in well_groups
         ]
 
+        calculated_data_aggregate_document = None
         calculated_data_document = self.get_calculated_data_document(
             group_ids, group_rows
         )
+
+        if calculated_data_document:
+            calculated_data_aggregate_document = TCalculatedDataAggregateDocument(
+                calculated_data_document=calculated_data_document
+            )
 
         return Model(
             dPCR_aggregate_document=DPCRAggregateDocument(
@@ -74,9 +82,7 @@ class AppbioAbsoluteQParser(VendorParser):
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 dPCR_document=dpcr_document,
-                calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
-                    calculated_data_document=calculated_data_document
-                ),
+                calculated_data_aggregate_document=calculated_data_aggregate_document,
             )
         )
 
@@ -151,10 +157,22 @@ class AppbioAbsoluteQParser(VendorParser):
             key = str((group_name, group["Target"]))
 
             ids = group_ids[key]
+            calculated_data_ids = {}
+            defered_calculated_data_items: list[CalculatedDataItem] = []
+
             for calculated_data_item in CALCULATED_DATA_REFERENCE[aggregation_type]:
                 # TODO: if aggregation type is Replicate(Average), check for required columns
-                # Raise if column does not exists
+                # Raise if column(s) do not exist
+
+                # Calculated data items that have another calculated data as data source
+                # need to be created after the later
+                if calculated_data_item.source == CalculatedDataSource.CALCULATED_DATA:
+                    defered_calculated_data_items.append(calculated_data_item)
+                    continue
+
                 datum_value = float(group[calculated_data_item.column])
+                calculated_data_id = str(uuid.uuid4())
+                calculated_data_ids[calculated_data_item.name] = calculated_data_id
 
                 data_source_document = [
                     DataSourceDocumentItem(
@@ -165,7 +183,34 @@ class AppbioAbsoluteQParser(VendorParser):
                 ]
                 calculated_data_document.append(
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier=str(uuid.uuid4()),
+                        calculated_data_identifier=calculated_data_id,
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=data_source_document
+                        ),
+                        calculated_data_name=calculated_data_item.name,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=datum_value,
+                            unit=calculated_data_item.unit,
+                        ),
+                    )
+                )
+
+            # TODO: this should be inproved (repeat less code)
+            for calculated_data_item in defered_calculated_data_items:
+                datum_value = float(group[calculated_data_item.column])
+                calculated_data_id = str(uuid.uuid4())
+
+                data_source_document = [
+                    DataSourceDocumentItem(
+                        data_source_identifier=calculated_data_ids[source_feature],
+                        data_source_feature=source_feature,
+                    )
+                    for source_feature in calculated_data_item.source_feature.split(",")
+                ]
+
+                calculated_data_document.append(
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier=calculated_data_id,
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=data_source_document
                         ),

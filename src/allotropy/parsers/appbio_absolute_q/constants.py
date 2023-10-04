@@ -53,13 +53,13 @@ CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataItem]] = {
             source_feature="number concentration",
             unit="#/μL",
         ),
-        # CalculatedDataItem(
-        #     column="CV%",
-        #     name="CV",
-        #     source=CalculatedDataSource.CALCULATED_DATA,
-        #     source_feature="Average Concentration, SD Concentration",
-        #     unit="%",
-        # ),
+        CalculatedDataItem(
+            column="CV%",
+            name="CV",
+            source=CalculatedDataSource.CALCULATED_DATA,
+            source_feature="Average Concentration,SD Concentration",
+            unit="%",
+        ),
         CalculatedDataItem(
             column="Positives",
             name="Average Positives",
