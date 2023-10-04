@@ -90,6 +90,8 @@ dependencies = [
   "jsonschema-specifications >= 2023.7.1",
   "pydantic == 1.10.9",
   "ruff >= 0.0.289",
+  # "mypy >= 1.5.1",
+  # "pytest >= 7.4.0",
 ]
 
 [tool.hatch.envs.scripts.scripts]

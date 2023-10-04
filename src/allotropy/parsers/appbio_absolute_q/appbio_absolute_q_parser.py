@@ -154,6 +154,8 @@ class AppbioAbsoluteQParser(VendorParser):
             for calculated_data_item in CALCULATED_DATA_REFERENCE[aggregation_type]:
                 # TODO: if aggregation type is Replicate(Average), check for required columns
                 # Raise if column does not exists
+                datum_value = float(group[calculated_data_item.column])
+
                 data_source_document = [
                     DataSourceDocumentItem(
                         data_source_identifier=identifier,
@@ -169,7 +171,7 @@ class AppbioAbsoluteQParser(VendorParser):
                         ),
                         calculated_data_name=calculated_data_item.name,
                         calculated_datum=TQuantityValueUnitless(
-                            value=group.get(calculated_data_item.column),
+                            value=datum_value,
                             unit=calculated_data_item.unit,
                         ),
                     )
