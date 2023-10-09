@@ -10,7 +10,11 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+from io import StringIO
+import re
 from typing import Optional
+
+import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
@@ -18,6 +22,17 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
 )
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
+from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.values import assert_not_none, try_int
+
+
+def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optional[str]:
+    value = data.get(key, default)
+    return None if value is None else str(value)
+
+
+def assert_get_str(series: pd.Series, key: str) -> str:
+    return assert_not_none(get_str(series, key), key)
 
 
 @dataclass
@@ -34,6 +49,60 @@ class Header:
     barcode: Optional[str]
     analyst: Optional[str]
     experimental_data_identifier: Optional[str]
+
+    @staticmethod
+    def create(reader: LinesReader) -> Header:
+        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
+        csv_stream = StringIO("\n".join(lines))
+        raw_data = pd.read_csv(
+            csv_stream, header=None, sep="=", names=["index", "values"]
+        )
+        data = pd.Series(raw_data["values"].values, index=raw_data["index"])
+        data.index = data.index.str.strip()
+        data = data.str.strip().replace("NA", None)
+
+        block_type = assert_get_str(data, "Block Type")
+        plate_well_count = assert_not_none(
+            try_int(
+                assert_not_none(
+                    re.match("(96)|(384)", block_type),
+                    msg="Unable to interpret plate well count",
+                ).group()
+            )
+        )
+
+        experiments_type_options = {
+            "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
+            "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
+            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
+            "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
+            "Genotyping": ExperimentType.genotyping_qPCR_experiment,
+            "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
+        }
+
+        experiments_type = assert_not_none(
+            experiments_type_options.get(
+                assert_get_str(data, "Experiment Type"),
+            ),
+            msg="Unable to get valid experiment type",
+        )
+
+        return Header(
+            measurement_time=assert_get_str(data, "Experiment Run End Time"),
+            plate_well_count=plate_well_count,
+            experiment_type=experiments_type,
+            device_identifier=assert_get_str(data, "Instrument Name"),
+            model_number=assert_get_str(data, "Instrument Type"),
+            device_serial_number=assert_get_str(data, "Instrument Serial Number"),
+            measurement_method_identifier=assert_get_str(
+                data, "Quantification Cycle Method"
+            ),
+            pcr_detection_chemistry=assert_get_str(data, "Chemistry"),
+            passive_reference_dye_setting=get_str(data, "Passive Reference"),
+            barcode=get_str(data, "Experiment Barcode"),
+            analyst=get_str(data, "Experiment User Name"),
+            experimental_data_identifier=get_str(data, "Experiment Name"),
+        )
 
 
 @dataclass

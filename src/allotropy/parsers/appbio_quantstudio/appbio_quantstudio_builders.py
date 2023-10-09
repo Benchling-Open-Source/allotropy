@@ -71,100 +71,6 @@ def get_bool(data: pd.Series, key: str) -> Optional[bool]:
         raise AllotropeConversionError(msg) from e
 
 
-class HeaderBuilder:
-    @staticmethod
-    def build(reader: LinesReader) -> Header:
-        data = HeaderBuilder.get_data(reader)
-
-        device_identifier = get_str(data, "Instrument Name")
-        if device_identifier is None:
-            msg = "Unable to get device identifier"
-            raise AllotropeConversionError(msg)
-
-        model_number = get_str(data, "Instrument Type")
-        if model_number is None:
-            msg = "Unable to get model number"
-            raise AllotropeConversionError(msg)
-
-        device_serial_number = get_str(data, "Instrument Serial Number")
-        if device_serial_number is None:
-            msg = "Unable to get device serial number"
-            raise AllotropeConversionError(msg)
-
-        measurement_method_identifier = get_str(data, "Quantification Cycle Method")
-        if measurement_method_identifier is None:
-            msg = "Unable to get measurement method identifier"
-            raise AllotropeConversionError(msg)
-
-        pcr_detection_chemistry = get_str(data, "Chemistry")
-        if pcr_detection_chemistry is None:
-            msg = "Unable to get PCR detection chemistry"
-            raise AllotropeConversionError(msg)
-
-        return Header(
-            measurement_time=HeaderBuilder.get_measurement_time(data),
-            plate_well_count=HeaderBuilder.get_plate_well_count(data),
-            experiment_type=HeaderBuilder.get_experiment_type(data),
-            device_identifier=device_identifier,
-            model_number=model_number,
-            device_serial_number=device_serial_number,
-            measurement_method_identifier=measurement_method_identifier,
-            pcr_detection_chemistry=pcr_detection_chemistry,
-            passive_reference_dye_setting=get_str(data, "Passive Reference"),
-            barcode=get_str(data, "Experiment Barcode"),
-            analyst=get_str(data, "Experiment User Name"),
-            experimental_data_identifier=get_str(data, "Experiment Name"),
-        )
-
-    @staticmethod
-    def get_experiment_type(data: pd.Series) -> ExperimentType:
-        experiments_type_options = {
-            "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
-            "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
-            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
-            "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
-            "Genotyping": ExperimentType.genotyping_qPCR_experiment,
-            "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
-        }
-
-        experiments_type = experiments_type_options.get(data.get("Experiment Type"))  # type: ignore[arg-type]
-        if experiments_type is None:
-            msg = "Unable to get valid experiment type"
-            raise AllotropeConversionError(msg)
-        return experiments_type
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> pd.Series:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        )
-        data = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        data.index = data.index.str.strip()
-        return data.str.strip().replace("NA", None)
-
-    @staticmethod
-    def get_measurement_time(data: pd.Series) -> str:
-        return str(data.get("Experiment Run End Time"))
-
-    @staticmethod
-    def get_plate_well_count(data: pd.Series) -> int:
-        block_type = get_str(data, "Block Type", default="")
-
-        if block_type is None:
-            msg = "Unable to get plate well count"
-            raise AllotropeConversionError(msg)
-
-        if "96" in block_type:
-            return 96
-        elif "384" in block_type:
-            return 384
-
-        msg = "Unable to interpret plate well count"
-        raise AllotropeConversionError(msg)
-
-
 class GenericWellBuilder:
     @staticmethod
     def build(data: pd.DataFrame) -> WellList:
@@ -597,7 +503,7 @@ class MeltCurveRawDataBuilder:
 class DataBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Data:
-        header = HeaderBuilder.build(reader)
+        header = Header.create(reader)
         wells = WellBuilder.build(reader, header.experiment_type)
         raw_data = RawDataBuilder.build(reader)
 

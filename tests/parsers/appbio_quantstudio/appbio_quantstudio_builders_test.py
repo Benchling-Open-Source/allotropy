@@ -10,7 +10,6 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
     DataBuilder,
-    HeaderBuilder,
     ResultsBuilder,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
@@ -58,7 +57,7 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
-    assert isinstance(HeaderBuilder.build(LinesReader(header_contents)), Header)
+    assert isinstance(Header.create(LinesReader(header_contents)), Header)
 
 
 def test_header_builder() -> None:
@@ -83,7 +82,7 @@ def test_header_builder() -> None:
         experimental_data_identifier=experimental_data_identifier,
     )
 
-    assert HeaderBuilder.build(LinesReader(header_contents)) == Header(
+    assert Header.create(LinesReader(header_contents)) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
         experiment_type=ExperimentType.genotyping_qPCR_experiment,
@@ -102,15 +101,18 @@ def test_header_builder() -> None:
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
-        ("device_identifier", "Unable to get device identifier"),
-        ("model_number", "Unable to get model number"),
-        ("device_serial_number", "Unable to get device serial number"),
+        ("device_identifier", "Expected non-null value for Instrument Name"),
+        ("model_number", "Expected non-null value for Instrument Type"),
+        (
+            "device_serial_number",
+            "Expected non-null value for Instrument Serial Number",
+        ),
         (
             "measurement_method_identifier",
-            "Unable to get measurement method identifier",
+            "Expected non-null value for Quantification Cycle Method",
         ),
-        ("pcr_detection_chemistry", "Unable to get PCR detection chemistry"),
-        ("plate_well_count", "Unable to interpret plate well count"),
+        ("pcr_detection_chemistry", "Expected non-null value for Chemistry"),
+        ("plate_well_count", "Expected non-null value for Block Type"),
     ],
 )
 @pytest.mark.short
@@ -120,7 +122,7 @@ def test_header_builder_required_parameter_none_then_raise(
     header_contents = get_raw_header_contents(**{parameter: None})
 
     with pytest.raises(AllotropeConversionError, match=expected_error):
-        HeaderBuilder.build(LinesReader(header_contents))
+        Header.create(LinesReader(header_contents))
 
 
 @pytest.mark.short
@@ -128,7 +130,7 @@ def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
 
     with pytest.raises(AllotropeConversionError):
-        HeaderBuilder.build(LinesReader(header_contents))
+        Header.create(LinesReader(header_contents))
 
 
 @pytest.mark.short
@@ -136,7 +138,7 @@ def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
 
     with pytest.raises(AllotropeConversionError):
-        HeaderBuilder.build(LinesReader(header_contents))
+        Header.create(LinesReader(header_contents))
 
 
 @pytest.mark.short
