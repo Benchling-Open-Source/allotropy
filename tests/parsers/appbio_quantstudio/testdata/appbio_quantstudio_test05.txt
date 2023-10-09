@@ -1,0 +1,55 @@
+* Block Type = 96-Well Block (0.2mL)
+* Calibration Background is expired  = No
+* Calibration Background performed on = 10-13-2010
+* Calibration HRM MELTDOCTOR is expired = No
+* Calibration HRM MELTDOCTOR performed on = 10-13-2010
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 10-13-2010
+* Calibration Pure Dye MELTDOCTOR is expired = No
+* Calibration Pure Dye MELTDOCTOR performed on = 10-13-2010
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 10-13-2010
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 10-13-2010
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 10-13-2010
+* Calibration RNaseP is expired  = No
+* Calibration RNaseP performed on = 10-15-2010
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 10-13-2010
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 10-13-2010
+* Chemistry = TAQMAN
+* Date Created = 2014-09-10 04:22:11 AM EDT
+* Experiment Barcode = 
+* Experiment Comment = NA
+* Experiment File Name = C:\Program Files (x86)\Applied BioSystems\QuantStudio Real-Time PCR Software\examples\QS7Flex\QS7_96-Well Relative Standard Curve Example.eds
+* Experiment Name = QuantStudio96-Well Relative Standard Curve Example
+* Experiment Run End Time = 2010-10-20 02:23:34 AM EDT
+* Experiment Type = Relative Standard Curve
+* Instrument Name = 278880034
+* Instrument Serial Number = 278880034
+* Instrument Type = QuantStudio(TM) 7 Flex System
+* Passive Reference = ROX
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage/ Cycle where Analysis is performed = Stage 2, Step 2
+* User Name = NA
+
+[Sample Setup]
+Well	Well Position	Sample Name	Sample Color	Biogroup Name	Biogroup Color	Target Name	Target Color	Task	Reporter	Quencher	Quantity	Comments
+37	D1	800	"RGB(176,23,31)"			RNaseP	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB		
+
+
+[Amplification Data]
+Well	Cycle	Target Name	Rn	Delta Rn
+37	1	RNaseP	0.627	0.001
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	RQ	RQ Min	RQ Max	CT	Ct Mean	Ct SD	Quantity	Normalized Quantity	Normalized Quantity Standard Error	Quantity Mean	Quantity SD	Efficiency	Y-Intercept	R(superscript 2)	Slope	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Comments	Amp Score	Cq Conf
+37	D1	false	800	RNaseP	UNKNOWN	FAM	NFQ-MGB	0.798	0.658	0.967	30.155	30.115	0.051				818.012	29.535	101.866	39.662	0.999	-3.278	true	0.133	true	3	25		1.242	0.967
+
+Analysis Type = Singleplex
+Endogenous Control = RNaseP
+RQ Min/Max Confidence Level = 95.0
+Reference Sample = 800
