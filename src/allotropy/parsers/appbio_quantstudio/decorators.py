@@ -6,8 +6,8 @@ def cache(fun: Callable) -> Callable:
 
     def inner(*args: Any) -> Any:
         key = "".join([str(arg) for arg in args])
-        if result := cache.get(key):
-            return result
+        if key in cache:
+            return cache[key]
         result = fun(*args)
         cache[key] = result
         return result
