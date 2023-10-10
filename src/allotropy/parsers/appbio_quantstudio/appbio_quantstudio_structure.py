@@ -119,25 +119,27 @@ class WellItem(Referenceable):
     _amplification_data: Optional[AmplificationData] = None
     _result: Optional[Result] = None
 
-    def add_amplification_data(self, amplification_data: AmplificationData) -> None:
+    @property
+    def amplification_data(self) -> AmplificationData:
+        return assert_not_none(
+            self._amplification_data,
+            f"Unable to find amplification data for well {self.identifier}",
+        )
+
+    @amplification_data.setter
+    def amplification_data(self, amplification_data: AmplificationData) -> None:
         self._amplification_data = amplification_data
 
     @property
-    def amplification_data(self) -> AmplificationData:
-        if self._amplification_data is None:
-            msg = f"Unable to find amplification data for well {self.identifier}"
-            raise AllotropeConversionError(msg)
-        return self._amplification_data
-
-    def add_result(self, result: Result) -> None:
-        self._result = result
-
-    @property
     def result(self) -> Result:
-        if self._result is None:
-            msg = f"Unablt to find result data for well {self.identifier}"
-            raise AllotropeConversionError(msg)
-        return self._result
+        return assert_not_none(
+            self._result,
+            f"Unablt to find result data for well {self.identifier}",
+        )
+
+    @result.setter
+    def result(self, result: Result) -> None:
+        self._result = result
 
 
 @dataclass
