@@ -116,28 +116,28 @@ class WellItem(Referenceable):
     well_location_identifier: Optional[str]
     quencher_dye_setting: Optional[str]
     sample_role_type: Optional[str]
-    amplification_data_obj: Optional[AmplificationData] = None
-    result_obj: Optional[Result] = None
+    _amplification_data: Optional[AmplificationData] = None
+    _result: Optional[Result] = None
 
     def add_amplification_data(self, amplification_data: AmplificationData) -> None:
-        self.amplification_data_obj = amplification_data
+        self._amplification_data = amplification_data
 
     @property
     def amplification_data(self) -> AmplificationData:
-        if self.amplification_data_obj is None:
+        if self._amplification_data is None:
             msg = f"Unable to find amplification data for well {self.identifier}"
             raise AllotropeConversionError(msg)
-        return self.amplification_data_obj
+        return self._amplification_data
 
     def add_result(self, result: Result) -> None:
-        self.result_obj = result
+        self._result = result
 
     @property
     def result(self) -> Result:
-        if self.result_obj is None:
+        if self._result is None:
             msg = f"Unablt to find result data for well {self.identifier}"
             raise AllotropeConversionError(msg)
-        return self.result_obj
+        return self._result
 
 
 @dataclass

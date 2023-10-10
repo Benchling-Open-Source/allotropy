@@ -69,13 +69,13 @@ def get_data() -> Data:
                 reporter_dye_setting="VIC",
                 quencher_dye_setting="NFQ-MGB",
                 sample_role_type="BlockedIPC",
-                amplification_data_obj=AmplificationData(
+                _amplification_data=AmplificationData(
                     total_cycle_number_setting=1,
                     cycle=[1],
                     rn=[1.064],
                     delta_rn=[-0.002],
                 ),
-                result_obj=Result(
+                _result=Result(
                     cycle_threshold_value_setting=0.2,
                     cycle_threshold_result=None,
                     automatic_cycle_threshold_enabled_setting=False,
@@ -113,13 +113,13 @@ def get_data() -> Data:
                 reporter_dye_setting="FAM",
                 quencher_dye_setting="NFQ-MGB",
                 sample_role_type="NTC",
-                amplification_data_obj=AmplificationData(
+                _amplification_data=AmplificationData(
                     total_cycle_number_setting=1,
                     cycle=[1],
                     rn=[0.343],
                     delta_rn=[-0.007],
                 ),
-                result_obj=Result(
+                _result=Result(
                     cycle_threshold_value_setting=0.2,
                     cycle_threshold_result=None,
                     automatic_cycle_threshold_enabled_setting=False,
@@ -253,13 +253,13 @@ def get_data2() -> Data:
                 reporter_dye_setting="SYBR",
                 quencher_dye_setting=None,
                 sample_role_type="UNKNOWN",
-                amplification_data_obj=AmplificationData(
+                _amplification_data=AmplificationData(
                     total_cycle_number_setting=1,
                     cycle=[1],
                     rn=[0.612],
                     delta_rn=[-0.007],
                 ),
-                result_obj=Result(
+                _result=Result(
                     cycle_threshold_value_setting=0.277,
                     cycle_threshold_result=18.717,
                     automatic_cycle_threshold_enabled_setting=True,
@@ -1114,13 +1114,13 @@ def get_genotyping_data() -> Data:
                 reporter_dye_setting=None,
                 quencher_dye_setting=None,
                 sample_role_type="NTC",
-                amplification_data_obj=AmplificationData(
+                _amplification_data=AmplificationData(
                     total_cycle_number_setting=2,
                     cycle=[1, 2],
                     rn=[0.275, 0.277],
                     delta_rn=[-0.003, -0.001],
                 ),
-                result_obj=Result(
+                _result=Result(
                     cycle_threshold_value_setting=0.219,
                     cycle_threshold_result=None,
                     automatic_cycle_threshold_enabled_setting=True,
@@ -1158,13 +1158,13 @@ def get_genotyping_data() -> Data:
                 reporter_dye_setting=None,
                 quencher_dye_setting=None,
                 sample_role_type="NTC",
-                amplification_data_obj=AmplificationData(
+                _amplification_data=AmplificationData(
                     total_cycle_number_setting=2,
                     cycle=[1, 2],
                     rn=[0.825, 0.831],
                     delta_rn=[-0.016, -0.011],
                 ),
-                result_obj=Result(
+                _result=Result(
                     cycle_threshold_value_setting=0.132,
                     cycle_threshold_result=None,
                     automatic_cycle_threshold_enabled_setting=True,
@@ -1471,13 +1471,13 @@ def get_rel_std_curve_data() -> Data:
                             well_location_identifier="D1",
                             quencher_dye_setting="NFQ-MGB",
                             sample_role_type="UNKNOWN",
-                            amplification_data_obj=AmplificationData(
+                            _amplification_data=AmplificationData(
                                 total_cycle_number_setting=1.0,
                                 cycle=[1],
                                 rn=[0.627],
                                 delta_rn=[0.001],
                             ),
-                            result_obj=Result(
+                            _result=Result(
                                 cycle_threshold_value_setting=0.133,
                                 cycle_threshold_result=30.155,
                                 automatic_cycle_threshold_enabled_setting=True,
@@ -1525,13 +1525,13 @@ def get_rel_std_curve_data() -> Data:
                                     well_location_identifier="D1",
                                     quencher_dye_setting="NFQ-MGB",
                                     sample_role_type="UNKNOWN",
-                                    amplification_data_obj=AmplificationData(
+                                    _amplification_data=AmplificationData(
                                         total_cycle_number_setting=1.0,
                                         cycle=[1],
                                         rn=[0.627],
                                         delta_rn=[0.001],
                                     ),
-                                    result_obj=Result(
+                                    _result=Result(
                                         cycle_threshold_value_setting=0.133,
                                         cycle_threshold_result=30.155,
                                         automatic_cycle_threshold_enabled_setting=True,
@@ -1577,13 +1577,13 @@ def get_rel_std_curve_data() -> Data:
                             well_location_identifier="D2",
                             quencher_dye_setting="NFQ-MGB",
                             sample_role_type="UNKNOWN",
-                            amplification_data_obj=AmplificationData(
+                            _amplification_data=AmplificationData(
                                 total_cycle_number_setting=1.0,
                                 cycle=[1],
                                 rn=[0.612],
                                 delta_rn=[-0.001],
                             ),
-                            result_obj=Result(
+                            _result=Result(
                                 cycle_threshold_value_setting=0.133,
                                 cycle_threshold_result=30.2,
                                 automatic_cycle_threshold_enabled_setting=True,
@@ -1631,13 +1631,13 @@ def get_rel_std_curve_data() -> Data:
                                     well_location_identifier="D2",
                                     quencher_dye_setting="NFQ-MGB",
                                     sample_role_type="UNKNOWN",
-                                    amplification_data_obj=AmplificationData(
+                                    _amplification_data=AmplificationData(
                                         total_cycle_number_setting=1.0,
                                         cycle=[1],
                                         rn=[0.612],
                                         delta_rn=[-0.001],
                                     ),
-                                    result_obj=Result(
+                                    _result=Result(
                                         cycle_threshold_value_setting=0.133,
                                         cycle_threshold_result=30.2,
                                         automatic_cycle_threshold_enabled_setting=True,
@@ -1700,13 +1700,13 @@ def get_rel_std_curve_data() -> Data:
                                         well_location_identifier="D1",
                                         quencher_dye_setting="NFQ-MGB",
                                         sample_role_type="UNKNOWN",
-                                        amplification_data_obj=AmplificationData(
+                                        _amplification_data=AmplificationData(
                                             total_cycle_number_setting=1.0,
                                             cycle=[1],
                                             rn=[0.627],
                                             delta_rn=[0.001],
                                         ),
-                                        result_obj=Result(
+                                        _result=Result(
                                             cycle_threshold_value_setting=0.133,
                                             cycle_threshold_result=30.155,
                                             automatic_cycle_threshold_enabled_setting=True,
@@ -1758,13 +1758,13 @@ def get_rel_std_curve_data() -> Data:
                                         well_location_identifier="D2",
                                         quencher_dye_setting="NFQ-MGB",
                                         sample_role_type="UNKNOWN",
-                                        amplification_data_obj=AmplificationData(
+                                        _amplification_data=AmplificationData(
                                             total_cycle_number_setting=1.0,
                                             cycle=[1],
                                             rn=[0.612],
                                             delta_rn=[-0.001],
                                         ),
-                                        result_obj=Result(
+                                        _result=Result(
                                             cycle_threshold_value_setting=0.133,
                                             cycle_threshold_result=30.2,
                                             automatic_cycle_threshold_enabled_setting=True,
@@ -1824,13 +1824,13 @@ def get_rel_std_curve_data() -> Data:
                                         well_location_identifier="D1",
                                         quencher_dye_setting="NFQ-MGB",
                                         sample_role_type="UNKNOWN",
-                                        amplification_data_obj=AmplificationData(
+                                        _amplification_data=AmplificationData(
                                             total_cycle_number_setting=1.0,
                                             cycle=[1],
                                             rn=[0.627],
                                             delta_rn=[0.001],
                                         ),
-                                        result_obj=Result(
+                                        _result=Result(
                                             cycle_threshold_value_setting=0.133,
                                             cycle_threshold_result=30.155,
                                             automatic_cycle_threshold_enabled_setting=True,
@@ -1882,13 +1882,13 @@ def get_rel_std_curve_data() -> Data:
                                         well_location_identifier="D2",
                                         quencher_dye_setting="NFQ-MGB",
                                         sample_role_type="UNKNOWN",
-                                        amplification_data_obj=AmplificationData(
+                                        _amplification_data=AmplificationData(
                                             total_cycle_number_setting=1.0,
                                             cycle=[1],
                                             rn=[0.612],
                                             delta_rn=[-0.001],
                                         ),
-                                        result_obj=Result(
+                                        _result=Result(
                                             cycle_threshold_value_setting=0.133,
                                             cycle_threshold_result=30.2,
                                             automatic_cycle_threshold_enabled_setting=True,
@@ -1941,13 +1941,13 @@ def get_rel_std_curve_data() -> Data:
                             well_location_identifier="D1",
                             quencher_dye_setting="NFQ-MGB",
                             sample_role_type="UNKNOWN",
-                            amplification_data_obj=AmplificationData(
+                            _amplification_data=AmplificationData(
                                 total_cycle_number_setting=1.0,
                                 cycle=[1],
                                 rn=[0.627],
                                 delta_rn=[0.001],
                             ),
-                            result_obj=Result(
+                            _result=Result(
                                 cycle_threshold_value_setting=0.133,
                                 cycle_threshold_result=30.155,
                                 automatic_cycle_threshold_enabled_setting=True,
@@ -1988,13 +1988,13 @@ def get_rel_std_curve_data() -> Data:
                             well_location_identifier="D2",
                             quencher_dye_setting="NFQ-MGB",
                             sample_role_type="UNKNOWN",
-                            amplification_data_obj=AmplificationData(
+                            _amplification_data=AmplificationData(
                                 total_cycle_number_setting=1.0,
                                 cycle=[1],
                                 rn=[0.612],
                                 delta_rn=[-0.001],
                             ),
-                            result_obj=Result(
+                            _result=Result(
                                 cycle_threshold_value_setting=0.133,
                                 cycle_threshold_result=30.2,
                                 automatic_cycle_threshold_enabled_setting=True,
@@ -2064,13 +2064,13 @@ def get_rel_std_curve_data() -> Data:
                                                                 well_location_identifier="D1",
                                                                 quencher_dye_setting="NFQ-MGB",
                                                                 sample_role_type="UNKNOWN",
-                                                                amplification_data_obj=AmplificationData(
+                                                                _amplification_data=AmplificationData(
                                                                     total_cycle_number_setting=1.0,
                                                                     cycle=[1],
                                                                     rn=[0.627],
                                                                     delta_rn=[0.001],
                                                                 ),
-                                                                result_obj=Result(
+                                                                _result=Result(
                                                                     cycle_threshold_value_setting=0.133,
                                                                     cycle_threshold_result=30.155,
                                                                     automatic_cycle_threshold_enabled_setting=True,
@@ -2122,13 +2122,13 @@ def get_rel_std_curve_data() -> Data:
                                                                 well_location_identifier="D2",
                                                                 quencher_dye_setting="NFQ-MGB",
                                                                 sample_role_type="UNKNOWN",
-                                                                amplification_data_obj=AmplificationData(
+                                                                _amplification_data=AmplificationData(
                                                                     total_cycle_number_setting=1.0,
                                                                     cycle=[1],
                                                                     rn=[0.612],
                                                                     delta_rn=[-0.001],
                                                                 ),
-                                                                result_obj=Result(
+                                                                _result=Result(
                                                                     cycle_threshold_value_setting=0.133,
                                                                     cycle_threshold_result=30.2,
                                                                     automatic_cycle_threshold_enabled_setting=True,
@@ -2203,13 +2203,13 @@ def get_rel_std_curve_data() -> Data:
                                                     well_location_identifier="D1",
                                                     quencher_dye_setting="NFQ-MGB",
                                                     sample_role_type="UNKNOWN",
-                                                    amplification_data_obj=AmplificationData(
+                                                    _amplification_data=AmplificationData(
                                                         total_cycle_number_setting=1.0,
                                                         cycle=[1],
                                                         rn=[0.627],
                                                         delta_rn=[0.001],
                                                     ),
-                                                    result_obj=Result(
+                                                    _result=Result(
                                                         cycle_threshold_value_setting=0.133,
                                                         cycle_threshold_result=30.155,
                                                         automatic_cycle_threshold_enabled_setting=True,
@@ -2261,13 +2261,13 @@ def get_rel_std_curve_data() -> Data:
                                                     well_location_identifier="D2",
                                                     quencher_dye_setting="NFQ-MGB",
                                                     sample_role_type="UNKNOWN",
-                                                    amplification_data_obj=AmplificationData(
+                                                    _amplification_data=AmplificationData(
                                                         total_cycle_number_setting=1.0,
                                                         cycle=[1],
                                                         rn=[0.612],
                                                         delta_rn=[-0.001],
                                                     ),
-                                                    result_obj=Result(
+                                                    _result=Result(
                                                         cycle_threshold_value_setting=0.133,
                                                         cycle_threshold_result=30.2,
                                                         automatic_cycle_threshold_enabled_setting=True,
@@ -2331,13 +2331,13 @@ def get_rel_std_curve_data() -> Data:
                                         well_location_identifier="D1",
                                         quencher_dye_setting="NFQ-MGB",
                                         sample_role_type="UNKNOWN",
-                                        amplification_data_obj=AmplificationData(
+                                        _amplification_data=AmplificationData(
                                             total_cycle_number_setting=1.0,
                                             cycle=[1],
                                             rn=[0.627],
                                             delta_rn=[0.001],
                                         ),
-                                        result_obj=Result(
+                                        _result=Result(
                                             cycle_threshold_value_setting=0.133,
                                             cycle_threshold_result=30.155,
                                             automatic_cycle_threshold_enabled_setting=True,
@@ -2389,13 +2389,13 @@ def get_rel_std_curve_data() -> Data:
                                         well_location_identifier="D2",
                                         quencher_dye_setting="NFQ-MGB",
                                         sample_role_type="UNKNOWN",
-                                        amplification_data_obj=AmplificationData(
+                                        _amplification_data=AmplificationData(
                                             total_cycle_number_setting=1.0,
                                             cycle=[1],
                                             rn=[0.612],
                                             delta_rn=[-0.001],
                                         ),
-                                        result_obj=Result(
+                                        _result=Result(
                                             cycle_threshold_value_setting=0.133,
                                             cycle_threshold_result=30.2,
                                             automatic_cycle_threshold_enabled_setting=True,
@@ -2469,13 +2469,13 @@ def get_rel_std_curve_data() -> Data:
                                                                 well_location_identifier="D1",
                                                                 quencher_dye_setting="NFQ-MGB",
                                                                 sample_role_type="UNKNOWN",
-                                                                amplification_data_obj=AmplificationData(
+                                                                _amplification_data=AmplificationData(
                                                                     total_cycle_number_setting=1.0,
                                                                     cycle=[1],
                                                                     rn=[0.627],
                                                                     delta_rn=[0.001],
                                                                 ),
-                                                                result_obj=Result(
+                                                                _result=Result(
                                                                     cycle_threshold_value_setting=0.133,
                                                                     cycle_threshold_result=30.155,
                                                                     automatic_cycle_threshold_enabled_setting=True,
@@ -2527,13 +2527,13 @@ def get_rel_std_curve_data() -> Data:
                                                                 well_location_identifier="D2",
                                                                 quencher_dye_setting="NFQ-MGB",
                                                                 sample_role_type="UNKNOWN",
-                                                                amplification_data_obj=AmplificationData(
+                                                                _amplification_data=AmplificationData(
                                                                     total_cycle_number_setting=1.0,
                                                                     cycle=[1],
                                                                     rn=[0.612],
                                                                     delta_rn=[-0.001],
                                                                 ),
-                                                                result_obj=Result(
+                                                                _result=Result(
                                                                     cycle_threshold_value_setting=0.133,
                                                                     cycle_threshold_result=30.2,
                                                                     automatic_cycle_threshold_enabled_setting=True,
@@ -3162,13 +3162,13 @@ def get_broken_calc_doc_data() -> Data:
                             well_location_identifier="D1",
                             quencher_dye_setting="NFQ-MGB",
                             sample_role_type="UNKNOWN",
-                            amplification_data_obj=AmplificationData(
+                            _amplification_data=AmplificationData(
                                 total_cycle_number_setting=1.0,
                                 cycle=[1],
                                 rn=[0.627],
                                 delta_rn=[0.001],
                             ),
-                            result_obj=Result(
+                            _result=Result(
                                 cycle_threshold_value_setting=0.133,
                                 cycle_threshold_result=30.155,
                                 automatic_cycle_threshold_enabled_setting=True,
@@ -3224,13 +3224,13 @@ def get_broken_calc_doc_data() -> Data:
                             well_location_identifier="D1",
                             quencher_dye_setting="NFQ-MGB",
                             sample_role_type="UNKNOWN",
-                            amplification_data_obj=AmplificationData(
+                            _amplification_data=AmplificationData(
                                 total_cycle_number_setting=1.0,
                                 cycle=[1],
                                 rn=[0.627],
                                 delta_rn=[0.001],
                             ),
-                            result_obj=Result(
+                            _result=Result(
                                 cycle_threshold_value_setting=0.133,
                                 cycle_threshold_result=30.155,
                                 automatic_cycle_threshold_enabled_setting=True,
