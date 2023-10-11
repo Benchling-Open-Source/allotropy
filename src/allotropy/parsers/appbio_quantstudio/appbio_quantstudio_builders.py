@@ -61,16 +61,6 @@ def get_bool(data: pd.Series, key: str) -> Optional[bool]:
         raise AllotropeConversionError(msg) from e
 
 
-class RawDataBuilder:
-    @staticmethod
-    def build(reader: LinesReader) -> Optional[RawData]:
-        if not reader.match(r"^\[Raw Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        return RawData(lines)
-
-
 class AmplificationDataBuilder:
     @staticmethod
     def build(
@@ -365,7 +355,7 @@ class DataBuilder:
     def build(reader: LinesReader) -> Data:
         header = Header.create(reader)
         wells = WellList.create(reader, header.experiment_type)
-        raw_data = RawDataBuilder.build(reader)
+        raw_data = RawData.create(reader)
 
         amp_data = AmplificationDataBuilder.get_data(reader)
         multi_data = MulticomponentDataBuilder.get_data(reader)
