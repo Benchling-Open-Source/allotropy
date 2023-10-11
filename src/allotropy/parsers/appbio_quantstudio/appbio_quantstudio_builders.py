@@ -61,53 +61,6 @@ def get_bool(data: pd.Series, key: str) -> Optional[bool]:
         raise AllotropeConversionError(msg) from e
 
 
-class AmplificationDataBuilder:
-    @staticmethod
-    def build(
-        amplification_data: pd.DataFrame, well_item: WellItem
-    ) -> AmplificationData:
-        target_data = AmplificationDataBuilder.filter_target_data(
-            amplification_data, well_item
-        )
-        return AmplificationData(
-            total_cycle_number_setting=float(target_data["Cycle"].max()),
-            cycle=target_data["Cycle"].tolist(),
-            rn=target_data["Rn"].tolist(),
-            delta_rn=target_data["Delta Rn"].tolist(),
-        )
-
-    @staticmethod
-    def filter_target_data(
-        amplification_data: pd.DataFrame, well_item: WellItem
-    ) -> pd.DataFrame:
-        well_data = amplification_data[
-            amplification_data["Well"] == well_item.identifier
-        ]
-        if well_data.empty:
-            msg = f"Unable to get amplification data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
-
-        target_data = well_data[
-            well_data["Target Name"] == well_item.target_dna_description
-        ]
-        if target_data.empty:
-            msg = f"Unable to get amplification data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return target_data
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> pd.DataFrame:
-        if reader.drop_until(r"^\[Amplification Data\]") is None:
-            msg = "Unable to find Amplification Data section in input file"
-            raise AllotropeConversionError(msg)
-
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
-
 class MulticomponentDataBuilder:
     @staticmethod
     def build(data: pd.DataFrame, well: Well) -> MulticomponentData:
@@ -357,7 +310,7 @@ class DataBuilder:
         wells = WellList.create(reader, header.experiment_type)
         raw_data = RawData.create(reader)
 
-        amp_data = AmplificationDataBuilder.get_data(reader)
+        amp_data = AmplificationData.get_data(reader)
         multi_data = MulticomponentDataBuilder.get_data(reader)
         results_data, results_metadata = ResultsBuilder.get_data(reader)
         melt_data = MeltCurveRawDataBuilder.get_data(reader)
@@ -373,7 +326,7 @@ class DataBuilder:
                 )
 
             for well_item in well.items.values():
-                well_item.amplification_data = AmplificationDataBuilder.build(
+                well_item.amplification_data = AmplificationData.create(
                     amp_data, well_item
                 )
                 well_item.result = ResultsBuilder.build(
