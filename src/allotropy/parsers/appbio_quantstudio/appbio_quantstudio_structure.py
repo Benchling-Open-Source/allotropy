@@ -456,6 +456,28 @@ class MeltCurveRawData:
     fluorescence: list[Optional[float]]
     derivative: list[Optional[float]]
 
+    @staticmethod
+    def create(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
+        well_data = assert_not_empty(
+            data[data["Well"] == well.identifier],
+            msg=f"Unable to get melt curve raw data for well {well.identifier}",
+        )
+
+        return MeltCurveRawData(
+            reading=well_data["Reading"].tolist(),
+            fluorescence=well_data["Fluorescence"].tolist(),
+            derivative=well_data["Derivative"].tolist(),
+        )
+
+    @staticmethod
+    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
+        if not reader.match(r"^\[Melt Curve Raw Data\]"):
+            return None
+        reader.pop()  # remove title
+        lines = list(reader.pop_until_empty())
+        csv_stream = StringIO("\n".join(lines))
+        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+
 
 @dataclass
 class Data:

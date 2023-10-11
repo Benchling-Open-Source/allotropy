@@ -20,7 +20,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     MulticomponentData,
     RawData,
     Result,
-    Well,
     WellItem,
     WellList,
 )
@@ -242,35 +241,6 @@ class ResultsBuilder:
         return data, metadata.str.strip()
 
 
-class MeltCurveRawDataBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
-        well_data = MeltCurveRawDataBuilder.filter_well_data(data, well)
-        return MeltCurveRawData(
-            reading=well_data["Reading"].tolist(),
-            fluorescence=well_data["Fluorescence"].tolist(),
-            derivative=well_data["Derivative"].tolist(),
-        )
-
-    @staticmethod
-    def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
-        well_data = data[data["Well"] == well.identifier]
-        if well_data.empty:
-            msg = f"Unable to get melt curve raw data for well {well.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return well_data
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Melt Curve Raw Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
-
 class DataBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Data:
@@ -281,15 +251,13 @@ class DataBuilder:
         amp_data = AmplificationData.get_data(reader)
         multi_data = MulticomponentData.get_data(reader)
         results_data, results_metadata = ResultsBuilder.get_data(reader)
-        melt_data = MeltCurveRawDataBuilder.get_data(reader)
+        melt_data = MeltCurveRawData.get_data(reader)
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = MulticomponentData.create(multi_data, well)
 
             if melt_data is not None:
-                well.melt_curve_raw_data = MeltCurveRawDataBuilder.build(
-                    melt_data, well
-                )
+                well.melt_curve_raw_data = MeltCurveRawData.create(melt_data, well)
 
             for well_item in well.items.values():
                 well_item.amplification_data = AmplificationData.create(
