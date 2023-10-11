@@ -13,17 +13,17 @@ from dataclasses import dataclass
 from io import StringIO
 import re
 from typing import Optional
+import uuid
 
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
-    ExperimentType,
-)
+from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import assert_not_none, try_int
+from allotropy.parsers.utils.values import assert_int, assert_not_none, try_int
 
 
 def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optional[str]:
@@ -31,8 +31,21 @@ def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optiona
     return None if value is None else str(value)
 
 
-def assert_get_str(series: pd.Series, key: str) -> str:
-    return assert_not_none(get_str(series, key), key)
+def assert_get_str(series: pd.Series, key: str, msg: Optional[str] = None) -> str:
+    return assert_not_none(get_str(series, key), key, msg)
+
+
+def get_int(data: pd.Series, key: str) -> Optional[int]:
+    try:
+        value = data.get(key)
+        return None if value is None else int(value)  # type: ignore[arg-type]
+    except Exception as e:
+        msg = f"Unable to convert {key} to integer value"
+        raise AllotropeConversionError(msg) from e
+
+
+def assert_get_int(data: pd.Series, key: str, msg: Optional[str] = None) -> int:
+    return assert_not_none(get_int(data, key), key, msg)
 
 
 @dataclass
@@ -141,21 +154,85 @@ class WellItem(Referenceable):
     def result(self, result: Result) -> None:
         self._result = result
 
+    @staticmethod
+    def create_genotyping(data: pd.Series) -> list[WellItem]:
+        identifier = assert_get_int(data, "Well")
+        snp_name = assert_get_str(
+            data,
+            "SNP Assay Name",
+            msg=f"Unable to get snp name for well {identifier}",
+        )
+
+        allele1 = assert_get_str(
+            data,
+            "Allele1 Name",
+            msg=f"Unable to get allele 1 for well {identifier}",
+        )
+        allele2 = assert_get_str(
+            data,
+            "Allele2 Name",
+            msg=f"Unable to get allele 2 for well {identifier}",
+        )
+
+        return [
+            WellItem(
+                uuid=str(uuid.uuid4()),
+                identifier=identifier,
+                target_dna_description=f"{snp_name}-{allele}",
+                sample_identifier=assert_get_str(
+                    data,
+                    "Sample Name",
+                    msg=f"Unable to get sample identifier for well {identifier}",
+                ),
+                reporter_dye_setting=get_str(data, "Reporter"),
+                position=get_str(data, "Well Position", default="UNDEFINED"),
+                well_location_identifier=get_str(data, "Well Position"),
+                quencher_dye_setting=get_str(data, "Quencher"),
+                sample_role_type=get_str(data, "Task"),
+            )
+            for allele in [allele1, allele2]
+        ]
+
+    @staticmethod
+    def create_generic(data: pd.Series) -> WellItem:
+        identifier = assert_get_int(data, "Well")
+        target_dna_description = assert_get_str(
+            data,
+            "Target Name",
+            msg=f"Unable to get target dna description for well {identifier}",
+        )
+        sample_identifier = assert_get_str(
+            data,
+            "Sample Name",
+            msg=f"Unable to get sample identifier for well {identifier}",
+        )
+
+        return WellItem(
+            uuid=str(uuid.uuid4()),
+            identifier=identifier,
+            target_dna_description=target_dna_description,
+            sample_identifier=sample_identifier,
+            reporter_dye_setting=get_str(data, "Reporter"),
+            position=get_str(data, "Well Position", default="UNDEFINED"),
+            well_location_identifier=get_str(data, "Well Position"),
+            quencher_dye_setting=get_str(data, "Quencher"),
+            sample_role_type=get_str(data, "Task"),
+        )
+
 
 @dataclass
 class Well:
     identifier: int
     items: dict[str, WellItem]
-    multicomponent_data: Optional[MulticomponentData] = None
-    melt_curve_raw_data: Optional[MeltCurveRawData] = None
-    calculated_document: Optional[CalculatedDocument] = None
+    _multicomponent_data: Optional[MulticomponentData] = None
+    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    _calculated_document: Optional[CalculatedDocument] = None
 
     def get_well_item(self, target: str) -> WellItem:
-        well_item = self.items.get(target)
-        if well_item is None:
-            msg = f"Unable to find target dna {target} for well {self.identifier}"
-            raise AllotropeConversionError(msg)
-        return well_item
+        return assert_not_none(
+            self.items.get(target),
+            msg=f"Unable to find target dna {target} for well {self.identifier}",
+        )
 
     def get_an_well_item(self) -> Optional[WellItem]:
         if not self.items:
@@ -163,11 +240,49 @@ class Well:
         target, *_ = self.items.keys()
         return self.items[target]
 
-    def add_multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
-        self.multicomponent_data = multicomponent_data
+    @property
+    def multicomponent_data(self) -> Optional[MulticomponentData]:
+        return self._multicomponent_data
 
-    def add_melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self.melt_curve_raw_data = melt_curve_raw_data
+    @multicomponent_data.setter
+    def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
+        self._multicomponent_data = multicomponent_data
+
+    @property
+    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
+        return self._melt_curve_raw_data
+
+    @melt_curve_raw_data.setter
+    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
+        self._melt_curve_raw_data = melt_curve_raw_data
+
+    @property
+    def calculated_document(self) -> Optional[CalculatedDocument]:
+        return self._calculated_document
+
+    @calculated_document.setter
+    def calculated_document(self, calculated_document: CalculatedDocument) -> None:
+        self._calculated_document = calculated_document
+
+    @staticmethod
+    def create_genotyping(well_id: int, well_data: pd.Series) -> Well:
+        return Well(
+            identifier=well_id,
+            items={
+                well_item.target_dna_description: well_item
+                for well_item in WellItem.create_genotyping(well_data)
+            },
+        )
+
+    @staticmethod
+    def create_generic(identifier: int, well_data: pd.DataFrame) -> Well:
+        return Well(
+            identifier=identifier,
+            items={
+                item_data["Target Name"]: WellItem.create_generic(item_data)
+                for _, item_data in well_data.iterrows()
+            },
+        )
 
 
 @dataclass
@@ -180,6 +295,34 @@ class WellList:
 
     def __iter__(self) -> Iterator[Well]:
         return iter(self.wells)
+
+    @staticmethod
+    def create(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
+        assert_not_none(
+            reader.drop_until(r"^\[Sample Setup\]"),
+            "Unable to find Sample Setup section in input file",
+        )
+
+        reader.pop()  # remove title
+        lines = list(reader.pop_until(r"^\[.+\]"))
+        csv_stream = StringIO("\n".join(lines))
+        raw_data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
+        data = raw_data[raw_data["Sample Name"].notnull()]
+
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            return WellList(
+                [
+                    Well.create_genotyping(assert_int(str(identifier)), well_data)
+                    for identifier, well_data in data.iterrows()
+                ]
+            )
+
+        return WellList(
+            [
+                Well.create_generic(assert_int(str(identifier)), well_data)
+                for identifier, well_data in data.groupby("Well")
+            ]
+        )
 
 
 @dataclass

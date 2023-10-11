@@ -1,6 +1,5 @@
 from io import StringIO
 from typing import Any, Optional
-import uuid
 
 import numpy as np
 import pandas as pd
@@ -44,15 +43,6 @@ def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optiona
     return None if value is None else str(value)
 
 
-def get_int(data: pd.Series, key: str) -> Optional[int]:
-    try:
-        value = data.get(key)
-        return None if value is None else int(value)  # type: ignore[arg-type]
-    except Exception as e:
-        msg = f"Unable to convert {key} to integer value"
-        raise AllotropeConversionError(msg) from e
-
-
 def get_float(data: pd.Series, key: str) -> Optional[float]:
     try:
         value = data.get(key)
@@ -69,136 +59,6 @@ def get_bool(data: pd.Series, key: str) -> Optional[bool]:
     except Exception as e:
         msg = f"Unable to convert {key} to bool value"
         raise AllotropeConversionError(msg) from e
-
-
-class GenericWellBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame) -> WellList:
-        return WellList(
-            [
-                Well(
-                    identifier=identifier,  # type: ignore[arg-type]
-                    items={
-                        item_data["Target Name"]: GenericWellBuilder.build_well_item(
-                            item_data
-                        )
-                        for _, item_data in well_data.iterrows()
-                    },
-                )
-                for identifier, well_data in data.groupby("Well")
-            ]
-        )
-
-    @staticmethod
-    def build_well_item(data: pd.Series) -> WellItem:
-        identifier = get_int(data, "Well")
-        if identifier is None:
-            msg = "Unable to get well identifier"
-            raise AllotropeConversionError(msg)
-
-        target_dna_description = get_str(data, "Target Name")
-        if target_dna_description is None:
-            msg = f"Unable to get target dna description for well {identifier}"
-            raise AllotropeConversionError(msg)
-
-        sample_identifier = get_str(data, "Sample Name")
-        if sample_identifier is None:
-            msg = f"Unable to get sample identifier for well {identifier}"
-            raise AllotropeConversionError(msg)
-
-        return WellItem(
-            uuid=str(uuid.uuid4()),
-            identifier=identifier,
-            target_dna_description=target_dna_description,
-            sample_identifier=sample_identifier,
-            reporter_dye_setting=get_str(data, "Reporter"),
-            position=get_str(data, "Well Position", default="UNDEFINED"),
-            well_location_identifier=get_str(data, "Well Position"),
-            quencher_dye_setting=get_str(data, "Quencher"),
-            sample_role_type=get_str(data, "Task"),
-        )
-
-
-class GenotypingWellBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame) -> WellList:
-        return WellList(
-            [
-                Well(
-                    identifier=well_id,  # type: ignore[arg-type]
-                    items={
-                        well_item.target_dna_description: well_item
-                        for well_item in GenotypingWellBuilder.build_well_items(
-                            well_data
-                        )
-                    },
-                )
-                for well_id, well_data in data.iterrows()
-            ]
-        )
-
-    @staticmethod
-    def build_well_items(data: pd.Series) -> list[WellItem]:
-        identifier = get_int(data, "Well")
-        if identifier is None:
-            msg = "Unable to get well identifier"
-            raise AllotropeConversionError(msg)
-
-        snp_name = get_str(data, "SNP Assay Name")
-        if snp_name is None:
-            msg = f"Unable to get snp name for well {identifier}"
-            raise AllotropeConversionError(msg)
-
-        allele1 = get_str(data, "Allele1 Name")
-        if allele1 is None:
-            msg = f"Unable to get allele 1 for well {identifier}"
-            raise AllotropeConversionError(msg)
-
-        allele2 = get_str(data, "Allele2 Name")
-        if allele2 is None:
-            msg = f"Unable to get allele 2 for well {identifier}"
-            raise AllotropeConversionError(msg)
-
-        sample_identifier = get_str(data, "Sample Name")
-        if sample_identifier is None:
-            msg = "Unable to get sample identifier"
-            raise AllotropeConversionError(msg)
-
-        return [
-            WellItem(
-                uuid=str(uuid.uuid4()),
-                identifier=identifier,
-                target_dna_description=f"{snp_name}-{allele}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=get_str(data, "Reporter"),
-                position=get_str(data, "Well Position", default="UNDEFINED"),
-                well_location_identifier=get_str(data, "Well Position"),
-                quencher_dye_setting=get_str(data, "Quencher"),
-                sample_role_type=get_str(data, "Task"),
-            )
-            for allele in [allele1, allele2]
-        ]
-
-
-class WellBuilder:
-    @staticmethod
-    def build(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
-        raw_data = WellBuilder.get_data(reader)
-        data = raw_data[raw_data["Sample Name"].notnull()]
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return GenotypingWellBuilder.build(data)
-        return GenericWellBuilder.build(data)
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> pd.DataFrame:
-        if reader.drop_until(r"^\[Sample Setup\]") is None:
-            msg = "Unable to find Sample Setup section in input file"
-            raise AllotropeConversionError(msg)
-
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
 
 class RawDataBuilder:
@@ -504,7 +364,7 @@ class DataBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Data:
         header = Header.create(reader)
-        wells = WellBuilder.build(reader, header.experiment_type)
+        wells = WellList.create(reader, header.experiment_type)
         raw_data = RawDataBuilder.build(reader)
 
         amp_data = AmplificationDataBuilder.get_data(reader)
@@ -513,13 +373,15 @@ class DataBuilder:
         melt_data = MeltCurveRawDataBuilder.get_data(reader)
         for well in wells:
             if multi_data is not None:
-                well.add_multicomponent_data(
-                    MulticomponentDataBuilder.build(multi_data, well)
+                well.multicomponent_data = MulticomponentDataBuilder.build(
+                    multi_data, well
                 )
+
             if melt_data is not None:
-                well.add_melt_curve_raw_data(
-                    MeltCurveRawDataBuilder.build(melt_data, well)
+                well.melt_curve_raw_data = MeltCurveRawDataBuilder.build(
+                    melt_data, well
                 )
+
             for well_item in well.items.values():
                 well_item.amplification_data = AmplificationDataBuilder.build(
                     amp_data, well_item

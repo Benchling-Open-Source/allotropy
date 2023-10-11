@@ -148,7 +148,7 @@ def get_data() -> Data:
                 ),
             ),
         },
-        multicomponent_data=MulticomponentData(
+        _multicomponent_data=MulticomponentData(
             cycle=[1],
             columns={
                 "FAM": [502840.900],
@@ -156,8 +156,8 @@ def get_data() -> Data:
                 "VIC": [1654662.500],
             },
         ),
-        melt_curve_raw_data=None,
-        calculated_document=None,
+        _melt_curve_raw_data=None,
+        _calculated_document=None,
     )
 
     return Data(
@@ -288,14 +288,14 @@ def get_data2() -> Data:
                 ),
             ),
         },
-        multicomponent_data=MulticomponentData(
+        _multicomponent_data=MulticomponentData(
             cycle=[1],
             columns={
                 "ROX": [55573.94],
                 "SYBR": [34014.32],
             },
         ),
-        melt_curve_raw_data=MeltCurveRawData(
+        _melt_curve_raw_data=MeltCurveRawData(
             reading=[1],
             fluorescence=[3.478],
             derivative=[0.093],
@@ -1506,9 +1506,9 @@ def get_rel_std_curve_data() -> Data:
                             ),
                         )
                     },
-                    multicomponent_data=None,
-                    melt_curve_raw_data=None,
-                    calculated_document=CalculatedDocument(
+                    _multicomponent_data=None,
+                    _melt_curve_raw_data=None,
+                    _calculated_document=CalculatedDocument(
                         uuid="94cf744d-d243-47bd-a723-aca6c6517af5",
                         name="quantity",
                         value=794.91,
@@ -1612,9 +1612,9 @@ def get_rel_std_curve_data() -> Data:
                             ),
                         )
                     },
-                    multicomponent_data=None,
-                    melt_curve_raw_data=None,
-                    calculated_document=CalculatedDocument(
+                    _multicomponent_data=None,
+                    _melt_curve_raw_data=None,
+                    _calculated_document=CalculatedDocument(
                         uuid="51066bef-10b0-4782-a8c9-ee7383fe3256",
                         name="quantity",
                         value=769.776,
@@ -3197,9 +3197,9 @@ def get_broken_calc_doc_data() -> Data:
                             ),
                         )
                     },
-                    multicomponent_data=None,
-                    melt_curve_raw_data=None,
-                    calculated_document=None,
+                    _multicomponent_data=None,
+                    _melt_curve_raw_data=None,
+                    _calculated_document=None,
                 )
             ]
         ),
