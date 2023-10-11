@@ -61,38 +61,6 @@ def get_bool(data: pd.Series, key: str) -> Optional[bool]:
         raise AllotropeConversionError(msg) from e
 
 
-class MulticomponentDataBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame, well: Well) -> MulticomponentData:
-        well_data = MulticomponentDataBuilder.filter_well_data(data, well)
-        return MulticomponentData(
-            cycle=well_data["Cycle"].tolist(),
-            columns={
-                name: well_data[name].tolist()  # type: ignore[misc]
-                for name in well_data
-                if name not in ["Well", "Cycle", "Well Position"]
-            },
-        )
-
-    @staticmethod
-    def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
-        well_data = data[data["Well"] == well.identifier]
-        if well_data.empty:
-            msg = f"Unable to find multi component data for well {well.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return well_data
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
-
 class GenericResultsBuilder:
     @staticmethod
     def build(data: pd.DataFrame, well_item: WellItem) -> Result:
@@ -311,14 +279,12 @@ class DataBuilder:
         raw_data = RawData.create(reader)
 
         amp_data = AmplificationData.get_data(reader)
-        multi_data = MulticomponentDataBuilder.get_data(reader)
+        multi_data = MulticomponentData.get_data(reader)
         results_data, results_metadata = ResultsBuilder.get_data(reader)
         melt_data = MeltCurveRawDataBuilder.get_data(reader)
         for well in wells:
             if multi_data is not None:
-                well.multicomponent_data = MulticomponentDataBuilder.build(
-                    multi_data, well
-                )
+                well.multicomponent_data = MulticomponentData.create(multi_data, well)
 
             if melt_data is not None:
                 well.melt_curve_raw_data = MeltCurveRawDataBuilder.build(
