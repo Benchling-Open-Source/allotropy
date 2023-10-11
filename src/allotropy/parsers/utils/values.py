@@ -13,6 +13,14 @@ def try_int(value: Optional[str]) -> Optional[int]:
         return None
 
 
+def assert_int(value: Optional[str], name: Optional[str] = None) -> int:
+    return assert_not_none(
+        try_int(value),
+        name,
+        msg=f"Expected int value{f' for {name}' if name else ''}",
+    )
+
+
 def try_float(value: Optional[str]) -> Optional[float]:
     try:
         return float(value or "")
