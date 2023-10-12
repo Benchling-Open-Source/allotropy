@@ -1,4 +1,3 @@
-from datetime import timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import pytest
