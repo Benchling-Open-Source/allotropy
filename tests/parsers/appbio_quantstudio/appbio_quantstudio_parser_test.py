@@ -62,6 +62,9 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
             get_rel_std_curve_data(),
             get_rel_std_curve_model(),
         ),
+        # test 5 will check the calculated data document structure when an
+        # expected value is missing. In this case a path is borken and should
+        # be entirely removed.
         (
             "appbio_quantstudio_test05.txt",
             get_broken_calc_doc_data(),
