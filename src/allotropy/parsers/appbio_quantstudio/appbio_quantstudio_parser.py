@@ -40,8 +40,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeStructure,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
-    DataBuilder,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    create_data,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Data,
@@ -55,7 +55,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AppBioQuantStudioParser(VendorParser):
     def _parse(self, raw_contents: IOBase, file_name: str) -> Model:
         reader = LinesReader(raw_contents)
-        data = DataBuilder.build(reader)
+        data = create_data(reader)
         return self._get_model(data, file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
