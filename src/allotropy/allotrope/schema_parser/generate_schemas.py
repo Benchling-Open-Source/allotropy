@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
 
-from autoflake import fix_file  # type: ignore[import]
+from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
     DataModelType,
     generate,
