@@ -5,12 +5,12 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_document
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
     Data,
-    get_str,
     Header,
     MeltCurveRawData,
     MulticomponentData,
     RawData,
     Result,
+    str_from_series,
     WellList,
 )
 from allotropy.parsers.lines_reader import LinesReader
@@ -41,8 +41,8 @@ def create_data(reader: LinesReader) -> Data:
         if an_well_item := well.get_an_well_item():
             well.calculated_document = build_quantity(an_well_item)
 
-    endogenous_control = get_str(results_metadata, "Endogenous Control") or ""
-    reference_sample = get_str(results_metadata, "Reference Sample") or ""
+    endogenous_control = str_from_series(results_metadata, "Endogenous Control") or ""
+    reference_sample = str_from_series(results_metadata, "Reference Sample") or ""
 
     return Data(
         header,

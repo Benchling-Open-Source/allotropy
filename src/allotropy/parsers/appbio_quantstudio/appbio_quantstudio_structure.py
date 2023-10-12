@@ -38,22 +38,26 @@ def df_to_series(df: pd.DataFrame, msg: str) -> pd.Series:
     raise AllotropeConversionError(msg)
 
 
-def assert_not_empty(df: pd.DataFrame, msg: str) -> pd.DataFrame:
+def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     if df.empty:
         raise AllotropeConversionError(msg)
     return df
 
 
-def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optional[str]:
+def str_from_series(
+    data: pd.Series, key: str, default: Optional[str] = None
+) -> Optional[str]:
     value = data.get(key, default)
     return None if value is None else str(value)
 
 
-def assert_get_str(series: pd.Series, key: str, msg: Optional[str] = None) -> str:
-    return assert_not_none(get_str(series, key), key, msg)
+def assert_str_from_series(
+    series: pd.Series, key: str, msg: Optional[str] = None
+) -> str:
+    return assert_not_none(str_from_series(series, key), key, msg)
 
 
-def get_int(data: pd.Series, key: str) -> Optional[int]:
+def int_from_series(data: pd.Series, key: str) -> Optional[int]:
     try:
         value = data.get(key)
         return try_int(str(value))
@@ -62,11 +66,11 @@ def get_int(data: pd.Series, key: str) -> Optional[int]:
         raise AllotropeConversionError(msg) from e
 
 
-def assert_get_int(data: pd.Series, key: str, msg: Optional[str] = None) -> int:
-    return assert_not_none(get_int(data, key), key, msg)
+def assert_int_from_series(data: pd.Series, key: str, msg: Optional[str] = None) -> int:
+    return assert_not_none(int_from_series(data, key), key, msg)
 
 
-def get_float(data: pd.Series, key: str) -> Optional[float]:
+def float_from_series(data: pd.Series, key: str) -> Optional[float]:
     try:
         value = data.get(key)
         return try_float(str(value))
@@ -75,11 +79,13 @@ def get_float(data: pd.Series, key: str) -> Optional[float]:
         raise AllotropeConversionError(msg) from e
 
 
-def assert_get_float(data: pd.Series, key: str, msg: Optional[str] = None) -> float:
-    return assert_not_none(get_float(data, key), key, msg)
+def assert_float_from_series(
+    data: pd.Series, key: str, msg: Optional[str] = None
+) -> float:
+    return assert_not_none(float_from_series(data, key), key, msg)
 
 
-def get_bool(data: pd.Series, key: str) -> Optional[bool]:
+def bool_from_series(data: pd.Series, key: str) -> Optional[bool]:
     try:
         value = data.get(key)
         return None if value is None else bool(value)
@@ -114,7 +120,7 @@ class Header:
         data.index = data.index.str.strip()
         data = data.str.strip().replace("NA", None)
 
-        block_type = assert_get_str(data, "Block Type")
+        block_type = assert_str_from_series(data, "Block Type")
         plate_well_count = assert_not_none(
             try_int(
                 assert_not_none(
@@ -135,26 +141,28 @@ class Header:
 
         experiments_type = assert_not_none(
             experiments_type_options.get(
-                assert_get_str(data, "Experiment Type"),
+                assert_str_from_series(data, "Experiment Type"),
             ),
             msg="Unable to get valid experiment type",
         )
 
         return Header(
-            measurement_time=assert_get_str(data, "Experiment Run End Time"),
+            measurement_time=assert_str_from_series(data, "Experiment Run End Time"),
             plate_well_count=plate_well_count,
             experiment_type=experiments_type,
-            device_identifier=assert_get_str(data, "Instrument Name"),
-            model_number=assert_get_str(data, "Instrument Type"),
-            device_serial_number=assert_get_str(data, "Instrument Serial Number"),
-            measurement_method_identifier=assert_get_str(
+            device_identifier=assert_str_from_series(data, "Instrument Name"),
+            model_number=assert_str_from_series(data, "Instrument Type"),
+            device_serial_number=assert_str_from_series(
+                data, "Instrument Serial Number"
+            ),
+            measurement_method_identifier=assert_str_from_series(
                 data, "Quantification Cycle Method"
             ),
-            pcr_detection_chemistry=assert_get_str(data, "Chemistry"),
-            passive_reference_dye_setting=get_str(data, "Passive Reference"),
-            barcode=get_str(data, "Experiment Barcode"),
-            analyst=get_str(data, "Experiment User Name"),
-            experimental_data_identifier=get_str(data, "Experiment Name"),
+            pcr_detection_chemistry=assert_str_from_series(data, "Chemistry"),
+            passive_reference_dye_setting=str_from_series(data, "Passive Reference"),
+            barcode=str_from_series(data, "Experiment Barcode"),
+            analyst=str_from_series(data, "Experiment User Name"),
+            experimental_data_identifier=str_from_series(data, "Experiment Name"),
         )
 
 
@@ -196,19 +204,19 @@ class WellItem(Referenceable):
 
     @staticmethod
     def create_genotyping(data: pd.Series) -> list[WellItem]:
-        identifier = assert_get_int(data, "Well")
-        snp_name = assert_get_str(
+        identifier = assert_int_from_series(data, "Well")
+        snp_name = assert_str_from_series(
             data,
             "SNP Assay Name",
             msg=f"Unable to get snp name for well {identifier}",
         )
 
-        allele1 = assert_get_str(
+        allele1 = assert_str_from_series(
             data,
             "Allele1 Name",
             msg=f"Unable to get allele 1 for well {identifier}",
         )
-        allele2 = assert_get_str(
+        allele2 = assert_str_from_series(
             data,
             "Allele2 Name",
             msg=f"Unable to get allele 2 for well {identifier}",
@@ -219,29 +227,29 @@ class WellItem(Referenceable):
                 uuid=str(uuid.uuid4()),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele}",
-                sample_identifier=assert_get_str(
+                sample_identifier=assert_str_from_series(
                     data,
                     "Sample Name",
                     msg=f"Unable to get sample identifier for well {identifier}",
                 ),
-                reporter_dye_setting=get_str(data, "Reporter"),
-                position=get_str(data, "Well Position", default="UNDEFINED"),
-                well_location_identifier=get_str(data, "Well Position"),
-                quencher_dye_setting=get_str(data, "Quencher"),
-                sample_role_type=get_str(data, "Task"),
+                reporter_dye_setting=str_from_series(data, "Reporter"),
+                position=str_from_series(data, "Well Position", default="UNDEFINED"),
+                well_location_identifier=str_from_series(data, "Well Position"),
+                quencher_dye_setting=str_from_series(data, "Quencher"),
+                sample_role_type=str_from_series(data, "Task"),
             )
             for allele in [allele1, allele2]
         ]
 
     @staticmethod
     def create_generic(data: pd.Series) -> WellItem:
-        identifier = assert_get_int(data, "Well")
-        target_dna_description = assert_get_str(
+        identifier = assert_int_from_series(data, "Well")
+        target_dna_description = assert_str_from_series(
             data,
             "Target Name",
             msg=f"Unable to get target dna description for well {identifier}",
         )
-        sample_identifier = assert_get_str(
+        sample_identifier = assert_str_from_series(
             data,
             "Sample Name",
             msg=f"Unable to get sample identifier for well {identifier}",
@@ -252,11 +260,11 @@ class WellItem(Referenceable):
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
-            reporter_dye_setting=get_str(data, "Reporter"),
-            position=get_str(data, "Well Position", default="UNDEFINED"),
-            well_location_identifier=get_str(data, "Well Position"),
-            quencher_dye_setting=get_str(data, "Quencher"),
-            sample_role_type=get_str(data, "Task"),
+            reporter_dye_setting=str_from_series(data, "Reporter"),
+            position=str_from_series(data, "Well Position", default="UNDEFINED"),
+            well_location_identifier=str_from_series(data, "Well Position"),
+            quencher_dye_setting=str_from_series(data, "Quencher"),
+            sample_role_type=str_from_series(data, "Task"),
         )
 
 
@@ -400,12 +408,12 @@ class AmplificationData:
     def create(
         amplification_data: pd.DataFrame, well_item: WellItem
     ) -> AmplificationData:
-        well_data = assert_not_empty(
+        well_data = assert_not_empty_df(
             amplification_data[amplification_data["Well"] == well_item.identifier],
             msg=f"Unable to get amplification data for well {well_item.identifier}",
         )
 
-        target_data = assert_not_empty(
+        target_data = assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
             msg=f"Unable to get amplification data for well {well_item.identifier}",
         )
@@ -431,7 +439,7 @@ class MulticomponentData:
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well) -> MulticomponentData:
-        well_data = assert_not_empty(
+        well_data = assert_not_empty_df(
             data[data["Well"] == well.identifier],
             msg=f"Unable to find multi component data for well {well.identifier}",
         )
@@ -485,14 +493,14 @@ class Result:
 
     @staticmethod
     def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
-        well_data = assert_not_empty(
+        well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
             msg=f"Unable to get result data for well {well_item.identifier}",
         )
 
         snp_assay_name, _ = well_item.target_dna_description.split("-")
         target_data = df_to_series(
-            assert_not_empty(
+            assert_not_empty_df(
                 well_data[well_data["SNP Assay Name"] == snp_assay_name],
                 msg=f"Unable to get result data for well {well_item.identifier}",
             ),
@@ -508,54 +516,54 @@ class Result:
         )
 
         return Result(
-            cycle_threshold_value_setting=assert_get_float(
+            cycle_threshold_value_setting=assert_float_from_series(
                 target_data,
                 f"{allele} Ct Threshold",
                 msg=f"Unable to get cycle threshold value setting for well {well_item.identifier}",
             ),
             cycle_threshold_result=try_float(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=get_bool(
+            automatic_cycle_threshold_enabled_setting=bool_from_series(
                 target_data, f"{allele} Automatic Ct Threshold"
             ),
-            automatic_baseline_determination_enabled_setting=get_bool(
+            automatic_baseline_determination_enabled_setting=bool_from_series(
                 target_data, f"{allele} Automatic Baseline"
             ),
-            normalized_reporter_result=get_float(target_data, "Rn"),
-            baseline_corrected_reporter_result=get_float(
+            normalized_reporter_result=float_from_series(target_data, "Rn"),
+            baseline_corrected_reporter_result=float_from_series(
                 target_data, f"{allele} Delta Rn"
             ),
-            genotyping_determination_result=get_str(target_data, "Call"),
-            genotyping_determination_method_setting=get_float(
+            genotyping_determination_result=str_from_series(target_data, "Call"),
+            genotyping_determination_method_setting=float_from_series(
                 target_data, "Threshold Value"
             ),
-            quantity=get_float(target_data, "Quantity"),
-            quantity_mean=get_float(target_data, "Quantity Mean"),
-            quantity_sd=get_float(target_data, "Quantity SD"),
-            ct_mean=get_float(target_data, "Ct Mean"),
-            ct_sd=get_float(target_data, "Ct SD"),
-            delta_ct_mean=get_float(target_data, "Delta Ct Mean"),
-            delta_ct_se=get_float(target_data, "Delta Ct SE"),
-            delta_delta_ct=get_float(target_data, "Delta Delta Ct"),
-            rq=get_float(target_data, "RQ"),
-            rq_min=get_float(target_data, "RQ Min"),
-            rq_max=get_float(target_data, "RQ Max"),
-            rn_mean=get_float(target_data, "Rn Mean"),
-            rn_sd=get_float(target_data, "Rn SD"),
-            y_intercept=get_float(target_data, "Y-Intercept"),
-            r_squared=get_float(target_data, "R(superscript 2)"),
-            slope=get_float(target_data, "Slope"),
-            efficiency=get_float(target_data, "Efficiency"),
+            quantity=float_from_series(target_data, "Quantity"),
+            quantity_mean=float_from_series(target_data, "Quantity Mean"),
+            quantity_sd=float_from_series(target_data, "Quantity SD"),
+            ct_mean=float_from_series(target_data, "Ct Mean"),
+            ct_sd=float_from_series(target_data, "Ct SD"),
+            delta_ct_mean=float_from_series(target_data, "Delta Ct Mean"),
+            delta_ct_se=float_from_series(target_data, "Delta Ct SE"),
+            delta_delta_ct=float_from_series(target_data, "Delta Delta Ct"),
+            rq=float_from_series(target_data, "RQ"),
+            rq_min=float_from_series(target_data, "RQ Min"),
+            rq_max=float_from_series(target_data, "RQ Max"),
+            rn_mean=float_from_series(target_data, "Rn Mean"),
+            rn_sd=float_from_series(target_data, "Rn SD"),
+            y_intercept=float_from_series(target_data, "Y-Intercept"),
+            r_squared=float_from_series(target_data, "R(superscript 2)"),
+            slope=float_from_series(target_data, "Slope"),
+            efficiency=float_from_series(target_data, "Efficiency"),
         )
 
     @staticmethod
     def create_generic(data: pd.DataFrame, well_item: WellItem) -> Result:
-        well_data = assert_not_empty(
+        well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
             msg=f"Unable to get result data for well {well_item.identifier}",
         )
 
         target_data = df_to_series(
-            assert_not_empty(
+            assert_not_empty_df(
                 well_data[well_data["Target Name"] == well_item.target_dna_description],
                 msg=f"Unable to get result data for well {well_item.identifier}",
             ),
@@ -568,41 +576,43 @@ class Result:
         )
 
         return Result(
-            cycle_threshold_value_setting=assert_get_float(
+            cycle_threshold_value_setting=assert_float_from_series(
                 target_data,
                 "Ct Threshold",
                 msg="Unable to get cycle threshold value setting",
             ),
             cycle_threshold_result=try_float(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=get_bool(
+            automatic_cycle_threshold_enabled_setting=bool_from_series(
                 target_data, "Automatic Ct Threshold"
             ),
-            automatic_baseline_determination_enabled_setting=get_bool(
+            automatic_baseline_determination_enabled_setting=bool_from_series(
                 target_data, "Automatic Baseline"
             ),
-            normalized_reporter_result=get_float(target_data, "Rn"),
-            baseline_corrected_reporter_result=get_float(target_data, "Delta Rn"),
-            genotyping_determination_result=get_str(target_data, "Call"),
-            genotyping_determination_method_setting=get_float(
+            normalized_reporter_result=float_from_series(target_data, "Rn"),
+            baseline_corrected_reporter_result=float_from_series(
+                target_data, "Delta Rn"
+            ),
+            genotyping_determination_result=str_from_series(target_data, "Call"),
+            genotyping_determination_method_setting=float_from_series(
                 target_data, "Threshold Value"
             ),
-            quantity=get_float(target_data, "Quantity"),
-            quantity_mean=get_float(target_data, "Quantity Mean"),
-            quantity_sd=get_float(target_data, "Quantity SD"),
-            ct_mean=get_float(target_data, "Ct Mean"),
-            ct_sd=get_float(target_data, "Ct SD"),
-            delta_ct_mean=get_float(target_data, "Delta Ct Mean"),
-            delta_ct_se=get_float(target_data, "Delta Ct SE"),
-            delta_delta_ct=get_float(target_data, "Delta Delta Ct"),
-            rq=get_float(target_data, "RQ"),
-            rq_min=get_float(target_data, "RQ Min"),
-            rq_max=get_float(target_data, "RQ Max"),
-            rn_mean=get_float(target_data, "Rn Mean"),
-            rn_sd=get_float(target_data, "Rn SD"),
-            y_intercept=get_float(target_data, "Y-Intercept"),
-            r_squared=get_float(target_data, "R(superscript 2)"),
-            slope=get_float(target_data, "Slope"),
-            efficiency=get_float(target_data, "Efficiency"),
+            quantity=float_from_series(target_data, "Quantity"),
+            quantity_mean=float_from_series(target_data, "Quantity Mean"),
+            quantity_sd=float_from_series(target_data, "Quantity SD"),
+            ct_mean=float_from_series(target_data, "Ct Mean"),
+            ct_sd=float_from_series(target_data, "Ct SD"),
+            delta_ct_mean=float_from_series(target_data, "Delta Ct Mean"),
+            delta_ct_se=float_from_series(target_data, "Delta Ct SE"),
+            delta_delta_ct=float_from_series(target_data, "Delta Delta Ct"),
+            rq=float_from_series(target_data, "RQ"),
+            rq_min=float_from_series(target_data, "RQ Min"),
+            rq_max=float_from_series(target_data, "RQ Max"),
+            rn_mean=float_from_series(target_data, "Rn Mean"),
+            rn_sd=float_from_series(target_data, "Rn SD"),
+            y_intercept=float_from_series(target_data, "Y-Intercept"),
+            r_squared=float_from_series(target_data, "R(superscript 2)"),
+            slope=float_from_series(target_data, "Slope"),
+            efficiency=float_from_series(target_data, "Efficiency"),
         )
 
     @staticmethod
@@ -650,7 +660,7 @@ class MeltCurveRawData:
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
-        well_data = assert_not_empty(
+        well_data = assert_not_empty_df(
             data[data["Well"] == well.identifier],
             msg=f"Unable to get melt curve raw data for well {well.identifier}",
         )
