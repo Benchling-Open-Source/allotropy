@@ -156,9 +156,9 @@ class HeaderBuilder:
             msg = "Unable to get plate well count"
             raise AllotropeConversionError(msg)
 
-        if block_type.startswith("96"):
+        if "96" in block_type:
             return 96
-        elif block_type.startswith("384"):
+        elif "384" in block_type:
             return 384
 
         msg = "Unable to interpret plate well count"
