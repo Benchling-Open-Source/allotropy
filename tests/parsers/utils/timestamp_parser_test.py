@@ -1,4 +1,5 @@
 from datetime import timedelta, timezone
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -26,13 +27,14 @@ def test_timestamp_parser_default_utc(time_str: str, expected: str) -> None:
     "time_str,expected",
     [
         ("10-11-08", "2008-10-11T00:00:00-07:00"),
-        ("Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09-07:00"),
+        ("Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09-08:00"),
+        ("Fri, 11 Jun 2011 03:18:09", "2011-06-11T03:18:09-07:00"),
         ("Fri, 11 Nov 2011 03:18:09 -0400", "2011-11-11T03:18:09-04:00"),
         ("Tue Jun 22 07:46:22 EST 2010", "2010-06-22T07:46:22-05:00"),
     ],
 )
 def test_timestamp_parser_provided_timezone(time_str: str, expected: str) -> None:
-    assert TimestampParser(timezone(timedelta(hours=-7))).parse(time_str) == expected
+    assert TimestampParser(ZoneInfo("US/Pacific")).parse(time_str) == expected
 
 
 @pytest.mark.short
