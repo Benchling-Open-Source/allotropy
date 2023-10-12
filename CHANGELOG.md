@@ -6,10 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Utils to get data from pandas series
 ### Fixed
 ### Changed
 - Relaxed TimestampParser to use tzinfo
 - Change the cell counter schema name to match with the one published by Allotrope (cell counting)
+- Replace builder classes with create methods in AppBio QuantStudio structure where possible
 ### Deprecated
 ### Removed
 ### Security
