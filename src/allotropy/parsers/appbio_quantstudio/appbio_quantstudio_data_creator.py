@@ -10,10 +10,12 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     MulticomponentData,
     RawData,
     Result,
-    str_from_series,
     WellList,
 )
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.values import (
+    str_from_series,
+)
 
 
 def create_data(reader: LinesReader) -> Data:

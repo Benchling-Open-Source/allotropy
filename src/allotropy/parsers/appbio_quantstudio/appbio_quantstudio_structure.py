@@ -24,74 +24,19 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedD
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
+    assert_float_from_series,
     assert_int,
+    assert_int_from_series,
+    assert_not_empty_df,
     assert_not_none,
+    assert_str_from_series,
+    bool_from_series,
+    df_to_series,
+    float_from_series,
+    str_from_series,
     try_float,
     try_int,
 )
-
-
-def df_to_series(df: pd.DataFrame, msg: str) -> pd.Series:
-    n_rows, _ = df.shape
-    if n_rows == 1:
-        return pd.Series(df.iloc[0], index=df.columns)
-    raise AllotropeConversionError(msg)
-
-
-def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
-    if df.empty:
-        raise AllotropeConversionError(msg)
-    return df
-
-
-def str_from_series(
-    data: pd.Series, key: str, default: Optional[str] = None
-) -> Optional[str]:
-    value = data.get(key, default)
-    return None if value is None else str(value)
-
-
-def assert_str_from_series(
-    series: pd.Series, key: str, msg: Optional[str] = None
-) -> str:
-    return assert_not_none(str_from_series(series, key), key, msg)
-
-
-def int_from_series(data: pd.Series, key: str) -> Optional[int]:
-    try:
-        value = data.get(key)
-        return try_int(str(value))
-    except Exception as e:
-        msg = f"Unable to convert {key} to integer value"
-        raise AllotropeConversionError(msg) from e
-
-
-def assert_int_from_series(data: pd.Series, key: str, msg: Optional[str] = None) -> int:
-    return assert_not_none(int_from_series(data, key), key, msg)
-
-
-def float_from_series(data: pd.Series, key: str) -> Optional[float]:
-    try:
-        value = data.get(key)
-        return try_float(str(value))
-    except Exception as e:
-        msg = f"Unable to convert {key} to float value"
-        raise AllotropeConversionError(msg) from e
-
-
-def assert_float_from_series(
-    data: pd.Series, key: str, msg: Optional[str] = None
-) -> float:
-    return assert_not_none(float_from_series(data, key), key, msg)
-
-
-def bool_from_series(data: pd.Series, key: str) -> Optional[bool]:
-    try:
-        value = data.get(key)
-        return None if value is None else bool(value)
-    except Exception as e:
-        msg = f"Unable to convert {key} to bool value"
-        raise AllotropeConversionError(msg) from e
 
 
 @dataclass
