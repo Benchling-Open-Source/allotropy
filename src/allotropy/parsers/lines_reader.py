@@ -71,6 +71,8 @@ class LinesReader:
             if line is not None:
                 yield line
 
+
+class CsvReader(LinesReader):
     def pop_csv_block(self, pattern: Optional[str] = None) -> pd.DataFrame:
         self.drop_empty()
         if pattern:
