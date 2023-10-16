@@ -1,3 +1,4 @@
+from datetime import timedelta, timezone, tzinfo
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -21,19 +22,31 @@ def test_timestamp_parser_default_utc(time_str: str, expected: str) -> None:
     assert TimestampParser().parse(time_str) == expected
 
 
+# Similar timezones, but only the former has DST info.
+US_PACIFIC = ZoneInfo("US/Pacific")
+UTC_MINUS_7 = timezone(timedelta(hours=-7))
+
+
 @pytest.mark.short
 @pytest.mark.parametrize(
-    "time_str,expected",
+    "tz_info,time_str,expected",
     [
-        ("10-11-08", "2008-10-11T00:00:00-07:00"),
-        ("Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09-08:00"),
-        ("Fri, 11 Jun 2011 03:18:09", "2011-06-11T03:18:09-07:00"),
-        ("Fri, 11 Nov 2011 03:18:09 -0400", "2011-11-11T03:18:09-04:00"),
-        ("Tue Jun 22 07:46:22 EST 2010", "2010-06-22T07:46:22-05:00"),
+        (US_PACIFIC, "10-11-08", "2008-10-11T00:00:00-07:00"),
+        (US_PACIFIC, "Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09-08:00"),
+        (US_PACIFIC, "Fri, 11 Jun 2011 03:18:09", "2011-06-11T03:18:09-07:00"),
+        (US_PACIFIC, "Fri, 11 Nov 2011 03:18:09 -0400", "2011-11-11T03:18:09-04:00"),
+        (US_PACIFIC, "Tue Jun 22 07:46:22 EST 2010", "2010-06-22T07:46:22-05:00"),
+        (UTC_MINUS_7, "10-11-08", "2008-10-11T00:00:00-07:00"),
+        (UTC_MINUS_7, "Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09-07:00"),
+        (UTC_MINUS_7, "Fri, 11 Jun 2011 03:18:09", "2011-06-11T03:18:09-07:00"),
+        (UTC_MINUS_7, "Fri, 11 Nov 2011 03:18:09 -0400", "2011-11-11T03:18:09-04:00"),
+        (UTC_MINUS_7, "Tue Jun 22 07:46:22 EST 2010", "2010-06-22T07:46:22-05:00"),
     ],
 )
-def test_timestamp_parser_provided_timezone(time_str: str, expected: str) -> None:
-    assert TimestampParser(ZoneInfo("US/Pacific")).parse(time_str) == expected
+def test_timestamp_parser_provided_timezone(
+    tz_info: tzinfo, time_str: str, expected: str
+) -> None:
+    assert TimestampParser(tz_info).parse(time_str) == expected
 
 
 @pytest.mark.short
