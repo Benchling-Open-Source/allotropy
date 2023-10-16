@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Test for broken calculated document structure in AppBio QuantStudio
 ### Fixed
 - Recalculation of function when result is null in cache of AppBio Quantstudio
 ### Changed

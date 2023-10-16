@@ -8,6 +8,8 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import Data
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
+    get_broken_calc_doc_data,
+    get_broken_calc_doc_model,
     get_data,
     get_data2,
     get_genotyping_data,
@@ -59,6 +61,14 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
             "appbio_quantstudio_test04.txt",
             get_rel_std_curve_data(),
             get_rel_std_curve_model(),
+        ),
+        # test 5 will check the calculated data document structure when an
+        # expected value is missing. In this case a path is borken and should
+        # be entirely removed.
+        (
+            "appbio_quantstudio_test05.txt",
+            get_broken_calc_doc_data(),
+            get_broken_calc_doc_model(),
         ),
     ],
 )

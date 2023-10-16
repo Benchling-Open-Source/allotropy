@@ -23,6 +23,7 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedD
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
+    get_broken_calc_doc_data,
     get_data,
     get_data2,
     get_genotyping_data,
@@ -190,6 +191,10 @@ def test_results_builder() -> None:
         (
             "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test04.txt",
             get_rel_std_curve_data(),
+        ),
+        (
+            "tests/parsers/appbio_quantstudio/testdata/appbio_quantstudio_test05.txt",
+            get_broken_calc_doc_data(),
         ),
     ],
 )
