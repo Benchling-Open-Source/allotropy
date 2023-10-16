@@ -1,6 +1,6 @@
-from datetime import timezone
 from enum import Enum
 from typing import Optional, Union
+from zoneinfo import ZoneInfo
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
@@ -55,7 +55,7 @@ class ParserFactory:
         pass
 
     def create(
-        self, vendor_type: VendorType, default_timezone: Optional[timezone] = None
+        self, vendor_type: VendorType, default_timezone: Optional[ZoneInfo] = None
     ) -> VendorParser:
         try:
             timestamp_parser = TimestampParser(default_timezone)
@@ -66,7 +66,7 @@ class ParserFactory:
 
 
 def get_parser(
-    vendor_type: VendorType, default_timezone: Optional[timezone] = None
+    vendor_type: VendorType, default_timezone: Optional[ZoneInfo] = None
 ) -> VendorParser:
     return PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
 
