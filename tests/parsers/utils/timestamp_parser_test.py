@@ -22,7 +22,7 @@ def test_timestamp_parser_default_utc(time_str: str, expected: str) -> None:
     assert TimestampParser().parse(time_str) == expected
 
 
-# Similar timezones, but only the former has DST info.
+# Similar timezones, but different DST info.
 US_PACIFIC = ZoneInfo("US/Pacific")
 UTC_MINUS_7 = timezone(timedelta(hours=-7))
 
