@@ -37,7 +37,7 @@ UTC_MINUS_7 = timezone(timedelta(hours=-7))
 
 @pytest.mark.short
 @pytest.mark.parametrize(
-    "tz_info,time_str,expected",
+    "default_timezone,time_str,expected",
     [
         (US_PACIFIC, "10-11-08", "2008-10-11T00:00:00-07:00"),
         (US_PACIFIC, "Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09-08:00"),
@@ -52,9 +52,9 @@ UTC_MINUS_7 = timezone(timedelta(hours=-7))
     ],
 )
 def test_timestamp_parser_provided_timezone(
-    tz_info: tzinfo, time_str: str, expected: str
+    default_timezone: tzinfo, time_str: str, expected: str
 ) -> None:
-    assert TimestampParser(tz_info).parse(time_str) == expected
+    assert TimestampParser(default_timezone).parse(time_str) == expected
 
 
 @pytest.mark.short
