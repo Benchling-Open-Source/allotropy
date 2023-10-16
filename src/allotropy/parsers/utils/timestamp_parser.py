@@ -20,6 +20,8 @@ TIMEZONE_CODES_MAP = {
 
 
 class TimestampParser:
+    default_timezone: tzinfo
+
     def __init__(self, default_timezone: Optional[tzinfo] = None):
         if default_timezone and not isinstance(default_timezone, tzinfo):
             msg = f"Invalid default timezone '{default_timezone}'"
