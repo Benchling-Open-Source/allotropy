@@ -3435,7 +3435,7 @@ def get_broken_calc_doc_model() -> Model:
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
                 ASM_converter_name="allotropy",
-                ASM_converter_version="0.1.5",
+                ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[

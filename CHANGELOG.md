@@ -6,9 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.6] - 2023-10-16
+### Added
 - Test for broken calculated document structure in AppBio QuantStudio
 ### Fixed
-- Recalculation of function when result is null in cache of AppBio Quantstudio
+- Fixed bug in result caching in AppBio Quantstudio
 ### Changed
 - Allow block type to have plate well count in any position for AppBio QuantStudio
 - Replaced datetime.timezone with ZoneInfo in TimestampParser
