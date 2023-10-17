@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Allow block type to have plate well count in any position for AppBio QuantStudio
 - Replaced datetime.timezone with ZoneInfo in TimestampParser
+- Implement CsvReader as child of LinesReader
 ### Deprecated
 ### Removed
 ### Security

@@ -4,7 +4,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
     BasicAssayInfo,
     create_plate_maps,
@@ -19,8 +19,8 @@ from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
 )
 
 
-def get_reader_from_lines(lines: list[str]) -> LinesReader:
-    return LinesReader(StringIO("\n".join(lines)))
+def get_reader_from_lines(lines: list[str]) -> CsvReader:
+    return CsvReader(StringIO("\n".join(lines)))
 
 
 def test_create_plate_info() -> None:

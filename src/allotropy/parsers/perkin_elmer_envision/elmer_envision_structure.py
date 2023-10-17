@@ -28,7 +28,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
@@ -52,7 +52,7 @@ class PlateInfo:
     chamber_temperature_at_start: Optional[float]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[PlateInfo]:
+    def create(reader: CsvReader) -> Optional[PlateInfo]:
         data = reader.pop_csv_block("^Plate information")
         series = df_to_series(data).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
@@ -90,7 +90,7 @@ class Result:
     value: int
 
     @staticmethod
-    def create(reader: LinesReader) -> list[Result]:
+    def create(reader: CsvReader) -> list[Result]:
         if not reader.current_line_exists() or reader.match(
             "(^Plate information)|(^Basic assay information)"
         ):
@@ -119,7 +119,7 @@ class Plate:
     results: list[Result]
 
     @staticmethod
-    def create(reader: LinesReader) -> list[Plate]:
+    def create(reader: CsvReader) -> list[Plate]:
         plates: list[Plate] = []
 
         while True:
@@ -148,7 +148,7 @@ class BasicAssayInfo:
     assay_id: str
 
     @staticmethod
-    def create(reader: LinesReader) -> BasicAssayInfo:
+    def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until("^Basic assay information")
         data = reader.pop_csv_block("^Basic assay information").T
         data.iloc[0].replace(":.*", "", regex=True, inplace=True)
@@ -164,7 +164,7 @@ class PlateType:
     number_of_wells: Optional[float] = None
 
     @staticmethod
-    def create(reader: LinesReader) -> PlateType:
+    def create(reader: CsvReader) -> PlateType:
         reader.drop_until("^Plate type")
         data = reader.pop_csv_block("^Plate type").T
         return PlateType(
@@ -212,7 +212,7 @@ class PlateMap:
     sample_role_type_mapping: dict[str, dict[str, SampleRoleType]]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[PlateMap]:
+    def create(reader: CsvReader) -> Optional[PlateMap]:
         if not reader.current_line_exists() or reader.match("^Calculations"):
             return None
 
@@ -254,7 +254,7 @@ class PlateMap:
             raise Exception(msg) from e
 
 
-def create_plate_maps(reader: LinesReader) -> dict[str, PlateMap]:
+def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
     if reader.drop_until("^Platemap") is None:
         msg = "Unable to get plate map information"
         raise Exception(msg)
@@ -274,7 +274,7 @@ class Filter:
     bandwidth: float
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[Filter]:
+    def create(reader: CsvReader) -> Optional[Filter]:
         if not reader.current_line_exists() or reader.match(
             "(^Mirror modules)|(^Instrument:)"
         ):
@@ -304,7 +304,7 @@ class Filter:
         return Filter(name, wavelength, bandwidth)
 
 
-def create_filters(reader: LinesReader) -> dict[str, Filter]:
+def create_filters(reader: CsvReader) -> dict[str, Filter]:
     reader.drop_until("(^Filters:)|^Instrument:")
 
     if reader.match("^Instrument"):
@@ -328,7 +328,7 @@ class Labels:
     detector_gain_setting: Optional[str] = None
 
     @staticmethod
-    def create(reader: LinesReader) -> Labels:
+    def create(reader: CsvReader) -> Labels:
         reader.drop_until("^Labels")
         data = reader.pop_csv_block("^Labels").T
         series = df_to_series(data).replace(np.nan, None)
@@ -365,7 +365,7 @@ class Instrument:
     nickname: str
 
     @staticmethod
-    def create(reader: LinesReader) -> Instrument:
+    def create(reader: CsvReader) -> Instrument:
         if reader.drop_until("^Instrument") is None:
             msg = "Unable to find instrument information"
             raise Exception(msg)
@@ -388,7 +388,7 @@ class Data:
     instrument: Instrument
 
     @staticmethod
-    def create(reader: LinesReader) -> Data:
+    def create(reader: CsvReader) -> Data:
         return Data(
             plates=Plate.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
