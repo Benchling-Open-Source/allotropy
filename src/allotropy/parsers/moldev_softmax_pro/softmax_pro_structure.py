@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from abc import ABC
 from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass
@@ -102,6 +101,18 @@ class Block:
     def __init__(self, raw_lines: list[str]):
         self.raw_lines = raw_lines
 
+    @staticmethod
+    def create(lines: list[str]) -> Block:
+        all_blocks: list[type[Block]] = [GroupBlock, NoteBlock, PlateBlock]
+        block_cls_by_type = {cls.BLOCK_TYPE: cls for cls in all_blocks}
+
+        for key, cls in block_cls_by_type.items():
+            if lines[0].startswith(key):
+                return cls.create(lines)
+
+        error = f"unrecognized block {lines[0]}"
+        raise AllotropeConversionError(error)
+
 
 class GroupBlock(Block):
     GROUP_PREFIX = "Group: "
@@ -118,10 +129,18 @@ class GroupBlock(Block):
                 self.group_data = raw_lines[1 : i - 1]
         # TODO handle group data
 
+    @staticmethod
+    def create(raw_lines: list[str]) -> GroupBlock:
+        return GroupBlock(raw_lines)
+
 
 # TODO do we need to do anything with these?
 class NoteBlock(Block):
     BLOCK_TYPE = "Note"
+
+    @staticmethod
+    def create(raw_lines: list[str]) -> NoteBlock:
+        return NoteBlock(raw_lines)
 
 
 class WellData:
@@ -159,7 +178,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-class PlateBlock(Block, ABC):
+class PlateBlock(Block):
     BLOCK_TYPE = "Plate"
     CONCEPT: ClassVar[str]
     MANIFEST: ClassVar[str]
@@ -179,6 +198,27 @@ class PlateBlock(Block, ABC):
     read_type: Optional[str]
     wavelengths: list[int]
     well_data: defaultdict[str, WellData]
+
+    @staticmethod
+    def create(raw_lines: list[str]) -> PlateBlock:
+        split_lines = [
+            [value_or_none(value) for value in raw_line.split("\t")]
+            for raw_line in raw_lines
+        ]
+        header = split_lines[0]
+        read_mode = header[5]
+
+        plate_block_cls = {
+            "Absorbance": AbsorbancePlateBlock,
+            "Fluorescence": FluorescencePlateBlock,
+            "Luminescence": LuminescencePlateBlock,
+        }
+
+        if cls := plate_block_cls.get(read_mode or ""):
+            return cls(header, split_lines, raw_lines)
+
+        error = f"unrecognized read mode {read_mode}"
+        raise AllotropeConversionError(error)
 
     def __init__(
         self,
@@ -654,41 +694,6 @@ class AbsorbancePlateBlock(PlateBlock):
         return allotrope_file
 
 
-def create_plate_block(raw_lines: list[str]) -> PlateBlock:
-    split_lines = [
-        [value_or_none(value) for value in raw_line.split("\t")]
-        for raw_line in raw_lines
-    ]
-    header = split_lines[0]
-    read_mode = header[5]
-
-    plate_block_cls = {
-        "Absorbance": AbsorbancePlateBlock,
-        "Fluorescence": FluorescencePlateBlock,
-        "Luminescence": LuminescencePlateBlock,
-    }
-
-    if cls := plate_block_cls.get(read_mode or ""):
-        return cls(header, split_lines, raw_lines)
-
-    error = f"unrecognized read mode {read_mode}"
-    raise AllotropeConversionError(error)
-
-
-def create_block(lines: list[str]) -> Block:
-    all_blocks: list[type[Block]] = [GroupBlock, NoteBlock, PlateBlock]
-    block_cls_by_type = {cls.BLOCK_TYPE: cls for cls in all_blocks}
-
-    for key, block_cls in block_cls_by_type.items():
-        if lines[0].startswith(key):
-            if block_cls == PlateBlock:
-                return create_plate_block(lines)
-            return block_cls(lines)
-
-    error = f"unrecognized block {lines[0]}"
-    raise AllotropeConversionError(error)
-
-
 @dataclass
 class BlockList:
     blocks: list[Block]
@@ -697,7 +702,7 @@ class BlockList:
     def create(lines_reader: LinesReader) -> BlockList:
         return BlockList(
             blocks=[
-                create_block(block) for block in BlockList._iter_blocks(lines_reader)
+                Block.create(block) for block in BlockList._iter_blocks(lines_reader)
             ]
         )
 
