@@ -6,11 +6,60 @@ import re
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.moldev_softmax_pro.block_factory import create_block
-from allotropy.parsers.moldev_softmax_pro.plate_block import Block, PlateBlock
+from allotropy.parsers.moldev_softmax_pro.absorbance_plate_block import (
+    AbsorbancePlateBlock,
+)
+from allotropy.parsers.moldev_softmax_pro.fluorescence_plate_block import (
+    FluorescencePlateBlock,
+)
+from allotropy.parsers.moldev_softmax_pro.luminescence_plate_block import (
+    LuminescencePlateBlock,
+)
+from allotropy.parsers.moldev_softmax_pro.plate_block import (
+    Block,
+    GroupBlock,
+    NoteBlock,
+    PlateBlock,
+)
+from allotropy.parsers.utils.values import value_or_none
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
+
+
+def create_plate_block(raw_lines: list[str]) -> PlateBlock:
+    split_lines = [
+        [value_or_none(value) for value in raw_line.split("\t")]
+        for raw_line in raw_lines
+    ]
+    header = split_lines[0]
+    read_mode = header[5]
+
+    plate_block_cls = {
+        "Absorbance": AbsorbancePlateBlock,
+        "Fluorescence": FluorescencePlateBlock,
+        "Luminescence": LuminescencePlateBlock,
+    }
+
+    if cls := plate_block_cls.get(read_mode or ""):
+        return cls(header, split_lines, raw_lines)
+
+    error = f"unrecognized read mode {read_mode}"
+    raise AllotropeConversionError(error)
+
+
+def create_block(lines: list[str]) -> Block:
+    all_blocks: list[type[Block]] = [GroupBlock, NoteBlock, PlateBlock]
+    block_cls_by_type = {cls.BLOCK_TYPE: cls for cls in all_blocks}
+
+    for key, block_cls in block_cls_by_type.items():
+        if lines[0].startswith(key):
+            if block_cls == PlateBlock:
+                return create_plate_block(lines)
+            return block_cls(lines)
+
+    error = f"unrecognized block {lines[0]}"
+    raise AllotropeConversionError(error)
 
 
 @dataclass
