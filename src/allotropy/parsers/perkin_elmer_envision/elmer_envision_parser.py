@@ -2,8 +2,9 @@ from io import IOBase
 from typing import Any, Optional, TypeVar
 import uuid
 
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.fluorescence_benchling_2023_10_fluorescence import (
     ContainerType,
+    DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
@@ -23,6 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import Data, Plate
 from allotropy.parsers.vendor_parser import VendorParser
@@ -35,11 +37,11 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 
 class ElmerEnvisionParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, _: str) -> Model:
+    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
         reader = CsvReader(raw_contents)
-        return self._get_model(Data.create(reader))
+        return self._get_model(Data.create(reader), filename)
 
-    def _get_model(self, data: Data) -> Model:
+    def _get_model(self, data: Data, filename: str) -> Model:
         if not self._check_fluorescence(data):
             msg = "Elmer envision currently only accepts fluorescence data"
             raise NotImplementedError(msg)
@@ -49,6 +51,16 @@ class ElmerEnvisionParser(VendorParser):
             raise Exception(msg)
 
         return Model(
+            device_system_document=DeviceSystemDocument(
+                model_number=data.instrument.serial_number,
+                device_identifier=data.instrument.nickname,
+            ),
+            data_system_document=DataSystemDocument(
+                file_name=filename,
+                software_name="placeholder",
+                ASM_converter_name=ASM_CONVERTER_NAME,
+                ASM_converter_version=ASM_CONVERTER_VERSION,
+            ),
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
                 measurement_time=self._get_measurement_time(data),
@@ -56,12 +68,8 @@ class ElmerEnvisionParser(VendorParser):
                 experimental_data_identifier=data.basic_assay_info.assay_id,
                 container_type=ContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.instrument.serial_number,
-                    device_identifier=data.instrument.nickname,
-                ),
                 measurement_document=self._get_measurement_document(data),
-            )
+            ),
         )
 
     def _check_fluorescence(self, data: Data) -> bool:

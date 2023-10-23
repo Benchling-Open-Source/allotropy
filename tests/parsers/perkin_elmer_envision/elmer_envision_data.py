@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.fluorescence_benchling_2023_10_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -98,10 +98,6 @@ def get_model() -> Model:
             experimental_data_identifier="3134",
             container_type=ContainerType.well_plate,
             plate_well_count=TQuantityValueNumber(value=96.0),
-            device_system_document=DeviceSystemDocument(
-                model_number="1050209",
-                device_identifier="EnVision",
-            ),
             measurement_document=[
                 MeasurementDocumentItem(
                     device_control_aggregate_document=DeviceControlAggregateDocument(
