@@ -20,6 +20,7 @@ from allotropy.parsers.perkin_elmer_envision.elmer_envision_parser import (
 from allotropy.parsers.roche_cedex_bioht.cedex_bioht_parser import CedexBiohtParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.weyland_yutani.weyland_yutani_parser import WeylandYutaniParser
 
 
 class Vendor(Enum):
@@ -32,6 +33,7 @@ class Vendor(Enum):
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
+    WEYLAND_YUTANI = "Weyland-Yutani"
 
 
 VendorType = Union[Vendor, str]
@@ -47,6 +49,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
     Vendor.PERKIN_ELMER_ENVISION: ElmerEnvisionParser,
     Vendor.ROCHE_CEDEX_BIOHT: CedexBiohtParser,
+    Vendor.WEYLAND_YUTANI: WeylandYutaniParser,
 }
 
 
