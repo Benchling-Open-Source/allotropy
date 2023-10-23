@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Changed
 - Relaxed TimestampParser to use tzinfo
+- Change the cell counter schema name to match with the one published by Allotrope (cell counting)
 ### Deprecated
 ### Removed
 ### Security

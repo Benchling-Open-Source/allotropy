@@ -11,15 +11,16 @@ requires-python = ">=3.9"
 license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
+  { name = "Benchling Open Source", email = "opensource@benchling.com" },
+  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
+  { name = "Brian Worth", email = "brian@benchling.com" },
+  { name = "Greg Wilson", email = "greg@deepgenomics.com" },
+  { name = "Joe Negri", email = "joe.negri@benchling.com" },
+  { name = "Kathy Garcia", email = "kathy@benchling.com" },
+  { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
   { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
-  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
-  { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
-  { name = "Kathy Garcia", email = "kathy@benchling.com" },
-  { name = "Brian Worth", email = "brian@benchling.com" },
-  { name = "Benchling Open Source", email = "opensource@benchling.com" },
-  { name = "Joe Negri", email = "joe.negri@benchling.com" },
-  { name = "Greg Wilson", email = "greg@deepgenomics.com" },
+  { name = "Stephen Worlow", email = "stephen.worlow@benchling.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
