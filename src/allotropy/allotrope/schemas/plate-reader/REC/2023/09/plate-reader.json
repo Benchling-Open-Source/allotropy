@@ -164,7 +164,13 @@
                                                     }
                                                   },
                                                   {
-                                                    "$ref": "#/$defs/orderedItem"
+                                                    "properties": {
+                                                      "@index": {
+                                                        "type": "integer",
+                                                        "minimum": 1,
+                                                        "maximum": 2147483647
+                                                      }
+                                                    }
                                                   }
                                                 ]
                                               },
@@ -377,7 +383,13 @@
                     }
                   },
                   {
-                    "$ref": "#/$defs/orderedItem"
+                    "properties": {
+                      "@index": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    }
                   }
                 ]
               },
@@ -511,7 +523,13 @@
                               ]
                             },
                             {
-                              "$ref": "#/$defs/orderedItem"
+                              "properties": {
+                                "@index": {
+                                  "type": "integer",
+                                  "minimum": 1,
+                                  "maximum": 2147483647
+                                }
+                              }
                             }
                           ]
                         },
@@ -737,7 +755,13 @@
                 }
               },
               {
-                "$ref": "#/$defs/orderedItem"
+                "properties": {
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                }
               }
             ]
           },
@@ -806,7 +830,13 @@
                 ]
               },
               {
-                "$ref": "#/$defs/orderedItem"
+                "properties": {
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                }
               }
             ]
           },
@@ -853,7 +883,13 @@
                 ]
               },
               {
-                "$ref": "#/$defs/orderedItem"
+                "properties": {
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                }
               }
             ]
           },
@@ -1088,15 +1124,42 @@
         }
       }
     },
-    "orderedItem": {
-      "description": "A schema for an array item, that is ordered in a not-natural way. This means that it MUST have an explicit @index property stating the position. The index value is a strict positive 32bit signed integer (excluding 0).",
+    "ultravioletAbsorbancePointDetectionDeviceControlDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+      "$asm.pattern": "aggregate datum",
       "properties": {
-        "@index": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 2147483647
+        "detector wavelength setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
+        },
+        "detector bandwidth setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
+        },
+        "electronic absorbance wavelength setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001254",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
+        },
+        "electronic absorbance bandwidth setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001253",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
+        },
+        "electronic absorbance reference bandwidth setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001251",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
+        },
+        "electronic absorbance reference wavelength setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001252",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
         }
-      }
+      }t
     },
     "ultravioletAbsorbancePointDetectionMeasurementDocumentItems": {
       "type": "object",
@@ -1119,44 +1182,16 @@
               "items": {
                 "allOf": [
                   {
-                    "type": "object",
-                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
-                    "$asm.pattern": "aggregate datum",
-                    "properties": {
-                      "detector wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "detector bandwidth setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "electronic absorbance wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001254",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "electronic absorbance bandwidth setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001253",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "electronic absorbance reference bandwidth setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001251",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "electronic absorbance reference wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001252",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      }
-                    }
+                    "$ref": "#/$defs/ultravioletAbsorbancePointDetectionDeviceControlDocument"
                   },
                   {
-                    "$ref": "#/$defs/orderedItem"
+                    "properties": {
+                      "@index": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    }
                   }
                 ]
               },
@@ -1229,7 +1264,13 @@
                     }
                   },
                   {
-                    "$ref": "#/$defs/orderedItem"
+                    "properties": {
+                      "@index": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    }
                   }
                 ]
               },
@@ -1287,7 +1328,13 @@
                     }
                   },
                   {
-                    "$ref": "#/$defs/orderedItem"
+                    "properties": {
+                      "@index": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                      }
+                    }
                   }
                 ]
               },
