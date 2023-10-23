@@ -3,6 +3,12 @@
 We welcome community contributions to this library and we hope that together we can expand the coverage of ASM ready data for everyone.
 
 In order to contribute you will need to have an Individual or Corporate Contributor License Agreement (CLA) on file with Benchling depending on if you are contributing on your own time or as part of another company. When you make your first pull request we will check if you have a CLA and if not take care of that with you first. The process is quick and painless and helps us to make sure that you and everyone who uses your code in the future is protected.
+## GPG keys and signed commits
+This repository uses signed commits. Please follow these links to get set up.
+- Check for [existing GPG keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits)
+- Otherwise, [generate a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
+- [Add your GPG key to GitHub](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)
+- [Tell Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
 
 # Adding a new converter
 
@@ -19,7 +25,6 @@ In this case we already have some code in the library to handle instruments of t
 ## If the ASM schema you need is not available
 
 Please open an issue and talk to us about adding it. There is a bit more work involved in this case but we would still love to work with you to get the instrument type that you desire into the library!
-
 
 
 # Other issues
