@@ -28,7 +28,7 @@ This library uses Python 3.9 or higher.
 Convert a file to an ASM dictionary:
 
 ```sh
-from allotropy.parser_factory import VendorType
+from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file
 
 asm_schema = allotrope_from_file("filepath.txt", Vendor.MOLDEV_SOFTMAX_PRO)
@@ -37,7 +37,7 @@ asm_schema = allotrope_from_file("filepath.txt", Vendor.MOLDEV_SOFTMAX_PRO)
 or, convert any IO:
 
 ```sh
-from allotropy.parser_factory import VendorType
+from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_io
 
 with open("filename.txt") as f:
@@ -55,7 +55,7 @@ asm_schema = allotrope_from_io(bytes_io, Vendor.MOLDEV_SOFTMAX_PRO)
 ### Setup
 
 Install Hatch: https://hatch.pypa.io/latest/
-Install python: https://www.python.org/downloads/
+Install Python: https://www.python.org/downloads/
 
 Add pre-push checks to your repo:
 ```sh
