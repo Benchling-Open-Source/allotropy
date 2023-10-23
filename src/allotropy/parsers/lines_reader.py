@@ -5,6 +5,8 @@ from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.allotrope import AllotropeException
+
 
 class LinesReader:
     def __init__(self, io_: IOBase):
@@ -78,7 +80,7 @@ class CsvReader(LinesReader):
         if pattern:
             if not self.match(pattern):
                 msg = f"Did not find {pattern}"
-                raise Exception(msg)
+                raise AllotropeException(msg)
             self.pop()  # remove title
 
         csv_stream = StringIO("\n".join(self.pop_until_empty()))
