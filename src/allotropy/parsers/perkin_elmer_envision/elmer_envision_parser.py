@@ -41,7 +41,7 @@ class ElmerEnvisionParser(VendorParser):
         try:
             return self._get_model(Data.create(reader))
         except (Exception) as error:
-            raise AllotropeConversionError(error)
+            raise AllotropeConversionError from error
 
     def _get_model(self, data: Data) -> Model:
         if not self._check_fluorescence(data):
