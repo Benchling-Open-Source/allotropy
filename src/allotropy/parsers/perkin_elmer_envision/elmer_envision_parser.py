@@ -1,7 +1,7 @@
 from io import IOBase
 from typing import Any, Optional, TypeVar
 import uuid
-from allotropy.allotrope.allotrope import AllotropeException
+from allotropy.allotrope.allotrope import AllotropyException
 
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
@@ -47,7 +47,7 @@ class ElmerEnvisionParser(VendorParser):
 
         if data.number_of_wells is None:
             msg = "Unable to get number of the wells in the plate"
-            raise AllotropeException(msg)
+            raise AllotropyException(msg)
 
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -86,7 +86,7 @@ class ElmerEnvisionParser(VendorParser):
             return self.get_date_time(min(dates))
 
         msg = "Unable to find valid measurement date"
-        raise AllotropeException(msg)
+        raise AllotropyException(msg)
 
     def _get_device_control_aggregate_document(
         self, data: Data, plate: Plate
@@ -135,7 +135,7 @@ class ElmerEnvisionParser(VendorParser):
                 p_map = data.plate_maps[plate.plate_info.number]
             except KeyError as e:
                 msg = f"Unable to find plate map of {plate.plate_info.barcode}"
-                raise AllotropeException(msg) from e
+                raise AllotropyException(msg) from e
 
             device_control_document = self._get_device_control_aggregate_document(
                 data, plate
