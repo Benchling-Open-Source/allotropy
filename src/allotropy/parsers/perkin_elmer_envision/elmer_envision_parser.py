@@ -1,7 +1,7 @@
 from io import IOBase
 from typing import Any, Optional, TypeVar
 import uuid
-
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -37,7 +37,10 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 class ElmerEnvisionParser(VendorParser):
     def _parse(self, raw_contents: IOBase, _: str) -> Model:
         reader = CsvReader(raw_contents)
-        return self._get_model(Data.create(reader))
+        try:
+            return self._get_model(Data.create(reader))
+        except (Exception) as e:
+            raise AllotropeConversionError(e)
 
     def _get_model(self, data: Data) -> Model:
         if not self._check_fluorescence(data):
