@@ -19,7 +19,7 @@ class AllotropeConversionError(Exception):
     pass
 
 
-class AllotropyException(Exception):
+class AllotropyError(Exception):
     pass
 
 
