@@ -31,13 +31,15 @@ classifiers = [
 dependencies = [
   "cattrs >= 23.0.0",
   "chardet >= 5.2.0",
+  "deepdiff >= 6.5.0",
   "jsonschema >= 4.17.0",
   "numpy >= 1.25.0",
   "openpyxl >= 3.1.0",
   "pandas >= 2.1.0",
+  "pytest >= 7.4.0",
+  "rfc3339-validator >= 0.1.4",
   "pytz",
   "xlrd >= 2.0.0",
-  "rfc3339-validator >= 0.1.4",
 ]
 
 [project.urls]
