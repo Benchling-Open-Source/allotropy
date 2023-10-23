@@ -5,8 +5,8 @@ from allotropy.allotrope.schema_parser.model_class_editor import (
 
 
 def test_get_manifest_from_schema_path() -> None:
-    schema_path = "src/allotropy/allotrope/schemas/cell_counter/BENCHLING/2023/09/cell-counter.json"
-    expected = "http://purl.allotrope.org/manifests/cell_counter/BENCHLING/2023/09/cell-counter.manifest"
+    schema_path = "src/allotropy/allotrope/schemas/cell_counting/BENCHLING/2023/09/cell-counting.json"
+    expected = "http://purl.allotrope.org/manifests/cell_counting/BENCHLING/2023/09/cell-counting.manifest"
     assert get_manifest_from_schema_path(schema_path) == expected
 
 

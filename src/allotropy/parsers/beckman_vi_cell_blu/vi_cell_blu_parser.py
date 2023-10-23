@@ -4,7 +4,7 @@ import uuid
 
 import pandas as pd
 
-from allotropy.allotrope.models.cell_counter_benchling_2023_09_cell_counter import (
+from allotropy.allotrope.models.cell_counting_benchling_2023_09_cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDocumentItem,
     DataProcessingDocument,
