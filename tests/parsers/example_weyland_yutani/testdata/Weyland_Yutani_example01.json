@@ -1,0 +1,32 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
+    "measurement aggregate document": {
+        "analytical method identifier": "",
+        "container type": "well plate",
+        "device system document": {
+            "device identifier": "",
+            "model number": ""
+        },
+        "experimental data identifier": "",
+        "measurement document": [
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A1"
+                }
+            }
+        ],
+        "measurement identifier": "3ad4567a-e393-465c-88df-ba5d085d083f",
+        "measurement time": "2023-12-31T00:00:00+00:00",
+        "plate well count": {
+            "unit": "#",
+            "value": 0
+        }
+    }
+}
