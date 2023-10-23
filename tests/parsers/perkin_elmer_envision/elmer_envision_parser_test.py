@@ -9,9 +9,9 @@ from tests.parsers.perkin_elmer_envision.elmer_envision_data import get_data, ge
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
 output_files = (
-    "PE_Envision_example01",
-    "PE_Envision_example02",
-    "PE_Envision_example03",
+    "PE_Envision_fluorescence_example01",
+    "PE_Envision_fluorescence_example02",
+    "PE_Envision_fluorescence_example03",
 )
 
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
