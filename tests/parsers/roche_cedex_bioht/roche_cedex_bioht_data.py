@@ -14,7 +14,9 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueMillimolePerLiter,
 )
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import RocheCedexBiohtReader
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
+    RocheCedexBiohtReader,
+)
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Analyte,
     AnalyteList,

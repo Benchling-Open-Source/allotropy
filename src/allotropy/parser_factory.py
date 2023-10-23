@@ -17,7 +17,9 @@ from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexPars
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
 )
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import RocheCedexBiohtParser
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
+    RocheCedexBiohtParser,
+)
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 

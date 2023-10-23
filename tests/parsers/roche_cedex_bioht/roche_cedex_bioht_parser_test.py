@@ -1,7 +1,9 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import RocheCedexBiohtParser
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
+    RocheCedexBiohtParser,
+)
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get_model
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema

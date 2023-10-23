@@ -7,10 +7,12 @@ from typing import Optional
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import RocheCedexBiohtReader
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
+)
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
+    RocheCedexBiohtReader,
 )
 
 
