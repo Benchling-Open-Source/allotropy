@@ -20,6 +20,7 @@ from dataclasses import dataclass
 import logging
 from re import search
 from typing import Optional
+from allotropy.allotrope.allotrope import AllotropyException
 
 import numpy as np
 import pandas as pd
@@ -68,7 +69,7 @@ class PlateInfo:
         search_result = search("De=...", str(series.get("Measinfo", "")))
         if not search_result:
             msg = f"Unable to get emition filter id from plate {barcode}"
-            raise Exception(msg)
+            raise AllotropyException(msg)
         emission_filter_id = search_result.group().removeprefix("De=")
 
         measurement_time = str(series.get("Measurement date", ""))
@@ -251,13 +252,13 @@ class PlateMap:
             msg = (
                 f"Invalid plate map location for plate map {self.plate_n}: {col} {row}"
             )
-            raise Exception(msg) from e
+            raise AllotropyException(msg) from e
 
 
 def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
     if reader.drop_until("^Platemap") is None:
         msg = "Unable to get plate map information"
-        raise Exception(msg)
+        raise AllotropyException(msg)
 
     reader.pop()  # remove title
 
@@ -290,7 +291,7 @@ class Filter:
         search_result = search("CWL=\\d*nm", description)
         if search_result is None:
             msg = f"Unable to find wavelength for filter {name}"
-            raise Exception(msg)
+            raise AllotropyException(msg)
         wavelength = float(
             search_result.group().removeprefix("CWL=").removesuffix("nm")
         )
@@ -298,7 +299,7 @@ class Filter:
         search_result = search("BW=\\d*nm", description)
         if search_result is None:
             msg = f"Unable to find bandwidth for filter {name}"
-            raise Exception(msg)
+            raise AllotropyException(msg)
         bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
 
         return Filter(name, wavelength, bandwidth)
@@ -368,7 +369,7 @@ class Instrument:
     def create(reader: CsvReader) -> Instrument:
         if reader.drop_until("^Instrument") is None:
             msg = "Unable to find instrument information"
-            raise Exception(msg)
+            raise AllotropyException(msg)
 
         reader.pop()  # remove title
 
