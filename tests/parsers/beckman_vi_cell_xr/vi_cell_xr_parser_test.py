@@ -13,7 +13,7 @@ output_files = (
 )
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_XR
-SCHEMA_FILE = "cell-counter/BENCHLING/2023/09/cell-counter.json"
+SCHEMA_FILE = "cell-counting/BENCHLING/2023/09/cell-counting.json"
 
 
 @pytest.mark.parametrize("output_file", output_files)
