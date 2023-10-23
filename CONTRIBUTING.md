@@ -3,12 +3,17 @@
 We welcome community contributions to this library and we hope that together we can expand the coverage of ASM ready data for everyone.
 
 In order to contribute you will need to have an Individual or Corporate Contributor License Agreement (CLA) on file with Benchling depending on if you are contributing on your own time or as part of another company. When you make your first pull request we will check if you have a CLA and if not take care of that with you first. The process is quick and painless and helps us to make sure that you and everyone who uses your code in the future is protected.
+
 ## GPG keys and signed commits
-This repository uses signed commits. Please follow these links to get set up.
-- Check for [existing GPG keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits)
-- Otherwise, [generate a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
-- [Add your GPG key to GitHub](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)
-- [Tell Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)
+All commits to this repository must be signed. To set up commit signatures, please do the following:
+- Check for [existing GPG keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/checking-for-existing-gpg-keys).
+- Otherwise, [generate a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).
+  - On macOS, GPG can be installed by running `brew install gpg`.
+- [Add your GPG key to GitHub](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account).
+- [Tell Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key).
+  - Follow up until step 5.
+
+To configure commits to be signed by default within this repo, run `git config commit.gpgsign true`.
 
 # Adding a new converter
 
