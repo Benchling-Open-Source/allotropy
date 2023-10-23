@@ -24,7 +24,7 @@ This code is published under the permissive MIT license because we believe that 
 Convert a file to an ASM dictionary:
 
 ```sh
-from allotropy.parser_factory import VendorType
+from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file
 
 asm_schema = allotrope_from_file("filepath.txt", Vendor.MOLDEV_SOFTMAX_PRO)
@@ -33,7 +33,7 @@ asm_schema = allotrope_from_file("filepath.txt", Vendor.MOLDEV_SOFTMAX_PRO)
 or, convert any IO:
 
 ```sh
-from allotropy.parser_factory import VendorType
+from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_io
 
 with open("filename.txt") as f:
