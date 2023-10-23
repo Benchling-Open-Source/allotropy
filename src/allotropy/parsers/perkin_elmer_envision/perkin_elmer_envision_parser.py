@@ -139,8 +139,8 @@ class PerkinElmerEnvisionParser(VendorParser):
                 msg = f"Unable to find plate map of {plate.plate_info.barcode}"
                 raise Exception(msg) from e
 
-            device_control_document = self._get_device_control_aggregate_document(
-                data, plate
+            device_control_aggregate_document = (
+                self._get_device_control_aggregate_document(data, plate)
             )
 
             items += [
@@ -152,7 +152,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                             result.col, result.row
                         ),
                     ),
-                    device_control_aggregate_document=device_control_document,
+                    device_control_aggregate_document=device_control_aggregate_document,
                     processed_data_aggregate_document=ProcessedDataAggregateDocument(
                         processed_data_document=[
                             ProcessedDataDocumentItem(
