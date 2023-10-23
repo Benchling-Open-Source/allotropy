@@ -19,6 +19,10 @@ We currently have parser support for the following instruments:
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 
+## Python version
+
+This library uses Python 3.9 or higher.
+
 # Usage
 
 Convert a file to an ASM dictionary:
