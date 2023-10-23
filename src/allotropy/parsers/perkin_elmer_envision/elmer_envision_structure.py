@@ -24,6 +24,7 @@ from allotropy.allotrope.allotrope import AllotropyException
 
 import numpy as np
 import pandas as pd
+from allotropy.allotrope.allotrope import AllotropyException
 
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ScanPositionSettingPlateReader,
@@ -130,7 +131,7 @@ class Plate:
             plate_info: Optional[PlateInfo] = None
             try:
                 plate_info = PlateInfo.create(reader)
-            except Exception as e:
+            except AllotropyException as e:
                 logging.warning(f"Failed to parse plate info with error: {e}")
 
             reader.drop_sections("^Background information|^Calculated results")
