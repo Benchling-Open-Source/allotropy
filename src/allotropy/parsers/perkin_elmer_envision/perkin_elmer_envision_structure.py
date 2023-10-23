@@ -20,11 +20,11 @@ from dataclasses import dataclass
 import logging
 from re import search
 from typing import Optional
-from allotropy.allotrope.allotrope import AllotropyError
 
 import numpy as np
 import pandas as pd
 
+from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ScanPositionSettingPlateReader,
 )
