@@ -24,7 +24,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import Data, Plate
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    Data,
+    Plate,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
@@ -34,7 +37,7 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
     return None if value is None else cls(value=value)  # type: ignore[call-arg]
 
 
-class ElmerEnvisionParser(VendorParser):
+class PerkinElmerEnvisionParser(VendorParser):
     def _parse(self, raw_contents: IOBase, _: str) -> Model:
         reader = CsvReader(raw_contents)
         return self._get_model(Data.create(reader))
