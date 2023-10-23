@@ -14,8 +14,8 @@ from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluPa
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_parser import (
-    ElmerEnvisionParser,
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
+    PerkinElmerEnvisionParser,
 )
 from allotropy.parsers.roche_cedex_bioht.cedex_bioht_parser import CedexBiohtParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
@@ -45,7 +45,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
-    Vendor.PERKIN_ELMER_ENVISION: ElmerEnvisionParser,
+    Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.ROCHE_CEDEX_BIOHT: CedexBiohtParser,
 }
 
