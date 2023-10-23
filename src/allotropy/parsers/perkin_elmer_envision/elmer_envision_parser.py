@@ -40,8 +40,8 @@ class ElmerEnvisionParser(VendorParser):
         reader = CsvReader(raw_contents)
         try:
             return self._get_model(Data.create(reader))
-        except (Exception) as e:
-            raise AllotropeConversionError(e)
+        except (Exception) as error:
+            raise AllotropeConversionError(error)
 
     def _get_model(self, data: Data) -> Model:
         if not self._check_fluorescence(data):
