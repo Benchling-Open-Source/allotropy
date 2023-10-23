@@ -19,10 +19,6 @@ We currently have parser support for the following instruments:
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 
-## Python version
-
-This library uses Python 3.9 or higher.
-
 # Usage
 
 Convert a file to an ASM dictionary:
@@ -56,6 +52,7 @@ asm_schema = allotrope_from_io(bytes_io, Vendor.MOLDEV_SOFTMAX_PRO)
 
 Install Hatch: https://hatch.pypa.io/latest/
 Install Python: https://www.python.org/downloads/
+This library supports Python 3.9 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
 
 Add pre-push checks to your repo:
 ```sh
