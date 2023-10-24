@@ -87,7 +87,7 @@ dependencies = [
   "autoflake >= 2.2.0",
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
-  "datamodel-code-generator[http] >= 0.21.5",
+  "datamodel-code-generator >= 0.21.5",
   "flake8 >= 6.1.0",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications >= 2023.7.1",
