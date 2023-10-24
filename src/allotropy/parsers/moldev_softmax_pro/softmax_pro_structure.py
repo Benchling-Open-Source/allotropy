@@ -218,88 +218,132 @@ class PlateBlock(Block):
         }
 
         if cls := plate_block_cls.get(read_mode or ""):
-            return cls(header, split_lines, raw_lines)
+            [
+                _,  # Plate:
+                name,
+                export_version,
+                export_format,
+                read_type,
+                _,  # Read mode
+            ] = header[:6]
+            if export_version != EXPORT_VERSION:
+                error = f"Invalid export version {export_version}"
+                raise AllotropeConversionError(error)
+
+            [
+                data_type,
+                _,  # Pre-read, always FALSE
+                kinetic_points_raw,
+                read_time_or_scan_pattern,
+                read_interval_or_scan_density,
+                _,  # start_wavelength
+                _,  # end_wavelength
+                _,  # wavelength_step
+                num_wavelengths_raw,
+                wavelengths_str,
+                _,  # first_column
+                num_columns_raw,
+                num_wells_raw,
+            ] = header[cls.DATA_TYPE_IDX : cls.DATA_TYPE_IDX + 13]
+            kinetic_points = assert_not_none(
+                try_int(kinetic_points_raw), "kinetic_points"
+            )
+            num_columns = assert_not_none(try_int(num_columns_raw), "num_columns")
+            num_wells = assert_not_none(try_int(num_wells_raw), "num_wells")
+            num_wavelengths = try_int(num_wavelengths_raw)
+            wavelengths = split_wavelengths(wavelengths_str) or []
+
+            extra_attr = cls.parse_read_mode_header(header)
+
+            well_data: defaultdict[str, WellData] = defaultdict(WellData)
+            data_header = split_lines[1]
+            data_lines = split_lines[2:]
+            if export_format == ExportFormat.TIME_FORMAT.value:
+                PlateBlock._parse_time_format_data(
+                    wavelengths,
+                    read_type,
+                    well_data,
+                    kinetic_points,
+                    num_wells,
+                    data_header,
+                    data_type,
+                    num_wavelengths,
+                    data_lines,
+                )
+            elif export_format == ExportFormat.PLATE_FORMAT.value:
+                PlateBlock._parse_plate_format_data(
+                    wavelengths,
+                    read_type,
+                    well_data,
+                    data_type,
+                    kinetic_points,
+                    extra_attr.num_rows,
+                    num_wavelengths,
+                    num_columns,
+                    data_header,
+                    data_lines,
+                )
+            else:
+                error = f"unrecognized export format {export_format}"
+                raise AllotropeConversionError(error)
+
+            return cls(
+                raw_lines=raw_lines,
+                name=name,
+                export_format=export_format,
+                read_type=read_type,
+                data_type=data_type,
+                kinetic_points=kinetic_points,
+                num_wavelengths=num_wavelengths,
+                wavelengths=wavelengths,
+                num_columns=num_columns,
+                num_wells=num_wells,
+                well_data=well_data,
+                data_header=data_header,
+                pmt_gain=extra_attr.pmt_gain,
+                num_rows=extra_attr.num_rows,
+                excitation_wavelengths=extra_attr.excitation_wavelengths,
+                cutoff_filters=extra_attr.cutoff_filters,
+            )
 
         error = f"unrecognized read mode {read_mode}"
         raise AllotropeConversionError(error)
 
     def __init__(
         self,
-        header: list[Optional[str]],
-        split_lines: list[list[Optional[str]]],
         raw_lines: list[str],
+        name: Optional[str],
+        export_format: Optional[str],
+        read_type: Optional[str],
+        data_type: Optional[str],
+        kinetic_points: int,
+        num_wavelengths: Optional[int],
+        wavelengths: list[int],
+        num_columns: int,
+        num_wells: int,
+        well_data: defaultdict[str, WellData],
+        data_header: list[Optional[str]],
+        pmt_gain: Optional[str],
+        num_rows: int,
+        excitation_wavelengths: Optional[list[int]],
+        cutoff_filters: Optional[list[int]],
     ):
-        super().__init__(raw_lines)
-        [
-            _,  # Plate:
-            self.name,
-            self.export_version,
-            self.export_format,
-            self.read_type,
-            _,  # Read mode
-        ] = header[:6]
-        if self.export_version != EXPORT_VERSION:
-            error = f"Invalid export version {self.export_version}"
-            raise AllotropeConversionError(error)
-
-        [
-            self.data_type,
-            _,  # Pre-read, always FALSE
-            kinetic_points,
-            read_time_or_scan_pattern,
-            read_interval_or_scan_density,
-            self.start_wavelength,
-            self.end_wavelength,
-            self.wavelength_step,
-            num_wavelengths,
-            wavelengths_str,
-            self.first_column,
-            num_columns,
-            num_wells,
-        ] = header[self.DATA_TYPE_IDX : self.DATA_TYPE_IDX + 13]
-        self.kinetic_points = assert_not_none(try_int(kinetic_points), "kinetic_points")
-        self.num_columns = assert_not_none(try_int(num_columns), "num_columns")
-        self.num_wells = assert_not_none(try_int(num_wells), "num_wells")
-        self.num_wavelengths = try_int(num_wavelengths)
-        self.wavelengths = split_wavelengths(wavelengths_str) or []
-
-        extra_attr = self.parse_read_mode_header(header)
-        self.pmt_gain = extra_attr.pmt_gain
-        self.num_rows = extra_attr.num_rows
-        self.excitation_wavelengths = extra_attr.excitation_wavelengths
-        self.cutoff_filters = extra_attr.excitation_wavelengths
-
-        self.well_data = defaultdict(WellData)
-        self.data_header = split_lines[1]
-        data_lines = split_lines[2:]
-        if self.export_format == ExportFormat.TIME_FORMAT.value:
-            PlateBlock._parse_time_format_data(
-                self.wavelengths,
-                self.read_type,
-                self.well_data,
-                self.kinetic_points,
-                self.num_wells,
-                self.data_header,
-                self.data_type,
-                self.num_wavelengths,
-                data_lines,
-            )
-        elif self.export_format == ExportFormat.PLATE_FORMAT.value:
-            PlateBlock._parse_plate_format_data(
-                self.wavelengths,
-                self.read_type,
-                self.well_data,
-                self.data_type,
-                self.kinetic_points,
-                self.num_rows,
-                self.num_wavelengths,
-                self.num_columns,
-                self.data_header,
-                data_lines,
-            )
-        else:
-            error = f"unrecognized export format {self.export_format}"
-            raise AllotropeConversionError(error)
+        self.raw_lines = raw_lines
+        self.name = name
+        self.export_format = export_format
+        self.read_type = read_type
+        self.data_type = data_type
+        self.kinetic_points = kinetic_points
+        self.num_wavelengths = num_wavelengths
+        self.wavelengths = wavelengths
+        self.num_columns = num_columns
+        self.num_wells = num_wells
+        self.well_data = well_data
+        self.data_header = data_header
+        self.pmt_gain = pmt_gain
+        self.num_rows = num_rows
+        self.excitation_wavelengths = excitation_wavelengths
+        self.cutoff_filters = cutoff_filters
 
     @staticmethod
     def _parse_reduced_plate_rows(
@@ -454,9 +498,8 @@ class PlateBlock(Block):
             error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
 
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
+    @staticmethod
+    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
         raise NotImplementedError
 
     @property
@@ -555,9 +598,8 @@ class FluorescencePlateBlock(PlateBlock):
     DATA_TYPE_IDX = 7
     EXCITATION_WAVELENGTHS_IDX = 20
 
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
+    @staticmethod
+    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
             _,  # cutoff
@@ -654,9 +696,8 @@ class LuminescencePlateBlock(PlateBlock):
     DATA_TYPE_IDX = 6
     EXCITATION_WAVELENGTHS_IDX = 19
 
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
+    @staticmethod
+    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
             _,  # cutoff
@@ -740,9 +781,8 @@ class AbsorbancePlateBlock(PlateBlock):
     UNIT = "mAU"
     DATA_TYPE_IDX = 6
 
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
+    @staticmethod
+    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
         return PlateBlockExtraAttr(
             pmt_gain=None,
             num_rows=assert_not_none(try_int(header[20]), "num_rows"),
