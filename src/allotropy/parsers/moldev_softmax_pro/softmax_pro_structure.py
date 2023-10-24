@@ -244,7 +244,7 @@ class PlateBlock(Block):
                 data_lines,
             )
         elif self.export_format == ExportFormat.PLATE_FORMAT.value:
-            self._parse_plate_format_data(
+            PlateBlock._parse_plate_format_data(
                 self.wavelengths,
                 self.read_type,
                 self.well_data,
@@ -348,8 +348,8 @@ class PlateBlock(Block):
             error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
 
+    @staticmethod
     def _parse_plate_format_data(
-        self,
         wavelengths: list[int],
         read_type: Optional[str],
         well_data: defaultdict[str, WellData],
@@ -399,15 +399,15 @@ class PlateBlock(Block):
             reduced_data_rows = data_lines[end_raw_data_index:]
             if len(reduced_data_rows) == num_rows:
                 PlateBlock._parse_reduced_plate_rows(
-                    self.num_columns,
-                    self.data_header,
-                    self.well_data,
+                    num_columns,
+                    data_header,
+                    well_data,
                     reduced_data_rows,
                 )
         elif data_type == DataType.REDUCED.value:
             reduced_data_rows = data_lines[end_raw_data_index:]
             PlateBlock._parse_reduced_plate_rows(
-                self.num_columns, self.data_header, self.well_data, reduced_data_rows
+                num_columns, data_header, well_data, reduced_data_rows
             )
         else:
             error = f"unrecognized data type {data_type}"
