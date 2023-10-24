@@ -5,7 +5,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BasicAssayInfo,
     create_plate_maps,
     Filter,

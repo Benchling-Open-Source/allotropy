@@ -17,10 +17,12 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser impo
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_parser import (
-    ElmerEnvisionParser,
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
+    PerkinElmerEnvisionParser,
 )
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_parser import CedexBiohtParser
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
+    RocheCedexBiohtParser,
+)
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -50,8 +52,8 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
-    Vendor.PERKIN_ELMER_ENVISION: ElmerEnvisionParser,
-    Vendor.ROCHE_CEDEX_BIOHT: CedexBiohtParser,
+    Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
+    Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
 }
 
 

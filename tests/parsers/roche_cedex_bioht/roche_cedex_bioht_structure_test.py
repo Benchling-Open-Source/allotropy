@@ -5,14 +5,14 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueMilliOsmolesPerKilogram,
 )
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_structure import (
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Analyte,
     AnalyteList,
     Data,
     Sample,
     Title,
 )
-from tests.parsers.roche_cedex_bioht.cedex_bioht_data import get_data, get_reader
+from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get_reader
 
 
 @pytest.mark.parametrize(

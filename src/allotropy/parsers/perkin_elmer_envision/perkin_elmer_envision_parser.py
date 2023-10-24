@@ -2,6 +2,7 @@ from io import IOBase
 from typing import Any, Optional, TypeVar
 import uuid
 
+from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -24,7 +25,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import Data, Plate
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    Data,
+    Plate,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
@@ -34,7 +38,7 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
     return None if value is None else cls(value=value)  # type: ignore[call-arg]
 
 
-class ElmerEnvisionParser(VendorParser):
+class PerkinElmerEnvisionParser(VendorParser):
     def _parse(self, raw_contents: IOBase, _: str) -> Model:
         reader = CsvReader(raw_contents)
         return self._get_model(Data.create(reader))
@@ -46,7 +50,7 @@ class ElmerEnvisionParser(VendorParser):
 
         if data.number_of_wells is None:
             msg = "Unable to get number of the wells in the plate"
-            raise Exception(msg)
+            raise AllotropyError(msg)
 
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -85,7 +89,7 @@ class ElmerEnvisionParser(VendorParser):
             return self.get_date_time(min(dates))
 
         msg = "Unable to find valid measurement date"
-        raise Exception(msg)
+        raise AllotropyError(msg)
 
     def _get_device_control_aggregate_document(
         self, data: Data, plate: Plate
@@ -134,10 +138,10 @@ class ElmerEnvisionParser(VendorParser):
                 p_map = data.plate_maps[plate.plate_info.number]
             except KeyError as e:
                 msg = f"Unable to find plate map of {plate.plate_info.barcode}"
-                raise Exception(msg) from e
+                raise AllotropyError(msg) from e
 
-            device_control_document = self._get_device_control_aggregate_document(
-                data, plate
+            device_control_aggregate_document = (
+                self._get_device_control_aggregate_document(data, plate)
             )
 
             items += [
@@ -149,7 +153,7 @@ class ElmerEnvisionParser(VendorParser):
                             result.col, result.row
                         ),
                     ),
-                    device_control_aggregate_document=device_control_document,
+                    device_control_aggregate_document=device_control_aggregate_document,
                     processed_data_aggregate_document=ProcessedDataAggregateDocument(
                         processed_data_document=[
                             ProcessedDataDocumentItem(

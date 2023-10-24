@@ -20,7 +20,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
 )
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BasicAssayInfo,
     Data,
     Filter,
