@@ -1,21 +1,25 @@
 from io import IOBase
-from typing import Any, Optional, TypeVar
+from typing import Any, Optional, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
     ContainerType,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
+    DeviceControlDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
-    MeasurementDocumentItem,
     Model,
-)
-from allotropy.allotrope.models.shared.components.plate_reader import (
+    PlateReaderAggregateDocument,
+    PlateReaderDocumentItem,
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    StatisticsAggregateDocument,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
@@ -28,6 +32,8 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     Data,
     Plate,
+    PlateMap,
+    Result,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -44,39 +50,41 @@ class PerkinElmerEnvisionParser(VendorParser):
         return self._get_model(Data.create(reader))
 
     def _get_model(self, data: Data) -> Model:
-        if not self._check_fluorescence(data):
-            msg = "Elmer envision currently only accepts fluorescence data"
-            raise NotImplementedError(msg)
-
         if data.number_of_wells is None:
             msg = "Unable to get number of the wells in the plate"
             raise AllotropyError(msg)
 
         return Model(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self._get_measurement_time(data),
-                analytical_method_identifier=data.basic_assay_info.protocol_id,
-                experimental_data_identifier=data.basic_assay_info.assay_id,
-                container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
+            plate_reader_aggregate_document=PlateReaderAggregateDocument(
+                plate_reader_document=self._get_plate_reader_document(data),
                 device_system_document=DeviceSystemDocument(
+                    asset_management_identifier=data.instrument.serial_number,  # TODO verify what this should be
                     model_number=data.instrument.serial_number,
-                    device_identifier=data.instrument.nickname,
+                    device_identifier=data.instrument.nickname
                 ),
-                measurement_document=self._get_measurement_document(data),
-            )
+                processed_data_aggregate_document=ProcessedDataAggregateDocument(),
+                calculated_data_aggregate_document=CalculatedDataAggregateDocument(),
+                statistics_aggregate_document=StatisticsAggregateDocument(),
+            ),
+            # TODO find the new plate reader manifest and add here
+            field_asm_manifest="http://purl.allotrope.org/manifests/fluorescence/REC/2023/09/fluorescence-endpoint.manifest",
         )
 
-    def _check_fluorescence(self, data: Data) -> bool:
-        absorbance_patterns = ["ABS", "Absorbance"]
-        luminescence_patterns = ["LUM", "Luminescence"]
-
-        for pattern in absorbance_patterns + luminescence_patterns:
-            if pattern in data.labels.label:
-                return False
-
-        return True
+        # return Model(
+        #     measurement_aggregate_document=MeasurementAggregateDocument(
+        #         measurement_identifier=str(uuid.uuid4()),
+        #         measurement_time=self._get_measurement_time(data),
+        #         analytical_method_identifier=data.basic_assay_info.protocol_id,
+        #         experimental_data_identifier=data.basic_assay_info.assay_id,
+        #         container_type=ContainerType.well_plate,
+        #         plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
+        #         device_system_document=DeviceSystemDocument(
+        #             model_number=data.instrument.serial_number,
+        #             device_identifier=data.instrument.nickname,
+        #         ),
+        #         measurement_document=self._get_plate_reader_document(data),
+        #     )
+        # )
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
@@ -128,8 +136,41 @@ class PerkinElmerEnvisionParser(VendorParser):
             ]
         )
 
-    def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
+    def _get_measurement_document(self, plate: Plate, result: Result, p_map: PlateMap, device_control_document: DeviceControlDocument) -> Union[
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+            FluorescencePointDetectionMeasurementDocumentItems,
+            LuminescencePointDetectionMeasurementDocumentItems,
+        ]:
+
+        return FluorescencePointDetectionMeasurementDocumentItems(
+            sample_document=SampleDocument(
+                plate_barcode=plate.plate_info.barcode,
+                well_location_identifier=f"{result.col}{result.row}",
+                sample_role_type=p_map.get_sample_role_type(
+                    result.col, result.row
+                ),
+            ),
+            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=device_control_document,
+            ),
+            fluorescence=result.value,
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                processed_data_document=[
+                    ProcessedDataDocumentItem(
+                        processed_data=result.value,
+                        data_processing_description="processed data",
+                    ),
+                ]
+            ),
+            compartment_temperature=safe_value(
+                TQuantityValueDegreeCelsius,
+                plate.plate_info.chamber_temperature_at_start,
+            )
+        )
+
+    def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
         items = []
+        measurement_time = self._get_measurement_time(data)
         for plate in data.plates:
             if plate.results is None:
                 continue
@@ -145,27 +186,12 @@ class PerkinElmerEnvisionParser(VendorParser):
             )
 
             items += [
-                MeasurementDocumentItem(
-                    sample_document=SampleDocument(
-                        plate_barcode=plate.plate_info.barcode,
-                        well_location_identifier=f"{result.col}{result.row}",
-                        sample_role_type=p_map.get_sample_role_type(
-                            result.col, result.row
-                        ),
-                    ),
-                    device_control_aggregate_document=device_control_aggregate_document,
-                    processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                        processed_data_document=[
-                            ProcessedDataDocumentItem(
-                                processed_data=result.value,
-                                data_processing_description="processed data",
-                            ),
-                        ]
-                    ),
-                    compartment_temperature=safe_value(
-                        TQuantityValueDegreeCelsius,
-                        plate.plate_info.chamber_temperature_at_start,
-                    ),
+                PlateReaderDocumentItem(
+                    measurement_aggregate_document=MeasurementAggregateDocument(
+                        measurement_time=measurement_time,
+                        plate_well_count=TQuantityValueNumber(len(plate.results)),
+                        measurement_document=[self._get_measurement_document(plate, result, p_map, device_control_aggregate_document)]
+                    )
                 )
                 for result in plate.results
             ]
