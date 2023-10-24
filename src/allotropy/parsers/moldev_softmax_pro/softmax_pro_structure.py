@@ -260,16 +260,20 @@ class PlateBlock(Block):
             error = f"unrecognized export format {self.export_format}"
             raise AllotropeConversionError(error)
 
+    @staticmethod
     def _parse_reduced_plate_rows(
-        self, reduced_data_rows: list[list[Optional[str]]]
+        num_columns: int,
+        data_header: list[Optional[str]],
+        well_data: defaultdict[str, WellData],
+        reduced_data_rows: list[list[Optional[str]]],
     ) -> None:
         for i, row in enumerate(reduced_data_rows):
-            for j, value in enumerate(row[2 : self.num_columns + 2]):
+            for j, value in enumerate(row[2 : num_columns + 2]):
                 if value is None:
                     continue
-                col_number = assert_not_none(self.data_header[j + 2], "column number")
+                col_number = assert_not_none(data_header[j + 2], "column number")
                 well = get_well_coordinates(i + 1, col_number)
-                self.well_data[well].processed_data.append(float(value))
+                well_data[well].processed_data.append(float(value))
 
     @staticmethod
     def _parse_reduced_columns(
@@ -394,10 +398,17 @@ class PlateBlock(Block):
             end_raw_data_index = ((num_rows + 1) * kinetic_points) + 1
             reduced_data_rows = data_lines[end_raw_data_index:]
             if len(reduced_data_rows) == num_rows:
-                self._parse_reduced_plate_rows(reduced_data_rows)
+                PlateBlock._parse_reduced_plate_rows(
+                    self.num_columns,
+                    self.data_header,
+                    self.well_data,
+                    reduced_data_rows,
+                )
         elif data_type == DataType.REDUCED.value:
             reduced_data_rows = data_lines[end_raw_data_index:]
-            self._parse_reduced_plate_rows(reduced_data_rows)
+            PlateBlock._parse_reduced_plate_rows(
+                self.num_columns, self.data_header, self.well_data, reduced_data_rows
+            )
         else:
             error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
