@@ -271,12 +271,17 @@ class PlateBlock(Block):
                 well = get_well_coordinates(i + 1, col_number)
                 self.well_data[well].processed_data.append(float(value))
 
-    def _parse_reduced_columns(self, reduced_data_row: list[Optional[str]]) -> None:
+    @staticmethod
+    def _parse_reduced_columns(
+        data_header: list[Optional[str]],
+        well_data: defaultdict[str, WellData],
+        reduced_data_row: list[Optional[str]],
+    ) -> None:
         for i, value in enumerate(reduced_data_row[2:]):
             if value is None:
                 continue
-            well = assert_not_none(self.data_header[i + 2], "well")
-            self.well_data[well].processed_data.append(float(value))
+            well = assert_not_none(data_header[i + 2], "well")
+            well_data[well].processed_data.append(float(value))
 
     @staticmethod
     def _add_data_point(
@@ -331,10 +336,10 @@ class PlateBlock(Block):
                         )
             if len(data_lines) > (kinetic_points + 1) * num_row_blocks:
                 reduced_row = data_lines[-1][: num_wells + 2]
-                self._parse_reduced_columns(reduced_row)
+                PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         elif data_type == DataType.REDUCED.value:
             reduced_row = data_lines[-1][: num_wells + 2]
-            self._parse_reduced_columns(reduced_row)
+            PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
             error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
