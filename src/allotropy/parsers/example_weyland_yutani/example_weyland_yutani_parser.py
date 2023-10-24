@@ -69,13 +69,13 @@ class ExampleWeylandYutaniParser(VendorParser):
                 ),
                 device_control_aggregate_document=device_control_aggregate_document,
                 processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                        processed_data_document=[
-                            ProcessedDataDocumentItem(
-                                processed_data=result.value,
-                                data_processing_description="processed data",
-                            ),
-                        ]
-                    ),
+                    processed_data_document=[
+                        ProcessedDataDocumentItem(
+                            processed_data=result.value,
+                            data_processing_description="processed data",
+                        ),
+                    ]
+                ),
             )
             for result in data.plates[0].results
         ]
