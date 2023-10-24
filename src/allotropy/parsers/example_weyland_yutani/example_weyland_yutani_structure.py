@@ -68,7 +68,7 @@ class Plate:
 
         return [
             Plate(
-                number=0,
+                number="0",
                 results=[
                     Result(col, row, float(series.loc[col, row]))
                     for col, row in series.stack().index
