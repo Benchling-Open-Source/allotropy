@@ -47,7 +47,7 @@ class ExampleWeylandYutaniParser(VendorParser):
         )
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
-        data
+        assert data
         return self.get_date_time("2023-12-31") # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
@@ -64,7 +64,7 @@ class ExampleWeylandYutaniParser(VendorParser):
         ]
 
     def _get_device_control_aggregate_document(self, data: Data) -> DeviceControlAggregateDocument:
-        data
+        assert data
         return DeviceControlAggregateDocument(
             [
                 DeviceControlDocumentItem(
