@@ -188,9 +188,7 @@ class TRelativeFluorescenceUnit(
 
 
 @dataclass
-class TRelativeLightUnit(
-    RelativeLightUnit, TQuantityValueWithOptionalUnit
-):
+class TRelativeLightUnit(RelativeLightUnit, TQuantityValueWithOptionalUnit):
     pass
 
 
