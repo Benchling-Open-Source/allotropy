@@ -422,7 +422,10 @@
               ]
             }
           }
-        }
+        },
+        "required": [
+          "plate reader document"
+        ]
       }
     }
   }
