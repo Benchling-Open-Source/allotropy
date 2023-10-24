@@ -30,6 +30,10 @@ class ExampleWeylandYutaniParser(VendorParser):
         return self._get_model(Data.create(reader))
 
     def _get_model(self, data: Data) -> Model:
+        if data.number_of_wells is None:
+            msg = "Unable to get number of the wells in the plate"
+            raise AllotropyError(msg)
+
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
