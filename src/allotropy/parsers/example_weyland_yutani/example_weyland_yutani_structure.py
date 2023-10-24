@@ -34,7 +34,7 @@ class Instrument:
     nickname: str
 
     @staticmethod
-    def create(reader: CsvReader) -> Instrument:
+    def create() -> Instrument:
         return Instrument(serial_number="", nickname="")  # FIXME
 
 

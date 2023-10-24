@@ -46,7 +46,7 @@ class ExampleWeylandYutaniParser(VendorParser):
             )
         )
 
-    def _get_measurement_time(self, data: Data) -> TDateTimeValue:
+    def _get_measurement_time(self) -> TDateTimeValue:
         return self.get_date_time("2023-12-31")  # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
