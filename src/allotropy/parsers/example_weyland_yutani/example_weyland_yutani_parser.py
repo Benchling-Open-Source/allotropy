@@ -62,9 +62,12 @@ class ExampleWeylandYutaniParser(VendorParser):
         )
         return [
             MeasurementDocumentItem(
-                sample_document=SampleDocument(well_location_identifier=f"{result.col}{result.row}"),
+                sample_document=SampleDocument(
+                    well_location_identifier=f"{result.col}{result.row}"
+                ),
                 device_control_aggregate_document=device_control_aggregate_document,
-            ) for result in data.plates[0].results
+            )
+            for result in data.plates[0].results
         ]
 
     def _get_device_control_aggregate_document(
