@@ -69,9 +69,9 @@ class Plate:
         data = pd.read_csv(csv_stream)
 
         cell_data = (
-            data.iloc[3:-1, 1:]
-            if isnan(float(data.iloc[data.shape[0] - 1, 0]))
-            else data.iloc[3:, 1:]
+            data.iloc[3:, 1:]
+            if isinstance(data.iloc[data.shape[0] - 1, 0], str)
+            else data.iloc[3:-1, 1:]
         )
         series = (
             cell_data.drop(0, axis=0).drop(0, axis=1)
