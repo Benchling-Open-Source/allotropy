@@ -451,13 +451,6 @@ class PlateBlock(Block):
         self.wavelengths = split_wavelengths(wavelengths_str) or []
         self.parse_read_mode_header(header)
 
-        if self.read_type == ReadType.KINETIC.value:
-            self.read_time = read_time_or_scan_pattern
-            self.read_interval = read_interval_or_scan_density
-        elif self.read_type == ReadType.WELL_SCAN.value:
-            self.scan_pattern = read_time_or_scan_pattern
-            self.scan_density = read_interval_or_scan_density
-
     @property
     def is_single_wavelength(self) -> bool:
         return (
