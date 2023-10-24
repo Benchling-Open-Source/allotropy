@@ -241,7 +241,15 @@ class PlateBlock(Block):
                 data_lines,
             )
         elif self.export_format == ExportFormat.PLATE_FORMAT.value:
-            self._parse_plate_format_data(data_lines)
+            self._parse_plate_format_data(
+                self.data_type,
+                self.kinetic_points,
+                self.num_rows,
+                self.num_wavelengths,
+                self.num_columns,
+                self.data_header,
+                data_lines,
+            )
         else:
             error = f"unrecognized export format {self.export_format}"
             raise AllotropeConversionError(error)
@@ -318,30 +326,37 @@ class PlateBlock(Block):
             error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
 
-    def _parse_plate_format_data(self, data_lines: list[list[Optional[str]]]) -> None:
+    def _parse_plate_format_data(
+        self,
+        data_type: Optional[str],
+        kinetic_points: int,
+        num_rows: int,
+        num_wavelengths: Optional[int],
+        num_columns: int,
+        data_header: list[Optional[str]],
+        data_lines: list[list[Optional[str]]],
+    ) -> None:
         end_raw_data_index = 0
-        if self.data_type == DataType.RAW.value:
-            for read_index in range(self.kinetic_points):
-                start_index = read_index * (self.num_rows + 1)
-                read_rows = data_lines[start_index : start_index + self.num_rows]
+        if data_type == DataType.RAW.value:
+            for read_index in range(kinetic_points):
+                start_index = read_index * (num_rows + 1)
+                read_rows = data_lines[start_index : start_index + num_rows]
                 data_key = read_rows[0][0]
                 temperature = read_rows[0][1]
                 for i, row in enumerate(read_rows):
                     wavelength_index = 0
                     num_row_blocks = (
-                        self.num_wavelengths if self.num_wavelengths is not None else 1
+                        num_wavelengths if num_wavelengths is not None else 1
                     )
                     for wavelength_index in range(num_row_blocks):
-                        col_start_index = 2 + (
-                            wavelength_index * (self.num_columns + 1)
-                        )
+                        col_start_index = 2 + (wavelength_index * (num_columns + 1))
                         for j, value in enumerate(
-                            row[col_start_index : col_start_index + self.num_columns]
+                            row[col_start_index : col_start_index + num_columns]
                         ):
                             if value is None:
                                 continue
                             col_number = assert_not_none(
-                                self.data_header[j + 2], "column number"
+                                data_header[j + 2], "column number"
                             )
                             well = get_well_coordinates(i + 1, col_number)
                             self._add_data_point(
@@ -351,15 +366,15 @@ class PlateBlock(Block):
                                 temperature=temperature,
                                 wavelength=self.get_wavelength(wavelength_index),
                             )
-            end_raw_data_index = ((self.num_rows + 1) * self.kinetic_points) + 1
+            end_raw_data_index = ((num_rows + 1) * kinetic_points) + 1
             reduced_data_rows = data_lines[end_raw_data_index:]
-            if len(reduced_data_rows) == self.num_rows:
+            if len(reduced_data_rows) == num_rows:
                 self._parse_reduced_plate_rows(reduced_data_rows)
-        elif self.data_type == DataType.REDUCED.value:
+        elif data_type == DataType.REDUCED.value:
             reduced_data_rows = data_lines[end_raw_data_index:]
             self._parse_reduced_plate_rows(reduced_data_rows)
         else:
-            error = f"unrecognized data type {self.data_type}"
+            error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
 
     def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
