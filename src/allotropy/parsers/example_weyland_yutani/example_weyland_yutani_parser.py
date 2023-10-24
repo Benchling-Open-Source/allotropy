@@ -47,8 +47,7 @@ class ExampleWeylandYutaniParser(VendorParser):
         )
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
-        assert data
-        return self.get_date_time("2023-12-31") # FIXME
+        return self.get_date_time(data.instrument.serial_number or "2023-12-31") # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = self._get_device_control_aggregate_document(
@@ -64,11 +63,10 @@ class ExampleWeylandYutaniParser(VendorParser):
         ]
 
     def _get_device_control_aggregate_document(self, data: Data) -> DeviceControlAggregateDocument:
-        assert data
         return DeviceControlAggregateDocument(
             [
                 DeviceControlDocumentItem(
-                    device_type="fluorescence detector",
+                    device_type=data.instrument.serial_number,
                 )
             ]
         )
