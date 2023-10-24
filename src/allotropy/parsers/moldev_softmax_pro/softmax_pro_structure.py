@@ -232,7 +232,7 @@ class PlateBlock(Block):
         self.data_header = split_lines[1]
         data_lines = split_lines[2:]
         if self.export_format == ExportFormat.TIME_FORMAT.value:
-            self._parse_time_format_data(
+            PlateBlock._parse_time_format_data(
                 self.wavelengths,
                 self.read_type,
                 self.well_data,
@@ -301,8 +301,8 @@ class PlateBlock(Block):
             wavelength=wavelength,
         )
 
+    @staticmethod
     def _parse_time_format_data(
-        self,
         wavelengths: list[int],
         read_type: Optional[str],
         well_data: defaultdict[str, WellData],
