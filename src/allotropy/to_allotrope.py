@@ -43,7 +43,7 @@ def allotrope_model_from_file(
     filepath: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
-) -> dict[str, Any]:
+) -> Any:
     with open(filepath, "rb") as f:
         return allotrope_model_from_io(
             f, Path(filepath).name, vendor_type, default_timezone=default_timezone
