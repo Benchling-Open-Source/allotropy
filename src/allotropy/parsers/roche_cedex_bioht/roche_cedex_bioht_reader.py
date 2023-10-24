@@ -15,7 +15,7 @@ def to_num(data: pd.Series) -> pd.Series:
     return pd.to_numeric(data, errors="coerce").replace(np.nan, None)
 
 
-class CedexBiohtReader:
+class RocheCedexBiohtReader:
     def __init__(self, contents: io.IOBase):
         self.title_data = self.read_title_data(contents)
         self.samples_data = self.read_samples_data(contents)

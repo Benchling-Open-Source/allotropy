@@ -7,10 +7,12 @@ from typing import Optional
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_reader import CedexBiohtReader
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
+)
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
+    RocheCedexBiohtReader,
 )
 
 
@@ -174,7 +176,7 @@ class Data:
     samples: list[Sample]
 
     @staticmethod
-    def create(reader: CedexBiohtReader) -> Data:
+    def create(reader: RocheCedexBiohtReader) -> Data:
         # A sample group is defined by both the sample and the batch identifier
         sample_groups = reader.samples_data.groupby(
             ["sample identifier", "batch identifier"]

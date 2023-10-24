@@ -4,8 +4,8 @@
         "analytical method identifier": "",
         "container type": "well plate",
         "device system document": {
-            "device identifier": "",
-            "model number": ""
+            "device identifier": "1251",
+            "model number": "Weyland-Yutani 470"
         },
         "experimental data identifier": "",
         "measurement document": [
@@ -18,7 +18,187 @@
                     ]
                 },
                 "sample document": {
-                    "well location identifier": "A1"
+                    "well location identifier": "A01"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A02"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A03"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A04"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B01"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B02"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B03"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B04"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C01"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C02"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C03"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C04"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D01"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D02"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D03"
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D04"
                 }
             }
         ],
@@ -26,7 +206,7 @@
         "measurement time": "2023-12-31T00:00:00+00:00",
         "plate well count": {
             "unit": "#",
-            "value": 0
+            "value": 16
         }
     }
 }

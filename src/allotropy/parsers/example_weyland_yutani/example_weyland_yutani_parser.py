@@ -1,6 +1,7 @@
 from io import IOBase
 import uuid
 
+from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -30,6 +31,10 @@ class ExampleWeylandYutaniParser(VendorParser):
         return self._get_model(Data.create(reader))
 
     def _get_model(self, data: Data) -> Model:
+        if data.number_of_wells is None:
+            msg = "Unable to get number of the wells in the plate"
+            raise AllotropyError(msg)
+
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
@@ -46,18 +51,23 @@ class ExampleWeylandYutaniParser(VendorParser):
             )
         )
 
-    def _get_measurement_time(self) -> TDateTimeValue:
-        return self.get_date_time("2023-12-31")  # FIXME
+    def _get_measurement_time(self, data: Data) -> TDateTimeValue:
+        return self.get_date_time(
+            data.instrument.serial_number or "2023-12-31"
+        )  # FIXME
 
-    def _get_measurement_document(self) -> list[MeasurementDocumentItem]:
+    def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = (
             self._get_device_control_aggregate_document()
         )
         return [
             MeasurementDocumentItem(
-                sample_document=SampleDocument(well_location_identifier="A1"),
+                sample_document=SampleDocument(
+                    well_location_identifier=f"{result.col}{result.row}"
+                ),
                 device_control_aggregate_document=device_control_aggregate_document,
             )
+            for result in data.plates[0].results
         ]
 
     def _get_device_control_aggregate_document(self) -> DeviceControlAggregateDocument:
