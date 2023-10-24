@@ -13,7 +13,7 @@ class BasicAssayInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
-        data = reader.pop_csv_block()
+        reader.pop_csv_block()
         return BasicAssayInfo(
             protocol_id="",  # FIXME
             assay_id="",  # FIXME
