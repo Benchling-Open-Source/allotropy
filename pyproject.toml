@@ -98,7 +98,7 @@ dependencies = [
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py"
-generate-weyland-yutani = "scripts/generate_weyland_yutani.py"
+generate-weyland-yutani = "scripts/generate_weyland_yutani.py {args:tests}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
