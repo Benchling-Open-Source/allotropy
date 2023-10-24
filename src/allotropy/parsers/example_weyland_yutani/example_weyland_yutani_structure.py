@@ -8,16 +8,6 @@ import pandas as pd
 from allotropy.parsers.lines_reader import CsvReader
 
 
-def df_to_series(df: pd.DataFrame) -> pd.Series:
-    df.columns = df.iloc[0]  # type: ignore[assignment]
-    return pd.Series(df.iloc[-1], index=df.columns)
-
-
-def num_to_chars(n: int) -> str:
-    d, m = divmod(n, 26)  # 26 is the number of ASCII letters
-    return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
-
-
 @dataclass
 class BasicAssayInfo:
     protocol_id: str
@@ -63,8 +53,8 @@ class Plate:
             else cell_data
         )
         rows, cols = series.shape
-        series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
+        series.index = [data.iloc[3, i + 1] for i in range(rows)]  # type: ignore[assignment]
+        series.columns = [str(data.iloc[3 + i, 0]) for i in range(1, cols + 1)]  # type: ignore[assignment]
 
         return [
             Plate(
