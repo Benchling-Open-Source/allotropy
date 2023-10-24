@@ -57,9 +57,7 @@ class ExampleWeylandYutaniParser(VendorParser):
         )  # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
-        device_control_aggregate_document = self._get_device_control_aggregate_document(
-            data
-        )
+        device_control_aggregate_document = self._get_device_control_aggregate_document()
         return [
             MeasurementDocumentItem(
                 sample_document=SampleDocument(
@@ -71,12 +69,12 @@ class ExampleWeylandYutaniParser(VendorParser):
         ]
 
     def _get_device_control_aggregate_document(
-        self, data: Data
+        self
     ) -> DeviceControlAggregateDocument:
         return DeviceControlAggregateDocument(
             [
                 DeviceControlDocumentItem(
-                    device_type=data.instrument.serial_number,
+                    device_type="fluorescence detector",
                 )
             ]
         )

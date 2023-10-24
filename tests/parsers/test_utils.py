@@ -29,7 +29,7 @@ def assert_allotrope_dicts_equal(expected: dict, actual: dict) -> None:
         r"\['calculated data identifier'\]",
     ]
     # Uncomment for more info
-    # print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
+    print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
     assert not DeepDiff(
         expected,
         actual,
