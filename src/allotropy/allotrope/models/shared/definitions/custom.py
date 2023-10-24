@@ -181,7 +181,7 @@ class TQuantityValueMilliAbsorbanceUnit(
 
 
 @dataclass
-class TQuantityValueRelativeFluorenceUnit(
+class TQuantityValueRelativeFluorescenceUnit(
     RelativeFluorescenceUnit, TQuantityValueWithOptionalUnit
 ):
     pass
