@@ -10,12 +10,21 @@ from allotropy.parsers.lines_reader import CsvReader
 class BasicAssayInfo:
     protocol_id: str
     assay_id: str
+    checksum: Optional[str]
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
+        old_line_num = reader.current_line
+        list(reader.pop_until("^Checksum"))
+        line = reader.pop()
+        checksum = None
+        if line:
+            checksum = line.split(",")[1]
+        reader.current_line = old_line_num
         return BasicAssayInfo(
-            protocol_id="",  # FIXME
-            assay_id="",  # FIXME
+            protocol_id="Weyland Yutani Example",
+            assay_id="Example Assay",
+            checksum=checksum,
         )
 
 
