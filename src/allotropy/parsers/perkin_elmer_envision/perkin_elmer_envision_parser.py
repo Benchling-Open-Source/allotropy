@@ -4,21 +4,20 @@ import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
-    CalculatedDataAggregateDocument,
     ContainerType,
     DeviceControlDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
     SampleDocument,
-    StatisticsAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -26,6 +25,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TRelativeFluorescenceUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.lines_reader import CsvReader
@@ -62,29 +62,28 @@ class PerkinElmerEnvisionParser(VendorParser):
                     model_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname
                 ),
-                processed_data_aggregate_document=ProcessedDataAggregateDocument(),
-                calculated_data_aggregate_document=CalculatedDataAggregateDocument(),
-                statistics_aggregate_document=StatisticsAggregateDocument(),
+                # processed_data_aggregate_document=ProcessedDataAggregateDocument(),
+                # calculated_data_aggregate_document=CalculatedDataAggregateDocument(),
+                # statistics_aggregate_document=StatisticsAggregateDocument(),
             ),
             # TODO find the new plate reader manifest and add here
             field_asm_manifest="http://purl.allotrope.org/manifests/fluorescence/REC/2023/09/fluorescence-endpoint.manifest",
         )
 
-        # return Model(
-        #     measurement_aggregate_document=MeasurementAggregateDocument(
-        #         measurement_identifier=str(uuid.uuid4()),
-        #         measurement_time=self._get_measurement_time(data),
-        #         analytical_method_identifier=data.basic_assay_info.protocol_id,
-        #         experimental_data_identifier=data.basic_assay_info.assay_id,
-        #         container_type=ContainerType.well_plate,
-        #         plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
-        #         device_system_document=DeviceSystemDocument(
-        #             model_number=data.instrument.serial_number,
-        #             device_identifier=data.instrument.nickname,
-        #         ),
-        #         measurement_document=self._get_plate_reader_document(data),
-        #     )
-        # )
+    def _check_read_type(self, data: Data) -> Optional[str]:
+        patterns = {
+            "ABS": "Absorbance",
+            "Absorbance": "Absorbance",
+            "LUM": "Luminescence",
+            "Luminescence": "Luminescence",
+            "Fluorescence": "Fluorescence"
+        }
+
+        for key in patterns:
+            if key in data.labels.label:
+                return patterns[key]
+
+        return None
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
@@ -101,12 +100,12 @@ class PerkinElmerEnvisionParser(VendorParser):
 
     def _get_device_control_aggregate_document(
         self, data: Data, plate: Plate
-    ) -> DeviceControlAggregateDocument:
+    ) -> Union[FluorescencePointDetectionDeviceControlAggregateDocument, LuminescencePointDetectionDeviceControlAggregateDocument, UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument]:
         ex_filter = data.labels.excitation_filter
         em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
-        return DeviceControlAggregateDocument(
+        return FluorescencePointDetectionDeviceControlAggregateDocument(
             [
-                DeviceControlDocumentItem(
+                FluorescencePointDetectionDeviceControlDocumentItem(
                     device_type="fluorescence detector",
                     detector_distance_setting__plate_reader_=safe_value(
                         TQuantityValueMillimeter, plate.plate_info.measured_height
@@ -143,25 +142,20 @@ class PerkinElmerEnvisionParser(VendorParser):
         ]:
 
         return FluorescencePointDetectionMeasurementDocumentItems(
+            measurement_identifier=str(uuid.uuid4()),
             sample_document=SampleDocument(
-                plate_barcode=plate.plate_info.barcode,
+                sample_identifier=str(uuid.uuid4()),  # TODO check what this should map to
+                location_identifier=str(uuid.uuid4()),  # TODO check what this should map to
+                well_plate_identifier=plate.plate_info.barcode,
                 well_location_identifier=f"{result.col}{result.row}",
-                sample_role_type=p_map.get_sample_role_type(
+                sample_role_type=str(p_map.get_sample_role_type(
                     result.col, result.row
-                ),
+                )),
             ),
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=device_control_document,
+                device_control_document=[device_control_document],
             ),
-            fluorescence=result.value,
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        processed_data=result.value,
-                        data_processing_description="processed data",
-                    ),
-                ]
-            ),
+            fluorescence=TRelativeFluorescenceUnit(result.value),
             compartment_temperature=safe_value(
                 TQuantityValueDegreeCelsius,
                 plate.plate_info.chamber_temperature_at_start,
@@ -189,8 +183,11 @@ class PerkinElmerEnvisionParser(VendorParser):
                 PlateReaderDocumentItem(
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         measurement_time=measurement_time,
-                        plate_well_count=TQuantityValueNumber(len(plate.results)),
-                        measurement_document=[self._get_measurement_document(plate, result, p_map, device_control_aggregate_document)]
+                        plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
+                        measurement_document=[self._get_measurement_document(plate, result, p_map, device_control_aggregate_document)],
+                        analytical_method_identifier=data.basic_assay_info.protocol_id,
+                        experimental_data_identifier=data.basic_assay_info.assay_id,
+                        container_type=ContainerType.well_plate,
                     )
                 )
                 for result in plate.results
