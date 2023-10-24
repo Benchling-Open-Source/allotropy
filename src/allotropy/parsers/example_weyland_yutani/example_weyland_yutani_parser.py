@@ -57,7 +57,9 @@ class ExampleWeylandYutaniParser(VendorParser):
         )  # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
-        device_control_aggregate_document = self._get_device_control_aggregate_document()
+        device_control_aggregate_document = (
+            self._get_device_control_aggregate_document()
+        )
         return [
             MeasurementDocumentItem(
                 sample_document=SampleDocument(
@@ -68,9 +70,7 @@ class ExampleWeylandYutaniParser(VendorParser):
             for result in data.plates[0].results
         ]
 
-    def _get_device_control_aggregate_document(
-        self
-    ) -> DeviceControlAggregateDocument:
+    def _get_device_control_aggregate_document(self) -> DeviceControlAggregateDocument:
         return DeviceControlAggregateDocument(
             [
                 DeviceControlDocumentItem(
