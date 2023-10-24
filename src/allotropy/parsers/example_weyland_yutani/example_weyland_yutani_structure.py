@@ -43,7 +43,7 @@ class Plate:
     number: str
 
     @staticmethod
-    def create(reader: CsvReader) -> list[Plate]:
+    def create() -> list[Plate]:
         plates: list[Plate] = []  # FIXME
         return plates
 
