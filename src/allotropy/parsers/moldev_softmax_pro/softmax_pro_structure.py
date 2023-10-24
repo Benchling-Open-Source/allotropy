@@ -199,6 +199,9 @@ class PlateBlock(Block):
     wavelengths: list[int]
     well_data: defaultdict[str, WellData]
 
+    excitation_wavelengths: Optional[list[int]]
+    cutoff_filters: Optional[list[int]]
+
     @staticmethod
     def create(raw_lines: list[str]) -> PlateBlock:
         split_lines = [
@@ -259,7 +262,12 @@ class PlateBlock(Block):
         self.num_wells = assert_not_none(try_int(num_wells), "num_wells")
         self.num_wavelengths = try_int(num_wavelengths)
         self.wavelengths = split_wavelengths(wavelengths_str) or []
-        self.parse_read_mode_header(header)
+
+        extra_attr = self.parse_read_mode_header(header)
+        self.pmt_gain = extra_attr.pmt_gain
+        self.num_rows = extra_attr.num_rows
+        self.excitation_wavelengths = extra_attr.excitation_wavelengths
+        self.cutoff_filters = extra_attr.excitation_wavelengths
 
         self.well_data = defaultdict(WellData)
         self.data_header = split_lines[1]
@@ -446,7 +454,9 @@ class PlateBlock(Block):
             error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
 
-    def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
         raise NotImplementedError
 
     @property
@@ -530,6 +540,14 @@ class PlateBlock(Block):
         raise NotImplementedError
 
 
+@dataclass
+class PlateBlockExtraAttr:
+    pmt_gain: Optional[str]
+    num_rows: int
+    excitation_wavelengths: Optional[list[int]]
+    cutoff_filters: Optional[list[int]]
+
+
 class FluorescencePlateBlock(PlateBlock):
     READ_MODE = "Fluorescence"
     CONCEPT = "fluorescence"
@@ -537,25 +555,32 @@ class FluorescencePlateBlock(PlateBlock):
     DATA_TYPE_IDX = 7
     EXCITATION_WAVELENGTHS_IDX = 20
 
-    def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
-            self.cutoff,
+            _,  # cutoff
             cutoff_filters_str,
-            self.sweep_wave,
-            self.sweep_wavelength,
-            self.reads_per_well,
-            self.pmt_gain,
-            self.start_integration_time,
-            self.end_integration_time,
-            self.first_row,
-            num_rows,
+            _,  # sweep_wave
+            _,  # sweep_wavelength
+            _,  # reads_per_well
+            pmt_gain,  # bad news
+            _,  # start_integration_time
+            _,  # end_integration_time
+            _,  # first_row
+            num_rows,  # bad news
         ] = header[
-            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+            FluorescencePlateBlock.EXCITATION_WAVELENGTHS_IDX : FluorescencePlateBlock.EXCITATION_WAVELENGTHS_IDX
+            + 11
         ]
-        self.excitation_wavelengths = split_wavelengths(excitation_wavelengths_str)
-        self.cutoff_filters = split_wavelengths(cutoff_filters_str)
-        self.num_rows = assert_not_none(try_int(num_rows), "num_rows")
+
+        return PlateBlockExtraAttr(
+            pmt_gain=pmt_gain,
+            num_rows=assert_not_none(try_int(num_rows), "num_rows"),
+            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
+            cutoff_filters=split_wavelengths(cutoff_filters_str),
+        )
 
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
     # Fluorescence ASM model has these extra fields. We may be able to fix this by templating the PlateBlock
@@ -629,25 +654,31 @@ class LuminescencePlateBlock(PlateBlock):
     DATA_TYPE_IDX = 6
     EXCITATION_WAVELENGTHS_IDX = 19
 
-    def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
-            self.cutoff,
+            _,  # cutoff
             cutoff_filters_str,
-            self.sweep_wave,
-            self.sweep_wavelength,
-            self.reads_per_well,
-            self.pmt_gain,
-            self.start_integration_time,
-            self.end_integration_time,
-            self.first_row,
-            num_rows,
+            _,  # sweep_wave
+            _,  # sweep_wavelength
+            _,  # reads_per_well
+            pmt_gain,  # bad news
+            _,  # start_integration_time
+            _,  # end_integration_time
+            _,  # first_row
+            num_rows,  # bad news
         ] = header[
-            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+            LuminescencePlateBlock.EXCITATION_WAVELENGTHS_IDX : LuminescencePlateBlock.EXCITATION_WAVELENGTHS_IDX
+            + 11
         ]
-        self.excitation_wavelengths = split_wavelengths(excitation_wavelengths_str)
-        self.cutoff_filters = split_wavelengths(cutoff_filters_str)
-        self.num_rows = assert_not_none(try_int(num_rows), "num_rows")
+        return PlateBlockExtraAttr(
+            pmt_gain=pmt_gain,
+            num_rows=assert_not_none(try_int(num_rows), "num_rows"),
+            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
+            cutoff_filters=split_wavelengths(cutoff_filters_str),
+        )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
         device_control_doc = DeviceControlDocumentItemLuminescence(
@@ -709,10 +740,15 @@ class AbsorbancePlateBlock(PlateBlock):
     UNIT = "mAU"
     DATA_TYPE_IDX = 6
 
-    def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
-        [self.first_row, num_rows] = header[19:21]
-        self.pmt_gain = None
-        self.num_rows = assert_not_none(try_int(num_rows), "num_rows")
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        return PlateBlockExtraAttr(
+            pmt_gain=None,
+            num_rows=assert_not_none(try_int(header[20]), "num_rows"),
+            excitation_wavelengths=None,
+            cutoff_filters=None,
+        )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemAbsorbance:
         device_control_doc = DeviceControlDocumentItemAbsorbance(
