@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from io import StringIO
-from math import isnan
 from typing import Optional
 
 import pandas as pd
