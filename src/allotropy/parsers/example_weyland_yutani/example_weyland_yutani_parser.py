@@ -62,7 +62,6 @@ class ExampleWeylandYutaniParser(VendorParser):
         device_control_aggregate_document = (
             self._get_device_control_aggregate_document()
         )
-        print(data.plates[0].results)
         return [
             MeasurementDocumentItem(
                 sample_document=SampleDocument(
