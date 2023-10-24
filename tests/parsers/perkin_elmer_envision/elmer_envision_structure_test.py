@@ -1,6 +1,6 @@
 from io import StringIO
 
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.fluorescence_benchling_2023_10_fluorescence import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType

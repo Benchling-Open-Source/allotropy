@@ -1,6 +1,16 @@
 {
+    "data system document": {
+        "file name": "PE_Envision_example03.csv",
+        "software name": "placeholder",
+        "ASM converter name": "allotropy",
+        "ASM converter version": "0.1.6"
+    },
+    "device system document": {
+        "device identifier": "EnVision#Alpha_680nm",
+        "model number": "1051017"
+    },
     "measurement aggregate document": {
-        "measurement identifier": "ee72aa4c-42b5-46a0-bd46-76d055cb6b0e",
+        "measurement identifier": "0318aefa-4d68-421d-a135-66adc7eac4cc",
         "plate well count": {
             "value": 384.0,
             "unit": "#"
@@ -11914,11 +11924,7 @@
         "measurement time": "2023-07-10T14:10:15+00:00",
         "analytical method identifier": "100130",
         "experimental data identifier": "2801",
-        "container type": "well plate",
-        "device system document": {
-            "device identifier": "EnVision#Alpha_680nm",
-            "model number": "1051017"
-        }
+        "container type": "well plate"
     },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
+    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/10/fluorescence.manifest"
 }

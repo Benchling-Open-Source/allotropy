@@ -1,5 +1,6 @@
 from allotropy.allotrope.models.fluorescence_benchling_2023_10_fluorescence import (
     ContainerType,
+    DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
@@ -20,6 +21,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
 )
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.elmer_envision_structure import (
     BasicAssayInfo,
     Data,
@@ -88,9 +90,19 @@ def get_data() -> Data:
     )
 
 
-def get_model() -> Model:
+def get_model(file_name: str) -> Model:
     return Model(
-        manifest="http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
+        data_system_document=DataSystemDocument(
+            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_version=ASM_CONVERTER_VERSION,
+            file_name=file_name,
+            software_name='placeholder',
+        ),
+        device_system_document=DeviceSystemDocument(
+            device_identifier='EnVision',
+            model_number='1050209'
+        ),
+        manifest="http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/10/fluorescence.manifest",
         measurement_aggregate_document=MeasurementAggregateDocument(
             measurement_identifier="",
             measurement_time="2022-10-13T15:08:06+00:00",
