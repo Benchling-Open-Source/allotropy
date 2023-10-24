@@ -13,6 +13,7 @@ class BasicAssayInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
+        data = reader.pop_csv_block()
         return BasicAssayInfo(
             protocol_id="",  # FIXME
             assay_id="",  # FIXME
@@ -26,6 +27,7 @@ class Instrument:
 
     @staticmethod
     def create(reader: CsvReader) -> Instrument:
+        reader.pop_csv_block()
         return Instrument(serial_number="", nickname="")  # FIXME
 
 
@@ -35,6 +37,7 @@ class Plate:
 
     @staticmethod
     def create(reader: CsvReader) -> list[Plate]:
+        reader.pop_csv_block()
         plates: list[Plate] = []  # FIXME
         return plates
 
