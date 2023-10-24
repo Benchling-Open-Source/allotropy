@@ -48,9 +48,12 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
+        data = reader.pop_csv_block()
+        rows, cols = data.shape
+
         return Data(
             plates=Plate.create(reader),
-            number_of_wells=0,
+            number_of_wells=(rows - 4) * (cols - 1),
             basic_assay_info=BasicAssayInfo.create(reader),
             instrument=Instrument.create(reader),
         )
