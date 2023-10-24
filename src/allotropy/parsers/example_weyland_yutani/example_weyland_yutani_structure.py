@@ -3,8 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-import pandas as pd
-
 from allotropy.parsers.lines_reader import CsvReader
 
 
