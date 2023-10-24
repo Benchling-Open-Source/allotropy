@@ -44,7 +44,7 @@ class Plate:
     @staticmethod
     def create(reader: CsvReader) -> list[Plate]:
         data = reader.pop_csv_block()
-        cell_data = data.iloc[4:, 1:]
+        cell_data = data.iloc[4:, 1:].T
         series = (
             cell_data.drop(0, axis=0).drop(0, axis=1)
             if cell_data.iloc[1, 0] == "A"
@@ -53,7 +53,6 @@ class Plate:
         rows, cols = series.shape
         series.index = [data.iloc[3, i + 1] for i in range(rows)]  # type: ignore[assignment]
         series.columns = [str(data.iloc[3 + i, 0]) for i in range(1, cols + 1)]  # type: ignore[assignment]
-
         return [
             Plate(
                 number="0",

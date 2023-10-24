@@ -12,6 +12,8 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     Model,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import (
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -60,12 +62,21 @@ class ExampleWeylandYutaniParser(VendorParser):
         device_control_aggregate_document = (
             self._get_device_control_aggregate_document()
         )
+        print(data.plates[0].results)
         return [
             MeasurementDocumentItem(
                 sample_document=SampleDocument(
                     well_location_identifier=f"{result.col}{result.row}"
                 ),
                 device_control_aggregate_document=device_control_aggregate_document,
+                processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                        processed_data_document=[
+                            ProcessedDataDocumentItem(
+                                processed_data=result.value,
+                                data_processing_description="processed data",
+                            ),
+                        ]
+                    ),
             )
             for result in data.plates[0].results
         ]
