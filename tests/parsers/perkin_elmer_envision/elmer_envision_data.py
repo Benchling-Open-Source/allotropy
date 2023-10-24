@@ -96,11 +96,10 @@ def get_model(file_name: str) -> Model:
             ASM_converter_name=ASM_CONVERTER_NAME,
             ASM_converter_version=ASM_CONVERTER_VERSION,
             file_name=file_name,
-            software_name='placeholder',
+            software_name="placeholder",
         ),
         device_system_document=DeviceSystemDocument(
-            device_identifier='EnVision',
-            model_number='1050209'
+            device_identifier="EnVision", model_number="1050209"
         ),
         manifest="http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/10/fluorescence.manifest",
         measurement_aggregate_document=MeasurementAggregateDocument(

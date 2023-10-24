@@ -31,9 +31,10 @@ def test_parse_elmer_envision_to_asm(output_file: str) -> None:
 @pytest.mark.short
 def test_get_model() -> None:
     parser = ElmerEnvisionParser(TimestampParser())
-    model = parser._get_model(get_data())
+    filename = "__dummy__.csv"
+    model = parser._get_model(get_data(), filename)
 
     if model.measurement_aggregate_document:
         model.measurement_aggregate_document.measurement_identifier = ""
 
-    assert model == get_model()
+    assert model == get_model(filename)
