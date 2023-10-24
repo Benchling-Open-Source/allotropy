@@ -13,6 +13,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Hertz,
     Microliter,
     Micrometer,
+    MilliAbsorbanceUnit,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
@@ -26,6 +27,8 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Percent,
     PH,
     PicogramPerMilliliter,
+    RelativeFluorescenceUnit,
+    RelativeLightUnit,
     SecondTime,
     TODO,
     Unitless,
@@ -167,6 +170,25 @@ class TQuantityValueMilliOsmolesPerKilogram(
 class TQuantityValueMillimolePerLiter(
     MillimolePerLiter, TQuantityValueWithOptionalUnit
 ):
+    pass
+
+
+@dataclass
+class TQuantityValueMilliAbsorbanceUnit(
+    MilliAbsorbanceUnit, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TRelativeFluorescenceUnit(
+    RelativeFluorescenceUnit, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TRelativeLightUnit(RelativeLightUnit, TQuantityValueWithOptionalUnit):
     pass
 
 
