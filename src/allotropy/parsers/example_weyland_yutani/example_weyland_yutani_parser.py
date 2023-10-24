@@ -47,7 +47,9 @@ class ExampleWeylandYutaniParser(VendorParser):
         )
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
-        return self.get_date_time(data.instrument.serial_number or "2023-12-31") # FIXME
+        return self.get_date_time(
+            data.instrument.serial_number or "2023-12-31"
+        )  # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = self._get_device_control_aggregate_document(
@@ -55,14 +57,14 @@ class ExampleWeylandYutaniParser(VendorParser):
         )
         return [
             MeasurementDocumentItem(
-                sample_document=SampleDocument(
-                    well_location_identifier="A1"
-                ),
+                sample_document=SampleDocument(well_location_identifier="A1"),
                 device_control_aggregate_document=device_control_aggregate_document,
             )
         ]
 
-    def _get_device_control_aggregate_document(self, data: Data) -> DeviceControlAggregateDocument:
+    def _get_device_control_aggregate_document(
+        self, data: Data
+    ) -> DeviceControlAggregateDocument:
         return DeviceControlAggregateDocument(
             [
                 DeviceControlDocumentItem(
