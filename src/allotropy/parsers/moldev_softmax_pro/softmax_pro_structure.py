@@ -472,8 +472,12 @@ class PlateBlock(Block):
         raise NotImplementedError
 
 
-class FluorescenceOrLuminescencePlateBlock(PlateBlock):
-    EXCITATION_WAVELENGTHS_IDX: ClassVar[int]
+class FluorescencePlateBlock(PlateBlock):
+    READ_MODE = "Fluorescence"
+    CONCEPT = "fluorescence"
+    UNIT = "RFU"
+    DATA_TYPE_IDX = 7
+    EXCITATION_WAVELENGTHS_IDX = 20
 
     def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
         [
@@ -494,14 +498,6 @@ class FluorescenceOrLuminescencePlateBlock(PlateBlock):
         self.excitation_wavelengths = split_wavelengths(excitation_wavelengths_str)
         self.cutoff_filters = split_wavelengths(cutoff_filters_str)
         self.num_rows = assert_not_none(try_int(num_rows), "num_rows")
-
-
-class FluorescencePlateBlock(FluorescenceOrLuminescencePlateBlock):
-    READ_MODE = "Fluorescence"
-    CONCEPT = "fluorescence"
-    UNIT = "RFU"
-    DATA_TYPE_IDX = 7
-    EXCITATION_WAVELENGTHS_IDX = 20
 
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
     # Fluorescence ASM model has these extra fields. We may be able to fix this by templating the PlateBlock
@@ -568,12 +564,32 @@ class FluorescencePlateBlock(FluorescenceOrLuminescencePlateBlock):
         return allotrope_file
 
 
-class LuminescencePlateBlock(FluorescenceOrLuminescencePlateBlock):
+class LuminescencePlateBlock(PlateBlock):
     READ_MODE = "Luminescence"
     CONCEPT = "luminescence"
     UNIT = "RLU"
     DATA_TYPE_IDX = 6
     EXCITATION_WAVELENGTHS_IDX = 19
+
+    def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
+        [
+            excitation_wavelengths_str,
+            self.cutoff,
+            cutoff_filters_str,
+            self.sweep_wave,
+            self.sweep_wavelength,
+            self.reads_per_well,
+            self.pmt_gain,
+            self.start_integration_time,
+            self.end_integration_time,
+            self.first_row,
+            num_rows,
+        ] = header[
+            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+        ]
+        self.excitation_wavelengths = split_wavelengths(excitation_wavelengths_str)
+        self.cutoff_filters = split_wavelengths(cutoff_filters_str)
+        self.num_rows = assert_not_none(try_int(num_rows), "num_rows")
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
         device_control_doc = DeviceControlDocumentItemLuminescence(
