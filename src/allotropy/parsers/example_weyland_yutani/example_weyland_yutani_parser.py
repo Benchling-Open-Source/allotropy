@@ -42,14 +42,14 @@ class ExampleWeylandYutaniParser(VendorParser):
                     model_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname,
                 ),
-                measurement_document=self._get_measurement_document(data),
+                measurement_document=self._get_measurement_document(),
             )
         )
 
     def _get_measurement_time(self) -> TDateTimeValue:
         return self.get_date_time("2023-12-31")  # FIXME
 
-    def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
+    def _get_measurement_document(self) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = (
             self._get_device_control_aggregate_document()
         )
