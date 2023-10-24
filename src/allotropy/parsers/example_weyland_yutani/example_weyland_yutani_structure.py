@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from io import StringIO
+from math import isnan
 from typing import Optional
 
 import pandas as pd
@@ -26,13 +28,10 @@ class BasicAssayInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
-        old_line_num = reader.current_line
-        list(reader.pop_until("^Checksum"))
         line = reader.pop()
         checksum = None
         if line:
             checksum = line.split(",")[1]
-        reader.current_line = old_line_num
 
         return BasicAssayInfo(
             protocol_id="Weyland Yutani Example",
@@ -65,8 +64,15 @@ class Plate:
 
     @staticmethod
     def create(reader: CsvReader) -> list[Plate]:
-        data = reader.pop_csv_block()
-        cell_data = data.iloc[4:, 1:]
+
+        csv_stream = StringIO("\n".join(reader.pop_until("^Checksum")))
+        data = pd.read_csv(csv_stream)
+
+        cell_data = (
+            data.iloc[3:-1, 1:]
+            if isnan(float(data.iloc[data.shape[0] - 1, 0]))
+            else data.iloc[3:, 1:]
+        )
         series = (
             cell_data.drop(0, axis=0).drop(0, axis=1)
             if cell_data.iloc[1, 0] == "A"
@@ -100,6 +106,6 @@ class Data:
         return Data(
             plates=plates,
             number_of_wells=len(plates[0].results),
-            basic_assay_info=BasicAssayInfo.create(),
+            basic_assay_info=BasicAssayInfo.create(reader),
             instrument=Instrument.create(),
         )
