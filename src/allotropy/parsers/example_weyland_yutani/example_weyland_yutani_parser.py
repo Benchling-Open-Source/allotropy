@@ -1,6 +1,7 @@
 from io import IOBase
 import uuid
 
+from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
