@@ -10,14 +10,16 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
     Model,
     SampleDocument,
 )
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_reader import CedexBiohtReader
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_structure import Data, Sample
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
+    RocheCedexBiohtReader,
+)
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-class CedexBiohtParser(VendorParser):
+class RocheCedexBiohtParser(VendorParser):
     def _parse(self, contents: io.IOBase, filename: str) -> Model:  # noqa: ARG002
-        reader = CedexBiohtReader(contents)
+        reader = RocheCedexBiohtReader(contents)
         return self._get_model(Data.create(reader))
 
     def _get_model(self, data: Data) -> Model:

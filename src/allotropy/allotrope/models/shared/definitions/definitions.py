@@ -47,6 +47,7 @@ class TDateTimeValueItem:
 
 
 TDateTimeValue = Union[str, TDateTimeValueItem]
+TDateTimeStampValue = TDateTimeValue
 
 
 @dataclass

@@ -1,6 +1,6 @@
 import pytest
 
-from tests.parsers.roche_cedex_bioht.cedex_bioht_data import (
+from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
     get_reader,
     get_reader_samples,
     get_reader_title,

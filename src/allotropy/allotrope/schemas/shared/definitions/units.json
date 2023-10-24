@@ -181,102 +181,158 @@
     },
     "GramPerLiter": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "g/L",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerLiter"
-           }
+            "unit": {
+                "type": "string",
+                "const": "g/L",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerLiter"
+            }
         },
-        "required": ["unit"]
-     },
-     "UnitPerLiter": {
+        "required": [
+            "unit"
+        ]
+    },
+    "UnitPerLiter": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "U/L",
-              "$asm.unit-iri": "TODO"
-           }
+            "unit": {
+                "type": "string",
+                "const": "U/L",
+                "$asm.unit-iri": "TODO"
+            }
         },
-        "required": ["unit"]
-     },
-     "MillimeterOfMercury": {
+        "required": [
+            "unit"
+        ]
+    },
+    "MillimeterOfMercury": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "mmHg",
-              "$asm.unit-iri": "http://qudt.org/vocab/unit#MillimeterOfMercury"
-           }
+            "unit": {
+                "type": "string",
+                "const": "mmHg",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#MillimeterOfMercury"
+            }
         },
-        "required": ["unit"]
-     },
-     "OpticalDensity": {
+        "required": [
+            "unit"
+        ]
+    },
+    "OpticalDensity": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "OD",
-              "$asm.unit-iri": "TODO"
-           }
+            "unit": {
+                "type": "string",
+                "const": "OD",
+                "$asm.unit-iri": "TODO"
+            }
         },
-        "required": ["unit"]
-     },
-     "PH": {
+        "required": [
+            "unit"
+        ]
+    },
+    "PH": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "pH",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
-           }
+            "unit": {
+                "type": "string",
+                "const": "pH",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
+            }
         },
-        "required": ["unit"]
-     },
-     "MilliOsmolesPerKilogram": {
+        "required": [
+            "unit"
+        ]
+    },
+    "MilliOsmolesPerKilogram": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "mosm/kg",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliOsmolesPerKilogram"
-           }
+            "unit": {
+                "type": "string",
+                "const": "mosm/kg",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliOsmolesPerKilogram"
+            }
         },
-        "required": ["unit"]
-     },
-     "MillimolePerLiter": {
+        "required": [
+            "unit"
+        ]
+    },
+    "MillimolePerLiter": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "mmol/L",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillimolePerLiter"
-           }
+            "unit": {
+                "type": "string",
+                "const": "mmol/L",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillimolePerLiter"
+            }
         },
-        "required": ["unit"]
-     },
-     "Number": {
+        "required": [
+            "unit"
+        ]
+    },
+    "Number": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "#",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Number"
-           }
+            "unit": {
+                "type": "string",
+                "const": "#",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Number"
+            }
         },
-        "required": ["unit"]
-     },
-     "PicogramPerMilliliter": {
+        "required": [
+            "unit"
+        ]
+    },
+    "PicogramPerMilliliter": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "pg/mL",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMilliliter"
-           }
+            "unit": {
+                "type": "string",
+                "const": "pg/mL",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMilliliter"
+            }
         },
-        "required": ["unit"]
-     },
-     "DegreeCelsius": {
+        "required": [
+            "unit"
+        ]
+    },
+    "DegreeCelsius": {
         "properties": {
-           "unit": {
-              "type": "string",
-              "const": "degC",
-              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#DegreeCelsius"
-           }
+            "unit": {
+                "type": "string",
+                "const": "degC",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#DegreeCelsius"
+            }
         },
-        "required": ["unit"]
-     }
+        "required": [
+            "unit"
+        ]
+    },
+    "MilliAbsorbanceUnit": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "mAU",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnit"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "RelativeFluorescenceUnit": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "RFU",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnit"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "RelativeLightUnit": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "RLU",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnit"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    }
 }
