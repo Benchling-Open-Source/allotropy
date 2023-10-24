@@ -51,15 +51,15 @@ class Plate:
 @dataclass
 class Data:
     plates: list[Plate]
-    number_of_wells: Optional[float]
+    number_of_wells: float
     basic_assay_info: BasicAssayInfo
     instrument: Instrument
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
-            plates=Plate.create(reader),
+            plates=Plate.create(),
             number_of_wells=0,
             basic_assay_info=BasicAssayInfo.create(reader),
-            instrument=Instrument.create(reader),
+            instrument=Instrument.create(),
         )
