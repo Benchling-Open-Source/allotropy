@@ -233,6 +233,8 @@ class PlateBlock(Block):
         data_lines = split_lines[2:]
         if self.export_format == ExportFormat.TIME_FORMAT.value:
             self._parse_time_format_data(
+                self.read_type,
+                self.well_data,
                 self.kinetic_points,
                 self.num_wells,
                 self.data_header,
@@ -242,6 +244,8 @@ class PlateBlock(Block):
             )
         elif self.export_format == ExportFormat.PLATE_FORMAT.value:
             self._parse_plate_format_data(
+                self.read_type,
+                self.well_data,
                 self.data_type,
                 self.kinetic_points,
                 self.num_rows,
@@ -272,18 +276,18 @@ class PlateBlock(Block):
             well = assert_not_none(self.data_header[i + 2], "well")
             self.well_data[well].processed_data.append(float(value))
 
+    @staticmethod
     def _add_data_point(
-        self,
+        read_type: Optional[str],
+        well_data: defaultdict[str, WellData],
         well: str,
         value: str,
         data_key: Optional[str],
         temperature: Optional[str],
         wavelength: Optional[int],
     ) -> None:
-        dimension = (
-            wavelength if self.read_type == ReadType.ENDPOINT.value else data_key
-        )
-        self.well_data[well].add_value(
+        dimension = wavelength if read_type == ReadType.ENDPOINT.value else data_key
+        well_data[well].add_value(
             value=float(value),
             dimension=dimension,
             temperature=temperature,
@@ -292,6 +296,8 @@ class PlateBlock(Block):
 
     def _parse_time_format_data(
         self,
+        read_type: Optional[str],
+        well_data: defaultdict[str, WellData],
         kinetic_points: int,
         num_wells: int,
         data_header: list[Optional[str]],
@@ -309,7 +315,9 @@ class PlateBlock(Block):
                         if value is None:
                             continue
                         well = assert_not_none(data_header[i + 2], "well")
-                        self._add_data_point(
+                        PlateBlock._add_data_point(
+                            read_type,
+                            well_data,
                             well,
                             value,
                             data_key=row[0],
@@ -328,6 +336,8 @@ class PlateBlock(Block):
 
     def _parse_plate_format_data(
         self,
+        read_type: Optional[str],
+        well_data: defaultdict[str, WellData],
         data_type: Optional[str],
         kinetic_points: int,
         num_rows: int,
@@ -359,7 +369,9 @@ class PlateBlock(Block):
                                 data_header[j + 2], "column number"
                             )
                             well = get_well_coordinates(i + 1, col_number)
-                            self._add_data_point(
+                            PlateBlock._add_data_point(
+                                read_type,
+                                well_data,
                                 well,
                                 value,
                                 data_key=data_key,
