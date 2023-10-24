@@ -233,6 +233,7 @@ class PlateBlock(Block):
         data_lines = split_lines[2:]
         if self.export_format == ExportFormat.TIME_FORMAT.value:
             self._parse_time_format_data(
+                self.wavelengths,
                 self.read_type,
                 self.well_data,
                 self.kinetic_points,
@@ -244,6 +245,7 @@ class PlateBlock(Block):
             )
         elif self.export_format == ExportFormat.PLATE_FORMAT.value:
             self._parse_plate_format_data(
+                self.wavelengths,
                 self.read_type,
                 self.well_data,
                 self.data_type,
@@ -296,6 +298,7 @@ class PlateBlock(Block):
 
     def _parse_time_format_data(
         self,
+        wavelengths: list[int],
         read_type: Optional[str],
         well_data: defaultdict[str, WellData],
         kinetic_points: int,
@@ -322,7 +325,9 @@ class PlateBlock(Block):
                             value,
                             data_key=row[0],
                             temperature=row[1],
-                            wavelength=self.get_wavelength(wavelength_index),
+                            wavelength=PlateBlock.get_wavelength(
+                                read_type, wavelengths, wavelength_index
+                            ),
                         )
             if len(data_lines) > (kinetic_points + 1) * num_row_blocks:
                 reduced_row = data_lines[-1][: num_wells + 2]
@@ -336,6 +341,7 @@ class PlateBlock(Block):
 
     def _parse_plate_format_data(
         self,
+        wavelengths: list[int],
         read_type: Optional[str],
         well_data: defaultdict[str, WellData],
         data_type: Optional[str],
@@ -376,7 +382,9 @@ class PlateBlock(Block):
                                 value,
                                 data_key=data_key,
                                 temperature=temperature,
-                                wavelength=self.get_wavelength(wavelength_index),
+                                wavelength=PlateBlock.get_wavelength(
+                                    read_type, wavelengths, wavelength_index
+                                ),
                             )
             end_raw_data_index = ((num_rows + 1) * kinetic_points) + 1
             reduced_data_rows = data_lines[end_raw_data_index:]
@@ -448,11 +456,16 @@ class PlateBlock(Block):
             and len(self.wavelengths) > 1
         )
 
-    def get_wavelength(self, wavelength_index: int) -> Optional[int]:
-        if self.read_type == ReadType.SPECTRUM.value:
+    @staticmethod
+    def get_wavelength(
+        read_type: Optional[str],
+        wavelengths: list[int],
+        wavelength_index: int,
+    ) -> Optional[int]:
+        if read_type == ReadType.SPECTRUM.value:
             return None
         else:
-            return self.wavelengths[wavelength_index] if self.wavelengths else None
+            return wavelengths[wavelength_index] if wavelengths else None
 
     def get_data_cube_dimensions(self) -> list[tuple[str, str, Optional[str]]]:
         dimensions: list[tuple[str, str, Optional[str]]] = []
