@@ -125,3 +125,15 @@ class MilliOsmolesPerKilogram:
 @dataclass
 class MillimolePerLiter:
     unit: Optional[str] = "mmol/L"
+
+@dataclass
+class MilliAbsorbanceUnit:
+    unit: Optional[str] = "mAU"
+
+@dataclass
+class RelativeFluorescenceUnit:
+    unit: Optional[str] = "RFU"
+
+@dataclass
+class RelativeLightUnit:
+    unit: Optional[str] = "RLU"

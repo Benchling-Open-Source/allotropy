@@ -92,23 +92,11 @@
                       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002374",
                       "$asm.pattern": "aggregate datum",
                       "properties": {
-                        "measurement identifier": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
-                          "$asm.pattern": "value datum",
-                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                          "$ref": "#/$defs/tStringValue"
-                        },
                         "measurement time": {
                           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
                           "$asm.pattern": "value datum",
                           "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
                           "$ref": "#/$defs/tDateTimeValue"
-                        },
-                        "analyst": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001116",
-                          "$asm.pattern": "value datum",
-                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                          "$ref": "#/$defs/tStringValue"
                         },
                         "analytical method identifier": {
                           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001978",
@@ -176,12 +164,15 @@
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
                             "$asm.pattern": "aggregate datum",
                             "required": [
-                              "device control aggregate document",
-                              "sample document"
+                              "measurement identifier",
+                              "compartment temperature"
                             ],
                             "properties": {
-                              "data cube": {
-                                "$ref": "#/$defs/tDatacube"
+                              "measurement identifier": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+                                "$asm.pattern": "value datum",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                "$ref": "#/$defs/tStringValue"
                               },
                               "device control aggregate document": {
                                 "type": "object",
@@ -200,12 +191,6 @@
                                           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
                                           "$asm.pattern": "aggregate datum",
                                           "properties": {
-                                            "device type": {
-                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
-                                              "$asm.pattern": "value datum",
-                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                              "$ref": "#/$defs/tStringValue"
-                                            },
                                             "shaking configuration description": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002450",
                                               "$asm.pattern": "value datum",
@@ -263,17 +248,17 @@
                                               "$asm.pattern": "quantity datum",
                                               "$ref": "#/$custom/tQuantityValueNanometer"
                                             },
+                                            "wavelength filter cutoff setting": {
+                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                                              "$asm.pattern": "quantity datum",
+                                              "$ref": "#/$custom/tQuantityValueNanometer"
+                                            },
                                             "excitation bandwidth setting": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
                                               "$asm.pattern": "quantity datum",
                                               "$ref": "#/$custom/tQuantityValueNanometer"
                                             },
                                             "excitation wavelength setting": {
-                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
-                                              "$asm.pattern": "quantity datum",
-                                              "$ref": "#/$custom/tQuantityValueNanometer"
-                                            },
-                                            "wavelength filter cutoff setting": {
                                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
                                               "$asm.pattern": "quantity datum",
                                               "$ref": "#/$custom/tQuantityValueNanometer"
@@ -353,53 +338,20 @@
                                   "well location identifier"
                                 ]
                               },
-                              "processed data aggregate document": {
-                                "type": "object",
-                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
-                                "$asm.pattern": "aggregate datum",
-                                "properties": {
-                                  "processed data document": {
-                                    "type": "array",
-                                    "$asm.array-ordered": false,
-                                    "$asm.array-mixed": false,
-                                    "$asm.pattern": "indexed datum",
-                                    "items": {
-                                      "type": "object",
-                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
-                                      "$asm.pattern": "aggregate datum",
-                                      "required": [
-                                        "processed data"
-                                      ],
-                                      "properties": {
-                                        "data format specification type": {
-                                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002657",
-                                          "$asm.pattern": "value datum",
-                                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                          "$ref": "#/$defs/tStringValue"
-                                        },
-                                        "data processing description": {
-                                          "$asm.pattern": "value datum",
-                                          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                          "$ref": "#/$defs/tStringValue"
-                                        },
-                                        "processed data": {
-                                          "oneOf": [
-                                            {
-                                              "type": [
-                                                "number",
-                                                "string"
-                                              ]
-                                            },
-                                            {
-                                              "$ref": "#/$defs/tDatacube"
-                                            }
-                                          ]
-                                        }
-                                      }
-                                    },
-                                    "minItems": 1
-                                  }
-                                }
+                              "absorbance": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001157",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueMilliAbsorbanceUnit"
+                              },
+                              "fluorescence": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueRelativeFluoresenceUnit"
+                              },
+                              "luminescence": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002507",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueRelativeLightUnit"
                               },
                               "mass concentration": {
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
@@ -412,15 +364,15 @@
                         }
                       },
                       "required": [
-                        "measurement identifier",
-                        "plate well count",
-                        "measurement document"
+                        "measurement time",
+                        "plate well count"
                       ]
                     }
                   }
                 }
               ]
-            }
+            },
+            "minItems": 1
           }
         },
         "required": [

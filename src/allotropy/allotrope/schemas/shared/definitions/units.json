@@ -11,6 +11,42 @@
             "unit"
         ]
     },
+    "MilliAbsorbanceUnit": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "mAU",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnit"
+           }
+        },
+        "required": [
+           "unit"
+        ]
+    },
+    "RelativeFluorenceUnit": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "RFU",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnit"
+           }
+        },
+        "required": [
+           "unit"
+        ]
+    },
+    "RelativeLightUnit": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "RLU",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnit"
+           }
+        },
+        "required": [
+           "unit"
+        ]
+    },
     "Millimeter": {
         "properties": {
             "unit": {

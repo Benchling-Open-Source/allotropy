@@ -26,6 +26,9 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Percent,
     PH,
     PicogramPerMilliliter,
+    MilliAbsorbanceUnit,
+    RelativeFluorescenceUnit,
+    RelativeLightUnit,
     SecondTime,
     TODO,
     Unitless,
@@ -166,6 +169,24 @@ class TQuantityValueMilliOsmolesPerKilogram(
 @dataclass
 class TQuantityValueMillimolePerLiter(
     MillimolePerLiter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+@dataclass
+class TQuantityValueMilliAbsorbanceUnit(
+    MilliAbsorbanceUnit, TQuantityValueWithOptionalUnit
+):
+    pass
+
+@dataclass
+class TQuantityValueRelativeFluorenceUnit(
+    RelativeFluorescenceUnit, TQuantityValueWithOptionalUnit
+):
+    pass
+
+@dataclass
+class TQuantityValueRelativeLightUnit(
+    RelativeLightUnit, TQuantityValueWithOptionalUnit
 ):
     pass
 

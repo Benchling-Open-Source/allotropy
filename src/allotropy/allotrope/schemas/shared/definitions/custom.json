@@ -379,6 +379,36 @@
             }
         ]
     },
+    "tQuantityValueRelativeFluoresenceUnit": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/RelativeFluorenceUnit"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueRelativeLightUnit": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/RelativeLightUnit"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueMilliAbsorbanceUnit": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MilliAbsorbanceUnit"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
     "tNullableQuantityValueUnitless": {
         "allOf": [
             {
