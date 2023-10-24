@@ -232,7 +232,14 @@ class PlateBlock(Block):
         self.data_header = split_lines[1]
         data_lines = split_lines[2:]
         if self.export_format == ExportFormat.TIME_FORMAT.value:
-            self._parse_time_format_data(data_lines)
+            self._parse_time_format_data(
+                self.kinetic_points,
+                self.num_wells,
+                self.data_header,
+                self.data_type,
+                self.num_wavelengths,
+                data_lines,
+            )
         elif self.export_format == ExportFormat.PLATE_FORMAT.value:
             self._parse_plate_format_data(data_lines)
         else:
@@ -275,21 +282,25 @@ class PlateBlock(Block):
             wavelength=wavelength,
         )
 
-    def _parse_time_format_data(self, data_lines: list[list[Optional[str]]]) -> None:
-        if self.data_type == DataType.RAW.value:
-            num_row_blocks = (
-                self.num_wavelengths if self.num_wavelengths is not None else 1
-            )
+    def _parse_time_format_data(
+        self,
+        kinetic_points: int,
+        num_wells: int,
+        data_header: list[Optional[str]],
+        data_type: Optional[str],
+        num_wavelengths: Optional[int],
+        data_lines: list[list[Optional[str]]],
+    ) -> None:
+        if data_type == DataType.RAW.value:
+            num_row_blocks = num_wavelengths if num_wavelengths is not None else 1
             for wavelength_index in range(num_row_blocks):
-                start_index = wavelength_index * (self.kinetic_points + 1)
-                wavelength_rows = data_lines[
-                    start_index : start_index + self.kinetic_points
-                ]
+                start_index = wavelength_index * (kinetic_points + 1)
+                wavelength_rows = data_lines[start_index : start_index + kinetic_points]
                 for row in wavelength_rows:
-                    for i, value in enumerate(row[2 : self.num_wells + 2]):
+                    for i, value in enumerate(row[2 : num_wells + 2]):
                         if value is None:
                             continue
-                        well = assert_not_none(self.data_header[i + 2], "well")
+                        well = assert_not_none(data_header[i + 2], "well")
                         self._add_data_point(
                             well,
                             value,
@@ -297,14 +308,14 @@ class PlateBlock(Block):
                             temperature=row[1],
                             wavelength=self.get_wavelength(wavelength_index),
                         )
-            if len(data_lines) > (self.kinetic_points + 1) * num_row_blocks:
-                reduced_row = data_lines[-1][: self.num_wells + 2]
+            if len(data_lines) > (kinetic_points + 1) * num_row_blocks:
+                reduced_row = data_lines[-1][: num_wells + 2]
                 self._parse_reduced_columns(reduced_row)
-        elif self.data_type == DataType.REDUCED.value:
-            reduced_row = data_lines[-1][: self.num_wells + 2]
+        elif data_type == DataType.REDUCED.value:
+            reduced_row = data_lines[-1][: num_wells + 2]
             self._parse_reduced_columns(reduced_row)
         else:
-            error = f"unrecognized data type {self.data_type}"
+            error = f"unrecognized data type {data_type}"
             raise AllotropeConversionError(error)
 
     def _parse_plate_format_data(self, data_lines: list[list[Optional[str]]]) -> None:
