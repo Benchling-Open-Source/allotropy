@@ -607,11 +607,11 @@ class FluorescencePlateBlock(PlateBlock):
             _,  # sweep_wave
             _,  # sweep_wavelength
             _,  # reads_per_well
-            pmt_gain,  # bad news
+            pmt_gain,
             _,  # start_integration_time
             _,  # end_integration_time
             _,  # first_row
-            num_rows,  # bad news
+            num_rows,
         ] = header[
             FluorescencePlateBlock.EXCITATION_WAVELENGTHS_IDX : FluorescencePlateBlock.EXCITATION_WAVELENGTHS_IDX
             + 11
@@ -705,11 +705,11 @@ class LuminescencePlateBlock(PlateBlock):
             _,  # sweep_wave
             _,  # sweep_wavelength
             _,  # reads_per_well
-            pmt_gain,  # bad news
+            pmt_gain,
             _,  # start_integration_time
             _,  # end_integration_time
             _,  # first_row
-            num_rows,  # bad news
+            num_rows,
         ] = header[
             LuminescencePlateBlock.EXCITATION_WAVELENGTHS_IDX : LuminescencePlateBlock.EXCITATION_WAVELENGTHS_IDX
             + 11
