@@ -227,7 +227,40 @@ class PlateBlock(Block):
         raw_lines: list[str],
     ):
         super().__init__(raw_lines)
-        self.parse_header(header)
+        [
+            _,  # Plate:
+            self.name,
+            self.export_version,
+            self.export_format,
+            self.read_type,
+            _,  # Read mode
+        ] = header[:6]
+        if self.export_version != EXPORT_VERSION:
+            error = f"Invalid export version {self.export_version}"
+            raise AllotropeConversionError(error)
+
+        [
+            self.data_type,
+            _,  # Pre-read, always FALSE
+            kinetic_points,
+            read_time_or_scan_pattern,
+            read_interval_or_scan_density,
+            self.start_wavelength,
+            self.end_wavelength,
+            self.wavelength_step,
+            num_wavelengths,
+            wavelengths_str,
+            self.first_column,
+            num_columns,
+            num_wells,
+        ] = header[self.DATA_TYPE_IDX : self.DATA_TYPE_IDX + 13]
+        self.kinetic_points = assert_not_none(try_int(kinetic_points), "kinetic_points")
+        self.num_columns = assert_not_none(try_int(num_columns), "num_columns")
+        self.num_wells = assert_not_none(try_int(num_wells), "num_wells")
+        self.num_wavelengths = try_int(num_wavelengths)
+        self.wavelengths = split_wavelengths(wavelengths_str) or []
+        self.parse_read_mode_header(header)
+
         self.well_data = defaultdict(WellData)
         self.data_header = split_lines[1]
         data_lines = split_lines[2:]
@@ -415,41 +448,6 @@ class PlateBlock(Block):
 
     def parse_read_mode_header(self, header: list[Optional[str]]) -> None:
         raise NotImplementedError
-
-    def parse_header(self, header: list[Optional[str]]) -> None:
-        [
-            _,  # Plate:
-            self.name,
-            self.export_version,
-            self.export_format,
-            self.read_type,
-            _,  # Read mode
-        ] = header[:6]
-        if self.export_version != EXPORT_VERSION:
-            error = f"Invalid export version {self.export_version}"
-            raise AllotropeConversionError(error)
-
-        [
-            self.data_type,
-            _,  # Pre-read, always FALSE
-            kinetic_points,
-            read_time_or_scan_pattern,
-            read_interval_or_scan_density,
-            self.start_wavelength,
-            self.end_wavelength,
-            self.wavelength_step,
-            num_wavelengths,
-            wavelengths_str,
-            self.first_column,
-            num_columns,
-            num_wells,
-        ] = header[self.DATA_TYPE_IDX : self.DATA_TYPE_IDX + 13]
-        self.kinetic_points = assert_not_none(try_int(kinetic_points), "kinetic_points")
-        self.num_columns = assert_not_none(try_int(num_columns), "num_columns")
-        self.num_wells = assert_not_none(try_int(num_wells), "num_wells")
-        self.num_wavelengths = try_int(num_wavelengths)
-        self.wavelengths = split_wavelengths(wavelengths_str) or []
-        self.parse_read_mode_header(header)
 
     @property
     def is_single_wavelength(self) -> bool:
