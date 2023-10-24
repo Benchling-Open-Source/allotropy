@@ -346,7 +346,7 @@
                               "fluorescence": {
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
                                 "$asm.pattern": "quantity datum",
-                                "$ref": "#/$custom/tQuantityValueRelativeFluoresenceUnit"
+                                "$ref": "#/$custom/tQuantityValueRelativeFluorescenceUnit"
                               },
                               "luminescence": {
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002507",
