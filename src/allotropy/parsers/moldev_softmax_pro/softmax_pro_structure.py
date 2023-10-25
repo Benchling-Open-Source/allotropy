@@ -137,12 +137,11 @@ class GroupBlock(Block):
 
 
 # TODO do we need to do anything with these?
+@dataclass
 class NoteBlock(Block):
-    BLOCK_TYPE = "Note"
-
     @staticmethod
     def create(raw_lines: list[str]) -> NoteBlock:
-        return NoteBlock(BLOCK_TYPE=NoteBlock.BLOCK_TYPE, raw_lines=raw_lines)
+        return NoteBlock(BLOCK_TYPE="Note", raw_lines=raw_lines)
 
 
 class WellData:
