@@ -95,16 +95,18 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
+@dataclass
 class Block:
-    BLOCK_TYPE: ClassVar[str]
-
-    def __init__(self, raw_lines: list[str]):
-        self.raw_lines = raw_lines
+    BLOCK_TYPE: str
+    raw_lines: list[str]
 
     @staticmethod
     def create(lines: list[str]) -> Block:
-        all_blocks: list[type[Block]] = [GroupBlock, NoteBlock, PlateBlock]
-        block_cls_by_type = {cls.BLOCK_TYPE: cls for cls in all_blocks}
+        block_cls_by_type: dict[str, type[Block]] = {
+            "Group": GroupBlock,
+            "Note": NoteBlock,
+            "Plate": PlateBlock,
+        }
 
         for key, cls in block_cls_by_type.items():
             if lines[0].startswith(key):
@@ -122,7 +124,7 @@ class GroupBlock(Block):
     group_data: list[str]
 
     def __init__(self, raw_lines: list[str]):
-        super().__init__(raw_lines)
+        super().__init__(BLOCK_TYPE=GroupBlock.BLOCK_TYPE, raw_lines=raw_lines)
         self.name = raw_lines[0][len(self.GROUP_PREFIX) :]
         for i, line in enumerate(raw_lines):
             if line.startswith(self.GROUP_COLUMN_PREFIX):
@@ -140,7 +142,7 @@ class NoteBlock(Block):
 
     @staticmethod
     def create(raw_lines: list[str]) -> NoteBlock:
-        return NoteBlock(raw_lines)
+        return NoteBlock(BLOCK_TYPE=NoteBlock.BLOCK_TYPE, raw_lines=raw_lines)
 
 
 class WellData:
@@ -328,7 +330,7 @@ class PlateBlock(Block):
         excitation_wavelengths: Optional[list[int]],
         cutoff_filters: Optional[list[int]],
     ):
-        self.raw_lines = raw_lines
+        super().__init__(BLOCK_TYPE=PlateBlock.BLOCK_TYPE, raw_lines=raw_lines)
         self.name = name
         self.export_format = export_format
         self.read_type = read_type
