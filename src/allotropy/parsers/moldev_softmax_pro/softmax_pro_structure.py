@@ -116,24 +116,26 @@ class Block:
         raise AllotropeConversionError(error)
 
 
+@dataclass
 class GroupBlock(Block):
-    GROUP_PREFIX = "Group: "
-    GROUP_COLUMN_PREFIX = "Group Column"
-    BLOCK_TYPE = "Group"
+    BLOCK_TYPE: str
     name: str
     group_data: list[str]
 
-    def __init__(self, raw_lines: list[str]):
-        super().__init__(BLOCK_TYPE=GroupBlock.BLOCK_TYPE, raw_lines=raw_lines)
-        self.name = raw_lines[0][len(self.GROUP_PREFIX) :]
-        for i, line in enumerate(raw_lines):
-            if line.startswith(self.GROUP_COLUMN_PREFIX):
-                self.group_data = raw_lines[1 : i - 1]
-        # TODO handle group data
-
     @staticmethod
     def create(raw_lines: list[str]) -> GroupBlock:
-        return GroupBlock(raw_lines)
+        group_data = []
+        for i, line in enumerate(raw_lines):
+            if line.startswith("Group Column"):
+                group_data = raw_lines[1 : i - 1]
+        # TODO handle group data
+
+        return GroupBlock(
+            BLOCK_TYPE="Group",
+            raw_lines=raw_lines,
+            name=raw_lines[0][len("Group: ") :],
+            group_data=group_data,
+        )
 
 
 # TODO do we need to do anything with these?
