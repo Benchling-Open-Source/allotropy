@@ -5,7 +5,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 import re
-from typing import Any, ClassVar, Optional
+from typing import Any, Optional
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
@@ -183,12 +183,9 @@ class WellData:
 
 @dataclass
 class PlateBlock(Block):
-    CONCEPT: ClassVar[str]
-    MANIFEST: ClassVar[str]
-    READ_MODE: ClassVar[str]
-    UNIT: ClassVar[str]
-    DATA_TYPE_IDX: ClassVar[int]
-
+    CONCEPT: str
+    READ_MODE: str
+    UNIT: str
     BLOCK_TYPE: str
     name: Optional[str]
     export_format: Optional[str]
@@ -234,6 +231,8 @@ class PlateBlock(Block):
                 error = f"Invalid export version {export_version}"
                 raise AllotropeConversionError(error)
 
+            data_type_idx = cls.get_data_type_idx()
+
             [
                 data_type,
                 _,  # Pre-read, always FALSE
@@ -248,7 +247,7 @@ class PlateBlock(Block):
                 _,  # first_column
                 num_columns_raw,
                 num_wells_raw,
-            ] = header[cls.DATA_TYPE_IDX : cls.DATA_TYPE_IDX + 13]
+            ] = header[data_type_idx : data_type_idx + 13]
             kinetic_points = assert_not_none(
                 try_int(kinetic_points_raw), "kinetic_points"
             )
@@ -292,6 +291,9 @@ class PlateBlock(Block):
                 raise AllotropeConversionError(error)
 
             return cls(
+                CONCEPT=extra_attr.CONCEPT,
+                READ_MODE=extra_attr.READ_MODE,
+                UNIT=extra_attr.UNIT,
                 BLOCK_TYPE="Plate",
                 raw_lines=raw_lines,
                 name=name,
@@ -471,6 +473,10 @@ class PlateBlock(Block):
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
         raise NotImplementedError
 
+    @staticmethod
+    def get_data_type_idx() -> int:
+        raise NotImplementedError
+
     @property
     def is_single_wavelength(self) -> bool:
         return (
@@ -558,14 +564,17 @@ class PlateBlockExtraAttr:
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
     cutoff_filters: Optional[list[int]]
+    CONCEPT: str
+    READ_MODE: str
+    UNIT: str
 
 
 class FluorescencePlateBlock(PlateBlock):
-    READ_MODE = "Fluorescence"
-    CONCEPT = "fluorescence"
-    UNIT = "RFU"
-    DATA_TYPE_IDX = 7
     EXCITATION_WAVELENGTHS_IDX = 20
+
+    @staticmethod
+    def get_data_type_idx() -> int:
+        return 7
 
     @staticmethod
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
@@ -591,6 +600,9 @@ class FluorescencePlateBlock(PlateBlock):
             num_rows=assert_not_none(try_int(num_rows), "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
+            CONCEPT="fluorescence",
+            READ_MODE="Fluorescence",
+            UNIT="RFU",
         )
 
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
@@ -659,11 +671,11 @@ class FluorescencePlateBlock(PlateBlock):
 
 
 class LuminescencePlateBlock(PlateBlock):
-    READ_MODE = "Luminescence"
-    CONCEPT = "luminescence"
-    UNIT = "RLU"
-    DATA_TYPE_IDX = 6
     EXCITATION_WAVELENGTHS_IDX = 19
+
+    @staticmethod
+    def get_data_type_idx() -> int:
+        return 6
 
     @staticmethod
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
@@ -688,6 +700,9 @@ class LuminescencePlateBlock(PlateBlock):
             num_rows=assert_not_none(try_int(num_rows), "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
+            CONCEPT="luminescence",
+            READ_MODE="Luminescence",
+            UNIT="RLU",
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
@@ -745,10 +760,9 @@ class LuminescencePlateBlock(PlateBlock):
 
 
 class AbsorbancePlateBlock(PlateBlock):
-    READ_MODE = "Absorbance"
-    CONCEPT = "absorbance"
-    UNIT = "mAU"
-    DATA_TYPE_IDX = 6
+    @staticmethod
+    def get_data_type_idx() -> int:
+        return 6
 
     @staticmethod
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
@@ -757,6 +771,9 @@ class AbsorbancePlateBlock(PlateBlock):
             num_rows=assert_not_none(try_int(header[20]), "num_rows"),
             excitation_wavelengths=None,
             cutoff_filters=None,
+            CONCEPT="absorbance",
+            READ_MODE="Absorbance",
+            UNIT="mAU",
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemAbsorbance:
