@@ -181,27 +181,28 @@ class WellData:
         return not self.dimensions or not self.values
 
 
+@dataclass
 class PlateBlock(Block):
-    BLOCK_TYPE = "Plate"
     CONCEPT: ClassVar[str]
     MANIFEST: ClassVar[str]
     READ_MODE: ClassVar[str]
     UNIT: ClassVar[str]
     DATA_TYPE_IDX: ClassVar[int]
-    data_header: list[Optional[str]]
-    data_type: Optional[str]
-    export_format: Optional[str]
-    name: Optional[str]
-    kinetic_points: int
-    num_columns: int
-    num_rows: int
-    num_wavelengths: Optional[int]
-    num_wells: int
-    pmt_gain: Optional[str]
-    read_type: Optional[str]
-    wavelengths: list[int]
-    well_data: defaultdict[str, WellData]
 
+    BLOCK_TYPE: str
+    name: Optional[str]
+    export_format: Optional[str]
+    read_type: Optional[str]
+    data_type: Optional[str]
+    kinetic_points: int
+    num_wavelengths: Optional[int]
+    wavelengths: list[int]
+    num_columns: int
+    num_wells: int
+    well_data: defaultdict[str, WellData]
+    data_header: list[Optional[str]]
+    pmt_gain: Optional[str]
+    num_rows: int
     excitation_wavelengths: Optional[list[int]]
     cutoff_filters: Optional[list[int]]
 
@@ -291,6 +292,7 @@ class PlateBlock(Block):
                 raise AllotropeConversionError(error)
 
             return cls(
+                BLOCK_TYPE="Plate",
                 raw_lines=raw_lines,
                 name=name,
                 export_format=export_format,
@@ -311,42 +313,6 @@ class PlateBlock(Block):
 
         error = f"unrecognized read mode {read_mode}"
         raise AllotropeConversionError(error)
-
-    def __init__(
-        self,
-        raw_lines: list[str],
-        name: Optional[str],
-        export_format: Optional[str],
-        read_type: Optional[str],
-        data_type: Optional[str],
-        kinetic_points: int,
-        num_wavelengths: Optional[int],
-        wavelengths: list[int],
-        num_columns: int,
-        num_wells: int,
-        well_data: defaultdict[str, WellData],
-        data_header: list[Optional[str]],
-        pmt_gain: Optional[str],
-        num_rows: int,
-        excitation_wavelengths: Optional[list[int]],
-        cutoff_filters: Optional[list[int]],
-    ):
-        super().__init__(BLOCK_TYPE=PlateBlock.BLOCK_TYPE, raw_lines=raw_lines)
-        self.name = name
-        self.export_format = export_format
-        self.read_type = read_type
-        self.data_type = data_type
-        self.kinetic_points = kinetic_points
-        self.num_wavelengths = num_wavelengths
-        self.wavelengths = wavelengths
-        self.num_columns = num_columns
-        self.num_wells = num_wells
-        self.well_data = well_data
-        self.data_header = data_header
-        self.pmt_gain = pmt_gain
-        self.num_rows = num_rows
-        self.excitation_wavelengths = excitation_wavelengths
-        self.cutoff_filters = cutoff_filters
 
     @staticmethod
     def _parse_reduced_plate_rows(
