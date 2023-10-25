@@ -212,7 +212,7 @@ class PlateBlock(Block):
         header = split_lines[0]
         read_mode = header[5]
 
-        plate_block_cls = {
+        plate_block_cls: dict[str, type[PlateBlock]] = {
             "Absorbance": AbsorbancePlateBlock,
             "Fluorescence": FluorescencePlateBlock,
             "Luminescence": LuminescencePlateBlock,
@@ -569,8 +569,9 @@ class PlateBlockExtraAttr:
     UNIT: str
 
 
+@dataclass
 class FluorescencePlateBlock(PlateBlock):
-    EXCITATION_WAVELENGTHS_IDX = 20
+    EXCITATION_WAVELENGTHS_IDX: int = 20
 
     @staticmethod
     def get_data_type_idx() -> int:
@@ -670,8 +671,9 @@ class FluorescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
+@dataclass
 class LuminescencePlateBlock(PlateBlock):
-    EXCITATION_WAVELENGTHS_IDX = 19
+    EXCITATION_WAVELENGTHS_IDX: int = 19
 
     @staticmethod
     def get_data_type_idx() -> int:
@@ -759,6 +761,7 @@ class LuminescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
+@dataclass
 class AbsorbancePlateBlock(PlateBlock):
     @staticmethod
     def get_data_type_idx() -> int:
