@@ -146,6 +146,7 @@ class NoteBlock(Block):
         return NoteBlock(BLOCK_TYPE="Note", raw_lines=raw_lines)
 
 
+@dataclass
 class WellData:
     values: list[Optional[float]]
     dimensions: list[Optional[PrimitiveValue]]
@@ -153,12 +154,15 @@ class WellData:
     temperature: Optional[str]
     processed_data: list[float]
 
-    def __init__(self) -> None:
-        self.values = []
-        self.dimensions = []
-        self.wavelengths = []
-        self.temperature = None
-        self.processed_data = []
+    @staticmethod
+    def create() -> WellData:
+        return WellData(
+            values=[],
+            dimensions=[],
+            wavelengths=[],
+            temperature=None,
+            processed_data=[],
+        )
 
     def add_value(
         self,
@@ -258,7 +262,7 @@ class PlateBlock(Block):
 
             extra_attr = cls.parse_read_mode_header(header)
 
-            well_data: defaultdict[str, WellData] = defaultdict(WellData)
+            well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
             data_header = split_lines[1]
             data_lines = split_lines[2:]
             if export_format == ExportFormat.TIME_FORMAT.value:
