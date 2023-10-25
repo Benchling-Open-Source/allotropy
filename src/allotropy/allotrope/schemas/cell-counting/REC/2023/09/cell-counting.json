@@ -423,18 +423,10 @@
                                   }
                                 },
                                 "calculated data aggregate document": {
-                                  "allOf": [
-                                    {
-                                      "$ref": "#/$defs/calculatedDataAggregateDocument"
-                                    }
-                                  ]
+                                  "$ref": "#/$defs/calculatedDataAggregateDocument"
                                 },
                                 "statistics aggregate document": {
-                                  "allOf": [
-                                    {
-                                      "$ref": "#/$defs/statisticsAggregateDocument"
-                                    }
-                                  ]
+                                  "$ref": "#/$defs/statisticsAggregateDocument"
                                 }
                               },
                               "required": [
