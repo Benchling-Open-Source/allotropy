@@ -166,7 +166,7 @@ def test_create_basic_assay_info() -> None:
 
 def test_create_basic_assay_info_fails() -> None:
     reader = get_reader_from_lines([])
-    # TODO(brian): Improve src to throw AllotropeConversionError
+    # TODO(brian): Improve src to throw AllotropeConversionError (or AllotropyError?)
     with pytest.raises(Exception, match="Did not find \\^Basic assay information"):
         BasicAssayInfo.create(reader)
 
