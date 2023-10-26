@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+import pandas as pd
+
 from allotropy.parsers.lines_reader import CsvReader
 
 
@@ -42,17 +44,16 @@ class Plate:
     results: list[Result]
 
     @staticmethod
-    def create(reader: CsvReader) -> list[Plate]:
-        data = reader.pop_csv_block()
-        cell_data = data.iloc[4:, 1:].T
+    def create(df: pd.DataFrame) -> list[Plate]:
+        cell_data = df.iloc[4:, 1:].T
         series = (
             cell_data.drop(0, axis=0).drop(0, axis=1)
             if cell_data.iloc[1, 0] == "A"
             else cell_data
         )
         rows, cols = series.shape
-        series.index = [data.iloc[3, i + 1] for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(data.iloc[3 + i, 0]) for i in range(1, cols + 1)]  # type: ignore[assignment]
+        series.index = [df.iloc[3, i + 1] for i in range(rows)]  # type: ignore[assignment]
+        series.columns = [str(df.iloc[3 + i, 0]) for i in range(1, cols + 1)]  # type: ignore[assignment]
         return [
             Plate(
                 number="0",
@@ -73,7 +74,8 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        plates = Plate.create(reader)
+        df = reader.pop_csv_block()
+        plates = Plate.create(df)
         return Data(
             plates=plates,
             number_of_wells=len(plates[0].results),
