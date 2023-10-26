@@ -1,13 +1,10 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
     "measurement aggregate document": {
-        "analytical method identifier": "",
-        "container type": "well plate",
-        "device system document": {
-            "device identifier": "1251",
-            "model number": "Weyland-Yutani 470"
+        "measurement identifier": "6333ec39-d2a9-406f-91e5-21a11c9c77ae",
+        "plate well count": {
+            "value": 16,
+            "unit": "#"
         },
-        "experimental data identifier": "",
         "measurement document": [
             {
                 "device control aggregate document": {
@@ -103,7 +100,7 @@
                 "processed data aggregate document": {
                     "processed data document": [
                         {
-                            "processed data": 3.85,
+                            "processed data": 3.45,
                             "data processing description": "processed data"
                         }
                     ]
@@ -283,7 +280,7 @@
                 "processed data aggregate document": {
                     "processed data document": [
                         {
-                            "processed data": 3.30,
+                            "processed data": 3.3,
                             "data processing description": "processed data"
                         }
                     ]
@@ -330,11 +327,14 @@
                 }
             }
         ],
-        "measurement identifier": "3ad4567a-e393-465c-88df-ba5d085d083f",
         "measurement time": "2023-12-31T00:00:00+00:00",
-        "plate well count": {
-            "unit": "#",
-            "value": 16
+        "analytical method identifier": "",
+        "experimental data identifier": "",
+        "container type": "well plate",
+        "device system document": {
+            "device identifier": "",
+            "model number": ""
         }
-    }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
 }
