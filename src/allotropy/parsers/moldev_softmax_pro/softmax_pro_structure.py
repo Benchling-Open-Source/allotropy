@@ -97,7 +97,7 @@ class DataType(Enum):
 
 @dataclass
 class Block:
-    BLOCK_TYPE: str
+    block_type: str
     raw_lines: list[str]
 
     @staticmethod
@@ -118,7 +118,7 @@ class Block:
 
 @dataclass
 class GroupBlock(Block):
-    BLOCK_TYPE: str
+    block_type: str
     name: str
     group_data: list[str]
 
@@ -131,7 +131,7 @@ class GroupBlock(Block):
         # TODO handle group data
 
         return GroupBlock(
-            BLOCK_TYPE="Group",
+            block_type="Group",
             raw_lines=raw_lines,
             name=raw_lines[0][len("Group: ") :],
             group_data=group_data,
@@ -143,7 +143,7 @@ class GroupBlock(Block):
 class NoteBlock(Block):
     @staticmethod
     def create(raw_lines: list[str]) -> NoteBlock:
-        return NoteBlock(BLOCK_TYPE="Note", raw_lines=raw_lines)
+        return NoteBlock(block_type="Note", raw_lines=raw_lines)
 
 
 @dataclass
@@ -187,10 +187,10 @@ class WellData:
 
 @dataclass
 class PlateBlock(Block):
-    CONCEPT: str
-    READ_MODE: str
-    UNIT: str
-    BLOCK_TYPE: str
+    concept: str
+    read_mode: str
+    unit: str
+    block_type: str
     name: Optional[str]
     export_format: Optional[str]
     read_type: Optional[str]
@@ -295,10 +295,10 @@ class PlateBlock(Block):
                 raise AllotropeConversionError(error)
 
             return cls(
-                CONCEPT=extra_attr.CONCEPT,
-                READ_MODE=extra_attr.READ_MODE,
-                UNIT=extra_attr.UNIT,
-                BLOCK_TYPE="Plate",
+                concept=extra_attr.concept,
+                read_mode=extra_attr.read_mode,
+                unit=extra_attr.unit,
+                block_type="Plate",
                 raw_lines=raw_lines,
                 name=name,
                 export_format=export_format,
@@ -536,7 +536,7 @@ class PlateBlock(Block):
                 ],
                 [
                     TDatacubeComponent(
-                        FieldComponentDatatype("double"), self.CONCEPT, self.UNIT
+                        FieldComponentDatatype("double"), self.concept, self.unit
                     )
                 ],
             ),
@@ -568,9 +568,9 @@ class PlateBlockExtraAttr:
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
     cutoff_filters: Optional[list[int]]
-    CONCEPT: str
-    READ_MODE: str
-    UNIT: str
+    concept: str
+    read_mode: str
+    unit: str
 
 
 @dataclass
@@ -605,9 +605,9 @@ class FluorescencePlateBlock(PlateBlock):
             num_rows=assert_not_none(try_int(num_rows), "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
-            CONCEPT="fluorescence",
-            READ_MODE="Fluorescence",
-            UNIT="RFU",
+            concept="fluorescence",
+            read_mode="Fluorescence",
+            unit="RFU",
         )
 
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
@@ -706,9 +706,9 @@ class LuminescencePlateBlock(PlateBlock):
             num_rows=assert_not_none(try_int(num_rows), "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
-            CONCEPT="luminescence",
-            READ_MODE="Luminescence",
-            UNIT="RLU",
+            concept="luminescence",
+            read_mode="Luminescence",
+            unit="RLU",
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
@@ -778,9 +778,9 @@ class AbsorbancePlateBlock(PlateBlock):
             num_rows=assert_not_none(try_int(header[20]), "num_rows"),
             excitation_wavelengths=None,
             cutoff_filters=None,
-            CONCEPT="absorbance",
-            READ_MODE="Absorbance",
-            UNIT="mAU",
+            concept="absorbance",
+            read_mode="Absorbance",
+            unit="mAU",
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemAbsorbance:
@@ -875,7 +875,7 @@ class Data:
         ]
 
         if len(plate_blocks) != 1:
-            block_types = [block.BLOCK_TYPE for block in self.block_list.blocks]
+            block_types = [block.block_type for block in self.block_list.blocks]
             block_counts = {bt: block_types.count(bt) for bt in set(block_types)}
             error = f"expected exactly 1 plate block, got {block_counts}"
             raise AllotropeConversionError(error)
