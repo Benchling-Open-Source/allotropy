@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Allow lines reader to accept or infer encoding
 ### Fixed
 ### Changed
 - Relax TimestampParser to use tzinfo
