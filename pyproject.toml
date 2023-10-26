@@ -12,15 +12,19 @@ license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
-  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
-  { name = "Brian Worth", email = "brian@benchling.com" },
-  { name = "Greg Wilson", email = "greg@deepgenomics.com" },
-  { name = "Joe Negri", email = "joe.negri@benchling.com" },
+  { name = "Lukas Boelling", email = "lukas.boelling@deepgenomics.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
-  { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
-  { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
+  { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
+  { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
+  { name = "Joe Negri", email = "joe.negri@benchling.com" },
+  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
+  { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
+  { name = "Eihab Syed", email = "eihabsyed@gmail.com" },
+  { name = "Yukthi Wickramarachchi", email = "yukthi.wickramarachchi@deepgenomics.com" },
+  { name = "Greg Wilson", email = "gvwilson@third-bit.com" },
   { name = "Stephen Worlow", email = "stephen.worlow@benchling.com" },
+  { name = "Brian Worth", email = "brian@benchling.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
