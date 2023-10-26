@@ -187,9 +187,6 @@ class WellData:
 
 @dataclass
 class PlateBlock(Block):
-    concept: str
-    read_mode: str
-    unit: str
     block_type: str
     name: Optional[str]
     export_format: Optional[str]
@@ -202,6 +199,9 @@ class PlateBlock(Block):
     num_wells: int
     well_data: defaultdict[str, WellData]
     data_header: list[Optional[str]]
+    concept: str
+    read_mode: str
+    unit: str
     pmt_gain: Optional[str]
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
@@ -295,9 +295,6 @@ class PlateBlock(Block):
                 raise AllotropeConversionError(error)
 
             return cls(
-                concept=extra_attr.concept,
-                read_mode=extra_attr.read_mode,
-                unit=extra_attr.unit,
                 block_type="Plate",
                 raw_lines=raw_lines,
                 name=name,
@@ -311,6 +308,9 @@ class PlateBlock(Block):
                 num_wells=num_wells,
                 well_data=well_data,
                 data_header=data_header,
+                concept=extra_attr.concept,
+                read_mode=extra_attr.read_mode,
+                unit=extra_attr.unit,
                 pmt_gain=extra_attr.pmt_gain,
                 num_rows=extra_attr.num_rows,
                 excitation_wavelengths=extra_attr.excitation_wavelengths,
@@ -564,13 +564,13 @@ class PlateBlock(Block):
 
 @dataclass
 class PlateBlockExtraAttr:
+    concept: str
+    read_mode: str
+    unit: str
     pmt_gain: Optional[str]
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
     cutoff_filters: Optional[list[int]]
-    concept: str
-    read_mode: str
-    unit: str
 
 
 @dataclass
@@ -601,13 +601,13 @@ class FluorescencePlateBlock(PlateBlock):
         ]
 
         return PlateBlockExtraAttr(
+            concept="fluorescence",
+            read_mode="Fluorescence",
+            unit="RFU",
             pmt_gain=pmt_gain,
             num_rows=assert_not_none(try_int(num_rows), "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
-            concept="fluorescence",
-            read_mode="Fluorescence",
-            unit="RFU",
         )
 
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
@@ -702,13 +702,13 @@ class LuminescencePlateBlock(PlateBlock):
             + 11
         ]
         return PlateBlockExtraAttr(
+            concept="luminescence",
+            read_mode="Luminescence",
+            unit="RLU",
             pmt_gain=pmt_gain,
             num_rows=assert_not_none(try_int(num_rows), "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
-            concept="luminescence",
-            read_mode="Luminescence",
-            unit="RLU",
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
@@ -774,13 +774,13 @@ class AbsorbancePlateBlock(PlateBlock):
     @staticmethod
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
         return PlateBlockExtraAttr(
+            concept="absorbance",
+            read_mode="Absorbance",
+            unit="mAU",
             pmt_gain=None,
             num_rows=assert_not_none(try_int(header[20]), "num_rows"),
             excitation_wavelengths=None,
             cutoff_filters=None,
-            concept="absorbance",
-            read_mode="Absorbance",
-            unit="mAU",
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemAbsorbance:
