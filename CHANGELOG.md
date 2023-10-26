@@ -8,8 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ### Fixed
 ### Changed
-- Relaxed TimestampParser to use tzinfo
+- Relax TimestampParser to use tzinfo
 - Change the cell counter schema name to match with the one published by Allotrope (cell counting)
+- Update README, CONTRIBUTING, and pyproject.toml
+- Rename to PerkinElmerEnvisionParser and RocheCedexBiohtParser for consistency
+- Update plate reader schema and parser to new Allotrope version
+- Add additional plate reader testing data for the plate reader parser
+- Change generic Exceptions to AllotropyErrors
 ### Deprecated
 ### Removed
 ### Security
