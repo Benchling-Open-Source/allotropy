@@ -3,7 +3,10 @@ import pytest
 from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
-valid_files = ("Weyland_Yutani_simple_correct",)
+valid_files = (
+    "Weyland_Yutani_simple_correct",
+    "Weyland_Yutani_checksum_correct",
+)
 
 SCHEMA = "fluorescence/BENCHLING/2023/09/fluorescence.json"
 TESTDATA = "tests/parsers/example_weyland_yutani/testdata"

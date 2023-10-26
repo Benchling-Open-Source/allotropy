@@ -12,12 +12,15 @@ from allotropy.parsers.lines_reader import CsvReader
 class BasicAssayInfo:
     protocol_id: str
     assay_id: str
+    checksum: Optional[str]
 
     @staticmethod
-    def create() -> BasicAssayInfo:
+    def create(df: pd.DataFrame) -> BasicAssayInfo:
+        checksum = df.iat[-1, 1] if df.iat[-1, 0] == "Checksum" else None
         return BasicAssayInfo(
-            protocol_id="",  # FIXME
-            assay_id="",  # FIXME
+            protocol_id="Weyland Yutani Example",
+            assay_id="Example Assay",
+            checksum=checksum,
         )
 
 
@@ -79,6 +82,6 @@ class Data:
         return Data(
             plates=plates,
             number_of_wells=len(plates[0].results),
-            basic_assay_info=BasicAssayInfo.create(),
+            basic_assay_info=BasicAssayInfo.create(df),
             instrument=Instrument.create(),
         )
