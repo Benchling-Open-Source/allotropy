@@ -65,4 +65,6 @@ def test_timestamp_parser_returns_none_on_invalid_timestamp(time_str: str) -> No
 
 @pytest.mark.short
 def test_timestamp_parser_handles_24h_pm() -> None:
-    assert TimestampParser().parse("2023-03-16 16:52:37 PM") == "2023-03-16T16:52:37+00:00"
+    assert (
+        TimestampParser().parse("2023-03-16 16:52:37 PM") == "2023-03-16T16:52:37+00:00"
+    )
