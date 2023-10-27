@@ -5,7 +5,13 @@ from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
+
+
+EMPTY_CSV_LINE = r"^[,\s]*$"
+PROTOCOL_ID = "Weyland Yutani Example"
+ASSAY_ID = "Example Assay"
 
 
 @dataclass
@@ -15,11 +21,11 @@ class BasicAssayInfo:
     checksum: Optional[str]
 
     @staticmethod
-    def create(df: pd.DataFrame) -> BasicAssayInfo:
-        checksum = df.iat[-1, 1] if df.iat[-1, 0] == "Checksum" else None
+    def create(top: pd.DataFrame, bottom: pd.DataFrame) -> BasicAssayInfo:
+        checksum = None if (bottom is None) or (bottom.iloc[0, 0] != "Checksum") else bottom.iloc[0, 1]
         return BasicAssayInfo(
-            protocol_id="Weyland Yutani Example",
-            assay_id="Example Assay",
+            protocol_id=PROTOCOL_ID,
+            assay_id=ASSAY_ID,
             checksum=checksum,
         )
 
@@ -48,21 +54,19 @@ class Plate:
 
     @staticmethod
     def create(df: pd.DataFrame) -> list[Plate]:
-        cell_data = df.iloc[4:, 1:].T
-        series = (
-            cell_data.drop(0, axis=0).drop(0, axis=1)
-            if cell_data.iloc[1, 0] == "A"
-            else cell_data
-        )
-        rows, cols = series.shape
-        series.index = [df.iloc[3, i + 1] for i in range(rows)]  # type: ignore[assignment]
-        series.columns = [str(df.iloc[3 + i, 0]) for i in range(1, cols + 1)]  # type: ignore[assignment]
+        pivoted = df.T
+        if pivoted.iloc[1, 0] != "A":
+            raise AllotropeConversionError("Column header(s) not found")
+        stripped = pivoted.drop(0, axis=0).drop(0, axis=1)
+        rows, cols = stripped.shape
+        stripped.index = [df.iloc[0, i + 1] for i in range(rows)]  # type: ignore[assignment]
+        stripped.columns = [str(int(df.iloc[i, 0])) for i in range(1, cols + 1)]  # type: ignore[assignment]
         return [
             Plate(
                 number="0",
                 results=[
-                    Result(col, row, float(series.loc[col, row]))
-                    for col, row in series.stack().index
+                    Result(col, row, float(stripped.loc[col, row]))
+                    for col, row in stripped.stack().index
                 ],
             )
         ]
@@ -77,11 +81,14 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        df = reader.pop_csv_block()
-        plates = Plate.create(df)
+        top = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
+        middle = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
+        bottom = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
+
+        plates = Plate.create(middle)
         return Data(
+            basic_assay_info=BasicAssayInfo.create(top, bottom),
             plates=plates,
             number_of_wells=len(plates[0].results),
-            basic_assay_info=BasicAssayInfo.create(df),
             instrument=Instrument.create(),
         )

@@ -54,7 +54,7 @@ class PlateInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[PlateInfo]:
-        data = reader.pop_csv_block("^Plate information")
+        data = reader.pop_csv_block_as_df("^Plate information")
         series = df_to_series(data).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
 
@@ -100,7 +100,7 @@ class Result:
         # Results may or may not have a title
         reader.pop_if_match("^Results")
 
-        data = reader.pop_csv_block()
+        data = reader.pop_csv_block_as_df()
         series = (
             data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
         )
@@ -151,7 +151,7 @@ class BasicAssayInfo:
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until("^Basic assay information")
-        data = reader.pop_csv_block("^Basic assay information").T
+        data = reader.pop_csv_block_as_df("^Basic assay information").T
         data.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data)
         return BasicAssayInfo(
@@ -167,7 +167,7 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until("^Plate type")
-        data = reader.pop_csv_block("^Plate type").T
+        data = reader.pop_csv_block_as_df("^Plate type").T
         return PlateType(
             try_float(str(df_to_series(data).get("Number of the wells in the plate")))
         )
@@ -220,7 +220,7 @@ class PlateMap:
         plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")[-1]
         group_n = assert_not_none(reader.pop(), "Platemap group").split(",")[-1]
 
-        data = reader.pop_csv_block().replace(" ", "", regex=True)
+        data = reader.pop_csv_block_as_df().replace(" ", "", regex=True)
 
         reader.pop_data()  # drop type specification
         reader.drop_empty()
@@ -281,7 +281,7 @@ class Filter:
         ):
             return None
 
-        data = reader.pop_csv_block().T
+        data = reader.pop_csv_block_as_df().T
         series = df_to_series(data)
 
         name = str(series.index[0])
@@ -331,7 +331,7 @@ class Labels:
     @staticmethod
     def create(reader: CsvReader) -> Labels:
         reader.drop_until("^Labels")
-        data = reader.pop_csv_block("^Labels").T
+        data = reader.pop_csv_block_as_df("^Labels").T
         series = df_to_series(data).replace(np.nan, None)
 
         filters = create_filters(reader)
