@@ -5,12 +5,13 @@ from typing import Any
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.create_plate_data import create_plate_data
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
+from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AgilentGen5Parser(VendorParser):
     def _get_plate_chunks(self, contents: str) -> list[str]:
-        return contents.strip().replace("\r\n", "\n").split(4 * "\n")
+        return contents.strip().split(4 * "\n")
 
     def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
         plates: list[PlateData] = []
@@ -18,7 +19,9 @@ class AgilentGen5Parser(VendorParser):
         file_paths_chunk = None
         all_data_chunk = None
 
-        plate_chunks = self._get_plate_chunks(self._read_contents(contents))
+        lines_reader = LinesReader(contents, encoding=None)
+
+        plate_chunks = self._get_plate_chunks(lines_reader.contents)
         completed_plate = False
         for plate_chunk in plate_chunks:
             if plate_chunk.startswith("Software Version"):
