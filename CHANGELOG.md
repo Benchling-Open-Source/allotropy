@@ -6,13 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Allow lines reader to accept or infer encoding
 ### Fixed
-- Use fuzzy=True for timestamp parsing to handle non-standard cases (e.g. mixing 24h time and AM/PM)
 ### Changed
 ### Deprecated
 ### Removed
 ### Security
+
+
+## [0.1.8] - 2023-10-30
+### Added
+- Allow lines reader to accept or infer encoding
+### Fixed
+- Use fuzzy=True for timestamp parsing to handle non-standard cases (e.g. mixing 24h time and AM/PM)
 
 ## [0.1.7] - 2023-10-26
 ### Added
@@ -26,9 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename to PerkinElmerEnvisionParser and RocheCedexBiohtParser for consistency
 - Add additional plate reader testing data for the plate reader parser
 - Change generic Exceptions to AllotropyErrors
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.6] - 2023-10-16
 ### Added
@@ -39,9 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow block type to have plate well count in any position for AppBio QuantStudio
 - Replace datetime.timezone with ZoneInfo in TimestampParser
 - Implement CsvReader as child of LinesReader
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.5] - 2023-10-04
 ### Added
