@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Allow lines reader to accept or infer encoding
 ### Fixed
+- Use fuzzy=True for timestamp parsing to handle non-standard cases (e.g. mixing 24h time and AM/PM)
 ### Changed
 ### Deprecated
 ### Removed
