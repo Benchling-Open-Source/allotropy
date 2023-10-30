@@ -3,20 +3,32 @@ from io import IOBase, StringIO
 from re import search
 from typing import Optional
 
+import chardet
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
 
 
 class LinesReader:
-    def __init__(self, io_: IOBase):
-        raw_contents = io_.read()
-        if isinstance(raw_contents, bytes):
-            raw_contents = raw_contents.decode("UTF-8")
-        self.contents = raw_contents.replace("\r\n", "\n")
+    def __init__(self, io_: IOBase, encoding: Optional[str] = "UTF-8"):
+        stream_contents = io_.read()
+        self.raw_contents = (
+            self._decode(stream_contents, encoding)
+            if isinstance(stream_contents, bytes)
+            else stream_contents
+        )
+        self.contents = self.raw_contents.replace("\r\n", "\n")
         self.lines: list[str] = self.contents.split("\n")
         self.n_lines = len(self.lines)
         self.current_line = 0
+
+    def _decode(self, bytes_content: bytes, encoding: Optional[str]) -> str:
+        if not encoding:
+            encoding = chardet.detect(bytes_content)["encoding"]
+            if not encoding:
+                error = "Unable to detect input file encoding"
+                raise AllotropyError(error)
+        return bytes_content.decode(encoding)
 
     def current_line_exists(self) -> bool:
         return 0 <= self.current_line < self.n_lines
