@@ -9,8 +9,10 @@ from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
     DeviceControlDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
@@ -18,6 +20,7 @@ from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
     PlateReaderDocumentItem,
     SampleDocument,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -37,6 +40,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     PlateMap,
     Result,
 )
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
@@ -165,50 +169,91 @@ class PerkinElmerEnvisionParser(VendorParser):
         raise AllotropyError(msg)
 
     def _get_device_control_aggregate_document(
-        self, data: Data, plate: Plate
+        self, data: Data, plate: Plate, read_type: ReadType,
     ) -> DeviceControlAggregateDocument:
         ex_filter = data.labels.excitation_filter
         em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
 
-        read_type = self._get_read_type(data)
-        device_control_aggregate_document_class = (
-            READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT[read_type]
-        )
-        device_control_document_item_class = READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS[
-            read_type
-        ]
-
-        return device_control_aggregate_document_class(
-            [
-                device_control_document_item_class(
-                    device_type="fluorescence detector",
-                    detector_distance_setting__plate_reader_=safe_value(
-                        TQuantityValueMillimeter, plate.plate_info.measured_height
-                    ),
-                    number_of_averages=safe_value(
-                        TQuantityValueNumber, data.labels.number_of_flashes
-                    ),
-                    detector_gain_setting=data.labels.detector_gain_setting,
-                    scan_position_setting__plate_reader_=data.labels.scan_position_setting,
-                    detector_wavelength_setting=safe_value(
-                        TQuantityValueNanometer,
-                        em_filter.wavelength if em_filter else None,
-                    ),
-                    detector_bandwidth_setting=safe_value(
-                        TQuantityValueNanometer,
-                        em_filter.bandwidth if em_filter else None,
-                    ),
-                    excitation_wavelength_setting=safe_value(
-                        TQuantityValueNanometer,
-                        ex_filter.wavelength if ex_filter else None,
-                    ),
-                    excitation_bandwidth_setting=safe_value(
-                        TQuantityValueNanometer,
-                        ex_filter.bandwidth if ex_filter else None,
-                    ),
-                )
-            ]
-        )
+        if read_type == ReadType.LUMINESCENCE:
+            return LuminescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    LuminescencePointDetectionDeviceControlDocumentItem(
+                        device_type="luminescence detector",
+                        detector_distance_setting__plate_reader_=safe_value(
+                            TQuantityValueMillimeter, plate.plate_info.measured_height
+                        ),
+                        number_of_averages=safe_value(
+                            TQuantityValueNumber, data.labels.number_of_flashes
+                        ),
+                        detector_gain_setting=data.labels.detector_gain_setting,
+                        scan_position_setting__plate_reader_=data.labels.scan_position_setting,
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.wavelength if em_filter else None,
+                        ),
+                        detector_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.bandwidth if em_filter else None,
+                        ),
+                    )
+                ]
+            )
+        elif read_type == ReadType.ABSORBANCE:
+            return UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        device_type="absorbance detector",
+                        detector_distance_setting__plate_reader_=safe_value(
+                            TQuantityValueMillimeter, plate.plate_info.measured_height
+                        ),
+                        number_of_averages=safe_value(
+                            TQuantityValueNumber, data.labels.number_of_flashes
+                        ),
+                        detector_gain_setting=data.labels.detector_gain_setting,
+                        scan_position_setting__plate_reader_=data.labels.scan_position_setting,
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.wavelength if em_filter else None,
+                        ),
+                        detector_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.bandwidth if em_filter else None,
+                        ),
+                    )
+                ]
+            )
+        else:  # read_type is FLUORESCENCE
+            return FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    FluorescencePointDetectionDeviceControlDocumentItem(
+                        device_type="fluorescence detector",
+                        detector_distance_setting__plate_reader_=safe_value(
+                            TQuantityValueMillimeter, plate.plate_info.measured_height
+                        ),
+                        number_of_averages=safe_value(
+                            TQuantityValueNumber, data.labels.number_of_flashes
+                        ),
+                        detector_gain_setting=data.labels.detector_gain_setting,
+                        scan_position_setting__plate_reader_=data.labels.scan_position_setting,
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.wavelength if em_filter else None,
+                        ),
+                        detector_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.bandwidth if em_filter else None,
+                        ),
+                        excitation_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            ex_filter.wavelength if ex_filter else None,
+                        ),
+                        excitation_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            ex_filter.bandwidth if ex_filter else None,
+                        ),
+                    )
+                ]
+            )
 
     def _get_measurement_document(
         self,
@@ -216,35 +261,44 @@ class PerkinElmerEnvisionParser(VendorParser):
         result: Result,
         p_map: PlateMap,
         device_control_document: DeviceControlDocument,
+        read_type: ReadType,
     ) -> MeasurementDocumentItems:
-        return FluorescencePointDetectionMeasurementDocumentItems(
-            measurement_identifier=str(uuid.uuid4()),
-            sample_document=SampleDocument(
-                sample_identifier=str(
-                    uuid.uuid4()
-                ),  # TODO check what this should map to
-                location_identifier=str(
-                    uuid.uuid4()
-                ),  # TODO check what this should map to
-                well_plate_identifier=plate.plate_info.barcode,
-                well_location_identifier=f"{result.col}{result.row}",
-                sample_role_type=str(
-                    p_map.get_sample_role_type(result.col, result.row)
-                ),
-            ),
-            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[device_control_document],
-            ),
-            fluorescence=TRelativeFluorescenceUnit(result.value),
-            compartment_temperature=safe_value(
-                TQuantityValueDegreeCelsius,
-                plate.plate_info.chamber_temperature_at_start,
+        sample_document = SampleDocument(
+            sample_identifier=str(
+                uuid.uuid4()
+            ),  # TODO check what this should map to
+            location_identifier=str(
+                uuid.uuid4()
+            ),  # TODO check what this should map to
+            well_plate_identifier=plate.plate_info.barcode,
+            well_location_identifier=f"{result.col}{result.row}",
+            sample_role_type=str(
+                p_map.get_sample_role_type(result.col, result.row)
             ),
         )
+        if read_type == ReadType.ABSORBANCE:
+            return
+        elif read_type == ReadType.LUMINESCENCE:
+            return
+        else:  # read_type is FLUORESCENCE
+            return FluorescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=str(uuid.uuid4()),
+                sample_document=sample_document,
+                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[cast(device_control_document, FluorescencePointDetectionDeviceControlDocumentItem)],
+                ),
+                fluorescence=TRelativeFluorescenceUnit(result.value),
+                compartment_temperature=safe_value(
+                    TQuantityValueDegreeCelsius,
+                    plate.plate_info.chamber_temperature_at_start,
+                ),
+            )
 
     def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
         items = []
         measurement_time = self._get_measurement_time(data)
+        read_type = self._get_read_type(data)
+
         for plate in data.plates:
             if plate.results is None:
                 continue
@@ -256,7 +310,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                 raise AllotropyError(msg) from e
 
             device_control_aggregate_document = (
-                self._get_device_control_aggregate_document(data, plate)
+                self._get_device_control_aggregate_document(data, plate, read_type)
             )
 
             items += [
@@ -268,7 +322,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         ),
                         measurement_document=[
                             self._get_measurement_document(
-                                plate, result, p_map, device_control_aggregate_document
+                                plate, result, p_map, device_control_aggregate_document.device_control_document[0], read_type
                             )
                         ],
                         analytical_method_identifier=data.basic_assay_info.protocol_id,
