@@ -217,12 +217,6 @@ class PerkinElmerEnvisionParser(VendorParser):
         read_type: ReadType,
     ) -> MeasurementDocumentItems:
         sample_document = SampleDocument(
-            sample_identifier=str(
-                uuid.uuid4()
-            ),  # TODO check what this should map to
-            location_identifier=str(
-                uuid.uuid4()
-            ),  # TODO check what this should map to
             well_plate_identifier=plate.plate_info.barcode,
             well_location_identifier=f"{result.col}{result.row}",
             sample_role_type=str(
