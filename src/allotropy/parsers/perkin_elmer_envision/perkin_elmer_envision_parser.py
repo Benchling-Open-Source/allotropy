@@ -122,7 +122,10 @@ class PerkinElmerEnvisionParser(VendorParser):
         raise AllotropyError(msg)
 
     def _get_device_control_aggregate_document(
-        self, data: Data, plate: Plate, read_type: ReadType,
+        self,
+        data: Data,
+        plate: Plate,
+        read_type: ReadType,
     ) -> DeviceControlAggregateDocument:
         ex_filter = data.labels.excitation_filter
         em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
@@ -219,9 +222,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         sample_document = SampleDocument(
             well_plate_identifier=plate.plate_info.barcode,
             well_location_identifier=f"{result.col}{result.row}",
-            sample_role_type=str(
-                p_map.get_sample_role_type(result.col, result.row)
-            ),
+            sample_role_type=str(p_map.get_sample_role_type(result.col, result.row)),
         )
         compartment_temperature = safe_value(
             TQuantityValueDegreeCelsius,
@@ -232,7 +233,12 @@ class PerkinElmerEnvisionParser(VendorParser):
                 measurement_identifier=str(uuid.uuid4()),
                 sample_document=sample_document,
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=cast(list[UltravioletAbsorbancePointDetectionDeviceControlDocumentItem], device_control_document),
+                    device_control_document=cast(
+                        list[
+                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem
+                        ],
+                        device_control_document,
+                    ),
                 ),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(result.value),
                 compartment_temperature=compartment_temperature,
@@ -242,7 +248,10 @@ class PerkinElmerEnvisionParser(VendorParser):
                 measurement_identifier=str(uuid.uuid4()),
                 sample_document=sample_document,
                 device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=cast(list[LuminescencePointDetectionDeviceControlDocumentItem], device_control_document),
+                    device_control_document=cast(
+                        list[LuminescencePointDetectionDeviceControlDocumentItem],
+                        device_control_document,
+                    ),
                 ),
                 luminescence=TRelativeLightUnit(result.value),
                 compartment_temperature=compartment_temperature,
@@ -252,7 +261,10 @@ class PerkinElmerEnvisionParser(VendorParser):
                 measurement_identifier=str(uuid.uuid4()),
                 sample_document=sample_document,
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=cast(list[FluorescencePointDetectionDeviceControlDocumentItem], device_control_document),
+                    device_control_document=cast(
+                        list[FluorescencePointDetectionDeviceControlDocumentItem],
+                        device_control_document,
+                    ),
                 ),
                 fluorescence=TRelativeFluorescenceUnit(result.value),
                 compartment_temperature=compartment_temperature,
@@ -286,7 +298,14 @@ class PerkinElmerEnvisionParser(VendorParser):
                         ),
                         measurement_document=[
                             self._get_measurement_document(
-                                plate, result, p_map, cast(list[DeviceControlDocument], device_control_aggregate_document.device_control_document), read_type
+                                plate,
+                                result,
+                                p_map,
+                                cast(
+                                    list[DeviceControlDocument],
+                                    device_control_aggregate_document.device_control_document,
+                                ),
+                                read_type,
                             )
                         ],
                         analytical_method_identifier=data.basic_assay_info.protocol_id,
