@@ -1,6 +1,6 @@
 from enum import Enum
 from io import IOBase
-from typing import Any, Optional, TypeAlias, TypeVar, Union
+from typing import Any, cast, Optional, TypeAlias, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -40,7 +40,6 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     PlateMap,
     Result,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
@@ -52,64 +51,18 @@ class ReadType(Enum):
     LUMINESCENCE = "Luminescence"
 
 
-MeasurementDocumentItemsType: TypeAlias = Union[
-    type[UltravioletAbsorbancePointDetectionMeasurementDocumentItems],
-    type[FluorescencePointDetectionMeasurementDocumentItems],
-    type[LuminescencePointDetectionMeasurementDocumentItems],
-]
-
 MeasurementDocumentItems: TypeAlias = Union[
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
 ]
 
-DeviceControlAggregateDocumentType: TypeAlias = Union[
-    type[UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument],
-    type[FluorescencePointDetectionDeviceControlAggregateDocument],
-    type[LuminescencePointDetectionDeviceControlAggregateDocument],
-]
 
 DeviceControlAggregateDocument: TypeAlias = Union[
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     LuminescencePointDetectionDeviceControlAggregateDocument,
 ]
-
-MeasurementUnitType: TypeAlias = Union[
-    type[TRelativeFluorescenceUnit],
-    type[TRelativeLightUnit],
-    type[TQuantityValueMilliAbsorbanceUnit],
-]
-
-MeasurementUnit: TypeAlias = Union[
-    TRelativeFluorescenceUnit,
-    TRelativeLightUnit,
-    TQuantityValueMilliAbsorbanceUnit,
-]
-
-
-READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS: dict[
-    ReadType, MeasurementDocumentItemsType
-] = {
-    ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-    ReadType.FLUORESCENCE: FluorescencePointDetectionMeasurementDocumentItems,
-    ReadType.LUMINESCENCE: LuminescencePointDetectionMeasurementDocumentItems,
-}
-
-READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT: dict[
-    ReadType, DeviceControlAggregateDocumentType
-] = {
-    ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
-    ReadType.FLUORESCENCE: FluorescencePointDetectionDeviceControlAggregateDocument,
-    ReadType.LUMINESCENCE: LuminescencePointDetectionDeviceControlAggregateDocument,
-}
-
-READ_TYPE_TO_MEASUREMENT_UNIT: dict[ReadType, MeasurementUnitType] = {
-    ReadType.ABSORBANCE: TQuantityValueMilliAbsorbanceUnit,
-    ReadType.FLUORESCENCE: TRelativeFluorescenceUnit,
-    ReadType.LUMINESCENCE: TRelativeLightUnit,
-}
 
 
 def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
@@ -260,7 +213,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         plate: Plate,
         result: Result,
         p_map: PlateMap,
-        device_control_document: DeviceControlDocument,
+        device_control_document: list[DeviceControlDocument],
         read_type: ReadType,
     ) -> MeasurementDocumentItems:
         sample_document = SampleDocument(
@@ -276,22 +229,39 @@ class PerkinElmerEnvisionParser(VendorParser):
                 p_map.get_sample_role_type(result.col, result.row)
             ),
         )
+        compartment_temperature = safe_value(
+            TQuantityValueDegreeCelsius,
+            plate.plate_info.chamber_temperature_at_start,
+        )
         if read_type == ReadType.ABSORBANCE:
-            return
+            return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+                measurement_identifier=str(uuid.uuid4()),
+                sample_document=sample_document,
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(list[UltravioletAbsorbancePointDetectionDeviceControlDocumentItem], device_control_document),
+                ),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(result.value),
+                compartment_temperature=compartment_temperature,
+            )
         elif read_type == ReadType.LUMINESCENCE:
-            return
+            return LuminescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=str(uuid.uuid4()),
+                sample_document=sample_document,
+                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(list[LuminescencePointDetectionDeviceControlDocumentItem], device_control_document),
+                ),
+                luminescence=TRelativeLightUnit(result.value),
+                compartment_temperature=compartment_temperature,
+            )
         else:  # read_type is FLUORESCENCE
             return FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 sample_document=sample_document,
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=[cast(device_control_document, FluorescencePointDetectionDeviceControlDocumentItem)],
+                    device_control_document=cast(list[FluorescencePointDetectionDeviceControlDocumentItem], device_control_document),
                 ),
                 fluorescence=TRelativeFluorescenceUnit(result.value),
-                compartment_temperature=safe_value(
-                    TQuantityValueDegreeCelsius,
-                    plate.plate_info.chamber_temperature_at_start,
-                ),
+                compartment_temperature=compartment_temperature,
             )
 
     def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
@@ -322,7 +292,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         ),
                         measurement_document=[
                             self._get_measurement_document(
-                                plate, result, p_map, device_control_aggregate_document.device_control_document[0], read_type
+                                plate, result, p_map, cast(list[DeviceControlDocument], device_control_aggregate_document.device_control_document), read_type
                             )
                         ],
                         analytical_method_identifier=data.basic_assay_info.protocol_id,

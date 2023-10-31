@@ -480,7 +480,7 @@ class FluorescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: FluorescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    compartment_temperature: TQuantityValueDegreeCelsius
+    compartment_temperature: Optional[TQuantityValueDegreeCelsius]
     fluorescence: TRelativeFluorescenceUnit
     measurement_time: Optional[TDateTimeStampValue] = None
     detection_type: Optional[TStringValue] = None
@@ -499,7 +499,7 @@ class LuminescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    compartment_temperature: TQuantityValueDegreeCelsius
+    compartment_temperature: Optional[TQuantityValueDegreeCelsius]
     luminescence: TRelativeLightUnit
     measurement_time: Optional[TDateTimeStampValue] = None
     detection_type: Optional[TStringValue] = None
@@ -518,7 +518,7 @@ class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
-    compartment_temperature: TQuantityValueDegreeCelsius
+    compartment_temperature: Optional[TQuantityValueDegreeCelsius]
     absorbance: TQuantityValueMilliAbsorbanceUnit
     measurement_time: Optional[TDateTimeStampValue] = None
     detection_type: Optional[TStringValue] = None
