@@ -37,7 +37,7 @@ def test_get_model() -> None:
     model = parser._get_model(get_data())
 
     # remove all random UUIDs
-    if model.plate_reader_aggregate_document.plate_reader_document:
+    if model.plate_reader_aggregate_document:
         for i in range(
             len(model.plate_reader_aggregate_document.plate_reader_document)
         ):
