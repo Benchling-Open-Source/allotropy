@@ -1,6 +1,6 @@
 from enum import Enum
 from io import IOBase
-from typing import Any, cast, Optional, TypeAlias, TypeVar, Union
+from typing import Any, cast, Optional, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -51,14 +51,14 @@ class ReadType(Enum):
     LUMINESCENCE = "Luminescence"
 
 
-MeasurementDocumentItems: TypeAlias = Union[
+MeasurementDocumentItems = Union[
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
 ]
 
 
-DeviceControlAggregateDocument: TypeAlias = Union[
+DeviceControlAggregateDocument = Union[
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     LuminescencePointDetectionDeviceControlAggregateDocument,
