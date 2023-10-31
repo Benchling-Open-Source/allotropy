@@ -9,12 +9,16 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
 )
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import ReadMode
+from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
 class AbsorbancePlateData(PlateData):
-    read_mode = ReadMode.ABSORBANCE
-    data_point_cls = AbsorbanceDataPoint
+    def get_read_mode(self) -> ReadMode:
+        return ReadMode.ABSORBANCE
+
+    def get_data_point_cls(self) -> type[DataPoint]:
+        return AbsorbanceDataPoint
 
     def to_allotrope(self, measurement_docs: list[MeasurementDocumentItem]) -> Model:
         return Model(

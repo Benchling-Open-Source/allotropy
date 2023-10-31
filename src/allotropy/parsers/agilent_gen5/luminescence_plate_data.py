@@ -8,13 +8,17 @@ from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence impo
 )
 from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
 from allotropy.parsers.agilent_gen5.constants import ReadMode
+from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
 class LuminescencePlateData(PlateData):
-    read_mode = ReadMode.LUMINESCENCE
-    data_point_cls = LuminescenceDataPoint
+    def get_read_mode(self) -> ReadMode:
+        return ReadMode.LUMINESCENCE
+
+    def get_data_point_cls(self) -> type[DataPoint]:
+        return LuminescenceDataPoint
 
     def to_allotrope(self, measurement_docs: list[MeasurementDocumentItem]) -> Model:
         return Model(

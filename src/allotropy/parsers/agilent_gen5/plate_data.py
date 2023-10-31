@@ -55,12 +55,10 @@ class PlateData(ABC):
     datetime: Optional[str]
     experiment_file_path: Optional[str]
     protocol_file_path: Optional[str]
-    read_mode: ReadMode
     read_type: ReadType
     plate_barcode: str
     statistics_doc: list
     actual_temperature: Optional[float]
-    data_point_cls: type[DataPoint]
 
     def __init__(
         self,
@@ -68,10 +66,6 @@ class PlateData(ABC):
         file_paths_chunk: str,
         all_data_chunk: str,
     ):
-        self.software_version_chunk = software_version_chunk
-        self.file_paths_chunk = file_paths_chunk
-        self.all_data_chunk = all_data_chunk
-
         self.measurements = defaultdict(list)
         self.processed_datas = defaultdict(list)
         self.temperatures = []
@@ -88,9 +82,15 @@ class PlateData(ABC):
         self.statistics_doc = []
         self.actual_temperature = None
 
-        self._parse_software_version_chunk(self.software_version_chunk)
-        self._parse_file_paths_chunk(self.file_paths_chunk)
-        self._parse_all_data_chunk(self.all_data_chunk)
+        self._parse_software_version_chunk(software_version_chunk)
+        self._parse_file_paths_chunk(file_paths_chunk)
+        self._parse_all_data_chunk(all_data_chunk)
+
+    def get_read_mode(self) -> ReadMode:
+        raise NotImplementedError
+
+    def get_data_point_cls(self) -> type[DataPoint]:
+        raise NotImplementedError
 
     def _parse_software_version_chunk(self, software_version_chunk: str) -> None:
         self.software_version = software_version_chunk.split("\t")[1]
@@ -185,7 +185,7 @@ class PlateData(ABC):
                 if len(split_line) != read_line_length:
                     msg = f"Unrecognized Read data {split_line}"
                     raise AllotropeConversionError(msg)
-                if split_line[-1] == f"{self.read_mode.title()} Endpoint":
+                if split_line[-1] == f"{self.get_read_mode().title()} Endpoint":
                     use_wavelength_names = True
                 else:
                     self.read_names.append(split_line[-1])
@@ -258,7 +258,7 @@ class PlateData(ABC):
                     self.measurements[well_pos].append([label_only, well_value])
 
         for well_pos in self.wells:
-            datapoint = self.data_point_cls(
+            datapoint = self.get_data_point_cls()(
                 self.read_type,
                 self.measurements[well_pos],
                 well_pos,
@@ -271,7 +271,7 @@ class PlateData(ABC):
             self.measurement_docs.append(datapoint.to_measurement_doc())
 
     def _is_processed_data_label(self, label: str) -> bool:
-        if self.read_mode == ReadMode.LUMINESCENCE:
+        if self.get_read_mode() == ReadMode.LUMINESCENCE:
             return not any(
                 (label.startswith(read_name) and label.split(":")[-1] == "Lum")
                 for read_name in self.read_names
@@ -341,7 +341,7 @@ class PlateData(ABC):
     def _blank_data_cube(self, measures: list[float]) -> TDatacube:
         structure_dimensions = READTYPE_TO_DIMENSIONS[self.read_type]
         structure_measures = [
-            ("double", self.read_mode.lower(), self.data_point_cls.unit)
+            ("double", self.get_read_mode().lower(), self.get_data_point_cls().unit)
         ]
         return TDatacube(
             label=f"{self.read_type.value.lower()} data",

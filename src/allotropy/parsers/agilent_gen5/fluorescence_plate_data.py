@@ -8,13 +8,17 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
 from allotropy.parsers.agilent_gen5.constants import ReadMode
+from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
 class FluorescencePlateData(PlateData):
-    read_mode = ReadMode.FLUORESCENCE
-    data_point_cls = FluorescenceDataPoint
+    def get_read_mode(self) -> ReadMode:
+        return ReadMode.FLUORESCENCE
+
+    def get_data_point_cls(self) -> type[DataPoint]:
+        return FluorescenceDataPoint
 
     def to_allotrope(self, measurement_docs: list[MeasurementDocumentItem]) -> Model:
         return Model(
