@@ -1,6 +1,6 @@
 from enum import Enum
 from io import IOBase
-from typing import Any, Dict, Optional, Type, TypeAlias, TypeVar, Union
+from typing import Any, Dict, Optional, TypeAlias, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -50,9 +50,9 @@ class ReadType(Enum):
 
 
 MeasurementDocumentItemsType: TypeAlias = Union[
-    Type[UltravioletAbsorbancePointDetectionMeasurementDocumentItems],
-    Type[FluorescencePointDetectionMeasurementDocumentItems],
-    Type[LuminescencePointDetectionMeasurementDocumentItems],
+    type[UltravioletAbsorbancePointDetectionMeasurementDocumentItems],
+    type[FluorescencePointDetectionMeasurementDocumentItems],
+    type[LuminescencePointDetectionMeasurementDocumentItems],
 ]
 
 MeasurementDocumentItems: TypeAlias = Union[
@@ -62,9 +62,9 @@ MeasurementDocumentItems: TypeAlias = Union[
 ]
 
 DeviceControlAggregateDocumentType: TypeAlias = Union[
-    Type[UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument],
-    Type[FluorescencePointDetectionDeviceControlAggregateDocument],
-    Type[LuminescencePointDetectionDeviceControlAggregateDocument],
+    type[UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument],
+    type[FluorescencePointDetectionDeviceControlAggregateDocument],
+    type[LuminescencePointDetectionDeviceControlAggregateDocument],
 ]
 
 DeviceControlAggregateDocument: TypeAlias = Union[
@@ -74,9 +74,9 @@ DeviceControlAggregateDocument: TypeAlias = Union[
 ]
 
 MeasurementUnitType: TypeAlias = Union[
-    Type[TRelativeFluorescenceUnit],
-    Type[TRelativeLightUnit],
-    Type[TQuantityValueMilliAbsorbanceUnit],
+    type[TRelativeFluorescenceUnit],
+    type[TRelativeLightUnit],
+    type[TQuantityValueMilliAbsorbanceUnit],
 ]
 
 MeasurementUnit: TypeAlias = Union[
