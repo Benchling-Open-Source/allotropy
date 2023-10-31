@@ -1,6 +1,6 @@
 from enum import Enum
 from io import IOBase
-from typing import Any, Dict, Optional, TypeAlias, TypeVar, Union
+from typing import Any, Optional, TypeAlias, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -9,7 +9,6 @@ from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
     DeviceControlDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
-    FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionDeviceControlAggregateDocument,
     LuminescencePointDetectionMeasurementDocumentItems,
@@ -86,19 +85,19 @@ MeasurementUnit: TypeAlias = Union[
 ]
 
 
-READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS: Dict[ReadType, MeasurementDocumentItemsType] = {
+READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS: dict[ReadType, MeasurementDocumentItemsType] = {
     ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     ReadType.FLUORESCENCE: FluorescencePointDetectionMeasurementDocumentItems,
     ReadType.LUMINESCENCE: LuminescencePointDetectionMeasurementDocumentItems,
 }
 
-READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT: Dict[ReadType, DeviceControlAggregateDocumentType] = {
+READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT: dict[ReadType, DeviceControlAggregateDocumentType] = {
     ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     ReadType.FLUORESCENCE: FluorescencePointDetectionDeviceControlAggregateDocument,
     ReadType.LUMINESCENCE: LuminescencePointDetectionDeviceControlAggregateDocument,
 }
 
-READ_TYPE_TO_MEASUREMENT_UNIT: Dict[ReadType, MeasurementUnitType] = {
+READ_TYPE_TO_MEASUREMENT_UNIT: dict[ReadType, MeasurementUnitType] = {
     ReadType.ABSORBANCE: TQuantityValueMilliAbsorbanceUnit,
     ReadType.FLUORESCENCE: TRelativeFluorescenceUnit,
     ReadType.LUMINESCENCE: TRelativeLightUnit,
