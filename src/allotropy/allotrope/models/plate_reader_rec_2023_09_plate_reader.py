@@ -321,9 +321,9 @@ class DeviceDocumentItem:
 
 @dataclass
 class DeviceSystemDocument:
-    asset_management_identifier: TStringValue
     device_identifier: TStringValue
     model_number: TStringValue
+    asset_management_identifier: Optional[TStringValue] = None
     description: Optional[Any] = None
     brand_name: Optional[TStringValue] = None
     product_manufacturer: Optional[TStringValue] = None

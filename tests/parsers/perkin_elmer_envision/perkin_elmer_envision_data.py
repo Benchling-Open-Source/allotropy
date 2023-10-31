@@ -98,7 +98,6 @@ def get_model() -> Model:
             plate_reader_document=[
                 PlateReaderDocumentItem(
                     measurement_aggregate_document=MeasurementAggregateDocument(
-                        measurement_identifier="",
                         measurement_time="2022-10-13T15:08:06+00:00",
                         analytical_method_identifier="100302",
                         experimental_data_identifier="3134",
@@ -106,6 +105,7 @@ def get_model() -> Model:
                         plate_well_count=TQuantityValueNumber(value=96.0),
                         measurement_document=[
                             FluorescencePointDetectionMeasurementDocumentItems(
+                                measurement_identifier="",
                                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                                     device_control_document=[
                                         FluorescencePointDetectionDeviceControlDocumentItem(
@@ -160,8 +160,8 @@ def get_model() -> Model:
                                     well_location_identifier="A01",
                                     sample_identifier=None,
                                     batch_identifier=None,
-                                    sample_role_type=SampleRoleType.undefined_sample_role,
-                                    plate_barcode="Plate 1",
+                                    sample_role_type=str(SampleRoleType.undefined_sample_role),
+                                    well_plate_identifier="Plate 1",
                                 ),
                                 compartment_temperature=TQuantityValueDegreeCelsius(
                                     value=23.17,
@@ -172,6 +172,7 @@ def get_model() -> Model:
                                 fluorescence=TRelativeFluorescenceUnit(31441),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
+                                measurement_identifier="",
                                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                                     device_control_document=[
                                         FluorescencePointDetectionDeviceControlDocumentItem(
@@ -226,8 +227,8 @@ def get_model() -> Model:
                                     well_location_identifier="A01",
                                     sample_identifier=None,
                                     batch_identifier=None,
-                                    sample_role_type=SampleRoleType.undefined_sample_role,
-                                    plate_barcode="Plate 1",
+                                    sample_role_type=str(SampleRoleType.undefined_sample_role),
+                                    well_plate_identifier="Plate 1",
                                 ),
                                 compartment_temperature=TQuantityValueDegreeCelsius(
                                     value=23.17,
