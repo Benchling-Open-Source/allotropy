@@ -1,5 +1,6 @@
+from enum import Enum
 from io import IOBase
-from typing import Any, Optional, TypeVar, Union
+from typing import Any, Dict, Optional, Type, TypeAlias, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -22,10 +23,12 @@ from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
+    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TRelativeFluorescenceUnit,
+    TRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.lines_reader import CsvReader
@@ -38,6 +41,68 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
+
+
+class ReadType(Enum):
+    ABSORBANCE = "Absorbance"
+    FLUORESCENCE = "Fluorescence"
+    LUMINESCENCE = "Luminescence"
+
+
+MeasurementDocumentItemsType: TypeAlias = Union[
+    Type[UltravioletAbsorbancePointDetectionMeasurementDocumentItems],
+    Type[FluorescencePointDetectionMeasurementDocumentItems],
+    Type[LuminescencePointDetectionMeasurementDocumentItems],
+]
+
+MeasurementDocumentItems: TypeAlias = Union[
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+]
+
+DeviceControlAggregateDocumentType: TypeAlias = Union[
+    Type[UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument],
+    Type[FluorescencePointDetectionDeviceControlAggregateDocument],
+    Type[LuminescencePointDetectionDeviceControlAggregateDocument],
+]
+
+DeviceControlAggregateDocument: TypeAlias = Union[
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+]
+
+MeasurementUnitType: TypeAlias = Union[
+    Type[TRelativeFluorescenceUnit],
+    Type[TRelativeLightUnit],
+    Type[TQuantityValueMilliAbsorbanceUnit],
+]
+
+MeasurementUnit: TypeAlias = Union[
+    TRelativeFluorescenceUnit,
+    TRelativeLightUnit,
+    TQuantityValueMilliAbsorbanceUnit,
+]
+
+
+READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS: Dict[ReadType, MeasurementDocumentItemsType] = {
+    ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    ReadType.FLUORESCENCE: FluorescencePointDetectionMeasurementDocumentItems,
+    ReadType.LUMINESCENCE: LuminescencePointDetectionMeasurementDocumentItems,
+}
+
+READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT: Dict[ReadType, DeviceControlAggregateDocumentType] = {
+    ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    ReadType.FLUORESCENCE: FluorescencePointDetectionDeviceControlAggregateDocument,
+    ReadType.LUMINESCENCE: LuminescencePointDetectionDeviceControlAggregateDocument,
+}
+
+READ_TYPE_TO_MEASUREMENT_UNIT: Dict[ReadType, MeasurementUnitType] = {
+    ReadType.ABSORBANCE: TQuantityValueMilliAbsorbanceUnit,
+    ReadType.FLUORESCENCE: TRelativeFluorescenceUnit,
+    ReadType.LUMINESCENCE: TRelativeLightUnit,
+}
 
 
 def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
@@ -61,29 +126,25 @@ class PerkinElmerEnvisionParser(VendorParser):
                     asset_management_identifier=data.instrument.serial_number,  # TODO verify what this should be
                     model_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname,
-                ),
-                # processed_data_aggregate_document=ProcessedDataAggregateDocument(),
-                # calculated_data_aggregate_document=CalculatedDataAggregateDocument(),
-                # statistics_aggregate_document=StatisticsAggregateDocument(),
+                )
             ),
-            # TODO find the new plate reader manifest and add here
-            field_asm_manifest="http://purl.allotrope.org/manifests/fluorescence/REC/2023/09/fluorescence-endpoint.manifest",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/REC/2023/09/plate-reader.manifest",
         )
 
-    def _check_read_type(self, data: Data) -> Optional[str]:
+    def _get_read_type(self, data: Data) -> ReadType:
         patterns = {
-            "ABS": "Absorbance",
-            "Absorbance": "Absorbance",
-            "LUM": "Luminescence",
-            "Luminescence": "Luminescence",
-            "Fluorescence": "Fluorescence",
+            "ABS": ReadType.ABSORBANCE,
+            "Absorbance": ReadType.ABSORBANCE,
+            "LUM": ReadType.LUMINESCENCE,
+            "Luminescence": ReadType.LUMINESCENCE,
+            "Fluorescence": ReadType.FLUORESCENCE,
         }
 
         for key in patterns:
             if key in data.labels.label:
                 return patterns[key]
 
-        return None
+        return ReadType.FLUORESCENCE  # TODO check if this is correct, this is the original behavior
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
@@ -100,16 +161,17 @@ class PerkinElmerEnvisionParser(VendorParser):
 
     def _get_device_control_aggregate_document(
         self, data: Data, plate: Plate
-    ) -> Union[
-        FluorescencePointDetectionDeviceControlAggregateDocument,
-        LuminescencePointDetectionDeviceControlAggregateDocument,
-        UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
-    ]:
+    ) -> DeviceControlAggregateDocument:
         ex_filter = data.labels.excitation_filter
         em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
-        return FluorescencePointDetectionDeviceControlAggregateDocument(
+
+        read_type = self._get_read_type(data)
+        device_control_aggregate_document_class = READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT[read_type]
+        device_control_document_item_class = READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS[read_type]
+
+        return device_control_aggregate_document_class(
             [
-                FluorescencePointDetectionDeviceControlDocumentItem(
+                device_control_document_item_class(
                     device_type="fluorescence detector",
                     detector_distance_setting__plate_reader_=safe_value(
                         TQuantityValueMillimeter, plate.plate_info.measured_height
@@ -145,12 +207,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         result: Result,
         p_map: PlateMap,
         device_control_document: DeviceControlDocument,
-    ) -> Union[
-        UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-        FluorescencePointDetectionMeasurementDocumentItems,
-        LuminescencePointDetectionMeasurementDocumentItems,
-    ]:
-
+    ) -> MeasurementDocumentItems:
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=str(uuid.uuid4()),
             sample_document=SampleDocument(
