@@ -169,7 +169,7 @@ class PlateType:
         reader.drop_until("^Plate type")
         data = reader.pop_csv_block("^Plate type").T
         return PlateType(
-            float(df_to_series(data).get("Number of the wells in the plate"))
+            float(str(df_to_series(data).get("Number of the wells in the plate")))
         )
 
 
