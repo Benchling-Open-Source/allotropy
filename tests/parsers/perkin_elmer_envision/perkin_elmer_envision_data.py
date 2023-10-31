@@ -160,7 +160,9 @@ def get_model() -> Model:
                                     well_location_identifier="A01",
                                     sample_identifier=None,
                                     batch_identifier=None,
-                                    sample_role_type=str(SampleRoleType.undefined_sample_role),
+                                    sample_role_type=str(
+                                        SampleRoleType.undefined_sample_role
+                                    ),
                                     well_plate_identifier="Plate 1",
                                 ),
                                 compartment_temperature=TQuantityValueDegreeCelsius(
@@ -227,7 +229,9 @@ def get_model() -> Model:
                                     well_location_identifier="A01",
                                     sample_identifier=None,
                                     batch_identifier=None,
-                                    sample_role_type=str(SampleRoleType.undefined_sample_role),
+                                    sample_role_type=str(
+                                        SampleRoleType.undefined_sample_role
+                                    ),
                                     well_plate_identifier="Plate 1",
                                 ),
                                 compartment_temperature=TQuantityValueDegreeCelsius(
