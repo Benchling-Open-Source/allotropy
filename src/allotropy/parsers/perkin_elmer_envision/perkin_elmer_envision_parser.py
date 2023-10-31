@@ -218,9 +218,12 @@ class PerkinElmerEnvisionParser(VendorParser):
         device_control_document: list[DeviceControlDocument],
         read_type: ReadType,
     ) -> MeasurementDocumentItems:
+        plate_barcode = plate.plate_info.barcode
+        well_location = f"{result.col}{result.row}"
         sample_document = SampleDocument(
-            well_plate_identifier=plate.plate_info.barcode,
-            location_identifier=f"{result.col}{result.row}",
+            sample_identifier=f"{plate_barcode} {well_location}",
+            well_plate_identifier=plate_barcode,
+            location_identifier=well_location,
             sample_role_type=str(p_map.get_sample_role_type(result.col, result.row)),
         )
         compartment_temperature = safe_value(

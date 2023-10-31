@@ -158,7 +158,7 @@ def get_model() -> Model:
                                 ),
                                 sample_document=SampleDocument(
                                     location_identifier="A01",
-                                    sample_identifier=None,
+                                    sample_identifier="Plate 1 A01",
                                     batch_identifier=None,
                                     sample_role_type=str(
                                         SampleRoleType.undefined_sample_role
@@ -238,7 +238,7 @@ def get_model() -> Model:
                                 ),
                                 sample_document=SampleDocument(
                                     location_identifier="A01",
-                                    sample_identifier=None,
+                                    sample_identifier="Plate 1 A01",
                                     batch_identifier=None,
                                     sample_role_type=str(
                                         SampleRoleType.undefined_sample_role
