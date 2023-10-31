@@ -17,7 +17,7 @@ To configure commits to be signed by default within this repo, run `git config c
 
 # Adding a new converter
 
-Determine if the ASM schemas you need are in [the schema folder](../src/allotropy/allotrope/schemas). We keep a copy of published ASM schemas here as well as our proposed changes that are yet to be taken up by the Allotrope Foundation. We expect this to be eventually consistent with the public ASM schemas.
+Determine if the ASM schemas you need are in [the schema folder](src/allotropy/allotrope/schemas). We keep a copy of published ASM schemas here as well as our proposed changes that are yet to be taken up by the Allotrope Foundation. We expect this to be eventually consistent with the public ASM schemas.
 
 ## If the ASM schema you need is available
 
