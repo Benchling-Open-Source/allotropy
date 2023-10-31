@@ -82,25 +82,12 @@ class PlateData(ABC):
         self.statistics_doc = []
         self.actual_temperature = None
 
-        self._parse_software_version_chunk(software_version_chunk)
-        self._parse_file_paths_chunk(file_paths_chunk)
-        self._parse_all_data_chunk(all_data_chunk)
-
-    def get_read_mode(self) -> ReadMode:
-        raise NotImplementedError
-
-    def get_data_point_cls(self) -> type[DataPoint]:
-        raise NotImplementedError
-
-    def _parse_software_version_chunk(self, software_version_chunk: str) -> None:
         self.software_version = software_version_chunk.split("\t")[1]
 
-    def _parse_file_paths_chunk(self, file_paths_chunk: str) -> None:
         file_paths = file_paths_chunk.split("\n")
         self.experiment_file_path = f"{file_paths[0]}\t".split("\t")[1]
         self.protocol_file_path = f"{file_paths[1]}\t".split("\t")[1]
 
-    def _parse_all_data_chunk(self, all_data_chunk: str) -> None:
         all_data_sections = all_data_chunk.split("\n\n")
 
         is_kinetic_data = False
@@ -136,6 +123,12 @@ class PlateData(ABC):
                 else:
                     is_kinetic_data = True
                     # kinetic_data_label = data_section.strip()
+
+    def get_read_mode(self) -> ReadMode:
+        raise NotImplementedError
+
+    def get_data_point_cls(self) -> type[DataPoint]:
+        raise NotImplementedError
 
     def _parse_metadata(self, metadata: str) -> None:
         metadata_dict: dict = {}
