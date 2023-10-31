@@ -157,7 +157,7 @@ def get_model() -> Model:
                                     ]
                                 ),
                                 sample_document=SampleDocument(
-                                    well_location_identifier="A01",
+                                    location_identifier="A01",
                                     sample_identifier=None,
                                     batch_identifier=None,
                                     sample_role_type=str(
@@ -172,7 +172,18 @@ def get_model() -> Model:
                                     field_type=None,
                                 ),
                                 fluorescence=TRelativeFluorescenceUnit(31441),
-                            ),
+                            )
+                        ],
+                    )
+                ),
+                PlateReaderDocumentItem(
+                    measurement_aggregate_document=MeasurementAggregateDocument(
+                        measurement_time="2022-10-13T15:08:06+00:00",
+                        analytical_method_identifier="100302",
+                        experimental_data_identifier="3134",
+                        container_type=ContainerType.well_plate,
+                        plate_well_count=TQuantityValueNumber(value=96.0),
+                        measurement_document=[
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
                                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
@@ -226,7 +237,7 @@ def get_model() -> Model:
                                     ]
                                 ),
                                 sample_document=SampleDocument(
-                                    well_location_identifier="A01",
+                                    location_identifier="A01",
                                     sample_identifier=None,
                                     batch_identifier=None,
                                     sample_role_type=str(
@@ -244,7 +255,7 @@ def get_model() -> Model:
                             ),
                         ],
                     )
-                )
+                ),
             ],
         ),
     )

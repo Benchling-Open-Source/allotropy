@@ -295,8 +295,8 @@ class DataSourceAggregateDocument:
 
 @dataclass
 class SampleDocument:
+    location_identifier: TStringValue
     sample_identifier: Optional[TStringValue] = None
-    location_identifier: Optional[TStringValue] = None
     description: Optional[Any] = None
     batch_identifier: Optional[TStringValue] = None
     sample_role_type: Optional[TClass] = None

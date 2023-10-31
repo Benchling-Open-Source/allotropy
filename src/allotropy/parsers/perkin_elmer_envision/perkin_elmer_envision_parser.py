@@ -220,7 +220,7 @@ class PerkinElmerEnvisionParser(VendorParser):
     ) -> MeasurementDocumentItems:
         sample_document = SampleDocument(
             well_plate_identifier=plate.plate_info.barcode,
-            well_location_identifier=f"{result.col}{result.row}",
+            location_identifier=f"{result.col}{result.row}",
             sample_role_type=str(p_map.get_sample_role_type(result.col, result.row)),
         )
         compartment_temperature = safe_value(

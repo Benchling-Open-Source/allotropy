@@ -36,7 +36,22 @@ def test_get_model() -> None:
     parser = PerkinElmerEnvisionParser(TimestampParser())
     model = parser._get_model(get_data())
 
-    if model.measurement_aggregate_document:
-        model.measurement_aggregate_document.measurement_identifier = ""
+    # remove all random UUIDs
+    if model.plate_reader_aggregate_document.plate_reader_document:
+        for i in range(
+            len(model.plate_reader_aggregate_document.plate_reader_document)
+        ):
+            for j in range(
+                len(
+                    model.plate_reader_aggregate_document.plate_reader_document[
+                        i
+                    ].measurement_aggregate_document.measurement_document
+                )
+            ):
+                model.plate_reader_aggregate_document.plate_reader_document[
+                    i
+                ].measurement_aggregate_document.measurement_document[
+                    j
+                ].measurement_identifier = ""
 
     assert model == get_model()
