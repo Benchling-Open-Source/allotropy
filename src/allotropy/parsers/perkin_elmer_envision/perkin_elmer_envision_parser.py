@@ -85,13 +85,17 @@ MeasurementUnit: TypeAlias = Union[
 ]
 
 
-READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS: dict[ReadType, MeasurementDocumentItemsType] = {
+READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS: dict[
+    ReadType, MeasurementDocumentItemsType
+] = {
     ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     ReadType.FLUORESCENCE: FluorescencePointDetectionMeasurementDocumentItems,
     ReadType.LUMINESCENCE: LuminescencePointDetectionMeasurementDocumentItems,
 }
 
-READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT: dict[ReadType, DeviceControlAggregateDocumentType] = {
+READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT: dict[
+    ReadType, DeviceControlAggregateDocumentType
+] = {
     ReadType.ABSORBANCE: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     ReadType.FLUORESCENCE: FluorescencePointDetectionDeviceControlAggregateDocument,
     ReadType.LUMINESCENCE: LuminescencePointDetectionDeviceControlAggregateDocument,
@@ -125,7 +129,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     asset_management_identifier=data.instrument.serial_number,  # TODO verify what this should be
                     model_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname,
-                )
+                ),
             ),
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/REC/2023/09/plate-reader.manifest",
         )
@@ -143,7 +147,9 @@ class PerkinElmerEnvisionParser(VendorParser):
             if key in data.labels.label:
                 return patterns[key]
 
-        return ReadType.FLUORESCENCE  # TODO check if this is correct, this is the original behavior
+        return (
+            ReadType.FLUORESCENCE
+        )  # TODO check if this is correct, this is the original behavior
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
@@ -165,8 +171,12 @@ class PerkinElmerEnvisionParser(VendorParser):
         em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
 
         read_type = self._get_read_type(data)
-        device_control_aggregate_document_class = READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT[read_type]
-        device_control_document_item_class = READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS[read_type]
+        device_control_aggregate_document_class = (
+            READ_TYPE_TO_DEVICE_CONTROL_AGGREGATE_DOCUMENT[read_type]
+        )
+        device_control_document_item_class = READ_TYPE_TO_MEASUREMENT_DOCUMENT_ITEMS[
+            read_type
+        ]
 
         return device_control_aggregate_document_class(
             [
