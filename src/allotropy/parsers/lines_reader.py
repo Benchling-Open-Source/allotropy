@@ -89,6 +89,15 @@ class LinesReader:
                 yield line
 
 
+class ListReader(LinesReader):
+    def __init__(self, lines: list[str]):
+        self.contents = "\n".join(lines)
+        self.raw_contents = self.contents
+        self.lines: list[str] = lines
+        self.n_lines = len(self.lines)
+        self.current_line = 0
+
+
 class CsvReader(LinesReader):
     def pop_csv_block_as_lines(
         self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR_PATTERN
