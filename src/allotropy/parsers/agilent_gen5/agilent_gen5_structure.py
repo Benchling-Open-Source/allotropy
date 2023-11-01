@@ -33,16 +33,25 @@ class Data:
         for data_section in all_data_sections:
             if data_section.startswith("Plate Type"):
                 if ReadMode.ABSORBANCE.value in data_section:
-                    return AbsorbancePlateData(
-                        software_version_chunk, file_paths_chunk, all_data_chunk
+                    return PlateData.create(
+                        AbsorbancePlateData,
+                        software_version_chunk,
+                        file_paths_chunk,
+                        all_data_chunk,
                     )
                 elif ReadMode.FLUORESCENCE.value in data_section:
-                    return FluorescencePlateData(
-                        software_version_chunk, file_paths_chunk, all_data_chunk
+                    return PlateData.create(
+                        FluorescencePlateData,
+                        software_version_chunk,
+                        file_paths_chunk,
+                        all_data_chunk,
                     )
                 elif ReadMode.LUMINESCENCE.value in data_section:
-                    return LuminescencePlateData(
-                        software_version_chunk, file_paths_chunk, all_data_chunk
+                    return PlateData.create(
+                        LuminescencePlateData,
+                        software_version_chunk,
+                        file_paths_chunk,
+                        all_data_chunk,
                     )
         msg = "Read mode not found"
         raise AllotropeConversionError(msg)

@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+from __future__ import annotations
+
 from collections import defaultdict
 from datetime import datetime
 from io import StringIO
@@ -42,7 +43,7 @@ def try_float(value: str) -> Union[str, float]:
         return value
 
 
-class PlateData(ABC):
+class PlateData:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
     temperatures: list
@@ -62,6 +63,8 @@ class PlateData(ABC):
 
     def __init__(
         self,
+        read_mode: ReadMode,
+        data_point_cls: type[DataPoint],
         software_version_chunk: str,
         file_paths_chunk: str,
         all_data_chunk: str,
@@ -109,7 +112,7 @@ class PlateData(ABC):
                 for procedure_chunk in procedure_chunks:
                     PlateData._parse_procedure_chunk(
                         procedure_chunk,
-                        self.get_read_mode(),
+                        read_mode,
                         self.read_names,
                     )
             elif data_section.startswith("Layout"):
@@ -126,11 +129,11 @@ class PlateData(ABC):
                 PlateData._parse_results(
                     data_section,
                     self.wells,
-                    self.get_read_mode(),
+                    read_mode,
                     self.read_names,
                     self.processed_datas,
                     self.measurements,
-                    self.get_data_point_cls(),
+                    data_point_cls,
                     self.read_type,
                     self.plate_barcode,
                     self.layout,
@@ -157,8 +160,8 @@ class PlateData(ABC):
                     blank_kinetic_data_label,
                     self.processed_datas,
                     self.read_type,
-                    self.get_read_mode(),
-                    self.get_data_point_cls(),
+                    read_mode,
+                    data_point_cls,
                     self.kinetic_times,
                 )
                 is_blank_kinetic_data = False
@@ -172,10 +175,27 @@ class PlateData(ABC):
                     is_kinetic_data = True
                     # kinetic_data_label = data_section.strip()
 
-    def get_read_mode(self) -> ReadMode:
+    @staticmethod
+    def create(
+        cls: type[PlateData],
+        software_version_chunk: str,
+        file_paths_chunk: str,
+        all_data_chunk: str,
+    ) -> PlateData:
+        return cls(
+            read_mode=cls.get_read_mode(),
+            data_point_cls=cls.get_data_point_cls(),
+            software_version_chunk=software_version_chunk,
+            file_paths_chunk=file_paths_chunk,
+            all_data_chunk=all_data_chunk,
+        )
+
+    @staticmethod
+    def get_read_mode() -> ReadMode:
         raise NotImplementedError
 
-    def get_data_point_cls(self) -> type[DataPoint]:
+    @staticmethod
+    def get_data_point_cls() -> type[DataPoint]:
         raise NotImplementedError
 
     @staticmethod
@@ -463,6 +483,5 @@ class PlateData(ABC):
         hours, minutes, seconds = tuple(int(num) for num in hhmmss.split(":"))
         return (3600 * hours) + (60 * minutes) + seconds
 
-    @abstractmethod
     def to_allotrope(self, measurement_docs: list) -> Any:
         raise NotImplementedError

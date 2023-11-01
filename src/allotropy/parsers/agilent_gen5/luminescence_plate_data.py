@@ -14,10 +14,12 @@ from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
 class LuminescencePlateData(PlateData):
-    def get_read_mode(self) -> ReadMode:
+    @staticmethod
+    def get_read_mode() -> ReadMode:
         return ReadMode.LUMINESCENCE
 
-    def get_data_point_cls(self) -> type[DataPoint]:
+    @staticmethod
+    def get_data_point_cls() -> type[DataPoint]:
         return LuminescenceDataPoint
 
     def to_allotrope(self, measurement_docs: list[MeasurementDocumentItem]) -> Model:
