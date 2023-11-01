@@ -3,11 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
-from allotropy.parsers.agilent_gen5.absorbance_plate_data import AbsorbancePlateData
 from allotropy.parsers.agilent_gen5.constants import ReadMode
-from allotropy.parsers.agilent_gen5.fluorescence_plate_data import FluorescencePlateData
-from allotropy.parsers.agilent_gen5.luminescence_plate_data import LuminescencePlateData
-from allotropy.parsers.agilent_gen5.plate_data import PlateData
+from allotropy.parsers.agilent_gen5.plate_data import (
+    AbsorbancePlateData,
+    FluorescencePlateData,
+    LuminescencePlateData,
+    PlateData,
+)
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import assert_not_none

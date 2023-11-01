@@ -5,11 +5,25 @@ from dataclasses import dataclass
 from datetime import datetime as datetime_lib
 from io import StringIO
 from typing import Any, Optional, Union
+import uuid
 
 import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+    ContainerType as FluorescenceContainerType,
+    MeasurementAggregateDocument as FluorescenceMeasurementAggregateDocument,
+    MeasurementDocumentItem as FluorescenceMeasurementDocumentItem,
+    Model as FluorescenceModel,
+)
+from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence import (
+    ContainerType as LuminescenceContainerType,
+    MeasurementAggregateDocument as LuminescenceMeasurementAggregateDocument,
+    MeasurementDocumentItem as LuminescenceMeasurementDocumentItem,
+    Model as LuminescenceModel,
+)
+from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TDatacube,
@@ -17,12 +31,21 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
+from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
+    ContainerType as AbsorbanceContainerType,
+    MeasurementAggregateDocument as AbsorbanceMeasurementAggregateDocument,
+    MeasurementDocumentItem as AbsorbanceMeasurementDocumentItem,
+    Model as AbsorbanceModel,
+)
+from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
     ReadMode,
     ReadType,
     READTYPE_TO_DIMENSIONS,
 )
 from allotropy.parsers.agilent_gen5.data_point import DataPoint
+from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
+from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
 
 METADATA_PREFIXES = frozenset(
     {
@@ -487,3 +510,81 @@ class PlateData:
 
     def to_allotrope(self, measurement_docs: list) -> Any:
         raise NotImplementedError
+
+
+class AbsorbancePlateData(PlateData):
+    @staticmethod
+    def get_read_mode() -> ReadMode:
+        return ReadMode.ABSORBANCE
+
+    @staticmethod
+    def get_data_point_cls() -> type[DataPoint]:
+        return AbsorbanceDataPoint
+
+    def to_allotrope(
+        self, measurement_docs: list[AbsorbanceMeasurementDocumentItem]
+    ) -> AbsorbanceModel:
+        return AbsorbanceModel(
+            measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
+                measurement_identifier=str(uuid.uuid4()),
+                measurement_time=self.datetime,
+                analytical_method_identifier=self.protocol_file_path,
+                experimental_data_identifier=self.experiment_file_path,
+                container_type=AbsorbanceContainerType.well_plate,
+                plate_well_count=TQuantityValueNumber(len(self.wells)),
+                # TODO read_type=self.read_type.value?,
+                measurement_document=measurement_docs,
+            )
+        )
+
+
+class FluorescencePlateData(PlateData):
+    @staticmethod
+    def get_read_mode() -> ReadMode:
+        return ReadMode.FLUORESCENCE
+
+    @staticmethod
+    def get_data_point_cls() -> type[DataPoint]:
+        return FluorescenceDataPoint
+
+    def to_allotrope(
+        self, measurement_docs: list[FluorescenceMeasurementDocumentItem]
+    ) -> FluorescenceModel:
+        return FluorescenceModel(
+            measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
+                measurement_identifier=str(uuid.uuid4()),
+                measurement_time=self.datetime,
+                analytical_method_identifier=self.protocol_file_path,
+                experimental_data_identifier=self.experiment_file_path,
+                container_type=FluorescenceContainerType.well_plate,
+                plate_well_count=TQuantityValueNumber(len(self.wells)),
+                # TODO read_type=self.read_type.value?,
+                measurement_document=measurement_docs,
+            )
+        )
+
+
+class LuminescencePlateData(PlateData):
+    @staticmethod
+    def get_read_mode() -> ReadMode:
+        return ReadMode.LUMINESCENCE
+
+    @staticmethod
+    def get_data_point_cls() -> type[DataPoint]:
+        return LuminescenceDataPoint
+
+    def to_allotrope(
+        self, measurement_docs: list[LuminescenceMeasurementDocumentItem]
+    ) -> LuminescenceModel:
+        return LuminescenceModel(
+            measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
+                measurement_identifier=str(uuid.uuid4()),
+                measurement_time=self.datetime,
+                analytical_method_identifier=self.protocol_file_path,
+                experimental_data_identifier=self.experiment_file_path,
+                container_type=LuminescenceContainerType.well_plate,
+                plate_well_count=TQuantityValueNumber(len(self.wells)),
+                # TODO read_type=self.read_type.value?,
+                measurement_document=measurement_docs,
+            )
+        )
