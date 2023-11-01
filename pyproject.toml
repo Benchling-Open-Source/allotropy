@@ -119,7 +119,7 @@ style = [
   "black --check --diff {args:.}",
   "flake8 .",
 ]
-fix = [
+fmt = [
   "black {args:.}",
   "ruff --fix {args:.}",
   "style",

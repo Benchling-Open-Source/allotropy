@@ -1,5 +1,7 @@
 from io import StringIO
 
+import pytest
+
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ScanPositionSettingPlateReader,
 )
@@ -160,6 +162,13 @@ def test_create_basic_assay_info() -> None:
     )
 
     assert BasicAssayInfo.create(reader) == expected
+
+
+def test_create_basic_assay_info_fails() -> None:
+    reader = get_reader_from_lines([])
+    # TODO(brian): Improve src to throw AllotropeConversionError (or AllotropyError?)
+    with pytest.raises(Exception, match="Did not find \\^Basic assay information"):
+        BasicAssayInfo.create(reader)
 
 
 def test_create_plate_type() -> None:
