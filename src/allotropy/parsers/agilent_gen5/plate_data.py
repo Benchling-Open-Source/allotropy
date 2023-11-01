@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from datetime import datetime
+from dataclasses import dataclass
+from datetime import datetime as datetime_lib
 from io import StringIO
 from typing import Any, Optional, Union
 
@@ -43,6 +44,7 @@ def try_float(value: str) -> Union[str, float]:
         return value
 
 
+@dataclass
 class PlateData:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -56,40 +58,41 @@ class PlateData:
     datetime: Optional[str]
     experiment_file_path: Optional[str]
     protocol_file_path: Optional[str]
-    read_type: ReadType
-    plate_barcode: str
     statistics_doc: list
     actual_temperature: Optional[float]
+    read_type: ReadType
+    plate_barcode: str
 
-    def __init__(
-        self,
-        read_mode: ReadMode,
-        data_point_cls: type[DataPoint],
+    @staticmethod
+    def create(
+        cls: type[PlateData],
         software_version_chunk: str,
         file_paths_chunk: str,
         all_data_chunk: str,
-    ):
-        self.measurements = defaultdict(list)
-        self.processed_datas = defaultdict(list)
-        self.temperatures = []
-        self.kinetic_times = None
+    ) -> PlateData:
+        read_mode = cls.get_read_mode()
+        data_point_cls = cls.get_data_point_cls()
 
-        self.measurement_docs = []
-        self.wells = []
-        self.layout = {}
-        self.concentrations = {}
-        self.read_names = []
-        self.datetime = None
-        self.experiment_file_path = None
-        self.protocol_file_path = None
-        self.statistics_doc = []
-        self.actual_temperature = None
+        measurements: defaultdict[str, list] = defaultdict(list)
+        processed_datas: defaultdict[str, list] = defaultdict(list)
+        temperatures: list = []
+        kinetic_times = None
+        measurement_docs: list = []
+        wells: list = []
+        layout: dict = {}
+        concentrations: dict = {}
+        read_names: list = []
+        datetime = None
+        experiment_file_path = None
+        protocol_file_path = None
+        statistics_doc = []
+        actual_temperature = None
 
-        self.software_version = software_version_chunk.split("\t")[1]
+        software_version = software_version_chunk.split("\t")[1]  # noqa: F841
 
         file_paths = file_paths_chunk.split("\n")
-        self.experiment_file_path = f"{file_paths[0]}\t".split("\t")[1]
-        self.protocol_file_path = f"{file_paths[1]}\t".split("\t")[1]
+        experiment_file_path = f"{file_paths[0]}\t".split("\t")[1]
+        protocol_file_path = f"{file_paths[1]}\t".split("\t")[1]
 
         all_data_sections = all_data_chunk.split("\n\n")
 
@@ -101,72 +104,70 @@ class PlateData:
         for data_section in all_data_sections:
             if data_section.startswith("Plate Number"):
                 metadata_dict = PlateData._parse_metadata(data_section)
-                self.datetime = datetime.strptime(  # noqa: DTZ007
+                datetime = datetime_lib.strptime(  # noqa: DTZ007
                     f"{metadata_dict['Date']} {metadata_dict['Time']}",
                     GEN5_DATETIME_FORMAT,
                 ).isoformat()
-                self.plate_barcode = metadata_dict["Plate Number"]
+                plate_barcode = metadata_dict["Plate Number"]
             elif data_section.startswith("Plate Type"):
-                self.read_type = PlateData.get_read_type(data_section)
+                read_type = PlateData.get_read_type(data_section)
                 procedure_chunks = PlateData._parse_procedure_chunks(data_section)
                 for procedure_chunk in procedure_chunks:
                     PlateData._parse_procedure_chunk(
                         procedure_chunk,
                         read_mode,
-                        self.read_names,
+                        read_names,
                     )
             elif data_section.startswith("Layout"):
                 PlateData._parse_layout(
                     data_section,
-                    self.layout,
-                    self.concentrations,
+                    layout,
+                    concentrations,
                 )
             elif data_section.startswith("Actual Temperature"):
-                self.actual_temperature = PlateData._parse_actual_temperature(
-                    data_section
-                )
+                actual_temperature = PlateData._parse_actual_temperature(data_section)
             elif data_section.startswith("Results"):
                 PlateData._parse_results(
                     data_section,
-                    self.wells,
+                    wells,
                     read_mode,
-                    self.read_names,
-                    self.processed_datas,
-                    self.measurements,
+                    read_names,
+                    processed_datas,
+                    measurements,
                     data_point_cls,
-                    self.read_type,
-                    self.plate_barcode,
-                    self.layout,
-                    self.concentrations,
-                    self.actual_temperature,
-                    self.measurement_docs,
+                    read_type,
+                    plate_barcode,
+                    layout,
+                    concentrations,
+                    actual_temperature,
+                    measurement_docs,
                 )
             elif data_section.startswith("Curve Name"):
-                self.statistics_doc = PlateData._parse_stdcurve(
+                statistics_doc = PlateData._parse_stdcurve(
                     data_section,
-                    self.plate_barcode,
-                    self.wells,
+                    plate_barcode,
+                    wells,
                 )
             elif is_kinetic_data:
-                self.kinetic_times, self.temperatures = PlateData._parse_kinetic_data(
+                kinetic_times, temperatures = PlateData._parse_kinetic_data(
                     data_section,
-                    self.wells,
-                    self.measurements,
+                    wells,
+                    measurements,
                 )
                 is_kinetic_data = False
             elif is_blank_kinetic_data:
                 PlateData._parse_blank_kinetic_data(
                     data_section,
                     blank_kinetic_data_label,
-                    self.processed_datas,
-                    self.read_type,
+                    processed_datas,
+                    read_type,
                     read_mode,
                     data_point_cls,
-                    self.kinetic_times,
+                    kinetic_times,
                 )
                 is_blank_kinetic_data = False
             elif len(data_section.split("\n")) == 1 and any(
-                read_name in data_section for read_name in self.read_names
+                read_name in data_section for read_name in read_names
             ):
                 if data_section.startswith("Blank"):
                     is_blank_kinetic_data = True
@@ -175,19 +176,23 @@ class PlateData:
                     is_kinetic_data = True
                     # kinetic_data_label = data_section.strip()
 
-    @staticmethod
-    def create(
-        cls: type[PlateData],
-        software_version_chunk: str,
-        file_paths_chunk: str,
-        all_data_chunk: str,
-    ) -> PlateData:
         return cls(
-            read_mode=cls.get_read_mode(),
-            data_point_cls=cls.get_data_point_cls(),
-            software_version_chunk=software_version_chunk,
-            file_paths_chunk=file_paths_chunk,
-            all_data_chunk=all_data_chunk,
+            measurements=measurements,
+            processed_datas=processed_datas,
+            temperatures=temperatures,
+            kinetic_times=kinetic_times,
+            measurement_docs=measurement_docs,
+            wells=wells,
+            layout=layout,
+            concentrations=concentrations,
+            read_names=read_names,
+            datetime=datetime,
+            experiment_file_path=experiment_file_path,
+            protocol_file_path=protocol_file_path,
+            statistics_doc=statistics_doc,
+            actual_temperature=actual_temperature,
+            read_type=read_type,
+            plate_barcode=plate_barcode,
         )
 
     @staticmethod
