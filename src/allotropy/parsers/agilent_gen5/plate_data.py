@@ -46,6 +46,8 @@ from allotropy.parsers.agilent_gen5.constants import (
 from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
 from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
+from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.values import assert_not_none
 
 METADATA_PREFIXES = frozenset(
     {
@@ -87,15 +89,7 @@ class PlateData:
     plate_barcode: str
 
     @staticmethod
-    def create(
-        cls: type[PlateData],
-        software_version_chunk: str,
-        file_paths_chunk: str,
-        all_data_chunk: str,
-    ) -> PlateData:
-        read_mode = cls.get_read_mode()
-        data_point_cls = cls.get_data_point_cls()
-
+    def create(lines_reader: LinesReader) -> PlateData:
         measurements: defaultdict[str, list] = defaultdict(list)
         processed_datas: defaultdict[str, list] = defaultdict(list)
         temperatures: list = []
@@ -108,13 +102,43 @@ class PlateData:
         statistics_doc = []
         actual_temperature = None
 
-        software_version = software_version_chunk.split("\t")[1]  # noqa: F841
+        software_version_chunk = assert_not_none(
+            lines_reader.drop_until("^Software Version"), "Software Version"
+        )
 
-        file_paths = file_paths_chunk.split("\n")
-        experiment_file_path = f"{file_paths[0]}\t".split("\t")[1]
-        protocol_file_path = f"{file_paths[1]}\t".split("\t")[1]
+        assert_not_none(
+            lines_reader.drop_until("^Experiment File Path"), "Experiment File Path"
+        )
+        file_paths = lines_reader.pop_until_empty()
+        experiment_file_path = f"{next(file_paths)}\t".split("\t")[1]
+        protocol_file_path = f"{next(file_paths)}\t".split("\t")[1]
 
+        assert_not_none(
+            lines_reader.drop_until("^Plate Number"),
+            "Plate Number",
+        )
+        all_data_chunk = "\n".join(lines_reader.pop_until("^Software Version"))
         all_data_sections = all_data_chunk.split("\n\n")
+
+        cls: Optional[type[PlateData]] = None
+        for data_section in all_data_sections:
+            if data_section.startswith("Plate Type"):
+                if ReadMode.ABSORBANCE.value in data_section:
+                    cls = AbsorbancePlateData
+                    break
+                elif ReadMode.FLUORESCENCE.value in data_section:
+                    cls = FluorescencePlateData
+                    break
+                elif ReadMode.LUMINESCENCE.value in data_section:
+                    cls = LuminescencePlateData
+                    break
+
+        if cls is None:
+            msg = "Read mode not found"
+            raise AllotropeConversionError(msg)
+
+        read_mode = cls.get_read_mode()
+        data_point_cls = cls.get_data_point_cls()
 
         is_kinetic_data = False
         # kinetic_data_label = None
