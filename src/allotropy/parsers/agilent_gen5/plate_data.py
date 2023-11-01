@@ -55,9 +55,9 @@ class PlateData:
     layout: dict
     concentrations: dict
     read_names: list
-    datetime: Optional[str]
-    experiment_file_path: Optional[str]
-    protocol_file_path: Optional[str]
+    datetime: str
+    experiment_file_path: str
+    protocol_file_path: str
     statistics_doc: list
     actual_temperature: Optional[float]
     read_type: ReadType
@@ -82,9 +82,6 @@ class PlateData:
         layout: dict = {}
         concentrations: dict = {}
         read_names: list = []
-        datetime = None
-        experiment_file_path = None
-        protocol_file_path = None
         statistics_doc = []
         actual_temperature = None
 
