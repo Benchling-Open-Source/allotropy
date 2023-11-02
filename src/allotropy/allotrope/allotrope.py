@@ -30,7 +30,6 @@ SPECIAL_KEYS = {
     "cube_structure": "cube-structure",
     "field_componentDatatype": "@componentDatatype",
     "field_asm_fill_value": "$asm.fill-value",
-    "field_asm_manifest": "$asm.manifest",
     "field_type": "@type",
     "field_index": "@index",
     "scan_position_setting__plate_reader_": "scan position setting (plate reader)",
