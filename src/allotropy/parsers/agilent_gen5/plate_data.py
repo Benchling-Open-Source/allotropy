@@ -117,28 +117,40 @@ class PlateData:
         ).isoformat()
         plate_barcode = metadata_dict["Plate Number"]
 
-        all_data_chunk = "\n".join(lines_reader.pop_until("^Software Version"))
-        all_data_sections = all_data_chunk.split("\n\n")
+        assert_not_none(lines_reader.drop_until("^Plate Type"), "Plate Type")
+        data_section = "\n".join(
+            [
+                lines_reader.pop() or "",
+                *lines_reader.pop_until_empty(),
+            ]
+        )
+        lines_reader.drop_empty()
 
         cls: Optional[type[PlateData]] = None
-        for data_section in all_data_sections:
-            if data_section.startswith("Plate Type"):
-                if ReadMode.ABSORBANCE.value in data_section:
-                    cls = AbsorbancePlateData
-                    break
-                elif ReadMode.FLUORESCENCE.value in data_section:
-                    cls = FluorescencePlateData
-                    break
-                elif ReadMode.LUMINESCENCE.value in data_section:
-                    cls = LuminescencePlateData
-                    break
-
-        if cls is None:
+        if ReadMode.ABSORBANCE.value in data_section:
+            cls = AbsorbancePlateData
+        elif ReadMode.FLUORESCENCE.value in data_section:
+            cls = FluorescencePlateData
+        elif ReadMode.LUMINESCENCE.value in data_section:
+            cls = LuminescencePlateData
+        else:
             msg = "Read mode not found"
             raise AllotropeConversionError(msg)
 
         read_mode = cls.get_read_mode()
         data_point_cls = cls.get_data_point_cls()
+
+        read_type = PlateData.get_read_type(data_section)
+        procedure_chunks = PlateData._parse_procedure_chunks(data_section)
+        for procedure_chunk in procedure_chunks:
+            PlateData._parse_procedure_chunk(
+                procedure_chunk,
+                read_mode,
+                read_names,
+            )
+
+        all_data_chunk = "\n".join(lines_reader.pop_until("^Software Version"))
+        all_data_sections = all_data_chunk.split("\n\n")
 
         is_kinetic_data = False
         # kinetic_data_label = None
@@ -146,16 +158,7 @@ class PlateData:
         blank_kinetic_data_label = None
 
         for data_section in all_data_sections:
-            if data_section.startswith("Plate Type"):
-                read_type = PlateData.get_read_type(data_section)
-                procedure_chunks = PlateData._parse_procedure_chunks(data_section)
-                for procedure_chunk in procedure_chunks:
-                    PlateData._parse_procedure_chunk(
-                        procedure_chunk,
-                        read_mode,
-                        read_names,
-                    )
-            elif data_section.startswith("Layout"):
+            if data_section.startswith("Layout"):
                 PlateData._parse_layout(
                     data_section,
                     layout,
