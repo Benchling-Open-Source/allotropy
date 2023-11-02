@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add missing example outputs for AppBio Quantstudio tests
 ### Fixed
+- Update plate-reader schema to be compatible with current supported adapters and change REC -> BENCHLING
 ### Changed
 ### Deprecated
 ### Removed
