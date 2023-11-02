@@ -225,7 +225,7 @@ def test_create_plate_maps() -> None:
             group_n="1",
             sample_role_type_mapping={
                 "01": {
-                    "A": SampleRoleType.undefined_sample_role,
+                    "A": SampleRoleType.unknown_sample_role,
                     "C": SampleRoleType.standard_sample_role,
                 },
                 "02": {"B": SampleRoleType.control_sample_role},

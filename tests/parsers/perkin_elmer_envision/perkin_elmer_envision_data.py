@@ -65,7 +65,7 @@ def get_data() -> Data:
                 plate_n="1",
                 group_n="1",
                 sample_role_type_mapping={
-                    "01": {"A": SampleRoleType.undefined_sample_role}
+                    "01": {"A": SampleRoleType.unknown_sample_role}
                 },
             ),
         },
@@ -161,7 +161,7 @@ def get_model() -> Model:
                                     sample_identifier="Plate 1 A01",
                                     batch_identifier=None,
                                     sample_role_type=str(
-                                        SampleRoleType.undefined_sample_role
+                                        SampleRoleType.unknown_sample_role
                                     ),
                                     well_plate_identifier="Plate 1",
                                 ),
@@ -241,7 +241,7 @@ def get_model() -> Model:
                                     sample_identifier="Plate 1 A01",
                                     batch_identifier=None,
                                     sample_role_type=str(
-                                        SampleRoleType.undefined_sample_role
+                                        SampleRoleType.unknown_sample_role
                                     ),
                                     well_plate_identifier="Plate 1",
                                 ),

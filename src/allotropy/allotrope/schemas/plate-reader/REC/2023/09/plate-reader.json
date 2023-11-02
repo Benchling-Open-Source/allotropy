@@ -14,7 +14,6 @@
               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
               "$asm.pattern": "aggregate datum",
               "required": [
-                "asset management identifier",
                 "device identifier",
                 "model number"
               ],
@@ -1219,8 +1218,7 @@
         "absorbance",
         "sample document",
         "device control aggregate document",
-        "measurement identifier",
-        "compartment temperature"
+        "measurement identifier"
       ],
       "properties": {
         "measurement time": {
@@ -1349,8 +1347,7 @@
         "fluorescence",
         "sample document",
         "device control aggregate document",
-        "measurement identifier",
-        "compartment temperature"
+        "measurement identifier"
       ],
       "properties": {
         "measurement time": {
@@ -1464,8 +1461,7 @@
         "luminescence",
         "sample document",
         "device control aggregate document",
-        "measurement identifier",
-        "compartment temperature"
+        "measurement identifier"
       ],
       "properties": {
         "measurement time": {

@@ -224,7 +224,7 @@ class PerkinElmerEnvisionParser(VendorParser):
             sample_identifier=f"{plate_barcode} {well_location}",
             well_plate_identifier=plate_barcode,
             location_identifier=well_location,
-            sample_role_type=str(p_map.get_sample_role_type(result.col, result.row)),
+            sample_role_type=p_map.get_sample_role_type(result.col, result.row).value,
         )
         compartment_temperature = safe_value(
             TQuantityValueDegreeCelsius,

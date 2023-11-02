@@ -181,7 +181,7 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
     # LH        lance_high          control_sample_role
     # S         pl_sample           sample_role
     # STD       standard            standard_sample_role
-    # -         undefined           <UNDEFINED>
+    # -         unknown             unknown_sample_role
     # UNK       unknown             unknown_sample_role
     # ZH        z_high              control_sample_role
     # ZL        z_low               control_sample_role
@@ -193,7 +193,7 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
         "LH": SampleRoleType.control_sample_role,
         "STD": SampleRoleType.standard_sample_role,
         "S": SampleRoleType.sample_role,
-        "-": SampleRoleType.undefined_sample_role,
+        "-": SampleRoleType.unknown_sample_role,
         "UNK": SampleRoleType.unknown_sample_role,
         "ZH": SampleRoleType.control_sample_role,
         "ZL": SampleRoleType.control_sample_role,
