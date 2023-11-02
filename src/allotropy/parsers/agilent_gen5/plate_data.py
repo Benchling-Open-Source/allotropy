@@ -109,10 +109,14 @@ class PlateData:
         experiment_file_path = f"{next(file_paths)}\t".split("\t")[1]
         protocol_file_path = f"{next(file_paths)}\t".split("\t")[1]
 
-        assert_not_none(
-            lines_reader.drop_until("^Plate Number"),
-            "Plate Number",
-        )
+        assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
+        metadata_dict = PlateData._parse_metadata(lines_reader)
+        datetime = datetime_lib.strptime(  # noqa: DTZ007
+            f"{metadata_dict['Date']} {metadata_dict['Time']}",
+            GEN5_DATETIME_FORMAT,
+        ).isoformat()
+        plate_barcode = metadata_dict["Plate Number"]
+
         all_data_chunk = "\n".join(lines_reader.pop_until("^Software Version"))
         all_data_sections = all_data_chunk.split("\n\n")
 
@@ -142,14 +146,7 @@ class PlateData:
         blank_kinetic_data_label = None
 
         for data_section in all_data_sections:
-            if data_section.startswith("Plate Number"):
-                metadata_dict = PlateData._parse_metadata(data_section)
-                datetime = datetime_lib.strptime(  # noqa: DTZ007
-                    f"{metadata_dict['Date']} {metadata_dict['Time']}",
-                    GEN5_DATETIME_FORMAT,
-                ).isoformat()
-                plate_barcode = metadata_dict["Plate Number"]
-            elif data_section.startswith("Plate Type"):
+            if data_section.startswith("Plate Type"):
                 read_type = PlateData.get_read_type(data_section)
                 procedure_chunks = PlateData._parse_procedure_chunks(data_section)
                 for procedure_chunk in procedure_chunks:
@@ -244,10 +241,9 @@ class PlateData:
         raise NotImplementedError
 
     @staticmethod
-    def _parse_metadata(metadata: str) -> dict:
+    def _parse_metadata(lines_reader: LinesReader) -> dict:
         metadata_dict: dict = {}
-        metadata_lines = metadata.splitlines()
-        for metadata_line in metadata_lines:
+        for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
                 msg = f"Unrecognized metadata {line_split[0]}"
