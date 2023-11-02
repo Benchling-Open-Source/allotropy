@@ -1,3 +1,4 @@
+import json
 import pytest
 
 from allotropy.parser_factory import Vendor
@@ -30,7 +31,9 @@ def test_parse_perkin_elmer_envision_to_asm(output_file: str) -> None:
         f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "plate-reader/REC/2023/09/plate-reader.json")
+    with open(f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.json", "w") as f:
+        json.dump(allotrope_dict, f, indent=4)
+    validate_schema(allotrope_dict, "plate-reader/BENCHLING/2023/09/plate-reader.json")
     validate_contents(allotrope_dict, expected_filepath)
 
 

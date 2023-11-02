@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -89,7 +89,7 @@ def get_data() -> Data:
 
 def get_model() -> Model:
     return Model(
-        field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/REC/2023/09/plate-reader.manifest",
+        field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         plate_reader_aggregate_document=PlateReaderAggregateDocument(
             device_system_document=DeviceSystemDocument(
                 model_number="1050209",
@@ -170,18 +170,7 @@ def get_model() -> Model:
                                     field_type=None,
                                 ),
                                 fluorescence=TRelativeFluorescenceUnit(31441),
-                            )
-                        ],
-                    )
-                ),
-                PlateReaderDocumentItem(
-                    measurement_aggregate_document=MeasurementAggregateDocument(
-                        measurement_time="2022-10-13T15:08:06+00:00",
-                        analytical_method_identifier="100302",
-                        experimental_data_identifier="3134",
-                        container_type=ContainerType.well_plate,
-                        plate_well_count=TQuantityValueNumber(value=96.0),
-                        measurement_document=[
+                            ),
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
                                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(

@@ -1,10 +1,11 @@
+from collections import defaultdict
 from enum import Enum
 from io import IOBase
 from typing import Any, cast, Optional, TypeVar, Union
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
-from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DeviceControlDocument,
     DeviceSystemDocument,
@@ -87,7 +88,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     device_identifier=data.instrument.nickname,
                 ),
             ),
-            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/REC/2023/09/plate-reader.manifest",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         )
 
     def _get_read_type(self, data: Data) -> ReadType:
@@ -277,6 +278,8 @@ class PerkinElmerEnvisionParser(VendorParser):
         measurement_time = self._get_measurement_time(data)
         read_type = self._get_read_type(data)
 
+        measurement_docs_dict = defaultdict(list)
+
         for plate in data.plates:
             if plate.results is None:
                 continue
@@ -291,30 +294,34 @@ class PerkinElmerEnvisionParser(VendorParser):
                 self._get_device_control_aggregate_document(data, plate, read_type)
             )
 
-            items += [
+            for result in plate.results:
+                measurement_docs_dict[(plate.plate_info.number, result.col, result.row)].append(
+                    self._get_measurement_document(
+                        plate,
+                        result,
+                        p_map,
+                        cast(
+                            list[DeviceControlDocument],
+                            device_control_aggregate_document.device_control_document,
+                        ),
+                        read_type,
+                    )
+                )
+
+        for well_location in sorted(measurement_docs_dict.keys()):
+            items.append(
                 PlateReaderDocumentItem(
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         measurement_time=measurement_time,
                         plate_well_count=TQuantityValueNumber(
                             value=data.number_of_wells
                         ),
-                        measurement_document=[
-                            self._get_measurement_document(
-                                plate,
-                                result,
-                                p_map,
-                                cast(
-                                    list[DeviceControlDocument],
-                                    device_control_aggregate_document.device_control_document,
-                                ),
-                                read_type,
-                            )
-                        ],
+                        measurement_document=measurement_docs_dict[well_location],
                         analytical_method_identifier=data.basic_assay_info.protocol_id,
                         experimental_data_identifier=data.basic_assay_info.assay_id,
                         container_type=ContainerType.well_plate,
                     )
                 )
-                for result in plate.results
-            ]
+            )
+
         return items

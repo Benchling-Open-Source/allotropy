@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
-from allotropy.allotrope.models.plate_reader_rec_2023_09_plate_reader import (
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
@@ -359,7 +359,7 @@ class Labels:
             emission_filters,
             filter_position_map.get(str(series.get("Using of emission filter")), None),
             number_of_flashes=try_float(str(series.get("Number of flashes"))),
-            detector_gain_setting=str(series.get("Reference AD gain")),
+            detector_gain_setting=series.get("Reference AD gain"),
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:
