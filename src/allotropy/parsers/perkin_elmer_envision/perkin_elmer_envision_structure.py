@@ -272,12 +272,12 @@ def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
 class Filter:
     name: str
     wavelength: float
-    bandwidth: float
+    bandwidth: Optional[float] = None
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[Filter]:
         if not reader.current_line_exists() or reader.match(
-            "(^Mirror modules)|(^Instrument:)"
+            "(^Mirror modules)|(^Instrument:)|(^Aperture:)"
         ):
             return None
 
@@ -288,21 +288,27 @@ class Filter:
 
         description = str(series.get("Description"))
 
-        search_result = search("CWL=\\d*nm", description)
+        search_result = search("(Longpass)=\\d*nm", description)
+        if search_result is not None:
+            wavelength = float(
+                search_result.group().removeprefix("Longpass=").removesuffix("nm")
+            )
+            return Filter(name, wavelength)
+
+        search_result = search("(CWL)=\\d*nm", description)
         if search_result is None:
             msg = f"Unable to find wavelength for filter {name}"
             raise AllotropyError(msg)
         wavelength = float(
             search_result.group().removeprefix("CWL=").removesuffix("nm")
         )
-
         search_result = search("BW=\\d*nm", description)
         if search_result is None:
             msg = f"Unable to find bandwidth for filter {name}"
             raise AllotropyError(msg)
         bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
 
-        return Filter(name, wavelength, bandwidth)
+        return Filter(name, wavelength, bandwidth=bandwidth)
 
 
 def create_filters(reader: CsvReader) -> dict[str, Filter]:

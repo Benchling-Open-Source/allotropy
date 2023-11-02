@@ -12,9 +12,12 @@ from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
 output_files = (
+    "PE_Envision_absorbance_example01",
     "PE_Envision_fluorescence_example01",
     "PE_Envision_fluorescence_example02",
     "PE_Envision_fluorescence_example03",
+    "PE_Envision_fluorescence_example04",
+    "PE_Envision_luminescence_example01",
 )
 
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
