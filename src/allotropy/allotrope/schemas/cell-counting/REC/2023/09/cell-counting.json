@@ -164,186 +164,6 @@
                               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
                               "$asm.pattern": "aggregate datum",
                               "properties": {
-                                "measurement time": {
-                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
-                                  "$asm.pattern": "value datum",
-                                  "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
-                                  "$ref": "#/$defs/tDateTimeStampValue"
-                                },
-                                "measurement identifier": {
-                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
-                                  "$asm.pattern": "value datum",
-                                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                  "$ref": "#/$defs/tStringValue"
-                                },
-                                "device control aggregate document": {
-                                  "type": "object",
-                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
-                                  "$asm.pattern": "aggregate datum",
-                                  "required": [
-                                    "device control document"
-                                  ],
-                                  "properties": {
-                                    "device control document": {
-                                      "type": "array",
-                                      "$asm.array-ordered": true,
-                                      "$asm.array-mixed": false,
-                                      "$asm.pattern": "indexed datum",
-                                      "items": {
-                                        "allOf": [
-                                          {
-                                            "type": "object",
-                                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
-                                            "$asm.pattern": "aggregate datum",
-                                            "properties": {
-                                              "device identifier": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002018",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "device type": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "detection type": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "product manufacturer": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001258",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "brand name": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001680",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "equipment serial number": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "model number": {
-                                                "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "firmware version": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001259",
-                                                "$asm.pattern": "value datum",
-                                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                "$ref": "#/$defs/tStringValue"
-                                              },
-                                              "sample volume setting": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",
-                                                "$asm.pattern": "quantity datum",
-                                                "$ref": "#/$custom/tQuantityValueMicroliter"
-                                              },
-                                              "illumination setting": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002861",
-                                                "$asm.pattern": "quantity datum",
-                                                "$ref": "#/$custom/tQuantityValuePercent"
-                                              },
-                                              "exposure duration setting": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
-                                                "$asm.pattern": "quantity datum",
-                                                "$ref": "#/$custom/tQuantityValueMilliSecond"
-                                              },
-                                              "detector gain setting": {
-                                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002250",
-                                                "$asm.pattern": "quantity datum",
-                                                "$ref": "#/$custom/tQuantityValueUnitless"
-                                              }
-                                            },
-                                            "required": [
-                                              "device type"
-                                            ]
-                                          },
-                                          {
-                                            "$ref": "#/$defs/orderedItem"
-                                          }
-                                        ]
-                                      },
-                                      "minItems": 1
-                                    }
-                                  }
-                                },
-                                "sample document": {
-                                  "type": "object",
-                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002083",
-                                  "$asm.pattern": "aggregate datum",
-                                  "properties": {
-                                    "description": {
-                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000922",
-                                      "$asm.pattern": "any datum"
-                                    },
-                                    "sample identifier": {
-                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001118",
-                                      "$asm.pattern": "value datum",
-                                      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                      "$ref": "#/$defs/tStringValue"
-                                    },
-                                    "batch identifier": {
-                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001120",
-                                      "$asm.pattern": "value datum",
-                                      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                      "$ref": "#/$defs/tStringValue"
-                                    },
-                                    "sample role type": {
-                                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002242",
-                                      "$asm.pattern": "class datum",
-                                      "allOf": [
-                                        {
-                                          "$ref": "#/$defs/tClass"
-                                        },
-                                        {
-                                          "type": "string",
-                                          "enum": [
-                                            "control sample role",
-                                            "standard sample role",
-                                            "validation sample role",
-                                            "experiment sample role",
-                                            "sample role",
-                                            "spiked sample role",
-                                            "blank role",
-                                            "unknown sample role",
-                                            "calibration sample role",
-                                            "unspiked sample role",
-                                            "specimen role",
-                                            "quality control sample role",
-                                            "reference sample role"
-                                          ],
-                                          "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000035"
-                                        }
-                                      ]
-                                    },
-                                    "written name": {
-                                      "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000590",
-                                      "$asm.pattern": "value datum",
-                                      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                      "$ref": "#/$defs/tStringValue"
-                                    }
-                                  },
-                                  "required": [
-                                    "sample identifier"
-                                  ]
-                                },
-                                "detection type": {
-                                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
-                                  "$asm.pattern": "value datum",
-                                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                  "$ref": "#/$defs/tStringValue"
-                                },
                                 "processed data aggregate document": {
                                   "type": "object",
                                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002658",
@@ -393,11 +213,7 @@
                                                 }
                                               },
                                               "data source aggregate document": {
-                                                "allOf": [
-                                                  {
-                                                    "$ref": "#/$defs/dataSourceAggregateDocument"
-                                                  }
-                                                ]
+                                                "$ref": "#/$defs/dataSourceAggregateDocument"
                                               },
                                               "processed data identifier": {
                                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002897",
@@ -421,21 +237,8 @@
                                       "minItems": 1
                                     }
                                   }
-                                },
-                                "calculated data aggregate document": {
-                                  "$ref": "#/$defs/calculatedDataAggregateDocument"
-                                },
-                                "statistics aggregate document": {
-                                  "$ref": "#/$defs/statisticsAggregateDocument"
                                 }
-                              },
-                              "required": [
-                                "device control aggregate document",
-                                "measurement time",
-                                "measurement identifier",
-                                "processed data aggregate document",
-                                "sample document"
-                              ]
+                              }
                             },
                             {
                               "anyOf": [
@@ -539,27 +342,33 @@
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
       "$asm.pattern": "aggregate datum",
       "required": [
-        "processed data aggregate document"
+        "processed data aggregate document",
+        "device control aggregate document",
+        "measurement time",
+        "measurement identifier",
+        "processed data aggregate document",
+        "sample document"
       ],
       "properties": {
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
         "device control aggregate document": {
           "properties": {
             "device control document": {
               "items": {
                 "allOf": [
                   {
-                    "properties": {
-                      "excitation wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "detector wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      }
-                    }
+                    "$ref": "#/$defs/deviceControlDocumentItems"
                   },
                   {
                     "$ref": "#/$defs/orderedItem"
@@ -569,6 +378,15 @@
               "minItems": 1
             }
           }
+        },
+        "sample document": {
+          "$ref": "#/$defs/sampleDocument"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
         },
         "processed data aggregate document": {
           "properties": {
@@ -733,6 +551,12 @@
           "required": [
             "processed data document"
           ]
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
         }
       }
     },
@@ -740,7 +564,26 @@
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
       "$asm.pattern": "aggregate datum",
+      "required": [
+        "device control aggregate document",
+        "measurement time",
+        "measurement identifier",
+        "processed data aggregate document",
+        "sample document"
+      ],
       "properties": {
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
         "device control aggregate document": {
           "type": "object",
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
@@ -754,15 +597,10 @@
               "items": {
                 "allOf": [
                   {
-                    "type": "object",
-                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
-                    "$asm.pattern": "aggregate datum",
+                    "$ref": "#/$defs/deviceControlDocumentItems"
+                  },
+                  {
                     "properties": {
-                      "detector wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
                       "detector bandwidth setting": {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
                         "$asm.pattern": "quantity datum",
@@ -775,11 +613,6 @@
                       },
                       "excitation bandwidth setting": {
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "excitation wavelength setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
                         "$asm.pattern": "quantity datum",
                         "$ref": "#/$custom/tQuantityValueNanometer"
                       },
@@ -799,6 +632,15 @@
               "minItems": 1
             }
           }
+        },
+        "sample document": {
+          "$ref": "#/$defs/sampleDocument"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
         },
         "processed data aggregate document": {
           "properties": {
@@ -831,6 +673,12 @@
           "required": [
             "processed data document"
           ]
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
         }
       }
     },
@@ -860,11 +708,7 @@
                     "$asm.pattern": "aggregate datum"
                   },
                   "data source aggregate document": {
-                    "allOf": [
-                      {
-                        "$ref": "#/$defs/dataSourceAggregateDocument"
-                      }
-                    ]
+                    "$ref": "#/$defs/dataSourceAggregateDocument"
                   },
                   "processed data identifier": {
                     "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002897",
@@ -1290,43 +1134,13 @@
           "$asm.pattern": "value datum",
           "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
           "$ref": "#/$defs/tStringValue"
-        },
-        "well location identifier": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002240",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
-        },
-        "vial location identifier": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002464",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
-        },
-        "location identifier": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002844",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
-        },
-        "well plate identifier": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002888",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
-        },
-        "mass concentration": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-          "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
         }
       },
       "required": [
-        "sample identifier",
-        "location identifier"
+        "sample identifier"
       ]
     },
-    "deviceControlDocument": {
+    "deviceControlDocumentItems": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
       "$asm.pattern": "aggregate datum",
@@ -1379,52 +1193,35 @@
           "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
           "$ref": "#/$defs/tStringValue"
         },
-        "shaking configuration description": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002450",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
-        },
-        "detector distance setting (plate reader)": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002451",
+        "sample volume setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueMillimeter"
+          "$ref": "#/$custom/tQuantityValueMicroliter"
         },
-        "integration time": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001671",
+        "illumination setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002861",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueSecondTime"
+          "$ref": "#/$custom/tQuantityValuePercent"
         },
-        "number of averages": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001672",
+        "exposure duration setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tQuantityValueNumber"
+          "$ref": "#/$custom/tQuantityValueMilliSecond"
         },
         "detector gain setting": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002250",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueUnitless"
         },
-        "scan position setting (plate reader)": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002452",
-          "$asm.pattern": "class datum",
-          "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
-          "type": "string",
-          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
-          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
-          "enum": [
-            "bottom scan position (plate reader)",
-            "scan position configuration (plate reader)",
-            "top scan position (plate reader)"
-          ],
-          "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/quality#AFQ_0000330"
+        "excitation wavelength setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
         },
-        "detector carriage speed setting": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002453",
-          "$asm.pattern": "value datum",
-          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-          "$ref": "#/$defs/tStringValue"
+        "detector wavelength setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueNanometer"
         }
       },
       "required": [
