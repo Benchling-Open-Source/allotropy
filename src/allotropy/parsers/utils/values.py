@@ -1,5 +1,5 @@
 import re
-from typing import Optional, TypeVar, Union
+from typing import Any, Optional, TypeVar, Union
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 
@@ -16,6 +16,15 @@ def try_int(value: Optional[str]) -> Optional[int]:
 def try_float(value: Optional[str]) -> Optional[float]:
     try:
         return float(value or "")
+    except ValueError:
+        return None
+
+
+def try_str(value: Any) -> Optional[str]:
+    if not value:
+        return None
+    try:
+        return str(value or "")
     except ValueError:
         return None
 

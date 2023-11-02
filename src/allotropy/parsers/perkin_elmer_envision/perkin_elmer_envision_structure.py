@@ -30,7 +30,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import assert_not_none, try_float, try_str
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -359,7 +359,7 @@ class Labels:
             emission_filters,
             filter_position_map.get(str(series.get("Using of emission filter")), None),
             number_of_flashes=try_float(str(series.get("Number of flashes"))),
-            detector_gain_setting=series.get("Reference AD gain"),
+            detector_gain_setting=try_str(series.get("Reference AD gain")),
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:
