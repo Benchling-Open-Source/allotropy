@@ -102,10 +102,6 @@ class PlateData:
         statistics_doc = []
         actual_temperature = None
 
-        software_version_chunk = assert_not_none(
-            lines_reader.drop_until("^Software Version"), "Software Version"
-        )
-
         assert_not_none(
             lines_reader.drop_until("^Experiment File Path"), "Experiment File Path"
         )
