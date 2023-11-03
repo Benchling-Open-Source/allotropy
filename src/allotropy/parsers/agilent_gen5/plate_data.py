@@ -272,6 +272,25 @@ class LayoutData:
 
 
 @dataclass
+class ActualTemperature:
+    value: Optional[float] = None
+
+    @staticmethod
+    def create_default() -> ActualTemperature:
+        return ActualTemperature()
+
+    @staticmethod
+    def create(actual_temperature: str) -> ActualTemperature:
+        if len(actual_temperature.split("\n")) != 1:
+            msg = f"Unrecognized temperature data {actual_temperature}"
+            raise AllotropeConversionError(msg)
+
+        return ActualTemperature(
+            value=float(actual_temperature.strip().split("\t")[-1]),
+        )
+
+
+@dataclass
 class PlateData:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -280,7 +299,6 @@ class PlateData:
     measurement_docs: list
     wells: list
     statistics_doc: list
-    actual_temperature: Optional[float]
     file_paths: FilePaths
     plate_number: PlateNumber
     plate_type: PlateType
@@ -294,19 +312,19 @@ class PlateData:
         measurement_docs: list = []
         wells: list = []
         statistics_doc = []
-        actual_temperature = None
 
         file_paths = FilePaths.create(lines_reader)
         plate_number = PlateNumber.create(lines_reader)
         plate_type = PlateType.create(lines_reader)
         layout_data = LayoutData.create_default()
+        actual_temperature = ActualTemperature.create_default()
 
         while lines_reader.current_line_exists():
             data_section = read_data_section(lines_reader)
             if data_section.startswith("Layout"):
                 layout_data = LayoutData.create(data_section)
             elif data_section.startswith("Actual Temperature"):
-                actual_temperature = PlateData._parse_actual_temperature(data_section)
+                actual_temperature = ActualTemperature.create(data_section)
             elif data_section.startswith("Results"):
                 PlateData._parse_results(
                     data_section,
@@ -356,7 +374,6 @@ class PlateData:
             measurement_docs=measurement_docs,
             wells=wells,
             statistics_doc=statistics_doc,
-            actual_temperature=actual_temperature,
             file_paths=file_paths,
             plate_number=plate_number,
             plate_type=plate_type,
@@ -371,13 +388,6 @@ class PlateData:
         raise NotImplementedError
 
     @staticmethod
-    def _parse_actual_temperature(actual_temperature: str) -> float:
-        if len(actual_temperature.split("\n")) != 1:
-            msg = f"Unrecognized temperature data {actual_temperature}"
-            raise AllotropeConversionError(msg)
-        return float(actual_temperature.strip().split("\t")[-1])
-
-    @staticmethod
     def _parse_results(
         results: str,
         wells: list,
@@ -389,7 +399,7 @@ class PlateData:
         read_type: ReadType,
         plate_barcode: str,
         layout_data: LayoutData,
-        actual_temperature: Optional[float],
+        actual_temperature: ActualTemperature,
         measurement_docs: list,
     ) -> None:
         result_lines = results.splitlines()
@@ -428,7 +438,7 @@ class PlateData:
                 layout_data.layout.get(well_pos),
                 layout_data.concentrations.get(well_pos),
                 processed_datas[well_pos],
-                actual_temperature,
+                actual_temperature.value,
             )
             measurement_docs.append(datapoint.to_measurement_doc())
 
