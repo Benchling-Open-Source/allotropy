@@ -149,15 +149,19 @@ class PlateData:
                 read_names,
             )
 
-        all_data_chunk = "\n".join(lines_reader.pop_until("^Software Version"))
-        all_data_sections = all_data_chunk.split("\n\n")
-
         is_kinetic_data = False
         # kinetic_data_label = None
         is_blank_kinetic_data = False
         blank_kinetic_data_label = None
 
-        for data_section in all_data_sections:
+        while lines_reader.current_line_exists():
+            data_section = "\n".join(
+                [
+                    lines_reader.pop() or "",
+                    *lines_reader.pop_until_empty(),
+                ]
+            )
+            lines_reader.drop_empty()
             if data_section.startswith("Layout"):
                 PlateData._parse_layout(
                     data_section,
