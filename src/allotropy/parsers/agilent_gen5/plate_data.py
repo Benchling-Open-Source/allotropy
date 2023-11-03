@@ -234,6 +234,44 @@ class PlateType:
 
 
 @dataclass
+class LayoutData:
+    layout: dict
+    concentrations: dict
+
+    @staticmethod
+    def create_default() -> LayoutData:
+        return LayoutData(
+            layout={},
+            concentrations={},
+        )
+
+    @staticmethod
+    def create(layout_str: str) -> LayoutData:
+        layout = {}
+        concentrations = {}
+
+        layout_lines = layout_str.splitlines()
+        # first line is "Layout", second line is column numbers
+        current_row = "A"
+        for i in range(2, len(layout_lines)):
+            split_line = layout_lines[i].split("\t")
+            if split_line[0]:
+                current_row = split_line[0]
+            label = split_line[-1]
+            for j in range(1, len(split_line) - 1):
+                well_loc = f"{current_row}{j}"
+                if label == "Well ID":
+                    layout[well_loc] = split_line[j]
+                elif label == "Conc/Dil" and split_line[j]:
+                    concentrations[well_loc] = float(split_line[j])
+
+        return LayoutData(
+            layout=layout,
+            concentrations=concentrations,
+        )
+
+
+@dataclass
 class PlateData:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -241,8 +279,6 @@ class PlateData:
     kinetic_times: Optional[list[int]]
     measurement_docs: list
     wells: list
-    layout: dict
-    concentrations: dict
     statistics_doc: list
     actual_temperature: Optional[float]
     file_paths: FilePaths
@@ -257,23 +293,18 @@ class PlateData:
         kinetic_times = None
         measurement_docs: list = []
         wells: list = []
-        layout: dict = {}
-        concentrations: dict = {}
         statistics_doc = []
         actual_temperature = None
 
         file_paths = FilePaths.create(lines_reader)
         plate_number = PlateNumber.create(lines_reader)
         plate_type = PlateType.create(lines_reader)
+        layout_data = LayoutData.create_default()
 
         while lines_reader.current_line_exists():
             data_section = read_data_section(lines_reader)
             if data_section.startswith("Layout"):
-                PlateData._parse_layout(
-                    data_section,
-                    layout,
-                    concentrations,
-                )
+                layout_data = LayoutData.create(data_section)
             elif data_section.startswith("Actual Temperature"):
                 actual_temperature = PlateData._parse_actual_temperature(data_section)
             elif data_section.startswith("Results"):
@@ -287,8 +318,7 @@ class PlateData:
                     plate_type.data_point_cls,
                     plate_type.read_type,
                     plate_number.plate_barcode,
-                    layout,
-                    concentrations,
+                    layout_data,
                     actual_temperature,
                     measurement_docs,
                 )
@@ -325,8 +355,6 @@ class PlateData:
             kinetic_times=kinetic_times,
             measurement_docs=measurement_docs,
             wells=wells,
-            layout=layout,
-            concentrations=concentrations,
             statistics_doc=statistics_doc,
             actual_temperature=actual_temperature,
             file_paths=file_paths,
@@ -341,27 +369,6 @@ class PlateData:
     @staticmethod
     def get_data_point_cls() -> type[DataPoint]:
         raise NotImplementedError
-
-    @staticmethod
-    def _parse_layout(
-        layout_str: str,
-        layout: dict,
-        concentrations: dict,
-    ) -> None:
-        layout_lines = layout_str.splitlines()
-        # first line is "Layout", second line is column numbers
-        current_row = "A"
-        for i in range(2, len(layout_lines)):
-            split_line = layout_lines[i].split("\t")
-            if split_line[0]:
-                current_row = split_line[0]
-            label = split_line[-1]
-            for j in range(1, len(split_line) - 1):
-                well_loc = f"{current_row}{j}"
-                if label == "Well ID":
-                    layout[well_loc] = split_line[j]
-                elif label == "Conc/Dil" and split_line[j]:
-                    concentrations[well_loc] = float(split_line[j])
 
     @staticmethod
     def _parse_actual_temperature(actual_temperature: str) -> float:
@@ -381,8 +388,7 @@ class PlateData:
         data_point_cls: type[DataPoint],
         read_type: ReadType,
         plate_barcode: str,
-        layout: dict,
-        concentrations: dict,
+        layout_data: LayoutData,
         actual_temperature: Optional[float],
         measurement_docs: list,
     ) -> None:
@@ -419,8 +425,8 @@ class PlateData:
                 measurements[well_pos],
                 well_pos,
                 plate_barcode,
-                layout.get(well_pos),
-                concentrations.get(well_pos),
+                layout_data.layout.get(well_pos),
+                layout_data.concentrations.get(well_pos),
                 processed_datas[well_pos],
                 actual_temperature,
             )
