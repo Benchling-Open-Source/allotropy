@@ -81,6 +81,24 @@ def read_data_section(lines_reader: LinesReader) -> str:
 
 
 @dataclass
+class FilePaths:
+    experiment_file_path: str
+    protocol_file_path: str
+
+    @staticmethod
+    def create(lines_reader: LinesReader) -> FilePaths:
+        assert_not_none(
+            lines_reader.drop_until("^Experiment File Path"),
+            "Experiment File Path",
+        )
+        file_paths = lines_reader.pop_until_empty()
+        return FilePaths(
+            experiment_file_path=f"{next(file_paths)}\t".split("\t")[1],
+            protocol_file_path=f"{next(file_paths)}\t".split("\t")[1],
+        )
+
+
+@dataclass
 class PlateData:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -92,12 +110,11 @@ class PlateData:
     concentrations: dict
     read_names: list
     datetime: str
-    experiment_file_path: str
-    protocol_file_path: str
     statistics_doc: list
     actual_temperature: Optional[float]
     read_type: ReadType
     plate_barcode: str
+    file_paths: FilePaths
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
@@ -113,12 +130,7 @@ class PlateData:
         statistics_doc = []
         actual_temperature = None
 
-        assert_not_none(
-            lines_reader.drop_until("^Experiment File Path"), "Experiment File Path"
-        )
-        file_paths = lines_reader.pop_until_empty()
-        experiment_file_path = f"{next(file_paths)}\t".split("\t")[1]
-        protocol_file_path = f"{next(file_paths)}\t".split("\t")[1]
+        file_paths = FilePaths.create(lines_reader)
 
         assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
         metadata_dict = PlateData._parse_metadata(lines_reader)
@@ -217,12 +229,11 @@ class PlateData:
             concentrations=concentrations,
             read_names=read_names,
             datetime=datetime,
-            experiment_file_path=experiment_file_path,
-            protocol_file_path=protocol_file_path,
             statistics_doc=statistics_doc,
             actual_temperature=actual_temperature,
             read_type=read_type,
             plate_barcode=plate_barcode,
+            file_paths=file_paths,
         )
 
     @staticmethod
@@ -541,8 +552,8 @@ class AbsorbancePlateData(PlateData):
             measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
                 measurement_time=self.datetime,
-                analytical_method_identifier=self.protocol_file_path,
-                experimental_data_identifier=self.experiment_file_path,
+                analytical_method_identifier=self.file_paths.protocol_file_path,
+                experimental_data_identifier=self.file_paths.experiment_file_path,
                 container_type=AbsorbanceContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(len(self.wells)),
                 # TODO read_type=self.read_type.value?,
@@ -567,8 +578,8 @@ class FluorescencePlateData(PlateData):
             measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
                 measurement_time=self.datetime,
-                analytical_method_identifier=self.protocol_file_path,
-                experimental_data_identifier=self.experiment_file_path,
+                analytical_method_identifier=self.file_paths.protocol_file_path,
+                experimental_data_identifier=self.file_paths.experiment_file_path,
                 container_type=FluorescenceContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(len(self.wells)),
                 # TODO read_type=self.read_type.value?,
@@ -593,8 +604,8 @@ class LuminescencePlateData(PlateData):
             measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
                 measurement_time=self.datetime,
-                analytical_method_identifier=self.protocol_file_path,
-                experimental_data_identifier=self.experiment_file_path,
+                analytical_method_identifier=self.file_paths.protocol_file_path,
+                experimental_data_identifier=self.file_paths.experiment_file_path,
                 container_type=LuminescenceContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(len(self.wells)),
                 # TODO read_type=self.read_type.value?,
