@@ -149,11 +149,6 @@ class PlateData:
                 read_names,
             )
 
-        is_kinetic_data = False
-        # kinetic_data_label = None
-        is_blank_kinetic_data = False
-        blank_kinetic_data_label = None
-
         while lines_reader.current_line_exists():
             data_section = "\n".join(
                 [
@@ -192,33 +187,25 @@ class PlateData:
                     plate_barcode,
                     wells,
                 )
-            elif is_kinetic_data:
-                kinetic_times, temperatures = PlateData._parse_kinetic_data(
-                    data_section,
-                    wells,
-                    measurements,
-                )
-                is_kinetic_data = False
-            elif is_blank_kinetic_data:
-                PlateData._parse_blank_kinetic_data(
-                    data_section,
-                    blank_kinetic_data_label,
-                    processed_datas,
-                    read_type,
-                    read_mode,
-                    data_point_cls,
-                    kinetic_times,
-                )
-                is_blank_kinetic_data = False
             elif len(data_section.split("\n")) == 1 and any(
                 read_name in data_section for read_name in read_names
             ):
                 if data_section.startswith("Blank"):
-                    is_blank_kinetic_data = True
-                    blank_kinetic_data_label = data_section.strip()
+                    PlateData._parse_blank_kinetic_data(
+                        lines_reader,
+                        data_section.strip(),
+                        processed_datas,
+                        read_type,
+                        read_mode,
+                        data_point_cls,
+                        kinetic_times,
+                    )
                 else:
-                    is_kinetic_data = True
-                    # kinetic_data_label = data_section.strip()
+                    kinetic_times, temperatures = PlateData._parse_kinetic_data(
+                        lines_reader,
+                        wells,
+                        measurements,
+                    )
 
         return cls(
             measurements=measurements,
@@ -442,10 +429,18 @@ class PlateData:
 
     @staticmethod
     def _parse_kinetic_data(
-        kinetic_data: str,
+        lines_reader: LinesReader,
         wells: list,
         measurements: defaultdict[str, list],
     ) -> tuple[list[int], list]:
+        kinetic_data = "\n".join(
+            [
+                lines_reader.pop() or "",
+                *lines_reader.pop_until_empty(),
+            ]
+        )
+        lines_reader.drop_empty()
+
         kinetic_data_io = StringIO(kinetic_data)
         df = pd.read_table(kinetic_data_io)
         df_columns = kinetic_data.split("\n")[0].split("\t")
@@ -472,7 +467,7 @@ class PlateData:
 
     @staticmethod
     def _parse_blank_kinetic_data(
-        blank_kinetic_data: str,
+        lines_reader: LinesReader,
         blank_kinetic_data_label: Optional[str],
         processed_datas: defaultdict[str, list],
         read_type: ReadType,
@@ -480,6 +475,14 @@ class PlateData:
         data_point_cls: type[DataPoint],
         kinetic_times: Optional[list[int]],
     ) -> None:
+        blank_kinetic_data = "\n".join(
+            [
+                lines_reader.pop() or "",
+                *lines_reader.pop_until_empty(),
+            ]
+        )
+        lines_reader.drop_empty()
+
         blank_kinetic_data_io = StringIO(blank_kinetic_data)
         df = pd.read_table(blank_kinetic_data_io)
         df.dropna(axis=0)  # drop incomplete rows
