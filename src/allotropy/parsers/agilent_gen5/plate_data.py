@@ -99,6 +99,37 @@ class FilePaths:
 
 
 @dataclass
+class PlateNumber:
+    datetime: str
+    plate_barcode: str
+
+    @staticmethod
+    def create(lines_reader: LinesReader) -> PlateNumber:
+        assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
+        metadata_dict = PlateNumber._parse_metadata(lines_reader)
+
+        return PlateNumber(
+            datetime=datetime_lib.strptime(  # noqa: DTZ007
+                f"{metadata_dict['Date']} {metadata_dict['Time']}",
+                GEN5_DATETIME_FORMAT,
+            ).isoformat(),
+            plate_barcode=metadata_dict["Plate Number"],
+        )
+
+    @staticmethod
+    def _parse_metadata(lines_reader: LinesReader) -> dict:
+        metadata_dict: dict = {}
+        for metadata_line in lines_reader.pop_until_empty():
+            line_split = metadata_line.split("\t")
+            if line_split[0] not in METADATA_PREFIXES:
+                msg = f"Unrecognized metadata {line_split[0]}"
+                raise AllotropeConversionError(msg)
+            metadata_dict[line_split[0]] = line_split[1]
+        # TODO put more metadata in the right spots
+        return metadata_dict
+
+
+@dataclass
 class PlateData:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -109,12 +140,11 @@ class PlateData:
     layout: dict
     concentrations: dict
     read_names: list
-    datetime: str
     statistics_doc: list
     actual_temperature: Optional[float]
     read_type: ReadType
-    plate_barcode: str
     file_paths: FilePaths
+    plate_number: PlateNumber
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
@@ -131,14 +161,7 @@ class PlateData:
         actual_temperature = None
 
         file_paths = FilePaths.create(lines_reader)
-
-        assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
-        metadata_dict = PlateData._parse_metadata(lines_reader)
-        datetime = datetime_lib.strptime(  # noqa: DTZ007
-            f"{metadata_dict['Date']} {metadata_dict['Time']}",
-            GEN5_DATETIME_FORMAT,
-        ).isoformat()
-        plate_barcode = metadata_dict["Plate Number"]
+        plate_number = PlateNumber.create(lines_reader)
 
         assert_not_none(lines_reader.drop_until("^Plate Type"), "Plate Type")
         data_section = read_data_section(lines_reader)
@@ -186,7 +209,7 @@ class PlateData:
                     measurements,
                     data_point_cls,
                     read_type,
-                    plate_barcode,
+                    plate_number.plate_barcode,
                     layout,
                     concentrations,
                     actual_temperature,
@@ -195,7 +218,7 @@ class PlateData:
             elif data_section.startswith("Curve Name"):
                 statistics_doc = PlateData._parse_stdcurve(
                     data_section,
-                    plate_barcode,
+                    plate_number.plate_barcode,
                     wells,
                 )
             elif len(data_section.split("\n")) == 1 and any(
@@ -228,12 +251,11 @@ class PlateData:
             layout=layout,
             concentrations=concentrations,
             read_names=read_names,
-            datetime=datetime,
             statistics_doc=statistics_doc,
             actual_temperature=actual_temperature,
             read_type=read_type,
-            plate_barcode=plate_barcode,
             file_paths=file_paths,
+            plate_number=plate_number,
         )
 
     @staticmethod
@@ -243,18 +265,6 @@ class PlateData:
     @staticmethod
     def get_data_point_cls() -> type[DataPoint]:
         raise NotImplementedError
-
-    @staticmethod
-    def _parse_metadata(lines_reader: LinesReader) -> dict:
-        metadata_dict: dict = {}
-        for metadata_line in lines_reader.pop_until_empty():
-            line_split = metadata_line.split("\t")
-            if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata {line_split[0]}"
-                raise AllotropeConversionError(msg)
-            metadata_dict[line_split[0]] = line_split[1]
-        # TODO put more metadata in the right spots
-        return metadata_dict
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
@@ -551,7 +561,7 @@ class AbsorbancePlateData(PlateData):
         return AbsorbanceModel(
             measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self.datetime,
+                measurement_time=self.plate_number.datetime,
                 analytical_method_identifier=self.file_paths.protocol_file_path,
                 experimental_data_identifier=self.file_paths.experiment_file_path,
                 container_type=AbsorbanceContainerType.well_plate,
@@ -577,7 +587,7 @@ class FluorescencePlateData(PlateData):
         return FluorescenceModel(
             measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self.datetime,
+                measurement_time=self.plate_number.datetime,
                 analytical_method_identifier=self.file_paths.protocol_file_path,
                 experimental_data_identifier=self.file_paths.experiment_file_path,
                 container_type=FluorescenceContainerType.well_plate,
@@ -603,7 +613,7 @@ class LuminescencePlateData(PlateData):
         return LuminescenceModel(
             measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self.datetime,
+                measurement_time=self.plate_number.datetime,
                 analytical_method_identifier=self.file_paths.protocol_file_path,
                 experimental_data_identifier=self.file_paths.experiment_file_path,
                 container_type=LuminescenceContainerType.well_plate,
