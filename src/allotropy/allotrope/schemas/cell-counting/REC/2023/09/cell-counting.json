@@ -258,6 +258,29 @@
     "$asm.manifest"
   ],
   "$defs": {
+    "cellCountingDetectorDeviceControlAggregateDocument":{
+      "properties": {
+        "device control document": {
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/deviceControlDocumentItems"
+              },
+              {
+                "properties": {
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    },
     "cellCountingDetectorMeasurementDocumentItems": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
@@ -284,27 +307,7 @@
           "$ref": "#/$defs/tStringValue"
         },
         "device control aggregate document": {
-          "properties": {
-            "device control document": {
-              "items": {
-                "allOf": [
-                  {
-                    "$ref": "#/$defs/deviceControlDocumentItems"
-                  },
-                  {
-                    "properties": {
-                      "@index": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 2147483647
-                      }
-                    }
-                  }
-                ]
-              },
-              "minItems": 1
-            }
-          }
+          "$ref": "#/$defs/cellCountingDetectorDeviceControlAggregateDocument"
         },
         "sample document": {
           "$ref": "#/$defs/sampleDocument"
@@ -471,6 +474,64 @@
         }
       }
     },
+    "fluorescenceCellCountingDeviceControlDocument":{
+      "type": "array",
+      "$asm.array-ordered": true,
+      "$asm.array-mixed": false,
+      "$asm.pattern": "indexed datum",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "#/$defs/deviceControlDocumentItems"
+          },
+          {
+            "properties": {
+              "detector bandwidth setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "wavelength filter cutoff setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002478",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "excitation bandwidth setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "fluorescent tag setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002870",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              }
+            }
+          },
+          {
+            "properties": {
+              "@index": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "fluorescenceCellCountingDeviceControlAggregateDocument":{
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "device control document":{
+          "$ref": "#/$defs/fluorescenceCellCountingDeviceControlDocument"
+        }
+      }
+    },
     "fluorescenceCellCountingMeasurementDocumentItems": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
@@ -496,59 +557,7 @@
           "$ref": "#/$defs/tStringValue"
         },
         "device control aggregate document": {
-          "type": "object",
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
-          "$asm.pattern": "aggregate datum",
-          "properties": {
-            "device control document": {
-              "type": "array",
-              "$asm.array-ordered": true,
-              "$asm.array-mixed": false,
-              "$asm.pattern": "indexed datum",
-              "items": {
-                "allOf": [
-                  {
-                    "$ref": "#/$defs/deviceControlDocumentItems"
-                  },
-                  {
-                    "properties": {
-                      "detector bandwidth setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "wavelength filter cutoff setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002478",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "excitation bandwidth setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
-                        "$asm.pattern": "quantity datum",
-                        "$ref": "#/$custom/tQuantityValueNanometer"
-                      },
-                      "fluorescent tag setting": {
-                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002870",
-                        "$asm.pattern": "value datum",
-                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                        "$ref": "#/$defs/tStringValue"
-                      }
-                    }
-                  },
-                  {
-                    "properties": {
-                      "@index": {
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 2147483647
-                      }
-                    }
-                  }
-                ]
-              },
-              "minItems": 1
-            }
-          }
+          "$ref": "#/$defs/fluorescenceCellCountingDeviceControlAggregateDocument"
         },
         "sample document": {
           "$ref": "#/$defs/sampleDocument"
