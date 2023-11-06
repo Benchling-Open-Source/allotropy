@@ -32,7 +32,7 @@ class TimestampParser:
         if not time:
             return None
         try:
-            timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP)
+            timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         except ValueError:
             return None
         if not timestamp.tzinfo:
