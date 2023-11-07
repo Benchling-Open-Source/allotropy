@@ -373,20 +373,52 @@ class Results:
 
 
 @dataclass
+class CurveName:
+    statistics_doc: list
+
+    @staticmethod
+    def create_default() -> CurveName:
+        return CurveName(statistics_doc=[])
+
+    @staticmethod
+    def create(
+        stdcurve: str,
+        plate_number: PlateNumber,
+        results: Results,
+    ) -> CurveName:
+        lines = stdcurve.splitlines()
+        num_lines = 2
+        if len(lines) != num_lines:
+            msg = f"Unrecognized std curve data {lines}"
+            raise AllotropeConversionError(msg)
+        keys = lines[0].split("\t")
+        values = lines[1].split("\t")
+        return CurveName(
+            statistics_doc=[
+                {
+                    "statistical feature": key,
+                    "feature": try_float(value),
+                    "group": f"{plate_number.plate_barcode} {results.wells[0]}-{results.wells[-1]}",
+                }
+                for key, value in zip(keys, values)
+            ]
+        )
+
+
+@dataclass
 class PlateData:
     temperatures: list
     kinetic_times: Optional[list[int]]
-    statistics_doc: list
     file_paths: FilePaths
     plate_number: PlateNumber
     plate_type: PlateType
     results: Results
+    curve_name: CurveName
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
         temperatures: list = []
         kinetic_times = None
-        statistics_doc = []
 
         file_paths = FilePaths.create(lines_reader)
         plate_number = PlateNumber.create(lines_reader)
@@ -394,6 +426,7 @@ class PlateData:
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()
         results = Results.create()
+        curve_name = CurveName.create_default()
 
         while lines_reader.current_line_exists():
             data_section = read_data_section(lines_reader)
@@ -410,10 +443,10 @@ class PlateData:
                     actual_temperature,
                 )
             elif data_section.startswith("Curve Name"):
-                statistics_doc = PlateData._parse_stdcurve(
+                curve_name = CurveName.create(
                     data_section,
-                    plate_number.plate_barcode,
-                    results.wells,
+                    plate_number,
+                    results,
                 )
             elif len(data_section.split("\n")) == 1 and any(
                 read_name in data_section for read_name in plate_type.read_names
@@ -438,11 +471,11 @@ class PlateData:
         return plate_type.experiment_cls(
             temperatures=temperatures,
             kinetic_times=kinetic_times,
-            statistics_doc=statistics_doc,
             file_paths=file_paths,
             plate_number=plate_number,
             plate_type=plate_type,
             results=results,
+            curve_name=curve_name,
         )
 
     @staticmethod
@@ -452,28 +485,6 @@ class PlateData:
     @staticmethod
     def get_data_point_cls() -> type[DataPoint]:
         raise NotImplementedError
-
-    @staticmethod
-    def _parse_stdcurve(
-        stdcurve: str,
-        plate_barcode: str,
-        wells: list,
-    ) -> list:
-        lines = stdcurve.splitlines()
-        num_lines = 2
-        if len(lines) != num_lines:
-            msg = f"Unrecognized std curve data {lines}"
-            raise AllotropeConversionError(msg)
-        keys = lines[0].split("\t")
-        values = lines[1].split("\t")
-        return [
-            {
-                "statistical feature": key,
-                "feature": try_float(value),
-                "group": f"{plate_barcode} {wells[0]}-{wells[-1]}",
-            }
-            for key, value in zip(keys, values)
-        ]
 
     @staticmethod
     def _parse_kinetic_data(
