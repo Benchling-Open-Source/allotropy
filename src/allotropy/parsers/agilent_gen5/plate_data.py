@@ -80,6 +80,12 @@ def read_data_section(lines_reader: LinesReader) -> str:
     return data_section
 
 
+def hhmmss_to_sec(hhmmss: str) -> int:
+    # convert to seconds, as specified by Allotrope
+    hours, minutes, seconds = tuple(int(num) for num in hhmmss.split(":"))
+    return (3600 * hours) + (60 * minutes) + seconds
+
+
 @dataclass
 class FilePaths:
     experiment_file_path: str
@@ -406,20 +412,113 @@ class CurveName:
 
 
 @dataclass
-class PlateData:
+class KineticData:
     temperatures: list
-    kinetic_times: Optional[list[int]]
+    kinetic_times: list[int]
+
+    @staticmethod
+    def create_default() -> KineticData:
+        return KineticData(
+            temperatures=[],
+            kinetic_times=[],
+        )
+
+    @staticmethod
+    def create(
+        lines_reader: LinesReader,
+        results: Results,
+    ) -> KineticData:
+        kinetic_data = read_data_section(lines_reader)
+
+        kinetic_data_io = StringIO(kinetic_data)
+        df = pd.read_table(kinetic_data_io)
+        df_columns = kinetic_data.split("\n")[0].split("\t")
+        df = df[
+            df["A1"].notna()
+        ]  # drop incomplete rows, particularly rows only with "0:00:00"
+
+        kinetic_times = [hhmmss_to_sec(hhmmss) for hhmmss in df["Time"]]
+        temperatures = df[df_columns[1]].replace(np.nan, None).tolist()
+        has_temperatures = any(temp is not None for temp in temperatures)
+        for well_pos in df_columns[
+            2:
+        ]:  # first column is Time, second column is T∞ READ_NAME with no values
+            results.wells.append(well_pos)
+            values = df[well_pos].tolist()
+            if has_temperatures:
+                results.measurements[well_pos].extend(
+                    list(zip(kinetic_times, values, temperatures))
+                )
+            else:
+                results.measurements[well_pos].extend(list(zip(kinetic_times, values)))
+
+        return KineticData(
+            temperatures=temperatures,
+            kinetic_times=kinetic_times,
+        )
+
+    def parse_blank_kinetic_data(
+        self,
+        lines_reader: LinesReader,
+        blank_kinetic_data_label: str,
+        results: Results,
+        plate_type: PlateType,
+    ) -> None:
+        blank_kinetic_data = read_data_section(lines_reader)
+
+        blank_kinetic_data_io = StringIO(blank_kinetic_data)
+        df = pd.read_table(blank_kinetic_data_io)
+        df.dropna(axis=0)  # drop incomplete rows
+        df_columns = blank_kinetic_data.split("\n")[0].split("\t")
+
+        for well_pos in df_columns[1:]:  # first column is Time
+            measures = df[well_pos].tolist()
+            results.processed_datas[well_pos].append(
+                [
+                    blank_kinetic_data_label,
+                    self._blank_data_cube(
+                        measures,
+                        plate_type,
+                    ),
+                ]
+            )
+
+    def _blank_data_cube(
+        self,
+        measures: list[float],
+        plate_type: PlateType,
+    ) -> TDatacube:
+        structure_dimensions = READTYPE_TO_DIMENSIONS[plate_type.read_type]
+        structure_measures = [
+            ("double", plate_type.read_mode.lower(), plate_type.data_point_cls.unit)
+        ]
+        return TDatacube(
+            label=f"{plate_type.read_type.value.lower()} data",
+            cube_structure=TDatacubeStructure(
+                [
+                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
+                    for data_type, concept, unit in structure_dimensions
+                ],
+                [
+                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
+                    for data_type, concept, unit in structure_measures
+                ],
+            ),
+            data=TDatacubeData([self.kinetic_times], [measures]),  # type: ignore[list-item]
+        )
+
+
+@dataclass
+class PlateData:
     file_paths: FilePaths
     plate_number: PlateNumber
     plate_type: PlateType
     results: Results
     curve_name: CurveName
+    kinetic_data: KineticData
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
-        temperatures: list = []
-        kinetic_times = None
-
         file_paths = FilePaths.create(lines_reader)
         plate_number = PlateNumber.create(lines_reader)
         plate_type = PlateType.create(lines_reader)
@@ -427,6 +526,7 @@ class PlateData:
         actual_temperature = ActualTemperature.create_default()
         results = Results.create()
         curve_name = CurveName.create_default()
+        kinetic_data = KineticData.create_default()
 
         while lines_reader.current_line_exists():
             data_section = read_data_section(lines_reader)
@@ -452,30 +552,25 @@ class PlateData:
                 read_name in data_section for read_name in plate_type.read_names
             ):
                 if data_section.startswith("Blank"):
-                    PlateData._parse_blank_kinetic_data(
+                    kinetic_data.parse_blank_kinetic_data(
                         lines_reader,
                         data_section.strip(),
-                        results.processed_datas,
-                        plate_type.read_type,
-                        plate_type.read_mode,
-                        plate_type.data_point_cls,
-                        kinetic_times,
+                        results,
+                        plate_type,
                     )
                 else:
-                    kinetic_times, temperatures = PlateData._parse_kinetic_data(
+                    kinetic_data = KineticData.create(
                         lines_reader,
-                        results.wells,
-                        results.measurements,
+                        results,
                     )
 
         return plate_type.experiment_cls(
-            temperatures=temperatures,
-            kinetic_times=kinetic_times,
             file_paths=file_paths,
             plate_number=plate_number,
             plate_type=plate_type,
             results=results,
             curve_name=curve_name,
+            kinetic_data=kinetic_data,
         )
 
     @staticmethod
@@ -485,101 +580,6 @@ class PlateData:
     @staticmethod
     def get_data_point_cls() -> type[DataPoint]:
         raise NotImplementedError
-
-    @staticmethod
-    def _parse_kinetic_data(
-        lines_reader: LinesReader,
-        wells: list,
-        measurements: defaultdict[str, list],
-    ) -> tuple[list[int], list]:
-        kinetic_data = read_data_section(lines_reader)
-
-        kinetic_data_io = StringIO(kinetic_data)
-        df = pd.read_table(kinetic_data_io)
-        df_columns = kinetic_data.split("\n")[0].split("\t")
-        df = df[
-            df["A1"].notna()
-        ]  # drop incomplete rows, particularly rows only with "0:00:00"
-
-        kinetic_times = [PlateData._hhmmss_to_sec(hhmmss) for hhmmss in df["Time"]]
-        temperatures = df[df_columns[1]].replace(np.nan, None).tolist()
-        has_temperatures = any(temp is not None for temp in temperatures)
-        for well_pos in df_columns[
-            2:
-        ]:  # first column is Time, second column is T∞ READ_NAME with no values
-            wells.append(well_pos)
-            values = df[well_pos].tolist()
-            if has_temperatures:
-                measurements[well_pos].extend(
-                    list(zip(kinetic_times, values, temperatures))
-                )
-            else:
-                measurements[well_pos].extend(list(zip(kinetic_times, values)))
-
-        return kinetic_times, temperatures
-
-    @staticmethod
-    def _parse_blank_kinetic_data(
-        lines_reader: LinesReader,
-        blank_kinetic_data_label: Optional[str],
-        processed_datas: defaultdict[str, list],
-        read_type: ReadType,
-        read_mode: ReadMode,
-        data_point_cls: type[DataPoint],
-        kinetic_times: Optional[list[int]],
-    ) -> None:
-        blank_kinetic_data = read_data_section(lines_reader)
-
-        blank_kinetic_data_io = StringIO(blank_kinetic_data)
-        df = pd.read_table(blank_kinetic_data_io)
-        df.dropna(axis=0)  # drop incomplete rows
-        df_columns = blank_kinetic_data.split("\n")[0].split("\t")
-
-        for well_pos in df_columns[1:]:  # first column is Time
-            measures = df[well_pos].tolist()
-            processed_datas[well_pos].append(
-                [
-                    blank_kinetic_data_label,
-                    PlateData._blank_data_cube(
-                        measures,
-                        read_type,
-                        read_mode,
-                        data_point_cls,
-                        kinetic_times,
-                    ),
-                ]
-            )
-
-    @staticmethod
-    def _blank_data_cube(
-        measures: list[float],
-        read_type: ReadType,
-        read_mode: ReadMode,
-        data_point_cls: type[DataPoint],
-        kinetic_times: Optional[list[int]],
-    ) -> TDatacube:
-        structure_dimensions = READTYPE_TO_DIMENSIONS[read_type]
-        structure_measures = [("double", read_mode.lower(), data_point_cls.unit)]
-        return TDatacube(
-            label=f"{read_type.value.lower()} data",
-            cube_structure=TDatacubeStructure(
-                [
-                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
-                    for data_type, concept, unit in structure_dimensions
-                ],
-                [
-                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
-                    for data_type, concept, unit in structure_measures
-                ],
-            ),
-            data=TDatacubeData([kinetic_times], [measures]),  # type: ignore[list-item]
-        )
-
-    @staticmethod
-    def _hhmmss_to_sec(hhmmss: str) -> int:
-        # convert to seconds, as specified by Allotrope
-        hours, minutes, seconds = tuple(int(num) for num in hhmmss.split(":"))
-        return (3600 * hours) + (60 * minutes) + seconds
 
     def to_allotrope(self, measurement_docs: list) -> Any:
         raise NotImplementedError
