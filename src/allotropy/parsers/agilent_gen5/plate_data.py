@@ -69,6 +69,17 @@ def try_float(value: str) -> Union[str, float]:
         return value
 
 
+def read_data_section(lines_reader: LinesReader) -> str:
+    data_section = "\n".join(
+        [
+            lines_reader.pop() or "",
+            *lines_reader.pop_until_empty(),
+        ]
+    )
+    lines_reader.drop_empty()
+    return data_section
+
+
 @dataclass
 class PlateData:
     measurements: defaultdict[str, list]
@@ -118,13 +129,7 @@ class PlateData:
         plate_barcode = metadata_dict["Plate Number"]
 
         assert_not_none(lines_reader.drop_until("^Plate Type"), "Plate Type")
-        data_section = "\n".join(
-            [
-                lines_reader.pop() or "",
-                *lines_reader.pop_until_empty(),
-            ]
-        )
-        lines_reader.drop_empty()
+        data_section = read_data_section(lines_reader)
 
         cls: Optional[type[PlateData]] = None
         if ReadMode.ABSORBANCE.value in data_section:
@@ -150,13 +155,7 @@ class PlateData:
             )
 
         while lines_reader.current_line_exists():
-            data_section = "\n".join(
-                [
-                    lines_reader.pop() or "",
-                    *lines_reader.pop_until_empty(),
-                ]
-            )
-            lines_reader.drop_empty()
+            data_section = read_data_section(lines_reader)
             if data_section.startswith("Layout"):
                 PlateData._parse_layout(
                     data_section,
@@ -433,13 +432,7 @@ class PlateData:
         wells: list,
         measurements: defaultdict[str, list],
     ) -> tuple[list[int], list]:
-        kinetic_data = "\n".join(
-            [
-                lines_reader.pop() or "",
-                *lines_reader.pop_until_empty(),
-            ]
-        )
-        lines_reader.drop_empty()
+        kinetic_data = read_data_section(lines_reader)
 
         kinetic_data_io = StringIO(kinetic_data)
         df = pd.read_table(kinetic_data_io)
@@ -475,13 +468,7 @@ class PlateData:
         data_point_cls: type[DataPoint],
         kinetic_times: Optional[list[int]],
     ) -> None:
-        blank_kinetic_data = "\n".join(
-            [
-                lines_reader.pop() or "",
-                *lines_reader.pop_until_empty(),
-            ]
-        )
-        lines_reader.drop_empty()
+        blank_kinetic_data = read_data_section(lines_reader)
 
         blank_kinetic_data_io = StringIO(blank_kinetic_data)
         df = pd.read_table(blank_kinetic_data_io)
