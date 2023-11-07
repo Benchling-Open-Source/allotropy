@@ -76,19 +76,9 @@ class HeaderBuilder:
     def build(reader: LinesReader) -> Header:
         data = HeaderBuilder.get_data(reader)
 
-        device_identifier = get_str(data, "Instrument Name")
-        if device_identifier is None:
-            msg = "Unable to get device identifier"
-            raise AllotropeConversionError(msg)
-
         model_number = get_str(data, "Instrument Type")
         if model_number is None:
             msg = "Unable to get model number"
-            raise AllotropeConversionError(msg)
-
-        device_serial_number = get_str(data, "Instrument Serial Number")
-        if device_serial_number is None:
-            msg = "Unable to get device serial number"
             raise AllotropeConversionError(msg)
 
         measurement_method_identifier = get_str(data, "Quantification Cycle Method")
@@ -105,9 +95,9 @@ class HeaderBuilder:
             measurement_time=HeaderBuilder.get_measurement_time(data),
             plate_well_count=HeaderBuilder.get_plate_well_count(data),
             experiment_type=HeaderBuilder.get_experiment_type(data),
-            device_identifier=device_identifier,
+            device_identifier=get_str(data, "Instrument Name") or "NA",
             model_number=model_number,
-            device_serial_number=device_serial_number,
+            device_serial_number=get_str(data, "Instrument Serial Number") or "NA",
             measurement_method_identifier=measurement_method_identifier,
             pcr_detection_chemistry=pcr_detection_chemistry,
             passive_reference_dye_setting=get_str(data, "Passive Reference"),

@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Security
 
+## [0.1.9] - 2023-11-03
+### Added
+- Add missing example outputs for AppBio Quantstudio tests
+### Fixed
+- Update plate-reader schema to be compatible with current supported adapters and change REC -> BENCHLING
 
 ## [0.1.8] - 2023-10-30
 ### Added
