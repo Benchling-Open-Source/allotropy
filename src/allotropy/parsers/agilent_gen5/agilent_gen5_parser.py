@@ -18,7 +18,7 @@ class AgilentGen5Parser(VendorParser):
         # plate dimensions/etc., need to follow up
         measurement_docs = list(
             itertools.chain.from_iterable(
-                [plate.measurement_docs for plate in data.plates]
+                [plate.results.measurement_docs for plate in data.plates]
             )
         )
         model = first_plate.to_allotrope(measurement_docs)
