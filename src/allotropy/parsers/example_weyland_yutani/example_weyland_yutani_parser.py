@@ -53,10 +53,9 @@ class ExampleWeylandYutaniParser(VendorParser):
             )
         )
 
-    def _get_measurement_time(self, data: Data) -> TDateTimeValue:
-        return self.get_date_time(
-            data.instrument.serial_number or "2023-12-31"
-        )  # FIXME
+    # TODO: extract and return actual measurement time
+    def _get_measurement_time(self, data: Data) -> TDateTimeValue:  # noqa: ARG002
+        return self.get_date_time("2022-12-31")
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = (

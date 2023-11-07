@@ -8,7 +8,6 @@ import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
 
-
 EMPTY_STR = r"^\s*$"
 
 
@@ -90,7 +89,9 @@ class LinesReader:
 
 
 class CsvReader(LinesReader):
-    def pop_csv_block_as_lines(self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR) -> list:
+    def pop_csv_block_as_lines(
+        self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR
+    ) -> list:
         self.drop_empty(empty_pat)
         if match_pat:
             if not self.match(match_pat):
@@ -101,7 +102,13 @@ class CsvReader(LinesReader):
         self.drop_empty(empty_pat)
         return lines
 
-    def pop_csv_block_as_df(self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR, as_str: bool = False) -> Optional[pd.DataFrame]:
+    def pop_csv_block_as_df(
+        self,
+        match_pat: Optional[str] = None,
+        empty_pat: str = EMPTY_STR,
+        *,
+        as_str: bool = False,
+    ) -> Optional[pd.DataFrame]:
         lines = self.pop_csv_block_as_lines(match_pat, empty_pat)
         if not lines:
             return None

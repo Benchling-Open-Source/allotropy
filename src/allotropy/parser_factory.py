@@ -57,11 +57,6 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 }
 
 
-VENDOR_NAME_LOOKUP: dict[str, Vendor] = {
-    v.value:v.name for v in Vendor
-}
-
-
 class ParserFactory:
     def __init__(self) -> None:
         pass

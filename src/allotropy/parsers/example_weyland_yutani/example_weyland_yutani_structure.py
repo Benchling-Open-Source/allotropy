@@ -8,7 +8,6 @@ import pandas as pd
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 
-
 EMPTY_CSV_LINE = r"^[,\s]*$"
 PROTOCOL_ID = "Weyland Yutani Example"
 ASSAY_ID = "Example Assay"
@@ -21,8 +20,12 @@ class BasicAssayInfo:
     checksum: Optional[str]
 
     @staticmethod
-    def create(top: pd.DataFrame, bottom: pd.DataFrame) -> BasicAssayInfo:
-        checksum = None if (bottom is None) or (bottom.iloc[0, 0] != "Checksum") else bottom.iloc[0, 1]
+    def create(bottom: pd.DataFrame) -> BasicAssayInfo:
+        checksum = (
+            None
+            if (bottom is None) or (bottom.iloc[0, 0] != "Checksum")
+            else bottom.iloc[0, 1]
+        )
         return BasicAssayInfo(
             protocol_id=PROTOCOL_ID,
             assay_id=ASSAY_ID,
@@ -35,9 +38,10 @@ class Instrument:
     serial_number: str
     nickname: str
 
+    # TODO: extract and fill in real values for serial number and nickname
     @staticmethod
     def create() -> Instrument:
-        return Instrument(serial_number="", nickname="")  # FIXME
+        return Instrument(serial_number="", nickname="")
 
 
 @dataclass
@@ -56,7 +60,8 @@ class Plate:
     def create(df: pd.DataFrame) -> list[Plate]:
         pivoted = df.T
         if pivoted.iloc[1, 0] != "A":
-            raise AllotropeConversionError("Column header(s) not found")
+            msg = "Column header(s) not found"
+            raise AllotropeConversionError(msg)
         stripped = pivoted.drop(0, axis=0).drop(0, axis=1)
         rows, cols = stripped.shape
         stripped.index = [df.iloc[0, i + 1] for i in range(rows)]  # type: ignore[assignment]
@@ -81,13 +86,13 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        top = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
+        _ = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
         middle = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
         bottom = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
 
         plates = Plate.create(middle)
         return Data(
-            basic_assay_info=BasicAssayInfo.create(top, bottom),
+            basic_assay_info=BasicAssayInfo.create(bottom),
             plates=plates,
             number_of_wells=len(plates[0].results),
             instrument=Instrument.create(),
