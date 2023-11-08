@@ -137,6 +137,55 @@
                 }
               }
             },
+            "data system document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002771",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "data system instance identifier": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002772",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "file name": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001926",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "UNC path": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001906",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "software name": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002802",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "software version": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001700",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "ASM converter name": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002748",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "ASM converter version": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002749",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                }
+              }
+            },
             "processed data aggregate document": {
               "$ref": "#/$defs/processedDataAggregateDocument"
             },
