@@ -149,21 +149,20 @@ class PlateType:
         data_section = read_data_section(lines_reader)
 
         experiment_cls = PlateType.get_experiment_class(data_section)
-        read_mode = experiment_cls.get_read_mode()
         read_type = PlateType.get_read_type(data_section)
         read_names: list = []
 
         for procedure_chunk in PlateType._parse_procedure_chunks(data_section):
             PlateType._parse_procedure_chunk(
                 procedure_chunk,
-                read_mode,
+                experiment_cls.read_mode,
                 read_names,
             )
 
         return PlateType(
             experiment_cls=experiment_cls,
-            read_mode=read_mode,
-            data_point_cls=experiment_cls.get_data_point_cls(),
+            read_mode=experiment_cls.read_mode,
+            data_point_cls=experiment_cls.data_point_cls,
             read_type=read_type,
             read_names=read_names,
         )
@@ -516,6 +515,8 @@ class PlateData:
     results: Results
     curve_name: CurveName
     kinetic_data: KineticData
+    read_mode: ReadMode = ReadMode.UNKNOWN
+    data_point_cls: type[DataPoint] = DataPoint
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
@@ -573,26 +574,14 @@ class PlateData:
             kinetic_data=kinetic_data,
         )
 
-    @staticmethod
-    def get_read_mode() -> ReadMode:
-        raise NotImplementedError
-
-    @staticmethod
-    def get_data_point_cls() -> type[DataPoint]:
-        raise NotImplementedError
-
     def to_allotrope(self, measurement_docs: list) -> Any:
         raise NotImplementedError
 
 
+@dataclass
 class AbsorbancePlateData(PlateData):
-    @staticmethod
-    def get_read_mode() -> ReadMode:
-        return ReadMode.ABSORBANCE
-
-    @staticmethod
-    def get_data_point_cls() -> type[DataPoint]:
-        return AbsorbanceDataPoint
+    read_mode: ReadMode = ReadMode.ABSORBANCE
+    data_point_cls: type[DataPoint] = AbsorbanceDataPoint
 
     def to_allotrope(
         self, measurement_docs: list[AbsorbanceMeasurementDocumentItem]
@@ -611,14 +600,10 @@ class AbsorbancePlateData(PlateData):
         )
 
 
+@dataclass
 class FluorescencePlateData(PlateData):
-    @staticmethod
-    def get_read_mode() -> ReadMode:
-        return ReadMode.FLUORESCENCE
-
-    @staticmethod
-    def get_data_point_cls() -> type[DataPoint]:
-        return FluorescenceDataPoint
+    read_mode: ReadMode = ReadMode.FLUORESCENCE
+    data_point_cls: type[DataPoint] = FluorescenceDataPoint
 
     def to_allotrope(
         self, measurement_docs: list[FluorescenceMeasurementDocumentItem]
@@ -637,14 +622,10 @@ class FluorescencePlateData(PlateData):
         )
 
 
+@dataclass
 class LuminescencePlateData(PlateData):
-    @staticmethod
-    def get_read_mode() -> ReadMode:
-        return ReadMode.LUMINESCENCE
-
-    @staticmethod
-    def get_data_point_cls() -> type[DataPoint]:
-        return LuminescenceDataPoint
+    read_mode: ReadMode = ReadMode.LUMINESCENCE
+    data_point_cls: type[DataPoint] = LuminescenceDataPoint
 
     def to_allotrope(
         self, measurement_docs: list[LuminescenceMeasurementDocumentItem]
