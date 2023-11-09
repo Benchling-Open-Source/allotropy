@@ -139,7 +139,6 @@ class PlateNumber:
 class PlateType:
     experiment_cls: type[PlateData]
     read_mode: ReadMode
-    data_point_cls: type[DataPoint]
     read_type: ReadType
     read_names: list
 
@@ -162,7 +161,6 @@ class PlateType:
         return PlateType(
             experiment_cls=experiment_cls,
             read_mode=experiment_cls.read_mode,
-            data_point_cls=experiment_cls.data_point_cls,
             read_type=read_type,
             read_names=read_names,
         )
@@ -347,17 +345,18 @@ class Results:
                     self.measurements[well_pos].append([label_only, well_value])
 
         for well_pos in self.wells:
-            datapoint = plate_type.data_point_cls(
-                plate_type.read_type,
-                self.measurements[well_pos],
-                well_pos,
-                plate_number.plate_barcode,
-                layout_data.layout.get(well_pos),
-                layout_data.concentrations.get(well_pos),
-                self.processed_datas[well_pos],
-                actual_temperature.value,
+            self.measurement_docs.append(
+                plate_type.experiment_cls.data_point_cls(
+                    plate_type.read_type,
+                    self.measurements[well_pos],
+                    well_pos,
+                    plate_number.plate_barcode,
+                    layout_data.layout.get(well_pos),
+                    layout_data.concentrations.get(well_pos),
+                    self.processed_datas[well_pos],
+                    actual_temperature.value,
+                ).to_measurement_doc()
             )
-            self.measurement_docs.append(datapoint.to_measurement_doc())
 
     @staticmethod
     def _is_processed_data_label(
@@ -489,7 +488,11 @@ class KineticData:
     ) -> TDatacube:
         structure_dimensions = READTYPE_TO_DIMENSIONS[plate_type.read_type]
         structure_measures = [
-            ("double", plate_type.read_mode.lower(), plate_type.data_point_cls.unit)
+            (
+                "double",
+                plate_type.read_mode.lower(),
+                plate_type.experiment_cls.unit,
+            )
         ]
         return TDatacube(
             label=f"{plate_type.read_type.value.lower()} data",
@@ -517,6 +520,7 @@ class PlateData:
     kinetic_data: KineticData
     read_mode: ReadMode = ReadMode.UNKNOWN
     data_point_cls: type[DataPoint] = DataPoint
+    unit: str = "Unknown"
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
@@ -581,6 +585,7 @@ class PlateData:
 @dataclass
 class AbsorbancePlateData(PlateData):
     read_mode: ReadMode = ReadMode.ABSORBANCE
+    unit: str = AbsorbanceDataPoint.unit
     data_point_cls: type[DataPoint] = AbsorbanceDataPoint
 
     def to_allotrope(
@@ -603,6 +608,7 @@ class AbsorbancePlateData(PlateData):
 @dataclass
 class FluorescencePlateData(PlateData):
     read_mode: ReadMode = ReadMode.FLUORESCENCE
+    unit: str = FluorescenceDataPoint.unit
     data_point_cls: type[DataPoint] = FluorescenceDataPoint
 
     def to_allotrope(
@@ -625,6 +631,7 @@ class FluorescencePlateData(PlateData):
 @dataclass
 class LuminescencePlateData(PlateData):
     read_mode: ReadMode = ReadMode.LUMINESCENCE
+    unit: str = LuminescenceDataPoint.unit
     data_point_cls: type[DataPoint] = LuminescenceDataPoint
 
     def to_allotrope(
