@@ -30,7 +30,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import assert_df, assert_not_none, try_float
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -55,7 +55,8 @@ class PlateInfo:
     @staticmethod
     def create(reader: CsvReader) -> Optional[PlateInfo]:
         data = reader.pop_csv_block_as_df("^Plate information")
-        series = df_to_series(data).replace(np.nan, None)
+        data_df = assert_df(data, "Plate information CSV block")
+        series = df_to_series(data_df).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
 
         plate_number = assert_not_none(
@@ -101,8 +102,11 @@ class Result:
         reader.pop_if_match("^Results")
 
         data = reader.pop_csv_block_as_df()
+        data_df = assert_df(data, "reader data")
         series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+            data_df.drop(0, axis=0).drop(0, axis=1)
+            if data_df.iloc[1, 0] == "A"
+            else data_df
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -151,9 +155,10 @@ class BasicAssayInfo:
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until("^Basic assay information")
-        data = reader.pop_csv_block_as_df("^Basic assay information").T
-        data.iloc[0].replace(":.*", "", regex=True, inplace=True)
-        series = df_to_series(data)
+        data = reader.pop_csv_block_as_df("^Basic assay information")
+        data_df = assert_df(data, "Basic assay information").T
+        data_df.iloc[0].replace(":.*", "", regex=True, inplace=True)
+        series = df_to_series(data_df)
         return BasicAssayInfo(
             str(series.get("Protocol ID")),
             str(series.get("Assay ID")),
@@ -167,9 +172,12 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until("^Plate type")
-        data = reader.pop_csv_block_as_df("^Plate type").T
+        data = reader.pop_csv_block_as_df("^Plate type")
+        data_df = assert_df(data, "Plate type").T
         return PlateType(
-            try_float(str(df_to_series(data).get("Number of the wells in the plate")))
+            try_float(
+                str(df_to_series(data_df).get("Number of the wells in the plate"))
+            )
         )
 
 
@@ -220,13 +228,16 @@ class PlateMap:
         plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")[-1]
         group_n = assert_not_none(reader.pop(), "Platemap group").split(",")[-1]
 
-        data = reader.pop_csv_block_as_df().replace(" ", "", regex=True)
+        data = reader.pop_csv_block_as_df()
+        data_df = assert_df(data, "Platemap data").replace(" ", "", regex=True)
 
         reader.pop_data()  # drop type specification
         reader.drop_empty()
 
         series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+            data_df.drop(0, axis=0).drop(0, axis=1)
+            if data_df.iloc[1, 0] == "A"
+            else data_df
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -281,8 +292,9 @@ class Filter:
         ):
             return None
 
-        data = reader.pop_csv_block_as_df().T
-        series = df_to_series(data)
+        data = reader.pop_csv_block_as_df()
+        data_df = assert_df(data, "Filter information").T
+        series = df_to_series(data_df)
 
         name = str(series.index[0])
 
@@ -331,8 +343,9 @@ class Labels:
     @staticmethod
     def create(reader: CsvReader) -> Labels:
         reader.drop_until("^Labels")
-        data = reader.pop_csv_block_as_df("^Labels").T
-        series = df_to_series(data).replace(np.nan, None)
+        data = reader.pop_csv_block_as_df("^Labels")
+        data_df = assert_df(data, "Labels").T
+        series = df_to_series(data_df).replace(np.nan, None)
 
         filters = create_filters(reader)
 
