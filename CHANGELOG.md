@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ### Fixed
 ### Changed
+- Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
+- Refactor Moldev Softmax Pro with explicit dataclasses structure
 ### Deprecated
 ### Removed
 ### Security
