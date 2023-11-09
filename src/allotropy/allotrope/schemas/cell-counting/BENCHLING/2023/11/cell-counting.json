@@ -13,9 +13,6 @@
               "type": "object",
               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
               "$asm.pattern": "aggregate datum",
-              "required": [
-                "asset management identifier"
-              ],
               "properties": {
                 "asset management identifier": {
                   "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001976",
