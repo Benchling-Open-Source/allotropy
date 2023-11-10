@@ -7,6 +7,7 @@ from allotropy.parsers.utils.values import (
     natural_sort_key,
     try_float,
     try_int,
+    try_int_or_none,
     value_or_none,
 )
 
@@ -64,6 +65,19 @@ def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
     assert try_float(value) == expected
 
 
+def _try_int(value: str) -> int:
+    return try_int(value, "param")
+
+
+def test_try_int() -> None:
+    assert _try_int("1") == 1
+
+
+def test_try_int_fails() -> None:
+    with pytest.raises(Exception, match="^Invalid integer string: a$"):
+        _try_int("a")
+
+
 @pytest.mark.short
 @pytest.mark.parametrize(
     "value,expected",
@@ -74,8 +88,8 @@ def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
         ("1.1", None),
     ],
 )
-def test_try_int(value: Optional[str], expected: Optional[float]) -> None:
-    assert try_int(value) == expected
+def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> None:
+    assert try_int_or_none(value) == expected
 
 
 @pytest.mark.short
