@@ -60,7 +60,7 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
         ("1.1", 1.1),
     ],
 )
-def test_try_float(value: Optional[str], expected: Optional[str]) -> None:
+def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
     assert try_float(value) == expected
 
 
@@ -74,7 +74,7 @@ def test_try_float(value: Optional[str], expected: Optional[str]) -> None:
         ("1.1", None),
     ],
 )
-def test_try_int(value: Optional[str], expected: Optional[str]) -> None:
+def test_try_int(value: Optional[str], expected: Optional[float]) -> None:
     assert try_int(value) == expected
 
 
