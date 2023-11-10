@@ -29,13 +29,15 @@ class TimestampParser:
             raise AllotropeConversionError(msg)
         self.default_timezone = default_timezone or ZoneInfo("UTC")
 
-    def parse(self, time: str) -> Optional[str]:
+    def parse(self, time: str) -> str:
+        """Parse a string to a datetime, then format as an ISO 8601 string.
+
+        :param time: the string to parse
+        :raises ValueError if time cannot be parsed
+        """
         assert_not_none(time, "time")
 
-        try:
-            timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
-        except ValueError:
-            return None
+        timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         if not timestamp.tzinfo:
             timestamp = timestamp.replace(tzinfo=self.default_timezone)
         return str(timestamp.isoformat())

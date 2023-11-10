@@ -19,7 +19,6 @@ def test_timestamp_parser_init_fails_invalid_default_timezone() -> None:
 @pytest.mark.parametrize(
     "time_str,expected",
     [
-        ("unparseable", None),
         ("10-11-08", "2008-10-11T00:00:00+00:00"),
         ("Fri, 11 Nov 2011 03:18:09", "2011-11-11T03:18:09+00:00"),
         ("Fri, 11 Nov 2011 03:18:09 -0400", "2011-11-11T03:18:09-04:00"),
@@ -61,8 +60,10 @@ def test_timestamp_parser_provided_timezone(
 
 @pytest.mark.short
 @pytest.mark.parametrize("time_str", ["blah"])
-def test_timestamp_parser_returns_none_on_invalid_timestamp(time_str: str) -> None:
-    assert TimestampParser().parse(time_str) is None
+def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
+    parser = TimestampParser()
+    with pytest.raises(ValueError, match="String does not contain a date: blah"):
+        parser.parse(time_str)
 
 
 @pytest.mark.short
