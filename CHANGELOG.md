@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
 - Refactor Moldev Softmax Pro with explicit dataclasses structure
+- Update Benchman Vi-cell Blu adapter to use the new cell-counting BENCHLING/2023/11 schema
 ### Deprecated
 ### Removed
 ### Security
