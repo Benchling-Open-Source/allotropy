@@ -29,10 +29,11 @@ class VendorParser(ABC):
             raise AllotropeConversionError(error)
         return file_bytes.decode(encoding)
 
-    def parse_timestamp(self, time: Optional[str]) -> Optional[str]:
+    def parse_timestamp(self, time: str) -> Optional[str]:
         return self.timestamp_parser.parse(time)
 
     def get_date_time(self, time: Any) -> TDateTimeValue:
+        assert_not_none(time, "time")
         return assert_not_none(
             self.parse_timestamp(str(time)), msg=f"Invalid timestamp: '{time}'"
         )
