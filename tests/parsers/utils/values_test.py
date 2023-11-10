@@ -4,6 +4,7 @@ import pytest
 
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    natural_sort_key,
     try_float,
     try_int,
     value_or_none,
@@ -33,6 +34,20 @@ def test_assert_not_none_fails_with_name() -> None:
 def test_assert_not_none_fails_with_message_and_name() -> None:
     with pytest.raises(Exception, match="^param_name was None$"):
         assert_not_none(None, "param_name", "param_name was None")
+
+
+@pytest.mark.short
+@pytest.mark.parametrize(
+    "key,expected",
+    [
+        ("", []),
+        ("a", ["a"]),
+        ("1", ["         1"]),
+        ("a1b2c", ["a", "         1", "b", "         2", "c"]),
+    ],
+)
+def test_natural_sort_key(key: str, expected: list[str]) -> None:
+    assert natural_sort_key(key) == expected
 
 
 @pytest.mark.short
