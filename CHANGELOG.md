@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
 - Refactor Moldev Softmax Pro with explicit dataclasses structure
 - Inline VendorParser.parse_timestamp (was only used by VendorParser.get_date_time)
+- Change TimeStampParser.parse() to raise for invalid input
 ### Deprecated
 ### Removed
 ### Security

@@ -37,7 +37,11 @@ class TimestampParser:
         """
         assert_not_none(time, "time")
 
-        timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
+        try:
+            timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
+        except ValueError as e:
+            msg = f"Could not parse time '{time}'"
+            raise AllotropeConversionError(msg) from e
         if not timestamp.tzinfo:
             timestamp = timestamp.replace(tzinfo=self.default_timezone)
         return str(timestamp.isoformat())

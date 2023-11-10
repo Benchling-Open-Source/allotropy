@@ -62,7 +62,7 @@ def test_timestamp_parser_provided_timezone(
 @pytest.mark.parametrize("time_str", ["blah"])
 def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
     parser = TimestampParser()
-    with pytest.raises(ValueError, match="String does not contain a date: blah"):
+    with pytest.raises(AllotropeConversionError, match="Could not parse time 'blah'"):
         parser.parse(time_str)
 
 
