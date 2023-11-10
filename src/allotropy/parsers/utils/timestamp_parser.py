@@ -31,6 +31,7 @@ class TimestampParser:
 
     def parse(self, time: str) -> Optional[str]:
         assert_not_none(time, "time")
+
         try:
             timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         except ValueError:
