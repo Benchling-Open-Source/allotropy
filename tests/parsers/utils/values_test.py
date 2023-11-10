@@ -5,7 +5,7 @@ import pytest
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
-    try_float,
+    try_float_or_none,
     try_int,
     value_or_none,
 )
@@ -61,7 +61,7 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
     ],
 )
 def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
-    assert try_float(value) == expected
+    assert try_float_or_none(value) == expected
 
 
 @pytest.mark.short

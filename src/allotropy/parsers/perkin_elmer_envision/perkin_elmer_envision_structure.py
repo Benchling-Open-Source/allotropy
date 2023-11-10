@@ -30,7 +30,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_not_none, try_float
+from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -79,8 +79,8 @@ class PlateInfo:
             barcode,
             emission_filter_id,
             measurement_time,
-            try_float(str(series.get("Measured height"))),
-            try_float(str(series.get("Chamber temperature at start"))),
+            try_float_or_none(str(series.get("Measured height"))),
+            try_float_or_none(str(series.get("Chamber temperature at start"))),
         )
 
 
@@ -169,7 +169,9 @@ class PlateType:
         reader.drop_until("^Plate type")
         data = reader.pop_csv_block("^Plate type").T
         return PlateType(
-            try_float(str(df_to_series(data).get("Number of the wells in the plate")))
+            try_float_or_none(
+                str(df_to_series(data).get("Number of the wells in the plate"))
+            )
         )
 
 
@@ -352,7 +354,7 @@ class Labels:
             excitation_filter,
             emission_filters,
             filter_position_map.get(str(series.get("Using of emission filter")), None),
-            number_of_flashes=try_float(str(series.get("Number of flashes"))),
+            number_of_flashes=try_float_or_none(str(series.get("Number of flashes"))),
             detector_gain_setting=str(series.get("Reference AD gain")),
         )
 
