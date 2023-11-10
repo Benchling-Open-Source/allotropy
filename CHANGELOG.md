@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.9] - 2023-11-03
 ### Added
 - Add missing example outputs for AppBio Quantstudio tests
+- Add cell-counting REC/2023/09 schema, with additions to support existing use cases
 ### Fixed
 - Update plate-reader schema to be compatible with current supported adapters and change REC -> BENCHLING
 
