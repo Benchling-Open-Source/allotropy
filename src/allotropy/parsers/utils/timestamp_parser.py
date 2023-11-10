@@ -33,7 +33,7 @@ class TimestampParser:
         """Parse a string to a datetime, then format as an ISO 8601 string.
 
         :param time: the string to parse
-        :raises ValueError if time cannot be parsed
+        :raises AllotropeConversionError if time cannot be parsed
         """
         assert_not_none(time, "time")
 
