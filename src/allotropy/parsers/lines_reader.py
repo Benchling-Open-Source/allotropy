@@ -8,7 +8,7 @@ import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
 
-EMPTY_STR = r"^\s*$"
+EMPTY_STR_PATTERN = r"^\s*$"
 
 
 class LinesReader:
@@ -42,7 +42,7 @@ class LinesReader:
         line = self.get()
         return False if line is None else bool(search(match_pat, line))
 
-    def is_empty(self, empty_pat: str = EMPTY_STR) -> bool:
+    def is_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> bool:
         return self.match(empty_pat)
 
     def pop(self) -> Optional[str]:
@@ -65,12 +65,12 @@ class LinesReader:
             self.pop()
         return self.get()
 
-    def drop_empty(self, empty_pat: str = EMPTY_STR) -> Optional[str]:
+    def drop_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Optional[str]:
         while self.current_line_exists() and self.is_empty(empty_pat):
             self.pop()
         return self.get()
 
-    def drop_until_empty(self, empty_pat: str = EMPTY_STR) -> Optional[str]:
+    def drop_until_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Optional[str]:
         while self.current_line_exists() and not self.is_empty(empty_pat):
             self.pop()
         return self.get()
@@ -81,7 +81,7 @@ class LinesReader:
             if line is not None:
                 yield line
 
-    def pop_until_empty(self, empty_pat: str = EMPTY_STR) -> Iterator[str]:
+    def pop_until_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Iterator[str]:
         while self.current_line_exists() and not self.is_empty(empty_pat):
             line = self.pop()
             if line is not None:
@@ -90,7 +90,7 @@ class LinesReader:
 
 class CsvReader(LinesReader):
     def pop_csv_block_as_lines(
-        self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR
+        self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR_PATTERN
     ) -> list:
         self.drop_empty(empty_pat)
         if match_pat:
@@ -105,7 +105,7 @@ class CsvReader(LinesReader):
     def pop_csv_block_as_df(
         self,
         match_pat: Optional[str] = None,
-        empty_pat: str = EMPTY_STR,
+        empty_pat: str = EMPTY_STR_PATTERN,
         *,
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
