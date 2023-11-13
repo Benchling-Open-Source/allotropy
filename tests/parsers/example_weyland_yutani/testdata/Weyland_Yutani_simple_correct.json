@@ -1,0 +1,340 @@
+{
+    "measurement aggregate document": {
+        "measurement identifier": "51bc48cc-b193-40c6-b92a-54cc937ca903",
+        "plate well count": {
+            "value": 16,
+            "unit": "#"
+        },
+        "measurement document": [
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A1"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 4.87,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A2"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 3.29,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A3"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 2.93,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "A4"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 1.94,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B1"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 3.45,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B2"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 0.99,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B3"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 0.57,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "B4"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 4.46,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C1"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 0.92,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C2"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 0.76,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C3"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 3.52,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "C4"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 2.25,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D1"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 4.71,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D2"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 3.3,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D3"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 3.73,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            },
+            {
+                "device control aggregate document": {
+                    "device control document": [
+                        {
+                            "device type": "fluorescence detector"
+                        }
+                    ]
+                },
+                "sample document": {
+                    "well location identifier": "D4"
+                },
+                "processed data aggregate document": {
+                    "processed data document": [
+                        {
+                            "processed data": 4.05,
+                            "data processing description": "processed data"
+                        }
+                    ]
+                }
+            }
+        ],
+        "measurement time": "2022-12-31T00:00:00+00:00",
+        "analytical method identifier": "Weyland Yutani Example",
+        "experimental data identifier": "Example Assay",
+        "container type": "well plate",
+        "device system document": {
+            "device identifier": "",
+            "model number": ""
+        }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
+}

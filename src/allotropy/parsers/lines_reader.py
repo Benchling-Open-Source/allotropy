@@ -8,6 +8,8 @@ import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
 
+EMPTY_STR_PATTERN = r"^\s*$"
+
 
 class LinesReader:
     def __init__(self, io_: IOBase, encoding: Optional[str] = "UTF-8"):
@@ -36,12 +38,12 @@ class LinesReader:
     def get(self) -> Optional[str]:
         return self.lines[self.current_line] if self.current_line_exists() else None
 
-    def match(self, pattern: str) -> bool:
+    def match(self, match_pat: str) -> bool:
         line = self.get()
-        return False if line is None else bool(search(pattern, line))
+        return False if line is None else bool(search(match_pat, line))
 
-    def is_empty(self) -> bool:
-        return self.match("^\\s*$")
+    def is_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> bool:
+        return self.match(empty_pat)
 
     def pop(self) -> Optional[str]:
         line = self.get()
@@ -49,8 +51,8 @@ class LinesReader:
             self.current_line += 1
         return line
 
-    def pop_if_match(self, pattern: str) -> Optional[str]:
-        if self.match(pattern):
+    def pop_if_match(self, match_pat: str) -> Optional[str]:
+        if self.match(match_pat):
             return self.pop()
         return None
 
@@ -58,52 +60,68 @@ class LinesReader:
         self.drop_empty()
         return self.pop()
 
-    def drop_until(self, pattern: str) -> Optional[str]:
-        while self.current_line_exists() and not self.match(pattern):
+    def drop_until(self, match_pat: str) -> Optional[str]:
+        while self.current_line_exists() and not self.match(match_pat):
             self.pop()
         return self.get()
 
-    def drop_empty(self) -> Optional[str]:
-        while self.current_line_exists() and self.is_empty():
+    def drop_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Optional[str]:
+        while self.current_line_exists() and self.is_empty(empty_pat):
             self.pop()
         return self.get()
 
-    def drop_until_empty(self) -> Optional[str]:
-        while self.current_line_exists() and not self.is_empty():
+    def drop_until_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Optional[str]:
+        while self.current_line_exists() and not self.is_empty(empty_pat):
             self.pop()
         return self.get()
 
-    def pop_until(self, pattern: str) -> Iterator[str]:
-        while self.current_line_exists() and not self.match(pattern):
+    def pop_until(self, match_pat: str) -> Iterator[str]:
+        while self.current_line_exists() and not self.match(match_pat):
             line = self.pop()
             if line is not None:
                 yield line
 
-    def pop_until_empty(self) -> Iterator[str]:
-        while self.current_line_exists() and not self.is_empty():
+    def pop_until_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Iterator[str]:
+        while self.current_line_exists() and not self.is_empty(empty_pat):
             line = self.pop()
             if line is not None:
                 yield line
 
 
 class CsvReader(LinesReader):
-    def pop_csv_block(self, pattern: Optional[str] = None) -> pd.DataFrame:
-        self.drop_empty()
-        if pattern:
-            if not self.match(pattern):
-                msg = f"Did not find {pattern}"
+    def pop_csv_block_as_lines(
+        self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR_PATTERN
+    ) -> list:
+        self.drop_empty(empty_pat)
+        if match_pat:
+            if not self.match(match_pat):
+                msg = f"Did not find {match_pat}"
                 raise AllotropyError(msg)
             self.pop()  # remove title
+        lines = list(self.pop_until_empty(empty_pat))
+        self.drop_empty(empty_pat)
+        return lines
 
-        csv_stream = StringIO("\n".join(self.pop_until_empty()))
-        self.drop_empty()
+    def pop_csv_block_as_df(
+        self,
+        match_pat: Optional[str] = None,
+        empty_pat: str = EMPTY_STR_PATTERN,
+        *,
+        as_str: bool = False,
+    ) -> Optional[pd.DataFrame]:
+        lines = self.pop_csv_block_as_lines(match_pat, empty_pat)
+        if not lines:
+            return None
+        csv_stream = StringIO("\n".join(lines))
+        if as_str:
+            return pd.read_csv(csv_stream, header=None, dtype=str)
+        else:
+            return pd.read_csv(csv_stream, header=None)
 
-        return pd.read_csv(csv_stream, header=None)
-
-    def drop_sections(self, pattern: str) -> None:
+    def drop_sections(self, match_pat: str) -> None:
         self.drop_empty()
         while True:
-            if not self.match(pattern):
+            if not self.match(match_pat):
                 return
             self.drop_until_empty()
             self.drop_empty()
