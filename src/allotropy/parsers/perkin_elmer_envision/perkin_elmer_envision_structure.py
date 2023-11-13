@@ -30,7 +30,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_df, assert_not_none, try_float
+from allotropy.parsers.utils.values import assert_not_none, try_float
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -55,7 +55,7 @@ class PlateInfo:
     @staticmethod
     def create(reader: CsvReader) -> Optional[PlateInfo]:
         data = reader.pop_csv_block_as_df("^Plate information")
-        data_df = assert_df(data, "Plate information CSV block")
+        data_df = assert_not_none(data, "Plate information CSV block")
         series = df_to_series(data_df).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
 
@@ -102,7 +102,7 @@ class Result:
         reader.pop_if_match("^Results")
 
         data = reader.pop_csv_block_as_df()
-        data_df = assert_df(data, "reader data")
+        data_df = assert_not_none(data, "reader data")
         series = (
             data_df.drop(0, axis=0).drop(0, axis=1)
             if data_df.iloc[1, 0] == "A"
@@ -156,7 +156,7 @@ class BasicAssayInfo:
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until("^Basic assay information")
         data = reader.pop_csv_block_as_df("^Basic assay information")
-        data_df = assert_df(data, "Basic assay information").T
+        data_df = assert_not_none(data, "Basic assay information").T
         data_df.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data_df)
         return BasicAssayInfo(
@@ -173,7 +173,7 @@ class PlateType:
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until("^Plate type")
         data = reader.pop_csv_block_as_df("^Plate type")
-        data_df = assert_df(data, "Plate type").T
+        data_df = assert_not_none(data, "Plate type").T
         return PlateType(
             try_float(
                 str(df_to_series(data_df).get("Number of the wells in the plate"))
@@ -229,7 +229,7 @@ class PlateMap:
         group_n = assert_not_none(reader.pop(), "Platemap group").split(",")[-1]
 
         data = reader.pop_csv_block_as_df()
-        data_df = assert_df(data, "Platemap data").replace(" ", "", regex=True)
+        data_df = assert_not_none(data, "Platemap data").replace(" ", "", regex=True)
 
         reader.pop_data()  # drop type specification
         reader.drop_empty()
@@ -293,7 +293,7 @@ class Filter:
             return None
 
         data = reader.pop_csv_block_as_df()
-        data_df = assert_df(data, "Filter information").T
+        data_df = assert_not_none(data, "Filter information").T
         series = df_to_series(data_df)
 
         name = str(series.index[0])
@@ -344,7 +344,7 @@ class Labels:
     def create(reader: CsvReader) -> Labels:
         reader.drop_until("^Labels")
         data = reader.pop_csv_block_as_df("^Labels")
-        data_df = assert_df(data, "Labels").T
+        data_df = assert_not_none(data, "Labels").T
         series = df_to_series(data_df).replace(np.nan, None)
 
         filters = create_filters(reader)
