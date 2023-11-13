@@ -32,6 +32,8 @@ class TimestampParser:
     def parse(self, time: str) -> str:
         """Parse a string to a datetime, then format as an ISO 8601 string.
 
+        If the parsed datetime doesn't have a timezone, use self.default_timezone.
+
         :param time: the string to parse
         :raises AllotropeConversionError if time cannot be parsed
         """
