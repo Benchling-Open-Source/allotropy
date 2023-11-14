@@ -40,7 +40,7 @@ class ExampleWeylandYutaniParser(VendorParser):
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self._get_measurement_time(data),
+                measurement_time=self._get_measurement_time(),
                 analytical_method_identifier=data.basic_assay_info.protocol_id,
                 experimental_data_identifier=data.basic_assay_info.assay_id,
                 container_type=ContainerType.well_plate,
@@ -53,10 +53,8 @@ class ExampleWeylandYutaniParser(VendorParser):
             )
         )
 
-    def _get_measurement_time(self, data: Data) -> TDateTimeValue:
-        return self.get_date_time(
-            data.instrument.serial_number or "2023-12-31"
-        )  # FIXME
+    def _get_measurement_time(self) -> TDateTimeValue:
+        return self.get_date_time("2023-12-31")  # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = (

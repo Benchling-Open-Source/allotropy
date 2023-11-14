@@ -25,8 +25,15 @@ class Instrument:
     nickname: str
 
     @staticmethod
-    def create() -> Instrument:
-        return Instrument(serial_number="", nickname="")  # FIXME
+    def create(header: str | None) -> Instrument:
+        if header is None:
+            return Instrument(serial_number="", nickname="")
+
+        instrument_spec = header.strip(",").split(" ")
+        serial_number = " ".join(instrument_spec[0:2])
+        nickname = instrument_spec[2]
+
+        return Instrument(serial_number=serial_number, nickname=nickname)
 
 
 @dataclass
@@ -73,10 +80,11 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
+        instrument = Instrument.create(reader.get())
         plates = Plate.create(reader)
         return Data(
             plates=plates,
             number_of_wells=len(plates[0].results),
             basic_assay_info=BasicAssayInfo.create(),
-            instrument=Instrument.create(),
+            instrument=instrument,
         )
