@@ -10,7 +10,7 @@ def try_int(value: Optional[str], value_name: str) -> int:
     try:
         return int(assert_not_none(value, value_name))
     except ValueError as e:
-        msg = f"Invalid integer string: {value}"
+        msg = f"Invalid integer string: '{value}'"
         raise AllotropeConversionError(msg) from e
 
 

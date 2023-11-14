@@ -74,7 +74,7 @@ def test_try_int() -> None:
 
 
 def test_try_int_fails() -> None:
-    with pytest.raises(Exception, match="^Invalid integer string: a$"):
+    with pytest.raises(Exception, match="^Invalid integer string: 'a'$"):
         _try_int("a")
 
 
