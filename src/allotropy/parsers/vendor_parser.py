@@ -32,6 +32,4 @@ class VendorParser(ABC):
     def get_date_time(self, time: Any) -> TDateTimeValue:
         assert_not_none(time, "time")
 
-        return assert_not_none(
-            self.timestamp_parser.parse(str(time)), msg=f"Invalid timestamp: '{time}'"
-        )
+        return self.timestamp_parser.parse(str(time))
