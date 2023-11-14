@@ -506,8 +506,6 @@ class PlateData:
     results: Results
     curve_name: CurveName
     kinetic_data: KineticData
-    read_mode: ReadMode = ReadMode.UNKNOWN
-    unit: str = "Unknown"
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
