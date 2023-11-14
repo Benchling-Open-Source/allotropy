@@ -4,38 +4,18 @@ from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime as datetime_lib
 from io import StringIO
-from typing import Any, Optional, Union
-import uuid
+from typing import Optional, Union
 
 import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
-    ContainerType as FluorescenceContainerType,
-    MeasurementAggregateDocument as FluorescenceMeasurementAggregateDocument,
-    MeasurementDocumentItem as FluorescenceMeasurementDocumentItem,
-    Model as FluorescenceModel,
-)
-from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence import (
-    ContainerType as LuminescenceContainerType,
-    MeasurementAggregateDocument as LuminescenceMeasurementAggregateDocument,
-    MeasurementDocumentItem as LuminescenceMeasurementDocumentItem,
-    Model as LuminescenceModel,
-)
-from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TDatacube,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
-)
-from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
-    ContainerType as AbsorbanceContainerType,
-    MeasurementAggregateDocument as AbsorbanceMeasurementAggregateDocument,
-    MeasurementDocumentItem as AbsorbanceMeasurementDocumentItem,
-    Model as AbsorbanceModel,
 )
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
@@ -137,42 +117,49 @@ class PlateNumber:
 
 @dataclass
 class PlateType:
-    experiment_cls: type[PlateData]
     read_mode: ReadMode
     read_type: ReadType
-    read_names: list
+    read_names: list[str]
 
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateType:
         assert_not_none(lines_reader.drop_until("^Plate Type"), "Plate Type")
         data_section = read_data_section(lines_reader)
 
-        experiment_cls = PlateType.get_experiment_class(data_section)
+        read_mode = PlateType.get_read_mode(data_section)
         read_type = PlateType.get_read_type(data_section)
         read_names: list = []
-
         for procedure_chunk in PlateType._parse_procedure_chunks(data_section):
-            PlateType._parse_procedure_chunk(
-                procedure_chunk,
-                experiment_cls.read_mode,
-                read_names,
+            read_names.extend(
+                PlateType._parse_procedure_chunk(procedure_chunk, read_mode)
             )
 
         return PlateType(
-            experiment_cls=experiment_cls,
-            read_mode=experiment_cls.read_mode,
+            read_mode=read_mode,
             read_type=read_type,
             read_names=read_names,
         )
 
+    @property
+    def data_point_cls(self) -> type[DataPoint]:
+        if self.read_mode == ReadMode.ABSORBANCE:
+            return AbsorbanceDataPoint
+        elif self.read_mode == ReadMode.FLUORESCENCE:
+            return FluorescenceDataPoint
+        elif self.read_mode == ReadMode.LUMINESCENCE:
+            return LuminescenceDataPoint
+
+        msg = f"Unrecognized read mode: {self.read_mode}"
+        raise AllotropeConversionError(msg)
+
     @staticmethod
-    def get_experiment_class(data_section: str) -> type[PlateData]:
+    def get_read_mode(data_section: str) -> ReadMode:
         if ReadMode.ABSORBANCE.value in data_section:
-            return AbsorbancePlateData
+            return ReadMode.ABSORBANCE
         elif ReadMode.FLUORESCENCE.value in data_section:
-            return FluorescencePlateData
+            return ReadMode.FLUORESCENCE
         elif ReadMode.LUMINESCENCE.value in data_section:
-            return LuminescencePlateData
+            return ReadMode.LUMINESCENCE
 
         msg = "Read mode not found"
         raise AllotropeConversionError(msg)
@@ -209,11 +196,11 @@ class PlateType:
     def _parse_procedure_chunk(
         procedure_chunk: list[str],
         read_mode: ReadMode,
-        read_names: list,
-    ) -> None:
+    ) -> list[str]:
         # if no user-defined name is specified for protocols,
         # e.g. it just says "Absorbance Endpoint",
         # Gen5 defaults to using the wavelength as the name
+        read_names = []
         use_wavelength_names = False
         read_line_length = 2
         wavelength_line_length = 2
@@ -234,6 +221,7 @@ class PlateType:
                         msg = f"Unrecognized Wavelengths data {split_line}"
                         raise AllotropeConversionError(msg)
                     read_names.extend(split_line_colon[-1].split(", "))
+        return read_names
 
 
 @dataclass
@@ -346,7 +334,7 @@ class Results:
 
         for well_pos in self.wells:
             self.measurement_docs.append(
-                plate_type.experiment_cls.data_point_cls(
+                plate_type.data_point_cls(
                     plate_type.read_type,
                     self.measurements[well_pos],
                     well_pos,
@@ -491,7 +479,7 @@ class KineticData:
             (
                 "double",
                 plate_type.read_mode.lower(),
-                plate_type.experiment_cls.unit,
+                plate_type.data_point_cls.unit,
             )
         ]
         return TDatacube(
@@ -519,7 +507,6 @@ class PlateData:
     curve_name: CurveName
     kinetic_data: KineticData
     read_mode: ReadMode = ReadMode.UNKNOWN
-    data_point_cls: type[DataPoint] = DataPoint
     unit: str = "Unknown"
 
     @staticmethod
@@ -569,83 +556,11 @@ class PlateData:
                         results,
                     )
 
-        return plate_type.experiment_cls(
+        return PlateData(
             file_paths=file_paths,
             plate_number=plate_number,
             plate_type=plate_type,
             results=results,
             curve_name=curve_name,
             kinetic_data=kinetic_data,
-        )
-
-    def to_allotrope(self, measurement_docs: list) -> Any:
-        raise NotImplementedError
-
-
-@dataclass
-class AbsorbancePlateData(PlateData):
-    read_mode: ReadMode = ReadMode.ABSORBANCE
-    unit: str = AbsorbanceDataPoint.unit
-    data_point_cls: type[DataPoint] = AbsorbanceDataPoint
-
-    def to_allotrope(
-        self, measurement_docs: list[AbsorbanceMeasurementDocumentItem]
-    ) -> AbsorbanceModel:
-        return AbsorbanceModel(
-            measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self.plate_number.datetime,
-                analytical_method_identifier=self.file_paths.protocol_file_path,
-                experimental_data_identifier=self.file_paths.experiment_file_path,
-                container_type=AbsorbanceContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(len(self.results.wells)),
-                # TODO read_type=self.read_type.value?,
-                measurement_document=measurement_docs,
-            )
-        )
-
-
-@dataclass
-class FluorescencePlateData(PlateData):
-    read_mode: ReadMode = ReadMode.FLUORESCENCE
-    unit: str = FluorescenceDataPoint.unit
-    data_point_cls: type[DataPoint] = FluorescenceDataPoint
-
-    def to_allotrope(
-        self, measurement_docs: list[FluorescenceMeasurementDocumentItem]
-    ) -> FluorescenceModel:
-        return FluorescenceModel(
-            measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self.plate_number.datetime,
-                analytical_method_identifier=self.file_paths.protocol_file_path,
-                experimental_data_identifier=self.file_paths.experiment_file_path,
-                container_type=FluorescenceContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(len(self.results.wells)),
-                # TODO read_type=self.read_type.value?,
-                measurement_document=measurement_docs,
-            )
-        )
-
-
-@dataclass
-class LuminescencePlateData(PlateData):
-    read_mode: ReadMode = ReadMode.LUMINESCENCE
-    unit: str = LuminescenceDataPoint.unit
-    data_point_cls: type[DataPoint] = LuminescenceDataPoint
-
-    def to_allotrope(
-        self, measurement_docs: list[LuminescenceMeasurementDocumentItem]
-    ) -> LuminescenceModel:
-        return LuminescenceModel(
-            measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self.plate_number.datetime,
-                analytical_method_identifier=self.file_paths.protocol_file_path,
-                experimental_data_identifier=self.file_paths.experiment_file_path,
-                container_type=LuminescenceContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(len(self.results.wells)),
-                # TODO read_type=self.read_type.value?,
-                measurement_document=measurement_docs,
-            )
         )
