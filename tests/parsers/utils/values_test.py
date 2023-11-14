@@ -2,6 +2,7 @@ from typing import Optional
 
 import pytest
 
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
@@ -65,7 +66,7 @@ def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
     assert try_float(value) == expected
 
 
-def _try_int(value: str) -> int:
+def _try_int(value: Optional[str]) -> int:
     return try_int(value, "param")
 
 
@@ -73,9 +74,17 @@ def test_try_int() -> None:
     assert _try_int("1") == 1
 
 
-def test_try_int_fails() -> None:
-    with pytest.raises(Exception, match="^Invalid integer string: 'a'$"):
-        _try_int("a")
+@pytest.mark.short
+@pytest.mark.parametrize(
+    "value,expected_regex",
+    [
+        (None, "Expected non-null value for param"),
+        ("a", "Invalid integer string: 'a'"),
+    ],
+)
+def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
+    with pytest.raises(AllotropeConversionError, match=expected_regex):
+        _try_int(value)
 
 
 @pytest.mark.short
