@@ -1,20 +1,76 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/json-schemas/adm/cell-counting/BENCHLING/2023/11/cell-counting.schema",
     "cell counting aggregate document": {
-        "device system document": {
-            "model number": "Vi-Cell XR",
-            "device serial number": "AW45484"
-        },
         "cell counting document": [
             {
-                "analyst": "Vi-Cell XR",
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "74ecd441-2c22-427a-bb86-6aa189410e53",
                             "measurement time": "2021-08-31T16:31:23+00:00",
+                            "measurement identifier": "d832af75-9383-4a47-903d-5d4ec94008a4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M1"
                             },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 50.4,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 7.8,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell count": {
+                                            "value": 135,
+                                            "unit": "cell"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Sp Lactic",
+                                            "cell density dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 15.5,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 5.12,
+                                            "unit": "μm"
+                                        },
+                                        "viable cell count": {
+                                            "value": 68,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.709,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-Cell XR"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2021-08-31T16:37:04+00:00",
+                            "measurement identifier": "5b37cc39-a312-4f80-9e04-63a376e0c2fc",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -23,116 +79,61 @@
                                     }
                                 ]
                             },
-                            "processed data document": {
-                                "data processing document": {
-                                    "cell type processing method": "Sp Lactic",
-                                    "cell density dilution factor": {
-                                        "value": 100.0,
-                                        "unit": "(unitless)"
-                                    }
-                                },
-                                "viability (cell counter)": {
-                                    "value": 50.4,
-                                    "unit": "%"
-                                },
-                                "viable cell density (cell counter)": {
-                                    "value": 7.8,
-                                    "unit": "10^6 cells/mL"
-                                },
-                                "total cell count": {
-                                    "value": 135,
-                                    "unit": "cell"
-                                },
-                                "total cell density (cell counter)": {
-                                    "value": 15.5,
-                                    "unit": "10^6 cells/mL"
-                                },
-                                "average total cell diameter": {
-                                    "value": 5.12,
-                                    "unit": "μm"
-                                },
-                                "viable cell count": {
-                                    "value": 68,
-                                    "unit": "cell"
-                                },
-                                "average total cell circularity": {
-                                    "value": 0.709,
-                                    "unit": "(unitless)"
-                                }
-                            }
-                        }
-                    ]
-                }
-            },
-            {
-                "analyst": "Vi-Cell XR",
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "measurement identifier": "dcfe5187-81dc-4b9b-b3eb-15cd777f37f1",
-                            "measurement time": "2021-08-31T16:37:04+00:00",
                             "sample document": {
                                 "sample identifier": "LAC DG 046 T0 M2"
                             },
-                            "device control aggregate document": {
-                                "device control document": [
+                            "processed data aggregate document": {
+                                "processed data document": [
                                     {
-                                        "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
+                                        "viability (cell counter)": {
+                                            "value": 44.2,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.99,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell count": {
+                                            "value": 985,
+                                            "unit": "cell"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Sp Lactic",
+                                            "cell density dilution factor": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 11.3,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 4.89,
+                                            "unit": "μm"
+                                        },
+                                        "viable cell count": {
+                                            "value": 435,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.76,
+                                            "unit": "(unitless)"
+                                        }
                                     }
                                 ]
-                            },
-                            "processed data document": {
-                                "data processing document": {
-                                    "cell type processing method": "Sp Lactic",
-                                    "cell density dilution factor": {
-                                        "value": 10.0,
-                                        "unit": "(unitless)"
-                                    }
-                                },
-                                "viability (cell counter)": {
-                                    "value": 44.2,
-                                    "unit": "%"
-                                },
-                                "viable cell density (cell counter)": {
-                                    "value": 4.99,
-                                    "unit": "10^6 cells/mL"
-                                },
-                                "total cell count": {
-                                    "value": 985,
-                                    "unit": "cell"
-                                },
-                                "total cell density (cell counter)": {
-                                    "value": 11.3,
-                                    "unit": "10^6 cells/mL"
-                                },
-                                "average total cell diameter": {
-                                    "value": 4.89,
-                                    "unit": "μm"
-                                },
-                                "viable cell count": {
-                                    "value": 435,
-                                    "unit": "cell"
-                                },
-                                "average total cell circularity": {
-                                    "value": 0.76,
-                                    "unit": "(unitless)"
-                                }
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "Vi-Cell XR"
             },
             {
-                "analyst": "Vi-Cell XR",
                 "measurement aggregate document": {
                     "measurement document": [
                         {
-                            "measurement identifier": "05451577-a2b5-409f-a54b-877e8805ca0f",
                             "measurement time": "2021-08-31T16:40:19+00:00",
-                            "sample document": {
-                                "sample identifier": "LAC DG 046 T0 M3"
-                            },
+                            "measurement identifier": "99d14539-8dee-4ff9-83d8-46bc306f875a",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -141,55 +142,66 @@
                                     }
                                 ]
                             },
-                            "processed data document": {
-                                "data processing document": {
-                                    "cell type processing method": "Sp Lactic",
-                                    "cell density dilution factor": {
-                                        "value": 10.0,
-                                        "unit": "(unitless)"
+                            "sample document": {
+                                "sample identifier": "LAC DG 046 T0 M3"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 39.9,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.91,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "total cell count": {
+                                            "value": 636,
+                                            "unit": "cell"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Sp Lactic",
+                                            "cell density dilution factor": {
+                                                "value": 10.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 7.3,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 5.16,
+                                            "unit": "μm"
+                                        },
+                                        "viable cell count": {
+                                            "value": 254,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.777,
+                                            "unit": "(unitless)"
+                                        }
                                     }
-                                },
-                                "viability (cell counter)": {
-                                    "value": 39.9,
-                                    "unit": "%"
-                                },
-                                "viable cell density (cell counter)": {
-                                    "value": 2.91,
-                                    "unit": "10^6 cells/mL"
-                                },
-                                "total cell count": {
-                                    "value": 636,
-                                    "unit": "cell"
-                                },
-                                "total cell density (cell counter)": {
-                                    "value": 7.3,
-                                    "unit": "10^6 cells/mL"
-                                },
-                                "average total cell diameter": {
-                                    "value": 5.16,
-                                    "unit": "μm"
-                                },
-                                "viable cell count": {
-                                    "value": 254,
-                                    "unit": "cell"
-                                },
-                                "average total cell circularity": {
-                                    "value": 0.777,
-                                    "unit": "(unitless)"
-                                }
+                                ]
                             }
                         }
                     ]
-                }
+                },
+                "analyst": "Vi-Cell XR"
             }
         ],
+        "device system document": {
+            "model number": "Vi-Cell XR",
+            "equipment serial number": "AW45484"
+        },
         "data system document": {
             "file name": "Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
             "software name": "Vi-Cell XR",
             "software version": "2.06",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.0.10"
+            "ASM converter version": "0.1.9"
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/09/cell-counting.manifest"
+    }
 }
