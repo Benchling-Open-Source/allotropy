@@ -12,6 +12,8 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     Model,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import (
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -38,7 +40,7 @@ class ExampleWeylandYutaniParser(VendorParser):
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self._get_measurement_time(data),
+                measurement_time=self._get_measurement_time(),
                 analytical_method_identifier=data.basic_assay_info.protocol_id,
                 experimental_data_identifier=data.basic_assay_info.assay_id,
                 container_type=ContainerType.well_plate,
@@ -51,10 +53,8 @@ class ExampleWeylandYutaniParser(VendorParser):
             )
         )
 
-    def _get_measurement_time(self, data: Data) -> TDateTimeValue:
-        return self.get_date_time(
-            data.instrument.serial_number or "2023-12-31"
-        )  # FIXME
+    def _get_measurement_time(self) -> TDateTimeValue:
+        return self.get_date_time("2023-12-31")  # FIXME
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = (
@@ -66,6 +66,14 @@ class ExampleWeylandYutaniParser(VendorParser):
                     well_location_identifier=f"{result.col}{result.row}"
                 ),
                 device_control_aggregate_document=device_control_aggregate_document,
+                processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                    processed_data_document=[
+                        ProcessedDataDocumentItem(
+                            processed_data=result.value,
+                            data_processing_description="processed data",
+                        ),
+                    ]
+                ),
             )
             for result in data.plates[0].results
         ]
