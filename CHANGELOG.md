@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add data system document to plate reader schema
 ### Fixed
 ### Changed
 - Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
