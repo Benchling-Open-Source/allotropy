@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from typing import Any, Optional
 
 from allotropy.allotrope.models.shared.components.plate_reader import (
@@ -19,7 +20,7 @@ from allotropy.parsers.agilent_gen5.constants import (
 )
 
 
-class DataPoint:
+class DataPoint(ABC):
     read_mode: ReadMode
     unit: str
 
@@ -101,5 +102,6 @@ class DataPoint:
             ]
         )
 
+    @abstractmethod
     def to_measurement_doc(self) -> Any:
         raise NotImplementedError
