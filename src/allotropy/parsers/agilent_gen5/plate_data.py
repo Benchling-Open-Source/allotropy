@@ -46,8 +46,8 @@ def try_float(value: str) -> Union[str, float]:
 
 
 class PlateData(Generic[MDI], ABC):
-    measurements: defaultdict[str, Any]
-    processed_datas: defaultdict[str, Any]
+    measurements: defaultdict[str, list[Any]]
+    processed_datas: defaultdict[str, list[Any]]
     temperatures: list[str]
     kinetic_times: Optional[list[int]]
     measurement_docs: list[str]
