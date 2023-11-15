@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 from collections.abc import Iterator
 from io import IOBase, StringIO
 from re import search
@@ -93,7 +91,7 @@ class LinesReader:
 class CsvReader(LinesReader):
     def pop_csv_block_as_lines(
         self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR_PATTERN
-    ) -> list:
+    ) -> list[str]:
         self.drop_empty(empty_pat)
         if match_pat:
             if not self.match(match_pat):
