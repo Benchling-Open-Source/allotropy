@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ### Fixed
 ### Changed
+- Set mypy's disallow_any_generics to True. Ideally, new files should not suppress these warnings.
 ### Deprecated
 ### Removed
 ### Security
