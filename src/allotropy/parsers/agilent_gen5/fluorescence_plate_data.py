@@ -12,7 +12,7 @@ from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceD
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
-class FluorescencePlateData(PlateData):
+class FluorescencePlateData(PlateData[MeasurementDocumentItem]):
     read_mode = ReadMode.FLUORESCENCE
     data_point_cls = FluorescenceDataPoint
 

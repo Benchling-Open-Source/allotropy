@@ -50,7 +50,7 @@ property_lookup = {
 }
 
 
-def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
+def get_property_from_sample(sample: pd.Series[str], property_name: str) -> Any:
     return property_lookup[property_name](value=value) if (value := sample.get(property_name)) else None  # type: ignore[arg-type]
 
 
@@ -84,7 +84,7 @@ class ViCellBluParser(VendorParser):
         ]
 
     def _get_cell_counting_document_item(
-        self, sample: pd.Series
+        self, sample: pd.Series[str]
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=sample.get("Analysis by") or DEFAULT_ANALYST,  # type: ignore[arg-type]

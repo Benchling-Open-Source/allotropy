@@ -28,7 +28,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 from allotropy.parsers.lines_reader import LinesReader
 
 
-def df_to_series(df: pd.DataFrame) -> pd.Series:
+def df_to_series(df: pd.DataFrame) -> pd.Series[str]:
     return pd.Series(df.iloc[0], index=df.columns)
 
 
@@ -39,12 +39,14 @@ def float_or_none(value: Any) -> Optional[float]:
         return None
 
 
-def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optional[str]:
+def get_str(
+    data: pd.Series[str], key: str, default: Optional[str] = None
+) -> Optional[str]:
     value = data.get(key, default)
     return None if value is None else str(value)
 
 
-def get_int(data: pd.Series, key: str) -> Optional[int]:
+def get_int(data: pd.Series[str], key: str) -> Optional[int]:
     try:
         value = data.get(key)
         return None if value is None else int(value)  # type: ignore[arg-type]
@@ -53,7 +55,7 @@ def get_int(data: pd.Series, key: str) -> Optional[int]:
         raise AllotropeConversionError(msg) from e
 
 
-def get_float(data: pd.Series, key: str) -> Optional[float]:
+def get_float(data: pd.Series[str], key: str) -> Optional[float]:
     try:
         value = data.get(key)
         return float_or_none(value)
@@ -62,7 +64,7 @@ def get_float(data: pd.Series, key: str) -> Optional[float]:
         raise AllotropeConversionError(msg) from e
 
 
-def get_bool(data: pd.Series, key: str) -> Optional[bool]:
+def get_bool(data: pd.Series[str], key: str) -> Optional[bool]:
     try:
         value = data.get(key)
         return None if value is None else bool(value)
@@ -107,7 +109,7 @@ class HeaderBuilder:
         )
 
     @staticmethod
-    def get_experiment_type(data: pd.Series) -> ExperimentType:
+    def get_experiment_type(data: pd.Series[str]) -> ExperimentType:
         experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
             "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
@@ -124,7 +126,7 @@ class HeaderBuilder:
         return experiments_type
 
     @staticmethod
-    def get_data(reader: LinesReader) -> pd.Series:
+    def get_data(reader: LinesReader) -> pd.Series[str]:
         lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
         csv_stream = StringIO("\n".join(lines))
         raw_data = pd.read_csv(
@@ -135,11 +137,11 @@ class HeaderBuilder:
         return data.str.strip().replace("NA", None)
 
     @staticmethod
-    def get_measurement_time(data: pd.Series) -> str:
+    def get_measurement_time(data: pd.Series[str]) -> str:
         return str(data.get("Experiment Run End Time"))
 
     @staticmethod
-    def get_plate_well_count(data: pd.Series) -> int:
+    def get_plate_well_count(data: pd.Series[str]) -> int:
         block_type = get_str(data, "Block Type", default="")
 
         if block_type is None:
@@ -174,7 +176,7 @@ class GenericWellBuilder:
         )
 
     @staticmethod
-    def build_well_item(data: pd.Series) -> WellItem:
+    def build_well_item(data: pd.Series[str]) -> WellItem:
         identifier = get_int(data, "Well")
         if identifier is None:
             msg = "Unable to get well identifier"
@@ -222,7 +224,7 @@ class GenotypingWellBuilder:
         )
 
     @staticmethod
-    def build_well_items(data: pd.Series) -> tuple[WellItem, WellItem]:
+    def build_well_items(data: pd.Series[str]) -> tuple[WellItem, WellItem]:
         identifier = get_int(data, "Well")
         if identifier is None:
             msg = "Unable to get well identifier"
@@ -433,7 +435,7 @@ class GenericResultsBuilder:
         )
 
     @staticmethod
-    def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
+    def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series[str]:
         well_data = data[data["Well"] == well_item.identifier]
         if well_data.empty:
             msg = f"Unable to get result data for well {well_item.identifier}"
@@ -507,7 +509,7 @@ class GenotypingResultsBuilder:
         )
 
     @staticmethod
-    def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
+    def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series[str]:
         well_data = data[data["Well"] == well_item.identifier]
         if well_data.empty:
             msg = f"Unable to get result data for well {well_item.identifier}"
@@ -537,7 +539,7 @@ class ResultsBuilder:
         return GenericResultsBuilder.build(data, well_item)
 
     @staticmethod
-    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series]:
+    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series[str]]:
         if reader.drop_until(r"^\[Results\]") is None:
             msg = "Unable to find Results section in input file"
             raise AllotropeConversionError(msg)

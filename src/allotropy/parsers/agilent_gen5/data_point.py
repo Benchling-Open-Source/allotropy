@@ -32,7 +32,7 @@ class DataPoint(ABC):
         plate_barcode: str,
         sample_identifier: Optional[str],
         concentration: Optional[float],
-        processed_data: list[list],
+        processed_data: list[list[str]],
         temperature: Optional[float],
     ):
         self.read_type = read_type

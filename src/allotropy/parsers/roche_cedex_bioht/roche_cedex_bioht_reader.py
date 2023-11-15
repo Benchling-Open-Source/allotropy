@@ -11,7 +11,7 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
 )
 
 
-def to_num(data: pd.Series) -> pd.Series:
+def to_num(data: pd.Series[str]) -> pd.Series[str]:
     return pd.to_numeric(data, errors="coerce").replace(np.nan, None)
 
 
@@ -20,7 +20,7 @@ class RocheCedexBiohtReader:
         self.title_data = self.read_title_data(contents)
         self.samples_data = self.read_samples_data(contents)
 
-    def read_title_data(self, contents: io.IOBase) -> pd.Series:
+    def read_title_data(self, contents: io.IOBase) -> pd.Series[str]:
         contents.seek(0)
         return pd.read_csv(  # type: ignore[call-overload, no-any-return]
             contents,

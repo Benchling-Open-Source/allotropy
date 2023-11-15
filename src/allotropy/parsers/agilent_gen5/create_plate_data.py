@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Optional
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.absorbance_plate_data import AbsorbancePlateData
@@ -13,7 +13,7 @@ def create_plate_data(
     software_version_chunk: Optional[str],
     file_paths_chunk: Optional[str],
     all_data_chunk: Optional[str],
-) -> PlateData:
+) -> PlateData[Any]:
     software_version_chunk = assert_not_none(
         software_version_chunk, "software_version_chunk"
     )

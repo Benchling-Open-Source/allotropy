@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, Optional
 
 import pandas as pd
 
@@ -24,7 +24,7 @@ class Title:
     device_serial_number: Optional[str]
 
     @staticmethod
-    def create(title_data: pd.Series) -> Title:
+    def create(title_data: pd.Series[str]) -> Title:
         analyst = title_data.get("analyst")
         if analyst is None:
             msg = "Unable to obtain analyst from input data"
@@ -50,7 +50,7 @@ class Analyte:
     unit: Optional[str]
 
     @staticmethod
-    def create(data: pd.Series) -> Analyte:
+    def create(data: pd.Series[str]) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
         concentration_value: Optional[float] = data.get("concentration value")  # type: ignore[assignment]
         unit: Optional[str] = data.get("concentration unit")  # type: ignore[assignment]
@@ -61,10 +61,10 @@ class Analyte:
 @dataclass
 class AnalyteList:
     analytes: list[Analyte]
-    molar_concentration_dict: dict
-    molar_concentration_nans: dict
-    non_aggregrable_dict: dict
-    non_aggregable_nans: dict
+    molar_concentration_dict: dict[str, Any]
+    molar_concentration_nans: dict[str, Any]
+    non_aggregrable_dict: dict[str, Any]
+    non_aggregable_nans: dict[str, Any]
     num_measurement_docs: int
 
     @staticmethod

@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Any, Union
 
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueCell,
@@ -81,7 +81,7 @@ ANALYTE_MAPPINGS: dict[str, dict[str, str]] = {
     },
 }
 
-PROPERTY_MAPPINGS: dict[str, dict] = {
+PROPERTY_MAPPINGS: dict[str, dict[str, Any]] = {
     "pco2": {
         "col_name": "PCO2",
         "cls": TNullableQuantityValueMillimeterOfMercury,

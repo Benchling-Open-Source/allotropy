@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from collections import defaultdict
 from datetime import datetime
 from io import StringIO
-from typing import Any, Optional, Union
+from typing import Any, Generic, Optional, TypeVar, Union
 
 import numpy as np
 import pandas as pd
@@ -35,6 +35,9 @@ METADATA_PREFIXES = frozenset(
 GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
 
+MDI = TypeVar("MDI")
+
+
 def try_float(value: str) -> Union[str, float]:
     try:
         return float(value)
@@ -42,23 +45,23 @@ def try_float(value: str) -> Union[str, float]:
         return value
 
 
-class PlateData(ABC):
-    measurements: defaultdict[str, list]
-    processed_datas: defaultdict[str, list]
-    temperatures: list
+class PlateData(Generic[MDI], ABC):
+    measurements: defaultdict[str, Any]
+    processed_datas: defaultdict[str, Any]
+    temperatures: list[str]
     kinetic_times: Optional[list[int]]
-    measurement_docs: list
-    wells: list
-    layout: dict
-    concentrations: dict
-    read_names: list
+    measurement_docs: list[str]
+    wells: list[str]
+    layout: dict[str, str]
+    concentrations: dict[str, float]
+    read_names: list[str]
     datetime: Optional[str]
     experiment_file_path: Optional[str]
     protocol_file_path: Optional[str]
     read_mode: ReadMode
     read_type: ReadType
     plate_barcode: str
-    statistics_doc: list
+    statistics_doc: list[dict[str, Union[str, float]]]
     actual_temperature: Optional[float]
     data_point_cls: type[DataPoint]
 
@@ -138,7 +141,7 @@ class PlateData(ABC):
                     # kinetic_data_label = data_section.strip()
 
     def _parse_metadata(self, metadata: str) -> None:
-        metadata_dict: dict = {}
+        metadata_dict: dict[str, str] = {}
         metadata_lines = metadata.splitlines()
         for metadata_line in metadata_lines:
             line_split = metadata_line.split("\t")
@@ -365,5 +368,5 @@ class PlateData(ABC):
         return (3600 * hours) + (60 * minutes) + seconds
 
     @abstractmethod
-    def to_allotrope(self, measurement_docs: list) -> Any:
+    def to_allotrope(self, measurement_docs: list[MDI]) -> Any:
         raise NotImplementedError

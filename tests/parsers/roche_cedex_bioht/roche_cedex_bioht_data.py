@@ -81,7 +81,7 @@ def get_reader() -> RocheCedexBiohtReader:
     return RocheCedexBiohtReader(get_data_stream())
 
 
-def get_reader_title() -> pd.Series:
+def get_reader_title() -> pd.Series[str]:
     return pd.Series(
         {
             "row type": 0,

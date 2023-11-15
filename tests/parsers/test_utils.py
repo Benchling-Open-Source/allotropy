@@ -12,7 +12,7 @@ from allotropy.parser_factory import VendorType
 from allotropy.to_allotrope import allotrope_from_file
 
 
-def replace_asm_converter_name_and_version(allotrope_dict: dict) -> None:
+def replace_asm_converter_name_and_version(allotrope_dict: dict[str, Any]) -> None:
     for key, value in allotrope_dict.items():
         if key == "data system document":
             value["ASM converter name"] = ASM_CONVERTER_NAME
@@ -21,7 +21,9 @@ def replace_asm_converter_name_and_version(allotrope_dict: dict) -> None:
             replace_asm_converter_name_and_version(value)
 
 
-def assert_allotrope_dicts_equal(expected: dict, actual: dict) -> None:
+def assert_allotrope_dicts_equal(
+    expected: dict[str, Any], actual: dict[str, Any]
+) -> None:
     replace_asm_converter_name_and_version(expected)
     exclude_regex = [
         r"\['measurement identifier'\]",
@@ -57,7 +59,7 @@ def validate_contents(allotrope_dict: dict[str, Any], expected_file: str) -> Non
         assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
 
 
-def build_series(elements: list[tuple]) -> pd.Series:
+def build_series(elements: list[tuple[Any]]) -> pd.Series[Any]:
     index, data = list(zip(*elements))
     # pd.Series has a Generic.
     return pd.Series(data=data, index=index)  # type: ignore[no-any-return]

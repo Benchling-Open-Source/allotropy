@@ -74,7 +74,7 @@ class Sample:
     properties: dict[str, Any]
 
     @staticmethod
-    def create(data: pd.Series) -> Sample:
+    def create(data: pd.Series[Any]) -> Sample:
         properties: dict[str, Any] = {
             property_name: property_dict["cls"](data[property_dict["col_name"]])
             for property_name, property_dict in PROPERTY_MAPPINGS.items()

@@ -51,7 +51,7 @@ class AppbioAbsoluteQParser(VendorParser):
         self, wells: pd.DataFrame, group_rows: pd.DataFrame, filename: str
     ) -> Model:
         well_groups = wells.groupby(["Well"]).groups.keys()
-        group_ids: dict[Any, list] = defaultdict(list)
+        group_ids: dict[Any, list[str]] = defaultdict(list)
 
         dpcr_document = [
             self._get_dpcr_document(wells[wells["Well"] == well_name], group_ids)
@@ -87,7 +87,7 @@ class AppbioAbsoluteQParser(VendorParser):
         )
 
     def _get_dpcr_document(
-        self, well_data: pd.DataFrame, group_ids: dict[Any, list]
+        self, well_data: pd.DataFrame, group_ids: dict[Any, list[str]]
     ) -> DPCRDocumentItem:
         measurement_documents = []
         for _, well_item in well_data.iterrows():
@@ -142,7 +142,7 @@ class AppbioAbsoluteQParser(VendorParser):
 
     @staticmethod
     def get_calculated_data_document(
-        group_ids: dict, group_rows: pd.DataFrame
+        group_ids: dict[str, Any], group_rows: pd.DataFrame
     ) -> list[CalculatedDataDocumentItem]:
         calculated_data_document: list[CalculatedDataDocumentItem] = []
 

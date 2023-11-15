@@ -43,13 +43,13 @@ class ViCellXRReader:
             header=None,
         ).fillna("")
 
-        header_list: list = header.agg(
+        header_list: list[str] = header.agg(
             lambda x: " ".join(x).replace(" /ml", "/ml").strip()
         ).to_list()
         return header_list
 
-    def _get_file_info(self) -> pd.Series:
-        info: pd.Series = pd.read_excel(
+    def _get_file_info(self) -> pd.Series[str]:
+        info: pd.Series[str] = pd.read_excel(
             self.contents, nrows=3, header=None, usecols=[0]
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])

@@ -12,7 +12,7 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
-class AbsorbancePlateData(PlateData):
+class AbsorbancePlateData(PlateData[MeasurementDocumentItem]):
     read_mode = ReadMode.ABSORBANCE
     data_point_cls = AbsorbanceDataPoint
 

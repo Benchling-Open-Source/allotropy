@@ -13,7 +13,7 @@ class AgilentGen5Parser(VendorParser):
         return contents.strip().replace("\r\n", "\n").split(4 * "\n")
 
     def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
-        plates: list[PlateData] = []
+        plates: list[PlateData[Any]] = []
         software_version_chunk = None
         file_paths_chunk = None
         all_data_chunk = None

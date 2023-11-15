@@ -12,7 +12,7 @@ from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceD
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 
 
-class LuminescencePlateData(PlateData):
+class LuminescencePlateData(PlateData[MeasurementDocumentItem]):
     read_mode = ReadMode.LUMINESCENCE
     data_point_cls = LuminescenceDataPoint
 
