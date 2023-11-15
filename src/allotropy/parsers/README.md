@@ -1,6 +1,7 @@
-# Allotropy parser structure
+# allotropy parser structure
 
-Allotropy is composed by multiple data parsers, each of them should follow a general structure.
+
+The allotropy library has a collection of data parsers, each of which follows a general structure.
 The idea of this structure is to ease the understanding of any parser in the library by defining the
 same basic building blocks.
 
@@ -29,15 +30,16 @@ classDiagram
       Parser <-- ParserFactory
 ```
 
-- **LinesReader**: Default class to read raw data file.
-- **Structure Elements**: Representation of the specific data structure of each parser.
+- **LinesReader**: Default class to read raw data file, a specific implementation may use or
+implement an alternative reader for its use case.
+- **Structure Elements**: Representation of the specific data structure of the files read by each parser.
 - **Parser**: Entry point and main controller of the parser.
 - **ParserFactory**: Default constructor for any parser in the library.
 
 ## Behavior
 
 The first step of the process is to use the **ParserFactory** to instantiate the desired **Parser**.
-This **Parser** receive a IO stream containing the raw information of the input file, in most cases
+This **Parser** receives an IO stream containing the raw information of the input file, in most cases
 the parsers can use a **LinesReader** instance to perform the decoding and allow an easy reading
 of every part of the file.
 
@@ -51,7 +53,8 @@ instance of a **LinesReader** to ease the extraction of the information that the
 
 # Calculated documents
 
-The intent of the calculated documents is to give information about which parts of a document are used in the calculation of another one.
+The intent of the calculated documents is to give information about which parts of a document are used
+to calculate other parts.
 
 ## Example
 
