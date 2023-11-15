@@ -112,7 +112,7 @@ extra-dependencies = [
 ]
 
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:src/allotropy tests}"
+typing = "mypy --install-types --non-interactive {args:src/allotropy scripts tests}"
 style = [
   "ruff {args:.}",
   "black --check --diff {args:.}",
