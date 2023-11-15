@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from datetime import datetime

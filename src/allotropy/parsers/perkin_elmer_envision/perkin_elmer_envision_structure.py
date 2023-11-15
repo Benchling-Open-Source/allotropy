@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 # plate (repeated for N plates measured)
 #     Plate information
 #     Background information (optional)
