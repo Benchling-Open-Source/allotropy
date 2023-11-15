@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add parser structure documentation
 ### Fixed
 ### Changed
 - Refactor Agilent Gen5 with explicit dataclasses structure
