@@ -53,9 +53,7 @@ class LinesReader:
         return line
 
     def pop_if_match(self, match_pat: str) -> Optional[str]:
-        if self.match(match_pat):
-            return self.pop()
-        return None
+        return self.pop() if self.match(match_pat) else None
 
     def pop_data(self) -> Optional[str]:
         self.drop_empty()
