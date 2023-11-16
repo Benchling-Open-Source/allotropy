@@ -212,10 +212,10 @@
                         "items": {
                           "anyOf": [
                             {
-                              "$ref": "#/$defs/fluorescenceCellCountingMeasurementDocumentItems"
+                              "$ref": "#/$defs/fluorescenceCellCountingMeasurementDocumentItem"
                             },
                             {
-                              "$ref": "#/$defs/cellCountingDetectorMeasurementDocumentItems"
+                              "$ref": "#/$defs/cellCountingDetectorMeasurementDocumentItem"
                             }
                           ]
                         },
@@ -310,7 +310,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "#/$defs/deviceControlDocumentItems"
+                "$ref": "#/$defs/deviceControlDocumentItem"
               },
               {
                 "properties": {
@@ -327,7 +327,7 @@
         }
       }
     },
-    "cellCountingDetectorMeasurementDocumentItems": {
+    "cellCountingDetectorMeasurementDocumentItem": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
       "$asm.pattern": "aggregate datum",
@@ -336,7 +336,6 @@
         "device control aggregate document",
         "measurement time",
         "measurement identifier",
-        "processed data aggregate document",
         "sample document"
       ],
       "properties": {
@@ -528,7 +527,7 @@
       "items": {
         "allOf": [
           {
-            "$ref": "#/$defs/deviceControlDocumentItems"
+            "$ref": "#/$defs/deviceControlDocumentItem"
           },
           {
             "properties": {
@@ -578,7 +577,7 @@
         }
       }
     },
-    "fluorescenceCellCountingMeasurementDocumentItems": {
+    "fluorescenceCellCountingMeasurementDocumentItem": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
       "$asm.pattern": "aggregate datum",
@@ -1168,7 +1167,7 @@
         "sample identifier"
       ]
     },
-    "deviceControlDocumentItems": {
+    "deviceControlDocumentItem": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
       "$asm.pattern": "aggregate datum",

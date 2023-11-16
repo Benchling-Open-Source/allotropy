@@ -6,13 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add parser structure documentation
 ### Fixed
 ### Changed
-- Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
-- Refactor Moldev Softmax Pro with explicit dataclasses structure
+- Refactor Agilent Gen5 with explicit dataclasses structure
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.10] - 2023-11-14
+### Added
+- Add data system document to plate reader schema
+### Changed
+- Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
+- Refactor Moldev Softmax Pro with explicit dataclasses structure
+- Inline VendorParser.parse_timestamp (was only used by VendorParser.get_date_time)
+- Change TimeStampParser.parse() to raise for invalid input
 
 ## [0.1.9] - 2023-11-03
 ### Added

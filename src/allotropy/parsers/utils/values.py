@@ -1,8 +1,6 @@
 import re
 from typing import Optional, TypeVar, Union
 
-import pandas as pd
-
 from allotropy.allotrope.allotrope import AllotropeConversionError
 
 PrimitiveValue = Union[str, int, float]
@@ -31,15 +29,6 @@ def natural_sort_key(key: str) -> list[str]:
 
 
 T = TypeVar("T")
-
-
-def assert_df(
-    value: Optional[pd.DataFrame], name: Optional[str] = None, msg: Optional[str] = None
-) -> pd.DataFrame:
-    if value is None:
-        error = msg or f"Expected non-null dataframe{f' for {name}' if name else ''}"
-        raise AllotropeConversionError(error)
-    return value
 
 
 def assert_not_none(
