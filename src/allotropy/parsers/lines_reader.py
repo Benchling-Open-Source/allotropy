@@ -109,30 +109,19 @@ class ListReader(LinesReader):
 
 
 class CsvReader(LinesReader):
-    def pop_csv_block_as_lines(
-        self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR_PATTERN
-    ) -> list:
+    def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list:
         self.drop_empty(empty_pat)
-
-        if match_pat and not self.match(match_pat):
-            msg = f"Did not find {match_pat}"
-            raise AllotropyError(msg)
-
-        if match_pat:
-            self.pop()  # remove title
-
         lines = list(self.pop_until_empty(empty_pat))
         self.drop_empty(empty_pat)
         return lines
 
     def pop_csv_block_as_df(
         self,
-        match_pat: Optional[str] = None,
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
-        if lines := self.pop_csv_block_as_lines(match_pat, empty_pat):
+        if lines := self.pop_csv_block_as_lines(empty_pat):
             return pd.read_csv(
                 StringIO("\n".join(lines)),
                 header=None,
