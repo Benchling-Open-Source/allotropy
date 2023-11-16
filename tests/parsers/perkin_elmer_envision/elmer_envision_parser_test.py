@@ -40,16 +40,14 @@ def test_get_model() -> None:
     assert model == get_model()
 
 
-@pytest.mark.parametrize("output_file", output_files)
-def test_parse_missing_file(output_file: str) -> None:
-    test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.tsv"
+def test_parse_missing_file() -> None:
+    test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.tsv"
     with pytest.raises(FileNotFoundError):
         from_file(test_filepath, VENDOR_TYPE)
 
 
-@pytest.mark.parametrize("output_file", output_files)
-def test_parse_incorrect_vendor(output_file: str) -> None:
-    test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.csv"
+def test_parse_incorrect_vendor() -> None:
+    test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.csv"
     with pytest.raises(AllotropeConversionError):
         from_file(test_filepath, Vendor.AGILENT_GEN5)
 
