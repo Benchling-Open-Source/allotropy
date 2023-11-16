@@ -54,8 +54,13 @@ class PlateInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[PlateInfo]:
+        assert_not_none(
+            reader.pop_if_match("^Plate information"),
+            "Expected to get plate information",
+        )
+
         data = assert_not_none(
-            reader.pop_csv_block_as_df("^Plate information"),
+            reader.pop_csv_block_as_df(),
             "Plate information CSV block",
         )
         series = df_to_series(data).replace(np.nan, None)
