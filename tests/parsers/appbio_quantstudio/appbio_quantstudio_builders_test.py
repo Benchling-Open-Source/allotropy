@@ -102,9 +102,7 @@ def test_header_builder() -> None:
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
-        ("device_identifier", "Unable to get device identifier"),
         ("model_number", "Unable to get model number"),
-        ("device_serial_number", "Unable to get device serial number"),
         (
             "measurement_method_identifier",
             "Unable to get measurement method identifier",

@@ -85,6 +85,32 @@
             }
         ]
     },
+    "tDateTimeStampValue": {
+        "description": "All timestamps MUST be in ISO8601 date/time format.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+        "oneOf": [
+            {
+                "type": "string",
+                "format": "date-time"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
     "tStatisticDatumRole": {
         "description": "A statistic datum role.",
         "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",

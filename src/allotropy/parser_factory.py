@@ -12,12 +12,17 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
+from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
+    ExampleWeylandYutaniParser,
+)
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
-from allotropy.parsers.perkin_elmer_envision.elmer_envision_parser import (
-    ElmerEnvisionParser,
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
+    PerkinElmerEnvisionParser,
 )
-from allotropy.parsers.roche_cedex_bioht.cedex_bioht_parser import CedexBiohtParser
+from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
+    RocheCedexBiohtParser,
+)
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -28,6 +33,7 @@ class Vendor(Enum):
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
+    EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
@@ -43,10 +49,11 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
+    Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
-    Vendor.PERKIN_ELMER_ENVISION: ElmerEnvisionParser,
-    Vendor.ROCHE_CEDEX_BIOHT: CedexBiohtParser,
+    Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
+    Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
 }
 
 

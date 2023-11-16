@@ -219,6 +219,66 @@
             }
         ]
     },
+    "tQuantityValueNumber": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Number"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValuePicogramPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/PicogramPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueDegreeCelsius": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/DegreeCelsius"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueMilliAbsorbanceUnit": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MilliAbsorbanceUnit"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tRelativeFluorescenceUnit": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/RelativeFluorescenceUnit"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tRelativeLightUnit": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/RelativeLightUnit"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
     "tNullableQuantityValueMicrometer": {
         "allOf": [
             {
@@ -349,40 +409,10 @@
             }
         ]
     },
-    "tQuantityValueNumber": {
-        "allOf": [
-            {
-                "$ref": "#/$defs/Number"
-            },
-            {
-                "$ref": "#/$defs/tQuantityValue"
-            }
-        ]
-    },
-    "tQuantityValuePicogramPerMilliliter": {
-        "allOf": [
-            {
-                "$ref": "#/$defs/PicogramPerMilliliter"
-            },
-            {
-                "$ref": "#/$defs/tQuantityValue"
-            }
-        ]
-    },
-    "tQuantityValueDegreeCelsius": {
-        "allOf": [
-            {
-                "$ref": "#/$defs/DegreeCelsius"
-            },
-            {
-                "$ref": "#/$defs/tQuantityValue"
-            }
-        ]
-    },
     "tNullableQuantityValueUnitless": {
         "allOf": [
             {
-                "$ref": "#/$defs/Unitless"
+                "$ref": "#/$defs/tNullableQuantityValue"
             },
             {
                 "$ref": "#/$defs/tNullableQuantityValue"

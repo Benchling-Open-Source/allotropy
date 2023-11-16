@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import io
-from typing import Any, Optional
+from typing import Any
 
 import chardet
 
@@ -29,10 +29,7 @@ class VendorParser(ABC):
             raise AllotropeConversionError(error)
         return file_bytes.decode(encoding)
 
-    def parse_timestamp(self, time: Optional[str]) -> Optional[str]:
-        return self.timestamp_parser.parse(time)
-
     def get_date_time(self, time: Any) -> TDateTimeValue:
-        return assert_not_none(
-            self.parse_timestamp(str(time)), msg=f"Invalid timestamp: '{time}'"
-        )
+        assert_not_none(time, "time")
+
+        return self.timestamp_parser.parse(str(time))
