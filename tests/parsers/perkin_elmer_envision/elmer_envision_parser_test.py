@@ -41,13 +41,13 @@ def test_get_model() -> None:
 
 
 def test_parse_missing_file() -> None:
-    test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.tsv"
+    test_filepath = "tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.tsv"
     with pytest.raises(FileNotFoundError):
         from_file(test_filepath, VENDOR_TYPE)
 
 
 def test_parse_incorrect_vendor() -> None:
-    test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.csv"
+    test_filepath = "tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.csv"
     with pytest.raises(AllotropeConversionError):
         from_file(test_filepath, Vendor.AGILENT_GEN5)
 
