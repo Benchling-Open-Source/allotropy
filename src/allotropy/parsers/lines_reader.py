@@ -59,20 +59,28 @@ class LinesReader:
         self.drop_empty()
         return self.pop()
 
-    def drop_until(self, match_pat: str) -> Optional[str]:
+    def drop_until(
+        self,
+        match_pat: str,
+        inclusive: bool = False,  # noqa: FBT001, FBT002
+    ) -> Optional[str]:
         while self.current_line_exists() and not self.match(match_pat):
             self.pop()
-        return self.get()
+        return self.pop() if inclusive else self.get()
 
     def drop_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Optional[str]:
         while self.current_line_exists() and self.is_empty(empty_pat):
             self.pop()
         return self.get()
 
-    def drop_until_empty(self, empty_pat: str = EMPTY_STR_PATTERN) -> Optional[str]:
+    def drop_until_empty(
+        self,
+        empty_pat: str = EMPTY_STR_PATTERN,
+        inclusive: bool = False,  # noqa: FBT001, FBT002
+    ) -> Optional[str]:
         while self.current_line_exists() and not self.is_empty(empty_pat):
             self.pop()
-        return self.get()
+        return self.pop() if inclusive else self.get()
 
     def pop_until(self, match_pat: str) -> Iterator[str]:
         while self.current_line_exists() and not self.match(match_pat):
