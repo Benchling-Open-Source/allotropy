@@ -38,6 +38,13 @@ def df_to_series(df: pd.DataFrame) -> pd.Series:
     return pd.Series(df.iloc[-1], index=df.columns)
 
 
+def str_from_series(
+    data: pd.Series, key: str, default: Optional[str] = None
+) -> Optional[str]:
+    value = data.get(key, default)
+    return None if value is None else str(value)
+
+
 def num_to_chars(n: int) -> str:
     d, m = divmod(n, 26)  # 26 is the number of ASCII letters
     return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
@@ -66,33 +73,31 @@ class PlateInfo:
         series = df_to_series(data).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
 
-        plate_number = str(
-            assert_not_none(
-                series.get("Plate"),
-                "Plate information: Plate",
-            )
-        )
-        barcode = (
-            str(series.get("Barcode") or '=""').removeprefix('="').removesuffix('"')
-            or f"Plate {plate_number}"
+        plate_number = assert_not_none(
+            str_from_series(series, "Plate"),
+            "Plate information: Plate",
         )
 
+        raw_barcode = str_from_series(series, "Barcode") or '=""'
+        raw_barcode = raw_barcode.removeprefix('="').removesuffix('"')
+        barcode = raw_barcode or f"Plate {plate_number}"
+
         search_result = assert_not_none(
-            search("De=...", str(series.get("Measinfo", ""))),
+            search("De=...", str_from_series(series, "Measinfo") or ""),
             f"Unable to get emition filter id from plate {barcode}",
         )
 
         emission_filter_id = search_result.group().removeprefix("De=")
 
-        measurement_time = str(series.get("Measurement date", ""))
+        measurement_time = str_from_series(series, "Measurement date") or ""
 
         return PlateInfo(
             plate_number,
             barcode,
             emission_filter_id,
             measurement_time,
-            try_float(str(series.get("Measured height"))),
-            try_float(str(series.get("Chamber temperature at start"))),
+            try_float(str_from_series(series, "Measured height")),
+            try_float(str_from_series(series, "Chamber temperature at start")),
         )
 
 
@@ -160,8 +165,8 @@ class Plate:
 
 @dataclass
 class BasicAssayInfo:
-    protocol_id: str
-    assay_id: str
+    protocol_id: Optional[str]
+    assay_id: Optional[str]
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
@@ -174,8 +179,8 @@ class BasicAssayInfo:
         data.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data)
         return BasicAssayInfo(
-            str(series.get("Protocol ID")),
-            str(series.get("Assay ID")),
+            str_from_series(series, "Protocol ID"),
+            str_from_series(series, "Assay ID"),
         )
 
 
@@ -190,8 +195,9 @@ class PlateType:
             reader.pop_csv_block_as_df(),
             "Plate type",
         )
+        series = df_to_series(data.T)
         return PlateType(
-            try_float(str(df_to_series(data.T).get("Number of the wells in the plate")))
+            try_float(str_from_series(series, "Number of the wells in the plate"))
         )
 
 
@@ -264,8 +270,7 @@ class PlateMap:
             col_mapping: dict[str, SampleRoleType] = {}
             for col, value in row_data.items():
                 if value:
-                    role_type = get_sample_role_type(str(value))
-                    if role_type:
+                    if role_type := get_sample_role_type(str(value)):
                         col_mapping[str(col)] = role_type
             if col_mapping:
                 sample_role_type_mapping[str(row)] = col_mapping
@@ -315,7 +320,7 @@ class Filter:
 
         name = str(series.index[0])
 
-        description = str(series.get("Description"))
+        description = str_from_series(series, "Description") or ""
 
         search_result = assert_not_none(
             search("CWL=\\d*nm", description),
@@ -367,25 +372,27 @@ class Labels:
         series = df_to_series(data.T).replace(np.nan, None)
 
         filters = create_filters(reader)
-
-        excitation_filter = filters.get(str(series.get("Exc. filter", "")))
+        excitation_filter = filters.get(str_from_series(series, "Exc. filter") or "")
 
         emission_filters = {
-            "1st": filters.get(str(series.get("Ems. filter"))),
-            "2nd": filters.get(str(series.get("2nd ems. filter"))),
+            "1st": filters.get(str_from_series(series, "Ems. filter") or ""),
+            "2nd": filters.get(str_from_series(series, "2nd ems. filter") or ""),
         }
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
             "Top": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
         }
+        scan_position_setting = filter_position_map.get(
+            str_from_series(series, "Using of emission filter") or ""
+        )
 
         return Labels(
             series.index[0],
             excitation_filter,
             emission_filters,
-            filter_position_map.get(str(series.get("Using of emission filter")), None),
-            number_of_flashes=try_float(str(series.get("Number of flashes"))),
-            detector_gain_setting=str(series.get("Reference AD gain")),
+            scan_position_setting,
+            number_of_flashes=try_float(str_from_series(series, "Number of flashes")),
+            detector_gain_setting=str_from_series(series, "Reference AD gain"),
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:
