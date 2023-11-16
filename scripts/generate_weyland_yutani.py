@@ -44,6 +44,7 @@ from datetime import datetime
 import hashlib
 import random
 import sys
+from typing import Any
 
 import pytz
 
@@ -55,32 +56,34 @@ SERIAL_NUMBER_RANGE = 1000
 MAX_READING = 5.0
 
 
-def main():
+def main() -> None:
     """Main driver."""
     args = parse_args()
     head = head_generate(args)
     body = body_generate(args)
     foot = foot_generate(args, body)
-    result = csv_normalize(*head, *body, *foot)
+    result = csv_normalize([*head, *body, *foot])
     save(args, result)
 
 
-def body_add_titles(args, readings):
+def body_add_titles(args: argparse.Namespace, readings: list[Any]) -> list[Any]:
     """Make column titles for plate readings."""
     title_row = ["", *[chr(ord("A") + col) for col in range(args.width)]]
     readings = [[str(i + 1), *r] for (i, r) in enumerate(readings)]
     return [title_row, *readings]
 
 
-def body_calculate_checksum(body):
+def body_calculate_checksum(body: list[Any]) -> str:
     """Calculate SHA256 checksum for body."""
     m = hashlib.sha256()
-    (m.update(bytes(val, "utf-8")) for row in body for val in row)
+    for row in body:
+        for val in row:
+            m.update(bytes(val, "utf-8"))
     digest = int(m.hexdigest(), base=16) % CHECKSUM_RANGE
     return f"{digest:04x}"
 
 
-def body_empty_readings(args, readings):
+def body_empty_readings(args: argparse.Namespace, readings: list[Any]) -> list[Any]:
     """Replace some readings with empty."""
     product = args.width * args.height
     coords = list(range(product))
@@ -92,7 +95,7 @@ def body_empty_readings(args, readings):
     return readings
 
 
-def body_generate(args):
+def body_generate(args: argparse.Namespace) -> list[Any]:
     """Make body of plate."""
     readings = body_generate_readings(args)
     readings = body_empty_readings(args, readings)
@@ -100,7 +103,7 @@ def body_generate(args):
     return readings
 
 
-def body_generate_readings(args):
+def body_generate_readings(args: argparse.Namespace) -> list[Any]:
     """Make table of plate readings."""
     return [
         [f"{(random.random() * MAX_READING):.02f}" for _ in range(args.width)]
@@ -108,14 +111,14 @@ def body_generate_readings(args):
     ]
 
 
-def csv_normalize(*rows):
+def csv_normalize(rows: list[Any]) -> list[Any]:
     required = max(len(r) for r in rows)
     for row in rows:
         row.extend([""] * (required - len(row)))
     return rows
 
 
-def foot_generate(args, body):
+def foot_generate(args: argparse.Namespace, body: list[Any]) -> list[Any]:
     """Make foot of plate."""
     result = []
     if args.checksum:
@@ -128,7 +131,7 @@ def foot_generate(args, body):
     return result
 
 
-def head_generate(args):
+def head_generate(args: argparse.Namespace) -> list[Any]:
     """Make head of plate."""
     operator = [["Operator", args.operator]] if args.operator else []
     return [
@@ -139,7 +142,7 @@ def head_generate(args):
     ]
 
 
-def parse_args():
+def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -167,7 +170,7 @@ def parse_args():
     return args
 
 
-def save(args, rows):
+def save(args: argparse.Namespace, rows: list[Any]) -> None:
     """Save as CSV."""
     if args.out is None:
         csv.writer(sys.stdout).writerows(rows)

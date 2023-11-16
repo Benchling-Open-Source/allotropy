@@ -3,7 +3,9 @@
 """Convert Weyland-Yutani data to dataframe."""
 
 import argparse
+from io import IOBase
 import sys
+from typing import Any
 
 import pandas as pd
 
@@ -11,21 +13,18 @@ from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_model_from_io
 
 
-def main():
+def main() -> None:
     """Main driver."""
     args = parse_args()
-    if args.filenames:
-        for filename in args.filenames:
-            with open(filename) as reader:
-                handle(filename, reader)
-    else:
-        handle("<stdin>", sys.stdin)
+    for filename in args.filenames:
+        with open(filename) as reader:
+            handle(filename, reader)
 
 
-def extract_well_data(model):
+def extract_well_data(model: Any) -> list[Any]:
     """Get (col, row, reading) from data."""
 
-    def _split(loc):
+    def _split(loc: Any) -> tuple:
         return (loc[0], int(loc[1:]))
 
     return [
@@ -34,19 +33,18 @@ def extract_well_data(model):
     ]
 
 
-def handle(filename, reader):
+def handle(filename: str, reader: IOBase) -> None:
     """Extract and show data from a single model."""
     try:
         model = allotrope_model_from_io(reader, filename, Vendor.EXAMPLE_WEYLAND_YUTANI)
         well_data = extract_well_data(model)
         df = pd.DataFrame(well_data, columns=["col", "row", "reading"])
         print(df)  # noqa: T201
-        pass
     except Exception as exc:
         print(f"Unable to read {filename}: {exc}", file=sys.stderr)  # noqa: T201
 
 
-def parse_args():
+def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser()
     parser.add_argument("filenames", type=str, nargs="+", help="input file(s)")
