@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add parser structure documentation
 ### Fixed
 ### Changed
+- Improve Perkin Elmer Envision adapter with better type handling
+- Improve Lines Reader with cleaner functionality
 - Refactor Agilent Gen5 with explicit dataclasses structure
 ### Deprecated
 ### Removed
