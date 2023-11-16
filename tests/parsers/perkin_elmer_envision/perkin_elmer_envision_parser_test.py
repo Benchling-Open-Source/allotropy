@@ -1,6 +1,6 @@
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropyError, AllotropeConversionError
+from allotropy.allotrope.allotrope import AllotropeConversionError, AllotropyError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
