@@ -72,10 +72,11 @@ class PlateInfo:
             or f"Plate {plate_number}"
         )
 
-        search_result = search("De=...", str(series.get("Measinfo", "")))
-        if not search_result:
-            msg = f"Unable to get emition filter id from plate {barcode}"
-            raise AllotropyError(msg)
+        search_result = assert_not_none(
+            search("De=...", str(series.get("Measinfo", ""))),
+            f"Unable to get emition filter id from plate {barcode}",
+        )
+
         emission_filter_id = search_result.group().removeprefix("De=")
 
         measurement_time = str(series.get("Measurement date", ""))
@@ -277,9 +278,10 @@ class PlateMap:
 
 
 def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
-    if reader.drop_until("^Platemap") is None:
-        msg = "Unable to get plate map information"
-        raise AllotropyError(msg)
+    assert_not_none(
+        reader.drop_until("^Platemap"),
+        "Unable to get plate map information",
+    )
 
     reader.pop()  # remove title
 
@@ -312,18 +314,18 @@ class Filter:
 
         description = str(series.get("Description"))
 
-        search_result = search("CWL=\\d*nm", description)
-        if search_result is None:
-            msg = f"Unable to find wavelength for filter {name}"
-            raise AllotropyError(msg)
+        search_result = assert_not_none(
+            search("CWL=\\d*nm", description),
+            f"Unable to find wavelength for filter {name}",
+        )
         wavelength = float(
             search_result.group().removeprefix("CWL=").removesuffix("nm")
         )
 
-        search_result = search("BW=\\d*nm", description)
-        if search_result is None:
-            msg = f"Unable to find bandwidth for filter {name}"
-            raise AllotropyError(msg)
+        search_result = assert_not_none(
+            search("BW=\\d*nm", description),
+            f"Unable to find bandwidth for filter {name}",
+        )
         bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
 
         return Filter(name, wavelength, bandwidth)
@@ -394,9 +396,10 @@ class Instrument:
 
     @staticmethod
     def create(reader: CsvReader) -> Instrument:
-        if reader.drop_until("^Instrument") is None:
-            msg = "Unable to find instrument information"
-            raise AllotropyError(msg)
+        assert_not_none(
+            reader.drop_until("^Instrument"),
+            "Unable to find instrument information",
+        )
 
         reader.pop()  # remove title
 
