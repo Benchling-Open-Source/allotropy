@@ -105,11 +105,14 @@ class CsvReader(LinesReader):
         self, match_pat: Optional[str] = None, empty_pat: str = EMPTY_STR_PATTERN
     ) -> list:
         self.drop_empty(empty_pat)
+
+        if match_pat and not self.match(match_pat):
+            msg = f"Did not find {match_pat}"
+            raise AllotropyError(msg)
+
         if match_pat:
-            if not self.match(match_pat):
-                msg = f"Did not find {match_pat}"
-                raise AllotropyError(msg)
             self.pop()  # remove title
+
         lines = list(self.pop_until_empty(empty_pat))
         self.drop_empty(empty_pat)
         return lines
@@ -121,19 +124,16 @@ class CsvReader(LinesReader):
         *,
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
-        lines = self.pop_csv_block_as_lines(match_pat, empty_pat)
-        if not lines:
-            return None
-        csv_stream = StringIO("\n".join(lines))
-        if as_str:
-            return pd.read_csv(csv_stream, header=None, dtype=str)
-        else:
-            return pd.read_csv(csv_stream, header=None)
+        if lines := self.pop_csv_block_as_lines(match_pat, empty_pat):
+            return pd.read_csv(
+                StringIO("\n".join(lines)),
+                header=None,
+                dtype=str if as_str else None,
+            )
+        return None
 
     def drop_sections(self, match_pat: str) -> None:
         self.drop_empty()
-        while True:
-            if not self.match(match_pat):
-                return
+        while self.match(match_pat):
             self.drop_until_empty()
             self.drop_empty()
