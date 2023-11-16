@@ -77,7 +77,7 @@ def get_model() -> Model:
     filename = get_filename()
     sample = data.loc[0]
     return Model(
-        field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/cell-counting/BENCHLING/2023/11/cell-counting.schema",
+        field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
         cell_counting_aggregate_document=CellCountingAggregateDocument(
             device_system_document=DeviceSystemDocument(
                 model_number="Vi-Cell BLU",

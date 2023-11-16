@@ -61,7 +61,7 @@ class ViCellBluParser(VendorParser):
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
         return Model(
-            field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/cell-counting/BENCHLING/2023/11/cell-counting.schema",
+            field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
             cell_counting_aggregate_document=CellCountingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     model_number=DEFAULT_MODEL_NUMBER,
