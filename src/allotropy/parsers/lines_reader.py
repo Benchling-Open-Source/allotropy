@@ -13,11 +13,20 @@ from allotropy.allotrope.allotrope import AllotropyError
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
+def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
+    if not encoding:
+        encoding = chardet.detect(bytes_content)["encoding"]
+        if not encoding:
+            error = "Unable to detect input file encoding"
+            raise AllotropyError(error)
+    return bytes_content.decode(encoding)
+
+
 class LinesReader:
     def __init__(self, io_: IOBase, encoding: Optional[str] = "UTF-8"):
         stream_contents = io_.read()
         self.raw_contents = (
-            self._decode(stream_contents, encoding)
+            _decode(stream_contents, encoding)
             if isinstance(stream_contents, bytes)
             else stream_contents
         )
@@ -25,14 +34,6 @@ class LinesReader:
         self.lines: list[str] = self.contents.split("\n")
         self.n_lines = len(self.lines)
         self.current_line = 0
-
-    def _decode(self, bytes_content: bytes, encoding: Optional[str]) -> str:
-        if not encoding:
-            encoding = chardet.detect(bytes_content)["encoding"]
-            if not encoding:
-                error = "Unable to detect input file encoding"
-                raise AllotropyError(error)
-        return bytes_content.decode(encoding)
 
     def current_line_exists(self) -> bool:
         return 0 <= self.current_line < self.n_lines
@@ -88,6 +89,15 @@ class LinesReader:
             line = self.pop()
             if line is not None:
                 yield line
+
+
+class ListReader(LinesReader):
+    def __init__(self, lines: list[str]):
+        self.contents = "\n".join(lines)
+        self.raw_contents = self.contents
+        self.lines: list[str] = lines
+        self.n_lines = len(self.lines)
+        self.current_line = 0
 
 
 class CsvReader(LinesReader):

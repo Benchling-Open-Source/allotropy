@@ -7,18 +7,19 @@ import uuid
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
-from allotropy.allotrope.models.cell_counting_benchling_2023_09_cell_counting import (
+from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     CellCountingAggregateDocument,
+    CellCountingDetectorDeviceControlAggregateDocument,
+    CellCountingDetectorMeasurementDocumentItem,
     CellCountingDocumentItem,
     DataProcessingDocument,
     DataSystemDocument,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
+    DeviceControlDocumentItemModel,
     DeviceSystemDocument,
     MeasurementAggregateDocument,
-    MeasurementDocumentItem,
     Model,
-    ProcessedDataDocument,
+    ProcessedDataAggregateDocument1,
+    ProcessedDataDocumentItem,
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -57,10 +58,11 @@ class ViCellXRParser(VendorParser):
         reader = ViCellXRReader(contents)
 
         return Model(
+            field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
             cell_counting_aggregate_document=CellCountingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     model_number=MODEL_NUMBER,
-                    device_serial_number=self._get_device_serial_number(
+                    equipment_serial_number=self._get_device_serial_number(
                         reader.file_info
                     ),
                 ),
@@ -109,7 +111,7 @@ class ViCellXRParser(VendorParser):
             analyst=DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
-                    MeasurementDocumentItem(
+                    CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
                         measurement_time=self.get_date_time(
                             sample.get(DATE_HEADER[file_version])
@@ -117,36 +119,40 @@ class ViCellXRParser(VendorParser):
                         sample_document=SampleDocument(
                             sample_identifier=sample["Sample ID"]
                         ),
-                        device_control_aggregate_document=DeviceControlAggregateDocument(
+                        device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
-                                DeviceControlDocumentItem(
+                                DeviceControlDocumentItemModel(
                                     device_type="brightfield imager (cell counter)",
                                     detection_type="brightfield",
                                 )
                             ]
                         ),
-                        processed_data_document=ProcessedDataDocument(
-                            data_processing_document=DataProcessingDocument(
-                                cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
-                                cell_density_dilution_factor=get_property_from_sample(
-                                    sample, "Dilution factor"
+                        processed_data_aggregate_document=ProcessedDataAggregateDocument1(
+                            processed_data_document=[
+                                ProcessedDataDocumentItem(
+                                    data_processing_document=DataProcessingDocument(
+                                        cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
+                                        cell_density_dilution_factor=get_property_from_sample(
+                                            sample, "Dilution factor"
+                                        ),
+                                    ),
+                                    viability__cell_counter_=viability__cell_counter_,
+                                    viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
+                                    total_cell_count=total_cell_count,
+                                    total_cell_density__cell_counter_=get_property_from_sample(
+                                        sample, "Total cells/ml (x10^6)"
+                                    ),
+                                    average_total_cell_diameter=get_property_from_sample(
+                                        sample, "Avg. diam. (microns)"
+                                    ),
+                                    viable_cell_count=get_property_from_sample(
+                                        sample, "Viable cells"
+                                    ),
+                                    average_total_cell_circularity=get_property_from_sample(
+                                        sample, "Avg. circ."
+                                    ),
                                 ),
-                            ),
-                            viability__cell_counter_=viability__cell_counter_,
-                            viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
-                            total_cell_count=total_cell_count,
-                            total_cell_density__cell_counter_=get_property_from_sample(
-                                sample, "Total cells/ml (x10^6)"
-                            ),
-                            average_total_cell_diameter=get_property_from_sample(
-                                sample, "Avg. diam. (microns)"
-                            ),
-                            viable_cell_count=get_property_from_sample(
-                                sample, "Viable cells"
-                            ),
-                            average_total_cell_circularity=get_property_from_sample(
-                                sample, "Avg. circ."
-                            ),
+                            ]
                         ),
                     )
                 ],
