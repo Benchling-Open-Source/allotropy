@@ -16,7 +16,7 @@ output_files = (
 )
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_BLU
-SCHEMA_FILE = "cell-counting/BENCHLING/2023/09/cell-counting.json"
+SCHEMA_FILE = "cell-counting/BENCHLING/2023/11/cell-counting.json"
 
 
 @pytest.mark.parametrize("output_file", output_files)
@@ -38,14 +38,14 @@ def test_get_model() -> None:
     parser = ViCellBluParser(TimestampParser())
     result = parser._get_model(get_data(), get_filename())
 
+    assert result.cell_counting_aggregate_document
+
     cell_counting_document_item = (
         result.cell_counting_aggregate_document.cell_counting_document[0]
     )
-    measurement_document_item = (
-        cell_counting_document_item.measurement_aggregate_document.measurement_document[
-            0
-        ]
+    measurement_document = (
+        cell_counting_document_item.measurement_aggregate_document.measurement_document
     )
-    measurement_document_item.measurement_identifier = ""
+    measurement_document[0].measurement_identifier = ""
 
     assert result == get_model()
