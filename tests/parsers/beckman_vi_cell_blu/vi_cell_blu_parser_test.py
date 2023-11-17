@@ -38,10 +38,11 @@ def test_get_model() -> None:
     parser = ViCellBluParser(TimestampParser())
     result = parser._get_model(get_data(), get_filename())
 
-    cell_counting_document = (
-        result.cell_counting_aggregate_document.cell_counting_document  # type: ignore[union-attr]
+    assert result.cell_counting_aggregate_document
+
+    cell_counting_document_item = (
+        result.cell_counting_aggregate_document.cell_counting_document[0]
     )
-    cell_counting_document_item = cell_counting_document[0]
     measurement_document = (
         cell_counting_document_item.measurement_aggregate_document.measurement_document
     )
