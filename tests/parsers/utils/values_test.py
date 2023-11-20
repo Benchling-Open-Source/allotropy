@@ -2,11 +2,13 @@ from typing import Optional
 
 import pytest
 
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
-    try_float,
+    try_float_or_none,
     try_int,
+    try_int_or_none,
     value_or_none,
 )
 
@@ -61,7 +63,28 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
     ],
 )
 def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
-    assert try_float(value) == expected
+    assert try_float_or_none(value) == expected
+
+
+def _try_int(value: Optional[str]) -> int:
+    return try_int(value, "param")
+
+
+def test_try_int() -> None:
+    assert _try_int("1") == 1
+
+
+@pytest.mark.short
+@pytest.mark.parametrize(
+    "value,expected_regex",
+    [
+        (None, "Expected non-null value for param"),
+        ("a", "Invalid integer string: 'a'"),
+    ],
+)
+def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
+    with pytest.raises(AllotropeConversionError, match=expected_regex):
+        _try_int(value)
 
 
 @pytest.mark.short
@@ -74,8 +97,8 @@ def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
         ("1.1", None),
     ],
 )
-def test_try_int(value: Optional[str], expected: Optional[float]) -> None:
-    assert try_int(value) == expected
+def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> None:
+    assert try_int_or_none(value) == expected
 
 
 @pytest.mark.short
