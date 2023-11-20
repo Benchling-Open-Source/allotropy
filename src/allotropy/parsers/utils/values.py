@@ -21,7 +21,7 @@ def try_int_or_none(value: Optional[str]) -> Optional[int]:
         return None
 
 
-def try_float(value: Optional[str]) -> Optional[float]:
+def try_float_or_none(value: Optional[str]) -> Optional[float]:
     try:
         return float(value or "")
     except ValueError:

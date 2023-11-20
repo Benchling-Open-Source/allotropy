@@ -6,7 +6,7 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
-    try_float,
+    try_float_or_none,
     try_int,
     try_int_or_none,
     value_or_none,
@@ -63,7 +63,7 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
     ],
 )
 def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
-    assert try_float(value) == expected
+    assert try_float_or_none(value) == expected
 
 
 def _try_int(value: Optional[str]) -> int:
