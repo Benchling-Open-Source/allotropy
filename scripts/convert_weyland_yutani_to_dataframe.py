@@ -24,7 +24,7 @@ def main() -> None:
 def extract_well_data(model: Any) -> list[Any]:
     """Get (col, row, reading) from data."""
 
-    def _split(loc: Any) -> tuple:
+    def _split(loc: Any) -> tuple:  # type: ignore[type-arg]
         return (loc[0], int(loc[1:]))
 
     return [

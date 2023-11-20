@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 import io
 from typing import Any
 import uuid
