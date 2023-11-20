@@ -53,6 +53,7 @@ from allotropy.parsers.utils.values import (
     natural_sort_key,
     PrimitiveValue,
     try_int,
+    try_int_or_none,
     value_or_none,
 )
 
@@ -252,12 +253,10 @@ class PlateBlock(Block):
                 num_columns_raw,
                 num_wells_raw,
             ] = header[data_type_idx : data_type_idx + 13]
-            kinetic_points = assert_not_none(
-                try_int(kinetic_points_raw), "kinetic_points"
-            )
-            num_columns = assert_not_none(try_int(num_columns_raw), "num_columns")
-            num_wells = assert_not_none(try_int(num_wells_raw), "num_wells")
-            num_wavelengths = try_int(num_wavelengths_raw)
+            kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
+            num_columns = try_int(num_columns_raw, "num_columns")
+            num_wells = try_int(num_wells_raw, "num_wells")
+            num_wavelengths = try_int_or_none(num_wavelengths_raw)
             wavelengths = split_wavelengths(wavelengths_str) or []
 
             extra_attr = cls.parse_read_mode_header(header)
@@ -605,7 +604,7 @@ class FluorescencePlateBlock(PlateBlock):
             read_mode="Fluorescence",
             unit="RFU",
             pmt_gain=pmt_gain,
-            num_rows=assert_not_none(try_int(num_rows), "num_rows"),
+            num_rows=try_int(num_rows, "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
         )
@@ -706,7 +705,7 @@ class LuminescencePlateBlock(PlateBlock):
             read_mode="Luminescence",
             unit="RLU",
             pmt_gain=pmt_gain,
-            num_rows=assert_not_none(try_int(num_rows), "num_rows"),
+            num_rows=try_int(num_rows, "num_rows"),
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
         )
@@ -778,7 +777,7 @@ class AbsorbancePlateBlock(PlateBlock):
             read_mode="Absorbance",
             unit="mAU",
             pmt_gain=None,
-            num_rows=assert_not_none(try_int(header[20]), "num_rows"),
+            num_rows=try_int(header[20], "num_rows"),
             excitation_wavelengths=None,
             cutoff_filters=None,
         )
