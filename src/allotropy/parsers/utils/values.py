@@ -6,7 +6,15 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 PrimitiveValue = Union[str, int, float]
 
 
-def try_int(value: Optional[str]) -> Optional[int]:
+def try_int(value: Optional[str], value_name: str) -> int:
+    try:
+        return int(assert_not_none(value, value_name))
+    except ValueError as e:
+        msg = f"Invalid integer string: '{value}'"
+        raise AllotropeConversionError(msg) from e
+
+
+def try_int_or_none(value: Optional[str]) -> Optional[int]:
     try:
         return int(value or "")
     except ValueError:
