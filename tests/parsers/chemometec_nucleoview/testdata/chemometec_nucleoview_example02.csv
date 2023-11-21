@@ -1,0 +1,47 @@
+Viability and Cell Count Assay - example cell counting; ;
+Image;20231120-0002-c-cellsABCD;
+Operator;DrScientist;
+Viability (%);92.8;
+Live (cells/ml);1.58E6;
+Dead (cells/ml);1.22E5;
+Total (cells/ml);1.70E6;
+; ;
+Estimated cell diameter (um);13.2;
+Cell diameter standard deviation (um);7.7;
+(%) of cells in aggregates with five or more cells;5;
+Sample Volume (ul);200.0;
+Dilution Volume (ul);0.000;
+Multiplication factor;1.000;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+cm filename;20231120-0039-c-cellsABCD.cm
+Protocol template title;Viability and Cell Count Assay
+Protocol template purpose;Cell Count and Viability with AO and DAPI
+Protocol template filename;Viability and Cell Count Assay - NC-200.cmsx
+Protocol adaptation title;example cell counting
+Protocol adaptation purpose;Cell Count and Viability with AO and DAPI
+Protocol adaptation filename;287764ADc8824786b882bfc202a12044.cmsu
+Instrument type;NucleoView NC-200
+Instrument s/n;s/n 9000201099909999
+Date time;20231120 110300
+Time zone offset;-7
+Login ID;admin
+PC;ABC0-NBBS-FQ01
+Application SW version;1.4.0.0
+21 CFR Part 11;disabled
+Event log format;Plain text
+csv file version;2
+
+//[25FDBA08]
