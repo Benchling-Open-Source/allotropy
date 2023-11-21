@@ -12,15 +12,19 @@ license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
-  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
-  { name = "Brian Worth", email = "brian@benchling.com" },
-  { name = "Greg Wilson", email = "greg@deepgenomics.com" },
-  { name = "Joe Negri", email = "joe.negri@benchling.com" },
+  { name = "Lukas Boelling", email = "lukas.boelling@deepgenomics.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
-  { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
-  { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
+  { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
+  { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
+  { name = "Joe Negri", email = "joe.negri@benchling.com" },
+  { name = "Alejando Salgado", email = "alejando.salgado@benchling.com" },
+  { name = "Nathan Stender", email = "nathan.stender@benchling.com" },
+  { name = "Eihab Syed", email = "eihabsyed@gmail.com" },
+  { name = "Yukthi Wickramarachchi", email = "yukthi.wickramarachchi@deepgenomics.com" },
+  { name = "Greg Wilson", email = "gvwilson@third-bit.com" },
   { name = "Stephen Worlow", email = "stephen.worlow@benchling.com" },
+  { name = "Brian Worth", email = "brian@benchling.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -30,7 +34,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-  "cattrs >= 23.0.0",
+  "cattrs == 23.1.2",
   "chardet >= 5.2.0",
   "jsonschema >= 4.17.0",
   "numpy >= 1.25.0",
@@ -88,7 +92,6 @@ dependencies = [
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
   "datamodel-code-generator >= 0.21.5",
-  "flake8 >= 6.1.0",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications >= 2023.7.1",
   "pydantic == 1.10.9",
@@ -102,20 +105,19 @@ generate-schemas = "scripts/generate_schemas.py"
 [tool.hatch.envs.lint]
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
-  "cattrs >= 23.0.0",
+  "cattrs == 23.1.2",
   "mypy >= 1.6.0",
   # For pytest types
   "pytest >= 7.4.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:src/allotropy tests}"
+typing = "mypy --install-types --non-interactive {args:src/allotropy scripts tests}"
 style = [
   "ruff {args:.}",
   "black --check --diff {args:.}",
-  "flake8 .",
 ]
-fix = [
+fmt = [
   "black {args:.}",
   "ruff --fix {args:.}",
   "style",

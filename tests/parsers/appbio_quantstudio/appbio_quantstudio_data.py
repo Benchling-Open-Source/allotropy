@@ -1111,7 +1111,7 @@ def get_genotyping_data() -> Data:
                 target_dna_description="CYP19_2-Allele 1",
                 sample_identifier="NTC",
                 well_location_identifier="A1",
-                reporter_dye_setting=None,
+                reporter_dye_setting="VIC",
                 quencher_dye_setting=None,
                 sample_role_type="NTC",
                 amplification_data_obj=AmplificationData(
@@ -1155,7 +1155,7 @@ def get_genotyping_data() -> Data:
                 target_dna_description="CYP19_2-Allele 2",
                 sample_identifier="NTC",
                 well_location_identifier="A1",
-                reporter_dye_setting=None,
+                reporter_dye_setting="FAM",
                 quencher_dye_setting=None,
                 sample_role_type="NTC",
                 amplification_data_obj=AmplificationData(
@@ -1251,7 +1251,7 @@ def get_genotyping_model() -> Model:
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
-                                            reporter_dye_setting=None,
+                                            reporter_dye_setting="VIC",
                                             passive_reference_dye_setting="ROX",
                                         )
                                     ]
@@ -1342,7 +1342,7 @@ def get_genotyping_model() -> Model:
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=2.0
                                             ),
-                                            reporter_dye_setting=None,
+                                            reporter_dye_setting="FAM",
                                             passive_reference_dye_setting="ROX",
                                         )
                                     ]

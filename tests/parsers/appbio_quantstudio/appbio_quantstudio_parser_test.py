@@ -25,6 +25,11 @@ output_files = (
     "appbio_quantstudio_example01",
     "appbio_quantstudio_example02",
     "appbio_quantstudio_example03",
+    "appbio_quantstudio_example04",
+    "appbio_quantstudio_example05",
+    "appbio_quantstudio_example06",
+    "appbio_quantstudio_example07",
+    "appbio_quantstudio_example08",
 )
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO

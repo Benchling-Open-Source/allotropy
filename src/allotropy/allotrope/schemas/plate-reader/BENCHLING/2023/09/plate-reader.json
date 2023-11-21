@@ -1,5 +1,5 @@
 {
-  "$id": "http://purl.allotrope.org/json-schemas/adm/plate-reader/REC/2023/09/plate-reader.schema",
+  "$id": "http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "allOf": [
     {
@@ -14,7 +14,6 @@
               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002526",
               "$asm.pattern": "aggregate datum",
               "required": [
-                "asset management identifier",
                 "device identifier",
                 "model number"
               ],
@@ -136,6 +135,55 @@
                     ]
                   },
                   "minItems": 1
+                }
+              }
+            },
+            "data system document": {
+              "type": "object",
+              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002771",
+              "$asm.pattern": "aggregate datum",
+              "properties": {
+                "data system instance identifier": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002772",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "file name": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001926",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "UNC path": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001906",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "software name": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002802",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "software version": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001700",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "ASM converter name": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002748",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
+                },
+                "ASM converter version": {
+                  "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002749",
+                  "$asm.pattern": "value datum",
+                  "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                  "$ref": "#/$defs/tStringValue"
                 }
               }
             },
@@ -1219,8 +1267,7 @@
         "absorbance",
         "sample document",
         "device control aggregate document",
-        "measurement identifier",
-        "compartment temperature"
+        "measurement identifier"
       ],
       "properties": {
         "measurement time": {
@@ -1349,8 +1396,7 @@
         "fluorescence",
         "sample document",
         "device control aggregate document",
-        "measurement identifier",
-        "compartment temperature"
+        "measurement identifier"
       ],
       "properties": {
         "measurement time": {
@@ -1464,8 +1510,7 @@
         "luminescence",
         "sample document",
         "device control aggregate document",
-        "measurement identifier",
-        "compartment temperature"
+        "measurement identifier"
       ],
       "properties": {
         "measurement time": {
