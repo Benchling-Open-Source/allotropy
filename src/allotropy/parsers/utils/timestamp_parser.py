@@ -6,6 +6,7 @@ from dateutil import parser
 import pytz
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.parsers.utils.values import assert_not_none
 
 TIMEZONE_CODES_MAP = {
     **{code: pytz.timezone(code) for code in pytz.all_timezones},
@@ -28,13 +29,21 @@ class TimestampParser:
             raise AllotropeConversionError(msg)
         self.default_timezone = default_timezone or ZoneInfo("UTC")
 
-    def parse(self, time: Optional[str]) -> Optional[str]:
-        if not time:
-            return None
+    def parse(self, time: str) -> str:
+        """Parse a string to a datetime, then format as an ISO 8601 string.
+
+        If the parsed datetime doesn't have a timezone, use self.default_timezone.
+
+        :param time: the string to parse
+        :raises AllotropeConversionError if time cannot be parsed
+        """
+        assert_not_none(time, "time")
+
         try:
-            timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP)
-        except ValueError:
-            return None
+            timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
+        except ValueError as e:
+            msg = f"Could not parse time '{time}'"
+            raise AllotropeConversionError(msg) from e
         if not timestamp.tzinfo:
             timestamp = timestamp.replace(tzinfo=self.default_timezone)
         return str(timestamp.isoformat())

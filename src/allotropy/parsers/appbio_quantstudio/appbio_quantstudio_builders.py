@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 from io import StringIO
 from typing import Any, Optional
 import uuid
@@ -76,19 +78,9 @@ class HeaderBuilder:
     def build(reader: LinesReader) -> Header:
         data = HeaderBuilder.get_data(reader)
 
-        device_identifier = get_str(data, "Instrument Name")
-        if device_identifier is None:
-            msg = "Unable to get device identifier"
-            raise AllotropeConversionError(msg)
-
         model_number = get_str(data, "Instrument Type")
         if model_number is None:
             msg = "Unable to get model number"
-            raise AllotropeConversionError(msg)
-
-        device_serial_number = get_str(data, "Instrument Serial Number")
-        if device_serial_number is None:
-            msg = "Unable to get device serial number"
             raise AllotropeConversionError(msg)
 
         measurement_method_identifier = get_str(data, "Quantification Cycle Method")
@@ -105,9 +97,9 @@ class HeaderBuilder:
             measurement_time=HeaderBuilder.get_measurement_time(data),
             plate_well_count=HeaderBuilder.get_plate_well_count(data),
             experiment_type=HeaderBuilder.get_experiment_type(data),
-            device_identifier=device_identifier,
+            device_identifier=get_str(data, "Instrument Name") or "NA",
             model_number=model_number,
-            device_serial_number=device_serial_number,
+            device_serial_number=get_str(data, "Instrument Serial Number") or "NA",
             measurement_method_identifier=measurement_method_identifier,
             pcr_detection_chemistry=pcr_detection_chemistry,
             passive_reference_dye_setting=get_str(data, "Passive Reference"),
@@ -232,7 +224,7 @@ class GenotypingWellBuilder:
         )
 
     @staticmethod
-    def build_well_items(data: pd.Series) -> list[WellItem]:
+    def build_well_items(data: pd.Series) -> tuple[WellItem, WellItem]:
         identifier = get_int(data, "Well")
         if identifier is None:
             msg = "Unable to get well identifier"
@@ -241,6 +233,11 @@ class GenotypingWellBuilder:
         snp_name = get_str(data, "SNP Assay Name")
         if snp_name is None:
             msg = f"Unable to get snp name for well {identifier}"
+            raise AllotropeConversionError(msg)
+
+        sample_identifier = get_str(data, "Sample Name")
+        if sample_identifier is None:
+            msg = "Unable to get sample identifier"
             raise AllotropeConversionError(msg)
 
         allele1 = get_str(data, "Allele1 Name")
@@ -253,25 +250,30 @@ class GenotypingWellBuilder:
             msg = f"Unable to get allele 2 for well {identifier}"
             raise AllotropeConversionError(msg)
 
-        sample_identifier = get_str(data, "Sample Name")
-        if sample_identifier is None:
-            msg = "Unable to get sample identifier"
-            raise AllotropeConversionError(msg)
-
-        return [
+        return (
             WellItem(
                 uuid=str(uuid.uuid4()),
                 identifier=identifier,
-                target_dna_description=f"{snp_name}-{allele}",
+                target_dna_description=f"{snp_name}-{allele1}",
                 sample_identifier=sample_identifier,
-                reporter_dye_setting=get_str(data, "Reporter"),
+                reporter_dye_setting=get_str(data, "Allele1 Reporter"),
                 position=get_str(data, "Well Position", default="UNDEFINED"),
                 well_location_identifier=get_str(data, "Well Position"),
                 quencher_dye_setting=get_str(data, "Quencher"),
                 sample_role_type=get_str(data, "Task"),
-            )
-            for allele in [allele1, allele2]
-        ]
+            ),
+            WellItem(
+                uuid=str(uuid.uuid4()),
+                identifier=identifier,
+                target_dna_description=f"{snp_name}-{allele2}",
+                sample_identifier=sample_identifier,
+                reporter_dye_setting=get_str(data, "Allele2 Reporter"),
+                position=get_str(data, "Well Position", default="UNDEFINED"),
+                well_location_identifier=get_str(data, "Well Position"),
+                quencher_dye_setting=get_str(data, "Quencher"),
+                sample_role_type=get_str(data, "Task"),
+            ),
+        )
 
 
 class WellBuilder:

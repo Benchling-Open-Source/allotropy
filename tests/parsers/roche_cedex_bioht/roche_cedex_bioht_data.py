@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 from io import StringIO
 
 import pandas as pd

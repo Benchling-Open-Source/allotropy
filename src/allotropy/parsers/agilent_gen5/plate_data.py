@@ -1,8 +1,12 @@
-from abc import ABC, abstractmethod
+# mypy: disallow_any_generics = False
+
+from __future__ import annotations
+
 from collections import defaultdict
-from datetime import datetime
+from dataclasses import dataclass
+from datetime import datetime as datetime_lib
 from io import StringIO
-from typing import Any, Optional, Union
+from typing import Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -15,12 +19,17 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
+from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
     ReadMode,
     ReadType,
     READTYPE_TO_DIMENSIONS,
 )
 from allotropy.parsers.agilent_gen5.data_point import DataPoint
+from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
+from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
+from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.values import assert_not_none
 
 METADATA_PREFIXES = frozenset(
     {
@@ -42,162 +51,136 @@ def try_float(value: str) -> Union[str, float]:
         return value
 
 
-class PlateData(ABC):
-    measurements: defaultdict[str, list]
-    processed_datas: defaultdict[str, list]
-    temperatures: list
-    kinetic_times: Optional[list[int]]
-    measurement_docs: list
-    wells: list
-    layout: dict
-    concentrations: dict
-    read_names: list
-    datetime: Optional[str]
-    experiment_file_path: Optional[str]
-    protocol_file_path: Optional[str]
-    read_mode: ReadMode
-    read_type: ReadType
+def read_data_section(lines_reader: LinesReader) -> str:
+    data_section = "\n".join(
+        [
+            lines_reader.pop() or "",
+            *lines_reader.pop_until_empty(),
+        ]
+    )
+    lines_reader.drop_empty()
+    return data_section
+
+
+def hhmmss_to_sec(hhmmss: str) -> int:
+    # convert to seconds, as specified by Allotrope
+    hours, minutes, seconds = tuple(int(num) for num in hhmmss.split(":"))
+    return (3600 * hours) + (60 * minutes) + seconds
+
+
+@dataclass
+class FilePaths:
+    experiment_file_path: str
+    protocol_file_path: str
+
+    @staticmethod
+    def create(lines_reader: LinesReader) -> FilePaths:
+        assert_not_none(
+            lines_reader.drop_until("^Experiment File Path"),
+            "Experiment File Path",
+        )
+        file_paths = lines_reader.pop_until_empty()
+        return FilePaths(
+            experiment_file_path=f"{next(file_paths)}\t".split("\t")[1],
+            protocol_file_path=f"{next(file_paths)}\t".split("\t")[1],
+        )
+
+
+@dataclass
+class PlateNumber:
+    datetime: str
     plate_barcode: str
-    statistics_doc: list
-    actual_temperature: Optional[float]
-    data_point_cls: type[DataPoint]
 
-    def __init__(
-        self,
-        software_version_chunk: str,
-        file_paths_chunk: str,
-        all_data_chunk: str,
-    ):
-        self.software_version_chunk = software_version_chunk
-        self.file_paths_chunk = file_paths_chunk
-        self.all_data_chunk = all_data_chunk
+    @staticmethod
+    def create(lines_reader: LinesReader) -> PlateNumber:
+        assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
+        metadata_dict = PlateNumber._parse_metadata(lines_reader)
 
-        self.measurements = defaultdict(list)
-        self.processed_datas = defaultdict(list)
-        self.temperatures = []
-        self.kinetic_times = None
+        return PlateNumber(
+            datetime=datetime_lib.strptime(  # noqa: DTZ007
+                f"{metadata_dict['Date']} {metadata_dict['Time']}",
+                GEN5_DATETIME_FORMAT,
+            ).isoformat(),
+            plate_barcode=metadata_dict["Plate Number"],
+        )
 
-        self.measurement_docs = []
-        self.wells = []
-        self.layout = {}
-        self.concentrations = {}
-        self.read_names = []
-        self.datetime = None
-        self.experiment_file_path = None
-        self.protocol_file_path = None
-        self.statistics_doc = []
-        self.actual_temperature = None
-
-        self._parse_software_version_chunk(self.software_version_chunk)
-        self._parse_file_paths_chunk(self.file_paths_chunk)
-        self._parse_all_data_chunk(self.all_data_chunk)
-
-    def _parse_software_version_chunk(self, software_version_chunk: str) -> None:
-        self.software_version = software_version_chunk.split("\t")[1]
-
-    def _parse_file_paths_chunk(self, file_paths_chunk: str) -> None:
-        file_paths = file_paths_chunk.split("\n")
-        self.experiment_file_path = f"{file_paths[0]}\t".split("\t")[1]
-        self.protocol_file_path = f"{file_paths[1]}\t".split("\t")[1]
-
-    def _parse_all_data_chunk(self, all_data_chunk: str) -> None:
-        all_data_sections = all_data_chunk.split("\n\n")
-
-        is_kinetic_data = False
-        # kinetic_data_label = None
-        is_blank_kinetic_data = False
-        blank_kinetic_data_label = None
-
-        for data_section in all_data_sections:
-            if data_section.startswith("Plate Number"):
-                self._parse_metadata(data_section)
-            elif data_section.startswith("Plate Type"):
-                self._parse_procedure_details(data_section)
-            elif data_section.startswith("Layout"):
-                self._parse_layout(data_section)
-            elif data_section.startswith("Actual Temperature"):
-                self._parse_actual_temperature(data_section)
-            elif data_section.startswith("Results"):
-                self._parse_results(data_section)
-            elif data_section.startswith("Curve Name"):
-                self._parse_stdcurve(data_section)
-            elif is_kinetic_data:
-                self._parse_kinetic_data(data_section)
-                is_kinetic_data = False
-            elif is_blank_kinetic_data:
-                self._parse_blank_kinetic_data(data_section, blank_kinetic_data_label)
-                is_blank_kinetic_data = False
-            elif len(data_section.split("\n")) == 1 and any(
-                read_name in data_section for read_name in self.read_names
-            ):
-                if data_section.startswith("Blank"):
-                    is_blank_kinetic_data = True
-                    blank_kinetic_data_label = data_section.strip()
-                else:
-                    is_kinetic_data = True
-                    # kinetic_data_label = data_section.strip()
-
-    def _parse_metadata(self, metadata: str) -> None:
+    @staticmethod
+    def _parse_metadata(lines_reader: LinesReader) -> dict:
         metadata_dict: dict = {}
-        metadata_lines = metadata.splitlines()
-        for metadata_line in metadata_lines:
+        for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
                 msg = f"Unrecognized metadata {line_split[0]}"
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
+        return metadata_dict
 
-        self.datetime = datetime.strptime(  # noqa: DTZ007
-            f"{metadata_dict['Date']} {metadata_dict['Time']}", GEN5_DATETIME_FORMAT
-        ).isoformat()
 
-        self.plate_barcode = metadata_dict["Plate Number"]
+@dataclass
+class PlateType:
+    read_mode: ReadMode
+    read_type: ReadType
+    read_names: list[str]
 
-    def _parse_procedure_details(
-        self, procedure_details: str
-    ) -> None:  # TODO parse the rest of the procedure details
+    @staticmethod
+    def create(lines_reader: LinesReader) -> PlateType:
+        assert_not_none(lines_reader.drop_until("^Plate Type"), "Plate Type")
+        data_section = read_data_section(lines_reader)
+
+        read_mode = PlateType.get_read_mode(data_section)
+        read_type = PlateType.get_read_type(data_section)
+        read_names: list = []
+        for procedure_chunk in PlateType._parse_procedure_chunks(data_section):
+            read_names.extend(
+                PlateType._parse_procedure_chunk(procedure_chunk, read_mode)
+            )
+
+        return PlateType(
+            read_mode=read_mode,
+            read_type=read_type,
+            read_names=read_names,
+        )
+
+    @property
+    def data_point_cls(self) -> type[DataPoint]:
+        if self.read_mode == ReadMode.ABSORBANCE:
+            return AbsorbanceDataPoint
+        elif self.read_mode == ReadMode.FLUORESCENCE:
+            return FluorescenceDataPoint
+        elif self.read_mode == ReadMode.LUMINESCENCE:
+            return LuminescenceDataPoint
+
+        msg = f"Unrecognized read mode: {self.read_mode}"
+        raise AllotropeConversionError(msg)
+
+    @staticmethod
+    def get_read_mode(data_section: str) -> ReadMode:
+        if ReadMode.ABSORBANCE.value in data_section:
+            return ReadMode.ABSORBANCE
+        elif ReadMode.FLUORESCENCE.value in data_section:
+            return ReadMode.FLUORESCENCE
+        elif ReadMode.LUMINESCENCE.value in data_section:
+            return ReadMode.LUMINESCENCE
+
+        msg = "Read mode not found"
+        raise AllotropeConversionError(msg)
+
+    @staticmethod
+    def get_read_type(procedure_details: str) -> ReadType:
+        # TODO parse the rest of the procedure details
         if ReadType.KINETIC.value in procedure_details:
-            self.read_type = ReadType.KINETIC
+            return ReadType.KINETIC
         elif ReadType.AREASCAN.value in procedure_details:
-            self.read_type = ReadType.AREASCAN
+            return ReadType.AREASCAN
         elif ReadType.SPECTRAL.value in procedure_details:
-            self.read_type = ReadType.SPECTRAL
-        else:
-            self.read_type = (
-                ReadType.ENDPOINT
-            )  # check for this last, because other modes still contain the word "Endpoint"
+            return ReadType.SPECTRAL
 
-        procedure_chunks = self._parse_procedure_chunks(procedure_details)
-        for procedure_chunk in procedure_chunks:
-            self._parse_procedure_chunk(procedure_chunk)
+        # check for this last, because other modes still contain the word "Endpoint"
+        return ReadType.ENDPOINT
 
-    def _parse_procedure_chunk(self, procedure_chunk: list[str]) -> None:
-        # if no user-defined name is specified for protocols,
-        # e.g. it just says "Absorbance Endpoint",
-        # Gen5 defaults to using the wavelength as the name
-        use_wavelength_names = False
-        read_line_length = 2
-        wavelength_line_length = 2
-        for line in procedure_chunk:
-            split_line = line.strip().split("\t")
-            if split_line[0] == "Read":
-                if len(split_line) != read_line_length:
-                    msg = f"Unrecognized Read data {split_line}"
-                    raise AllotropeConversionError(msg)
-                if split_line[-1] == f"{self.read_mode.title()} Endpoint":
-                    use_wavelength_names = True
-                else:
-                    self.read_names.append(split_line[-1])
-            elif split_line[0].startswith("Wavelengths"):
-                if use_wavelength_names:
-                    split_line_colon = split_line[0].split(":  ")
-                    if len(split_line_colon) != wavelength_line_length:
-                        msg = f"Unrecognized Wavelengths data {split_line}"
-                        raise AllotropeConversionError(msg)
-                    self.read_names.extend(split_line_colon[-1].split(", "))
-
-    def _parse_procedure_chunks(self, procedure_details: str) -> list[list[str]]:
+    @staticmethod
+    def _parse_procedure_chunks(procedure_details: str) -> list[list[str]]:
         procedure_chunks = []
         current_chunk: list[str] = []
         procedure_lines = procedure_details.splitlines()
@@ -211,8 +194,56 @@ class PlateData(ABC):
 
         return procedure_chunks
 
-    def _parse_layout(self, layout: str) -> None:
-        layout_lines = layout.splitlines()
+    @staticmethod
+    def _parse_procedure_chunk(
+        procedure_chunk: list[str],
+        read_mode: ReadMode,
+    ) -> list[str]:
+        # if no user-defined name is specified for protocols,
+        # e.g. it just says "Absorbance Endpoint",
+        # Gen5 defaults to using the wavelength as the name
+        read_names = []
+        use_wavelength_names = False
+        read_line_length = 2
+        wavelength_line_length = 2
+        for line in procedure_chunk:
+            split_line = line.strip().split("\t")
+            if split_line[0] == "Read":
+                if len(split_line) != read_line_length:
+                    msg = f"Unrecognized Read data {split_line}"
+                    raise AllotropeConversionError(msg)
+                if split_line[-1] == f"{read_mode.title()} Endpoint":
+                    use_wavelength_names = True
+                else:
+                    read_names.append(split_line[-1])
+            elif split_line[0].startswith("Wavelengths"):
+                if use_wavelength_names:
+                    split_line_colon = split_line[0].split(":  ")
+                    if len(split_line_colon) != wavelength_line_length:
+                        msg = f"Unrecognized Wavelengths data {split_line}"
+                        raise AllotropeConversionError(msg)
+                    read_names.extend(split_line_colon[-1].split(", "))
+        return read_names
+
+
+@dataclass
+class LayoutData:
+    layout: dict
+    concentrations: dict
+
+    @staticmethod
+    def create_default() -> LayoutData:
+        return LayoutData(
+            layout={},
+            concentrations={},
+        )
+
+    @staticmethod
+    def create(layout_str: str) -> LayoutData:
+        layout = {}
+        concentrations = {}
+
+        layout_lines = layout_str.splitlines()
         # first line is "Layout", second line is column numbers
         current_row = "A"
         for i in range(2, len(layout_lines)):
@@ -223,17 +254,59 @@ class PlateData(ABC):
             for j in range(1, len(split_line) - 1):
                 well_loc = f"{current_row}{j}"
                 if label == "Well ID":
-                    self.layout[well_loc] = split_line[j]
+                    layout[well_loc] = split_line[j]
                 elif label == "Conc/Dil" and split_line[j]:
-                    self.concentrations[well_loc] = float(split_line[j])
+                    concentrations[well_loc] = float(split_line[j])
 
-    def _parse_actual_temperature(self, actual_temperature: str) -> None:
+        return LayoutData(
+            layout=layout,
+            concentrations=concentrations,
+        )
+
+
+@dataclass
+class ActualTemperature:
+    value: Optional[float] = None
+
+    @staticmethod
+    def create_default() -> ActualTemperature:
+        return ActualTemperature()
+
+    @staticmethod
+    def create(actual_temperature: str) -> ActualTemperature:
         if len(actual_temperature.split("\n")) != 1:
             msg = f"Unrecognized temperature data {actual_temperature}"
             raise AllotropeConversionError(msg)
-        self.actual_temperature = float(actual_temperature.strip().split("\t")[-1])
 
-    def _parse_results(self, results: str) -> None:
+        return ActualTemperature(
+            value=float(actual_temperature.strip().split("\t")[-1]),
+        )
+
+
+@dataclass
+class Results:
+    measurements: defaultdict[str, list]
+    processed_datas: defaultdict[str, list]
+    wells: list
+    measurement_docs: list
+
+    @staticmethod
+    def create() -> Results:
+        return Results(
+            measurements=defaultdict(list),
+            processed_datas=defaultdict(list),
+            wells=[],
+            measurement_docs=[],
+        )
+
+    def parse_results(
+        self,
+        results: str,
+        plate_type: PlateType,
+        plate_number: PlateNumber,
+        layout_data: LayoutData,
+        actual_temperature: ActualTemperature,
+    ) -> None:
         result_lines = results.splitlines()
         if result_lines[0].strip() != "Results":
             msg = f"Unrecognized results data {result_lines[0]}"
@@ -251,38 +324,62 @@ class PlateData(ABC):
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
                 well_value: Union[str, float] = try_float(values[col_num])
-                if self._is_processed_data_label(label):
+                if Results._is_processed_data_label(
+                    label,
+                    plate_type.read_mode,
+                    plate_type.read_names,
+                ):
                     self.processed_datas[well_pos].append([label, well_value])
                 else:
                     label_only = label.split(":")[-1]
                     self.measurements[well_pos].append([label_only, well_value])
 
         for well_pos in self.wells:
-            datapoint = self.data_point_cls(
-                self.read_type,
-                self.measurements[well_pos],
-                well_pos,
-                self.plate_barcode,
-                self.layout.get(well_pos),
-                self.concentrations.get(well_pos),
-                self.processed_datas[well_pos],
-                self.actual_temperature,
+            self.measurement_docs.append(
+                plate_type.data_point_cls(
+                    plate_type.read_type,
+                    self.measurements[well_pos],
+                    well_pos,
+                    plate_number.plate_barcode,
+                    layout_data.layout.get(well_pos),
+                    layout_data.concentrations.get(well_pos),
+                    self.processed_datas[well_pos],
+                    actual_temperature.value,
+                ).to_measurement_doc()
             )
-            self.measurement_docs.append(datapoint.to_measurement_doc())
 
-    def _is_processed_data_label(self, label: str) -> bool:
-        if self.read_mode == ReadMode.LUMINESCENCE:
+    @staticmethod
+    def _is_processed_data_label(
+        label: str,
+        read_mode: ReadMode,
+        read_names: list,
+    ) -> bool:
+        if read_mode == ReadMode.LUMINESCENCE:
             return not any(
                 (label.startswith(read_name) and label.split(":")[-1] == "Lum")
-                for read_name in self.read_names
+                for read_name in read_names
             )
         else:
             return not any(
                 (label.startswith(read_name) and label.split(":")[-1][0].isdigit())
-                for read_name in self.read_names
+                for read_name in read_names
             )
 
-    def _parse_stdcurve(self, stdcurve: str) -> None:
+
+@dataclass
+class CurveName:
+    statistics_doc: list
+
+    @staticmethod
+    def create_default() -> CurveName:
+        return CurveName(statistics_doc=[])
+
+    @staticmethod
+    def create(
+        stdcurve: str,
+        plate_number: PlateNumber,
+        results: Results,
+    ) -> CurveName:
         lines = stdcurve.splitlines()
         num_lines = 2
         if len(lines) != num_lines:
@@ -290,16 +387,37 @@ class PlateData(ABC):
             raise AllotropeConversionError(msg)
         keys = lines[0].split("\t")
         values = lines[1].split("\t")
-        self.statistics_doc = [
-            {
-                "statistical feature": key,
-                "feature": try_float(value),
-                "group": f"{self.plate_barcode} {self.wells[0]}-{self.wells[-1]}",
-            }
-            for key, value in zip(keys, values)
-        ]
+        return CurveName(
+            statistics_doc=[
+                {
+                    "statistical feature": key,
+                    "feature": try_float(value),
+                    "group": f"{plate_number.plate_barcode} {results.wells[0]}-{results.wells[-1]}",
+                }
+                for key, value in zip(keys, values)
+            ]
+        )
 
-    def _parse_kinetic_data(self, kinetic_data: str) -> None:
+
+@dataclass
+class KineticData:
+    temperatures: list
+    kinetic_times: list[int]
+
+    @staticmethod
+    def create_default() -> KineticData:
+        return KineticData(
+            temperatures=[],
+            kinetic_times=[],
+        )
+
+    @staticmethod
+    def create(
+        lines_reader: LinesReader,
+        results: Results,
+    ) -> KineticData:
+        kinetic_data = read_data_section(lines_reader)
+
         kinetic_data_io = StringIO(kinetic_data)
         df = pd.read_table(kinetic_data_io)
         df_columns = kinetic_data.split("\n")[0].split("\t")
@@ -307,26 +425,35 @@ class PlateData(ABC):
             df["A1"].notna()
         ]  # drop incomplete rows, particularly rows only with "0:00:00"
 
-        self.kinetic_times = [self._hhmmss_to_sec(hhmmss) for hhmmss in df["Time"]]
-        self.temperatures = df[df_columns[1]].replace(np.nan, None).tolist()
-        has_temperatures = any(temp is not None for temp in self.temperatures)
+        kinetic_times = [hhmmss_to_sec(hhmmss) for hhmmss in df["Time"]]
+        temperatures = df[df_columns[1]].replace(np.nan, None).tolist()
+        has_temperatures = any(temp is not None for temp in temperatures)
         for well_pos in df_columns[
             2:
         ]:  # first column is Time, second column is T∞ READ_NAME with no values
-            self.wells.append(well_pos)
+            results.wells.append(well_pos)
             values = df[well_pos].tolist()
             if has_temperatures:
-                self.measurements[well_pos].extend(
-                    list(zip(self.kinetic_times, values, self.temperatures))
+                results.measurements[well_pos].extend(
+                    list(zip(kinetic_times, values, temperatures))
                 )
             else:
-                self.measurements[well_pos].extend(
-                    list(zip(self.kinetic_times, values))
-                )
+                results.measurements[well_pos].extend(list(zip(kinetic_times, values)))
 
-    def _parse_blank_kinetic_data(
-        self, blank_kinetic_data: str, blank_kinetic_data_label: Optional[str]
+        return KineticData(
+            temperatures=temperatures,
+            kinetic_times=kinetic_times,
+        )
+
+    def parse_blank_kinetic_data(
+        self,
+        lines_reader: LinesReader,
+        blank_kinetic_data_label: str,
+        results: Results,
+        plate_type: PlateType,
     ) -> None:
+        blank_kinetic_data = read_data_section(lines_reader)
+
         blank_kinetic_data_io = StringIO(blank_kinetic_data)
         df = pd.read_table(blank_kinetic_data_io)
         df.dropna(axis=0)  # drop incomplete rows
@@ -334,17 +461,31 @@ class PlateData(ABC):
 
         for well_pos in df_columns[1:]:  # first column is Time
             measures = df[well_pos].tolist()
-            self.processed_datas[well_pos].append(
-                [blank_kinetic_data_label, self._blank_data_cube(measures)]
+            results.processed_datas[well_pos].append(
+                [
+                    blank_kinetic_data_label,
+                    self._blank_data_cube(
+                        measures,
+                        plate_type,
+                    ),
+                ]
             )
 
-    def _blank_data_cube(self, measures: list[float]) -> TDatacube:
-        structure_dimensions = READTYPE_TO_DIMENSIONS[self.read_type]
+    def _blank_data_cube(
+        self,
+        measures: list[float],
+        plate_type: PlateType,
+    ) -> TDatacube:
+        structure_dimensions = READTYPE_TO_DIMENSIONS[plate_type.read_type]
         structure_measures = [
-            ("double", self.read_mode.lower(), self.data_point_cls.unit)
+            (
+                "double",
+                plate_type.read_mode.lower(),
+                plate_type.data_point_cls.unit,
+            )
         ]
         return TDatacube(
-            label=f"{self.read_type.value.lower()} data",
+            label=f"{plate_type.read_type.value.lower()} data",
             cube_structure=TDatacubeStructure(
                 [
                     TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
@@ -358,12 +499,68 @@ class PlateData(ABC):
             data=TDatacubeData([self.kinetic_times], [measures]),  # type: ignore[list-item]
         )
 
-    def _hhmmss_to_sec(
-        self, hhmmss: str
-    ) -> int:  # convert to seconds, as specified by Allotrope
-        hours, minutes, seconds = tuple(int(num) for num in hhmmss.split(":"))
-        return (3600 * hours) + (60 * minutes) + seconds
 
-    @abstractmethod
-    def to_allotrope(self, measurement_docs: list) -> Any:
-        raise NotImplementedError
+@dataclass
+class PlateData:
+    file_paths: FilePaths
+    plate_number: PlateNumber
+    plate_type: PlateType
+    results: Results
+    curve_name: CurveName
+    kinetic_data: KineticData
+
+    @staticmethod
+    def create(lines_reader: LinesReader) -> PlateData:
+        file_paths = FilePaths.create(lines_reader)
+        plate_number = PlateNumber.create(lines_reader)
+        plate_type = PlateType.create(lines_reader)
+        layout_data = LayoutData.create_default()
+        actual_temperature = ActualTemperature.create_default()
+        results = Results.create()
+        curve_name = CurveName.create_default()
+        kinetic_data = KineticData.create_default()
+
+        while lines_reader.current_line_exists():
+            data_section = read_data_section(lines_reader)
+            if data_section.startswith("Layout"):
+                layout_data = LayoutData.create(data_section)
+            elif data_section.startswith("Actual Temperature"):
+                actual_temperature = ActualTemperature.create(data_section)
+            elif data_section.startswith("Results"):
+                results.parse_results(
+                    data_section,
+                    plate_type,
+                    plate_number,
+                    layout_data,
+                    actual_temperature,
+                )
+            elif data_section.startswith("Curve Name"):
+                curve_name = CurveName.create(
+                    data_section,
+                    plate_number,
+                    results,
+                )
+            elif len(data_section.split("\n")) == 1 and any(
+                read_name in data_section for read_name in plate_type.read_names
+            ):
+                if data_section.startswith("Blank"):
+                    kinetic_data.parse_blank_kinetic_data(
+                        lines_reader,
+                        data_section.strip(),
+                        results,
+                        plate_type,
+                    )
+                else:
+                    kinetic_data = KineticData.create(
+                        lines_reader,
+                        results,
+                    )
+
+        return PlateData(
+            file_paths=file_paths,
+            plate_number=plate_number,
+            plate_type=plate_type,
+            results=results,
+            curve_name=curve_name,
+            kinetic_data=kinetic_data,
+        )

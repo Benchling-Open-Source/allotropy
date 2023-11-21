@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 from __future__ import annotations
 
 from dataclasses import fields, is_dataclass
@@ -26,6 +28,7 @@ class AllotropyError(Exception):
 # TODO: gather exceptions when parsing models from schema and publish them in model
 SPECIAL_KEYS = {
     "manifest": "$asm.manifest",
+    "field_asm_manifest": "$asm.manifest",
     "cube_structure": "cube-structure",
     "field_componentDatatype": "@componentDatatype",
     "field_asm_fill_value": "$asm.fill-value",
