@@ -52,7 +52,8 @@ def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
 
         # if the porperty type is measured in million cells per ml convert cells per ml
         if property_type == TQuantityValueMillionCellsPerMilliliter:
-            value /= 1e6
+            return property_type(value=float(str(value)) / 1e6)
+
         return property_type(value=value)  # type: ignore[arg-type]
     # special case for cell count since nucleoview doesn't provide total cell count
     elif property_name == "Cell count":
