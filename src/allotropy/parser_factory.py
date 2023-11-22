@@ -23,6 +23,9 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )
+from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
+    ChemometecNucleoviewParser,
+)
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -38,6 +41,7 @@ class Vendor(Enum):
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
+    CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
 
 
 VendorType = Union[Vendor, str]
@@ -54,6 +58,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
+    Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
 }
 
 
