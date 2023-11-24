@@ -128,17 +128,11 @@ class GroupBlock(Block):
 
     @staticmethod
     def create(lines_reader: CsvReader) -> GroupBlock:
-        group_data = []
-        for i, line in enumerate(lines_reader.lines):
-            if line.startswith("Group Column"):
-                group_data = lines_reader.lines[1 : i - 1]
-        # TODO handle group data
-
         return GroupBlock(
             block_type="Group",
             raw_lines=lines_reader.lines,
-            name=lines_reader.lines[0][len("Group: ") :],
-            group_data=group_data,
+            name=(lines_reader.pop() or "").removeprefix("Group: "),
+            group_data=list(lines_reader.pop_until("Group Column")),
         )
 
 
