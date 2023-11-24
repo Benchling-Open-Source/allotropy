@@ -50,7 +50,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import CsvReader, ListCsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
@@ -105,7 +105,7 @@ class Block:
     raw_lines: list[str]
 
     @staticmethod
-    def create(lines: list[str]) -> Block:
+    def create(lines_reader: CsvReader) -> Block:
         block_cls_by_type: dict[str, type[Block]] = {
             "Group": GroupBlock,
             "Note": NoteBlock,
@@ -113,10 +113,10 @@ class Block:
         }
 
         for key, cls in block_cls_by_type.items():
-            if lines[0].startswith(key):
-                return cls.create(lines)
+            if lines_reader.lines[0].startswith(key):
+                return cls.create(lines_reader)
 
-        error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
+        error = f"Expected block '{lines_reader.lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
@@ -127,17 +127,17 @@ class GroupBlock(Block):
     group_data: list[str]
 
     @staticmethod
-    def create(raw_lines: list[str]) -> GroupBlock:
+    def create(lines_reader: CsvReader) -> GroupBlock:
         group_data = []
-        for i, line in enumerate(raw_lines):
+        for i, line in enumerate(lines_reader.lines):
             if line.startswith("Group Column"):
-                group_data = raw_lines[1 : i - 1]
+                group_data = lines_reader.lines[1 : i - 1]
         # TODO handle group data
 
         return GroupBlock(
             block_type="Group",
-            raw_lines=raw_lines,
-            name=raw_lines[0][len("Group: ") :],
+            raw_lines=lines_reader.lines,
+            name=lines_reader.lines[0][len("Group: ") :],
             group_data=group_data,
         )
 
@@ -146,8 +146,8 @@ class GroupBlock(Block):
 @dataclass(frozen=True)
 class NoteBlock(Block):
     @staticmethod
-    def create(raw_lines: list[str]) -> NoteBlock:
-        return NoteBlock(block_type="Note", raw_lines=raw_lines)
+    def create(lines_reader: CsvReader) -> NoteBlock:
+        return NoteBlock(block_type="Note", raw_lines=lines_reader.lines)
 
 
 @dataclass
@@ -212,10 +212,10 @@ class PlateBlock(Block):
     cutoff_filters: Optional[list[int]]
 
     @staticmethod
-    def create(raw_lines: list[str]) -> PlateBlock:
+    def create(lines_reader: CsvReader) -> PlateBlock:
         split_lines = [
             [value_or_none(value) for value in raw_line.split("\t")]
-            for raw_line in raw_lines
+            for raw_line in lines_reader.lines
         ]
         header = split_lines[0]
         read_mode = header[5]
@@ -300,7 +300,7 @@ class PlateBlock(Block):
 
             return cls(
                 block_type="Plate",
-                raw_lines=raw_lines,
+                raw_lines=lines_reader.lines,
                 name=name,
                 export_format=export_format,
                 read_type=read_type,
@@ -852,7 +852,7 @@ class BlockList:
     blocks: list[Block]
 
     @staticmethod
-    def create(lines_reader: LinesReader) -> BlockList:
+    def create(lines_reader: CsvReader) -> BlockList:
         return BlockList(
             blocks=[
                 Block.create(block) for block in BlockList._iter_blocks(lines_reader)
@@ -860,7 +860,7 @@ class BlockList:
         )
 
     @staticmethod
-    def _get_n_blocks(lines_reader: LinesReader) -> int:
+    def _get_n_blocks(lines_reader: CsvReader) -> int:
         start_line = lines_reader.pop() or ""
         if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
@@ -868,10 +868,10 @@ class BlockList:
         raise AllotropeConversionError(msg)
 
     @staticmethod
-    def _iter_blocks(lines_reader: LinesReader) -> Iterator[list[str]]:
+    def _iter_blocks(lines_reader: CsvReader) -> Iterator[CsvReader]:
         n_blocks = BlockList._get_n_blocks(lines_reader)
         for _ in range(n_blocks):
-            yield list(lines_reader.pop_until(END_LINE_REGEX))
+            yield ListCsvReader(list(lines_reader.pop_until(END_LINE_REGEX)))
             lines_reader.pop()  # drop end line
             lines_reader.drop_empty()
 
@@ -894,5 +894,5 @@ class Data:
         return plate_blocks[0]
 
     @staticmethod
-    def create(lines_reader: LinesReader) -> Data:
+    def create(lines_reader: CsvReader) -> Data:
         return Data(block_list=BlockList.create(lines_reader))
