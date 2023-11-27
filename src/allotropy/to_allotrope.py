@@ -1,10 +1,12 @@
 from datetime import tzinfo
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Optional, TYPE_CHECKING
 
 from allotropy.allotrope.allotrope import serialize_allotrope
 from allotropy.parser_factory import PARSER_FACTORY, VendorType
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 def allotrope_from_io(

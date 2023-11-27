@@ -1,3 +1,4 @@
+from typing import TYPE_CHECKING
 import uuid
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
@@ -11,7 +12,9 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 )
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class NovaBioFlexParser(VendorParser):

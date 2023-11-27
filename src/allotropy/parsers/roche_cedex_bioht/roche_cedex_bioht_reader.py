@@ -1,5 +1,5 @@
 # mypy: disallow_any_generics = False
-
+from typing import TYPE_CHECKING
 
 import numpy as np
 import pandas as pd
@@ -10,7 +10,9 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
     INFO_HEADER,
     SAMPLE_ROLE_TYPES,
 )
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 def to_num(data: pd.Series) -> pd.Series:

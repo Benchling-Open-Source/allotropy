@@ -1,3 +1,4 @@
+from typing import TYPE_CHECKING
 import uuid
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
@@ -14,7 +15,9 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class RocheCedexBiohtParser(VendorParser):

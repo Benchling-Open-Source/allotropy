@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     BaselineCorrectedReporterDataCube,
@@ -49,7 +49,9 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class AppBioQuantStudioParser(VendorParser):

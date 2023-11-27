@@ -1,6 +1,6 @@
 # mypy: disallow_any_generics = False
 
-from typing import Any, Optional
+from typing import Any, Optional, TYPE_CHECKING
 import uuid
 
 import pandas as pd
@@ -38,7 +38,9 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 property_lookup = {
     "Dilution factor": TQuantityValueUnitless,

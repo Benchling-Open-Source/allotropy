@@ -1,6 +1,6 @@
 # mypy: disallow_any_generics = False
 
-from typing import Any
+from typing import Any, TYPE_CHECKING
 import uuid
 
 import pandas as pd
@@ -35,7 +35,9 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 property_lookup = {
     "Average viable diameter (μm)": TQuantityValueMicrometer,

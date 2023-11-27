@@ -4,13 +4,15 @@
 
 import argparse
 import sys
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
 import pandas as pd
 
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_model_from_io
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 def main() -> None:

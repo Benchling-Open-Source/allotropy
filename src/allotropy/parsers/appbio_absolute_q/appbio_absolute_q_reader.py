@@ -1,7 +1,10 @@
+from typing import TYPE_CHECKING
+
 import numpy as np
 import pandas as pd
 
-from allotropy.types import ContentsType
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class AbsoluteQReader:

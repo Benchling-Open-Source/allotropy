@@ -1,6 +1,7 @@
 # mypy: disallow_any_generics = False
 
 import re
+from typing import TYPE_CHECKING
 
 import pandas as pd
 
@@ -10,7 +11,9 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     MODEL_RE,
     XrVersion,
 )
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class ViCellXRReader:

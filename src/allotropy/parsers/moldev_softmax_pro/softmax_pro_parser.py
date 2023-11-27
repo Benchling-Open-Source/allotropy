@@ -1,9 +1,11 @@
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import Data
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class SoftmaxproParser(VendorParser):

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any
+from typing import Any, TYPE_CHECKING
 import uuid
 
 import pandas as pd
@@ -41,7 +41,9 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataSource,
 )
 from allotropy.parsers.vendor_parser import VendorParser
-from allotropy.types import ContentsType
+
+if TYPE_CHECKING:
+    from allotropy.types import ContentsType
 
 
 class AppbioAbsoluteQParser(VendorParser):
