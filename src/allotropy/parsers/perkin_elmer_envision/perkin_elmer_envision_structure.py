@@ -416,7 +416,8 @@ class Software:
             msg = "Unable to find software information"
             raise AllotropyError(msg)
 
-        software_info = reader.pop()[: len(exported_with_text)].split(" version ")
+        software_info_line = reader.pop()
+        software_info = [s.strip() for s in software_info_line[len(exported_with_text):].split("version")]
         return Software(software_info[0], software_info[1])
 
 
@@ -433,11 +434,11 @@ class Data:
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
-            software=Software.create(reader),
             plates=Plate.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
             number_of_wells=PlateType.create(reader).number_of_wells,
             plate_maps=create_plate_maps(reader),
             labels=Labels.create(reader),
             instrument=Instrument.create(reader),
+            software=Software.create(reader),
         )
