@@ -40,21 +40,15 @@ def test_get_model() -> None:
     model = parser._get_model(get_data())
 
     # remove all random UUIDs
-    if model.plate_reader_aggregate_document:
-        for i in range(
-            len(model.plate_reader_aggregate_document.plate_reader_document)
-        ):
+    if agg_doc := model.plate_reader_aggregate_document:
+        for i in range(len(plate_doc := agg_doc.plate_reader_document)):
             for j in range(
                 len(
-                    model.plate_reader_aggregate_document.plate_reader_document[
+                    measurement_doc := plate_doc[
                         i
                     ].measurement_aggregate_document.measurement_document
                 )
             ):
-                model.plate_reader_aggregate_document.plate_reader_document[
-                    i
-                ].measurement_aggregate_document.measurement_document[
-                    j
-                ].measurement_identifier = ""
+                measurement_doc[j].measurement_identifier = ""
 
     assert model == get_model()
