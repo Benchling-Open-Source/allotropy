@@ -1,23 +1,22 @@
 import io
-from typing import Any
 
 import numpy as np
 import pandas as pd
 
 
-def convert_datetime(x: pd.Series[Any]) -> pd.Series[str]:
+def convert_datetime(x: pd.Series[np.dtypes.ObjectDType]) -> pd.Series[str]:
     return pd.to_datetime(x).dt.strftime("%Y-%m-%d %H:%M:%S")
 
 
-def convert_float(x: pd.Series[Any]) -> pd.Series[float]:
+def convert_float(x: pd.Series[np.dtypes.ObjectDType]) -> pd.Series[float]:
     return pd.to_numeric(x, errors="coerce")
 
 
-def convert_int(x: pd.Series[Any]) -> pd.Series[int]:
+def convert_int(x: pd.Series[np.dtypes.ObjectDType]) -> pd.Series[int]:
     return pd.to_numeric(x, errors="coerce")
 
 
-def convert_string(x: pd.Series[Any]) -> pd.Series[str]:
+def convert_string(x: pd.Series[np.dtypes.ObjectDType]) -> pd.Series[str]:
     return x.astype(str)
 
 
@@ -54,15 +53,15 @@ class ViCellBluReader:
     def read(cls, contents: io.IOBase) -> pd.DataFrame:
         raw_data = pd.read_csv(contents, index_col=False)  # type: ignore[call-overload]
 
-        columns: list[pd.Series[Any]] = []
+        columns: list[pd.Series[np.dtypes.ObjectDType]] = []
         for column, desired_type in desired_columns.items():
             col = raw_data.get(column)
             if not isinstance(col, pd.Series):
                 continue
 
             new_col = (
-                col if col.dtype == desired_type else conversors[desired_type](col)
+                col if col.dtype == desired_type else conversors[desired_type](col)  # type: ignore[arg-type]
             )
-            columns.append(new_col)  # type: ignore [arg-type]
+            columns.append(new_col)  # type: ignore[arg-type]
 
         return pd.concat(columns, axis=1).replace(np.nan, None)
