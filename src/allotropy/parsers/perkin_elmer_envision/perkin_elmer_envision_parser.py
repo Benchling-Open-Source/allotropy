@@ -1,4 +1,3 @@
-from io import IOBase
 from typing import Any, Optional, TypeVar
 import uuid
 
@@ -30,6 +29,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     Plate,
 )
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 T = TypeVar("T")
 
@@ -39,7 +39,7 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 
 class PerkinElmerEnvisionParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, _: str) -> Model:
+    def _parse(self, raw_contents: ContentsType, _: str) -> Model:
         reader = CsvReader(raw_contents)
         return self._get_model(Data.create(reader))
 

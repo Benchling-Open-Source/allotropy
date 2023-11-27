@@ -1,4 +1,3 @@
-import io
 import uuid
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
@@ -12,10 +11,11 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 )
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 
 class NovaBioFlexParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def _parse(self, contents: ContentsType, filename: str) -> Model:
         return self._get_model(Data.create(contents, filename))
 
     def _get_model(self, data: Data) -> Model:

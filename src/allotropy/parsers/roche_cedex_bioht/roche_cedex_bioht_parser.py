@@ -1,4 +1,3 @@
-import io
 import uuid
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
@@ -15,10 +14,11 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 
 class RocheCedexBiohtParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:  # noqa: ARG002
+    def _parse(self, contents: ContentsType, filename: str) -> Model:  # noqa: ARG002
         reader = RocheCedexBiohtReader(contents)
         return self._get_model(Data.create(reader))
 

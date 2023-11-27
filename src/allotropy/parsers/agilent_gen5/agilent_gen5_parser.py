@@ -1,4 +1,3 @@
-import io
 import itertools
 from typing import Any, Union
 import uuid
@@ -25,6 +24,7 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 
 class AgilentGen5Parser(VendorParser):
@@ -86,7 +86,7 @@ class AgilentGen5Parser(VendorParser):
         msg = f"Unrecognized read mode: {first_plate.plate_type.read_mode}"
         raise AllotropeConversionError(msg)
 
-    def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
+    def _parse(self, contents: ContentsType, filename: str) -> Any:  # noqa: ARG002
         section_lines_reader = SectionLinesReader(contents, encoding=None)
         data = Data.create(section_lines_reader)
 

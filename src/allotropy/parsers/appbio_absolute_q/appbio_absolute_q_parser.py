@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from io import IOBase
 from typing import Any
 import uuid
 
@@ -42,10 +41,11 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataSource,
 )
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 
 class AppbioAbsoluteQParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
+    def _parse(self, raw_contents: ContentsType, filename: str) -> Model:
         reader = AbsoluteQReader(raw_contents)
         return self._get_model(reader.wells, reader.group_rows, filename)
 

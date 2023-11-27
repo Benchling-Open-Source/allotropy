@@ -1,4 +1,3 @@
-from io import IOBase
 from typing import Optional
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
@@ -50,10 +49,11 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 
 class AppBioQuantStudioParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, file_name: str) -> Model:
+    def _parse(self, raw_contents: ContentsType, file_name: str) -> Model:
         reader = LinesReader(raw_contents)
         data = DataBuilder.build(reader)
         return self._get_model(data, file_name)

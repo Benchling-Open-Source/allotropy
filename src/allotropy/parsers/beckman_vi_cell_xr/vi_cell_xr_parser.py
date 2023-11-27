@@ -1,6 +1,5 @@
 # mypy: disallow_any_generics = False
 
-import io
 from typing import Any, Optional
 import uuid
 
@@ -39,6 +38,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 property_lookup = {
     "Dilution factor": TQuantityValueUnitless,
@@ -54,7 +54,7 @@ def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
 
 
 class ViCellXRParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def _parse(self, contents: ContentsType, filename: str) -> Model:
         reader = ViCellXRReader(contents)
 
         return Model(

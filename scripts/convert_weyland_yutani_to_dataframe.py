@@ -3,7 +3,6 @@
 """Convert Weyland-Yutani data to dataframe."""
 
 import argparse
-from io import IOBase
 import sys
 from typing import Any
 
@@ -11,6 +10,7 @@ import pandas as pd
 
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_model_from_io
+from allotropy.types import ContentsType
 
 
 def main() -> None:
@@ -33,7 +33,7 @@ def extract_well_data(model: Any) -> list[Any]:
     ]
 
 
-def handle(filename: str, reader: IOBase) -> None:
+def handle(filename: str, reader: ContentsType) -> None:
     """Extract and show data from a single model."""
     try:
         model = allotrope_model_from_io(reader, filename, Vendor.EXAMPLE_WEYLAND_YUTANI)

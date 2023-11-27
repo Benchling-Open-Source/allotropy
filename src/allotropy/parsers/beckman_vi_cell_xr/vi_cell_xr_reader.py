@@ -1,6 +1,5 @@
 # mypy: disallow_any_generics = False
 
-from io import IOBase
 import re
 
 import pandas as pd
@@ -11,10 +10,11 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     MODEL_RE,
     XrVersion,
 )
+from allotropy.types import ContentsType
 
 
 class ViCellXRReader:
-    def __init__(self, contents: IOBase) -> None:
+    def __init__(self, contents: ContentsType) -> None:
         self.contents = contents
         self.file_info = self._get_file_info()
         self.file_version = self._get_file_version()

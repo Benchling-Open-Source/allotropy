@@ -1,6 +1,5 @@
 # mypy: disallow_any_generics = False
 
-import io
 from typing import Any
 import uuid
 
@@ -36,6 +35,7 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
 from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.types import ContentsType
 
 property_lookup = {
     "Average viable diameter (μm)": TQuantityValueMicrometer,
@@ -58,7 +58,7 @@ def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
 
 
 class ViCellBluParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def _parse(self, contents: ContentsType, filename: str) -> Model:
         return self._get_model(ViCellBluReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
