@@ -7,6 +7,7 @@ import uuid
 from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
+    DataSystemDocument,
     DeviceControlDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -34,6 +35,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     Data,
@@ -71,11 +73,11 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 
 class PerkinElmerEnvisionParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, _: str) -> Model:
+    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
         reader = CsvReader(raw_contents)
-        return self._get_model(Data.create(reader))
+        return self._get_model(Data.create(reader), filename)
 
-    def _get_model(self, data: Data) -> Model:
+    def _get_model(self, data: Data, filename: str) -> Model:
         if data.number_of_wells is None:
             msg = "Unable to get number of the wells in the plate"
             raise AllotropyError(msg)
@@ -83,6 +85,13 @@ class PerkinElmerEnvisionParser(VendorParser):
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 plate_reader_document=self._get_plate_reader_document(data),
+                data_system_document=DataSystemDocument(
+                    file_name=filename,
+                    software_name=data.software.software_name,
+                    software_version=data.software.software_version,
+                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
                 device_system_document=DeviceSystemDocument(
                     model_number="EnVision",
                     equipment_serial_number=data.instrument.serial_number,

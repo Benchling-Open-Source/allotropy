@@ -405,7 +405,24 @@ class Instrument:
 
 
 @dataclass
+class Software:
+    software_name: str
+    software_version: str
+
+    @staticmethod
+    def create(reader: CsvReader) -> Software:
+        exported_with_text = "Exported with "
+        if reader.drop_until(exported_with_text) is None:
+            msg = "Unable to find software information"
+            raise AllotropyError(msg)
+
+        software_info = reader.pop()[: len(exported_with_text)].split(" version ")
+        return Software(software_info[0], software_info[1])
+
+
+@dataclass
 class Data:
+    software: Software
     plates: list[Plate]
     basic_assay_info: BasicAssayInfo
     number_of_wells: float
@@ -416,6 +433,7 @@ class Data:
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
+            software=Software.create(reader),
             plates=Plate.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
             number_of_wells=PlateType.create(reader).number_of_wells,
