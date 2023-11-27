@@ -202,15 +202,7 @@ class PlateHeader:
 @dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
-    name: Optional[str]
-    export_format: Optional[str]
-    read_type: Optional[str]
-    data_type: Optional[str]
-    kinetic_points: int
-    num_wavelengths: Optional[int]
-    wavelengths: list[int]
-    num_columns: int
-    num_wells: int
+    header: PlateHeader
     well_data: defaultdict[str, WellData]
     data_header: list[Optional[str]]
     concept: str
@@ -251,26 +243,16 @@ class PlateBlock(Block):
 
             if header.export_format == ExportFormat.TIME_FORMAT.value:
                 PlateBlock._parse_time_format_data(
-                    header.wavelengths,
-                    header.read_type,
+                    header,
                     well_data,
-                    header.kinetic_points,
-                    header.num_wells,
                     data_header,
-                    header.data_type,
-                    header.num_wavelengths,
                     data_lines,
                 )
             elif header.export_format == ExportFormat.PLATE_FORMAT.value:
                 PlateBlock._parse_plate_format_data(
-                    header.wavelengths,
-                    header.read_type,
+                    header,
                     well_data,
-                    header.data_type,
-                    header.kinetic_points,
                     extra_attr.num_rows,
-                    header.num_wavelengths,
-                    header.num_columns,
                     data_header,
                     data_lines,
                 )
@@ -283,15 +265,7 @@ class PlateBlock(Block):
             return cls(
                 block_type="Plate",
                 raw_lines=lines_reader.lines,
-                name=header.name,
-                export_format=header.export_format,
-                read_type=header.read_type,
-                data_type=header.data_type,
-                kinetic_points=header.kinetic_points,
-                num_wavelengths=header.num_wavelengths,
-                wavelengths=header.wavelengths,
-                num_columns=header.num_columns,
-                num_wells=header.num_wells,
+                header=header,
                 well_data=well_data,
                 data_header=data_header,
                 concept=extra_attr.concept,
@@ -400,65 +374,59 @@ class PlateBlock(Block):
 
     @staticmethod
     def _parse_time_format_data(
-        wavelengths: list[int],
-        read_type: Optional[str],
+        header: PlateHeader,
         well_data: defaultdict[str, WellData],
-        kinetic_points: int,
-        num_wells: int,
         data_header: list[Optional[str]],
-        data_type: Optional[str],
-        num_wavelengths: Optional[int],
         data_lines: list[list[Optional[str]]],
     ) -> None:
-        if data_type == DataType.RAW.value:
-            num_row_blocks = num_wavelengths if num_wavelengths is not None else 1
+        if header.data_type == DataType.RAW.value:
+            num_row_blocks = (
+                header.num_wavelengths if header.num_wavelengths is not None else 1
+            )
             for wavelength_index in range(num_row_blocks):
-                start_index = wavelength_index * (kinetic_points + 1)
-                wavelength_rows = data_lines[start_index : start_index + kinetic_points]
+                start_index = wavelength_index * (header.kinetic_points + 1)
+                wavelength_rows = data_lines[
+                    start_index : start_index + header.kinetic_points
+                ]
                 for row in wavelength_rows:
-                    for i, value in enumerate(row[2 : num_wells + 2]):
+                    for i, value in enumerate(row[2 : header.num_wells + 2]):
                         if value is None:
                             continue
                         well = assert_not_none(data_header[i + 2], "well")
                         PlateBlock._add_data_point(
-                            read_type,
+                            header.read_type,
                             well_data,
                             well,
                             value,
                             data_key=row[0],
                             temperature=row[1],
                             wavelength=PlateBlock.get_wavelength(
-                                read_type, wavelengths, wavelength_index
+                                header, wavelength_index
                             ),
                         )
-            if len(data_lines) > (kinetic_points + 1) * num_row_blocks:
-                reduced_row = data_lines[-1][: num_wells + 2]
+            if len(data_lines) > (header.kinetic_points + 1) * num_row_blocks:
+                reduced_row = data_lines[-1][: header.num_wells + 2]
                 PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
-        elif data_type == DataType.REDUCED.value:
-            reduced_row = data_lines[-1][: num_wells + 2]
+        elif header.data_type == DataType.REDUCED.value:
+            reduced_row = data_lines[-1][: header.num_wells + 2]
             PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
             msg = msg_for_error_on_unrecognized_value(
-                "data type", data_type, DataType._member_names_
+                "data type", header.data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
 
     @staticmethod
     def _parse_plate_format_data(
-        wavelengths: list[int],
-        read_type: Optional[str],
+        header: PlateHeader,
         well_data: defaultdict[str, WellData],
-        data_type: Optional[str],
-        kinetic_points: int,
         num_rows: int,
-        num_wavelengths: Optional[int],
-        num_columns: int,
         data_header: list[Optional[str]],
         data_lines: list[list[Optional[str]]],
     ) -> None:
         end_raw_data_index = 0
-        if data_type == DataType.RAW.value:
-            for read_index in range(kinetic_points):
+        if header.data_type == DataType.RAW.value:
+            for read_index in range(header.kinetic_points):
                 start_index = read_index * (num_rows + 1)
                 read_rows = data_lines[start_index : start_index + num_rows]
                 data_key = read_rows[0][0]
@@ -466,12 +434,16 @@ class PlateBlock(Block):
                 for i, row in enumerate(read_rows):
                     wavelength_index = 0
                     num_row_blocks = (
-                        num_wavelengths if num_wavelengths is not None else 1
+                        header.num_wavelengths
+                        if header.num_wavelengths is not None
+                        else 1
                     )
                     for wavelength_index in range(num_row_blocks):
-                        col_start_index = 2 + (wavelength_index * (num_columns + 1))
+                        col_start_index = 2 + (
+                            wavelength_index * (header.num_columns + 1)
+                        )
                         for j, value in enumerate(
-                            row[col_start_index : col_start_index + num_columns]
+                            row[col_start_index : col_start_index + header.num_columns]
                         ):
                             if value is None:
                                 continue
@@ -480,33 +452,34 @@ class PlateBlock(Block):
                             )
                             well = get_well_coordinates(i + 1, col_number)
                             PlateBlock._add_data_point(
-                                read_type,
+                                header.read_type,
                                 well_data,
                                 well,
                                 value,
                                 data_key=data_key,
                                 temperature=temperature,
                                 wavelength=PlateBlock.get_wavelength(
-                                    read_type, wavelengths, wavelength_index
+                                    header,
+                                    wavelength_index,
                                 ),
                             )
-            end_raw_data_index = ((num_rows + 1) * kinetic_points) + 1
+            end_raw_data_index = ((num_rows + 1) * header.kinetic_points) + 1
             reduced_data_rows = data_lines[end_raw_data_index:]
             if len(reduced_data_rows) == num_rows:
                 PlateBlock._parse_reduced_plate_rows(
-                    num_columns,
+                    header.num_columns,
                     data_header,
                     well_data,
                     reduced_data_rows,
                 )
-        elif data_type == DataType.REDUCED.value:
+        elif header.data_type == DataType.REDUCED.value:
             reduced_data_rows = data_lines[end_raw_data_index:]
             PlateBlock._parse_reduced_plate_rows(
-                num_columns, data_header, well_data, reduced_data_rows
+                header.num_columns, data_header, well_data, reduced_data_rows
             )
         else:
             msg = msg_for_error_on_unrecognized_value(
-                "data type", data_type, DataType._member_names_
+                "data type", header.data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
 
@@ -521,45 +494,50 @@ class PlateBlock(Block):
     @property
     def is_single_wavelength(self) -> bool:
         return (
-            self.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
-            and len(self.wavelengths) == 1
+            self.header.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
+            and len(self.header.wavelengths) == 1
         )
 
     @property
     def has_wavelength_dimension(self) -> bool:
         return (
-            self.read_type not in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
-            and len(self.wavelengths) > 1
+            self.header.read_type
+            not in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
+            and len(self.header.wavelengths) > 1
         )
 
     @staticmethod
     def get_wavelength(
-        read_type: Optional[str],
-        wavelengths: list[int],
+        header: PlateHeader,
         wavelength_index: int,
     ) -> Optional[int]:
-        if read_type == ReadType.SPECTRUM.value:
+        if header.read_type == ReadType.SPECTRUM.value:
             return None
         else:
-            return wavelengths[wavelength_index] if wavelengths else None
+            return header.wavelengths[wavelength_index] if header.wavelengths else None
 
     def get_data_cube_dimensions(self) -> list[tuple[str, str, Optional[str]]]:
         dimensions: list[tuple[str, str, Optional[str]]] = []
-        if self.read_type == ReadType.KINETIC.value:
+        if self.header.read_type == ReadType.KINETIC.value:
             dimensions = [("double", "elapsed time", "s")]
-        elif self.read_type == ReadType.WELL_SCAN.value:
+        elif self.header.read_type == ReadType.WELL_SCAN.value:
             dimensions = [("int", "x", None)]
-        elif self.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}:
+        elif self.header.read_type in {
+            ReadType.SPECTRUM.value,
+            ReadType.ENDPOINT.value,
+        }:
             dimensions = [("int", "wavelength", "nm")]
         else:
-            error = f"Cannot make data cube for read type {self.read_type}; only {sorted(ReadType._member_names_)} are supported."
+            error = f"Cannot make data cube for read type {self.header.read_type}; only {sorted(ReadType._member_names_)} are supported."
             raise AllotropeConversionError(error)
         if self.has_wavelength_dimension:
             dimensions.append(("int", "wavelength", "nm"))
         return dimensions
 
     def generate_sample_document(self, well: str) -> SampleDocument:
-        return SampleDocument(well_location_identifier=well, plate_barcode=self.name)
+        return SampleDocument(
+            well_location_identifier=well, plate_barcode=self.header.name
+        )
 
     def generate_data_cube(self, well_data: WellData) -> TDatacube:
         dimension_data = [well_data.dimensions] + (
@@ -657,7 +635,7 @@ class FluorescencePlateBlock(PlateBlock):
 
         if self.is_single_wavelength:
             device_control_doc.detector_wavelength_setting = TQuantityValueNanometer(
-                self.wavelengths[0]
+                self.header.wavelengths[0]
             )
         if self.excitation_wavelengths and len(self.excitation_wavelengths) == 1:
             device_control_doc.excitation_wavelength_setting = TQuantityValueNanometer(
@@ -701,7 +679,7 @@ class FluorescencePlateBlock(PlateBlock):
         allotrope_file = ModelFluorescence(
             measurement_aggregate_document=MeasurementAggregateDocumentFluorescence(
                 measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(self.num_wells),
+                plate_well_count=TQuantityValueNumber(self.header.num_wells),
                 measurement_document=[
                     self.generate_measurement_doc(well, self.well_data[well])
                     for well in wells
@@ -755,7 +733,7 @@ class LuminescencePlateBlock(PlateBlock):
 
         if self.is_single_wavelength:
             device_control_doc.detector_wavelength_setting = TQuantityValueNanometer(
-                self.wavelengths[0]
+                self.header.wavelengths[0]
             )
 
         return device_control_doc
@@ -791,7 +769,7 @@ class LuminescencePlateBlock(PlateBlock):
         allotrope_file = ModelLuminescence(
             measurement_aggregate_document=MeasurementAggregateDocumentLuminescence(
                 measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(self.num_wells),
+                plate_well_count=TQuantityValueNumber(self.header.num_wells),
                 measurement_document=[
                     self.generate_measurement_doc(well, self.well_data[well])
                     for well in wells
@@ -827,7 +805,7 @@ class AbsorbancePlateBlock(PlateBlock):
 
         if self.is_single_wavelength:
             device_control_doc.detector_wavelength_setting = TQuantityValueNanometer(
-                self.wavelengths[0]
+                self.header.wavelengths[0]
             )
 
         return device_control_doc
@@ -863,7 +841,7 @@ class AbsorbancePlateBlock(PlateBlock):
         allotrope_file = ModelAbsorbance(
             measurement_aggregate_document=MeasurementAggregateDocumentAbsorbance(
                 measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(self.num_wells),
+                plate_well_count=TQuantityValueNumber(self.header.num_wells),
                 measurement_document=[
                     self.generate_measurement_doc(well, self.well_data[well])
                     for well in wells
