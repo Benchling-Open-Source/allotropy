@@ -8,6 +8,8 @@ import re
 from typing import Any, Optional
 import uuid
 
+import pandas as pd
+
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
     DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,
@@ -183,6 +185,20 @@ class WellData:
         return not self.dimensions or not self.values
 
 
+@dataclass
+class PlateHeader:
+    name: str
+    export_version: str
+    export_format: str
+    read_type: str
+    data_type: str
+    kinetic_points: int
+    num_wavelengths: Optional[int]
+    wavelengths: list[int]
+    num_columns: int
+    num_wells: int
+
+
 @dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
@@ -221,41 +237,7 @@ class PlateBlock(Block):
         }
 
         if cls := plate_block_cls.get(read_mode or ""):
-            [
-                _,  # Plate:
-                name,
-                export_version,
-                export_format,
-                read_type,
-                _,  # Read mode
-            ] = header_series[:6]
-            if export_version != EXPORT_VERSION:
-                error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
-                raise AllotropeConversionError(error)
-
-            data_type_idx = cls.get_data_type_idx()
-
-            [
-                data_type,
-                _,  # Pre-read, always FALSE
-                kinetic_points_raw,
-                read_time_or_scan_pattern,
-                read_interval_or_scan_density,
-                _,  # start_wavelength
-                _,  # end_wavelength
-                _,  # wavelength_step
-                num_wavelengths_raw,
-                wavelengths_str,
-                _,  # first_column
-                num_columns_raw,
-                num_wells_raw,
-            ] = header_series[data_type_idx : data_type_idx + 13]
-            kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
-            num_columns = try_int(num_columns_raw, "num_columns")
-            num_wells = try_int(num_wells_raw, "num_wells")
-            num_wavelengths = try_int_or_none(num_wavelengths_raw)
-            wavelengths = split_wavelengths(wavelengths_str) or []
-
+            header = cls.create_header(header_series)
             extra_attr = cls.parse_read_mode_header(header_series.tolist())
 
             well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
@@ -267,49 +249,49 @@ class PlateBlock(Block):
             data_header = split_lines[1]
             data_lines = split_lines[2:]
 
-            if export_format == ExportFormat.TIME_FORMAT.value:
+            if header.export_format == ExportFormat.TIME_FORMAT.value:
                 PlateBlock._parse_time_format_data(
-                    wavelengths,
-                    read_type,
+                    header.wavelengths,
+                    header.read_type,
                     well_data,
-                    kinetic_points,
-                    num_wells,
+                    header.kinetic_points,
+                    header.num_wells,
                     data_header,
-                    data_type,
-                    num_wavelengths,
+                    header.data_type,
+                    header.num_wavelengths,
                     data_lines,
                 )
-            elif export_format == ExportFormat.PLATE_FORMAT.value:
+            elif header.export_format == ExportFormat.PLATE_FORMAT.value:
                 PlateBlock._parse_plate_format_data(
-                    wavelengths,
-                    read_type,
+                    header.wavelengths,
+                    header.read_type,
                     well_data,
-                    data_type,
-                    kinetic_points,
+                    header.data_type,
+                    header.kinetic_points,
                     extra_attr.num_rows,
-                    num_wavelengths,
-                    num_columns,
+                    header.num_wavelengths,
+                    header.num_columns,
                     data_header,
                     data_lines,
                 )
             else:
-                msg = msg_for_error_on_unrecognized_value(
-                    "export format", export_format, ExportFormat._member_names_
+                error = msg_for_error_on_unrecognized_value(
+                    "export format", header.export_format, ExportFormat._member_names_
                 )
                 raise AllotropeConversionError(error)
 
             return cls(
                 block_type="Plate",
                 raw_lines=lines_reader.lines,
-                name=name,
-                export_format=export_format,
-                read_type=read_type,
-                data_type=data_type,
-                kinetic_points=kinetic_points,
-                num_wavelengths=num_wavelengths,
-                wavelengths=wavelengths,
-                num_columns=num_columns,
-                num_wells=num_wells,
+                name=header.name,
+                export_format=header.export_format,
+                read_type=header.read_type,
+                data_type=header.data_type,
+                kinetic_points=header.kinetic_points,
+                num_wavelengths=header.num_wavelengths,
+                wavelengths=header.wavelengths,
+                num_columns=header.num_columns,
+                num_wells=header.num_wells,
                 well_data=well_data,
                 data_header=data_header,
                 concept=extra_attr.concept,
@@ -325,6 +307,51 @@ class PlateBlock(Block):
             "read mode", read_mode, plate_block_cls.keys()
         )
         raise AllotropeConversionError(msg)
+
+    @classmethod
+    def create_header(cls, header: pd.Series[str]) -> PlateHeader:
+        data_type_idx = cls.get_data_type_idx()
+        [
+            _,  # Plate:
+            name,
+            export_version,
+            export_format,
+            read_type,
+            _,  # Read mode
+        ] = header[:6]
+
+        if export_version != EXPORT_VERSION:
+            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
+            raise AllotropeConversionError(error)
+
+        [
+            data_type,
+            _,  # Pre-read, always FALSE
+            kinetic_points_raw,
+            _,  # read_time_or_scan_pattern
+            _,  # read_interval_or_scan_density
+            _,  # start_wavelength
+            _,  # end_wavelength
+            _,  # wavelength_step
+            num_wavelengths_raw,
+            wavelengths_str,
+            _,  # first_column
+            num_columns_raw,
+            num_wells_raw,
+        ] = header[data_type_idx : data_type_idx + 13]
+
+        return PlateHeader(
+            name=name,
+            export_version=export_version,
+            export_format=export_format,
+            read_type=read_type,
+            data_type=data_type,
+            kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
+            num_wavelengths=try_int_or_none(num_wavelengths_raw),
+            wavelengths=split_wavelengths(wavelengths_str) or [],
+            num_columns=try_int(num_columns_raw, "num_columns"),
+            num_wells=try_int(num_wells_raw, "num_wells"),
+        )
 
     @staticmethod
     def _parse_reduced_plate_rows(
