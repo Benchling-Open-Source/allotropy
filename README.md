@@ -19,6 +19,11 @@ We currently have parser support for the following instruments:
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 
+
+# Contributing
+We welcome community contributions to this library and we hope that together we can expand the coverage of ASM ready data for everyone. If you are interested, please read our [contribution guidelines](CONTRIBUTING.md).
+
+
 # Usage
 
 Convert a file to an ASM dictionary:
