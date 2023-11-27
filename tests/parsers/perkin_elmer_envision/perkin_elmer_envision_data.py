@@ -90,7 +90,7 @@ def get_data() -> Data:
         software=Software(
             software_name="EnVision Workstation",
             software_version="1.0",
-        )
+        ),
     )
 
 

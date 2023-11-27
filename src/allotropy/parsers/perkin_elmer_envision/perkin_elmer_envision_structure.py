@@ -417,7 +417,10 @@ class Software:
             raise AllotropyError(msg)
 
         software_info_line = reader.pop()
-        software_info = [s.strip() for s in software_info_line[len(exported_with_text):].split("version")]
+        software_info = [
+            s.strip()
+            for s in software_info_line[len(exported_with_text) :].split("version")
+        ]
         return Software(software_info[0], software_info[1])
 
 
