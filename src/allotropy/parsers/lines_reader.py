@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 from collections.abc import Iterator
 from io import IOBase, StringIO
 from re import search

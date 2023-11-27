@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 from typing import Union
 
 from allotropy.allotrope.models.shared.definitions.custom import (
