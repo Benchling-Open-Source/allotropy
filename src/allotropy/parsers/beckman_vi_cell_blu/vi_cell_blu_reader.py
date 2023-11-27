@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 import io
 from typing import Any
 
@@ -19,7 +17,7 @@ def convert_int(x: pd.Series[Any]) -> pd.Series[int]:
     return pd.to_numeric(x, errors="coerce")
 
 
-def convert_string(x: pd.Series) -> pd.Series[str]:
+def convert_string(x: pd.Series[Any]) -> pd.Series[str]:
     return x.astype(str)
 
 
@@ -56,7 +54,7 @@ class ViCellBluReader:
     def read(cls, contents: io.IOBase) -> pd.DataFrame:
         raw_data = pd.read_csv(contents, index_col=False)  # type: ignore[call-overload]
 
-        columns: list[pd.Series] = []
+        columns: list[pd.Series[Any]] = []
         for column, desired_type in desired_columns.items():
             col = raw_data.get(column)
             if not isinstance(col, pd.Series):
