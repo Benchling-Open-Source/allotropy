@@ -376,7 +376,7 @@ class Labels:
             emission_filters,
             filter_position_map.get(str(series.get("Using of emission filter")), None),
             number_of_flashes=try_float_or_none(str(series.get("Number of flashes"))),
-            detector_gain_setting=str(series.get("Reference AD gain")),
+            detector_gain_setting=str(gain) if (gain := series.get("Reference AD gain")) else None,
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:

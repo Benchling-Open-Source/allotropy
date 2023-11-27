@@ -84,7 +84,8 @@ class PerkinElmerEnvisionParser(VendorParser):
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 plate_reader_document=self._get_plate_reader_document(data),
                 device_system_document=DeviceSystemDocument(
-                    model_number=data.instrument.serial_number,
+                    model_number="EnVision",
+                    equipment_serial_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname,
                 ),
             ),

@@ -92,7 +92,8 @@ def get_model() -> Model:
         field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         plate_reader_aggregate_document=PlateReaderAggregateDocument(
             device_system_document=DeviceSystemDocument(
-                model_number="1050209",
+                model_number="EnVision",
+                equipment_serial_number="1050209",
                 device_identifier="EnVision",
             ),
             plate_reader_document=[
