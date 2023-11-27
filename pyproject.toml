@@ -34,7 +34,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-  "cattrs >= 23.0.0",
+  "cattrs == 23.1.2",
   "chardet >= 5.2.0",
   "jsonschema >= 4.17.0",
   "numpy >= 1.25.0",
@@ -92,7 +92,6 @@ dependencies = [
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
   "datamodel-code-generator >= 0.21.5",
-  "flake8 >= 6.1.0",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications >= 2023.7.1",
   "pydantic == 1.10.9",
@@ -106,18 +105,17 @@ generate-schemas = "scripts/generate_schemas.py"
 [tool.hatch.envs.lint]
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
-  "cattrs >= 23.0.0",
+  "cattrs == 23.1.2",
   "mypy >= 1.6.0",
   # For pytest types
   "pytest >= 7.4.0",
 ]
 
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:src/allotropy tests}"
+typing = "mypy --install-types --non-interactive {args:src/allotropy scripts tests}"
 style = [
   "ruff {args:.}",
   "black --check --diff {args:.}",
-  "flake8 .",
 ]
 fmt = [
   "black {args:.}",

@@ -1,4 +1,5 @@
 from datetime import timedelta, timezone, tzinfo
+from typing import Optional
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -26,7 +27,7 @@ def test_timestamp_parser_init_fails_invalid_default_timezone() -> None:
         ("Tue Jun 22 07:46:22 GMT 2010", "2010-06-22T07:46:22+00:00"),
     ],
 )
-def test_timestamp_parser_default_utc(time_str: str, expected: str) -> None:
+def test_timestamp_parser_default_utc(time_str: str, expected: Optional[str]) -> None:
     assert TimestampParser().parse(time_str) == expected
 
 
@@ -59,8 +60,10 @@ def test_timestamp_parser_provided_timezone(
 
 @pytest.mark.short
 @pytest.mark.parametrize("time_str", ["blah"])
-def test_timestamp_parser_returns_none_on_invalid_timestamp(time_str: str) -> None:
-    assert TimestampParser().parse(time_str) is None
+def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
+    parser = TimestampParser()
+    with pytest.raises(AllotropeConversionError, match="Could not parse time 'blah'"):
+        parser.parse(time_str)
 
 
 @pytest.mark.short

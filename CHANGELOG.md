@@ -6,14 +6,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add missing example outputs for AppBio Quantstudio tests
+- Add parser structure documentation
 ### Fixed
-- Update plate-reader schema to be compatible with current supported adapters and change REC -> BENCHLING
 ### Changed
+- Refactor Agilent Gen5 with explicit dataclasses structure
+- Update Benchman Vi-cell Blu adapter to use the new cell-counting BENCHLING/2023/11 schema
+- Update Benchman Vi-cell XR adapter to use the new cell-counting BENCHLING/2023/11 schema
+- Set mypy's disallow_any_generics to True. Ideally, new files should not suppress these warnings.
 ### Deprecated
 ### Removed
 ### Security
 
+## [0.1.10] - 2023-11-14
+### Added
+- Add data system document to plate reader schema
+### Changed
+- Redefine reporter dye setting for genotyping experiments in AppBio QuantStudio
+- Refactor Moldev Softmax Pro with explicit dataclasses structure
+- Inline VendorParser.parse_timestamp (was only used by VendorParser.get_date_time)
+- Change TimeStampParser.parse() to raise for invalid input
+
+## [0.1.9] - 2023-11-03
+### Added
+- Add missing example outputs for AppBio Quantstudio tests
+- Add cell-counting REC/2023/09 schema, with additions to support existing use cases
+### Fixed
+- Update plate-reader schema to be compatible with current supported adapters and change REC -> BENCHLING
 
 ## [0.1.8] - 2023-10-30
 ### Added

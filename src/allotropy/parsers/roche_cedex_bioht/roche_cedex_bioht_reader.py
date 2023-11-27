@@ -1,3 +1,5 @@
+# mypy: disallow_any_generics = False
+
 import io
 
 import numpy as np
