@@ -207,12 +207,12 @@ class PlateBlock(Block):
 
     @staticmethod
     def create(lines_reader: CsvReader) -> PlateBlock:
-        split_lines = [
-            [value_or_none(value) for value in raw_line.split("\t")]
-            for raw_line in lines_reader.lines
-        ]
-        header = split_lines[0]
-        read_mode = header[5]
+        raw_header_series = assert_not_none(
+            lines_reader.pop_as_series(sep="\t"),
+            msg="Unable to get plate block header",
+        )
+        header_series = raw_header_series.replace("", None).str.strip()
+        read_mode = header_series[5]
 
         plate_block_cls: dict[str, type[PlateBlock]] = {
             "Absorbance": AbsorbancePlateBlock,
@@ -228,7 +228,7 @@ class PlateBlock(Block):
                 export_format,
                 read_type,
                 _,  # Read mode
-            ] = header[:6]
+            ] = header_series[:6]
             if export_version != EXPORT_VERSION:
                 error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
                 raise AllotropeConversionError(error)
@@ -249,18 +249,24 @@ class PlateBlock(Block):
                 _,  # first_column
                 num_columns_raw,
                 num_wells_raw,
-            ] = header[data_type_idx : data_type_idx + 13]
+            ] = header_series[data_type_idx : data_type_idx + 13]
             kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
             num_columns = try_int(num_columns_raw, "num_columns")
             num_wells = try_int(num_wells_raw, "num_wells")
             num_wavelengths = try_int_or_none(num_wavelengths_raw)
             wavelengths = split_wavelengths(wavelengths_str) or []
 
-            extra_attr = cls.parse_read_mode_header(header)
+            extra_attr = cls.parse_read_mode_header(header_series.tolist())
 
             well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
+
+            split_lines = [
+                [value_or_none(value) for value in raw_line.split("\t")]
+                for raw_line in lines_reader.lines
+            ]
             data_header = split_lines[1]
             data_lines = split_lines[2:]
+
             if export_format == ExportFormat.TIME_FORMAT.value:
                 PlateBlock._parse_time_format_data(
                     wavelengths,
