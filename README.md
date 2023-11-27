@@ -68,6 +68,12 @@ To add requirements used by the library, update `dependencies` in `pyproject.tom
 - For test dependencies, update `dependencies` under `[tool.hatch.envs.test]`.
 
 ### Useful Hatch commands
+Spawn a shell within an environment for development:
+```sh
+hatch shell
+```
+
+List all environments:
 ```sh
 hatch env show
 ```

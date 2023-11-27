@@ -13,7 +13,20 @@ All commits to this repository must be signed. To set up commit signatures, plea
 - [Tell Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key).
   - Follow up until step 5.
 
-To configure commits to be signed by default within this repo, run `git config commit.gpgsign true`.
+To configure commits to be signed by default within this repo, run this line:
+```sh
+git config commit.gpgsign true
+``````
+
+If you have a passphrase on your GPG key, be sure to add this line to your `~/.zshrc` or `~/.bashrc` (or your respective shell configuration file):
+
+```sh
+export GPG_TTY=$(tty)
+```
+
+> [!NOTE]
+> If you are having trouble signing your commits, when adding commits, make sure to `exit` any `hatch shell` you may have open. Developers have reported issues trying to do so, as commit signing does not work properly in a virtual environment.
+
 
 # Adding a new converter
 
