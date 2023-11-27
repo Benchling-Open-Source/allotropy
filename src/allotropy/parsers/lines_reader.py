@@ -133,3 +133,7 @@ class CsvReader(LinesReader):
         while self.match(match_pat):
             self.drop_until_empty()
             self.drop_empty()
+
+
+class ListCsvReader(CsvReader, ListReader):
+    pass
