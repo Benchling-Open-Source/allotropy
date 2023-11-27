@@ -1,5 +1,6 @@
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
+    DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
@@ -19,6 +20,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TRelativeFluorescenceUnit,
 )
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BasicAssayInfo,
     Data,
@@ -29,6 +31,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     PlateInfo,
     PlateMap,
     Result,
+    Software,
 )
 
 
@@ -84,6 +87,10 @@ def get_data() -> Data:
             serial_number="1050209",
             nickname="EnVision",
         ),
+        software=Software(
+            software_name="EnVision Workstation",
+            software_version="1.0",
+        )
     )
 
 
@@ -95,6 +102,13 @@ def get_model() -> Model:
                 model_number="EnVision",
                 equipment_serial_number="1050209",
                 device_identifier="EnVision",
+            ),
+            data_system_document=DataSystemDocument(
+                file_name="file.txt",
+                software_name="EnVision Workstation",
+                software_version="1.0",
+                ASM_converter_name=ASM_CONVERTER_NAME,
+                ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             plate_reader_document=[
                 PlateReaderDocumentItem(

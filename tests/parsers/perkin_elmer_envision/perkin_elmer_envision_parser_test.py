@@ -37,7 +37,7 @@ def test_parse_perkin_elmer_envision_to_asm(output_file: str) -> None:
 @pytest.mark.short
 def test_get_model() -> None:
     parser = PerkinElmerEnvisionParser(TimestampParser())
-    model = parser._get_model(get_data())
+    model = parser._get_model(get_data(), "file.txt")
 
     # remove all random UUIDs
     if agg_doc := model.plate_reader_aggregate_document:
