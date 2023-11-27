@@ -113,10 +113,10 @@ class Block:
         }
 
         for key, cls in block_cls_by_type.items():
-            if lines_reader.lines[0].startswith(key):
+            if lines_reader.match(f"^{key}"):
                 return cls.create(lines_reader)
 
-        error = f"Expected block '{lines_reader.lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
+        error = f"Expected block '{lines_reader.get()}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
