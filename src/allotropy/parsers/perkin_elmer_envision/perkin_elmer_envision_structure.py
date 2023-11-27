@@ -178,7 +178,9 @@ class PlateType:
         data_df = assert_not_none(data, "Plate type").T
         return PlateType(
             float(
-                assert_not_none(str(df_to_series(data_df).get("Number of the wells in the plate")))
+                assert_not_none(
+                    str(df_to_series(data_df).get("Number of the wells in the plate"))
+                )
             )
         )
 
