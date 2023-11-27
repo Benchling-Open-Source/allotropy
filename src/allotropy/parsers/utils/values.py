@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional, TypeVar, Union
+from typing import Optional, TypeVar, Union
 
 from allotropy.allotrope.allotrope import AllotropeConversionError
 
