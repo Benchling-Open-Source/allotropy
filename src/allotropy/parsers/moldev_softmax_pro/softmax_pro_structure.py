@@ -214,12 +214,7 @@ class PlateBlock(Block):
 
     @staticmethod
     def create(lines_reader: CsvReader) -> PlateBlock:
-        raw_header_series = assert_not_none(
-            lines_reader.pop_as_series(sep="\t"),
-            msg="Unable to get plate block header",
-        )
-        header_series = raw_header_series.replace("", None).str.strip()
-
+        header_series = PlateBlock.read_header(lines_reader)
         cls = PlateBlock.get_plate_block_cls(header_series)
         header = cls.parse_header(header_series)
         well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
@@ -238,6 +233,14 @@ class PlateBlock(Block):
             header=header,
             well_data=well_data,
         )
+
+    @staticmethod
+    def read_header(lines_reader: CsvReader) -> pd.Series[str]:
+        raw_header_series = assert_not_none(
+            lines_reader.pop_as_series(sep="\t"),
+            msg="Unable to get plate block header",
+        )
+        return raw_header_series.replace("", None).str.strip()
 
     @staticmethod
     def get_plate_block_cls(header_series: pd.Series[str]) -> type[PlateBlock]:
