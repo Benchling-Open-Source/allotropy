@@ -1,4 +1,4 @@
-from typing import Any, Optional, TYPE_CHECKING, TypeVar
+from typing import Any, Optional, TypeVar
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -29,9 +29,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     Plate,
 )
 from allotropy.parsers.vendor_parser import VendorParser
-
-if TYPE_CHECKING:
-    from allotropy.types import ContentsType
+from allotropy.types import ContentsType
 
 T = TypeVar("T")
 

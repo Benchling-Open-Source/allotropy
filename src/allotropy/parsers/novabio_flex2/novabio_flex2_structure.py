@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
-from typing import Any, Optional, TYPE_CHECKING
+from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
@@ -18,9 +18,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
-
-if TYPE_CHECKING:
-    from allotropy.types import ContentsType
+from allotropy.types import ContentsType
 
 
 @dataclass

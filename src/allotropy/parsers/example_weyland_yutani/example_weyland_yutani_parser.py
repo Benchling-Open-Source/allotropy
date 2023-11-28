@@ -1,4 +1,3 @@
-from typing import TYPE_CHECKING
 import uuid
 
 from allotropy.allotrope.allotrope import AllotropyError
@@ -25,9 +24,7 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure i
 )
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.vendor_parser import VendorParser
-
-if TYPE_CHECKING:
-    from allotropy.types import ContentsType
+from allotropy.types import ContentsType
 
 
 class ExampleWeylandYutaniParser(VendorParser):

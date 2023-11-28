@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, TYPE_CHECKING
+from typing import Any
 
 import chardet
 
@@ -7,9 +7,7 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
-
-if TYPE_CHECKING:
-    from allotropy.types import ContentsType
+from allotropy.types import ContentsType
 
 
 class VendorParser(ABC):

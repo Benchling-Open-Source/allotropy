@@ -3,15 +3,13 @@
 from collections.abc import Iterator
 from io import StringIO
 from re import search
-from typing import Optional, TYPE_CHECKING
+from typing import Optional
 
 import chardet
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
-
-if TYPE_CHECKING:
-    from allotropy.types import ContentsType
+from allotropy.types import ContentsType
 
 EMPTY_STR_PATTERN = r"^\s*$"
 

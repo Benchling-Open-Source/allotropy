@@ -1,11 +1,10 @@
 # mypy: disallow_any_generics = False
-from typing import TYPE_CHECKING
+
 
 import numpy as np
 import pandas as pd
 
-if TYPE_CHECKING:
-    from allotropy.types import ContentsType
+from allotropy.types import ContentsType
 
 
 def convert_datetime(x: pd.Series) -> pd.Series:
