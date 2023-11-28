@@ -111,9 +111,7 @@ class ChemometecNucleoviewParser(VendorParser):
                         measurement_time=self.get_date_time(
                             _get_value(data_frame, row, "datetime")
                         ),
-                        sample_document=SampleDocument(
-                            sample_identifier=_get_value(data_frame, row, "Sample ID")  # type: ignore[arg-type]
-                        ),
+                        sample_document=SampleDocument(sample_identifier=""),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItemModel(
