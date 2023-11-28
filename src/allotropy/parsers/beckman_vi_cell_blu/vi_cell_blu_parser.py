@@ -57,8 +57,10 @@ def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]
     return data_frame[column][row]
 
 
-def _get_property(data_frame: pd.DataFrame, row: int, property_name: str) -> Optional[Any]:
-    return property_lookup[property_name](value=value) if (value := _get_value(data_frame, row, property_name)) else None  # type: ignore[arg-type]
+def _get_property(
+    data_frame: pd.DataFrame, row: int, property_name: str
+) -> Optional[Any]:
+    return property_lookup[property_name](value=value) if (value := _get_value(data_frame, row, property_name)) else None
 
 
 class ViCellBluParser(VendorParser):
@@ -95,7 +97,7 @@ class ViCellBluParser(VendorParser):
         self, data_frame: pd.DataFrame, row: int
     ) -> CellCountingDocumentItem:
         data_processing_document = DataProcessingDocument(
-            cell_type_processing_method=_get_value(data_frame, row, "Cell type"),  # type: ignore[arg-type]
+            cell_type_processing_method=_get_value(data_frame, row, "Cell type"),
             minimum_cell_diameter_setting=_get_property(
                 data_frame, row, "Minimum Diameter (μm)"
             ),
@@ -149,7 +151,7 @@ class ViCellBluParser(VendorParser):
             ),
         )
         return CellCountingDocumentItem(
-            analyst=_get_value(data_frame, row, "Analysis by") or DEFAULT_ANALYST,  # type: ignore[arg-type]
+            analyst=_get_value(data_frame, row, "Analysis by") or DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[cell_counting_detector_measurement_document_item],
             ),
