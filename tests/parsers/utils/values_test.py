@@ -53,7 +53,7 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
     assert natural_sort_key(key) == expected
 
 
-def _try_float(value: Optional[str]) -> int:
+def _try_float(value: Optional[str]) -> float:
     return try_float(value, "param")
 
 
