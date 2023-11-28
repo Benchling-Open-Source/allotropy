@@ -211,7 +211,6 @@ class PlateBlock(Block):
     block_type: str
     header: PlateHeader
     well_data: defaultdict[str, WellData]
-    data_header: list[Optional[str]]
 
     @staticmethod
     def create(lines_reader: CsvReader) -> PlateBlock:
@@ -256,7 +255,6 @@ class PlateBlock(Block):
             raw_lines=lines_reader.lines,
             header=header,
             well_data=well_data,
-            data_header=data_header,
         )
 
     @staticmethod
