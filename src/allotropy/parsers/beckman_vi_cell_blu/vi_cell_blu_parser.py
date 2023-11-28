@@ -1,7 +1,7 @@
 # mypy: disallow_any_generics = False
 
 import io
-from typing import Any, Optional
+from typing import Any, NamedTuple, Optional
 import uuid
 
 import pandas as pd
@@ -53,16 +53,20 @@ property_lookup = {
 }
 
 
-def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]:
+class _Sample(NamedTuple):
+    data_frame: pd.DataFrame
+    row: int
+
+
+def _get_value(sample: _Sample, column: str) -> Optional[Any]:
+    data_frame, row = sample
     if column not in data_frame.columns:
         return None
     return data_frame[column][row]
 
 
-def get_property_from_sample(
-    data_frame: pd.DataFrame, row: int, property_name: str
-) -> Optional[Any]:
-    value = _get_value(data_frame, row, property_name)
+def get_property_from_sample(sample: _Sample, property_name: str) -> Optional[Any]:
+    value = _get_value(sample, property_name)
     if value is None:
         return None
     return property_lookup[property_name](value=value)
@@ -93,25 +97,25 @@ class ViCellBluParser(VendorParser):
         self, data: pd.DataFrame
     ) -> list[CellCountingDocumentItem]:
         return [
-            self._get_cell_counting_document_item(data, i)
+            self._get_cell_counting_document_item(_Sample(data, i))
             for i in range(len(data.index))
-            if _get_value(data, i, "Cell count")
+            if _get_value(_Sample(data, i), "Cell count")
         ]
 
     def _get_cell_counting_document_item(
-        self, data_frame: pd.DataFrame, row: int
+        self, sample: _Sample
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
-            analyst=_get_value(data_frame, row, "Analysis by") or DEFAULT_ANALYST,
+            analyst=_get_value(sample, "Analysis by") or DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_time=self.get_date_time(
-                            _get_value(data_frame, row, "Analysis date/time")
+                            _get_value(sample, "Analysis date/time")
                         ),
                         measurement_identifier=str(uuid.uuid4()),
                         sample_document=SampleDocument(
-                            sample_identifier=_get_value(data_frame, row, "Sample ID")  # type: ignore[arg-type]
+                            sample_identifier=_get_value(sample, "Sample ID")  # type: ignore[arg-type]
                         ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
@@ -126,42 +130,42 @@ class ViCellBluParser(VendorParser):
                                 ProcessedDataDocumentItem(
                                     data_processing_document=DataProcessingDocument(
                                         cell_type_processing_method=_get_value(
-                                            data_frame, row, "Cell type"
+                                            sample, "Cell type"
                                         ),
                                         minimum_cell_diameter_setting=get_property_from_sample(
-                                            data_frame, row, "Minimum Diameter (μm)"
+                                            sample, "Minimum Diameter (μm)"
                                         ),
                                         maximum_cell_diameter_setting=get_property_from_sample(
-                                            data_frame, row, "Maximum Diameter (μm)"
+                                            sample, "Maximum Diameter (μm)"
                                         ),
                                         cell_density_dilution_factor=get_property_from_sample(
-                                            data_frame, row, "Dilution"
+                                            sample, "Dilution"
                                         ),
                                     ),
                                     viability__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
-                                        data_frame, row, "Viability (%)"
+                                        sample, "Viability (%)"
                                     ),
                                     viable_cell_density__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
-                                        data_frame, row, "Viable (x10^6) cells/mL"
+                                        sample, "Viable (x10^6) cells/mL"
                                     ),
-                                    total_cell_count=get_property_from_sample(data_frame, row, "Cell count"),  # type: ignore[arg-type]
+                                    total_cell_count=get_property_from_sample(sample, "Cell count"),  # type: ignore[arg-type]
                                     total_cell_density__cell_counter_=get_property_from_sample(
-                                        data_frame, row, "Total (x10^6) cells/mL"
+                                        sample, "Total (x10^6) cells/mL"
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
-                                        data_frame, row, "Average diameter (μm)"
+                                        sample, "Average diameter (μm)"
                                     ),
                                     average_live_cell_diameter__cell_counter_=get_property_from_sample(
-                                        data_frame, row, "Average viable diameter (μm)"
+                                        sample, "Average viable diameter (μm)"
                                     ),
                                     viable_cell_count=get_property_from_sample(
-                                        data_frame, row, "Viable cells"
+                                        sample, "Viable cells"
                                     ),
                                     average_total_cell_circularity=get_property_from_sample(
-                                        data_frame, row, "Average circularity"
+                                        sample, "Average circularity"
                                     ),
                                     average_viable_cell_circularity=get_property_from_sample(
-                                        data_frame, row, "Average viable circularity"
+                                        sample, "Average viable circularity"
                                     ),
                                 ),
                             ]
