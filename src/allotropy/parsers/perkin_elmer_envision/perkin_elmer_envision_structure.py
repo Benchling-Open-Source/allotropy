@@ -32,7 +32,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
+from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series:
@@ -177,11 +177,7 @@ class PlateType:
         data = reader.pop_csv_block_as_df("^Plate type")
         data_df = assert_not_none(data, "Plate type").T
         return PlateType(
-            float(
-                assert_not_none(
-                    str(df_to_series(data_df).get("Number of the wells in the plate"))
-                )
-            )
+            try_float(str(df_to_series(data_df).get("Number of the wells in the plate")))
         )
 
 

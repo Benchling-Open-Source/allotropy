@@ -6,6 +6,7 @@ from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
+    try_float,
     try_float_or_none,
     try_int,
     try_int_or_none,
@@ -52,6 +53,27 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
     assert natural_sort_key(key) == expected
 
 
+def _try_float(value: Optional[str]) -> int:
+    return try_float(value, "param")
+
+
+def test_try_float() -> None:
+    assert _try_float("1.0") == 1.0
+
+
+@pytest.mark.short
+@pytest.mark.parametrize(
+    "value,expected_regex",
+    [
+        (None, "Expected non-null value for param"),
+        ("a", "Invalid float string: 'a'"),
+    ],
+)
+def test_try_float_fails(value: Optional[str], expected_regex: str) -> None:
+    with pytest.raises(AllotropeConversionError, match=expected_regex):
+        _try_float(value)
+
+
 @pytest.mark.short
 @pytest.mark.parametrize(
     "value,expected",
@@ -62,7 +84,7 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
         ("1.1", 1.1),
     ],
 )
-def test_try_float(value: Optional[str], expected: Optional[int]) -> None:
+def test_try_float_or_none(value: Optional[str], expected: Optional[int]) -> None:
     assert try_float_or_none(value) == expected
 
 
