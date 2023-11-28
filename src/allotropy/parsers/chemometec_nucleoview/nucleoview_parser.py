@@ -26,29 +26,30 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
-from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NC200Reader
+from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
 from allotropy.parsers.vendor_parser import VendorParser
 
-property_lookup = {
-    "Estimated cell diameter (um)": TQuantityValueMicrometer,
-    "Multiplication factor": TQuantityValueUnitless,
-    "Viability (%)": TQuantityValuePercent,
-    "Total (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
-    "Live (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
-    "Dead (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
+_PROPERTY_LOOKUP = {
     "Cell count": TQuantityValueCell,
+    "Dead (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
+    "Estimated cell diameter (um)": TQuantityValueMicrometer,
+    "Live (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
+    "Multiplication factor": TQuantityValueUnitless,
+    "Total (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
+    "Viability (%)": TQuantityValuePercent,
 }
 
 
 def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
     if (value := sample.get(property_name)) is not None:
-        property_type = property_lookup[property_name]
+        property_type = _PROPERTY_LOOKUP[property_name]
 
         # if the porperty type is measured in million cells per ml convert cells per ml
         if property_type == TQuantityValueMillionCellsPerMilliliter:
@@ -57,7 +58,7 @@ def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
         return property_type(value=value)  # type: ignore[arg-type]
     # special case for cell count since nucleoview doesn't provide total cell count
     elif property_name == "Cell count":
-        property_type = property_lookup[property_name]
+        property_type = _PROPERTY_LOOKUP[property_name]
         return property_type(value=float("NaN"))
     else:
         return None
@@ -65,7 +66,7 @@ def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
 
 class ChemometecNucleoviewParser(VendorParser):
     def _parse(self, contents: io.IOBase, filename: str) -> Model:
-        return self._get_model(NC200Reader.read(contents), filename)
+        return self._get_model(NucleoviewReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
         return Model(
@@ -97,7 +98,7 @@ class ChemometecNucleoviewParser(VendorParser):
     def _get_device_identifier(
         self,
         data: pd.DataFrame,
-    ) -> Optional[str]:
+    ) -> str:
         try:
             return str(data["Instrument type"].iloc[0])
         except KeyError:
@@ -112,6 +113,12 @@ class ChemometecNucleoviewParser(VendorParser):
             if sample.get("Total (cells/ml)")
         ]
 
+    def _get_sample_datetime(self, sample: pd.Series) -> Optional[TDateTimeValue]:
+        time = sample.get("datetime")
+        if time is not None:
+            return self.get_date_time(time)
+        return time
+
     def _get_cell_counting_document_item(
         self, sample: pd.Series
     ) -> CellCountingDocumentItem:
@@ -121,7 +128,7 @@ class ChemometecNucleoviewParser(VendorParser):
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=self.get_date_time(sample.get("datetime")),
+                        measurement_time=self._get_sample_datetime(sample),
                         sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
