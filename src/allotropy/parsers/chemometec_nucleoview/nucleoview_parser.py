@@ -26,7 +26,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
@@ -47,21 +46,30 @@ _PROPERTY_LOOKUP = {
 }
 
 
-def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
-    if (value := sample.get(property_name)) is not None:
-        property_type = _PROPERTY_LOOKUP[property_name]
-
-        # if the porperty type is measured in million cells per ml convert cells per ml
-        if property_type == TQuantityValueMillionCellsPerMilliliter:
-            return property_type(value=float(str(value)) / 1e6)
-
-        return property_type(value=value)  # type: ignore[arg-type]
-    # special case for cell count since nucleoview doesn't provide total cell count
-    elif property_name == "Cell count":
-        property_type = _PROPERTY_LOOKUP[property_name]
-        return property_type(value=float("NaN"))
-    else:
+def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]:
+    if column not in data_frame.columns:
         return None
+    return data_frame[column][row]
+
+
+def get_property_from_sample(
+    data_frame: pd.DataFrame, row: int, property_name: str
+) -> Optional[Any]:
+    value = _get_value(data_frame, row, property_name)
+    if value is None:
+        return None
+
+    property_type = _PROPERTY_LOOKUP[property_name]
+
+    # if the porperty type is measured in million cells per ml convert cells per ml
+    if property_type == TQuantityValueMillionCellsPerMilliliter:
+        return property_type(value=float(str(value)) / 1e6)
+
+    # special case for cell count since nucleoview doesn't provide total cell count
+    if property_name == "Cell count":
+        return property_type(value=float("NaN"))
+
+    return property_type(value=value)
 
 
 class ChemometecNucleoviewParser(VendorParser):
@@ -73,8 +81,9 @@ class ChemometecNucleoviewParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
             cell_counting_aggregate_document=CellCountingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    model_number=self._get_device_identifier(data),
-                    equipment_serial_number=self._get_device_serial_number(data),
+                    model_number=_get_value(data, 0, "Instrument type")
+                    or DEFAULT_MODEL_NUMBER,
+                    equipment_serial_number=_get_value(data, 0, "Instrument s/n"),
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
@@ -86,50 +95,30 @@ class ChemometecNucleoviewParser(VendorParser):
             ),
         )
 
-    def _get_device_serial_number(
-        self,
-        data: pd.DataFrame,
-    ) -> Optional[str]:
-        try:
-            return str(data["Instrument s/n"].iloc[0])
-        except KeyError:
-            return None
-
-    def _get_device_identifier(
-        self,
-        data: pd.DataFrame,
-    ) -> str:
-        try:
-            return str(data["Instrument type"].iloc[0])
-        except KeyError:
-            return DEFAULT_MODEL_NUMBER
-
     def _get_cell_counting_document(
         self, data: pd.DataFrame
     ) -> list[CellCountingDocumentItem]:
         return [
-            self._get_cell_counting_document_item(sample)
-            for _, sample in data.iterrows()
-            if sample.get("Total (cells/ml)")
+            self._get_cell_counting_document_item(data, i)
+            for i in range(len(data.index))
+            if _get_value(data, i, "Total (cells/ml)")
         ]
 
-    def _get_sample_datetime(self, sample: pd.Series) -> Optional[TDateTimeValue]:
-        time = sample.get("datetime")
-        if time is not None:
-            return self.get_date_time(time)
-        return time
-
     def _get_cell_counting_document_item(
-        self, sample: pd.Series
+        self, data_frame: pd.DataFrame, row: int
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
-            analyst=sample.get("Operator") or DEFAULT_ANALYST,  # type: ignore[arg-type]
+            analyst=_get_value(data_frame, row, "Operator") or DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=self._get_sample_datetime(sample),
-                        sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
+                        measurement_time=self.get_date_time(
+                            _get_value(data_frame, row, "datetime")
+                        ),
+                        sample_document=SampleDocument(
+                            sample_identifier=_get_value(data_frame, row, "Sample ID")  # type: ignore[arg-type]
+                        ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItemModel(
@@ -143,26 +132,26 @@ class ChemometecNucleoviewParser(VendorParser):
                                 ProcessedDataDocumentItem(
                                     data_processing_document=DataProcessingDocument(
                                         cell_density_dilution_factor=get_property_from_sample(
-                                            sample, "Multiplication factor"
+                                            data_frame, row, "Multiplication factor"
                                         ),
                                     ),
-                                    viability__cell_counter_=get_property_from_sample(
-                                        sample, "Viability (%)"
+                                    viability__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
+                                        data_frame, row, "Viability (%)"
                                     ),
-                                    viable_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Live (cells/ml)"
+                                    viable_cell_density__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
+                                        data_frame, row, "Live (cells/ml)"
                                     ),
                                     dead_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Dead (cells/ml)"
+                                        data_frame, row, "Dead (cells/ml)"
                                     ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Total (cells/ml)"
+                                        data_frame, row, "Total (cells/ml)"
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
-                                        sample, "Estimated cell diameter (um)"
+                                        data_frame, row, "Estimated cell diameter (um)"
                                     ),
-                                    total_cell_count=get_property_from_sample(
-                                        sample, "Cell count"
+                                    total_cell_count=get_property_from_sample(  # type: ignore[arg-type]
+                                        data_frame, row, "Cell count"
                                     ),
                                 )
                             ]
