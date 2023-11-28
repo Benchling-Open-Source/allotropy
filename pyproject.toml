@@ -131,6 +131,7 @@ all = [
 extra-dependencies = [
   "coverage[toml] >= 6.5",
   "deepdiff >= 6.5.0",
+  "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
 ]
 
