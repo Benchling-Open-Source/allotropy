@@ -222,30 +222,12 @@ class PlateBlock(Block):
 
         cls = PlateBlock.get_plate_block_cls(header_series)
         header = cls.parse_header(header_series)
-
         well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
 
-        split_lines = [
-            [value_or_none(value) for value in raw_line.split("\t")]
-            for raw_line in lines_reader.lines
-        ]
-        data_header = split_lines[1]
-        data_lines = split_lines[2:]
-
         if header.export_format == ExportFormat.TIME_FORMAT.value:
-            PlateBlock._parse_time_format_data(
-                header,
-                well_data,
-                data_header,
-                data_lines,
-            )
+            PlateBlock._parse_time_format_data(lines_reader, header, well_data)
         elif header.export_format == ExportFormat.PLATE_FORMAT.value:
-            PlateBlock._parse_plate_format_data(
-                header,
-                well_data,
-                data_header,
-                data_lines,
-            )
+            PlateBlock._parse_plate_format_data(lines_reader, header, well_data)
         else:
             error = f"unrecognized export format {header.export_format}"
             raise AllotropeConversionError(error)
@@ -320,11 +302,17 @@ class PlateBlock(Block):
 
     @staticmethod
     def _parse_time_format_data(
+        lines_reader: CsvReader,
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
-        data_header: list[Optional[str]],
-        data_lines: list[list[Optional[str]]],
     ) -> None:
+        split_lines = [
+            [value_or_none(value) for value in raw_line.split("\t")]
+            for raw_line in lines_reader.lines
+        ]
+        data_header = split_lines[1]
+        data_lines = split_lines[2:]
+
         if header.data_type == DataType.RAW.value:
             num_row_blocks = (
                 header.num_wavelengths if header.num_wavelengths is not None else 1
@@ -364,11 +352,16 @@ class PlateBlock(Block):
 
     @staticmethod
     def _parse_plate_format_data(
+        lines_reader: CsvReader,
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
-        data_header: list[Optional[str]],
-        data_lines: list[list[Optional[str]]],
     ) -> None:
+        split_lines = [
+            [value_or_none(value) for value in raw_line.split("\t")]
+            for raw_line in lines_reader.lines
+        ]
+        data_header = split_lines[1]
+        data_lines = split_lines[2:]
         end_raw_data_index = 0
         if header.data_type == DataType.RAW.value:
             for read_index in range(header.kinetic_points):
