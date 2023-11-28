@@ -68,15 +68,6 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
-START_LETTER_CODE = ord("A")
-
-
-def get_well_coordinates(row_number: int, column_number: str) -> str:
-    row_letters = ""
-    while row_number > 0:
-        row_number, remainder = divmod(row_number - 1, 26)
-        row_letters = chr(START_LETTER_CODE + remainder) + row_letters
-    return row_letters + str(column_number)
 
 
 class ReadType(Enum):
@@ -371,7 +362,11 @@ class PlateBlock(Block):
         if header.export_format == ExportFormat.TIME_FORMAT.value:
             PlateBlock._parse_time_format_data(lines_reader, header, well_data)
         elif header.export_format == ExportFormat.PLATE_FORMAT.value:
-            PlateBlock._parse_plate_format_data(lines_reader, header, well_data)
+            PlateBlock._parse_plate_format_data(
+                header,
+                well_data,
+                plate_data=PlateData.create(lines_reader, header),
+            )
         else:
             error = f"unrecognized export format {header.export_format}"
             raise AllotropeConversionError(error)
@@ -406,21 +401,6 @@ class PlateBlock(Block):
             )
             raise AllotropeConversionError(msg)
         return cls
-
-    @staticmethod
-    def _parse_reduced_plate_rows(
-        num_columns: int,
-        data_header: list[Optional[str]],
-        well_data: defaultdict[str, WellData],
-        reduced_data_rows: list[list[Optional[str]]],
-    ) -> None:
-        for i, row in enumerate(reduced_data_rows):
-            for j, value in enumerate(row[2 : num_columns + 2]):
-                if value is None:
-                    continue
-                col_number = assert_not_none(data_header[j + 2], "column number")
-                well = get_well_coordinates(i + 1, col_number)
-                well_data[well].processed_data.append(float(value))
 
     @staticmethod
     def _parse_reduced_columns(
@@ -506,62 +486,33 @@ class PlateBlock(Block):
 
     @staticmethod
     def _parse_plate_format_data(
-        lines_reader: CsvReader,
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
+        plate_data: PlateData,
     ) -> None:
-        split_lines = [
-            [value_or_none(value) for value in raw_line.split("\t")]
-            for raw_line in lines_reader.lines
-        ]
-        data_header = split_lines[1]
-        data_lines = split_lines[2:]
         if header.data_type == DataType.RAW.value:
-            for read_index in range(header.kinetic_points):
-                start_index = read_index * (header.num_rows + 1)
-                read_rows = data_lines[start_index : start_index + header.num_rows]
-                data_key = read_rows[0][0]
-                temperature = read_rows[0][1]
-                for i, row in enumerate(read_rows):
-                    wavelength_index = 0
-                    for wavelength_index in range(header.num_wavelengths):
-                        col_start_index = 2 + (
-                            wavelength_index * (header.num_columns + 1)
+            for kinetic_data in plate_data.get_raw_data().kinetic_data:
+                for idx, wavelength_data in enumerate(kinetic_data.wavelength_data):
+                    for wavelength_element in wavelength_data.iter_elements():
+                        PlateBlock._add_data_point(
+                            header,
+                            well_data,
+                            wavelength_element.pos,
+                            wavelength_element.value,
+                            data_key=kinetic_data.data_key,
+                            temperature=kinetic_data.temperature,
+                            wavelength_index=idx,
                         )
-                        for j, value in enumerate(
-                            row[col_start_index : col_start_index + header.num_columns]
-                        ):
-                            if value is None:
-                                continue
-                            col_number = assert_not_none(
-                                data_header[j + 2], "column number"
-                            )
-                            well = get_well_coordinates(i + 1, col_number)
-                            PlateBlock._add_data_point(
-                                header,
-                                well_data,
-                                well,
-                                try_float(value, "well data point"),
-                                data_key=data_key,
-                                temperature=try_float_or_none(temperature),
-                                wavelength_index=wavelength_index,
-                            )
-            end_raw_data_index = ((header.num_rows + 1) * header.kinetic_points) + 1
-            reduced_data_rows = data_lines[end_raw_data_index:]
-            if len(reduced_data_rows) == header.num_rows:
-                PlateBlock._parse_reduced_plate_rows(
-                    header.num_columns,
-                    data_header,
-                    well_data,
-                    reduced_data_rows,
-                )
+            if plate_data.reduced_data:
+                for reduced_element in plate_data.reduced_data.iter_elements():
+                    well_data[reduced_element.pos].processed_data.append(
+                        reduced_element.value
+                    )
         elif header.data_type == DataType.REDUCED.value:
-            PlateBlock._parse_reduced_plate_rows(
-                header.num_columns,
-                data_header,
-                well_data,
-                data_lines,
-            )
+            for reduced_element in plate_data.get_reduced_data().iter_elements():
+                well_data[reduced_element.pos].processed_data.append(
+                    reduced_element.value
+                )
         else:
             msg = msg_for_error_on_unrecognized_value(
                 "data type", header.data_type, DataType._member_names_
