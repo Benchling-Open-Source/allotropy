@@ -60,7 +60,11 @@ def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]
 def _get_property(
     data_frame: pd.DataFrame, row: int, property_name: str
 ) -> Optional[Any]:
-    return property_lookup[property_name](value=value) if (value := _get_value(data_frame, row, property_name)) else None
+    return (
+        property_lookup[property_name](value=value)
+        if (value := _get_value(data_frame, row, property_name))
+        else None
+    )
 
 
 class ViCellBluParser(VendorParser):
