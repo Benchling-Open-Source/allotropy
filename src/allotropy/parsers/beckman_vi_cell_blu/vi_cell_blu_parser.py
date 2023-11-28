@@ -1,5 +1,5 @@
 import io
-from typing import Any, NamedTuple
+from typing import Any, NamedTuple, Optional
 import uuid
 
 import pandas as pd
@@ -56,7 +56,7 @@ class _Sample(NamedTuple):
     row: int
 
 
-def _get_value(sample: _Sample, column: str) -> Any:
+def _get_value(sample: _Sample, column: str) -> Optional[Any]:
     data_frame, row = sample
     if column not in data_frame.columns:
         return None
@@ -114,7 +114,7 @@ class ViCellBluParser(VendorParser):
                         ),
                         measurement_identifier=str(uuid.uuid4()),
                         sample_document=SampleDocument(
-                            sample_identifier=_get_value(sample, "Sample ID")
+                            sample_identifier=_get_value(sample, "Sample ID")  # type: ignore[arg-type]
                         ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
