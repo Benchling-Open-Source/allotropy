@@ -106,6 +106,7 @@ generate-schemas = "scripts/generate_schemas.py"
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs == 23.1.2",
+  "more-itertools >= 10.1.0",
   "mypy >= 1.6.0",
   # For pytest types
   "pytest >= 7.4.0",
