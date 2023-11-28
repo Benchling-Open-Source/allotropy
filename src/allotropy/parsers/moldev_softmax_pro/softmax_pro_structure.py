@@ -193,7 +193,7 @@ class PlateHeader:
     read_type: str
     data_type: str
     kinetic_points: int
-    num_wavelengths: Optional[int]
+    num_wavelengths: int
     wavelengths: list[int]
     num_columns: int
     num_wells: int
@@ -317,10 +317,7 @@ class PlateBlock(Block):
         data_lines = split_lines[2:]
 
         if header.data_type == DataType.RAW.value:
-            num_row_blocks = (
-                header.num_wavelengths if header.num_wavelengths is not None else 1
-            )
-            for wavelength_index in range(num_row_blocks):
+            for wavelength_index in range(header.num_wavelengths):
                 start_index = wavelength_index * (header.kinetic_points + 1)
                 wavelength_rows = data_lines[
                     start_index : start_index + header.kinetic_points
@@ -341,7 +338,7 @@ class PlateBlock(Block):
                                 header, wavelength_index
                             ),
                         )
-            if len(data_lines) > (header.kinetic_points + 1) * num_row_blocks:
+            if len(data_lines) > (header.kinetic_points + 1) * header.num_wavelengths:
                 reduced_row = data_lines[-1][: header.num_wells + 2]
                 PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         elif header.data_type == DataType.REDUCED.value:
@@ -374,12 +371,7 @@ class PlateBlock(Block):
                 temperature = read_rows[0][1]
                 for i, row in enumerate(read_rows):
                     wavelength_index = 0
-                    num_row_blocks = (
-                        header.num_wavelengths
-                        if header.num_wavelengths is not None
-                        else 1
-                    )
-                    for wavelength_index in range(num_row_blocks):
+                    for wavelength_index in range(header.num_wavelengths):
                         col_start_index = 2 + (
                             wavelength_index * (header.num_columns + 1)
                         )
@@ -576,7 +568,7 @@ class FluorescencePlateBlock(PlateBlock):
             read_type=read_type,
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
-            num_wavelengths=try_int_or_none(num_wavelengths_raw),
+            num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
             wavelengths=split_wavelengths(wavelengths_str) or [],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
@@ -705,7 +697,7 @@ class LuminescencePlateBlock(PlateBlock):
             read_type=read_type,
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
-            num_wavelengths=try_int_or_none(num_wavelengths_raw),
+            num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
             wavelengths=split_wavelengths(wavelengths_str) or [],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
@@ -811,7 +803,7 @@ class AbsorbancePlateBlock(PlateBlock):
             read_type=read_type,
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
-            num_wavelengths=try_int_or_none(num_wavelengths_raw),
+            num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
             wavelengths=split_wavelengths(wavelengths_str) or [],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
