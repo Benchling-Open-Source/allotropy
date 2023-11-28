@@ -21,7 +21,7 @@ This code is published under the permissive MIT license because we believe that 
 
 
 # Contributing
-We welcome community contributions to this library and we hope that together we can expand the coverage of ASM ready data for everyone. If you are interested, please read our [contribution guidelines](CONTRIBUTING.md).
+We welcome community contributions to this library and we hope that together we can expand the coverage of ASM-ready data for everyone. If you are interested, please read our [contribution guidelines](CONTRIBUTING.md).
 
 
 # Usage
@@ -73,11 +73,6 @@ To add requirements used by the library, update `dependencies` in `pyproject.tom
 - For test dependencies, update `dependencies` under `[tool.hatch.envs.test]`.
 
 ### Useful Hatch commands
-Spawn a shell within an environment for development:
-```sh
-hatch shell
-```
-
 List all environments:
 ```sh
 hatch env show
@@ -101,6 +96,11 @@ hatch run test:test
 Run all tests with coverage:
 ```sh
 hatch run test:cov
+```
+
+Spawn a shell within an environment for development:
+```sh
+hatch shell
 ```
 
 ### Publish
