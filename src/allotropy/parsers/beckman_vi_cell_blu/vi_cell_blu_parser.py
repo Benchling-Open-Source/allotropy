@@ -54,6 +54,8 @@ property_lookup = {
 
 
 def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]:
+    if column not in data_frame.columns:
+        return None
     return data_frame[column][row]
 
 
