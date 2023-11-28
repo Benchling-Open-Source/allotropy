@@ -1,5 +1,5 @@
-from dataclasses import dataclass
-from typing import Optional
+from dataclasses import dataclass, fields
+from typing import Any, Optional
 
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCountsPerMilliliter,
@@ -22,6 +22,11 @@ class DistributionItem:
     differential_count: TQuantityValueUnitless
     differential_particle_density: TQuantityValueCountsPerMilliliter
     particle_size: TQuantityValueMicrometer
+
+    @classmethod
+    def from_dict(cls, d: dict[Any, Any]) -> "DistributionItem":
+        field_names = {field.name for field in fields(cls)}
+        return cls(**{k: v for k, v in d.items() if k in field_names})
 
 
 @dataclass
