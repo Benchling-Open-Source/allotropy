@@ -62,11 +62,10 @@ def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]
 def get_property_from_sample(
     data_frame: pd.DataFrame, row: int, property_name: str
 ) -> Optional[Any]:
-    return (
-        property_lookup[property_name](value=value)
-        if (value := _get_value(data_frame, row, property_name))
-        else None
-    )
+    value = _get_value(data_frame, row, property_name)
+    if value is None:
+        return None
+    return property_lookup[property_name](value=value)
 
 
 class ViCellBluParser(VendorParser):
