@@ -1,7 +1,7 @@
 # mypy: disallow_any_generics = False
 
 import io
-from typing import Any, NamedTuple, Optional
+from typing import Any, NamedTuple
 import uuid
 
 import pandas as pd
@@ -58,18 +58,19 @@ class _Sample(NamedTuple):
     row: int
 
 
-def _get_value(sample: _Sample, column: str) -> Optional[Any]:
+def _get_value(sample: _Sample, column: str) -> Any:
     data_frame, row = sample
     if column not in data_frame.columns:
         return None
     return data_frame[column][row]
 
 
-def get_property_from_sample(sample: _Sample, property_name: str) -> Optional[Any]:
-    value = _get_value(sample, property_name)
-    if value is None:
-        return None
-    return property_lookup[property_name](value=value)
+def get_property_from_sample(sample: _Sample, property_name: str) -> Any:
+    return (
+        property_lookup[property_name](value=value)
+        if (value := _get_value(sample, property_name))
+        else None
+    )
 
 
 class ViCellBluParser(VendorParser):
@@ -115,7 +116,7 @@ class ViCellBluParser(VendorParser):
                         ),
                         measurement_identifier=str(uuid.uuid4()),
                         sample_document=SampleDocument(
-                            sample_identifier=_get_value(sample, "Sample ID")  # type: ignore[arg-type]
+                            sample_identifier=_get_value(sample, "Sample ID")
                         ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
@@ -142,13 +143,15 @@ class ViCellBluParser(VendorParser):
                                             sample, "Dilution"
                                         ),
                                     ),
-                                    viability__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
+                                    viability__cell_counter_=get_property_from_sample(
                                         sample, "Viability (%)"
                                     ),
-                                    viable_cell_density__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
+                                    viable_cell_density__cell_counter_=get_property_from_sample(
                                         sample, "Viable (x10^6) cells/mL"
                                     ),
-                                    total_cell_count=get_property_from_sample(sample, "Cell count"),  # type: ignore[arg-type]
+                                    total_cell_count=get_property_from_sample(
+                                        sample, "Cell count"
+                                    ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
                                         sample, "Total (x10^6) cells/mL"
                                     ),
