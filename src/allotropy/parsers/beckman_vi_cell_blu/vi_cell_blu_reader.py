@@ -1,24 +1,25 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
 
 import io
+from typing import Any
 
 import numpy as np
 import pandas as pd
 
 
-def convert_datetime(x: pd.Series) -> pd.Series:
+def convert_datetime(x: pd.Series[Any]) -> pd.Series[str]:
     return pd.to_datetime(x).dt.strftime("%Y-%m-%d %H:%M:%S")
 
 
-def convert_float(x: pd.Series) -> pd.Series:
+def convert_float(x: pd.Series[Any]) -> pd.Series[float]:
     return pd.to_numeric(x, errors="coerce")
 
 
-def convert_int(x: pd.Series) -> pd.Series:
+def convert_int(x: pd.Series[Any]) -> pd.Series[int]:
     return pd.to_numeric(x, errors="coerce")
 
 
-def convert_string(x: pd.Series) -> pd.Series:
+def convert_string(x: pd.Series[Any]) -> pd.Series[str]:
     return x.astype(str)
 
 
@@ -55,7 +56,7 @@ class ViCellBluReader:
     def read(cls, contents: io.IOBase) -> pd.DataFrame:
         raw_data = pd.read_csv(contents, index_col=False)  # type: ignore[call-overload]
 
-        columns: list[pd.Series] = []
+        columns: list[pd.Series[Any]] = []
         for column, desired_type in desired_columns.items():
             col = raw_data.get(column)
             if not isinstance(col, pd.Series):
@@ -64,6 +65,6 @@ class ViCellBluReader:
             new_col = (
                 col if col.dtype == desired_type else conversors[desired_type](col)
             )
-            columns.append(new_col)
+            columns.append(new_col)  # type: ignore [arg-type]
 
         return pd.concat(columns, axis=1).replace(np.nan, None)
