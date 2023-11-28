@@ -118,12 +118,14 @@ class CsvReader(LinesReader):
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
         header: Optional[int] = None,
+        sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return pd.read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
+                sep=sep,
                 dtype=str if as_str else None,
             )
         return None
