@@ -1,7 +1,7 @@
 # mypy: disallow_any_generics = False
 
 import io
-from typing import Any
+from typing import Any, Optional
 import uuid
 
 import pandas as pd
@@ -53,8 +53,12 @@ property_lookup = {
 }
 
 
+def _get_value_from_sample(sample: pd.Series, column: str) -> Optional[Any]:
+    return sample.get(column)
+
+
 def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
-    return property_lookup[property_name](value=value) if (value := sample.get(property_name)) else None  # type: ignore[arg-type]
+    return property_lookup[property_name](value=value) if (value := _get_value_from_sample(sample, property_name)) else None  # type: ignore[arg-type]
 
 
 class ViCellBluParser(VendorParser):
@@ -84,35 +88,29 @@ class ViCellBluParser(VendorParser):
         return [
             self._get_cell_counting_document_item(sample)
             for _, sample in data.iterrows()
-            if sample.get("Cell count")
+            if _get_value_from_sample(sample, "Cell count")
         ]
 
     def _get_cell_counting_document_item(
         self, sample: pd.Series
     ) -> CellCountingDocumentItem:
         data_processing_document = DataProcessingDocument(
-            cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
+            cell_type_processing_method=_get_value_from_sample(sample, "Cell type"),  # type: ignore[arg-type]
             minimum_cell_diameter_setting=get_property_from_sample(
                 sample, "Minimum Diameter (μm)"
             ),
             maximum_cell_diameter_setting=get_property_from_sample(
                 sample, "Maximum Diameter (μm)"
             ),
-            cell_density_dilution_factor=get_property_from_sample(
-                sample, "Dilution"
-            ),
+            cell_density_dilution_factor=get_property_from_sample(sample, "Dilution"),
         )
         processed_data_document_item = ProcessedDataDocumentItem(
             data_processing_document=data_processing_document,
-            viability__cell_counter_=get_property_from_sample(
-                sample, "Viability (%)"
-            ),
+            viability__cell_counter_=get_property_from_sample(sample, "Viability (%)"),
             viable_cell_density__cell_counter_=get_property_from_sample(
                 sample, "Viable (x10^6) cells/mL"
             ),
-            total_cell_count=get_property_from_sample(
-                sample, "Cell count"
-            ),
+            total_cell_count=get_property_from_sample(sample, "Cell count"),
             total_cell_density__cell_counter_=get_property_from_sample(
                 sample, "Total (x10^6) cells/mL"
             ),
@@ -122,9 +120,7 @@ class ViCellBluParser(VendorParser):
             average_live_cell_diameter__cell_counter_=get_property_from_sample(
                 sample, "Average viable diameter (μm)"
             ),
-            viable_cell_count=get_property_from_sample(
-                sample, "Viable cells"
-            ),
+            viable_cell_count=get_property_from_sample(sample, "Viable cells"),
             average_total_cell_circularity=get_property_from_sample(
                 sample, "Average circularity"
             ),
@@ -134,10 +130,10 @@ class ViCellBluParser(VendorParser):
         )
         cell_counting_detector_measurement_document_item = CellCountingDetectorMeasurementDocumentItem(
             measurement_time=self.get_date_time(
-                sample.get("Analysis date/time")
+                _get_value_from_sample(sample, "Analysis date/time")
             ),
             measurement_identifier=str(uuid.uuid4()),
-            sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
+            sample_document=SampleDocument(sample_identifier=_get_value_from_sample(sample, "Sample ID")),  # type: ignore[arg-type]
             device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItemModel(
@@ -153,10 +149,8 @@ class ViCellBluParser(VendorParser):
             ),
         )
         return CellCountingDocumentItem(
-            analyst=sample.get("Analysis by") or DEFAULT_ANALYST,  # type: ignore[arg-type]
+            analyst=_get_value_from_sample(sample, "Analysis by") or DEFAULT_ANALYST,  # type: ignore[arg-type]
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_document=[
-                    cell_counting_detector_measurement_document_item
-                ],
+                measurement_document=[cell_counting_detector_measurement_document_item],
             ),
         )
