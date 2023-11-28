@@ -36,7 +36,6 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import Nucleoview
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
-    "Cell count": TQuantityValueCell,
     "Dead (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
     "Estimated cell diameter (um)": TQuantityValueMicrometer,
     "Live (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
@@ -64,10 +63,6 @@ def get_property_from_sample(
     # if the porperty type is measured in million cells per ml convert cells per ml
     if property_type == TQuantityValueMillionCellsPerMilliliter:
         return property_type(value=float(str(value)) / 1e6)
-
-    # special case for cell count since nucleoview doesn't provide total cell count
-    if property_name == "Cell count":
-        return property_type(value=float("NaN"))
 
     return property_type(value=value)
 
@@ -150,8 +145,8 @@ class ChemometecNucleoviewParser(VendorParser):
                                     average_total_cell_diameter=get_property_from_sample(
                                         data_frame, row, "Estimated cell diameter (um)"
                                     ),
-                                    total_cell_count=get_property_from_sample(  # type: ignore[arg-type]
-                                        data_frame, row, "Cell count"
+                                    total_cell_count=TQuantityValueCell(
+                                        value=float("NaN")
                                     ),
                                 )
                             ]
