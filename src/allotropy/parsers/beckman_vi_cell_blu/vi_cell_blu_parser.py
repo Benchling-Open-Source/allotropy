@@ -57,7 +57,7 @@ def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]
     return data_frame[column][row]
 
 
-def get_property(data_frame: pd.DataFrame, row: int, property_name: str) -> Any:
+def _get_property(data_frame: pd.DataFrame, row: int, property_name: str) -> Optional[Any]:
     return property_lookup[property_name](value=value) if (value := _get_value(data_frame, row, property_name)) else None  # type: ignore[arg-type]
 
 
@@ -88,7 +88,7 @@ class ViCellBluParser(VendorParser):
         return [
             self._get_cell_counting_document_item(data, i)
             for i in range(len(data.index))
-            # if _get_value_from_sample(sample, "Cell count")
+            if _get_value(data, i, "Cell count")
         ]
 
     def _get_cell_counting_document_item(
@@ -96,35 +96,35 @@ class ViCellBluParser(VendorParser):
     ) -> CellCountingDocumentItem:
         data_processing_document = DataProcessingDocument(
             cell_type_processing_method=_get_value(data_frame, row, "Cell type"),  # type: ignore[arg-type]
-            minimum_cell_diameter_setting=get_property(
+            minimum_cell_diameter_setting=_get_property(
                 data_frame, row, "Minimum Diameter (μm)"
             ),
-            maximum_cell_diameter_setting=get_property(
+            maximum_cell_diameter_setting=_get_property(
                 data_frame, row, "Maximum Diameter (μm)"
             ),
-            cell_density_dilution_factor=get_property(data_frame, row, "Dilution"),
+            cell_density_dilution_factor=_get_property(data_frame, row, "Dilution"),
         )
         processed_data_document_item = ProcessedDataDocumentItem(
             data_processing_document=data_processing_document,
-            viability__cell_counter_=get_property(data_frame, row, "Viability (%)"),
-            viable_cell_density__cell_counter_=get_property(
+            viability__cell_counter_=_get_property(data_frame, row, "Viability (%)"),
+            viable_cell_density__cell_counter_=_get_property(
                 data_frame, row, "Viable (x10^6) cells/mL"
             ),
-            total_cell_count=get_property(data_frame, row, "Cell count"),
-            total_cell_density__cell_counter_=get_property(
+            total_cell_count=_get_property(data_frame, row, "Cell count"),
+            total_cell_density__cell_counter_=_get_property(
                 data_frame, row, "Total (x10^6) cells/mL"
             ),
-            average_total_cell_diameter=get_property(
+            average_total_cell_diameter=_get_property(
                 data_frame, row, "Average diameter (μm)"
             ),
-            average_live_cell_diameter__cell_counter_=get_property(
+            average_live_cell_diameter__cell_counter_=_get_property(
                 data_frame, row, "Average viable diameter (μm)"
             ),
-            viable_cell_count=get_property(data_frame, row, "Viable cells"),
-            average_total_cell_circularity=get_property(
+            viable_cell_count=_get_property(data_frame, row, "Viable cells"),
+            average_total_cell_circularity=_get_property(
                 data_frame, row, "Average circularity"
             ),
-            average_viable_cell_circularity=get_property(
+            average_viable_cell_circularity=_get_property(
                 data_frame, row, "Average viable circularity"
             ),
         )
