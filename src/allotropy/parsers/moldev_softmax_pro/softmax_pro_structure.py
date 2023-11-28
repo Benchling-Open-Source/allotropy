@@ -68,14 +68,6 @@ EXPORT_VERSION = "1.3"
 START_LETTER_CODE = ord("A")
 
 
-def split_wavelengths(
-    values: Optional[str], delimiter: str = " "
-) -> Optional[list[int]]:
-    if values is None:
-        return None
-    return [int(value) for value in values.split(delimiter)]
-
-
 def get_well_coordinates(row_number: int, column_number: str) -> str:
     row_letters = ""
     while row_number > 0:
@@ -367,7 +359,6 @@ class PlateBlock(Block):
         ]
         data_header = split_lines[1]
         data_lines = split_lines[2:]
-        end_raw_data_index = 0
         if header.data_type == DataType.RAW.value:
             for read_index in range(header.kinetic_points):
                 start_index = read_index * (header.num_rows + 1)
@@ -408,15 +399,21 @@ class PlateBlock(Block):
                     reduced_data_rows,
                 )
         elif header.data_type == DataType.REDUCED.value:
-            reduced_data_rows = data_lines[end_raw_data_index:]
             PlateBlock._parse_reduced_plate_rows(
-                header.num_columns, data_header, well_data, reduced_data_rows
+                header.num_columns,
+                data_header,
+                well_data,
+                data_lines,
             )
         else:
             msg = msg_for_error_on_unrecognized_value(
                 "data type", header.data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
+
+    @staticmethod
+    def split_wavelengths(values: Optional[str]) -> Optional[list[int]]:
+        return None if values is None else [int(v) for v in values.split()]
 
     @staticmethod
     def parse_header(header: pd.Series[str]) -> PlateHeader:
@@ -561,7 +558,7 @@ class FluorescencePlateBlock(PlateBlock):
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=split_wavelengths(wavelengths_str) or [],
+            wavelengths=PlateBlock.split_wavelengths(wavelengths_str) or [],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="fluorescence",
@@ -569,8 +566,10 @@ class FluorescencePlateBlock(PlateBlock):
             unit="RFU",
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
-            cutoff_filters=split_wavelengths(cutoff_filters_str),
+            excitation_wavelengths=PlateBlock.split_wavelengths(
+                excitation_wavelengths_str
+            ),
+            cutoff_filters=PlateBlock.split_wavelengths(cutoff_filters_str),
         )
 
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
@@ -690,7 +689,7 @@ class LuminescencePlateBlock(PlateBlock):
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=split_wavelengths(wavelengths_str) or [],
+            wavelengths=PlateBlock.split_wavelengths(wavelengths_str) or [],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="luminescence",
@@ -698,8 +697,10 @@ class LuminescencePlateBlock(PlateBlock):
             unit="RLU",
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
-            cutoff_filters=split_wavelengths(cutoff_filters_str),
+            excitation_wavelengths=PlateBlock.split_wavelengths(
+                excitation_wavelengths_str
+            ),
+            cutoff_filters=PlateBlock.split_wavelengths(cutoff_filters_str),
         )
 
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
@@ -796,7 +797,7 @@ class AbsorbancePlateBlock(PlateBlock):
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=split_wavelengths(wavelengths_str) or [],
+            wavelengths=PlateBlock.split_wavelengths(wavelengths_str) or [],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="absorbance",
