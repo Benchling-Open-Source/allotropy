@@ -93,6 +93,11 @@ Run all tests:
 hatch run test:test
 ```
 
+Run a specific test file (replace the filepath with your own):
+```sh
+hatch run test:test tests/allotrope/allotrope_test.py
+```
+
 Run all tests with coverage:
 ```sh
 hatch run test:cov
