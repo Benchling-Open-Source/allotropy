@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from io import IOBase
 import re
 from typing import Any
