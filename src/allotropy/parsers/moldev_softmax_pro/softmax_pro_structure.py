@@ -56,6 +56,7 @@ from allotropy.parsers.lines_reader import CsvReader, ListCsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
+    num_to_chars,
     PrimitiveValue,
     try_float,
     try_float_or_none,
@@ -200,6 +201,160 @@ class PlateHeader:
     cutoff_filters: Optional[list[int]]
 
 
+@dataclass
+class WavelengthElement:
+    row: str
+    col: str
+    value: float
+
+    @property
+    def pos(self) -> str:
+        return f"{self.row}{self.col}"
+
+
+@dataclass
+class PlateWavelengthData:
+    wavelength_data: pd.DataFrame
+
+    @staticmethod
+    def create(data: pd.DataFrame) -> PlateWavelengthData:
+        rows, _ = data.shape
+        data.index = pd.Index([num_to_chars(i) for i in range(rows)])
+        return PlateWavelengthData(wavelength_data=data)
+
+    def iter_elements(self) -> Iterator[WavelengthElement]:
+        for letter, row in self.wavelength_data.iterrows():
+            for number, value in row.items():
+                yield WavelengthElement(
+                    row=str(letter),
+                    col=str(number),
+                    value=try_float(value, "well data point"),
+                )
+
+
+@dataclass
+class PlateKineticData:
+    data_key: Optional[str]
+    temperature: Optional[float]
+    wavelength_data: list[PlateWavelengthData]
+
+    @staticmethod
+    def create(
+        lines_reader: CsvReader,
+        header: PlateHeader,
+        columns: pd.Series[str],
+    ) -> PlateKineticData:
+        data = assert_not_none(
+            lines_reader.pop_csv_block_as_df(sep="\t"),
+            msg="unable to find data from plate block.",
+        )
+        data.columns = pd.Index(columns)
+
+        raw_data_key = data.iloc[0, 0]
+        raw_temperature = data.iloc[0, 1]
+
+        return PlateKineticData(
+            data_key=str(raw_data_key) if raw_data_key else None,
+            temperature=try_float_or_none(str(raw_temperature)),
+            wavelength_data=list(
+                PlateKineticData._iter_wavelength_data(header, data.iloc[:, 2:])
+            ),
+        )
+
+    @staticmethod
+    def _iter_wavelength_data(
+        header: PlateHeader, w_data: pd.DataFrame
+    ) -> Iterator[PlateWavelengthData]:
+        for idx in range(header.num_wavelengths):
+            start = idx * (header.num_columns + 1)
+            end = start + header.num_columns
+            yield PlateWavelengthData.create(w_data.iloc[:, start:end])
+
+
+@dataclass
+class PlateRawData:
+    kinetic_data: list[PlateKineticData]
+
+    @staticmethod
+    def create(
+        lines_reader: CsvReader,
+        header: PlateHeader,
+    ) -> Optional[PlateRawData]:
+        if header.data_type == DataType.REDUCED.value:
+            return None
+
+        columns = assert_not_none(
+            lines_reader.pop_as_series(sep="\t"),
+            msg="unable to find data columns for plate block raw data.",
+        )
+
+        return PlateRawData(
+            kinetic_data=[
+                PlateKineticData.create(lines_reader, header, columns)
+                for _ in range(header.kinetic_points)
+            ]
+        )
+
+
+@dataclass
+class PlateReducedData:
+    reduced_data: pd.DataFrame
+
+    @staticmethod
+    def create(
+        lines_reader: CsvReader,
+        header: PlateHeader,
+    ) -> Optional[PlateReducedData]:
+        if not lines_reader.current_line_exists():
+            return None
+
+        raw_data = assert_not_none(
+            lines_reader.pop_csv_block_as_df(sep="\t", header=0),
+            msg="Unable to find reduced data for plate block.",
+        )
+        data = raw_data.iloc[:, 2 : header.num_columns + 2]
+        rows, _ = data.shape
+        data.index = pd.Index([num_to_chars(i) for i in range(rows)])
+        return PlateReducedData(reduced_data=data)
+
+    def iter_elements(self) -> Iterator[WavelengthElement]:
+        for letter, row in self.reduced_data.iterrows():
+            for number, value in row.items():
+                yield WavelengthElement(
+                    row=str(letter),
+                    col=str(number),
+                    value=try_float(value, "well data point"),
+                )
+
+
+@dataclass
+class PlateData:
+    raw_data: Optional[PlateRawData]
+    reduced_data: Optional[PlateReducedData]
+
+    @staticmethod
+    def create(
+        lines_reader: CsvReader,
+        header: PlateHeader,
+    ) -> PlateData:
+        return PlateData(
+            raw_data=PlateRawData.create(lines_reader, header),
+            reduced_data=PlateReducedData.create(lines_reader, header),
+        )
+
+    def get_raw_data(self) -> PlateRawData:
+        return assert_not_none(
+            self.raw_data,
+            msg="Unable to find plate block raw data.",
+        )
+
+    def get_reduced_data(self) -> PlateReducedData:
+        return assert_not_none(
+            self.reduced_data,
+            msg="Unable to find plate block reduced data.",
+        )
+
+
 @dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
@@ -232,7 +387,7 @@ class PlateBlock(Block):
     def read_header(lines_reader: CsvReader) -> pd.Series[str]:
         raw_header_series = assert_not_none(
             lines_reader.pop_as_series(sep="\t"),
-            msg="Unable to get plate block header",
+            msg="Unable to find plate block header.",
         )
         return raw_header_series.replace("", None).str.strip()
 
