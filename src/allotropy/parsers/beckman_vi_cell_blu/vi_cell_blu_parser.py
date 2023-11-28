@@ -57,7 +57,7 @@ def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]
     return data_frame[column][row]
 
 
-def _get_property(
+def get_property_from_sample(
     data_frame: pd.DataFrame, row: int, property_name: str
 ) -> Optional[Any]:
     return (
@@ -127,39 +127,39 @@ class ViCellBluParser(VendorParser):
                                         cell_type_processing_method=_get_value(
                                             data_frame, row, "Cell type"
                                         ),
-                                        minimum_cell_diameter_setting=_get_property(
+                                        minimum_cell_diameter_setting=get_property_from_sample(
                                             data_frame, row, "Minimum Diameter (μm)"
                                         ),
-                                        maximum_cell_diameter_setting=_get_property(
+                                        maximum_cell_diameter_setting=get_property_from_sample(
                                             data_frame, row, "Maximum Diameter (μm)"
                                         ),
-                                        cell_density_dilution_factor=_get_property(
+                                        cell_density_dilution_factor=get_property_from_sample(
                                             data_frame, row, "Dilution"
                                         ),
                                     ),
-                                    viability__cell_counter_=_get_property(  # type: ignore[arg-type]
+                                    viability__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
                                         data_frame, row, "Viability (%)"
                                     ),
-                                    viable_cell_density__cell_counter_=_get_property(  # type: ignore[arg-type]
+                                    viable_cell_density__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
                                         data_frame, row, "Viable (x10^6) cells/mL"
                                     ),
-                                    total_cell_count=_get_property(data_frame, row, "Cell count"),  # type: ignore[arg-type]
-                                    total_cell_density__cell_counter_=_get_property(
+                                    total_cell_count=get_property_from_sample(data_frame, row, "Cell count"),  # type: ignore[arg-type]
+                                    total_cell_density__cell_counter_=get_property_from_sample(
                                         data_frame, row, "Total (x10^6) cells/mL"
                                     ),
-                                    average_total_cell_diameter=_get_property(
+                                    average_total_cell_diameter=get_property_from_sample(
                                         data_frame, row, "Average diameter (μm)"
                                     ),
-                                    average_live_cell_diameter__cell_counter_=_get_property(
+                                    average_live_cell_diameter__cell_counter_=get_property_from_sample(
                                         data_frame, row, "Average viable diameter (μm)"
                                     ),
-                                    viable_cell_count=_get_property(
+                                    viable_cell_count=get_property_from_sample(
                                         data_frame, row, "Viable cells"
                                     ),
-                                    average_total_cell_circularity=_get_property(
+                                    average_total_cell_circularity=get_property_from_sample(
                                         data_frame, row, "Average circularity"
                                     ),
-                                    average_viable_cell_circularity=_get_property(
+                                    average_viable_cell_circularity=get_property_from_sample(
                                         data_frame, row, "Average viable circularity"
                                     ),
                                 ),
