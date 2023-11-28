@@ -30,6 +30,8 @@ TStringOrNullArray = list[Optional[str]]
 
 TClass = str
 
+TIntValue = int
+
 
 @dataclass
 class TStringValueItem:

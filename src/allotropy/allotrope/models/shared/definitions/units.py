@@ -58,6 +58,11 @@ class Microliter:
 
 
 @dataclass
+class Milliliter:
+    unit: Optional[str] = "mL"
+
+
+@dataclass
 class NumberPerMicroliter:
     unit: Optional[str] = "#/μL"
 
@@ -140,3 +145,8 @@ class RelativeFluorescenceUnit:
 @dataclass
 class RelativeLightUnit:
     unit: Optional[str] = "RLU"
+
+
+@dataclass
+class CountsPerMilliliter:
+    unit: Optional[str] = "Counts/mL"
