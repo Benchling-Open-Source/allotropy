@@ -19,7 +19,6 @@ class SampleRoleType(Enum):
     spiked_sample_role = "spiked sample role"
     blank_role = "blank role"
     unknown_sample_role = "unknown sample role"
-    undefined_sample_role = "undefined sample role"
     calibration_sample_role = "calibration sample role"
     unspiked_sample_role = "unspiked sample role"
     specimen_role = "specimen role"
