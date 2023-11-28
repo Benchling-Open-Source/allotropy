@@ -113,9 +113,7 @@ class ViCellBluParser(VendorParser):
                             _get_value(sample, "Analysis date/time")
                         ),
                         measurement_identifier=str(uuid.uuid4()),
-                        sample_document=SampleDocument(
-                            sample_identifier=_get_value(sample, "Sample ID")  # type: ignore[arg-type]
-                        ),
+                        sample_document=SampleDocument(sample_identifier=_get_value(sample, "Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItemModel(
