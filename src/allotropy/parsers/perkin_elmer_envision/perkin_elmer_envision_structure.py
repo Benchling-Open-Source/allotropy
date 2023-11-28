@@ -176,9 +176,10 @@ class PlateType:
         reader.drop_until("^Plate type")
         data = reader.pop_csv_block_as_df("^Plate type")
         data_df = assert_not_none(data, "Plate type").T
+        number_of_wells_str = "Number of the wells in the plate"
         return PlateType(
             try_float(
-                str(df_to_series(data_df).get("Number of the wells in the plate"))
+                str(df_to_series(data_df).get(number_of_wells_str)), number_of_wells_str
             )
         )
 
