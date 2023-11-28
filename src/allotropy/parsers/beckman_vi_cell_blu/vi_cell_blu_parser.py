@@ -112,11 +112,11 @@ class ViCellBluParser(VendorParser):
         )
         processed_data_document_item = ProcessedDataDocumentItem(
             data_processing_document=data_processing_document,
-            viability__cell_counter_=_get_property(data_frame, row, "Viability (%)"),
-            viable_cell_density__cell_counter_=_get_property(
+            viability__cell_counter_=_get_property(data_frame, row, "Viability (%)"),  # type: ignore[arg-type]
+            viable_cell_density__cell_counter_=_get_property(  # type: ignore[arg-type]
                 data_frame, row, "Viable (x10^6) cells/mL"
             ),
-            total_cell_count=_get_property(data_frame, row, "Cell count"),
+            total_cell_count=_get_property(data_frame, row, "Cell count"),  # type: ignore[arg-type]
             total_cell_density__cell_counter_=_get_property(
                 data_frame, row, "Total (x10^6) cells/mL"
             ),
@@ -139,9 +139,7 @@ class ViCellBluParser(VendorParser):
                 _get_value(data_frame, row, "Analysis date/time")
             ),
             measurement_identifier=str(uuid.uuid4()),
-            sample_document=SampleDocument(
-                sample_identifier=_get_value(data_frame, row, "Sample ID")
-            ),
+            sample_document=SampleDocument(sample_identifier=_get_value(data_frame, row, "Sample ID")),  # type: ignore[arg-type]
             device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItemModel(
