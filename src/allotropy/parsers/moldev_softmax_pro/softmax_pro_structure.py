@@ -287,15 +287,22 @@ class PlateBlock(Block):
 
     @staticmethod
     def _add_data_point(
-        read_type: Optional[str],
+        header: PlateHeader,
         well_data: defaultdict[str, WellData],
         well: str,
         value: str,
         data_key: Optional[str],
         temperature: Optional[str],
-        wavelength: Optional[int],
+        wavelength_index: int,
     ) -> None:
-        dimension = wavelength if read_type == ReadType.ENDPOINT.value else data_key
+        wavelength = (
+            header.wavelengths[wavelength_index]
+            if header.read_type != ReadType.SPECTRUM.value
+            else None
+        )
+        dimension = (
+            wavelength if header.read_type == ReadType.ENDPOINT.value else data_key
+        )
         well_data[well].add_value(
             value=float(value),
             dimension=dimension,
@@ -328,15 +335,13 @@ class PlateBlock(Block):
                             continue
                         well = assert_not_none(data_header[i + 2], "well")
                         PlateBlock._add_data_point(
-                            header.read_type,
+                            header,
                             well_data,
                             well,
                             value,
                             data_key=row[0],
                             temperature=row[1],
-                            wavelength=PlateBlock.get_wavelength(
-                                header, wavelength_index
-                            ),
+                            wavelength_index=wavelength_index,
                         )
             if len(data_lines) > (header.kinetic_points + 1) * header.num_wavelengths:
                 reduced_row = data_lines[-1][: header.num_wells + 2]
@@ -385,16 +390,13 @@ class PlateBlock(Block):
                             )
                             well = get_well_coordinates(i + 1, col_number)
                             PlateBlock._add_data_point(
-                                header.read_type,
+                                header,
                                 well_data,
                                 well,
                                 value,
                                 data_key=data_key,
                                 temperature=temperature,
-                                wavelength=PlateBlock.get_wavelength(
-                                    header,
-                                    wavelength_index,
-                                ),
+                                wavelength_index=wavelength_index,
                             )
             end_raw_data_index = ((header.num_rows + 1) * header.kinetic_points) + 1
             reduced_data_rows = data_lines[end_raw_data_index:]
@@ -434,16 +436,6 @@ class PlateBlock(Block):
             not in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
             and len(self.header.wavelengths) > 1
         )
-
-    @staticmethod
-    def get_wavelength(
-        header: PlateHeader,
-        wavelength_index: int,
-    ) -> Optional[int]:
-        if header.read_type == ReadType.SPECTRUM.value:
-            return None
-        else:
-            return header.wavelengths[wavelength_index] if header.wavelengths else None
 
     def get_data_cube_dimensions(self) -> list[tuple[str, str, Optional[str]]]:
         dimensions: list[tuple[str, str, Optional[str]]] = []
