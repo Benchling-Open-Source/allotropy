@@ -62,9 +62,9 @@ def get_property_from_sample(
 
     # if the porperty type is measured in million cells per ml convert cells per ml
     if property_type == TQuantityValueMillionCellsPerMilliliter:
-        return property_type(value=float(str(value)) / 1e6)
+        return property_type(value=float(value) / 1e6)
 
-    return property_type(value=value)
+    return property_type(value=float(value))
 
 
 class ChemometecNucleoviewParser(VendorParser):
