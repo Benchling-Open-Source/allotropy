@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 from __future__ import annotations
 
 from collections.abc import Iterator
@@ -11,7 +9,7 @@ T = TypeVar("T")
 
 
 class ViewData(Generic[T]):
-    def __init__(self, data: dict[str, Union[ViewData, list[T]]]):
+    def __init__(self, data: dict[str, Union[ViewData[T], list[T]]]):
         self.data = data
 
     def get_first_key(self) -> str:
@@ -26,7 +24,7 @@ class ViewData(Generic[T]):
             else:
                 yield [key]
 
-    def get_item(self, *keys: str) -> Union[ViewData, list[T]]:
+    def get_item(self, *keys: str) -> Union[ViewData[T], list[T]]:
         if len(keys) == 0:
             return self.data[self.get_first_key()]
 
@@ -37,7 +35,7 @@ class ViewData(Generic[T]):
         else:
             return item
 
-    def get_sub_view_data(self, *keys: str) -> ViewData:
+    def get_sub_view_data(self, *keys: str) -> ViewData[T]:
         item = self.get_item(*keys)
         if isinstance(item, ViewData):
             return item
@@ -53,13 +51,13 @@ class ViewData(Generic[T]):
 
 
 class View(Generic[T]):
-    def __init__(self, sub_view: Optional[View] = None):
+    def __init__(self, sub_view: Optional[View[T]] = None):
         self.sub_view = sub_view
 
     def sort_elements(self, _: list[T]) -> dict[str, list[T]]:
         return {}
 
-    def apply(self, elements: list[T]) -> ViewData:
+    def apply(self, elements: list[T]) -> ViewData[T]:
         return ViewData(
             {
                 id_: self.sub_view.apply(element) if self.sub_view else element
