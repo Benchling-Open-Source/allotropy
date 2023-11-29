@@ -2,9 +2,6 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMicrometer,
-)
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_hiac.hiac_parser import HIACParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
@@ -27,23 +24,23 @@ def test_get_model(test_file: Path) -> None:
     assert model.measurement_document.distribution_document
 
     # Single distribution document
-    assert isinstance(model.measurement_document.distribution_document.items, list)
-    assert len(model.measurement_document.distribution_document.items) == 1
+
+    assert len(model.measurement_document.distribution_document) == 1
 
     # 5 rows in the distribution document
     assert isinstance(
-        model.measurement_document.distribution_document.items[0].items, list
+        model.measurement_document.distribution_document[0].distribution, list
     )
-    assert len(model.measurement_document.distribution_document.items[0].items) == 5
+    assert len(model.measurement_document.distribution_document[0].distribution) == 5
 
     # Ensure correct order and particle sizes
     for i, particle_size in enumerate([2, 5, 10, 25, 50]):
         test = (
-            model.measurement_document.distribution_document.items[0]
-            .items[i]
+            model.measurement_document.distribution_document[0]
+            .distribution[i]
             .particle_size
         )
-        assert test == TQuantityValueMicrometer(particle_size)
+        assert test.value == particle_size
 
 
 def test_asm(test_file: Path) -> None:

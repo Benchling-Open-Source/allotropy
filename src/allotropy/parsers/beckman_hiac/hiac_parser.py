@@ -1,18 +1,23 @@
 import io
+from typing import Any
 
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.light_obscuration import (
-    Distribution,
-    DistributionDocument,
+from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration_embed_schema import (
+    CumulativeCount,
+    CumulativeParticleDensity,
+    DetectorViewVolume,
+    DifferentialCount,
+    DifferentialParticleDensity,
+    DilutionFactorSetting,
+    DistributionDocumentItem,
     DistributionItem,
+    FlushVolumeSetting,
     MeasurementDocument,
     Model,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMilliliter,
-    TQuantityValueUnitless,
+    ParticleSize,
+    SampleVolumeSetting,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -25,6 +30,18 @@ column_map = {
     "Differential Counts/mL": "differential particle density",
     "Differential Count": "differential count",
 }
+
+property_lookup = {
+    "particle_size": ParticleSize,
+    "cumulative_count": CumulativeCount,
+    "cumulative_particle_density": CumulativeParticleDensity,
+    "differential_particle_density": DifferentialParticleDensity,
+    "differential_count": DifferentialCount,
+}
+
+
+def get_property_from_sample(property_name: str, value: Any) -> Any:
+    return property_lookup[property_name](value=value)
 
 
 class HIACParser(VendorParser):
@@ -57,9 +74,11 @@ class HIACParser(VendorParser):
         )
         return avg
 
-    def _create_distribution_document(self, df: pd.DataFrame) -> DistributionDocument:
+    def _create_distribution_document_items(
+        self, df: pd.DataFrame
+    ) -> list[DistributionDocumentItem]:
         """Create the distribution document. First, we create the actual distrituion, which itself
-        contains a list of DistributionItem objects. The DistributionItem objects represent the values
+        contains a list of DistributionDocumentItem objects. The DistributionDocumentItem objects represent the values
         from the rows of the incoming dataframe.
 
         If we were able to support more than one data frame instead of just the average data, we could
@@ -78,16 +97,17 @@ class HIACParser(VendorParser):
                     " ", "_"
                 )  # to be able to set the props on the DistributionItem
                 if c in elem:
-                    item[prop] = float(elem[c])
+                    item[prop] = get_property_from_sample(prop, float(elem[c]))
                 else:
                     item[
                         prop
                     ] = np.nan  # TODO is there a better way here for missing props?
-            items.append(DistributionItem.from_dict(item))
-        d = Distribution(items=items)
+            items.append(DistributionItem(**item))
         # TODO get test example for data_processing_omission_setting
-        dd = DistributionDocument(items=[d], data_processing_omission_setting=False)
-        return dd
+        dd = DistributionDocumentItem(
+            distribution=items, data_processing_omission_setting=False
+        )
+        return [dd]
 
     def _setup_model(self, df: pd.DataFrame) -> Model:
         """Build the Model
@@ -96,22 +116,22 @@ class HIACParser(VendorParser):
         :return: the model
         """
         data = self._extract_data(df)
-        distribution_document = self._create_distribution_document(data)
+        distribution_document_items = self._create_distribution_document_items(data)
         model = Model(
-            dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
-            detector_model_number=df.at[2, 5],
-            analyst=df.at[11, 5],
-            repetition_setting=df.at[11, 5],
-            sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
-            detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
-            measurement_identifier=df.at[2, 2],
-            sample_identifier=df.at[2, 2],
-            equipment_serial_number=df.at[4, 5],
+            dilution_factor_setting=DilutionFactorSetting(df.at[13, 2]),
+            detector_model_number=str(df.at[2, 5]),
+            analyst=str(df.at[11, 5]),
+            repetition_setting=int(df.at[11, 5]),
+            sample_volume_setting=SampleVolumeSetting(df.at[11, 2]),
+            detector_view_volume=DetectorViewVolume(df.at[9, 5]),
+            measurement_identifier=str(df.at[2, 2]),
+            sample_identifier=str(df.at[2, 2]),
+            equipment_serial_number=str(df.at[4, 5]),
             detector_identifier=str(df.at[4, 5]),
             measurement_document=MeasurementDocument(
-                distribution_document=distribution_document
+                distribution_document=distribution_document_items
             ),
-            flush_volume_setting=TQuantityValueMilliliter(
+            flush_volume_setting=FlushVolumeSetting(
                 0
             ),  # TODO get test example for this
             measurement_time=pd.to_datetime(

@@ -1,0 +1,1342 @@
+{
+  "$id": "http://purl.allotrope.org/json-schemas/adm/light-obscuration/REC/2021/12/light-obscuration.embed.schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "required": [
+    "detector view volume",
+    "flush volume setting",
+    "analyst",
+    "dilution factor setting",
+    "repetition setting",
+    "sample volume setting",
+    "detector identifier",
+    "sample identifier",
+    "detector model number",
+    "measurement time"
+  ],
+  "properties": {
+    "detector view volume": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002491",
+      "$asm.pattern": "quantity datum",
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": {
+          "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type": "http://qudt.org/schema/qudt#Unit",
+          "const": "mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
+        },
+        "@type": {
+          "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": ["value", "unit"]
+    },
+    "measurement document": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "distribution document": {
+          "type": "array",
+          "$asm.array-ordered": true,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "allOf": [
+              {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002193",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "distribution": {
+                    "type": "array",
+                    "$asm.array-ordered": false,
+                    "$asm.array-mixed": false,
+                    "$asm.pattern": "indexed datum",
+                    "items": {
+                      "type": "object",
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000733",
+                      "$asm.pattern": "aggregate datum",
+                      "required": [
+                        "particle size",
+                        "cumulative count",
+                        "cumulative particle density",
+                        "differential particle density",
+                        "differential count"
+                      ],
+                      "properties": {
+                        "particle size": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002027",
+                          "$asm.pattern": "quantity datum",
+                          "type": "object",
+                          "properties": {
+                            "value": { "type": "number" },
+                            "unit": {
+                              "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+                              "$asm.type": "http://qudt.org/schema/qudt#Unit",
+                              "const": "\u00b5m",
+                              "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
+                            },
+                            "@type": {
+                              "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+                            }
+                          },
+                          "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+                          "required": ["value", "unit"]
+                        },
+                        "cumulative count": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002132",
+                          "$asm.pattern": "quantity datum",
+                          "type": "object",
+                          "properties": {
+                            "value": { "type": "number" },
+                            "unit": {
+                              "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+                              "$asm.type": "http://qudt.org/schema/qudt#Unit",
+                              "const": "(unitless)",
+                              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Unitless"
+                            },
+                            "@type": {
+                              "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+                            }
+                          },
+                          "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+                          "required": ["value", "unit"]
+                        },
+                        "cumulative particle density": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002495",
+                          "$asm.pattern": "quantity datum",
+                          "type": "object",
+                          "properties": {
+                            "value": { "type": "number" },
+                            "unit": {
+                              "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+                              "$asm.type": "http://qudt.org/schema/qudt#Unit",
+                              "const": "Counts/mL",
+                              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMilliliter"
+                            },
+                            "@type": {
+                              "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+                            }
+                          },
+                          "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+                          "required": ["value", "unit"]
+                        },
+                        "differential particle density": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002496",
+                          "$asm.pattern": "quantity datum",
+                          "type": "object",
+                          "properties": {
+                            "value": { "type": "number" },
+                            "unit": {
+                              "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+                              "$asm.type": "http://qudt.org/schema/qudt#Unit",
+                              "const": "Counts/mL",
+                              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMilliliter"
+                            },
+                            "@type": {
+                              "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+                            }
+                          },
+                          "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+                          "required": ["value", "unit"]
+                        },
+                        "differential count": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002494",
+                          "$asm.pattern": "quantity datum",
+                          "type": "object",
+                          "properties": {
+                            "value": { "type": "number" },
+                            "unit": {
+                              "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+                              "$asm.type": "http://qudt.org/schema/qudt#Unit",
+                              "const": "(unitless)",
+                              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Unitless"
+                            },
+                            "@type": {
+                              "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                              "type": "string",
+                              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+                            }
+                          },
+                          "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+                          "required": ["value", "unit"]
+                        }
+                      }
+                    },
+                    "minItems": 1
+                  },
+                  "data processing omission setting": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002497",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                    "oneOf": [
+                      { "type": "boolean" },
+                      {
+                        "type": "object",
+                        "required": ["@type", "value"],
+                        "properties": {
+                          "value": { "type": "boolean" },
+                          "@type": {
+                            "type": "string",
+                            "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+                            "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "flush volume setting": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002493",
+      "$asm.pattern": "quantity datum",
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": {
+          "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type": "http://qudt.org/schema/qudt#Unit",
+          "const": "mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
+        },
+        "@type": {
+          "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": ["value", "unit"]
+    },
+    "analyst": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001116",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "dilution factor setting": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002498",
+      "$asm.pattern": "quantity datum",
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": {
+          "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type": "http://qudt.org/schema/qudt#Unit",
+          "const": "(unitless)",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Unitless"
+        },
+        "@type": {
+          "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": ["value", "unit"]
+    },
+    "measurement identifier": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "repetition setting": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001678",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#int",
+      "oneOf": [
+        { "type": "integer", "minimum": -2147483648, "maximum": 2147483647 },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": -2147483648,
+              "maximum": 2147483647
+            },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "sample volume setting": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",
+      "$asm.pattern": "quantity datum",
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": {
+          "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+          "$asm.type": "http://qudt.org/schema/qudt#Unit",
+          "const": "mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
+        },
+        "@type": {
+          "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+          "type": "string",
+          "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+        }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": ["value", "unit"]
+    },
+    "detector identifier": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002490",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "sample identifier": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001118",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "equipment serial number": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001119",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "detector model number": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002489",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "model number": {
+      "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    },
+    "measurement time": {
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+      "$asm.pattern": "value datum",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        {
+          "type": "object",
+          "required": ["@type", "value"],
+          "properties": {
+            "value": { "type": "string", "format": "date-time" },
+            "@type": {
+              "type": "string",
+              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "Centimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "cm",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Centimeter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Millimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mm",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Millimeter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Nanometer": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "nm",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Nanometer"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Micrometer": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "\u03bcm",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Micrometer"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Hertz": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "Hz",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Hertz"
+        }
+      },
+      "required": ["unit"]
+    },
+    "CubicMillimeter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mm^3",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#CubicMillimeter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Unitless": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "(unitless)",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Unitless"
+        }
+      },
+      "required": ["unit"]
+    },
+    "SecondTime": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "s",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#SecondTime"
+        }
+      },
+      "required": ["unit"]
+    },
+    "MilliSecond": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "ms",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#MilliSecond"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Percent": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "%",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Percent"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Microliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "\u03bcL",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "NumberPerMicroliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "#/\u03bcL",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#NumberPerMicroliter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "MillionCellsPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "10^6 cells/mL",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#MillionCellsPerMilliliter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Cell": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "cell",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Cell"
+        }
+      },
+      "required": ["unit"]
+    },
+    "TODO": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "TODO",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#TODO"
+        }
+      },
+      "required": ["unit"]
+    },
+    "GramPerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "g/L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#GramPerLiter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "UnitPerLiter": {
+      "properties": {
+        "unit": { "type": "string", "const": "U/L", "$asm.unit-iri": "TODO" }
+      },
+      "required": ["unit"]
+    },
+    "MillimeterOfMercury": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mmHg",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#MillimeterOfMercury"
+        }
+      },
+      "required": ["unit"]
+    },
+    "OpticalDensity": {
+      "properties": {
+        "unit": { "type": "string", "const": "OD", "$asm.unit-iri": "TODO" }
+      },
+      "required": ["unit"]
+    },
+    "PH": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pH",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PH"
+        }
+      },
+      "required": ["unit"]
+    },
+    "MilliOsmolesPerKilogram": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mosm/kg",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliOsmolesPerKilogram"
+        }
+      },
+      "required": ["unit"]
+    },
+    "MillimolePerLiter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mmol/L",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillimolePerLiter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "Number": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "#",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Number"
+        }
+      },
+      "required": ["unit"]
+    },
+    "PicogramPerMilliliter": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "pg/mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMilliliter"
+        }
+      },
+      "required": ["unit"]
+    },
+    "DegreeCelsius": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "degC",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#DegreeCelsius"
+        }
+      },
+      "required": ["unit"]
+    },
+    "MilliAbsorbanceUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mAU",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnit"
+        }
+      },
+      "required": ["unit"]
+    },
+    "RelativeFluorescenceUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RFU",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnit"
+        }
+      },
+      "required": ["unit"]
+    },
+    "RelativeLightUnit": {
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "RLU",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeLightUnit"
+        }
+      },
+      "required": ["unit"]
+    },
+    "tClass": {
+      "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+      "type": "string",
+      "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class"
+    },
+    "tUnit": {
+      "description": "A unit is referenced by its QUDT symbol. It MUST be unique within the QUDT units defined in the vocabularies declared in the manifest.",
+      "type": "string",
+      "$asm.lookup-property": "http://purl.allotrope.org/ontology/qudt-ext/schema#symbol",
+      "$asm.type": "http://qudt.org/schema/qudt#Unit"
+    },
+    "tStringValue": {
+      "description": "A literal string in UTF-8 encoding.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "@type": { "$ref": "#/$defs/tClass" },
+            "value": { "type": "string" }
+          },
+          "required": ["@type", "value"]
+        }
+      ]
+    },
+    "tBooleanValue": {
+      "description": "A boolean value.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+      "oneOf": [
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "properties": {
+            "@type": { "$ref": "#/$defs/tClass" },
+            "value": { "type": "boolean" }
+          },
+          "required": ["@type", "value"]
+        }
+      ]
+    },
+    "tDateTimeValue": {
+      "description": "All timestamps MUST be in ISO8601 date/time format.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        {
+          "type": "object",
+          "properties": {
+            "@type": { "$ref": "#/$defs/tClass" },
+            "value": { "type": "string", "format": "date-time" }
+          },
+          "required": ["@type", "value"]
+        }
+      ]
+    },
+    "tDateTimeStampValue": {
+      "description": "All timestamps MUST be in ISO8601 date/time format.",
+      "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        {
+          "type": "object",
+          "properties": {
+            "@type": { "$ref": "#/$defs/tClass" },
+            "value": { "type": "string", "format": "date-time" }
+          },
+          "required": ["@type", "value"]
+        }
+      ]
+    },
+    "tStatisticDatumRole": {
+      "description": "A statistic datum role.",
+      "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+      "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+      "type": "string",
+      "enum": [
+        "arithmetic mean role",
+        "median role",
+        "relative standard deviation role",
+        "skewness role",
+        "standard deviation role",
+        "variance role",
+        "maximum value role",
+        "minimum value role"
+      ],
+      "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000328"
+    },
+    "tQuantityValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "$ref": "#/$defs/tUnit" },
+        "has statistic datum role": { "$ref": "#/$defs/tStatisticDatumRole" },
+        "@type": { "$ref": "#/$defs/tClass" }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": ["value", "unit"]
+    },
+    "tNullableQuantityValue": {
+      "type": "object",
+      "properties": {
+        "value": { "type": ["number", "null"] },
+        "unit": { "$ref": "#/$defs/tUnit" },
+        "has statistic datum role": { "$ref": "#/$defs/tStatisticDatumRole" },
+        "@type": { "$ref": "#/$defs/tClass" }
+      },
+      "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+      "required": ["value", "unit"]
+    },
+    "tDatacube": {
+      "type": "object",
+      "properties": {
+        "label": { "type": "string" },
+        "cube-structure": { "$ref": "#/$defs/tDatacubeStructure" },
+        "data": { "$ref": "#/$defs/tDatacubeData" }
+      }
+    },
+    "tDatacubeStructure": {
+      "type": "object",
+      "properties": {
+        "dimensions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tDatacubeComponent" },
+          "unique": true
+        },
+        "measures": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tDatacubeComponent" },
+          "unique": true,
+          "minItems": 1
+        }
+      },
+      "required": ["dimensions", "measures"]
+    },
+    "tDatacubeComponent": {
+      "type": "object",
+      "properties": {
+        "@componentDatatype": {
+          "description": "Subset of XSD datatypes supported in simple models",
+          "default": "double",
+          "enum": [
+            "double",
+            "float",
+            "decimal",
+            "integer",
+            "byte",
+            "int",
+            "short",
+            "long",
+            "string",
+            "boolean",
+            "dateTime"
+          ]
+        },
+        "concept": { "$ref": "#/$defs/tClass" },
+        "unit": { "$ref": "#/$defs/tUnit" },
+        "scale": {
+          "enum": ["nominal", "ordinal", "cardinal", "interval", "range"]
+        },
+        "$asm.fill-value": {
+          "type": ["string", "number", "integer", "boolean"]
+        }
+      },
+      "required": ["@componentDatatype", "concept"],
+      "allOf": [
+        { "$ref": "#/$defs/cFillValueIEEE" },
+        { "$ref": "#/$defs/cFillValueDecimal" },
+        { "$ref": "#/$defs/cFillValueBoolean" },
+        { "$ref": "#/$defs/cFillValueString" }
+      ]
+    },
+    "cFillValueBoolean": {
+      "$comment": "constraint on fill values if component data type is boolean",
+      "if": { "properties": { "@componentDatatype": { "const": "boolean" } } },
+      "then": { "$asm.fill-value": { "type": "boolean", "default": false } }
+    },
+    "cFillValueIEEE": {
+      "$comment": "constraint on fill values if component data type is any numeric type",
+      "if": {
+        "properties": { "@componentDatatype": { "pattern": "double|float" } }
+      },
+      "then": {
+        "$asm.fill-value": {
+          "oneOf": [
+            { "type": "number" },
+            { "const": "NaN" },
+            { "const": "+Infinity" },
+            { "const": "-Infinity" }
+          ],
+          "default": 0.0
+        }
+      }
+    },
+    "cFillValueDecimal": {
+      "$comment": "constraint on fill values if component data type is any numeric type",
+      "if": {
+        "properties": {
+          "@componentDatatype": {
+            "pattern": "integer|decimal|long|int|short|byte"
+          }
+        }
+      },
+      "then": { "$asm.fill-value": { "type": "number", "default": 0 } }
+    },
+    "cFillValueString": {
+      "$comment": "constraint on fill values if component data type is string",
+      "if": {
+        "properties": {
+          "@componentDatatype": { "pattern": "string|dateTime|date" }
+        }
+      },
+      "then": { "$asm.fill-value": { "type": "string", "default": "" } }
+    },
+    "tDatacubeData": {
+      "allOf": [
+        { "$ref": "#/$defs/tDimensionData" },
+        { "$ref": "#/$defs/tMeasureData" }
+      ]
+    },
+    "tDimensionData": {
+      "properties": {
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/tDimensionArray" },
+              { "$ref": "#/$defs/tFunction" }
+            ]
+          }
+        }
+      },
+      "required": ["dimensions"]
+    },
+    "tMeasureData": {
+      "oneOf": [
+        {
+          "properties": {
+            "measures": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/tMeasureArray" }
+            }
+          },
+          "required": ["measures"]
+        },
+        {
+          "properties": {
+            "points": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/tTupleData" }
+            }
+          },
+          "required": ["points"]
+        }
+      ]
+    },
+    "tTupleData": {
+      "$comment": "heterogenous array of data used in point arrays",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "number" },
+          { "type": "boolean" },
+          { "type": "string" },
+          { "type": "null" }
+        ]
+      }
+    },
+    "tDimensionArray": {
+      "$comment": "homogenous array of data used in explicit dimension arrays",
+      "oneOf": [
+        { "$ref": "#/$defs/tNumberArray" },
+        { "$ref": "#/$defs/tBooleanArray" },
+        { "$ref": "#/$defs/tStringArray" }
+      ]
+    },
+    "tMeasureArray": {
+      "$comment": "homogenous array of data used in explicit measure arrays, may contain null values",
+      "oneOf": [
+        { "$ref": "#/$defs/tNumberOrNullArray" },
+        { "$ref": "#/$defs/tBooleanOrNullArray" },
+        { "$ref": "#/$defs/tStringOrNullArray" }
+      ]
+    },
+    "tNumberArray": {
+      "$comment": "homogenous array of numbers",
+      "type": "array",
+      "items": { "type": "number" }
+    },
+    "tNumberOrNullArray": {
+      "$comment": "homogenous array of numbers, may contain null values",
+      "type": "array",
+      "items": { "anyOf": [{ "type": "number" }, { "type": "null" }] }
+    },
+    "tBooleanArray": {
+      "$comment": "homogenous array of booleans",
+      "type": "array",
+      "items": { "type": "boolean" }
+    },
+    "tBooleanOrNullArray": {
+      "$comment": "homogenous array of booleans, may contain null values",
+      "type": "array",
+      "items": { "anyOf": [{ "type": "boolean" }, { "type": "null" }] }
+    },
+    "tStringArray": {
+      "$comment": "homogenous array of strings",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tStringOrNullArray": {
+      "$comment": "homogenous array of strings, may contain null values",
+      "type": "array",
+      "items": { "anyOf": [{ "type": "string" }, { "type": "null" }] }
+    },
+    "tFunction": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["linear", "logarithmic"], "default": "linear" },
+        "start": { "type": "number", "default": 1 },
+        "length": { "type": "number" },
+        "incr": { "type": "number", "default": 1 }
+      }
+    }
+  },
+  "$custom": {
+    "tQuantityValueCentimeter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Centimeter" }
+      ]
+    },
+    "tQuantityValueMillimeter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Millimeter" }
+      ]
+    },
+    "tQuantityValueNanometer": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Nanometer" }
+      ]
+    },
+    "tQuantityValueMicrometer": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Micrometer" }
+      ]
+    },
+    "tQuantityValueHertz": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Hertz" }
+      ]
+    },
+    "tQuantityValueCubicMillimeter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/CubicMillimeter" }
+      ]
+    },
+    "tQuantityValueUnitless": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Unitless" }
+      ]
+    },
+    "tQuantityValueSecondTime": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/SecondTime" }
+      ]
+    },
+    "tQuantityValueMilliSecond": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/MilliSecond" }
+      ]
+    },
+    "tQuantityValuePercent": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Percent" }
+      ]
+    },
+    "tQuantityValueMicroliter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Microliter" }
+      ]
+    },
+    "tQuantityValueNumberPerMicroliter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/NumberPerMicroliter" }
+      ]
+    },
+    "tQuantityValueMillionCellsPerMilliliter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/MillionCellsPerMilliliter" }
+      ]
+    },
+    "tQuantityValueCell": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/Cell" }
+      ]
+    },
+    "tQuantityValueTODO": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/TODO" }
+      ]
+    },
+    "tQuantityValueGramPerLiter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/GramPerLiter" }
+      ]
+    },
+    "tQuantityValueUnitPerLiter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/UnitPerLiter" }
+      ]
+    },
+    "tQuantityValueMillimeterOfMercury": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/MillimeterOfMercury" }
+      ]
+    },
+    "tQuantityValueOpticalDensity": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/OpticalDensity" }
+      ]
+    },
+    "tQuantityValuePH": {
+      "allOf": [{ "$ref": "#/$defs/tQuantityValue" }, { "$ref": "#/$defs/PH" }]
+    },
+    "tQuantityValueMilliOsmolesPerKilogram": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/MilliOsmolesPerKilogram" }
+      ]
+    },
+    "tQuantityValueMillimolePerLiter": {
+      "allOf": [
+        { "$ref": "#/$defs/tQuantityValue" },
+        { "$ref": "#/$defs/MillimolePerLiter" }
+      ]
+    },
+    "tQuantityValueNumber": {
+      "allOf": [
+        { "$ref": "#/$defs/Number" },
+        { "$ref": "#/$defs/tQuantityValue" }
+      ]
+    },
+    "tQuantityValuePicogramPerMilliliter": {
+      "allOf": [
+        { "$ref": "#/$defs/PicogramPerMilliliter" },
+        { "$ref": "#/$defs/tQuantityValue" }
+      ]
+    },
+    "tQuantityValueDegreeCelsius": {
+      "allOf": [
+        { "$ref": "#/$defs/DegreeCelsius" },
+        { "$ref": "#/$defs/tQuantityValue" }
+      ]
+    },
+    "tQuantityValueMilliAbsorbanceUnit": {
+      "allOf": [
+        { "$ref": "#/$defs/MilliAbsorbanceUnit" },
+        { "$ref": "#/$defs/tQuantityValue" }
+      ]
+    },
+    "tRelativeFluorescenceUnit": {
+      "allOf": [
+        { "$ref": "#/$defs/RelativeFluorescenceUnit" },
+        { "$ref": "#/$defs/tQuantityValue" }
+      ]
+    },
+    "tRelativeLightUnit": {
+      "allOf": [
+        { "$ref": "#/$defs/RelativeLightUnit" },
+        { "$ref": "#/$defs/tQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueMicrometer": {
+      "allOf": [
+        { "$ref": "#/$defs/Micrometer" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValuePercent": {
+      "allOf": [
+        { "$ref": "#/$defs/Percent" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueCubicMillimeter": {
+      "allOf": [
+        { "$ref": "#/$defs/CubicMillimeter" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueCell": {
+      "allOf": [
+        { "$ref": "#/$defs/Cell" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueTODO": {
+      "allOf": [
+        { "$ref": "#/$defs/TODO" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueGramPerLiter": {
+      "allOf": [
+        { "$ref": "#/$defs/GramPerLiter" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueUnitPerLiter": {
+      "allOf": [
+        { "$ref": "#/$defs/UnitPerLiter" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueMillimeterOfMercury": {
+      "allOf": [
+        { "$ref": "#/$defs/MillimeterOfMercury" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueOpticalDensity": {
+      "allOf": [
+        { "$ref": "#/$defs/OpticalDensity" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValuePH": {
+      "allOf": [
+        { "$ref": "#/$defs/PH" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueMilliOsmolesPerKilogram": {
+      "allOf": [
+        { "$ref": "#/$defs/MilliOsmolesPerKilogram" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueMillimolePerLiter": {
+      "allOf": [
+        { "$ref": "#/$defs/MillimolePerLiter" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueMillionCellsPerMilliliter": {
+      "allOf": [
+        { "$ref": "#/$defs/MillionCellsPerMilliliter" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    },
+    "tNullableQuantityValueUnitless": {
+      "allOf": [
+        { "$ref": "#/$defs/tNullableQuantityValue" },
+        { "$ref": "#/$defs/tNullableQuantityValue" }
+      ]
+    }
+  }
+}
