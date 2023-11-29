@@ -120,7 +120,7 @@ class HIACParser(VendorParser):
         model = Model(
             dilution_factor_setting=DilutionFactorSetting(df.at[13, 2]),
             detector_model_number=str(df.at[2, 5]),
-            analyst=str(df.at[11, 5]),
+            analyst=str(df.at[6, 5]),
             repetition_setting=int(df.at[11, 5]),
             sample_volume_setting=SampleVolumeSetting(df.at[11, 2]),
             detector_view_volume=DetectorViewVolume(df.at[9, 5]),
