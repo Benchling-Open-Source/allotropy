@@ -196,16 +196,6 @@ class WellBuilder:
         return pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
 
-class RawDataBuilder:
-    @staticmethod
-    def build(reader: LinesReader) -> Optional[RawData]:
-        if not reader.match(r"^\[Raw Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        return RawData(lines)
-
-
 class AmplificationDataBuilder:
     @staticmethod
     def build(
@@ -492,7 +482,7 @@ class DataBuilder:
     def build(reader: LinesReader) -> Data:
         header = Header.create(reader)
         wells = WellBuilder.build(reader, header.experiment_type)
-        raw_data = RawDataBuilder.build(reader)
+        raw_data = RawData.create(reader)
 
         amp_data = AmplificationDataBuilder.get_data(reader)
         multi_data = MulticomponentDataBuilder.get_data(reader)

@@ -189,6 +189,13 @@ class WellList:
 class RawData:
     lines: list[str]
 
+    @staticmethod
+    def create(reader: LinesReader) -> Optional[RawData]:
+        if reader.match(r"^\[Raw Data\]"):
+            reader.pop()  # remove title
+            return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
+        return None
+
 
 @dataclass(frozen=True)
 class AmplificationData:
