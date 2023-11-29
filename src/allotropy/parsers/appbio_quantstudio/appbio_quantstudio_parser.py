@@ -40,8 +40,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
-    DataBuilder,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    create_data,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Data,
@@ -56,7 +56,7 @@ class AppBioQuantStudioParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, file_name = named_file_contents
         reader = LinesReader(raw_contents)
-        data = DataBuilder.build(reader)
+        data = create_data(reader)
         return self._get_model(data, file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:

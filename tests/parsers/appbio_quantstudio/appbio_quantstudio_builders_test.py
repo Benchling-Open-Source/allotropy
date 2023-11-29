@@ -8,8 +8,8 @@ import pytest
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
-    DataBuilder,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    create_data,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Data,
@@ -195,7 +195,7 @@ def test_results_builder() -> None:
 def test_data_builder(test_filepath: str, expected_data: Data) -> None:
     with open(test_filepath, "rb") as raw_contents:
         reader = LinesReader(raw_contents)
-    assert rm_uuid(DataBuilder.build(reader)) == rm_uuid(expected_data)
+    assert rm_uuid(create_data(reader)) == rm_uuid(expected_data)
 
 
 def get_raw_header_contents(
