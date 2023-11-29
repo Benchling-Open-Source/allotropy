@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 
+from allotropy.allotrope.allotrope import AllotropeConversionError
+
 TTupleData = list[Optional[Union[float, bool, str]]]
 
 
@@ -197,8 +199,8 @@ class TDatacubeData:
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
         if not (self.measures is None) ^ (self.points is None):
-            error = "Exactly one of measures or points must be set"
-            raise ValueError(error)
+            error = "Exactly one of measures or points must be set on a datacube."
+            raise AllotropeConversionError(error)
 
 
 @dataclass

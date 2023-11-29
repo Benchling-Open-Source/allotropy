@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 from typing import Optional
 
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
@@ -69,8 +70,8 @@ class ClassLines:
         elif " = " in self.lines[0]:
             match = re.match("(\\S+) =", self.lines[0])
         if not match:
-            error = f"Could not determine class name for : {''.join(self.lines)}"
-            raise ValueError(error)
+            error = f"Could not determine class name for : {''.join(self.lines)}."
+            raise AllotropeConversionError(error)
         return match.groups()[0]
 
 

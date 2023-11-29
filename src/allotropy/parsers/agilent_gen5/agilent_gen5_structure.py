@@ -19,7 +19,7 @@ class Data:
         ]
 
         if not plates:
-            msg = "No plate data found in file"
+            msg = "No plate data found in file."
             raise AllotropeConversionError(msg)
 
         return Data(plates)

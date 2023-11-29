@@ -68,7 +68,7 @@ class ParserFactory:
             timestamp_parser = TimestampParser(default_timezone)
             return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
         except (ValueError, KeyError) as e:
-            error = f"Failed to create parser, unregistered vendor: {vendor_type}"
+            error = f"Failed to create parser, unregistered vendor: {vendor_type}."
             raise AllotropeConversionError(error) from e
 
 

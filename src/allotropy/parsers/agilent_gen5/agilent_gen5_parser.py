@@ -83,7 +83,7 @@ class AgilentGen5Parser(VendorParser):
                 )
             )
 
-        msg = f"Unrecognized read mode: {first_plate.plate_type.read_mode}"
+        msg = f"Unrecognized read mode: {first_plate.plate_type.read_mode}. Only 'absorbance', 'fluorescence', and 'luminescence' are supported."
         raise AllotropeConversionError(msg)
 
     def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002

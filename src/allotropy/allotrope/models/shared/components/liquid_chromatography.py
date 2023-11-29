@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueSecondTime,
@@ -120,8 +121,8 @@ class PeakItem:
         ]
         # Logic for enforcing anyOf
         if all(getattr(self, key) is None for key in any_of_keys):
-            error = f"At least one of {any_of_keys} must be set."
-            raise ValueError(error)
+            error = f"At least one of {any_of_keys} must be set on a peak."
+            raise AllotropeConversionError(error)
 
 
 @dataclass
