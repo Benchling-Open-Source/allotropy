@@ -69,10 +69,10 @@ class _ParserFactory:
             raise AllotropeConversionError(error) from e
 
 
-PARSER_FACTORY = _ParserFactory()
+_PARSER_FACTORY = _ParserFactory()
 
 
 def get_parser(
     vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
-    return PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
+    return _PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
