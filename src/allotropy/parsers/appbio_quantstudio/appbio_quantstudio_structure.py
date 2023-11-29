@@ -19,7 +19,6 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
@@ -259,10 +258,10 @@ class Well:
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
-        if well_item is None:
-            msg = f"Unable to find target DNA '{target}' for well {self.identifier}."
-            raise AllotropeConversionError(msg)
-        return well_item
+        return assert_not_none(
+            well_item,
+            msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
+        )
 
     def get_an_well_item(self) -> Optional[WellItem]:
         if not self.items:
@@ -411,11 +410,10 @@ class MulticomponentData:
     columns: dict[str, list[Optional[float]]]
 
     def get_column(self, name: str) -> list[Optional[float]]:
-        column = self.columns.get(name)
-        if column is None:
-            msg = f"Unable to obtain '{name}' from multicomponent data."
-            raise AllotropeConversionError(msg)
-        return column
+        return assert_not_none(
+            self.columns.get(name),
+            msg=f"Unable to obtain '{name}' from multicomponent data.",
+        )
 
     @staticmethod
     def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
