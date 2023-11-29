@@ -414,6 +414,31 @@ class MulticomponentData:
             raise AllotropeConversionError(msg)
         return column
 
+    @staticmethod
+    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
+        if not reader.match(r"^\[Multicomponent Data\]"):
+            return None
+        reader.pop()  # remove title
+        lines = list(reader.pop_until(r"^\[.+\]"))
+        csv_stream = StringIO("\n".join(lines))
+        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+
+    @staticmethod
+    def create(data: pd.DataFrame, well: Well) -> MulticomponentData:
+        well_data = assert_not_empty_df(
+            data[data["Well"] == well.identifier],
+            msg=f"Unable to find multi component data for well {well.identifier}.",
+        )
+
+        return MulticomponentData(
+            cycle=well_data["Cycle"].tolist(),
+            columns={
+                name: well_data[name].tolist()  # type: ignore[misc]
+                for name in well_data
+                if name not in ["Well", "Cycle", "Well Position"]
+            },
+        )
+
 
 @dataclass(frozen=True)
 class Result:

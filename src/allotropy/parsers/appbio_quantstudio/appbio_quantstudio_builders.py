@@ -39,36 +39,6 @@ from allotropy.parsers.utils.values import (
 )
 
 
-class MulticomponentDataBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame, well: Well) -> MulticomponentData:
-        well_data = MulticomponentDataBuilder.filter_well_data(data, well)
-        return MulticomponentData(
-            cycle=well_data["Cycle"].tolist(),
-            columns={
-                name: well_data[name].tolist()  # type: ignore[misc]
-                for name in well_data
-                if name not in ["Well", "Cycle", "Well Position"]
-            },
-        )
-
-    @staticmethod
-    def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
-        return assert_not_empty_df(
-            data[data["Well"] == well.identifier],
-            msg=f"Unable to find multi component data for well {well.identifier}.",
-        )
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
-
 class GenericResultsBuilder:
     @staticmethod
     def build(data: pd.DataFrame, well_item: WellItem) -> Result:
@@ -287,12 +257,12 @@ class DataBuilder:
         raw_data = RawData.create(reader)
 
         amp_data = AmplificationData.get_data(reader)
-        multi_data = MulticomponentDataBuilder.get_data(reader)
+        multi_data = MulticomponentData.get_data(reader)
         results_data, results_metadata = ResultsBuilder.get_data(reader)
         melt_data = MeltCurveRawDataBuilder.get_data(reader)
         for well in wells:
             if multi_data is not None:
-                well.multicomponent_data = MulticomponentDataBuilder.build(
+                well.multicomponent_data = MulticomponentData.create(
                     multi_data,
                     well,
                 )
