@@ -25,8 +25,10 @@ class DistributionItem:
 
     @classmethod
     def from_dict(cls, d: dict[Any, Any]) -> "DistributionItem":
-        field_names = {field.name for field in fields(cls)}
-        return cls(**{k: v for k, v in d.items() if k in field_names})
+        field_names = {field.name: field.type for field in fields(cls)}
+        return cls(
+            **{k: field_names[k](value=v) for k, v in d.items() if k in field_names}
+        )
 
 
 @dataclass

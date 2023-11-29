@@ -11,6 +11,7 @@ from allotropy.allotrope.models.shared.components.light_obscuration import (
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
+    TQuantityValueUnitless,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -93,12 +94,12 @@ class HIACParser(VendorParser):
         data = self._extract_data(df)
         distribution_document = self._create_distribution_document(data)
         model = Model(
-            dilution_factor_setting=df.at[13, 2],
+            dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
             detector_model_number=df.at[2, 5],
             analyst=df.at[11, 5],
             repetition_setting=df.at[11, 5],
-            sample_volume_setting=df.at[11, 2],
-            detector_view_volume=df.at[9, 5],
+            sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
+            detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
             measurement_identifier=df.at[2, 2],
             sample_identifier=df.at[2, 2],
             equipment_serial_number=df.at[4, 5],

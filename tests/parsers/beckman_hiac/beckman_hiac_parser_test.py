@@ -43,8 +43,7 @@ def test_get_model(test_file: Path) -> None:
             .items[i]
             .particle_size
         )
-        assert isinstance(test, float)
-        assert TQuantityValueMicrometer(test) == TQuantityValueMicrometer(particle_size)
+        assert test == TQuantityValueMicrometer(particle_size)
 
 
 def test_asm(test_file: Path) -> None:
