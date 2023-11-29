@@ -102,13 +102,13 @@ def test_header_builder() -> None:
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
-        ("model_number", "Unable to get model number"),
+        ("model_number", "Expected non-null value for Instrument Type"),
         (
             "measurement_method_identifier",
-            "Unable to get measurement method identifier",
+            "Expected non-null value for Quantification Cycle Method",
         ),
-        ("pcr_detection_chemistry", "Unable to get PCR detection chemistry"),
-        ("plate_well_count", "Unable to interpret plate well count"),
+        ("pcr_detection_chemistry", "Expected non-null value for Chemistry"),
+        ("plate_well_count", "Expected non-null value for Block Type"),
     ],
 )
 @pytest.mark.short
