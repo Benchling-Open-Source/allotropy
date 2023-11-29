@@ -1,4 +1,4 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
 
 import io
 from typing import Any, Optional
@@ -53,11 +53,11 @@ property_lookup = {
 }
 
 
-def _get_value(sample: pd.Series, column: str) -> Optional[Any]:
+def _get_value(sample: pd.Series[Any], column: str) -> Optional[Any]:
     return sample.get(column)
 
 
-def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
+def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
     return (
         property_lookup[property_name](value=value)
         if (value := _get_value(sample, property_name))
@@ -96,7 +96,7 @@ class ViCellBluParser(VendorParser):
         ]
 
     def _get_cell_counting_document_item(
-        self, sample: pd.Series
+        self, sample: pd.Series[Any]
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=_get_value(sample, "Analysis by") or DEFAULT_ANALYST,

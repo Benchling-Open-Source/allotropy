@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 from __future__ import annotations
 
 from dataclasses import fields, is_dataclass
@@ -108,7 +106,7 @@ def serialize_allotrope(model: Any) -> dict[str, Any]:
 
     def unstructure_dataclass_fn(
         cls: Any, should_omit: Callable[[str, Any], bool] = should_omit
-    ) -> Callable[[Any], dict]:
+    ) -> Callable[[Any], dict[str, Any]]:
         def unstructure(obj: Any) -> Any:
             # Break out of dataclass recursion by calling back to converter.unstructure
             if not is_dataclass(obj):

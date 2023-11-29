@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 # plate (repeated for N plates measured)
 #     Plate information
 #     Background information (optional)
@@ -21,7 +19,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import logging
 from re import search
-from typing import Optional
+from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
@@ -35,7 +33,7 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
 
-def df_to_series(df: pd.DataFrame) -> pd.Series:
+def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
     df.columns = df.iloc[0]  # type: ignore[assignment]
     return pd.Series(df.iloc[-1], index=df.columns)
 

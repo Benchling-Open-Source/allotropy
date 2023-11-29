@@ -1,4 +1,4 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
 
 import io
 from typing import Any, Optional
@@ -49,7 +49,7 @@ property_lookup = {
 }
 
 
-def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
+def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
     return property_lookup[property_name](value=value) if (value := sample.get(property_name)) else None  # type: ignore[arg-type]
 
 
@@ -80,7 +80,7 @@ class ViCellXRParser(VendorParser):
             ),
         )
 
-    def _get_device_serial_number(self, file_info: pd.Series) -> Optional[str]:
+    def _get_device_serial_number(self, file_info: pd.Series[Any]) -> Optional[str]:
         serial = str(file_info["serial"])
         try:
             serial_number = serial[serial.rindex(":") + 1 :].strip()
@@ -90,7 +90,7 @@ class ViCellXRParser(VendorParser):
         return serial_number
 
     def _get_cell_counting_document_item(
-        self, sample: pd.Series, file_version: XrVersion
+        self, sample: pd.Series[Any], file_version: XrVersion
     ) -> CellCountingDocumentItem:
         # Required fields
         try:
