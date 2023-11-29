@@ -69,7 +69,7 @@ class _ParserFactory:
             raise AllotropeConversionError(error) from e
 
 
-PARSER_FACTORY: _ParserFactory = _ParserFactory()
+PARSER_FACTORY = _ParserFactory()
 
 
 def get_parser(
