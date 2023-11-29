@@ -75,7 +75,10 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 class PerkinElmerEnvisionParser(VendorParser):
     def _parse(self, raw_contents: IOBase, filename: str) -> Model:
         reader = CsvReader(raw_contents)
-        return self._get_model(Data.create(reader), filename)
+        try:
+            return self._get_model(Data.create(reader), filename)
+        except (Exception) as error:
+            raise AllotropyError from error
 
     def _get_model(self, data: Data, filename: str) -> Model:
         if data.number_of_wells is None:
