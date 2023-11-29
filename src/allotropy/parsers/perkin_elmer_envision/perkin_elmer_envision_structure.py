@@ -276,7 +276,7 @@ class PlateMap:
 
 def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
     if reader.drop_until("^Platemap") is None:
-        msg = "Unable to get plate map information; no text found beginning with 'Platemap'."
+        msg = "No 'Platemap' section found."
         raise AllotropeConversionError(msg)
 
     reader.pop()  # remove title
@@ -397,7 +397,7 @@ class Instrument:
     @staticmethod
     def create(reader: CsvReader) -> Instrument:
         if reader.drop_until("^Instrument") is None:
-            msg = "Unable to find instrument information; no text found beginning with 'Instrument'."
+            msg = "No 'Instrument' section found."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -417,7 +417,7 @@ class Software:
     def create(reader: CsvReader) -> Software:
         exported_with_text = "Exported with "
         if reader.drop_until(exported_with_text) is None:
-            msg = f"Unable to find software information; no text found beginning with '{exported_with_text}'."
+            msg = f"Unable to find software information; no '{exported_with_text}' section found."
             raise AllotropeConversionError(msg)
 
         software_info_line = assert_not_none(reader.pop(), "software information")

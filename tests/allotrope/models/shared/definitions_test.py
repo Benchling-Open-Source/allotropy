@@ -1,5 +1,6 @@
 import pytest
 
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacubeData
 
 
@@ -21,12 +22,14 @@ def test_data_cube_data() -> None:
 
 def test_data_cube_data_oneof_post_init() -> None:
     with pytest.raises(
-        ValueError, match="Exactly one of measures or points must be set"
+        AllotropeConversionError,
+        match="Exactly one of measures or points must be set on a datacube.",
     ):
         TDatacubeData(dimensions=[["A", "B"]])
 
     with pytest.raises(
-        ValueError, match="Exactly one of measures or points must be set"
+        AllotropeConversionError,
+        match="Exactly one of measures or points must be set on a datacube.",
     ):
         TDatacubeData(dimensions=[["A", "B"]], measures=[], points=[])
 
