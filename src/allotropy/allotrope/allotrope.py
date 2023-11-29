@@ -12,10 +12,6 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
     AnalyteDocumentItem,
     MeasurementDocumentItem,
 )
-from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration_embed_schema import (
-    DifferentialCount,
-    DifferentialParticleDensity,
-)
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ProcessedDataDocumentItem,
 )
@@ -83,14 +79,8 @@ QPCR_NULLABLE_VALUE_CLASSES: dict[Any, set[str]] = {
     ProcessedDataDocumentItem: {"cycle_threshold_result"}
 }
 
-LIGHT_OBSCURATION_NULLABLE_VALUE_CLASSES: dict[Any, set[str]] = {
-    DifferentialParticleDensity: {"differential_particle_density"},
-    DifferentialCount: {"differential_count"},
-}
-
 EMPTY_VALUE_CLASS_AND_FIELD = {
     **CELL_CULTURE_NULLABLE_VALUE_CLASSES,
-    **LIGHT_OBSCURATION_NULLABLE_VALUE_CLASSES,
     **QPCR_NULLABLE_VALUE_CLASSES,
 }
 

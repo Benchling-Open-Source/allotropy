@@ -1,6 +1,7 @@
 import io
 from typing import Any
 
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration_embed_schema import (
@@ -99,7 +100,7 @@ class HIACParser(VendorParser):
                     item[prop] = get_property_from_sample(prop, float(elem[c]))
                 else:
                     item[prop] = get_property_from_sample(
-                        prop, None
+                        prop, np.nan
                     )  # TODO is there a better way here for missing props?
             items.append(DistributionItem(**item))
         # TODO get test example for data_processing_omission_setting
