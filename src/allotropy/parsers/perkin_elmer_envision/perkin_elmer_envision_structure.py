@@ -56,7 +56,12 @@ class PlateInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[PlateInfo]:
-        data = reader.pop_csv_block_as_df("^Plate information")
+        assert_not_none(
+            reader.pop_if_match("^Plate information"),
+            msg="Unable to find expected plate information",
+        )
+
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Plate information CSV block")
         series = df_to_series(data_df).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
@@ -156,8 +161,8 @@ class BasicAssayInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
-        reader.drop_until("^Basic assay information")
-        data = reader.pop_csv_block_as_df("^Basic assay information")
+        reader.drop_until_inclusive("^Basic assay information")
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Basic assay information").T
         data_df.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data_df)
@@ -173,8 +178,8 @@ class PlateType:
 
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
-        reader.drop_until("^Plate type")
-        data = reader.pop_csv_block_as_df("^Plate type")
+        reader.drop_until_inclusive("^Plate type")
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Plate type").T
         number_of_wells_str = "Number of the wells in the plate"
         return PlateType(
@@ -351,8 +356,8 @@ class Labels:
 
     @staticmethod
     def create(reader: CsvReader) -> Labels:
-        reader.drop_until("^Labels")
-        data = reader.pop_csv_block_as_df("^Labels")
+        reader.drop_until_inclusive("^Labels")
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Labels").T
         series = df_to_series(data_df).replace(np.nan, None)
 
