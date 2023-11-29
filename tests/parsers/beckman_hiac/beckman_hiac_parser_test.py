@@ -43,6 +43,7 @@ def test_get_model(test_file: Path) -> None:
         assert test.value == particle_size
 
 
+@pytest.mark.short
 def test_asm(test_file: Path) -> None:
     asm = allotrope_from_file(str(test_file), Vendor.BECKMAN_HIAC)
     assert isinstance(asm, dict)
