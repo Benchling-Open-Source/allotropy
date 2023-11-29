@@ -1,4 +1,5 @@
 import io
+import time
 from typing import Any, Optional
 import uuid
 
@@ -26,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
@@ -99,6 +101,14 @@ class ChemometecNucleoviewParser(VendorParser):
             if _get_value(data, i, "Total (cells/ml)")
         ]
 
+    def _get_date_time_or_epoch(self, time_val: Any) -> TDateTimeValue:
+        if time_val is None:
+            # return epoch time 1970-01-01 00:00:00-0500
+            return self.get_date_time(
+                time.strftime("%Y-%m-%d %H:%M:%S%z", time.gmtime(0))
+            )
+        return self.get_date_time(time_val)
+
     def _get_cell_counting_document_item(
         self, data_frame: pd.DataFrame, row: int
     ) -> CellCountingDocumentItem:
@@ -108,7 +118,7 @@ class ChemometecNucleoviewParser(VendorParser):
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
-                        measurement_time=self.get_date_time(
+                        measurement_time=self._get_date_time_or_epoch(
                             _get_value(data_frame, row, "datetime")
                         ),
                         sample_document=SampleDocument(sample_identifier=""),
