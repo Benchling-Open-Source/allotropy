@@ -1,7 +1,6 @@
 # mypy: disallow_any_generics = False
 
 from io import StringIO
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -22,7 +21,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     MulticomponentData,
     RawData,
     Result,
-    Well,
     WellItem,
     WellList,
 )
@@ -222,33 +220,6 @@ class ResultsBuilder:
         return data, metadata.str.strip()
 
 
-class MeltCurveRawDataBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
-        well_data = MeltCurveRawDataBuilder.filter_well_data(data, well)
-        return MeltCurveRawData(
-            reading=well_data["Reading"].tolist(),
-            fluorescence=well_data["Fluorescence"].tolist(),
-            derivative=well_data["Derivative"].tolist(),
-        )
-
-    @staticmethod
-    def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
-        return assert_not_empty_df(
-            data[data["Well"] == well.identifier],
-            msg=f"Unable to find melt curve raw data for well {well.identifier}.",
-        )
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Melt Curve Raw Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
-
 class DataBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Data:
@@ -259,7 +230,7 @@ class DataBuilder:
         amp_data = AmplificationData.get_data(reader)
         multi_data = MulticomponentData.get_data(reader)
         results_data, results_metadata = ResultsBuilder.get_data(reader)
-        melt_data = MeltCurveRawDataBuilder.get_data(reader)
+        melt_data = MeltCurveRawData.get_data(reader)
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = MulticomponentData.create(
@@ -268,7 +239,7 @@ class DataBuilder:
                 )
 
             if melt_data is not None:
-                well.melt_curve_raw_data = MeltCurveRawDataBuilder.build(
+                well.melt_curve_raw_data = MeltCurveRawData.create(
                     melt_data,
                     well,
                 )
