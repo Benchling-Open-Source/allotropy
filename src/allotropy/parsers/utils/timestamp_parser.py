@@ -25,7 +25,7 @@ class TimestampParser:
 
     def __init__(self, default_timezone: Optional[tzinfo] = None):
         if default_timezone and not isinstance(default_timezone, tzinfo):
-            msg = f"Invalid default timezone '{default_timezone}'"
+            msg = f"Invalid default timezone '{default_timezone}'."
             raise AllotropeConversionError(msg)
         self.default_timezone = default_timezone or ZoneInfo("UTC")
 
@@ -42,7 +42,7 @@ class TimestampParser:
         try:
             timestamp = parser.parse(time, tzinfos=TIMEZONE_CODES_MAP, fuzzy=True)
         except ValueError as e:
-            msg = f"Could not parse time '{time}'"
+            msg = f"Could not parse time '{time}'."
             raise AllotropeConversionError(msg) from e
         if not timestamp.tzinfo:
             timestamp = timestamp.replace(tzinfo=self.default_timezone)

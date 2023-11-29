@@ -50,7 +50,7 @@ class Analyte:
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
         if raw_name not in ANALYTE_MAPPINGS:
-            msg = "Invalid analyte name"
+            msg = f"Invalid analyte name; expected to be one of {list(ANALYTE_MAPPINGS.keys())}."
             raise AllotropeConversionError(msg)
 
         mapping = ANALYTE_MAPPINGS[raw_name]
@@ -112,13 +112,13 @@ class SampleList:
         sample_data_rows = [row for _, row in data.iterrows()]
 
         if not sample_data_rows:
-            msg = "Unable to get any sample"
+            msg = "Unable to get any sample."
             raise AllotropeConversionError(msg)
 
         analyst = sample_data_rows[0].get("Operator")
 
         if analyst is None:
-            msg = "Unable to get analyst from data"
+            msg = "Unable to identify the Operator."
             raise AllotropeConversionError(msg)
 
         return SampleList(

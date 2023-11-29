@@ -26,7 +26,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropyError
+from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
@@ -76,8 +76,8 @@ class PlateInfo:
 
         search_result = search("De=...", str(series.get("Measinfo", "")))
         if not search_result:
-            msg = f"Unable to get emition filter id from plate {barcode}"
-            raise AllotropyError(msg)
+            msg = f"Unable to get emission filter ID from Plate {barcode}"
+            raise AllotropeConversionError(msg)
         emission_filter_id = search_result.group().removeprefix("De=")
 
         measurement_time = str(series.get("Measurement date", ""))
@@ -218,8 +218,8 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
         if encoding.startswith(pattern):
             return value
 
-    msg = f"Unable to determine sample role type of plate map encoding {encoding}"
-    raise ValueError(msg)
+    msg = f"Unable to determine sample role type of plate map encoding {encoding}; expected to start with one of {list(sample_role_type_map.keys())}."
+    raise AllotropeConversionError(msg)
 
 
 @dataclass
@@ -269,15 +269,15 @@ class PlateMap:
             return self.sample_role_type_mapping[row][col]
         except KeyError as e:
             msg = (
-                f"Invalid plate map location for plate map {self.plate_n}: {col} {row}"
+                f"Invalid plate map location for plate map {self.plate_n}: {col} {row}."
             )
-            raise AllotropyError(msg) from e
+            raise AllotropeConversionError(msg) from e
 
 
 def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
     if reader.drop_until("^Platemap") is None:
-        msg = "Unable to get plate map information"
-        raise AllotropyError(msg)
+        msg = "Unable to get plate map information; no text found beginning with 'Platemap'."
+        raise AllotropeConversionError(msg)
 
     reader.pop()  # remove title
 
@@ -317,15 +317,15 @@ class Filter:
 
         search_result = search("(CWL)=\\d*nm", description)
         if search_result is None:
-            msg = f"Unable to find wavelength for filter {name}"
-            raise AllotropyError(msg)
+            msg = f"Unable to find wavelength for filter {name}."
+            raise AllotropeConversionError(msg)
         wavelength = float(
             search_result.group().removeprefix("CWL=").removesuffix("nm")
         )
         search_result = search("BW=\\d*nm", description)
         if search_result is None:
-            msg = f"Unable to find bandwidth for filter {name}"
-            raise AllotropyError(msg)
+            msg = f"Unable to find bandwidth for filter {name}."
+            raise AllotropeConversionError(msg)
         bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
 
         return Filter(name, wavelength, bandwidth=bandwidth)
@@ -397,8 +397,8 @@ class Instrument:
     @staticmethod
     def create(reader: CsvReader) -> Instrument:
         if reader.drop_until("^Instrument") is None:
-            msg = "Unable to find instrument information"
-            raise AllotropyError(msg)
+            msg = "Unable to find instrument information; no text found beginning with 'Instrument'."
+            raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
 
@@ -417,8 +417,8 @@ class Software:
     def create(reader: CsvReader) -> Software:
         exported_with_text = "Exported with "
         if reader.drop_until(exported_with_text) is None:
-            msg = "Unable to find software information"
-            raise AllotropyError(msg)
+            msg = f"Unable to find software information; no text found beginning with '{exported_with_text}'."
+            raise AllotropeConversionError(msg)
 
         software_info_line = assert_not_none(reader.pop(), "software information")
         software_info = [

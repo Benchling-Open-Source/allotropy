@@ -305,12 +305,12 @@ class AmplificationDataBuilder:
     ) -> pd.DataFrame:
         well_data = assert_not_empty_df(
             amplification_data[amplification_data["Well"] == well_item.identifier],
-            msg=f"Unable to get amplification data for well {well_item.identifier}",
+            msg=f"Unable to get amplification data for well {well_item.identifier}.",
         )
 
         return assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to get amplification data for well {well_item.identifier}",
+            msg=f"Unable to get amplification data for well {well_item.identifier}.",
         )
 
     @staticmethod
@@ -342,7 +342,7 @@ class MulticomponentDataBuilder:
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
         return assert_not_empty_df(
             data[data["Well"] == well.identifier],
-            msg=f"Unable to find multi component data for well {well.identifier}",
+            msg=f"Unable to find multi component data for well {well.identifier}.",
         )
 
     @staticmethod
@@ -412,17 +412,17 @@ class GenericResultsBuilder:
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to get result data for well {well_item.identifier}.",
         )
 
         target_data = assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to get result data for well {well_item.identifier}.",
         )
 
         return df_to_series(
             target_data,
-            f"Unexpected number of results associated to well {well_item.identifier}",
+            f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
         )
 
 
@@ -485,18 +485,18 @@ class GenotypingResultsBuilder:
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to get result data for well {well_item.identifier}.",
         )
 
         snp_assay_name, _ = well_item.target_dna_description.split("-")
         target_data = assert_not_empty_df(
             well_data[well_data["SNP Assay Name"] == snp_assay_name],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to get result data for well {well_item.identifier}.",
         )
 
         return df_to_series(
             target_data,
-            msg=f"Unexpected number of results associated to well {well_item.identifier}",
+            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
         )
 
 
@@ -552,7 +552,7 @@ class MeltCurveRawDataBuilder:
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
         return assert_not_empty_df(
             data[data["Well"] == well.identifier],
-            msg=f"Unable to get melt curve raw data for well {well.identifier}",
+            msg=f"Unable to get melt curve raw data for well {well.identifier}.",
         )
 
     @staticmethod

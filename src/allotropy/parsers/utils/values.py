@@ -12,7 +12,7 @@ def try_int(value: Optional[str], value_name: str) -> int:
     try:
         return int(assert_not_none(value, value_name))
     except ValueError as e:
-        msg = f"Invalid integer string: '{value}'"
+        msg = f"Invalid integer string: '{value}'."
         raise AllotropeConversionError(msg) from e
 
 
@@ -27,7 +27,7 @@ def try_float(value: Optional[str], value_name: str) -> float:
     try:
         return float(assert_not_none(value, value_name))
     except ValueError as e:
-        msg = f"Invalid float string: '{value}'"
+        msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
 
 
@@ -53,7 +53,7 @@ def assert_not_none(
     value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
 ) -> T:
     if value is None:
-        error = msg or f"Expected non-null value{f' for {name}' if name else ''}"
+        error = msg or f"Expected non-null value{f' for {name}' if name else ''}."
         raise AllotropeConversionError(error)
     return value
 
@@ -103,7 +103,7 @@ def try_int_from_series_or_none(
         value = data.get(key)
         return try_int(str(value), key)
     except Exception as e:
-        msg = f"Unable to convert {key} to integer value"
+        msg = f"Unable to convert '{value}' (with key '{key}') to integer value."
         raise AllotropeConversionError(msg) from e
 
 
@@ -123,7 +123,7 @@ def try_float_from_series_or_none(
         value = data.get(key)
         return try_float_or_none(str(value))
     except Exception as e:
-        msg = f"Unable to convert {key} to float value"
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
         raise AllotropeConversionError(msg) from e
 
 
@@ -143,5 +143,5 @@ def try_bool_from_series_or_none(
         value = data.get(key)
         return None if value is None else bool(value)
     except Exception as e:
-        msg = f"Unable to convert {key} to bool value"
+        msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
