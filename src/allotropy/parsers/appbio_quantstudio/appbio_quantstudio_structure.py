@@ -18,9 +18,7 @@ import uuid
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
-    ExperimentType,
-)
+from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
@@ -28,6 +26,11 @@ from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
+    df_to_series,
+    try_bool_from_series_or_none,
+    try_float_from_series,
+    try_float_from_series_or_none,
+    try_float_or_none,
     try_int,
     try_int_from_series,
     try_str_from_series,
@@ -467,6 +470,172 @@ class Result:
     r_squared: Optional[float]
     slope: Optional[float]
     efficiency: Optional[float]
+
+    @staticmethod
+    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series[str]]:
+        assert_not_none(
+            reader.drop_until(r"^\[Results\]"),
+            msg="Unable to find 'Results' section in file.",
+        )
+
+        reader.pop()  # remove title
+        data_lines = list(reader.pop_until_empty())
+        csv_stream = StringIO("\n".join(data_lines))
+        data = pd.read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
+
+        reader.drop_empty()
+
+        if reader.match(r"\[.+\]"):
+            return data, pd.Series()
+
+        metadata_lines = list(reader.pop_until_empty())
+        csv_stream = StringIO("\n".join(metadata_lines))
+        raw_data = pd.read_csv(
+            csv_stream, header=None, sep="=", names=["index", "values"]
+        )
+        metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
+        metadata.index = metadata.index.str.strip()
+
+        reader.drop_empty()
+
+        return data, metadata.str.strip()
+
+    @staticmethod
+    def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
+        well_data = assert_not_empty_df(
+            data[data["Well"] == well_item.identifier],
+            msg=f"Unable to find result data for well {well_item.identifier}.",
+        )
+
+        snp_assay_name, _ = well_item.target_dna_description.split("-")
+        target_data = df_to_series(
+            assert_not_empty_df(
+                well_data[well_data["SNP Assay Name"] == snp_assay_name],
+                msg=f"Unable to find result data for well {well_item.identifier}.",
+            ),
+            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+        )
+
+        _, raw_allele = well_item.target_dna_description.split("-")
+        allele = raw_allele.replace(" ", "")
+        cycle_threshold_value_setting = try_float_from_series(
+            target_data,
+            f"{allele} Ct Threshold",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
+        )
+
+        cycle_threshold_result = assert_not_none(
+            target_data.get(f"{allele} Ct"),
+            msg="Unable to find cycle threshold result",
+        )
+
+        return Result(
+            cycle_threshold_value_setting=cycle_threshold_value_setting,
+            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
+                target_data, f"{allele} Automatic Ct Threshold"
+            ),
+            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
+                target_data, f"{allele} Automatic Baseline"
+            ),
+            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
+            baseline_corrected_reporter_result=try_float_from_series_or_none(
+                target_data, f"{allele} Delta Rn"
+            ),
+            genotyping_determination_result=try_str_from_series_or_none(
+                target_data, "Call"
+            ),
+            genotyping_determination_method_setting=try_float_from_series_or_none(
+                target_data, "Threshold Value"
+            ),
+            quantity=try_float_from_series_or_none(target_data, "Quantity"),
+            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
+            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
+            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
+            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
+            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
+            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
+            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
+            rq=try_float_from_series_or_none(target_data, "RQ"),
+            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
+            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
+            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
+            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
+            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
+            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
+            slope=try_float_from_series_or_none(target_data, "Slope"),
+            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
+        )
+
+    @staticmethod
+    def create_generic(data: pd.DataFrame, well_item: WellItem) -> Result:
+        well_data = assert_not_empty_df(
+            data[data["Well"] == well_item.identifier],
+            msg=f"Unable to find result data for well {well_item.identifier}.",
+        )
+
+        target_data = df_to_series(
+            assert_not_empty_df(
+                well_data[well_data["Target Name"] == well_item.target_dna_description],
+                msg=f"Unable to find result data for well {well_item.identifier}.",
+            ),
+            f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+        )
+
+        cycle_threshold_result = assert_not_none(
+            target_data.get("CT"),
+            msg="Unable to find cycle threshold result",
+        )
+
+        return Result(
+            cycle_threshold_value_setting=try_float_from_series(
+                target_data,
+                "Ct Threshold",
+                msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
+            ),
+            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
+                target_data, "Automatic Ct Threshold"
+            ),
+            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
+                target_data, "Automatic Baseline"
+            ),
+            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
+            baseline_corrected_reporter_result=try_float_from_series_or_none(
+                target_data, "Delta Rn"
+            ),
+            genotyping_determination_result=try_str_from_series_or_none(
+                target_data, "Call"
+            ),
+            genotyping_determination_method_setting=try_float_from_series_or_none(
+                target_data, "Threshold Value"
+            ),
+            quantity=try_float_from_series_or_none(target_data, "Quantity"),
+            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
+            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
+            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
+            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
+            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
+            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
+            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
+            rq=try_float_from_series_or_none(target_data, "RQ"),
+            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
+            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
+            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
+            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
+            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
+            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
+            slope=try_float_from_series_or_none(target_data, "Slope"),
+            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
+        )
+
+    @staticmethod
+    def create(
+        data: pd.DataFrame, well_item: WellItem, experiment_type: ExperimentType
+    ) -> Result:
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            return Result.create_genotyping(data, well_item)
+        return Result.create_generic(data, well_item)
 
 
 @dataclass(frozen=True)
