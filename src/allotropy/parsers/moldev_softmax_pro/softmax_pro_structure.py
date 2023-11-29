@@ -264,7 +264,10 @@ class PlateBlock(Block):
             well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
             data_header = split_lines[1]
             data_lines = split_lines[2:]
-            export_format_list = [ExportFormat.TIME_FORMAT.value, ExportFormat.PLATE_FORMAT.value]
+            export_format_list = [
+                ExportFormat.TIME_FORMAT.value,
+                ExportFormat.PLATE_FORMAT.value,
+            ]
             if export_format == ExportFormat.TIME_FORMAT.value:
                 PlateBlock._parse_time_format_data(
                     wavelengths,
