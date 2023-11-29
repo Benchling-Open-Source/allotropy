@@ -1,5 +1,6 @@
 import io
 
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.components.light_obscuration import (
@@ -79,9 +80,12 @@ class HIACParser(VendorParser):
                 if c in elem:
                     item[prop] = float(elem[c])
                 else:
-                    item[prop] = float(1)
+                    item[
+                        prop
+                    ] = np.nan  # TODO is there a better way here for missing props?
             items.append(DistributionItem.from_dict(item))
         d = Distribution(items=items)
+        # TODO get test example for data_processing_omission_setting
         dd = DistributionDocument(items=[d], data_processing_omission_setting=False)
         return dd
 
@@ -107,7 +111,9 @@ class HIACParser(VendorParser):
             measurement_document=MeasurementDocument(
                 distribution_document=distribution_document
             ),
-            flush_volume_setting=TQuantityValueMilliliter(0),
+            flush_volume_setting=TQuantityValueMilliliter(
+                0
+            ),  # TODO get test example for this
             measurement_time=pd.to_datetime(
                 str(df.at[8, 5]).replace(".", "-")
             ).isoformat(timespec="microseconds")
