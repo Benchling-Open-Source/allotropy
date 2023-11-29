@@ -29,8 +29,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
-    APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
+    APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
@@ -45,22 +45,19 @@ VendorType = Union[Vendor, str]
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
-    Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
+    Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
-    Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
+    Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
 }
 
 
-class ParserFactory:
-    def __init__(self) -> None:
-        pass
-
+class _ParserFactory:
     def create(
         self, vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
     ) -> VendorParser:
@@ -72,10 +69,10 @@ class ParserFactory:
             raise AllotropeConversionError(error) from e
 
 
+PARSER_FACTORY: _ParserFactory = _ParserFactory()
+
+
 def get_parser(
     vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
     return PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
-
-
-PARSER_FACTORY: ParserFactory = ParserFactory()
