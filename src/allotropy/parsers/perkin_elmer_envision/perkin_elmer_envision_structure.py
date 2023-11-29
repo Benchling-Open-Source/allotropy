@@ -27,7 +27,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
-from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
