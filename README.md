@@ -19,6 +19,11 @@ We currently have parser support for the following instruments:
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 
+
+# Contributing
+We welcome community contributions to this library and we hope that together we can expand the coverage of ASM-ready data for everyone. If you are interested, please read our [contribution guidelines](CONTRIBUTING.md).
+
+
 # Usage
 
 Convert a file to an ASM dictionary:
@@ -68,6 +73,7 @@ To add requirements used by the library, update `dependencies` in `pyproject.tom
 - For test dependencies, update `dependencies` under `[tool.hatch.envs.test]`.
 
 ### Useful Hatch commands
+List all environments:
 ```sh
 hatch env show
 ```
@@ -87,9 +93,19 @@ Run all tests:
 hatch run test:test
 ```
 
+Run a specific test file (replace the filepath with your own):
+```sh
+hatch run test:test tests/allotrope/allotrope_test.py
+```
+
 Run all tests with coverage:
 ```sh
 hatch run test:cov
+```
+
+Spawn a shell within an environment for development:
+```sh
+hatch shell
 ```
 
 ### Publish

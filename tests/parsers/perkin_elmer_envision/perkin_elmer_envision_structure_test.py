@@ -2,7 +2,7 @@ from io import StringIO
 
 import pytest
 
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
@@ -225,7 +225,7 @@ def test_create_plate_maps() -> None:
             group_n="1",
             sample_role_type_mapping={
                 "01": {
-                    "A": SampleRoleType.undefined_sample_role,
+                    "A": SampleRoleType.unknown_sample_role,
                     "C": SampleRoleType.standard_sample_role,
                 },
                 "02": {"B": SampleRoleType.control_sample_role},
