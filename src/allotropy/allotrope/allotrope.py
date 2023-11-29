@@ -21,10 +21,6 @@ class AllotropeConversionError(Exception):
     pass
 
 
-class AllotropyError(Exception):
-    pass
-
-
 # TODO: gather exceptions when parsing models from schema and publish them in model
 SPECIAL_KEYS = {
     "manifest": "$asm.manifest",

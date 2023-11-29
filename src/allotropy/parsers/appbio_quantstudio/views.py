@@ -41,13 +41,13 @@ class ViewData(Generic[T]):
         item = self.get_item(*keys)
         if isinstance(item, ViewData):
             return item
-        msg = f"Unable to get sub view data with keys {keys}"
+        msg = f"Unable to get sub view data with keys: {keys}."
         raise AllotropeConversionError(msg)
 
     def get_leaf_item(self, *keys: str) -> list[T]:
         item = self.get_item(*keys)
         if isinstance(item, ViewData):
-            msg = f"Unable to get leaf item of view data with keys {keys}"
+            msg = f"Unable to get leaf item of view data with keys: {keys}."
             raise AllotropeConversionError(msg)
         return item
 

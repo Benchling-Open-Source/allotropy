@@ -265,7 +265,7 @@ class WellBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
         if reader.drop_until(r"^\[Sample Setup\]") is None:
-            msg = "Unable to find Sample Setup section in input file"
+            msg = "Unable to find 'Sample Setup' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -316,7 +316,7 @@ class AmplificationDataBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
         if reader.drop_until(r"^\[Amplification Data\]") is None:
-            msg = "Unable to find Amplification Data section in input file"
+            msg = "Unable to find 'Amplification Data' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -512,7 +512,7 @@ class ResultsBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series]:
         if reader.drop_until(r"^\[Results\]") is None:
-            msg = "Unable to find Results section in input file"
+            msg = "Unable to find 'Results' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title

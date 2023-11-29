@@ -113,7 +113,7 @@ class Block:
             if lines[0].startswith(key):
                 return cls.create(lines)
 
-        error = f"unrecognized block {lines[0]}"
+        error = f"Expected block '{lines[0]}' to start with one of {list(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
@@ -177,7 +177,7 @@ class WellData:
         self.wavelengths.append(wavelength)
         if temperature is not None:
             if self.temperature is not None and temperature != self.temperature:
-                error = "Expected all measurements to have the same temperature"
+                error = f"Expected all measurements to have the same temperature, but two have differing values of {self.temperature} and {temperature}."
                 raise AllotropeConversionError(error)
             self.temperature = temperature
 
@@ -233,7 +233,7 @@ class PlateBlock(Block):
                 _,  # Read mode
             ] = header[:6]
             if export_version != EXPORT_VERSION:
-                error = f"Invalid export version {export_version}"
+                error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
                 raise AllotropeConversionError(error)
 
             data_type_idx = cls.get_data_type_idx()
@@ -264,6 +264,7 @@ class PlateBlock(Block):
             well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
             data_header = split_lines[1]
             data_lines = split_lines[2:]
+            export_format_list = [ExportFormat.TIME_FORMAT.value, ExportFormat.PLATE_FORMAT.value]
             if export_format == ExportFormat.TIME_FORMAT.value:
                 PlateBlock._parse_time_format_data(
                     wavelengths,
@@ -290,7 +291,7 @@ class PlateBlock(Block):
                     data_lines,
                 )
             else:
-                error = f"unrecognized export format {export_format}"
+                error = f"Unrecognized export format {export_format}; expected to be one of {export_format_list}."
                 raise AllotropeConversionError(error)
 
             return cls(
@@ -316,7 +317,7 @@ class PlateBlock(Block):
                 cutoff_filters=extra_attr.cutoff_filters,
             )
 
-        error = f"unrecognized read mode {read_mode}"
+        error = f"Unrecognized read mode: {read_mode}. Only {list(plate_block_cls.keys())} are supported."
         raise AllotropeConversionError(error)
 
     @staticmethod

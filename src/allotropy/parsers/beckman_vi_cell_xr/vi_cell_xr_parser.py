@@ -92,6 +92,7 @@ class ViCellXRParser(VendorParser):
     def _get_cell_counting_document_item(
         self, sample: pd.Series, file_version: XrVersion
     ) -> CellCountingDocumentItem:
+        required_fields_list = ["Viability (%)", "Total cells", "Viable cells/ml (x10^6)"]
         # Required fields
         try:
             viability__cell_counter_ = TQuantityValuePercent(
@@ -104,7 +105,7 @@ class ViCellXRParser(VendorParser):
                 )
             )
         except KeyError as e:
-            error = f"required value not found {e}"
+            error = f"Expected to find lines with all of these headers: {required_fields_list}."
             raise AllotropeConversionError(error) from e
 
         return CellCountingDocumentItem(

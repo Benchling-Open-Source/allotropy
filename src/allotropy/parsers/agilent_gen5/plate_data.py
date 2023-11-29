@@ -110,7 +110,7 @@ class PlateNumber:
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata key {line_split[0]}; expected to be one of {list(METADATA_PREFIXES)}."
+                msg = f"Unrecognized metadata key '{line_split[0]}'; expected to be one of {list(METADATA_PREFIXES)}."
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
@@ -151,7 +151,7 @@ class PlateType:
         elif self.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceDataPoint
 
-        msg = f"Unrecognized read mode: {self.read_mode}. Only 'absorbance', 'fluorescence', and 'luminescence' are supported."
+        msg = f"Unrecognized read mode: {self.read_mode}. Only {ReadMode._member_names_} are supported."
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -163,7 +163,7 @@ class PlateType:
         elif ReadMode.LUMINESCENCE.value in data_section:
             return ReadMode.LUMINESCENCE
 
-        msg = "Read mode not found; expected to find one of 'absorbance', 'fluorescence', or 'luminescence'."
+        msg = f"Read mode not found; expected to find one of {ReadMode._member_names_}."
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -275,7 +275,7 @@ class ActualTemperature:
     @staticmethod
     def create(actual_temperature: str) -> ActualTemperature:
         if len(actual_temperature.split("\n")) != 1:
-            msg = f"Expected the Temperature section {actual_temperature} to contain exactly 1 line."
+            msg = f"Expected the Temperature section '{actual_temperature}' to contain exactly 1 line."
             raise AllotropeConversionError(msg)
 
         return ActualTemperature(
@@ -383,7 +383,7 @@ class CurveName:
         lines = stdcurve.splitlines()
         num_lines = 2
         if len(lines) != num_lines:
-            msg = f"Expected the std curve data {lines} to contain exactly {num_lines} lines."
+            msg = f"Expected the std curve data '{lines}' to contain exactly {num_lines} lines."
             raise AllotropeConversionError(msg)
         keys = lines[0].split("\t")
         values = lines[1].split("\t")

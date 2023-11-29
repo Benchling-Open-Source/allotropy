@@ -70,7 +70,7 @@ class ClassLines:
         elif " = " in self.lines[0]:
             match = re.match("(\\S+) =", self.lines[0])
         if not match:
-            error = f"Could not determine class name for : {''.join(self.lines)}."
+            error = f"Could not determine class name for: {''.join(self.lines)}."
             raise AllotropeConversionError(error)
         return match.groups()[0]
 
