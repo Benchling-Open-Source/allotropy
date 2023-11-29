@@ -45,6 +45,7 @@ def from_file(test_file: str, vendor_type: VendorType) -> dict[str, Any]:
 
 
 def validate_schema(allotrope_dict: dict[str, Any], schema_relative_path: str) -> None:
+    """Check that the newly created allotrope_dict matches the pre-defined schema from Allotrope."""
     allotrope_schema = get_schema(schema_relative_path)
     jsonschema.validate(
         allotrope_dict,
@@ -54,6 +55,7 @@ def validate_schema(allotrope_dict: dict[str, Any], schema_relative_path: str) -
 
 
 def validate_contents(allotrope_dict: dict[str, Any], expected_file: str) -> None:
+    """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     with open(expected_file) as f:
         expected_dict = json.load(f)
         assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
