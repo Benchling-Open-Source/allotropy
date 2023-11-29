@@ -7,7 +7,7 @@ import pandas as pd
 class NucleoviewReader:
     @classmethod
     def read(cls, contents: io.IOBase) -> pd.DataFrame:
-        df = pd.read_csv(contents, skipfooter=1, sep=";", index_col=False)  # type: ignore[call-overload]
+        df = cast(pd.DataFrame, pd.read_csv(contents, skipfooter=1, sep=";", index_col=False))  # type: ignore[call-overload]
 
         # drop last column
         df = df.drop(df.columns[2], axis=1)
@@ -17,10 +17,12 @@ class NucleoviewReader:
         df = df[df[df.columns[1]] != " "]
 
         # add a common index to all rows for our group by and pivot
-        df.index = [0] * len(df)
+        df["group_by"] = ["Group1"] * len(df)
 
         # pivot to wide format
-        raw_data = df.pivot(columns=df.columns[0], values=df.columns[1])
+        raw_data = df.pivot(
+            index="group_by", columns=df.columns[0], values=df.columns[1]
+        )
 
         # give timezone offset a positive symbol if not present
         if "Time zone offset" in raw_data.columns and "Date time" in raw_data.columns:
@@ -34,4 +36,4 @@ class NucleoviewReader:
             )
         raw_data["Sample ID"] = raw_data["Image"].str.split("-", n=3).str[3]
 
-        return cast(pd.DataFrame, raw_data)
+        return raw_data
