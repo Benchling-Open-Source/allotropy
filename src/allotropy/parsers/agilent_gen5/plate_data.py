@@ -110,7 +110,7 @@ class PlateNumber:
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata key '{line_split[0]}'; expected to be one of {list(METADATA_PREFIXES)}."
+                msg = f"Unrecognized metadata key '{line_split[0]}'; expected to be one of {sorted(METADATA_PREFIXES)}."
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
@@ -151,7 +151,7 @@ class PlateType:
         elif self.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceDataPoint
 
-        msg = f"Unrecognized read mode: {self.read_mode}. Only {ReadMode._member_names_} are supported."
+        msg = f"Unrecognized read mode: {self.read_mode}. Only {sorted(ReadMode._member_names_)} are supported."
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -163,7 +163,7 @@ class PlateType:
         elif ReadMode.LUMINESCENCE.value in data_section:
             return ReadMode.LUMINESCENCE
 
-        msg = f"Read mode not found; expected to find one of {ReadMode._member_names_}."
+        msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
         raise AllotropeConversionError(msg)
 
     @staticmethod

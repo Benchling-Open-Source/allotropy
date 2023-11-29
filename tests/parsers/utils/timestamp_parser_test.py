@@ -10,7 +10,7 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 def test_timestamp_parser_init_fails_invalid_default_timezone() -> None:
     with pytest.raises(
-        AllotropeConversionError, match="Invalid default timezone 'timezone'"
+        AllotropeConversionError, match="Invalid default timezone 'timezone'."
     ):
         TimestampParser("timezone")  # type: ignore[arg-type]
 
@@ -62,7 +62,7 @@ def test_timestamp_parser_provided_timezone(
 @pytest.mark.parametrize("time_str", ["blah"])
 def test_timestamp_parser_fails_on_invalid_timestamp(time_str: str) -> None:
     parser = TimestampParser()
-    with pytest.raises(AllotropeConversionError, match="Could not parse time 'blah'"):
+    with pytest.raises(AllotropeConversionError, match="Could not parse time 'blah'."):
         parser.parse(time_str)
 
 

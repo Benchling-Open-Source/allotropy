@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 from allotropy.allotrope.allotrope import serialize_allotrope
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.parser_factory import PARSER_FACTORY, VendorType
 
 
@@ -33,10 +34,14 @@ def allotrope_from_file(
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
 ) -> dict[str, Any]:
-    with open(filepath, "rb") as f:
-        return allotrope_from_io(
-            f, Path(filepath).name, vendor_type, default_timezone=default_timezone
-        )
+    try:
+        with open(filepath, "rb") as f:
+            return allotrope_from_io(
+                f, Path(filepath).name, vendor_type, default_timezone=default_timezone
+            )
+    except FileNotFoundError as e:
+        msg = f"File not found: {filepath}."
+        raise AllotropeConversionError(msg) from e
 
 
 def allotrope_model_from_file(

@@ -218,7 +218,7 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
         if encoding.startswith(pattern):
             return value
 
-    msg = f"Unable to determine sample role type of plate map encoding {encoding}; expected to start with one of {list(sample_role_type_map.keys())}."
+    msg = f"Unable to determine sample role type of plate map encoding {encoding}; expected to start with one of {sorted(sample_role_type_map.keys())}."
     raise AllotropeConversionError(msg)
 
 

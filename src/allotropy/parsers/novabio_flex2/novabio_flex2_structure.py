@@ -50,7 +50,7 @@ class Analyte:
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
         if raw_name not in ANALYTE_MAPPINGS:
-            msg = f"Invalid analyte name; expected to be one of {list(ANALYTE_MAPPINGS.keys())}."
+            msg = f"Invalid analyte name; expected to be one of {sorted(ANALYTE_MAPPINGS.keys())}."
             raise AllotropeConversionError(msg)
 
         mapping = ANALYTE_MAPPINGS[raw_name]

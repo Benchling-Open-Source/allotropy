@@ -67,5 +67,5 @@ def test_to_allotrope_luminescence(filename: str) -> None:
 
 
 def test_to_allotrope_invalid_plate_data() -> None:
-    with pytest.raises(AllotropeConversionError, match="No plate data found in file"):
+    with pytest.raises(AllotropeConversionError, match="No plate data found in file."):
         from_file("tests/parsers/agilent_gen5/testdata/garbage.txt", VENDOR_TYPE)

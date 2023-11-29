@@ -113,7 +113,7 @@ class Block:
             if lines[0].startswith(key):
                 return cls.create(lines)
 
-        error = f"Expected block '{lines[0]}' to start with one of {list(block_cls_by_type.keys())}."
+        error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
@@ -264,10 +264,6 @@ class PlateBlock(Block):
             well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
             data_header = split_lines[1]
             data_lines = split_lines[2:]
-            export_format_list = [
-                ExportFormat.TIME_FORMAT.value,
-                ExportFormat.PLATE_FORMAT.value,
-            ]
             if export_format == ExportFormat.TIME_FORMAT.value:
                 PlateBlock._parse_time_format_data(
                     wavelengths,
@@ -294,7 +290,7 @@ class PlateBlock(Block):
                     data_lines,
                 )
             else:
-                error = f"Unrecognized export format {export_format}; expected to be one of {export_format_list}."
+                error = f"Unrecognized export format {export_format}; expected to be one of {sorted(ExportFormat._member_names_)}."
                 raise AllotropeConversionError(error)
 
             return cls(
@@ -320,7 +316,7 @@ class PlateBlock(Block):
                 cutoff_filters=extra_attr.cutoff_filters,
             )
 
-        error = f"Unrecognized read mode: {read_mode}. Only {list(plate_block_cls.keys())} are supported."
+        error = f"Unrecognized read mode: {read_mode}. Only {sorted(plate_block_cls.keys())} are supported."
         raise AllotropeConversionError(error)
 
     @staticmethod
@@ -408,7 +404,7 @@ class PlateBlock(Block):
             reduced_row = data_lines[-1][: num_wells + 2]
             PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
-            error = f"Unrecognized data type {data_type}; expected to be one of {DataType._member_names_}."
+            error = f"Unrecognized data type {data_type}; expected to be one of {sorted(DataType._member_names_)}."
             raise AllotropeConversionError(error)
 
     @staticmethod
@@ -473,7 +469,7 @@ class PlateBlock(Block):
                 num_columns, data_header, well_data, reduced_data_rows
             )
         else:
-            error = f"Unrecognized data type {data_type}; expected to be one of {DataType._member_names_}."
+            error = f"Unrecognized data type {data_type}; expected to be one of {sorted(DataType._member_names_)}."
             raise AllotropeConversionError(error)
 
     @staticmethod
@@ -518,7 +514,7 @@ class PlateBlock(Block):
         elif self.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}:
             dimensions = [("int", "wavelength", "nm")]
         else:
-            error = f"Cannot make data cube for read type {self.read_type}; only {ReadType._member_names_} are supported."
+            error = f"Cannot make data cube for read type {self.read_type}; only {sorted(ReadType._member_names_)} are supported."
             raise AllotropeConversionError(error)
         if self.has_wavelength_dimension:
             dimensions.append(("int", "wavelength", "nm"))
