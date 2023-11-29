@@ -1,6 +1,6 @@
 # Introduction
 
-We welcome community contributions to this library and we hope that together we can expand the coverage of ASM ready data for everyone.
+We welcome community contributions to this library and we hope that together we can expand the coverage of ASM-ready data for everyone.
 
 In order to contribute you will need to have an Individual or Corporate Contributor License Agreement (CLA) on file with Benchling depending on if you are contributing on your own time or as part of another company. When you make your first pull request we will check if you have a CLA and if not take care of that with you first. The process is quick and painless and helps us to make sure that you and everyone who uses your code in the future is protected.
 
@@ -13,7 +13,20 @@ All commits to this repository must be signed. To set up commit signatures, plea
 - [Tell Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key).
   - Follow up until step 5.
 
-To configure commits to be signed by default within this repo, run `git config commit.gpgsign true`.
+To configure commits to be signed by default within this repo, run this line:
+```sh
+git config commit.gpgsign true
+``````
+
+If you have a passphrase on your GPG key, be sure to add this line to your `~/.zshrc` or `~/.bashrc` (or your respective shell configuration file):
+
+```sh
+export GPG_TTY=$(tty)
+```
+
+> [!NOTE]
+> If you are having trouble signing your commits, when adding commits, make sure to `exit` any `hatch shell` you may have open. Developers have reported issues trying to do so, as commit signing does not work properly in a virtual environment.
+
 
 # Adding a new converter
 
