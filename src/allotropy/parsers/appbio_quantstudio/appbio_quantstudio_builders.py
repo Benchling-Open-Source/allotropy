@@ -1,7 +1,6 @@
 # mypy: disallow_any_generics = False
 
 from io import StringIO
-import re
 from typing import Optional
 import uuid
 
@@ -37,87 +36,10 @@ from allotropy.parsers.utils.values import (
     try_float_from_series,
     try_float_from_series_or_none,
     try_float_or_none,
-    try_int,
     try_int_from_series,
     try_str_from_series,
     try_str_from_series_or_none,
 )
-
-
-class HeaderBuilder:
-    @staticmethod
-    def build(reader: LinesReader) -> Header:
-        data = HeaderBuilder.get_data(reader)
-
-        return Header(
-            measurement_time=HeaderBuilder.get_measurement_time(data),
-            plate_well_count=HeaderBuilder.get_plate_well_count(data),
-            experiment_type=HeaderBuilder.get_experiment_type(data),
-            device_identifier=(
-                try_str_from_series_or_none(data, "Instrument Name") or "NA"
-            ),
-            model_number=try_str_from_series(data, "Instrument Type"),
-            device_serial_number=try_str_from_series_or_none(
-                data, "Instrument Serial Number"
-            )
-            or "NA",
-            measurement_method_identifier=try_str_from_series(
-                data, "Quantification Cycle Method"
-            ),
-            pcr_detection_chemistry=try_str_from_series(data, "Chemistry"),
-            passive_reference_dye_setting=try_str_from_series_or_none(
-                data, "Passive Reference"
-            ),
-            barcode=try_str_from_series_or_none(data, "Experiment Barcode"),
-            analyst=try_str_from_series_or_none(data, "Experiment User Name"),
-            experimental_data_identifier=try_str_from_series_or_none(
-                data, "Experiment Name"
-            ),
-        )
-
-    @staticmethod
-    def get_experiment_type(data: pd.Series) -> ExperimentType:
-        experiments_type_options = {
-            "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
-            "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
-            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
-            "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
-            "Genotyping": ExperimentType.genotyping_qPCR_experiment,
-            "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
-        }
-
-        return assert_not_none(
-            experiments_type_options.get(
-                try_str_from_series(data, "Experiment Type"),
-            ),
-            msg="Unable to find valid experiment type",
-        )
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> pd.Series:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        )
-        data = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        data.index = data.index.str.strip()
-        return data.str.strip().replace("NA", None)
-
-    @staticmethod
-    def get_measurement_time(data: pd.Series) -> str:
-        return str(data.get("Experiment Run End Time"))
-
-    @staticmethod
-    def get_plate_well_count(data: pd.Series) -> int:
-        block_type = try_str_from_series(data, "Block Type")
-        return try_int(
-            assert_not_none(
-                re.match("(96)|(384)", block_type),
-                msg="Unable to interpret plate well count",
-            ).group(),
-            "plate well count",
-        )
 
 
 class GenericWellBuilder:
@@ -568,7 +490,7 @@ class MeltCurveRawDataBuilder:
 class DataBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Data:
-        header = HeaderBuilder.build(reader)
+        header = Header.create(reader)
         wells = WellBuilder.build(reader, header.experiment_type)
         raw_data = RawDataBuilder.build(reader)
 
