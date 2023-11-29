@@ -490,21 +490,27 @@ class DataBuilder:
         melt_data = MeltCurveRawDataBuilder.get_data(reader)
         for well in wells:
             if multi_data is not None:
-                well.add_multicomponent_data(
-                    MulticomponentDataBuilder.build(multi_data, well)
+                well.multicomponent_data = MulticomponentDataBuilder.build(
+                    multi_data,
+                    well,
                 )
+
             if melt_data is not None:
-                well.add_melt_curve_raw_data(
-                    MeltCurveRawDataBuilder.build(melt_data, well)
+                well.melt_curve_raw_data = MeltCurveRawDataBuilder.build(
+                    melt_data,
+                    well,
                 )
+
             for well_item in well.items.values():
-                well_item.add_amplification_data(
-                    AmplificationDataBuilder.build(amp_data, well_item)
+                well_item.amplification_data = AmplificationDataBuilder.build(
+                    amp_data,
+                    well_item,
                 )
-                well_item.add_result(
-                    ResultsBuilder.build(
-                        results_data, well_item, header.experiment_type
-                    )
+
+                well_item.result = ResultsBuilder.build(
+                    results_data,
+                    well_item,
+                    header.experiment_type,
                 )
 
             if an_well_item := well.get_an_well_item():

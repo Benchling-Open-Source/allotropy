@@ -121,36 +121,38 @@ class WellItem(Referenceable):
     well_location_identifier: Optional[str]
     quencher_dye_setting: Optional[str]
     sample_role_type: Optional[str]
-    amplification_data_obj: Optional[AmplificationData] = None
-    result_obj: Optional[Result] = None
-
-    def add_amplification_data(self, amplification_data: AmplificationData) -> None:
-        self.amplification_data_obj = amplification_data
+    _amplification_data: Optional[AmplificationData] = None
+    _result: Optional[Result] = None
 
     @property
     def amplification_data(self) -> AmplificationData:
-        if self.amplification_data_obj is None:
-            msg = f"Unable to find amplification data for well {self.identifier}."
-            raise AllotropeConversionError(msg)
-        return self.amplification_data_obj
+        return assert_not_none(
+            self._amplification_data,
+            msg=f"Unable to find amplification data for well {self.identifier}.",
+        )
 
-    def add_result(self, result: Result) -> None:
-        self.result_obj = result
+    @amplification_data.setter
+    def amplification_data(self, amplification_data: AmplificationData) -> None:
+        self._amplification_data = amplification_data
 
     @property
     def result(self) -> Result:
-        if self.result_obj is None:
-            msg = f"Unable to find result data for well {self.identifier}."
-            raise AllotropeConversionError(msg)
-        return self.result_obj
+        return assert_not_none(
+            self._result,
+            msg=f"Unable to find result data for well {self.identifier}.",
+        )
+
+    @result.setter
+    def result(self, result: Result) -> None:
+        self._result = result
 
 
 @dataclass
 class Well:
     identifier: int
     items: dict[str, WellItem]
-    multicomponent_data: Optional[MulticomponentData] = None
-    melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    _multicomponent_data: Optional[MulticomponentData] = None
+    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
     calculated_document: Optional[CalculatedDocument] = None
 
     def get_well_item(self, target: str) -> WellItem:
@@ -166,11 +168,21 @@ class Well:
         target, *_ = self.items.keys()
         return self.items[target]
 
-    def add_multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
-        self.multicomponent_data = multicomponent_data
+    @property
+    def multicomponent_data(self) -> Optional[MulticomponentData]:
+        return self._multicomponent_data
 
-    def add_melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self.melt_curve_raw_data = melt_curve_raw_data
+    @multicomponent_data.setter
+    def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
+        self._multicomponent_data = multicomponent_data
+
+    @property
+    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
+        return self._melt_curve_raw_data
+
+    @melt_curve_raw_data.setter
+    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
+        self._melt_curve_raw_data = melt_curve_raw_data
 
 
 @dataclass(frozen=True)
