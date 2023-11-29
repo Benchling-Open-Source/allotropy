@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import io
 from typing import Any, NamedTuple, Optional
 import uuid
