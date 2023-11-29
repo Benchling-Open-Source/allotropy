@@ -32,6 +32,6 @@ class NucleoviewReader:
             raw_data["datetime"] = pd.to_datetime(
                 raw_data["Date time"] + raw_data["Time zone offset"]
             )
-        raw_data["Sample ID"] = raw_data["Image"].str.split('-', n=3).str[3]
+        raw_data["Sample ID"] = raw_data["Image"].str.split("-", n=3).str[3]
 
         return cast(pd.DataFrame, raw_data)

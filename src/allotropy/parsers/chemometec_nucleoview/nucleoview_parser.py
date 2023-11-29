@@ -122,7 +122,9 @@ class ChemometecNucleoviewParser(VendorParser):
                             _get_value(data_frame, row, "datetime")
                         ),
                         sample_document=SampleDocument(
-                            sample_identifier=_get_value(data_frame, row, "Sample ID")
+                            sample_identifier=str(
+                                _get_value(data_frame, row, "Sample ID")
+                            )
                         ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
