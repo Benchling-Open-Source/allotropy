@@ -1,146 +1,136 @@
 {
-  "detector view volume": {
-    "value": 100,
-    "unit": "mL"
-  },
-  "flush volume setting": {
-    "value": 0,
-    "unit": "mL"
-  },
-  "analyst": "MFC7094",
-  "dilution factor setting": {
-    "value": 1,
-    "unit": "(unitless)"
-  },
-  "repetition setting": 2,
-  "sample volume setting": {
-    "value": 0.2,
-    "unit": "mL"
-  },
-  "detector identifier": "1808303021",
-  "sample identifier": "ExampleTimepoint",
-  "detector model number": "HRLD150@10ml",
-  "measurement time": "2022-08-12T07:51:50.000000Z",
-  "measurement document": {
-    "distribution document": [
-      {
-        "distribution": [
-          {
-            "particle size": {
-              "value": 2.0,
-              "unit": "\u00b5m"
-            },
-            "cumulative count": {
-              "value": 24.0,
-              "unit": "(unitless)"
-            },
-            "cumulative particle density": {
-              "value": 110.0,
-              "unit": "Counts/mL"
-            },
-            "differential particle density": {
-              "value": NaN,
-              "unit": "Counts/mL"
-            },
-            "differential count": {
-              "value": NaN,
-              "unit": "(unitless)"
+    "detector view volume": {
+        "value": 100,
+        "unit": "mL"
+    },
+    "flush volume setting": {
+        "value": 0,
+        "unit": "mL"
+    },
+    "analyst": "MFC7094",
+    "dilution factor setting": {
+        "value": 1,
+        "unit": "(unitless)"
+    },
+    "repetition setting": 2,
+    "sample volume setting": {
+        "value": 0.2,
+        "unit": "mL"
+    },
+    "detector identifier": "1808303021",
+    "sample identifier": "ExampleTimepoint",
+    "detector model number": "HRLD150@10ml",
+    "measurement time": "2022-08-12T07:51:50.000000Z",
+    "measurement document": {
+        "distribution document": [
+            {
+                "distribution": [
+                    {
+                        "particle size": {
+                            "value": 2.0,
+                            "unit": "\u00b5m"
+                        },
+                        "cumulative count": {
+                            "value": 24.0,
+                            "unit": "(unitless)"
+                        },
+                        "cumulative particle density": {
+                            "value": 110.0,
+                            "unit": "Counts/mL"
+                        },
+                        "differential particle density": {
+                            "unit": "Counts/mL"
+                        },
+                        "differential count": {
+                            "unit": "(unitless)"
+                        }
+                    },
+                    {
+                        "particle size": {
+                            "value": 5.0,
+                            "unit": "\u00b5m"
+                        },
+                        "cumulative count": {
+                            "value": 9.0,
+                            "unit": "(unitless)"
+                        },
+                        "cumulative particle density": {
+                            "value": 120.0,
+                            "unit": "Counts/mL"
+                        },
+                        "differential particle density": {
+                            "unit": "Counts/mL"
+                        },
+                        "differential count": {
+                            "unit": "(unitless)"
+                        }
+                    },
+                    {
+                        "particle size": {
+                            "value": 10.0,
+                            "unit": "\u00b5m"
+                        },
+                        "cumulative count": {
+                            "value": 4.0,
+                            "unit": "(unitless)"
+                        },
+                        "cumulative particle density": {
+                            "value": 130.0,
+                            "unit": "Counts/mL"
+                        },
+                        "differential particle density": {
+                            "unit": "Counts/mL"
+                        },
+                        "differential count": {
+                            "unit": "(unitless)"
+                        }
+                    },
+                    {
+                        "particle size": {
+                            "value": 25.0,
+                            "unit": "\u00b5m"
+                        },
+                        "cumulative count": {
+                            "value": 0.0,
+                            "unit": "(unitless)"
+                        },
+                        "cumulative particle density": {
+                            "value": 140.0,
+                            "unit": "Counts/mL"
+                        },
+                        "differential particle density": {
+                            "unit": "Counts/mL"
+                        },
+                        "differential count": {
+                            "unit": "(unitless)"
+                        }
+                    },
+                    {
+                        "particle size": {
+                            "value": 50.0,
+                            "unit": "\u00b5m"
+                        },
+                        "cumulative count": {
+                            "value": 0.0,
+                            "unit": "(unitless)"
+                        },
+                        "cumulative particle density": {
+                            "value": 150.0,
+                            "unit": "Counts/mL"
+                        },
+                        "differential particle density": {
+                            "unit": "Counts/mL"
+                        },
+                        "differential count": {
+                            "unit": "(unitless)"
+                        }
+                    }
+                ],
+                "data processing omission setting": false
             }
-          },
-          {
-            "particle size": {
-              "value": 5.0,
-              "unit": "\u00b5m"
-            },
-            "cumulative count": {
-              "value": 9.0,
-              "unit": "(unitless)"
-            },
-            "cumulative particle density": {
-              "value": 120.0,
-              "unit": "Counts/mL"
-            },
-            "differential particle density": {
-              "value": NaN,
-              "unit": "Counts/mL"
-            },
-            "differential count": {
-              "value": NaN,
-              "unit": "(unitless)"
-            }
-          },
-          {
-            "particle size": {
-              "value": 10.0,
-              "unit": "\u00b5m"
-            },
-            "cumulative count": {
-              "value": 4.0,
-              "unit": "(unitless)"
-            },
-            "cumulative particle density": {
-              "value": 130.0,
-              "unit": "Counts/mL"
-            },
-            "differential particle density": {
-              "value": NaN,
-              "unit": "Counts/mL"
-            },
-            "differential count": {
-              "value": NaN,
-              "unit": "(unitless)"
-            }
-          },
-          {
-            "particle size": {
-              "value": 25.0,
-              "unit": "\u00b5m"
-            },
-            "cumulative count": {
-              "value": 0.0,
-              "unit": "(unitless)"
-            },
-            "cumulative particle density": {
-              "value": 140.0,
-              "unit": "Counts/mL"
-            },
-            "differential particle density": {
-              "value": NaN,
-              "unit": "Counts/mL"
-            },
-            "differential count": {
-              "value": NaN,
-              "unit": "(unitless)"
-            }
-          },
-          {
-            "particle size": {
-              "value": 50.0,
-              "unit": "\u00b5m"
-            },
-            "cumulative count": {
-              "value": 0.0,
-              "unit": "(unitless)"
-            },
-            "cumulative particle density": {
-              "value": 150.0,
-              "unit": "Counts/mL"
-            },
-            "differential particle density": {
-              "value": NaN,
-              "unit": "Counts/mL"
-            },
-            "differential count": {
-              "value": NaN,
-              "unit": "(unitless)"
-            }
-          }
-        ],
-        "data processing omission setting": false
-      }
-    ]
-  },
-  "measurement identifier": "ExampleTimepoint",
-  "equipment serial number": "1808303021",
-  "$asm.manifest": "http://purl.allotrope.org/manifests/light-obscuration/REC/2021/12/light-obscuration.embed.schema.manifest"
+        ]
+    },
+    "measurement identifier": "ExampleTimepoint",
+    "equipment serial number": "1808303021",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/light-obscuration/REC/2021/12/light-obscuration.embed.schema.manifest"
 }
