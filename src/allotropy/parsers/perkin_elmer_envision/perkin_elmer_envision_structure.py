@@ -26,7 +26,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )

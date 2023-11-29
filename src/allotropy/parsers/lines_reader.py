@@ -8,7 +8,7 @@ from typing import Optional
 import chardet
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 
 EMPTY_STR_PATTERN = r"^\s*$"
 

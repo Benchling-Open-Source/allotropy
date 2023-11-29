@@ -5,7 +5,7 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 
 EMPTY_CSV_LINE = r"^,*$"

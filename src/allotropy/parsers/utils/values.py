@@ -3,7 +3,7 @@ from typing import Optional, TypeVar, Union
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 
 PrimitiveValue = Union[str, int, float]
 

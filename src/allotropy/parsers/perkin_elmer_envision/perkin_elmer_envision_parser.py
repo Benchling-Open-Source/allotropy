@@ -4,7 +4,7 @@ from io import IOBase
 from typing import Any, cast, Optional, TypeVar, Union
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DataSystemDocument,

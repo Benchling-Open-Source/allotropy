@@ -10,7 +10,7 @@ from typing import Any, Optional
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     FILENAME_REGEX,

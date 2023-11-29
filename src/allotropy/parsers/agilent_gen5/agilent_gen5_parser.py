@@ -3,7 +3,7 @@ import itertools
 from typing import Any, Union
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType as FluorescenceContainerType,
     MeasurementAggregateDocument as FluorescenceMeasurementAggregateDocument,

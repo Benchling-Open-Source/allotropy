@@ -8,7 +8,7 @@ import re
 from typing import Any, Optional
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
     DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,

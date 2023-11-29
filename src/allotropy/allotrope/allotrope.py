@@ -17,10 +17,6 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
 )
 
 
-class AllotropeConversionError(Exception):
-    pass
-
-
 # TODO: gather exceptions when parsing models from schema and publish them in model
 SPECIAL_KEYS = {
     "manifest": "$asm.manifest",

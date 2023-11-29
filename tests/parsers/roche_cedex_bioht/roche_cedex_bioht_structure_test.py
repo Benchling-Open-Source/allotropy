@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueMilliOsmolesPerKilogram,
 )
