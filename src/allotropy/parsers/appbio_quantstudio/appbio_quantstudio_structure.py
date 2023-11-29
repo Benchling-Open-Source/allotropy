@@ -26,6 +26,7 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedD
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
+    assert_not_empty_df,
     assert_not_none,
     try_int,
     try_int_from_series,
@@ -366,6 +367,39 @@ class AmplificationData:
     cycle: list[float]
     rn: list[Optional[float]]
     delta_rn: list[Optional[float]]
+
+    @staticmethod
+    def get_data(reader: LinesReader) -> pd.DataFrame:
+        assert_not_none(
+            reader.drop_until(r"^\[Amplification Data\]"),
+            msg="Unable to find 'Amplification Data' section in file.",
+        )
+
+        reader.pop()  # remove title
+        lines = list(reader.pop_until(r"^\[.+\]"))
+        csv_stream = StringIO("\n".join(lines))
+        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+
+    @staticmethod
+    def create(
+        amplification_data: pd.DataFrame, well_item: WellItem
+    ) -> AmplificationData:
+        well_data = assert_not_empty_df(
+            amplification_data[amplification_data["Well"] == well_item.identifier],
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+        )
+
+        target_data = assert_not_empty_df(
+            well_data[well_data["Target Name"] == well_item.target_dna_description],
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+        )
+
+        return AmplificationData(
+            total_cycle_number_setting=float(target_data["Cycle"].max()),
+            cycle=target_data["Cycle"].tolist(),
+            rn=target_data["Rn"].tolist(),
+            delta_rn=target_data["Delta Rn"].tolist(),
+        )
 
 
 @dataclass(frozen=True)
