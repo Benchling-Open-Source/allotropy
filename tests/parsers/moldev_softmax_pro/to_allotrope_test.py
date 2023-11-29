@@ -1,3 +1,5 @@
+import re
+
 import pytest
 
 from allotropy.allotrope.exceptions import AllotropeConversionError
@@ -40,7 +42,9 @@ def test_to_allotrope(test_file: str, schema_file: str, expected_file: str) -> N
 def test_handles_unrecognized_read_mode() -> None:
     with pytest.raises(
         AllotropeConversionError,
-        match="Unrecognized read mode: Time Resolved. Only ['Absorbance', 'Fluorescence', 'Luminescence'] are supported.",
+        match=re.escape(
+            "Unrecognized read mode: Time Resolved. Only ['Absorbance', 'Fluorescence', 'Luminescence'] are supported."
+        ),
     ):
         from_file(
             "tests/parsers/moldev_softmax_pro/testdata/trf_well_scan_plates.txt",

@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Set mypy's disallow_any_generics to True. Ideally, new files should not suppress these warnings.
 - Refactor way to extract and validate information from pandas series in AppBio QuantStudio
 - Simplify csv lines reader
+- Update PerkinElmer EnVision adapter to use the new plate-reader BENCHLING/2023/09 schema
+- Standaradize and clarify exception messages
 ### Deprecated
 ### Removed
 ### Security
