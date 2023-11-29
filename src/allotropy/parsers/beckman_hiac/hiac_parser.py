@@ -99,9 +99,9 @@ class HIACParser(VendorParser):
                 if c in elem:
                     item[prop] = get_property_from_sample(prop, float(elem[c]))
                 else:
-                    item[
-                        prop
-                    ] = np.nan  # TODO is there a better way here for missing props?
+                    item[prop] = get_property_from_sample(
+                        prop, np.nan
+                    )  # TODO is there a better way here for missing props?
             items.append(DistributionItem(**item))
         # TODO get test example for data_processing_omission_setting
         dd = DistributionDocumentItem(
