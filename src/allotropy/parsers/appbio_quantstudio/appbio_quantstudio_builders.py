@@ -2,7 +2,6 @@
 
 from io import StringIO
 from typing import Optional
-import uuid
 
 import numpy as np
 import pandas as pd
@@ -36,164 +35,8 @@ from allotropy.parsers.utils.values import (
     try_float_from_series,
     try_float_from_series_or_none,
     try_float_or_none,
-    try_int_from_series,
-    try_str_from_series,
     try_str_from_series_or_none,
 )
-
-
-class GenericWellBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame) -> WellList:
-        return WellList(
-            [
-                Well(
-                    identifier=identifier,  # type: ignore[arg-type]
-                    items={
-                        item_data["Target Name"]: GenericWellBuilder.build_well_item(
-                            item_data
-                        )
-                        for _, item_data in well_data.iterrows()
-                    },
-                )
-                for identifier, well_data in data.groupby("Well")
-            ]
-        )
-
-    @staticmethod
-    def build_well_item(data: pd.Series) -> WellItem:
-        identifier = try_int_from_series(data, "Well")
-
-        target_dna_description = try_str_from_series(
-            data,
-            "Target Name",
-            msg=f"Unable to find target dna description for well {identifier}",
-        )
-
-        sample_identifier = try_str_from_series(
-            data,
-            "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
-        )
-
-        return WellItem(
-            uuid=str(uuid.uuid4()),
-            identifier=identifier,
-            target_dna_description=target_dna_description,
-            sample_identifier=sample_identifier,
-            reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
-            position=try_str_from_series_or_none(
-                data, "Well Position", default="UNDEFINED"
-            ),
-            well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
-            quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-            sample_role_type=try_str_from_series_or_none(data, "Task"),
-        )
-
-
-class GenotypingWellBuilder:
-    @staticmethod
-    def build(data: pd.DataFrame) -> WellList:
-        return WellList(
-            [
-                Well(
-                    identifier=well_id,  # type: ignore[arg-type]
-                    items={
-                        well_item.target_dna_description: well_item
-                        for well_item in GenotypingWellBuilder.build_well_items(
-                            well_data
-                        )
-                    },
-                )
-                for well_id, well_data in data.iterrows()
-            ]
-        )
-
-    @staticmethod
-    def build_well_items(data: pd.Series) -> tuple[WellItem, WellItem]:
-        identifier = try_int_from_series(data, "Well")
-
-        snp_name = try_str_from_series(
-            data,
-            "SNP Assay Name",
-            msg=f"Unable to find snp name for well {identifier}",
-        )
-
-        sample_identifier = try_str_from_series(
-            data,
-            "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
-        )
-
-        allele1 = try_str_from_series(
-            data,
-            "Allele1 Name",
-            msg=f"Unable to find allele 1 for well {identifier}",
-        )
-
-        allele2 = try_str_from_series(
-            data,
-            "Allele2 Name",
-            msg=f"Unable to find allele 2 for well {identifier}",
-        )
-
-        return (
-            WellItem(
-                uuid=str(uuid.uuid4()),
-                identifier=identifier,
-                target_dna_description=f"{snp_name}-{allele1}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=try_str_from_series_or_none(
-                    data, "Allele1 Reporter"
-                ),
-                position=try_str_from_series_or_none(
-                    data, "Well Position", default="UNDEFINED"
-                ),
-                well_location_identifier=try_str_from_series_or_none(
-                    data, "Well Position"
-                ),
-                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-                sample_role_type=try_str_from_series_or_none(data, "Task"),
-            ),
-            WellItem(
-                uuid=str(uuid.uuid4()),
-                identifier=identifier,
-                target_dna_description=f"{snp_name}-{allele2}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=try_str_from_series_or_none(
-                    data, "Allele2 Reporter"
-                ),
-                position=try_str_from_series_or_none(
-                    data, "Well Position", default="UNDEFINED"
-                ),
-                well_location_identifier=try_str_from_series_or_none(
-                    data, "Well Position"
-                ),
-                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-                sample_role_type=try_str_from_series_or_none(data, "Task"),
-            ),
-        )
-
-
-class WellBuilder:
-    @staticmethod
-    def build(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
-        raw_data = WellBuilder.get_data(reader)
-        data = raw_data[raw_data["Sample Name"].notnull()]
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return GenotypingWellBuilder.build(data)
-        return GenericWellBuilder.build(data)
-
-    @staticmethod
-    def get_data(reader: LinesReader) -> pd.DataFrame:
-        if reader.drop_until(r"^\[Sample Setup\]") is None:
-            msg = "Unable to find 'Sample Setup' section in file."
-            raise AllotropeConversionError(msg)
-
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
 
 class AmplificationDataBuilder:
@@ -481,7 +324,7 @@ class DataBuilder:
     @staticmethod
     def build(reader: LinesReader) -> Data:
         header = Header.create(reader)
-        wells = WellBuilder.build(reader, header.experiment_type)
+        wells = WellList.create(reader, header.experiment_type)
         raw_data = RawData.create(reader)
 
         amp_data = AmplificationDataBuilder.get_data(reader)

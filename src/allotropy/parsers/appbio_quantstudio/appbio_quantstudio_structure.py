@@ -13,7 +13,9 @@ from dataclasses import dataclass
 from io import StringIO
 import re
 from typing import Optional
+import uuid
 
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
@@ -26,6 +28,7 @@ from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_int,
+    try_int_from_series,
     try_str_from_series,
     try_str_from_series_or_none,
 )
@@ -146,6 +149,101 @@ class WellItem(Referenceable):
     def result(self, result: Result) -> None:
         self._result = result
 
+    @staticmethod
+    def create_genotyping(data: pd.Series[str]) -> tuple[WellItem, WellItem]:
+        identifier = try_int_from_series(data, "Well")
+
+        snp_name = try_str_from_series(
+            data,
+            "SNP Assay Name",
+            msg=f"Unable to find snp name for well {identifier}",
+        )
+
+        sample_identifier = try_str_from_series(
+            data,
+            "Sample Name",
+            msg=f"Unable to find sample identifier for well {identifier}",
+        )
+
+        allele1 = try_str_from_series(
+            data,
+            "Allele1 Name",
+            msg=f"Unable to find allele 1 for well {identifier}",
+        )
+
+        allele2 = try_str_from_series(
+            data,
+            "Allele2 Name",
+            msg=f"Unable to find allele 2 for well {identifier}",
+        )
+
+        return (
+            WellItem(
+                uuid=str(uuid.uuid4()),
+                identifier=identifier,
+                target_dna_description=f"{snp_name}-{allele1}",
+                sample_identifier=sample_identifier,
+                reporter_dye_setting=try_str_from_series_or_none(
+                    data, "Allele1 Reporter"
+                ),
+                position=try_str_from_series_or_none(
+                    data, "Well Position", default="UNDEFINED"
+                ),
+                well_location_identifier=try_str_from_series_or_none(
+                    data, "Well Position"
+                ),
+                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+                sample_role_type=try_str_from_series_or_none(data, "Task"),
+            ),
+            WellItem(
+                uuid=str(uuid.uuid4()),
+                identifier=identifier,
+                target_dna_description=f"{snp_name}-{allele2}",
+                sample_identifier=sample_identifier,
+                reporter_dye_setting=try_str_from_series_or_none(
+                    data, "Allele2 Reporter"
+                ),
+                position=try_str_from_series_or_none(
+                    data, "Well Position", default="UNDEFINED"
+                ),
+                well_location_identifier=try_str_from_series_or_none(
+                    data, "Well Position"
+                ),
+                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+                sample_role_type=try_str_from_series_or_none(data, "Task"),
+            ),
+        )
+
+    @staticmethod
+    def create_generic(data: pd.Series[str]) -> WellItem:
+        identifier = try_int_from_series(data, "Well")
+
+        target_dna_description = try_str_from_series(
+            data,
+            "Target Name",
+            msg=f"Unable to find target dna description for well {identifier}",
+        )
+
+        sample_identifier = try_str_from_series(
+            data,
+            "Sample Name",
+            msg=f"Unable to find sample identifier for well {identifier}",
+        )
+
+        return WellItem(
+            uuid=str(uuid.uuid4()),
+            identifier=identifier,
+            target_dna_description=target_dna_description,
+            sample_identifier=sample_identifier,
+            reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
+            position=try_str_from_series_or_none(
+                data, "Well Position", default="UNDEFINED"
+            ),
+            well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
+            quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+            sample_role_type=try_str_from_series_or_none(data, "Task"),
+        )
+
 
 @dataclass
 class Well:
@@ -184,6 +282,26 @@ class Well:
     def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
         self._melt_curve_raw_data = melt_curve_raw_data
 
+    @staticmethod
+    def create_genotyping(identifier: int, well_data: pd.Series[str]) -> Well:
+        return Well(
+            identifier=identifier,
+            items={
+                well_item.target_dna_description: well_item
+                for well_item in WellItem.create_genotyping(well_data)
+            },
+        )
+
+    @staticmethod
+    def create_generic(identifier: int, well_data: pd.DataFrame) -> Well:
+        return Well(
+            identifier=identifier,
+            items={
+                item_data["Target Name"]: WellItem.create_generic(item_data)
+                for _, item_data in well_data.iterrows()
+            },
+        )
+
 
 @dataclass(frozen=True)
 class WellList:
@@ -195,6 +313,39 @@ class WellList:
 
     def __iter__(self) -> Iterator[Well]:
         return iter(self.wells)
+
+    @staticmethod
+    def create(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
+        assert_not_none(
+            reader.drop_until(r"^\[Sample Setup\]"),
+            msg="Unable to find 'Sample Setup' section in file.",
+        )
+
+        reader.pop()  # remove title
+        lines = list(reader.pop_until(r"^\[.+\]"))
+        csv_stream = StringIO("\n".join(lines))
+        raw_data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
+        data = raw_data[raw_data["Sample Name"].notnull()]
+
+        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            return WellList(
+                [
+                    Well.create_genotyping(
+                        try_int(str(identifier), "genotyping well identifier"),
+                        well_data,
+                    )
+                    for identifier, well_data in data.iterrows()
+                ]
+            )
+        return WellList(
+            [
+                Well.create_generic(
+                    try_int(str(identifier), "well identifier"),
+                    well_data,
+                )
+                for identifier, well_data in data.groupby("Well")
+            ]
+        )
 
 
 @dataclass(frozen=True)
