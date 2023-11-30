@@ -5,7 +5,7 @@ from typing import Any, Optional
 
 from allotropy.allotrope.allotrope import serialize_allotrope
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parser_factory import PARSER_FACTORY, VendorType
+from allotropy.parser_factory import get_parser, VendorType
 
 
 def allotrope_from_io(
@@ -25,7 +25,7 @@ def allotrope_model_from_io(
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
 ) -> Any:
-    parser = PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
+    parser = get_parser(vendor_type, default_timezone=default_timezone)
     return parser.to_allotrope(contents, filename)
 
 
