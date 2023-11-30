@@ -19,7 +19,7 @@ class VendorParser(ABC):
         """
         Parse the contents of a file and return an Allotrope model.
 
-        :param contents: file contests
+        :param contents: file contents
         :param filename: file name
         :return: an Allotrope model
         """
