@@ -1,6 +1,5 @@
 from collections import defaultdict
 from enum import Enum
-from io import IOBase
 from typing import Any, cast, Optional, TypeVar, Union
 import uuid
 
@@ -36,6 +35,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     Data,
@@ -73,7 +73,8 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 
 class PerkinElmerEnvisionParser(VendorParser):
-    def to_allotrope(self, raw_contents: IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        raw_contents, filename = named_file_contents
         reader = CsvReader(raw_contents)
         try:
             return self._get_model(Data.create(reader), filename)

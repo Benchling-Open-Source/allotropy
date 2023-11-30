@@ -1,4 +1,3 @@
-import io
 import itertools
 from typing import Any, Union
 import uuid
@@ -20,6 +19,7 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     Model as AbsorbanceModel,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
@@ -86,8 +86,10 @@ class AgilentGen5Parser(VendorParser):
         msg = f"Unrecognized read mode: {first_plate.plate_type.read_mode}. Only {sorted(ReadMode._member_names_)} are supported."
         raise AllotropeConversionError(msg)
 
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
-        section_lines_reader = SectionLinesReader(contents, encoding=None)
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
+        section_lines_reader = SectionLinesReader(
+            named_file_contents.contents, encoding=None
+        )
         data = Data.create(section_lines_reader)
 
         first_plate = data.plates[0]
