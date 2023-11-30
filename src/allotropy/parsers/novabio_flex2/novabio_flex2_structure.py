@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import io
 import re
 from typing import Any, Optional
 
@@ -20,6 +19,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
+from allotropy.types import IOType
 
 
 @dataclass
@@ -136,7 +136,6 @@ class Data:
     sample_list: SampleList
 
     @staticmethod
-    def create(contents: io.IOBase, filename: str) -> Data:
-        # NOTE: type ignore is an issue with pandas typing, it accepts an io.IOBase that implements read.
-        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[call-overload]
+    def create(contents: IOType, filename: str) -> Data:
+        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))

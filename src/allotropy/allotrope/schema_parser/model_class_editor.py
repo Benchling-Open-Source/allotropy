@@ -12,6 +12,7 @@ from allotropy.allotrope.schema_parser.schema_model import (
     get_schema_definitions_mapping,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.types import IOType
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
@@ -105,7 +106,7 @@ class ModelClassEditor:
         return class_lines.lines
 
     def _get_class_lines(
-        self, file: io.TextIOBase, existing_lines: Optional[list[str]] = None
+        self, file: IOType, existing_lines: Optional[list[str]] = None
     ) -> Optional[ClassLines]:
         # Reads lines for the next class and returns as a ClassLines object.
         lines: list[str] = existing_lines or []
