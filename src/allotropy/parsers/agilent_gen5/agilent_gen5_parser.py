@@ -3,7 +3,6 @@ import itertools
 from typing import Any, Union
 import uuid
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType as FluorescenceContainerType,
     MeasurementAggregateDocument as FluorescenceMeasurementAggregateDocument,
@@ -20,6 +19,7 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementAggregateDocument as AbsorbanceMeasurementAggregateDocument,
     Model as AbsorbanceModel,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData

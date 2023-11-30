@@ -6,7 +6,6 @@ import uuid
 
 import pandas as pd
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDetectorDeviceControlAggregateDocument,
@@ -30,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
     DEFAULT_ANALYST,

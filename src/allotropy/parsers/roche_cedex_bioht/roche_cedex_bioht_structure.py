@@ -8,7 +8,7 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,

@@ -7,11 +7,11 @@ from pathlib import Path
 import re
 from typing import Optional
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
 )
+from allotropy.exceptions import AllotropeConversionError
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"

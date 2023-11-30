@@ -8,10 +8,10 @@ import uuid
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     build_quantity,
     iter_calculated_data_documents,

@@ -1,7 +1,7 @@
 import pytest
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import TDatacubeData
+from allotropy.exceptions import AllotropeConversionError
 
 
 def test_data_cube_data() -> None:

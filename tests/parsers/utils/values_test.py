@@ -2,7 +2,7 @@ from typing import Optional
 
 import pytest
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,

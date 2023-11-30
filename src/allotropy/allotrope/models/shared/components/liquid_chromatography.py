@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueSecondTime,
@@ -13,6 +12,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
     TStringValue,
 )
+from allotropy.exceptions import AllotropeConversionError
 
 
 @dataclass

@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 from allotropy.allotrope.allotrope import serialize_allotrope
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import PARSER_FACTORY, VendorType
 
 

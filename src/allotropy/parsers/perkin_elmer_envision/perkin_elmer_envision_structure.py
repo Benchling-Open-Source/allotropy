@@ -24,11 +24,11 @@ from typing import Any, Optional
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 

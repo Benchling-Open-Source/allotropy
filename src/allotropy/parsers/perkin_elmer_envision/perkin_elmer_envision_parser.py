@@ -4,7 +4,6 @@ from io import IOBase
 from typing import Any, cast, Optional, TypeVar, Union
 import uuid
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DataSystemDocument,
@@ -36,6 +35,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     Data,

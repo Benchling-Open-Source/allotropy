@@ -5,7 +5,7 @@ from zoneinfo import ZoneInfo
 from dateutil import parser
 import pytz
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import assert_not_none
 
 TIMEZONE_CODES_MAP = {

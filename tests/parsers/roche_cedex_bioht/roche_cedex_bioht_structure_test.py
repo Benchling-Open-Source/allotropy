@@ -1,10 +1,10 @@
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueMilliOsmolesPerKilogram,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Analyte,
     AnalyteList,

@@ -4,8 +4,8 @@ from typing import Any
 
 import chardet
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 

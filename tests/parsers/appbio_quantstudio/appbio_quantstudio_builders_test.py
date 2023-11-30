@@ -6,8 +6,8 @@ from typing import Optional
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
     DataBuilder,
     HeaderBuilder,

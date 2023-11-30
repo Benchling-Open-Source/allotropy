@@ -8,7 +8,6 @@ import re
 from typing import Any, Optional
 import uuid
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
     DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,
@@ -47,6 +46,7 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
     Model as ModelAbsorbance,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_none,

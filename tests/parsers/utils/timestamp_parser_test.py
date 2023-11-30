@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 import pytest
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 

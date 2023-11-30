@@ -11,7 +11,6 @@ from typing import Optional, Union
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TDatacube,
@@ -19,6 +18,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
     ReadMode,

@@ -6,7 +6,7 @@ from typing import Optional
 import chardet
 import pandas as pd
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 
 EMPTY_STR_PATTERN = r"^\s*$"
 

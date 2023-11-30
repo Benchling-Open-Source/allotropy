@@ -3,7 +3,7 @@ from typing import Optional
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,

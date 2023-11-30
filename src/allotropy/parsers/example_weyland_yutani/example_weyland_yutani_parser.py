@@ -1,7 +1,6 @@
 from io import IOBase
 import uuid
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -20,6 +19,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure import (
     Data,
 )

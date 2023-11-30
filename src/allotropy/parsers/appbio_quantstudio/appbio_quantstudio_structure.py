@@ -12,10 +12,10 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from typing import Optional
 
-from allotropy.allotrope.exceptions import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
