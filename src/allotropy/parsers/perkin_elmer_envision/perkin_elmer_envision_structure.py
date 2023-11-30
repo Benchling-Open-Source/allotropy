@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 # plate (repeated for N plates measured)
 #     Plate information
 #     Background information (optional)
@@ -21,21 +19,21 @@ from __future__ import annotations
 from dataclasses import dataclass
 import logging
 from re import search
-from typing import Optional
+from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.allotrope import AllotropyError
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
+from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
 
-def df_to_series(df: pd.DataFrame) -> pd.Series:
+def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
     df.columns = df.iloc[0]  # type: ignore[assignment]
     return pd.Series(df.iloc[-1], index=df.columns)
 
@@ -56,7 +54,12 @@ class PlateInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[PlateInfo]:
-        data = reader.pop_csv_block_as_df("^Plate information")
+        assert_not_none(
+            reader.pop_if_match("^Plate information"),
+            msg="Unable to find expected plate information",
+        )
+
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Plate information CSV block")
         series = df_to_series(data_df).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
@@ -156,8 +159,8 @@ class BasicAssayInfo:
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
-        reader.drop_until("^Basic assay information")
-        data = reader.pop_csv_block_as_df("^Basic assay information")
+        reader.drop_until_inclusive("^Basic assay information")
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Basic assay information").T
         data_df.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data_df)
@@ -169,16 +172,17 @@ class BasicAssayInfo:
 
 @dataclass
 class PlateType:
-    number_of_wells: Optional[float] = None
+    number_of_wells: float
 
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
-        reader.drop_until("^Plate type")
-        data = reader.pop_csv_block_as_df("^Plate type")
+        reader.drop_until_inclusive("^Plate type")
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Plate type").T
+        number_of_wells_str = "Number of the wells in the plate"
         return PlateType(
-            try_float_or_none(
-                str(df_to_series(data_df).get("Number of the wells in the plate"))
+            try_float(
+                str(df_to_series(data_df).get(number_of_wells_str)), number_of_wells_str
             )
         )
 
@@ -191,7 +195,7 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
     # LH        lance_high          control_sample_role
     # S         pl_sample           sample_role
     # STD       standard            standard_sample_role
-    # -         undefined           <UNDEFINED>
+    # -         unknown             unknown_sample_role
     # UNK       unknown             unknown_sample_role
     # ZH        z_high              control_sample_role
     # ZL        z_low               control_sample_role
@@ -203,7 +207,7 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
         "LH": SampleRoleType.control_sample_role,
         "STD": SampleRoleType.standard_sample_role,
         "S": SampleRoleType.sample_role,
-        "-": SampleRoleType.undefined_sample_role,
+        "-": SampleRoleType.unknown_sample_role,
         "UNK": SampleRoleType.unknown_sample_role,
         "ZH": SampleRoleType.control_sample_role,
         "ZL": SampleRoleType.control_sample_role,
@@ -285,12 +289,12 @@ def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
 class Filter:
     name: str
     wavelength: float
-    bandwidth: float
+    bandwidth: Optional[float] = None
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[Filter]:
         if not reader.current_line_exists() or reader.match(
-            "(^Mirror modules)|(^Instrument:)"
+            "(^Mirror modules)|(^Instrument:)|(^Aperture:)"
         ):
             return None
 
@@ -302,21 +306,27 @@ class Filter:
 
         description = str(series.get("Description"))
 
-        search_result = search("CWL=\\d*nm", description)
+        search_result = search("(Longpass)=\\d*nm", description)
+        if search_result is not None:
+            wavelength = float(
+                search_result.group().removeprefix("Longpass=").removesuffix("nm")
+            )
+            return Filter(name, wavelength)
+
+        search_result = search("(CWL)=\\d*nm", description)
         if search_result is None:
             msg = f"Unable to find wavelength for filter {name}"
             raise AllotropyError(msg)
         wavelength = float(
             search_result.group().removeprefix("CWL=").removesuffix("nm")
         )
-
         search_result = search("BW=\\d*nm", description)
         if search_result is None:
             msg = f"Unable to find bandwidth for filter {name}"
             raise AllotropyError(msg)
         bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
 
-        return Filter(name, wavelength, bandwidth)
+        return Filter(name, wavelength, bandwidth=bandwidth)
 
 
 def create_filters(reader: CsvReader) -> dict[str, Filter]:
@@ -344,8 +354,8 @@ class Labels:
 
     @staticmethod
     def create(reader: CsvReader) -> Labels:
-        reader.drop_until("^Labels")
-        data = reader.pop_csv_block_as_df("^Labels")
+        reader.drop_until_inclusive("^Labels")
+        data = reader.pop_csv_block_as_df()
         data_df = assert_not_none(data, "Labels").T
         series = df_to_series(data_df).replace(np.nan, None)
 
@@ -368,7 +378,9 @@ class Labels:
             emission_filters,
             filter_position_map.get(str(series.get("Using of emission filter")), None),
             number_of_flashes=try_float_or_none(str(series.get("Number of flashes"))),
-            detector_gain_setting=str(series.get("Reference AD gain")),
+            detector_gain_setting=str(gain)
+            if (gain := series.get("Reference AD gain"))
+            else None,
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:
@@ -395,10 +407,31 @@ class Instrument:
 
 
 @dataclass
+class Software:
+    software_name: str
+    software_version: str
+
+    @staticmethod
+    def create(reader: CsvReader) -> Software:
+        exported_with_text = "Exported with "
+        if reader.drop_until(exported_with_text) is None:
+            msg = "Unable to find software information"
+            raise AllotropyError(msg)
+
+        software_info_line = assert_not_none(reader.pop(), "software information")
+        software_info = [
+            s.strip()
+            for s in software_info_line[len(exported_with_text) :].split("version")
+        ]
+        return Software(software_info[0], software_info[1])
+
+
+@dataclass
 class Data:
+    software: Software
     plates: list[Plate]
     basic_assay_info: BasicAssayInfo
-    number_of_wells: Optional[float]
+    number_of_wells: float
     plate_maps: dict[str, PlateMap]
     labels: Labels
     instrument: Instrument
@@ -412,4 +445,5 @@ class Data:
             plate_maps=create_plate_maps(reader),
             labels=Labels.create(reader),
             instrument=Instrument.create(reader),
+            software=Software.create(reader),
         )

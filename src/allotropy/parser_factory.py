@@ -62,10 +62,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 }
 
 
-class ParserFactory:
-    def __init__(self) -> None:
-        pass
-
+class _ParserFactory:
     def create(
         self, vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
     ) -> VendorParser:
@@ -77,10 +74,10 @@ class ParserFactory:
             raise AllotropeConversionError(error) from e
 
 
+_PARSER_FACTORY = _ParserFactory()
+
+
 def get_parser(
     vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
-    return PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
-
-
-PARSER_FACTORY: ParserFactory = ParserFactory()
+    return _PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)

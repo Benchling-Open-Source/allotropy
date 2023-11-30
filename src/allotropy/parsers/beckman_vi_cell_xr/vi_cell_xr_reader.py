@@ -1,7 +1,8 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
 
 from io import IOBase
 import re
+from typing import Any
 
 import pandas as pd
 
@@ -45,13 +46,13 @@ class ViCellXRReader:
             header=None,
         ).fillna("")
 
-        header_list: list = header.agg(
+        header_list: list[str] = header.agg(
             lambda x: " ".join(x).replace(" /ml", "/ml").strip()
         ).to_list()
         return header_list
 
-    def _get_file_info(self) -> pd.Series:
-        info: pd.Series = pd.read_excel(
+    def _get_file_info(self) -> pd.Series[Any]:
+        info: pd.Series[Any] = pd.read_excel(
             self.contents, nrows=3, header=None, usecols=[0]
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
