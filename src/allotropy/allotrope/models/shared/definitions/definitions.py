@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 
+from allotropy.exceptions import AllotropeConversionError
+
 
 @dataclass
 class TBooleanValueItem:
@@ -177,8 +179,8 @@ class TDatacubeData:
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
         if not (self.measures is None) ^ (self.points is None):
-            error = "Exactly one of measures or points must be set"
-            raise ValueError(error)
+            error = "Exactly one of measures or points must be set on a datacube."
+            raise AllotropeConversionError(error)
 
 
 @dataclass

@@ -8,10 +8,10 @@ import uuid
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     build_quantity,
     iter_calculated_data_documents,
@@ -90,7 +90,7 @@ class HeaderBuilder:
             experiments_type_options.get(
                 try_str_from_series(data, "Experiment Type"),
             ),
-            msg="Unable to get valid experiment type",
+            msg="Unable to find valid experiment type",
         )
 
     @staticmethod
@@ -145,13 +145,13 @@ class GenericWellBuilder:
         target_dna_description = try_str_from_series(
             data,
             "Target Name",
-            msg=f"Unable to get target dna description for well {identifier}",
+            msg=f"Unable to find target dna description for well {identifier}",
         )
 
         sample_identifier = try_str_from_series(
             data,
             "Sample Name",
-            msg=f"Unable to get sample identifier for well {identifier}",
+            msg=f"Unable to find sample identifier for well {identifier}",
         )
 
         return WellItem(
@@ -194,25 +194,25 @@ class GenotypingWellBuilder:
         snp_name = try_str_from_series(
             data,
             "SNP Assay Name",
-            msg=f"Unable to get snp name for well {identifier}",
+            msg=f"Unable to find snp name for well {identifier}",
         )
 
         sample_identifier = try_str_from_series(
             data,
             "Sample Name",
-            msg=f"Unable to get sample identifier for well {identifier}",
+            msg=f"Unable to find sample identifier for well {identifier}",
         )
 
         allele1 = try_str_from_series(
             data,
             "Allele1 Name",
-            msg=f"Unable to get allele 1 for well {identifier}",
+            msg=f"Unable to find allele 1 for well {identifier}",
         )
 
         allele2 = try_str_from_series(
             data,
             "Allele2 Name",
-            msg=f"Unable to get allele 2 for well {identifier}",
+            msg=f"Unable to find allele 2 for well {identifier}",
         )
 
         return (
@@ -265,7 +265,7 @@ class WellBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
         if reader.drop_until(r"^\[Sample Setup\]") is None:
-            msg = "Unable to find Sample Setup section in input file"
+            msg = "Unable to find 'Sample Setup' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -305,18 +305,18 @@ class AmplificationDataBuilder:
     ) -> pd.DataFrame:
         well_data = assert_not_empty_df(
             amplification_data[amplification_data["Well"] == well_item.identifier],
-            msg=f"Unable to get amplification data for well {well_item.identifier}",
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
         )
 
         return assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to get amplification data for well {well_item.identifier}",
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
         )
 
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
         if reader.drop_until(r"^\[Amplification Data\]") is None:
-            msg = "Unable to find Amplification Data section in input file"
+            msg = "Unable to find 'Amplification Data' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -342,7 +342,7 @@ class MulticomponentDataBuilder:
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
         return assert_not_empty_df(
             data[data["Well"] == well.identifier],
-            msg=f"Unable to find multi component data for well {well.identifier}",
+            msg=f"Unable to find multi component data for well {well.identifier}.",
         )
 
     @staticmethod
@@ -362,12 +362,12 @@ class GenericResultsBuilder:
         cycle_threshold_value_setting = try_float_from_series(
             target_data,
             "Ct Threshold",
-            msg=f"Unable to get cycle threshold value setting for well {well_item.identifier}",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
         cycle_threshold_result = assert_not_none(
             target_data.get("CT"),
-            msg="Unable to get cycle threshold result",
+            msg="Unable to find cycle threshold result",
         )
 
         return Result(
@@ -412,17 +412,17 @@ class GenericResultsBuilder:
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         target_data = assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         return df_to_series(
             target_data,
-            f"Unexpected number of results associated to well {well_item.identifier}",
+            f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
         )
 
 
@@ -435,12 +435,12 @@ class GenotypingResultsBuilder:
         cycle_threshold_value_setting = try_float_from_series(
             target_data,
             f"{allele} Ct Threshold",
-            msg=f"Unable to get cycle threshold value setting for well {well_item.identifier}",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
         cycle_threshold_result = assert_not_none(
             target_data.get(f"{allele} Ct"),
-            msg="Unable to get cycle threshold result",
+            msg="Unable to find cycle threshold result",
         )
 
         return Result(
@@ -485,18 +485,18 @@ class GenotypingResultsBuilder:
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         snp_assay_name, _ = well_item.target_dna_description.split("-")
         target_data = assert_not_empty_df(
             well_data[well_data["SNP Assay Name"] == snp_assay_name],
-            msg=f"Unable to get result data for well {well_item.identifier}",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         return df_to_series(
             target_data,
-            msg=f"Unexpected number of results associated to well {well_item.identifier}",
+            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
         )
 
 
@@ -512,7 +512,7 @@ class ResultsBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series]:
         if reader.drop_until(r"^\[Results\]") is None:
-            msg = "Unable to find Results section in input file"
+            msg = "Unable to find 'Results' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -552,7 +552,7 @@ class MeltCurveRawDataBuilder:
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
         return assert_not_empty_df(
             data[data["Well"] == well.identifier],
-            msg=f"Unable to get melt curve raw data for well {well.identifier}",
+            msg=f"Unable to find melt curve raw data for well {well.identifier}.",
         )
 
     @staticmethod

@@ -6,8 +6,8 @@ from typing import Optional
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
     DataBuilder,
     HeaderBuilder,
@@ -102,13 +102,13 @@ def test_header_builder() -> None:
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
-        ("model_number", "Expected non-null value for Instrument Type"),
+        ("model_number", "Expected non-null value for Instrument Type."),
         (
             "measurement_method_identifier",
-            "Expected non-null value for Quantification Cycle Method",
+            "Expected non-null value for Quantification Cycle Method.",
         ),
-        ("pcr_detection_chemistry", "Expected non-null value for Chemistry"),
-        ("plate_well_count", "Expected non-null value for Block Type"),
+        ("pcr_detection_chemistry", "Expected non-null value for Chemistry."),
+        ("plate_well_count", "Expected non-null value for Block Type."),
     ],
 )
 @pytest.mark.short

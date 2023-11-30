@@ -1,6 +1,6 @@
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError, AllotropyError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
@@ -57,7 +57,9 @@ def test_get_model() -> None:
 
 def test_parse_missing_file() -> None:
     test_filepath = "tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.tsv"
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(
+        AllotropeConversionError, match=f"File not found: {test_filepath}"
+    ):
         from_file(test_filepath, VENDOR_TYPE)
 
 
@@ -71,5 +73,5 @@ def test_parse_file_missing_headers() -> None:
     test_filepath = (
         "tests/parsers/perkin_elmer_envision/testdata/example01_missing_header.csv"
     )
-    with pytest.raises(AllotropyError):
+    with pytest.raises(AllotropeConversionError):
         from_file(test_filepath, VENDOR_TYPE)

@@ -6,7 +6,6 @@ import uuid
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDetectorDeviceControlAggregateDocument,
@@ -30,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
     DEFAULT_ANALYST,
@@ -92,6 +92,11 @@ class ViCellXRParser(VendorParser):
     def _get_cell_counting_document_item(
         self, sample: pd.Series[Any], file_version: XrVersion
     ) -> CellCountingDocumentItem:
+        required_fields_list = [
+            "Viability (%)",
+            "Total cells",
+            "Viable cells/ml (x10^6)",
+        ]
         # Required fields
         try:
             viability__cell_counter_ = TQuantityValuePercent(
@@ -104,7 +109,7 @@ class ViCellXRParser(VendorParser):
                 )
             )
         except KeyError as e:
-            error = f"required value not found {e}"
+            error = f"Expected to find lines with all of these headers: {required_fields_list}."
             raise AllotropeConversionError(error) from e
 
         return CellCountingDocumentItem(

@@ -8,7 +8,6 @@ import re
 from typing import Any, Optional
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
     DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,
@@ -47,6 +46,7 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
     Model as ModelAbsorbance,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -113,7 +113,7 @@ class Block:
             if lines[0].startswith(key):
                 return cls.create(lines)
 
-        error = f"unrecognized block {lines[0]}"
+        error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
@@ -177,7 +177,7 @@ class WellData:
         self.wavelengths.append(wavelength)
         if temperature is not None:
             if self.temperature is not None and temperature != self.temperature:
-                error = "Expected all measurements to have the same temperature"
+                error = f"Expected all measurements to have the same temperature, but two have differing values of {self.temperature} and {temperature}."
                 raise AllotropeConversionError(error)
             self.temperature = temperature
 
@@ -233,7 +233,7 @@ class PlateBlock(Block):
                 _,  # Read mode
             ] = header[:6]
             if export_version != EXPORT_VERSION:
-                error = f"Invalid export version {export_version}"
+                error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
                 raise AllotropeConversionError(error)
 
             data_type_idx = cls.get_data_type_idx()
@@ -290,7 +290,7 @@ class PlateBlock(Block):
                     data_lines,
                 )
             else:
-                error = f"unrecognized export format {export_format}"
+                error = f"Unrecognized export format {export_format}; expected to be one of {sorted(ExportFormat._member_names_)}."
                 raise AllotropeConversionError(error)
 
             return cls(
@@ -316,7 +316,7 @@ class PlateBlock(Block):
                 cutoff_filters=extra_attr.cutoff_filters,
             )
 
-        error = f"unrecognized read mode {read_mode}"
+        error = f"Unrecognized read mode: {read_mode}. Only {sorted(plate_block_cls.keys())} are supported."
         raise AllotropeConversionError(error)
 
     @staticmethod
@@ -404,7 +404,7 @@ class PlateBlock(Block):
             reduced_row = data_lines[-1][: num_wells + 2]
             PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
-            error = f"unrecognized data type {data_type}"
+            error = f"Unrecognized data type {data_type}; expected to be one of {sorted(DataType._member_names_)}."
             raise AllotropeConversionError(error)
 
     @staticmethod
@@ -469,7 +469,7 @@ class PlateBlock(Block):
                 num_columns, data_header, well_data, reduced_data_rows
             )
         else:
-            error = f"unrecognized data type {data_type}"
+            error = f"Unrecognized data type {data_type}; expected to be one of {sorted(DataType._member_names_)}."
             raise AllotropeConversionError(error)
 
     @staticmethod
@@ -514,7 +514,7 @@ class PlateBlock(Block):
         elif self.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}:
             dimensions = [("int", "wavelength", "nm")]
         else:
-            error = f"cannot make data cube for {self.read_type}"
+            error = f"Cannot make data cube for read type {self.read_type}; only {sorted(ReadType._member_names_)} are supported."
             raise AllotropeConversionError(error)
         if self.has_wavelength_dimension:
             dimensions.append(("int", "wavelength", "nm"))
@@ -850,9 +850,10 @@ class BlockList:
 
     @staticmethod
     def _get_n_blocks(lines_reader: LinesReader) -> int:
-        if search_result := re.search(BLOCKS_LINE_REGEX, lines_reader.pop() or ""):
+        start_line = lines_reader.pop() or ""
+        if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
-        error = "unrecognized start line"
+        error = f"Unrecognized start line '{start_line}'."
         raise AllotropeConversionError(error)
 
     @staticmethod
@@ -876,7 +877,7 @@ class Data:
         if len(plate_blocks) != 1:
             block_types = [block.block_type for block in self.block_list.blocks]
             block_counts = {bt: block_types.count(bt) for bt in set(block_types)}
-            error = f"expected exactly 1 plate block, got {block_counts}"
+            error = f"Expected exactly 1 plate block; got {block_counts}."
             raise AllotropeConversionError(error)
 
         return plate_blocks[0]

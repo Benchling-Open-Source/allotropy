@@ -1,6 +1,6 @@
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 

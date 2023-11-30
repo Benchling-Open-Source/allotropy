@@ -4,8 +4,8 @@ from typing import Any
 
 import chardet
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -25,7 +25,7 @@ class VendorParser(ABC):
         file_bytes = contents.read()
         encoding = chardet.detect(file_bytes)["encoding"]
         if not encoding:
-            error = "Did not detect encoding in input file"
+            error = "Unable to detect text encoding for file. The file may be empty."
             raise AllotropeConversionError(error)
         return file_bytes.decode(encoding)
 
