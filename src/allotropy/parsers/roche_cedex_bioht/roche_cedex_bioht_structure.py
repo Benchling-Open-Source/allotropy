@@ -8,7 +8,7 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
@@ -29,12 +29,12 @@ class Title:
     def create(title_data: pd.Series) -> Title:
         analyst = title_data.get("analyst")
         if analyst is None:
-            msg = "Unable to obtain analyst from input data"
+            msg = "Unable to obtain analyst."
             raise AllotropeConversionError(msg)
 
         device_serial_number = title_data.get("device serial number")
         if device_serial_number is None:
-            msg = "Unable to obtain device serial number from input data"
+            msg = "Unable to obtain device serial number."
             raise AllotropeConversionError(msg)
 
         return Title(

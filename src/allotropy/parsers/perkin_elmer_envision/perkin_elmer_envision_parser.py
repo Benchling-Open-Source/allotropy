@@ -4,7 +4,6 @@ from io import IOBase
 from typing import Any, cast, Optional, TypeVar, Union
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DataSystemDocument,
@@ -36,6 +35,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     Data,
@@ -78,12 +78,12 @@ class PerkinElmerEnvisionParser(VendorParser):
         try:
             return self._get_model(Data.create(reader), filename)
         except (Exception) as error:
-            raise AllotropyError from error
+            raise AllotropeConversionError from error
 
     def _get_model(self, data: Data, filename: str) -> Model:
         if data.number_of_wells is None:
-            msg = "Unable to get number of the wells in the plate"
-            raise AllotropyError(msg)
+            msg = "Unable to determine the number of wells in the plate."
+            raise AllotropeConversionError(msg)
 
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
@@ -131,8 +131,8 @@ class PerkinElmerEnvisionParser(VendorParser):
         if dates:
             return self.get_date_time(min(dates))
 
-        msg = "Unable to find valid measurement date"
-        raise AllotropyError(msg)
+        msg = "Unable to determine the measurement time."
+        raise AllotropeConversionError(msg)
 
     def _get_device_control_aggregate_document(
         self,
@@ -300,8 +300,8 @@ class PerkinElmerEnvisionParser(VendorParser):
             try:
                 p_map = data.plate_maps[plate.plate_info.number]
             except KeyError as e:
-                msg = f"Unable to find plate map of {plate.plate_info.barcode}"
-                raise AllotropyError(msg) from e
+                msg = f"Unable to find plate map for Plate {plate.plate_info.barcode}."
+                raise AllotropeConversionError(msg) from e
 
             device_control_aggregate_document = (
                 self._get_device_control_aggregate_document(data, plate, read_type)

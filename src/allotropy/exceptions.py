@@ -1,0 +1,2 @@
+class AllotropeConversionError(Exception):
+    pass

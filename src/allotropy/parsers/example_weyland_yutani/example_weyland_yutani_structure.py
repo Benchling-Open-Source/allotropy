@@ -5,7 +5,7 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 
 EMPTY_CSV_LINE = r"^,*$"
@@ -62,7 +62,7 @@ class Plate:
             return []
         pivoted = df.T
         if pivoted.iloc[1, 0] != "A":
-            msg = "Column header(s) not found"
+            msg = "Column header(s) not found."
             raise AllotropeConversionError(msg)
         stripped = pivoted.drop(0, axis=0).drop(0, axis=1)
         rows, cols = stripped.shape

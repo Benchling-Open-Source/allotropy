@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 
@@ -19,7 +19,7 @@ class Data:
         ]
 
         if not plates:
-            msg = "No plate data found in file"
+            msg = "No plate data found in file."
             raise AllotropeConversionError(msg)
 
         return Data(plates)

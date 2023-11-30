@@ -6,7 +6,7 @@ from typing import Optional
 import chardet
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropyError
+from allotropy.exceptions import AllotropeConversionError
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
@@ -15,8 +15,8 @@ def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
     if not encoding:
         encoding = chardet.detect(bytes_content)["encoding"]
         if not encoding:
-            error = "Unable to detect input file encoding"
-            raise AllotropyError(error)
+            error = "Unable to detect text encoding for file. The file may be empty."
+            raise AllotropeConversionError(error)
     return bytes_content.decode(encoding)
 
 
