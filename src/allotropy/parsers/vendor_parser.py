@@ -2,33 +2,35 @@ from abc import ABC, abstractmethod
 import io
 from typing import Any
 
-import chardet
-
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
 
 class VendorParser(ABC):
-    def __init__(self, timestamp_parser: TimestampParser):
-        self.timestamp_parser = timestamp_parser
+    timestamp_parser: TimestampParser
 
+    """Base class for all vendor parsers."""
+
+    def __init__(self, timestamp_parser: TimestampParser):
+        self.timestamp_parser = assert_not_none(timestamp_parser, "timestamp_parser")
+
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:
+        """
+        Parse the contents of a file and return an Allotrope model.
+
+        :param contents: file contents
+        :param filename: file name
+        :return: an Allotrope model
+        """
+        return self._parse(contents, filename)
+
+    # TODO: inline this method
     @abstractmethod
     def _parse(self, contents: io.IOBase, filename: str) -> Any:
         raise NotImplementedError
 
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:
-        return self._parse(contents, filename)
-
-    def _read_contents(self, contents: io.IOBase) -> Any:
-        file_bytes = contents.read()
-        encoding = chardet.detect(file_bytes)["encoding"]
-        if not encoding:
-            error = "Unable to detect text encoding for file. The file may be empty."
-            raise AllotropeConversionError(error)
-        return file_bytes.decode(encoding)
-
+    # TODO: rename to _get_date_time and make time param a str
     def get_date_time(self, time: Any) -> TDateTimeValue:
         assert_not_none(time, "time")
 
