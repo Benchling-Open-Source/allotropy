@@ -7,6 +7,6 @@ class AllotropeConversionError(Exception):
 
 
 def msg_for_error_on_unrecognized_value(
-    key: str, value: Any, valid_values: Collection
+    key: str, value: Any, valid_values: Collection[Any]
 ) -> str:
     return f"Unrecognized {key}: {value}. Only {sorted(valid_values)} are supported."
