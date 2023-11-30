@@ -86,6 +86,30 @@ class PlateInfo:
 
 
 @dataclass(frozen=True)
+class CalculatedPlateInfo(PlateInfo):
+    formula: str
+
+    @staticmethod
+    def create(series: pd.Series[str]) -> CalculatedPlateInfo:
+        plate_number = PlateInfo.get_plate_number(series)
+        return CalculatedPlateInfo(
+            number=plate_number,
+            barcode=PlateInfo.get_barcode(series, plate_number),
+            measurement_time=try_str_from_series_or_none(series, "Measurement date"),
+            measured_height=try_float_from_series_or_none(series, "Measured height"),
+            chamber_temperature_at_start=try_float_from_series_or_none(
+                series,
+                "Chamber temperature at start",
+            ),
+            formula=try_str_from_series(
+                series,
+                "Formula",
+                msg="Unable to get expected formula for calculated results section",
+            ),
+        )
+
+
+@dataclass(frozen=True)
 class ResultPlateInfo(PlateInfo):
     emission_filter_id: str
 
