@@ -47,6 +47,7 @@ def get_data() -> Data:
                     measured_height=11.9,
                     chamber_temperature_at_start=23.17,
                 ),
+                calculated_results=[],
                 results=[Result(col="A", row="01", value=31441)],
             ),
             Plate(
@@ -58,6 +59,7 @@ def get_data() -> Data:
                     measured_height=11.9,
                     chamber_temperature_at_start=23.17,
                 ),
+                calculated_results=[],
                 results=[Result(col="A", row="01", value=80368)],
             ),
         ],
