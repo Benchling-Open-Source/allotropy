@@ -59,13 +59,16 @@ class PlateInfo:
             msg="Unable to find expected plate information",
         )
 
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "Plate information CSV block")
-        series = df_to_series(data_df).replace(np.nan, None)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "Plate information CSV block",
+        )
+        series = df_to_series(data).replace(np.nan, None)
         series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
 
         plate_number = assert_not_none(
-            str(series.get("Plate")), "Plate information: Plate"
+            str(series.get("Plate")),
+            "Plate information: Plate",
         )
         barcode = (
             str(series.get("Barcode") or '=""').removeprefix('="').removesuffix('"')
@@ -106,12 +109,12 @@ class Result:
         # Results may or may not have a title
         reader.pop_if_match("^Results")
 
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "reader data")
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "reader data",
+        )
         series = (
-            data_df.drop(0, axis=0).drop(0, axis=1)
-            if data_df.iloc[1, 0] == "A"
-            else data_df
+            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -160,10 +163,13 @@ class BasicAssayInfo:
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until_inclusive("^Basic assay information")
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "Basic assay information").T
-        data_df.iloc[0].replace(":.*", "", regex=True, inplace=True)
-        series = df_to_series(data_df)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "Basic assay information",
+        )
+        data = data.T
+        data.iloc[0].replace(":.*", "", regex=True, inplace=True)
+        series = df_to_series(data)
         return BasicAssayInfo(
             str(series.get("Protocol ID")),
             str(series.get("Assay ID")),
@@ -177,12 +183,15 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until_inclusive("^Plate type")
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "Plate type").T
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "Plate type",
+        )
         number_of_wells_str = "Number of the wells in the plate"
         return PlateType(
             try_float(
-                str(df_to_series(data_df).get(number_of_wells_str)), number_of_wells_str
+                str(df_to_series(data.T).get(number_of_wells_str)),
+                number_of_wells_str,
             )
         )
 
@@ -234,16 +243,16 @@ class PlateMap:
         plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")[-1]
         group_n = assert_not_none(reader.pop(), "Platemap group").split(",")[-1]
 
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "Platemap data").replace(" ", "", regex=True)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "Platemap data",
+        ).replace(" ", "", regex=True)
 
         reader.pop_data()  # drop type specification
         reader.drop_empty()
 
         series = (
-            data_df.drop(0, axis=0).drop(0, axis=1)
-            if data_df.iloc[1, 0] == "A"
-            else data_df
+            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -298,9 +307,11 @@ class Filter:
         ):
             return None
 
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "Filter information").T
-        series = df_to_series(data_df)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "Filter information",
+        )
+        series = df_to_series(data.T)
 
         name = str(series.index[0])
 
@@ -355,9 +366,11 @@ class Labels:
     @staticmethod
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
-        data = reader.pop_csv_block_as_df()
-        data_df = assert_not_none(data, "Labels").T
-        series = df_to_series(data_df).replace(np.nan, None)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "Labels",
+        )
+        series = df_to_series(data.T).replace(np.nan, None)
 
         filters = create_filters(reader)
 
