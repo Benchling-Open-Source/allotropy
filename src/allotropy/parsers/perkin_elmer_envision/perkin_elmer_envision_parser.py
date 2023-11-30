@@ -314,7 +314,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                 )
             )
 
-            for result in plate.results:
+            for result in plate.results.results:
                 measurement_docs_dict[
                     (plate.plate_info.number, result.col, result.row)
                 ].append(

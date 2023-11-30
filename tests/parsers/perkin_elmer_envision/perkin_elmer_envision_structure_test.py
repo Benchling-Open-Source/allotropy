@@ -11,6 +11,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     BasicAssayInfo,
     CalculatedPlateInfo,
     CalculatedResult,
+    CalculatedResultList,
     create_plate_maps,
     Filter,
     Instrument,
@@ -19,6 +20,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     PlateMap,
     PlateType,
     Result,
+    ResultList,
     ResultPlateInfo,
 )
 
@@ -86,13 +88,15 @@ def test_create_result() -> None:
         ]
     )
 
-    expected = [
-        Result(col="A", row="01", value=1),
-        Result(col="A", row="02", value=2),
-        Result(col="B", row="01", value=3),
-        Result(col="B", row="02", value=4),
-    ]
-    assert Result.create(reader) == expected
+    expected = ResultList(
+        results=[
+            Result(col="A", row="01", value=1),
+            Result(col="A", row="02", value=2),
+            Result(col="B", row="01", value=3),
+            Result(col="B", row="02", value=4),
+        ]
+    )
+    assert ResultList.create(reader) == expected
 
 
 def test_create_plates() -> None:
@@ -122,12 +126,14 @@ def test_create_plates() -> None:
                 measured_height=1.1,
                 chamber_temperature_at_start=14.5,
             ),
-            calculated_results=[],
-            results=[
-                Result(col="A", row="01", value=6),
-                Result(col="A", row="03", value=7),
-                Result(col="C", row="02", value=8),
-            ],
+            calculated_results=CalculatedResultList([]),
+            results=ResultList(
+                results=[
+                    Result(col="A", row="01", value=6),
+                    Result(col="A", row="03", value=7),
+                    Result(col="C", row="02", value=8),
+                ]
+            ),
         )
     ]
 
@@ -159,12 +165,14 @@ def test_create_plates() -> None:
                 chamber_temperature_at_start=14.5,
                 formula="Calc 1: General = X / 2 where X = test",
             ),
-            calculated_results=[
-                CalculatedResult(col="A", row="01", value=3),
-                CalculatedResult(col="A", row="03", value=3.5),
-                CalculatedResult(col="C", row="02", value=4),
-            ],
-            results=[],
+            calculated_results=CalculatedResultList(
+                calculated_results=[
+                    CalculatedResult(col="A", row="01", value=3),
+                    CalculatedResult(col="A", row="03", value=3.5),
+                    CalculatedResult(col="C", row="02", value=4),
+                ]
+            ),
+            results=ResultList([]),
         )
     ]
 
