@@ -25,7 +25,7 @@ class RocheCedexBiohtReader:
 
     def read_title_data(self, contents: IOType) -> pd.Series[Any]:
         contents.seek(0)
-        return pd.read_csv(
+        return pd.read_csv(  # type: ignore[call-overload]
             contents,
             delimiter="\t",
             usecols=INFO_HEADER,
@@ -35,7 +35,7 @@ class RocheCedexBiohtReader:
 
     def read_samples_data(self, contents: IOType) -> pd.DataFrame:
         contents.seek(0)
-        sample_rows: pd.DataFrame = pd.read_csv(
+        sample_rows: pd.DataFrame = pd.read_csv(  # type: ignore[call-overload]
             contents,
             delimiter="\t",
             usecols=DATA_HEADER,

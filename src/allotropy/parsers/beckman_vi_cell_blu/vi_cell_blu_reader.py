@@ -55,7 +55,7 @@ desired_columns = {
 class ViCellBluReader:
     @classmethod
     def read(cls, contents: IOType) -> pd.DataFrame:
-        raw_data = pd.read_csv(contents, index_col=False)
+        raw_data = pd.read_csv(contents, index_col=False)  # type: ignore[call-overload]
 
         columns: list[pd.Series[Any]] = []
         for column, desired_type in desired_columns.items():
