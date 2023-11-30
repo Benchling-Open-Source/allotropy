@@ -30,7 +30,13 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float_from_series,
+    try_float_from_series_or_none,
+    try_str_from_series,
+    try_str_from_series_or_none,
+)
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
@@ -59,37 +65,37 @@ class PlateInfo:
             msg="Unable to find expected plate information",
         )
 
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
-            "Plate information CSV block",
-        )
-        series = df_to_series(data).replace(np.nan, None)
-        series.index = pd.Series(series.index).replace(np.nan, "empty label")  # type: ignore[assignment]
+        series = df_to_series(
+            assert_not_none(
+                reader.pop_csv_block_as_df(),
+                "Plate information CSV block",
+            )
+        ).replace(np.nan, None)
 
-        plate_number = assert_not_none(
-            str(series.get("Plate")),
-            "Plate information: Plate",
-        )
-        barcode = (
-            str(series.get("Barcode") or '=""').removeprefix('="').removesuffix('"')
-            or f"Plate {plate_number}"
+        plate_number = try_str_from_series(
+            series,
+            "Plate",
+            msg="Unable to find plate number",
         )
 
-        search_result = assert_not_none(
-            search("De=...", str(series.get("Measinfo", ""))),
+        optional_barcode = try_str_from_series_or_none(series, "Barcode")
+        raw_barcode = (optional_barcode or '=""').removeprefix('="').removesuffix('"')
+        barcode = raw_barcode or f"Plate {plate_number}"
+
+        emission_filter_id = assert_not_none(
+            search("De=(...)", try_str_from_series_or_none(series, "Measinfo") or ""),
             msg=f"Unable to find emission filter ID for Plate {barcode}.",
-        )
-        emission_filter_id = search_result.group().removeprefix("De=")
+        ).group(1)
 
-        measurement_time = str(series.get("Measurement date", ""))
+        measurement_time = try_str_from_series_or_none(series, "Measurement date") or ""
 
         return PlateInfo(
             plate_number,
             barcode,
             emission_filter_id,
             measurement_time,
-            try_float_or_none(str(series.get("Measured height"))),
-            try_float_or_none(str(series.get("Chamber temperature at start"))),
+            try_float_from_series_or_none(series, "Measured height"),
+            try_float_from_series_or_none(series, "Chamber temperature at start"),
         )
 
 
@@ -157,8 +163,8 @@ class Plate:
 
 @dataclass
 class BasicAssayInfo:
-    protocol_id: str
-    assay_id: str
+    protocol_id: Optional[str]
+    assay_id: Optional[str]
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
@@ -171,8 +177,8 @@ class BasicAssayInfo:
         data.iloc[0].replace(":.*", "", regex=True, inplace=True)
         series = df_to_series(data)
         return BasicAssayInfo(
-            str(series.get("Protocol ID")),
-            str(series.get("Assay ID")),
+            try_str_from_series_or_none(series, "Protocol ID"),
+            try_str_from_series_or_none(series, "Assay ID"),
         )
 
 
@@ -187,12 +193,11 @@ class PlateType:
             reader.pop_csv_block_as_df(),
             "Plate type",
         )
-        number_of_wells_str = "Number of the wells in the plate"
         return PlateType(
-            try_float(
-                str(df_to_series(data.T).get(number_of_wells_str)),
-                number_of_wells_str,
-            )
+            number_of_wells=try_float_from_series(
+                df_to_series(data.T),
+                "Number of the wells in the plate",
+            ),
         )
 
 
@@ -240,8 +245,8 @@ class PlateMap:
         if not reader.current_line_exists() or reader.match("^Calculations"):
             return None
 
-        plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")[-1]
-        group_n = assert_not_none(reader.pop(), "Platemap group").split(",")[-1]
+        *_, plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")
+        *_, group_n = assert_not_none(reader.pop(), "Platemap group").split(",")
 
         data = assert_not_none(
             reader.pop_csv_block_as_df(),
@@ -263,8 +268,7 @@ class PlateMap:
             col_mapping: dict[str, SampleRoleType] = {}
             for col, value in row_data.items():
                 if value:
-                    role_type = get_sample_role_type(str(value))
-                    if role_type:
+                    if role_type := get_sample_role_type(str(value)):
                         col_mapping[str(col)] = role_type
             if col_mapping:
                 sample_role_type_mapping[str(row)] = col_mapping
@@ -313,35 +317,26 @@ class Filter:
             "Filter information",
         )
         series = df_to_series(data.T)
-
         name = str(series.index[0])
+        description = try_str_from_series(series, "Description")
 
-        description = str(series.get("Description"))
-
-        search_result = search("(Longpass)=\\d*nm", description)
-        if search_result is not None:
-            wavelength = float(
-                search_result.group().removeprefix("Longpass=").removesuffix("nm")
-            )
-            return Filter(name, wavelength)
-
-        search_result = assert_not_none(
-            search("(CWL)=\\d*nm", description),
-            msg=f"Unable to find wavelength for filter {name}.",
+        if search_result := search("Longpass=(\\d+)nm", description):
+            return Filter(name, wavelength=float(search_result.group(1)))
+        return Filter(
+            name,
+            wavelength=float(
+                assert_not_none(
+                    search("CWL=(\\d+)nm", description),
+                    msg=f"Unable to find wavelength for filter {name}.",
+                ).group(1)
+            ),
+            bandwidth=float(
+                assert_not_none(
+                    search("BW=(\\d+)nm", description),
+                    msg=f"Unable to find bandwidth for filter {name}.",
+                ).group(1)
+            ),
         )
-
-        wavelength = float(
-            search_result.group().removeprefix("CWL=").removesuffix("nm")
-        )
-
-        search_result = assert_not_none(
-            search("BW=\\d*nm", description),
-            msg=f"Unable to find bandwidth for filter {name}.",
-        )
-
-        bandwidth = float(search_result.group().removeprefix("BW=").removesuffix("nm"))
-
-        return Filter(name, wavelength, bandwidth=bandwidth)
 
 
 def create_filters(reader: CsvReader) -> dict[str, Filter]:
@@ -375,29 +370,34 @@ class Labels:
             "Labels",
         )
         series = df_to_series(data.T).replace(np.nan, None)
-
         filters = create_filters(reader)
-
-        excitation_filter = filters.get(str(series.get("Exc. filter", "")))
-
-        emission_filters = {
-            "1st": filters.get(str(series.get("Ems. filter"))),
-            "2nd": filters.get(str(series.get("2nd ems. filter"))),
-        }
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
             "Top": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
         }
 
         return Labels(
-            series.index[0],
-            excitation_filter,
-            emission_filters,
-            filter_position_map.get(str(series.get("Using of emission filter")), None),
-            number_of_flashes=try_float_or_none(str(series.get("Number of flashes"))),
-            detector_gain_setting=str(gain)
-            if (gain := series.get("Reference AD gain"))
-            else None,
+            label=series.index[0],
+            excitation_filter=filters.get(
+                try_str_from_series_or_none(series, "Exc. filter") or ""
+            ),
+            emission_filters={
+                "1st": filters.get(
+                    try_str_from_series_or_none(series, "Ems. filter") or "",
+                ),
+                "2nd": filters.get(
+                    try_str_from_series_or_none(series, "2nd ems. filter") or ""
+                ),
+            },
+            scan_position_setting=filter_position_map.get(
+                try_str_from_series_or_none(series, "Using of emission filter") or ""
+            ),
+            number_of_flashes=try_float_from_series_or_none(
+                series, "Number of flashes"
+            ),
+            detector_gain_setting=try_str_from_series_or_none(
+                series, "Reference AD gain"
+            ),
         )
 
     def get_emission_filter(self, id_val: str) -> Optional[Filter]:
@@ -418,8 +418,8 @@ class Instrument:
 
         reader.pop()  # remove title
 
-        serial_number = assert_not_none(reader.pop(), "serial number").split(",")[-1]
-        nickname = assert_not_none(reader.pop(), "nickname").split(",")[-1]
+        *_, serial_number = assert_not_none(reader.pop(), "serial number").split(",")
+        *_, nickname = assert_not_none(reader.pop(), "nickname").split(",")
 
         return Instrument(serial_number, nickname)
 
@@ -431,18 +431,26 @@ class Software:
 
     @staticmethod
     def create(reader: CsvReader) -> Software:
-        exported_with_text = "Exported with "
+        exported_with_regex = "Exported with (.+) version (.+)"
         assert_not_none(
-            reader.drop_until(exported_with_text),
+            reader.drop_until(exported_with_regex),
             msg="Unable to find software information; no 'Exported with' section found.",
         )
 
-        software_info_line = assert_not_none(reader.pop(), "software information")
-        software_info = [
-            s.strip()
-            for s in software_info_line[len(exported_with_text) :].split("version")
-        ]
-        return Software(software_info[0], software_info[1])
+        search_result = assert_not_none(
+            search(
+                exported_with_regex,
+                assert_not_none(
+                    reader.pop(),
+                    "software information",
+                ),
+            )
+        )
+
+        return Software(
+            software_name=search_result.group(1),
+            software_version=search_result.group(2),
+        )
 
 
 @dataclass
