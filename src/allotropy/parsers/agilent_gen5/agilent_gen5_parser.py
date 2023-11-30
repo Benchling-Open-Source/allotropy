@@ -91,7 +91,7 @@ class AgilentGen5Parser(VendorParser):
         )
         raise AllotropeConversionError(msg)
 
-    def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
         section_lines_reader = SectionLinesReader(contents, encoding=None)
         data = Data.create(section_lines_reader)
 
