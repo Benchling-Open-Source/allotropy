@@ -129,7 +129,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         ]
 
         if dates:
-            return self.get_date_time(min(dates))
+            return self._get_date_time(min(dates))
 
         msg = "Unable to determine the measurement time."
         raise AllotropeConversionError(msg)

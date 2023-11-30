@@ -26,7 +26,7 @@ class RocheCedexBiohtParser(VendorParser):
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                data_processing_time=self.get_date_time(
+                data_processing_time=self._get_date_time(
                     data.title.data_processing_time
                 ),
                 analyst=data.title.analyst,
@@ -79,6 +79,6 @@ class RocheCedexBiohtParser(VendorParser):
                 sample_role_type=sample.role_type,
                 batch_identifier=sample.batch,
             ),
-            measurement_time=self.get_date_time(sample.measurement_time),
+            measurement_time=self._get_date_time(sample.measurement_time),
             analyte_aggregate_document=AnalyteAggregateDocument(analyte_document=[]),
         )

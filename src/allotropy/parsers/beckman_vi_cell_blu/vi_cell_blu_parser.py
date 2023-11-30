@@ -111,7 +111,7 @@ class ViCellBluParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_time=self.get_date_time(
+                        measurement_time=self._get_date_time(
                             _get_value(sample, "Analysis date/time")
                         ),
                         measurement_identifier=str(uuid.uuid4()),
