@@ -21,7 +21,7 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
 )
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
-output_files = (
+OUTPUT_FILES = (
     "appbio_quantstudio_example01",
     "appbio_quantstudio_example02",
     "appbio_quantstudio_example03",
@@ -35,14 +35,14 @@ output_files = (
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
-@pytest.mark.parametrize("output_file", output_files)
+@pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(allotrope_dict, "pcr/BENCHLING/2023/09/qpcr.json")
 
 
-@pytest.mark.parametrize("output_file", output_files)
+@pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
     expected_filepath = test_filepath.replace(".txt", ".json")
