@@ -8,7 +8,10 @@ from typing import Any, Optional
 import numpy as np
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     FILENAME_REGEX,
@@ -48,7 +51,9 @@ class Analyte:
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
         if raw_name not in ANALYTE_MAPPINGS:
-            msg = f"Unrecognized analyte name; expected to be one of {sorted(ANALYTE_MAPPINGS.keys())}."
+            msg = msg_for_error_on_unrecognized_value(
+                "analyte name", raw_name, ANALYTE_MAPPINGS.keys()
+            )
             raise AllotropeConversionError(msg)
 
         mapping = ANALYTE_MAPPINGS[raw_name]

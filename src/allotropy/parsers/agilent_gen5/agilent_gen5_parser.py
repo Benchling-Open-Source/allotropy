@@ -18,7 +18,10 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementAggregateDocument as AbsorbanceMeasurementAggregateDocument,
     Model as AbsorbanceModel,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import ReadMode
@@ -83,7 +86,9 @@ class AgilentGen5Parser(VendorParser):
                 )
             )
 
-        msg = f"Unrecognized read mode: {first_plate.plate_type.read_mode}. Only {sorted(ReadMode._member_names_)} are supported."
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", first_plate.plate_type.read_mode, ReadMode._member_names_
+        )
         raise AllotropeConversionError(msg)
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:

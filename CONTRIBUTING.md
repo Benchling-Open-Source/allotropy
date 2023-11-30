@@ -45,6 +45,22 @@ In this case we already have some code in the library to handle instruments of t
 Please open an issue and talk to us about adding it. There is a bit more work involved in this case but we would still love to work with you to get the instrument type that you desire into the library!
 
 
+# Error messaging
+
+We ask that all error messages thrown in exceptions are written to be clear and useful to developers and end users. As such, please follow these guidelines. `AllotropeConversionError` and helper functions can be found in [`exceptions.py`](src/allotropy/exceptions.py) (and as always, we welcome any additions you may have).
+- Catch and raise all exceptions in this repo as `AllotropeConversionError`.
+- Write all messages with proper capitalization and full punctuation.
+- As much as possible, include the exact text of the problematic line(s) or value(s) (in single quotes as needed, to add clarity).
+- As much as possible, explain why that text was problematic, or what the expected behavior would have been.
+- Construct messages using f-strings, when applicable.
+
+## Specific situations
+- If a value is not a member of an expected set of values (e.g. an Enum), the text should read: `Unrecognized {key}: '{value}'. Only {valid_values} are supported.` (there is a helper function in [`exceptions.py`](src/allotropy/exceptions.py) for this)
+- If an expected value is not present, begin the text with `"Unable to find..."` or `"Unable to determine..."`
+- If a certain number of values are expected, begin the text with `"Expected exactly..."`
+- If a certain framework is unsupported, begin with the text `"Unsupported..."`
+
+
 # Other issues
 
 Please open an issue for other concerns or issues you want to communicate to us. In the case of a security vulnerability please follow the [Github provided guidance](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)
