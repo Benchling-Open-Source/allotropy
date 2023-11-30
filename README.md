@@ -41,11 +41,13 @@ or, convert any IO:
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_io
 
-with open("filename.txt") as f:
-    asm_schema = allotrope_from_io(f, Vendor.MOLDEV_SOFTMAX_PRO)
+file_name = "filepath.txt"
+
+with open(file_name) as f:
+    asm_schema = allotrope_from_io(f, file_name, Vendor.MOLDEV_SOFTMAX_PRO)
 
 bytes_io = BytesIO(file_stream)
-asm_schema = allotrope_from_io(bytes_io, Vendor.MOLDEV_SOFTMAX_PRO)
+asm_schema = allotrope_from_io(bytes_io, file_name, Vendor.MOLDEV_SOFTMAX_PRO)
 ```
 
 # Specific setup and build instructions
