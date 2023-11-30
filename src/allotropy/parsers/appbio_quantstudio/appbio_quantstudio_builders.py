@@ -90,7 +90,7 @@ class HeaderBuilder:
             experiments_type_options.get(
                 try_str_from_series(data, "Experiment Type"),
             ),
-            msg="Unable to get valid experiment type",
+            msg="Unable to find valid experiment type",
         )
 
     @staticmethod
@@ -145,13 +145,13 @@ class GenericWellBuilder:
         target_dna_description = try_str_from_series(
             data,
             "Target Name",
-            msg=f"Unable to get target dna description for well {identifier}",
+            msg=f"Unable to find target dna description for well {identifier}",
         )
 
         sample_identifier = try_str_from_series(
             data,
             "Sample Name",
-            msg=f"Unable to get sample identifier for well {identifier}",
+            msg=f"Unable to find sample identifier for well {identifier}",
         )
 
         return WellItem(
@@ -194,25 +194,25 @@ class GenotypingWellBuilder:
         snp_name = try_str_from_series(
             data,
             "SNP Assay Name",
-            msg=f"Unable to get snp name for well {identifier}",
+            msg=f"Unable to find snp name for well {identifier}",
         )
 
         sample_identifier = try_str_from_series(
             data,
             "Sample Name",
-            msg=f"Unable to get sample identifier for well {identifier}",
+            msg=f"Unable to find sample identifier for well {identifier}",
         )
 
         allele1 = try_str_from_series(
             data,
             "Allele1 Name",
-            msg=f"Unable to get allele 1 for well {identifier}",
+            msg=f"Unable to find allele 1 for well {identifier}",
         )
 
         allele2 = try_str_from_series(
             data,
             "Allele2 Name",
-            msg=f"Unable to get allele 2 for well {identifier}",
+            msg=f"Unable to find allele 2 for well {identifier}",
         )
 
         return (
@@ -305,12 +305,12 @@ class AmplificationDataBuilder:
     ) -> pd.DataFrame:
         well_data = assert_not_empty_df(
             amplification_data[amplification_data["Well"] == well_item.identifier],
-            msg=f"Unable to get amplification data for well {well_item.identifier}.",
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
         )
 
         return assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to get amplification data for well {well_item.identifier}.",
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
         )
 
     @staticmethod
@@ -362,12 +362,12 @@ class GenericResultsBuilder:
         cycle_threshold_value_setting = try_float_from_series(
             target_data,
             "Ct Threshold",
-            msg=f"Unable to get cycle threshold value setting for well {well_item.identifier}",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
         cycle_threshold_result = assert_not_none(
             target_data.get("CT"),
-            msg="Unable to get cycle threshold result",
+            msg="Unable to find cycle threshold result",
         )
 
         return Result(
@@ -412,12 +412,12 @@ class GenericResultsBuilder:
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
-            msg=f"Unable to get result data for well {well_item.identifier}.",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         target_data = assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to get result data for well {well_item.identifier}.",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         return df_to_series(
@@ -435,12 +435,12 @@ class GenotypingResultsBuilder:
         cycle_threshold_value_setting = try_float_from_series(
             target_data,
             f"{allele} Ct Threshold",
-            msg=f"Unable to get cycle threshold value setting for well {well_item.identifier}",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
         cycle_threshold_result = assert_not_none(
             target_data.get(f"{allele} Ct"),
-            msg="Unable to get cycle threshold result",
+            msg="Unable to find cycle threshold result",
         )
 
         return Result(
@@ -485,13 +485,13 @@ class GenotypingResultsBuilder:
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
-            msg=f"Unable to get result data for well {well_item.identifier}.",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         snp_assay_name, _ = well_item.target_dna_description.split("-")
         target_data = assert_not_empty_df(
             well_data[well_data["SNP Assay Name"] == snp_assay_name],
-            msg=f"Unable to get result data for well {well_item.identifier}.",
+            msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         return df_to_series(
@@ -552,7 +552,7 @@ class MeltCurveRawDataBuilder:
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
         return assert_not_empty_df(
             data[data["Well"] == well.identifier],
-            msg=f"Unable to get melt curve raw data for well {well.identifier}.",
+            msg=f"Unable to find melt curve raw data for well {well.identifier}.",
         )
 
     @staticmethod

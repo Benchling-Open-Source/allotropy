@@ -110,13 +110,13 @@ class SampleList:
         sample_data_rows = [row for _, row in data.iterrows()]
 
         if not sample_data_rows:
-            msg = "Unable to get any sample."
+            msg = "Unable to find any sample."
             raise AllotropeConversionError(msg)
 
         analyst = sample_data_rows[0].get("Operator")
 
         if analyst is None:
-            msg = "Unable to identify the Operator."
+            msg = "Unable to find the Operator."
             raise AllotropeConversionError(msg)
 
         return SampleList(

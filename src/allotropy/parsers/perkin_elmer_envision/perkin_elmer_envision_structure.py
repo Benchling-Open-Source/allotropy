@@ -74,7 +74,7 @@ class PlateInfo:
 
         search_result = search("De=...", str(series.get("Measinfo", "")))
         if not search_result:
-            msg = f"Unable to get emission filter ID from Plate {barcode}"
+            msg = f"Unable to find emission filter ID for Plate {barcode}."
             raise AllotropeConversionError(msg)
         emission_filter_id = search_result.group().removeprefix("De=")
 
