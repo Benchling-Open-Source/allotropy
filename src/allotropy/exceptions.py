@@ -7,7 +7,7 @@ class AllotropeConversionError(Exception):
 
 
 def msg_for_error_on_unrecognized_value(
-    key: str, value: Any, valid_values: Optional[Collection[Any]]
+    key: str, value: Any, valid_values: Optional[Collection[Any]] = None
 ) -> str:
     msg = f"Unrecognized {key}: '{value}'."
     if valid_values:
