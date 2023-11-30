@@ -113,7 +113,9 @@ class PlateNumber:
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata key '{line_split[0]}'; expected to be one of {sorted(METADATA_PREFIXES)}."
+                msg = msg_for_error_on_unrecognized_value(
+                    "metadata key", line_split[0], METADATA_PREFIXES
+                )
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
