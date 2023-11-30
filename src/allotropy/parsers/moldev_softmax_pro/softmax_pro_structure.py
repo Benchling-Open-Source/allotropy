@@ -46,7 +46,10 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
     Model as ModelAbsorbance,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -316,8 +319,10 @@ class PlateBlock(Block):
                 cutoff_filters=extra_attr.cutoff_filters,
             )
 
-        error = f"Unrecognized read mode: {read_mode}. Only {sorted(plate_block_cls.keys())} are supported."
-        raise AllotropeConversionError(error)
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", read_mode, plate_block_cls.keys()
+        )
+        raise AllotropeConversionError(msg)
 
     @staticmethod
     def _parse_reduced_plate_rows(
