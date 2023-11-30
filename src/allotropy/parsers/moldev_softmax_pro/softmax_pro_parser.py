@@ -7,7 +7,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class SoftmaxproParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
         lines_reader = LinesReader(contents)
         data = Data.create(lines_reader)
         return self._get_model(data)

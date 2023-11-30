@@ -74,7 +74,7 @@ def get_property_from_sample(sample: _Sample, property_name: str) -> Any:
 
 
 class ViCellBluParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Model:
         return self._get_model(ViCellBluReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:

@@ -28,7 +28,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ExampleWeylandYutaniParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, _: str) -> Model:
+    def to_allotrope(self, raw_contents: IOBase, _: str) -> Model:
         reader = CsvReader(raw_contents)
         return self._get_model(Data.create(reader))
 
