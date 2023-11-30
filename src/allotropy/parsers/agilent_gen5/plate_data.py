@@ -18,7 +18,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
     ReadMode,
@@ -110,7 +113,9 @@ class PlateNumber:
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata key '{line_split[0]}'; expected to be one of {sorted(METADATA_PREFIXES)}."
+                msg = msg_for_error_on_unrecognized_value(
+                    "metadata key", line_split[0], METADATA_PREFIXES
+                )
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
@@ -151,7 +156,9 @@ class PlateType:
         elif self.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceDataPoint
 
-        msg = f"Unrecognized read mode: {self.read_mode}. Only {sorted(ReadMode._member_names_)} are supported."
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", self.read_mode, ReadMode._member_names_
+        )
         raise AllotropeConversionError(msg)
 
     @staticmethod
