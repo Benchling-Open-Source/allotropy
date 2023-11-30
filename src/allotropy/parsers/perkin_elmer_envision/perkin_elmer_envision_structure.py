@@ -135,6 +135,34 @@ class ResultPlateInfo(PlateInfo):
         )
 
 
+@dataclass
+class CalculatedResult:
+    col: str
+    row: str
+    value: float
+
+    @staticmethod
+    def create(reader: CsvReader) -> list[CalculatedResult]:
+        # Calculated results may or may not have a title
+        reader.pop_if_match("^Calculated results")
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(),
+            "results data",
+        )
+        series = (
+            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+        )
+        rows, cols = series.shape
+        series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
+        series.columns = [str(i).zfill(2) for i in range(1, cols + 1)]  # type: ignore[assignment]
+
+        return [
+            CalculatedResult(col, row, series.loc[col, row])
+            for col, row in series.stack().index
+        ]
+
+
 @dataclass(frozen=True)
 class Result:
     col: str
