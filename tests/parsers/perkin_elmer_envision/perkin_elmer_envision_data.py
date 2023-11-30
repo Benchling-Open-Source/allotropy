@@ -28,9 +28,9 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     Instrument,
     Labels,
     Plate,
-    PlateInfo,
     PlateMap,
     Result,
+    ResultPlateInfo,
     Software,
 )
 
@@ -39,7 +39,7 @@ def get_data() -> Data:
     return Data(
         plates=[
             Plate(
-                plate_info=PlateInfo(
+                plate_info=ResultPlateInfo(
                     number="1",
                     barcode="Plate 1",
                     emission_filter_id="1st",
@@ -50,7 +50,7 @@ def get_data() -> Data:
                 results=[Result(col="A", row="01", value=31441)],
             ),
             Plate(
-                plate_info=PlateInfo(
+                plate_info=ResultPlateInfo(
                     number="1",
                     barcode="Plate 1",
                     emission_filter_id="2nd",

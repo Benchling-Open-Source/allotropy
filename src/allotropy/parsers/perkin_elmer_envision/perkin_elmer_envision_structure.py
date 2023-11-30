@@ -52,53 +52,62 @@ def num_to_chars(n: int) -> str:
 class PlateInfo:
     number: str
     barcode: str
-    emission_filter_id: str
     measurement_time: Optional[str]
     measured_height: Optional[float]
     chamber_temperature_at_start: Optional[float]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[PlateInfo]:
+    def get_series(reader: CsvReader) -> pd.Series[str]:
         assert_not_none(
             reader.pop_if_match("^Plate information"),
             msg="Unable to find expected plate information",
         )
 
-        series = df_to_series(
+        return df_to_series(
             assert_not_none(
                 reader.pop_csv_block_as_df(),
                 "Plate information CSV block",
             )
         ).replace(np.nan, None)
 
-        plate_number = try_str_from_series(
+    @staticmethod
+    def get_plate_number(series: pd.Series[str]) -> str:
+        return try_str_from_series(
             series,
             "Plate",
             msg="Unable to find plate number",
         )
 
-        optional_barcode = try_str_from_series_or_none(series, "Barcode")
-        raw_barcode = (optional_barcode or '=""').removeprefix('="').removesuffix('"')
-        barcode = raw_barcode or f"Plate {plate_number}"
+    @staticmethod
+    def get_barcode(series: pd.Series[str], plate_number: str) -> str:
+        raw_barcode = try_str_from_series_or_none(series, "Barcode")
+        barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
+        return barcode or f"Plate {plate_number}"
 
+
+@dataclass(frozen=True)
+class ResultPlateInfo(PlateInfo):
+    emission_filter_id: str
+
+    @staticmethod
+    def create(series: pd.Series[str]) -> Optional[ResultPlateInfo]:
         measinfo = try_str_from_series_or_none(series, "Measinfo")
         if measinfo is None:
             return None
 
-        emission_filter_id = assert_not_none(
-            search("De=(...)", measinfo),
-            msg=f"Unable to find emission filter ID for Plate {barcode}.",
-        ).group(1)
+        plate_number = PlateInfo.get_plate_number(series)
+        barcode = PlateInfo.get_barcode(series, plate_number)
 
-        measurement_time = try_str_from_series_or_none(series, "Measurement date") or ""
-
-        return PlateInfo(
+        return ResultPlateInfo(
             plate_number,
             barcode,
-            emission_filter_id,
-            measurement_time,
+            try_str_from_series_or_none(series, "Measurement date"),
             try_float_from_series_or_none(series, "Measured height"),
             try_float_from_series_or_none(series, "Chamber temperature at start"),
+            emission_filter_id=assert_not_none(
+                search("De=(...)", measinfo),
+                msg=f"Unable to find emission filter ID for Plate {barcode}.",
+            ).group(1),
         )
 
 
@@ -137,7 +146,7 @@ class Result:
 
 @dataclass(frozen=True)
 class Plate:
-    plate_info: PlateInfo
+    plate_info: ResultPlateInfo
     results: list[Result]
 
     @staticmethod
@@ -145,7 +154,8 @@ class Plate:
         plates: list[Plate] = []
 
         while reader.match("^Plate information"):
-            if plate_info := PlateInfo.create(reader):
+            series = PlateInfo.get_series(reader)
+            if plate_info := ResultPlateInfo.create(series):
                 reader.drop_sections("^Background information|^Calculated results")
                 plates.append(Plate(plate_info, results=Result.create(reader)))
             else:
