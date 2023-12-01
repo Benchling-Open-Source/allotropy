@@ -15,7 +15,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class NovaBioFlexParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Model:
         return self._get_model(Data.create(contents, filename))
 
     def _get_model(self, data: Data) -> Model:

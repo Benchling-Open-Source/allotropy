@@ -73,7 +73,7 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 
 class PerkinElmerEnvisionParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
+    def to_allotrope(self, raw_contents: IOBase, filename: str) -> Model:
         reader = CsvReader(raw_contents)
         try:
             return self._get_model(Data.create(reader), filename)

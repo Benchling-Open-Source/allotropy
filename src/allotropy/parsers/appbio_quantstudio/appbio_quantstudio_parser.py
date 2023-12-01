@@ -53,7 +53,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, file_name: str) -> Model:
+    def to_allotrope(self, raw_contents: IOBase, file_name: str) -> Model:
         reader = LinesReader(raw_contents)
         data = DataBuilder.build(reader)
         return self._get_model(data, file_name)

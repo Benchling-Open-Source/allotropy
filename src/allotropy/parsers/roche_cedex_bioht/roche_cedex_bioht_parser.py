@@ -18,7 +18,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class RocheCedexBiohtParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:  # noqa: ARG002
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Model:  # noqa: ARG002
         reader = RocheCedexBiohtReader(contents)
         return self._get_model(Data.create(reader))
 

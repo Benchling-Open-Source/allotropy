@@ -45,7 +45,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppbioAbsoluteQParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
+    def to_allotrope(self, raw_contents: IOBase, filename: str) -> Model:
         reader = AbsoluteQReader(raw_contents)
         return self._get_model(reader.wells, reader.group_rows, filename)
 

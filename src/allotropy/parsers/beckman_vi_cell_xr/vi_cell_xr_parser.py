@@ -54,7 +54,7 @@ def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
 
 
 class ViCellXRParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, contents: io.IOBase, filename: str) -> Model:
         reader = ViCellXRReader(contents)
 
         return Model(
