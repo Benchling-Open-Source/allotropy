@@ -111,10 +111,15 @@ class CalculatedPlateInfo(PlateInfo):
 
 @dataclass(frozen=True)
 class ResultPlateInfo(PlateInfo):
+    label: str
     emission_filter_id: str
 
     @staticmethod
     def create(series: pd.Series[str]) -> Optional[ResultPlateInfo]:
+        label = try_str_from_series_or_none(series, "Label")
+        if label is None:
+            return None
+
         measinfo = try_str_from_series_or_none(series, "Measinfo")
         if measinfo is None:
             return None
@@ -128,6 +133,7 @@ class ResultPlateInfo(PlateInfo):
             try_str_from_series_or_none(series, "Measurement date"),
             try_float_from_series_or_none(series, "Measured height"),
             try_float_from_series_or_none(series, "Chamber temperature at start"),
+            label=label,
             emission_filter_id=assert_not_none(
                 search("De=(...)", measinfo),
                 msg=f"Unable to find emission filter ID for Plate {barcode}.",

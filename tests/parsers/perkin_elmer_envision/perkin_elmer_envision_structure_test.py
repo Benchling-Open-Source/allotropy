@@ -33,8 +33,8 @@ def test_create_plate_info() -> None:
     reader = get_reader_from_lines(
         [
             "Plate information",
-            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Measinfo,Kinetics,Measurement date,",
-            '1,1,"=""BAR_123""",11.9,23.17,De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,',
+            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Label,Measinfo,Kinetics,Measurement date,",
+            '1,1,"=""BAR_123""",11.9,23.17,AC HTRF Laser [Eu](1),De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,',
         ]
     )
 
@@ -45,6 +45,7 @@ def test_create_plate_info() -> None:
         measurement_time="10/13/2022 3:08:06 PM",
         measured_height=11.9,
         chamber_temperature_at_start=23.17,
+        label="AC HTRF Laser [Eu](1)",
     )
 
     series = ResultPlateInfo.get_series(reader)
@@ -55,8 +56,8 @@ def test_create_plate_info_default_barcode() -> None:
     reader = get_reader_from_lines(
         [
             "Plate information",
-            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Measinfo,Kinetics,Measurement date,",
-            '1,1,"=""""",11.9,23.17,De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,',
+            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Label,Measinfo,Kinetics,Measurement date,",
+            '1,1,"=""""",11.9,23.17,AC HTRF Laser [Eu](1),De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,',
         ]
     )
 
@@ -67,8 +68,8 @@ def test_create_plate_info_default_barcode() -> None:
     reader = get_reader_from_lines(
         [
             "Plate information",
-            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Measinfo,Kinetics,Measurement date,",
-            "1,1,,11.9,23.17,De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,",
+            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Label,Measinfo,Kinetics,Measurement date,",
+            "1,1,,11.9,23.17,AC HTRF Laser [Eu](1),De=1st Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,",
         ]
     )
 
@@ -103,8 +104,8 @@ def test_create_plates() -> None:
     reader = get_reader_from_lines(
         [
             "Plate information",
-            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Measinfo,Kinetics,Measurement date,",
-            "2,1,,1.1,14.5,De=2nd Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,",
+            "Plate,Repeat,Barcode,Measured height,Chamber temperature at start,Label,Measinfo,Kinetics,Measurement date,",
+            "2,1,,1.1,14.5,AC HTRF Laser [Eu](1),De=2nd Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,",
             "",
             "Background information",
             "junk",
@@ -125,6 +126,7 @@ def test_create_plates() -> None:
                 measurement_time="10/13/2022 3:08:06 PM",
                 measured_height=1.1,
                 chamber_temperature_at_start=14.5,
+                label="AC HTRF Laser [Eu](1)",
             ),
             calculated_results=CalculatedResultList([]),
             results=ResultList(
