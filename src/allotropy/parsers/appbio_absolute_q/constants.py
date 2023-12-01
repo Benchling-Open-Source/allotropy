@@ -21,7 +21,7 @@ AGGREGATION_LOOKUP = {
 }
 
 
-@dataclass
+@dataclass(frozen=True)
 class CalculatedDataItem:
     column: str
     name: str

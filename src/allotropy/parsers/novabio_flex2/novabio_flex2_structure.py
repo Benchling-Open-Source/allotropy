@@ -22,7 +22,7 @@ from allotropy.parsers.novabio_flex2.constants import (
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Title:
     processing_time: str
     device_identifier: Optional[str]
@@ -43,7 +43,7 @@ class Title:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Analyte:
     name: str
     molar_concentration: MOLAR_CONCENTRATION_CLASSES
@@ -69,7 +69,7 @@ class Analyte:
         return self.name < other.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class Sample:
     identifier: str
     role_type: str
@@ -105,7 +105,7 @@ class Sample:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class SampleList:
     analyst: str
     samples: list[Sample]
@@ -130,7 +130,7 @@ class SampleList:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     title: Title
     sample_list: SampleList

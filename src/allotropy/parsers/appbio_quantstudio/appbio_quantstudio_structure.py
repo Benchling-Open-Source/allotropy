@@ -20,7 +20,7 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedD
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
 
-@dataclass
+@dataclass(frozen=True)
 class Header:
     measurement_time: str
     plate_well_count: int
@@ -99,7 +99,7 @@ class Well:
         self.melt_curve_raw_data = melt_curve_raw_data
 
 
-@dataclass
+@dataclass(frozen=True)
 class WellList:
     wells: list[Well]
 
@@ -111,12 +111,12 @@ class WellList:
         return iter(self.wells)
 
 
-@dataclass
+@dataclass(frozen=True)
 class RawData:
     lines: list[str]
 
 
-@dataclass
+@dataclass(frozen=True)
 class AmplificationData:
     total_cycle_number_setting: float
     cycle: list[float]
@@ -124,7 +124,7 @@ class AmplificationData:
     delta_rn: list[Optional[float]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class MulticomponentData:
     cycle: list[float]
     columns: dict[str, list[Optional[float]]]
@@ -137,7 +137,7 @@ class MulticomponentData:
         return column
 
 
-@dataclass
+@dataclass(frozen=True)
 class Result:
     cycle_threshold_value_setting: float
     cycle_threshold_result: Optional[float]
@@ -166,14 +166,14 @@ class Result:
     efficiency: Optional[float]
 
 
-@dataclass
+@dataclass(frozen=True)
 class MeltCurveRawData:
     reading: list[float]
     fluorescence: list[Optional[float]]
     derivative: list[Optional[float]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     header: Header
     wells: WellList
