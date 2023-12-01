@@ -19,8 +19,8 @@ class VendorParser(ABC):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
 
-    # TODO: rename to _get_date_time and make time param a str
-    def get_date_time(self, time: Any) -> TDateTimeValue:
+    # TODO: make time param a str
+    def _get_date_time(self, time: Any) -> TDateTimeValue:
         assert_not_none(time, "time")
 
         return self.timestamp_parser.parse(str(time))

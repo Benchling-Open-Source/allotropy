@@ -178,7 +178,7 @@ class AppBioQuantStudioParser(VendorParser):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=well_item.uuid,
-            measurement_time=self.get_date_time(data.header.measurement_time),
+            measurement_time=self._get_date_time(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(
                 sample_identifier=well_item.sample_identifier,

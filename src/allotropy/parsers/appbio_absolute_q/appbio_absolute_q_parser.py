@@ -102,7 +102,7 @@ class AppbioAbsoluteQParser(VendorParser):
             measurement_documents.append(
                 MeasurementDocumentItem(
                     measurement_identifier=measurement_identifier,
-                    measurement_time=self.get_date_time(str(well_item["Date"])),
+                    measurement_time=self._get_date_time(str(well_item["Date"])),
                     target_DNA_description=well_item["Target"],
                     total_partition_count=TQuantityValueNumber(
                         value=well_item["Total"]
