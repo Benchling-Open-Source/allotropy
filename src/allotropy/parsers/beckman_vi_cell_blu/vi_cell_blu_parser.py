@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import io
 from typing import Any, NamedTuple, Optional
 import uuid
 
@@ -29,6 +28,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
@@ -74,7 +74,8 @@ def get_property_from_sample(sample: _Sample, property_name: str) -> Any:
 
 
 class ViCellBluParser(VendorParser):
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        contents, filename = named_file_contents
         return self._get_model(ViCellBluReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:

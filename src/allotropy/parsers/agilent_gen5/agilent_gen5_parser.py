@@ -1,4 +1,3 @@
-import io
 import itertools
 from typing import Any, Union
 import uuid
@@ -23,6 +22,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
@@ -91,7 +91,8 @@ class AgilentGen5Parser(VendorParser):
         )
         raise AllotropeConversionError(msg)
 
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
+        contents = named_file_contents.contents
         section_lines_reader = SectionLinesReader(contents, encoding=None)
         data = Data.create(section_lines_reader)
 

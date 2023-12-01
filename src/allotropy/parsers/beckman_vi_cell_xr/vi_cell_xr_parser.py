@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import io
 from typing import Any, Optional
 import uuid
 
@@ -30,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
     DEFAULT_ANALYST,
@@ -54,7 +54,8 @@ def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
 
 
 class ViCellXRParser(VendorParser):
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        contents, filename = named_file_contents
         reader = ViCellXRReader(contents)
 
         return Model(
