@@ -11,7 +11,7 @@
   "[yaml]": {
     "editor.autoIndent": "keep"
   },
-  // Use flake8, not pylint
+  // Do not use pylint
   "python.linting.pylintEnabled": false,
   // Disable Python tests for now.
   "python.testing.pytestEnabled": false,
