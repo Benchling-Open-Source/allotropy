@@ -46,7 +46,10 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
     Model as ModelAbsorbance,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -96,7 +99,7 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
-@dataclass
+@dataclass(frozen=True)
 class Block:
     block_type: str
     raw_lines: list[str]
@@ -117,7 +120,7 @@ class Block:
         raise AllotropeConversionError(error)
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupBlock(Block):
     block_type: str
     name: str
@@ -140,7 +143,7 @@ class GroupBlock(Block):
 
 
 # TODO do we need to do anything with these?
-@dataclass
+@dataclass(frozen=True)
 class NoteBlock(Block):
     @staticmethod
     def create(raw_lines: list[str]) -> NoteBlock:
@@ -186,7 +189,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
     name: Optional[str]
@@ -290,7 +293,9 @@ class PlateBlock(Block):
                     data_lines,
                 )
             else:
-                error = f"Unrecognized export format {export_format}; expected to be one of {sorted(ExportFormat._member_names_)}."
+                msg = msg_for_error_on_unrecognized_value(
+                    "export format", export_format, ExportFormat._member_names_
+                )
                 raise AllotropeConversionError(error)
 
             return cls(
@@ -316,8 +321,10 @@ class PlateBlock(Block):
                 cutoff_filters=extra_attr.cutoff_filters,
             )
 
-        error = f"Unrecognized read mode: {read_mode}. Only {sorted(plate_block_cls.keys())} are supported."
-        raise AllotropeConversionError(error)
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", read_mode, plate_block_cls.keys()
+        )
+        raise AllotropeConversionError(msg)
 
     @staticmethod
     def _parse_reduced_plate_rows(
@@ -404,8 +411,10 @@ class PlateBlock(Block):
             reduced_row = data_lines[-1][: num_wells + 2]
             PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
-            error = f"Unrecognized data type {data_type}; expected to be one of {sorted(DataType._member_names_)}."
-            raise AllotropeConversionError(error)
+            msg = msg_for_error_on_unrecognized_value(
+                "data type", data_type, DataType._member_names_
+            )
+            raise AllotropeConversionError(msg)
 
     @staticmethod
     def _parse_plate_format_data(
@@ -469,8 +478,10 @@ class PlateBlock(Block):
                 num_columns, data_header, well_data, reduced_data_rows
             )
         else:
-            error = f"Unrecognized data type {data_type}; expected to be one of {sorted(DataType._member_names_)}."
-            raise AllotropeConversionError(error)
+            msg = msg_for_error_on_unrecognized_value(
+                "data type", data_type, DataType._member_names_
+            )
+            raise AllotropeConversionError(msg)
 
     @staticmethod
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
@@ -561,7 +572,7 @@ class PlateBlock(Block):
         raise NotImplementedError
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateBlockExtraAttr:
     concept: str
     read_mode: str
@@ -572,7 +583,7 @@ class PlateBlockExtraAttr:
     cutoff_filters: Optional[list[int]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 20
 
@@ -674,7 +685,7 @@ class FluorescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 19
 
@@ -764,7 +775,7 @@ class LuminescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
     @staticmethod
     def get_data_type_idx() -> int:
@@ -836,7 +847,7 @@ class AbsorbancePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class BlockList:
     blocks: list[Block]
 
@@ -853,8 +864,8 @@ class BlockList:
         start_line = lines_reader.pop() or ""
         if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
-        error = f"Unrecognized start line '{start_line}'."
-        raise AllotropeConversionError(error)
+        msg = msg_for_error_on_unrecognized_value("start line", start_line)
+        raise AllotropeConversionError(msg)
 
     @staticmethod
     def _iter_blocks(lines_reader: LinesReader) -> Iterator[list[str]]:
@@ -865,7 +876,7 @@ class BlockList:
             lines_reader.drop_empty()
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     block_list: BlockList
 

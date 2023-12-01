@@ -18,7 +18,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Title:
     data_processing_time: Optional[str]
     analyst: str
@@ -45,7 +45,7 @@ class Title:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Analyte:
     name: str
     concentration_value: Optional[float]
@@ -60,7 +60,7 @@ class Analyte:
         return Analyte(analyte_name, concentration_value, unit)
 
 
-@dataclass
+@dataclass(frozen=True)
 class AnalyteList:
     analytes: list[Analyte]
     molar_concentration_dict: dict
@@ -146,7 +146,7 @@ class AnalyteList:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Sample:
     name: str
     role_type: str
@@ -172,7 +172,7 @@ class Sample:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     title: Title
     samples: list[Sample]

@@ -18,7 +18,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
     ReadMode,
@@ -68,7 +71,7 @@ def hhmmss_to_sec(hhmmss: str) -> int:
     return (3600 * hours) + (60 * minutes) + seconds
 
 
-@dataclass
+@dataclass(frozen=True)
 class FilePaths:
     experiment_file_path: str
     protocol_file_path: str
@@ -86,7 +89,7 @@ class FilePaths:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateNumber:
     datetime: str
     plate_barcode: str
@@ -110,14 +113,16 @@ class PlateNumber:
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata key '{line_split[0]}'; expected to be one of {sorted(METADATA_PREFIXES)}."
+                msg = msg_for_error_on_unrecognized_value(
+                    "metadata key", line_split[0], METADATA_PREFIXES
+                )
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
         return metadata_dict
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateType:
     read_mode: ReadMode
     read_type: ReadType
@@ -151,7 +156,9 @@ class PlateType:
         elif self.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceDataPoint
 
-        msg = f"Unrecognized read mode: {self.read_mode}. Only {sorted(ReadMode._member_names_)} are supported."
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", self.read_mode, ReadMode._member_names_
+        )
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -226,7 +233,7 @@ class PlateType:
         return read_names
 
 
-@dataclass
+@dataclass(frozen=True)
 class LayoutData:
     layout: dict
     concentrations: dict
@@ -264,7 +271,7 @@ class LayoutData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class ActualTemperature:
     value: Optional[float] = None
 
@@ -283,7 +290,7 @@ class ActualTemperature:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Results:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -366,7 +373,7 @@ class Results:
             )
 
 
-@dataclass
+@dataclass(frozen=True)
 class CurveName:
     statistics_doc: list
 
@@ -399,7 +406,7 @@ class CurveName:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class KineticData:
     temperatures: list
     kinetic_times: list[int]
@@ -500,7 +507,7 @@ class KineticData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateData:
     file_paths: FilePaths
     plate_number: PlateNumber

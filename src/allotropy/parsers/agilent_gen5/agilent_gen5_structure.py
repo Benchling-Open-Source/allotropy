@@ -7,7 +7,7 @@ from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     plates: list[PlateData]
 

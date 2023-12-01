@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
-import io
 from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -16,7 +16,7 @@ class VendorParser(ABC):
         self.timestamp_parser = assert_not_none(timestamp_parser, "timestamp_parser")
 
     @abstractmethod
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
 
     # TODO: make time param a str

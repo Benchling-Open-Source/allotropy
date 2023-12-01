@@ -8,7 +8,10 @@ from typing import Any, Optional
 import numpy as np
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     FILENAME_REGEX,
@@ -19,7 +22,7 @@ from allotropy.parsers.novabio_flex2.constants import (
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Title:
     processing_time: str
     device_identifier: Optional[str]
@@ -40,7 +43,7 @@ class Title:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Analyte:
     name: str
     molar_concentration: MOLAR_CONCENTRATION_CLASSES
@@ -48,7 +51,9 @@ class Analyte:
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
         if raw_name not in ANALYTE_MAPPINGS:
-            msg = f"Unrecognized analyte name; expected to be one of {sorted(ANALYTE_MAPPINGS.keys())}."
+            msg = msg_for_error_on_unrecognized_value(
+                "analyte name", raw_name, ANALYTE_MAPPINGS.keys()
+            )
             raise AllotropeConversionError(msg)
 
         mapping = ANALYTE_MAPPINGS[raw_name]
@@ -64,7 +69,7 @@ class Analyte:
         return self.name < other.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class Sample:
     identifier: str
     role_type: str
@@ -100,7 +105,7 @@ class Sample:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class SampleList:
     analyst: str
     samples: list[Sample]
@@ -125,7 +130,7 @@ class SampleList:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     title: Title
     sample_list: SampleList
