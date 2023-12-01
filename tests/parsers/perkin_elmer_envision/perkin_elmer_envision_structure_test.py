@@ -8,6 +8,8 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    BackgroundInfo,
+    BackgroundInfoList,
     BasicAssayInfo,
     CalculatedPlateInfo,
     CalculatedResult,
@@ -108,7 +110,9 @@ def test_create_plates() -> None:
             "2,1,,1.1,14.5,AC HTRF Laser [Eu](1),De=2nd Ex=Top Em=Top Wdw=1 (14),0,10/13/2022 3:08:06 PM,",
             "",
             "Background information",
-            "junk",
+            "Plate,Label,Result,Meastime,MeasInfo,",
+            "2,AC HTRF Laser [Eu],0,00:00:00.000,De=1st Ex=Top Em=Top Wdw=1 (14),",
+            "2,AC HTRF Laser [Eu],0,00:00:00.000,De=2nd Ex=Top Em=Top Wdw=1 (142),",
             "",
             "Results",
             "6,,7,",
@@ -127,6 +131,20 @@ def test_create_plates() -> None:
                 measured_height=1.1,
                 chamber_temperature_at_start=14.5,
                 label="AC HTRF Laser [Eu](1)",
+            ),
+            background_info=BackgroundInfoList(
+                background_info=[
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                    ),
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                    ),
+                ],
             ),
             calculated_results=CalculatedResultList([]),
             results=ResultList(
@@ -148,7 +166,9 @@ def test_create_plates() -> None:
             "2,1,,1.1,14.5,Calc 1: General = X / 2 where X = test,0,10/13/2022 3:08:06 PM,",
             "",
             "Background information",
-            "junk",
+            "Plate,Label,Result,Meastime,MeasInfo,",
+            "2,AC HTRF Laser [Eu],0,00:00:00.000,De=1st Ex=Top Em=Top Wdw=1 (14),",
+            "2,AC HTRF Laser [Eu],0,00:00:00.000,De=2nd Ex=Top Em=Top Wdw=1 (142),",
             "",
             "Calculated results",
             "3,,3.5,",
@@ -166,6 +186,20 @@ def test_create_plates() -> None:
                 measured_height=1.1,
                 chamber_temperature_at_start=14.5,
                 formula="Calc 1: General = X / 2 where X = test",
+            ),
+            background_info=BackgroundInfoList(
+                background_info=[
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                    ),
+                    BackgroundInfo(
+                        plate_num="2",
+                        label="AC HTRF Laser [Eu]",
+                        measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                    ),
+                ],
             ),
             calculated_results=CalculatedResultList(
                 calculated_results=[

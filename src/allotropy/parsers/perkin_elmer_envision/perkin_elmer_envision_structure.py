@@ -142,6 +142,49 @@ class ResultPlateInfo(PlateInfo):
 
 
 @dataclass
+class BackgroundInfo:
+    plate_num: str
+    label: str
+    measinfo: str
+
+
+@dataclass
+class BackgroundInfoList:
+    background_info: list[BackgroundInfo]
+
+    @staticmethod
+    def create(reader: CsvReader) -> Optional[BackgroundInfoList]:
+        title = reader.pop_if_match("^Background information")
+        if title is None:
+            return None
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(header=0),
+            "background information",
+        )
+
+        return BackgroundInfoList(
+            background_info=[
+                BackgroundInfo(
+                    plate_num=assert_not_none(
+                        try_str_from_series_or_none(series, "Plate"),
+                        msg="Unable to find plate number from background info.",
+                    ),
+                    label=assert_not_none(
+                        try_str_from_series_or_none(series, "Label"),
+                        msg="Unable to find label from background info.",
+                    ),
+                    measinfo=assert_not_none(
+                        try_str_from_series_or_none(series, "MeasInfo"),
+                        msg="Unable to find meas info from background info.",
+                    ),
+                )
+                for _, series in data.iterrows()
+            ]
+        )
+
+
+@dataclass
 class CalculatedResult:
     col: str
     row: str
@@ -214,6 +257,7 @@ class ResultList:
 @dataclass(frozen=True)
 class Plate:
     plate_info: Union[CalculatedPlateInfo, ResultPlateInfo]
+    background_info: Optional[BackgroundInfoList]
     calculated_results: CalculatedResultList
     results: ResultList
 
@@ -224,19 +268,19 @@ class Plate:
         while reader.match("^Plate information"):
             series = PlateInfo.get_series(reader)
             if result_plate_info := ResultPlateInfo.create(series):
-                reader.drop_sections("^Background information")
                 plates.append(
                     Plate(
                         plate_info=result_plate_info,
+                        background_info=BackgroundInfoList.create(reader),
                         calculated_results=CalculatedResultList([]),
                         results=ResultList.create(reader),
                     )
                 )
             else:
-                reader.drop_sections("^Background information")
                 plates.append(
                     Plate(
                         plate_info=CalculatedPlateInfo.create(series),
+                        background_info=BackgroundInfoList.create(reader),
                         calculated_results=CalculatedResultList.create(reader),
                         results=ResultList([]),
                     )
