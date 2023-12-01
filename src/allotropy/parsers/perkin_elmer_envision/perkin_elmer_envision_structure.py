@@ -48,7 +48,7 @@ def num_to_chars(n: int) -> str:
     return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateInfo:
     number: str
     barcode: str
@@ -102,7 +102,7 @@ class PlateInfo:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Result:
     col: str
     row: str
@@ -135,7 +135,7 @@ class Result:
         ]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Plate:
     plate_info: PlateInfo
     results: list[Result]
@@ -153,7 +153,7 @@ class Plate:
         return plates
 
 
-@dataclass
+@dataclass(frozen=True)
 class BasicAssayInfo:
     protocol_id: Optional[str]
     assay_id: Optional[str]
@@ -174,7 +174,7 @@ class BasicAssayInfo:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateType:
     number_of_wells: float
 
@@ -226,7 +226,7 @@ def get_sample_role_type(encoding: str) -> SampleRoleType:
     raise AllotropeConversionError(msg)
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateMap:
     plate_n: str
     group_n: str
@@ -291,7 +291,7 @@ def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
     return maps
 
 
-@dataclass
+@dataclass(frozen=True)
 class Filter:
     name: str
     wavelength: float
@@ -345,7 +345,7 @@ def create_filters(reader: CsvReader) -> dict[str, Filter]:
     return filters
 
 
-@dataclass
+@dataclass(frozen=True)
 class Labels:
     label: str
     excitation_filter: Optional[Filter]
@@ -396,7 +396,7 @@ class Labels:
         return self.emission_filters.get(id_val)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Instrument:
     serial_number: str
     nickname: str
@@ -416,7 +416,7 @@ class Instrument:
         return Instrument(serial_number, nickname)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Software:
     software_name: str
     software_version: str
@@ -445,7 +445,7 @@ class Software:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     software: Software
     plates: list[Plate]
