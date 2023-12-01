@@ -151,6 +151,15 @@ class ResultPlateInfo(PlateInfo):
             ).group(1),
         )
 
+    def match(self, background_info: BackgroundInfo) -> bool:
+        return all(
+            [
+                background_info.plate_num == self.number,
+                background_info.label in self.label,
+                background_info.measinfo == self.measinfo,
+            ]
+        )
+
 
 @dataclass
 class BackgroundInfo:
@@ -302,6 +311,20 @@ class Plate:
                 results=ResultList([]),
             )
 
+    def collect_result_plates(self, plates: PlateList) -> list[Plate]:
+        background_info = assert_not_none(
+            self.background_info,
+            msg=f"Unable to collect result plates, there is no background information for plate {self.plate_info.number}",
+        )
+
+        return [
+            assert_not_none(
+                plates.get_result_plate(bkg_info),
+                msg=f"Unable to find result plate {bkg_info.label}.",
+            )
+            for bkg_info in background_info.background_info
+        ]
+
 
 @dataclass
 class PlateList:
@@ -314,6 +337,15 @@ class PlateList:
         while reader.match("^Plate information"):
             plates.append(Plate.create(reader))
         return PlateList(plates)
+
+    def get_result_plate(self, background_info: BackgroundInfo) -> Optional[Plate]:
+        for plate in self.plates:
+            if isinstance(plate.plate_info, CalculatedPlateInfo):
+                continue
+
+            if plate.plate_info.match(background_info):
+                return plate
+        return None
 
 
 @dataclass(frozen=True)
