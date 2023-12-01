@@ -21,6 +21,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.parsers.unchained_labs_lunatic.constants import WAVELENGHT_COLUMNS_RE
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
     UnchainedLabsLunaticReader,
 )
@@ -29,7 +30,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 def get_device_identifier(data: pd.DataFrame) -> str:
-    device_identifier = assert_not_none(data.get("Instrument ID"), 'Instrument ID')
+    device_identifier = assert_not_none(data.get("Instrument ID"), "Instrument ID")
 
     return str(device_identifier[0])
 
@@ -47,6 +48,7 @@ class UnchainedLabsLunaticParser(VendorParser):
         return self._get_model(reader.data, filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
+        wavelenght_columns = list(filter(WAVELENGHT_COLUMNS_RE.match, data.columns))
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
@@ -62,17 +64,17 @@ class UnchainedLabsLunaticParser(VendorParser):
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
-                    self._get_plate_reader_document_item(plate)
+                    self._get_plate_reader_document_item(plate, wavelenght_columns)
                     for _, plate in data.iterrows()
                 ],
             ),
         )
 
     def _get_plate_reader_document_item(
-        self, plate: pd.Series
+        self, plate: pd.Series, wavelenght_columns: str
     ) -> PlateReaderDocumentItem:
         measurement_time = get_datetime_from_plate(plate)
-        wavelenght = self._get_wavelength_setting()
+
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self.get_date_time(measurement_time),
@@ -80,36 +82,36 @@ class UnchainedLabsLunaticParser(VendorParser):
                 container_type="well plate",
                 plate_well_count=TQuantityValueNumber(value=96),
                 measurement_document=[
-                    # TODO: There should be one measurement document item for each wavelenght recorded in
-                    # the output file.
-                    UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                        measurement_identifier=str(uuid.uuid4()),
-                        device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                            device_control_document=[
-                                UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                                    device_type="plate reader",
-                                    detector_wavelength_setting=TQuantityValueNanometer(
-                                        value=wavelenght
-                                    ),
-                                )
-                            ]
-                        ),
-                        absorbance=TQuantityValueMilliAbsorbanceUnit(
-                            value=plate.get(f"A{wavelenght}")
-                        ),
-                        sample_document=SampleDocument(
-                            sample_identifier=assert_not_none(plate.get("Sample name")),
-                            location_identifier=assert_not_none(
-                                plate.get("Plate ID"), "Plate ID"
-                            ),
-                            well_plate_identifier=assert_not_none(
-                                plate.get("Plate Position"), "Plate Position"
-                            ),
-                        ),
-                    )
+                    self._get_mearurement_document_item(plate, wavelenght_column)
+                    for wavelenght_column in wavelenght_columns
                 ],
             )
         )
 
-    def _get_wavelength_setting(self) -> int:
-        return 260
+    def _get_mearurement_document_item(
+        self, plate: pd.DataFrame, wavelenght_column: str
+    ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
+        wavelenght = wavelenght_column[1:]
+        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+            measurement_identifier=str(uuid.uuid4()),
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        device_type="plate reader",
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            value=wavelenght
+                        ),
+                    )
+                ]
+            ),
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=plate.get(wavelenght_column)
+            ),
+            sample_document=SampleDocument(
+                sample_identifier=assert_not_none(plate.get("Sample name")),
+                location_identifier=assert_not_none(plate.get("Plate ID"), "Plate ID"),
+                well_plate_identifier=assert_not_none(
+                    plate.get("Plate Position"), "Plate Position"
+                ),
+            ),
+        )
