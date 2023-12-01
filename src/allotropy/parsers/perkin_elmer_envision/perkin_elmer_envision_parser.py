@@ -87,9 +87,11 @@ class PerkinElmerEnvisionParser(VendorParser):
             msg = "Unable to determine the number of wells in the plate."
             raise AllotropeConversionError(msg)
 
+        read_type = self._get_read_type(data)
+
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
-                plate_reader_document=self._get_plate_reader_document(data),
+                plate_reader_document=self._get_plate_reader_document(data, read_type),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=data.software.software_name,
@@ -290,11 +292,13 @@ class PerkinElmerEnvisionParser(VendorParser):
                 compartment_temperature=compartment_temperature,
             )
 
-    def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
+    def _get_plate_reader_document(
+        self,
+        data: Data,
+        read_type: ReadType,
+    ) -> list[PlateReaderDocumentItem]:
         items = []
         measurement_time = self._get_measurement_time(data)
-        read_type = self._get_read_type(data)
-
         measurement_docs_dict = defaultdict(list)
 
         for plate in data.plates.plates:
