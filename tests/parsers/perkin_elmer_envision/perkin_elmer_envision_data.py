@@ -62,7 +62,16 @@ def get_data() -> Data:
                     ],
                 ),
                 calculated_results=CalculatedResultList([]),
-                results=ResultList([Result(col="A", row="01", value=31441)]),
+                results=ResultList(
+                    [
+                        Result(
+                            uuid="80d11e7d-734c-4506-8087-335769da996c",
+                            col="A",
+                            row="01",
+                            value=31441,
+                        )
+                    ]
+                ),
             ),
             Plate(
                 plate_info=ResultPlateInfo(
@@ -84,7 +93,16 @@ def get_data() -> Data:
                     ],
                 ),
                 calculated_results=CalculatedResultList([]),
-                results=ResultList([Result(col="A", row="01", value=80368)]),
+                results=ResultList(
+                    [
+                        Result(
+                            uuid="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
+                            col="A",
+                            row="01",
+                            value=80368,
+                        )
+                    ]
+                ),
             ),
         ],
         basic_assay_info=BasicAssayInfo("100302", "3134"),

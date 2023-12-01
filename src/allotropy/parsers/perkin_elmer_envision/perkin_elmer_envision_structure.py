@@ -19,6 +19,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from re import search
 from typing import Any, Optional, Union
+import uuid
 
 import numpy as np
 import pandas as pd
@@ -194,6 +195,7 @@ class BackgroundInfoList:
 
 @dataclass
 class CalculatedResult:
+    uuid: str
     col: str
     row: str
     value: float
@@ -221,14 +223,20 @@ class CalculatedResultList:
 
         return CalculatedResultList(
             calculated_results=[
-                CalculatedResult(col, row, series.loc[col, row])
+                CalculatedResult(
+                    uuid=str(uuid.uuid4()),
+                    col=col,
+                    row=row,
+                    value=series.loc[col, row],
+                )
                 for col, row in series.stack().index
             ]
         )
 
 
-@dataclass(frozen=True)
+@dataclass
 class Result:
+    uuid: str
     col: str
     row: str
     value: int
@@ -256,13 +264,18 @@ class ResultList:
 
         return ResultList(
             results=[
-                Result(col, row, int(series.loc[col, row]))
+                Result(
+                    uuid=str(uuid.uuid4()),
+                    col=col,
+                    row=row,
+                    value=int(series.loc[col, row]),
+                )
                 for col, row in series.stack().index
             ]
         )
 
 
-@dataclass(frozen=True)
+@dataclass
 class Plate:
     plate_info: Union[CalculatedPlateInfo, ResultPlateInfo]
     background_info: Optional[BackgroundInfoList]

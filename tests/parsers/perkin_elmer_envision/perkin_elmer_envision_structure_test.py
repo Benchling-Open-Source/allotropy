@@ -31,6 +31,30 @@ def get_reader_from_lines(lines: list[str]) -> CsvReader:
     return CsvReader(StringIO("\n".join(lines)))
 
 
+def rm_result_list_uuids(result_list: ResultList) -> ResultList:
+    for result in result_list.results:
+        result.uuid = ""
+    return result_list
+
+
+def rm_calculated_result_list_uuid(
+    calculated_result_list: CalculatedResultList,
+) -> CalculatedResultList:
+    for calculated_result in calculated_result_list.calculated_results:
+        calculated_result.uuid = ""
+    return calculated_result_list
+
+
+def rm_plate_uuids(plate: Plate) -> Plate:
+    plate.calculated_results = rm_calculated_result_list_uuid(plate.calculated_results)
+    plate.results = rm_result_list_uuids(plate.results)
+    return plate
+
+
+def rm_plates_uuids(plates: list[Plate]) -> list[Plate]:
+    return [rm_plate_uuids(plate) for plate in plates]
+
+
 def test_create_plate_info() -> None:
     reader = get_reader_from_lines(
         [
@@ -93,13 +117,34 @@ def test_create_result() -> None:
 
     expected = ResultList(
         results=[
-            Result(col="A", row="01", value=1),
-            Result(col="A", row="02", value=2),
-            Result(col="B", row="01", value=3),
-            Result(col="B", row="02", value=4),
+            Result(
+                uuid="419c6bf1-25a7-448a-a201-67745003a1c5",
+                col="A",
+                row="01",
+                value=1,
+            ),
+            Result(
+                uuid="e2390200-ce45-44dc-b012-a98139a2981c",
+                col="A",
+                row="02",
+                value=2,
+            ),
+            Result(
+                uuid="334db986-6007-4f36-8250-b8b3b6a47032",
+                col="B",
+                row="01",
+                value=3,
+            ),
+            Result(
+                uuid="055ecf25-af94-484d-b44e-584b55a0c553",
+                col="B",
+                row="02",
+                value=4,
+            ),
         ]
     )
-    assert ResultList.create(reader) == expected
+    result_list = ResultList.create(reader)
+    assert rm_result_list_uuids(result_list) == rm_result_list_uuids(expected)
 
 
 def test_create_plates() -> None:
@@ -149,15 +194,31 @@ def test_create_plates() -> None:
             calculated_results=CalculatedResultList([]),
             results=ResultList(
                 results=[
-                    Result(col="A", row="01", value=6),
-                    Result(col="A", row="03", value=7),
-                    Result(col="C", row="02", value=8),
+                    Result(
+                        uuid="68893bf4-218e-45ed-9622-01e9211a2608",
+                        col="A",
+                        row="01",
+                        value=6,
+                    ),
+                    Result(
+                        uuid="d549e030-8fe2-4a24-8d58-f6abdf5010d6",
+                        col="A",
+                        row="03",
+                        value=7,
+                    ),
+                    Result(
+                        uuid="1a82a766-5ff6-4b02-9d4f-3d2fe71ea55e",
+                        col="C",
+                        row="02",
+                        value=8,
+                    ),
                 ]
             ),
         )
     ]
 
-    assert Plate.create(reader) == expected
+    plate = Plate.create(reader)
+    assert rm_plates_uuids(plate) == rm_plates_uuids(expected)
 
     reader = get_reader_from_lines(
         [
@@ -204,16 +265,32 @@ def test_create_plates() -> None:
             ),
             calculated_results=CalculatedResultList(
                 calculated_results=[
-                    CalculatedResult(col="A", row="01", value=3),
-                    CalculatedResult(col="A", row="03", value=3.5),
-                    CalculatedResult(col="C", row="02", value=4),
+                    CalculatedResult(
+                        uuid="68893bf4-218e-45ed-9622-01e9211a2608",
+                        col="A",
+                        row="01",
+                        value=3,
+                    ),
+                    CalculatedResult(
+                        uuid="d549e030-8fe2-4a24-8d58-f6abdf5010d6",
+                        col="A",
+                        row="03",
+                        value=3.5,
+                    ),
+                    CalculatedResult(
+                        uuid="1a82a766-5ff6-4b02-9d4f-3d2fe71ea55e",
+                        col="C",
+                        row="02",
+                        value=4,
+                    ),
                 ]
             ),
             results=ResultList([]),
         )
     ]
 
-    assert Plate.create(reader) == expected
+    plate = Plate.create(reader)
+    assert rm_plates_uuids(plate) == rm_plates_uuids(expected)
 
 
 def test_create_basic_assay_info() -> None:
