@@ -1,0 +1,1170 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b3eedf5a-81ea-479c-8fec-f6e6831f258c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A1"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0497fdc1-feeb-4cf7-a014-2aa9961c0631",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B1"
+                            },
+                            "absorbance": {
+                                "value": 1.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c8b9757b-cacb-43cb-87d8-e1b48aee97c1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C1"
+                            },
+                            "absorbance": {
+                                "value": 2.03,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "bf5e53c4-f2c8-4d25-878e-4a802a1ecae5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D1"
+                            },
+                            "absorbance": {
+                                "value": 0.49,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "2744d286-dcfb-4c46-97c7-4a4729a2e39f",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E1"
+                            },
+                            "absorbance": {
+                                "value": 5.01,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0953717e-a94e-405a-b9fc-ff6d2642f9d8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F1"
+                            },
+                            "absorbance": {
+                                "value": 0.6,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "2be99b3b-380c-4b48-a57b-388b659e5bac",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G1"
+                            },
+                            "absorbance": {
+                                "value": 10.04,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d8086e23-1e8e-4f5b-bc45-525527b4fbe3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H1"
+                            },
+                            "absorbance": {
+                                "value": 0.79,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b32f6ed4-25a8-4d93-bc6f-0eae6f2411bd",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A2"
+                            },
+                            "absorbance": {
+                                "value": 10.19,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "af583925-3c4e-4c1b-8a9b-09fdcc6d30a2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B2"
+                            },
+                            "absorbance": {
+                                "value": 0.77,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "00bccae0-2500-4d9d-b259-960f835c46bf",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C2"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "6b1e56d8-0d3a-4d53-ad1a-c28c5e607be2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D2"
+                            },
+                            "absorbance": {
+                                "value": 0.99,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f5dfc886-1ed9-462f-97b7-9957e4aaf147",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E2"
+                            },
+                            "absorbance": {
+                                "value": 2.02,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5cb16835-8a81-4846-8a9c-76b0d7622a7e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F2"
+                            },
+                            "absorbance": {
+                                "value": 0.49,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5434b3eb-5359-4095-84a4-e14d8aff52a9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G2"
+                            },
+                            "absorbance": {
+                                "value": 5.01,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c59f4027-29f0-4922-9398-04c83c34254b",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H2"
+                            },
+                            "absorbance": {
+                                "value": 0.6,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ddce05d0-6091-4ab7-ae87-f490ffee5d89",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A3"
+                            },
+                            "absorbance": {
+                                "value": 5.03,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "95b9c3fa-166a-496f-b7cd-e8a9a70dd096",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B3"
+                            },
+                            "absorbance": {
+                                "value": 0.59,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d06b9d8e-4a72-43fa-8b4e-1030fefde2be",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C3"
+                            },
+                            "absorbance": {
+                                "value": 10.09,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d25b88ce-1ba1-4069-af94-cefbfe399e23",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D3"
+                            },
+                            "absorbance": {
+                                "value": 0.81,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "59073536-6551-408d-807d-93328acdbffd",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E3"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f48f467d-66dd-46e4-a5a2-0ea0624314b1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F3"
+                            },
+                            "absorbance": {
+                                "value": 0.98,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "36c72a36-151e-4308-b49a-d32b94c55748",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G3"
+                            },
+                            "absorbance": {
+                                "value": 1.98,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "422cbe3b-b2d5-4344-a522-7d21c69c44e9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H3"
+                            },
+                            "absorbance": {
+                                "value": 0.49,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3d1ede40-de12-4eaa-b8b2-bccb45e4f929",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A4"
+                            },
+                            "absorbance": {
+                                "value": 2.02,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "4ca4bb91-f005-4911-aba1-70808a0ba0d8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B4"
+                            },
+                            "absorbance": {
+                                "value": 0.49,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "1cfb0956-1792-4e0c-b7af-cdd4edc0cdfe",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C4"
+                            },
+                            "absorbance": {
+                                "value": 5.02,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0a4b05d0-9a90-4840-9448-84024ea48065",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D4"
+                            },
+                            "absorbance": {
+                                "value": 0.6,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "4f37ae38-3a2e-4ee1-9614-a94fbf719982",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E4"
+                            },
+                            "absorbance": {
+                                "value": 10.05,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "80ad574f-01e1-4f32-80e2-e1e91e0262e4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F4"
+                            },
+                            "absorbance": {
+                                "value": 0.78,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b8a8a02c-30d9-433b-b6f5-7b90c790d5d7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G4"
+                            },
+                            "absorbance": {
+                                "value": -0.01,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:19:18+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b5ba8268-116d-476a-a266-b13cadc9eaa8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "260",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H4"
+                            },
+                            "absorbance": {
+                                "value": 0.98,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "A260 dsDNA",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "15",
+            "model number": "Lunatic",
+            "product manufacturer": "Unchained Labs"
+        },
+        "data system document": {
+            "file name": "Demo_A260_dsDNA_Data.csv",
+            "software name": "Lunatic and Stunner Analysis",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.10"
+        }
+    }
+}

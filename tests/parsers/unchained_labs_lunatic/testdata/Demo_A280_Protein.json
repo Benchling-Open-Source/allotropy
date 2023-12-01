@@ -1,0 +1,1170 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "59dc5977-bbd5-4873-808c-3ca73eb654fc",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A1"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5317d924-88da-4e99-9efa-0d4aeab3c8c1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B1"
+                            },
+                            "absorbance": {
+                                "value": 0.84,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "2e05ffd0-5eb1-4b3b-863d-8997680c4bcd",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C1"
+                            },
+                            "absorbance": {
+                                "value": 1.04,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "77a7c46a-7bf1-4e33-9d77-b412a0e1826d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D1"
+                            },
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "db9cf9c2-158b-49cd-9281-c1d1c20165cb",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E1"
+                            },
+                            "absorbance": {
+                                "value": 2.07,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "aab686ce-b1cc-49a8-96ad-50206f8f6955",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F1"
+                            },
+                            "absorbance": {
+                                "value": 0.39,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0500fc91-e316-4932-9b99-d32948d0e292",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G1"
+                            },
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a95d3c57-3cce-4676-94f9-7ee08d6384e9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H1"
+                            },
+                            "absorbance": {
+                                "value": 0.61,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "05f1cb58-b57e-473a-a4d4-750830ac4709",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A2"
+                            },
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "77c857a8-dc25-4a5f-b88f-428977f44cef",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B2"
+                            },
+                            "absorbance": {
+                                "value": 0.61,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "bed2929f-9dde-4b7c-91b7-6f0d1108e977",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C2"
+                            },
+                            "absorbance": {
+                                "value": 0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c1fb206d-8fbf-4dfa-8e4b-2536c8014a1a",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D2"
+                            },
+                            "absorbance": {
+                                "value": 0.82,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d40e204a-4004-4323-a252-3333ab8f9b57",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E2"
+                            },
+                            "absorbance": {
+                                "value": 1.03,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "36ab2812-ce5c-42a1-a4e4-9e7683c46530",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F2"
+                            },
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "78cc9c04-1eaa-4c4e-9f28-86ae4daf9665",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G2"
+                            },
+                            "absorbance": {
+                                "value": 2.05,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d8c33292-a8d2-413b-8ee2-42ffb5874d25",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H2"
+                            },
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "376e3f82-a439-440b-bb2c-6976e2b792ed",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A3"
+                            },
+                            "absorbance": {
+                                "value": 2.08,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "2238c6c5-6523-4be7-9697-c2ddeef25e95",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B3"
+                            },
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "1170a54d-7b7f-4075-afd8-05f4d537464b",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C3"
+                            },
+                            "absorbance": {
+                                "value": 4.23,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d1812430-cb60-4613-853f-3a896f9fe2fc",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D3"
+                            },
+                            "absorbance": {
+                                "value": 0.6,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "914bb7e7-3ca1-4fd7-94ce-7c54e6aaa409",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E3"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d5f233c0-eb72-418d-aae3-4950cc34d523",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F3"
+                            },
+                            "absorbance": {
+                                "value": 0.83,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0bd2c845-d8c0-47ef-a66f-a0949f224b68",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G3"
+                            },
+                            "absorbance": {
+                                "value": 1.03,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3673652e-f8ad-4dc5-b517-29a7bc3b85c4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H3"
+                            },
+                            "absorbance": {
+                                "value": 0.19,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "6d5b51b5-9e2f-435e-86d7-4c1f8220eb1e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A4"
+                            },
+                            "absorbance": {
+                                "value": 1.04,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "198597fc-02db-4fb8-9bb9-891c9b21405e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B4"
+                            },
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "01430858-603f-4821-8401-9a11410252bb",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C4"
+                            },
+                            "absorbance": {
+                                "value": 2.07,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a9792ebb-9faf-4fbd-b00c-fd9c17d4ca85",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D4"
+                            },
+                            "absorbance": {
+                                "value": 0.38,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "48c37b73-94b1-4455-a7cb-0af4784a8f5e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E4"
+                            },
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "4fe3a583-1fe0-4be2-971d-b0eb0cc48f88",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F4"
+                            },
+                            "absorbance": {
+                                "value": 0.62,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "461cce0d-38a5-48cc-b1c9-d47a4f9c0eec",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G4"
+                            },
+                            "absorbance": {
+                                "value": -0.01,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ccaff228-9073-4a9a-828d-f169b489579e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": "280",
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H4"
+                            },
+                            "absorbance": {
+                                "value": 0.83,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "15",
+            "model number": "Lunatic",
+            "product manufacturer": "Unchained Labs"
+        },
+        "data system document": {
+            "file name": "Demo_A280_Protein.csv",
+            "software name": "Lunatic and Stunner Analysis",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.10"
+        }
+    }
+}
