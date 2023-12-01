@@ -283,30 +283,35 @@ class Plate:
     results: ResultList
 
     @staticmethod
-    def create(reader: CsvReader) -> list[Plate]:
+    def create(reader: CsvReader) -> Plate:
+        series = PlateInfo.get_series(reader)
+        if result_plate_info := ResultPlateInfo.create(series):
+            return Plate(
+                plate_info=result_plate_info,
+                background_info=BackgroundInfoList.create(reader),
+                calculated_results=CalculatedResultList([]),
+                results=ResultList.create(reader),
+            )
+        else:
+            return Plate(
+                plate_info=CalculatedPlateInfo.create(series),
+                background_info=BackgroundInfoList.create(reader),
+                calculated_results=CalculatedResultList.create(reader),
+                results=ResultList([]),
+            )
+
+
+@dataclass
+class PlateList:
+    plates: list[Plate]
+
+    @staticmethod
+    def create(reader: CsvReader) -> PlateList:
         plates: list[Plate] = []
 
         while reader.match("^Plate information"):
-            series = PlateInfo.get_series(reader)
-            if result_plate_info := ResultPlateInfo.create(series):
-                plates.append(
-                    Plate(
-                        plate_info=result_plate_info,
-                        background_info=BackgroundInfoList.create(reader),
-                        calculated_results=CalculatedResultList([]),
-                        results=ResultList.create(reader),
-                    )
-                )
-            else:
-                plates.append(
-                    Plate(
-                        plate_info=CalculatedPlateInfo.create(series),
-                        background_info=BackgroundInfoList.create(reader),
-                        calculated_results=CalculatedResultList.create(reader),
-                        results=ResultList([]),
-                    )
-                )
-        return plates
+            plates.append(Plate.create(reader))
+        return PlateList(plates)
 
 
 @dataclass(frozen=True)
@@ -604,7 +609,7 @@ class Software:
 @dataclass(frozen=True)
 class Data:
     software: Software
-    plates: list[Plate]
+    plates: PlateList
     basic_assay_info: BasicAssayInfo
     number_of_wells: float
     plate_maps: dict[str, PlateMap]
@@ -614,7 +619,7 @@ class Data:
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
-            plates=Plate.create(reader),
+            plates=PlateList.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
             number_of_wells=PlateType.create(reader).number_of_wells,
             plate_maps=create_plate_maps(reader),
