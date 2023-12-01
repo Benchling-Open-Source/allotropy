@@ -88,10 +88,18 @@ class PlateInfo:
 @dataclass(frozen=True)
 class CalculatedPlateInfo(PlateInfo):
     formula: str
+    name: str
 
     @staticmethod
     def create(series: pd.Series[str]) -> CalculatedPlateInfo:
         plate_number = PlateInfo.get_plate_number(series)
+
+        formula = try_str_from_series(
+            series,
+            "Formula",
+            msg="Unable to find expected formula for calculated results section.",
+        )
+
         return CalculatedPlateInfo(
             number=plate_number,
             barcode=PlateInfo.get_barcode(series, plate_number),
@@ -101,11 +109,11 @@ class CalculatedPlateInfo(PlateInfo):
                 series,
                 "Chamber temperature at start",
             ),
-            formula=try_str_from_series(
-                series,
-                "Formula",
-                msg="Unable to get expected formula for calculated results section",
-            ),
+            formula=formula,
+            name=assert_not_none(
+                search(r"=\s*(.*)", formula),
+                msg="Unable to find expected formula description for calculated results section.",
+            ).group(1),
         )
 
 

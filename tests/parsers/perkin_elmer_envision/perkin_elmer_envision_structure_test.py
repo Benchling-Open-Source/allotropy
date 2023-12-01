@@ -186,6 +186,7 @@ def test_create_plates() -> None:
                 measured_height=1.1,
                 chamber_temperature_at_start=14.5,
                 formula="Calc 1: General = X / 2 where X = test",
+                name="X / 2 where X = test",
             ),
             background_info=BackgroundInfoList(
                 background_info=[
