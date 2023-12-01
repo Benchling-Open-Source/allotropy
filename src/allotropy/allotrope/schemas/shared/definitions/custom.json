@@ -99,6 +99,16 @@
             }
         ]
     },
+    "tQuantityValueMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Milliliter"
+            }
+        ]
+    },
     "tQuantityValueMicroliter": {
         "allOf": [
             {

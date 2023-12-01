@@ -119,6 +119,18 @@
             "unit"
         ]
     },
+    "Milliliter": {
+        "properties": {
+           "unit": {
+              "type": "string",
+              "const": "mL",
+              "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
+           }
+        },
+        "required": [
+           "unit"
+        ]
+     },
     "Microliter": {
         "properties": {
             "unit": {

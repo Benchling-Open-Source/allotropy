@@ -4,7 +4,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration_embed_schema import (
+from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration import (
     CumulativeCount,
     CumulativeParticleDensity,
     DetectorViewVolume,

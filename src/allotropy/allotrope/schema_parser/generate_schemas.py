@@ -82,11 +82,9 @@ def generate_schemas(root_dir: Path) -> int:
         print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
         schema_name = rel_schema_path.stem
         schema_path = os.path.join(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-        output_file = (
-            re.sub("/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py")
-            .replace(".embed.", "_embed_")
-            .lower()
-        )
+        output_file = re.sub(
+            "/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py"
+        ).lower()
         model_path = os.path.join(root_dir, MODEL_DIR_PATH, output_file)
         model_backup_path = f"{model_path}.bak"
         schema_backup_path = f"{schema_path}.bak"
