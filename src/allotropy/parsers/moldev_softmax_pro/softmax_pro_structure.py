@@ -57,6 +57,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
     PrimitiveValue,
+    try_float_or_none,
     try_int,
     try_int_or_none,
     value_or_none,
@@ -143,7 +144,7 @@ class WellData:
     values: list[Optional[float]]
     dimensions: list[Optional[PrimitiveValue]]
     wavelengths: list[Optional[int]]
-    temperature: Optional[str]
+    temperature: Optional[float]
     processed_data: list[float]
 
     @staticmethod
@@ -160,7 +161,7 @@ class WellData:
         self,
         value: float,
         dimension: Optional[PrimitiveValue],
-        temperature: Optional[str],
+        temperature: Optional[float],
         wavelength: Optional[int],
     ) -> None:
         self.values.append(value)
@@ -284,7 +285,7 @@ class PlateBlock(Block):
         well: str,
         value: str,
         data_key: Optional[str],
-        temperature: Optional[str],
+        temperature: Optional[float],
         wavelength_index: int,
     ) -> None:
         wavelength = (
@@ -332,7 +333,7 @@ class PlateBlock(Block):
                             well,
                             value,
                             data_key=row[0],
-                            temperature=row[1],
+                            temperature=try_float_or_none(str(row[1])),
                             wavelength_index=wavelength_index,
                         )
             if len(data_lines) > (header.kinetic_points + 1) * header.num_wavelengths:
@@ -386,7 +387,7 @@ class PlateBlock(Block):
                                 well,
                                 value,
                                 data_key=data_key,
-                                temperature=temperature,
+                                temperature=try_float_or_none(temperature),
                                 wavelength_index=wavelength_index,
                             )
             end_raw_data_index = ((header.num_rows + 1) * header.kinetic_points) + 1
@@ -610,7 +611,7 @@ class FluorescencePlateBlock(PlateBlock):
 
         if well_data.temperature is not None:
             measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                float(well_data.temperature)
+                well_data.temperature
             )
 
         if not well_data.is_empty:
@@ -727,7 +728,7 @@ class LuminescencePlateBlock(PlateBlock):
 
         if well_data.temperature is not None:
             measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                float(well_data.temperature)
+                well_data.temperature
             )
 
         if not well_data.is_empty:
@@ -833,7 +834,7 @@ class AbsorbancePlateBlock(PlateBlock):
 
         if well_data.temperature is not None:
             measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                float(well_data.temperature)
+                well_data.temperature
             )
 
         if not well_data.is_empty:
