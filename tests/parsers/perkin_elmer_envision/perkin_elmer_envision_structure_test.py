@@ -47,8 +47,10 @@ def rm_calculated_result_list_uuid(
 
 
 def rm_plate_uuids(plate: Plate) -> Plate:
-    plate.calculated_results = rm_calculated_result_list_uuid(plate.calculated_results)
-    plate.results = rm_result_list_uuids(plate.results)
+    plate.calculated_result_list = rm_calculated_result_list_uuid(
+        plate.calculated_result_list
+    )
+    plate.result_list = rm_result_list_uuids(plate.result_list)
     return plate
 
 
@@ -181,7 +183,7 @@ def test_create_plates() -> None:
                     chamber_temperature_at_start=14.5,
                     label="AC HTRF Laser [Eu](1)",
                 ),
-                background_info=BackgroundInfoList(
+                background_info_list=BackgroundInfoList(
                     background_info=[
                         BackgroundInfo(
                             plate_num="2",
@@ -195,8 +197,8 @@ def test_create_plates() -> None:
                         ),
                     ],
                 ),
-                calculated_results=CalculatedResultList([]),
-                results=ResultList(
+                calculated_result_list=CalculatedResultList([]),
+                result_list=ResultList(
                     results=[
                         Result(
                             uuid="68893bf4-218e-45ed-9622-01e9211a2608",
@@ -255,7 +257,7 @@ def test_create_plates() -> None:
                     formula="Calc 1: General = X / 2 where X = test",
                     name="X / 2 where X = test",
                 ),
-                background_info=BackgroundInfoList(
+                background_info_list=BackgroundInfoList(
                     background_info=[
                         BackgroundInfo(
                             plate_num="2",
@@ -269,7 +271,7 @@ def test_create_plates() -> None:
                         ),
                     ],
                 ),
-                calculated_results=CalculatedResultList(
+                calculated_result_list=CalculatedResultList(
                     calculated_results=[
                         CalculatedResult(
                             uuid="68893bf4-218e-45ed-9622-01e9211a2608",
@@ -291,7 +293,7 @@ def test_create_plates() -> None:
                         ),
                     ]
                 ),
-                results=ResultList([]),
+                result_list=ResultList([]),
             )
         ]
     )

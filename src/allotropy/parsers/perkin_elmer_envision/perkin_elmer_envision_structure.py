@@ -289,9 +289,9 @@ class ResultList:
 @dataclass
 class Plate:
     plate_info: Union[CalculatedPlateInfo, ResultPlateInfo]
-    background_info: Optional[BackgroundInfoList]
-    calculated_results: CalculatedResultList
-    results: ResultList
+    background_info_list: Optional[BackgroundInfoList]
+    calculated_result_list: CalculatedResultList
+    result_list: ResultList
 
     @staticmethod
     def create(reader: CsvReader) -> Plate:
@@ -299,30 +299,30 @@ class Plate:
         if result_plate_info := ResultPlateInfo.create(series):
             return Plate(
                 plate_info=result_plate_info,
-                background_info=BackgroundInfoList.create(reader),
-                calculated_results=CalculatedResultList([]),
-                results=ResultList.create(reader),
+                background_info_list=BackgroundInfoList.create(reader),
+                calculated_result_list=CalculatedResultList([]),
+                result_list=ResultList.create(reader),
             )
         else:
             return Plate(
                 plate_info=CalculatedPlateInfo.create(series),
-                background_info=BackgroundInfoList.create(reader),
-                calculated_results=CalculatedResultList.create(reader),
-                results=ResultList([]),
+                background_info_list=BackgroundInfoList.create(reader),
+                calculated_result_list=CalculatedResultList.create(reader),
+                result_list=ResultList([]),
             )
 
-    def collect_result_plates(self, plates: PlateList) -> list[Plate]:
-        background_info = assert_not_none(
-            self.background_info,
+    def collect_result_plates(self, plate_list: PlateList) -> list[Plate]:
+        background_info_list = assert_not_none(
+            self.background_info_list,
             msg=f"Unable to collect result plates, there is no background information for plate {self.plate_info.number}",
         )
 
         return [
             assert_not_none(
-                plates.get_result_plate(bkg_info),
-                msg=f"Unable to find result plate {bkg_info.label}.",
+                plate_list.get_result_plate(background_info),
+                msg=f"Unable to find result plate {background_info.label}.",
             )
-            for bkg_info in background_info.background_info
+            for background_info in background_info_list.background_info
         ]
 
 
@@ -643,7 +643,7 @@ class Software:
 @dataclass(frozen=True)
 class Data:
     software: Software
-    plates: PlateList
+    plate_list: PlateList
     basic_assay_info: BasicAssayInfo
     number_of_wells: float
     plate_maps: dict[str, PlateMap]
@@ -653,7 +653,7 @@ class Data:
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
-            plates=PlateList.create(reader),
+            plate_list=PlateList.create(reader),
             basic_assay_info=BasicAssayInfo.create(reader),
             number_of_wells=PlateType.create(reader).number_of_wells,
             plate_maps=create_plate_maps(reader),

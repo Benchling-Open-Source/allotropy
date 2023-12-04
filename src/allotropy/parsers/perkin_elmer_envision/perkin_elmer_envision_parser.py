@@ -138,7 +138,7 @@ class PerkinElmerEnvisionParser(VendorParser):
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
             plate.plate_info.measurement_time
-            for plate in data.plates.plates
+            for plate in data.plate_list.plates
             if plate.plate_info.measurement_time
         ]
 
@@ -311,7 +311,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         measurement_time = self._get_measurement_time(data)
         measurement_docs_dict = defaultdict(list)
 
-        for plate in data.plates.plates:
+        for plate in data.plate_list.plates:
             if isinstance(plate.plate_info, CalculatedPlateInfo):
                 continue
 
@@ -327,7 +327,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                 )
             )
 
-            for result in plate.results.results:
+            for result in plate.result_list.results:
                 measurement_docs_dict[
                     (plate.plate_info.number, result.col, result.row)
                 ].append(
@@ -368,17 +368,19 @@ class PerkinElmerEnvisionParser(VendorParser):
     ) -> Optional[CalculatedDataAggregateDocument]:
         calculated_documents = []
 
-        for calculated_plate in data.plates.plates:
+        for calculated_plate in data.plate_list.plates:
             if isinstance(calculated_plate.plate_info, ResultPlateInfo):
                 continue
 
             source_result_lists = [
-                source_plate.results.results
-                for source_plate in calculated_plate.collect_result_plates(data.plates)
+                source_plate.result_list.results
+                for source_plate in calculated_plate.collect_result_plates(
+                    data.plate_list
+                )
             ]
 
             for calculated_result, *source_results in zip(
-                calculated_plate.calculated_results.calculated_results,
+                calculated_plate.calculated_result_list.calculated_results,
                 *source_result_lists,
             ):
                 calculated_documents.append(

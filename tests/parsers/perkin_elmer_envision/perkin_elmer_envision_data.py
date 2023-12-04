@@ -42,7 +42,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
 
 def get_data() -> Data:
     return Data(
-        plates=PlateList(
+        plate_list=PlateList(
             plates=[
                 Plate(
                     plate_info=ResultPlateInfo(
@@ -55,7 +55,7 @@ def get_data() -> Data:
                         chamber_temperature_at_start=23.17,
                         label="AC HTRF Laser [Eu]",
                     ),
-                    background_info=BackgroundInfoList(
+                    background_info_list=BackgroundInfoList(
                         background_info=[
                             BackgroundInfo(
                                 plate_num="1",
@@ -64,8 +64,8 @@ def get_data() -> Data:
                             ),
                         ],
                     ),
-                    calculated_results=CalculatedResultList([]),
-                    results=ResultList(
+                    calculated_result_list=CalculatedResultList([]),
+                    result_list=ResultList(
                         [
                             Result(
                                 uuid="80d11e7d-734c-4506-8087-335769da996c",
@@ -87,7 +87,7 @@ def get_data() -> Data:
                         chamber_temperature_at_start=23.17,
                         label="AC HTRF Laser [Eu]",
                     ),
-                    background_info=BackgroundInfoList(
+                    background_info_list=BackgroundInfoList(
                         background_info=[
                             BackgroundInfo(
                                 plate_num="1",
@@ -96,8 +96,8 @@ def get_data() -> Data:
                             ),
                         ],
                     ),
-                    calculated_results=CalculatedResultList([]),
-                    results=ResultList(
+                    calculated_result_list=CalculatedResultList([]),
+                    result_list=ResultList(
                         [
                             Result(
                                 uuid="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
