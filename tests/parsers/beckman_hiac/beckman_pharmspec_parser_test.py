@@ -8,7 +8,7 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.to_allotrope import allotrope_from_file
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
-VENDOR_TYPE = Vendor.BECKMAN_HIAC
+VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
 
 
 @pytest.fixture()
@@ -48,7 +48,7 @@ def test_get_model(test_file: Path) -> None:
 
 @pytest.mark.short
 def test_asm(test_file: Path) -> None:
-    asm = allotrope_from_file(str(test_file), Vendor.BECKMAN_HIAC)
+    asm = allotrope_from_file(str(test_file), Vendor.BECKMAN_PHARMSPEC)
     assert isinstance(asm, dict)
 
 
