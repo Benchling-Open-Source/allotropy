@@ -10,7 +10,7 @@ from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_parser import (
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
     AppBioQuantStudioParser,
 )
-from allotropy.parsers.beckman_hiac.hiac_parser import HIACParser
+from allotropy.parsers.beckman_pharmspec.pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
@@ -49,7 +49,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
-    Vendor.BECKMAN_HIAC: HIACParser,
+    Vendor.BECKMAN_HIAC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,

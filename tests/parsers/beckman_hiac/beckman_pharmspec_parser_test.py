@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from allotropy.parser_factory import Vendor
-from allotropy.parsers.beckman_hiac.hiac_parser import HIACParser
+from allotropy.parsers.beckman_pharmspec.pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.to_allotrope import allotrope_from_file
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
@@ -19,7 +19,7 @@ def test_file() -> Path:
 
 @pytest.mark.short
 def test_get_model(test_file: Path) -> None:
-    parser = HIACParser(TimestampParser())
+    parser = PharmSpecParser(TimestampParser())
     model = parser._parse(open(test_file, "rb"), "")
     assert model.detector_identifier == "1808303021"
     assert model.sample_identifier == "ExampleTimepoint"
