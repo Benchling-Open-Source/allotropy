@@ -57,6 +57,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
     PrimitiveValue,
+    try_float,
     try_float_or_none,
     try_int,
     try_int_or_none,
@@ -283,7 +284,7 @@ class PlateBlock(Block):
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
         well: str,
-        value: str,
+        value: float,
         data_key: Optional[str],
         temperature: Optional[float],
         wavelength_index: int,
@@ -297,7 +298,7 @@ class PlateBlock(Block):
             wavelength if header.read_type == ReadType.ENDPOINT.value else data_key
         )
         well_data[well].add_value(
-            value=float(value),
+            value=value,
             dimension=dimension,
             temperature=temperature,
             wavelength=wavelength,
@@ -331,7 +332,7 @@ class PlateBlock(Block):
                             header,
                             well_data,
                             well,
-                            value,
+                            try_float(value, "well data point"),
                             data_key=row[0],
                             temperature=try_float_or_none(str(row[1])),
                             wavelength_index=wavelength_index,
@@ -385,7 +386,7 @@ class PlateBlock(Block):
                                 header,
                                 well_data,
                                 well,
-                                value,
+                                try_float(value, "well data point"),
                                 data_key=data_key,
                                 temperature=try_float_or_none(temperature),
                                 wavelength_index=wavelength_index,
