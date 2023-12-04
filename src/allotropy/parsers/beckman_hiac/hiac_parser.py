@@ -50,6 +50,22 @@ class HIACParser(VendorParser):
         model = self._setup_model(df)
         return model
 
+    def _get_data_using_key_bounds(
+        self, df: pd.DataFrame, start_key: str, end_key: str
+    ) -> pd.DataFrame:
+        """Find the data in the raw dataframe. We identify the boundary of the data
+        by finding the index first row which contains the word 'Particle' and ending right before
+        the index of the first row containing 'Approver'.
+
+        :param df: the raw dataframe
+        :param start_key: the key to start the slice
+        :parm end_key: the key to end the slice
+        :return: the dataframe slice between the stard and end bounds
+        """
+        start = df[df[1].str.contains(start_key, na=False)].index.values[0]
+        end = df[df[0].str.contains(end_key, na=False)].index.values[0] - 1
+        return df.loc[start:end, :]
+
     def _extract_data(self, df: pd.DataFrame) -> pd.DataFrame:
         """Extract the Average data frame from the raw data. Initial use cases have focused on
         only extracting the Average data, not the individual runs. The ASM does support multiple
@@ -59,8 +75,9 @@ class HIACParser(VendorParser):
         :param df: the raw dataframe
         :return: the average data frame
         """
-        start, end = self.get_data_index_bounds(df)
-        data = df.loc[start:end, :]
+        data = self._get_data_using_key_bounds(
+            df, start_key="Particle", end_key="Approver_"
+        )
         data = data.dropna(how="all").dropna(how="all", axis=1)
         data[0] = data[0].ffill()
         data = data.dropna(subset=1).reset_index(drop=True)
@@ -137,15 +154,3 @@ class HIACParser(VendorParser):
             + "Z",
         )
         return model
-
-    def get_data_index_bounds(self, df: pd.DataFrame) -> tuple[int, int]:
-        """Find the data in the raw dataframe. We identify the boundary of the data
-        by finding the index first row which contains the word 'Particle' and ending right before
-        the index of the first row containing 'Approver'.
-
-        :param df: the raw dataframe
-        :return: a tuple of ints representing the start and end indexes of the data frame
-        """
-        start = df[df[1].str.contains("Particle", na=False)].index.values[0]
-        end = df[df[0].str.contains("Approver_", na=False)].index.values[0] - 1
-        return start, end
