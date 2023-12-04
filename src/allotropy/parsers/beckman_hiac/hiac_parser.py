@@ -112,10 +112,6 @@ class HIACParser(VendorParser):
                 )  # to be able to set the props on the DistributionItem
                 if c in elem:
                     item[prop] = get_property_from_sample(prop, float(elem[c]))
-                else:
-                    item[prop] = get_property_from_sample(
-                        prop, np.nan
-                    )  # TODO is there a better way here for missing props?
             items.append(DistributionItem(**item))
         # TODO get test example for data_processing_omission_setting
         dd = DistributionDocumentItem(

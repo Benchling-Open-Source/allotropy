@@ -48,9 +48,7 @@
                       "required": [
                         "particle size",
                         "cumulative count",
-                        "cumulative particle density",
-                        "differential particle density",
-                        "differential count"
+                        "cumulative particle density"
                       ],
                       "properties": {
                         "particle size": {
