@@ -6,7 +6,7 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_hiac.hiac_parser import HIACParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.to_allotrope import allotrope_from_file
-from tests.parsers.test_utils import from_file, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
 VENDOR_TYPE = Vendor.BECKMAN_HIAC
 
@@ -58,3 +58,10 @@ def test_parse_beckman_hiac_to_asm_schema(test_file: Path) -> None:
     validate_schema(
         allotrope_dict, "light-obscuration/REC/2021/12/light-obscuration.json"
     )
+
+
+@pytest.mark.short
+def test_parse_beckman_hiac_to_asm_contents(test_file: Path) -> None:
+    expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
+    allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
+    validate_contents(allotrope_dict, expected_filepath)
