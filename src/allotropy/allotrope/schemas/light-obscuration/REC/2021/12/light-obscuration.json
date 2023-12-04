@@ -134,33 +134,7 @@
     "repetition setting": {
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001678",
       "$asm.pattern": "value datum",
-      "$asm.type": "http://www.w3.org/2001/XMLSchema#int",
-      "oneOf": [
-        {
-          "type": "integer",
-          "minimum": -2147483648,
-          "maximum": 2147483647
-        },
-        {
-          "type": "object",
-          "required": [
-            "@type",
-            "value"
-          ],
-          "properties": {
-            "value": {
-              "type": "integer",
-              "minimum": -2147483648,
-              "maximum": 2147483647
-            },
-            "@type": {
-              "type": "string",
-              "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
-              "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
-            }
-          }
-        }
-      ]
+      "$ref": "#/$defs/tIntValue"
     },
     "sample volume setting": {
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002492",

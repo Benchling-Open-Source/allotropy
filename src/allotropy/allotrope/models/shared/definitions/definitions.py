@@ -30,8 +30,6 @@ TStringOrNullArray = list[Optional[str]]
 
 TClass = str
 
-TIntValue = int
-
 
 @dataclass
 class TStringValueItem:
@@ -40,6 +38,15 @@ class TStringValueItem:
 
 
 TStringValue = Union[str, TStringValueItem]
+
+
+@dataclass
+class TIntValueItem:
+    value: int
+    field_type: str
+
+
+TIntValue = Union[int, TIntValueItem]
 
 
 @dataclass
