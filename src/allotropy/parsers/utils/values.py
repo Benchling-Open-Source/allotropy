@@ -145,3 +145,8 @@ def try_bool_from_series_or_none(
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
+
+
+def num_to_chars(n: int) -> str:
+    d, m = divmod(n, 26)  # 26 is the number of ASCII letters
+    return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
