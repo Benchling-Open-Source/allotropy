@@ -5,19 +5,16 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration import (
-    CumulativeCount,
-    CumulativeParticleDensity,
-    DetectorViewVolume,
-    DifferentialCount,
-    DifferentialParticleDensity,
-    DilutionFactorSetting,
     DistributionDocumentItem,
     DistributionItem,
-    FlushVolumeSetting,
     MeasurementDocument,
     Model,
-    ParticleSize,
-    SampleVolumeSetting,
+)
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueCountsPerMilliliter,
+    TQuantityValueMicrometer,
+    TQuantityValueMilliliter,
+    TQuantityValueUnitless,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -32,11 +29,11 @@ column_map = {
 }
 
 property_lookup = {
-    "particle_size": ParticleSize,
-    "cumulative_count": CumulativeCount,
-    "cumulative_particle_density": CumulativeParticleDensity,
-    "differential_particle_density": DifferentialParticleDensity,
-    "differential_count": DifferentialCount,
+    "particle_size": TQuantityValueMicrometer,
+    "cumulative_count": TQuantityValueUnitless,
+    "cumulative_particle_density": TQuantityValueCountsPerMilliliter,
+    "differential_particle_density": TQuantityValueCountsPerMilliliter,
+    "differential_count": TQuantityValueUnitless,
 }
 
 
@@ -118,12 +115,12 @@ class HIACParser(VendorParser):
         data = self._extract_data(df)
         distribution_document_items = self._create_distribution_document_items(data)
         model = Model(
-            dilution_factor_setting=DilutionFactorSetting(df.at[13, 2]),
+            dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
             detector_model_number=str(df.at[2, 5]),
             analyst=str(df.at[6, 5]),
             repetition_setting=int(df.at[11, 5]),
-            sample_volume_setting=SampleVolumeSetting(df.at[11, 2]),
-            detector_view_volume=DetectorViewVolume(df.at[9, 5]),
+            sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
+            detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
             measurement_identifier=str(df.at[2, 2]),
             sample_identifier=str(df.at[2, 2]),
             equipment_serial_number=str(df.at[4, 5]),
@@ -131,7 +128,7 @@ class HIACParser(VendorParser):
             measurement_document=MeasurementDocument(
                 distribution_document=distribution_document_items
             ),
-            flush_volume_setting=FlushVolumeSetting(
+            flush_volume_setting=TQuantityValueMilliliter(
                 0
             ),  # TODO get test example for this
             measurement_time=pd.to_datetime(

@@ -159,6 +159,16 @@
             }
         ]
     },
+    "tQuantityValueCountsPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/CountsPerMilliliter"
+            }
+        ]
+    },
     "tQuantityValueGramPerLiter": {
         "allOf": [
             {
