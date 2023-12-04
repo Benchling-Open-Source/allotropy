@@ -12,15 +12,15 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from typing import Optional
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
 
-@dataclass
+@dataclass(frozen=True)
 class Header:
     measurement_time: str
     plate_well_count: int
@@ -56,7 +56,7 @@ class WellItem(Referenceable):
     @property
     def amplification_data(self) -> AmplificationData:
         if self.amplification_data_obj is None:
-            msg = f"Unable to find amplification data for well {self.identifier}"
+            msg = f"Unable to find amplification data for well {self.identifier}."
             raise AllotropeConversionError(msg)
         return self.amplification_data_obj
 
@@ -66,7 +66,7 @@ class WellItem(Referenceable):
     @property
     def result(self) -> Result:
         if self.result_obj is None:
-            msg = f"Unablt to find result data for well {self.identifier}"
+            msg = f"Unable to find result data for well {self.identifier}."
             raise AllotropeConversionError(msg)
         return self.result_obj
 
@@ -82,7 +82,7 @@ class Well:
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
         if well_item is None:
-            msg = f"Unable to find target dna {target} for well {self.identifier}"
+            msg = f"Unable to find target DNA '{target}' for well {self.identifier}."
             raise AllotropeConversionError(msg)
         return well_item
 
@@ -99,7 +99,7 @@ class Well:
         self.melt_curve_raw_data = melt_curve_raw_data
 
 
-@dataclass
+@dataclass(frozen=True)
 class WellList:
     wells: list[Well]
 
@@ -111,12 +111,12 @@ class WellList:
         return iter(self.wells)
 
 
-@dataclass
+@dataclass(frozen=True)
 class RawData:
     lines: list[str]
 
 
-@dataclass
+@dataclass(frozen=True)
 class AmplificationData:
     total_cycle_number_setting: float
     cycle: list[float]
@@ -124,7 +124,7 @@ class AmplificationData:
     delta_rn: list[Optional[float]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class MulticomponentData:
     cycle: list[float]
     columns: dict[str, list[Optional[float]]]
@@ -132,12 +132,12 @@ class MulticomponentData:
     def get_column(self, name: str) -> list[Optional[float]]:
         column = self.columns.get(name)
         if column is None:
-            msg = f"Unable to obtain {name} from multicomponent data"
+            msg = f"Unable to obtain '{name}' from multicomponent data."
             raise AllotropeConversionError(msg)
         return column
 
 
-@dataclass
+@dataclass(frozen=True)
 class Result:
     cycle_threshold_value_setting: float
     cycle_threshold_result: Optional[float]
@@ -166,14 +166,14 @@ class Result:
     efficiency: Optional[float]
 
 
-@dataclass
+@dataclass(frozen=True)
 class MeltCurveRawData:
     reading: list[float]
     fluorescence: list[Optional[float]]
     derivative: list[Optional[float]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     header: Header
     wells: WellList

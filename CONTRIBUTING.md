@@ -1,6 +1,6 @@
 # Introduction
 
-We welcome community contributions to this library and we hope that together we can expand the coverage of ASM ready data for everyone.
+We welcome community contributions to this library and we hope that together we can expand the coverage of ASM-ready data for everyone.
 
 In order to contribute you will need to have an Individual or Corporate Contributor License Agreement (CLA) on file with Benchling depending on if you are contributing on your own time or as part of another company. When you make your first pull request we will check if you have a CLA and if not take care of that with you first. The process is quick and painless and helps us to make sure that you and everyone who uses your code in the future is protected.
 
@@ -13,7 +13,20 @@ All commits to this repository must be signed. To set up commit signatures, plea
 - [Tell Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key).
   - Follow up until step 5.
 
-To configure commits to be signed by default within this repo, run `git config commit.gpgsign true`.
+To configure commits to be signed by default within this repo, run this line:
+```sh
+git config commit.gpgsign true
+``````
+
+If you have a passphrase on your GPG key, be sure to add this line to your `~/.zshrc` or `~/.bashrc` (or your respective shell configuration file):
+
+```sh
+export GPG_TTY=$(tty)
+```
+
+> [!NOTE]
+> If you are having trouble signing your commits, when adding commits, make sure to `exit` any `hatch shell` you may have open. Developers have reported issues trying to do so, as commit signing does not work properly in a virtual environment.
+
 
 # Adding a new converter
 
@@ -30,6 +43,22 @@ In this case we already have some code in the library to handle instruments of t
 ## If the ASM schema you need is not available
 
 Please open an issue and talk to us about adding it. There is a bit more work involved in this case but we would still love to work with you to get the instrument type that you desire into the library!
+
+
+# Error messaging
+
+We ask that all error messages thrown in exceptions are written to be clear and useful to developers and end users. As such, please follow these guidelines. `AllotropeConversionError` and helper functions can be found in [`exceptions.py`](src/allotropy/exceptions.py) (and as always, we welcome any additions you may have).
+- Catch and raise all exceptions in this repo as `AllotropeConversionError`.
+- Write all messages with proper capitalization and full punctuation.
+- As much as possible, include the exact text of the problematic line(s) or value(s) (in single quotes as needed, to add clarity).
+- As much as possible, explain why that text was problematic, or what the expected behavior would have been.
+- Construct messages using f-strings, when applicable.
+
+## Specific situations
+- If a value is not a member of an expected set of values (e.g. an Enum), the text should read: `Unrecognized {key}: '{value}'. Only {valid_values} are supported.` (there is a helper function in [`exceptions.py`](src/allotropy/exceptions.py) for this)
+- If an expected value is not present, begin the text with `"Unable to find..."` or `"Unable to determine..."`
+- If a certain number of values are expected, begin the text with `"Expected exactly..."`
+- If a certain framework is unsupported, begin with the text `"Unsupported..."`
 
 
 # Other issues

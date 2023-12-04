@@ -2,7 +2,7 @@ from datetime import tzinfo
 from enum import Enum
 from typing import Optional, Union
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_parser import (
     AppbioAbsoluteQParser,
@@ -30,8 +30,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
-    APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
+    APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     BECKMAN_PHARMSPEC = "BECKMAN_PHARMSPEC"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
@@ -47,38 +47,25 @@ VendorType = Union[Vendor, str]
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
-    Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
+    Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.BECKMAN_PHARMSPEC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
-    Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
+    Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
 }
 
 
-class ParserFactory:
-    def __init__(self) -> None:
-        pass
-
-    def create(
-        self, vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
-    ) -> VendorParser:
-        try:
-            timestamp_parser = TimestampParser(default_timezone)
-            return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
-        except (ValueError, KeyError) as e:
-            error = f"Failed to create parser, unregistered vendor: {vendor_type}"
-            raise AllotropeConversionError(error) from e
-
-
 def get_parser(
     vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
-    return PARSER_FACTORY.create(vendor_type, default_timezone=default_timezone)
-
-
-PARSER_FACTORY: ParserFactory = ParserFactory()
+    try:
+        timestamp_parser = TimestampParser(default_timezone)
+        return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
+    except (ValueError, KeyError) as e:
+        error = f"Failed to create parser, unregistered vendor: {vendor_type}."
+        raise AllotropeConversionError(error) from e

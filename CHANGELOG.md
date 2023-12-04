@@ -6,16 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add parser structure documentation
+- Calculated data documents to PerkinElmer EnVision
 ### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.11] - 2023-12-04
+### Added
+- Add parser structure documentation
 ### Changed
 - Refactor Agilent Gen5 with explicit dataclasses structure
 - Update Benchman Vi-cell Blu adapter to use the new cell-counting BENCHLING/2023/11 schema
 - Update Benchman Vi-cell XR adapter to use the new cell-counting BENCHLING/2023/11 schema
 - Set mypy's disallow_any_generics to True. Ideally, new files should not suppress these warnings.
-### Deprecated
-### Removed
-### Security
+- Refactor way to extract and validate information from pandas series in AppBio QuantStudio
+- Simplify CSV lines reader
+- Update PerkinElmer EnVision adapter to use the new plate-reader BENCHLING/2023/09 schema
+- Standaradize and clarify exception messages
 
 ## [0.1.10] - 2023-11-14
 ### Added

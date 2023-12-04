@@ -1,4 +1,3 @@
-from io import IOBase
 from typing import Optional
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
@@ -40,6 +39,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeStructure,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
     DataBuilder,
 )
@@ -53,7 +53,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, file_name: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        raw_contents, file_name = named_file_contents
         reader = LinesReader(raw_contents)
         data = DataBuilder.build(reader)
         return self._get_model(data, file_name)
@@ -177,7 +178,7 @@ class AppBioQuantStudioParser(VendorParser):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=well_item.uuid,
-            measurement_time=self.get_date_time(data.header.measurement_time),
+            measurement_time=self._get_date_time(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(
                 sample_identifier=well_item.sample_identifier,

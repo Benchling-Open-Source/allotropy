@@ -1,16 +1,17 @@
 # mypy: disallow_any_generics = False
 
 from io import StringIO
-from typing import Any, Optional
+import re
+from typing import Optional
 import uuid
 
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     build_quantity,
     iter_calculated_data_documents,
@@ -28,49 +29,19 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellList,
 )
 from allotropy.parsers.lines_reader import LinesReader
-
-
-def df_to_series(df: pd.DataFrame) -> pd.Series:
-    return pd.Series(df.iloc[0], index=df.columns)
-
-
-def float_or_none(value: Any) -> Optional[float]:
-    try:
-        return float(value)
-    except Exception:
-        return None
-
-
-def get_str(data: pd.Series, key: str, default: Optional[str] = None) -> Optional[str]:
-    value = data.get(key, default)
-    return None if value is None else str(value)
-
-
-def get_int(data: pd.Series, key: str) -> Optional[int]:
-    try:
-        value = data.get(key)
-        return None if value is None else int(value)  # type: ignore[arg-type]
-    except Exception as e:
-        msg = f"Unable to convert {key} to integer value"
-        raise AllotropeConversionError(msg) from e
-
-
-def get_float(data: pd.Series, key: str) -> Optional[float]:
-    try:
-        value = data.get(key)
-        return float_or_none(value)
-    except Exception as e:
-        msg = f"Unable to convert {key} to float value"
-        raise AllotropeConversionError(msg) from e
-
-
-def get_bool(data: pd.Series, key: str) -> Optional[bool]:
-    try:
-        value = data.get(key)
-        return None if value is None else bool(value)
-    except Exception as e:
-        msg = f"Unable to convert {key} to bool value"
-        raise AllotropeConversionError(msg) from e
+from allotropy.parsers.utils.values import (
+    assert_not_empty_df,
+    assert_not_none,
+    df_to_series,
+    try_bool_from_series_or_none,
+    try_float_from_series,
+    try_float_from_series_or_none,
+    try_float_or_none,
+    try_int,
+    try_int_from_series,
+    try_str_from_series,
+    try_str_from_series_or_none,
+)
 
 
 class HeaderBuilder:
@@ -78,34 +49,30 @@ class HeaderBuilder:
     def build(reader: LinesReader) -> Header:
         data = HeaderBuilder.get_data(reader)
 
-        model_number = get_str(data, "Instrument Type")
-        if model_number is None:
-            msg = "Unable to get model number"
-            raise AllotropeConversionError(msg)
-
-        measurement_method_identifier = get_str(data, "Quantification Cycle Method")
-        if measurement_method_identifier is None:
-            msg = "Unable to get measurement method identifier"
-            raise AllotropeConversionError(msg)
-
-        pcr_detection_chemistry = get_str(data, "Chemistry")
-        if pcr_detection_chemistry is None:
-            msg = "Unable to get PCR detection chemistry"
-            raise AllotropeConversionError(msg)
-
         return Header(
             measurement_time=HeaderBuilder.get_measurement_time(data),
             plate_well_count=HeaderBuilder.get_plate_well_count(data),
             experiment_type=HeaderBuilder.get_experiment_type(data),
-            device_identifier=get_str(data, "Instrument Name") or "NA",
-            model_number=model_number,
-            device_serial_number=get_str(data, "Instrument Serial Number") or "NA",
-            measurement_method_identifier=measurement_method_identifier,
-            pcr_detection_chemistry=pcr_detection_chemistry,
-            passive_reference_dye_setting=get_str(data, "Passive Reference"),
-            barcode=get_str(data, "Experiment Barcode"),
-            analyst=get_str(data, "Experiment User Name"),
-            experimental_data_identifier=get_str(data, "Experiment Name"),
+            device_identifier=(
+                try_str_from_series_or_none(data, "Instrument Name") or "NA"
+            ),
+            model_number=try_str_from_series(data, "Instrument Type"),
+            device_serial_number=try_str_from_series_or_none(
+                data, "Instrument Serial Number"
+            )
+            or "NA",
+            measurement_method_identifier=try_str_from_series(
+                data, "Quantification Cycle Method"
+            ),
+            pcr_detection_chemistry=try_str_from_series(data, "Chemistry"),
+            passive_reference_dye_setting=try_str_from_series_or_none(
+                data, "Passive Reference"
+            ),
+            barcode=try_str_from_series_or_none(data, "Experiment Barcode"),
+            analyst=try_str_from_series_or_none(data, "Experiment User Name"),
+            experimental_data_identifier=try_str_from_series_or_none(
+                data, "Experiment Name"
+            ),
         )
 
     @staticmethod
@@ -119,11 +86,12 @@ class HeaderBuilder:
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }
 
-        experiments_type = experiments_type_options.get(data.get("Experiment Type"))  # type: ignore[arg-type]
-        if experiments_type is None:
-            msg = "Unable to get valid experiment type"
-            raise AllotropeConversionError(msg)
-        return experiments_type
+        return assert_not_none(
+            experiments_type_options.get(
+                try_str_from_series(data, "Experiment Type"),
+            ),
+            msg="Unable to find valid experiment type",
+        )
 
     @staticmethod
     def get_data(reader: LinesReader) -> pd.Series:
@@ -142,19 +110,14 @@ class HeaderBuilder:
 
     @staticmethod
     def get_plate_well_count(data: pd.Series) -> int:
-        block_type = get_str(data, "Block Type", default="")
-
-        if block_type is None:
-            msg = "Unable to get plate well count"
-            raise AllotropeConversionError(msg)
-
-        if "96" in block_type:
-            return 96
-        elif "384" in block_type:
-            return 384
-
-        msg = "Unable to interpret plate well count"
-        raise AllotropeConversionError(msg)
+        block_type = try_str_from_series(data, "Block Type")
+        return try_int(
+            assert_not_none(
+                re.match("(96)|(384)", block_type),
+                msg="Unable to interpret plate well count",
+            ).group(),
+            "plate well count",
+        )
 
 
 class GenericWellBuilder:
@@ -177,31 +140,32 @@ class GenericWellBuilder:
 
     @staticmethod
     def build_well_item(data: pd.Series) -> WellItem:
-        identifier = get_int(data, "Well")
-        if identifier is None:
-            msg = "Unable to get well identifier"
-            raise AllotropeConversionError(msg)
+        identifier = try_int_from_series(data, "Well")
 
-        target_dna_description = get_str(data, "Target Name")
-        if target_dna_description is None:
-            msg = f"Unable to get target dna description for well {identifier}"
-            raise AllotropeConversionError(msg)
+        target_dna_description = try_str_from_series(
+            data,
+            "Target Name",
+            msg=f"Unable to find target dna description for well {identifier}",
+        )
 
-        sample_identifier = get_str(data, "Sample Name")
-        if sample_identifier is None:
-            msg = f"Unable to get sample identifier for well {identifier}"
-            raise AllotropeConversionError(msg)
+        sample_identifier = try_str_from_series(
+            data,
+            "Sample Name",
+            msg=f"Unable to find sample identifier for well {identifier}",
+        )
 
         return WellItem(
             uuid=str(uuid.uuid4()),
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
-            reporter_dye_setting=get_str(data, "Reporter"),
-            position=get_str(data, "Well Position", default="UNDEFINED"),
-            well_location_identifier=get_str(data, "Well Position"),
-            quencher_dye_setting=get_str(data, "Quencher"),
-            sample_role_type=get_str(data, "Task"),
+            reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
+            position=try_str_from_series_or_none(
+                data, "Well Position", default="UNDEFINED"
+            ),
+            well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
+            quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+            sample_role_type=try_str_from_series_or_none(data, "Task"),
         )
 
 
@@ -225,30 +189,31 @@ class GenotypingWellBuilder:
 
     @staticmethod
     def build_well_items(data: pd.Series) -> tuple[WellItem, WellItem]:
-        identifier = get_int(data, "Well")
-        if identifier is None:
-            msg = "Unable to get well identifier"
-            raise AllotropeConversionError(msg)
+        identifier = try_int_from_series(data, "Well")
 
-        snp_name = get_str(data, "SNP Assay Name")
-        if snp_name is None:
-            msg = f"Unable to get snp name for well {identifier}"
-            raise AllotropeConversionError(msg)
+        snp_name = try_str_from_series(
+            data,
+            "SNP Assay Name",
+            msg=f"Unable to find snp name for well {identifier}",
+        )
 
-        sample_identifier = get_str(data, "Sample Name")
-        if sample_identifier is None:
-            msg = "Unable to get sample identifier"
-            raise AllotropeConversionError(msg)
+        sample_identifier = try_str_from_series(
+            data,
+            "Sample Name",
+            msg=f"Unable to find sample identifier for well {identifier}",
+        )
 
-        allele1 = get_str(data, "Allele1 Name")
-        if allele1 is None:
-            msg = f"Unable to get allele 1 for well {identifier}"
-            raise AllotropeConversionError(msg)
+        allele1 = try_str_from_series(
+            data,
+            "Allele1 Name",
+            msg=f"Unable to find allele 1 for well {identifier}",
+        )
 
-        allele2 = get_str(data, "Allele2 Name")
-        if allele2 is None:
-            msg = f"Unable to get allele 2 for well {identifier}"
-            raise AllotropeConversionError(msg)
+        allele2 = try_str_from_series(
+            data,
+            "Allele2 Name",
+            msg=f"Unable to find allele 2 for well {identifier}",
+        )
 
         return (
             WellItem(
@@ -256,22 +221,34 @@ class GenotypingWellBuilder:
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele1}",
                 sample_identifier=sample_identifier,
-                reporter_dye_setting=get_str(data, "Allele1 Reporter"),
-                position=get_str(data, "Well Position", default="UNDEFINED"),
-                well_location_identifier=get_str(data, "Well Position"),
-                quencher_dye_setting=get_str(data, "Quencher"),
-                sample_role_type=get_str(data, "Task"),
+                reporter_dye_setting=try_str_from_series_or_none(
+                    data, "Allele1 Reporter"
+                ),
+                position=try_str_from_series_or_none(
+                    data, "Well Position", default="UNDEFINED"
+                ),
+                well_location_identifier=try_str_from_series_or_none(
+                    data, "Well Position"
+                ),
+                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+                sample_role_type=try_str_from_series_or_none(data, "Task"),
             ),
             WellItem(
                 uuid=str(uuid.uuid4()),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele2}",
                 sample_identifier=sample_identifier,
-                reporter_dye_setting=get_str(data, "Allele2 Reporter"),
-                position=get_str(data, "Well Position", default="UNDEFINED"),
-                well_location_identifier=get_str(data, "Well Position"),
-                quencher_dye_setting=get_str(data, "Quencher"),
-                sample_role_type=get_str(data, "Task"),
+                reporter_dye_setting=try_str_from_series_or_none(
+                    data, "Allele2 Reporter"
+                ),
+                position=try_str_from_series_or_none(
+                    data, "Well Position", default="UNDEFINED"
+                ),
+                well_location_identifier=try_str_from_series_or_none(
+                    data, "Well Position"
+                ),
+                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+                sample_role_type=try_str_from_series_or_none(data, "Task"),
             ),
         )
 
@@ -288,7 +265,7 @@ class WellBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
         if reader.drop_until(r"^\[Sample Setup\]") is None:
-            msg = "Unable to find Sample Setup section in input file"
+            msg = "Unable to find 'Sample Setup' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -326,26 +303,20 @@ class AmplificationDataBuilder:
     def filter_target_data(
         amplification_data: pd.DataFrame, well_item: WellItem
     ) -> pd.DataFrame:
-        well_data = amplification_data[
-            amplification_data["Well"] == well_item.identifier
-        ]
-        if well_data.empty:
-            msg = f"Unable to get amplification data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
+        well_data = assert_not_empty_df(
+            amplification_data[amplification_data["Well"] == well_item.identifier],
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+        )
 
-        target_data = well_data[
-            well_data["Target Name"] == well_item.target_dna_description
-        ]
-        if target_data.empty:
-            msg = f"Unable to get amplification data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return target_data
+        return assert_not_empty_df(
+            well_data[well_data["Target Name"] == well_item.target_dna_description],
+            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+        )
 
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
         if reader.drop_until(r"^\[Amplification Data\]") is None:
-            msg = "Unable to find Amplification Data section in input file"
+            msg = "Unable to find 'Amplification Data' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -369,12 +340,10 @@ class MulticomponentDataBuilder:
 
     @staticmethod
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
-        well_data = data[data["Well"] == well.identifier]
-        if well_data.empty:
-            msg = f"Unable to find multi component data for well {well.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return well_data
+        return assert_not_empty_df(
+            data[data["Well"] == well.identifier],
+            msg=f"Unable to find multi component data for well {well.identifier}.",
+        )
 
     @staticmethod
     def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
@@ -390,70 +359,71 @@ class GenericResultsBuilder:
     @staticmethod
     def build(data: pd.DataFrame, well_item: WellItem) -> Result:
         target_data = GenericResultsBuilder.filter_target_data(data, well_item)
-        cycle_threshold_value_setting = get_float(target_data, "Ct Threshold")
-        if cycle_threshold_value_setting is None:
-            msg = "Unable to get cycle threshold value setting"
-            raise AllotropeConversionError(msg)
+        cycle_threshold_value_setting = try_float_from_series(
+            target_data,
+            "Ct Threshold",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
+        )
 
-        cycle_threshold_result = target_data.get("CT")
-        if cycle_threshold_result is None:
-            msg = "Unable to get cycle threshold result"
-            raise AllotropeConversionError(msg)
+        cycle_threshold_result = assert_not_none(
+            target_data.get("CT"),
+            msg="Unable to find cycle threshold result",
+        )
 
         return Result(
             cycle_threshold_value_setting=cycle_threshold_value_setting,
-            cycle_threshold_result=float_or_none(cycle_threshold_result),
-            automatic_cycle_threshold_enabled_setting=get_bool(
+            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
                 target_data, "Automatic Ct Threshold"
             ),
-            automatic_baseline_determination_enabled_setting=get_bool(
+            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
                 target_data, "Automatic Baseline"
             ),
-            normalized_reporter_result=get_float(target_data, "Rn"),
-            baseline_corrected_reporter_result=get_float(target_data, "Delta Rn"),
-            genotyping_determination_result=get_str(target_data, "Call"),
-            genotyping_determination_method_setting=get_float(
+            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
+            baseline_corrected_reporter_result=try_float_from_series_or_none(
+                target_data, "Delta Rn"
+            ),
+            genotyping_determination_result=try_str_from_series_or_none(
+                target_data, "Call"
+            ),
+            genotyping_determination_method_setting=try_float_from_series_or_none(
                 target_data, "Threshold Value"
             ),
-            quantity=get_float(target_data, "Quantity"),
-            quantity_mean=get_float(target_data, "Quantity Mean"),
-            quantity_sd=get_float(target_data, "Quantity SD"),
-            ct_mean=get_float(target_data, "Ct Mean"),
-            ct_sd=get_float(target_data, "Ct SD"),
-            delta_ct_mean=get_float(target_data, "Delta Ct Mean"),
-            delta_ct_se=get_float(target_data, "Delta Ct SE"),
-            delta_delta_ct=get_float(target_data, "Delta Delta Ct"),
-            rq=get_float(target_data, "RQ"),
-            rq_min=get_float(target_data, "RQ Min"),
-            rq_max=get_float(target_data, "RQ Max"),
-            rn_mean=get_float(target_data, "Rn Mean"),
-            rn_sd=get_float(target_data, "Rn SD"),
-            y_intercept=get_float(target_data, "Y-Intercept"),
-            r_squared=get_float(target_data, "R(superscript 2)"),
-            slope=get_float(target_data, "Slope"),
-            efficiency=get_float(target_data, "Efficiency"),
+            quantity=try_float_from_series_or_none(target_data, "Quantity"),
+            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
+            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
+            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
+            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
+            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
+            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
+            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
+            rq=try_float_from_series_or_none(target_data, "RQ"),
+            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
+            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
+            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
+            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
+            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
+            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
+            slope=try_float_from_series_or_none(target_data, "Slope"),
+            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
         )
 
     @staticmethod
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
-        well_data = data[data["Well"] == well_item.identifier]
-        if well_data.empty:
-            msg = f"Unable to get result data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
+        well_data = assert_not_empty_df(
+            data[data["Well"] == well_item.identifier],
+            msg=f"Unable to find result data for well {well_item.identifier}.",
+        )
 
-        target_data = well_data[
-            well_data["Target Name"] == well_item.target_dna_description
-        ]
-        if target_data.empty:
-            msg = f"Unable to get result data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
+        target_data = assert_not_empty_df(
+            well_data[well_data["Target Name"] == well_item.target_dna_description],
+            msg=f"Unable to find result data for well {well_item.identifier}.",
+        )
 
-        n_rows, _ = target_data.shape
-        if n_rows != 1:
-            msg = f"Unexpected number of results associated to well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return df_to_series(target_data)
+        return df_to_series(
+            target_data,
+            f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+        )
 
 
 class GenotypingResultsBuilder:
@@ -462,71 +432,72 @@ class GenotypingResultsBuilder:
         target_data = GenotypingResultsBuilder.filter_target_data(data, well_item)
         _, raw_allele = well_item.target_dna_description.split("-")
         allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = get_float(target_data, f"{allele} Ct Threshold")
-        if cycle_threshold_value_setting is None:
-            msg = f"Unable to get cycle threshold value setting for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
+        cycle_threshold_value_setting = try_float_from_series(
+            target_data,
+            f"{allele} Ct Threshold",
+            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
+        )
 
-        cycle_threshold_result = target_data.get(f"{allele} Ct")
-        if cycle_threshold_result is None:
-            msg = "Unable to get cycle threshold result"
-            raise AllotropeConversionError(msg)
+        cycle_threshold_result = assert_not_none(
+            target_data.get(f"{allele} Ct"),
+            msg="Unable to find cycle threshold result",
+        )
 
         return Result(
             cycle_threshold_value_setting=cycle_threshold_value_setting,
-            cycle_threshold_result=float_or_none(cycle_threshold_result),
-            automatic_cycle_threshold_enabled_setting=get_bool(
+            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
                 target_data, f"{allele} Automatic Ct Threshold"
             ),
-            automatic_baseline_determination_enabled_setting=get_bool(
+            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
                 target_data, f"{allele} Automatic Baseline"
             ),
-            normalized_reporter_result=get_float(target_data, "Rn"),
-            baseline_corrected_reporter_result=get_float(
+            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
+            baseline_corrected_reporter_result=try_float_from_series_or_none(
                 target_data, f"{allele} Delta Rn"
             ),
-            genotyping_determination_result=get_str(target_data, "Call"),
-            genotyping_determination_method_setting=get_float(
+            genotyping_determination_result=try_str_from_series_or_none(
+                target_data, "Call"
+            ),
+            genotyping_determination_method_setting=try_float_from_series_or_none(
                 target_data, "Threshold Value"
             ),
-            quantity=get_float(target_data, "Quantity"),
-            quantity_mean=get_float(target_data, "Quantity Mean"),
-            quantity_sd=get_float(target_data, "Quantity SD"),
-            ct_mean=get_float(target_data, "Ct Mean"),
-            ct_sd=get_float(target_data, "Ct SD"),
-            delta_ct_mean=get_float(target_data, "Delta Ct Mean"),
-            delta_ct_se=get_float(target_data, "Delta Ct SE"),
-            delta_delta_ct=get_float(target_data, "Delta Delta Ct"),
-            rq=get_float(target_data, "RQ"),
-            rq_min=get_float(target_data, "RQ Min"),
-            rq_max=get_float(target_data, "RQ Max"),
-            rn_mean=get_float(target_data, "Rn Mean"),
-            rn_sd=get_float(target_data, "Rn SD"),
-            y_intercept=get_float(target_data, "Y-Intercept"),
-            r_squared=get_float(target_data, "R(superscript 2)"),
-            slope=get_float(target_data, "Slope"),
-            efficiency=get_float(target_data, "Efficiency"),
+            quantity=try_float_from_series_or_none(target_data, "Quantity"),
+            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
+            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
+            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
+            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
+            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
+            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
+            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
+            rq=try_float_from_series_or_none(target_data, "RQ"),
+            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
+            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
+            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
+            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
+            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
+            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
+            slope=try_float_from_series_or_none(target_data, "Slope"),
+            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
         )
 
     @staticmethod
     def filter_target_data(data: pd.DataFrame, well_item: WellItem) -> pd.Series:
-        well_data = data[data["Well"] == well_item.identifier]
-        if well_data.empty:
-            msg = f"Unable to get result data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
+        well_data = assert_not_empty_df(
+            data[data["Well"] == well_item.identifier],
+            msg=f"Unable to find result data for well {well_item.identifier}.",
+        )
 
         snp_assay_name, _ = well_item.target_dna_description.split("-")
-        target_data = well_data[well_data["SNP Assay Name"] == snp_assay_name]
-        if target_data.empty:
-            msg = f"Unable to get result data for well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
+        target_data = assert_not_empty_df(
+            well_data[well_data["SNP Assay Name"] == snp_assay_name],
+            msg=f"Unable to find result data for well {well_item.identifier}.",
+        )
 
-        n_rows, _ = target_data.shape
-        if n_rows != 1:
-            msg = f"Unexpected number of results associated to well {well_item.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return df_to_series(target_data)
+        return df_to_series(
+            target_data,
+            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+        )
 
 
 class ResultsBuilder:
@@ -541,7 +512,7 @@ class ResultsBuilder:
     @staticmethod
     def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series]:
         if reader.drop_until(r"^\[Results\]") is None:
-            msg = "Unable to find Results section in input file"
+            msg = "Unable to find 'Results' section in file."
             raise AllotropeConversionError(msg)
 
         reader.pop()  # remove title
@@ -579,12 +550,10 @@ class MeltCurveRawDataBuilder:
 
     @staticmethod
     def filter_well_data(data: pd.DataFrame, well: Well) -> pd.DataFrame:
-        well_data = data[data["Well"] == well.identifier]
-        if well_data.empty:
-            msg = f"Unable to get melt curve raw data for well {well.identifier}"
-            raise AllotropeConversionError(msg)
-
-        return well_data
+        return assert_not_empty_df(
+            data[data["Well"] == well.identifier],
+            msg=f"Unable to find melt curve raw data for well {well.identifier}.",
+        )
 
     @staticmethod
     def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
@@ -629,8 +598,12 @@ class DataBuilder:
             if an_well_item := well.get_an_well_item():
                 well.calculated_document = build_quantity(an_well_item)
 
-        endogenous_control = get_str(results_metadata, "Endogenous Control") or ""
-        reference_sample = get_str(results_metadata, "Reference Sample") or ""
+        endogenous_control = (
+            try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""
+        )
+        reference_sample = (
+            try_str_from_series_or_none(results_metadata, "Reference Sample") or ""
+        )
 
         return Data(
             header,

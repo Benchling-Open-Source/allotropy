@@ -4,40 +4,13 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Union
 
-TTupleData = list[Optional[Union[float, bool, str]]]
-
-
-TUnit = str
-
-
-TBooleanArray = list[bool]
-
-
-TBooleanOrNullArray = list[Optional[bool]]
-
-
-TNumberArray = list[float]
-
-
-TNumberOrNullArray = list[Optional[float]]
-
-
-TStringArray = list[str]
-
-
-TStringOrNullArray = list[Optional[str]]
-
-
-TClass = str
+from allotropy.exceptions import AllotropeConversionError
 
 
 @dataclass
-class TStringValueItem:
-    value: str
-    field_type: str
-
-
-TStringValue = Union[str, TStringValueItem]
+class TBooleanValueItem:
+    field_type: TClass
+    value: bool
 
 
 @dataclass
@@ -55,17 +28,26 @@ class TDateTimeValueItem:
     value: str
 
 
-TDateTimeValue = Union[str, TDateTimeValueItem]
-TDateTimeStampValue = TDateTimeValue
-
-
 @dataclass
-class TBooleanValueItem:
-    field_type: TClass
-    value: bool
+class TStringValueItem:
+    value: str
+    field_type: str
 
 
+TBooleanArray = list[bool]
+TBooleanOrNullArray = list[Optional[bool]]
 TBooleanValue = Union[bool, TBooleanValueItem]
+TClass = str
+TDateTimeValue = Union[str, TDateTimeValueItem]
+# TODO(brian): inline this
+TDateTimeStampValue = TDateTimeValue
+TNumberArray = list[float]
+TNumberOrNullArray = list[Optional[float]]
+TStringArray = list[str]
+TStringOrNullArray = list[Optional[str]]
+TStringValue = Union[str, TStringValueItem]
+TTupleData = list[Optional[Union[float, bool, str]]]
+TUnit = str
 
 
 class TStatisticDatumRole(Enum):
@@ -206,8 +188,8 @@ class TDatacubeData:
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
         if not (self.measures is None) ^ (self.points is None):
-            error = "Exactly one of measures or points must be set"
-            raise ValueError(error)
+            error = "Exactly one of measures or points must be set on a datacube."
+            raise AllotropeConversionError(error)
 
 
 @dataclass

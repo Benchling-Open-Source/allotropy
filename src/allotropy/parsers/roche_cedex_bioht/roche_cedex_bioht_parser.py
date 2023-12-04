@@ -1,4 +1,3 @@
-import io
 import uuid
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
@@ -10,6 +9,7 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
     Model,
     SampleDocument,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
@@ -18,7 +18,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class RocheCedexBiohtParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:  # noqa: ARG002
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        contents = named_file_contents.contents
         reader = RocheCedexBiohtReader(contents)
         return self._get_model(Data.create(reader))
 
@@ -26,7 +27,7 @@ class RocheCedexBiohtParser(VendorParser):
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                data_processing_time=self.get_date_time(
+                data_processing_time=self._get_date_time(
                     data.title.data_processing_time
                 ),
                 analyst=data.title.analyst,
@@ -79,6 +80,6 @@ class RocheCedexBiohtParser(VendorParser):
                 sample_role_type=sample.role_type,
                 batch_identifier=sample.batch,
             ),
-            measurement_time=self.get_date_time(sample.measurement_time),
+            measurement_time=self._get_date_time(sample.measurement_time),
             analyte_aggregate_document=AnalyteAggregateDocument(analyte_document=[]),
         )
