@@ -346,6 +346,114 @@ class PlateData:
         )
 
 
+@dataclass
+class TimeWavelengthRow:
+    data_key: str
+    temperature: float
+    data: pd.Series[float]
+
+    @staticmethod
+    def create(row: pd.Series[float]) -> TimeWavelengthRow:
+        return TimeWavelengthRow(
+            data_key=str(row.iloc[0]),
+            temperature=row.iloc[1],
+            data=row.iloc[2:],
+        )
+
+
+@dataclass
+class TimeWavelengthData:
+    data: pd.DataFrame
+
+    def iter_wavelength_rows(self) -> Iterator[TimeWavelengthRow]:
+        for _, row in self.data.iterrows():
+            yield TimeWavelengthRow.create(row)
+
+
+@dataclass
+class TimeRawData:
+    wavelength_data: list[TimeWavelengthData]
+
+    @staticmethod
+    def create(
+        lines_reader: CsvReader,
+        header: PlateHeader,
+    ) -> Optional[TimeRawData]:
+        if header.data_type == DataType.REDUCED.value:
+            return None
+
+        columns = assert_not_none(
+            lines_reader.pop_as_series(sep="\t"),
+            msg="unable to find data columns for time block raw data.",
+        )
+        data = assert_not_none(
+            lines_reader.pop_csv_block_as_df(sep="\t"),
+            msg="unable to find raw data from time block.",
+        )
+        data.columns = pd.Index(columns)
+        return TimeRawData(
+            wavelength_data=list(TimeRawData._iter_wavelength_data(header, data)),
+        )
+
+    @staticmethod
+    def _iter_wavelength_data(
+        header: PlateHeader, data: pd.DataFrame
+    ) -> Iterator[TimeWavelengthData]:
+        for idx in range(header.num_wavelengths):
+            start = idx * (header.kinetic_points + 1)
+            end = start + header.kinetic_points
+            yield TimeWavelengthData(data.iloc[:, start:end])
+
+
+@dataclass
+class TimeReducedData:
+    columns: list[str]
+    data: list[str]
+
+    @staticmethod
+    def create(lines_reader: CsvReader) -> Optional[TimeReducedData]:
+        if not lines_reader.current_line_exists():
+            return None
+
+        _, _, *columns = assert_not_none(
+            lines_reader.pop_as_series(sep="\t"),
+            msg="unable to find columns for time block reduced data.",
+        )
+        _, _, *data = assert_not_none(
+            lines_reader.pop_as_series(sep="\t"),
+            msg="unable to find reduced data from time block.",
+        )
+        return TimeReducedData(columns, data)
+
+
+@dataclass
+class TimeData:
+    raw_data: Optional[TimeRawData]
+    reduced_data: Optional[TimeReducedData]
+
+    @staticmethod
+    def create(
+        lines_reader: CsvReader,
+        header: PlateHeader,
+    ) -> TimeData:
+        return TimeData(
+            raw_data=TimeRawData.create(lines_reader, header),
+            reduced_data=TimeReducedData.create(lines_reader),
+        )
+
+    def get_raw_data(self) -> TimeRawData:
+        return assert_not_none(
+            self.raw_data,
+            msg="Unable to find plate block raw data.",
+        )
+
+    def get_reduced_data(self) -> TimeReducedData:
+        return assert_not_none(
+            self.reduced_data,
+            msg="Unable to find plate block reduced data.",
+        )
+
+
 @dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
@@ -360,7 +468,12 @@ class PlateBlock(Block):
         well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
 
         if header.export_format == ExportFormat.TIME_FORMAT.value:
-            PlateBlock._parse_time_format_data(lines_reader, header, well_data)
+            PlateBlock._parse_time_format_data(
+                lines_reader,
+                header,
+                well_data,
+                time_data=TimeData.create(lines_reader, header),
+            )
         elif header.export_format == ExportFormat.PLATE_FORMAT.value:
             PlateBlock._parse_plate_format_data(
                 header,
@@ -444,6 +557,7 @@ class PlateBlock(Block):
         lines_reader: CsvReader,
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
+        time_data: TimeData,  # noqa: ARG004
     ) -> None:
         split_lines = [
             [value_or_none(value) for value in raw_line.split("\t")]
