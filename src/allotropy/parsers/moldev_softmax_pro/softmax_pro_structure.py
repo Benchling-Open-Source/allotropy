@@ -62,7 +62,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int,
     try_int_or_none,
-    value_or_none,
 )
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
@@ -348,14 +347,14 @@ class PlateData:
 
 @dataclass
 class TimeWavelengthRow:
-    data_key: str
+    data_key: float
     temperature: float
     data: pd.Series[float]
 
     @staticmethod
     def create(row: pd.Series[float]) -> TimeWavelengthRow:
         return TimeWavelengthRow(
-            data_key=str(row.iloc[0]),
+            data_key=row.iloc[0],
             temperature=row.iloc[1],
             data=row.iloc[2:],
         )
@@ -402,7 +401,7 @@ class TimeRawData:
         for idx in range(header.num_wavelengths):
             start = idx * (header.kinetic_points + 1)
             end = start + header.kinetic_points
-            yield TimeWavelengthData(data.iloc[:, start:end])
+            yield TimeWavelengthData(data.iloc[start:end, :])
 
 
 @dataclass
@@ -424,6 +423,10 @@ class TimeReducedData:
             msg="unable to find reduced data from time block.",
         )
         return TimeReducedData(columns, data)
+
+    def iter_data(self) -> Iterator[tuple[str, float]]:
+        for pos, value in zip(self.columns, self.data):
+            yield pos, try_float(value, "time block reduced data element")
 
 
 @dataclass
@@ -469,7 +472,6 @@ class PlateBlock(Block):
 
         if header.export_format == ExportFormat.TIME_FORMAT.value:
             PlateBlock._parse_time_format_data(
-                lines_reader,
                 header,
                 well_data,
                 time_data=TimeData.create(lines_reader, header),
@@ -516,18 +518,6 @@ class PlateBlock(Block):
         return cls
 
     @staticmethod
-    def _parse_reduced_columns(
-        data_header: list[Optional[str]],
-        well_data: defaultdict[str, WellData],
-        reduced_data_row: list[Optional[str]],
-    ) -> None:
-        for i, value in enumerate(reduced_data_row[2:]):
-            if value is None:
-                continue
-            well = assert_not_none(data_header[i + 2], "well")
-            well_data[well].processed_data.append(float(value))
-
-    @staticmethod
     def _add_data_point(
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
@@ -554,44 +544,31 @@ class PlateBlock(Block):
 
     @staticmethod
     def _parse_time_format_data(
-        lines_reader: CsvReader,
         header: PlateHeader,
         well_data: defaultdict[str, WellData],
-        time_data: TimeData,  # noqa: ARG004
+        time_data: TimeData,
     ) -> None:
-        split_lines = [
-            [value_or_none(value) for value in raw_line.split("\t")]
-            for raw_line in lines_reader.lines
-        ]
-        data_header = split_lines[1]
-        data_lines = split_lines[2:]
-
         if header.data_type == DataType.RAW.value:
-            for wavelength_index in range(header.num_wavelengths):
-                start_index = wavelength_index * (header.kinetic_points + 1)
-                wavelength_rows = data_lines[
-                    start_index : start_index + header.kinetic_points
-                ]
-                for row in wavelength_rows:
-                    for i, value in enumerate(row[2 : header.num_wells + 2]):
-                        if value is None:
-                            continue
-                        well = assert_not_none(data_header[i + 2], "well")
+            for idx, wavelength_data in enumerate(
+                time_data.get_raw_data().wavelength_data
+            ):
+                for wavelength_row in wavelength_data.iter_wavelength_rows():
+                    for pos, val in wavelength_row.data.items():
                         PlateBlock._add_data_point(
                             header,
                             well_data,
-                            well,
-                            try_float(value, "well data point"),
-                            data_key=row[0],
-                            temperature=try_float_or_none(str(row[1])),
-                            wavelength_index=wavelength_index,
+                            str(pos),
+                            val,
+                            data_key=str(int(wavelength_row.data_key)),
+                            temperature=wavelength_row.temperature,
+                            wavelength_index=idx,
                         )
-            if len(data_lines) > (header.kinetic_points + 1) * header.num_wavelengths:
-                reduced_row = data_lines[-1][: header.num_wells + 2]
-                PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
+            if time_data.reduced_data:
+                for pos, val in time_data.reduced_data.iter_data():
+                    well_data[pos].processed_data.append(val)
         elif header.data_type == DataType.REDUCED.value:
-            reduced_row = data_lines[-1][: header.num_wells + 2]
-            PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
+            for pos, val in time_data.get_reduced_data().iter_data():
+                well_data[pos].processed_data.append(val)
         else:
             msg = msg_for_error_on_unrecognized_value(
                 "data type", header.data_type, DataType._member_names_
