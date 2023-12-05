@@ -3,10 +3,13 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+    CalculatedDataDocumentItem,
     DistributionDocumentItem,
     DistributionItem,
-    MeasurementDocument,
+    MeasurementAggregateDocument,
+    MeasurementDocumentItem,
     Model,
+    TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCountsPerMilliliter,
@@ -34,6 +37,8 @@ property_lookup = {
     "differential_particle_density": TQuantityValueCountsPerMilliliter,
     "differential_count": TQuantityValueUnitless,
 }
+
+VALID_CALCS = ["Average"]
 
 
 def get_property_from_sample(property_name: str, value: Any) -> Any:
@@ -78,10 +83,7 @@ class PharmSpecParser(VendorParser):
         data = data.dropna(subset=1).reset_index(drop=True)
         data.columns = pd.Index([x.strip() for x in data.loc[0]])
         data = data.loc[1:, :]
-        avg = data[data["Run No."] == "Average"].rename(
-            columns={x: column_map[x] for x in column_map}
-        )
-        return avg
+        return data.rename(columns={x: column_map[x] for x in column_map})
 
     def _create_distribution_document_items(
         self, df: pd.DataFrame
@@ -114,6 +116,26 @@ class PharmSpecParser(VendorParser):
         )
         return [dd]
 
+    def _create_calculated_document_items(
+        self, name: str, df: pd.DataFrame
+    ) -> list[CalculatedDataDocumentItem]:
+        cols = column_map.values()
+        items = []
+        for row in df.index:
+            for col in [x for x in cols if x in df.columns]:
+                prop = col.replace(
+                    " ", "_"
+                )  # to be able to set the props on the DistributionItem
+                items.append(
+                    CalculatedDataDocumentItem(
+                        calculated_data_name=name,
+                        calculated_result=get_property_from_sample(
+                            prop, df.at[row, col]
+                        ),
+                    )
+                )
+        return items
+
     def _setup_model(self, df: pd.DataFrame) -> Model:
         """Build the Model
 
@@ -121,7 +143,22 @@ class PharmSpecParser(VendorParser):
         :return: the model
         """
         data = self._extract_data(df)
-        distribution_document_items = self._create_distribution_document_items(data)
+        measurement_doc_items = []
+        calc_agg_doc = None
+        for g, gdf in data.groupby("Run No."):
+            name = str(g)
+            if g in VALID_CALCS:
+                calc_agg_doc = TCalculatedDataAggregateDocument(
+                    calculated_data_document=self._create_calculated_document_items(
+                        name, gdf
+                    )
+                )
+            else:
+                measurement_doc_items.append(
+                    MeasurementDocumentItem(
+                        name, self._create_distribution_document_items(gdf)
+                    )
+                )
         model = Model(
             dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
             detector_model_number=str(df.at[2, 5]),
@@ -129,13 +166,13 @@ class PharmSpecParser(VendorParser):
             repetition_setting=int(df.at[11, 5]),
             sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
             detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
-            measurement_identifier=str(df.at[2, 2]),
             sample_identifier=str(df.at[2, 2]),
             equipment_serial_number=str(df.at[4, 5]),
             detector_identifier=str(df.at[4, 5]),
-            measurement_document=MeasurementDocument(
-                distribution_document=distribution_document_items
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_document=measurement_doc_items
             ),
+            calculated_data_aggregate_document=calc_agg_doc,
             flush_volume_setting=TQuantityValueMilliliter(
                 0
             ),  # TODO get test example for this

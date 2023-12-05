@@ -11,96 +11,14 @@
     "detector identifier",
     "sample identifier",
     "detector model number",
-    "measurement time"
+    "measurement time",
+    "measurement aggregate document"
   ],
   "properties": {
     "detector view volume": {
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002491",
       "$asm.pattern": "quantity datum",
       "$ref": "#/$custom/tQuantityValueMilliliter"
-    },
-    "measurement document": {
-      "type": "object",
-      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
-      "$asm.pattern": "aggregate datum",
-      "properties": {
-        "distribution document": {
-          "type": "array",
-          "$asm.array-ordered": true,
-          "$asm.array-mixed": false,
-          "$asm.pattern": "indexed datum",
-          "items": {
-            "allOf": [
-              {
-                "type": "object",
-                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002193",
-                "$asm.pattern": "aggregate datum",
-                "properties": {
-                  "distribution": {
-                    "type": "array",
-                    "$asm.array-ordered": false,
-                    "$asm.array-mixed": false,
-                    "$asm.pattern": "indexed datum",
-                    "items": {
-                      "type": "object",
-                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000733",
-                      "$asm.pattern": "aggregate datum",
-                      "required": [
-                        "particle size",
-                        "cumulative count",
-                        "cumulative particle density"
-                      ],
-                      "properties": {
-                        "particle size": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002027",
-                          "$asm.pattern": "quantity datum",
-                          "$ref": "#/$custom/tQuantityValueMicrometer"
-                        },
-                        "cumulative count": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002132",
-                          "$asm.pattern": "quantity datum",
-                          "$ref": "#/$custom/tQuantityValueUnitless"
-                        },
-                        "cumulative particle density": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002495",
-                          "$asm.pattern": "quantity datum",
-                          "$ref": "#/$custom/tQuantityValueCountsPerMilliliter"
-                        },
-                        "differential particle density": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002496",
-                          "$asm.pattern": "quantity datum",
-                          "$ref": "#/$custom/tQuantityValueCountsPerMilliliter"
-                        },
-                        "differential count": {
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002494",
-                          "$asm.pattern": "quantity datum",
-                          "$ref": "#/$custom/tQuantityValueUnitless"
-                        }
-                      }
-                    },
-                    "minItems": 1
-                  },
-                  "data processing omission setting": {
-                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002497",
-                    "$asm.pattern": "value datum",
-                    "$ref": "#/$defs/tBooleanValue"
-                  }
-                }
-              },
-              {
-                "properties": {
-                  "@index": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2147483647
-                  }
-                }
-              }
-            ]
-          },
-          "minItems": 1
-        }
-      }
     },
     "flush volume setting": {
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002493",
@@ -122,12 +40,6 @@
         "value",
         "unit"
       ]
-    },
-    "measurement identifier": {
-      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
-      "$asm.pattern": "value datum",
-      "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-      "$ref": "#/$defs/tStringValue"
     },
     "repetition setting": {
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001678",
@@ -168,6 +80,227 @@
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
       "$asm.pattern": "value datum",
       "$ref": "#/$defs/tDateTimeValue"
+    },
+    "measurement aggregate document": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002374",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "measurement document": {
+          "type": "array",
+          "$asm.array-ordered": false,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "required": [
+              "measurement identifier",
+              "distribution document"
+            ],
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "measurement identifier": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              },
+              "distribution document": {
+                "type": "array",
+                "$asm.array-ordered": true,
+                "$asm.array-mixed": false,
+                "$asm.pattern": "indexed datum",
+                "items": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002193",
+                      "$asm.pattern": "aggregate datum",
+                      "properties": {
+                        "distribution": {
+                          "type": "array",
+                          "$asm.array-ordered": false,
+                          "$asm.array-mixed": false,
+                          "$asm.pattern": "indexed datum",
+                          "items": {
+                            "type": "object",
+                            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000733",
+                            "$asm.pattern": "aggregate datum",
+                            "required": [
+                              "particle size",
+                              "cumulative count",
+                              "cumulative particle density"
+                            ],
+                            "properties": {
+                              "particle size": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002027",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueMicrometer"
+                              },
+                              "cumulative count": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002132",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueUnitless"
+                              },
+                              "cumulative particle density": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002495",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueCountsPerMilliliter"
+                              },
+                              "differential particle density": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002496",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueCountsPerMilliliter"
+                              },
+                              "differential count": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002494",
+                                "$asm.pattern": "quantity datum",
+                                "$ref": "#/$custom/tQuantityValueUnitless"
+                              }
+                            }
+                          },
+                          "minItems": 1
+                        },
+                        "data processing omission setting": {
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002497",
+                          "$asm.pattern": "value datum",
+                          "$ref": "#/$defs/tBooleanValue"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "@index": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        }
+                      }
+                    }
+                  ]
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "calculated data aggregate document": {
+      "$ref": "#/$defs/tCalculatedDataAggregateDocument"
+    }
+  },
+  "$defs": {
+    "tDataSourceAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002894",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "data source document"
+      ],
+      "properties": {
+        "data source document": {
+          "type": "array",
+          "$asm.array-ordered": true,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "allOf": [
+              {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002895",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "data source identifier": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002896",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "data source feature": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002898",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  }
+                },
+                "required": [
+                  "data source identifier",
+                  "data source feature"
+                ]
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "tCalculatedDataAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002889",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "calculated data document"
+      ],
+      "properties": {
+        "calculated data document": {
+          "type": "array",
+          "$asm.array-ordered": true,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "allOf": [
+              {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002890",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "data source aggregate document": {
+                    "allOf": [
+                      {
+                        "$ref": "#/$defs/tDataSourceAggregateDocument"
+                      }
+                    ]
+                  },
+                  "calculated data identifier": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002893",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "calculated data name": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002891",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "calculation description": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002141",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "calculated result": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002892",
+                    "$asm.pattern": "quantity datum",
+                    "anyOf": [
+                      {
+                        "$ref": "#/$custom/tQuantityValueMicrometer"
+                      },
+                      {
+                        "$ref": "#/$custom/tQuantityValueUnitless"
+                      },
+                      {
+                        "$ref": "#/$custom/tQuantityValueCountsPerMilliliter"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "calculated data name",
+                  "calculated result"
+                ]
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      }
     }
   }
 }

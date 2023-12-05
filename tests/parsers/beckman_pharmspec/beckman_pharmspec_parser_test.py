@@ -2,6 +2,9 @@ from pathlib import Path
 
 import pytest
 
+from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+    MeasurementDocumentItem,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_pharmspec.pharmspec_parser import PharmSpecParser
@@ -21,30 +24,30 @@ def test_file() -> Path:
 @pytest.mark.short
 def test_get_model(test_file: Path) -> None:
     parser = PharmSpecParser(TimestampParser())
+
     model = parser.to_allotrope(NamedFileContents(open(test_file, "rb"), ""))
     assert model.detector_identifier == "1808303021"
     assert model.sample_identifier == "ExampleTimepoint"
-    assert model.measurement_document
-    assert model.measurement_document.distribution_document
+    assert model.measurement_aggregate_document
+    assert model.measurement_aggregate_document.measurement_document
 
-    # Single distribution document
+    # # Single distribution document
 
-    assert len(model.measurement_document.distribution_document) == 1
+    assert len(model.measurement_aggregate_document.measurement_document) == 2
+    for elem in model.measurement_aggregate_document.measurement_document:
+        assert isinstance(elem, MeasurementDocumentItem)
+        assert isinstance(elem.measurement_identifier, str)
+        assert isinstance(elem.distribution_document, list)
+        assert len(elem.distribution_document) == 1
+        assert isinstance(elem.distribution_document[0].distribution, list)
 
-    # 5 rows in the distribution document
-    assert isinstance(
-        model.measurement_document.distribution_document[0].distribution, list
-    )
-    assert len(model.measurement_document.distribution_document[0].distribution) == 5
+        # 5 rows in the distribution document
+        assert len(elem.distribution_document[0].distribution) == 5
 
-    # Ensure correct order and particle sizes
-    for i, particle_size in enumerate([2, 5, 10, 25, 50]):
-        test = (
-            model.measurement_document.distribution_document[0]
-            .distribution[i]
-            .particle_size
-        )
-        assert test.value == particle_size
+        # Ensure correct order and particle sizes
+        for i, particle_size in enumerate([2, 5, 10, 25, 50]):
+            test = elem.distribution_document[0].distribution[i].particle_size
+            assert test.value == particle_size
 
 
 @pytest.mark.short

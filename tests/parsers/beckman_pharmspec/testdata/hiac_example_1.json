@@ -21,86 +21,279 @@
     "sample identifier": "ExampleTimepoint",
     "detector model number": "HRLD150@10ml",
     "measurement time": "2022-08-12T07:51:50.000000Z",
-    "measurement document": {
-        "distribution document": [
+    "measurement aggregate document": {
+        "measurement document": [
             {
-                "distribution": [
+                "measurement identifier": "Run1",
+                "distribution document": [
                     {
-                        "particle size": {
-                            "value": 2.0,
-                            "unit": "\u03bcm"
-                        },
-                        "cumulative count": {
-                            "value": 24.0,
-                            "unit": "(unitless)"
-                        },
-                        "cumulative particle density": {
-                            "value": 110.0,
-                            "unit": "Counts/mL"
-                        }
-                    },
-                    {
-                        "particle size": {
-                            "value": 5.0,
-                            "unit": "\u03bcm"
-                        },
-                        "cumulative count": {
-                            "value": 9.0,
-                            "unit": "(unitless)"
-                        },
-                        "cumulative particle density": {
-                            "value": 120.0,
-                            "unit": "Counts/mL"
-                        }
-                    },
-                    {
-                        "particle size": {
-                            "value": 10.0,
-                            "unit": "\u03bcm"
-                        },
-                        "cumulative count": {
-                            "value": 4.0,
-                            "unit": "(unitless)"
-                        },
-                        "cumulative particle density": {
-                            "value": 130.0,
-                            "unit": "Counts/mL"
-                        }
-                    },
-                    {
-                        "particle size": {
-                            "value": 25.0,
-                            "unit": "\u03bcm"
-                        },
-                        "cumulative count": {
-                            "value": 0.0,
-                            "unit": "(unitless)"
-                        },
-                        "cumulative particle density": {
-                            "value": 140.0,
-                            "unit": "Counts/mL"
-                        }
-                    },
-                    {
-                        "particle size": {
-                            "value": 50.0,
-                            "unit": "\u03bcm"
-                        },
-                        "cumulative count": {
-                            "value": 0.0,
-                            "unit": "(unitless)"
-                        },
-                        "cumulative particle density": {
-                            "value": 150.0,
-                            "unit": "Counts/mL"
-                        }
+                        "distribution": [
+                            {
+                                "particle size": {
+                                    "value": 2.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 48.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 10.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 5.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 1.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 20.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 10.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 0.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 30.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 25.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 0.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 40.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 50.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 0.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 50.0,
+                                    "unit": "Counts/mL"
+                                }
+                            }
+                        ],
+                        "data processing omission setting": false
                     }
-                ],
-                "data processing omission setting": false
+                ]
+            },
+            {
+                "measurement identifier": "Run2",
+                "distribution document": [
+                    {
+                        "distribution": [
+                            {
+                                "particle size": {
+                                    "value": 2.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 24.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 60.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 5.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 9.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 70.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 10.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 4.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 80.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 25.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 0.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 90.0,
+                                    "unit": "Counts/mL"
+                                }
+                            },
+                            {
+                                "particle size": {
+                                    "value": 50.0,
+                                    "unit": "\u03bcm"
+                                },
+                                "cumulative count": {
+                                    "value": 0.0,
+                                    "unit": "(unitless)"
+                                },
+                                "cumulative particle density": {
+                                    "value": 100.0,
+                                    "unit": "Counts/mL"
+                                }
+                            }
+                        ],
+                        "data processing omission setting": false
+                    }
+                ]
             }
         ]
     },
-    "measurement identifier": "ExampleTimepoint",
     "equipment serial number": "1808303021",
+    "calculated data aggregate document": {
+        "calculated data document": [
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 110,
+                    "unit": "Counts/mL"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 24,
+                    "unit": "(unitless)"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 2,
+                    "unit": "\u03bcm"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 120,
+                    "unit": "Counts/mL"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 9,
+                    "unit": "(unitless)"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 5,
+                    "unit": "\u03bcm"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 130,
+                    "unit": "Counts/mL"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 4,
+                    "unit": "(unitless)"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 10,
+                    "unit": "\u03bcm"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 140,
+                    "unit": "Counts/mL"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 0,
+                    "unit": "(unitless)"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 25,
+                    "unit": "\u03bcm"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 150,
+                    "unit": "Counts/mL"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 0,
+                    "unit": "(unitless)"
+                }
+            },
+            {
+                "calculated data name": "Average",
+                "calculated result": {
+                    "value": 50,
+                    "unit": "\u03bcm"
+                }
+            }
+        ]
+    },
     "$asm.manifest": "http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest"
 }
