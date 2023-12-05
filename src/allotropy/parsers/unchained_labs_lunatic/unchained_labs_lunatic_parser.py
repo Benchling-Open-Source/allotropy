@@ -24,8 +24,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.unchained_labs_lunatic.constants import WAVELENGHT_COLUMNS_RE
+from allotropy.parsers.unchained_labs_lunatic.constants import (
+    NO_DATE_OR_TIME_ERROR_MSG,
+    NO_WAVELENGHT_COLUMN_ERROR_MSG,
+    WAVELENGHT_COLUMNS_RE,
+)
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
     UnchainedLabsLunaticReader,
 )
@@ -40,8 +45,11 @@ def _get_device_identifier(data: pd.Series[Any]) -> str:
 
 
 def _get_datetime_from_plate(plate: pd.Series[Any]) -> str:
-    date = assert_not_none(plate.get("Date"), "Date")
-    time = assert_not_none(plate.get("Time"), "Time")
+    date = plate.get("Date")
+    time = plate.get("Time")
+
+    if not date or not time:
+        raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
 
     return f"{date} {time}"
 
@@ -54,6 +62,8 @@ class UnchainedLabsLunaticParser(VendorParser):
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
         wavelenght_columns = list(filter(WAVELENGHT_COLUMNS_RE.match, data.columns))
+        if not wavelenght_columns:
+            raise AllotropeConversionError(NO_WAVELENGHT_COLUMN_ERROR_MSG)
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
