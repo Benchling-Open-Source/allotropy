@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Calculated data documents to PerkinElmer EnVision
 ### Fixed
 ### Changed
 - Refactor builders as create methods in AppBio QuantStudio
