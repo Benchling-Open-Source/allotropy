@@ -43,11 +43,7 @@ def get_property_from_sample(property_name: str, value: Any) -> Any:
 class PharmSpecParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
-        return self._get_model(df)
-
-    def _get_model(self, df: pd.DataFrame) -> Model:
-        model = self._setup_model(df)
-        return model
+        return self._setup_model(df)
 
     def _get_data_using_key_bounds(
         self, df: pd.DataFrame, start_key: str, end_key: str
