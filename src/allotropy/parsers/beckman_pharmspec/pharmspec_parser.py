@@ -2,7 +2,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.light_obscuration_rec_2021_12_light_obscuration import (
+from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
     DistributionDocumentItem,
     DistributionItem,
     MeasurementDocument,

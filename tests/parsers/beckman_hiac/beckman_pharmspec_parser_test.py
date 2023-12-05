@@ -54,15 +54,15 @@ def test_asm(test_file: Path) -> None:
 
 
 @pytest.mark.short
-def test_parse_beckman_hiac_to_asm_schema(test_file: Path) -> None:
+def test_parse_beckman_pharmspec_hiac_to_asm_schema(test_file: Path) -> None:
     allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
     validate_schema(
-        allotrope_dict, "light-obscuration/REC/2021/12/light-obscuration.json"
+        allotrope_dict, "light-obscuration/BENCHLING/2023/12/light-obscuration.json"
     )
 
 
 @pytest.mark.short
-def test_parse_beckman_hiac_to_asm_contents(test_file: Path) -> None:
+def test_parse_beckman_pharmspec_hiac_to_asm_contents(test_file: Path) -> None:
     expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
     allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
