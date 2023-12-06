@@ -65,7 +65,7 @@ class UnchainedLabsLunaticParser(VendorParser):
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self._get_date_time(plate.measurement_time),
-                analytical_method_identifier=plate.analytical_method_identifier,  # type: ignore[arg-type]
+                analytical_method_identifier=plate.analytical_method_identifier,
                 container_type=ContainerType.well_plate,
                 plate_well_count=TQuantityValueNumber(value=96),
                 measurement_document=[

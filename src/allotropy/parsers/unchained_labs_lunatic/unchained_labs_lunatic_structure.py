@@ -13,7 +13,7 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGHT_COLUMN_ERROR_MSG,
     WAVELENGHT_COLUMNS_RE,
 )
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import try_float_from_series, try_str_from_series
 
 
 @dataclass(frozen=True)
@@ -21,9 +21,9 @@ class Measurement:
     measurement_identifier: str
     wavelenght: float
     absorbance: float
-    sample_identifier: Optional[str]
+    sample_identifier: str
     location_identifier: str
-    well_plate_identifier: str
+    well_plate_identifier: Optional[str]
 
     @staticmethod
     def create(plate_data: pd.Series[Any], wavelenght_column: str) -> Measurement:
@@ -38,10 +38,10 @@ class Measurement:
         return Measurement(
             measurement_identifier=str(uuid.uuid4()),
             wavelenght=wavelenght,
-            absorbance=assert_not_none(plate_data.get(wavelenght_column)),  # type: ignore[arg-type]
-            sample_identifier=plate_data.get("Sample name"),  # type: ignore[arg-type]
-            location_identifier=assert_not_none(plate_data.get("Plate ID"), "Plate ID"),  # type: ignore[arg-type]
-            well_plate_identifier=assert_not_none(plate_data.get("Plate Position"), "Plate Position"),  # type: ignore[arg-type]
+            absorbance=try_float_from_series(plate_data, wavelenght_column),
+            sample_identifier=try_str_from_series(plate_data, "Sample name"),
+            location_identifier=try_str_from_series(plate_data, "Plate ID"),
+            well_plate_identifier=plate_data.get("Plate Position"),  # type: ignore[arg-type]
         )
 
 
@@ -96,6 +96,6 @@ class Data:
 
     @staticmethod
     def get_device_identifier(data: pd.Series[Any]) -> str:
-        device_identifier = assert_not_none(data.get("Instrument ID"), "Instrument ID")
+        device_identifier = try_str_from_series(data, "Instrument ID")
 
         return str(device_identifier)
