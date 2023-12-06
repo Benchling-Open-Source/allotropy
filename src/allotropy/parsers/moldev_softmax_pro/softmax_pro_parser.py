@@ -11,7 +11,7 @@ class SoftmaxproParser(VendorParser):
         lines = read_to_lines(named_file_contents.contents, encoding=None)
         reader = CsvReader(lines)
         data = Data.create(reader)
-        return self._get_model(data)
+        return self._get_model(named_file_contents.original_file_name, data)
 
-    def _get_model(self, data: Data) -> Any:
+    def _get_model(self, _: str, data: Data) -> Any:
         return data.get_plate_block().to_allotrope()
