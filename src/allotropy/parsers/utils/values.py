@@ -58,10 +58,6 @@ def assert_not_none(
     return value
 
 
-def value_or_none(value: str) -> Optional[str]:
-    return value.strip() or None
-
-
 def df_to_series(
     df: pd.DataFrame,
     msg: str,
