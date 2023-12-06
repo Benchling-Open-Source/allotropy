@@ -1,7 +1,7 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
 
 import io
-from typing import Any
+from typing import Any, Optional
 import uuid
 
 import pandas as pd
@@ -53,8 +53,16 @@ property_lookup = {
 }
 
 
-def get_property_from_sample(sample: pd.Series, property_name: str) -> Any:
-    return property_lookup[property_name](value=value) if (value := sample.get(property_name)) else None  # type: ignore[arg-type]
+def _get_value(sample: pd.Series[Any], column: str) -> Optional[Any]:
+    return sample.get(column)
+
+
+def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
+    return (
+        property_lookup[property_name](value=value)
+        if (value := _get_value(sample, property_name))
+        else None
+    )
 
 
 class ViCellBluParser(VendorParser):
@@ -84,22 +92,22 @@ class ViCellBluParser(VendorParser):
         return [
             self._get_cell_counting_document_item(sample)
             for _, sample in data.iterrows()
-            if sample.get("Cell count")
+            if _get_value(sample, "Cell count")
         ]
 
     def _get_cell_counting_document_item(
-        self, sample: pd.Series
+        self, sample: pd.Series[Any]
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
-            analyst=sample.get("Analysis by") or DEFAULT_ANALYST,  # type: ignore[arg-type]
+            analyst=_get_value(sample, "Analysis by") or DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_time=self.get_date_time(
-                            sample.get("Analysis date/time")
+                            _get_value(sample, "Analysis date/time")
                         ),
                         measurement_identifier=str(uuid.uuid4()),
-                        sample_document=SampleDocument(sample_identifier=sample.get("Sample ID")),  # type: ignore[arg-type]
+                        sample_document=SampleDocument(sample_identifier=_get_value(sample, "Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItemModel(
@@ -112,7 +120,9 @@ class ViCellBluParser(VendorParser):
                             processed_data_document=[
                                 ProcessedDataDocumentItem(
                                     data_processing_document=DataProcessingDocument(
-                                        cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
+                                        cell_type_processing_method=_get_value(
+                                            sample, "Cell type"
+                                        ),
                                         minimum_cell_diameter_setting=get_property_from_sample(
                                             sample, "Minimum Diameter (μm)"
                                         ),
