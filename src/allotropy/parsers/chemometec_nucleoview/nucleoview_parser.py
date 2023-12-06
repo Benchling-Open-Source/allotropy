@@ -21,7 +21,6 @@ from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting im
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueCell,
     TQuantityValueMicrometer,
     TQuantityValueMillionCellsPerMilliliter,
     TQuantityValuePercent,
@@ -156,9 +155,6 @@ class ChemometecNucleoviewParser(VendorParser):
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
                                         data_frame, row, "Estimated cell diameter (um)"
-                                    ),
-                                    total_cell_count=TQuantityValueCell(
-                                        value=float("NaN")
                                     ),
                                 )
                             ]
