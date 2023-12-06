@@ -46,15 +46,15 @@ class Measurement:
 
 
 @dataclass(frozen=True)
-class Plate:
+class WellPlate:
     measurement_time: str
     analytical_method_identifier: Optional[str]
     measurements: list[Measurement]
 
     @staticmethod
-    def create(plate_data: pd.Series[Any], wavelenght_columns: list[str]) -> Plate:
-        return Plate(
-            measurement_time=Plate.get_datetime_from_plate(plate_data),
+    def create(plate_data: pd.Series[Any], wavelenght_columns: list[str]) -> WellPlate:
+        return WellPlate(
+            measurement_time=WellPlate.get_datetime_from_plate(plate_data),
             analytical_method_identifier=plate_data.get("Application"),  # type: ignore[arg-type]
             measurements=[
                 Measurement.create(plate_data, wavelenght_column)
@@ -76,7 +76,7 @@ class Plate:
 @dataclass(frozen=True)
 class Data:
     device_identifier: str
-    plate_list: list[Plate]
+    well_plate_list: list[WellPlate]
 
     @staticmethod
     def create(data: pd.DataFrame) -> Data:
@@ -88,8 +88,8 @@ class Data:
 
         return Data(
             device_identifier=device_identifier,
-            plate_list=[
-                Plate.create(data.iloc[i], wavelenght_columns)
+            well_plate_list=[
+                WellPlate.create(data.iloc[i], wavelenght_columns)
                 for i in range(len(data.index))
             ],
         )

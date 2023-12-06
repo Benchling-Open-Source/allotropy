@@ -28,7 +28,7 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader impo
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
     Data,
     Measurement,
-    Plate,
+    WellPlate,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -56,12 +56,14 @@ class UnchainedLabsLunaticParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate)
-                    for plate in data.plate_list
+                    for plate in data.well_plate_list
                 ],
             ),
         )
 
-    def _get_plate_reader_document_item(self, plate: Plate) -> PlateReaderDocumentItem:
+    def _get_plate_reader_document_item(
+        self, plate: WellPlate
+    ) -> PlateReaderDocumentItem:
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self._get_date_time(plate.measurement_time),
