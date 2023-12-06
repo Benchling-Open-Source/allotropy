@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Calculated data documents to PerkinElmer EnVision
 ### Fixed
 ### Changed
+- Simplify Moldev Softmax Pro parsing with dataclasses
 - Refactor builders as create methods in AppBio QuantStudio
 ### Deprecated
 ### Removed
