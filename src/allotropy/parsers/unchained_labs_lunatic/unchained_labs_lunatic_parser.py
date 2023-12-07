@@ -36,8 +36,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 class UnchainedLabsLunaticParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, filename = named_file_contents
-        reader = UnchainedLabsLunaticReader(raw_contents)
-        return self._get_model(Data.create(reader.data), filename)
+        data = UnchainedLabsLunaticReader.read(raw_contents)
+        return self._get_model(Data.create(data), filename)
 
     def _get_model(self, data: Data, filename: str) -> Model:
         return Model(
