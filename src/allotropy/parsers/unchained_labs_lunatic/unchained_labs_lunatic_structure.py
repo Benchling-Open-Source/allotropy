@@ -8,11 +8,11 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
-    INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG,
+    INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
-    NO_WAVELENGHT_COLUMN_ERROR_MSG,
-    WAVELENGHT_COLUMNS_RE,
+    NO_WAVELENGTH_COLUMN_ERROR_MSG,
+    WAVELENGTH_COLUMNS_RE,
 )
 from allotropy.parsers.utils.values import try_float_from_series, try_str_from_series
 
@@ -20,27 +20,27 @@ from allotropy.parsers.utils.values import try_float_from_series, try_str_from_s
 @dataclass(frozen=True)
 class Measurement:
     measurement_identifier: str
-    wavelenght: float
+    wavelength: float
     absorbance: float
     sample_identifier: str
     location_identifier: str
     well_plate_identifier: Optional[str]
 
     @staticmethod
-    def create(well_plate_data: pd.Series[Any], wavelenght_column: str) -> Measurement:
-        if wavelenght_column not in well_plate_data:
-            msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelenght_column)
+    def create(well_plate_data: pd.Series[Any], wavelength_column: str) -> Measurement:
+        if wavelength_column not in well_plate_data:
+            msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
             raise AllotropeConversionError(msg)
 
-        if not WAVELENGHT_COLUMNS_RE.match(wavelenght_column):
-            raise AllotropeConversionError(INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG)
+        if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
+            raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
-        wavelenght = float(wavelenght_column[1:])
+        wavelength = float(wavelength_column[1:])
 
         return Measurement(
             measurement_identifier=str(uuid.uuid4()),
-            wavelenght=wavelenght,
-            absorbance=try_float_from_series(well_plate_data, wavelenght_column),
+            wavelength=wavelength,
+            absorbance=try_float_from_series(well_plate_data, wavelength_column),
             sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
             location_identifier=try_str_from_series(well_plate_data, "Plate ID"),
             well_plate_identifier=well_plate_data.get("Plate Position"),  # type: ignore[arg-type]
@@ -54,13 +54,13 @@ class WellPlate:
     measurements: list[Measurement]
 
     @staticmethod
-    def create(plate_data: pd.Series[Any], wavelenght_columns: list[str]) -> WellPlate:
+    def create(plate_data: pd.Series[Any], wavelength_columns: list[str]) -> WellPlate:
         return WellPlate(
             measurement_time=WellPlate.get_datetime_from_plate(plate_data),
             analytical_method_identifier=plate_data.get("Application"),  # type: ignore[arg-type]
             measurements=[
-                Measurement.create(plate_data, wavelenght_column)
-                for wavelenght_column in wavelenght_columns
+                Measurement.create(plate_data, wavelength_column)
+                for wavelength_column in wavelength_columns
             ],
         )
 
@@ -84,14 +84,14 @@ class Data:
     def create(data: pd.DataFrame) -> Data:
         device_identifier = Data.get_device_identifier(data.iloc[0])
 
-        wavelenght_columns = list(filter(WAVELENGHT_COLUMNS_RE.match, data.columns))
-        if not wavelenght_columns:
-            raise AllotropeConversionError(NO_WAVELENGHT_COLUMN_ERROR_MSG)
+        wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
+        if not wavelength_columns:
+            raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
         return Data(
             device_identifier=device_identifier,
             well_plate_list=[
-                WellPlate.create(data.iloc[i], wavelenght_columns)
+                WellPlate.create(data.iloc[i], wavelength_columns)
                 for i in range(len(data.index))
             ],
         )

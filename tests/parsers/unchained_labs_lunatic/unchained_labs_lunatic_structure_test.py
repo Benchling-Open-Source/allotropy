@@ -5,7 +5,7 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
-    INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG,
+    INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
 )
@@ -17,7 +17,7 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
 
 
 @pytest.mark.parametrize(
-    "wavelenght,absorbance_value,sample_identifier,location_identifier,well_plate_identifier",
+    "wavelength,absorbance_value,sample_identifier,location_identifier,well_plate_identifier",
     [
         (245, 590, "Sample Name 1", "plateID1", "A1"),
         (230, 90, "Sample Name 2", "plateID2", "A3"),
@@ -26,22 +26,22 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
 )
 @pytest.mark.short
 def test_create_measurement(
-    wavelenght: int,
+    wavelength: int,
     absorbance_value: float,
     sample_identifier: str,
     location_identifier: str,
     well_plate_identifier: str,
 ) -> None:
-    wavelenght_column = f"A{wavelenght}"
+    wavelength_column = f"A{wavelength}"
     well_plate_data = {
-        wavelenght_column: absorbance_value,
+        wavelength_column: absorbance_value,
         "Sample name": sample_identifier,
         "Plate ID": location_identifier,
         "Plate Position": well_plate_identifier,
     }
-    measurement = Measurement.create(pd.Series(well_plate_data), wavelenght_column)
+    measurement = Measurement.create(pd.Series(well_plate_data), wavelength_column)
 
-    assert measurement.wavelenght == wavelenght
+    assert measurement.wavelength == wavelength
     assert measurement.absorbance == absorbance_value
     assert measurement.sample_identifier == sample_identifier
     assert measurement.location_identifier == location_identifier
@@ -49,21 +49,21 @@ def test_create_measurement(
 
 
 @pytest.mark.short
-def test_create_measurement_with_no_wavelenght_column() -> None:
+def test_create_measurement_with_no_wavelength_column() -> None:
     well_plate_data = {
         "Sample name": "dummy name",
         "Plate ID": "dummy ID",
         "Plate Position": "B3",
     }
-    wavelenght_column = "A250"
-    msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelenght_column)
+    wavelength_column = "A250"
+    msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
-        Measurement.create(pd.Series(well_plate_data), wavelenght_column)
+        Measurement.create(pd.Series(well_plate_data), wavelength_column)
 
 
 @pytest.mark.short
-def test_create_title_with_incorrect_wavelenght_column_format() -> None:
-    msg = INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG
+def test_create_title_with_incorrect_wavelength_column_format() -> None:
+    msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
     well_plate_data = pd.Series({"Sample name": "dummy name"})
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
         Measurement.create(well_plate_data, "Sample name")

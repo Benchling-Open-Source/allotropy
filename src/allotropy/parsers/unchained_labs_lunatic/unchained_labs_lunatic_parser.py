@@ -87,7 +87,7 @@ class UnchainedLabsLunaticParser(VendorParser):
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type="plate reader",
                         detector_wavelength_setting=TQuantityValueNanometer(
-                            value=measurement.wavelenght
+                            value=measurement.wavelength
                         ),
                     )
                 ]
