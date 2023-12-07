@@ -1,5 +1,6 @@
-import io
 from typing import NamedTuple
+
+from allotropy.types import IOType
 
 
 class NamedFileContents(NamedTuple):
@@ -12,5 +13,5 @@ class NamedFileContents(NamedTuple):
     and original file name to support as many cases as possible.
     """
 
-    contents: io.IOBase
+    contents: IOType
     original_file_name: str
