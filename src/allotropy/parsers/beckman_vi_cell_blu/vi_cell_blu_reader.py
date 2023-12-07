@@ -6,6 +6,8 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from allotropy.parsers.pandas_utils import read_csv
+
 
 def convert_datetime(x: pd.Series[Any]) -> pd.Series[str]:
     return pd.to_datetime(x).dt.strftime("%Y-%m-%d %H:%M:%S")
@@ -54,7 +56,7 @@ desired_columns = {
 class ViCellBluReader:
     @classmethod
     def read(cls, contents: io.IOBase) -> pd.DataFrame:
-        raw_data = pd.read_csv(contents, index_col=False)  # type: ignore[call-overload]
+        raw_data = read_csv(contents, index_col=False)  # type: ignore[arg-type]
 
         columns: list[pd.Series[Any]] = []
         for column, desired_type in desired_columns.items():
@@ -65,6 +67,6 @@ class ViCellBluReader:
             new_col = (
                 col if col.dtype == desired_type else conversors[desired_type](col)
             )
-            columns.append(new_col)  # type: ignore [arg-type]
+            columns.append(new_col)
 
         return pd.concat(columns, axis=1).replace(np.nan, None)

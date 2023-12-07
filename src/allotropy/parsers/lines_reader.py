@@ -7,6 +7,7 @@ import chardet
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.pandas_utils import read_csv
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
@@ -121,7 +122,7 @@ class CsvReader(LinesReader):
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
-            return pd.read_csv(
+            return read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
                 dtype=str if as_str else None,

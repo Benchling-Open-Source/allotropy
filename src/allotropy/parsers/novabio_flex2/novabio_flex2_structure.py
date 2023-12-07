@@ -20,6 +20,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
+from allotropy.parsers.pandas_utils import read_csv
 
 
 @dataclass(frozen=True)
@@ -138,5 +139,5 @@ class Data:
     @staticmethod
     def create(contents: io.IOBase, filename: str) -> Data:
         # NOTE: type ignore is an issue with pandas typing, it accepts an io.IOBase that implements read.
-        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[call-overload]
+        data = read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[arg-type]
         return Data(Title.create(filename), SampleList.create(data))
