@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import io
 from typing import Any
 
 import numpy as np
@@ -12,6 +11,7 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
     INFO_HEADER,
     SAMPLE_ROLE_TYPES,
 )
+from allotropy.types import IOType
 
 
 def to_num(data: pd.Series[Any]) -> pd.Series[Any]:
@@ -19,11 +19,11 @@ def to_num(data: pd.Series[Any]) -> pd.Series[Any]:
 
 
 class RocheCedexBiohtReader:
-    def __init__(self, contents: io.IOBase):
+    def __init__(self, contents: IOType):
         self.title_data = self.read_title_data(contents)
         self.samples_data = self.read_samples_data(contents)
 
-    def read_title_data(self, contents: io.IOBase) -> pd.Series[Any]:
+    def read_title_data(self, contents: IOType) -> pd.Series[Any]:
         contents.seek(0)
         return pd.read_csv(  # type: ignore[call-overload, no-any-return]
             contents,
@@ -33,7 +33,7 @@ class RocheCedexBiohtReader:
             nrows=1,
         ).T[0]
 
-    def read_samples_data(self, contents: io.IOBase) -> pd.DataFrame:
+    def read_samples_data(self, contents: IOType) -> pd.DataFrame:
         contents.seek(0)
         sample_rows: pd.DataFrame = pd.read_csv(  # type: ignore[call-overload]
             contents,

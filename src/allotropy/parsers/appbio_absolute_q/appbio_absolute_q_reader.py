@@ -1,11 +1,11 @@
-from io import IOBase
-
 import numpy as np
 import pandas as pd
 
+from allotropy.types import IOType
+
 
 class AbsoluteQReader:
-    def __init__(self, contents: IOBase):
+    def __init__(self, contents: IOType):
         absolute_q_data = pd.read_csv(  # type: ignore[call-overload]
             filepath_or_buffer=contents, parse_dates=["Date"]
         ).replace(np.nan, None)
