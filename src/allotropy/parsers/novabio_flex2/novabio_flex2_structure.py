@@ -137,5 +137,5 @@ class Data:
 
     @staticmethod
     def create(contents: IOType, filename: str) -> Data:
-        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[call-overload]
+        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))
