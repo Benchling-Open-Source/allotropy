@@ -10,3 +10,6 @@ INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG = (
 NO_DATE_OR_TIME_ERROR_MSG = (
     "The file is required to include both 'Date' and 'Time' columns."
 )
+NO_MEASUREMENT_IN_PLATE_ERROR_MSG = (
+    "The plate data does not contain absorbance measurement for {}."
+)

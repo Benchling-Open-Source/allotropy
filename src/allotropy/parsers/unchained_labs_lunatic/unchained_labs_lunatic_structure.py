@@ -10,6 +10,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
+    NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
     NO_WAVELENGHT_COLUMN_ERROR_MSG,
     WAVELENGHT_COLUMNS_RE,
 )
@@ -26,22 +27,23 @@ class Measurement:
     well_plate_identifier: Optional[str]
 
     @staticmethod
-    def create(plate_data: pd.Series[Any], wavelenght_column: str) -> Measurement:
+    def create(well_plate_data: pd.Series[Any], wavelenght_column: str) -> Measurement:
+        if wavelenght_column not in well_plate_data:
+            msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelenght_column)
+            raise AllotropeConversionError(msg)
+
         if not WAVELENGHT_COLUMNS_RE.match(wavelenght_column):
             raise AllotropeConversionError(INCORRECT_WAVELENGHT_COLUMN_FORMAT_ERROR_MSG)
 
-        if wavelenght_column not in plate_data:
-            msg = f"The plate data does not contain absorbance measurement for {wavelenght_column}."
-            raise AllotropeConversionError(msg)
         wavelenght = float(wavelenght_column[1:])
 
         return Measurement(
             measurement_identifier=str(uuid.uuid4()),
             wavelenght=wavelenght,
-            absorbance=try_float_from_series(plate_data, wavelenght_column),
-            sample_identifier=try_str_from_series(plate_data, "Sample name"),
-            location_identifier=try_str_from_series(plate_data, "Plate ID"),
-            well_plate_identifier=plate_data.get("Plate Position"),  # type: ignore[arg-type]
+            absorbance=try_float_from_series(well_plate_data, wavelenght_column),
+            sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
+            location_identifier=try_str_from_series(well_plate_data, "Plate ID"),
+            well_plate_identifier=well_plate_data.get("Plate Position"),  # type: ignore[arg-type]
         )
 
 
