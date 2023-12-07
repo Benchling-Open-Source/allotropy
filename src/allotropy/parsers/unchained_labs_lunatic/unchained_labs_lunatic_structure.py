@@ -56,7 +56,7 @@ class WellPlate:
     @staticmethod
     def create(plate_data: pd.Series[Any], wavelength_columns: list[str]) -> WellPlate:
         return WellPlate(
-            measurement_time=WellPlate.get_datetime_from_plate(plate_data),
+            measurement_time=WellPlate._get_datetime_from_plate(plate_data),
             analytical_method_identifier=plate_data.get("Application"),  # type: ignore[arg-type]
             measurements=[
                 Measurement.create(plate_data, wavelength_column)
@@ -65,7 +65,7 @@ class WellPlate:
         )
 
     @staticmethod
-    def get_datetime_from_plate(plate_data: pd.Series[Any]) -> str:
+    def _get_datetime_from_plate(plate_data: pd.Series[Any]) -> str:
         date = plate_data.get("Date")
         time = plate_data.get("Time")
 
@@ -82,7 +82,7 @@ class Data:
 
     @staticmethod
     def create(data: pd.DataFrame) -> Data:
-        device_identifier = Data.get_device_identifier(data.iloc[0])
+        device_identifier = Data._get_device_identifier(data.iloc[0])
 
         wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
         if not wavelength_columns:
@@ -97,7 +97,7 @@ class Data:
         )
 
     @staticmethod
-    def get_device_identifier(data: pd.Series[Any]) -> str:
+    def _get_device_identifier(data: pd.Series[Any]) -> str:
         device_identifier = try_str_from_series(data, "Instrument ID")
 
         return str(device_identifier)
