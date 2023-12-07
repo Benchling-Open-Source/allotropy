@@ -57,7 +57,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
     num_to_chars,
-    PrimitiveValue,
+    str_or_none,
     try_float,
     try_float_or_none,
     try_int,
@@ -134,7 +134,7 @@ class NoteBlock(Block):
 @dataclass
 class WellData:
     values: list[Optional[float]]
-    dimensions: list[Optional[PrimitiveValue]]
+    dimensions: list[Optional[str]]
     wavelengths: list[Optional[int]]
     temperature: Optional[float]
     processed_data: list[float]
@@ -152,7 +152,7 @@ class WellData:
     def add_value(
         self,
         value: float,
-        dimension: Optional[PrimitiveValue],
+        dimension: Optional[str],
         temperature: Optional[float],
         wavelength: Optional[int],
     ) -> None:
@@ -244,7 +244,7 @@ class PlateKineticData:
         raw_temperature = data.iloc[0, 1]
 
         return PlateKineticData(
-            data_key=str(raw_data_key) if raw_data_key else None,
+            data_key=str_or_none(raw_data_key),
             temperature=try_float_or_none(str(raw_temperature)),
             wavelength_data=list(
                 PlateKineticData._iter_wavelength_data(header, data.iloc[:, 2:])
@@ -533,7 +533,9 @@ class PlateBlock(Block):
             else None
         )
         dimension = (
-            wavelength if header.read_type == ReadType.ENDPOINT.value else data_key
+            str_or_none(wavelength)
+            if header.read_type == ReadType.ENDPOINT.value
+            else data_key
         )
         well_data[well].add_value(
             value=value,

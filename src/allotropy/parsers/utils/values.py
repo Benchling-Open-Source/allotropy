@@ -1,5 +1,5 @@
 import re
-from typing import Optional, TypeVar, Union
+from typing import Any, Optional, TypeVar, Union
 
 import pandas as pd
 
@@ -146,3 +146,7 @@ def try_bool_from_series_or_none(
 def num_to_chars(n: int) -> str:
     d, m = divmod(n, 26)  # 26 is the number of ASCII letters
     return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
+
+
+def str_or_none(value: Any) -> Optional[str]:
+    return None if value is None else str(value)
