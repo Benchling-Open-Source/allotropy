@@ -99,7 +99,7 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
-@dataclass
+@dataclass(frozen=True)
 class Block:
     block_type: str
     raw_lines: list[str]
@@ -120,7 +120,7 @@ class Block:
         raise AllotropeConversionError(error)
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupBlock(Block):
     block_type: str
     name: str
@@ -143,7 +143,7 @@ class GroupBlock(Block):
 
 
 # TODO do we need to do anything with these?
-@dataclass
+@dataclass(frozen=True)
 class NoteBlock(Block):
     @staticmethod
     def create(raw_lines: list[str]) -> NoteBlock:
@@ -189,7 +189,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
     name: Optional[str]
@@ -572,7 +572,7 @@ class PlateBlock(Block):
         raise NotImplementedError
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateBlockExtraAttr:
     concept: str
     read_mode: str
@@ -583,7 +583,7 @@ class PlateBlockExtraAttr:
     cutoff_filters: Optional[list[int]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 20
 
@@ -685,7 +685,7 @@ class FluorescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 19
 
@@ -775,7 +775,7 @@ class LuminescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
     @staticmethod
     def get_data_type_idx() -> int:
@@ -847,7 +847,7 @@ class AbsorbancePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class BlockList:
     blocks: list[Block]
 
@@ -876,7 +876,7 @@ class BlockList:
             lines_reader.drop_empty()
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     block_list: BlockList
 

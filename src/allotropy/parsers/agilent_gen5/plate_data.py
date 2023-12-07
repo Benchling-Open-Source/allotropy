@@ -71,7 +71,7 @@ def hhmmss_to_sec(hhmmss: str) -> int:
     return (3600 * hours) + (60 * minutes) + seconds
 
 
-@dataclass
+@dataclass(frozen=True)
 class FilePaths:
     experiment_file_path: str
     protocol_file_path: str
@@ -89,7 +89,7 @@ class FilePaths:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateNumber:
     datetime: str
     plate_barcode: str
@@ -122,7 +122,7 @@ class PlateNumber:
         return metadata_dict
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateType:
     read_mode: ReadMode
     read_type: ReadType
@@ -233,7 +233,7 @@ class PlateType:
         return read_names
 
 
-@dataclass
+@dataclass(frozen=True)
 class LayoutData:
     layout: dict
     concentrations: dict
@@ -271,7 +271,7 @@ class LayoutData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class ActualTemperature:
     value: Optional[float] = None
 
@@ -290,7 +290,7 @@ class ActualTemperature:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Results:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -373,7 +373,7 @@ class Results:
             )
 
 
-@dataclass
+@dataclass(frozen=True)
 class CurveName:
     statistics_doc: list
 
@@ -406,7 +406,7 @@ class CurveName:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class KineticData:
     temperatures: list
     kinetic_times: list[int]
@@ -507,7 +507,7 @@ class KineticData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateData:
     file_paths: FilePaths
     plate_number: PlateNumber

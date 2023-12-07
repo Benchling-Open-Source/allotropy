@@ -1,10 +1,13 @@
 from collections import defaultdict
 from enum import Enum
 from typing import Any, cast, Optional, TypeVar, Union
-import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
+    DataSourceAggregateDocument1,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlDocument,
     DeviceSystemDocument,
@@ -32,16 +35,21 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TRelativeFluorescenceUnit,
     TRelativeLightUnit,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TDateTimeValue,
+    TQuantityValue,
+)
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    CalculatedPlateInfo,
     Data,
     Plate,
     PlateMap,
     Result,
+    ResultPlateInfo,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -86,9 +94,11 @@ class PerkinElmerEnvisionParser(VendorParser):
             msg = "Unable to determine the number of wells in the plate."
             raise AllotropeConversionError(msg)
 
+        read_type = self._get_read_type(data)
+
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
-                plate_reader_document=self._get_plate_reader_document(data),
+                plate_reader_document=self._get_plate_reader_document(data, read_type),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=data.software.software_name,
@@ -100,6 +110,9 @@ class PerkinElmerEnvisionParser(VendorParser):
                     model_number="EnVision",
                     equipment_serial_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname,
+                ),
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data, read_type
                 ),
             ),
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
@@ -125,12 +138,12 @@ class PerkinElmerEnvisionParser(VendorParser):
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
             plate.plate_info.measurement_time
-            for plate in data.plates
+            for plate in data.plate_list.plates
             if plate.plate_info.measurement_time
         ]
 
         if dates:
-            return self.get_date_time(min(dates))
+            return self._get_date_time(min(dates))
 
         msg = "Unable to determine the measurement time."
         raise AllotropeConversionError(msg)
@@ -138,11 +151,13 @@ class PerkinElmerEnvisionParser(VendorParser):
     def _get_device_control_aggregate_document(
         self,
         data: Data,
-        plate: Plate,
+        result_plate_info: ResultPlateInfo,
         read_type: ReadType,
     ) -> DeviceControlAggregateDocument:
         ex_filter = data.labels.excitation_filter
-        em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
+        em_filter = data.labels.get_emission_filter(
+            result_plate_info.emission_filter_id
+        )
 
         if read_type == ReadType.LUMINESCENCE:
             return LuminescencePointDetectionDeviceControlAggregateDocument(
@@ -150,7 +165,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     LuminescencePointDetectionDeviceControlDocumentItem(
                         device_type="luminescence detector",
                         detector_distance_setting__plate_reader_=safe_value(
-                            TQuantityValueMillimeter, plate.plate_info.measured_height
+                            TQuantityValueMillimeter, result_plate_info.measured_height
                         ),
                         number_of_averages=safe_value(
                             TQuantityValueNumber, data.labels.number_of_flashes
@@ -174,7 +189,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type="absorbance detector",
                         detector_distance_setting__plate_reader_=safe_value(
-                            TQuantityValueMillimeter, plate.plate_info.measured_height
+                            TQuantityValueMillimeter, result_plate_info.measured_height
                         ),
                         number_of_averages=safe_value(
                             TQuantityValueNumber, data.labels.number_of_flashes
@@ -198,7 +213,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type="fluorescence detector",
                         detector_distance_setting__plate_reader_=safe_value(
-                            TQuantityValueMillimeter, plate.plate_info.measured_height
+                            TQuantityValueMillimeter, result_plate_info.measured_height
                         ),
                         number_of_averages=safe_value(
                             TQuantityValueNumber, data.labels.number_of_flashes
@@ -247,7 +262,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         )
         if read_type == ReadType.ABSORBANCE:
             return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=result.uuid,
                 sample_document=sample_document,
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=cast(
@@ -262,7 +277,7 @@ class PerkinElmerEnvisionParser(VendorParser):
             )
         elif read_type == ReadType.LUMINESCENCE:
             return LuminescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=result.uuid,
                 sample_document=sample_document,
                 device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=cast(
@@ -275,7 +290,7 @@ class PerkinElmerEnvisionParser(VendorParser):
             )
         else:  # read_type is FLUORESCENCE
             return FluorescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=result.uuid,
                 sample_document=sample_document,
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=cast(
@@ -287,15 +302,17 @@ class PerkinElmerEnvisionParser(VendorParser):
                 compartment_temperature=compartment_temperature,
             )
 
-    def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
+    def _get_plate_reader_document(
+        self,
+        data: Data,
+        read_type: ReadType,
+    ) -> list[PlateReaderDocumentItem]:
         items = []
         measurement_time = self._get_measurement_time(data)
-        read_type = self._get_read_type(data)
-
         measurement_docs_dict = defaultdict(list)
 
-        for plate in data.plates:
-            if plate.results is None:
+        for plate in data.plate_list.plates:
+            if isinstance(plate.plate_info, CalculatedPlateInfo):
                 continue
 
             try:
@@ -305,10 +322,12 @@ class PerkinElmerEnvisionParser(VendorParser):
                 raise AllotropeConversionError(msg) from e
 
             device_control_aggregate_document = (
-                self._get_device_control_aggregate_document(data, plate, read_type)
+                self._get_device_control_aggregate_document(
+                    data, plate.plate_info, read_type
+                )
             )
 
-            for result in plate.results:
+            for result in plate.result_list.results:
                 measurement_docs_dict[
                     (plate.plate_info.number, result.col, result.row)
                 ].append(
@@ -341,3 +360,53 @@ class PerkinElmerEnvisionParser(VendorParser):
             )
 
         return items
+
+    def _get_calculated_data_aggregate_document(
+        self,
+        data: Data,
+        read_type: ReadType,
+    ) -> Optional[CalculatedDataAggregateDocument]:
+        calculated_documents = []
+
+        for calculated_plate in data.plate_list.plates:
+            if isinstance(calculated_plate.plate_info, ResultPlateInfo):
+                continue
+
+            source_result_lists = [
+                source_plate.result_list.results
+                for source_plate in calculated_plate.collect_result_plates(
+                    data.plate_list
+                )
+            ]
+
+            for calculated_result, *source_results in zip(
+                calculated_plate.calculated_result_list.calculated_results,
+                *source_result_lists,
+            ):
+                calculated_documents.append(
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier=calculated_result.uuid,
+                        calculated_data_name=calculated_plate.plate_info.name,
+                        calculation_description=calculated_plate.plate_info.formula,
+                        calculated_result=TQuantityValue(
+                            value=calculated_result.value,
+                            unit="unitless",
+                        ),
+                        data_source_aggregate_document=DataSourceAggregateDocument1(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier=source_result.uuid,
+                                    data_source_feature=read_type.value,
+                                )
+                                for source_result in source_results
+                            ]
+                        ),
+                    )
+                )
+
+        if not calculated_documents:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=calculated_documents,
+        )
