@@ -296,7 +296,7 @@ class PlateBlock(Block):
                 msg = msg_for_error_on_unrecognized_value(
                     "export format", export_format, ExportFormat._member_names_
                 )
-                raise AllotropeConversionError(error)
+                raise AllotropeConversionError(msg)
 
             return cls(
                 block_type="Plate",
