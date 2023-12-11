@@ -507,7 +507,7 @@ class Result:
                 well_data[well_data["SNP Assay Name"] == snp_assay_name],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
-            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}, target '{well_item.target_dna_description}'.",
+            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
         _, raw_allele = well_item.target_dna_description.split("-")
@@ -573,7 +573,7 @@ class Result:
                 well_data[well_data["Target Name"] == well_item.target_dna_description],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
-            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}, target '{well_item.target_dna_description}'.",
+            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
         cycle_threshold_result = assert_not_none(
