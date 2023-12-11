@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import io
 import re
 from typing import Any, Optional
 
@@ -21,6 +20,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     PROPERTY_MAPPINGS,
 )
 from allotropy.parsers.pandas_utils import read_csv
+from allotropy.types import IOType
 
 
 @dataclass(frozen=True)
@@ -137,7 +137,7 @@ class Data:
     sample_list: SampleList
 
     @staticmethod
-    def create(contents: io.IOBase, filename: str) -> Data:
+    def create(contents: IOType, filename: str) -> Data:
         # NOTE: type ignore is an issue with pandas typing, it accepts an io.IOBase that implements read.
-        data = read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[arg-type]
+        data = read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))

@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-import io
 from typing import Any
 
 import numpy as np
 import pandas as pd
 
 from allotropy.parsers.pandas_utils import read_csv
+from allotropy.types import IOType
 
 
 def convert_datetime(x: pd.Series[Any]) -> pd.Series[str]:
@@ -55,8 +55,8 @@ desired_columns = {
 
 class ViCellBluReader:
     @classmethod
-    def read(cls, contents: io.IOBase) -> pd.DataFrame:
-        raw_data = read_csv(contents, index_col=False)  # type: ignore[arg-type]
+    def read(cls, contents: IOType) -> pd.DataFrame:
+        raw_data = read_csv(contents, index_col=False)
 
         columns: list[pd.Series[Any]] = []
         for column, desired_type in desired_columns.items():
