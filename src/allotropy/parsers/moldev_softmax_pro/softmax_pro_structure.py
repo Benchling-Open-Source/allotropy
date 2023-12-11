@@ -8,7 +8,6 @@ import re
 from typing import Any, Optional
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
     DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,
@@ -46,6 +45,10 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementAggregateDocument as MeasurementAggregateDocumentAbsorbance,
     MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
     Model as ModelAbsorbance,
+)
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
@@ -96,7 +99,7 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
-@dataclass
+@dataclass(frozen=True)
 class Block:
     block_type: str
     raw_lines: list[str]
@@ -113,11 +116,11 @@ class Block:
             if lines[0].startswith(key):
                 return cls.create(lines)
 
-        error = f"unrecognized block {lines[0]}"
+        error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupBlock(Block):
     block_type: str
     name: str
@@ -140,7 +143,7 @@ class GroupBlock(Block):
 
 
 # TODO do we need to do anything with these?
-@dataclass
+@dataclass(frozen=True)
 class NoteBlock(Block):
     @staticmethod
     def create(raw_lines: list[str]) -> NoteBlock:
@@ -177,7 +180,7 @@ class WellData:
         self.wavelengths.append(wavelength)
         if temperature is not None:
             if self.temperature is not None and temperature != self.temperature:
-                error = "Expected all measurements to have the same temperature"
+                error = f"Expected all measurements to have the same temperature, but two have differing values of {self.temperature} and {temperature}."
                 raise AllotropeConversionError(error)
             self.temperature = temperature
 
@@ -186,7 +189,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateBlock(Block):
     block_type: str
     name: Optional[str]
@@ -223,101 +226,106 @@ class PlateBlock(Block):
             "Luminescence": LuminescencePlateBlock,
         }
 
-        if cls := plate_block_cls.get(read_mode or ""):
-            [
-                _,  # Plate:
-                name,
-                export_version,
-                export_format,
-                read_type,
-                _,  # Read mode
-            ] = header[:6]
-            if export_version != EXPORT_VERSION:
-                error = f"Invalid export version {export_version}"
-                raise AllotropeConversionError(error)
-
-            data_type_idx = cls.get_data_type_idx()
-
-            [
-                data_type,
-                _,  # Pre-read, always FALSE
-                kinetic_points_raw,
-                read_time_or_scan_pattern,
-                read_interval_or_scan_density,
-                _,  # start_wavelength
-                _,  # end_wavelength
-                _,  # wavelength_step
-                num_wavelengths_raw,
-                wavelengths_str,
-                _,  # first_column
-                num_columns_raw,
-                num_wells_raw,
-            ] = header[data_type_idx : data_type_idx + 13]
-            kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
-            num_columns = try_int(num_columns_raw, "num_columns")
-            num_wells = try_int(num_wells_raw, "num_wells")
-            num_wavelengths = try_int_or_none(num_wavelengths_raw)
-            wavelengths = split_wavelengths(wavelengths_str) or []
-
-            extra_attr = cls.parse_read_mode_header(header)
-
-            well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
-            data_header = split_lines[1]
-            data_lines = split_lines[2:]
-            if export_format == ExportFormat.TIME_FORMAT.value:
-                PlateBlock._parse_time_format_data(
-                    wavelengths,
-                    read_type,
-                    well_data,
-                    kinetic_points,
-                    num_wells,
-                    data_header,
-                    data_type,
-                    num_wavelengths,
-                    data_lines,
-                )
-            elif export_format == ExportFormat.PLATE_FORMAT.value:
-                PlateBlock._parse_plate_format_data(
-                    wavelengths,
-                    read_type,
-                    well_data,
-                    data_type,
-                    kinetic_points,
-                    extra_attr.num_rows,
-                    num_wavelengths,
-                    num_columns,
-                    data_header,
-                    data_lines,
-                )
-            else:
-                error = f"unrecognized export format {export_format}"
-                raise AllotropeConversionError(error)
-
-            return cls(
-                block_type="Plate",
-                raw_lines=raw_lines,
-                name=name,
-                export_format=export_format,
-                read_type=read_type,
-                data_type=data_type,
-                kinetic_points=kinetic_points,
-                num_wavelengths=num_wavelengths,
-                wavelengths=wavelengths,
-                num_columns=num_columns,
-                num_wells=num_wells,
-                well_data=well_data,
-                data_header=data_header,
-                concept=extra_attr.concept,
-                read_mode=extra_attr.read_mode,
-                unit=extra_attr.unit,
-                pmt_gain=extra_attr.pmt_gain,
-                num_rows=extra_attr.num_rows,
-                excitation_wavelengths=extra_attr.excitation_wavelengths,
-                cutoff_filters=extra_attr.cutoff_filters,
+        cls = plate_block_cls.get(read_mode or "")
+        if not cls:
+            msg = msg_for_error_on_unrecognized_value(
+                "read mode", read_mode, plate_block_cls.keys()
             )
+            raise AllotropeConversionError(msg)
 
-        error = f"unrecognized read mode {read_mode}"
-        raise AllotropeConversionError(error)
+        [
+            _,  # Plate:
+            name,
+            export_version,
+            export_format,
+            read_type,
+            _,  # Read mode
+        ] = header[:6]
+        if export_version != EXPORT_VERSION:
+            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
+            raise AllotropeConversionError(error)
+
+        data_type_idx = cls.get_data_type_idx()
+
+        [
+            data_type,
+            _,  # Pre-read, always FALSE
+            kinetic_points_raw,
+            read_time_or_scan_pattern,
+            read_interval_or_scan_density,
+            _,  # start_wavelength
+            _,  # end_wavelength
+            _,  # wavelength_step
+            num_wavelengths_raw,
+            wavelengths_str,
+            _,  # first_column
+            num_columns_raw,
+            num_wells_raw,
+        ] = header[data_type_idx : data_type_idx + 13]
+        kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
+        num_columns = try_int(num_columns_raw, "num_columns")
+        num_wells = try_int(num_wells_raw, "num_wells")
+        num_wavelengths = try_int_or_none(num_wavelengths_raw)
+        wavelengths = split_wavelengths(wavelengths_str) or []
+
+        extra_attr = cls.parse_read_mode_header(header)
+
+        well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
+        data_header = split_lines[1]
+        data_lines = split_lines[2:]
+        if export_format == ExportFormat.TIME_FORMAT.value:
+            PlateBlock._parse_time_format_data(
+                wavelengths,
+                read_type,
+                well_data,
+                kinetic_points,
+                num_wells,
+                data_header,
+                data_type,
+                num_wavelengths,
+                data_lines,
+            )
+        elif export_format == ExportFormat.PLATE_FORMAT.value:
+            PlateBlock._parse_plate_format_data(
+                wavelengths,
+                read_type,
+                well_data,
+                data_type,
+                kinetic_points,
+                extra_attr.num_rows,
+                num_wavelengths,
+                num_columns,
+                data_header,
+                data_lines,
+            )
+        else:
+            msg = msg_for_error_on_unrecognized_value(
+                "export format", export_format, ExportFormat._member_names_
+            )
+            raise AllotropeConversionError(msg)
+
+        return cls(
+            block_type="Plate",
+            raw_lines=raw_lines,
+            name=name,
+            export_format=export_format,
+            read_type=read_type,
+            data_type=data_type,
+            kinetic_points=kinetic_points,
+            num_wavelengths=num_wavelengths,
+            wavelengths=wavelengths,
+            num_columns=num_columns,
+            num_wells=num_wells,
+            well_data=well_data,
+            data_header=data_header,
+            concept=extra_attr.concept,
+            read_mode=extra_attr.read_mode,
+            unit=extra_attr.unit,
+            pmt_gain=extra_attr.pmt_gain,
+            num_rows=extra_attr.num_rows,
+            excitation_wavelengths=extra_attr.excitation_wavelengths,
+            cutoff_filters=extra_attr.cutoff_filters,
+        )
 
     @staticmethod
     def _parse_reduced_plate_rows(
@@ -404,8 +412,10 @@ class PlateBlock(Block):
             reduced_row = data_lines[-1][: num_wells + 2]
             PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
-            error = f"unrecognized data type {data_type}"
-            raise AllotropeConversionError(error)
+            msg = msg_for_error_on_unrecognized_value(
+                "data type", data_type, DataType._member_names_
+            )
+            raise AllotropeConversionError(msg)
 
     @staticmethod
     def _parse_plate_format_data(
@@ -469,8 +479,10 @@ class PlateBlock(Block):
                 num_columns, data_header, well_data, reduced_data_rows
             )
         else:
-            error = f"unrecognized data type {data_type}"
-            raise AllotropeConversionError(error)
+            msg = msg_for_error_on_unrecognized_value(
+                "data type", data_type, DataType._member_names_
+            )
+            raise AllotropeConversionError(msg)
 
     @staticmethod
     def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
@@ -514,7 +526,7 @@ class PlateBlock(Block):
         elif self.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}:
             dimensions = [("int", "wavelength", "nm")]
         else:
-            error = f"cannot make data cube for {self.read_type}"
+            error = f"Cannot make data cube for read type {self.read_type}; only {sorted(ReadType._member_names_)} are supported."
             raise AllotropeConversionError(error)
         if self.has_wavelength_dimension:
             dimensions.append(("int", "wavelength", "nm"))
@@ -561,7 +573,7 @@ class PlateBlock(Block):
         raise NotImplementedError
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateBlockExtraAttr:
     concept: str
     read_mode: str
@@ -572,7 +584,7 @@ class PlateBlockExtraAttr:
     cutoff_filters: Optional[list[int]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 20
 
@@ -674,7 +686,7 @@ class FluorescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 19
 
@@ -764,7 +776,7 @@ class LuminescencePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
     @staticmethod
     def get_data_type_idx() -> int:
@@ -836,7 +848,7 @@ class AbsorbancePlateBlock(PlateBlock):
         return allotrope_file
 
 
-@dataclass
+@dataclass(frozen=True)
 class BlockList:
     blocks: list[Block]
 
@@ -850,10 +862,11 @@ class BlockList:
 
     @staticmethod
     def _get_n_blocks(lines_reader: LinesReader) -> int:
-        if search_result := re.search(BLOCKS_LINE_REGEX, lines_reader.pop() or ""):
+        start_line = lines_reader.pop() or ""
+        if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
-        error = "unrecognized start line"
-        raise AllotropeConversionError(error)
+        msg = msg_for_error_on_unrecognized_value("start line", start_line)
+        raise AllotropeConversionError(msg)
 
     @staticmethod
     def _iter_blocks(lines_reader: LinesReader) -> Iterator[list[str]]:
@@ -864,7 +877,7 @@ class BlockList:
             lines_reader.drop_empty()
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     block_list: BlockList
 
@@ -876,7 +889,7 @@ class Data:
         if len(plate_blocks) != 1:
             block_types = [block.block_type for block in self.block_list.blocks]
             block_counts = {bt: block_types.count(bt) for bt in set(block_types)}
-            error = f"expected exactly 1 plate block, got {block_counts}"
+            error = f"Expected exactly 1 plate block; got {block_counts}."
             raise AllotropeConversionError(error)
 
         return plate_blocks[0]

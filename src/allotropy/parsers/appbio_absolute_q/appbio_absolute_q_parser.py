@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from io import IOBase
 from typing import Any
 import uuid
 
@@ -34,6 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_reader import AbsoluteQReader
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
@@ -45,7 +45,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppbioAbsoluteQParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        raw_contents, filename = named_file_contents
         reader = AbsoluteQReader(raw_contents)
         return self._get_model(reader.wells, reader.group_rows, filename)
 
@@ -101,7 +102,7 @@ class AppbioAbsoluteQParser(VendorParser):
             measurement_documents.append(
                 MeasurementDocumentItem(
                     measurement_identifier=measurement_identifier,
-                    measurement_time=self.get_date_time(str(well_item["Date"])),
+                    measurement_time=self._get_date_time(str(well_item["Date"])),
                     target_DNA_description=well_item["Target"],
                     total_partition_count=TQuantityValueNumber(
                         value=well_item["Total"]

@@ -1,10 +1,10 @@
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueMilliOsmolesPerKilogram,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Analyte,
     AnalyteList,
@@ -44,9 +44,7 @@ def test_create_title(
 @pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
     title_data = {"device serial number": 1234}
-    with pytest.raises(
-        AllotropeConversionError, match="Unable to obtain analyst from input data"
-    ):
+    with pytest.raises(AllotropeConversionError, match="Unable to obtain analyst."):
         Title.create(pd.Series(title_data))
 
 
@@ -55,7 +53,7 @@ def test_create_title_with_no_serial_number() -> None:
     title_data = {"analyst": "dummy"}
     with pytest.raises(
         AllotropeConversionError,
-        match="Unable to obtain device serial number from input data",
+        match="Unable to obtain device serial number.",
     ):
         Title.create(pd.Series(title_data))
 

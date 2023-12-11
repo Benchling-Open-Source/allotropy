@@ -8,7 +8,7 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
@@ -18,7 +18,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Title:
     data_processing_time: Optional[str]
     analyst: str
@@ -29,12 +29,12 @@ class Title:
     def create(title_data: pd.Series) -> Title:
         analyst = title_data.get("analyst")
         if analyst is None:
-            msg = "Unable to obtain analyst from input data"
+            msg = "Unable to obtain analyst."
             raise AllotropeConversionError(msg)
 
         device_serial_number = title_data.get("device serial number")
         if device_serial_number is None:
-            msg = "Unable to obtain device serial number from input data"
+            msg = "Unable to obtain device serial number."
             raise AllotropeConversionError(msg)
 
         return Title(
@@ -45,7 +45,7 @@ class Title:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Analyte:
     name: str
     concentration_value: Optional[float]
@@ -60,7 +60,7 @@ class Analyte:
         return Analyte(analyte_name, concentration_value, unit)
 
 
-@dataclass
+@dataclass(frozen=True)
 class AnalyteList:
     analytes: list[Analyte]
     molar_concentration_dict: dict
@@ -146,7 +146,7 @@ class AnalyteList:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Sample:
     name: str
     role_type: str
@@ -172,7 +172,7 @@ class Sample:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     title: Title
     samples: list[Sample]

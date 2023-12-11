@@ -1,7 +1,5 @@
-from io import IOBase
 import uuid
 
-from allotropy.allotrope.allotrope import AllotropyError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -20,6 +18,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure import (
     Data,
 )
@@ -28,14 +28,15 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ExampleWeylandYutaniParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, _: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        raw_contents = named_file_contents.contents
         reader = CsvReader(raw_contents)
         return self._get_model(Data.create(reader))
 
     def _get_model(self, data: Data) -> Model:
         if data.number_of_wells is None:
-            msg = "Unable to get number of the wells in the plate"
-            raise AllotropyError(msg)
+            msg = "Unable to determine the number of wells in the plate."
+            raise AllotropeConversionError(msg)
 
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -55,7 +56,7 @@ class ExampleWeylandYutaniParser(VendorParser):
 
     # TODO: extract and return actual measurement time
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:  # noqa: ARG002
-        return self.get_date_time("2022-12-31")
+        return self._get_date_time("2022-12-31")
 
     def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
         device_control_aggregate_document = (

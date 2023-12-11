@@ -22,45 +22,94 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    BackgroundInfo,
+    BackgroundInfoList,
     BasicAssayInfo,
+    CalculatedResultList,
     Data,
     Filter,
     Instrument,
     Labels,
     Plate,
-    PlateInfo,
+    PlateList,
     PlateMap,
     Result,
+    ResultList,
+    ResultPlateInfo,
     Software,
 )
 
 
 def get_data() -> Data:
     return Data(
-        plates=[
-            Plate(
-                plate_info=PlateInfo(
-                    number="1",
-                    barcode="Plate 1",
-                    emission_filter_id="1st",
-                    measurement_time="10/13/2022 3:08:06 PM",
-                    measured_height=11.9,
-                    chamber_temperature_at_start=23.17,
+        plate_list=PlateList(
+            plates=[
+                Plate(
+                    plate_info=ResultPlateInfo(
+                        number="1",
+                        barcode="Plate 1",
+                        emission_filter_id="1st",
+                        measinfo="1st Ex=Top Em=Top Wdw=1 (14)",
+                        measurement_time="10/13/2022 3:08:06 PM",
+                        measured_height=11.9,
+                        chamber_temperature_at_start=23.17,
+                        label="AC HTRF Laser [Eu]",
+                    ),
+                    background_info_list=BackgroundInfoList(
+                        background_info=[
+                            BackgroundInfo(
+                                plate_num="1",
+                                label="AC HTRF Laser [Eu]",
+                                measinfo="De=1st Ex=Top Em=Top Wdw=1 (14)",
+                            ),
+                        ],
+                    ),
+                    calculated_result_list=CalculatedResultList([]),
+                    result_list=ResultList(
+                        [
+                            Result(
+                                uuid="80d11e7d-734c-4506-8087-335769da996c",
+                                col="A",
+                                row="01",
+                                value=31441,
+                            )
+                        ]
+                    ),
                 ),
-                results=[Result(col="A", row="01", value=31441)],
-            ),
-            Plate(
-                plate_info=PlateInfo(
-                    number="1",
-                    barcode="Plate 1",
-                    emission_filter_id="2nd",
-                    measurement_time="10/13/2022 3:08:06 PM",
-                    measured_height=11.9,
-                    chamber_temperature_at_start=23.17,
+                Plate(
+                    plate_info=ResultPlateInfo(
+                        number="1",
+                        barcode="Plate 1",
+                        emission_filter_id="2nd",
+                        measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                        measurement_time="10/13/2022 3:08:06 PM",
+                        measured_height=11.9,
+                        chamber_temperature_at_start=23.17,
+                        label="AC HTRF Laser [Eu]",
+                    ),
+                    background_info_list=BackgroundInfoList(
+                        background_info=[
+                            BackgroundInfo(
+                                plate_num="1",
+                                label="AC HTRF Laser [Eu]",
+                                measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                            ),
+                        ],
+                    ),
+                    calculated_result_list=CalculatedResultList([]),
+                    result_list=ResultList(
+                        [
+                            Result(
+                                uuid="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
+                                col="A",
+                                row="01",
+                                value=80368,
+                            )
+                        ]
+                    ),
                 ),
-                results=[Result(col="A", row="01", value=80368)],
-            ),
-        ],
+            ],
+        ),
         basic_assay_info=BasicAssayInfo("100302", "3134"),
         number_of_wells=96.0,
         plate_maps={

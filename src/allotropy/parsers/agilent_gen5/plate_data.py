@@ -11,13 +11,16 @@ from typing import Optional, Union
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
     TDatacube,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
+)
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
@@ -68,7 +71,7 @@ def hhmmss_to_sec(hhmmss: str) -> int:
     return (3600 * hours) + (60 * minutes) + seconds
 
 
-@dataclass
+@dataclass(frozen=True)
 class FilePaths:
     experiment_file_path: str
     protocol_file_path: str
@@ -86,7 +89,7 @@ class FilePaths:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateNumber:
     datetime: str
     plate_barcode: str
@@ -110,14 +113,16 @@ class PlateNumber:
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
-                msg = f"Unrecognized metadata {line_split[0]}"
+                msg = msg_for_error_on_unrecognized_value(
+                    "metadata key", line_split[0], METADATA_PREFIXES
+                )
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
         return metadata_dict
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateType:
     read_mode: ReadMode
     read_type: ReadType
@@ -151,7 +156,9 @@ class PlateType:
         elif self.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceDataPoint
 
-        msg = f"Unrecognized read mode: {self.read_mode}"
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", self.read_mode, ReadMode._member_names_
+        )
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -163,7 +170,7 @@ class PlateType:
         elif ReadMode.LUMINESCENCE.value in data_section:
             return ReadMode.LUMINESCENCE
 
-        msg = "Read mode not found"
+        msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
         raise AllotropeConversionError(msg)
 
     @staticmethod
@@ -210,7 +217,7 @@ class PlateType:
             split_line = line.strip().split("\t")
             if split_line[0] == "Read":
                 if len(split_line) != read_line_length:
-                    msg = f"Unrecognized Read data {split_line}"
+                    msg = f"Expected the Read data line {split_line} to contain exactly {read_line_length} values."
                     raise AllotropeConversionError(msg)
                 if split_line[-1] == f"{read_mode.title()} Endpoint":
                     use_wavelength_names = True
@@ -220,13 +227,13 @@ class PlateType:
                 if use_wavelength_names:
                     split_line_colon = split_line[0].split(":  ")
                     if len(split_line_colon) != wavelength_line_length:
-                        msg = f"Unrecognized Wavelengths data {split_line}"
+                        msg = f"Expected the Wavelengths data line {split_line} to contain exactly {wavelength_line_length} values."
                         raise AllotropeConversionError(msg)
                     read_names.extend(split_line_colon[-1].split(", "))
         return read_names
 
 
-@dataclass
+@dataclass(frozen=True)
 class LayoutData:
     layout: dict
     concentrations: dict
@@ -264,7 +271,7 @@ class LayoutData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class ActualTemperature:
     value: Optional[float] = None
 
@@ -275,7 +282,7 @@ class ActualTemperature:
     @staticmethod
     def create(actual_temperature: str) -> ActualTemperature:
         if len(actual_temperature.split("\n")) != 1:
-            msg = f"Unrecognized temperature data {actual_temperature}"
+            msg = f"Expected the Temperature section '{actual_temperature}' to contain exactly 1 line."
             raise AllotropeConversionError(msg)
 
         return ActualTemperature(
@@ -283,7 +290,7 @@ class ActualTemperature:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Results:
     measurements: defaultdict[str, list]
     processed_datas: defaultdict[str, list]
@@ -309,7 +316,7 @@ class Results:
     ) -> None:
         result_lines = results.splitlines()
         if result_lines[0].strip() != "Results":
-            msg = f"Unrecognized results data {result_lines[0]}"
+            msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
             raise AllotropeConversionError(msg)
         # result_lines[1] contains column numbers
 
@@ -366,7 +373,7 @@ class Results:
             )
 
 
-@dataclass
+@dataclass(frozen=True)
 class CurveName:
     statistics_doc: list
 
@@ -383,7 +390,7 @@ class CurveName:
         lines = stdcurve.splitlines()
         num_lines = 2
         if len(lines) != num_lines:
-            msg = f"Unrecognized std curve data {lines}"
+            msg = f"Expected the std curve data '{lines}' to contain exactly {num_lines} lines."
             raise AllotropeConversionError(msg)
         keys = lines[0].split("\t")
         values = lines[1].split("\t")
@@ -399,7 +406,7 @@ class CurveName:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class KineticData:
     temperatures: list
     kinetic_times: list[int]
@@ -500,7 +507,7 @@ class KineticData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateData:
     file_paths: FilePaths
     plate_number: PlateNumber

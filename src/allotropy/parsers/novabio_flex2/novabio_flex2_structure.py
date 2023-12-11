@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import io
 import re
 from typing import Any, Optional
 
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     FILENAME_REGEX,
@@ -17,9 +19,10 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
+from allotropy.types import IOType
 
 
-@dataclass
+@dataclass(frozen=True)
 class Title:
     processing_time: str
     device_identifier: Optional[str]
@@ -40,7 +43,7 @@ class Title:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Analyte:
     name: str
     molar_concentration: MOLAR_CONCENTRATION_CLASSES
@@ -48,7 +51,9 @@ class Analyte:
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
         if raw_name not in ANALYTE_MAPPINGS:
-            msg = "Invalid analyte name"
+            msg = msg_for_error_on_unrecognized_value(
+                "analyte name", raw_name, ANALYTE_MAPPINGS.keys()
+            )
             raise AllotropeConversionError(msg)
 
         mapping = ANALYTE_MAPPINGS[raw_name]
@@ -64,7 +69,7 @@ class Analyte:
         return self.name < other.name
 
 
-@dataclass
+@dataclass(frozen=True)
 class Sample:
     identifier: str
     role_type: str
@@ -100,7 +105,7 @@ class Sample:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class SampleList:
     analyst: str
     samples: list[Sample]
@@ -110,13 +115,13 @@ class SampleList:
         sample_data_rows = [row for _, row in data.iterrows()]
 
         if not sample_data_rows:
-            msg = "Unable to get any sample"
+            msg = "Unable to find any sample."
             raise AllotropeConversionError(msg)
 
         analyst = sample_data_rows[0].get("Operator")
 
         if analyst is None:
-            msg = "Unable to get analyst from data"
+            msg = "Unable to find the Operator."
             raise AllotropeConversionError(msg)
 
         return SampleList(
@@ -125,13 +130,12 @@ class SampleList:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     title: Title
     sample_list: SampleList
 
     @staticmethod
-    def create(contents: io.IOBase, filename: str) -> Data:
-        # NOTE: type ignore is an issue with pandas typing, it accepts an io.IOBase that implements read.
-        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[call-overload]
+    def create(contents: IOType, filename: str) -> Data:
+        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))

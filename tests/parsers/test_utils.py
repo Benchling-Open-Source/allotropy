@@ -36,7 +36,7 @@ def assert_allotrope_dicts_equal(expected: dict, actual: dict) -> None:
         expected,
         actual,
         exclude_regex_paths=exclude_regex,
-        ignore_type_in_groups=[(float, np.float64)],
+        ignore_type_in_groups=[(float, np.float64), (int, np.int64)],
     )
 
 

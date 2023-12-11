@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import io
-from typing import Any, Optional
+from typing import Any, NamedTuple, Optional
 import uuid
 
 import pandas as pd
@@ -29,6 +28,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
@@ -53,11 +53,19 @@ property_lookup = {
 }
 
 
-def _get_value(sample: pd.Series[Any], column: str) -> Optional[Any]:
-    return sample.get(column)
+class _Sample(NamedTuple):
+    data_frame: pd.DataFrame
+    row: int
 
 
-def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
+def _get_value(sample: _Sample, column: str) -> Optional[Any]:
+    data_frame, row = sample
+    if column not in data_frame.columns:
+        return None
+    return data_frame[column][row]
+
+
+def get_property_from_sample(sample: _Sample, property_name: str) -> Any:
     return (
         property_lookup[property_name](value=value)
         if (value := _get_value(sample, property_name))
@@ -66,7 +74,8 @@ def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
 
 
 class ViCellBluParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        contents, filename = named_file_contents
         return self._get_model(ViCellBluReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
@@ -90,20 +99,20 @@ class ViCellBluParser(VendorParser):
         self, data: pd.DataFrame
     ) -> list[CellCountingDocumentItem]:
         return [
-            self._get_cell_counting_document_item(sample)
-            for _, sample in data.iterrows()
-            if _get_value(sample, "Cell count")
+            self._get_cell_counting_document_item(_Sample(data, i))
+            for i in range(len(data.index))
+            if _get_value(_Sample(data, i), "Cell count")
         ]
 
     def _get_cell_counting_document_item(
-        self, sample: pd.Series[Any]
+        self, sample: _Sample
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
             analyst=_get_value(sample, "Analysis by") or DEFAULT_ANALYST,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_time=self.get_date_time(
+                        measurement_time=self._get_date_time(
                             _get_value(sample, "Analysis date/time")
                         ),
                         measurement_identifier=str(uuid.uuid4()),

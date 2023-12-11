@@ -13,7 +13,7 @@ classDiagram
           - Parser: create()
       }
       class Parser {
-          - Model: parse(raw_contents: IOBase, file_name: str)
+          - Model: parse(raw_contents: IOType, file_name: str)
       }
       class StructureElements{
           + Any: attributes

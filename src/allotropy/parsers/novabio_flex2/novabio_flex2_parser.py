@@ -1,4 +1,3 @@
-import io
 import uuid
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
@@ -10,19 +9,21 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
     Model,
     SampleDocument,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class NovaBioFlexParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        contents, filename = named_file_contents
         return self._get_model(Data.create(contents, filename))
 
     def _get_model(self, data: Data) -> Model:
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_identifier=str(uuid.uuid4()),
-                data_processing_time=self.get_date_time(data.title.processing_time),
+                data_processing_time=self._get_date_time(data.title.processing_time),
                 analyst=data.sample_list.analyst,
                 device_system_document=DeviceSystemDocument(
                     model_number="NovaBio Flex2",
@@ -46,7 +47,7 @@ class NovaBioFlexParser(VendorParser):
                 sample_role_type=sample.role_type,
                 batch_identifier=sample.batch_identifier,
             ),
-            measurement_time=self.get_date_time(sample.measurement_time),
+            measurement_time=self._get_date_time(sample.measurement_time),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     AnalyteDocumentItem(
