@@ -52,7 +52,7 @@ def create_data(reader: LinesReader) -> Data:
 
         for well_item in well.items.values():
             if quantity := build_quantity(well_item):
-                well.calculated_documents.append(quantity)
+                well.add_calculated_document(quantity)
 
     endogenous_control = (
         try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""

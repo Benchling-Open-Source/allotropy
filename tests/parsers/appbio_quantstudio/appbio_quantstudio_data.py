@@ -157,7 +157,6 @@ def get_data() -> Data:
             },
         ),
         _melt_curve_raw_data=None,
-        calculated_documents=[],
     )
 
     return Data(
@@ -288,7 +287,6 @@ def get_data2() -> Data:
                 ),
             ),
         },
-        calculated_documents=[],
         _multicomponent_data=MulticomponentData(
             cycle=[1],
             columns={
@@ -1194,7 +1192,6 @@ def get_genotyping_data() -> Data:
                 ),
             ),
         },
-        calculated_documents=[],
     )
 
     return Data(
@@ -1510,7 +1507,7 @@ def get_rel_std_curve_data() -> Data:
                     },
                     _multicomponent_data=None,
                     _melt_curve_raw_data=None,
-                    calculated_documents=[
+                    _calculated_documents=[
                         CalculatedDocument(
                             uuid="94cf744d-d243-47bd-a723-aca6c6517af5",
                             name="quantity",
@@ -1618,7 +1615,7 @@ def get_rel_std_curve_data() -> Data:
                     },
                     _multicomponent_data=None,
                     _melt_curve_raw_data=None,
-                    calculated_documents=[
+                    _calculated_documents=[
                         CalculatedDocument(
                             uuid="51066bef-10b0-4782-a8c9-ee7383fe3256",
                             name="quantity",
@@ -3205,7 +3202,6 @@ def get_broken_calc_doc_data() -> Data:
                     },
                     _multicomponent_data=None,
                     _melt_curve_raw_data=None,
-                    calculated_documents=[],
                 )
             ]
         ),
