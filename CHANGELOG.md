@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Calculated data documents to PerkinElmer EnVision
 - Add Unchained labs lunatic adapter
 ### Fixed
+- Fix per-well calculated documents in AppBio QuantStudio
 ### Changed
 - Refactor builders as create methods in AppBio QuantStudio
 ### Deprecated

@@ -134,7 +134,7 @@ class WellItem(Referenceable):
     def amplification_data(self) -> AmplificationData:
         return assert_not_none(
             self._amplification_data,
-            msg=f"Unable to find amplification data for well {self.identifier}.",
+            msg=f"Unable to find amplification data for target '{self.target_dna_description}' in well {self.identifier} .",
         )
 
     @amplification_data.setter
@@ -389,7 +389,7 @@ class AmplificationData:
 
         target_data = assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+            msg=f"Unable to find amplification data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
         )
 
         return AmplificationData(
@@ -507,7 +507,7 @@ class Result:
                 well_data[well_data["SNP Assay Name"] == snp_assay_name],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
-            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}, target '{well_item.target_dna_description}'.",
         )
 
         _, raw_allele = well_item.target_dna_description.split("-")
@@ -573,7 +573,7 @@ class Result:
                 well_data[well_data["Target Name"] == well_item.target_dna_description],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
-            f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}, target '{well_item.target_dna_description}'.",
         )
 
         cycle_threshold_result = assert_not_none(
