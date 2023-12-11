@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import uuid
 
+import numpy as np
+import pandas as pd
+
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DataSystemDocument,
@@ -22,9 +25,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_reader import (
-    UnchainedLabsLunaticReader,
-)
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
     Data,
     Measurement,
@@ -36,7 +36,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 class UnchainedLabsLunaticParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, filename = named_file_contents
-        data = UnchainedLabsLunaticReader.read(raw_contents)
+        data = pd.read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
+
         return self._get_model(Data.create(data), filename)
 
     def _get_model(self, data: Data, filename: str) -> Model:
