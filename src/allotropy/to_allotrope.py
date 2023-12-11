@@ -1,5 +1,4 @@
 from datetime import tzinfo
-import io
 from pathlib import Path
 from typing import Any, Optional
 
@@ -7,10 +6,11 @@ from allotropy.allotrope.allotrope import serialize_allotrope
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import get_parser, VendorType
+from allotropy.types import IOType
 
 
 def allotrope_from_io(
-    contents: io.IOBase,
+    contents: IOType,
     filename: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
@@ -21,7 +21,7 @@ def allotrope_from_io(
 
 
 def allotrope_model_from_io(
-    contents: io.IOBase,
+    contents: IOType,
     filename: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,

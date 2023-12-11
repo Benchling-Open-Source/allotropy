@@ -1,5 +1,5 @@
 from collections.abc import Iterator
-from io import IOBase, StringIO
+from io import StringIO
 from re import search
 from typing import Optional
 
@@ -7,6 +7,7 @@ import chardet
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.types import IOType
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
@@ -21,7 +22,7 @@ def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
 
 
 class LinesReader:
-    def __init__(self, io_: IOBase, encoding: Optional[str] = "UTF-8"):
+    def __init__(self, io_: IOType, encoding: Optional[str] = "UTF-8"):
         stream_contents = io_.read()
         self.raw_contents = (
             _decode(stream_contents, encoding)
