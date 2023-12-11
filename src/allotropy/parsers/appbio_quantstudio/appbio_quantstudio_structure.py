@@ -252,9 +252,9 @@ class WellItem(Referenceable):
 class Well:
     identifier: int
     items: dict[str, WellItem]
+    calculated_documents: list[CalculatedDocument]
     _multicomponent_data: Optional[MulticomponentData] = None
     _melt_curve_raw_data: Optional[MeltCurveRawData] = None
-    calculated_document: Optional[CalculatedDocument] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -262,12 +262,6 @@ class Well:
             well_item,
             msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
         )
-
-    def get_an_well_item(self) -> Optional[WellItem]:
-        if not self.items:
-            return None
-        target, *_ = self.items.keys()
-        return self.items[target]
 
     @property
     def multicomponent_data(self) -> Optional[MulticomponentData]:
@@ -293,6 +287,7 @@ class Well:
                 well_item.target_dna_description: well_item
                 for well_item in WellItem.create_genotyping(well_data)
             },
+            calculated_documents=[],
         )
 
     @staticmethod
@@ -303,6 +298,7 @@ class Well:
                 item_data["Target Name"]: WellItem.create_generic(item_data)
                 for _, item_data in well_data.iterrows()
             },
+            calculated_documents=[],
         )
 
 

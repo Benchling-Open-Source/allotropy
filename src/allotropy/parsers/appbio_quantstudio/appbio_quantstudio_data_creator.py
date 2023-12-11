@@ -50,8 +50,9 @@ def create_data(reader: LinesReader) -> Data:
                 header.experiment_type,
             )
 
-        if an_well_item := well.get_an_well_item():
-            well.calculated_document = build_quantity(an_well_item)
+        for well_item in well.items.values():
+            if quantity := build_quantity(well_item):
+                well.calculated_documents.append(quantity)
 
     endogenous_control = (
         try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""
