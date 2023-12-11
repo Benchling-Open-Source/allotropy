@@ -226,105 +226,106 @@ class PlateBlock(Block):
             "Luminescence": LuminescencePlateBlock,
         }
 
-        if cls := plate_block_cls.get(read_mode or ""):
-            [
-                _,  # Plate:
-                name,
-                export_version,
-                export_format,
-                read_type,
-                _,  # Read mode
-            ] = header[:6]
-            if export_version != EXPORT_VERSION:
-                error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
-                raise AllotropeConversionError(error)
-
-            data_type_idx = cls.get_data_type_idx()
-
-            [
-                data_type,
-                _,  # Pre-read, always FALSE
-                kinetic_points_raw,
-                read_time_or_scan_pattern,
-                read_interval_or_scan_density,
-                _,  # start_wavelength
-                _,  # end_wavelength
-                _,  # wavelength_step
-                num_wavelengths_raw,
-                wavelengths_str,
-                _,  # first_column
-                num_columns_raw,
-                num_wells_raw,
-            ] = header[data_type_idx : data_type_idx + 13]
-            kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
-            num_columns = try_int(num_columns_raw, "num_columns")
-            num_wells = try_int(num_wells_raw, "num_wells")
-            num_wavelengths = try_int_or_none(num_wavelengths_raw)
-            wavelengths = split_wavelengths(wavelengths_str) or []
-
-            extra_attr = cls.parse_read_mode_header(header)
-
-            well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
-            data_header = split_lines[1]
-            data_lines = split_lines[2:]
-            if export_format == ExportFormat.TIME_FORMAT.value:
-                PlateBlock._parse_time_format_data(
-                    wavelengths,
-                    read_type,
-                    well_data,
-                    kinetic_points,
-                    num_wells,
-                    data_header,
-                    data_type,
-                    num_wavelengths,
-                    data_lines,
-                )
-            elif export_format == ExportFormat.PLATE_FORMAT.value:
-                PlateBlock._parse_plate_format_data(
-                    wavelengths,
-                    read_type,
-                    well_data,
-                    data_type,
-                    kinetic_points,
-                    extra_attr.num_rows,
-                    num_wavelengths,
-                    num_columns,
-                    data_header,
-                    data_lines,
-                )
-            else:
-                msg = msg_for_error_on_unrecognized_value(
-                    "export format", export_format, ExportFormat._member_names_
-                )
-                raise AllotropeConversionError(msg)
-
-            return cls(
-                block_type="Plate",
-                raw_lines=raw_lines,
-                name=name,
-                export_format=export_format,
-                read_type=read_type,
-                data_type=data_type,
-                kinetic_points=kinetic_points,
-                num_wavelengths=num_wavelengths,
-                wavelengths=wavelengths,
-                num_columns=num_columns,
-                num_wells=num_wells,
-                well_data=well_data,
-                data_header=data_header,
-                concept=extra_attr.concept,
-                read_mode=extra_attr.read_mode,
-                unit=extra_attr.unit,
-                pmt_gain=extra_attr.pmt_gain,
-                num_rows=extra_attr.num_rows,
-                excitation_wavelengths=extra_attr.excitation_wavelengths,
-                cutoff_filters=extra_attr.cutoff_filters,
+        cls = plate_block_cls.get(read_mode or "")
+        if not cls:
+            msg = msg_for_error_on_unrecognized_value(
+                "read mode", read_mode, plate_block_cls.keys()
             )
+            raise AllotropeConversionError(msg)
 
-        msg = msg_for_error_on_unrecognized_value(
-            "read mode", read_mode, plate_block_cls.keys()
+        [
+            _,  # Plate:
+            name,
+            export_version,
+            export_format,
+            read_type,
+            _,  # Read mode
+        ] = header[:6]
+        if export_version != EXPORT_VERSION:
+            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
+            raise AllotropeConversionError(error)
+
+        data_type_idx = cls.get_data_type_idx()
+
+        [
+            data_type,
+            _,  # Pre-read, always FALSE
+            kinetic_points_raw,
+            read_time_or_scan_pattern,
+            read_interval_or_scan_density,
+            _,  # start_wavelength
+            _,  # end_wavelength
+            _,  # wavelength_step
+            num_wavelengths_raw,
+            wavelengths_str,
+            _,  # first_column
+            num_columns_raw,
+            num_wells_raw,
+        ] = header[data_type_idx : data_type_idx + 13]
+        kinetic_points = try_int(kinetic_points_raw, "kinetic_points")
+        num_columns = try_int(num_columns_raw, "num_columns")
+        num_wells = try_int(num_wells_raw, "num_wells")
+        num_wavelengths = try_int_or_none(num_wavelengths_raw)
+        wavelengths = split_wavelengths(wavelengths_str) or []
+
+        extra_attr = cls.parse_read_mode_header(header)
+
+        well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
+        data_header = split_lines[1]
+        data_lines = split_lines[2:]
+        if export_format == ExportFormat.TIME_FORMAT.value:
+            PlateBlock._parse_time_format_data(
+                wavelengths,
+                read_type,
+                well_data,
+                kinetic_points,
+                num_wells,
+                data_header,
+                data_type,
+                num_wavelengths,
+                data_lines,
+            )
+        elif export_format == ExportFormat.PLATE_FORMAT.value:
+            PlateBlock._parse_plate_format_data(
+                wavelengths,
+                read_type,
+                well_data,
+                data_type,
+                kinetic_points,
+                extra_attr.num_rows,
+                num_wavelengths,
+                num_columns,
+                data_header,
+                data_lines,
+            )
+        else:
+            msg = msg_for_error_on_unrecognized_value(
+                "export format", export_format, ExportFormat._member_names_
+            )
+            raise AllotropeConversionError(msg)
+
+        return cls(
+            block_type="Plate",
+            raw_lines=raw_lines,
+            name=name,
+            export_format=export_format,
+            read_type=read_type,
+            data_type=data_type,
+            kinetic_points=kinetic_points,
+            num_wavelengths=num_wavelengths,
+            wavelengths=wavelengths,
+            num_columns=num_columns,
+            num_wells=num_wells,
+            well_data=well_data,
+            data_header=data_header,
+            concept=extra_attr.concept,
+            read_mode=extra_attr.read_mode,
+            unit=extra_attr.unit,
+            pmt_gain=extra_attr.pmt_gain,
+            num_rows=extra_attr.num_rows,
+            excitation_wavelengths=extra_attr.excitation_wavelengths,
+            cutoff_filters=extra_attr.cutoff_filters,
         )
-        raise AllotropeConversionError(msg)
 
     @staticmethod
     def _parse_reduced_plate_rows(
