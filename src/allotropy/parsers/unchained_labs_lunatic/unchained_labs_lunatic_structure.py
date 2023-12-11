@@ -14,7 +14,11 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.utils.values import try_float_from_series, try_str_from_series
+from allotropy.parsers.utils.values import (
+    try_float_from_series,
+    try_str_from_series,
+    try_str_from_series_or_none,
+)
 
 
 @dataclass(frozen=True)
@@ -35,15 +39,15 @@ class Measurement:
         if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
             raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
-        wavelength = float(wavelength_column[1:])
-
         return Measurement(
             measurement_identifier=str(uuid.uuid4()),
-            wavelength=wavelength,
+            wavelength=float(wavelength_column[1:]),
             absorbance=try_float_from_series(well_plate_data, wavelength_column),
             sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
             location_identifier=try_str_from_series(well_plate_data, "Plate ID"),
-            well_plate_identifier=well_plate_data.get("Plate Position"),  # type: ignore[arg-type]
+            well_plate_identifier=try_str_from_series_or_none(
+                well_plate_data, "Plate Position"
+            ),
         )
 
 
@@ -57,7 +61,9 @@ class WellPlate:
     def create(plate_data: pd.Series[Any], wavelength_columns: list[str]) -> WellPlate:
         return WellPlate(
             measurement_time=WellPlate._get_datetime_from_plate(plate_data),
-            analytical_method_identifier=plate_data.get("Application"),  # type: ignore[arg-type]
+            analytical_method_identifier=try_str_from_series_or_none(
+                plate_data, "Application"
+            ),
             measurements=[
                 Measurement.create(plate_data, wavelength_column)
                 for wavelength_column in wavelength_columns
