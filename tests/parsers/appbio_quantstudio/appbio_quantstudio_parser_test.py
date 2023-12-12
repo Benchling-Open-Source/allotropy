@@ -30,6 +30,7 @@ OUTPUT_FILES = (
     "appbio_quantstudio_example06",
     "appbio_quantstudio_example07",
     "appbio_quantstudio_example08",
+    "appbio_quantstudio_multiple_cal_doc_wells",
 )
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
