@@ -10,12 +10,14 @@ We have chosen to have this library output ASM since JSON is easy to read and co
 We currently have parser support for the following instruments:
   - Agilent Gen5
   - Applied Bio QuantStudio
+  - Applied Bio AbsoluteQ
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - MolDev SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
   - Roche Cedex BioHT
+  - Unchained Labs Lunatic
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 
