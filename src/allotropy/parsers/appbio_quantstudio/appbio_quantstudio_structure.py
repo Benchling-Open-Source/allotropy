@@ -283,12 +283,6 @@ class Well:
     def calculated_documents(self) -> list[CalculatedDocument]:
         return self._calculated_documents if self._calculated_documents else []
 
-    @calculated_documents.setter
-    def calculated_documents(
-        self, calculated_documents: list[CalculatedDocument]
-    ) -> None:
-        self._calculated_documents = calculated_documents
-
     def add_calculated_document(self, calculated_document: CalculatedDocument) -> None:
         if not self._calculated_documents:
             self._calculated_documents = []
