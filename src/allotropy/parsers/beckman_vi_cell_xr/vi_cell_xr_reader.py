@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from io import IOBase
 import re
 from typing import Any
 
@@ -12,10 +11,11 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     MODEL_RE,
     XrVersion,
 )
+from allotropy.types import IOType
 
 
 class ViCellXRReader:
-    def __init__(self, contents: IOBase) -> None:
+    def __init__(self, contents: IOType) -> None:
         self.contents = contents
         self.file_info = self._get_file_info()
         self.file_version = self._get_file_version()
