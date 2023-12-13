@@ -170,7 +170,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateHeader:
     name: str
     export_version: str
