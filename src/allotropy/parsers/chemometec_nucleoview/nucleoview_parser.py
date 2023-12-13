@@ -1,4 +1,3 @@
-import io
 import time
 from typing import Any, Optional
 import uuid
@@ -28,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
@@ -69,7 +69,8 @@ def get_property_from_sample(
 
 
 class ChemometecNucleoviewParser(VendorParser):
-    def _parse(self, contents: io.IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        contents, filename = named_file_contents
         return self._get_model(NucleoviewReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
@@ -103,10 +104,10 @@ class ChemometecNucleoviewParser(VendorParser):
     def _get_date_time_or_epoch(self, time_val: Any) -> TDateTimeValue:
         if time_val is None:
             # return epoch time 1970-01-01 00:00:00-0500
-            return self.get_date_time(
+            return self._get_date_time(
                 time.strftime("%Y-%m-%d %H:%M:%S%z", time.gmtime(0))
             )
-        return self.get_date_time(time_val)
+        return self._get_date_time(time_val)
 
     def _get_cell_counting_document_item(
         self, data_frame: pd.DataFrame, row: int

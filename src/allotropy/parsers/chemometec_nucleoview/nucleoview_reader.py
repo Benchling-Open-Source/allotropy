@@ -1,23 +1,19 @@
-import io
-from typing import cast
-
 import pandas as pd
+
+from allotropy.types import IOType
 
 
 class NucleoviewReader:
     @classmethod
-    def read(cls, contents: io.IOBase) -> pd.DataFrame:
-        df = cast(
-            pd.DataFrame,
-            pd.read_csv(  # type: ignore[call-overload]
-                contents,
-                skipfooter=1,
-                sep=";",
-                usecols=[0, 1],
-                skipinitialspace=True,
-                index_col=False,
-            ).dropna(axis=0, how="all"),
-        )
+    def read(cls, contents: IOType) -> pd.DataFrame:
+        df = pd.read_csv(
+            contents,
+            skipfooter=1,
+            sep=";",
+            usecols=[0, 1],
+            skipinitialspace=True,
+            index_col=False,
+        ).dropna(axis=0, how="all")
 
         # add a common index to all rows for our group by and pivot
         df["group_by"] = ["Group1"] * len(df)
