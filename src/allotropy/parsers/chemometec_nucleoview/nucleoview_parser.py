@@ -1,4 +1,3 @@
-import time
 from typing import Any, Optional
 import uuid
 
@@ -103,10 +102,8 @@ class ChemometecNucleoviewParser(VendorParser):
 
     def _get_date_time_or_epoch(self, time_val: Any) -> TDateTimeValue:
         if time_val is None:
-            # return epoch time 1970-01-01 00:00:00-0500
-            return self._get_date_time(
-                time.strftime("%Y-%m-%d %H:%M:%S%z", time.gmtime(0))
-            )
+            # return epoch time 1970-01-01
+            return self._get_date_time("1970-01-01")
         return self._get_date_time(time_val)
 
     def _get_cell_counting_document_item(
