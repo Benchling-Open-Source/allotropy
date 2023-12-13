@@ -1,0 +1,707 @@
+{
+    "qPCR aggregate document": {
+        "device system document": {
+            "device identifier": "278880031",
+            "model number": "QuantStudio(TM) 7 Flex System",
+            "device serial number": "278880031"
+        },
+        "qPCR document": [
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                            "measurement time": "2010-10-21T00:51:26-04:00",
+                            "target DNA description": "GROUP1",
+                            "sample document": {
+                                "sample identifier": "5K",
+                                "sample role type": "UNKNOWN",
+                                "well location identifier": "A1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "PCR detection chemistry": "TAQMAN",
+                                        "total cycle number setting": {
+                                            "value": 1.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "FAM",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.074,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true
+                                        },
+                                        "cycle threshold result": {
+                                            "value": 27.102,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.522
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.008
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                            "measurement time": "2010-10-21T00:51:26-04:00",
+                            "target DNA description": "GROUP2",
+                            "sample document": {
+                                "sample identifier": "5K",
+                                "sample role type": "UNKNOWN",
+                                "well location identifier": "A1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "PCR detection chemistry": "TAQMAN",
+                                        "total cycle number setting": {
+                                            "value": 2.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "VIC",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.074,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true
+                                        },
+                                        "cycle threshold result": {
+                                            "value": 27.102,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        2
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.521
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        2
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.007
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
+                    "experiment type": "standard curve qPCR experiment",
+                    "container type": "qPCR reaction block"
+                },
+                "calculated data aggregate document": {
+                    "calculated data document": [
+                        {
+                            "calculated data identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
+                            "data source aggregate document": {
+                                "data source document": [
+                                    {
+                                        "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                                        "data source feature": "cycle threshold result"
+                                    }
+                                ]
+                            },
+                            "calculated data name": "quantity",
+                            "calculated datum": {
+                                "value": 5720.562,
+                                "unit": "(unitless)"
+                            }
+                        },
+                        {
+                            "calculated data identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
+                            "data source aggregate document": {
+                                "data source document": [
+                                    {
+                                        "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                                        "data source feature": "cycle threshold result"
+                                    }
+                                ]
+                            },
+                            "calculated data name": "quantity",
+                            "calculated datum": {
+                                "value": 5720.562,
+                                "unit": "(unitless)"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                            "measurement time": "2010-10-21T00:51:26-04:00",
+                            "target DNA description": "GROUP1",
+                            "sample document": {
+                                "sample identifier": "5K",
+                                "sample role type": "UNKNOWN",
+                                "well location identifier": "A2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "PCR detection chemistry": "TAQMAN",
+                                        "total cycle number setting": {
+                                            "value": 1.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "FAM",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.074,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true
+                                        },
+                                        "cycle threshold result": {
+                                            "value": 27.132,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.507
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.007
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                            "measurement time": "2010-10-21T00:51:26-04:00",
+                            "target DNA description": "GROUP2",
+                            "sample document": {
+                                "sample identifier": "5K",
+                                "sample role type": "UNKNOWN",
+                                "well location identifier": "A2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "Ct",
+                                        "PCR detection chemistry": "TAQMAN",
+                                        "total cycle number setting": {
+                                            "value": 2.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "VIC",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.074,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true
+                                        },
+                                        "cycle threshold result": {
+                                            "value": 27.132,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        2
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.507
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        2
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.007
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
+                    "experiment type": "standard curve qPCR experiment",
+                    "container type": "qPCR reaction block"
+                },
+                "calculated data aggregate document": {
+                    "calculated data document": [
+                        {
+                            "calculated data identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
+                            "data source aggregate document": {
+                                "data source document": [
+                                    {
+                                        "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                                        "data source feature": "cycle threshold result"
+                                    }
+                                ]
+                            },
+                            "calculated data name": "quantity",
+                            "calculated datum": {
+                                "value": 5605.765,
+                                "unit": "(unitless)"
+                            }
+                        },
+                        {
+                            "calculated data identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
+                            "data source aggregate document": {
+                                "data source document": [
+                                    {
+                                        "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                                        "data source feature": "cycle threshold result"
+                                    }
+                                ]
+                            },
+                            "calculated data name": "quantity",
+                            "calculated datum": {
+                                "value": 5605.765,
+                                "unit": "(unitless)"
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "data system document": {
+            "data system instance identifier": "localhost",
+            "file name": "appbio_quantstudio_multiple_cal_doc_wells.txt",
+            "UNC path": "",
+            "software name": "Thermo QuantStudio",
+            "software version": "1.0",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.11"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data identifier": "7fa15718-4147-47e2-bb51-13dd53adad00",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
+                                "data source feature": "quantity"
+                            },
+                            {
+                                "data source identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
+                                "data source feature": "quantity"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity mean",
+                    "calculated datum": {
+                        "value": 5314.592,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "c135b5d1-7cc5-4332-8931-ed4cad5b3837",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
+                                "data source feature": "quantity"
+                            },
+                            {
+                                "data source identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
+                                "data source feature": "quantity"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity sd",
+                    "calculated datum": {
+                        "value": 227.193,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "339e12bb-419b-4871-a849-34b5cb35bc40",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "ct mean",
+                    "calculated datum": {
+                        "value": 27.211,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "41bbe8ad-6c24-4346-a859-802e95886f99",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "ct sd",
+                    "calculated datum": {
+                        "value": 0.063,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "dbdd9abb-6d81-491f-9093-6cf8aaad5dbe",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
+                                "data source feature": "quantity"
+                            },
+                            {
+                                "data source identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
+                                "data source feature": "quantity"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity mean",
+                    "calculated datum": {
+                        "value": 5314.592,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "d6df9212-0e46-45d1-862e-23131b55f701",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
+                                "data source feature": "quantity"
+                            },
+                            {
+                                "data source identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
+                                "data source feature": "quantity"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity sd",
+                    "calculated datum": {
+                        "value": 227.193,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "e7c81d5a-92f4-4ea6-8f28-12fff94811c9",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "ct mean",
+                    "calculated datum": {
+                        "value": 27.211,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "4ab59e9d-8f28-471e-8cb6-3ea9ccb07996",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                                "data source feature": "cycle threshold result"
+                            },
+                            {
+                                "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "ct sd",
+                    "calculated datum": {
+                        "value": 0.063,
+                        "unit": "(unitless)"
+                    }
+                }
+            ]
+        }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"
+}

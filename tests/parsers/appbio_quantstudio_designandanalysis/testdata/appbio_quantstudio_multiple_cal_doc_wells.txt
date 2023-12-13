@@ -1,0 +1,37 @@
+* Block Type = 96-Well Block (0.2mL)
+* Chemistry = TAQMAN
+* Date Created = 2014-09-10 04:19:15 AM EDT
+* Experiment Barcode = NA
+* Experiment File Name = C:\Program Files (x86)\Applied BioSystems\QuantStudio Real-Time PCR Software\examples\QS7Flex\QS7_96-Well Standard Curve Example.eds
+* Experiment Name = QuantStudio 96-Well Standard Curve Example
+* Experiment Run End Time = 2010-10-21 00:51:26 AM EDT
+* Experiment Type = Standard Curve
+* Instrument Name = 278880031
+* Instrument Serial Number = 278880031
+* Instrument Type = QuantStudio(TM) 7 Flex System
+* Passive Reference = ROX
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+
+
+[Sample Setup]
+Well	Well Position	Sample Name	Sample Color	Biogroup Name	Biogroup Color	Target Name	Target Color	Task	Reporter	Quencher	Quantity	Comments
+1	A1	5K	"RGB(176,23,31)"			GROUP1	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+1	A1	5K	"RGB(176,23,31)"			GROUP2	"RGB(176,23,0)"	UNKNOWN	VIC	NFQ-MGB
+2	A2	5K	"RGB(176,23,31)"			GROUP1	"RGB(176,23,31)"	UNKNOWN	FAM	NFQ-MGB
+2	A2	5K	"RGB(176,23,31)"			GROUP2	"RGB(176,23,0)"	UNKNOWN	VIC	NFQ-MGB
+
+[Amplification Data]
+Well	Cycle	Target Name	Rn	Delta Rn
+1	1	GROUP1	0.522	0.008
+1	2	GROUP2	0.521	0.007
+2	1	GROUP1	0.507	0.007
+2	2	GROUP2	0.507	0.007
+
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Comments	Y-Intercept	R(superscript 2)	Slope	Efficiency	Amp Score	Cq Conf
+1	A1	false	5K	GROUP1	UNKNOWN	FAM	NFQ-MGB	27.102	27.211	0.063	5,720.562	5,314.592	227.193	true	0.074	true	3	23		39.814	0.997	-3.383	97.505	1.198	0.989
+1	A1	false	5K	GROUP2	UNKNOWN	VIC	NFQ-MGB	27.102	27.211	0.063	5,720.562	5,314.592	227.193	true	0.074	true	3	23		39.814	0.997	-3.383	97.505	1.198	0.989
+2	A2	false	5K	GROUP1	UNKNOWN	FAM	NFQ-MGB	27.132	27.211	0.063	5,605.765	5,314.592	227.193	true	0.074	true	3	23		39.814	0.997	-3.383	97.505	1.194	0.988
+2	A2	false	5K	GROUP2	UNKNOWN	VIC	NFQ-MGB	27.132	27.211	0.063	5,605.765	5,314.592	227.193	true	0.074	true	3	23		39.814	0.997	-3.383	97.505	1.194	0.988
