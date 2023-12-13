@@ -99,7 +99,7 @@ class AppBioQuantStudioParser(VendorParser):
                     )
                     for well in data.wells
                 ],
-                calculated_data_aggregate_document=self.get_outter_calculated_data_aggregate_document(
+                calculated_data_aggregate_document=self.get_outer_calculated_data_aggregate_document(
                     data
                 ),
             )
@@ -108,32 +108,33 @@ class AppBioQuantStudioParser(VendorParser):
     def get_inner_calculated_data_aggregate_document(
         self, well: Well
     ) -> Optional[TCalculatedDataAggregateDocument]:
-        if not well.calculated_document:
+        if not well.calculated_documents:
             return None
 
         return TCalculatedDataAggregateDocument(
             calculated_data_document=[
                 CalculatedDataDocumentItem(
-                    calculated_data_identifier=well.calculated_document.uuid,
+                    calculated_data_identifier=calculated_document.uuid,
                     data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[
                             DataSourceDocumentItem(
                                 data_source_identifier=data_source.reference.uuid,
                                 data_source_feature=data_source.feature,
                             )
-                            for data_source in well.calculated_document.data_sources
+                            for data_source in calculated_document.data_sources
                         ],
                     ),
-                    calculated_data_name=well.calculated_document.name,
+                    calculated_data_name=calculated_document.name,
                     calculated_data_description=None,
                     calculated_datum=TQuantityValueUnitless(
-                        value=well.calculated_document.value
+                        value=calculated_document.value
                     ),
                 )
+                for calculated_document in well.calculated_documents
             ],
         )
 
-    def get_outter_calculated_data_aggregate_document(
+    def get_outer_calculated_data_aggregate_document(
         self, data: Data
     ) -> TCalculatedDataAggregateDocument:
         if data.header.experiment_type in [
