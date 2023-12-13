@@ -92,7 +92,7 @@ class Block:
     raw_lines: list[str]
 
     @staticmethod
-    def create(lines_reader: CsvReader) -> Block:
+    def create(reader: CsvReader) -> Block:
         block_cls_by_type: dict[str, type[Block]] = {
             "Group": GroupBlock,
             "Note": NoteBlock,
@@ -100,10 +100,10 @@ class Block:
         }
 
         for key, cls in block_cls_by_type.items():
-            if lines_reader.match(f"^{key}"):
-                return cls.create(lines_reader)
+            if reader.match(f"^{key}"):
+                return cls.create(reader)
 
-        error = f"Expected block '{lines_reader.get()}' to start with one of {sorted(block_cls_by_type.keys())}."
+        error = f"Expected block '{reader.get()}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
 
 
@@ -114,12 +114,12 @@ class GroupBlock(Block):
     group_data: list[str]
 
     @staticmethod
-    def create(lines_reader: CsvReader) -> GroupBlock:
+    def create(reader: CsvReader) -> GroupBlock:
         return GroupBlock(
             block_type="Group",
-            raw_lines=lines_reader.lines,
-            name=(lines_reader.pop() or "").removeprefix("Group: "),
-            group_data=list(lines_reader.pop_until("Group Column")),
+            raw_lines=reader.lines,
+            name=(reader.pop() or "").removeprefix("Group: "),
+            group_data=list(reader.pop_until("Group Column")),
         )
 
 
@@ -127,8 +127,8 @@ class GroupBlock(Block):
 @dataclass(frozen=True)
 class NoteBlock(Block):
     @staticmethod
-    def create(lines_reader: CsvReader) -> NoteBlock:
-        return NoteBlock(block_type="Note", raw_lines=lines_reader.lines)
+    def create(reader: CsvReader) -> NoteBlock:
+        return NoteBlock(block_type="Note", raw_lines=reader.lines)
 
 
 @dataclass
@@ -230,12 +230,12 @@ class PlateKineticData:
 
     @staticmethod
     def create(
-        lines_reader: CsvReader,
+        reader: CsvReader,
         header: PlateHeader,
         columns: pd.Series[str],
     ) -> PlateKineticData:
         data = assert_not_none(
-            lines_reader.pop_csv_block_as_df(sep="\t"),
+            reader.pop_csv_block_as_df(sep="\t"),
             msg="unable to find data from plate block.",
         )
         data.columns = pd.Index(columns)
@@ -267,20 +267,20 @@ class PlateRawData:
 
     @staticmethod
     def create(
-        lines_reader: CsvReader,
+        reader: CsvReader,
         header: PlateHeader,
     ) -> Optional[PlateRawData]:
         if header.data_type == DataType.REDUCED.value:
             return None
 
         columns = assert_not_none(
-            lines_reader.pop_as_series(sep="\t"),
+            reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
         )
 
         return PlateRawData(
             kinetic_data=[
-                PlateKineticData.create(lines_reader, header, columns)
+                PlateKineticData.create(reader, header, columns)
                 for _ in range(header.kinetic_points)
             ]
         )
@@ -292,14 +292,14 @@ class PlateReducedData:
 
     @staticmethod
     def create(
-        lines_reader: CsvReader,
+        reader: CsvReader,
         header: PlateHeader,
     ) -> Optional[PlateReducedData]:
-        if not lines_reader.current_line_exists():
+        if not reader.current_line_exists():
             return None
 
         raw_data = assert_not_none(
-            lines_reader.pop_csv_block_as_df(sep="\t", header=0),
+            reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
         data = raw_data.iloc[:, 2 : header.num_columns + 2]
@@ -324,12 +324,12 @@ class PlateData:
 
     @staticmethod
     def create(
-        lines_reader: CsvReader,
+        reader: CsvReader,
         header: PlateHeader,
     ) -> PlateData:
         return PlateData(
-            raw_data=PlateRawData.create(lines_reader, header),
-            reduced_data=PlateReducedData.create(lines_reader, header),
+            raw_data=PlateRawData.create(reader, header),
+            reduced_data=PlateReducedData.create(reader, header),
         )
 
     def get_raw_data(self) -> PlateRawData:
@@ -375,18 +375,18 @@ class TimeRawData:
 
     @staticmethod
     def create(
-        lines_reader: CsvReader,
+        reader: CsvReader,
         header: PlateHeader,
     ) -> Optional[TimeRawData]:
         if header.data_type == DataType.REDUCED.value:
             return None
 
         columns = assert_not_none(
-            lines_reader.pop_as_series(sep="\t"),
+            reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for time block raw data.",
         )
         data = assert_not_none(
-            lines_reader.pop_csv_block_as_df(sep="\t"),
+            reader.pop_csv_block_as_df(sep="\t"),
             msg="unable to find raw data from time block.",
         )
         data.columns = pd.Index(columns)
@@ -410,16 +410,16 @@ class TimeReducedData:
     data: list[str]
 
     @staticmethod
-    def create(lines_reader: CsvReader) -> Optional[TimeReducedData]:
-        if not lines_reader.current_line_exists():
+    def create(reader: CsvReader) -> Optional[TimeReducedData]:
+        if not reader.current_line_exists():
             return None
 
         _, _, *columns = assert_not_none(
-            lines_reader.pop_as_series(sep="\t"),
+            reader.pop_as_series(sep="\t"),
             msg="unable to find columns for time block reduced data.",
         )
         _, _, *data = assert_not_none(
-            lines_reader.pop_as_series(sep="\t"),
+            reader.pop_as_series(sep="\t"),
             msg="unable to find reduced data from time block.",
         )
         return TimeReducedData(columns, data)
@@ -436,12 +436,12 @@ class TimeData:
 
     @staticmethod
     def create(
-        lines_reader: CsvReader,
+        reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
         return TimeData(
-            raw_data=TimeRawData.create(lines_reader, header),
-            reduced_data=TimeReducedData.create(lines_reader),
+            raw_data=TimeRawData.create(reader, header),
+            reduced_data=TimeReducedData.create(reader),
         )
 
     def get_raw_data(self) -> TimeRawData:
@@ -464,8 +464,8 @@ class PlateBlock(Block):
     well_data: defaultdict[str, WellData]
 
     @staticmethod
-    def create(lines_reader: CsvReader) -> PlateBlock:
-        header_series = PlateBlock.read_header(lines_reader)
+    def create(reader: CsvReader) -> PlateBlock:
+        header_series = PlateBlock.read_header(reader)
         cls = PlateBlock.get_plate_block_cls(header_series)
         header = cls.parse_header(header_series)
         well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
@@ -474,13 +474,13 @@ class PlateBlock(Block):
             PlateBlock._parse_time_format_data(
                 header,
                 well_data,
-                time_data=TimeData.create(lines_reader, header),
+                time_data=TimeData.create(reader, header),
             )
         elif header.export_format == ExportFormat.PLATE_FORMAT.value:
             PlateBlock._parse_plate_format_data(
                 header,
                 well_data,
-                plate_data=PlateData.create(lines_reader, header),
+                plate_data=PlateData.create(reader, header),
             )
         else:
             error = f"unrecognized export format {header.export_format}"
@@ -488,15 +488,15 @@ class PlateBlock(Block):
 
         return cls(
             block_type="Plate",
-            raw_lines=lines_reader.lines,
+            raw_lines=reader.lines,
             header=header,
             well_data=well_data,
         )
 
     @staticmethod
-    def read_header(lines_reader: CsvReader) -> pd.Series[str]:
+    def read_header(reader: CsvReader) -> pd.Series[str]:
         raw_header_series = assert_not_none(
-            lines_reader.pop_as_series(sep="\t"),
+            reader.pop_as_series(sep="\t"),
             msg="Unable to find plate block header.",
         )
         return raw_header_series.replace("", None).str.strip()
@@ -1069,28 +1069,26 @@ class BlockList:
     blocks: list[Block]
 
     @staticmethod
-    def create(lines_reader: CsvReader) -> BlockList:
+    def create(reader: CsvReader) -> BlockList:
         return BlockList(
-            blocks=[
-                Block.create(block) for block in BlockList._iter_blocks(lines_reader)
-            ]
+            blocks=[Block.create(block) for block in BlockList._iter_blocks(reader)]
         )
 
     @staticmethod
-    def _get_n_blocks(lines_reader: CsvReader) -> int:
-        start_line = lines_reader.pop() or ""
+    def _get_n_blocks(reader: CsvReader) -> int:
+        start_line = reader.pop() or ""
         if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
         msg = msg_for_error_on_unrecognized_value("start line", start_line)
         raise AllotropeConversionError(msg)
 
     @staticmethod
-    def _iter_blocks(lines_reader: CsvReader) -> Iterator[CsvReader]:
-        n_blocks = BlockList._get_n_blocks(lines_reader)
+    def _iter_blocks(reader: CsvReader) -> Iterator[CsvReader]:
+        n_blocks = BlockList._get_n_blocks(reader)
         for _ in range(n_blocks):
-            yield ListCsvReader(list(lines_reader.pop_until(END_LINE_REGEX)))
-            lines_reader.pop()  # drop end line
-            lines_reader.drop_empty()
+            yield ListCsvReader(list(reader.pop_until(END_LINE_REGEX)))
+            reader.pop()  # drop end line
+            reader.drop_empty()
 
 
 @dataclass(frozen=True)
@@ -1111,5 +1109,5 @@ class Data:
         return plate_blocks[0]
 
     @staticmethod
-    def create(lines_reader: CsvReader) -> Data:
-        return Data(block_list=BlockList.create(lines_reader))
+    def create(reader: CsvReader) -> Data:
+        return Data(block_list=BlockList.create(reader))
