@@ -52,8 +52,11 @@ def test_create_title(
 )
 @pytest.mark.short
 def test_create_title_invalid_filename(filename: str) -> None:
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError) as exc_info:
         Title.create(filename)
+    # TODO: Fix exception message -- file name is duplicated
+    expected = f"('{filename}', '{filename} is not valid. File name is expected to have format of SampleResultsYYYY-MM-DD_HHMMSS.csv or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings')"
+    assert str(exc_info.value) == expected
 
 
 @pytest.mark.short
@@ -73,8 +76,10 @@ def test_create_analyte() -> None:
 
 @pytest.mark.short
 def test_create_invalid_analyte() -> None:
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError) as exc_info:
         Analyte.create("FAKE", 100)
+    expected = "Unrecognized analyte name: 'FAKE'. Only ['Ca++', 'Gln', 'Glu', 'Gluc', 'HCO3', 'K+', 'Lac', 'NH4+', 'Na+'] are supported."
+    assert str(exc_info.value) == expected
 
 
 @pytest.mark.short
@@ -151,13 +156,13 @@ def test_create_sample_list() -> None:
 
 @pytest.mark.short
 def test_create_sample_list_invalid_no_samples() -> None:
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError, match="Unable to find any sample."):
         SampleList.create(pd.DataFrame({}))
 
 
 @pytest.mark.short
 def test_create_sample_list_invalid_no_analyst() -> None:
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError, match="Unable to find the Operator."):
         SampleList.create(
             pd.DataFrame(
                 {

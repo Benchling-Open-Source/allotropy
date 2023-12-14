@@ -36,5 +36,7 @@ def test_parse_vi_cell_xr_to_asm_expected_contents(output_file: str) -> None:
 
 def test_perse_vi_cell_xr_file_without_required_fields_then_raise() -> None:
     test_filepath = "tests/parsers/beckman_vi_cell_xr/testdata/v2.04/Beckman_Vi-Cell-XR_example02_instrumentOutput.xls"
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError) as exc_info:
         from_file(test_filepath, VENDOR_TYPE)
+    expected = "Expected to find lines with all of these headers: ['Viability (%)', 'Total cells', 'Viable cells/ml (x10^6)']."
+    assert str(exc_info.value) == expected
