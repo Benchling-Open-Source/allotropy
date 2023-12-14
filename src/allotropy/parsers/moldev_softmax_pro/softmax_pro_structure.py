@@ -484,12 +484,12 @@ class PlateBlock(Block):
             )
             raise AllotropeConversionError(msg)
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         raise NotImplementedError
 
-    @staticmethod
-    def get_data_type_idx() -> int:
+    @classmethod
+    def get_data_type_idx(cls) -> int:
         raise NotImplementedError
 
     @property
@@ -588,12 +588,12 @@ class PlateBlockExtraAttr:
 class FluorescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 20
 
-    @staticmethod
-    def get_data_type_idx() -> int:
+    @classmethod
+    def get_data_type_idx(cls) -> int:
         return 7
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
             _,  # cutoff
@@ -690,12 +690,12 @@ class FluorescencePlateBlock(PlateBlock):
 class LuminescencePlateBlock(PlateBlock):
     EXCITATION_WAVELENGTHS_IDX: int = 19
 
-    @staticmethod
-    def get_data_type_idx() -> int:
+    @classmethod
+    def get_data_type_idx(cls) -> int:
         return 6
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
             _,  # cutoff
@@ -778,12 +778,12 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @staticmethod
-    def get_data_type_idx() -> int:
+    @classmethod
+    def get_data_type_idx(cls) -> int:
         return 6
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         return PlateBlockExtraAttr(
             concept="absorbance",
             read_mode="Absorbance",
