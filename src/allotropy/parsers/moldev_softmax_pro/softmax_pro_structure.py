@@ -480,84 +480,6 @@ class PlateBlockBuilder(ABC):
             return wavelengths[wavelength_index] if wavelengths else None
 
 
-class PlateBlockFactory:
-    @staticmethod
-    def create(raw_lines: list[str]) -> PlateBlock:
-        read_mode = raw_lines[0].split("\t")[5]
-        if read_mode == "Absorbance":
-            return AbsorbancePlateBlockBuilder(raw_lines).build()
-        elif read_mode == "Fluorescence":
-            return FluorescencePlateBlockBuilder(raw_lines).build()
-        elif read_mode == "Luminescence":
-            return LuminescencePlateBlockBuilder(raw_lines).build()
-        else:
-            valid_values = ["Absorbance", "Fluorescence", "Luminescence"]
-            msg = msg_for_error_on_unrecognized_value(
-                "read mode", read_mode, valid_values
-            )
-            raise AllotropeConversionError(msg)
-
-
-class AbsorbancePlateBlockBuilder(PlateBlockBuilder):
-    def get_data_type_idx(self) -> int:
-        return 6
-
-    def get_plate_class(self) -> type[PlateBlock]:
-        return AbsorbancePlateBlock
-
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
-        return PlateBlockExtraAttr(
-            concept="absorbance",
-            read_mode="Absorbance",
-            unit="mAU",
-            pmt_gain=None,
-            num_rows=try_int(header[20], "num_rows"),
-            excitation_wavelengths=None,
-            cutoff_filters=None,
-        )
-
-
-class FluorescencePlateBlockBuilder(PlateBlockBuilder):
-    EXCITATION_WAVELENGTHS_IDX: int = 20
-
-    def get_data_type_idx(self) -> int:
-        return 7
-
-    def get_plate_class(self) -> type[PlateBlock]:
-        return FluorescencePlateBlock
-
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
-        [
-            excitation_wavelengths_str,
-            _,  # cutoff
-            cutoff_filters_str,
-            _,  # sweep_wave
-            _,  # sweep_wavelength
-            _,  # reads_per_well
-            pmt_gain,
-            _,  # start_integration_time
-            _,  # end_integration_time
-            _,  # first_row
-            num_rows,
-        ] = header[
-            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
-        ]
-
-        return PlateBlockExtraAttr(
-            concept="fluorescence",
-            read_mode="Fluorescence",
-            unit="RFU",
-            pmt_gain=pmt_gain,
-            num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
-            cutoff_filters=split_wavelengths(cutoff_filters_str),
-        )
-
-
 class LuminescencePlateBlockBuilder(PlateBlockBuilder):
     EXCITATION_WAVELENGTHS_IDX: int = 19
 
@@ -594,6 +516,24 @@ class LuminescencePlateBlockBuilder(PlateBlockBuilder):
             excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
             cutoff_filters=split_wavelengths(cutoff_filters_str),
         )
+
+
+class PlateBlockFactory:
+    @staticmethod
+    def create(raw_lines: list[str]) -> PlateBlock:
+        read_mode = raw_lines[0].split("\t")[5]
+        if read_mode == "Absorbance":
+            return AbsorbancePlateBlockBuilder(raw_lines).build()
+        elif read_mode == "Fluorescence":
+            return FluorescencePlateBlockBuilder(raw_lines).build()
+        elif read_mode == "Luminescence":
+            return LuminescencePlateBlockBuilder(raw_lines).build()
+        else:
+            valid_values = ["Absorbance", "Fluorescence", "Luminescence"]
+            msg = msg_for_error_on_unrecognized_value(
+                "read mode", read_mode, valid_values
+            )
+            raise AllotropeConversionError(msg)
 
 
 @dataclass(frozen=True)
@@ -697,6 +637,45 @@ class PlateBlockExtraAttr:
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
     cutoff_filters: Optional[list[int]]
+
+
+class FluorescencePlateBlockBuilder(PlateBlockBuilder):
+    EXCITATION_WAVELENGTHS_IDX: int = 20
+
+    def get_data_type_idx(self) -> int:
+        return 7
+
+    def get_plate_class(self) -> type[PlateBlock]:
+        return FluorescencePlateBlock
+
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        [
+            excitation_wavelengths_str,
+            _,  # cutoff
+            cutoff_filters_str,
+            _,  # sweep_wave
+            _,  # sweep_wavelength
+            _,  # reads_per_well
+            pmt_gain,
+            _,  # start_integration_time
+            _,  # end_integration_time
+            _,  # first_row
+            num_rows,
+        ] = header[
+            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+        ]
+
+        return PlateBlockExtraAttr(
+            concept="fluorescence",
+            read_mode="Fluorescence",
+            unit="RFU",
+            pmt_gain=pmt_gain,
+            num_rows=try_int(num_rows, "num_rows"),
+            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
+            cutoff_filters=split_wavelengths(cutoff_filters_str),
+        )
 
 
 @dataclass(frozen=True)
@@ -820,6 +799,27 @@ class LuminescencePlateBlock(PlateBlock):
         )
 
         return allotrope_file
+
+
+class AbsorbancePlateBlockBuilder(PlateBlockBuilder):
+    def get_data_type_idx(self) -> int:
+        return 6
+
+    def get_plate_class(self) -> type[PlateBlock]:
+        return AbsorbancePlateBlock
+
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        return PlateBlockExtraAttr(
+            concept="absorbance",
+            read_mode="Absorbance",
+            unit="mAU",
+            pmt_gain=None,
+            num_rows=try_int(header[20], "num_rows"),
+            excitation_wavelengths=None,
+            cutoff_filters=None,
+        )
 
 
 @dataclass(frozen=True)
