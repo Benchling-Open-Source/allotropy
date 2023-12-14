@@ -480,44 +480,6 @@ class PlateBlockBuilder(ABC):
             return wavelengths[wavelength_index] if wavelengths else None
 
 
-class LuminescencePlateBlockBuilder(PlateBlockBuilder):
-    EXCITATION_WAVELENGTHS_IDX: int = 19
-
-    def get_data_type_idx(self) -> int:
-        return 6
-
-    def get_plate_class(self) -> type[PlateBlock]:
-        return LuminescencePlateBlock
-
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
-        [
-            excitation_wavelengths_str,
-            _,  # cutoff
-            cutoff_filters_str,
-            _,  # sweep_wave
-            _,  # sweep_wavelength
-            _,  # reads_per_well
-            pmt_gain,
-            _,  # start_integration_time
-            _,  # end_integration_time
-            _,  # first_row
-            num_rows,
-        ] = header[
-            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
-        ]
-        return PlateBlockExtraAttr(
-            concept="luminescence",
-            read_mode="Luminescence",
-            unit="RLU",
-            pmt_gain=pmt_gain,
-            num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
-            cutoff_filters=split_wavelengths(cutoff_filters_str),
-        )
-
-
 class PlateBlockFactory:
     @staticmethod
     def create(raw_lines: list[str]) -> PlateBlock:
@@ -743,6 +705,44 @@ class FluorescencePlateBlock(PlateBlock):
         )
 
         return allotrope_file
+
+
+class LuminescencePlateBlockBuilder(PlateBlockBuilder):
+    EXCITATION_WAVELENGTHS_IDX: int = 19
+
+    def get_data_type_idx(self) -> int:
+        return 6
+
+    def get_plate_class(self) -> type[PlateBlock]:
+        return LuminescencePlateBlock
+
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        [
+            excitation_wavelengths_str,
+            _,  # cutoff
+            cutoff_filters_str,
+            _,  # sweep_wave
+            _,  # sweep_wavelength
+            _,  # reads_per_well
+            pmt_gain,
+            _,  # start_integration_time
+            _,  # end_integration_time
+            _,  # first_row
+            num_rows,
+        ] = header[
+            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+        ]
+        return PlateBlockExtraAttr(
+            concept="luminescence",
+            read_mode="Luminescence",
+            unit="RLU",
+            pmt_gain=pmt_gain,
+            num_rows=try_int(num_rows, "num_rows"),
+            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
+            cutoff_filters=split_wavelengths(cutoff_filters_str),
+        )
 
 
 @dataclass(frozen=True)
