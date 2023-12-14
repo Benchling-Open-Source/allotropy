@@ -483,19 +483,18 @@ class PlateBlockBuilder(ABC):
 class PlateBlockFactory:
     @staticmethod
     def create(raw_lines: list[str]) -> PlateBlock:
+        read_mode_to_builder_class: dict[str, type[PlateBlockBuilder]] = {
+            "Absorbance": AbsorbancePlateBlockBuilder,
+            "Fluorescence": FluorescencePlateBlock,
+            "Luminescence": LuminescencePlateBlock,
+        }
         read_mode = raw_lines[0].split("\t")[5]
-        if read_mode == "Absorbance":
-            return AbsorbancePlateBlockBuilder(raw_lines).build()
-        elif read_mode == "Fluorescence":
-            return FluorescencePlateBlockBuilder(raw_lines).build()
-        elif read_mode == "Luminescence":
-            return LuminescencePlateBlockBuilder(raw_lines).build()
-        else:
-            valid_values = ["Absorbance", "Fluorescence", "Luminescence"]
-            msg = msg_for_error_on_unrecognized_value(
-                "read mode", read_mode, valid_values
-            )
-            raise AllotropeConversionError(msg)
+        builder_class = read_mode_to_builder_class.get(read_mode)
+        if builder_class:
+            return builder_class(raw_lines).build()
+        valid_values = list(read_mode_to_builder_class.keys())
+        msg = msg_for_error_on_unrecognized_value("read mode", read_mode, valid_values)
+        raise AllotropeConversionError(msg)
 
 
 @dataclass(frozen=True)
