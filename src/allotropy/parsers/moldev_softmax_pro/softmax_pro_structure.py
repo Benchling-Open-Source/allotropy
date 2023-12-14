@@ -272,7 +272,7 @@ class PlateBlockBuilder(ABC):
             )
             raise AllotropeConversionError(msg)
 
-        plate_class = self.get_plate_class()
+        plate_class = self.get_plate_block_class()
         return plate_class(
             block_type="Plate",
             raw_lines=self.raw_lines,
@@ -464,7 +464,7 @@ class PlateBlockBuilder(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_plate_class(self) -> type[PlateBlock]:
+    def get_plate_block_class(self) -> type[PlateBlock]:
         raise NotImplementedError
 
     def get_wavelength(
@@ -613,7 +613,7 @@ class FluorescencePlateBlockBuilder(PlateBlockBuilder):
     def get_data_type_idx(self) -> int:
         return 7
 
-    def get_plate_class(self) -> type[PlateBlock]:
+    def get_plate_block_class(self) -> type[PlateBlock]:
         return FluorescencePlateBlock
 
     def parse_read_mode_header(
@@ -719,7 +719,7 @@ class LuminescencePlateBlockBuilder(PlateBlockBuilder):
     def get_data_type_idx(self) -> int:
         return 6
 
-    def get_plate_class(self) -> type[PlateBlock]:
+    def get_plate_block_class(self) -> type[PlateBlock]:
         return LuminescencePlateBlock
 
     def parse_read_mode_header(
@@ -811,7 +811,7 @@ class AbsorbancePlateBlockBuilder(PlateBlockBuilder):
     def get_data_type_idx(self) -> int:
         return 6
 
-    def get_plate_class(self) -> type[PlateBlock]:
+    def get_plate_block_class(self) -> type[PlateBlock]:
         return AbsorbancePlateBlock
 
     def parse_read_mode_header(
