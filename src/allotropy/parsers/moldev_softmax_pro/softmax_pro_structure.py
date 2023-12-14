@@ -100,21 +100,10 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
-class BlockFactory(ABC):
-    @classmethod
-    @abstractmethod
-    def create(cls, lines: list[str]) -> Block:
-        raise NotImplementedError
-
-
-@dataclass(frozen=True)
-class Block:
-    block_type: str
-    raw_lines: list[str]
-
+class BlockFactory:
     @staticmethod
     def create(lines: list[str]) -> Block:
-        block_cls_by_type: dict[str, type[BlockFactory]] = {
+        block_cls_by_type: dict[str, type[BlockChildFactory]] = {
             "Group": GroupBlockFactory,
             "Note": NoteBlockFactory,
             "Plate": PlateBlockFactory,
@@ -128,7 +117,20 @@ class Block:
         raise AllotropeConversionError(error)
 
 
-class GroupBlockFactory(BlockFactory):
+class BlockChildFactory(ABC):
+    @classmethod
+    @abstractmethod
+    def create(cls, lines: list[str]) -> Block:
+        raise NotImplementedError
+
+
+@dataclass(frozen=True)
+class Block:
+    block_type: str
+    raw_lines: list[str]
+
+
+class GroupBlockFactory(BlockChildFactory):
     @classmethod
     def create(cls, raw_lines: list[str]) -> GroupBlock:
         group_data = []
@@ -152,7 +154,7 @@ class GroupBlock(Block):
     group_data: list[str]
 
 
-class NoteBlockFactory(BlockFactory):
+class NoteBlockFactory(BlockChildFactory):
     @classmethod
     def create(cls, raw_lines: list[str]) -> NoteBlock:
         return NoteBlock(block_type="Note", raw_lines=raw_lines)
@@ -203,7 +205,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-class PlateBlockFactory(BlockFactory):
+class PlateBlockFactory(BlockChildFactory):
     @classmethod
     def create(cls, lines: list[str]) -> PlateBlock:
         read_mode_to_builder_class: dict[str, type[PlateBlockBuilder]] = {
@@ -898,7 +900,8 @@ class BlockList:
     def create(lines_reader: LinesReader) -> BlockList:
         return BlockList(
             blocks=[
-                Block.create(block) for block in BlockList._iter_blocks(lines_reader)
+                BlockFactory.create(block)
+                for block in BlockList._iter_blocks(lines_reader)
             ]
         )
 
