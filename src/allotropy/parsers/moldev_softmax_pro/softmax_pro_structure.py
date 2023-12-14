@@ -454,17 +454,6 @@ class PlateBlockBuilder(ABC):
             )
             raise AllotropeConversionError(msg)
 
-    def get_wavelength(
-        self,
-        read_type: Optional[str],
-        wavelengths: list[int],
-        wavelength_index: int,
-    ) -> Optional[int]:
-        if read_type == ReadType.SPECTRUM.value:
-            return None
-        else:
-            return wavelengths[wavelength_index] if wavelengths else None
-
     @abstractmethod
     def parse_read_mode_header(
         self, header: list[Optional[str]]
@@ -478,6 +467,17 @@ class PlateBlockBuilder(ABC):
     @abstractmethod
     def get_plate_class(self) -> type[PlateBlock]:
         raise NotImplementedError
+
+    def get_wavelength(
+        self,
+        read_type: Optional[str],
+        wavelengths: list[int],
+        wavelength_index: int,
+    ) -> Optional[int]:
+        if read_type == ReadType.SPECTRUM.value:
+            return None
+        else:
+            return wavelengths[wavelength_index] if wavelengths else None
 
 
 class PlateBlockFactory:
