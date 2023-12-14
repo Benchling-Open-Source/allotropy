@@ -298,6 +298,10 @@ class PlateBlockBuilder(ABC):
         )
 
     @abstractmethod
+    def get_data_type_idx(self) -> int:
+        raise NotImplementedError
+
+    @abstractmethod
     def get_plate_class(self) -> type[PlateBlock]:
         raise NotImplementedError
 
@@ -307,9 +311,20 @@ class PlateBlockBuilder(ABC):
     ) -> PlateBlockExtraAttr:
         raise NotImplementedError
 
-    @abstractmethod
-    def get_data_type_idx(self) -> int:
-        raise NotImplementedError
+    def _parse_reduced_plate_rows(
+        self,
+        num_columns: int,
+        data_header: list[Optional[str]],
+        well_data: defaultdict[str, WellData],
+        reduced_data_rows: list[list[Optional[str]]],
+    ) -> None:
+        for i, row in enumerate(reduced_data_rows):
+            for j, value in enumerate(row[2 : num_columns + 2]):
+                if value is None:
+                    continue
+                col_number = assert_not_none(data_header[j + 2], "column number")
+                well = get_well_coordinates(i + 1, col_number)
+                well_data[well].processed_data.append(float(value))
 
     def _parse_time_format_data(
         self,
@@ -434,21 +449,6 @@ class PlateBlockBuilder(ABC):
                 "data type", data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
-
-    def _parse_reduced_plate_rows(
-        self,
-        num_columns: int,
-        data_header: list[Optional[str]],
-        well_data: defaultdict[str, WellData],
-        reduced_data_rows: list[list[Optional[str]]],
-    ) -> None:
-        for i, row in enumerate(reduced_data_rows):
-            for j, value in enumerate(row[2 : num_columns + 2]):
-                if value is None:
-                    continue
-                col_number = assert_not_none(data_header[j + 2], "column number")
-                well = get_well_coordinates(i + 1, col_number)
-                well_data[well].processed_data.append(float(value))
 
     def _add_data_point(
         self,
