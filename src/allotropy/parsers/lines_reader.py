@@ -128,6 +128,8 @@ class CsvReader(LinesReader):
                 header=header,
                 sep=sep,
                 dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
             )
         return None
 

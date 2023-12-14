@@ -8,8 +8,8 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class SoftmaxproParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
-        lines_reader = CsvReader(named_file_contents.contents, encoding=None)
-        data = Data.create(lines_reader)
+        reader = CsvReader(named_file_contents.contents, encoding=None)
+        data = Data.create(reader)
         return self._get_model(data)
 
     def _get_model(self, data: Data) -> Any:
