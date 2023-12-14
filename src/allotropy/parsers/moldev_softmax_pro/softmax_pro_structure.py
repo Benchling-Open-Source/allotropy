@@ -100,6 +100,13 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
+class BlockFactory(ABC):
+    @classmethod
+    @abstractmethod
+    def create(cls, raw_lines: list[str]) -> Block:
+        raise NotImplementedError
+
+
 @dataclass(frozen=True)
 class Block:
     block_type: str
@@ -188,6 +195,24 @@ class WellData:
     @property
     def is_empty(self) -> bool:
         return not self.dimensions or not self.values
+
+
+class PlateBlockFactory(BlockFactory):
+    @classmethod
+    def create(cls, raw_lines: list[str]) -> PlateBlock:
+        read_mode_to_builder_class: dict[str, type[PlateBlockBuilder]] = {
+            "Absorbance": AbsorbancePlateBlockBuilder,
+            "Fluorescence": FluorescencePlateBlockBuilder,
+            "Luminescence": LuminescencePlateBlockBuilder,
+        }
+        read_mode = raw_lines[0].split("\t")[5]
+        builder_class = read_mode_to_builder_class.get(read_mode)
+        if builder_class:
+            builder = builder_class(raw_lines)
+            return builder.build()
+        valid_values = list(read_mode_to_builder_class.keys())
+        msg = msg_for_error_on_unrecognized_value("read mode", read_mode, valid_values)
+        raise AllotropeConversionError(msg)
 
 
 @dataclass(frozen=True)
@@ -477,31 +502,6 @@ class PlateBlockBuilder(ABC):
             return None
         else:
             return wavelengths[wavelength_index] if wavelengths else None
-
-
-class BlockFactory(ABC):
-    @classmethod
-    @abstractmethod
-    def create(cls, raw_lines: list[str]) -> Block:
-        raise NotImplementedError
-
-
-class PlateBlockFactory(BlockFactory):
-    @classmethod
-    def create(cls, raw_lines: list[str]) -> PlateBlock:
-        read_mode_to_builder_class: dict[str, type[PlateBlockBuilder]] = {
-            "Absorbance": AbsorbancePlateBlockBuilder,
-            "Fluorescence": FluorescencePlateBlockBuilder,
-            "Luminescence": LuminescencePlateBlockBuilder,
-        }
-        read_mode = raw_lines[0].split("\t")[5]
-        builder_class = read_mode_to_builder_class.get(read_mode)
-        if builder_class:
-            builder = builder_class(raw_lines)
-            return builder.build()
-        valid_values = list(read_mode_to_builder_class.keys())
-        msg = msg_for_error_on_unrecognized_value("read mode", read_mode, valid_values)
-        raise AllotropeConversionError(msg)
 
 
 @dataclass(frozen=True)
