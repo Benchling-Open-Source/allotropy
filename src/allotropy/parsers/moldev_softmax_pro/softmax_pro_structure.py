@@ -134,7 +134,7 @@ class NoteBlock(Block):
 @dataclass
 class WellData:
     values: list[Optional[float]]
-    dimensions: list[Optional[str]]
+    dimensions: list[Optional[float]]
     wavelengths: list[Optional[int]]
     temperature: Optional[float]
     processed_data: list[float]
@@ -152,7 +152,7 @@ class WellData:
     def add_value(
         self,
         value: float,
-        dimension: Optional[str],
+        dimension: Optional[float],
         temperature: Optional[float],
         wavelength: Optional[int],
     ) -> None:
@@ -533,7 +533,7 @@ class PlateBlock(Block):
             else None
         )
         dimension = (
-            str_or_none(wavelength)
+            try_float_or_none(wavelength)
             if header.read_type == ReadType.ENDPOINT.value
             else data_key
         )
