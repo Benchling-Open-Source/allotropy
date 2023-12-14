@@ -616,8 +616,8 @@ class PlateBlock(Block):
     def split_wavelengths(values: Optional[str]) -> Optional[list[int]]:
         return None if values is None else [int(v) for v in values.split()]
 
-    @staticmethod
-    def parse_header(header: pd.Series[str]) -> PlateHeader:
+    @classmethod
+    def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
 
     @property
@@ -711,8 +711,8 @@ class PlateBlockExtraAttr:
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    @staticmethod
-    def parse_header(header: pd.Series[str]) -> PlateHeader:
+    @classmethod
+    def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
             _,  # Plate:
             name,
@@ -843,8 +843,8 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    @staticmethod
-    def parse_header(header: pd.Series[str]) -> PlateHeader:
+    @classmethod
+    def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
             _,  # Plate:
             name,
@@ -960,8 +960,8 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @staticmethod
-    def parse_header(header: pd.Series[str]) -> PlateHeader:
+    @classmethod
+    def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
             _,  # Plate:
             name,
