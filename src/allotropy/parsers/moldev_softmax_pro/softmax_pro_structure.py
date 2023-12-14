@@ -484,8 +484,8 @@ class PlateBlock(Block):
             )
             raise AllotropeConversionError(msg)
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         raise NotImplementedError
 
     @staticmethod
@@ -592,8 +592,8 @@ class FluorescencePlateBlock(PlateBlock):
     def get_data_type_idx() -> int:
         return 7
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
             _,  # cutoff
@@ -694,8 +694,8 @@ class LuminescencePlateBlock(PlateBlock):
     def get_data_type_idx() -> int:
         return 6
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         [
             excitation_wavelengths_str,
             _,  # cutoff
@@ -782,8 +782,8 @@ class AbsorbancePlateBlock(PlateBlock):
     def get_data_type_idx() -> int:
         return 6
 
-    @staticmethod
-    def parse_read_mode_header(header: list[Optional[str]]) -> PlateBlockExtraAttr:
+    @classmethod
+    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
         return PlateBlockExtraAttr(
             concept="absorbance",
             read_mode="Absorbance",
