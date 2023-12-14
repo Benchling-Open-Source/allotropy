@@ -6,7 +6,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 import re
-from typing import Any, Optional, Union
+from typing import Any, Optional
 import uuid
 
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
@@ -114,9 +114,9 @@ class Block:
 
     @staticmethod
     def create(lines: list[str]) -> Block:
-        block_cls_by_type: dict[str, Union[type[Block], type[BlockFactory]]] = {
-            "Group": GroupBlock,
-            "Note": NoteBlock,
+        block_cls_by_type: dict[str, type[BlockFactory]] = {
+            "Group": GroupBlockFactory,
+            "Note": NoteBlockFactory,
             "Plate": PlateBlockFactory,
         }
 
@@ -128,14 +128,9 @@ class Block:
         raise AllotropeConversionError(error)
 
 
-@dataclass(frozen=True)
-class GroupBlock(Block):
-    block_type: str
-    name: str
-    group_data: list[str]
-
-    @staticmethod
-    def create(raw_lines: list[str]) -> GroupBlock:
+class GroupBlockFactory(BlockFactory):
+    @classmethod
+    def create(cls, raw_lines: list[str]) -> GroupBlock:
         group_data = []
         for i, line in enumerate(raw_lines):
             if line.startswith("Group Column"):
@@ -150,12 +145,23 @@ class GroupBlock(Block):
         )
 
 
+@dataclass(frozen=True)
+class GroupBlock(Block):
+    block_type: str
+    name: str
+    group_data: list[str]
+
+
+class NoteBlockFactory(BlockFactory):
+    @classmethod
+    def create(cls, raw_lines: list[str]) -> NoteBlock:
+        return NoteBlock(block_type="Note", raw_lines=raw_lines)
+
+
 # TODO do we need to do anything with these?
 @dataclass(frozen=True)
 class NoteBlock(Block):
-    @staticmethod
-    def create(raw_lines: list[str]) -> NoteBlock:
-        return NoteBlock(block_type="Note", raw_lines=raw_lines)
+    pass
 
 
 @dataclass
