@@ -119,13 +119,17 @@ class CsvReader(LinesReader):
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
         header: Optional[int] = None,
+        sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return pd.read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
+                sep=sep,
                 dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
             )
         return None
 
@@ -134,3 +138,11 @@ class CsvReader(LinesReader):
         while self.match(match_pat):
             self.drop_until_empty()
             self.drop_empty()
+
+    def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
+        line = self.pop()
+        return None if line is None else pd.Series(line.split(sep))
+
+
+class ListCsvReader(CsvReader, ListReader):
+    pass

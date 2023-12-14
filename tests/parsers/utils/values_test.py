@@ -10,7 +10,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int,
     try_int_or_none,
-    value_or_none,
 )
 
 
@@ -121,16 +120,3 @@ def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
 )
 def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> None:
     assert try_int_or_none(value) == expected
-
-
-@pytest.mark.short
-@pytest.mark.parametrize(
-    "value,expected",
-    [
-        ("", None),
-        ("  ", None),
-        (" 1 ", "1"),
-    ],
-)
-def test_value_or_none(value: str, expected: Optional[str]) -> None:
-    assert value_or_none(value) == expected

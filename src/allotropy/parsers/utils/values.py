@@ -1,5 +1,5 @@
 import re
-from typing import Optional, TypeVar, Union
+from typing import Any, Optional, TypeVar, Union
 
 import pandas as pd
 
@@ -56,10 +56,6 @@ def assert_not_none(
         error = msg or f"Expected non-null value{f' for {name}' if name else ''}."
         raise AllotropeConversionError(error)
     return value
-
-
-def value_or_none(value: str) -> Optional[str]:
-    return value.strip() or None
 
 
 def df_to_series(
@@ -145,3 +141,12 @@ def try_bool_from_series_or_none(
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
+
+
+def num_to_chars(n: int) -> str:
+    d, m = divmod(n, 26)  # 26 is the number of ASCII letters
+    return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
+
+
+def str_or_none(value: Any) -> Optional[str]:
+    return None if value is None else str(value)
