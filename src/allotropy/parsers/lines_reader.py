@@ -22,6 +22,12 @@ def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
 
 
 class LinesReader:
+    raw_contents: str
+    contents: str
+    lines: list[str]
+    n_lines: int
+    current_line: int
+
     def __init__(self, io_: IOType, encoding: Optional[str] = "UTF-8"):
         stream_contents = io_.read()
         self.raw_contents = (
@@ -30,7 +36,7 @@ class LinesReader:
             else stream_contents
         )
         self.contents = self.raw_contents.replace("\r\n", "\n")
-        self.lines: list[str] = self.contents.split("\n")
+        self.lines = self.contents.split("\n")
         self.n_lines = len(self.lines)
         self.current_line = 0
 
