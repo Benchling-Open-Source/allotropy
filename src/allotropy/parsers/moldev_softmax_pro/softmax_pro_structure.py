@@ -6,7 +6,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 import re
-from typing import Any, Optional
+from typing import Any, Optional, Union
 import uuid
 
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
@@ -107,16 +107,15 @@ class Block:
 
     @staticmethod
     def create(lines: list[str]) -> Block:
-        block_cls_by_type: dict[str, type[Block]] = {
+        block_cls_by_type: dict[str, Union[type[Block], type[BlockFactory]]] = {
             "Group": GroupBlock,
             "Note": NoteBlock,
+            "Plate": PlateBlockFactory,
         }
 
         for key, cls in block_cls_by_type.items():
             if lines[0].startswith(key):
                 return cls.create(lines)
-            elif lines[0].startswith("Plate"):
-                return PlateBlockFactory.create(lines)
 
         error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
@@ -480,9 +479,16 @@ class PlateBlockBuilder(ABC):
             return wavelengths[wavelength_index] if wavelengths else None
 
 
-class PlateBlockFactory:
-    @staticmethod
-    def create(raw_lines: list[str]) -> PlateBlock:
+class BlockFactory(ABC):
+    @classmethod
+    @abstractmethod
+    def create(cls, raw_lines: list[str]) -> Block:
+        raise NotImplementedError
+
+
+class PlateBlockFactory(BlockFactory):
+    @classmethod
+    def create(cls, raw_lines: list[str]) -> PlateBlock:
         read_mode_to_builder_class: dict[str, type[PlateBlockBuilder]] = {
             "Absorbance": AbsorbancePlateBlockBuilder,
             "Fluorescence": FluorescencePlateBlockBuilder,
