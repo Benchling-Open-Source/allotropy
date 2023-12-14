@@ -305,12 +305,6 @@ class PlateBlockBuilder(ABC):
     def get_plate_class(self) -> type[PlateBlock]:
         raise NotImplementedError
 
-    @abstractmethod
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
-        raise NotImplementedError
-
     def _parse_reduced_plate_rows(
         self,
         num_columns: int,
@@ -467,6 +461,12 @@ class PlateBlockBuilder(ABC):
                 "data type", data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
+
+    @abstractmethod
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        raise NotImplementedError
 
     def get_wavelength(
         self,
