@@ -326,6 +326,36 @@ class PlateBlockBuilder(ABC):
                 well = get_well_coordinates(i + 1, col_number)
                 well_data[well].processed_data.append(float(value))
 
+    def _parse_reduced_columns(
+        self,
+        data_header: list[Optional[str]],
+        well_data: defaultdict[str, WellData],
+        reduced_data_row: list[Optional[str]],
+    ) -> None:
+        for i, value in enumerate(reduced_data_row[2:]):
+            if value is None:
+                continue
+            well = assert_not_none(data_header[i + 2], "well")
+            well_data[well].processed_data.append(float(value))
+
+    def _add_data_point(
+        self,
+        read_type: Optional[str],
+        well_data: defaultdict[str, WellData],
+        well: str,
+        value: str,
+        data_key: Optional[str],
+        temperature: Optional[str],
+        wavelength: Optional[int],
+    ) -> None:
+        dimension = wavelength if read_type == ReadType.ENDPOINT.value else data_key
+        well_data[well].add_value(
+            value=float(value),
+            dimension=dimension,
+            temperature=temperature,
+            wavelength=wavelength,
+        )
+
     def _parse_time_format_data(
         self,
         wavelengths: list[int],
@@ -370,18 +400,6 @@ class PlateBlockBuilder(ABC):
                 "data type", data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
-
-    def _parse_reduced_columns(
-        self,
-        data_header: list[Optional[str]],
-        well_data: defaultdict[str, WellData],
-        reduced_data_row: list[Optional[str]],
-    ) -> None:
-        for i, value in enumerate(reduced_data_row[2:]):
-            if value is None:
-                continue
-            well = assert_not_none(data_header[i + 2], "well")
-            well_data[well].processed_data.append(float(value))
 
     def _parse_plate_format_data(
         self,
@@ -449,24 +467,6 @@ class PlateBlockBuilder(ABC):
                 "data type", data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
-
-    def _add_data_point(
-        self,
-        read_type: Optional[str],
-        well_data: defaultdict[str, WellData],
-        well: str,
-        value: str,
-        data_key: Optional[str],
-        temperature: Optional[str],
-        wavelength: Optional[int],
-    ) -> None:
-        dimension = wavelength if read_type == ReadType.ENDPOINT.value else data_key
-        well_data[well].add_value(
-            value=float(value),
-            dimension=dimension,
-            temperature=temperature,
-            wavelength=wavelength,
-        )
 
     def get_wavelength(
         self,
