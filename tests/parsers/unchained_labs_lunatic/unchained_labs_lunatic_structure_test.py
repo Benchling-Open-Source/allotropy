@@ -5,6 +5,7 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
+    CALCULATED_DATA_LOOKUP,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
@@ -62,11 +63,50 @@ def test_create_measurement_with_no_wavelength_column() -> None:
 
 
 @pytest.mark.short
-def test_create_title_with_incorrect_wavelength_column_format() -> None:
+def test_create_measurement_with_incorrect_wavelength_column_format() -> None:
     msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
     well_plate_data = pd.Series({"Sample name": "dummy name"})
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
         Measurement.create(well_plate_data, "Sample name")
+
+
+@pytest.mark.short
+def test_get_calculated_data_from_measuremet_for_unknown_wavelength() -> None:
+    well_plate_data = {
+        "Sample name": "dummy name",
+        "Plate ID": "dummy ID",
+        "Plate Position": "B3",
+        "A240": 0.5,
+        "A260": 0,
+        "A260 Concentration (ng/ul)": 4.5,
+        "Background (A260)": 0.523,
+    }
+    measurement = Measurement.create(pd.Series(well_plate_data), "A240")
+
+    assert not measurement.calculated_data
+
+
+@pytest.mark.short
+def test_get_calculated_data_from_measuremet_for_A260() -> None:  # noqa: N802
+    well_plate_data = {
+        "Sample name": "dummy name",
+        "Plate ID": "dummy ID",
+        "Plate Position": "B3",
+        "A260": 34.5,
+        "A260 Concentration (ng/ul)": 4.5,
+        "Background (A260)": 0.523,
+        "A260/A230": 2.5,
+        "A260/A280": 24.9,
+    }
+    wavelength = "A260"
+    measurement = Measurement.create(pd.Series(well_plate_data), wavelength)
+
+    calculated_data_dict = {data.name: data for data in measurement.calculated_data}
+
+    for item in CALCULATED_DATA_LOOKUP[wavelength]:
+        if item["column"] in well_plate_data:
+            calculated_data_item = calculated_data_dict[item["name"]]
+            assert calculated_data_item.value == well_plate_data[item["column"]]
 
 
 @pytest.mark.short
@@ -112,6 +152,46 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
     }
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
         WellPlate.create(pd.Series(plate_data), [])
+
+
+@pytest.mark.short
+def test_get_calculated_data_document_from_data_no_calculated_data_columns() -> None:
+    plate_data = {
+        "Sample name": ["batch_id"],
+        "Plate ID": ["Plate1"],
+        "Application": ["dummyApp"],
+        "Date": ["2021-05-20"],
+        "Time": ["16:55:51"],
+        "Instrument ID": [14],
+        "A260": [23.4],
+        "A260 Concentration (ng/ul)": [4.5],
+        "Background (A260)": [0.523],
+        "A260/A230": [2.5],
+        "A260/A280": [24.9],
+    }
+    data = Data.create(pd.DataFrame(plate_data))
+    calculated_data_document = data.get_calculated_data_document()
+
+    assert len(calculated_data_document) == 4
+
+
+@pytest.mark.short
+def test_get_calculated_data_document_from_data_with_no_calculated_data_columns() -> (
+    None
+):
+    plate_data = {
+        "Sample name": ["batch_id"],
+        "Plate ID": ["Plate1"],
+        "Application": ["dummyApp"],
+        "Date": ["2021-05-20"],
+        "Time": ["16:55:51"],
+        "Instrument ID": [14],
+        "A260": [23.4],
+    }
+    data = Data.create(pd.DataFrame(plate_data))
+    calculated_data_document = data.get_calculated_data_document()
+
+    assert not calculated_data_document
 
 
 @pytest.mark.short
