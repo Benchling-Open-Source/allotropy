@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass
@@ -109,12 +110,13 @@ class Block:
         block_cls_by_type: dict[str, type[Block]] = {
             "Group": GroupBlock,
             "Note": NoteBlock,
-            "Plate": PlateBlock,
         }
 
         for key, cls in block_cls_by_type.items():
             if lines[0].startswith(key):
                 return cls.create(lines)
+            elif lines[0].startswith("Plate"):
+                return PlateBlockFactory.create(lines)
 
         error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
         raise AllotropeConversionError(error)
@@ -190,48 +192,15 @@ class WellData:
 
 
 @dataclass(frozen=True)
-class PlateBlock(Block):
-    block_type: str
-    name: Optional[str]
-    export_format: Optional[str]
-    read_type: Optional[str]
-    data_type: Optional[str]
-    kinetic_points: int
-    num_wavelengths: Optional[int]
-    wavelengths: list[int]
-    num_columns: int
-    num_wells: int
-    well_data: defaultdict[str, WellData]
-    data_header: list[Optional[str]]
-    concept: str
-    read_mode: str
-    unit: str
-    pmt_gain: Optional[str]
-    num_rows: int
-    excitation_wavelengths: Optional[list[int]]
-    cutoff_filters: Optional[list[int]]
+class PlateBlockBuilder(ABC):
+    raw_lines: list[str]
 
-    @staticmethod
-    def create(raw_lines: list[str]) -> PlateBlock:
+    def build(self) -> PlateBlock:
         split_lines = [
             [value_or_none(value) for value in raw_line.split("\t")]
-            for raw_line in raw_lines
+            for raw_line in self.raw_lines
         ]
         header = split_lines[0]
-        read_mode = header[5]
-
-        plate_block_cls: dict[str, type[PlateBlock]] = {
-            "Absorbance": AbsorbancePlateBlock,
-            "Fluorescence": FluorescencePlateBlock,
-            "Luminescence": LuminescencePlateBlock,
-        }
-
-        cls = plate_block_cls.get(read_mode or "")
-        if not cls:
-            msg = msg_for_error_on_unrecognized_value(
-                "read mode", read_mode, plate_block_cls.keys()
-            )
-            raise AllotropeConversionError(msg)
 
         [
             _,  # Plate:
@@ -245,7 +214,7 @@ class PlateBlock(Block):
             error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
             raise AllotropeConversionError(error)
 
-        data_type_idx = cls.get_data_type_idx()
+        data_type_idx = self.get_data_type_idx()
 
         [
             data_type,
@@ -268,13 +237,13 @@ class PlateBlock(Block):
         num_wavelengths = try_int_or_none(num_wavelengths_raw)
         wavelengths = split_wavelengths(wavelengths_str) or []
 
-        extra_attr = cls.parse_read_mode_header(header)
+        extra_attr = self.parse_read_mode_header(header)
 
         well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
         data_header = split_lines[1]
         data_lines = split_lines[2:]
         if export_format == ExportFormat.TIME_FORMAT.value:
-            PlateBlock._parse_time_format_data(
+            self._parse_time_format_data(
                 wavelengths,
                 read_type,
                 well_data,
@@ -286,7 +255,7 @@ class PlateBlock(Block):
                 data_lines,
             )
         elif export_format == ExportFormat.PLATE_FORMAT.value:
-            PlateBlock._parse_plate_format_data(
+            self._parse_plate_format_data(
                 wavelengths,
                 read_type,
                 well_data,
@@ -304,9 +273,10 @@ class PlateBlock(Block):
             )
             raise AllotropeConversionError(msg)
 
-        return cls(
+        plate_class = self.get_plate_class()
+        return plate_class(
             block_type="Plate",
-            raw_lines=raw_lines,
+            raw_lines=self.raw_lines,
             name=name,
             export_format=export_format,
             read_type=read_type,
@@ -327,53 +297,22 @@ class PlateBlock(Block):
             cutoff_filters=extra_attr.cutoff_filters,
         )
 
-    @staticmethod
-    def _parse_reduced_plate_rows(
-        num_columns: int,
-        data_header: list[Optional[str]],
-        well_data: defaultdict[str, WellData],
-        reduced_data_rows: list[list[Optional[str]]],
-    ) -> None:
-        for i, row in enumerate(reduced_data_rows):
-            for j, value in enumerate(row[2 : num_columns + 2]):
-                if value is None:
-                    continue
-                col_number = assert_not_none(data_header[j + 2], "column number")
-                well = get_well_coordinates(i + 1, col_number)
-                well_data[well].processed_data.append(float(value))
+    @abstractmethod
+    def get_plate_class(self) -> type[PlateBlock]:
+        raise NotImplementedError
 
-    @staticmethod
-    def _parse_reduced_columns(
-        data_header: list[Optional[str]],
-        well_data: defaultdict[str, WellData],
-        reduced_data_row: list[Optional[str]],
-    ) -> None:
-        for i, value in enumerate(reduced_data_row[2:]):
-            if value is None:
-                continue
-            well = assert_not_none(data_header[i + 2], "well")
-            well_data[well].processed_data.append(float(value))
+    @abstractmethod
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        raise NotImplementedError
 
-    @staticmethod
-    def _add_data_point(
-        read_type: Optional[str],
-        well_data: defaultdict[str, WellData],
-        well: str,
-        value: str,
-        data_key: Optional[str],
-        temperature: Optional[str],
-        wavelength: Optional[int],
-    ) -> None:
-        dimension = wavelength if read_type == ReadType.ENDPOINT.value else data_key
-        well_data[well].add_value(
-            value=float(value),
-            dimension=dimension,
-            temperature=temperature,
-            wavelength=wavelength,
-        )
+    @abstractmethod
+    def get_data_type_idx(self) -> int:
+        raise NotImplementedError
 
-    @staticmethod
     def _parse_time_format_data(
+        self,
         wavelengths: list[int],
         read_type: Optional[str],
         well_data: defaultdict[str, WellData],
@@ -394,31 +333,43 @@ class PlateBlock(Block):
                         if value is None:
                             continue
                         well = assert_not_none(data_header[i + 2], "well")
-                        PlateBlock._add_data_point(
+                        self._add_data_point(
                             read_type,
                             well_data,
                             well,
                             value,
                             data_key=row[0],
                             temperature=row[1],
-                            wavelength=PlateBlock.get_wavelength(
+                            wavelength=self.get_wavelength(
                                 read_type, wavelengths, wavelength_index
                             ),
                         )
             if len(data_lines) > (kinetic_points + 1) * num_row_blocks:
                 reduced_row = data_lines[-1][: num_wells + 2]
-                PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
+                self._parse_reduced_columns(data_header, well_data, reduced_row)
         elif data_type == DataType.REDUCED.value:
             reduced_row = data_lines[-1][: num_wells + 2]
-            PlateBlock._parse_reduced_columns(data_header, well_data, reduced_row)
+            self._parse_reduced_columns(data_header, well_data, reduced_row)
         else:
             msg = msg_for_error_on_unrecognized_value(
                 "data type", data_type, DataType._member_names_
             )
             raise AllotropeConversionError(msg)
 
-    @staticmethod
+    def _parse_reduced_columns(
+        self,
+        data_header: list[Optional[str]],
+        well_data: defaultdict[str, WellData],
+        reduced_data_row: list[Optional[str]],
+    ) -> None:
+        for i, value in enumerate(reduced_data_row[2:]):
+            if value is None:
+                continue
+            well = assert_not_none(data_header[i + 2], "well")
+            well_data[well].processed_data.append(float(value))
+
     def _parse_plate_format_data(
+        self,
         wavelengths: list[int],
         read_type: Optional[str],
         well_data: defaultdict[str, WellData],
@@ -453,21 +404,21 @@ class PlateBlock(Block):
                                 data_header[j + 2], "column number"
                             )
                             well = get_well_coordinates(i + 1, col_number)
-                            PlateBlock._add_data_point(
+                            self._add_data_point(
                                 read_type,
                                 well_data,
                                 well,
                                 value,
                                 data_key=data_key,
                                 temperature=temperature,
-                                wavelength=PlateBlock.get_wavelength(
+                                wavelength=self.get_wavelength(
                                     read_type, wavelengths, wavelength_index
                                 ),
                             )
             end_raw_data_index = ((num_rows + 1) * kinetic_points) + 1
             reduced_data_rows = data_lines[end_raw_data_index:]
             if len(reduced_data_rows) == num_rows:
-                PlateBlock._parse_reduced_plate_rows(
+                self._parse_reduced_plate_rows(
                     num_columns,
                     data_header,
                     well_data,
@@ -475,7 +426,7 @@ class PlateBlock(Block):
                 )
         elif data_type == DataType.REDUCED.value:
             reduced_data_rows = data_lines[end_raw_data_index:]
-            PlateBlock._parse_reduced_plate_rows(
+            self._parse_reduced_plate_rows(
                 num_columns, data_header, well_data, reduced_data_rows
             )
         else:
@@ -484,13 +435,188 @@ class PlateBlock(Block):
             )
             raise AllotropeConversionError(msg)
 
-    @classmethod
-    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
-        raise NotImplementedError
+    def _parse_reduced_plate_rows(
+        self,
+        num_columns: int,
+        data_header: list[Optional[str]],
+        well_data: defaultdict[str, WellData],
+        reduced_data_rows: list[list[Optional[str]]],
+    ) -> None:
+        for i, row in enumerate(reduced_data_rows):
+            for j, value in enumerate(row[2 : num_columns + 2]):
+                if value is None:
+                    continue
+                col_number = assert_not_none(data_header[j + 2], "column number")
+                well = get_well_coordinates(i + 1, col_number)
+                well_data[well].processed_data.append(float(value))
 
+    def _add_data_point(
+        self,
+        read_type: Optional[str],
+        well_data: defaultdict[str, WellData],
+        well: str,
+        value: str,
+        data_key: Optional[str],
+        temperature: Optional[str],
+        wavelength: Optional[int],
+    ) -> None:
+        dimension = wavelength if read_type == ReadType.ENDPOINT.value else data_key
+        well_data[well].add_value(
+            value=float(value),
+            dimension=dimension,
+            temperature=temperature,
+            wavelength=wavelength,
+        )
+
+    def get_wavelength(
+        self,
+        read_type: Optional[str],
+        wavelengths: list[int],
+        wavelength_index: int,
+    ) -> Optional[int]:
+        if read_type == ReadType.SPECTRUM.value:
+            return None
+        else:
+            return wavelengths[wavelength_index] if wavelengths else None
+
+
+class PlateBlockFactory:
     @staticmethod
-    def get_data_type_idx() -> int:
-        raise NotImplementedError
+    def create(raw_lines: list[str]) -> PlateBlock:
+        read_mode = raw_lines[0].split("\t")[5]
+        if read_mode == "Absorbance":
+            return AbsorbancePlateBlockBuilder(raw_lines).build()
+        elif read_mode == "Fluorescence":
+            return FluorescencePlateBlockBuilder(raw_lines).build()
+        elif read_mode == "Luminescence":
+            return LuminescencePlateBlockBuilder(raw_lines).build()
+        else:
+            valid_values = ["Absorbance", "Fluorescence", "Luminescence"]
+            msg = msg_for_error_on_unrecognized_value(
+                "read mode", read_mode, valid_values
+            )
+            raise AllotropeConversionError(msg)
+
+
+class AbsorbancePlateBlockBuilder(PlateBlockBuilder):
+    def get_data_type_idx(self) -> int:
+        return 6
+
+    def get_plate_class(self) -> type[PlateBlock]:
+        return AbsorbancePlateBlock
+
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        return PlateBlockExtraAttr(
+            concept="absorbance",
+            read_mode="Absorbance",
+            unit="mAU",
+            pmt_gain=None,
+            num_rows=try_int(header[20], "num_rows"),
+            excitation_wavelengths=None,
+            cutoff_filters=None,
+        )
+
+
+class FluorescencePlateBlockBuilder(PlateBlockBuilder):
+    EXCITATION_WAVELENGTHS_IDX: int = 20
+
+    def get_data_type_idx(self) -> int:
+        return 7
+
+    def get_plate_class(self) -> type[PlateBlock]:
+        return FluorescencePlateBlock
+
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        [
+            excitation_wavelengths_str,
+            _,  # cutoff
+            cutoff_filters_str,
+            _,  # sweep_wave
+            _,  # sweep_wavelength
+            _,  # reads_per_well
+            pmt_gain,
+            _,  # start_integration_time
+            _,  # end_integration_time
+            _,  # first_row
+            num_rows,
+        ] = header[
+            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+        ]
+
+        return PlateBlockExtraAttr(
+            concept="fluorescence",
+            read_mode="Fluorescence",
+            unit="RFU",
+            pmt_gain=pmt_gain,
+            num_rows=try_int(num_rows, "num_rows"),
+            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
+            cutoff_filters=split_wavelengths(cutoff_filters_str),
+        )
+
+
+class LuminescencePlateBlockBuilder(PlateBlockBuilder):
+    EXCITATION_WAVELENGTHS_IDX: int = 19
+
+    def get_data_type_idx(self) -> int:
+        return 6
+
+    def get_plate_class(self) -> type[PlateBlock]:
+        return LuminescencePlateBlock
+
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        [
+            excitation_wavelengths_str,
+            _,  # cutoff
+            cutoff_filters_str,
+            _,  # sweep_wave
+            _,  # sweep_wavelength
+            _,  # reads_per_well
+            pmt_gain,
+            _,  # start_integration_time
+            _,  # end_integration_time
+            _,  # first_row
+            num_rows,
+        ] = header[
+            self.EXCITATION_WAVELENGTHS_IDX : self.EXCITATION_WAVELENGTHS_IDX + 11
+        ]
+        return PlateBlockExtraAttr(
+            concept="luminescence",
+            read_mode="Luminescence",
+            unit="RLU",
+            pmt_gain=pmt_gain,
+            num_rows=try_int(num_rows, "num_rows"),
+            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
+            cutoff_filters=split_wavelengths(cutoff_filters_str),
+        )
+
+
+@dataclass(frozen=True)
+class PlateBlock(Block):
+    block_type: str
+    name: Optional[str]
+    export_format: Optional[str]
+    read_type: Optional[str]
+    data_type: Optional[str]
+    kinetic_points: int
+    num_wavelengths: Optional[int]
+    wavelengths: list[int]
+    num_columns: int
+    num_wells: int
+    well_data: defaultdict[str, WellData]
+    data_header: list[Optional[str]]
+    concept: str
+    read_mode: str
+    unit: str
+    pmt_gain: Optional[str]
+    num_rows: int
+    excitation_wavelengths: Optional[list[int]]
+    cutoff_filters: Optional[list[int]]
 
     @property
     def is_single_wavelength(self) -> bool:
@@ -505,17 +631,6 @@ class PlateBlock(Block):
             self.read_type not in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
             and len(self.wavelengths) > 1
         )
-
-    @staticmethod
-    def get_wavelength(
-        read_type: Optional[str],
-        wavelengths: list[int],
-        wavelength_index: int,
-    ) -> Optional[int]:
-        if read_type == ReadType.SPECTRUM.value:
-            return None
-        else:
-            return wavelengths[wavelength_index] if wavelengths else None
 
     def get_data_cube_dimensions(self) -> list[tuple[str, str, Optional[str]]]:
         dimensions: list[tuple[str, str, Optional[str]]] = []
@@ -586,41 +701,6 @@ class PlateBlockExtraAttr:
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    EXCITATION_WAVELENGTHS_IDX: int = 20
-
-    @staticmethod
-    def get_data_type_idx() -> int:
-        return 7
-
-    @classmethod
-    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
-        [
-            excitation_wavelengths_str,
-            _,  # cutoff
-            cutoff_filters_str,
-            _,  # sweep_wave
-            _,  # sweep_wavelength
-            _,  # reads_per_well
-            pmt_gain,
-            _,  # start_integration_time
-            _,  # end_integration_time
-            _,  # first_row
-            num_rows,
-        ] = header[
-            FluorescencePlateBlock.EXCITATION_WAVELENGTHS_IDX : FluorescencePlateBlock.EXCITATION_WAVELENGTHS_IDX
-            + 11
-        ]
-
-        return PlateBlockExtraAttr(
-            concept="fluorescence",
-            read_mode="Fluorescence",
-            unit="RFU",
-            pmt_gain=pmt_gain,
-            num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
-            cutoff_filters=split_wavelengths(cutoff_filters_str),
-        )
-
     # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
     # Fluorescence ASM model has these extra fields. We may be able to fix this by templating the PlateBlock
     # class on these classes, or some clever shared/models refactoring.
@@ -688,40 +768,6 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    EXCITATION_WAVELENGTHS_IDX: int = 19
-
-    @staticmethod
-    def get_data_type_idx() -> int:
-        return 6
-
-    @classmethod
-    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
-        [
-            excitation_wavelengths_str,
-            _,  # cutoff
-            cutoff_filters_str,
-            _,  # sweep_wave
-            _,  # sweep_wavelength
-            _,  # reads_per_well
-            pmt_gain,
-            _,  # start_integration_time
-            _,  # end_integration_time
-            _,  # first_row
-            num_rows,
-        ] = header[
-            LuminescencePlateBlock.EXCITATION_WAVELENGTHS_IDX : LuminescencePlateBlock.EXCITATION_WAVELENGTHS_IDX
-            + 11
-        ]
-        return PlateBlockExtraAttr(
-            concept="luminescence",
-            read_mode="Luminescence",
-            unit="RLU",
-            pmt_gain=pmt_gain,
-            num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=split_wavelengths(excitation_wavelengths_str),
-            cutoff_filters=split_wavelengths(cutoff_filters_str),
-        )
-
     def generate_device_control_doc(self) -> DeviceControlDocumentItemLuminescence:
         device_control_doc = DeviceControlDocumentItemLuminescence(
             detector_gain_setting=self.pmt_gain
@@ -778,22 +824,6 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @staticmethod
-    def get_data_type_idx() -> int:
-        return 6
-
-    @classmethod
-    def parse_read_mode_header(cls, header: list[Optional[str]]) -> PlateBlockExtraAttr:
-        return PlateBlockExtraAttr(
-            concept="absorbance",
-            read_mode="Absorbance",
-            unit="mAU",
-            pmt_gain=None,
-            num_rows=try_int(header[20], "num_rows"),
-            excitation_wavelengths=None,
-            cutoff_filters=None,
-        )
-
     def generate_device_control_doc(self) -> DeviceControlDocumentItemAbsorbance:
         device_control_doc = DeviceControlDocumentItemAbsorbance(
             detector_gain_setting=self.pmt_gain
