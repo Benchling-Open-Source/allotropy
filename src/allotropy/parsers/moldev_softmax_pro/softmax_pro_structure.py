@@ -103,7 +103,7 @@ class DataType(Enum):
 class BlockFactory(ABC):
     @classmethod
     @abstractmethod
-    def create(cls, raw_lines: list[str]) -> Block:
+    def create(cls, lines: list[str]) -> Block:
         raise NotImplementedError
 
 
