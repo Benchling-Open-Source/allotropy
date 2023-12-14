@@ -297,14 +297,6 @@ class PlateBlockBuilder(ABC):
             cutoff_filters=extra_attr.cutoff_filters,
         )
 
-    @abstractmethod
-    def get_data_type_idx(self) -> int:
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_plate_class(self) -> type[PlateBlock]:
-        raise NotImplementedError
-
     def _parse_reduced_plate_rows(
         self,
         num_columns: int,
@@ -462,12 +454,6 @@ class PlateBlockBuilder(ABC):
             )
             raise AllotropeConversionError(msg)
 
-    @abstractmethod
-    def parse_read_mode_header(
-        self, header: list[Optional[str]]
-    ) -> PlateBlockExtraAttr:
-        raise NotImplementedError
-
     def get_wavelength(
         self,
         read_type: Optional[str],
@@ -478,6 +464,20 @@ class PlateBlockBuilder(ABC):
             return None
         else:
             return wavelengths[wavelength_index] if wavelengths else None
+
+    @abstractmethod
+    def parse_read_mode_header(
+        self, header: list[Optional[str]]
+    ) -> PlateBlockExtraAttr:
+        raise NotImplementedError
+
+    @abstractmethod
+    def get_data_type_idx(self) -> int:
+        raise NotImplementedError
+
+    @abstractmethod
+    def get_plate_class(self) -> type[PlateBlock]:
+        raise NotImplementedError
 
 
 class PlateBlockFactory:
