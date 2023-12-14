@@ -100,24 +100,22 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
-class BlockFactory:
-    @staticmethod
-    def create(lines: list[str]) -> Block:
-        block_cls_by_type: dict[str, type[BlockChildFactory]] = {
-            "Group": GroupBlockFactory,
-            "Note": NoteBlockFactory,
-            "Plate": PlateBlockFactory,
-        }
+def create_block(lines: list[str]) -> Block:
+    block_cls_by_type: dict[str, type[BlockFactory]] = {
+        "Group": GroupBlockFactory,
+        "Note": NoteBlockFactory,
+        "Plate": PlateBlockFactory,
+    }
 
-        for key, cls in block_cls_by_type.items():
-            if lines[0].startswith(key):
-                return cls.create(lines)
+    for key, cls in block_cls_by_type.items():
+        if lines[0].startswith(key):
+            return cls.create(lines)
 
-        error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
-        raise AllotropeConversionError(error)
+    error = f"Expected block '{lines[0]}' to start with one of {sorted(block_cls_by_type.keys())}."
+    raise AllotropeConversionError(error)
 
 
-class BlockChildFactory(ABC):
+class BlockFactory(ABC):
     @classmethod
     @abstractmethod
     def create(cls, lines: list[str]) -> Block:
@@ -130,7 +128,7 @@ class Block:
     raw_lines: list[str]
 
 
-class GroupBlockFactory(BlockChildFactory):
+class GroupBlockFactory(BlockFactory):
     @classmethod
     def create(cls, raw_lines: list[str]) -> GroupBlock:
         group_data = []
@@ -154,7 +152,7 @@ class GroupBlock(Block):
     group_data: list[str]
 
 
-class NoteBlockFactory(BlockChildFactory):
+class NoteBlockFactory(BlockFactory):
     @classmethod
     def create(cls, raw_lines: list[str]) -> NoteBlock:
         return NoteBlock(block_type="Note", raw_lines=raw_lines)
@@ -205,7 +203,7 @@ class WellData:
         return not self.dimensions or not self.values
 
 
-class PlateBlockFactory(BlockChildFactory):
+class PlateBlockFactory(BlockFactory):
     @classmethod
     def create(cls, lines: list[str]) -> PlateBlock:
         read_mode_to_builder_class: dict[str, type[PlateBlockBuilder]] = {
@@ -900,8 +898,7 @@ class BlockList:
     def create(lines_reader: LinesReader) -> BlockList:
         return BlockList(
             blocks=[
-                BlockFactory.create(block)
-                for block in BlockList._iter_blocks(lines_reader)
+                create_block(block) for block in BlockList._iter_blocks(lines_reader)
             ]
         )
 
