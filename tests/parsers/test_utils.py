@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections.abc import Mapping
 import json
 from typing import Any
 
@@ -12,9 +11,9 @@ import pandas as pd
 from allotropy.allotrope.schemas import get_schema
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import VendorType
-from allotropy.to_allotrope import allotrope_from_file
+from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
 
-DictType = Mapping[str, Any]
+DictType = dict[str, Any]
 
 
 def replace_asm_converter_name_and_version(allotrope_dict: DictType) -> None:
@@ -45,6 +44,10 @@ def assert_allotrope_dicts_equal(expected: DictType, actual: DictType) -> None:
 
 def from_file(test_file: str, vendor_type: VendorType) -> DictType:
     return allotrope_from_file(test_file, vendor_type)
+
+
+def model_from_file(test_file: str, vendor_type: VendorType) -> Any:
+    return allotrope_model_from_file(test_file, vendor_type)
 
 
 def validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None:
