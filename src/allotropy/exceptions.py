@@ -6,7 +6,7 @@ _ERROR_MESSAGE = "message must not be empty"
 
 class AllotropeConversionError(Exception):
     def __init__(self, message: str) -> None:
-        if not message:
+        if not message or not message.strip():
             raise ValueError(_ERROR_MESSAGE)
         super().__init__(message)
 
