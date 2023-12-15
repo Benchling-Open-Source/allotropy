@@ -32,9 +32,7 @@ class Title:
         matches = re.match(FILENAME_REGEX, filename)
 
         if not matches:
-            raise AllotropeConversionError(
-                filename, INVALID_FILENAME_MESSAGE.format(filename)
-            )
+            raise AllotropeConversionError(INVALID_FILENAME_MESSAGE.format(filename))
 
         matches_dict = matches.groupdict()
         return Title(
