@@ -34,7 +34,7 @@ def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
 
 class LinesReader:
     lines: list[str]
-    current_line: int
+    current_line: int  # TODO: make private
 
     def __init__(self, lines: list[str]) -> None:
         self.lines = lines
