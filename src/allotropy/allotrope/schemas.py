@@ -3,6 +3,8 @@ import os
 from pathlib import Path
 from typing import Any
 
+from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
+
 SCHEMAS_DIR = os.path.join(Path(__file__).parent, "schemas")
 
 
@@ -24,4 +26,5 @@ def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
 
 def get_schema(schema_relative_path: str) -> dict[str, Any]:
     with open(os.path.join(SCHEMAS_DIR, schema_relative_path)) as f:
-        return add_definitions(json.load(f))
+        schema = SchemaCleaner(json.load(f)).clean()
+        return add_definitions(schema)

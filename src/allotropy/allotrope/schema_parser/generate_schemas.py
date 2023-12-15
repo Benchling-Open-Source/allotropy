@@ -2,7 +2,8 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess  # noqa: S404, RUF100
+import subprocess
+from typing import Optional  # noqa: S404, RUF100
 
 from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
@@ -65,19 +66,20 @@ def files_equal(path1: str, path2: str) -> bool:
     return True
 
 
-def generate_schemas(root_dir: Path) -> int:
+def generate_schemas(root_dir: Path, schema_regex: Optional[str] = None) -> int:
     """Generate schemas from JSON schema files.
 
     :root_dir: The root directory of the project.
     :return: The number of schemas generated.
     """
-
     os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
     schema_paths = list(Path(".").rglob("*.json"))
     os.chdir(os.path.join(root_dir))
     number_generated = 0
     for rel_schema_path in schema_paths:
         if str(rel_schema_path).startswith("shared"):
+            continue
+        if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
             continue
         print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
         schema_name = rel_schema_path.stem
