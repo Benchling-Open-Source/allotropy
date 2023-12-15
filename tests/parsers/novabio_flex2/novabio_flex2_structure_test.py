@@ -53,8 +53,7 @@ def test_create_title(
 )
 @pytest.mark.short
 def test_create_title_invalid_filename(filename: str) -> None:
-    # TODO: Fix exception message -- file name is duplicated
-    expected_regex_raw = f"('{filename}', '{filename} is not valid. File name is expected to have format of SampleResultsYYYY-MM-DD_HHMMSS.csv or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings')"
+    expected_regex_raw = f"{filename} is not valid. File name is expected to have format of SampleResultsYYYY-MM-DD_HHMMSS.csv or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings"
     expected_regex = re.escape(expected_regex_raw)
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         Title.create(filename)
@@ -157,25 +156,25 @@ def test_create_sample_list() -> None:
 
 @pytest.mark.short
 def test_create_sample_list_invalid_no_samples() -> None:
+    df = pd.DataFrame()
     with pytest.raises(AllotropeConversionError, match="Unable to find any sample."):
-        SampleList.create(pd.DataFrame({}))
+        SampleList.create(df)
 
 
 @pytest.mark.short
 def test_create_sample_list_invalid_no_analyst() -> None:
+    df = pd.DataFrame(
+        {
+            "Sample ID": ["SAMPLE_1", "SAMPLE_2"],
+            "Sample Type": ["Spent Media", "Spent Media"],
+            "Date & Time": [
+                pd.Timestamp("2022-06-24 14:34:52"),
+                pd.Timestamp("2022-06-24 14:34:52"),
+            ],
+        }
+    )
     with pytest.raises(AllotropeConversionError, match="Unable to find the Operator."):
-        SampleList.create(
-            pd.DataFrame(
-                {
-                    "Sample ID": ["SAMPLE_1", "SAMPLE_2"],
-                    "Sample Type": ["Spent Media", "Spent Media"],
-                    "Date & Time": [
-                        pd.Timestamp("2022-06-24 14:34:52"),
-                        pd.Timestamp("2022-06-24 14:34:52"),
-                    ],
-                }
-            )
-        )
+        SampleList.create(df)
 
 
 @pytest.mark.short
