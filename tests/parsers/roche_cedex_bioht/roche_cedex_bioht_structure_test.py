@@ -43,19 +43,19 @@ def test_create_title(
 
 @pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
-    title_data = {"device serial number": 1234}
+    title_data = pd.Series({"device serial number": 1234})
     with pytest.raises(AllotropeConversionError, match="Unable to obtain analyst."):
-        Title.create(pd.Series(title_data))
+        Title.create(title_data)
 
 
 @pytest.mark.short
 def test_create_title_with_no_serial_number() -> None:
-    title_data = {"analyst": "dummy"}
+    title_data = pd.Series({"analyst": "dummy"})
     with pytest.raises(
         AllotropeConversionError,
         match="Unable to obtain device serial number.",
     ):
-        Title.create(pd.Series(title_data))
+        Title.create(title_data)
 
 
 @pytest.mark.short
