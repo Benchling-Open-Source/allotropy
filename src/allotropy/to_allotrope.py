@@ -44,14 +44,3 @@ def allotrope_from_file(
     except FileNotFoundError as e:
         msg = f"File not found: {filepath}."
         raise AllotropeConversionError(msg) from e
-
-
-def allotrope_model_from_file(
-    filepath: str,
-    vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-) -> Any:
-    with open(filepath, "rb") as f:
-        return allotrope_model_from_io(
-            f, Path(filepath).name, vendor_type, default_timezone=default_timezone
-        )
