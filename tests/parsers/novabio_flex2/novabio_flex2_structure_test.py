@@ -53,8 +53,7 @@ def test_create_title(
 )
 @pytest.mark.short
 def test_create_title_invalid_filename(filename: str) -> None:
-    # TODO: Fix exception message -- file name is duplicated
-    expected_regex_raw = f"('{filename}', '{filename} is not valid. File name is expected to have format of SampleResultsYYYY-MM-DD_HHMMSS.csv or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings')"
+    expected_regex_raw = f"{filename} is not valid. File name is expected to have format of SampleResultsYYYY-MM-DD_HHMMSS.csv or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings"
     expected_regex = re.escape(expected_regex_raw)
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         Title.create(filename)

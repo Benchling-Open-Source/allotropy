@@ -1,9 +1,14 @@
 from collections.abc import Collection
 from typing import Any, Optional
 
+_ERROR_MESSAGE = "message must not be empty"
+
 
 class AllotropeConversionError(Exception):
-    pass
+    def __init__(self, message: str) -> None:
+        if not message or not message.strip():
+            raise ValueError(_ERROR_MESSAGE)
+        super().__init__(message)
 
 
 def msg_for_error_on_unrecognized_value(
