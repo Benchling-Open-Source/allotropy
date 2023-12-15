@@ -52,7 +52,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
-from allotropy.parsers.lines_reader import CsvReader, ListCsvReader
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
@@ -1085,7 +1085,7 @@ class BlockList:
     def _iter_blocks(reader: CsvReader) -> Iterator[CsvReader]:
         n_blocks = BlockList._get_n_blocks(reader)
         for _ in range(n_blocks):
-            yield ListCsvReader(list(reader.pop_until(END_LINE_REGEX)))
+            yield CsvReader(list(reader.pop_until(END_LINE_REGEX)))
             reader.pop()  # drop end line
             reader.drop_empty()
 

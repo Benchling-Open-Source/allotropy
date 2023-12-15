@@ -1,6 +1,6 @@
 from collections.abc import Iterator
 
-from allotropy.parsers.lines_reader import LinesReader, ListReader
+from allotropy.parsers.lines_reader import LinesReader
 
 
 class SectionLinesReader(LinesReader):
@@ -10,4 +10,4 @@ class SectionLinesReader(LinesReader):
             if (initial_line := self.pop()) is None:
                 break
             lines = [initial_line, *self.pop_until(pattern)]
-            yield ListReader(lines)
+            yield LinesReader(lines)
