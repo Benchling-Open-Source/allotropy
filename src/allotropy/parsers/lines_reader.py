@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from io import StringIO
 from re import search
-from typing import Final, Optional
+from typing import Optional
 
 import chardet
 import pandas as pd
@@ -33,7 +33,7 @@ def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
 
 
 class LinesReader:
-    lines: Final[list[str]]
+    lines: list[str]
     current_line: int
 
     def __init__(self, lines: list[str]) -> None:
