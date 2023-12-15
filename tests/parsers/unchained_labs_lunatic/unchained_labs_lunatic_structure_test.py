@@ -55,10 +55,11 @@ def test_create_measurement_with_no_wavelength_column() -> None:
         "Plate ID": "dummy ID",
         "Plate Position": "B3",
     }
+    series = pd.Series(well_plate_data)
     wavelength_column = "A250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
-        Measurement.create(pd.Series(well_plate_data), wavelength_column)
+        Measurement.create(series, wavelength_column)
 
 
 @pytest.mark.short
@@ -110,8 +111,9 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
         "Plate ID": "dummy ID",
         "Time": "7:19:18",
     }
+    series = pd.Series(plate_data)
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
-        WellPlate.create(pd.Series(plate_data), [])
+        WellPlate.create(series, [])
 
 
 @pytest.mark.short

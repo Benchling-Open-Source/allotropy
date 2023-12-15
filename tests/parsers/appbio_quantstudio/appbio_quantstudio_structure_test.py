@@ -114,30 +114,30 @@ def test_header_builder_required_parameter_none_then_raise(
     parameter: str, expected_error: str
 ) -> None:
     header_contents = get_raw_header_contents(**{parameter: None})
-
+    lines_reader = LinesReader(header_contents)
     with pytest.raises(AllotropeConversionError, match=expected_error):
-        Header.create(LinesReader(header_contents))
+        Header.create(lines_reader)
 
 
 @pytest.mark.short
 def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
-
+    lines_reader = LinesReader(header_contents)
     with pytest.raises(
         AllotropeConversionError, match="Unable to find plate well count"
     ):
-        Header.create(LinesReader(header_contents))
+        Header.create(lines_reader)
 
 
 @pytest.mark.short
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
-
+    lines_reader = LinesReader(header_contents)
     with pytest.raises(
         AllotropeConversionError,
         match="Expected non-null value for Experiment Run End Time.",
     ):
-        Header.create(LinesReader(header_contents))
+        Header.create(lines_reader)
 
 
 @pytest.mark.short
