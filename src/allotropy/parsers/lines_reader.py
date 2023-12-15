@@ -1,4 +1,5 @@
 from collections.abc import Iterator
+from dataclasses import dataclass
 from io import StringIO
 from re import search
 from typing import Optional
@@ -21,27 +22,24 @@ def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
     return bytes_content.decode(encoding)
 
 
-class LinesReader:
-    raw_contents: str
-    contents: str
-    lines: list[str]
-    n_lines: int
-    current_line: int
+def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
+    stream_contents = io_.read()
+    raw_contents = (
+        _decode(stream_contents, encoding)
+        if isinstance(stream_contents, bytes)
+        else stream_contents
+    )
+    contents = raw_contents.replace("\r\n", "\n")
+    return contents.split("\n")
 
-    def __init__(self, io_: IOType, encoding: Optional[str] = "UTF-8"):
-        stream_contents = io_.read()
-        self.raw_contents = (
-            _decode(stream_contents, encoding)
-            if isinstance(stream_contents, bytes)
-            else stream_contents
-        )
-        self.contents = self.raw_contents.replace("\r\n", "\n")
-        self.lines = self.contents.split("\n")
-        self.n_lines = len(self.lines)
-        self.current_line = 0
+
+@dataclass
+class LinesReader:
+    lines: list[str]
+    current_line: int = 0
 
     def current_line_exists(self) -> bool:
-        return 0 <= self.current_line < self.n_lines
+        return 0 <= self.current_line < len(self.lines)
 
     def get(self) -> Optional[str]:
         return self.lines[self.current_line] if self.current_line_exists() else None
@@ -104,15 +102,6 @@ class LinesReader:
                 yield line
 
 
-class ListReader(LinesReader):
-    def __init__(self, lines: list[str]):
-        self.contents = "\n".join(lines)
-        self.raw_contents = self.contents
-        self.lines: list[str] = lines
-        self.n_lines = len(self.lines)
-        self.current_line = 0
-
-
 class CsvReader(LinesReader):
     def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list[str]:
         self.drop_empty(empty_pat)
@@ -148,7 +137,3 @@ class CsvReader(LinesReader):
     def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
         line = self.pop()
         return None if line is None else pd.Series(line.split(sep))
-
-
-class ListCsvReader(CsvReader, ListReader):
-    pass

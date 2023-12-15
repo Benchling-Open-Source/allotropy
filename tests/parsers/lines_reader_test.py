@@ -1,6 +1,6 @@
 from io import BytesIO
 
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 
 
 def get_input_lines() -> list[str]:
@@ -33,14 +33,13 @@ def get_input_stream() -> BytesIO:
 
 
 def get_test_reader() -> LinesReader:
-    return LinesReader(get_input_stream())
+    lines = read_to_lines(get_input_stream())
+    return LinesReader(lines)
 
 
 def test_reader_constructure() -> None:
     test_reader = get_test_reader()
-    assert test_reader.contents == get_input_text()
     assert test_reader.lines == get_input_lines()
-    assert test_reader.n_lines == 16
     assert test_reader.current_line == 0
 
 
