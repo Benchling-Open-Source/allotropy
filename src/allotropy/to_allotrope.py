@@ -15,9 +15,8 @@ def allotrope_from_io(
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
 ) -> dict[str, Any]:
-    return serialize_allotrope(
-        allotrope_model_from_io(contents, filename, vendor_type, default_timezone)
-    )
+    model = allotrope_model_from_io(contents, filename, vendor_type, default_timezone)
+    return serialize_allotrope(model)
 
 
 def allotrope_model_from_io(
