@@ -1,5 +1,4 @@
 from collections.abc import Iterator
-from dataclasses import dataclass
 from io import StringIO
 from re import search
 from typing import Optional
@@ -33,10 +32,13 @@ def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
     return contents.split("\n")
 
 
-@dataclass
 class LinesReader:
     lines: list[str]
-    current_line: int = 0
+    current_line: int
+
+    def __init__(self, lines: list[str]) -> None:
+        self.lines = lines
+        self.current_line = 0
 
     def current_line_exists(self) -> bool:
         return 0 <= self.current_line < len(self.lines)
