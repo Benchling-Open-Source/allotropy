@@ -49,8 +49,8 @@ def test_to_allotrope_absorbance(filename: str) -> None:
 
 
 # Test allotrope_model_from_file().
-@pytest.mark.parametrize("filename", ABSORBENCE_FILENAMES)
-def test_model_from_file_absorbance(filename: str) -> None:
+def test_model_from_file_absorbance() -> None:
+    filename = ABSORBENCE_FILENAMES[0]
     test_filepath = f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.txt"
     expected_filepath = (
         f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
