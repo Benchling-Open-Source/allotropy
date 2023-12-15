@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections.abc import Mapping
 import json
 from typing import Any
 
@@ -14,7 +13,7 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import VendorType
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
 
-DictType = Mapping[str, Any]
+DictType = dict[str, Any]
 
 
 def replace_asm_converter_name_and_version(allotrope_dict: DictType) -> None:
