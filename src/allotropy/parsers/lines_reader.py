@@ -22,6 +22,12 @@ def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
 
 
 class LinesReader:
+    raw_contents: str
+    contents: str
+    lines: list[str]
+    n_lines: int
+    current_line: int
+
     def __init__(self, io_: IOType, encoding: Optional[str] = "UTF-8"):
         stream_contents = io_.read()
         self.raw_contents = (
@@ -30,7 +36,7 @@ class LinesReader:
             else stream_contents
         )
         self.contents = self.raw_contents.replace("\r\n", "\n")
-        self.lines: list[str] = self.contents.split("\n")
+        self.lines = self.contents.split("\n")
         self.n_lines = len(self.lines)
         self.current_line = 0
 
@@ -119,13 +125,17 @@ class CsvReader(LinesReader):
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
         header: Optional[int] = None,
+        sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return pd.read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
+                sep=sep,
                 dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
             )
         return None
 
@@ -134,3 +144,11 @@ class CsvReader(LinesReader):
         while self.match(match_pat):
             self.drop_until_empty()
             self.drop_empty()
+
+    def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
+        line = self.pop()
+        return None if line is None else pd.Series(line.split(sep))
+
+
+class ListCsvReader(CsvReader, ListReader):
+    pass
