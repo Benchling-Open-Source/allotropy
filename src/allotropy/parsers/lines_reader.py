@@ -12,10 +12,10 @@ from allotropy.types import IOType
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
+def read_to_lines(io_: IOType) -> list[str]:
     stream_contents = io_.read()
     raw_contents = (
-        _decode(stream_contents, encoding)
+        _decode(stream_contents)
         if isinstance(stream_contents, bytes)
         else stream_contents
     )
@@ -23,12 +23,11 @@ def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
     return contents.split("\n")
 
 
-def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
+def _decode(bytes_content: bytes) -> str:
+    encoding = chardet.detect(bytes_content)["encoding"]
     if not encoding:
-        encoding = chardet.detect(bytes_content)["encoding"]
-        if not encoding:
-            error = "Unable to detect text encoding for file. The file may be empty."
-            raise AllotropeConversionError(error)
+        error = "Unable to detect text encoding for file. The file may be empty."
+        raise AllotropeConversionError(error)
     return bytes_content.decode(encoding)
 
 
