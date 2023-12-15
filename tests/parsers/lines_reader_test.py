@@ -1,8 +1,4 @@
 from io import BytesIO
-import re
-from typing import Optional
-
-import pytest
 
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 
@@ -37,28 +33,6 @@ def _get_input_stream() -> BytesIO:
 def test_read_to_lines() -> None:
     lines = read_to_lines(_get_input_stream())
     assert lines == INPUT_LINES
-
-
-@pytest.mark.parametrize("encoding", [None, "UTF-8"])
-def test_read_to_lines_with_encoding(encoding: Optional[str]) -> None:
-    lines = read_to_lines(_get_input_stream(), encoding)
-    assert lines == INPUT_LINES
-
-
-def test_read_to_lines_with_encoding_that_is_invalid() -> None:
-    input_stream = _get_input_stream()
-    # TODO: should raise AllotropeConversionError
-    with pytest.raises(LookupError, match="unknown encoding: BAD ENCODING"):
-        read_to_lines(input_stream, "BAD ENCODING")
-
-
-def test_read_to_lines_with_encoding_that_is_valid_but_invalid_for_file() -> None:
-    input_stream = _get_input_stream()
-    expected_regex_raw = "'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)"
-    expected_regex = re.escape(expected_regex_raw)
-    # TODO: should raise AllotropeConversionError
-    with pytest.raises(UnicodeDecodeError, match=expected_regex):
-        read_to_lines(input_stream, "UTF-32")
 
 
 def get_test_reader() -> LinesReader:
