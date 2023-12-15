@@ -164,17 +164,17 @@ def test_create_sample_list_invalid_no_samples() -> None:
 
 @pytest.mark.short
 def test_create_sample_list_invalid_no_analyst() -> None:
+    df = pd.DataFrame(
+        {
+            "Sample ID": ["SAMPLE_1", "SAMPLE_2"],
+            "Sample Type": ["Spent Media", "Spent Media"],
+            "Date & Time": [
+                pd.Timestamp("2022-06-24 14:34:52"),
+                pd.Timestamp("2022-06-24 14:34:52"),
+            ],
+        }
+    )
     with pytest.raises(AllotropeConversionError, match="Unable to find the Operator."):
-        df = pd.DataFrame(
-            {
-                "Sample ID": ["SAMPLE_1", "SAMPLE_2"],
-                "Sample Type": ["Spent Media", "Spent Media"],
-                "Date & Time": [
-                    pd.Timestamp("2022-06-24 14:34:52"),
-                    pd.Timestamp("2022-06-24 14:34:52"),
-                ],
-            }
-        )
         SampleList.create(df)
 
 
