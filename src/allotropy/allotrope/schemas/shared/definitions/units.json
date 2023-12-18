@@ -275,12 +275,72 @@
             "unit"
         ]
     },
+    "NanogramPerMicroliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "ng/uL",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMicroliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "MicrogramPerMicroliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "ug/uL",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMicroliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
     "PicogramPerMilliliter": {
         "properties": {
             "unit": {
                 "type": "string",
                 "const": "pg/mL",
                 "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#PicogramPerMilliliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "NanogramPerMilliliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "ng/mL",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMilliliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "MicrogramPerMilliliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "ug/mL",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMilliliter"
+            }
+        },
+        "required": [
+            "unit"
+        ]
+    },
+    "MilligramPerMilliliter": {
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "mg/mL",
+                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilligramPerMilliliter"
             }
         },
         "required": [
