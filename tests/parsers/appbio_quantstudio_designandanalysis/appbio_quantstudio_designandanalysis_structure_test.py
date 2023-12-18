@@ -23,7 +23,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.calculated_document 
 from allotropy.parsers.appbio_quantstudio_designandanalysis.referenceable import (
     Referenceable,
 )
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignAndAnalysisReader,
+)
 from tests.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data import (
     get_broken_calc_doc_data,
     get_data,
@@ -60,7 +62,7 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
-    assert isinstance(Header.create(LinesReader(header_contents)), Header)
+    assert isinstance(Header.create(DesignAndAnalysisReader(header_contents)), Header)
 
 
 def test_header_builder() -> None:
@@ -85,7 +87,7 @@ def test_header_builder() -> None:
         experimental_data_identifier=experimental_data_identifier,
     )
 
-    assert Header.create(LinesReader(header_contents)) == Header(
+    assert Header.create(DesignAndAnalysisReader(header_contents)) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
         experiment_type=ExperimentType.genotyping_qPCR_experiment,
@@ -120,7 +122,7 @@ def test_header_builder_required_parameter_none_then_raise(
     header_contents = get_raw_header_contents(**{parameter: None})
 
     with pytest.raises(AllotropeConversionError, match=expected_error):
-        Header.create(LinesReader(header_contents))
+        Header.create(DesignAndAnalysisReader(header_contents))
 
 
 @pytest.mark.short
@@ -128,7 +130,7 @@ def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
 
     with pytest.raises(AllotropeConversionError):
-        Header.create(LinesReader(header_contents))
+        Header.create(DesignAndAnalysisReader(header_contents))
 
 
 @pytest.mark.short
@@ -136,7 +138,7 @@ def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
 
     with pytest.raises(AllotropeConversionError):
-        Header.create(LinesReader(header_contents))
+        Header.create(DesignAndAnalysisReader(header_contents))
 
 
 @pytest.mark.short
@@ -197,7 +199,7 @@ def test_results_builder() -> None:
 )
 def test_data_builder(test_filepath: str, expected_data: Data) -> None:
     with open(test_filepath, "rb") as raw_contents:
-        reader = LinesReader(raw_contents)
+        reader = DesignAndAnalysisReader(raw_contents)
     assert rm_uuid(create_data(reader)) == rm_uuid(expected_data)
 
 
