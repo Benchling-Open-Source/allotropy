@@ -10,22 +10,27 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-from io import StringIO
+
+# from io import StringIO
 import re
 from typing import Optional
 import uuid
 
-import numpy as np
+# import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+
+# from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignAndAnalysisReader,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.calculated_document import (
     CalculatedDocument,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.referenceable import (
     Referenceable,
 )
-from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -50,34 +55,37 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    pcr_detection_chemistry: str
+    pcr_detection_chemistry: Optional[str]
     passive_reference_dye_setting: Optional[str]
     barcode: Optional[str]
     analyst: Optional[str]
     experimental_data_identifier: Optional[str]
+    software_name: Optional[str]
+    software_version: Optional[str]
 
     @staticmethod
-    def create(reader: LinesReader) -> Header:
-        lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        )
-        data = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        data.index = data.index.str.strip()
-        data = data.str.strip().replace("NA", None)
+    def create(reader: DesignAndAnalysisReader) -> Header:
+        # lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
+        # csv_stream = StringIO("\n".join(lines))
+        # raw_data = pd.read_csv(
+        #    csv_stream, header=None, sep="=", names=["index", "values"]
+        # )
+        # data = pd.Series(raw_data["values"].values, index=raw_data["index"])
+        # data.index = data.index.str.strip()
+        # data = data.str.strip().replace("NA", None)
+        data = reader.metadata
 
-        experiments_type_options = {
+        """experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
             "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
             "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
             "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
             "Genotyping": ExperimentType.genotyping_qPCR_experiment,
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
-        }
+        }"""
 
         return Header(
-            measurement_time=try_str_from_series(data, "Experiment Run End Time"),
+            measurement_time=try_str_from_series(data, "Run End Data/Time"),
             plate_well_count=assert_not_none(
                 try_int(
                     assert_not_none(
@@ -91,12 +99,14 @@ class Header:
                 ),
                 msg="Unable to interpret plate well count",
             ),
-            experiment_type=assert_not_none(
-                experiments_type_options.get(
-                    try_str_from_series(data, "Experiment Type"),
-                ),
-                msg="Unable to find valid experiment type",
-            ),
+            # experiment_type=assert_not_none(
+            #    experiments_type_options.get(
+            #        try_str_from_series(data, "Experiment Type"),
+            #    ),
+            #    msg="Unable to find valid experiment type",
+            # ),
+            # default to this for now as it's not in the data file
+            experiment_type=ExperimentType.melt_curve_qPCR_experiment,
             device_identifier=(
                 try_str_from_series_or_none(data, "Instrument Name") or "NA"
             ),
@@ -108,15 +118,21 @@ class Header:
             measurement_method_identifier=try_str_from_series(
                 data, "Quantification Cycle Method"
             ),
-            pcr_detection_chemistry=try_str_from_series(data, "Chemistry"),
+            pcr_detection_chemistry=try_str_from_series_or_none(data, "Chemistry"),
             passive_reference_dye_setting=try_str_from_series_or_none(
                 data, "Passive Reference"
             ),
-            barcode=try_str_from_series_or_none(data, "Experiment Barcode"),
-            analyst=try_str_from_series_or_none(data, "Experiment User Name"),
+            barcode=try_str_from_series_or_none(data, "Barcode"),
+            analyst=try_str_from_series_or_none(data, "Operator"),
             experimental_data_identifier=try_str_from_series_or_none(
                 data, "Experiment Name"
             ),
+            software_name=try_str_from_series(data, "Software Name and Version").split(
+                " v"
+            )[0],
+            software_version=try_str_from_series(
+                data, "Software Name and Version"
+            ).split(" v")[1],
         )
 
 
@@ -227,13 +243,13 @@ class WellItem(Referenceable):
 
         target_dna_description = try_str_from_series(
             data,
-            "Target Name",
+            "Target",
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
         sample_identifier = try_str_from_series(
             data,
-            "Sample Name",
+            "Sample",
             msg=f"Unable to find sample identifier for well {identifier}",
         )
 
@@ -307,7 +323,7 @@ class Well:
         return Well(
             identifier=identifier,
             items={
-                item_data["Target Name"]: WellItem.create_generic(item_data)
+                item_data["Target"]: WellItem.create_generic(item_data)
                 for _, item_data in well_data.iterrows()
             },
         )
@@ -325,17 +341,27 @@ class WellList:
         return iter(self.wells)
 
     @staticmethod
-    def create(reader: LinesReader, experiment_type: ExperimentType) -> WellList:
-        assert_not_none(
-            reader.drop_until(r"^\[Sample Setup\]"),
-            msg="Unable to find 'Sample Setup' section in file.",
+    def create(
+        reader: DesignAndAnalysisReader, experiment_type: ExperimentType
+    ) -> WellList:
+        # assert_not_none(
+        #    reader.drop_until(r"^\[Sample Setup\]"),
+        #    msg="Unable to find 'Sample Setup' section in file.",
+        # )
+
+        # reader.pop()  # remove title
+        # lines = list(reader.pop_until(r"^\[.+\]"))
+        # csv_stream = StringIO("\n".join(lines))
+        # raw_data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
+        # data = raw_data[raw_data["Sample Name"].notnull()]
+
+        assert_not_empty_df(
+            reader.data["Results"],
+            msg="Unable to find 'Results' sheet in file.",
         )
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
-        data = raw_data[raw_data["Sample Name"].notnull()]
+        raw_data = reader.data["Results"]
+        data = raw_data[raw_data["Sample"].notnull()]
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             return WellList(
@@ -358,16 +384,20 @@ class WellList:
         )
 
 
-@dataclass(frozen=True)
+'''@dataclass(frozen=True)
 class RawData:
-    lines: list[str]
+    df: pd.DataFrame
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[RawData]:
-        if reader.match(r"^\[Raw Data\]"):
-            reader.pop()  # remove title
-            return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
-        return None
+    def create(reader: DesignAndAnalysisReader) -> Optional[RawData]:
+        # if reader.match(r"^\[Raw Data\]"):
+        #    reader.pop()  # remove title
+        #    return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
+        # return None
+
+        if not reader.data["Raw Data"].empty:
+            return RawData(df=reader.data["Raw Data"])
+        return None'''
 
 
 @dataclass(frozen=True)
@@ -378,16 +408,22 @@ class AmplificationData:
     delta_rn: list[Optional[float]]
 
     @staticmethod
-    def get_data(reader: LinesReader) -> pd.DataFrame:
-        assert_not_none(
-            reader.drop_until(r"^\[Amplification Data\]"),
-            msg="Unable to find 'Amplification Data' section in file.",
-        )
+    def get_data(reader: DesignAndAnalysisReader) -> pd.DataFrame:
+        # assert_not_none(
+        #    reader.drop_until(r"^\[Amplification Data\]"),
+        #    msg="Unable to find 'Amplification Data' section in file.",
+        # )
 
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+        # reader.pop()  # remove title
+        # lines = list(reader.pop_until(r"^\[.+\]"))
+        # csv_stream = StringIO("\n".join(lines))
+        # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+
+        assert_not_empty_df(
+            reader.data["Amplification Data"],
+            msg="Unable to find 'Amplification Data' sheet in file.",
+        )
+        return reader.data["Amplification Data"]
 
     @staticmethod
     def create(
@@ -399,15 +435,15 @@ class AmplificationData:
         )
 
         target_data = assert_not_empty_df(
-            well_data[well_data["Target Name"] == well_item.target_dna_description],
+            well_data[well_data["Target"] == well_item.target_dna_description],
             msg=f"Unable to find amplification data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
         )
 
         return AmplificationData(
-            total_cycle_number_setting=float(target_data["Cycle"].max()),
-            cycle=target_data["Cycle"].tolist(),
+            total_cycle_number_setting=float(target_data["Cycle Number"].max()),
+            cycle=target_data["Cycle Number"].tolist(),
             rn=target_data["Rn"].tolist(),
-            delta_rn=target_data["Delta Rn"].tolist(),
+            delta_rn=target_data["dRn"].tolist(),
         )
 
 
@@ -423,13 +459,18 @@ class MulticomponentData:
         )
 
     @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Multicomponent Data\]"):
-            return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until(r"^\[.+\]"))
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+    def get_data(reader: DesignAndAnalysisReader) -> Optional[pd.DataFrame]:
+        # if not reader.match(r"^\[Multicomponent Data\]"):
+        #    return None
+        # reader.pop()  # remove title
+        # lines = list(reader.pop_until(r"^\[.+\]"))
+        # csv_stream = StringIO("\n".join(lines))
+        # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+
+        if "Multicomponent" in reader.data:
+            if not reader.data["Multicomponent"].empty:
+                return reader.data["Multicomponent"]
+        return None
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well) -> MulticomponentData:
@@ -439,11 +480,11 @@ class MulticomponentData:
         )
 
         return MulticomponentData(
-            cycle=well_data["Cycle"].tolist(),
+            cycle=well_data["Cycle Number"].tolist(),
             columns={
                 name: well_data[name].tolist()  # type: ignore[misc]
                 for name in well_data
-                if name not in ["Well", "Cycle", "Well Position"]
+                if name not in ["Well", "Cycle Number", "Well Position"]
             },
         )
 
@@ -477,33 +518,37 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
-    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series[str]]:
-        assert_not_none(
-            reader.drop_until(r"^\[Results\]"),
-            msg="Unable to find 'Results' section in file.",
-        )
+    def get_data(
+        reader: DesignAndAnalysisReader,
+    ) -> tuple[pd.DataFrame, pd.Series[str]]:
+        # assert_not_none(
+        #    reader.drop_until(r"^\[Results\]"),
+        #    msg="Unable to find 'Results' section in file.",
+        # )
 
-        reader.pop()  # remove title
-        data_lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(data_lines))
-        data = pd.read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
+        # reader.pop()  # remove title
+        # data_lines = list(reader.pop_until_empty())
+        # csv_stream = StringIO("\n".join(data_lines))
+        # data = pd.read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
 
-        reader.drop_empty()
+        # reader.drop_empty()
 
-        if reader.match(r"\[.+\]"):
-            return data, pd.Series()
+        # if reader.match(r"\[.+\]"):
+        #    return data, pd.Series()
 
-        metadata_lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(metadata_lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        )
-        metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        metadata.index = metadata.index.str.strip()
+        # metadata_lines = list(reader.pop_until_empty())
+        # csv_stream = StringIO("\n".join(metadata_lines))
+        # raw_data = pd.read_csv(
+        #    csv_stream, header=None, sep="=", names=["index", "values"]
+        # )
+        # metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
+        # metadata.index = metadata.index.str.strip()
 
-        reader.drop_empty()
+        # reader.drop_empty()
 
-        return data, metadata.str.strip()
+        # return data, metadata.str.strip()
+        # The example I have doesn't have this metadata, so returning an empty Series for now)
+        return reader.data["Results"], pd.Series()
 
     @staticmethod
     def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
@@ -581,29 +626,29 @@ class Result:
 
         target_data = df_to_series(
             assert_not_empty_df(
-                well_data[well_data["Target Name"] == well_item.target_dna_description],
+                well_data[well_data["Target"] == well_item.target_dna_description],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
             msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
         cycle_threshold_result = assert_not_none(
-            target_data.get("CT"),
+            target_data.get("Cq"),
             msg="Unable to find cycle threshold result",
         )
 
         return Result(
             cycle_threshold_value_setting=try_float_from_series(
                 target_data,
-                "Ct Threshold",
+                "Threshold",
                 msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
             ),
             cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
             automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
-                target_data, "Automatic Ct Threshold"
+                target_data, "Auto Threshold"
             ),
             automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
-                target_data, "Automatic Baseline"
+                target_data, "Auto Baseline"
             ),
             normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
             baseline_corrected_reporter_result=try_float_from_series_or_none(
@@ -613,13 +658,13 @@ class Result:
                 target_data, "Call"
             ),
             genotyping_determination_method_setting=try_float_from_series_or_none(
-                target_data, "Threshold Value"
+                target_data, "Threshold"
             ),
             quantity=try_float_from_series_or_none(target_data, "Quantity"),
             quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
             quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
-            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
-            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
+            ct_mean=try_float_from_series_or_none(target_data, "Cq Mean"),
+            ct_sd=try_float_from_series_or_none(target_data, "Cq SD"),
             delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
             delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
             delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
@@ -656,26 +701,29 @@ class MeltCurveRawData:
             msg=f"Unable to find melt curve raw data for well {well.identifier}.",
         )
         return MeltCurveRawData(
-            reading=well_data["Reading"].tolist(),
+            reading=well_data["Temperature"].tolist(),
             fluorescence=well_data["Fluorescence"].tolist(),
             derivative=well_data["Derivative"].tolist(),
         )
 
     @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
-        if not reader.match(r"^\[Melt Curve Raw Data\]"):
+    def get_data(reader: DesignAndAnalysisReader) -> Optional[pd.DataFrame]:
+        # if not reader.match(r"^\[Melt Curve Raw Data\]"):
+        #    return None
+        # reader.pop()  # remove title
+        # lines = list(reader.pop_until_empty())
+        # csv_stream = StringIO("\n".join(lines))
+        # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+        if reader.data["Melt Curve Raw"].empty:
             return None
-        reader.pop()  # remove title
-        lines = list(reader.pop_until_empty())
-        csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+        return reader.data["Melt Curve Raw"]
 
 
 @dataclass(frozen=True)
 class Data:
     header: Header
     wells: WellList
-    raw_data: Optional[RawData]
+    # raw_data: Optional[RawData]
     endogenous_control: str
     reference_sample: str
     calculated_documents: list[CalculatedDocument]
