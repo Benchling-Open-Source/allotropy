@@ -110,7 +110,6 @@ class SampleDocument:
 class DeviceControlDocumentItem:
     device_type: TStringValue
     measurement_method_identifier: TStringValue
-    PCR_detection_chemistry: TStringValue
     device_identifier: Optional[TStringValue] = None
     detection_type: Optional[TStringValue] = None
     total_cycle_number_setting: Optional[TQuantityValueNumber] = None
@@ -120,6 +119,7 @@ class DeviceControlDocumentItem:
     annealing_time_setting: Optional[TQuantityValueSecondTime] = None
     extension_temperature_setting: Optional[TQuantityValueDegreeCelsius] = None
     extension_time_setting: Optional[TQuantityValueSecondTime] = None
+    PCR_detection_chemistry: Optional[TStringValue] = None
     reporter_dye_setting: Optional[TStringValue] = None
     quencher_dye_setting: Optional[TStringValue] = None
     passive_reference_dye_setting: Optional[TStringValue] = None

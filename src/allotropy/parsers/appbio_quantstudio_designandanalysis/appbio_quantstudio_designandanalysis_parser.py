@@ -43,19 +43,23 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data_creator import (
     create_data,
 )
+
+# from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignAndAnalysisReader,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     Data,
     Well,
     WellItem,
 )
-from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, file_name = named_file_contents
-        reader = LinesReader(raw_contents)
+        reader = DesignAndAnalysisReader(raw_contents)
         data = create_data(reader)
         return self._get_model(data, file_name)
 
@@ -71,8 +75,10 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     data_system_instance_identifier="localhost",
                     file_name=file_name,
                     UNC_path="",  # unknown
-                    software_name="Thermo QuantStudio",
-                    software_version="1.0",
+                    # software_name="Thermo QuantStudio",
+                    software_name=data.header.software_name,
+                    # software_version="1.0",
+                    software_version=data.header.software_version,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
