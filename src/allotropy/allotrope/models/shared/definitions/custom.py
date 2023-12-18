@@ -11,15 +11,20 @@ from allotropy.allotrope.models.shared.definitions.units import (
     DegreeCelsius,
     GramPerLiter,
     Hertz,
+    MicrogramPerMicroliter,
+    MicrogramPerMilliliter,
     Microliter,
     Micrometer,
     MilliAbsorbanceUnit,
+    MilligramPerMilliliter,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
     MillionCellsPerMilliliter,
     MilliOsmolesPerKilogram,
     MilliSecond,
+    NanogramPerMicroliter,
+    NanogramPerMilliliter,
     Nanometer,
     Number,
     NumberPerMicroliter,
@@ -131,8 +136,43 @@ class TQuantityValueNumber(Number, TQuantityValueWithOptionalUnit):
 
 
 @dataclass
+class TQuantityValueNanogramPerMicroliter(
+    NanogramPerMicroliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMicrogramPerMicroliter(
+    MicrogramPerMicroliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
 class TQuantityValuePicogramPerMilliliter(
     PicogramPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueNanogramPerMilliliter(
+    NanogramPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMicrogramPerMilliliter(
+    MicrogramPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMilligramPerMilliliter(
+    MilligramPerMilliliter, TQuantityValueWithOptionalUnit
 ):
     pass
 
