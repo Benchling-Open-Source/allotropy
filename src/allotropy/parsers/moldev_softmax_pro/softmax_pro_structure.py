@@ -154,10 +154,11 @@ class PlateHeader:
 
 @dataclass(frozen=True)
 class PlateWavelengthData:
+    wavelength: Optional[int]
     data: pd.Series[float]
 
     @staticmethod
-    def create(df_data: pd.DataFrame) -> PlateWavelengthData:
+    def create(wavelength: Optional[int], df_data: pd.DataFrame) -> PlateWavelengthData:
         rows, _ = df_data.shape
         df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
 
@@ -167,7 +168,7 @@ class PlateWavelengthData:
             raise AllotropeConversionError(error)
 
         data.index = data.index.map("".join)
-        return PlateWavelengthData(data)
+        return PlateWavelengthData(wavelength, data)
 
 
 @dataclass(frozen=True)
@@ -204,9 +205,14 @@ class PlateKineticData:
         header: PlateHeader, w_data: pd.DataFrame
     ) -> Iterator[PlateWavelengthData]:
         for idx in range(header.num_wavelengths):
+            wavelength = (
+                header.wavelengths[idx]
+                if header.read_type != ReadType.SPECTRUM.value
+                else None
+            )
             start = idx * (header.num_columns + 1)
             end = start + header.num_columns
-            yield PlateWavelengthData.create(w_data.iloc[:, start:end])
+            yield PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
 
 
 @dataclass(frozen=True)
@@ -296,6 +302,7 @@ class TimeWavelengthRow:
 
 @dataclass(frozen=True)
 class TimeWavelengthData:
+    wavelength: Optional[int]
     data: pd.DataFrame
 
     def iter_wavelength_rows(self) -> Iterator[TimeWavelengthRow]:
@@ -333,9 +340,14 @@ class TimeRawData:
         header: PlateHeader, data: pd.DataFrame
     ) -> Iterator[TimeWavelengthData]:
         for idx in range(header.num_wavelengths):
+            wavelength = (
+                header.wavelengths[idx]
+                if header.read_type != ReadType.SPECTRUM.value
+                else None
+            )
             start = idx * (header.kinetic_points + 1)
             end = start + header.kinetic_points
-            yield TimeWavelengthData(data.iloc[start:end, :])
+            yield TimeWavelengthData(wavelength, data.iloc[start:end, :])
 
 
 @dataclass(frozen=True)
@@ -448,13 +460,8 @@ class PlateBlock(Block):
         value: float,
         data_key: Optional[str],
         temperature: Optional[float],
-        wavelength_index: int,
+        wavelength: Optional[int],
     ) -> None:
-        wavelength = (
-            header.wavelengths[wavelength_index]
-            if header.read_type != ReadType.SPECTRUM.value
-            else None
-        )
         dimension = (
             wavelength if header.read_type == ReadType.ENDPOINT.value else data_key
         )
@@ -476,7 +483,7 @@ class PlateBlock(Block):
                 time_data.raw_data,
                 msg="Unable to find plate block raw data.",
             )
-            for idx, wavelength_data in enumerate(raw_data.wavelength_data):
+            for wavelength_data in raw_data.wavelength_data:
                 for wavelength_row in wavelength_data.iter_wavelength_rows():
                     for pos, val in wavelength_row.data.items():
                         PlateBlock._add_data_point(
@@ -486,7 +493,7 @@ class PlateBlock(Block):
                             val,
                             data_key=str(int(wavelength_row.data_key)),
                             temperature=wavelength_row.temperature,
-                            wavelength_index=idx,
+                            wavelength=wavelength_data.wavelength,
                         )
             if time_data.reduced_data:
                 for pos, val in time_data.reduced_data.iter_data():
@@ -516,7 +523,7 @@ class PlateBlock(Block):
                 msg="Unable to find plate block raw data.",
             )
             for kinetic_data in raw_data.kinetic_data:
-                for idx, wavelength_data in enumerate(kinetic_data.wavelength_data):
+                for wavelength_data in kinetic_data.wavelength_data:
                     for pos, value in wavelength_data.data.items():
                         PlateBlock._add_data_point(
                             header,
@@ -525,7 +532,7 @@ class PlateBlock(Block):
                             value,
                             data_key=kinetic_data.data_key,
                             temperature=kinetic_data.temperature,
-                            wavelength_index=idx,
+                            wavelength=wavelength_data.wavelength,
                         )
             if plate_data.reduced_data:
                 for pos, value in plate_data.reduced_data.data.items():
