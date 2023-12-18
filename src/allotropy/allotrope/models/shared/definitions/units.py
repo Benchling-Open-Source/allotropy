@@ -165,3 +165,8 @@ class RelativeFluorescenceUnit:
 @dataclass
 class RelativeLightUnit:
     unit: Optional[str] = "RLU"
+
+
+@dataclass
+class SquareCentimetersPerGram:
+    unit: Optional[str] = "cm^2/g"
