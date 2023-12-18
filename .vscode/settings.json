@@ -11,8 +11,6 @@
   "[yaml]": {
     "editor.autoIndent": "keep"
   },
-  // Do not use pylint
-  "python.linting.pylintEnabled": false,
   // Disable Python tests for now.
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": false,
@@ -24,12 +22,12 @@
     "--quiet"
   ],
   // Use Black for formatting
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
+  "black-formatter.args": [
     "--config",
     "${workspaceRoot}/pyproject.toml"
   ],
   "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
@@ -37,5 +35,4 @@
     }
   },
   "search.useIgnoreFiles": true,
-  "python.linting.enabled": true,
 }
