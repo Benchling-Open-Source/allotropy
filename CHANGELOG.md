@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Parser for ChemoMetic NucleoView
 ### Fixed
 ### Changed
+- Simplify Moldev Softmax Pro parsing with dataclasses
 ### Deprecated
 ### Removed
 ### Security
