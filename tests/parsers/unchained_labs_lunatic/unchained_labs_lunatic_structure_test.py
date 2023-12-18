@@ -71,7 +71,7 @@ def test_create_measurement_with_incorrect_wavelength_column_format() -> None:
 
 
 @pytest.mark.short
-def test_get_calculated_data_from_measuremet_for_unknown_wavelength() -> None:
+def test_get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
     well_plate_data = {
         "Sample name": "dummy name",
         "Plate ID": "dummy ID",
@@ -87,7 +87,7 @@ def test_get_calculated_data_from_measuremet_for_unknown_wavelength() -> None:
 
 
 @pytest.mark.short
-def test_get_calculated_data_from_measuremet_for_A260() -> None:  # noqa: N802
+def test_get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
     well_plate_data = {
         "Sample name": "dummy name",
         "Plate ID": "dummy ID",
@@ -155,7 +155,29 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
 
 
 @pytest.mark.short
-def test_get_calculated_data_document_from_data_no_calculated_data_columns() -> None:
+def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
+    plate_data = {
+        "Sample name": ["batch_id"],
+        "Plate ID": ["Plate1"],
+        "Application": ["dummyApp"],
+        "Date": ["2021-05-20"],
+        "Time": ["16:55:51"],
+        "Instrument ID": [14],
+        "A260": [23.4],
+        "A260 Concentration (ng/ul)": [4.5],
+    }
+    data = Data.create(pd.DataFrame(plate_data))
+    calculated_data_document = data.get_calculated_data_document()
+    calculated_data_item = calculated_data_document[0]
+
+    assert calculated_data_item.name == "Concentration"
+    assert calculated_data_item.value == 4.5
+    assert calculated_data_item.unit == "ng/mL"
+    assert calculated_data_item.data_source_document[0].feature == "absorbance"
+
+
+@pytest.mark.short
+def test_get_calculated_data_document_from_data_create_right_ammount_of_items() -> None:
     plate_data = {
         "Sample name": ["batch_id"],
         "Plate ID": ["Plate1"],
