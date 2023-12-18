@@ -12,13 +12,16 @@ def read_csv(
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
     delimiter: str | None | lib.NoDefault = None,
     dtype: DtypeArg | None = None,
+    float_precision: Literal["high", "legacy", "round_trip"] | None = None,
     header: int | Sequence[int] | None | Literal["infer"] = "infer",
     index_col: IndexLabel | Literal[False] | None = None,
     names: Sequence[Hashable] | None | lib.NoDefault = lib.no_default,
     nrows: int | None = None,
     parse_dates: bool | Sequence[Hashable] | None = None,
     sep: str | None | lib.NoDefault = lib.no_default,
+    skipinitialspace: bool = False,  # noqa: FBT001, FBT002
     skiprows: list[int] | int | Callable[[Hashable], bool] | None = None,
+    skipfooter: int = 0,
     thousands: str | None = None,
     usecols: list[HashableT] | Callable[[Hashable], bool] | None = None,
 ) -> pd.DataFrame:
@@ -37,13 +40,16 @@ def read_csv(
         filepath_or_buffer,
         delimiter=delimiter,  # type: ignore[arg-type]
         dtype=dtype,
+        float_precision=float_precision,
         header=header,
         index_col=index_col,  # type: ignore[arg-type]
         names=names,  # type: ignore[arg-type]
         nrows=nrows,
         parse_dates=parse_dates,  # type: ignore[arg-type]
         sep=sep,  # type: ignore[arg-type]
+        skipinitialspace=skipinitialspace,
         skiprows=skiprows,  # type: ignore[arg-type]
+        skipfooter=skipfooter,
         thousands=thousands,
         usecols=usecols,  # type: ignore[arg-type]
     )
