@@ -5,34 +5,14 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 import re
-from typing import Any, Optional
-import uuid
+from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
-    DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
-    DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,
-    MeasurementAggregateDocument as MeasurementAggregateDocumentFluorescence,
-    MeasurementDocumentItem as MeasurementDocumentItemFluorescence,
-    Model as ModelFluorescence,
-)
-from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence import (
-    DeviceControlAggregateDocument as DeviceControlAggregateDocumentLuminescence,
-    DeviceControlDocumentItem as DeviceControlDocumentItemLuminescence,
-    MeasurementAggregateDocument as MeasurementAggregateDocumentLuminescence,
-    MeasurementDocumentItem as MeasurementDocumentItemLuminescence,
-    Model as ModelLuminescence,
-)
 from allotropy.allotrope.models.shared.components.plate_reader import (
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValueNanometer,
-    TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -41,13 +21,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
-    DeviceControlAggregateDocument as DeviceControlAggregateDocumentAbsorbance,
-    DeviceControlDocumentItem as DeviceControlDocumentItemAbsorbance,
-    MeasurementAggregateDocument as MeasurementAggregateDocumentAbsorbance,
-    MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
-    Model as ModelAbsorbance,
-)
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -55,7 +28,6 @@ from allotropy.exceptions import (
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
-    natural_sort_key,
     num_to_chars,
     PrimitiveValue,
     str_or_none,
@@ -694,9 +666,6 @@ class PlateBlock(Block):
             ]
         )
 
-    def to_allotrope(self) -> Any:
-        raise NotImplementedError
-
 
 @dataclass(frozen=True)
 class PlateBlockExtraAttr:
@@ -775,62 +744,6 @@ class FluorescencePlateBlock(PlateBlock):
             cutoff_filters=PlateBlock.split_wavelengths(cutoff_filters_str),
         )
 
-    def to_allotrope(self) -> Any:
-        measurement_document = []
-
-        for well in sorted(self.well_data.keys(), key=natural_sort_key):
-            well_data = self.well_data[well]
-
-            # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
-            # Fluorescence ASM model has these extra fields. We may be able to fix this by templating the PlateBlock
-            # class on these classes, or some clever shared/models refactoring.
-            device_control_doc = DeviceControlDocumentItemFluorescence(
-                detector_gain_setting=self.header.pmt_gain
-            )
-
-            if self.is_single_wavelength:
-                device_control_doc.detector_wavelength_setting = (
-                    TQuantityValueNanometer(self.header.wavelengths[0])
-                )
-            if (
-                self.header.excitation_wavelengths
-                and len(self.header.excitation_wavelengths) == 1
-            ):
-                device_control_doc.excitation_wavelength_setting = (
-                    TQuantityValueNanometer(self.header.excitation_wavelengths[0])
-                )
-            if self.header.cutoff_filters and len(self.header.cutoff_filters) == 1:
-                device_control_doc.wavelength_filter_cutoff_setting = (
-                    TQuantityValueNanometer(self.header.cutoff_filters[0])
-                )
-
-            measurement = MeasurementDocumentItemFluorescence(
-                DeviceControlAggregateDocumentFluorescence([device_control_doc]),
-                self.generate_sample_document(well),
-            )
-
-            if well_data.temperature is not None:
-                measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                    well_data.temperature
-                )
-
-            if not well_data.is_empty:
-                measurement.data_cube = self.generate_data_cube(well_data)
-
-            if well_data.processed_data:
-                measurement.processed_data_aggregate_document = (
-                    self.generate_processed_data_aggreate_document(well_data)
-                )
-            measurement_document.append(measurement)
-
-        return ModelFluorescence(
-            measurement_aggregate_document=MeasurementAggregateDocumentFluorescence(
-                measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(self.header.num_wells),
-                measurement_document=measurement_document,
-            )
-        )
-
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
@@ -897,47 +810,6 @@ class LuminescencePlateBlock(PlateBlock):
             cutoff_filters=PlateBlock.split_wavelengths(cutoff_filters_str),
         )
 
-    def to_allotrope(self) -> Any:
-        measurement_document = []
-        for well in sorted(self.well_data.keys(), key=natural_sort_key):
-            well_data = self.well_data[well]
-
-            device_control_doc = DeviceControlDocumentItemLuminescence(
-                detector_gain_setting=self.header.pmt_gain
-            )
-
-            if self.is_single_wavelength:
-                device_control_doc.detector_wavelength_setting = (
-                    TQuantityValueNanometer(self.header.wavelengths[0])
-                )
-
-            measurement = MeasurementDocumentItemLuminescence(
-                DeviceControlAggregateDocumentLuminescence([device_control_doc]),
-                self.generate_sample_document(well),
-            )
-
-            if well_data.temperature is not None:
-                measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                    well_data.temperature
-                )
-
-            if not well_data.is_empty:
-                measurement.data_cube = self.generate_data_cube(well_data)
-
-            if well_data.processed_data:
-                measurement.processed_data_aggregate_document = (
-                    self.generate_processed_data_aggreate_document(well_data)
-                )
-            measurement_document.append(measurement)
-
-        return ModelLuminescence(
-            measurement_aggregate_document=MeasurementAggregateDocumentLuminescence(
-                measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(self.header.num_wells),
-                measurement_document=measurement_document,
-            )
-        )
-
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
@@ -991,47 +863,6 @@ class AbsorbancePlateBlock(PlateBlock):
             num_rows=try_int(num_rows_raw, "num_rows"),
             excitation_wavelengths=None,
             cutoff_filters=None,
-        )
-
-    def to_allotrope(self) -> Any:
-        measurement_document = []
-        for well in sorted(self.well_data.keys(), key=natural_sort_key):
-            well_data = self.well_data[well]
-
-            device_control_doc = DeviceControlDocumentItemAbsorbance(
-                detector_gain_setting=self.header.pmt_gain
-            )
-
-            if self.is_single_wavelength:
-                device_control_doc.detector_wavelength_setting = (
-                    TQuantityValueNanometer(self.header.wavelengths[0])
-                )
-
-            measurement = MeasurementDocumentItemAbsorbance(
-                DeviceControlAggregateDocumentAbsorbance([device_control_doc]),
-                self.generate_sample_document(well),
-            )
-
-            if well_data.temperature is not None:
-                measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                    well_data.temperature
-                )
-
-            if not well_data.is_empty:
-                measurement.data_cube = self.generate_data_cube(well_data)
-
-            if well_data.processed_data:
-                measurement.processed_data_aggregate_document = (
-                    self.generate_processed_data_aggreate_document(well_data)
-                )
-            measurement_document.append(measurement)
-
-        return ModelAbsorbance(
-            measurement_aggregate_document=MeasurementAggregateDocumentAbsorbance(
-                measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(self.header.num_wells),
-                measurement_document=measurement_document,
-            )
         )
 
 
