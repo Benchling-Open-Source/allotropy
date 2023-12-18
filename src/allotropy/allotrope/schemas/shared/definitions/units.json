@@ -394,5 +394,17 @@
         "required": [
             "unit"
         ]
+    },
+    "SquareCentimetersPerGram":{
+        "properties": {
+            "unit": {
+                "type": "string",
+                "const": "cm^2/g",
+                "$asm.unit-iri": "http://qudt.org/vocab/unit#SquareCentimetersPerGram"
+            }
+        },
+        "required": [
+            "unit"
+        ]
     }
 }
