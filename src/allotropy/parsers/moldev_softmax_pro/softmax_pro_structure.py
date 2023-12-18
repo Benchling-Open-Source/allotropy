@@ -278,18 +278,6 @@ class PlateData:
             reduced_data=PlateReducedData.create(reader, header),
         )
 
-    def get_raw_data(self) -> PlateRawData:
-        return assert_not_none(
-            self.raw_data,
-            msg="Unable to find plate block raw data.",
-        )
-
-    def get_reduced_data(self) -> PlateReducedData:
-        return assert_not_none(
-            self.reduced_data,
-            msg="Unable to find plate block reduced data.",
-        )
-
 
 @dataclass(frozen=True)
 class TimeWavelengthRow:
@@ -390,18 +378,6 @@ class TimeData:
             reduced_data=TimeReducedData.create(reader),
         )
 
-    def get_raw_data(self) -> TimeRawData:
-        return assert_not_none(
-            self.raw_data,
-            msg="Unable to find plate block raw data.",
-        )
-
-    def get_reduced_data(self) -> TimeReducedData:
-        return assert_not_none(
-            self.reduced_data,
-            msg="Unable to find plate block reduced data.",
-        )
-
 
 @dataclass(frozen=True)
 class PlateBlock(Block):
@@ -496,9 +472,11 @@ class PlateBlock(Block):
         time_data: TimeData,
     ) -> None:
         if header.data_type == DataType.RAW.value:
-            for idx, wavelength_data in enumerate(
-                time_data.get_raw_data().wavelength_data
-            ):
+            raw_data = assert_not_none(
+                time_data.raw_data,
+                msg="Unable to find plate block raw data.",
+            )
+            for idx, wavelength_data in enumerate(raw_data.wavelength_data):
                 for wavelength_row in wavelength_data.iter_wavelength_rows():
                     for pos, val in wavelength_row.data.items():
                         PlateBlock._add_data_point(
@@ -514,7 +492,11 @@ class PlateBlock(Block):
                 for pos, val in time_data.reduced_data.iter_data():
                     well_data[pos].processed_data.append(val)
         elif header.data_type == DataType.REDUCED.value:
-            for pos, val in time_data.get_reduced_data().iter_data():
+            reduced_data = assert_not_none(
+                time_data.reduced_data,
+                msg="Unable to find plate block reduced data.",
+            )
+            for pos, val in reduced_data.iter_data():
                 well_data[pos].processed_data.append(val)
         else:
             msg = msg_for_error_on_unrecognized_value(
@@ -529,7 +511,11 @@ class PlateBlock(Block):
         plate_data: PlateData,
     ) -> None:
         if header.data_type == DataType.RAW.value:
-            for kinetic_data in plate_data.get_raw_data().kinetic_data:
+            raw_data = assert_not_none(
+                plate_data.raw_data,
+                msg="Unable to find plate block raw data.",
+            )
+            for kinetic_data in raw_data.kinetic_data:
                 for idx, wavelength_data in enumerate(kinetic_data.wavelength_data):
                     for pos, value in wavelength_data.data.items():
                         PlateBlock._add_data_point(
@@ -545,7 +531,11 @@ class PlateBlock(Block):
                 for pos, value in plate_data.reduced_data.data.items():
                     well_data[str(pos)].processed_data.append(value)
         elif header.data_type == DataType.REDUCED.value:
-            for pos, value in plate_data.get_reduced_data().data.items():
+            reduced_data = assert_not_none(
+                plate_data.reduced_data,
+                msg="Unable to find plate block reduced data.",
+            )
+            for pos, value in reduced_data.data.items():
                 well_data[str(pos)].processed_data.append(value)
         else:
             msg = msg_for_error_on_unrecognized_value(
