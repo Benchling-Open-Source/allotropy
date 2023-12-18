@@ -153,34 +153,21 @@ class PlateHeader:
 
 
 @dataclass(frozen=True)
-class WavelengthElement:
-    row: str
-    col: str
-    value: float
-
-    @property
-    def pos(self) -> str:
-        return f"{self.row}{self.col}"
-
-
-@dataclass(frozen=True)
 class PlateWavelengthData:
-    wavelength_data: pd.DataFrame
+    data: pd.Series[float]
 
     @staticmethod
-    def create(data: pd.DataFrame) -> PlateWavelengthData:
-        rows, _ = data.shape
-        data.index = pd.Index([num_to_chars(i) for i in range(rows)])
-        return PlateWavelengthData(wavelength_data=data)
+    def create(df_data: pd.DataFrame) -> PlateWavelengthData:
+        rows, _ = df_data.shape
+        df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
 
-    def iter_elements(self) -> Iterator[WavelengthElement]:
-        for letter, row in self.wavelength_data.iterrows():
-            for number, value in row.items():
-                yield WavelengthElement(
-                    row=str(letter),
-                    col=str(number),
-                    value=try_float(value, "well data point"),
-                )
+        data = df_data.stack()
+        if isinstance(data, pd.DataFrame):
+            error = "Unable to read plate wavelength data as pandas series."
+            raise AllotropeConversionError(error)
+
+        data.index = data.index.map("".join)
+        return PlateWavelengthData(data)
 
 
 @dataclass(frozen=True)
@@ -249,7 +236,7 @@ class PlateRawData:
 
 @dataclass(frozen=True)
 class PlateReducedData:
-    reduced_data: pd.DataFrame
+    data: pd.Series[float]
 
     @staticmethod
     def create(
@@ -263,19 +250,17 @@ class PlateReducedData:
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
-        data = raw_data.iloc[:, 2 : header.num_columns + 2]
-        rows, _ = data.shape
-        data.index = pd.Index([num_to_chars(i) for i in range(rows)])
-        return PlateReducedData(reduced_data=data)
+        df_data = raw_data.iloc[:, 2 : header.num_columns + 2]
+        rows, _ = df_data.shape
+        df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
 
-    def iter_elements(self) -> Iterator[WavelengthElement]:
-        for letter, row in self.reduced_data.iterrows():
-            for number, value in row.items():
-                yield WavelengthElement(
-                    row=str(letter),
-                    col=str(number),
-                    value=try_float(value, "well data point"),
-                )
+        data = df_data.stack()
+        if isinstance(data, pd.DataFrame):
+            error = "Unable to read plate reduced data as pandas series."
+            raise AllotropeConversionError(error)
+
+        data.index = data.index.map("".join)
+        return PlateReducedData(data)
 
 
 @dataclass(frozen=True)
@@ -546,26 +531,22 @@ class PlateBlock(Block):
         if header.data_type == DataType.RAW.value:
             for kinetic_data in plate_data.get_raw_data().kinetic_data:
                 for idx, wavelength_data in enumerate(kinetic_data.wavelength_data):
-                    for wavelength_element in wavelength_data.iter_elements():
+                    for pos, value in wavelength_data.data.items():
                         PlateBlock._add_data_point(
                             header,
                             well_data,
-                            wavelength_element.pos,
-                            wavelength_element.value,
+                            str(pos),
+                            value,
                             data_key=kinetic_data.data_key,
                             temperature=kinetic_data.temperature,
                             wavelength_index=idx,
                         )
             if plate_data.reduced_data:
-                for reduced_element in plate_data.reduced_data.iter_elements():
-                    well_data[reduced_element.pos].processed_data.append(
-                        reduced_element.value
-                    )
+                for pos, value in plate_data.reduced_data.data.items():
+                    well_data[str(pos)].processed_data.append(value)
         elif header.data_type == DataType.REDUCED.value:
-            for reduced_element in plate_data.get_reduced_data().iter_elements():
-                well_data[reduced_element.pos].processed_data.append(
-                    reduced_element.value
-                )
+            for pos, value in plate_data.get_reduced_data().data.items():
+                well_data[str(pos)].processed_data.append(value)
         else:
             msg = msg_for_error_on_unrecognized_value(
                 "data type", header.data_type, DataType._member_names_
