@@ -6,14 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Calculated data documents to PerkinElmer EnVision
-- Add Unchained labs lunatic adapter
+- Add calculated data documents to Unchained Labs Lunatic adapter
+- Parser for ChemoMetic NucleoView
 ### Fixed
 ### Changed
-- Refactor builders as create methods in AppBio QuantStudio
+- Simplify Moldev Softmax Pro parsing with dataclasses
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.12] - 2023-12-12
+### Added
+- Calculated data documents to PerkinElmer EnVision
+- Add Unchained Labs Lunatic adapter
+### Fixed
+- Fix per-well calculated documents in AppBio QuantStudio
+### Changed
+- Refactor builders as create methods in AppBio QuantStudio
 
 ## [0.1.11] - 2023-12-04
 ### Added

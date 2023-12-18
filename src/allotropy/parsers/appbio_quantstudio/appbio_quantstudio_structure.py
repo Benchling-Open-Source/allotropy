@@ -133,7 +133,7 @@ class WellItem(Referenceable):
     def amplification_data(self) -> AmplificationData:
         return assert_not_none(
             self._amplification_data,
-            msg=f"Unable to find amplification data for well {self.identifier}.",
+            msg=f"Unable to find amplification data for target '{self.target_dna_description}' in well {self.identifier} .",
         )
 
     @amplification_data.setter
@@ -253,7 +253,7 @@ class Well:
     items: dict[str, WellItem]
     _multicomponent_data: Optional[MulticomponentData] = None
     _melt_curve_raw_data: Optional[MeltCurveRawData] = None
-    calculated_document: Optional[CalculatedDocument] = None
+    _calculated_documents: Optional[list[CalculatedDocument]] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -261,12 +261,6 @@ class Well:
             well_item,
             msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
         )
-
-    def get_an_well_item(self) -> Optional[WellItem]:
-        if not self.items:
-            return None
-        target, *_ = self.items.keys()
-        return self.items[target]
 
     @property
     def multicomponent_data(self) -> Optional[MulticomponentData]:
@@ -283,6 +277,15 @@ class Well:
     @melt_curve_raw_data.setter
     def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
         self._melt_curve_raw_data = melt_curve_raw_data
+
+    @property
+    def calculated_documents(self) -> list[CalculatedDocument]:
+        return self._calculated_documents if self._calculated_documents else []
+
+    def add_calculated_document(self, calculated_document: CalculatedDocument) -> None:
+        if not self._calculated_documents:
+            self._calculated_documents = []
+        self._calculated_documents.append(calculated_document)
 
     @staticmethod
     def create_genotyping(identifier: int, well_data: pd.Series[str]) -> Well:
@@ -392,7 +395,7 @@ class AmplificationData:
 
         target_data = assert_not_empty_df(
             well_data[well_data["Target Name"] == well_item.target_dna_description],
-            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+            msg=f"Unable to find amplification data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
         )
 
         return AmplificationData(
@@ -508,7 +511,7 @@ class Result:
                 well_data[well_data["SNP Assay Name"] == snp_assay_name],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
-            msg=f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
         _, raw_allele = well_item.target_dna_description.split("-")
@@ -574,7 +577,7 @@ class Result:
                 well_data[well_data["Target Name"] == well_item.target_dna_description],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
-            f"Expected exactly 1 row of results to be associated to well {well_item.identifier}.",
+            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
         cycle_threshold_result = assert_not_none(

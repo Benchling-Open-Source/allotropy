@@ -42,7 +42,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     CalculatedPlateInfo,
     Data,
@@ -83,11 +83,13 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 class PerkinElmerEnvisionParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, filename = named_file_contents
-        reader = CsvReader(raw_contents)
+        lines = read_to_lines(named_file_contents.contents)
+        reader = CsvReader(lines)
         try:
             return self._get_model(Data.create(reader), filename)
-        except (Exception) as error:
-            raise AllotropeConversionError from error
+        except Exception as error:
+            msg = "Unhandled error in PerkinElmerEnvisionParser"
+            raise AllotropeConversionError(msg) from error
 
     def _get_model(self, data: Data, filename: str) -> Model:
         if data.number_of_wells is None:
