@@ -101,7 +101,7 @@ dependencies = [
 
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
-generate-schemas = "scripts/generate_schemas.py {args:.}"
+generate-schemas = "scripts/generate_schemas.py {args:}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
