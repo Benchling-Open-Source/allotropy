@@ -2,24 +2,28 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     build_quantity,
     iter_calculated_data_documents,
 )
+
+# from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignAndAnalysisReader,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     AmplificationData,
     Data,
     Header,
     MeltCurveRawData,
     MulticomponentData,
-    RawData,
+    # RawData,
     Result,
     WellList,
 )
-from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import try_str_from_series_or_none
 
 
-def create_data(reader: LinesReader) -> Data:
+def create_data(reader: DesignAndAnalysisReader) -> Data:
     header = Header.create(reader)
     wells = WellList.create(reader, header.experiment_type)
-    raw_data = RawData.create(reader)
+    # raw_data = RawData.create(reader)
 
     amp_data = AmplificationData.get_data(reader)
     multi_data = MulticomponentData.get_data(reader)
@@ -64,7 +68,7 @@ def create_data(reader: LinesReader) -> Data:
     return Data(
         header,
         wells,
-        raw_data,
+        # raw_data,
         endogenous_control,
         reference_sample,
         list(
