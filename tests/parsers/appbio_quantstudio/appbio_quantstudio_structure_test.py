@@ -54,6 +54,11 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
             source.reference.uuid = ""
 
 
+def _read_to_lines(io_: IOType) -> list[str]:
+    named_file_contents = NamedFileContents(io_, "test.csv")
+    return read_to_lines(named_file_contents)
+
+
 @pytest.mark.short
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
@@ -175,11 +180,6 @@ def test_results_builder() -> None:
     assert result.cycle_threshold_value_setting == 0.219
     assert result.cycle_threshold_result is None
     assert result.automatic_cycle_threshold_enabled_setting is True
-
-
-def _read_to_lines(io_: IOType) -> list[str]:
-    named_file_contents = NamedFileContents(io_, "test.csv")
-    return read_to_lines(named_file_contents)
 
 
 @pytest.mark.short
