@@ -70,6 +70,7 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False) -> list
     """Generate schemas from JSON schema files.
 
     :root_dir: The root directory of the project.
+    :dry_run: If true, does not save changes to any models, but still returns the list of models that would change.
     :return: A list of model files that were changed.
     """
 
