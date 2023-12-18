@@ -1,45 +1,73 @@
 from io import BytesIO
+import re
+from typing import Optional
+
+import pytest
 
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 
-
-def get_input_lines() -> list[str]:
-    return [
-        "data section",
-        "col1, col2, col3",
-        ", ,",
-        ", ,",
-        ", ,",
-        "",
-        "header section",
-        "element1",
-        "element2",
-        "element3",
-        "",
-        "",
-        "information",
-        "name",
-        "123",
-        "",
-    ]
+INPUT_LINES = [
+    "data section",
+    "col1, col2, col3",
+    ", ,",
+    ", ,",
+    ", ,",
+    "",
+    "header section",
+    "element1",
+    "element2",
+    "element3",
+    "",
+    "",
+    "information",
+    "name",
+    "123",
+    "",
+]
 
 
-def get_input_text() -> str:
-    return "\n".join(get_input_lines())
+def _get_input_text() -> str:
+    return "\n".join(INPUT_LINES)
 
 
-def get_input_stream() -> BytesIO:
-    return BytesIO(get_input_text().encode("UTF-8"))
+def _get_input_stream() -> BytesIO:
+    return BytesIO(_get_input_text().encode("UTF-8"))
+
+
+def test_read_to_lines() -> None:
+    lines = read_to_lines(_get_input_stream())
+    assert lines == INPUT_LINES
+
+
+@pytest.mark.parametrize("encoding", [None, "UTF-8"])
+def test_read_to_lines_with_encoding(encoding: Optional[str]) -> None:
+    lines = read_to_lines(_get_input_stream(), encoding)
+    assert lines == INPUT_LINES
+
+
+def test_read_to_lines_with_encoding_that_is_invalid() -> None:
+    input_stream = _get_input_stream()
+    # TODO: should raise AllotropeConversionError
+    with pytest.raises(LookupError, match="unknown encoding: BAD ENCODING"):
+        read_to_lines(input_stream, "BAD ENCODING")
+
+
+def test_read_to_lines_with_encoding_that_is_valid_but_invalid_for_file() -> None:
+    input_stream = _get_input_stream()
+    expected_regex_raw = "'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)"
+    expected_regex = re.escape(expected_regex_raw)
+    # TODO: should raise AllotropeConversionError
+    with pytest.raises(UnicodeDecodeError, match=expected_regex):
+        read_to_lines(input_stream, "UTF-32")
 
 
 def get_test_reader() -> LinesReader:
-    lines = read_to_lines(get_input_stream())
-    return LinesReader(lines)
+    return LinesReader(INPUT_LINES)
 
 
-def test_reader_constructure() -> None:
+def test_reader_init() -> None:
     test_reader = get_test_reader()
-    assert test_reader.lines == get_input_lines()
+    assert test_reader.lines == INPUT_LINES
     assert test_reader.current_line == 0
 
 
@@ -143,12 +171,10 @@ def test_reader_drop_until_empty() -> None:
 
 
 def test_reader_pop_until() -> None:
-    input_lines = get_input_lines()
     test_reader = get_test_reader()
-    assert list(test_reader.pop_until("^header section")) == input_lines[:6]
+    assert list(test_reader.pop_until("^header section")) == INPUT_LINES[:6]
 
 
 def test_reader_pop_until_empty() -> None:
-    input_lines = get_input_lines()
     test_reader = get_test_reader()
-    assert list(test_reader.pop_until_empty()) == input_lines[:5]
+    assert list(test_reader.pop_until_empty()) == INPUT_LINES[:5]

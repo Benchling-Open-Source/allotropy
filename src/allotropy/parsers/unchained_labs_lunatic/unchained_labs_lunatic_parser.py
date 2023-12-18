@@ -1,12 +1,16 @@
 from __future__ import annotations
 
-import uuid
+from typing import Optional
 
 import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
+    DataSourceAggregateDocument1,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     MeasurementAggregateDocument,
@@ -23,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
@@ -59,6 +64,9 @@ class UnchainedLabsLunaticParser(VendorParser):
                     self._get_plate_reader_document_item(plate)
                     for plate in data.well_plate_list
                 ],
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data
+                ),
             ),
         )
 
@@ -82,7 +90,7 @@ class UnchainedLabsLunaticParser(VendorParser):
         self, measurement: Measurement
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-            measurement_identifier=str(uuid.uuid4()),
+            measurement_identifier=measurement.identifier,
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
@@ -99,4 +107,33 @@ class UnchainedLabsLunaticParser(VendorParser):
                 location_identifier=measurement.location_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
             ),
+        )
+
+    def _get_calculated_data_aggregate_document(
+        self, data: Data
+    ) -> Optional[CalculatedDataAggregateDocument]:
+        if not (calculated_data_document := data.get_calculated_data_document()):
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calculated_data_item.identifier,
+                    calculated_data_name=calculated_data_item.name,
+                    calculated_result=TQuantityValue(
+                        value=calculated_data_item.value,
+                        unit=calculated_data_item.unit,
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=item.identifier,
+                                data_source_feature=item.feature,
+                            )
+                            for item in calculated_data_item.data_source_document
+                        ]
+                    ),
+                )
+                for calculated_data_item in calculated_data_document
+            ]
         )
