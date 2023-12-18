@@ -463,6 +463,7 @@ class PlateBlock(Block):
     block_type: str
     header: PlateHeader
     well_data: defaultdict[str, WellData]
+    plate_block_type: str = "Abstract"
 
     @staticmethod
     def create(reader: CsvReader) -> PlateBlock:
@@ -710,6 +711,8 @@ class PlateBlockExtraAttr:
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
+    plate_block_type: str = "Fluorescence"
+
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
@@ -842,6 +845,8 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
+    plate_block_type: str = "Luminescence"
+
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
@@ -959,6 +964,8 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
+    plate_block_type: str = "Absorbance"
+
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         [
