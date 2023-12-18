@@ -26,12 +26,9 @@ INPUT_LINES = [
 ]
 
 
-def _get_input_text() -> str:
-    return "\n".join(INPUT_LINES)
-
-
 def _read_to_lines(encoding: Optional[str] = None) -> list[str]:
-    io_ = BytesIO(_get_input_text().encode("UTF-8"))
+    input_text = "\n".join(INPUT_LINES)
+    io_ = BytesIO(input_text.encode("UTF-8"))
     return read_to_lines(io_, encoding)
 
 
