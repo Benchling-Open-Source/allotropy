@@ -88,6 +88,7 @@ def generate_schemas(root_dir: Path, schema_regex: Optional[str] = None) -> int:
             "/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py"
         ).lower()
         model_path = os.path.join(root_dir, MODEL_DIR_PATH, output_file)
+        # os.mkdir(model_path)
         model_backup_path = f"{model_path}.bak"
         schema_backup_path = f"{schema_path}.bak"
 

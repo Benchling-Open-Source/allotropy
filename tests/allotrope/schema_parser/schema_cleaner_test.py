@@ -98,9 +98,104 @@ def test_clean_http_refs():
     }
 
 
-def test_blah():
-    from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
-        Model,
-    )
+def test_fix_quantity_value_reference() -> None:
+    schema = {
+        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
+        "$asm.pattern": "quantity datum",
+        "allOf": [
+            {
+                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/(unitless)"
+            }
+        ]
+    }
 
-    m = Model()
+    assert SchemaCleaner().clean(schema) == {
+        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
+        "$asm.pattern": "quantity datum",
+        "$ref": "#/$defs/tQuantityValueUnitless"
+    }
+
+
+def test_fix_quantity_value_reference_add_missing_unit() -> None:
+    schema = {
+        "properties": {
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
+            "$asm.pattern": "quantity datum",
+            "allOf": [
+                {
+                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                },
+                {
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mV.s"
+                }
+            ]
+        },
+        "$defs": {
+            "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema": {
+                "$id": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema",
+                "$comment": "Auto-generated from QUDT 1.1 and Allotrope Extensions for QUDT",
+                "$defs": {
+                    "mV.s": {
+                        "properties": {
+                            "unit": {
+                                "type": "string",
+                                "const": "mV.s",
+                                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillivoltTimesSecond"
+                            }
+                        },
+                        "required": [
+                            "unit"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+
+    assert SchemaCleaner().clean(schema) == {
+        "properties": {
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
+            "$asm.pattern": "quantity datum",
+            "$ref": "#/$defs/tQuantityValueMillivoltTimesSecond"
+
+        },
+        "$defs": {}
+    }
+
+
+def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
+    schema = {
+        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
+        "$asm.pattern": "quantity datum",
+        "allOf": [
+            {
+                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+            },
+            {
+                "oneOf": [
+                    {
+                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/ms"
+                    },
+                    {
+                        "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
+                    }
+                ]
+            }
+        ]
+    }
+
+    assert SchemaCleaner().clean(schema) == {
+        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
+        "$asm.pattern": "quantity datum",
+        "oneOf": [
+            {
+                "$ref": "#/$defs/tQuantityValueMilliSecond"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValuePercent"
+            }
+        ]
+    }
