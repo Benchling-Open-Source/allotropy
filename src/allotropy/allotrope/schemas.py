@@ -26,5 +26,5 @@ def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
 
 def get_schema(schema_relative_path: str) -> dict[str, Any]:
     with open(os.path.join(SCHEMAS_DIR, schema_relative_path)) as f:
-        schema = SchemaCleaner(json.load(f)).clean()
+        schema = SchemaCleaner().clean(json.load(f))
         return add_definitions(schema)
