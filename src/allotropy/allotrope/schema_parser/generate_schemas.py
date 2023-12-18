@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
+from typing import Optional
 
 from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
@@ -65,17 +66,18 @@ def files_equal(path1: str, path2: str) -> bool:
     return True
 
 
-def generate_schemas(root_dir: Path) -> int:
+def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False) -> list[str]:
     """Generate schemas from JSON schema files.
 
     :root_dir: The root directory of the project.
-    :return: The number of schemas generated.
+    :dry_run: If true, does not save changes to any models, but still returns the list of models that would change.
+    :return: A list of model files that were changed.
     """
 
     os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
     schema_paths = list(Path(".").rglob("*.json"))
     os.chdir(os.path.join(root_dir))
-    number_generated = 0
+    models_changed = []
     for rel_schema_path in schema_paths:
         if str(rel_schema_path).startswith("shared"):
             continue
@@ -116,12 +118,13 @@ def generate_schemas(root_dir: Path) -> int:
 
         # Restore backups
         if os.path.exists(model_backup_path):
-            if files_equal(model_path, model_backup_path):
+            files_are_equal = files_equal(model_path, model_backup_path)
+            if not files_are_equal:
+                models_changed.append(os.path.basename(model_path))
+            if files_are_equal or dry_run:
                 os.rename(model_backup_path, model_path)
             else:
                 os.remove(model_backup_path)
         os.rename(schema_backup_path, schema_path)
 
-        number_generated += 1
-
-    return number_generated
+    return models_changed
