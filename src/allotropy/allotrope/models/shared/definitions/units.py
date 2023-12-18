@@ -88,8 +88,33 @@ class Number:
 
 
 @dataclass
+class NanogramPerMicroliter:
+    unit: Optional[str] = "ng/uL"
+
+
+@dataclass
+class MicrogramPerMicroliter:
+    unit: Optional[str] = "ug/uL"
+
+
+@dataclass
 class PicogramPerMilliliter:
     unit: Optional[str] = "pg/mL"
+
+
+@dataclass
+class NanogramPerMilliliter:
+    unit: Optional[str] = "ng/mL"
+
+
+@dataclass
+class MicrogramPerMilliliter:
+    unit: Optional[str] = "ug/mL"
+
+
+@dataclass
+class MilligramPerMilliliter:
+    unit: Optional[str] = "mg/mL"
 
 
 @dataclass
