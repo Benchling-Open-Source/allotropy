@@ -30,6 +30,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeFluorescenceUnit,
     RelativeLightUnit,
     SecondTime,
+    SquareCentimetersPerGram,
     TODO,
     Unitless,
     UnitPerLiter,
@@ -189,6 +190,13 @@ class TRelativeFluorescenceUnit(
 
 @dataclass
 class TRelativeLightUnit(RelativeLightUnit, TQuantityValueWithOptionalUnit):
+    pass
+
+
+@dataclass
+class TQuantityValueSquareCentimetersPerGram(
+    SquareCentimetersPerGram, TQuantityValueWithOptionalUnit
+):
     pass
 
 
