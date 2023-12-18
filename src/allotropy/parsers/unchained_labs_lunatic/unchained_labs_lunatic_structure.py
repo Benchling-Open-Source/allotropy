@@ -82,7 +82,7 @@ class Measurement:
         if not calculated_data_dict:
             return []
 
-        calculated_data: list[CalculatedDataItem] = []
+        calculated_data = []
         for item in calculated_data_dict:
             value = try_float_from_series_or_none(well_plate_data, item["column"])
             if value is None:
