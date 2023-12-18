@@ -9,18 +9,6 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.components.plate_reader import (
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
-    SampleDocument,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -605,65 +593,6 @@ class PlateBlock(Block):
             self.header.read_type
             not in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
             and len(self.header.wavelengths) > 1
-        )
-
-    def get_data_cube_dimensions(self) -> list[tuple[str, str, Optional[str]]]:
-        dimensions: list[tuple[str, str, Optional[str]]] = []
-        if self.header.read_type == ReadType.KINETIC.value:
-            dimensions = [("double", "elapsed time", "s")]
-        elif self.header.read_type == ReadType.WELL_SCAN.value:
-            dimensions = [("int", "x", None)]
-        elif self.header.read_type in {
-            ReadType.SPECTRUM.value,
-            ReadType.ENDPOINT.value,
-        }:
-            dimensions = [("int", "wavelength", "nm")]
-        else:
-            error = f"Cannot make data cube for read type {self.header.read_type}; only {sorted(ReadType._member_names_)} are supported."
-            raise AllotropeConversionError(error)
-        if self.has_wavelength_dimension:
-            dimensions.append(("int", "wavelength", "nm"))
-        return dimensions
-
-    def generate_sample_document(self, well: str) -> SampleDocument:
-        return SampleDocument(
-            well_location_identifier=well, plate_barcode=self.header.name
-        )
-
-    def generate_data_cube(self, well_data: WellData) -> TDatacube:
-        dimension_data = [well_data.dimensions] + (
-            [well_data.wavelengths] if self.has_wavelength_dimension else []
-        )
-        return TDatacube(
-            cube_structure=TDatacubeStructure(
-                [
-                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
-                    for data_type, concept, unit in self.get_data_cube_dimensions()
-                ],
-                [
-                    TDatacubeComponent(
-                        FieldComponentDatatype("double"),
-                        self.header.concept,
-                        self.header.unit,
-                    )
-                ],
-            ),
-            data=TDatacubeData(
-                dimension_data,  # type: ignore[arg-type]
-                [well_data.values],
-            ),
-        )
-
-    def generate_processed_data_aggreate_document(
-        self, well_data: WellData
-    ) -> ProcessedDataAggregateDocument:
-        return ProcessedDataAggregateDocument(
-            [
-                ProcessedDataDocumentItem(
-                    val, data_processing_description="processed data"
-                )
-                for val in well_data.processed_data
-            ]
         )
 
 

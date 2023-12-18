@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional, Union
 import uuid
 
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
@@ -15,10 +15,22 @@ from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence impo
     MeasurementDocumentItem as MeasurementDocumentItemLuminescence,
     Model as ModelLuminescence,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import (
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
+    SampleDocument,
+)
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    FieldComponentDatatype,
+    TDatacube,
+    TDatacubeComponent,
+    TDatacubeData,
+    TDatacubeStructure,
 )
 from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
     DeviceControlAggregateDocument as DeviceControlAggregateDocumentAbsorbance,
@@ -32,7 +44,12 @@ from allotropy.exceptions import (
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import Data, PlateBlock
+from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
+    Data,
+    PlateBlock,
+    ReadType,
+    WellData,
+)
 from allotropy.parsers.utils.values import natural_sort_key
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -96,7 +113,9 @@ class SoftmaxproParser(VendorParser):
 
             measurement = MeasurementDocumentItemFluorescence(
                 DeviceControlAggregateDocumentFluorescence([device_control_doc]),
-                plate_block.generate_sample_document(well),
+                SampleDocument(
+                    well_location_identifier=well, plate_barcode=plate_block.header.name
+                ),
             )
 
             if well_data.temperature is not None:
@@ -105,11 +124,18 @@ class SoftmaxproParser(VendorParser):
                 )
 
             if not well_data.is_empty:
-                measurement.data_cube = plate_block.generate_data_cube(well_data)
+                measurement.data_cube = self.generate_data_cube(plate_block, well_data)
 
             if well_data.processed_data:
                 measurement.processed_data_aggregate_document = (
-                    plate_block.generate_processed_data_aggreate_document(well_data)
+                    ProcessedDataAggregateDocument(
+                        [
+                            ProcessedDataDocumentItem(
+                                val, data_processing_description="processed data"
+                            )
+                            for val in well_data.processed_data
+                        ]
+                    )
                 )
             measurement_document.append(measurement)
 
@@ -137,7 +163,9 @@ class SoftmaxproParser(VendorParser):
 
             measurement = MeasurementDocumentItemLuminescence(
                 DeviceControlAggregateDocumentLuminescence([device_control_doc]),
-                plate_block.generate_sample_document(well),
+                SampleDocument(
+                    well_location_identifier=well, plate_barcode=plate_block.header.name
+                ),
             )
 
             if well_data.temperature is not None:
@@ -146,11 +174,18 @@ class SoftmaxproParser(VendorParser):
                 )
 
             if not well_data.is_empty:
-                measurement.data_cube = plate_block.generate_data_cube(well_data)
+                measurement.data_cube = self.generate_data_cube(plate_block, well_data)
 
             if well_data.processed_data:
                 measurement.processed_data_aggregate_document = (
-                    plate_block.generate_processed_data_aggreate_document(well_data)
+                    ProcessedDataAggregateDocument(
+                        [
+                            ProcessedDataDocumentItem(
+                                val, data_processing_description="processed data"
+                            )
+                            for val in well_data.processed_data
+                        ]
+                    )
                 )
             measurement_document.append(measurement)
 
@@ -178,7 +213,9 @@ class SoftmaxproParser(VendorParser):
 
             measurement = MeasurementDocumentItemAbsorbance(
                 DeviceControlAggregateDocumentAbsorbance([device_control_doc]),
-                plate_block.generate_sample_document(well),
+                SampleDocument(
+                    well_location_identifier=well, plate_barcode=plate_block.header.name
+                ),
             )
 
             if well_data.temperature is not None:
@@ -187,11 +224,18 @@ class SoftmaxproParser(VendorParser):
                 )
 
             if not well_data.is_empty:
-                measurement.data_cube = plate_block.generate_data_cube(well_data)
+                measurement.data_cube = self.generate_data_cube(plate_block, well_data)
 
             if well_data.processed_data:
                 measurement.processed_data_aggregate_document = (
-                    plate_block.generate_processed_data_aggreate_document(well_data)
+                    ProcessedDataAggregateDocument(
+                        [
+                            ProcessedDataDocumentItem(
+                                val, data_processing_description="processed data"
+                            )
+                            for val in well_data.processed_data
+                        ]
+                    )
                 )
             measurement_document.append(measurement)
 
@@ -201,4 +245,55 @@ class SoftmaxproParser(VendorParser):
                 plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
                 measurement_document=measurement_document,
             )
+        )
+
+    def get_data_cube_dimensions(
+        self, plate_block: PlateBlock
+    ) -> list[tuple[str, str, Optional[str]]]:
+        dimensions: list[tuple[str, str, Optional[str]]] = []
+
+        if plate_block.header.read_type == ReadType.KINETIC.value:
+            dimensions = [("double", "elapsed time", "s")]
+        elif plate_block.header.read_type == ReadType.WELL_SCAN.value:
+            dimensions = [("int", "x", None)]
+        elif plate_block.header.read_type in {
+            ReadType.SPECTRUM.value,
+            ReadType.ENDPOINT.value,
+        }:
+            dimensions = [("int", "wavelength", "nm")]
+        else:
+            error = f"Cannot make data cube for read type {plate_block.header.read_type}; only {sorted(ReadType._member_names_)} are supported."
+            raise AllotropeConversionError(error)
+
+        if plate_block.has_wavelength_dimension:
+            dimensions.append(("int", "wavelength", "nm"))
+
+        return dimensions
+
+    def generate_data_cube(
+        self, plate_block: PlateBlock, well_data: WellData
+    ) -> TDatacube:
+        dimension_data = [well_data.dimensions] + (
+            [well_data.wavelengths] if plate_block.has_wavelength_dimension else []
+        )
+        return TDatacube(
+            cube_structure=TDatacubeStructure(
+                [
+                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
+                    for data_type, concept, unit in self.get_data_cube_dimensions(
+                        plate_block
+                    )
+                ],
+                [
+                    TDatacubeComponent(
+                        FieldComponentDatatype("double"),
+                        plate_block.header.concept,
+                        plate_block.header.unit,
+                    )
+                ],
+            ),
+            data=TDatacubeData(
+                dimension_data,  # type: ignore[arg-type]
+                [well_data.values],
+            ),
         )
