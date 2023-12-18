@@ -26,39 +26,35 @@ INPUT_LINES = [
 ]
 
 
-def _get_input_text() -> str:
-    return "\n".join(INPUT_LINES)
-
-
-def _get_input_stream() -> BytesIO:
-    return BytesIO(_get_input_text().encode("UTF-8"))
+def _read_to_lines(encoding: Optional[str] = None) -> list[str]:
+    input_text = "\n".join(INPUT_LINES)
+    io_ = BytesIO(input_text.encode("UTF-8"))
+    return read_to_lines(io_, encoding)
 
 
 def test_read_to_lines() -> None:
-    lines = read_to_lines(_get_input_stream())
+    lines = _read_to_lines()
     assert lines == INPUT_LINES
 
 
 @pytest.mark.parametrize("encoding", [None, "UTF-8"])
 def test_read_to_lines_with_encoding(encoding: Optional[str]) -> None:
-    lines = read_to_lines(_get_input_stream(), encoding)
+    lines = _read_to_lines(encoding)
     assert lines == INPUT_LINES
 
 
 def test_read_to_lines_with_encoding_that_is_invalid() -> None:
-    input_stream = _get_input_stream()
     # TODO: should raise AllotropeConversionError
     with pytest.raises(LookupError, match="unknown encoding: BAD ENCODING"):
-        read_to_lines(input_stream, "BAD ENCODING")
+        _read_to_lines("BAD ENCODING")
 
 
 def test_read_to_lines_with_encoding_that_is_valid_but_invalid_for_file() -> None:
-    input_stream = _get_input_stream()
     expected_regex_raw = "'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)"
     expected_regex = re.escape(expected_regex_raw)
     # TODO: should raise AllotropeConversionError
     with pytest.raises(UnicodeDecodeError, match=expected_regex):
-        read_to_lines(input_stream, "UTF-32")
+        _read_to_lines("UTF-32")
 
 
 def get_test_reader() -> LinesReader:
