@@ -329,6 +329,16 @@
             }
         ]
     },
+    "tQuantityValueSquareCentimetersPerGram":{
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/SquareCentimetersPerGram"
+            }
+        ]
+    },
     "tNullableQuantityValueMicrometer": {
         "allOf": [
             {
