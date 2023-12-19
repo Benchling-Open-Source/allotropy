@@ -52,15 +52,15 @@ class TStatisticDatumRole(Enum):
     minimum_value_role = "minimum value role"
 
 
-class TNonNumericQuantityValue(Enum):
-    nan = "NaN"
-    plus_infinite = "+Infinity"
-    minus_infinite = "-Infinity"
+class ValueEnum(Enum):
+    NaN = "NaN"
+    Infinity = "Infinity"
+    field_Infinity = "-Infinity"
 
 
 @dataclass
 class TQuantityValue:
-    value: Union[float, TNonNumericQuantityValue]
+    value: Union[float, ValueEnum]
     unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
@@ -77,7 +77,7 @@ class TNullableQuantityValue:
 # NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
 @dataclass
 class TQuantityValueWithOptionalUnit:
-    value: Union[float, TNonNumericQuantityValue]
+    value: Union[float, ValueEnum]
     unit: Optional[TUnit]
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None

@@ -137,13 +137,7 @@
                         "type": "number"
                     },
                     {
-                        "const": "NaN"
-                    },
-                    {
-                        "const": "+Infinity"
-                    },
-                    {
-                        "const": "-Infinity"
+                        "enum": ["NaN", "Infinity", "-Infinity"]
                     }
                 ]
             },
