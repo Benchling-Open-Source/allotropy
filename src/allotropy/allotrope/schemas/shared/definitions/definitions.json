@@ -132,7 +132,20 @@
         "type": "object",
         "properties": {
             "value": {
-                "type": "number"
+                "oneOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "const": "NaN"
+                    },
+                    {
+                        "const": "+Infinity"
+                    },
+                    {
+                        "const": "-Infinity"
+                    }
+                ]
             },
             "unit": {
                 "$ref": "#/$defs/tUnit"
