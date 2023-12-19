@@ -199,3 +199,88 @@ def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
             }
         ]
     }
+
+
+def test_replace_definiton() -> None:
+    schema = {
+        "properties": {
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
+            "$asm.pattern": "quantity datum",
+            "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+        },
+        "$defs": {
+            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
+                "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
+                "title": "Schema for leaf node values.",
+                "$defs": {
+                    "asm": {
+                        "properties": {
+                            "$asm.manifest": {
+                                "oneOf": [
+                                    {
+                                        "type": "string",
+                                        "format": "iri"
+                                    },
+                                    {
+                                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/manifest.schema"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "tQuantityValue": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "$ref": "#/$defs/tUnit"
+                            },
+                            "has statistic datum role": {
+                                "$ref": "#/$defs/tStatisticDatumRole"
+                            },
+                            "@type": {
+                                "$ref": "#/$defs/tClass"
+                            }
+                        },
+                        "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+                        "required": [
+                            "value",
+                            "unit"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+    assert SchemaCleaner.clean(schema) == {
+        "properties": {
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
+            "$asm.pattern": "quantity datum",
+            "$ref": "#/$defs/tQuantityValue"
+        },
+        "$defs": {
+            "adm_core_REC_2023_09_core_schema": {
+                "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
+                "title": "Schema for leaf node values.",
+                "$defs": {
+                    "asm": {
+                        "properties": {
+                            "$asm.manifest": {
+                                "oneOf": [
+                                    {
+                                        "type": "string",
+                                        "format": "iri"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/adm_core_REC_2023_09_manifest_schema"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                }
+            }
+        }
+    }
