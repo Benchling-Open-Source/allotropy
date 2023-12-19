@@ -11,6 +11,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     FILENAME_REGEX,
@@ -19,7 +20,6 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
-from allotropy.types import IOType
 
 
 @dataclass(frozen=True)
@@ -134,6 +134,7 @@ class Data:
     sample_list: SampleList
 
     @staticmethod
-    def create(contents: IOType, filename: str) -> Data:
+    def create(named_file_contents: NamedFileContents) -> Data:
+        contents, filename = named_file_contents
         data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))
