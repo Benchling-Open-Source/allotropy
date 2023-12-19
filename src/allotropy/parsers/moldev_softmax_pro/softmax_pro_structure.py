@@ -16,7 +16,6 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
-    str_or_none,
     try_float,
     try_float_or_none,
     try_int,
@@ -142,7 +141,6 @@ class PlateWavelengthData:
 
 @dataclass(frozen=True)
 class PlateKineticData:
-    data_key: Optional[str]
     temperature: Optional[float]
     wavelength_data: list[PlateWavelengthData]
 
@@ -158,12 +156,8 @@ class PlateKineticData:
         )
         data.columns = pd.Index(columns)
 
-        raw_data_key = data.iloc[0, 0]
-        raw_temperature = data.iloc[0, 1]
-
         return PlateKineticData(
-            data_key=str_or_none(raw_data_key),
-            temperature=try_float_or_none(str(raw_temperature)),
+            temperature=try_float_or_none(str(data.iloc[0, 1])),
             wavelength_data=list(
                 PlateKineticData._iter_wavelength_data(header, data.iloc[:, 2:])
             ),
@@ -267,14 +261,12 @@ class PlateData:
 
 @dataclass(frozen=True)
 class TimeKineticData:
-    data_key: str
     temperature: float
     data: pd.Series[float]
 
     @staticmethod
     def create(row: pd.Series[float]) -> TimeKineticData:
         return TimeKineticData(
-            data_key=str(int(row.iloc[0])),
             temperature=row.iloc[1],
             data=row.iloc[2:],
         )
