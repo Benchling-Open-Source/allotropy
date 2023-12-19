@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from collections.abc import Hashable, Sequence
+from collections.abc import Hashable, MutableSequence, Sequence
 from typing import Callable, Literal, Optional
 
 import pandas as pd
 from pandas._libs import lib
-from pandas._typing import DtypeArg, FilePath, HashableT, ReadCsvBuffer
+from pandas._typing import DtypeArg, FilePath, ReadCsvBuffer
 
 
 def read_csv(
@@ -23,7 +23,7 @@ def read_csv(
     skiprows: list[int] | int | Callable[[Hashable], bool] | None = None,
     skipfooter: int = 0,
     thousands: str | None = None,
-    usecols: list[HashableT] | Callable[[Hashable], bool] | None = None,
+    usecols: Sequence[int] | MutableSequence[str] | None = None,
 ) -> pd.DataFrame:
     """
     Read a delimited text file into a Pandas DataFrame.
@@ -51,7 +51,7 @@ def read_csv(
         skiprows=skiprows,  # type: ignore[arg-type]
         skipfooter=skipfooter,
         thousands=thousands,
-        usecols=usecols,  # type: ignore[arg-type]
+        usecols=usecols,
     )
 
     if not isinstance(df, pd.DataFrame):
