@@ -99,7 +99,7 @@ class PlateHeader:
     data_type: str
     kinetic_points: int
     num_wavelengths: int
-    wavelengths: list[int]
+    wavelengths: list[float]
     num_columns: int
     num_wells: int
     concept: str
@@ -174,7 +174,7 @@ class PlateKineticData:
         header: PlateHeader, w_data: pd.DataFrame
     ) -> Iterator[PlateWavelengthData]:
         for idx in range(header.num_wavelengths):
-            wavelength = try_float(str(header.wavelengths[idx]), "wavelength")
+            wavelength = header.wavelengths[idx]
             start = idx * (header.num_columns + 1)
             end = start + header.num_columns
             yield PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
@@ -323,7 +323,7 @@ class TimeRawData:
         header: PlateHeader, data: pd.DataFrame
     ) -> Iterator[TimeWavelengthData]:
         for idx in range(header.num_wavelengths):
-            wavelength = try_float(str(header.wavelengths[idx]), "wavelength")
+            wavelength = header.wavelengths[idx]
             start = idx * (header.kinetic_points + 1)
             end = start + header.kinetic_points
             yield TimeWavelengthData.create(wavelength, data.iloc[start:end, :])
@@ -440,10 +440,6 @@ class PlateBlock(Block):
             raise AllotropeConversionError(msg)
         return cls
 
-    @staticmethod
-    def split_wavelengths(values: Optional[str]) -> Optional[list[int]]:
-        return None if values is None else [int(v) for v in values.split()]
-
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
@@ -502,6 +498,21 @@ class FluorescencePlateBlock(PlateBlock):
             error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
+        assert_not_none(
+            wavelengths_str,
+            msg="Unable to find wavelengths list.",
+        )
+
+        assert_not_none(
+            excitation_wavelengths_str,
+            msg="Unable to find excitation wavelengths.",
+        )
+
+        assert_not_none(
+            cutoff_filters_str,
+            msg="Unable to find cutoff filters.",
+        )
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -510,7 +521,10 @@ class FluorescencePlateBlock(PlateBlock):
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=PlateBlock.split_wavelengths(wavelengths_str) or [],
+            wavelengths=[
+                try_float(wavelength, "wavelength")
+                for wavelength in wavelengths_str.split()
+            ],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="fluorescence",
@@ -520,10 +534,14 @@ class FluorescencePlateBlock(PlateBlock):
             reads_per_well=try_float(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=PlateBlock.split_wavelengths(
-                excitation_wavelengths_str
-            ),
-            cutoff_filters=PlateBlock.split_wavelengths(cutoff_filters_str),
+            excitation_wavelengths=[
+                try_int(excitation_wavelength, "excitation wavelengths")
+                for excitation_wavelength in excitation_wavelengths_str.split()
+            ],
+            cutoff_filters=[
+                try_int(cutoff_filters, "cutoff filters")
+                for cutoff_filters in cutoff_filters_str.split()
+            ],
         )
 
 
@@ -553,9 +571,9 @@ class LuminescencePlateBlock(PlateBlock):
             _,  # first_column
             num_columns_raw,
             num_wells_raw,
-            excitation_wavelengths_str,
+            _,  # excitation_wavelengths_str
             _,  # cutoff
-            cutoff_filters_str,
+            _,  # cutoff_filters_str,
             _,  # sweep_wave
             _,  # sweep_wavelength
             reads_per_well,
@@ -582,7 +600,10 @@ class LuminescencePlateBlock(PlateBlock):
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=PlateBlock.split_wavelengths(wavelengths_str) or [],
+            wavelengths=[
+                try_float(wavelength, "wavelength")
+                for wavelength in wavelengths_str.split()
+            ],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="luminescence",
@@ -592,10 +613,8 @@ class LuminescencePlateBlock(PlateBlock):
             reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=PlateBlock.split_wavelengths(
-                excitation_wavelengths_str
-            ),
-            cutoff_filters=PlateBlock.split_wavelengths(cutoff_filters_str),
+            excitation_wavelengths=None,
+            cutoff_filters=None,
         )
 
 
@@ -645,7 +664,10 @@ class AbsorbancePlateBlock(PlateBlock):
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=PlateBlock.split_wavelengths(wavelengths_str) or [],
+            wavelengths=[
+                try_float(wavelength, "wavelength")
+                for wavelength in wavelengths_str.split()
+            ],
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="absorbance",

@@ -155,10 +155,6 @@ class SoftmaxproParser(VendorParser):
         for idx, data_element in enumerate(
             plate_block.block_data.iter_wavelengths(position)
         ):
-            wavelength = assert_not_none(
-                data_element.wavelength,
-                msg=f"Unable to find wavelength for position {data_element.position}.",
-            )
             yield FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
@@ -181,7 +177,7 @@ class SoftmaxproParser(VendorParser):
                             detection_type=plate_block.header.read_mode,
                             scan_position_setting__plate_reader_=scan_position,
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                wavelength
+                                data_element.wavelength
                             ),
                             excitation_wavelength_setting=TQuantityValueNanometer(
                                 excitation_wavelengths[idx]
@@ -205,10 +201,6 @@ class SoftmaxproParser(VendorParser):
         )
 
         for data_element in plate_block.block_data.iter_wavelengths(position):
-            wavelength = assert_not_none(
-                data_element.wavelength,
-                msg=f"Unable to find wavelength for position {data_element.position}.",
-            )
             yield LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 luminescence=TRelativeLightUnit(value=data_element.value),
@@ -226,7 +218,7 @@ class SoftmaxproParser(VendorParser):
                             device_type="plate reader",
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                wavelength
+                                data_element.wavelength
                             ),
                             number_of_averages=TQuantityValueNumber(reads_per_well),
                             detector_gain_setting=plate_block.header.pmt_gain,
@@ -239,10 +231,6 @@ class SoftmaxproParser(VendorParser):
         self, plate_block: PlateBlock, position: str
     ) -> Iterator[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
         for data_element in plate_block.block_data.iter_wavelengths(position):
-            wavelength = assert_not_none(
-                data_element.wavelength,
-                msg=f"Unable to find wavelength for position {data_element.position}.",
-            )
             yield UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
@@ -264,7 +252,7 @@ class SoftmaxproParser(VendorParser):
                             device_type="plate reader",
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                wavelength
+                                data_element.wavelength
                             ),
                         )
                     ]
