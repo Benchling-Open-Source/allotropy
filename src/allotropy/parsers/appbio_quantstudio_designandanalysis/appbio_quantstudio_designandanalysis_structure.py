@@ -60,6 +60,7 @@ class Header:
     barcode: Optional[str]
     analyst: Optional[str]
     experimental_data_identifier: Optional[str]
+    pcr_stage_number: str
     software_name: Optional[str]
     software_version: Optional[str]
 
@@ -127,6 +128,19 @@ class Header:
             experimental_data_identifier=try_str_from_series_or_none(
                 data, "Experiment Name"
             ),
+            pcr_stage_number=assert_not_none(
+                try_int(
+                    assert_not_none(
+                        re.match(
+                            r"(Stage )(\d+)",
+                            try_str_from_series(data, r"PCR Stage/Step Number"),
+                        ),
+                        msg="Unable to find PCR Stage Number",
+                    ).group(2),
+                    "PCR Stage Number",
+                ),
+                msg=r"Unable to interpret PCR Stage/Step Number",
+            ),
             software_name=try_str_from_series(data, "Software Name and Version").split(
                 " v"
             )[0],
@@ -149,6 +163,18 @@ class WellItem(Referenceable):
     sample_role_type: Optional[str]
     _amplification_data: Optional[AmplificationData] = None
     _result: Optional[Result] = None
+    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
+
+    @property
+    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
+        return assert_not_none(
+            self._melt_curve_raw_data,
+            msg=f"Unable to find melt curve data for target '{self.target_dna_description}' in well {self.identifier} .",
+        )
+
+    @melt_curve_raw_data.setter
+    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
+        self._melt_curve_raw_data = melt_curve_raw_data
 
     @property
     def amplification_data(self) -> AmplificationData:
@@ -273,7 +299,7 @@ class Well:
     identifier: int
     items: dict[str, WellItem]
     _multicomponent_data: Optional[MulticomponentData] = None
-    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    # _melt_curve_raw_data: Optional[MeltCurveRawData] = None
     _calculated_documents: Optional[list[CalculatedDocument]] = None
 
     def get_well_item(self, target: str) -> WellItem:
@@ -291,13 +317,13 @@ class Well:
     def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
         self._multicomponent_data = multicomponent_data
 
-    @property
+    '''@property
     def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
         return self._melt_curve_raw_data
 
     @melt_curve_raw_data.setter
     def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self._melt_curve_raw_data = melt_curve_raw_data
+        self._melt_curve_raw_data = melt_curve_raw_data'''
 
     @property
     def calculated_documents(self) -> list[CalculatedDocument]:
@@ -473,18 +499,30 @@ class MulticomponentData:
         return None
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well) -> MulticomponentData:
+    def create(data: pd.DataFrame, well: Well, header: Header) -> MulticomponentData:
         well_data = assert_not_empty_df(
             data[data["Well"] == well.identifier],
             msg=f"Unable to find multi component data for well {well.identifier}.",
         )
 
+        stage_data = assert_not_empty_df(
+            well_data[well_data["Stage Number"] == header.pcr_stage_number],
+            msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
+        )
+
         return MulticomponentData(
-            cycle=well_data["Cycle Number"].tolist(),
+            cycle=stage_data["Cycle Number"].tolist(),
             columns={
-                name: well_data[name].tolist()  # type: ignore[misc]
-                for name in well_data
-                if name not in ["Well", "Cycle Number", "Well Position"]
+                name: stage_data[name].tolist()
+                for name in stage_data
+                if name
+                not in [
+                    "Well",
+                    "Cycle Number",
+                    "Well Position",
+                    "Stage Number",
+                    "Step Number",
+                ]
             },
         )
 
@@ -695,15 +733,21 @@ class MeltCurveRawData:
     derivative: list[Optional[float]]
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
+    def create(data: pd.DataFrame, well_item: WellItem) -> MeltCurveRawData:
         well_data = assert_not_empty_df(
-            data[data["Well"] == well.identifier],
-            msg=f"Unable to find melt curve raw data for well {well.identifier}.",
+            data[data["Well"] == well_item.identifier],
+            msg=f"Unable to find Melt Curve Raw data for well {well_item.identifier}.",
         )
+
+        target_data = assert_not_empty_df(
+            well_data[well_data["Target"] == well_item.target_dna_description],
+            msg=f"Unable to find Melt Curve Raw data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
+        )
+
         return MeltCurveRawData(
-            reading=well_data["Temperature"].tolist(),
-            fluorescence=well_data["Fluorescence"].tolist(),
-            derivative=well_data["Derivative"].tolist(),
+            reading=target_data["Temperature"].tolist(),
+            fluorescence=target_data["Fluorescence"].tolist(),
+            derivative=target_data["Derivative"].tolist(),
         )
 
     @staticmethod
@@ -714,8 +758,10 @@ class MeltCurveRawData:
         # lines = list(reader.pop_until_empty())
         # csv_stream = StringIO("\n".join(lines))
         # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-        if reader.data["Melt Curve Raw"].empty:
-            return None
+        assert_not_empty_df(
+            reader.data["Melt Curve Raw"],
+            msg="Unable to find 'Melt Curve Raw' sheet in file.",
+        )
         return reader.data["Melt Curve Raw"]
 
 

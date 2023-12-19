@@ -207,7 +207,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             passive_reference_dye_data_cube=self.get_passive_reference_dye_data_cube(
                 data, well
             ),
-            melting_curve_data_cube=self.get_melting_curve_data_cube(well),
+            melting_curve_data_cube=self.get_melting_curve_data_cube(well_item),
         )
 
     def get_device_control_document_item(
