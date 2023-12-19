@@ -71,7 +71,7 @@ def get_schema_definitions_mapping() -> dict[str, list[SchemaModel]]:
         (filename, directory)
         for directory in ["definitions", "components"]
         for filename in os.listdir(os.path.join(SHARED_SCHEMAS_DIR, directory))
-        if not filename.endswith("bak")
+        if not filename.endswith(".bak.json")
     ]
 
     for schema_file, directory in definition_files:

@@ -10,6 +10,7 @@ from allotropy.allotrope.schema_parser.update_units import (
     unit_name_from_iri,
     update_unit_files,
 )
+from allotropy.allotrope.schemas import get_schema
 
 SCHEMAS_DIR = os.path.join(Path(__file__).parent.parent, "schemas")
 SHARED_SCHEMAS_DIR = os.path.join(SCHEMAS_DIR, "shared", "definitions")
@@ -25,14 +26,12 @@ class SchemaCleaner:
         self.definitions = self._load_definitions()
         self.replaced_definitions = defaultdict(list)
 
-    def add_missing_units(self) -> bool:
+    def add_missing_units(self) -> None:
         # Update unit schemas and models with all units found in cleaned schemas.
-        # Returns True if any units were added.
         if not self.missing_referenced_units:
-            return False
+            return
         update_unit_files({unit: iri for unit, iri in self.missing_unit_to_iri.items() if unit in self.missing_referenced_units})
         self.missing_referenced_units = []
-        return True
 
     def _get_unit_name(self, unit: str) -> str:
         if unit in self.missing_unit_to_iri:
@@ -193,3 +192,10 @@ class SchemaCleaner:
         if "$defs" in schema:
             schema["$defs"] = self._clean_defs(schema)
         return self._clean(schema)
+
+    def clean_file(self, schema_path: str) -> None:
+        schema = get_schema(schema_path)
+        schema = self.clean(schema)
+        self.add_missing_units()
+        with open(schema_path, "w") as f:
+            json.dump(schema, f, indent=2)

@@ -32,6 +32,7 @@ UNITS_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "units.py")
 CUSTOM_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "custom.py")
 GENERATED_SHARED_PATHS = [UNITS_SCHEMAS_PATH, UNITS_MODELS_PATH, CUSTOM_SCHEMAS_PATH, CUSTOM_MODELS_PATH]
 
+
 def lint_file(model_path: str) -> None:
     # The first run of ruff changes typing annotations and causes unused imports. We catch failure
     # due to unused imports.
@@ -70,6 +71,32 @@ def lint_file(model_path: str) -> None:
     )
 
 
+def _get_schema_and_model_paths(root_dir: str, rel_schema_path: Path) -> tuple[Path, Path]:
+    schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
+    model_file = re.sub(
+        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
+    ).lower()
+    model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
+    return schema_path, model_path
+
+
+def _generate_schema(model_path: str, schema_path: str) -> bool:
+    # Generate models
+    generate(
+        input_=Path(schema_path),
+        output=Path(model_path),
+        output_model_type=DataModelType.DataclassesDataclass,
+        input_file_type=InputFileType.JsonSchema,
+        # Specify base_class as empty when using dataclass
+        base_class="",
+        target_python_version=PythonVersion.PY_39,
+        use_union_operator=False,
+    )
+    # Import classes from shared files, remove unused classes, format.
+    modify_file(model_path, schema_path)
+    lint_file(model_path)
+
+
 def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_regex: Optional[str] = None) -> list[str]:
     """Generate schemas from JSON schema files.
 
@@ -80,7 +107,6 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
     :return: A list of model files that were changed.
     """
     schema_cleaner = SchemaCleaner()
-    units_updated = False
 
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
         os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
@@ -88,45 +114,20 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
         os.chdir(os.path.join(root_dir))
         models_changed = []
         for rel_schema_path in schema_paths:
-            if str(rel_schema_path).startswith("shared"):
+            if str(rel_schema_path).startswith("shared") or str(rel_schema_path).endswith(".bak.json"):
                 continue
             if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
                 continue
 
             print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-            schema_name = rel_schema_path.stem
-            schema_path = os.path.join(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-            model_file = re.sub(
-                "/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py"
-            ).lower()
-            model_path = os.path.join(root_dir, MODEL_DIR_PATH, model_file)
+            schema_path, model_path = _get_schema_and_model_paths(root_dir, rel_schema_path)
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
-                # Backup schema and override with extra defs
-                schema = get_schema(str(rel_schema_path))
-                schema = schema_cleaner.clean(schema)
-                units_updated |= schema_cleaner.add_missing_units()
-                with open(schema_path, "w") as f:
-                    json.dump(schema, f)
+                schema_cleaner.clean_file(str(schema_path))
+                _generate_schema(model_path, schema_path)
 
-                # Generate models
-                generate(
-                    input_=Path(schema_path),
-                    output=Path(model_path),
-                    output_model_type=DataModelType.DataclassesDataclass,
-                    input_file_type=InputFileType.JsonSchema,
-                    # Specify base_class as empty when using dataclass
-                    base_class="",
-                    target_python_version=PythonVersion.PY_39,
-                    use_union_operator=False,
-                )
-                # Import classes from shared files, remove unused classes, format.
-                modify_file(model_path, schema_path)
-                lint_file(model_path)
-
-                is_changed = is_file_changed(model_path)
-                if is_changed:
-                    models_changed.append(os.path.basename(model_path))
+                if is_file_changed(model_path):
+                    models_changed.append(model_path.stem)
                 else:
                     restore_backup(model_path)
 
