@@ -129,7 +129,7 @@ class SchemaCleaner:
                 # them in separate shared unit schema file, in order to allow for shared imports.
                 if cleaned_schema_name.endswith("units_schema"):
                     self._add_embeded_units(defs_schema["$defs"])
-                else:
+                elif "$defs" in defs_schema:
                     # For other definitions, we may have a shared copy for common definitons, but not all.
                     # For these, check if the schema matches a definition in shared. If so, we will replace
                     # the reference, otherwise we leave it as it.
