@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Hashable, Sequence
-from typing import Callable, Literal
+from typing import Callable, Literal, Optional
 
 import pandas as pd
 from pandas._libs import lib
-from pandas._typing import DtypeArg, FilePath, HashableT, IndexLabel, ReadCsvBuffer
+from pandas._typing import DtypeArg, FilePath, HashableT, ReadCsvBuffer
 
 
 def read_csv(
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
-    delimiter: str | None | lib.NoDefault = None,
+    delimiter: Optional[str] = None,
     dtype: DtypeArg | None = None,
     float_precision: Literal["high", "legacy", "round_trip"] | None = None,
     header: int | Sequence[int] | None | Literal["infer"] = "infer",
-    index_col: IndexLabel | Literal[False] | None = None,
+    index_col: Optional[Literal[False]] = None,
     names: Sequence[Hashable] | None | lib.NoDefault = lib.no_default,
     nrows: int | None = None,
     parse_dates: bool | Sequence[Hashable] | None = None,
@@ -38,11 +38,11 @@ def read_csv(
     # don't work as well in 3.9.
     df = pd.read_csv(  # type: ignore[misc]
         filepath_or_buffer,
-        delimiter=delimiter,  # type: ignore[arg-type]
+        delimiter=delimiter,
         dtype=dtype,
         float_precision=float_precision,
         header=header,
-        index_col=index_col,  # type: ignore[arg-type]
+        index_col=index_col,
         names=names,  # type: ignore[arg-type]
         nrows=nrows,
         parse_dates=parse_dates,  # type: ignore[arg-type]
