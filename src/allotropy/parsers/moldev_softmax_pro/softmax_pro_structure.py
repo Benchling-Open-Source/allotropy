@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
@@ -17,7 +16,6 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
-    PrimitiveValue,
     str_or_none,
     try_float,
     try_float_or_none,
@@ -92,45 +90,6 @@ class NoteBlock(Block):
         return NoteBlock(block_type="Note", raw_lines=reader.lines)
 
 
-@dataclass
-class WellData:
-    values: list[Optional[float]]
-    dimensions: list[Optional[PrimitiveValue]]
-    wavelengths: list[Optional[int]]
-    temperature: Optional[float]
-    processed_data: list[float]
-
-    @staticmethod
-    def create() -> WellData:
-        return WellData(
-            values=[],
-            dimensions=[],
-            wavelengths=[],
-            temperature=None,
-            processed_data=[],
-        )
-
-    def add_value(
-        self,
-        value: float,
-        dimension: Optional[PrimitiveValue],
-        temperature: Optional[float],
-        wavelength: Optional[int],
-    ) -> None:
-        self.values.append(value)
-        self.dimensions.append(dimension)
-        self.wavelengths.append(wavelength)
-        if temperature is not None:
-            if self.temperature is not None and temperature != self.temperature:
-                error = f"Expected all measurements to have the same temperature, but two have differing values of {self.temperature} and {temperature}."
-                raise AllotropeConversionError(error)
-            self.temperature = temperature
-
-    @property
-    def is_empty(self) -> bool:
-        return not self.dimensions or not self.values
-
-
 @dataclass(frozen=True)
 class PlateHeader:
     name: str
@@ -147,7 +106,7 @@ class PlateHeader:
     read_mode: str
     unit: str
     scan_position: Optional[str]
-    reads_per_well: Optional[int]
+    reads_per_well: float
     pmt_gain: Optional[str]
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
@@ -157,18 +116,18 @@ class PlateHeader:
 @dataclass
 class DataElement:
     temperature: Optional[float]
-    wavelength: Optional[int]
+    wavelength: float
     position: str
     value: float
 
 
 @dataclass(frozen=True)
 class PlateWavelengthData:
-    wavelength: Optional[int]
+    wavelength: float
     data: pd.Series[float]
 
     @staticmethod
-    def create(wavelength: Optional[int], df_data: pd.DataFrame) -> PlateWavelengthData:
+    def create(wavelength: float, df_data: pd.DataFrame) -> PlateWavelengthData:
         rows, _ = df_data.shape
         df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
 
@@ -215,11 +174,7 @@ class PlateKineticData:
         header: PlateHeader, w_data: pd.DataFrame
     ) -> Iterator[PlateWavelengthData]:
         for idx in range(header.num_wavelengths):
-            wavelength = (
-                header.wavelengths[idx]
-                if header.read_type != ReadType.SPECTRUM.value
-                else None
-            )
+            wavelength = try_float(str(header.wavelengths[idx]), "wavelength")
             start = idx * (header.num_columns + 1)
             end = start + header.num_columns
             yield PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
@@ -327,11 +282,11 @@ class TimeKineticData:
 
 @dataclass(frozen=True)
 class TimeWavelengthData:
-    wavelength: Optional[int]
+    wavelength: float
     kinetic_data: list[TimeKineticData]
 
     @staticmethod
-    def create(wavelength: Optional[int], data: pd.DataFrame) -> TimeWavelengthData:
+    def create(wavelength: float, data: pd.DataFrame) -> TimeWavelengthData:
         return TimeWavelengthData(
             wavelength=wavelength,
             kinetic_data=[TimeKineticData.create(row) for _, row in data.iterrows()],
@@ -368,11 +323,7 @@ class TimeRawData:
         header: PlateHeader, data: pd.DataFrame
     ) -> Iterator[TimeWavelengthData]:
         for idx in range(header.num_wavelengths):
-            wavelength = (
-                header.wavelengths[idx]
-                if header.read_type != ReadType.SPECTRUM.value
-                else None
-            )
+            wavelength = try_float(str(header.wavelengths[idx]), "wavelength")
             start = idx * (header.kinetic_points + 1)
             end = start + header.kinetic_points
             yield TimeWavelengthData.create(wavelength, data.iloc[start:end, :])
@@ -438,7 +389,6 @@ class TimeData:
 class PlateBlock(Block):
     block_type: str
     header: PlateHeader
-    well_data: defaultdict[str, WellData]
     block_data: Union[PlateData, TimeData]
     plate_block_type: str = "Abstract"
 
@@ -447,35 +397,20 @@ class PlateBlock(Block):
         header_series = PlateBlock.read_header(reader)
         cls = PlateBlock.get_plate_block_cls(header_series)
         header = cls.parse_header(header_series)
-        well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
 
         if header.export_format == ExportFormat.TIME_FORMAT.value:
-            time_data = TimeData.create(reader, header)
-            PlateBlock._parse_time_format_data(
-                header,
-                well_data,
-                time_data,
-            )
             return cls(
                 block_type="Plate",
                 raw_lines=reader.lines,
                 header=header,
-                well_data=well_data,
-                block_data=time_data,
+                block_data=TimeData.create(reader, header),
             )
         elif header.export_format == ExportFormat.PLATE_FORMAT.value:
-            plate_data = PlateData.create(reader, header)
-            PlateBlock._parse_plate_format_data(
-                header,
-                well_data,
-                plate_data,
-            )
             return cls(
                 block_type="Plate",
                 raw_lines=reader.lines,
                 header=header,
-                well_data=well_data,
-                block_data=plate_data,
+                block_data=PlateData.create(reader, header),
             )
         else:
             error = f"unrecognized export format {header.export_format}"
@@ -506,104 +441,6 @@ class PlateBlock(Block):
         return cls
 
     @staticmethod
-    def _add_data_point(
-        header: PlateHeader,
-        well_data: defaultdict[str, WellData],
-        well: str,
-        value: float,
-        data_key: Optional[str],
-        temperature: Optional[float],
-        wavelength: Optional[int],
-    ) -> None:
-        dimension = (
-            wavelength if header.read_type == ReadType.ENDPOINT.value else data_key
-        )
-        well_data[well].add_value(
-            value=value,
-            dimension=dimension,
-            temperature=temperature,
-            wavelength=wavelength,
-        )
-
-    @staticmethod
-    def _parse_time_format_data(
-        header: PlateHeader,
-        well_data: defaultdict[str, WellData],
-        time_data: TimeData,
-    ) -> None:
-        if header.data_type == DataType.RAW.value:
-            raw_data = assert_not_none(
-                time_data.raw_data,
-                msg="Unable to find plate block raw data.",
-            )
-            for wavelength_data in raw_data.wavelength_data:
-                for kinetic_data in wavelength_data.kinetic_data:
-                    for pos, val in kinetic_data.data.items():
-                        PlateBlock._add_data_point(
-                            header,
-                            well_data,
-                            str(pos),
-                            val,
-                            data_key=kinetic_data.data_key,
-                            temperature=kinetic_data.temperature,
-                            wavelength=wavelength_data.wavelength,
-                        )
-            if time_data.reduced_data:
-                for pos, val in time_data.reduced_data.iter_data():
-                    well_data[pos].processed_data.append(val)
-        elif header.data_type == DataType.REDUCED.value:
-            reduced_data = assert_not_none(
-                time_data.reduced_data,
-                msg="Unable to find plate block reduced data.",
-            )
-            for pos, val in reduced_data.iter_data():
-                well_data[pos].processed_data.append(val)
-        else:
-            msg = msg_for_error_on_unrecognized_value(
-                "data type", header.data_type, DataType._member_names_
-            )
-            raise AllotropeConversionError(msg)
-
-    @staticmethod
-    def _parse_plate_format_data(
-        header: PlateHeader,
-        well_data: defaultdict[str, WellData],
-        plate_data: PlateData,
-    ) -> None:
-        if header.data_type == DataType.RAW.value:
-            raw_data = assert_not_none(
-                plate_data.raw_data,
-                msg="Unable to find plate block raw data.",
-            )
-            for kinetic_data in raw_data.kinetic_data:
-                for wavelength_data in kinetic_data.wavelength_data:
-                    for pos, value in wavelength_data.data.items():
-                        PlateBlock._add_data_point(
-                            header,
-                            well_data,
-                            str(pos),
-                            value,
-                            data_key=kinetic_data.data_key,
-                            temperature=kinetic_data.temperature,
-                            wavelength=wavelength_data.wavelength,
-                        )
-            if plate_data.reduced_data:
-                for pos, value in plate_data.reduced_data.data.items():
-                    well_data[str(pos)].processed_data.append(value)
-        elif header.data_type == DataType.REDUCED.value:
-            reduced_data = assert_not_none(
-                plate_data.reduced_data,
-                msg="Unable to find plate block reduced data.",
-            )
-            for pos, value in reduced_data.data.items():
-                well_data[str(pos)].processed_data.append(value)
-        else:
-            msg = msg_for_error_on_unrecognized_value(
-                "data type", header.data_type, DataType._member_names_
-            )
-            raise AllotropeConversionError(msg)
-
-    @staticmethod
     def split_wavelengths(values: Optional[str]) -> Optional[list[int]]:
         return None if values is None else [int(v) for v in values.split()]
 
@@ -615,21 +452,6 @@ class PlateBlock(Block):
         for row in range(self.header.num_rows):
             for col in range(1, self.header.num_columns + 1):
                 yield f"{num_to_chars(row)}{col}"
-
-    @property
-    def is_single_wavelength(self) -> bool:
-        return (
-            self.header.read_type in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
-            and len(self.header.wavelengths) == 1
-        )
-
-    @property
-    def has_wavelength_dimension(self) -> bool:
-        return (
-            self.header.read_type
-            not in {ReadType.SPECTRUM.value, ReadType.ENDPOINT.value}
-            and len(self.header.wavelengths) > 1
-        )
 
 
 @dataclass(frozen=True)
@@ -676,8 +498,8 @@ class FluorescencePlateBlock(PlateBlock):
             error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
             raise AllotropeConversionError(error)
 
-        if read_type != ReadType.ENDPOINT:
-            error = f"Only Endpoint measurements can be processed at this time."
+        if read_type != ReadType.ENDPOINT.value:
+            error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
         return PlateHeader(
@@ -695,7 +517,7 @@ class FluorescencePlateBlock(PlateBlock):
             read_mode="Fluorescence",
             unit="RFU",
             scan_position=scan_position,
-            reads_per_well=try_int(reads_per_well, "reads_per_well"),
+            reads_per_well=try_float(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
             excitation_wavelengths=PlateBlock.split_wavelengths(
@@ -748,8 +570,8 @@ class LuminescencePlateBlock(PlateBlock):
             error = f"Invalid export version {export_version}"
             raise AllotropeConversionError(error)
 
-        if read_type != ReadType.ENDPOINT:
-            error = f"Only Endpoint measurements can be processed at this time."
+        if read_type != ReadType.ENDPOINT.value:
+            error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
         return PlateHeader(
@@ -811,8 +633,8 @@ class AbsorbancePlateBlock(PlateBlock):
             error = f"Invalid export version {export_version}"
             raise AllotropeConversionError(error)
 
-        if read_type != ReadType.ENDPOINT:
-            error = f"Only Endpoint measurements can be processed at this time."
+        if read_type != ReadType.ENDPOINT.value:
+            error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
         return PlateHeader(
@@ -830,7 +652,7 @@ class AbsorbancePlateBlock(PlateBlock):
             read_mode="Absorbance",
             unit="mAU",
             scan_position=None,
-            reads_per_well=None,
+            reads_per_well=0,
             pmt_gain=None,
             num_rows=try_int(num_rows_raw, "num_rows"),
             excitation_wavelengths=None,

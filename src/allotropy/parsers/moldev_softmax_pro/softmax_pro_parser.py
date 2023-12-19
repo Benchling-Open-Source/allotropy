@@ -1,5 +1,4 @@
 from collections.abc import Iterator
-from typing import Optional
 import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
@@ -30,13 +29,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TRelativeFluorescenceUnit,
     TRelativeLightUnit,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
@@ -46,8 +38,6 @@ from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
     PlateBlock,
-    ReadType,
-    WellData,
 )
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -280,54 +270,3 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-
-    def get_data_cube_dimensions(
-        self, plate_block: PlateBlock
-    ) -> list[tuple[str, str, Optional[str]]]:
-        dimensions: list[tuple[str, str, Optional[str]]] = []
-
-        if plate_block.header.read_type == ReadType.KINETIC.value:
-            dimensions = [("double", "elapsed time", "s")]
-        elif plate_block.header.read_type == ReadType.WELL_SCAN.value:
-            dimensions = [("int", "x", None)]
-        elif plate_block.header.read_type in {
-            ReadType.SPECTRUM.value,
-            ReadType.ENDPOINT.value,
-        }:
-            dimensions = [("int", "wavelength", "nm")]
-        else:
-            error = f"Cannot make data cube for read type {plate_block.header.read_type}; only {sorted(ReadType._member_names_)} are supported."
-            raise AllotropeConversionError(error)
-
-        if plate_block.has_wavelength_dimension:
-            dimensions.append(("int", "wavelength", "nm"))
-
-        return dimensions
-
-    def generate_data_cube(
-        self, plate_block: PlateBlock, well_data: WellData
-    ) -> TDatacube:
-        dimension_data = [well_data.dimensions] + (
-            [well_data.wavelengths] if plate_block.has_wavelength_dimension else []
-        )
-        return TDatacube(
-            cube_structure=TDatacubeStructure(
-                [
-                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
-                    for data_type, concept, unit in self.get_data_cube_dimensions(
-                        plate_block
-                    )
-                ],
-                [
-                    TDatacubeComponent(
-                        FieldComponentDatatype("double"),
-                        plate_block.header.concept,
-                        plate_block.header.unit,
-                    )
-                ],
-            ),
-            data=TDatacubeData(
-                dimension_data,  # type: ignore[arg-type]
-                [well_data.values],
-            ),
-        )
