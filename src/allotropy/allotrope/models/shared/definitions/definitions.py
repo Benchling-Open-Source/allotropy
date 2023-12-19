@@ -54,8 +54,8 @@ class TStatisticDatumRole(Enum):
 
 class ValueEnum(Enum):
     NaN = "NaN"
-    Infinity = "Infinity"
-    field_Infinity = "-Infinity"
+    field_Infinity = "+Infinity"
+    field_Infinity_1 = "-Infinity"
 
 
 @dataclass
