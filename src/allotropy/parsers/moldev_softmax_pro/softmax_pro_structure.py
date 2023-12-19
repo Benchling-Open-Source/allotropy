@@ -154,6 +154,14 @@ class PlateHeader:
     cutoff_filters: Optional[list[int]]
 
 
+@dataclass
+class DataElement:
+    temperature: Optional[float]
+    wavelength: Optional[int]
+    position: str
+    value: float
+
+
 @dataclass(frozen=True)
 class PlateWavelengthData:
     wavelength: Optional[int]
@@ -286,6 +294,21 @@ class PlateData:
             reduced_data=PlateReducedData.create(reader, header),
         )
 
+    def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
+        raw_data = assert_not_none(
+            self.raw_data,
+            msg="Unable to find plate block raw data.",
+        )
+
+        for kinetic_data in raw_data.kinetic_data:
+            for wavelength_data in kinetic_data.wavelength_data:
+                yield DataElement(
+                    temperature=kinetic_data.temperature,
+                    wavelength=wavelength_data.wavelength,
+                    position=position,
+                    value=wavelength_data.data[position],
+                )
+
 
 @dataclass(frozen=True)
 class TimeKineticData:
@@ -394,6 +417,21 @@ class TimeData:
             raw_data=TimeRawData.create(reader, header),
             reduced_data=TimeReducedData.create(reader),
         )
+
+    def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
+        raw_data = assert_not_none(
+            self.raw_data,
+            msg="Unable to find plate block raw data.",
+        )
+
+        for wavelength_data in raw_data.wavelength_data:
+            for kinetic_data in wavelength_data.kinetic_data:
+                yield DataElement(
+                    temperature=kinetic_data.temperature,
+                    wavelength=wavelength_data.wavelength,
+                    position=position,
+                    value=kinetic_data.data[position],
+                )
 
 
 @dataclass(frozen=True)
@@ -562,6 +600,11 @@ class PlateBlock(Block):
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
+
+    def iter_wells(self) -> Iterator[str]:
+        for row in range(self.header.num_rows):
+            for col in range(1, self.header.num_columns + 1):
+                yield f"{num_to_chars(row)}{col}"
 
     @property
     def is_single_wavelength(self) -> bool:
