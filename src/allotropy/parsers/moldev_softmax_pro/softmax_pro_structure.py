@@ -5,7 +5,7 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 import re
-from typing import Optional
+from typing import Optional, Union
 
 import pandas as pd
 
@@ -439,6 +439,7 @@ class PlateBlock(Block):
     block_type: str
     header: PlateHeader
     well_data: defaultdict[str, WellData]
+    block_data: Union[PlateData, TimeData]
     plate_block_type: str = "Abstract"
 
     @staticmethod
@@ -449,27 +450,36 @@ class PlateBlock(Block):
         well_data: defaultdict[str, WellData] = defaultdict(WellData.create)
 
         if header.export_format == ExportFormat.TIME_FORMAT.value:
+            time_data = TimeData.create(reader, header)
             PlateBlock._parse_time_format_data(
                 header,
                 well_data,
-                time_data=TimeData.create(reader, header),
+                time_data,
+            )
+            return cls(
+                block_type="Plate",
+                raw_lines=reader.lines,
+                header=header,
+                well_data=well_data,
+                block_data=time_data,
             )
         elif header.export_format == ExportFormat.PLATE_FORMAT.value:
+            plate_data = PlateData.create(reader, header)
             PlateBlock._parse_plate_format_data(
                 header,
                 well_data,
-                plate_data=PlateData.create(reader, header),
+                plate_data,
+            )
+            return cls(
+                block_type="Plate",
+                raw_lines=reader.lines,
+                header=header,
+                well_data=well_data,
+                block_data=plate_data,
             )
         else:
             error = f"unrecognized export format {header.export_format}"
             raise AllotropeConversionError(error)
-
-        return cls(
-            block_type="Plate",
-            raw_lines=reader.lines,
-            header=header,
-            well_data=well_data,
-        )
 
     @staticmethod
     def read_header(reader: CsvReader) -> pd.Series[str]:
