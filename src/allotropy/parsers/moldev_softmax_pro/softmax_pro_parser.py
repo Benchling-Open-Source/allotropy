@@ -1,29 +1,34 @@
-from typing import Optional, Union
+from collections.abc import Iterator
+from typing import Optional
 import uuid
 
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
-    DeviceControlAggregateDocument as DeviceControlAggregateDocumentFluorescence,
-    DeviceControlDocumentItem as DeviceControlDocumentItemFluorescence,
-    MeasurementAggregateDocument as MeasurementAggregateDocumentFluorescence,
-    MeasurementDocumentItem as MeasurementDocumentItemFluorescence,
-    Model as ModelFluorescence,
-)
-from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence import (
-    DeviceControlAggregateDocument as DeviceControlAggregateDocumentLuminescence,
-    DeviceControlDocumentItem as DeviceControlDocumentItemLuminescence,
-    MeasurementAggregateDocument as MeasurementAggregateDocumentLuminescence,
-    MeasurementDocumentItem as MeasurementDocumentItemLuminescence,
-    Model as ModelLuminescence,
-)
-from allotropy.allotrope.models.shared.components.plate_reader import (
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ContainerType,
+    DataSystemDocument,
+    DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
+    LuminescencePointDetectionMeasurementDocumentItems,
+    MeasurementAggregateDocument,
+    Model,
+    PlateReaderAggregateDocument,
+    PlateReaderDocumentItem,
     SampleDocument,
+    ScanPositionSettingPlateReader,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
+    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TRelativeFluorescenceUnit,
+    TRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
@@ -32,13 +37,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
-    DeviceControlAggregateDocument as DeviceControlAggregateDocumentAbsorbance,
-    DeviceControlDocumentItem as DeviceControlDocumentItemAbsorbance,
-    MeasurementAggregateDocument as MeasurementAggregateDocumentAbsorbance,
-    MeasurementDocumentItem as MeasurementDocumentItemAbsorbance,
-    Model as ModelAbsorbance,
-)
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
@@ -50,202 +49,237 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     ReadType,
     WellData,
 )
-from allotropy.parsers.utils.values import natural_sort_key
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class SoftmaxproParser(VendorParser):
-    def to_allotrope(
-        self, named_file_contents: NamedFileContents
-    ) -> Union[ModelAbsorbance, ModelLuminescence, ModelFluorescence]:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents.contents, encoding=None)
         reader = CsvReader(lines)
         data = Data.create(reader)
         return self._get_model(named_file_contents.original_file_name, data)
 
-    def _get_model(
-        self, _: str, data: Data
-    ) -> Union[ModelAbsorbance, ModelLuminescence, ModelFluorescence]:
+    def _get_model(self, file_name: str, data: Data) -> Model:
         plate_block = data.get_plate_block()
+        return Model(
+            field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
+            plate_reader_aggregate_document=PlateReaderAggregateDocument(
+                device_system_document=DeviceSystemDocument(
+                    device_identifier="null",
+                    model_number="null",
+                ),
+                data_system_document=DataSystemDocument(
+                    file_name=file_name,
+                    software_name="SoftMax Pro",
+                    software_version=None,
+                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
+                plate_reader_document=[
+                    self._get_plate_reader_document_item(plate_block, position)
+                    for position in plate_block.iter_wells()
+                ],
+                calculated_data_aggregate_document=None,
+            ),
+        )
+
+    def _get_plate_reader_document_item(
+        self, plate_block: PlateBlock, position: str
+    ) -> PlateReaderDocumentItem:
         if plate_block.plate_block_type == "Absorbance":
-            return self.absorbance_to_allotrope(plate_block)
+            return PlateReaderDocumentItem(
+                measurement_aggregate_document=MeasurementAggregateDocument(
+                    measurement_time="null",
+                    plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
+                    container_type=ContainerType.well_plate,
+                    measurement_document=list(
+                        self._iter_absorbance_measurement_document(
+                            plate_block, position
+                        ),
+                    ),
+                )
+            )
         elif plate_block.plate_block_type == "Luminescence":
-            return self.luminescence_to_allotrope(plate_block)
+            return PlateReaderDocumentItem(
+                measurement_aggregate_document=MeasurementAggregateDocument(
+                    measurement_time="null",
+                    plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
+                    container_type=ContainerType.well_plate,
+                    measurement_document=list(
+                        self._iter_luminescence_measurement_document(
+                            plate_block, position
+                        ),
+                    ),
+                )
+            )
         elif plate_block.plate_block_type == "Fluorescence":
-            return self.fluorescence_to_allotrope(plate_block)
-
-        error = "Unable to find valid plate block type."
-        raise AllotropeConversionError(error)
-
-    def fluorescence_to_allotrope(self, plate_block: PlateBlock) -> ModelFluorescence:
-        measurement_document = []
-
-        for well in sorted(plate_block.well_data.keys(), key=natural_sort_key):
-            well_data = plate_block.well_data[well]
-
-            # TODO: the reason we can't factor out DeviceControlDocumentItemFluorescence and the enclosing classes is because the
-            # Fluorescence ASM model has these extra fields. We may be able to fix this by templating the PlateBlock
-            # class on these classes, or some clever shared/models refactoring.
-            device_control_doc = DeviceControlDocumentItemFluorescence(
-                detector_gain_setting=plate_block.header.pmt_gain
+            return PlateReaderDocumentItem(
+                measurement_aggregate_document=MeasurementAggregateDocument(
+                    measurement_time="null",
+                    plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
+                    container_type=ContainerType.well_plate,
+                    measurement_document=list(
+                        self._iter_fluorescence_measurement_document(
+                            plate_block, position
+                        )
+                    ),
+                )
             )
+        else:
+            error = "Unable to find valid plate block type."
+            raise AllotropeConversionError(error)
 
-            if plate_block.is_single_wavelength:
-                device_control_doc.detector_wavelength_setting = (
-                    TQuantityValueNanometer(plate_block.header.wavelengths[0])
-                )
-            if (
-                plate_block.header.excitation_wavelengths
-                and len(plate_block.header.excitation_wavelengths) == 1
-            ):
-                device_control_doc.excitation_wavelength_setting = (
-                    TQuantityValueNanometer(
-                        plate_block.header.excitation_wavelengths[0]
-                    )
-                )
-            if (
-                plate_block.header.cutoff_filters
-                and len(plate_block.header.cutoff_filters) == 1
-            ):
-                device_control_doc.wavelength_filter_cutoff_setting = (
-                    TQuantityValueNanometer(plate_block.header.cutoff_filters[0])
-                )
+    def _iter_fluorescence_measurement_document(
+        self, plate_block: PlateBlock, position: str
+    ) -> Iterator[FluorescencePointDetectionMeasurementDocumentItems]:
+        if plate_block.header.scan_position == "TRUE":
+            scan_position = (
+                ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+            )
+        elif plate_block.header.scan_position == "FALSE":
+            scan_position = (
+                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+            )
+        else:
+            error = "Unable to find valid scan position."
+            raise AllotropeConversionError(error)
 
-            measurement = MeasurementDocumentItemFluorescence(
-                DeviceControlAggregateDocumentFluorescence([device_control_doc]),
-                SampleDocument(
-                    well_location_identifier=well, plate_barcode=plate_block.header.name
+        reads_per_well = assert_not_none(
+            plate_block.header.reads_per_well,
+            msg="Unable to find plate block reads per well.",
+        )
+
+        excitation_wavelengths = assert_not_none(
+            plate_block.header.excitation_wavelengths,
+            msg="Unable to find plate block excitation wavelength.",
+        )
+
+        cutoff_filters = assert_not_none(
+            plate_block.header.cutoff_filters,
+            msg="Unable to find plate block cutoff filters.",
+        )
+
+        for idx, data_element in enumerate(
+            plate_block.block_data.iter_wavelengths(position)
+        ):
+            wavelength = assert_not_none(
+                data_element.wavelength,
+                msg=f"Unable to find wavelength for position {data_element.position}.",
+            )
+            yield FluorescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=str(uuid.uuid4()),
+                fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
+                compartment_temperature=None
+                if data_element.temperature is None
+                else TQuantityValueDegreeCelsius(data_element.temperature),
+                sample_document=SampleDocument(
+                    location_identifier=data_element.position,
+                    well_plate_identifier=plate_block.header.name,
+                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_role_type=None,
+                    well_location_identifier=None,
+                    vial_location_identifier=None,
+                    mass_concentration=None,
+                ),
+                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[
+                        FluorescencePointDetectionDeviceControlDocumentItem(
+                            device_type="plate reader",
+                            detection_type=plate_block.header.read_mode,
+                            scan_position_setting__plate_reader_=scan_position,
+                            detector_wavelength_setting=TQuantityValueNanometer(
+                                wavelength
+                            ),
+                            excitation_wavelength_setting=TQuantityValueNanometer(
+                                excitation_wavelengths[idx]
+                            ),
+                            wavelength_filter_cutoff_setting=TQuantityValueNanometer(
+                                cutoff_filters[idx]
+                            ),
+                            number_of_averages=TQuantityValueNumber(reads_per_well),
+                            detector_gain_setting=plate_block.header.pmt_gain,
+                        )
+                    ]
                 ),
             )
 
-            if well_data.temperature is not None:
-                measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                    well_data.temperature
-                )
-
-            if not well_data.is_empty:
-                measurement.data_cube = self.generate_data_cube(plate_block, well_data)
-
-            if well_data.processed_data:
-                measurement.processed_data_aggregate_document = (
-                    ProcessedDataAggregateDocument(
-                        [
-                            ProcessedDataDocumentItem(
-                                val, data_processing_description="processed data"
-                            )
-                            for val in well_data.processed_data
-                        ]
-                    )
-                )
-            measurement_document.append(measurement)
-
-        return ModelFluorescence(
-            measurement_aggregate_document=MeasurementAggregateDocumentFluorescence(
-                measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
-                measurement_document=measurement_document,
-            )
+    def _iter_luminescence_measurement_document(
+        self, plate_block: PlateBlock, position: str
+    ) -> Iterator[LuminescencePointDetectionMeasurementDocumentItems]:
+        reads_per_well = assert_not_none(
+            plate_block.header.reads_per_well,
+            msg="Unable to find plate block reads per well.",
         )
 
-    def luminescence_to_allotrope(self, plate_block: PlateBlock) -> ModelLuminescence:
-        measurement_document = []
-        for well in sorted(plate_block.well_data.keys(), key=natural_sort_key):
-            well_data = plate_block.well_data[well]
-
-            device_control_doc = DeviceControlDocumentItemLuminescence(
-                detector_gain_setting=plate_block.header.pmt_gain
+        for data_element in plate_block.block_data.iter_wavelengths(position):
+            wavelength = assert_not_none(
+                data_element.wavelength,
+                msg=f"Unable to find wavelength for position {data_element.position}.",
             )
-
-            if plate_block.is_single_wavelength:
-                device_control_doc.detector_wavelength_setting = (
-                    TQuantityValueNanometer(plate_block.header.wavelengths[0])
-                )
-
-            measurement = MeasurementDocumentItemLuminescence(
-                DeviceControlAggregateDocumentLuminescence([device_control_doc]),
-                SampleDocument(
-                    well_location_identifier=well, plate_barcode=plate_block.header.name
+            yield LuminescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=str(uuid.uuid4()),
+                luminescence=TRelativeLightUnit(value=data_element.value),
+                compartment_temperature=None
+                if data_element.temperature is None
+                else TQuantityValueDegreeCelsius(data_element.temperature),
+                sample_document=SampleDocument(
+                    location_identifier=data_element.position,
+                    well_plate_identifier=plate_block.header.name,
+                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                ),
+                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[
+                        LuminescencePointDetectionDeviceControlDocumentItem(
+                            device_type="plate reader",
+                            detection_type=plate_block.header.read_mode,
+                            detector_wavelength_setting=TQuantityValueNanometer(
+                                wavelength
+                            ),
+                            number_of_averages=TQuantityValueNumber(reads_per_well),
+                            detector_gain_setting=plate_block.header.pmt_gain,
+                        )
+                    ]
                 ),
             )
 
-            if well_data.temperature is not None:
-                measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                    well_data.temperature
-                )
-
-            if not well_data.is_empty:
-                measurement.data_cube = self.generate_data_cube(plate_block, well_data)
-
-            if well_data.processed_data:
-                measurement.processed_data_aggregate_document = (
-                    ProcessedDataAggregateDocument(
-                        [
-                            ProcessedDataDocumentItem(
-                                val, data_processing_description="processed data"
-                            )
-                            for val in well_data.processed_data
-                        ]
-                    )
-                )
-            measurement_document.append(measurement)
-
-        return ModelLuminescence(
-            measurement_aggregate_document=MeasurementAggregateDocumentLuminescence(
+    def _iter_absorbance_measurement_document(
+        self, plate_block: PlateBlock, position: str
+    ) -> Iterator[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
+        for data_element in plate_block.block_data.iter_wavelengths(position):
+            wavelength = assert_not_none(
+                data_element.wavelength,
+                msg=f"Unable to find wavelength for position {data_element.position}.",
+            )
+            yield UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
-                measurement_document=measurement_document,
-            )
-        )
-
-    def absorbance_to_allotrope(self, plate_block: PlateBlock) -> ModelAbsorbance:
-        measurement_document = []
-        for well in sorted(plate_block.well_data.keys(), key=natural_sort_key):
-            well_data = plate_block.well_data[well]
-
-            device_control_doc = DeviceControlDocumentItemAbsorbance(
-                detector_gain_setting=plate_block.header.pmt_gain
-            )
-
-            if plate_block.is_single_wavelength:
-                device_control_doc.detector_wavelength_setting = (
-                    TQuantityValueNanometer(plate_block.header.wavelengths[0])
-                )
-
-            measurement = MeasurementDocumentItemAbsorbance(
-                DeviceControlAggregateDocumentAbsorbance([device_control_doc]),
-                SampleDocument(
-                    well_location_identifier=well, plate_barcode=plate_block.header.name
+                absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
+                compartment_temperature=None
+                if data_element.temperature is None
+                else TQuantityValueDegreeCelsius(data_element.temperature),
+                sample_document=SampleDocument(
+                    location_identifier=data_element.position,
+                    well_plate_identifier=plate_block.header.name,
+                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_role_type=None,
+                    well_location_identifier=None,
+                    vial_location_identifier=None,
+                    mass_concentration=None,
+                ),
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[
+                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                            device_type="plate reader",
+                            detection_type=plate_block.header.read_mode,
+                            detector_wavelength_setting=TQuantityValueNanometer(
+                                wavelength
+                            ),
+                        )
+                    ]
                 ),
             )
-
-            if well_data.temperature is not None:
-                measurement.compartment_temperature = TQuantityValueDegreeCelsius(
-                    well_data.temperature
-                )
-
-            if not well_data.is_empty:
-                measurement.data_cube = self.generate_data_cube(plate_block, well_data)
-
-            if well_data.processed_data:
-                measurement.processed_data_aggregate_document = (
-                    ProcessedDataAggregateDocument(
-                        [
-                            ProcessedDataDocumentItem(
-                                val, data_processing_description="processed data"
-                            )
-                            for val in well_data.processed_data
-                        ]
-                    )
-                )
-            measurement_document.append(measurement)
-
-        return ModelAbsorbance(
-            measurement_aggregate_document=MeasurementAggregateDocumentAbsorbance(
-                measurement_identifier=str(uuid.uuid4()),
-                plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
-                measurement_document=measurement_document,
-            )
-        )
 
     def get_data_cube_dimensions(
         self, plate_block: PlateBlock

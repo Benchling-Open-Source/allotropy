@@ -676,6 +676,10 @@ class FluorescencePlateBlock(PlateBlock):
             error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
             raise AllotropeConversionError(error)
 
+        if read_type != ReadType.ENDPOINT:
+            error = f"Only Endpoint measurements can be processed at this time."
+            raise AllotropeConversionError(error)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -744,6 +748,10 @@ class LuminescencePlateBlock(PlateBlock):
             error = f"Invalid export version {export_version}"
             raise AllotropeConversionError(error)
 
+        if read_type != ReadType.ENDPOINT:
+            error = f"Only Endpoint measurements can be processed at this time."
+            raise AllotropeConversionError(error)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -801,6 +809,10 @@ class AbsorbancePlateBlock(PlateBlock):
 
         if export_version != EXPORT_VERSION:
             error = f"Invalid export version {export_version}"
+            raise AllotropeConversionError(error)
+
+        if read_type != ReadType.ENDPOINT:
+            error = f"Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
         return PlateHeader(
