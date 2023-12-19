@@ -13,13 +13,24 @@ from datamodel_code_generator import (
     PythonVersion,
 )
 
+from allotropy.allotrope.schema_parser.backup_manager import (
+    backup,
+    is_file_changed,
+    restore_backup,
+)
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schemas import get_schema
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
+SHARED_SCHEMAS_PATH = os.path.join(SCHEMA_DIR_PATH, "shared", "definitions")
+UNITS_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "units.json")
+CUSTOM_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "custom.json")
 MODEL_DIR_PATH = "src/allotropy/allotrope/models"
-
+SHARED_MODELS_PATH = os.path.join(MODEL_DIR_PATH, "shared", "definitions")
+UNITS_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "units.py")
+CUSTOM_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "custom.py")
+GENERATED_SHARED_PATHS = [UNITS_SCHEMAS_PATH, UNITS_MODELS_PATH, CUSTOM_SCHEMAS_PATH, CUSTOM_MODELS_PATH]
 
 def lint_file(model_path: str) -> None:
     # The first run of ruff changes typing annotations and causes unused imports. We catch failure
@@ -59,14 +70,6 @@ def lint_file(model_path: str) -> None:
     )
 
 
-def files_equal(path1: str, path2: str) -> bool:
-    with open(path1) as file1, open(path2) as file2:
-        for line1, line2 in zip(file1, file2):
-            if line1 != line2 and not line1.startswith("#   timestamp:"):
-                return False
-    return True
-
-
 def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_regex: Optional[str] = None) -> list[str]:
     """Generate schemas from JSON schema files.
 
@@ -77,63 +80,57 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
     :return: A list of model files that were changed.
     """
     schema_cleaner = SchemaCleaner()
+    units_updated = False
 
-    os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
-    schema_paths = list(Path(".").rglob("*.json"))
-    os.chdir(os.path.join(root_dir))
-    models_changed = []
-    for rel_schema_path in schema_paths:
-        if str(rel_schema_path).startswith("shared"):
-            continue
-        if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
-            continue
-        print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-        schema_name = rel_schema_path.stem
-        schema_path = os.path.join(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-        output_file = re.sub(
-            "/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py"
-        ).lower()
-        model_path = os.path.join(root_dir, MODEL_DIR_PATH, output_file)
-        # os.mkdir(model_path)
-        model_backup_path = f"{model_path}.bak"
-        schema_backup_path = f"{schema_path}.bak"
+    with backup(GENERATED_SHARED_PATHS, always_restore=dry_run):
+        os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
+        schema_paths = list(Path(".").rglob("*.json"))
+        os.chdir(os.path.join(root_dir))
+        models_changed = []
+        for rel_schema_path in schema_paths:
+            if str(rel_schema_path).startswith("shared"):
+                continue
+            if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
+                continue
 
-        # Backup model to do diff after generation
-        if os.path.exists(model_path):
-            os.rename(model_path, model_backup_path)
+            print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
+            schema_name = rel_schema_path.stem
+            schema_path = os.path.join(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
+            model_file = re.sub(
+                "/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py"
+            ).lower()
+            model_path = os.path.join(root_dir, MODEL_DIR_PATH, model_file)
 
-        # Backup schema and override with extra defs
-        schema = get_schema(str(rel_schema_path))
-        schema = schema_cleaner.clean(schema)
-        schema_cleaner.add_missing_units()
-        os.rename(schema_path, schema_backup_path)
-        with open(schema_path, "w") as f:
-            json.dump(schema, f)
+            with backup(model_path, always_restore=dry_run), backup(schema_path, always_restore=True):
+                # Backup schema and override with extra defs
+                schema = get_schema(str(rel_schema_path))
+                schema = schema_cleaner.clean(schema)
+                units_updated |= schema_cleaner.add_missing_units()
+                with open(schema_path, "w") as f:
+                    json.dump(schema, f)
 
-        # Generate models
-        generate(
-            input_=Path(schema_path),
-            output=Path(model_path),
-            output_model_type=DataModelType.DataclassesDataclass,
-            input_file_type=InputFileType.JsonSchema,
-            # Specify base_class as empty when using dataclass
-            base_class="",
-            target_python_version=PythonVersion.PY_39,
-            use_union_operator=False,
-        )
-        # Import classes from shared files, remove unused classes, format.
-        modify_file(model_path, schema_path)
-        lint_file(model_path)
+                # Generate models
+                generate(
+                    input_=Path(schema_path),
+                    output=Path(model_path),
+                    output_model_type=DataModelType.DataclassesDataclass,
+                    input_file_type=InputFileType.JsonSchema,
+                    # Specify base_class as empty when using dataclass
+                    base_class="",
+                    target_python_version=PythonVersion.PY_39,
+                    use_union_operator=False,
+                )
+                # Import classes from shared files, remove unused classes, format.
+                modify_file(model_path, schema_path)
+                lint_file(model_path)
 
-        # Restore backups
-        if os.path.exists(model_backup_path):
-            files_are_equal = files_equal(model_path, model_backup_path)
-            if not files_are_equal:
-                models_changed.append(os.path.basename(model_path))
-            if files_are_equal or dry_run:
-                os.rename(model_backup_path, model_path)
-            else:
-                os.remove(model_backup_path)
-        os.rename(schema_backup_path, schema_path)
+                is_changed = is_file_changed(model_path)
+                if is_changed:
+                    models_changed.append(os.path.basename(model_path))
+                else:
+                    restore_backup(model_path)
+
+        for path in [UNITS_MODELS_PATH, CUSTOM_MODELS_PATH]:
+            lint_file(path)
 
     return models_changed
