@@ -278,7 +278,16 @@ class TimeWavelengthData:
     kinetic_data: list[TimeKineticData]
 
     @staticmethod
-    def create(wavelength: float, data: pd.DataFrame) -> TimeWavelengthData:
+    def create(
+        reader: CsvReader,
+        wavelength: float,
+        columns: pd.Series[str],
+    ) -> TimeWavelengthData:
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(sep="\t"),
+            msg="unable to find raw data from time block.",
+        )
+        data.columns = pd.Index(columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             kinetic_data=[TimeKineticData.create(row) for _, row in data.iterrows()],
@@ -301,24 +310,13 @@ class TimeRawData:
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for time block raw data.",
         )
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t"),
-            msg="unable to find raw data from time block.",
-        )
-        data.columns = pd.Index(columns)
-        return TimeRawData(
-            wavelength_data=list(TimeRawData._iter_wavelength_data(header, data)),
-        )
 
-    @staticmethod
-    def _iter_wavelength_data(
-        header: PlateHeader, data: pd.DataFrame
-    ) -> Iterator[TimeWavelengthData]:
-        for idx in range(header.num_wavelengths):
-            wavelength = header.wavelengths[idx]
-            start = idx * (header.kinetic_points + 1)
-            end = start + header.kinetic_points
-            yield TimeWavelengthData.create(wavelength, data.iloc[start:end, :])
+        return TimeRawData(
+            wavelength_data=[
+                TimeWavelengthData.create(reader, header.wavelengths[idx], columns)
+                for idx in range(header.num_wavelengths)
+            ]
+        )
 
 
 @dataclass(frozen=True)
