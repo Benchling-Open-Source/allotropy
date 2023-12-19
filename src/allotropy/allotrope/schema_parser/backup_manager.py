@@ -46,7 +46,7 @@ def backup(paths: Union[list[PathType], PathType], *, restore: Optional[bool] = 
     try:
         yield
     except Exception:
-        # [restore_backup(path) for path in paths]
+        [restore_backup(path) for path in paths]
         raise
 
     if restore:
