@@ -580,17 +580,6 @@ class PlateBlock(Block):
 
 
 @dataclass(frozen=True)
-class PlateBlockExtraAttr:
-    concept: str
-    read_mode: str
-    unit: str
-    pmt_gain: Optional[str]
-    num_rows: int
-    excitation_wavelengths: Optional[list[int]]
-    cutoff_filters: Optional[list[int]]
-
-
-@dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
     plate_block_type: str = "Fluorescence"
 
