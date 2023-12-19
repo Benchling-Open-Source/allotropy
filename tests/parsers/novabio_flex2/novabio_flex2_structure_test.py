@@ -5,6 +5,7 @@ import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
@@ -179,4 +180,5 @@ def test_create_sample_list_invalid_no_analyst() -> None:
 
 @pytest.mark.short
 def test_create_data() -> None:
-    assert Data.create(get_input_stream(), get_input_title()) == get_data()
+    named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
+    assert Data.create(named_file_contents) == get_data()
