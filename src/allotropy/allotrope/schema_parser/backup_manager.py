@@ -38,7 +38,7 @@ def _remove_backup(path: str):
 
 
 @contextmanager
-def backup(paths: Union[list[str], str], always_restore: Optional[bool] = False):
+def backup(paths: Union[list[str], str], restore: Optional[bool] = False):
     paths = paths if isinstance(paths, list) else [paths]
     [_backup_file(path) for path in paths]
     try:
@@ -47,7 +47,7 @@ def backup(paths: Union[list[str], str], always_restore: Optional[bool] = False)
         [restore_backup(path) for path in paths]
         raise
 
-    if always_restore:
+    if restore:
         [restore_backup(path) for path in paths]
     else:
         [_remove_backup(path) for path in paths]

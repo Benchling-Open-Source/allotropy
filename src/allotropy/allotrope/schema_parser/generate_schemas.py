@@ -82,7 +82,7 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
     schema_cleaner = SchemaCleaner()
     units_updated = False
 
-    with backup(GENERATED_SHARED_PATHS, always_restore=dry_run):
+    with backup(GENERATED_SHARED_PATHS, restore=dry_run):
         os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
         schema_paths = list(Path(".").rglob("*.json"))
         os.chdir(os.path.join(root_dir))
@@ -101,7 +101,7 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
             ).lower()
             model_path = os.path.join(root_dir, MODEL_DIR_PATH, model_file)
 
-            with backup(model_path, always_restore=dry_run), backup(schema_path, always_restore=True):
+            with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
                 # Backup schema and override with extra defs
                 schema = get_schema(str(rel_schema_path))
                 schema = schema_cleaner.clean(schema)
