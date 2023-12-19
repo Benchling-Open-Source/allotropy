@@ -14,6 +14,7 @@ from datamodel_code_generator import (
 )
 
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
+from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schemas import get_schema
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
@@ -75,6 +76,8 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
 
     :return: A list of model files that were changed.
     """
+    schema_cleaner = SchemaCleaner()
+
     os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
     schema_paths = list(Path(".").rglob("*.json"))
     os.chdir(os.path.join(root_dir))
@@ -101,6 +104,8 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_
 
         # Backup schema and override with extra defs
         schema = get_schema(str(rel_schema_path))
+        schema = schema_cleaner.clean(schema)
+        schema_cleaner.add_missing_units()
         os.rename(schema_path, schema_backup_path)
         with open(schema_path, "w") as f:
             json.dump(schema, f)
