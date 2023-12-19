@@ -18,7 +18,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
+    TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
@@ -233,7 +233,7 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(31441),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(31441),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
@@ -300,7 +300,7 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(80368),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(80368),
                             ),
                         ],
                     )
