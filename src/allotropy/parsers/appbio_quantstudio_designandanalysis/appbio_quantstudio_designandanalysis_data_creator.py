@@ -32,14 +32,13 @@ def create_data(reader: DesignAndAnalysisReader) -> Data:
     for well in wells:
         if multi_data is not None:
             well.multicomponent_data = MulticomponentData.create(
-                multi_data,
-                well,
+                multi_data, well, header
             )
 
-        if melt_data is not None:
-            well.melt_curve_raw_data = MeltCurveRawData.create(
+        for well_item in well.items.values():
+            well_item.melt_curve_raw_data = MeltCurveRawData.create(
                 melt_data,
-                well,
+                well_item,
             )
 
         for well_item in well.items.values():
