@@ -79,23 +79,37 @@ def test_clean_http_refs():
     schema = {
         "allOf": [
             {
-                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
             },
             {
-                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/cube.schema#/$defs/tDatacube"
+                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
             }
-        ]
-    }
-    assert SchemaCleaner().clean(schema) == {
-        "allOf": [
-            {
-                "$ref": "#/$defs/adm_core_REC_2023_09_cube_schema/$defs/tDatacube"
-            },
-            {
-                "$ref": "#/$defs/adm_core_REC_2023_09_cube_schema/$defs/tDatacube"
+        ],
+        "$defs": {
+            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
+                "$defs": {
+                    "orderedItem": {
+                        "description": "A schema for an array item, that is ordered in a not-natural way. This means that it MUST have an explicit @index property stating the position. The index value is a strict positive 32bit signed integer (excluding 0).",
+                        "properties": {
+                            "@index": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 2147483647
+                            }
+                        }
+                    }
+                }
             }
-        ]
+        }
     }
+    assert SchemaCleaner().clean(schema)["allOf"] == [
+        {
+            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
+        },
+        {
+            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
+        }
+    ]
 
 
 def test_fix_quantity_value_reference() -> None:
@@ -254,7 +268,7 @@ def test_replace_definiton() -> None:
             }
         }
     }
-    assert SchemaCleaner.clean(schema) == {
+    assert SchemaCleaner().clean(schema) == {
         "properties": {
             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
             "$asm.pattern": "quantity datum",
@@ -284,3 +298,121 @@ def test_replace_definiton() -> None:
             }
         }
     }
+
+
+def test_fix_allof_optional_before_required() -> None:
+    schema = {
+        "device document": {
+            "type": "array",
+            "$asm.pattern": "indexed datum",
+            "items": {
+                "allOf": [
+                    {
+                        "type": "object",
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002567",
+                        "$asm.pattern": "aggregate datum",
+                        "required": [
+                            "device type"
+                        ],
+                        "properties": {
+                            "device type": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                                "$asm.pattern": "value datum",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                            },
+                            "other value": {
+                                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                                "$asm.pattern": "value datum",
+                                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                            },
+                        }
+                    },
+                    {
+                        "required": [
+                            "other value"
+                        ],
+                    },
+                    {
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                    }
+                ]
+            }
+        },
+        "$defs": {
+            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
+                "$defs": {
+                    "orderedItem": {
+                        "properties": {
+                            "@index": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 2147483647
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    import json
+    print(json.dumps(SchemaCleaner().clean(schema), indent=4))
+
+    assert SchemaCleaner().clean(schema) == {
+        "device document": {
+            "type": "array",
+            "$asm.pattern": "indexed datum",
+            "items": {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002567",
+                "$asm.pattern": "aggregate datum",
+                "required": ["other value", "device type"],
+                "properties": {
+                    "device type": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                        "$asm.pattern": "value datum",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                    },
+                    "other value": {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
+                        "$asm.pattern": "value datum",
+                        "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                        "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
+                    },
+                    "@index": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 2147483647
+                    }
+                }
+            }
+        },
+        "$defs": {
+            "adm_core_REC_2023_09_core_schema": {
+                "$defs": {
+                    "orderedItem": {
+                        "properties": {
+                            "@index": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 2147483647
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+"""
+def test_load_model() -> None:
+    from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
+        Model,
+    )
+
+    model = Model()
+"""

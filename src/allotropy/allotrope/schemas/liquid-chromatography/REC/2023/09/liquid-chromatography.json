@@ -255,7 +255,7 @@
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                                                                     },
                                                                     {
-                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%25"
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
                                                                     }
                                                                   ]
                                                                 },
@@ -303,7 +303,7 @@
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                                                                     },
                                                                     {
-                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%25"
+                                                                      "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/%"
                                                                     }
                                                                   ]
                                                                 },
@@ -363,18 +363,6 @@
                                                                   ]
                                                                 }
                                                               },
-                                                              "oneOf": [
-                                                                {
-                                                                  "required": [
-                                                                    "retention time"
-                                                                  ]
-                                                                },
-                                                                {
-                                                                  "required": [
-                                                                    "retention volume"
-                                                                  ]
-                                                                }
-                                                              ],
                                                               "anyOf": [
                                                                 {
                                                                   "properties": {
@@ -12692,9 +12680,6 @@
                                 "allOf": [
                                   {
                                     "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  },
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/S~1m"
                                   }
                                 ]
                               },
@@ -12704,9 +12689,6 @@
                                 "allOf": [
                                   {
                                     "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
-                                  },
-                                  {
-                                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/[S~1m].s"
                                   }
                                 ]
                               }
