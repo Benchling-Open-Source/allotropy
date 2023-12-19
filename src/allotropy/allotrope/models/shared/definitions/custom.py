@@ -11,15 +11,21 @@ from allotropy.allotrope.models.shared.definitions.units import (
     DegreeCelsius,
     GramPerLiter,
     Hertz,
+    MicrogramPerMicroliter,
+    MicrogramPerMilliliter,
     Microliter,
     Micrometer,
     MilliAbsorbanceUnit,
+    MilligramPerMilliliter,
+    Milliliter,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
     MillionCellsPerMilliliter,
     MilliOsmolesPerKilogram,
     MilliSecond,
+    NanogramPerMicroliter,
+    NanogramPerMilliliter,
     Nanometer,
     Number,
     NumberPerMicroliter,
@@ -30,6 +36,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     RelativeFluorescenceUnit,
     RelativeLightUnit,
     SecondTime,
+    SquareCentimetersPerGram,
     TODO,
     Unitless,
     UnitPerLiter,
@@ -131,8 +138,50 @@ class TQuantityValueNumber(Number, TQuantityValueWithOptionalUnit):
 
 
 @dataclass
+class TQuantityValueNanogramPerMicroliter(
+    NanogramPerMicroliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMicrogramPerMicroliter(
+    MicrogramPerMicroliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
 class TQuantityValuePicogramPerMilliliter(
     PicogramPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMilliliter(
+    Milliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueNanogramPerMilliliter(
+    NanogramPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMicrogramPerMilliliter(
+    MicrogramPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMilligramPerMilliliter(
+    MilligramPerMilliliter, TQuantityValueWithOptionalUnit
 ):
     pass
 
@@ -189,6 +238,13 @@ class TRelativeFluorescenceUnit(
 
 @dataclass
 class TRelativeLightUnit(RelativeLightUnit, TQuantityValueWithOptionalUnit):
+    pass
+
+
+@dataclass
+class TQuantityValueSquareCentimetersPerGram(
+    SquareCentimetersPerGram, TQuantityValueWithOptionalUnit
+):
     pass
 
 

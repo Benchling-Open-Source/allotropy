@@ -229,10 +229,70 @@
             }
         ]
     },
+    "tQuantityValueNanogramPerMicroliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/NanogramPerMicroliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueMicrogramPerMicroliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MicrogramPerMicroliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
     "tQuantityValuePicogramPerMilliliter": {
         "allOf": [
             {
                 "$ref": "#/$defs/PicogramPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueNanogramPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/NanogramPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueMicrogramPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MicrogramPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueMilligramPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/MilligramPerMilliliter"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/Milliliter"
             },
             {
                 "$ref": "#/$defs/tQuantityValue"
@@ -276,6 +336,16 @@
             },
             {
                 "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueSquareCentimetersPerGram":{
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/SquareCentimetersPerGram"
             }
         ]
     },

@@ -11,7 +11,7 @@ ROOT_DIR = Path(__file__).parent.parent
 @click.command()
 @click.option("--regex")
 def _generate_schemas(regex):
-    generate_schemas(ROOT_DIR, regex)
+    generate_schemas(ROOT_DIR, schema_regex=regex)
 
 
 if __name__ == "__main__":
