@@ -146,6 +146,8 @@ class PlateHeader:
     concept: str
     read_mode: str
     unit: str
+    scan_position: Optional[str]
+    reads_per_well: Optional[int]
     pmt_gain: Optional[str]
     num_rows: int
     excitation_wavelengths: Optional[list[int]]
@@ -601,7 +603,7 @@ class FluorescencePlateBlock(PlateBlock):
             export_format,
             read_type,
             _,  # Read mode
-            _,
+            scan_position,
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
@@ -620,7 +622,7 @@ class FluorescencePlateBlock(PlateBlock):
             cutoff_filters_str,
             _,  # sweep_wave
             _,  # sweep_wavelength
-            _,  # reads_per_well
+            reads_per_well,
             pmt_gain,
             _,  # start_integration_time
             _,  # end_integration_time
@@ -646,6 +648,8 @@ class FluorescencePlateBlock(PlateBlock):
             concept="fluorescence",
             read_mode="Fluorescence",
             unit="RFU",
+            scan_position=scan_position,
+            reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
             excitation_wavelengths=PlateBlock.split_wavelengths(
@@ -686,7 +690,7 @@ class LuminescencePlateBlock(PlateBlock):
             cutoff_filters_str,
             _,  # sweep_wave
             _,  # sweep_wavelength
-            _,  # reads_per_well
+            reads_per_well,
             pmt_gain,
             _,  # start_integration_time
             _,  # end_integration_time
@@ -712,6 +716,8 @@ class LuminescencePlateBlock(PlateBlock):
             concept="luminescence",
             read_mode="Luminescence",
             unit="RLU",
+            scan_position=None,
+            reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
             excitation_wavelengths=PlateBlock.split_wavelengths(
@@ -769,6 +775,8 @@ class AbsorbancePlateBlock(PlateBlock):
             concept="absorbance",
             read_mode="Absorbance",
             unit="mAU",
+            scan_position=None,
+            reads_per_well=None,
             pmt_gain=None,
             num_rows=try_int(num_rows_raw, "num_rows"),
             excitation_wavelengths=None,
