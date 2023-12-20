@@ -13,6 +13,15 @@ VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
     "file_name",
     [
         "abs_endpoint_plates",
+        "MD_SMP_absorbance_endpoint_example01",
+        "MD_SMP_absorbance_endpoint_example02",
+        "MD_SMP_absorbance_endpoint_example04",
+        "MD_SMP_absorbance_endpoint_example05",
+        "MD_SMP_fluorescence_endpoint_example07",
+        "MD_SMP_fluorescence_endpoint_example06",
+        "MD_SMP_luminescence_endpoint_example03",
+        "MD_SMP_luminescence_endpoint_example08",
+        "MD_SMP_luminescence_endpoint_example09",
     ],
 )
 def test_to_allotrope(file_name: str) -> None:
