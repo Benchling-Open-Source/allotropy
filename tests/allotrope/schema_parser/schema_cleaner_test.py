@@ -336,6 +336,94 @@ def test_replace_definiton() -> None:
     }, test_defs=True)
 
 
+def test_fix_nested_def_references() -> None:
+    # References to definitions inside of a definiton schema do not use the full path, making it impossible
+    # for the generation script to find them. Fix this by replacing the def with the correct path.
+    # e.g. a #/$defs/nestedSchema inside of core.schema will become #/$defs/core_schema_nestedSchema
+    schema = {
+        "$defs": {
+            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/hierarchy.schema": {
+                "$defs": {
+                    "anotherThing": {
+                        "properties": {
+                            "allOf": [
+                                {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
+                                },
+                                {
+                                    "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/nestedSchema"
+                                },
+                            ]
+                        }
+                    }
+                }
+            },
+            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
+                "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
+                "title": "Schema for leaf node values.",
+                "$defs": {
+                    "aThing": {
+                        "properties": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/$defs/nestedSchema"
+                                },
+                                {
+                                    "$ref": "#/$defs/otherSchema"
+                                },
+                                {
+                                    "$ref": "#/$defs/tQuantityValue"
+                                }
+                            ]
+                        }
+                    },
+                    "nestedSchema": {
+                        "properties": {
+                            "type": "string"
+                        }
+                    },
+                }
+            },
+        }
+    }
+    validate_cleaned_schema(schema, {
+        "$defs": {
+            "adm_core_REC_2023_09_hierarchy_schema_anotherThing": {
+                "properties": {
+                    "allOf": [
+                        {
+                            "$ref": "#/$defs/tQuantityValue"
+                        },
+                        {
+                            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_nestedSchema"
+                        },
+                    ]
+                }
+            },
+            "adm_core_REC_2023_09_core_schema_aThing": {
+                "properties": {
+                    "allOf": [
+                        {
+                            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_nestedSchema"
+                        },
+                        {
+                            "$ref": "#/$defs/otherSchema"
+                        },
+                        {
+                            "$ref": "#/$defs/tQuantityValue"
+                        }
+                    ]
+                }
+            },
+            "adm_core_REC_2023_09_core_schema_nestedSchema": {
+                "properties": {
+                    "type": "string"
+                }
+            },
+        }
+    }, test_defs=True)
+
+
 """
 def test_fix_allof_optional_before_required() -> None:
     schema = {

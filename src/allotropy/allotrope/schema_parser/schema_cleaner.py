@@ -26,6 +26,9 @@ class SchemaCleaner:
         self.definitions = self._load_definitions()
         self.replaced_definitions = defaultdict(list)
 
+        self.enclosing_schema_name: Optional[str] = None
+        self.enclosing_schema_keys: Optional[dict[str, Any]] = None
+
     def add_missing_units(self) -> None:
         # Update unit schemas and models with all units found in cleaned schemas.
         if not self.missing_referenced_units:
@@ -106,26 +109,36 @@ class SchemaCleaner:
 
         return {"allOf": cleaned_values}
 
-    def _get_reference(self, value: Any) -> Optional[str]:
+    def _get_reference(self, value: Any) -> tuple[Optional[str], Optional[str]]:
         # Identify URL-like references, and return a sanitized version that can be followed by generation script.
-        # Specifically, we must flatten nested definitions (because generation script does not respect them),
-        # so we transform <url_schema>/#/$defs/<def_name> into <schema_name>_<def_name> references.
-        # Finally, we replace references to definitons stored in definitions.json.
+        # Return schema_name and definition name separately for use in other logic.
         ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*schema)(\#/\$defs/)?(.*)?", str(value))
         if not ref_match:
-            return None
-        def_schema, _, def_name = ref_match.groups()
-        def_schema = re.subn(r"[\/\-\.]", "_", def_schema)[0]
-        if def_name in self.replaced_definitions.get(def_schema, []):
-            return def_name
-        if self._get_unit_name(def_name):
-            return self._get_unit_name(def_name)
-        return f"{def_schema}_{def_name}" if def_schema and def_name else f"{def_schema or def_name}"
+            return None, None
+        schema_name, _, def_name = ref_match.groups()
+        schema_name = re.subn(r"[\/\-\.]", "_", schema_name)[0]
+        return schema_name, def_name
 
     def _clean_ref_value(self, value: str) -> str:
-        cleaned_ref = self._get_reference(value)
-        # TODO: will we ever not get a cleaned ref?
-        return f"#/$defs/{cleaned_ref}" if cleaned_ref else value
+        schema_name, def_name = self._get_reference(value)
+        if def_name in self.replaced_definitions.get(schema_name, []):
+            return f"#/$defs/{def_name}"
+        elif def_name and self._get_unit_name(def_name):
+            return f"#/$defs/{self._get_unit_name(def_name)}"
+
+        if schema_name and def_name:
+            cleaned_ref = f"#/$defs/{schema_name}_{def_name}"
+        elif schema_name or def_name:
+            cleaned_ref = f"#/$defs/{schema_name or def_name}"
+        else:
+            cleaned_ref = value
+
+        def_name = cleaned_ref.split("/")[-1]
+
+        if self.enclosing_schema_name and def_name not in self.definitions and def_name in self.enclosing_schema_keys:
+            cleaned_ref = f"#/$defs/{self.enclosing_schema_name}_{def_name}"
+
+        return cleaned_ref
 
     def _clean_value(self, value: Any) -> Any:
         if isinstance(value, dict):
@@ -160,26 +173,37 @@ class SchemaCleaner:
         raise AssertionError(msg)
 
     def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
-        cleaned = {}
         for schema_name, defs_schema in schema["$defs"].items():
             # Replace web address reference name with a version that can be followed in datamodel-codegen
-            cleaned_schema_name = self._get_reference(schema_name) or schema_name
+            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
             # Units are treated specially. We rename the unit (to avoid non-variable names) and store
             # them in separate shared unit schema file, in order to allow for shared imports.
             if cleaned_schema_name.endswith("units_schema"):
                 self._add_embeded_units(defs_schema["$defs"])
             elif "$defs" in defs_schema:
-                # For nested definitions, we need to flatten then into a single $defs entry in order
-                # for the generation script to work correctly.
-                # We also check if we have a copy of the schema in the shared definitions file, and if so
-                # replace with that, so we can share imports more easily.
+                # Store defs that are replaced with definitions in common/definitions before cleaning.
                 # NOTE: this does not attempt to handle futher nested $defs, in schemas, but we have not
                 # observed that in any schema files yet.
                 for def_name, def_schema in defs_schema["$defs"].items():
                     if self.definitions.get(def_name) == def_schema:
                         self.replaced_definitions[cleaned_schema_name].append(def_name)
-                    else:
+
+        cleaned = {}
+        for schema_name, defs_schema in schema["$defs"].items():
+            # Replace web address reference name with a version that can be followed in datamodel-codegen
+            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
+            if cleaned_schema_name.endswith("units_schema"):
+                continue
+            elif "$defs" in defs_schema:
+                # For nested definitions, we need to flatten then into a single $defs entry in order
+                # for the generation script to work correctly.
+                self.enclosing_schema_name = cleaned_schema_name
+                self.enclosing_schema_keys = defs_schema["$defs"].keys()
+                for def_name, def_schema in defs_schema["$defs"].items():
+                    if def_name not in self.replaced_definitions[cleaned_schema_name]:
                         cleaned[f"{cleaned_schema_name}_{def_name}"] = self._clean(def_schema)
+                self.enclosing_schema_name = None
+                self.enclosing_schema_keys = None
             else:
                 cleaned[cleaned_schema_name] = self._clean(defs_schema)
 
