@@ -6,6 +6,7 @@ from enum import Enum
 import math
 import re
 from typing import Optional, Union
+import uuid
 
 import pandas as pd
 
@@ -109,6 +110,7 @@ class PlateHeader:
 
 @dataclass
 class DataElement:
+    uuid: str
     temperature: Optional[float]
     wavelength: float
     position: str
@@ -246,6 +248,7 @@ class PlateData:
         for kinetic_data in raw_data.kinetic_data:
             for wavelength_data in kinetic_data.wavelength_data:
                 yield DataElement(
+                    uuid=str(uuid.uuid4()),
                     temperature=kinetic_data.temperature,
                     wavelength=wavelength_data.wavelength,
                     position=position,
@@ -362,6 +365,7 @@ class TimeData:
         for wavelength_data in raw_data.wavelength_data:
             for kinetic_data in wavelength_data.kinetic_data:
                 yield DataElement(
+                    uuid=str(uuid.uuid4()),
                     temperature=kinetic_data.temperature,
                     wavelength=wavelength_data.wavelength,
                     position=position,

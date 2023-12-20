@@ -1,5 +1,4 @@
 from typing import Union
-import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
@@ -131,7 +130,7 @@ class SoftmaxproParser(VendorParser):
     ]:
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=data_element.uuid,
                 fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
                 compartment_temperature=(
                     None
@@ -199,7 +198,7 @@ class SoftmaxproParser(VendorParser):
 
         return [
             LuminescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=data_element.uuid,
                 luminescence=TRelativeLightUnit(value=data_element.value),
                 compartment_temperature=(
                     None
@@ -239,7 +238,7 @@ class SoftmaxproParser(VendorParser):
     ]:
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=data_element.uuid,
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
                 compartment_temperature=(
                     None
