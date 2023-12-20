@@ -44,6 +44,8 @@ from allotropy.parsers.utils.values import (
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
+EPOCH = "1970-01-01T00:00:00-00:00"
+
 
 class SoftmaxproParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
@@ -82,7 +84,7 @@ class SoftmaxproParser(VendorParser):
         if plate_block.plate_block_type == "Absorbance":
             return PlateReaderDocumentItem(
                 measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_time="null",
+                    measurement_time=EPOCH,
                     plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
                     container_type=ContainerType.well_plate,
                     measurement_document=list(
@@ -95,7 +97,7 @@ class SoftmaxproParser(VendorParser):
         elif plate_block.plate_block_type == "Luminescence":
             return PlateReaderDocumentItem(
                 measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_time="null",
+                    measurement_time=EPOCH,
                     plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
                     container_type=ContainerType.well_plate,
                     measurement_document=list(
@@ -108,7 +110,7 @@ class SoftmaxproParser(VendorParser):
         elif plate_block.plate_block_type == "Fluorescence":
             return PlateReaderDocumentItem(
                 measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_time="null",
+                    measurement_time=EPOCH,
                     plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
                     container_type=ContainerType.well_plate,
                     measurement_document=list(
