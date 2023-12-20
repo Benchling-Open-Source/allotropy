@@ -34,5 +34,10 @@ class NucleoviewReader:
                 raw_data["Date time"] + raw_data["Time zone offset"]
             )
         raw_data["Sample ID"] = raw_data["Image"].str.split("-", n=3).str[3]
+        raw_data.rename(
+            {"Estimated cell diameter [um]": "Estimated cell diameter (um)"},
+            axis=1,
+            inplace=True,
+        )
 
         return raw_data
