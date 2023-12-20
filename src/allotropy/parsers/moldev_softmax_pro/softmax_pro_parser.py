@@ -148,9 +148,11 @@ class SoftmaxproParser(VendorParser):
             yield FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
-                compartment_temperature=None
-                if data_element.temperature is None
-                else TQuantityValueDegreeCelsius(data_element.temperature),
+                compartment_temperature=(
+                    None
+                    if data_element.temperature is None
+                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
@@ -202,9 +204,11 @@ class SoftmaxproParser(VendorParser):
             yield LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 luminescence=TRelativeLightUnit(value=data_element.value),
-                compartment_temperature=None
-                if data_element.temperature is None
-                else TQuantityValueDegreeCelsius(data_element.temperature),
+                compartment_temperature=(
+                    None
+                    if data_element.temperature is None
+                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
@@ -232,9 +236,11 @@ class SoftmaxproParser(VendorParser):
             yield UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
-                compartment_temperature=None
-                if data_element.temperature is None
-                else TQuantityValueDegreeCelsius(data_element.temperature),
+                compartment_temperature=(
+                    None
+                    if data_element.temperature is None
+                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
