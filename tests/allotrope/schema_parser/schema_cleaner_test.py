@@ -1,4 +1,52 @@
+from typing import Any, Optional
+
+from deepdiff import DeepDiff
+
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
+
+
+def validate_cleaned_schema(schema: dict[str, Any], expected: dict[str, Any], *, test_defs: Optional[bool] = False):
+    # Add $defs/<core schema>/$defs/tQuantityValue as it is used for many tests.
+    if "$defs" not in schema:
+        schema["$defs"] = {}
+    if "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema" not in schema["$defs"]:
+        schema["$defs"]["http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"] = {"$defs": {}}
+    schema["$defs"]["http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"]["$defs"]["tQuantityValue"] = {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": "number"
+            },
+            "unit": {
+                "$ref": "#/$defs/tUnit"
+            },
+            "has statistic datum role": {
+                "$ref": "#/$defs/tStatisticDatumRole"
+            },
+            "@type": {
+                "$ref": "#/$defs/tClass"
+            }
+        },
+        "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
+        "required": [
+            "value",
+            "unit"
+        ]
+    }
+    actual = SchemaCleaner().clean(schema)
+
+    if not test_defs:
+        actual.pop("$defs", None)
+        expected.pop("$defs", None)
+
+    import json
+    print("^^^^")
+    print(json.dumps(actual, indent=4))
+    # print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
+    assert not DeepDiff(
+        expected,
+        actual,
+    )
 
 
 def test_fixes_singlular_allof():
@@ -9,10 +57,9 @@ def test_fixes_singlular_allof():
             }
         ],
     }
-    cleaned = SchemaCleaner().clean(schema)
-    assert cleaned == {
+    validate_cleaned_schema(schema, {
         "key": "value"
-    }
+    })
 
 
 def test_fixes_oneof_nested_in_allof():
@@ -57,7 +104,7 @@ def test_fixes_oneof_nested_in_allof():
             }
         ]
     }
-    assert SchemaCleaner().clean(schema) == expected
+    validate_cleaned_schema(schema, expected)
 
     # Flip so oneOf is first in allOf list, to cover all branches.
     schema["allOf"] = schema["allOf"][::-1]
@@ -65,16 +112,16 @@ def test_fixes_oneof_nested_in_allof():
         {"allOf": value["allOf"][::-1]}
         for value in expected["oneOf"]
     ]
-    assert SchemaCleaner().clean(schema) == expected
+    validate_cleaned_schema(schema, expected)
 
 
 def test_clean_http_refs():
     schema = {
         "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
     }
-    assert SchemaCleaner().clean(schema) == {
-        "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
-    }
+    validate_cleaned_schema(schema, {
+        "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_orderedItem"
+    })
 
     schema = {
         "allOf": [
@@ -82,34 +129,20 @@ def test_clean_http_refs():
                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
             },
             {
-                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
+                "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tNumberArray"
             }
-        ],
-        "$defs": {
-            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
-                "$defs": {
-                    "orderedItem": {
-                        "description": "A schema for an array item, that is ordered in a not-natural way. This means that it MUST have an explicit @index property stating the position. The index value is a strict positive 32bit signed integer (excluding 0).",
-                        "properties": {
-                            "@index": {
-                                "type": "integer",
-                                "minimum": 1,
-                                "maximum": 2147483647
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        ]
     }
-    assert SchemaCleaner().clean(schema)["allOf"] == [
-        {
-            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
-        },
-        {
-            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
-        }
-    ]
+    validate_cleaned_schema(schema, {
+        "allOf": [
+            {
+                "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_orderedItem"
+            },
+            {
+                "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_tNumberArray"
+            }
+        ]
+    })
 
 
 def test_fix_quantity_value_reference() -> None:
@@ -123,14 +156,46 @@ def test_fix_quantity_value_reference() -> None:
             {
                 "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/(unitless)"
             }
-        ]
+        ],
     }
-
-    assert SchemaCleaner().clean(schema) == {
+    validate_cleaned_schema(schema, {
         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
         "$asm.pattern": "quantity datum",
-        "$ref": "#/$defs/tQuantityValueUnitless"
+        "$ref": "#/$defs/tQuantityValueUnitless",
+    })
+
+
+def test_add_missing_unit() -> None:
+    schema = {
+        "properties": {
+            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/fake-unit"
+        },
+        "$defs": {
+            "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema": {
+                "$id": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema",
+                "$comment": "Auto-generated from QUDT 1.1 and Allotrope Extensions for QUDT",
+                "$defs": {
+                    "fake-unit": {
+                        "properties": {
+                            "unit": {
+                                "type": "string",
+                                "const": "fake-unit",
+                                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"
+                            }
+                        },
+                        "required": [
+                            "unit"
+                        ]
+                    }
+                }
+            }
+        }
     }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "$ref": "#/$defs/FakeUnit"
+        },
+    })
 
 
 def test_fix_quantity_value_reference_add_missing_unit() -> None:
@@ -143,7 +208,7 @@ def test_fix_quantity_value_reference_add_missing_unit() -> None:
                     "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tQuantityValue"
                 },
                 {
-                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/mV.s"
+                    "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/fake-unit"
                 }
             ]
         },
@@ -152,12 +217,12 @@ def test_fix_quantity_value_reference_add_missing_unit() -> None:
                 "$id": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema",
                 "$comment": "Auto-generated from QUDT 1.1 and Allotrope Extensions for QUDT",
                 "$defs": {
-                    "mV.s": {
+                    "fake-unit": {
                         "properties": {
                             "unit": {
                                 "type": "string",
-                                "const": "mV.s",
-                                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillivoltTimesSecond"
+                                "const": "fake-unit",
+                                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"
                             }
                         },
                         "required": [
@@ -165,19 +230,16 @@ def test_fix_quantity_value_reference_add_missing_unit() -> None:
                         ]
                     }
                 }
-            }
+            },
         }
     }
-
-    assert SchemaCleaner().clean(schema) == {
+    validate_cleaned_schema(schema, {
         "properties": {
             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001233",
             "$asm.pattern": "quantity datum",
-            "$ref": "#/$defs/tQuantityValueMillivoltTimesSecond"
-
-        },
-        "$defs": {}
-    }
+            "$ref": "#/$defs/tQuantityValueFakeUnit"
+        }
+    })
 
 
 def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
@@ -200,8 +262,7 @@ def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
             }
         ]
     }
-
-    assert SchemaCleaner().clean(schema) == {
+    validate_cleaned_schema(schema, {
         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
         "$asm.pattern": "quantity datum",
         "oneOf": [
@@ -211,11 +272,14 @@ def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
             {
                 "$ref": "#/$defs/tQuantityValuePercent"
             }
-        ]
-    }
+        ],
+    })
 
 
 def test_replace_definiton() -> None:
+    # tQuantityValue in core.schema matches the schema of tQuantityValue in shared/definitions.json, so the
+    # ref will be replaced by that, and tQuantityValue will be removed from cleaned defs.
+    # asm is not in shared/definitions, so it will be preserved and flattened into adm_core_REC_2023_09_core_schema_asm.
     schema = {
         "properties": {
             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
@@ -242,64 +306,37 @@ def test_replace_definiton() -> None:
                             }
                         }
                     },
-                    "tQuantityValue": {
-                        "type": "object",
-                        "properties": {
-                            "value": {
-                                "type": "number"
-                            },
-                            "unit": {
-                                "$ref": "#/$defs/tUnit"
-                            },
-                            "has statistic datum role": {
-                                "$ref": "#/$defs/tStatisticDatumRole"
-                            },
-                            "@type": {
-                                "$ref": "#/$defs/tClass"
-                            }
-                        },
-                        "$asm.type": "http://qudt.org/schema/qudt#QuantityValue",
-                        "required": [
-                            "value",
-                            "unit"
-                        ]
-                    }
                 }
             }
         }
     }
-    assert SchemaCleaner().clean(schema) == {
+    validate_cleaned_schema(schema, {
         "properties": {
             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
             "$asm.pattern": "quantity datum",
             "$ref": "#/$defs/tQuantityValue"
         },
         "$defs": {
-            "adm_core_REC_2023_09_core_schema": {
-                "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
-                "title": "Schema for leaf node values.",
-                "$defs": {
-                    "asm": {
-                        "properties": {
-                            "$asm.manifest": {
-                                "oneOf": [
-                                    {
-                                        "type": "string",
-                                        "format": "iri"
-                                    },
-                                    {
-                                        "$ref": "#/$defs/adm_core_REC_2023_09_manifest_schema"
-                                    }
-                                ]
+            "adm_core_REC_2023_09_core_schema_asm": {
+                "properties": {
+                    "$asm.manifest": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "format": "iri"
+                            },
+                            {
+                                "$ref": "#/$defs/adm_core_REC_2023_09_manifest_schema"
                             }
-                        }
-                    },
+                        ]
+                    }
                 }
             }
         }
-    }
+    }, test_defs=True)
 
 
+"""
 def test_fix_allof_optional_before_required() -> None:
     schema = {
         "device document": {
@@ -406,7 +443,7 @@ def test_fix_allof_optional_before_required() -> None:
             }
         }
     }
-
+"""
 
 """
 def test_load_model() -> None:

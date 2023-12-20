@@ -33,7 +33,16 @@ class SchemaCleaner:
         update_unit_files({unit: iri for unit, iri in self.missing_unit_to_iri.items() if unit in self.missing_referenced_units})
         self.missing_referenced_units = []
 
-    def _get_unit_name(self, unit: str) -> str:
+    def _is_unit_name_ref(self, ref: str) -> Optional[str]:
+        return ref.split("/")[-1] in self.unit_to_name.values()
+
+    def _get_unit_name(self, unit: str) -> Optional[str]:
+        unit_match = re.match(r"(?:\#/\$defs/)?(?:.*schema_)?(.*)", unit)
+        if not unit_match:
+            return None
+        unit = unit_match.groups()[0]
+        if unit not in self.unit_to_name:
+            return None
         if unit in self.missing_unit_to_iri:
             self.missing_referenced_units.append(unit)
         return self.unit_to_name[unit]
@@ -90,81 +99,89 @@ class SchemaCleaner:
                 ] if new_values else [[value] for value in values_list]
             return self._clean_value({"oneOf": [{"allOf": values} for values in new_values]})
 
-        return {"allOf": self._clean_value(values)}
+        cleaned_values = self._clean_value(values)
 
-    def _get_reference(self, value: Any) -> tuple[Optional[str], Optional[str]]:
+        if self._is_quantity_value(cleaned_values):
+            return self._fix_quantity_value_reference(cleaned_values)
+
+        return {"allOf": cleaned_values}
+
+    def _get_reference(self, value: Any) -> Optional[str]:
         # Identify URL-like references, and return a sanitized version that can be followed by generation script.
-        # Also returns the schema and definition name separately for use in other logic.
-        # Finally, replaces references to definitons we store in common.
+        # Specifically, we must flatten nested definitions (because generation script does not respect them),
+        # so we transform <url_schema>/#/$defs/<def_name> into <schema_name>_<def_name> references.
+        # Finally, we replace references to definitons stored in definitions.json.
         ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*schema)(\#/\$defs/)?(.*)?", str(value))
         if not ref_match:
-            return None, None
-        if ref_match:
-            def_schema, _, def_name = ref_match.groups()
-            def_schema = def_schema.replace("/", "_").replace("-", "_").replace(".", "_")
-            if def_name in self.replaced_definitions.get(def_schema, []):
-                return None, def_name
-            return def_schema, def_name
+            return None
+        def_schema, _, def_name = ref_match.groups()
+        def_schema = re.subn(r"[\/\-\.]", "_", def_schema)[0]
+        if def_name in self.replaced_definitions.get(def_schema, []):
+            return def_name
+        if self._get_unit_name(def_name):
+            return self._get_unit_name(def_name)
+        return f"{def_schema}_{def_name}" if def_schema and def_name else f"{def_schema or def_name}"
 
     def _clean_ref_value(self, value: str) -> str:
-        def_schema, def_name = self._get_reference(value)
-        if def_schema:
-            return f"#/$defs/{def_schema}/$defs/{def_name}" if def_name else f"#/$defs/{def_schema}"
-        elif def_name:
-            return f"#/$defs/{def_name}"
-        return value
+        cleaned_ref = self._get_reference(value)
+        # TODO: will we ever not get a cleaned ref?
+        return f"#/$defs/{cleaned_ref}" if cleaned_ref else value
 
     def _clean_value(self, value: Any) -> Any:
         if isinstance(value, dict):
             return self._clean(value)
         elif isinstance(value, list):
             return [self._clean_value(v) for v in value]
-
         return value
 
-    def _is_quantity_value(self, schema: dict[str, Any]) -> bool:
-        # Check if this schema is a special case of allOf: [tQuantityValue}, {unit] and if so replace.
-        if "allOf" not in schema or len(schema["allOf"]) != 2:
+    def _is_quantity_value(self, values: list[dict[str, Any]]) -> bool:
+        # Check if this schema is a special case of allOf: [tQuantityValue, unit] and if so replace.
+        if len(values) != 2:
             return False
-        for value in schema["allOf"]:
-            if "$ref" in value and value["$ref"].endswith("$defs/tQuantityValue"):
-                return True
-        return False
+        quantity_value_found = False
+        unit_found = False
+        for value in values:
+            if "$ref" not in value:
+                return False
+            if value["$ref"].endswith("$defs/tQuantityValue"):
+                quantity_value_found = True
+            if self._is_unit_name_ref(value["$ref"]):
+                unit_found = True
+        return quantity_value_found and unit_found
 
-    def _fix_quantity_value_reference(self, schema: dict[str, Any]) -> dict[str, Any]:
-        for value in schema.pop("allOf"):
+    def _fix_quantity_value_reference(self, values: list[dict[str, Any]]) -> dict[str, Any]:
+        for value in values:
             if value["$ref"].endswith("$defs/tQuantityValue"):
                 continue
-            unit = value["$ref"].split("/")[-1]
-            schema["$ref"] = f"#/$defs/tQuantityValue{self._get_unit_name(unit)}"
-            return schema
+            unit_name = value["$ref"].split("/")[-1]
+            return {"$ref": f"#/$defs/tQuantityValue{unit_name}"}
 
-        return schema
+        msg = f"Failed to find value unit in quantity value reference: {values}"
+        raise AssertionError(msg)
 
     def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
         cleaned = {}
         for schema_name, defs_schema in schema["$defs"].items():
             # Replace web address reference name with a version that can be followed in datamodel-codegen
-            cleaned_schema_name, _ = self._get_reference(schema_name)
-            if cleaned_schema_name:
-                # Units are treated specially. We rename the unit (to avoid non-variable names) and store
-                # them in separate shared unit schema file, in order to allow for shared imports.
-                if cleaned_schema_name.endswith("units_schema"):
-                    self._add_embeded_units(defs_schema["$defs"])
-                elif "$defs" in defs_schema:
-                    # For other definitions, we may have a shared copy for common definitons, but not all.
-                    # For these, check if the schema matches a definition in shared. If so, we will replace
-                    # the reference, otherwise we leave it as it.
-                    cleaned_defs = {k: {} if k == "$defs" else v for k, v in defs_schema.items()}
-                    for def_name, def_schema in defs_schema["$defs"].items():
-                        if self.definitions.get(def_name) == def_schema:
-                            self.replaced_definitions[cleaned_schema_name].append(def_name)
-                        else:
-                            cleaned_defs["$defs"][def_name] = def_schema
-                    if cleaned_defs["$defs"]:
-                        cleaned[cleaned_schema_name] = self._clean(cleaned_defs)
+            cleaned_schema_name = self._get_reference(schema_name) or schema_name
+            # Units are treated specially. We rename the unit (to avoid non-variable names) and store
+            # them in separate shared unit schema file, in order to allow for shared imports.
+            if cleaned_schema_name.endswith("units_schema"):
+                self._add_embeded_units(defs_schema["$defs"])
+            elif "$defs" in defs_schema:
+                # For nested definitions, we need to flatten then into a single $defs entry in order
+                # for the generation script to work correctly.
+                # We also check if we have a copy of the schema in the shared definitions file, and if so
+                # replace with that, so we can share imports more easily.
+                # NOTE: this does not attempt to handle futher nested $defs, in schemas, but we have not
+                # observed that in any schema files yet.
+                for def_name, def_schema in defs_schema["$defs"].items():
+                    if self.definitions.get(def_name) == def_schema:
+                        self.replaced_definitions[cleaned_schema_name].append(def_name)
+                    else:
+                        cleaned[f"{cleaned_schema_name}_{def_name}"] = self._clean(def_schema)
             else:
-                cleaned[schema_name] = self._clean(defs_schema)
+                cleaned[cleaned_schema_name] = self._clean(defs_schema)
 
         return cleaned
 
@@ -181,17 +198,15 @@ class SchemaCleaner:
             else:
                 cleaned[key] = self._clean_value(value)
 
-        if self._is_quantity_value(cleaned):
-            cleaned = self._fix_quantity_value_reference(cleaned)
-
         return cleaned
 
     def clean(self, schema: dict[str, Any]) -> dict[str, Any]:
         # Call clean defs first, because we store some metadata about overriden definitions that is used in
         # the main body.
-        if "$defs" in schema:
-            schema["$defs"] = self._clean_defs(schema)
-        return self._clean(schema)
+        cleaned = copy.deepcopy(schema)
+        if "$defs" in cleaned:
+            cleaned["$defs"] = self._clean_defs(cleaned)
+        return self._clean(cleaned)
 
     def clean_file(self, schema_path: str) -> None:
         schema = get_schema(schema_path)

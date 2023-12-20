@@ -50,6 +50,7 @@ def backup(paths: Union[list[PathType], PathType], *, restore: Optional[bool] = 
         raise
 
     if restore:
-        [restore_backup(path) for path in paths]
+        pass
+        #[restore_backup(path) for path in paths]
     else:
         [_remove_backup(path) for path in paths]
