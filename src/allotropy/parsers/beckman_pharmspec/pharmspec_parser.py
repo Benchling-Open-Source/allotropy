@@ -6,6 +6,8 @@ from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscur
     CalculatedDataDocumentItem,
     DistributionDocumentItem,
     DistributionItem,
+    LightObscurationAggregateDocument,
+    LightObscurationDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
@@ -160,25 +162,32 @@ class PharmSpecParser(VendorParser):
                     )
                 )
         model = Model(
-            dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
-            detector_model_number=str(df.at[2, 5]),
-            analyst=str(df.at[6, 5]),
-            repetition_setting=int(df.at[11, 5]),
-            sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
-            detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
-            sample_identifier=str(df.at[2, 2]),
-            equipment_serial_number=str(df.at[4, 5]),
-            detector_identifier=str(df.at[4, 5]),
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_document=measurement_doc_items
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/12/light-obscuration.manifest",
+            light_obscuration_aggregate_document=LightObscurationAggregateDocument(
+                light_obscuration_document=[
+                    LightObscurationDocumentItem(
+                        dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
+                        detector_model_number=str(df.at[2, 5]),
+                        analyst=str(df.at[6, 5]),
+                        repetition_setting=int(df.at[11, 5]),
+                        sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
+                        detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
+                        sample_identifier=str(df.at[2, 2]),
+                        equipment_serial_number=str(df.at[4, 5]),
+                        detector_identifier="",
+                        measurement_aggregate_document=MeasurementAggregateDocument(
+                            measurement_document=measurement_doc_items
+                        ),
+                        flush_volume_setting=TQuantityValueMilliliter(
+                            0
+                        ),  # TODO get test example for this
+                        measurement_time=pd.to_datetime(
+                            str(df.at[8, 5]).replace(".", "-")
+                        ).isoformat(timespec="microseconds")
+                        + "Z",
+                    )
+                ],
+                calculated_data_aggregate_document=calc_agg_doc,
             ),
-            calculated_data_aggregate_document=calc_agg_doc,
-            flush_volume_setting=TQuantityValueMilliliter(
-                0
-            ),  # TODO get test example for this
-            measurement_time=pd.to_datetime(
-                str(df.at[8, 5]).replace(".", "-")
-            ).isoformat(timespec="microseconds")
-            + "Z",
         )
         return model

@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+    LightObscurationAggregateDocument,
     MeasurementDocumentItem,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -26,15 +27,41 @@ def test_get_model(test_file: Path) -> None:
     parser = PharmSpecParser(TimestampParser())
 
     model = parser.to_allotrope(NamedFileContents(open(test_file, "rb"), ""))
-    assert model.detector_identifier == "1808303021"
-    assert model.sample_identifier == "ExampleTimepoint"
-    assert model.measurement_aggregate_document
-    assert model.measurement_aggregate_document.measurement_document
+    assert isinstance(
+        model.light_obscuration_aggregate_document, LightObscurationAggregateDocument
+    )
+    assert (
+        model.light_obscuration_aggregate_document.light_obscuration_document[
+            0
+        ].equipment_serial_number
+        == "1808303021"
+    )
+    assert (
+        model.light_obscuration_aggregate_document.light_obscuration_document[
+            0
+        ].sample_identifier
+        == "ExampleTimepoint"
+    )
+    assert model.light_obscuration_aggregate_document.light_obscuration_document[
+        0
+    ].measurement_aggregate_document
+    assert model.light_obscuration_aggregate_document.light_obscuration_document[
+        0
+    ].measurement_aggregate_document.measurement_document
 
     # # Single distribution document
 
-    assert len(model.measurement_aggregate_document.measurement_document) == 2
-    for elem in model.measurement_aggregate_document.measurement_document:
+    assert (
+        len(
+            model.light_obscuration_aggregate_document.light_obscuration_document[
+                0
+            ].measurement_aggregate_document.measurement_document
+        )
+        == 2
+    )
+    for elem in model.light_obscuration_aggregate_document.light_obscuration_document[
+        0
+    ].measurement_aggregate_document.measurement_document:
         assert isinstance(elem, MeasurementDocumentItem)
         assert isinstance(elem.measurement_identifier, str)
         assert isinstance(elem.distribution_document, list)
@@ -52,7 +79,7 @@ def test_get_model(test_file: Path) -> None:
 
 @pytest.mark.short
 def test_asm(test_file: Path) -> None:
-    asm = allotrope_from_file(str(test_file), Vendor.BECKMAN_PHARMSPEC)
+    asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
     assert isinstance(asm, dict)
 
 
