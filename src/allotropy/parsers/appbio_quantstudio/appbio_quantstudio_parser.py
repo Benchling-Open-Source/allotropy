@@ -40,23 +40,24 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
-    DataBuilder,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    create_data,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Data,
     Well,
     WellItem,
 )
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, file_name = named_file_contents
-        reader = LinesReader(raw_contents)
-        data = DataBuilder.build(reader)
+        lines = read_to_lines(raw_contents)
+        reader = LinesReader(lines)
+        data = create_data(reader)
         return self._get_model(data, file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
@@ -99,7 +100,7 @@ class AppBioQuantStudioParser(VendorParser):
                     )
                     for well in data.wells
                 ],
-                calculated_data_aggregate_document=self.get_outter_calculated_data_aggregate_document(
+                calculated_data_aggregate_document=self.get_outer_calculated_data_aggregate_document(
                     data
                 ),
             )
@@ -108,32 +109,33 @@ class AppBioQuantStudioParser(VendorParser):
     def get_inner_calculated_data_aggregate_document(
         self, well: Well
     ) -> Optional[TCalculatedDataAggregateDocument]:
-        if not well.calculated_document:
+        if not well.calculated_documents:
             return None
 
         return TCalculatedDataAggregateDocument(
             calculated_data_document=[
                 CalculatedDataDocumentItem(
-                    calculated_data_identifier=well.calculated_document.uuid,
+                    calculated_data_identifier=calculated_document.uuid,
                     data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[
                             DataSourceDocumentItem(
                                 data_source_identifier=data_source.reference.uuid,
                                 data_source_feature=data_source.feature,
                             )
-                            for data_source in well.calculated_document.data_sources
+                            for data_source in calculated_document.data_sources
                         ],
                     ),
-                    calculated_data_name=well.calculated_document.name,
+                    calculated_data_name=calculated_document.name,
                     calculated_data_description=None,
                     calculated_datum=TQuantityValueUnitless(
-                        value=well.calculated_document.value
+                        value=calculated_document.value
                     ),
                 )
+                for calculated_document in well.calculated_documents
             ],
         )
 
-    def get_outter_calculated_data_aggregate_document(
+    def get_outer_calculated_data_aggregate_document(
         self, data: Data
     ) -> TCalculatedDataAggregateDocument:
         if data.header.experiment_type in [

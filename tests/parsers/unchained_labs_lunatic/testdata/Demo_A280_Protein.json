@@ -1,0 +1,2582 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "73048191-fe03-454b-bf56-83e1e8f5482d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A1"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "61d5f7a9-c55a-4ed7-939a-eeb04e629a7f",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B1"
+                            },
+                            "absorbance": {
+                                "value": 0.84,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "e362c933-96eb-4700-8622-bcea80018470",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C1"
+                            },
+                            "absorbance": {
+                                "value": 1.04,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "354cda14-ce33-4b88-ab64-b7af17b82763",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D1"
+                            },
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a576d197-e2f4-4be1-a4d6-aeac2ae9ce37",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E1"
+                            },
+                            "absorbance": {
+                                "value": 2.07,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "e323b099-4b33-4755-b74e-b456c9cd3af5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F1"
+                            },
+                            "absorbance": {
+                                "value": 0.39,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "0f9b6844-a9e2-434e-866a-df419c52f9bb",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G1"
+                            },
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "aaf0c0ef-a776-4635-b382-b19c6e6ede32",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H1"
+                            },
+                            "absorbance": {
+                                "value": 0.61,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "cc256fac-9218-4ff7-ad76-e8294aebebee",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A2"
+                            },
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "80a18bb2-74cf-47e9-9f42-a1d1aa1b6a13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B2"
+                            },
+                            "absorbance": {
+                                "value": 0.61,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ff6eb35d-1b82-4f80-8fa0-a6924992dbf3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C2"
+                            },
+                            "absorbance": {
+                                "value": 0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ddaf3ea4-dac3-4677-aef7-437c55b82ce4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D2"
+                            },
+                            "absorbance": {
+                                "value": 0.82,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a612c8a0-0d7f-42c7-8ae7-695abb5250b2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E2"
+                            },
+                            "absorbance": {
+                                "value": 1.03,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "239550d3-05d8-4040-952b-a373951750ec",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F2"
+                            },
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d2376b38-206b-4124-b985-4feba05f548c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G2"
+                            },
+                            "absorbance": {
+                                "value": 2.05,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "70d3f7fe-50a1-4593-baec-04fccf80b22d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H2"
+                            },
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f8168fab-a692-4bbe-8b04-eff7ea4b0567",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A3"
+                            },
+                            "absorbance": {
+                                "value": 2.08,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a8a5ea76-7317-4b59-8e9f-8d7d1f10270c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B3"
+                            },
+                            "absorbance": {
+                                "value": 0.4,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "cba98c8d-64c2-4ca5-8f00-47d8a319fbc6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C3"
+                            },
+                            "absorbance": {
+                                "value": 4.23,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3118e595-e096-43b2-8baf-cee83fc36350",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D3"
+                            },
+                            "absorbance": {
+                                "value": 0.6,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "8d0bb48f-786e-4ba9-aef7-b6feed810934",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E3"
+                            },
+                            "absorbance": {
+                                "value": -0.0,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ae768ea2-3eb9-4b0d-b78d-de9d24c110ff",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F3"
+                            },
+                            "absorbance": {
+                                "value": 0.83,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c621806c-ed9d-4dc6-9f31-992d192c2d69",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G3"
+                            },
+                            "absorbance": {
+                                "value": 1.03,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "ad4e99ed-1ed9-4a88-a5a4-cd3322f56773",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H3"
+                            },
+                            "absorbance": {
+                                "value": 0.19,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "8b22f52f-a687-42a9-acb2-f3268f0440ee",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 3",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "A4"
+                            },
+                            "absorbance": {
+                                "value": 1.04,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7b9f5c3e-c44b-445c-b5e5-919e43675516",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 7",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "B4"
+                            },
+                            "absorbance": {
+                                "value": 0.18,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "8ee94673-c8fe-4534-8d37-b53fddd871b6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 2",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "C4"
+                            },
+                            "absorbance": {
+                                "value": 2.07,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "e7565e51-5d9d-4da0-87f1-e144c11f7f98",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 6",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "D4"
+                            },
+                            "absorbance": {
+                                "value": 0.38,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "29e6b7a6-7174-4fa2-8f3b-917dae1e5d63",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 1",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "E4"
+                            },
+                            "absorbance": {
+                                "value": 4.22,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f97fc15c-e298-4f08-ac1d-6f5e2fee6854",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 5",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "F4"
+                            },
+                            "absorbance": {
+                                "value": 0.62,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "44369508-7bf7-496c-9de4-c6ea65052113",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "H2O",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "G4"
+                            },
+                            "absorbance": {
+                                "value": -0.01,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-10-17T07:28:30+00:00",
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "6200c232-5aa5-43ce-96e6-79ffa8913521",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "plate reader",
+                                        "detector wavelength setting": {
+                                            "value": 280.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "Sample 4",
+                                "location identifier": "Plate 1",
+                                "well plate identifier": "H4"
+                            },
+                            "absorbance": {
+                                "value": 0.83,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "analytical method identifier": "Protein (Turbidity)",
+                    "container type": "well plate"
+                }
+            }
+        ],
+        "device system document": {
+            "device identifier": "15",
+            "model number": "Lunatic",
+            "product manufacturer": "Unchained Labs"
+        },
+        "data system document": {
+            "file name": "Demo_A280_Protein.csv",
+            "software name": "Lunatic and Stunner Analysis",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.11"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.02,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "73048191-fe03-454b-bf56-83e1e8f5482d",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "d920c0b6-1d86-4b3d-a3fa-2cb8d2684b12"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.84,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "61d5f7a9-c55a-4ed7-939a-eeb04e629a7f",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "f0867f25-d2e0-4669-a1a6-07f3cc5ffcf9"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "61d5f7a9-c55a-4ed7-939a-eeb04e629a7f",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "90fa7b48-0351-4fde-9cb8-e5f1931b0dff"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.56,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "61d5f7a9-c55a-4ed7-939a-eeb04e629a7f",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "b8c0a73b-e362-4e7a-a8ec-c9850d8bf668"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 1.04,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e362c933-96eb-4700-8622-bcea80018470",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "d2de44b3-5bc7-4422-9ddb-52de72d8ed29"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.14,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e362c933-96eb-4700-8622-bcea80018470",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "533e8255-28a7-475d-80bb-690372dcc3c7"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e362c933-96eb-4700-8622-bcea80018470",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "3b56515d-9815-4f27-a260-d81c4cec5396"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.18,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "354cda14-ce33-4b88-ab64-b7af17b82763",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "8beea411-95ae-4046-b7aa-586f4791722c"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.14,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "354cda14-ce33-4b88-ab64-b7af17b82763",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "b8d640f9-8a93-4d26-84cd-7468dab746bb"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.46,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "354cda14-ce33-4b88-ab64-b7af17b82763",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "3751bfdb-a389-4286-802f-4c72d592d09f"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 2.07,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a576d197-e2f4-4be1-a4d6-aeac2ae9ce37",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "85c25bf2-4e64-4c9f-b716-0a2fc4e4c8fd"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.22,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a576d197-e2f4-4be1-a4d6-aeac2ae9ce37",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "489ed049-17bc-4c87-b45c-f8650d4ebb18"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a576d197-e2f4-4be1-a4d6-aeac2ae9ce37",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "5d95e8a4-e25e-4392-afbb-8fd4b175950b"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.39,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e323b099-4b33-4755-b74e-b456c9cd3af5",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "979700cf-eb15-4aba-8d79-9b2da535385a"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.09,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e323b099-4b33-4755-b74e-b456c9cd3af5",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "6cc8d57c-6625-4db6-bef8-dde24d7e48ce"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.51,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e323b099-4b33-4755-b74e-b456c9cd3af5",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "63433e12-c130-4004-a945-6697bfebd565"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 4.22,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "0f9b6844-a9e2-434e-866a-df419c52f9bb",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "44f222c3-74b7-4fc2-94f3-4fb68ec59eb7"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.31,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "0f9b6844-a9e2-434e-866a-df419c52f9bb",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "3aab57a7-7b88-492b-b0c7-6eabd0d07182"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "0f9b6844-a9e2-434e-866a-df419c52f9bb",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "903c237b-d56d-416b-b91e-a92cb806dae3"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.61,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "aaf0c0ef-a776-4635-b382-b19c6e6ede32",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "6420dc1d-0531-4f96-9161-dda4d043831d"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.04,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "aaf0c0ef-a776-4635-b382-b19c6e6ede32",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "117d7e28-d4ae-4302-9f9f-7d8c2ba9efb2"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.53,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "aaf0c0ef-a776-4635-b382-b19c6e6ede32",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c5d6c717-4524-4365-af7b-233eef8a0929"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 4.22,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cc256fac-9218-4ff7-ad76-e8294aebebee",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "1da9949c-2f52-4c62-9dd3-8fe552882109"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cc256fac-9218-4ff7-ad76-e8294aebebee",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "0e232e40-7ab6-4214-ab34-0cb9920054a7"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cc256fac-9218-4ff7-ad76-e8294aebebee",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "b6d77928-25af-4660-b055-e62896e373b1"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.61,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "80a18bb2-74cf-47e9-9f42-a1d1aa1b6a13",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "2b2ef3f1-6e0b-426d-abdb-79dfd9337ac2"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "80a18bb2-74cf-47e9-9f42-a1d1aa1b6a13",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "4db0cdf1-2d40-4d35-863d-7b389ec6276d"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "80a18bb2-74cf-47e9-9f42-a1d1aa1b6a13",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "90356e45-a164-4038-ae37-e8547ae8d4b0"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ff6eb35d-1b82-4f80-8fa0-a6924992dbf3",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "178b348b-2e51-4393-a81e-5de9eb5ae94d"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.82,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ddaf3ea4-dac3-4677-aef7-437c55b82ce4",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "a77843cb-d86e-40a5-bd2a-04f1e108b51e"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.01,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ddaf3ea4-dac3-4677-aef7-437c55b82ce4",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "3655a5d9-db8b-46e2-b3d6-41f29827edb8"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ddaf3ea4-dac3-4677-aef7-437c55b82ce4",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "9416a178-4333-4732-916a-c7b842e857b3"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 1.03,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a612c8a0-0d7f-42c7-8ae7-695abb5250b2",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "7ebf6259-dc2c-48b7-932d-f267e72785ea"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a612c8a0-0d7f-42c7-8ae7-695abb5250b2",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "e0be8ec1-3b7b-40d7-8ad8-b71fe0ee9068"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a612c8a0-0d7f-42c7-8ae7-695abb5250b2",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "a4b463a9-5ceb-4f8c-8111-0a8554db7c0d"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.18,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "239550d3-05d8-4040-952b-a373951750ec",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "27409dbb-d336-46d8-9377-80f795885520"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.1,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "239550d3-05d8-4040-952b-a373951750ec",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "fd451e03-51d3-45a4-9eee-82e72924e211"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.47,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "239550d3-05d8-4040-952b-a373951750ec",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "932ea3a1-346d-4655-9450-38b27cc72781"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 2.05,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d2376b38-206b-4124-b985-4feba05f548c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "543f1520-41c0-492d-b149-c9d9b75772e6"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d2376b38-206b-4124-b985-4feba05f548c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "3aebe402-ad79-4136-9f00-09188869724f"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d2376b38-206b-4124-b985-4feba05f548c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "e01f805f-f124-4fe1-8198-9f12973133b8"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.4,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "70d3f7fe-50a1-4593-baec-04fccf80b22d",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "4914fd76-e176-4650-b3df-3d77186d70dc"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.09,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "70d3f7fe-50a1-4593-baec-04fccf80b22d",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "b52f0e8a-5dc8-48e3-bcae-6df575e28134"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.53,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "70d3f7fe-50a1-4593-baec-04fccf80b22d",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "ed151b55-d931-4ea6-b19c-b80485cfbb89"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 2.08,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f8168fab-a692-4bbe-8b04-eff7ea4b0567",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "b9b48450-ea95-487f-881b-c6215181bfee"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.21,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f8168fab-a692-4bbe-8b04-eff7ea4b0567",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "98e3f7f0-f1ee-46d4-93b3-283886ee6147"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f8168fab-a692-4bbe-8b04-eff7ea4b0567",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "7ef941e6-a35d-45d2-a253-5dc1c4410af2"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.4,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a8a5ea76-7317-4b59-8e9f-8d7d1f10270c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "de39fb77-5464-40cd-a216-d746fac9dd4e"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.06,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a8a5ea76-7317-4b59-8e9f-8d7d1f10270c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "a351f757-5990-4c3a-bb9d-e9bf26fdf43f"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a8a5ea76-7317-4b59-8e9f-8d7d1f10270c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "5aae260b-a80c-4205-9936-ef83ed42aa52"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 4.23,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cba98c8d-64c2-4ca5-8f00-47d8a319fbc6",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "f8a7931d-cd8a-4102-8166-5ab7ba9fa718"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.3,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cba98c8d-64c2-4ca5-8f00-47d8a319fbc6",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "090fc8d8-6d53-4299-8447-c6feca03e9d3"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "cba98c8d-64c2-4ca5-8f00-47d8a319fbc6",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "dcab1c2b-fb66-4ea1-ab60-27fffc2ef68f"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.6,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "3118e595-e096-43b2-8baf-cee83fc36350",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c4800726-d640-4dfb-b607-f8a0df64ad7c"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.18,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "3118e595-e096-43b2-8baf-cee83fc36350",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "5fe71e60-ad2d-4b47-bc0b-e044b3172359"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.53,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "3118e595-e096-43b2-8baf-cee83fc36350",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "6472dfee-fc77-4819-9729-d66b7cbfd64a"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8d0bb48f-786e-4ba9-aef7-b6feed810934",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "350a40e3-0752-43ec-afc7-f6a15be44412"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.83,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ae768ea2-3eb9-4b0d-b78d-de9d24c110ff",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "fcc37c7d-c5e5-4b47-bcbe-8a8a37c9c040"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.12,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ae768ea2-3eb9-4b0d-b78d-de9d24c110ff",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "44ea0eba-1ce6-4d44-bc93-39d5ce5e5789"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ae768ea2-3eb9-4b0d-b78d-de9d24c110ff",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "93eb0e95-286c-4b3f-a5d3-4c8e8697125d"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 1.03,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c621806c-ed9d-4dc6-9f31-992d192c2d69",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "8a70c98d-623a-464f-b17d-1b6cc9ea3cf4"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.14,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c621806c-ed9d-4dc6-9f31-992d192c2d69",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "200781fb-bd93-4dab-b247-e23a7dfc22dd"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.54,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "c621806c-ed9d-4dc6-9f31-992d192c2d69",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "33e29263-ee8c-4349-88b4-ab2707fb37ba"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.19,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ad4e99ed-1ed9-4a88-a5a4-cd3322f56773",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "0a2a2e5e-c75f-4524-ab14-21f680c10aab"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ad4e99ed-1ed9-4a88-a5a4-cd3322f56773",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c1026461-f411-4229-af78-f8749097c8c8"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "ad4e99ed-1ed9-4a88-a5a4-cd3322f56773",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "ce1a4829-3cfb-492d-9df2-aa01e1425313"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 1.04,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8b22f52f-a687-42a9-acb2-f3268f0440ee",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "a8703d29-d5fa-434b-a3b5-2921db830cc4"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.12,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8b22f52f-a687-42a9-acb2-f3268f0440ee",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "2d37878b-41f3-4371-bc8f-2961d9e7eb53"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.56,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8b22f52f-a687-42a9-acb2-f3268f0440ee",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "5c4c7228-0e4c-4351-a878-0b1b37b88604"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.18,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "7b9f5c3e-c44b-445c-b5e5-919e43675516",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "2fda0c5c-8b96-4eee-80e3-3fdcc3b5d495"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.01,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "7b9f5c3e-c44b-445c-b5e5-919e43675516",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c11afe35-d93c-40fe-860a-941a4f6a836f"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.54,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "7b9f5c3e-c44b-445c-b5e5-919e43675516",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "5c1b20f8-f87f-485b-bb2c-d07772211d85"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 2.07,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8ee94673-c8fe-4534-8d37-b53fddd871b6",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "85134444-9dd4-42ff-9db7-d9994496ca01"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.21,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8ee94673-c8fe-4534-8d37-b53fddd871b6",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "ae2eeea9-5fde-4acb-85ba-3c3f34f26464"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8ee94673-c8fe-4534-8d37-b53fddd871b6",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "6ffb5cbe-c026-48f7-9705-dc4dc8eca3dc"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.38,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e7565e51-5d9d-4da0-87f1-e144c11f7f98",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "1774a7c6-35d8-444e-b21a-ebbe797cc48f"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.12,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e7565e51-5d9d-4da0-87f1-e144c11f7f98",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "7fea7579-59e5-4a36-8fb6-067f7a4834a0"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.49,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "e7565e51-5d9d-4da0-87f1-e144c11f7f98",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "a4488339-f4f4-4a6b-af96-71bb5a71b6c2"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 4.22,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "29e6b7a6-7174-4fa2-8f3b-917dae1e5d63",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "952b8063-357f-4e74-9174-c92a36f126ea"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.27,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "29e6b7a6-7174-4fa2-8f3b-917dae1e5d63",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "9a742079-ff24-43ed-b0b4-06ddfbb65726"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.55,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "29e6b7a6-7174-4fa2-8f3b-917dae1e5d63",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "5086246e-67c2-4a3d-a436-5db18b290470"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.62,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f97fc15c-e298-4f08-ac1d-6f5e2fee6854",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "0c9d3be1-fc7f-4cb9-9f01-866c1fa69ae3"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f97fc15c-e298-4f08-ac1d-6f5e2fee6854",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "34af2e76-1c71-4440-9eaa-30e80230cfbb"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.56,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f97fc15c-e298-4f08-ac1d-6f5e2fee6854",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "7eff330e-9ef3-45d8-88b1-8caf58d23358"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "44369508-7bf7-496c-9de4-c6ea65052113",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "99df7687-5a84-4934-8484-24c585476df6"
+                },
+                {
+                    "calculated data name": "Concentration",
+                    "calculated result": {
+                        "value": 0.83,
+                        "unit": "mg/mL"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "6200c232-5aa5-43ce-96e6-79ffa8913521",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "42ca3d80-5872-46ba-b054-67113995d8a5"
+                },
+                {
+                    "calculated data name": "Background (A280)",
+                    "calculated result": {
+                        "value": 0.0,
+                        "unit": "mAU"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "6200c232-5aa5-43ce-96e6-79ffa8913521",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "78761926-5b4b-415a-8fcd-979fbb6e5802"
+                },
+                {
+                    "calculated data name": "A260/A280",
+                    "calculated result": {
+                        "value": 0.56,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "6200c232-5aa5-43ce-96e6-79ffa8913521",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "fc371013-37d3-4c94-bcc7-219ce9d6cb5a"
+                }
+            ]
+        }
+    }
+}

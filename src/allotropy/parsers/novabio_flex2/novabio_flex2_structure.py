@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-import io
 import re
 from typing import Any, Optional
 
@@ -12,6 +11,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     FILENAME_REGEX,
@@ -32,9 +32,7 @@ class Title:
         matches = re.match(FILENAME_REGEX, filename)
 
         if not matches:
-            raise AllotropeConversionError(
-                filename, INVALID_FILENAME_MESSAGE.format(filename)
-            )
+            raise AllotropeConversionError(INVALID_FILENAME_MESSAGE.format(filename))
 
         matches_dict = matches.groupdict()
         return Title(
@@ -136,7 +134,7 @@ class Data:
     sample_list: SampleList
 
     @staticmethod
-    def create(contents: io.IOBase, filename: str) -> Data:
-        # NOTE: type ignore is an issue with pandas typing, it accepts an io.IOBase that implements read.
-        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)  # type: ignore[call-overload]
+    def create(named_file_contents: NamedFileContents) -> Data:
+        contents, filename = named_file_contents
+        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))

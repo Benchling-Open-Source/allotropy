@@ -1,5 +1,3 @@
-from io import StringIO
-
 import pytest
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
@@ -29,7 +27,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
 
 
 def get_reader_from_lines(lines: list[str]) -> CsvReader:
-    return CsvReader(StringIO("\n".join(lines)))
+    return CsvReader(lines)
 
 
 def rm_result_list_uuids(result_list: ResultList) -> ResultList:

@@ -61,9 +61,15 @@ class TStatisticDatumRole(Enum):
     minimum_value_role = "minimum value role"
 
 
+class ValueEnum(Enum):
+    NaN = "NaN"
+    field_Infinity = "+Infinity"
+    field_Infinity_1 = "-Infinity"
+
+
 @dataclass
 class TQuantityValue:
-    value: float
+    value: Union[float, ValueEnum]
     unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
@@ -80,7 +86,7 @@ class TNullableQuantityValue:
 # NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
 @dataclass
 class TQuantityValueWithOptionalUnit:
-    value: float
+    value: Union[float, ValueEnum]
     unit: Optional[TUnit]
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
