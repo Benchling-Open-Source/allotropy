@@ -142,16 +142,6 @@ class SoftmaxproParser(VendorParser):
             msg="Unable to find plate block reads per well.",
         )
 
-        excitation_wavelengths = assert_not_none(
-            plate_block.header.excitation_wavelengths,
-            msg="Unable to find plate block excitation wavelength.",
-        )
-
-        cutoff_filters = assert_not_none(
-            plate_block.header.cutoff_filters,
-            msg="Unable to find plate block cutoff filters.",
-        )
-
         for idx, data_element in enumerate(
             plate_block.block_data.iter_wavelengths(position)
         ):
@@ -179,11 +169,19 @@ class SoftmaxproParser(VendorParser):
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 data_element.wavelength
                             ),
-                            excitation_wavelength_setting=TQuantityValueNanometer(
-                                excitation_wavelengths[idx]
+                            excitation_wavelength_setting=(
+                                None
+                                if plate_block.header.excitation_wavelengths is None
+                                else TQuantityValueNanometer(
+                                    plate_block.header.excitation_wavelengths[idx]
+                                )
                             ),
-                            wavelength_filter_cutoff_setting=TQuantityValueNanometer(
-                                cutoff_filters[idx]
+                            wavelength_filter_cutoff_setting=(
+                                None
+                                if plate_block.header.cutoff_filters is None
+                                else TQuantityValueNanometer(
+                                    plate_block.header.cutoff_filters[idx]
+                                )
                             ),
                             number_of_averages=TQuantityValueNumber(reads_per_well),
                             detector_gain_setting=plate_block.header.pmt_gain,

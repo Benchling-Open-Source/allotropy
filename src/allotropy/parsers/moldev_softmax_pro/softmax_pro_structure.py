@@ -488,20 +488,48 @@ class FluorescencePlateBlock(PlateBlock):
             error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
+        num_wavelengths = try_int_or_none(num_wavelengths_raw) or 1
+
         assert_not_none(
             wavelengths_str,
             msg="Unable to find wavelengths list.",
         )
+
+        wavelengths = [
+            try_float(wavelength, "wavelength")
+            for wavelength in wavelengths_str.split()
+        ]
+
+        if len(wavelengths) != num_wavelengths:
+            error = "Unable to find expected number of wavelength values."
+            raise AllotropeConversionError(error)
 
         assert_not_none(
             excitation_wavelengths_str,
             msg="Unable to find excitation wavelengths.",
         )
 
-        assert_not_none(
-            cutoff_filters_str,
-            msg="Unable to find cutoff filters.",
+        excitation_wavelengths = [
+            try_int(excitation_wavelength, "excitation wavelengths")
+            for excitation_wavelength in excitation_wavelengths_str.split()
+        ]
+
+        if len(excitation_wavelengths) != num_wavelengths:
+            error = "Unable to find expected number of excitation values."
+            raise AllotropeConversionError(error)
+
+        cutoff_filters = (
+            [
+                try_int(cutoff_filters, "cutoff filters")
+                for cutoff_filters in cutoff_filters_str.split()
+            ]
+            if cutoff_filters_str is not None
+            else None
         )
+
+        if cutoff_filters is not None and len(cutoff_filters) != num_wavelengths:
+            error = "Unable to find expected number of cutoff filter values."
+            raise AllotropeConversionError(error)
 
         return PlateHeader(
             name=name,
@@ -510,11 +538,8 @@ class FluorescencePlateBlock(PlateBlock):
             read_type=read_type,
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
-            num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=[
-                try_float(wavelength, "wavelength")
-                for wavelength in wavelengths_str.split()
-            ],
+            num_wavelengths=num_wavelengths,
+            wavelengths=wavelengths,
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="fluorescence",
@@ -524,14 +549,8 @@ class FluorescencePlateBlock(PlateBlock):
             reads_per_well=try_float(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
-            excitation_wavelengths=[
-                try_int(excitation_wavelength, "excitation wavelengths")
-                for excitation_wavelength in excitation_wavelengths_str.split()
-            ],
-            cutoff_filters=[
-                try_int(cutoff_filters, "cutoff filters")
-                for cutoff_filters in cutoff_filters_str.split()
-            ],
+            excitation_wavelengths=excitation_wavelengths,
+            cutoff_filters=cutoff_filters,
         )
 
 
@@ -582,6 +601,22 @@ class LuminescencePlateBlock(PlateBlock):
             error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
+        num_wavelengths = try_int_or_none(num_wavelengths_raw) or 1
+
+        assert_not_none(
+            wavelengths_str,
+            msg="Unable to find wavelengths list.",
+        )
+
+        wavelengths = [
+            try_float(wavelength, "wavelength")
+            for wavelength in wavelengths_str.split()
+        ]
+
+        if len(wavelengths) != num_wavelengths:
+            error = "Unable to find expected number of wavelength values."
+            raise AllotropeConversionError(error)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -589,11 +624,8 @@ class LuminescencePlateBlock(PlateBlock):
             read_type=read_type,
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
-            num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=[
-                try_float(wavelength, "wavelength")
-                for wavelength in wavelengths_str.split()
-            ],
+            num_wavelengths=num_wavelengths,
+            wavelengths=wavelengths,
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="luminescence",
@@ -646,6 +678,22 @@ class AbsorbancePlateBlock(PlateBlock):
             error = "Only Endpoint measurements can be processed at this time."
             raise AllotropeConversionError(error)
 
+        num_wavelengths = try_int_or_none(num_wavelengths_raw) or 1
+
+        assert_not_none(
+            wavelengths_str,
+            msg="Unable to find wavelengths list.",
+        )
+
+        wavelengths = [
+            try_float(wavelength, "wavelength")
+            for wavelength in wavelengths_str.split()
+        ]
+
+        if len(wavelengths) != num_wavelengths:
+            error = "Unable to find expected number of wavelength values."
+            raise AllotropeConversionError(error)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -653,11 +701,8 @@ class AbsorbancePlateBlock(PlateBlock):
             read_type=read_type,
             data_type=data_type,
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
-            num_wavelengths=try_int_or_none(num_wavelengths_raw) or 1,
-            wavelengths=[
-                try_float(wavelength, "wavelength")
-                for wavelength in wavelengths_str.split()
-            ],
+            num_wavelengths=num_wavelengths,
+            wavelengths=wavelengths,
             num_columns=try_int(num_columns_raw, "num_columns"),
             num_wells=try_int(num_wells_raw, "num_wells"),
             concept="absorbance",
