@@ -53,7 +53,6 @@ class SoftmaxproParser(VendorParser):
         return self._get_model(named_file_contents.original_file_name, data)
 
     def _get_model(self, file_name: str, data: Data) -> Model:
-        plate_block = data.get_plate_block()
         return Model(
             field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
@@ -70,6 +69,7 @@ class SoftmaxproParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate_block, position)
+                    for plate_block in data.get_plate_block()
                     for position in plate_block.iter_wells()
                 ],
                 calculated_data_aggregate_document=None,

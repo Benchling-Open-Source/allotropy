@@ -748,18 +748,10 @@ class BlockList:
 class Data:
     block_list: BlockList
 
-    def get_plate_block(self) -> PlateBlock:
-        plate_blocks = [
+    def get_plate_block(self) -> list[PlateBlock]:
+        return [
             block for block in self.block_list.blocks if isinstance(block, PlateBlock)
         ]
-
-        if len(plate_blocks) != 1:
-            block_types = [block.block_type for block in self.block_list.blocks]
-            block_counts = {bt: block_types.count(bt) for bt in set(block_types)}
-            error = f"Expected exactly 1 plate block; got {block_counts}."
-            raise AllotropeConversionError(error)
-
-        return plate_blocks[0]
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
