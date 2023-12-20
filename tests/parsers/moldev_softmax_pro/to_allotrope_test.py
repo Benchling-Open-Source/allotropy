@@ -10,15 +10,14 @@ VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
 
 
 @pytest.mark.parametrize(
-    "test_file,expected_file",
+    "file_name",
     [
-        (
-            "tests/parsers/moldev_softmax_pro/testdata/abs_endpoint_plates.txt",
-            "tests/parsers/moldev_softmax_pro/testdata/expected_abs_endpoint.json",
-        ),
+        "abs_endpoint_plates",
     ],
 )
-def test_to_allotrope(test_file: str, expected_file: str) -> None:
+def test_to_allotrope(file_name: str) -> None:
+    test_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
+    expected_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.json"
     allotrope_dict = from_file(test_file, VENDOR_TYPE)
     validate_schema(allotrope_dict, "plate-reader/BENCHLING/2023/09/plate-reader.json")
     validate_contents(allotrope_dict, expected_file)
