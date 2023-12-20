@@ -159,7 +159,9 @@ class PlateKineticData:
         return PlateKineticData(
             temperature=try_float_or_none(str(data.iloc[0, 1])),
             wavelength_data=list(
-                PlateKineticData._iter_wavelength_data(header, data.iloc[:, 2:])
+                PlateKineticData._iter_wavelength_data(
+                    header, data.iloc[:, 2:].astype(float)
+                )
             ),
         )
 
@@ -215,7 +217,7 @@ class PlateReducedData:
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
-        df_data = raw_data.iloc[:, 2 : header.num_columns + 2]
+        df_data = raw_data.iloc[:, 2 : header.num_columns + 2].astype(float)
         rows, _ = df_data.shape
         df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
 
@@ -268,7 +270,7 @@ class TimeKineticData:
     def create(row: pd.Series[float]) -> TimeKineticData:
         return TimeKineticData(
             temperature=row.iloc[1],
-            data=row.iloc[2:],
+            data=row.iloc[2:].astype(float),
         )
 
 
