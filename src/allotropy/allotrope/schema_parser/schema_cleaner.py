@@ -1,5 +1,6 @@
 from collections import defaultdict
 import copy
+import itertools
 import json
 import os
 from pathlib import Path
@@ -67,16 +68,98 @@ class SchemaCleaner:
             self.missing_unit_to_iri[unit] = unit_iri
             self.unit_to_name[unit] = unit_name_from_iri(unit_iri)
 
-    def _combine_dicts(self, dict1: dict[str, Any], dict2: dict[str, Any]) -> dict[str, Any]:
-        # Combines dictionaries recursively
-        combined = copy.deepcopy(dict1)
-        for key, value in dict2.items():
-            if key in combined:
-                combined[key] = self._combine_dicts(combined[key], value)
-            else:
-                combined[key] = value
+    def _is_object_schema(self, value: dict[str, Any]) -> bool:
+        return isinstance(value, dict) and "properties" in value
 
-        return combined
+    def _cross_product_sets(self, sets: list[Any]) -> list[set[Any]]:
+        include_empty_set = set() in sets
+        if include_empty_set:
+            sets.remove(set())
+        result = [
+            set.union(*x)
+            for i in range(len(sets) + 1)
+            for x in itertools.combinations(sets, i) if x
+        ]
+        if include_empty_set:
+            result.insert(0, set())
+        return result
+
+    def _combine_anyof_values(self, values: list[dict[str, Any]]) -> Any:
+        if not all(self._is_object_schema(value) for value in values):
+            msg = "_combine_anyof_values can only be called with list of object schema dictionaries"
+            raise AssertionError(msg)
+
+        combined = {}
+        conflicts = defaultdict(list)
+        required_keys_sets = []
+        for object_schema in values:
+            if "required" in object_schema:
+                required_keys_sets.append(set(object_schema["required"]))
+            elif set() not in required_keys_sets:
+                required_keys_sets.append(set())
+            for key, value in object_schema.get("properties", {}).items():
+                if key in conflicts:
+                    conflicts[key].append(value)
+                elif key in combined:
+                    conflicts[key] = [combined.pop(key), value]
+                else:
+                    combined[key] = value
+
+        # Combine conflicting values if possible, fan out where not possible.
+        conflict_values: list[Any] = []
+        for key, values in conflicts.items():
+            if not all(v is None or isinstance(v, type(values[0])) for v in values):
+                msg = f"Error: cannot combine keys with different types in {key}: {values}"
+                raise AssertionError(msg)
+
+            cleaned = [self._clean_value(v) for v in values]
+            if self._is_object_schema(cleaned[0]):
+                conflict_values.append([{key: v} for v in self._combine_anyof_values(cleaned)])
+            else:
+                conflict_values.append([{key: v} for v in cleaned])
+
+        # Cross-product all lists of values that could not be combined.
+        results = [combined]
+        for conflict_value_list in conflict_values:
+            new_results = []
+            for value in conflict_value_list:
+                for result in results:
+                    new_results.append(result | value)
+            results = new_results
+
+        # Cross-product all lists of required keys
+        all_required_sets = self._cross_product_sets(required_keys_sets)
+
+        # Transform back into object schemas
+        final_results = []
+        all_required_keys = set.union(*required_keys_sets) if required_keys_sets else [set()]
+        for result in results:
+            for required_key_set in all_required_sets:
+                final_result = {
+                    "properties": {
+                        key: value for key, value in result.items() if key in required_key_set or key not in all_required_keys
+                    },
+                    "required": sorted(required_key_set)
+                }
+                if not final_result["required"]:
+                    final_result.pop("required")
+                if final_result not in final_results:
+                    final_results.append(final_result)
+
+        return final_results
+
+    def _clean_anyof(self, values: list[Any]) -> dict[str, Any]:
+        for value in values:
+            if not isinstance(value, dict):
+                # TODO: would be nice to track path to help with debugging.
+                msg = "Unhandled case: expected every item in an anyOf to be a dictionary"
+                raise AssertionError(msg)
+
+        combined = self._combine_anyof_values(values)
+
+        if len(combined) == 1:
+            return self._clean_value(combined[0])
+        return {"anyOf": self._clean_value(combined)}
 
     def _clean_allof(self, values: list[Any]) -> dict[str, Any]:
         for value in values:
@@ -127,7 +210,7 @@ class SchemaCleaner:
             return f"#/$defs/{self._get_unit_name(def_name)}"
 
         if schema_name and def_name:
-            cleaned_ref = f"#/$defs/{schema_name}_{def_name}"
+            cleaned_ref = f"#/$defs/{schema_name}/$defs/{def_name}"
         elif schema_name or def_name:
             cleaned_ref = f"#/$defs/{schema_name or def_name}"
         else:
@@ -136,7 +219,7 @@ class SchemaCleaner:
         def_name = cleaned_ref.split("/")[-1]
 
         if self.enclosing_schema_name and def_name not in self.definitions and def_name in self.enclosing_schema_keys:
-            cleaned_ref = f"#/$defs/{self.enclosing_schema_name}_{def_name}"
+            cleaned_ref = f"#/$defs/{self.enclosing_schema_name}/$defs/{def_name}"
 
         return cleaned_ref
 
@@ -199,11 +282,13 @@ class SchemaCleaner:
                 # for the generation script to work correctly.
                 self.enclosing_schema_name = cleaned_schema_name
                 self.enclosing_schema_keys = defs_schema["$defs"].keys()
+                cleaned_defs = {}
                 for def_name, def_schema in defs_schema["$defs"].items():
                     if def_name not in self.replaced_definitions[cleaned_schema_name]:
-                        cleaned[f"{cleaned_schema_name}_{def_name}"] = self._clean(def_schema)
+                        cleaned_defs[def_name] = self._clean(def_schema)
                 self.enclosing_schema_name = None
                 self.enclosing_schema_keys = None
+                cleaned[cleaned_schema_name] = {"$defs": cleaned_defs}
             else:
                 cleaned[cleaned_schema_name] = self._clean(defs_schema)
 
@@ -217,6 +302,8 @@ class SchemaCleaner:
                 cleaned[key] = value
             elif key == "allOf":
                 cleaned |= self._clean_allof(value)
+            elif key == "anyOf":
+                cleaned |= self._clean_anyof(value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
             else:

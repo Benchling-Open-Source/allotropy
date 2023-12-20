@@ -120,7 +120,7 @@ def test_clean_http_refs():
         "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
     }
     validate_cleaned_schema(schema, {
-        "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_orderedItem"
+        "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
     })
 
     schema = {
@@ -136,10 +136,10 @@ def test_clean_http_refs():
     validate_cleaned_schema(schema, {
         "allOf": [
             {
-                "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_orderedItem"
+                "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"
             },
             {
-                "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_tNumberArray"
+                "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/tNumberArray"
             }
         ]
     })
@@ -279,7 +279,7 @@ def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
 def test_replace_definiton() -> None:
     # tQuantityValue in core.schema matches the schema of tQuantityValue in shared/definitions.json, so the
     # ref will be replaced by that, and tQuantityValue will be removed from cleaned defs.
-    # asm is not in shared/definitions, so it will be preserved and flattened into adm_core_REC_2023_09_core_schema_asm.
+    # asm is not in shared/definitions, so it will be preserved.
     schema = {
         "properties": {
             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
@@ -317,18 +317,22 @@ def test_replace_definiton() -> None:
             "$ref": "#/$defs/tQuantityValue"
         },
         "$defs": {
-            "adm_core_REC_2023_09_core_schema_asm": {
-                "properties": {
-                    "$asm.manifest": {
-                        "oneOf": [
-                            {
-                                "type": "string",
-                                "format": "iri"
-                            },
-                            {
-                                "$ref": "#/$defs/adm_core_REC_2023_09_manifest_schema"
+            "adm_core_REC_2023_09_core_schema": {
+                "$defs": {
+                    "asm": {
+                        "properties": {
+                            "$asm.manifest": {
+                                "oneOf": [
+                                    {
+                                        "type": "string",
+                                        "format": "iri"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/adm_core_REC_2023_09_manifest_schema"
+                                    }
+                                ]
                             }
-                        ]
+                        }
                     }
                 }
             }
@@ -339,7 +343,7 @@ def test_replace_definiton() -> None:
 def test_fix_nested_def_references() -> None:
     # References to definitions inside of a definiton schema do not use the full path, making it impossible
     # for the generation script to find them. Fix this by replacing the def with the correct path.
-    # e.g. a #/$defs/nestedSchema inside of core.schema will become #/$defs/core_schema_nestedSchema
+    # e.g. a #/$defs/nestedSchema inside of core_schema will become #/$defs/core_schema/$defs/nestedSchema
     schema = {
         "$defs": {
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/hierarchy.schema": {
@@ -388,41 +392,478 @@ def test_fix_nested_def_references() -> None:
     }
     validate_cleaned_schema(schema, {
         "$defs": {
-            "adm_core_REC_2023_09_hierarchy_schema_anotherThing": {
-                "properties": {
-                    "allOf": [
-                        {
-                            "$ref": "#/$defs/tQuantityValue"
-                        },
-                        {
-                            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_nestedSchema"
-                        },
-                    ]
-                }
-            },
-            "adm_core_REC_2023_09_core_schema_aThing": {
-                "properties": {
-                    "allOf": [
-                        {
-                            "$ref": "#/$defs/adm_core_REC_2023_09_core_schema_nestedSchema"
-                        },
-                        {
-                            "$ref": "#/$defs/otherSchema"
-                        },
-                        {
-                            "$ref": "#/$defs/tQuantityValue"
+            "adm_core_REC_2023_09_hierarchy_schema": {
+                "$defs": {
+                    "anotherThing": {
+                        "properties": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/$defs/tQuantityValue"
+                                },
+                                {
+                                    "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/nestedSchema"
+                                },
+                            ]
                         }
-                    ]
+                    }
                 }
             },
-            "adm_core_REC_2023_09_core_schema_nestedSchema": {
-                "properties": {
-                    "type": "string"
+            "adm_core_REC_2023_09_core_schema": {
+                "$defs": {
+                    "aThing": {
+                        "properties": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/nestedSchema"
+                                },
+                                {
+                                    "$ref": "#/$defs/otherSchema"
+                                },
+                                {
+                                    "$ref": "#/$defs/tQuantityValue"
+                                }
+                            ]
+                        }
+                    },
+                    "nestedSchema": {
+                        "properties": {
+                            "type": "string"
+                        }
+                    }
                 }
-            },
+            }
         }
     }, test_defs=True)
 
+
+def test_singular_anyof():
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    }
+                }
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "key1": {
+                "type": "string"
+            },
+        }
+    })
+
+
+def test_combine_anyof_non_conflicting_optional_keys():
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key2": {
+                        "type": "string"
+                    }
+                }
+            }
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "key1": {
+                "type": "string"
+            },
+            "key2": {
+                "type": "string"
+            }
+        }
+    })
+
+
+def test_combine_anyof_with_conflicting_keys():
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key2": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key1": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key1": {
+                        "type": "boolean"
+                    },
+                    "key2": {
+                        "type": "string"
+                    }
+                }
+            },
+        ]
+    })
+
+
+def test_combine_anyof_with_nested_conflicting_keys() -> None:
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "obj1": {
+                        "properties": {
+                            "key1": "string"
+                        }
+                    },
+                    "field1": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "obj1": {
+                        "properties": {
+                            "key1": "boolean"
+                        }
+                    },
+                }
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "anyOf": [
+            {
+                "properties": {
+                    "obj1": {
+                        "properties": {
+                            "key1": "string"
+                        }
+                    },
+                    "field1": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "obj1": {
+                        "properties": {
+                            "key1": "boolean"
+                        }
+                    },
+                    "field1": {
+                        "type": "string"
+                    }
+                }
+            },
+        ]
+    })
+
+
+def test_combine_anyof_with_nested_anyof() -> None:
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "obj1": {
+                        "anyOf": [
+                            {
+                                "properties": {
+                                    "key1": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            {
+                                "properties": {
+                                    "key2": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "obj1": {
+                        "anyOf": [
+                            {
+                                "properties": {
+                                    "key3": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            {
+                                "properties": {
+                                    "key4": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "obj1": {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    },
+                    "key4": {
+                        "type": "string"
+                    }
+                }
+            },
+        }
+    })
+
+
+def test_combine_anyof_with_required_values():
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1"]
+            },
+            {
+                "properties": {
+                    "key2": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key3": {
+                        "type": "string"
+                    }
+                }
+            }
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "anyOf": [
+            {
+                "properties": {
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1"]
+            }
+        ]
+    })
+
+
+def test_combine_anyof_with_multiple_required_values():
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1", "key2"]
+            },
+            {
+                "properties": {
+                    "key3": {
+                        "type": "string"
+                    }
+                }
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "anyOf": [
+            {
+                "properties": {
+                    "key3": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1", "key2"]
+            }
+        ]
+    })
+
+
+def test_combine_anyof_with_multiple_required_value_sets():
+    schema = {
+        "anyOf": [
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1", "key2"]
+            },
+            {
+                "properties": {
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key4": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key4"]
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "anyOf": [
+            {
+                "properties": {
+                    "key3": {
+                        "type": "string"
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1", "key2"]
+            },
+            {
+                "properties": {
+                    "key3": {
+                        "type": "string"
+                    },
+                    "key4": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key4"]
+            },
+            {
+                "properties": {
+                    "key1": {
+                        "type": "string"
+                    },
+                    "key2": {
+                        "type": "string"
+                    },
+                    "key3": {
+                        "type": "string"
+                    },
+                    "key4": {
+                        "type": "string"
+                    }
+                },
+                "required": ["key1", "key2", "key4"]
+            },
+        ]
+    })
 
 """
 def test_fix_allof_optional_before_required() -> None:
