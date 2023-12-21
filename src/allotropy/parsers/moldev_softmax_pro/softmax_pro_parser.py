@@ -1,7 +1,13 @@
+from collections.abc import Iterator
 from typing import Union
+import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
+    DataSourceAggregateDocument1,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -27,6 +33,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TRelativeFluorescenceUnit,
     TRelativeLightUnit,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TQuantityValue,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
@@ -75,6 +84,11 @@ class SoftmaxproParser(VendorParser):
                     for plate_block in data.block_list.get_plate_blocks()
                     for position in plate_block.iter_wells()
                 ],
+                calculated_data_aggregate_document=CalculatedDataAggregateDocument(
+                    calculated_data_document=list(
+                        self._iter_calculated_data_documents(data)
+                    ),
+                ),
             ),
         )
 
@@ -264,3 +278,29 @@ class SoftmaxproParser(VendorParser):
             )
             for data_element in plate_block.block_data.iter_wavelengths(position)
         ]
+
+    def _iter_calculated_data_documents(
+        self, data: Data
+    ) -> Iterator[CalculatedDataDocumentItem]:
+        for plate_block in data.block_list.get_plate_blocks():
+            if plate_block.block_data.reduced_data is None:
+                continue
+
+            for pos, value in plate_block.block_data.reduced_data.iter_data():
+                yield CalculatedDataDocumentItem(
+                    calculated_data_identifier=str(uuid.uuid4()),
+                    calculated_data_name="Reduced",
+                    calculated_result=TQuantityValue(
+                        unit="unitless",
+                        value=value,
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=w.uuid,
+                                data_source_feature=plate_block.get_plate_block_type(),
+                            )
+                            for w in plate_block.block_data.iter_wavelengths(pos)
+                        ]
+                    ),
+                )
