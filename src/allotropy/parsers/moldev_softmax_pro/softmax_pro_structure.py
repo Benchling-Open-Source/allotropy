@@ -260,6 +260,11 @@ class PlateReducedData:
             }
         )
 
+    def iter_data(self) -> Iterator[tuple[str, float]]:
+        for pos, value in self.data.items():
+            if not math.isnan(value):
+                yield str(pos), value
+
 
 @dataclass(frozen=True)
 class PlateData:
@@ -375,6 +380,11 @@ class TimeReducedData:
         data.index = pd.Index(columns)
         data = data.replace(r"^\s*$", None, regex=True)
         return TimeReducedData(data[2 : header.num_wells + 2].astype(float))
+
+    def iter_data(self) -> Iterator[tuple[str, float]]:
+        for pos, value in self.data.items():
+            if not math.isnan(value):
+                yield str(pos), value
 
 
 @dataclass(frozen=True)
