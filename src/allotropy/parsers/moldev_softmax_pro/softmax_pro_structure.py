@@ -55,7 +55,6 @@ class ScanPosition(Enum):
 @dataclass(frozen=True)
 class Block:
     block_type: str
-    raw_lines: list[str]
 
     @staticmethod
     def create(reader: CsvReader) -> Block:
@@ -71,7 +70,6 @@ class GroupBlock(Block):
     def create(reader: CsvReader) -> GroupBlock:
         return GroupBlock(
             block_type="Group",
-            raw_lines=reader.lines,
             name=(reader.pop() or "").removeprefix("Group: "),
             group_data=list(reader.pop_until("Group Column")),
         )
@@ -81,8 +79,8 @@ class GroupBlock(Block):
 @dataclass(frozen=True)
 class NoteBlock(Block):
     @staticmethod
-    def create(reader: CsvReader) -> NoteBlock:
-        return NoteBlock(block_type="Note", raw_lines=reader.lines)
+    def create(_: CsvReader) -> NoteBlock:
+        return NoteBlock(block_type="Note")
 
 
 @dataclass(frozen=True)
@@ -720,7 +718,6 @@ class BlockList:
                 blocks.append(
                     cls(
                         block_type="Plate",
-                        raw_lines=sub_reader.lines,
                         header=header,
                         block_data=block_data,
                     )
