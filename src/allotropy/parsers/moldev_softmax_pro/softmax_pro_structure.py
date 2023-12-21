@@ -61,17 +61,64 @@ class Block:
         raise NotImplementedError
 
 
+@dataclass
+class GroupData:
+    name: str
+    data: pd.DataFrame
+
+    @staticmethod
+    def create(reader: CsvReader) -> GroupData:
+        name = assert_not_none(
+            reader.pop(),
+            msg="Unable to find group block name.",
+        ).removeprefix("Group: ")
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(sep="\t", header=0),
+            msg="Unable to find group block data.",
+        ).replace(r"^\s+$", None, regex=True)
+
+        return GroupData(
+            name=name,
+            data=data.ffill(),
+        )
+
+
+@dataclass
+class GroupColumns:
+    data: list[str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> GroupColumns:
+        data = list(reader.pop_until_empty())
+        reader.drop_empty()
+        return GroupColumns(data)
+
+
+@dataclass
+class GroupSummaries:
+    data: list[str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> GroupSummaries:
+        data = list(reader.pop_until_empty())
+        reader.drop_empty()
+        return GroupSummaries(data)
+
+
 @dataclass(frozen=True)
 class GroupBlock(Block):
-    name: str
-    group_data: list[str]
+    group_data: GroupData
+    group_columns: GroupColumns
+    group_summaries: GroupSummaries
 
     @staticmethod
     def create(reader: CsvReader) -> GroupBlock:
         return GroupBlock(
             block_type="Group",
-            name=(reader.pop() or "").removeprefix("Group: "),
-            group_data=list(reader.pop_until("Group Column")),
+            group_data=GroupData.create(reader),
+            group_columns=GroupColumns.create(reader),
+            group_summaries=GroupSummaries.create(reader),
         )
 
 
@@ -743,15 +790,13 @@ class BlockList:
             reader.pop()  # drop end line
             reader.drop_empty()
 
+    def get_plate_blocks(self) -> list[PlateBlock]:
+        return [block for block in self.blocks if isinstance(block, PlateBlock)]
+
 
 @dataclass(frozen=True)
 class Data:
     block_list: BlockList
-
-    def get_plate_block(self) -> list[PlateBlock]:
-        return [
-            block for block in self.block_list.blocks if isinstance(block, PlateBlock)
-        ]
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
