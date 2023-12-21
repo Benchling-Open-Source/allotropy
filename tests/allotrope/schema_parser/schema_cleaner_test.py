@@ -865,6 +865,36 @@ def test_combine_anyof_with_multiple_required_value_sets():
         ]
     })
 
+
+def test_combine_anyof_with_parent_object():
+    schema = {
+        "properties": {
+            "parentKey": {
+                "type": "string",
+            }
+        },
+        "anyOf": [
+            {
+                "properties": {
+                    "childKey": {
+                        "type": "string"
+                    }
+                }
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "parentKey": {
+                "type": "string"
+            },
+            "childKey": {
+                "type": "string"
+            }
+        }
+    })
+
+
 """
 def test_fix_allof_optional_before_required() -> None:
     schema = {
@@ -974,11 +1004,9 @@ def test_fix_allof_optional_before_required() -> None:
     }
 """
 
-"""
 def test_load_model() -> None:
     from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
         Model,
     )
 
     model = Model()
-"""

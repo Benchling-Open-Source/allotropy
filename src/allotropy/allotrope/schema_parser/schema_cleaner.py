@@ -86,8 +86,10 @@ class SchemaCleaner:
 
     def _combine_anyof_values(self, values: list[dict[str, Any]]) -> Any:
         if not all(self._is_object_schema(value) for value in values):
-            msg = "_combine_anyof_values can only be called with list of object schema dictionaries"
-            raise AssertionError(msg)
+            if any(self._is_object_schema(value) for value in values):
+                msg = f"_combine_anyof_values can only be called with list of object schema dictionaries: {values}"
+                raise AssertionError(msg)
+            return values
 
         combined = {}
         conflicts = defaultdict(list)
@@ -295,17 +297,21 @@ class SchemaCleaner:
         return cleaned
 
     def _clean(self, schema: dict[str, Any]) -> dict[str, Any]:
-        cleaned = {}
 
+        if "anyOf" in schema and self._is_object_schema(schema):
+            values = schema.pop("anyOf")
+            schema = self._clean_anyof([schema, *values])
+
+        cleaned = {}
         for key, value in schema.items():
             if key == "$custom":
                 cleaned[key] = value
             elif key == "allOf":
                 cleaned |= self._clean_allof(value)
-            elif key == "anyOf":
-                cleaned |= self._clean_anyof(value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
+            elif key == "anyOf":
+                cleaned |= self._clean_anyof(value)
             else:
                 cleaned[key] = self._clean_value(value)
 
