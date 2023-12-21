@@ -360,24 +360,21 @@ class TimeRawData:
 
 @dataclass(frozen=True)
 class TimeReducedData:
-    columns: list[str]
-    data: list[str]
+    data: pd.Series[float]
 
     @staticmethod
-    def create(reader: CsvReader) -> TimeReducedData:
-        _, _, *columns = assert_not_none(
+    def create(reader: CsvReader, header: PlateHeader) -> TimeReducedData:
+        columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find columns for time block reduced data.",
         )
-        _, _, *data = assert_not_none(
+        data = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find reduced data from time block.",
         )
-        return TimeReducedData(columns, data)
-
-    def iter_data(self) -> Iterator[tuple[str, float]]:
-        for pos, value in zip(self.columns, self.data):
-            yield pos, try_float(value, "time block reduced data element")
+        data.index = pd.Index(columns)
+        data = data.replace(r"^\s*$", None, regex=True)
+        return TimeReducedData(data[2 : header.num_wells + 2].astype(float))
 
 
 @dataclass(frozen=True)
@@ -397,7 +394,9 @@ class TimeData:
                 else TimeRawData.create(reader, header)
             ),
             reduced_data=(
-                TimeReducedData.create(reader) if reader.current_line_exists() else None
+                TimeReducedData.create(reader, header)
+                if reader.current_line_exists()
+                else None
             ),
         )
 
