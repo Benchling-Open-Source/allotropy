@@ -72,7 +72,7 @@ class SoftmaxproParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate_block, position)
-                    for plate_block in data.get_plate_block()
+                    for plate_block in data.block_list.get_plate_blocks()
                     for position in plate_block.iter_wells()
                 ],
             ),
