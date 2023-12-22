@@ -1,6 +1,7 @@
 from collections import defaultdict
 import copy
 import itertools
+from itertools import chain, combinations
 import json
 import os
 from pathlib import Path
@@ -27,6 +28,7 @@ class SchemaCleaner:
         self.definitions = self._load_definitions()
         self.replaced_definitions = defaultdict(list)
 
+        self.cleaning_defs = False
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
 
@@ -69,12 +71,11 @@ class SchemaCleaner:
             self.unit_to_name[unit] = unit_name_from_iri(unit_iri)
 
     def _is_object_schema(self, value: dict[str, Any]) -> bool:
-        return isinstance(value, dict) and "properties" in value
+        return isinstance(value, dict) and "properties" in value or "required" in value
 
     def _cross_product_sets(self, sets: list[Any]) -> list[set[Any]]:
         include_empty_set = set() in sets
-        if include_empty_set:
-            sets.remove(set())
+        sets = [s for s in sets if s]
         result = [
             set.union(*x)
             for i in range(len(sets) + 1)
@@ -84,21 +85,12 @@ class SchemaCleaner:
             result.insert(0, set())
         return result
 
-    def _combine_anyof_values(self, values: list[dict[str, Any]]) -> Any:
-        if not all(self._is_object_schema(value) for value in values):
-            if any(self._is_object_schema(value) for value in values):
-                msg = f"_combine_anyof_values can only be called with list of object schema dictionaries: {values}"
-                raise AssertionError(msg)
-            return values
-
+    def _combine_object_schemas(self, values: list[dict, str]) -> tuple[dict[str, Any], dict[str, list[Any]], list[set[str]]]:
         combined = {}
         conflicts = defaultdict(list)
         required_keys_sets = []
         for object_schema in values:
-            if "required" in object_schema:
-                required_keys_sets.append(set(object_schema["required"]))
-            elif set() not in required_keys_sets:
-                required_keys_sets.append(set())
+            required_keys_sets.append(set(object_schema.get("required", [])))
             for key, value in object_schema.get("properties", {}).items():
                 if key in conflicts:
                     conflicts[key].append(value)
@@ -107,92 +99,159 @@ class SchemaCleaner:
                 else:
                     combined[key] = value
 
-        # Combine conflicting values if possible, fan out where not possible.
-        conflict_values: list[Any] = []
-        for key, values in conflicts.items():
-            if not all(v is None or isinstance(v, type(values[0])) for v in values):
-                msg = f"Error: cannot combine keys with different types in {key}: {values}"
-                raise AssertionError(msg)
+        return combined, {key: list(value) for key, value in conflicts.items()}, required_keys_sets
 
-            cleaned = [self._clean_value(v) for v in values]
-            if self._is_object_schema(cleaned[0]):
-                conflict_values.append([{key: v} for v in self._combine_anyof_values(cleaned)])
-            else:
-                conflict_values.append([{key: v} for v in cleaned])
+    def _create_object_schema(self, properties: dict[str, Any], required: list[str]):
+        schema = {"properties": properties}
+        if required:
+            schema["required"] = required
+        return schema
 
-        # Cross-product all lists of values that could not be combined.
-        results = [combined]
-        for conflict_value_list in conflict_values:
-            new_results = []
-            for value in conflict_value_list:
-                for result in results:
-                    new_results.append(result | value)
-            results = new_results
+    def _try_combine_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
+        combined_props = {}
+        for schema in schemas:
+            for key, value in schema.get("properties", {}).items():
+                print("!!!")
+                print(key)
+                print(value)
+                if key in combined_props:
+                    if self._is_object_schema(value):
+                        print("^^^ OBJ SCHEMAS")
+                        combined_props[key] = self._try_combine_schemas([combined_props[key], value])
+                    elif value != combined_props[key]:
+                        msg = f"Error combining schemas, conflicting values for key '{key}': ['{value}', '{combined_props[key]}']"
+                        raise AssertionError(msg)
+                else:
+                    combined_props[key] = value
 
-        # Cross-product all lists of required keys
-        all_required_sets = self._cross_product_sets(required_keys_sets)
+        return self._create_object_schema(
+            combined_props,
+            sorted(set.union(*[set(schema.get("required", [])) for schema in schemas]))
+        )
 
-        # Transform back into object schemas
-        final_results = []
-        all_required_keys = set.union(*required_keys_sets) if required_keys_sets else [set()]
-        for result in results:
-            for required_key_set in all_required_sets:
-                final_result = {
-                    "properties": {
-                        key: value for key, value in result.items() if key in required_key_set or key not in all_required_keys
-                    },
-                    "required": sorted(required_key_set)
-                }
-                if not final_result["required"]:
-                    final_result.pop("required")
-                if final_result not in final_results:
-                    final_results.append(final_result)
+    def _combine_anyof_values(self, values: list[dict[str, Any]]) -> Any:
+        if not all(self._is_object_schema(value) for value in values):
+            return values
 
-        return final_results
+        # For schemas without required values, we want to combine them as much as possible, but sometimes
+        # can't due to keys with conflcting values. To do this, we take the power set of combinations and
+        # try to combine each. When we succeed, remove other sets that are covered by that powerset.
+        # Then, for schemas with required keys, we try to combine with schema avaiable, and overwrite
+        # conflicting keys if they are optional, only failing if two required keys conflict.
+        successful = []
+        for i in range(2**len(values) - 1, 0, -1):
+            indices = {j for j, digit in enumerate(f"{i:b}"[::-1]) if digit == "1"}
+            try:
+                combined = self._try_combine_schemas([values[j] for j in indices])
+            except AssertionError:
+                continue
+            covered = False
+            for schema, schema_indices in successful:
+                if indices.issubset(schema_indices) and set(combined.get("required", [])) == set(schema.get("required", [])):
+                    covered = True
+                    break
+            if not covered:
+                successful.append((combined, indices))
+
+        return [schema for schema, _ in successful]
 
     def _clean_anyof(self, values: list[Any]) -> dict[str, Any]:
-        for value in values:
-            if not isinstance(value, dict):
-                # TODO: would be nice to track path to help with debugging.
-                msg = "Unhandled case: expected every item in an anyOf to be a dictionary"
-                raise AssertionError(msg)
-
+        values = self._clean_value(values)
         combined = self._combine_anyof_values(values)
 
         if len(combined) == 1:
-            return self._clean_value(combined[0])
-        return {"anyOf": self._clean_value(combined)}
+            return combined[0]
+        return {"anyOf": combined}
+
+    def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
+        result = copy.deepcopy(value)
+        if "$ref" in value and not self._is_unit_name_ref(value["$ref"]):
+            # NOTE: assumes ref is cleaned
+            def_1, def_2 = re.match(r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", result.pop("$ref")).groups()
+            if def_2:
+                result |= self.definitions[def_1]["$defs"][def_2]
+            else:
+                result |= self.definitions[def_1]
+        for group_key in ["anyOf", "allOf", "oneOf"]:
+            if group_key in value:
+                result[group_key] = self._dereference_values(result[group_key])
+        return result
+
+    def _dereference_values(self, values: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        return [self._dereference_value(value) for value in values]
+
+    def _required_anywhere(self, value: Any) -> bool:
+        if isinstance(value, dict):
+            return any(k == "required" or self._required_anywhere(v) for k, v in value.items())
+        elif isinstance(value, list):
+            return any(self._required_anywhere(v) for v in value)
+        return False
+
+    def _invert_allof(self, values: list[Any], key: str):
+        new_values = []
+        for value in values:
+            values_list = value[key] if key in value else [value]
+            new_values = [
+                [*new_value, add_value]
+                for new_value in new_values
+                for add_value in values_list
+            ] if new_values else [[value] for value in values_list]
+        return self._clean_value({key: [{"allOf": values} for values in new_values]})
+
+    def _combine_allof_values(self, values: list[dict[str, Any]]) -> Any:
+        if not all(self._is_object_schema(value) for value in values):
+            if any(self._is_object_schema(value) for value in values):
+                for value in values:
+                    if not self._is_object_schema(value):
+                        print("!!!!!")
+                        print(value)
+                msg = f"_combine_allof_values can only be called with list of object schema dictionaries: {values}"
+                raise AssertionError(msg)
+            return values
+
+        return self._try_combine_schemas(values)
 
     def _clean_allof(self, values: list[Any]) -> dict[str, Any]:
-        for value in values:
-            if not isinstance(value, dict):
-                # TODO: would be nice to track path to help with debugging.
-                msg = "Unhandled case: expected every item in an allOf to be a dictionary"
-                raise AssertionError(msg)
+        if not all(isinstance(value, dict) for value in values):
+            msg = "Unhandled case: expected every item in an allOf to be a dictionary"
+            raise AssertionError(msg)
+
+        values = self._clean_value(values)
 
         if len(values) == 1:
             # datamodel-codegen can not handle single-value allOf entries.
-            return self._clean_value(values[0])
+            return values[0]
 
         # datamodel-codegen can not handle oneOf nested inside allOf. Fix this by reversing the order,
         # making a oneOf with each possible product of allOf
         if any("oneOf" in value for value in values):
-            new_values = []
-            for value in [self._clean_value(v) for v in values]:
-                values_list = value["oneOf"] if "oneOf" in value else [value]
-                new_values = [
-                    [*new_value, add_value]
-                    for new_value in new_values
-                    for add_value in values_list
-                ] if new_values else [[value] for value in values_list]
-            return self._clean_value({"oneOf": [{"allOf": values} for values in new_values]})
+            return self._invert_allof(values, "oneOf")
 
-        cleaned_values = self._clean_value(values)
+        # This must come after fixing oneOf because oneOf may break into multiple quantity values
+        if self._is_quantity_value(values):
+            return self._fix_quantity_value_reference(values)
 
-        if self._is_quantity_value(cleaned_values):
-            return self._fix_quantity_value_reference(cleaned_values)
+        # Deference values and check for oneOf/anyOf inversion again.
+        derefed_values = self._clean_value(self._dereference_values(values))
+        if any("oneOf" in value for value in derefed_values):
+            return self._invert_allof(derefed_values, "oneOf")
 
-        return {"allOf": cleaned_values}
+        if any("anyOf" in value for value in values):
+            return self._invert_allof(derefed_values, "anyOf")
+
+        # We don't combine allOf for definitions because we don't want to flatten definitions and prevent
+        # inheritance in generated dataclasses.
+        if not self.cleaning_defs:
+            # If any object in the allOf has required fields, we must combine them in order for the generation
+            # script to generate valid dataclasses. This is because dataclass inheritance with optional fields
+            # is broken in python<3.10.
+            if self._required_anywhere(derefed_values):
+                return self._combine_allof_values(derefed_values)
+            # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
+            # but we don't save the result.
+            self._try_combine_schemas(derefed_values)
+
+        return {"allOf": values}
 
     def _get_reference(self, value: Any) -> tuple[Optional[str], Optional[str]]:
         # Identify URL-like references, and return a sanitized version that can be followed by generation script.
@@ -258,6 +317,7 @@ class SchemaCleaner:
         raise AssertionError(msg)
 
     def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
+        self.cleaning_defs = True
         for schema_name, defs_schema in schema["$defs"].items():
             # Replace web address reference name with a version that can be followed in datamodel-codegen
             cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
@@ -269,9 +329,14 @@ class SchemaCleaner:
                 # Store defs that are replaced with definitions in common/definitions before cleaning.
                 # NOTE: this does not attempt to handle futher nested $defs, in schemas, but we have not
                 # observed that in any schema files yet.
+                self.definitions[cleaned_schema_name] = {"$defs": {}}
                 for def_name, def_schema in defs_schema["$defs"].items():
                     if self.definitions.get(def_name) == def_schema:
                         self.replaced_definitions[cleaned_schema_name].append(def_name)
+                    else:
+                        self.definitions[cleaned_schema_name]["$defs"][def_name] = def_schema
+            else:
+                self.definitions[cleaned_schema_name] = defs_schema
 
         cleaned = {}
         for schema_name, defs_schema in schema["$defs"].items():
@@ -280,8 +345,11 @@ class SchemaCleaner:
             if cleaned_schema_name.endswith("units_schema"):
                 continue
             elif "$defs" in defs_schema:
-                # For nested definitions, we need to flatten then into a single $defs entry in order
-                # for the generation script to work correctly.
+                # For references nested inside definitions, we need to change the ref into the full reference
+                # path in order for the generation script to find them. e.g.
+                #   {"someSchema": {"$ref": "#/$defs/someThing"}}
+                #       becomes
+                #   {"someSchema": {"$ref": "#/$defs/someSchema/$defs/someThing"}}
                 self.enclosing_schema_name = cleaned_schema_name
                 self.enclosing_schema_keys = defs_schema["$defs"].keys()
                 cleaned_defs = {}
@@ -294,17 +362,30 @@ class SchemaCleaner:
             else:
                 cleaned[cleaned_schema_name] = self._clean(defs_schema)
 
+        self.definitions |= cleaned
+        self.cleaning_defs = False
         return cleaned
 
     def _clean(self, schema: dict[str, Any]) -> dict[str, Any]:
-
-        if "anyOf" in schema and self._is_object_schema(schema):
-            values = schema.pop("anyOf")
-            schema = self._clean_anyof([schema, *values])
+        if self._is_object_schema(schema) and ("anyOf" in schema or "oneOf" in schema):
+            print("HERE")
+            print(schema)
+            fixed = {
+                "allOf": [
+                    self._create_object_schema(schema.get("properties", {}), schema.get("required", [])),
+                    *schema.get("allOf", [])
+                ],
+            }
+            if "anyOf" in schema:
+                fixed["allOf"].append({"anyOf": schema["anyOf"]})
+            if "oneOf" in schema:
+                fixed["allOf"].append({"oneOf": schema["oneOf"]})
+            print(fixed)
+            return self._clean(fixed)
 
         cleaned = {}
         for key, value in schema.items():
-            if key == "$custom":
+            if key in ("$defs", "$custom"):
                 cleaned[key] = value
             elif key == "allOf":
                 cleaned |= self._clean_allof(value)
