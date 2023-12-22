@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
+import math
 import re
 from typing import Optional, Union
 
@@ -156,8 +157,12 @@ class PlateKineticData:
         )
         data.columns = pd.Index(columns)
 
+        temperature = try_float_or_none(str(data.iloc[0, 1]))
+        if temperature is not None and math.isnan(temperature):
+            temperature = None
+
         return PlateKineticData(
-            temperature=try_float_or_none(str(data.iloc[0, 1])),
+            temperature=temperature,
             wavelength_data=list(
                 PlateKineticData._iter_wavelength_data(
                     header, data.iloc[:, 2:].astype(float)
@@ -263,13 +268,16 @@ class PlateData:
 
 @dataclass(frozen=True)
 class TimeKineticData:
-    temperature: float
+    temperature: Optional[float]
     data: pd.Series[float]
 
     @staticmethod
     def create(row: pd.Series[float]) -> TimeKineticData:
+        temperature = try_float_or_none(str(row.iloc[1]))
+        if temperature is not None and math.isnan(temperature):
+            temperature = None
         return TimeKineticData(
-            temperature=row.iloc[1],
+            temperature=temperature,
             data=row.iloc[2:].astype(float),
         )
 
