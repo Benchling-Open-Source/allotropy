@@ -22,6 +22,7 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int,
     try_int_or_none,
+    try_str_from_series,
 )
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
@@ -62,9 +63,17 @@ class Block:
 
 
 @dataclass
+class GroupDataElement:
+    sample: str
+    position: str
+    plate: str
+    data: pd.Series[float]
+
+
+@dataclass
 class GroupData:
     name: str
-    data: pd.DataFrame
+    data_elements: list[GroupDataElement]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupData:
@@ -78,21 +87,59 @@ class GroupData:
             msg="Unable to find group block data.",
         ).replace(r"^\s+$", None, regex=True)
 
+        non_memorable = [
+            "Sample",
+            "Standard Value",
+            "Wells",
+            "WellPlateName",
+            "Unnamed:",
+        ]
+
+        columns = [
+            column
+            for column in data.columns
+            if not any(column.startswith(name) for name in non_memorable)
+        ]
+
         return GroupData(
             name=name,
-            data=data.ffill(),
+            data_elements=[
+                GroupDataElement(
+                    sample=try_str_from_series(row, "Sample"),
+                    position=try_str_from_series(row, "Wells"),
+                    plate=try_str_from_series(row, "WellPlateName"),
+                    data=row[columns].astype(float),
+                )
+                for _, row in data.ffill().iterrows()
+            ],
         )
 
 
 @dataclass
 class GroupColumns:
-    data: list[str]
+    data: pd.Series[str]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupColumns:
-        data = list(reader.pop_until_empty())
-        reader.drop_empty()
-        return GroupColumns(data)
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(sep="\t", header=0),
+            msg="Unable to find group block columns.",
+        )
+
+        if "Formula Name" not in data:
+            error = "Unable to find formula name in group block columns."
+            raise AllotropeConversionError(error)
+
+        if "Formula" not in data:
+            error = "Unable to find formula in group block columns."
+            raise AllotropeConversionError(error)
+
+        return GroupColumns(
+            data=pd.Series(
+                index=pd.Index(data["Formula Name"].values),
+                data=data["Formula"].values,
+            ),
+        )
 
 
 @dataclass
@@ -799,8 +846,15 @@ class BlockList:
             reader.pop()  # drop end line
             reader.drop_empty()
 
-    def get_plate_blocks(self) -> list[PlateBlock]:
-        return [block for block in self.blocks if isinstance(block, PlateBlock)]
+    def get_plate_blocks(self) -> dict[str, PlateBlock]:
+        return {
+            block.header.name: block
+            for block in self.blocks
+            if isinstance(block, PlateBlock)
+        }
+
+    def get_group_blocks(self) -> list[GroupBlock]:
+        return [block for block in self.blocks if isinstance(block, GroupBlock)]
 
 
 @dataclass(frozen=True)
