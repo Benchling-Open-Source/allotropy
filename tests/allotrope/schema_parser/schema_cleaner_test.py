@@ -396,16 +396,22 @@ def test_singular_anyof():
     schema = {
         "anyOf": [
             {
-                "properties": {
-                    "key1": "value"
-                }
-            },
+                "items": {
+                    "properties": {
+                        "key1": "value"
+                    }
+                },
+                "minItems": 1
+            }
         ]
     }
     validate_cleaned_schema(schema, {
-        "properties": {
-            "key1": "value",
-        }
+        "items": {
+            "properties": {
+                "key1": "value",
+            }
+        },
+        "minItems": 1
     })
 
 
@@ -623,38 +629,53 @@ def test_combine_anyof_with_required_values():
     schema = {
         "anyOf": [
             {
-                "properties": {
-                    "key1": "value"
+                "items": {
+                    "properties": {
+                        "key1": "value"
+                    },
+                    "required": ["key1"]
                 },
-                "required": ["key1"]
+                "minItems": 0
             },
             {
-                "properties": {
-                    "key2": "value"
-                }
+                "items": {
+                    "properties": {
+                        "key2": "value"
+                    }
+                },
+                "minItems": 0
             },
             {
-                "properties": {
-                    "key3": "value"
-                }
+                "items": {
+                    "properties": {
+                        "key3": "value"
+                    }
+                },
+                "minItems": 0
             }
         ]
     }
     validate_cleaned_schema(schema, {
         "anyOf": [
             {
-                "properties": {
-                    "key1": "value",
-                    "key2": "value",
-                    "key3": "value"
+                "items": {
+                    "properties": {
+                        "key1": "value",
+                        "key2": "value",
+                        "key3": "value"
+                    },
+                    "required": ["key1"]
                 },
-                "required": ["key1"]
+                "minItems": 0
             },
             {
-                "properties": {
-                    "key2": "value",
-                    "key3": "value"
-                }
+                "items": {
+                    "properties": {
+                        "key2": "value",
+                        "key3": "value"
+                    }
+                },
+                "minItems": 0
             },
         ]
     })
@@ -760,36 +781,42 @@ def test_combine_anyof_with_multiple_required_value_sets():
 
 def test_combine_anyof_with_parent_object():
     schema = {
-        "properties": {
-            "parentKey": "value"
+        "items": {
+            "properties": {
+                "parentKey": "value"
+            },
+            "anyOf": [
+                {
+                    "properties": {
+                        "key1": "value"
+                    }
+                },
+                {
+                    "properties": {
+                        "key2": "value"
+                    }
+                },
+            ]
         },
-        "anyOf": [
-            {
-                "properties": {
-                    "key1": "value"
-                }
-            },
-            {
-                "properties": {
-                    "key2": "value"
-                }
-            },
-        ]
+        "minItems": 1
     }
     validate_cleaned_schema(schema, {
-        "allOf": [
-            {
-                "properties": {
-                    "parentKey": "value",
-                }
-            },
-            {
-                "properties": {
-                    "key1": "value",
-                    "key2": "value"
-                }
-            },
-        ]
+        "items": {
+            "allOf": [
+                {
+                    "properties": {
+                        "parentKey": "value",
+                    }
+                },
+                {
+                    "properties": {
+                        "key1": "value",
+                        "key2": "value"
+                    }
+                },
+            ]
+        },
+        "minItems": 1
     })
 
 
@@ -1452,6 +1479,98 @@ def test_combine_allof_nested_oneof_and_anyof() -> None:
                 ]
             },
         ]
+    })
+
+
+@pytest.mark.skip()
+def test_combine_allof_items() -> None:
+    schema = {
+        "allOf": [
+            {
+                "items": {
+                    "properties": {
+                        "key1": "value",
+                    },
+                    "required": ["key1"]
+                },
+                "minItems": 1
+            },
+            {
+                "items": {
+                    "properties": {
+                        "key2": "value",
+                    },
+                },
+                "minItems": 1
+            },
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "items": {
+            "properties": {
+                "key1": "value",
+                "key2": "value",
+            },
+            "required": ["key1"]
+        },
+        "minItems": 1
+    })
+
+
+def test_combine_nested_allof() -> None:
+    schema = {
+        "allOf": [
+            {
+                "properties": {
+                    "obj1": {
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "key1": "value"
+                                },
+                                "required": ["key1"]
+                            },
+                            {
+                                "properties": {
+                                    "key2": "value"
+                                }
+                            }
+                        ]
+                    }
+                },
+            },
+            {
+                "properties": {
+                    "obj1": {
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "key3": "value"
+                                }
+                            },
+                            {
+                                "properties": {
+                                    "key4": "value"
+                                }
+                            }
+                        ]
+                    }
+                },
+            }
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "obj1": {
+                "properties": {
+                    "key1": "value",
+                    "key2": "value",
+                    "key3": "value",
+                    "key4": "value",
+                },
+                "required": ["key1"]
+            }
+        },
     })
 
 
