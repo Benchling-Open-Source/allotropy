@@ -614,13 +614,21 @@ def test_combine_anyof_with_nested_anyof() -> None:
     validate_cleaned_schema(schema, {
         "properties": {
             "obj1": {
-                "properties": {
-                    "key1": "value",
-                    "key2": "value",
-                    "key3": "value",
-                    "key4": "value"
-                }
-            },
+                "allOf": [
+                    {
+                        "properties": {
+                            "key1": "value",
+                            "key2": "value"
+                        }
+                    },
+                    {
+                        "properties": {
+                            "key3": "value",
+                            "key4": "value"
+                        }
+                    }
+                ]
+            }
         }
     })
 
@@ -1115,7 +1123,7 @@ def test_combine_allof_fails_on_conflicting_key():
             },
         ]
     }
-    with pytest.raises(AssertionError, match=re.escape("Error combining schemas, conflicting values for key 'key1': ['otherValue', 'value']")):
+    with pytest.raises(AssertionError, match=re.escape("Error combining schemas, conflicting values for key 'key1': ['value', 'otherValue']")):
         SchemaCleaner().clean(schema)
 
 
@@ -1142,49 +1150,11 @@ def test_combine_allof_fails_on_nested_conflicting_key():
             },
         ]
     }
-    with pytest.raises(AssertionError, match=re.escape("Error combining schemas, conflicting values for key 'key1': ['otherValue', 'value']")):
+    with pytest.raises(AssertionError, match=re.escape("Error combining schemas, conflicting values for key 'key1': ['value', 'otherValue']")):
         SchemaCleaner().clean(schema)
 
 
-def test_combine_allof_with_simple_ref():
-    schema = {
-        "allOf": [
-            {
-                "$ref": "#/$defs/tQuantityValue"
-            },
-            {
-                "properties": {
-                    "key2": "value"
-                },
-                "required": ["key2"]
-            },
-        ]
-    }
-    validate_cleaned_schema(schema, {
-        "properties": {
-            "value": {
-                "type": "number"
-            },
-            "unit": {
-                "$ref": "#/$defs/tUnit"
-            },
-            "has statistic datum role": {
-                "$ref": "#/$defs/tStatisticDatumRole"
-            },
-            "@type": {
-                "$ref": "#/$defs/tClass"
-            },
-            "key2": "value"
-        },
-        "required": [
-            "key2",
-            "unit",
-            "value"
-        ]
-    })
-
-
-def test_combine_allof_with_local_ref():
+def test_combine_allof_with_ref():
     schema = {
         "allOf": [
             {
@@ -1356,18 +1326,10 @@ def test_combine_allof_with_nested_anyof_with_required_keys() -> None:
                 "required": ["key2"]
             },
             {
-                "allOf": [
-                    {
-                        "properties": {
-                            "key1": "value"
-                        },
-                    },
-                    {
-                        "properties": {
-                            "key3": "value"
-                        },
-                    }
-                ]
+                "properties": {
+                    "key1": "value",
+                    "key3": "value",
+                },
             },
         ]
     })
@@ -1426,23 +1388,11 @@ def test_combine_allof_nested_oneof_and_anyof() -> None:
                         "required": ["key2"]
                     },
                     {
-                        "allOf": [
-                            {
-                                "properties": {
-                                    "key1": "value"
-                                },
-                            },
-                            {
-                                "properties": {
-                                    "key3": "value"
-                                },
-                            },
-                            {
-                                "properties": {
-                                    "key4": "value"
-                                },
-                            },
-                        ]
+                        "properties": {
+                            "key1": "value",
+                            "key3": "value",
+                            "key4": "value",
+                        },
                     },
                 ]
             },
@@ -1458,23 +1408,11 @@ def test_combine_allof_nested_oneof_and_anyof() -> None:
                         "required": ["key2"]
                     },
                     {
-                        "allOf": [
-                            {
-                                "properties": {
-                                    "key1": "value"
-                                },
-                            },
-                            {
-                                "properties": {
-                                    "key3": "value"
-                                },
-                            },
-                            {
-                                "properties": {
-                                    "key5": "value"
-                                },
-                            },
-                        ]
+                        "properties": {
+                            "key1": "value",
+                            "key3": "value",
+                            "key5": "value",
+                        },
                     },
                 ]
             },
@@ -1482,7 +1420,6 @@ def test_combine_allof_nested_oneof_and_anyof() -> None:
     })
 
 
-@pytest.mark.skip()
 def test_combine_allof_items() -> None:
     schema = {
         "allOf": [
@@ -1573,6 +1510,71 @@ def test_combine_nested_allof() -> None:
         },
     })
 
+
+def test_combine_nested_oneof() -> None:
+    schema = {
+        "allOf": [
+            {
+                "properties": {
+                    "obj1": {
+                        "oneOf": [
+                            {
+                                "properties": {
+                                    "key1": "value"
+                                },
+                                "required": ["key1"]
+                            },
+                            {
+                                "properties": {
+                                    "key2": "value"
+                                }
+                            }
+                        ]
+                    }
+                },
+            },
+            {
+                "properties": {
+                    "obj1": {
+                        "properties": {
+                            "key3": "value"
+                        }
+                    },
+                },
+            }
+        ]
+    }
+    validate_cleaned_schema(schema, {
+        "properties": {
+            "obj1": {
+                "oneOf": [
+                    {
+                        "properties": {
+                            "key1": "value",
+                            "key3": "value"
+                        },
+                        "required": [
+                            "key1"
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "properties": {
+                                    "key2": "value"
+                                }
+                            },
+                            {
+                                "properties": {
+                                    "key3": "value"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    })
 
 @pytest.mark.skip()
 def test_load_model() -> None:
