@@ -489,10 +489,10 @@ class TimeRawData:
                 TimeWavelengthData.create(
                     reader,
                     header.name,
-                    header.wavelengths[idx],
+                    wavelength,
                     columns,
                 )
-                for idx in range(header.num_wavelengths)
+                for wavelength in header.wavelengths
             ]
         )
 
