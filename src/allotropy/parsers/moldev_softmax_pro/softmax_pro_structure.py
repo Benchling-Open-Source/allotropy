@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from enum import Enum
 import math
 import re
-from typing import Optional, Union
+from typing import Any, Optional, Union
 import uuid
 
 import pandas as pd
@@ -29,6 +29,22 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
+
+
+def is_float(value: Any) -> bool:
+    try:
+        number = float(value)
+        return False if math.isnan(number) else True
+    except Exception:
+        return False
+
+
+def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
+    new_data = data
+    for column in data.columns:
+        if re.match(pattern, column):
+            new_data = new_data.drop(columns=[column])
+    return new_data
 
 
 def try_str_from_series_multikey_or_none(
@@ -86,21 +102,65 @@ class Block:
 
 
 @dataclass
+class GroupDataElementEntry:
+    name: str
+    value: float
+    aggregated: bool
+
+
+@dataclass
 class GroupDataElement:
     sample: str
     position: str
     plate: str
-    data: pd.Series[float]
+    entries: list[GroupDataElementEntry]
 
-    def iter_data(self) -> Iterator[tuple[str, float]]:
-        for key, value in self.data.items():
-            yield str(key), value
+
+@dataclass
+class GroupSampleData:
+    identifier: str
+    data_elements: list[GroupDataElement]
+
+    @staticmethod
+    def create(data: pd.DataFrame) -> GroupSampleData:
+        top_row = data.iloc[0]
+        identifier = top_row["Sample"]
+        data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        column_info = [
+            (column, data[column].iloc[1:].isnull().all())
+            for column in data.columns
+            if is_float(top_row[column])
+        ]
+
+        return GroupSampleData(
+            identifier=identifier,
+            data_elements=[
+                GroupDataElement(
+                    sample=identifier,
+                    position=try_str_from_series_multikey(
+                        row,
+                        ["Well", "Wells"],
+                        msg="Unable to find well position in group data.",
+                    ),
+                    plate=try_str_from_series(row, "WellPlateName"),
+                    entries=[
+                        GroupDataElementEntry(
+                            name=column,
+                            value=top_row[column] if aggregated else row[column],
+                            aggregated=aggregated,
+                        )
+                        for column, aggregated in column_info
+                    ],
+                )
+                for _, row in data.iterrows()
+            ],
+        )
 
 
 @dataclass
 class GroupData:
     name: str
-    data_elements: list[GroupDataElement]
+    sample_data: list[GroupSampleData]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupData:
@@ -114,35 +174,17 @@ class GroupData:
             msg="Unable to find group block data.",
         ).replace(r"^\s+$", None, regex=True)
 
-        non_memorable = [
-            "Sample",
-            "Standard Value",
-            "Well",
-            "Wells",
-            "WellPlateName",
-            "Unnamed:",
-        ]
+        assert_not_none(
+            data.get("Sample"),
+            msg=f"Unable to find sample identifier column in group data {name}",
+        )
 
-        columns = [
-            column
-            for column in data.columns
-            if not any(column.startswith(name) for name in non_memorable)
-        ]
-
+        samples = data["Sample"].ffill()
         return GroupData(
             name=name,
-            data_elements=[
-                GroupDataElement(
-                    sample=try_str_from_series(row, "Sample"),
-                    position=try_str_from_series_multikey(
-                        row,
-                        ["Well", "Wells"],
-                        msg="Unable to find well position in group data.",
-                    ),
-                    plate=try_str_from_series(row, "WellPlateName"),
-                    data=row[columns].astype(float),
-                )
-                for _, row in data.ffill().iterrows()
+            sample_data=[
+                GroupSampleData.create(data.iloc[sample_entries.index])
+                for _, sample_entries in samples.groupby(samples)
             ],
         )
 
@@ -946,11 +988,12 @@ class Data:
         block_list = BlockList.create(reader)
 
         for group_block in block_list.group_blocks:
-            for group_data_element in group_block.group_data.data_elements:
-                plate_block = block_list.plate_blocks[group_data_element.plate]
-                for data_element in plate_block.block_data.iter_data_elements(
-                    group_data_element.position
-                ):
-                    data_element.sample_id = group_data_element.sample
+            for group_sample_data in group_block.group_data.sample_data:
+                for group_data_element in group_sample_data.data_elements:
+                    plate_block = block_list.plate_blocks[group_data_element.plate]
+                    for data_element in plate_block.block_data.iter_data_elements(
+                        group_data_element.position
+                    ):
+                        data_element.sample_id = group_data_element.sample
 
         return Data(block_list)

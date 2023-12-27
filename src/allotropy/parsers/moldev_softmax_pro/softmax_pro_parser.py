@@ -306,29 +306,29 @@ class SoftmaxproParser(VendorParser):
                 )
 
         for group_block in data.block_list.group_blocks:
-            for data_element in group_block.group_data.data_elements:
-                for name, value in data_element.iter_data():
-                    yield CalculatedDataDocumentItem(
-                        calculated_data_identifier=str(uuid.uuid4()),
-                        calculated_data_name=name,
-                        calculation_description=group_block.group_columns.get_element(
-                            name
-                        ),
-                        calculated_result=TQuantityValue(
-                            unit="unitless",
-                            value=value,
-                        ),
-                        data_source_aggregate_document=DataSourceAggregateDocument1(
-                            data_source_document=[
-                                DataSourceDocumentItem(
-                                    data_source_identifier=w.uuid,
-                                    data_source_feature=data.block_list.plate_blocks[
-                                        data_element.plate
-                                    ].get_plate_block_type(),
-                                )
-                                for w in data.block_list.plate_blocks[
-                                    data_element.plate
-                                ].block_data.iter_data_elements(data_element.position)
-                            ]
-                        ),
-                    )
+            for group_sample_data in group_block.group_data.sample_data:
+                for data_element in group_sample_data.data_elements:
+                    block = data.block_list.plate_blocks[data_element.plate]
+                    for entrie in data_element.entries:
+                        yield CalculatedDataDocumentItem(
+                            calculated_data_identifier=str(uuid.uuid4()),
+                            calculated_data_name=entrie.name,
+                            calculation_description=group_block.group_columns.get_element(
+                                entrie.name
+                            ),
+                            calculated_result=TQuantityValue(
+                                unit="unitless",
+                                value=entrie.value,
+                            ),
+                            data_source_aggregate_document=DataSourceAggregateDocument1(
+                                data_source_document=[
+                                    DataSourceDocumentItem(
+                                        data_source_identifier=w.uuid,
+                                        data_source_feature=block.get_plate_block_type(),
+                                    )
+                                    for w in block.block_data.iter_data_elements(
+                                        data_element.position
+                                    )
+                                ]
+                            ),
+                        )
