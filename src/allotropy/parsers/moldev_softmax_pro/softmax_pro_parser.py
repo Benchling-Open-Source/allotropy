@@ -307,12 +307,12 @@ class SoftmaxproParser(VendorParser):
 
         for group_block in data.block_list.group_blocks:
             for data_element in group_block.group_data.data_elements:
-                for name, value in data_element.data.items():
+                for name, value in data_element.iter_data():
                     yield CalculatedDataDocumentItem(
                         calculated_data_identifier=str(uuid.uuid4()),
-                        calculated_data_name=str(name),
-                        calculation_description=str(
-                            group_block.group_columns.data.get(name)
+                        calculated_data_name=name,
+                        calculation_description=group_block.group_columns.get_element(
+                            name
                         ),
                         calculated_result=TQuantityValue(
                             unit="unitless",

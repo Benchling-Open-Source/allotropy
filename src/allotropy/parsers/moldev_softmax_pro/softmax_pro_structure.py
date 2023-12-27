@@ -92,6 +92,10 @@ class GroupDataElement:
     plate: str
     data: pd.Series[float]
 
+    def iter_data(self) -> Iterator[tuple[str, float]]:
+        for key, value in self.data.items():
+            yield str(key), value
+
 
 @dataclass
 class GroupData:
@@ -164,10 +168,14 @@ class GroupColumns:
 
         return GroupColumns(
             data=pd.Series(
-                index=pd.Index(data["Formula Name"].values),
-                data=data["Formula"].values,
+                index=pd.Index(data["Formula Name"]),
+                data=data["Formula"],
             ),
         )
+
+    def get_element(self, name: str) -> Optional[str]:
+        element = self.data.get(name)
+        return None if element is None else str(element)
 
 
 @dataclass
