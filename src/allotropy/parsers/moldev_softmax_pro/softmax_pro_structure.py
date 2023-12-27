@@ -343,6 +343,7 @@ class PlateReducedData:
 
 @dataclass(frozen=True)
 class PlateData:
+    plate_name: str
     raw_data: Optional[PlateRawData]
     reduced_data: Optional[PlateReducedData]
 
@@ -352,6 +353,7 @@ class PlateData:
         header: PlateHeader,
     ) -> PlateData:
         return PlateData(
+            plate_name=header.name,
             raw_data=(
                 None
                 if header.data_type == DataType.REDUCED.value
@@ -464,6 +466,7 @@ class TimeReducedData:
 
 @dataclass(frozen=True)
 class TimeData:
+    plate_name: str
     raw_data: Optional[TimeRawData]
     reduced_data: Optional[TimeReducedData]
 
@@ -473,6 +476,7 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         return TimeData(
+            plate_name=header.name,
             raw_data=(
                 None
                 if header.data_type == DataType.REDUCED.value
