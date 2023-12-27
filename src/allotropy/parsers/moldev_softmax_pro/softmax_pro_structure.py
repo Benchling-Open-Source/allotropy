@@ -796,14 +796,17 @@ class AbsorbancePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class BlockList:
-    blocks: list[Block]
+    plate_blocks: dict[str, PlateBlock]
+    group_blocks: list[GroupBlock]
 
     @staticmethod
     def create(reader: CsvReader) -> BlockList:
-        blocks: list[Block] = []
+        plate_blocks = {}
+        group_blocks = []
+
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                blocks.append(GroupBlock.create(sub_reader))
+                group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
                 cls = PlateBlock.get_plate_block_cls(header_series)
@@ -818,17 +821,19 @@ class BlockList:
                     error = f"unrecognized export format {header.export_format}"
                     raise AllotropeConversionError(error)
 
-                blocks.append(
-                    cls(
-                        block_type="Plate",
-                        header=header,
-                        block_data=block_data,
-                    )
+                plate_blocks[header.name] = cls(
+                    block_type="Plate",
+                    header=header,
+                    block_data=block_data,
                 )
             elif not sub_reader.match("^Note"):
                 error = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
                 raise AllotropeConversionError(error)
-        return BlockList(blocks)
+
+        return BlockList(
+            plate_blocks=plate_blocks,
+            group_blocks=group_blocks,
+        )
 
     @staticmethod
     def _get_n_blocks(reader: CsvReader) -> int:
@@ -845,16 +850,6 @@ class BlockList:
             yield CsvReader(list(reader.pop_until(END_LINE_REGEX)))
             reader.pop()  # drop end line
             reader.drop_empty()
-
-    def get_plate_blocks(self) -> dict[str, PlateBlock]:
-        return {
-            block.header.name: block
-            for block in self.blocks
-            if isinstance(block, PlateBlock)
-        }
-
-    def get_group_blocks(self) -> list[GroupBlock]:
-        return [block for block in self.blocks if isinstance(block, GroupBlock)]
 
 
 @dataclass(frozen=True)
