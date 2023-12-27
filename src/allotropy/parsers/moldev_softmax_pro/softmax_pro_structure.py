@@ -405,7 +405,7 @@ class PlateData:
             ),
         )
 
-    def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
+    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         raw_data = assert_not_none(
             self.raw_data,
             msg="Unable to find plate block raw data.",
@@ -544,7 +544,7 @@ class TimeData:
             ),
         )
 
-    def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
+    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
         raw_data = assert_not_none(
             self.raw_data,
             msg="Unable to find plate block raw data.",
