@@ -254,16 +254,32 @@ class DataElement:
 @dataclass(frozen=True)
 class PlateWavelengthData:
     wavelength: float
-    data: dict[str, float]
+    data_elements: dict[str, DataElement]
 
     @staticmethod
-    def create(wavelength: float, df_data: pd.DataFrame) -> PlateWavelengthData:
+    def create(
+        plate_name: str,
+        temperature: Optional[float],
+        wavelength: float,
+        df_data: pd.DataFrame,
+    ) -> PlateWavelengthData:
+        data = {
+            f"{num_to_chars(row)}{col}": value
+            for row, *data in df_data.itertuples()
+            for col, value in enumerate(data, start=1)
+        }
         return PlateWavelengthData(
             wavelength,
-            data={
-                f"{num_to_chars(row)}{col}": value
-                for row, *data in df_data.itertuples()
-                for col, value in enumerate(data, start=1)
+            data_elements={
+                str(position): DataElement(
+                    uuid=str(uuid.uuid4()),
+                    plate=plate_name,
+                    temperature=temperature,
+                    wavelength=wavelength,
+                    position=str(position),
+                    value=value,
+                )
+                for position, value in data.items()
             },
         )
 
@@ -292,13 +308,19 @@ class PlateKineticData:
         return PlateKineticData(
             temperature=temperature,
             wavelength_data=PlateKineticData._get_wavelength_data(
-                header, data.iloc[:, 2:].astype(float)
+                header.name,
+                temperature,
+                header,
+                data.iloc[:, 2:].astype(float),
             ),
         )
 
     @staticmethod
     def _get_wavelength_data(
-        header: PlateHeader, w_data: pd.DataFrame
+        plate_name: str,
+        temperature: Optional[float],
+        header: PlateHeader,
+        w_data: pd.DataFrame,
     ) -> list[PlateWavelengthData]:
         wavelength_data = []
         for idx in range(header.num_wavelengths):
@@ -306,7 +328,12 @@ class PlateKineticData:
             start = idx * (header.num_columns + 1)
             end = start + header.num_columns
             wavelength_data.append(
-                PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
+                PlateWavelengthData.create(
+                    plate_name,
+                    temperature,
+                    wavelength,
+                    w_data.iloc[:, start:end],
+                )
             )
         return wavelength_data
 
@@ -357,7 +384,6 @@ class PlateReducedData:
 
 @dataclass(frozen=True)
 class PlateData:
-    plate_name: str
     raw_data: Optional[PlateRawData]
     reduced_data: Optional[PlateReducedData]
 
@@ -367,7 +393,6 @@ class PlateData:
         header: PlateHeader,
     ) -> PlateData:
         return PlateData(
-            plate_name=header.name,
             raw_data=(
                 None
                 if header.data_type == DataType.REDUCED.value
@@ -388,29 +413,37 @@ class PlateData:
 
         for kinetic_data in raw_data.kinetic_data:
             for wavelength_data in kinetic_data.wavelength_data:
-                yield DataElement(
-                    uuid=str(uuid.uuid4()),
-                    plate=self.plate_name,
-                    temperature=kinetic_data.temperature,
-                    wavelength=wavelength_data.wavelength,
-                    position=position,
-                    value=wavelength_data.data[position],
-                )
+                yield wavelength_data.data_elements[position]
 
 
 @dataclass(frozen=True)
 class TimeKineticData:
     temperature: Optional[float]
-    data: pd.Series[float]
+    data_elements: dict[str, DataElement]
 
     @staticmethod
-    def create(row: pd.Series[float]) -> TimeKineticData:
+    def create(
+        plate_name: str,
+        wavelength: float,
+        row: pd.Series[float],
+    ) -> TimeKineticData:
         temperature = try_float_or_none(str(row.iloc[1]))
         if temperature is not None and math.isnan(temperature):
             temperature = None
+
         return TimeKineticData(
             temperature=temperature,
-            data=row.iloc[2:].astype(float),
+            data_elements={
+                str(position): DataElement(
+                    uuid=str(uuid.uuid4()),
+                    plate=plate_name,
+                    temperature=temperature,
+                    wavelength=wavelength,
+                    position=str(position),
+                    value=value,
+                )
+                for position, value in row.iloc[2:].astype(float).items()
+            },
         )
 
 
@@ -422,6 +455,7 @@ class TimeWavelengthData:
     @staticmethod
     def create(
         reader: CsvReader,
+        plate_name: str,
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
@@ -432,7 +466,10 @@ class TimeWavelengthData:
         data.columns = pd.Index(columns)
         return TimeWavelengthData(
             wavelength=wavelength,
-            kinetic_data=[TimeKineticData.create(row) for _, row in data.iterrows()],
+            kinetic_data=[
+                TimeKineticData.create(plate_name, wavelength, row)
+                for _, row in data.iterrows()
+            ],
         )
 
 
@@ -449,7 +486,12 @@ class TimeRawData:
 
         return TimeRawData(
             wavelength_data=[
-                TimeWavelengthData.create(reader, header.wavelengths[idx], columns)
+                TimeWavelengthData.create(
+                    reader,
+                    header.name,
+                    header.wavelengths[idx],
+                    columns,
+                )
                 for idx in range(header.num_wavelengths)
             ]
         )
@@ -481,7 +523,6 @@ class TimeReducedData:
 
 @dataclass(frozen=True)
 class TimeData:
-    plate_name: str
     raw_data: Optional[TimeRawData]
     reduced_data: Optional[TimeReducedData]
 
@@ -491,7 +532,6 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         return TimeData(
-            plate_name=header.name,
             raw_data=(
                 None
                 if header.data_type == DataType.REDUCED.value
@@ -512,14 +552,7 @@ class TimeData:
 
         for wavelength_data in raw_data.wavelength_data:
             for kinetic_data in wavelength_data.kinetic_data:
-                yield DataElement(
-                    uuid=str(uuid.uuid4()),
-                    plate=self.plate_name,
-                    temperature=kinetic_data.temperature,
-                    wavelength=wavelength_data.wavelength,
-                    position=position,
-                    value=kinetic_data.data[position],
-                )
+                yield kinetic_data.data_elements[position]
 
 
 @dataclass(frozen=True)
