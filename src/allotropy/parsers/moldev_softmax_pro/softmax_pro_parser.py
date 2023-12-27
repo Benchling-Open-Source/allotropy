@@ -81,7 +81,7 @@ class SoftmaxproParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate_block, position)
-                    for plate_block in data.block_list.get_plate_blocks().values()
+                    for plate_block in data.block_list.plate_blocks.values()
                     for position in plate_block.iter_wells()
                 ],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
@@ -282,9 +282,7 @@ class SoftmaxproParser(VendorParser):
     def _iter_calculated_data_documents(
         self, data: Data
     ) -> Iterator[CalculatedDataDocumentItem]:
-        plate_blocks = data.block_list.get_plate_blocks()
-
-        for plate_block in plate_blocks.values():
+        for plate_block in data.block_list.plate_blocks.values():
             if plate_block.block_data.reduced_data is None:
                 continue
 
@@ -307,7 +305,7 @@ class SoftmaxproParser(VendorParser):
                     ),
                 )
 
-        for group_block in data.block_list.get_group_blocks():
+        for group_block in data.block_list.group_blocks:
             for data_element in group_block.group_data.data_elements:
                 for name, value in data_element.data.items():
                     yield CalculatedDataDocumentItem(
@@ -324,11 +322,11 @@ class SoftmaxproParser(VendorParser):
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier=w.uuid,
-                                    data_source_feature=plate_blocks[
+                                    data_source_feature=data.block_list.plate_blocks[
                                         data_element.plate
                                     ].get_plate_block_type(),
                                 )
-                                for w in plate_blocks[
+                                for w in data.block_list.plate_blocks[
                                     data_element.plate
                                 ].block_data.iter_wavelengths(data_element.position)
                             ]
