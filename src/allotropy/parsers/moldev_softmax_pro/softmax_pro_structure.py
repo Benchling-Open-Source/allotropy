@@ -834,7 +834,11 @@ class BlockList:
 
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                group_blocks.append(GroupBlock.create(sub_reader))
+                if "WellPlateName" in assert_not_none(
+                    sub_reader.get_line(sub_reader.current_line + 1),
+                    msg="Unable to get columns from group block",
+                ):
+                    group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
                 cls = PlateBlock.get_plate_block_cls(header_series)
