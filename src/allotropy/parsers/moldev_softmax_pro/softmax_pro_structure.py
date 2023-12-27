@@ -23,11 +23,34 @@ from allotropy.parsers.utils.values import (
     try_int,
     try_int_or_none,
     try_str_from_series,
+    try_str_from_series_or_none,
 )
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
+
+
+def try_str_from_series_multikey_or_none(
+    data: pd.Series,  # type: ignore[type-arg]
+    possible_keys: list[str],
+) -> Optional[str]:
+    for key in possible_keys:
+        value = try_str_from_series_or_none(data, key)
+        if value is not None:
+            return value
+    return None
+
+
+def try_str_from_series_multikey(
+    data: pd.Series,  # type: ignore[type-arg]
+    possible_keys: list[str],
+    msg: Optional[str] = None,
+) -> str:
+    return assert_not_none(
+        try_str_from_series_multikey_or_none(data, possible_keys),
+        msg=msg,
+    )
 
 
 class ReadType(Enum):
@@ -90,6 +113,7 @@ class GroupData:
         non_memorable = [
             "Sample",
             "Standard Value",
+            "Well",
             "Wells",
             "WellPlateName",
             "Unnamed:",
@@ -106,7 +130,11 @@ class GroupData:
             data_elements=[
                 GroupDataElement(
                     sample=try_str_from_series(row, "Sample"),
-                    position=try_str_from_series(row, "Wells"),
+                    position=try_str_from_series_multikey(
+                        row,
+                        ["Well", "Wells"],
+                        msg="Unable to find well position in group data.",
+                    ),
                     plate=try_str_from_series(row, "WellPlateName"),
                     data=row[columns].astype(float),
                 )
