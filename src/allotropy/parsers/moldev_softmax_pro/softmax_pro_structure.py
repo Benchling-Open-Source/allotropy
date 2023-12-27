@@ -943,4 +943,14 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        return Data(block_list=BlockList.create(reader))
+        block_list = BlockList.create(reader)
+
+        for group_block in block_list.group_blocks:
+            for group_data_element in group_block.group_data.data_elements:
+                plate_block = block_list.plate_blocks[group_data_element.plate]
+                for data_element in plate_block.block_data.iter_data_elements(
+                    group_data_element.position
+                ):
+                    data_element.sample_id = group_data_element.sample
+
+        return Data(block_list)
