@@ -154,7 +154,7 @@ class SoftmaxproParser(VendorParser):
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
-                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_identifier=data_element.sample_identifier,
                 ),
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -222,7 +222,7 @@ class SoftmaxproParser(VendorParser):
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
-                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_identifier=data_element.sample_identifier,
                 ),
                 device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -262,7 +262,7 @@ class SoftmaxproParser(VendorParser):
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
-                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_identifier=data_element.sample_identifier,
                 ),
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[

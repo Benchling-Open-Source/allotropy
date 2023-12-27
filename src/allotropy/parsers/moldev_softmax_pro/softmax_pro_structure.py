@@ -231,10 +231,16 @@ class PlateHeader:
 @dataclass
 class DataElement:
     uuid: str
+    plate: str
     temperature: Optional[float]
     wavelength: float
     position: str
     value: float
+    sample_id: Optional[str] = None
+
+    @property
+    def sample_identifier(self) -> str:
+        return self.sample_id if self.sample_id else f"{self.plate} {self.position}"
 
 
 @dataclass(frozen=True)
@@ -376,6 +382,7 @@ class PlateData:
             for wavelength_data in kinetic_data.wavelength_data:
                 yield DataElement(
                     uuid=str(uuid.uuid4()),
+                    plate=self.plate_name,
                     temperature=kinetic_data.temperature,
                     wavelength=wavelength_data.wavelength,
                     position=position,
@@ -499,6 +506,7 @@ class TimeData:
             for kinetic_data in wavelength_data.kinetic_data:
                 yield DataElement(
                     uuid=str(uuid.uuid4()),
+                    plate=self.plate_name,
                     temperature=kinetic_data.temperature,
                     wavelength=wavelength_data.wavelength,
                     position=position,
