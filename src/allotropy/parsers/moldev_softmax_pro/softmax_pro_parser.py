@@ -1,4 +1,5 @@
 from collections.abc import Iterator
+import math
 from typing import Union
 import uuid
 
@@ -36,6 +37,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
+    ValueEnum,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
@@ -149,7 +151,11 @@ class SoftmaxproParser(VendorParser):
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                    else TQuantityValueDegreeCelsius(
+                        ValueEnum.NaN
+                        if math.isnan(data_element.temperature)
+                        else data_element.temperature
+                    )
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
@@ -217,7 +223,11 @@ class SoftmaxproParser(VendorParser):
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                    else TQuantityValueDegreeCelsius(
+                        ValueEnum.NaN
+                        if math.isnan(data_element.temperature)
+                        else data_element.temperature
+                    )
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
@@ -257,7 +267,11 @@ class SoftmaxproParser(VendorParser):
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                    else TQuantityValueDegreeCelsius(
+                        ValueEnum.NaN
+                        if math.isnan(data_element.temperature)
+                        else data_element.temperature
+                    )
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
