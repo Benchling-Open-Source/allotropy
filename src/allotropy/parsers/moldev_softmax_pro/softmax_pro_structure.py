@@ -435,7 +435,7 @@ class PlateReducedData:
 
 @dataclass(frozen=True)
 class PlateData:
-    raw_data: Optional[PlateRawData]
+    raw_data: PlateRawData
     reduced_data: Optional[PlateReducedData]
 
     @staticmethod
@@ -444,11 +444,7 @@ class PlateData:
         header: PlateHeader,
     ) -> PlateData:
         return PlateData(
-            raw_data=(
-                None
-                if header.data_type == DataType.REDUCED.value
-                else PlateRawData.create(reader, header)
-            ),
+            raw_data=PlateRawData.create(reader, header),
             reduced_data=(
                 PlateReducedData.create(reader, header)
                 if reader.current_line_exists()
@@ -457,12 +453,7 @@ class PlateData:
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        raw_data = assert_not_none(
-            self.raw_data,
-            msg="Unable to find plate block raw data.",
-        )
-
-        for kinetic_data in raw_data.kinetic_data:
+        for kinetic_data in self.raw_data.kinetic_data:
             for wavelength_data in kinetic_data.wavelength_data:
                 yield wavelength_data.data_elements[position]
 
@@ -574,7 +565,7 @@ class TimeReducedData:
 
 @dataclass(frozen=True)
 class TimeData:
-    raw_data: Optional[TimeRawData]
+    raw_data: TimeRawData
     reduced_data: Optional[TimeReducedData]
 
     @staticmethod
@@ -583,11 +574,7 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         return TimeData(
-            raw_data=(
-                None
-                if header.data_type == DataType.REDUCED.value
-                else TimeRawData.create(reader, header)
-            ),
+            raw_data=TimeRawData.create(reader, header),
             reduced_data=(
                 TimeReducedData.create(reader, header)
                 if reader.current_line_exists()
@@ -596,12 +583,7 @@ class TimeData:
         )
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
-        raw_data = assert_not_none(
-            self.raw_data,
-            msg="Unable to find plate block raw data.",
-        )
-
-        for wavelength_data in raw_data.wavelength_data:
+        for wavelength_data in self.raw_data.wavelength_data:
             for kinetic_data in wavelength_data.kinetic_data:
                 yield kinetic_data.data_elements[position]
 
