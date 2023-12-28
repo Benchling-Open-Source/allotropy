@@ -313,7 +313,7 @@ class SoftmaxproParser(VendorParser):
                         yield CalculatedDataDocumentItem(
                             calculated_data_identifier=str(uuid.uuid4()),
                             calculated_data_name=entrie.name,
-                            calculation_description=group_block.group_columns.get_element(
+                            calculation_description=group_block.group_columns.data.get(
                                 entrie.name
                             ),
                             calculated_result=TQuantityValue(
