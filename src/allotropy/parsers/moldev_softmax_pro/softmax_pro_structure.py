@@ -191,7 +191,7 @@ class GroupData:
 
 @dataclass
 class GroupColumns:
-    data: pd.Series[str]
+    data: dict[str, str]
 
     @staticmethod
     def create(reader: CsvReader) -> GroupColumns:
@@ -209,15 +209,8 @@ class GroupColumns:
             raise AllotropeConversionError(error)
 
         return GroupColumns(
-            data=pd.Series(
-                index=pd.Index(data["Formula Name"]),
-                data=data["Formula"],
-            ),
+            data=dict(zip(data["Formula Name"], data["Formula"])),
         )
-
-    def get_element(self, name: str) -> Optional[str]:
-        element = self.data.get(name)
-        return None if element is None else str(element)
 
 
 @dataclass
