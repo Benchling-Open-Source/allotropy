@@ -424,13 +424,9 @@ class PlateReducedData:
                 f"{num_to_chars(row)}{col}": value
                 for row, *data in df_data.itertuples()
                 for col, value in enumerate(data, start=1)
+                if not math.isnan(value)
             }
         )
-
-    def iter_data(self) -> Iterator[tuple[str, float]]:
-        for pos, value in self.data.items():
-            if not math.isnan(value):
-                yield str(pos), value
 
 
 @dataclass(frozen=True)
@@ -541,7 +537,7 @@ class TimeRawData:
 
 @dataclass(frozen=True)
 class TimeReducedData:
-    data: pd.Series[float]
+    data: dict[str, float]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> TimeReducedData:
@@ -555,12 +551,14 @@ class TimeReducedData:
         )
         data.index = pd.Index(columns)
         data = data.replace(r"^\s*$", None, regex=True)
-        return TimeReducedData(data[2 : header.num_wells + 2].astype(float))
 
-    def iter_data(self) -> Iterator[tuple[str, float]]:
-        for pos, value in self.data.items():
-            if not math.isnan(value):
-                yield str(pos), value
+        return TimeReducedData(
+            data={
+                str(pos): value
+                for pos, value in data[2 : header.num_wells + 2].astype(float).items()
+                if not math.isnan(value)
+            }
+        )
 
 
 @dataclass(frozen=True)

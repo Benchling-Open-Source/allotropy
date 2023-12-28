@@ -300,7 +300,7 @@ class SoftmaxproParser(VendorParser):
             if plate_block.block_data.reduced_data is None:
                 continue
 
-            for pos, value in plate_block.block_data.reduced_data.iter_data():
+            for pos, value in plate_block.block_data.reduced_data.data.items():
                 yield CalculatedDataDocumentItem(
                     calculated_data_identifier=str(uuid.uuid4()),
                     calculated_data_name="Reduced",
