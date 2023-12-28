@@ -355,8 +355,6 @@ class PlateKineticData:
         data.columns = pd.Index(columns)
 
         temperature = try_float_or_none(str(data.iloc[0, 1]))
-        if temperature is not None and math.isnan(temperature):
-            temperature = None
 
         return PlateKineticData(
             temperature=temperature,
