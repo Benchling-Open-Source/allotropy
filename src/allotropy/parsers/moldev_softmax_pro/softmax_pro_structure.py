@@ -145,16 +145,34 @@ class GroupSampleData:
                     plate=try_str_from_series(row, "WellPlateName"),
                     entries=[
                         GroupDataElementEntry(
-                            name=column,
-                            value=top_row[column] if aggregated else row[column],
+                            name=column_name,
+                            value=(
+                                try_float(top_row[column_name], column_name)
+                                if aggregated
+                                else try_float(row[column_name], column_name)
+                            ),
                             aggregated=aggregated,
                         )
-                        for column, aggregated in column_info
+                        for column_name, aggregated in column_info
                     ],
                 )
                 for _, row in data.iterrows()
             ],
         )
+
+    def iter_simple_data_sources(
+        self, plate: PlateBlock, group_data_element: GroupDataElement
+    ) -> Iterator[DataElement]:
+        yield from plate.block_data.iter_data_elements(group_data_element.position)
+
+    def iter_aggregated_data_sources(
+        self, block_list: BlockList
+    ) -> Iterator[DataElement]:
+        for group_data_element in self.data_elements:
+            yield from self.iter_simple_data_sources(
+                block_list.plate_blocks[group_data_element.plate],
+                group_data_element,
+            )
 
 
 @dataclass
