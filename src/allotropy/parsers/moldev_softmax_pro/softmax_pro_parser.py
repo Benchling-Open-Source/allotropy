@@ -197,9 +197,7 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-            for idx, data_element in enumerate(
-                plate_block.block_data.iter_data_elements(position)
-            )
+            for idx, data_element in enumerate(plate_block.iter_data_elements(position))
         ]
 
     def _get_luminescence_measurement_document(
@@ -248,7 +246,7 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-            for data_element in plate_block.block_data.iter_data_elements(position)
+            for data_element in plate_block.iter_data_elements(position)
         ]
 
     def _get_absorbance_measurement_document(
@@ -290,7 +288,7 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-            for data_element in plate_block.block_data.iter_data_elements(position)
+            for data_element in plate_block.iter_data_elements(position)
         ]
 
     def _iter_calculated_data_documents(
@@ -311,8 +309,8 @@ class SoftmaxproParser(VendorParser):
                                 data_source_identifier=w.uuid,
                                 data_source_feature=plate_block.get_plate_block_type(),
                             )
-                            for w in plate_block.block_data.iter_data_elements(
-                                reduced_data_element.position,
+                            for w in plate_block.iter_data_elements(
+                                reduced_data_element.position
                             )
                         ]
                     ),
