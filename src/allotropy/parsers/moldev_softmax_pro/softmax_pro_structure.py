@@ -163,7 +163,7 @@ class GroupSampleData:
     def iter_simple_data_sources(
         self, plate: PlateBlock, group_data_element: GroupDataElement
     ) -> Iterator[DataElement]:
-        yield from plate.block_data.iter_data_elements(group_data_element.position)
+        yield from plate.iter_data_elements(group_data_element.position)
 
     def iter_aggregated_data_sources(
         self, block_list: BlockList
@@ -674,6 +674,9 @@ class PlateBlock(Block):
             for col in range(1, self.header.num_columns + 1):
                 yield f"{num_to_chars(row)}{col}"
 
+    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
+        yield from self.block_data.iter_data_elements(position)
+
     def iter_reduced_data(self) -> Iterator[ReducedDataElement]:
         if self.block_data.reduced_data:
             yield from self.block_data.reduced_data.data
@@ -996,7 +999,7 @@ class Data:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
                     plate_block = block_list.plate_blocks[group_data_element.plate]
-                    for data_element in plate_block.block_data.iter_data_elements(
+                    for data_element in plate_block.iter_data_elements(
                         group_data_element.position
                     ):
                         data_element.sample_id = group_data_element.sample
