@@ -297,16 +297,13 @@ class SoftmaxproParser(VendorParser):
         self, data: Data
     ) -> Iterator[CalculatedDataDocumentItem]:
         for plate_block in data.block_list.plate_blocks.values():
-            if plate_block.block_data.reduced_data is None:
-                continue
-
-            for pos, value in plate_block.block_data.reduced_data.data.items():
+            for reduced_data_element in plate_block.iter_reduced_data():
                 yield CalculatedDataDocumentItem(
                     calculated_data_identifier=str(uuid.uuid4()),
                     calculated_data_name="Reduced",
                     calculated_result=TQuantityValue(
                         unit="unitless",
-                        value=value,
+                        value=reduced_data_element.value,
                     ),
                     data_source_aggregate_document=DataSourceAggregateDocument1(
                         data_source_document=[
@@ -314,7 +311,9 @@ class SoftmaxproParser(VendorParser):
                                 data_source_identifier=w.uuid,
                                 data_source_feature=plate_block.get_plate_block_type(),
                             )
-                            for w in plate_block.block_data.iter_data_elements(pos)
+                            for w in plate_block.block_data.iter_data_elements(
+                                reduced_data_element.position,
+                            )
                         ]
                     ),
                 )

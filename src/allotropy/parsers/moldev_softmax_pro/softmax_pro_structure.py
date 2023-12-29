@@ -305,6 +305,12 @@ class DataElement:
 
 
 @dataclass(frozen=True)
+class ReducedDataElement:
+    position: str
+    value: float
+
+
+@dataclass(frozen=True)
 class PlateWavelengthData:
     wavelength: float
     data_elements: dict[str, DataElement]
@@ -410,7 +416,7 @@ class PlateRawData:
 
 @dataclass(frozen=True)
 class PlateReducedData:
-    data: dict[str, float]
+    data: list[ReducedDataElement]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
@@ -420,12 +426,15 @@ class PlateReducedData:
         )
         df_data = raw_data.iloc[:, 2 : header.num_columns + 2].astype(float)
         return PlateReducedData(
-            data={
-                f"{num_to_chars(row)}{col}": value
+            data=[
+                ReducedDataElement(
+                    position=f"{num_to_chars(row)}{col}",
+                    value=value,
+                )
                 for row, *data in df_data.itertuples()
                 for col, value in enumerate(data, start=1)
                 if not math.isnan(value)
-            }
+            ]
         )
 
 
@@ -537,7 +546,7 @@ class TimeRawData:
 
 @dataclass(frozen=True)
 class TimeReducedData:
-    data: dict[str, float]
+    data: list[ReducedDataElement]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> TimeReducedData:
@@ -553,11 +562,14 @@ class TimeReducedData:
         data = data.replace(r"^\s*$", None, regex=True)
 
         return TimeReducedData(
-            data={
-                str(pos): value
+            data=[
+                ReducedDataElement(
+                    position=str(pos),
+                    value=value,
+                )
                 for pos, value in data[2 : header.num_wells + 2].astype(float).items()
                 if not math.isnan(value)
-            }
+            ]
         )
 
 
@@ -661,6 +673,10 @@ class PlateBlock(Block):
         for row in range(self.header.num_rows):
             for col in range(1, self.header.num_columns + 1):
                 yield f"{num_to_chars(row)}{col}"
+
+    def iter_reduced_data(self) -> Iterator[ReducedDataElement]:
+        if self.block_data.reduced_data:
+            yield from self.block_data.reduced_data.data
 
 
 @dataclass(frozen=True)
