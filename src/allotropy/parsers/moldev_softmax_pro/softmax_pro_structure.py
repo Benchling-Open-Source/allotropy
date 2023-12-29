@@ -336,7 +336,10 @@ class PlateWavelengthData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=value,
+                    value=try_float(
+                        value,
+                        f"value from block plate {plate_name} and wavelength {wavelength}",
+                    ),
                 )
                 for position, value in data.items()
             },
@@ -424,18 +427,20 @@ class PlateReducedData:
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
-        df_data = raw_data.iloc[:, 2 : header.num_columns + 2].astype(float)
-        return PlateReducedData(
-            data=[
-                ReducedDataElement(
-                    position=f"{num_to_chars(row)}{col}",
-                    value=value,
-                )
-                for row, *data in df_data.itertuples()
-                for col, value in enumerate(data, start=1)
-                if not math.isnan(value)
-            ]
-        )
+        df_data = raw_data.iloc[:, 2 : header.num_columns + 2]
+
+        reduced_data_elements = []
+        for row, *data in df_data.itertuples():
+            for col, str_value in enumerate(data, start=1):
+                value = try_float_or_none(str_value)
+                if value is not None and not math.isnan(value):
+                    reduced_data_elements.append(
+                        ReducedDataElement(
+                            position=f"{num_to_chars(row)}{col}",
+                            value=value,
+                        )
+                    )
+        return PlateReducedData(data=reduced_data_elements)
 
 
 @dataclass(frozen=True)
@@ -487,9 +492,12 @@ class TimeKineticData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=value,
+                    value=try_float(
+                        str(value),
+                        f"value from plate block {plate_name} and wavelength {wavelength}",
+                    ),
                 )
-                for position, value in row.iloc[2:].astype(float).items()
+                for position, value in row.iloc[2:].items()
             },
         )
 
@@ -559,18 +567,18 @@ class TimeReducedData:
             msg="unable to find reduced data from time block.",
         )
         data.index = pd.Index(columns)
-        data = data.replace(r"^\s*$", None, regex=True)
 
-        return TimeReducedData(
-            data=[
-                ReducedDataElement(
-                    position=str(pos),
-                    value=value,
+        reduced_data_elements = []
+        for pos, str_value in data[2 : header.num_wells + 2].items():
+            value = try_float_or_none(str_value)
+            if value is not None and not math.isnan(value):
+                reduced_data_elements.append(
+                    ReducedDataElement(
+                        position=str(pos),
+                        value=value,
+                    )
                 )
-                for pos, value in data[2 : header.num_wells + 2].astype(float).items()
-                if not math.isnan(value)
-            ]
-        )
+        return TimeReducedData(data=reduced_data_elements)
 
 
 @dataclass(frozen=True)
