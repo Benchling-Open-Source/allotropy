@@ -1,9 +1,11 @@
+import pandas as pd
 import pytest
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BackgroundInfo,
@@ -253,7 +255,7 @@ def test_create_plates() -> None:
                     measured_height=1.1,
                     chamber_temperature_at_start=14.5,
                     formula="Calc 1: General = X / 2 where X = test",
-                    name="X / 2 where X = test",
+                    name="Calc 1: General",
                 ),
                 background_info_list=BackgroundInfoList(
                     background_info=[
@@ -298,6 +300,57 @@ def test_create_plates() -> None:
 
     plate = PlateList.create(reader)
     assert rm_plates_uuids(plate) == rm_plates_uuids(expected)
+
+
+def test_create_calculated_plate_info() -> None:
+    data = pd.Series(
+        {
+            "Plate": "4",
+            "Measured height": "44.5",
+            "Formula": "Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
+            "Measurement date": "10/13/2022 3:08:06 PM",
+        }
+    )
+    calculated_plate_info = CalculatedPlateInfo.create(data)
+
+    expected = CalculatedPlateInfo(
+        number="4",
+        barcode="Plate 4",
+        measurement_time="10/13/2022 3:08:06 PM",
+        measured_height=44.5,
+        formula="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
+        name="Calc 1: General",
+        chamber_temperature_at_start=None,
+    )
+
+    assert calculated_plate_info == expected
+
+
+def test_create_calculated_plate_info_with_no_formula() -> None:
+    data = pd.Series(
+        {
+            "Plate": "dummy",
+            "Measured height": "0",
+            "Measurement date": "10/13/2022 3:08:06 PM",
+        }
+    )
+    msg = "Unable to find expected formula for calculated results section."
+    with pytest.raises(AllotropeConversionError, match=msg):
+        CalculatedPlateInfo.create(data)
+
+
+def test_create_calculated_plate_info_with_invalid_formula() -> None:
+    data = pd.Series(
+        {
+            "Plate": "dummy",
+            "Measured height": "0",
+            "Formula": "invalid formula",
+            "Measurement date": "10/13/2022 3:08:06 PM",
+        }
+    )
+    msg = "Unable to find expected formula name for calculated results section."
+    with pytest.raises(AllotropeConversionError, match=msg):
+        CalculatedPlateInfo.create(data)
 
 
 def test_create_basic_assay_info() -> None:
