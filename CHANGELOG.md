@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Parser for ChemoMetic NucleoView
 - Add non numeric options for tQuantityValue value property
 - Add support for non-numeric values to ChemoMetic NucleoView
+- Increase test coverage of calculated data documents on Perkin Elmer Envision.
 ### Fixed
 - Perkin Elmer Envision: calculated data name now captures string to the left - rather than right - of the ‘=’ in the Formula cell.
 
