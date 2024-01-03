@@ -1,5 +1,9 @@
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
+    DataSourceAggregateDocument1,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -20,11 +24,17 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TRelativeFluorescenceUnit,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
+    ReadType,
+)
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
     BackgroundInfo,
     BackgroundInfoList,
     BasicAssayInfo,
+    CalculatedPlateInfo,
+    CalculatedResult,
     CalculatedResultList,
     Data,
     Filter,
@@ -107,6 +117,37 @@ def get_data() -> Data:
                             )
                         ]
                     ),
+                ),
+                Plate(
+                    plate_info=CalculatedPlateInfo(
+                        number="1",
+                        barcode="Plate 1",
+                        measurement_time=None,
+                        measured_height=None,
+                        chamber_temperature_at_start=None,
+                        formula="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
+                        name="Calc 1: General",
+                    ),
+                    background_info_list=BackgroundInfoList(
+                        background_info=[
+                            BackgroundInfo(
+                                plate_num="1",
+                                label="AC HTRF Laser [Eu]",
+                                measinfo="De=2nd Ex=Top Em=Top Wdw=1 (142)",
+                            ),
+                        ],
+                    ),
+                    calculated_result_list=CalculatedResultList(
+                        calculated_results=[
+                            CalculatedResult(
+                                uuid="",
+                                col="A",
+                                row="01",
+                                value=3,
+                            )
+                        ]
+                    ),
+                    result_list=ResultList([]),
                 ),
             ],
         ),
@@ -306,5 +347,26 @@ def get_model() -> Model:
                     )
                 ),
             ],
+            calculated_data_aggregate_document=CalculatedDataAggregateDocument(
+                calculated_data_document=[
+                    CalculatedDataDocumentItem(
+                        calculated_data_name="Calc 1: General",
+                        calculation_description="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
+                        calculated_data_identifier="",
+                        calculated_result=TQuantityValue(
+                            value=3,
+                            unit="unitless",
+                        ),
+                        data_source_aggregate_document=DataSourceAggregateDocument1(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
+                                    data_source_feature=ReadType.FLUORESCENCE.value,
+                                )
+                            ]
+                        ),
+                    )
+                ]
+            ),
         ),
     )

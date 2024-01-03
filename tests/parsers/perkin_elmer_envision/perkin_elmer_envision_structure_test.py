@@ -227,6 +227,8 @@ def test_create_plates() -> None:
     plate = PlateList.create(reader)
     assert rm_plates_uuids(plate) == rm_plates_uuids(expected)
 
+
+def test_create_plates_with_calculated_data() -> None:
     reader = get_reader_from_lines(
         [
             "Plate information",
