@@ -514,9 +514,6 @@
                       "processed data aggregate document": {
                         "$ref": "#/$defs/processedDataAggregateDocument"
                       },
-                      "calculated data aggregate document": {
-                        "$ref": "#/$defs/calculatedDataAggregateDocument"
-                      },
                       "statistics aggregate document": {
                         "$ref": "#/$defs/statisticsAggregateDocument"
                       }
