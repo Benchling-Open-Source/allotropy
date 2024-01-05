@@ -113,7 +113,7 @@ class SoftmaxproParser(VendorParser):
                 )
             )
         else:
-            error = "Unable to find valid plate block type."
+            error = f"{plate_block_type} is not a valid plate block type."
             raise AllotropeConversionError(error)
 
         return PlateReaderDocumentItem(
