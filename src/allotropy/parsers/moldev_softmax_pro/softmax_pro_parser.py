@@ -80,7 +80,9 @@ class SoftmaxproParser(VendorParser):
     def _get_plate_reader_document_item(
         self, plate_block: PlateBlock, position: str
     ) -> PlateReaderDocumentItem:
-        if plate_block.plate_block_type == "Absorbance":
+        plate_block_type = plate_block.plate_block_type
+
+        if plate_block_type == "Absorbance":
             return PlateReaderDocumentItem(
                 measurement_aggregate_document=MeasurementAggregateDocument(
                     measurement_time=EPOCH,
@@ -93,7 +95,7 @@ class SoftmaxproParser(VendorParser):
                     ),
                 )
             )
-        elif plate_block.plate_block_type == "Luminescence":
+        elif plate_block_type == "Luminescence":
             return PlateReaderDocumentItem(
                 measurement_aggregate_document=MeasurementAggregateDocument(
                     measurement_time=EPOCH,
@@ -106,7 +108,7 @@ class SoftmaxproParser(VendorParser):
                     ),
                 )
             )
-        elif plate_block.plate_block_type == "Fluorescence":
+        elif plate_block_type == "Fluorescence":
             return PlateReaderDocumentItem(
                 measurement_aggregate_document=MeasurementAggregateDocument(
                     measurement_time=EPOCH,
