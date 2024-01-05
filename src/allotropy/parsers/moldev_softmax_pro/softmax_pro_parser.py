@@ -1,4 +1,5 @@
 from collections.abc import Iterator
+from typing import Union
 import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
@@ -82,48 +83,47 @@ class SoftmaxproParser(VendorParser):
     ) -> PlateReaderDocumentItem:
         plate_block_type = plate_block.plate_block_type
 
+        measurement_document: list[
+            Union[
+                UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+                FluorescencePointDetectionMeasurementDocumentItems,
+                LuminescencePointDetectionMeasurementDocumentItems,
+            ]
+        ] = []
+
         if plate_block_type == "Absorbance":
-            return PlateReaderDocumentItem(
-                measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_time=EPOCH,
-                    plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
-                    container_type=ContainerType.well_plate,
-                    measurement_document=list(
-                        self._iter_absorbance_measurement_document(
-                            plate_block, position
-                        ),
-                    ),
+            measurement_document = list(
+                self._iter_absorbance_measurement_document(
+                    plate_block,
+                    position,
                 )
             )
         elif plate_block_type == "Luminescence":
-            return PlateReaderDocumentItem(
-                measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_time=EPOCH,
-                    plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
-                    container_type=ContainerType.well_plate,
-                    measurement_document=list(
-                        self._iter_luminescence_measurement_document(
-                            plate_block, position
-                        ),
-                    ),
+            measurement_document = list(
+                self._iter_luminescence_measurement_document(
+                    plate_block,
+                    position,
                 )
             )
         elif plate_block_type == "Fluorescence":
-            return PlateReaderDocumentItem(
-                measurement_aggregate_document=MeasurementAggregateDocument(
-                    measurement_time=EPOCH,
-                    plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
-                    container_type=ContainerType.well_plate,
-                    measurement_document=list(
-                        self._iter_fluorescence_measurement_document(
-                            plate_block, position
-                        )
-                    ),
+            measurement_document = list(
+                self._iter_fluorescence_measurement_document(
+                    plate_block,
+                    position,
                 )
             )
         else:
             error = "Unable to find valid plate block type."
             raise AllotropeConversionError(error)
+
+        return PlateReaderDocumentItem(
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_time=EPOCH,
+                plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
+                container_type=ContainerType.well_plate,
+                measurement_document=measurement_document,
+            )
+        )
 
     def _iter_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
