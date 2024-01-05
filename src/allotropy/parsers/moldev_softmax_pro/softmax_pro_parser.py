@@ -44,6 +44,7 @@ from allotropy.parsers.utils.values import (
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
+DEVICE_TYPE = "plate reader"
 EPOCH = "1970-01-01T00:00:00-00:00"
 NULL = "null"
 
@@ -155,7 +156,7 @@ class SoftmaxproParser(VendorParser):
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
                         FluorescencePointDetectionDeviceControlDocumentItem(
-                            device_type="plate reader",
+                            device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             scan_position_setting__plate_reader_=self._get_fluorescence_plate_block_scan_position(
                                 plate_block
@@ -221,7 +222,7 @@ class SoftmaxproParser(VendorParser):
                 device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
                         LuminescencePointDetectionDeviceControlDocumentItem(
-                            device_type="plate reader",
+                            device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 data_element.wavelength
@@ -261,7 +262,7 @@ class SoftmaxproParser(VendorParser):
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
                         UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                            device_type="plate reader",
+                            device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 data_element.wavelength
