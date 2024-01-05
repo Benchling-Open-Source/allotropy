@@ -118,6 +118,17 @@ class SoftmaxproParser(VendorParser):
             )
         )
 
+    def _get_fluorescence_plate_block_scan_position(
+        self, plate_block: PlateBlock
+    ) -> ScanPositionSettingPlateReader:
+        if plate_block.header.scan_position == "TRUE":
+            return ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+        elif plate_block.header.scan_position == "FALSE":
+            return ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+        else:
+            error = "Unable to find valid scan position."
+            raise AllotropeConversionError(error)
+
     def _get_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
     ) -> list[
@@ -127,23 +138,10 @@ class SoftmaxproParser(VendorParser):
             LuminescencePointDetectionMeasurementDocumentItems,
         ]
     ]:
-        if plate_block.header.scan_position == "TRUE":
-            scan_position = (
-                ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
-            )
-        elif plate_block.header.scan_position == "FALSE":
-            scan_position = (
-                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
-            )
-        else:
-            error = "Unable to find valid scan position."
-            raise AllotropeConversionError(error)
-
         reads_per_well = assert_not_none(
             plate_block.header.reads_per_well,
             msg="Unable to find plate block reads per well.",
         )
-
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
@@ -163,7 +161,9 @@ class SoftmaxproParser(VendorParser):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type="plate reader",
                             detection_type=plate_block.header.read_mode,
-                            scan_position_setting__plate_reader_=scan_position,
+                            scan_position_setting__plate_reader_=self._get_fluorescence_plate_block_scan_position(
+                                plate_block
+                            ),
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 data_element.wavelength
                             ),
