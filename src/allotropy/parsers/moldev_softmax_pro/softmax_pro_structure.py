@@ -192,7 +192,7 @@ class PlateHeader:
     cutoff_filters: Optional[list[int]]
 
 
-@dataclass
+@dataclass(frozen=True)
 class WavelengthElement:
     row: str
     col: str
@@ -203,7 +203,7 @@ class WavelengthElement:
         return f"{self.row}{self.col}"
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateWavelengthData:
     wavelength_data: pd.DataFrame
 
@@ -223,7 +223,7 @@ class PlateWavelengthData:
                 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateKineticData:
     data_key: Optional[str]
     temperature: Optional[float]
@@ -262,7 +262,7 @@ class PlateKineticData:
             yield PlateWavelengthData.create(w_data.iloc[:, start:end])
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateRawData:
     kinetic_data: list[PlateKineticData]
 
@@ -287,7 +287,7 @@ class PlateRawData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateReducedData:
     reduced_data: pd.DataFrame
 
@@ -318,7 +318,7 @@ class PlateReducedData:
                 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class PlateData:
     raw_data: Optional[PlateRawData]
     reduced_data: Optional[PlateReducedData]
@@ -346,7 +346,7 @@ class PlateData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class TimeWavelengthRow:
     data_key: float
     temperature: float
@@ -361,7 +361,7 @@ class TimeWavelengthRow:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class TimeWavelengthData:
     data: pd.DataFrame
 
@@ -370,7 +370,7 @@ class TimeWavelengthData:
             yield TimeWavelengthRow.create(row)
 
 
-@dataclass
+@dataclass(frozen=True)
 class TimeRawData:
     wavelength_data: list[TimeWavelengthData]
 
@@ -405,7 +405,7 @@ class TimeRawData:
             yield TimeWavelengthData(data.iloc[start:end, :])
 
 
-@dataclass
+@dataclass(frozen=True)
 class TimeReducedData:
     columns: list[str]
     data: list[str]
@@ -430,7 +430,7 @@ class TimeReducedData:
             yield pos, try_float(value, "time block reduced data element")
 
 
-@dataclass
+@dataclass(frozen=True)
 class TimeData:
     raw_data: Optional[TimeRawData]
     reduced_data: Optional[TimeReducedData]
