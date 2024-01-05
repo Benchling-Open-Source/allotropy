@@ -1,4 +1,3 @@
-from collections.abc import Iterator
 from typing import Union
 import uuid
 
@@ -89,28 +88,22 @@ class SoftmaxproParser(VendorParser):
                 FluorescencePointDetectionMeasurementDocumentItems,
                 LuminescencePointDetectionMeasurementDocumentItems,
             ]
-        ] = []
+        ]
 
         if plate_block_type == "Absorbance":
-            measurement_document = list(
-                self._iter_absorbance_measurement_document(
-                    plate_block,
-                    position,
-                )
+            measurement_document = self._get_absorbance_measurement_document(
+                plate_block,
+                position,
             )
         elif plate_block_type == "Luminescence":
-            measurement_document = list(
-                self._iter_luminescence_measurement_document(
-                    plate_block,
-                    position,
-                )
+            measurement_document = self._get_luminescence_measurement_document(
+                plate_block,
+                position,
             )
         elif plate_block_type == "Fluorescence":
-            measurement_document = list(
-                self._iter_fluorescence_measurement_document(
-                    plate_block,
-                    position,
-                )
+            measurement_document = self._get_fluorescence_measurement_document(
+                plate_block,
+                position,
             )
         else:
             error = f"{plate_block_type} is not a valid plate block type."
@@ -125,9 +118,15 @@ class SoftmaxproParser(VendorParser):
             )
         )
 
-    def _iter_fluorescence_measurement_document(
+    def _get_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> Iterator[FluorescencePointDetectionMeasurementDocumentItems]:
+    ) -> list[
+        Union[
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+            FluorescencePointDetectionMeasurementDocumentItems,
+            LuminescencePointDetectionMeasurementDocumentItems,
+        ]
+    ]:
         if plate_block.header.scan_position == "TRUE":
             scan_position = (
                 ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
@@ -145,10 +144,8 @@ class SoftmaxproParser(VendorParser):
             msg="Unable to find plate block reads per well.",
         )
 
-        for idx, data_element in enumerate(
-            plate_block.block_data.iter_wavelengths(position)
-        ):
-            yield FluorescencePointDetectionMeasurementDocumentItems(
+        return [
+            FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
                 compartment_temperature=(
@@ -190,17 +187,27 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
+            for idx, data_element in enumerate(
+                plate_block.block_data.iter_wavelengths(position)
+            )
+        ]
 
-    def _iter_luminescence_measurement_document(
+    def _get_luminescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> Iterator[LuminescencePointDetectionMeasurementDocumentItems]:
+    ) -> list[
+        Union[
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+            FluorescencePointDetectionMeasurementDocumentItems,
+            LuminescencePointDetectionMeasurementDocumentItems,
+        ]
+    ]:
         reads_per_well = assert_not_none(
             plate_block.header.reads_per_well,
             msg="Unable to find plate block reads per well.",
         )
 
-        for data_element in plate_block.block_data.iter_wavelengths(position):
-            yield LuminescencePointDetectionMeasurementDocumentItems(
+        return [
+            LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 luminescence=TRelativeLightUnit(value=data_element.value),
                 compartment_temperature=(
@@ -227,12 +234,20 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
+            for data_element in plate_block.block_data.iter_wavelengths(position)
+        ]
 
-    def _iter_absorbance_measurement_document(
+    def _get_absorbance_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> Iterator[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
-        for data_element in plate_block.block_data.iter_wavelengths(position):
-            yield UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+    ) -> list[
+        Union[
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+            FluorescencePointDetectionMeasurementDocumentItems,
+            LuminescencePointDetectionMeasurementDocumentItems,
+        ]
+    ]:
+        return [
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
                 compartment_temperature=(
@@ -257,3 +272,5 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
+            for data_element in plate_block.block_data.iter_wavelengths(position)
+        ]
