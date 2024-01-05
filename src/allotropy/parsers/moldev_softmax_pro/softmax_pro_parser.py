@@ -45,6 +45,7 @@ from allotropy.parsers.utils.values import (
 from allotropy.parsers.vendor_parser import VendorParser
 
 EPOCH = "1970-01-01T00:00:00-00:00"
+NULL = "null"
 
 
 class SoftmaxproParser(VendorParser):
@@ -59,8 +60,8 @@ class SoftmaxproParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier="null",
-                    model_number="null",
+                    device_identifier=NULL,
+                    model_number=NULL,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
