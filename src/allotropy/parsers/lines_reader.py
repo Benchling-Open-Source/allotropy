@@ -7,13 +7,15 @@ import chardet
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.types import IOType
+from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
-    stream_contents = io_.read()
+def read_to_lines(
+    named_file_contents: NamedFileContents, encoding: Optional[str] = "UTF-8"
+) -> list[str]:
+    stream_contents = named_file_contents.contents.read()
     raw_contents = (
         _decode(stream_contents, encoding)
         if isinstance(stream_contents, bytes)

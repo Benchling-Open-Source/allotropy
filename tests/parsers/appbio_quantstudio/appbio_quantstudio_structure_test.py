@@ -8,6 +8,7 @@ import pytest
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     create_data,
 )
@@ -20,6 +21,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
     get_data,
@@ -52,11 +54,16 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
             source.reference.uuid = ""
 
 
+def _read_to_lines(io_: IOType) -> list[str]:
+    named_file_contents = NamedFileContents(io_, "test.csv")
+    return read_to_lines(named_file_contents)
+
+
 @pytest.mark.short
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
-    lines = read_to_lines(header_contents)
+    lines = _read_to_lines(header_contents)
     assert isinstance(Header.create(LinesReader(lines)), Header)
 
 
@@ -82,7 +89,7 @@ def test_header_builder() -> None:
         experimental_data_identifier=experimental_data_identifier,
     )
 
-    lines = read_to_lines(header_contents)
+    lines = _read_to_lines(header_contents)
     assert Header.create(LinesReader(lines)) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
@@ -116,7 +123,7 @@ def test_header_builder_required_parameter_none_then_raise(
     parameter: str, expected_error: str
 ) -> None:
     header_contents = get_raw_header_contents(**{parameter: None})
-    lines = read_to_lines(header_contents)
+    lines = _read_to_lines(header_contents)
     lines_reader = LinesReader(lines)
     with pytest.raises(AllotropeConversionError, match=expected_error):
         Header.create(lines_reader)
@@ -125,7 +132,7 @@ def test_header_builder_required_parameter_none_then_raise(
 @pytest.mark.short
 def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
-    lines = read_to_lines(header_contents)
+    lines = _read_to_lines(header_contents)
     with pytest.raises(
         AllotropeConversionError, match="Unable to find plate well count"
     ):
@@ -135,7 +142,7 @@ def test_header_builder_invalid_plate_well_count() -> None:
 @pytest.mark.short
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
-    lines = read_to_lines(header_contents)
+    lines = _read_to_lines(header_contents)
     lines_reader = LinesReader(lines)
     with pytest.raises(
         AllotropeConversionError,
@@ -203,7 +210,7 @@ def test_results_builder() -> None:
 )
 def test_data_builder(test_filepath: str, expected_data: Data) -> None:
     with open(test_filepath, "rb") as raw_contents:
-        lines = read_to_lines(raw_contents)
+        lines = _read_to_lines(raw_contents)
     reader = LinesReader(lines)
     assert rm_uuid(create_data(reader)) == rm_uuid(expected_data)
 
