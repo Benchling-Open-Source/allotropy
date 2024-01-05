@@ -66,7 +66,6 @@ class SoftmaxproParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name="SoftMax Pro",
-                    software_version=None,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
@@ -75,7 +74,6 @@ class SoftmaxproParser(VendorParser):
                     for plate_block in data.get_plate_block()
                     for position in plate_block.iter_wells()
                 ],
-                calculated_data_aggregate_document=None,
             ),
         )
 
@@ -160,10 +158,6 @@ class SoftmaxproParser(VendorParser):
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
                     sample_identifier=f"{plate_block.header.name} {data_element.position}",
-                    sample_role_type=None,
-                    well_location_identifier=None,
-                    vial_location_identifier=None,
-                    mass_concentration=None,
                 ),
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -248,10 +242,6 @@ class SoftmaxproParser(VendorParser):
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
                     sample_identifier=f"{plate_block.header.name} {data_element.position}",
-                    sample_role_type=None,
-                    well_location_identifier=None,
-                    vial_location_identifier=None,
-                    mass_concentration=None,
                 ),
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
