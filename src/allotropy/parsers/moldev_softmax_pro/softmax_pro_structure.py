@@ -163,22 +163,24 @@ class PlateKineticData:
 
         return PlateKineticData(
             temperature=temperature,
-            wavelength_data=list(
-                PlateKineticData._iter_wavelength_data(
-                    header, data.iloc[:, 2:].astype(float)
-                )
+            wavelength_data=PlateKineticData._get_wavelength_data(
+                header, data.iloc[:, 2:].astype(float)
             ),
         )
 
     @staticmethod
-    def _iter_wavelength_data(
+    def _get_wavelength_data(
         header: PlateHeader, w_data: pd.DataFrame
-    ) -> Iterator[PlateWavelengthData]:
+    ) -> list[PlateWavelengthData]:
+        wavelength_data = []
         for idx in range(header.num_wavelengths):
             wavelength = header.wavelengths[idx]
             start = idx * (header.num_columns + 1)
             end = start + header.num_columns
-            yield PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
+            wavelength_data.append(
+                PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
+            )
+        return wavelength_data
 
 
 @dataclass(frozen=True)
