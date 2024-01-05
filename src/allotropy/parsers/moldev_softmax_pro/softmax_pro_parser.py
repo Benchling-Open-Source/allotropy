@@ -138,10 +138,6 @@ class SoftmaxproParser(VendorParser):
             LuminescencePointDetectionMeasurementDocumentItems,
         ]
     ]:
-        reads_per_well = assert_not_none(
-            plate_block.header.reads_per_well,
-            msg="Unable to find plate block reads per well.",
-        )
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=str(uuid.uuid4()),
@@ -181,7 +177,9 @@ class SoftmaxproParser(VendorParser):
                                     plate_block.header.cutoff_filters[idx]
                                 )
                             ),
-                            number_of_averages=TQuantityValueNumber(reads_per_well),
+                            number_of_averages=TQuantityValueNumber(
+                                plate_block.header.reads_per_well,
+                            ),
                             detector_gain_setting=plate_block.header.pmt_gain,
                         )
                     ]
