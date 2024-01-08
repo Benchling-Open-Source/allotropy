@@ -7,6 +7,9 @@ OUTPUT_FILES = (
     "chemometec_nucleoview_example01.csv",
     "chemometec_nucleoview_example02.csv",
     "chemometec_nucleoview_example03.csv",
+    "chemometec_nucleoview_example04.csv",
+    "chemometec_nucleoview_example05.csv",
+    "chemometec_nucleoview_example06.csv",
 )
 
 VENDOR_TYPE = Vendor.CHEMOMETEC_NUCLEOVIEW

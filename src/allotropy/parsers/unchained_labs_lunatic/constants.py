@@ -13,3 +13,52 @@ NO_DATE_OR_TIME_ERROR_MSG = (
 NO_MEASUREMENT_IN_PLATE_ERROR_MSG = (
     "The plate data does not contain absorbance measurement for {}."
 )
+
+CALCULATED_DATA_LOOKUP = {
+    "A260": [
+        {
+            "column": "A260 Concentration (ng/ul)",
+            "name": "Concentration",
+            "feature": "absorbance",
+            "unit": "ng/mL",
+        },
+        {
+            "column": "Background (A260)",
+            "name": "Background (A260)",
+            "feature": "absorbance",
+            "unit": "mAU",
+        },
+        {
+            "column": "A260/A230",
+            "name": "A260/A230",
+            "feature": "absorbance",
+            "unit": "(unitless)",
+        },
+        {
+            "column": "A260/A280",
+            "name": "A260/A280",
+            "feature": "absorbance",
+            "unit": "(unitless)",
+        },
+    ],
+    "A280": [
+        {
+            "column": "Concentration (mg/ml)",
+            "name": "Concentration",
+            "feature": "absorbance",
+            "unit": "mg/mL",
+        },
+        {
+            "column": "Background (A280)",
+            "name": "Background (A280)",
+            "feature": "absorbance",
+            "unit": "mAU",
+        },
+        {
+            "column": "A260/A280",
+            "name": "A260/A280",
+            "feature": "absorbance",
+            "unit": "(unitless)",
+        },
+    ],
+}

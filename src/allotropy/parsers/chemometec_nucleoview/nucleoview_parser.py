@@ -24,7 +24,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TDateTimeValue,
+    ValueEnum,
+)
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
@@ -59,6 +62,11 @@ def get_property_from_sample(
         return None
 
     property_type = _PROPERTY_LOOKUP[property_name]
+
+    try:
+        value = float(value)
+    except ValueError:
+        return property_type(value=ValueEnum.NaN)
 
     # if the porperty type is measured in million cells per ml convert cells per ml
     if property_type == TQuantityValueMillionCellsPerMilliliter:
