@@ -270,10 +270,7 @@ class PlateRawData:
     def create(
         reader: CsvReader,
         header: PlateHeader,
-    ) -> Optional[PlateRawData]:
-        if header.data_type == DataType.REDUCED.value:
-            return None
-
+    ) -> PlateRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
@@ -295,10 +292,7 @@ class PlateReducedData:
     def create(
         reader: CsvReader,
         header: PlateHeader,
-    ) -> Optional[PlateReducedData]:
-        if not reader.current_line_exists():
-            return None
-
+    ) -> PlateReducedData:
         raw_data = assert_not_none(
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
@@ -328,9 +322,19 @@ class PlateData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> PlateData:
+        if header.data_type == DataType.REDUCED.value:
+            raw_data = None
+        else:
+            raw_data = PlateRawData.create(reader, header)
+
+        if reader.current_line_exists():
+            reduced_data = PlateReducedData.create(reader, header)
+        else:
+            reduced_data = None
+
         return PlateData(
-            raw_data=PlateRawData.create(reader, header),
-            reduced_data=PlateReducedData.create(reader, header),
+            raw_data=raw_data,
+            reduced_data=reduced_data,
         )
 
     def get_raw_data(self) -> PlateRawData:
@@ -378,10 +382,7 @@ class TimeRawData:
     def create(
         reader: CsvReader,
         header: PlateHeader,
-    ) -> Optional[TimeRawData]:
-        if header.data_type == DataType.REDUCED.value:
-            return None
-
+    ) -> TimeRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for time block raw data.",
@@ -411,10 +412,7 @@ class TimeReducedData:
     data: list[str]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[TimeReducedData]:
-        if not reader.current_line_exists():
-            return None
-
+    def create(reader: CsvReader) -> TimeReducedData:
         _, _, *columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find columns for time block reduced data.",
@@ -440,9 +438,19 @@ class TimeData:
         reader: CsvReader,
         header: PlateHeader,
     ) -> TimeData:
+        if header.data_type == DataType.REDUCED.value:
+            raw_data = None
+        else:
+            raw_data = TimeRawData.create(reader, header)
+
+        if reader.current_line_exists():
+            reduced_data = TimeReducedData.create(reader)
+        else:
+            reduced_data = None
+
         return TimeData(
-            raw_data=TimeRawData.create(reader, header),
-            reduced_data=TimeReducedData.create(reader),
+            raw_data=raw_data,
+            reduced_data=reduced_data,
         )
 
     def get_raw_data(self) -> TimeRawData:
