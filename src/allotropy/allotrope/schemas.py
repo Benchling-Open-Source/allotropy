@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from typing import Any
 
+
 SCHEMAS_DIR = os.path.join(Path(__file__).parent, "schemas")
 
 

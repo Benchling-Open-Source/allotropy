@@ -32,8 +32,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
-    TRelativeLightUnit,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TDateTimeValue,
@@ -287,7 +287,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                luminescence=TRelativeLightUnit(result.value),
+                luminescence=TQuantityValueRelativeLightUnit(result.value),
                 compartment_temperature=compartment_temperature,
             )
         else:  # read_type is FLUORESCENCE
@@ -300,7 +300,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                fluorescence=TRelativeFluorescenceUnit(result.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(result.value),
                 compartment_temperature=compartment_temperature,
             )
 

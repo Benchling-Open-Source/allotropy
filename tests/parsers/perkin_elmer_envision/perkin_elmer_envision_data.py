@@ -22,7 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
+    TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
@@ -274,7 +274,7 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(31441),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(31441),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
@@ -341,7 +341,7 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(80368),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(80368),
                             ),
                         ],
                     )
