@@ -74,7 +74,6 @@ class Block:
 
 @dataclass(frozen=True)
 class GroupBlock(Block):
-    block_type: str
     name: str
     group_data: list[str]
 
@@ -383,7 +382,6 @@ class TimeData:
 
 @dataclass(frozen=True)
 class PlateBlock(Block):
-    block_type: str
     header: PlateHeader
     block_data: Union[PlateData, TimeData]
 
