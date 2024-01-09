@@ -716,17 +716,14 @@ class BlockList:
 
     @staticmethod
     def create_block(reader: CsvReader) -> Block:
-        block_cls_by_type: dict[str, type[Block]] = {
-            "Group": GroupBlock,
-            "Note": NoteBlock,
-            "Plate": PlateBlock,
-        }
+        if reader.match("^Group"):
+            return GroupBlock.create(reader)
+        elif reader.match("^Plate"):
+            return PlateBlock.create(reader)
+        elif reader.match("^Note"):
+            return NoteBlock.create(reader)
 
-        for key, cls in block_cls_by_type.items():
-            if reader.match(f"^{key}"):
-                return cls.create(reader)
-
-        error = f"Expected block '{reader.get()}' to start with one of {sorted(block_cls_by_type.keys())}."
+        error = f"Expected block '{reader.get()}' to start with Group, Plate or Note."
         raise AllotropeConversionError(error)
 
     @staticmethod
