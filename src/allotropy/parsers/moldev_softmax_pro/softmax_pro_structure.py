@@ -130,20 +130,18 @@ class DataElement:
 @dataclass(frozen=True)
 class PlateWavelengthData:
     wavelength: float
-    data: pd.Series[float]
+    data: dict[str, float]
 
     @staticmethod
     def create(wavelength: float, df_data: pd.DataFrame) -> PlateWavelengthData:
-        rows, _ = df_data.shape
-        df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
-
-        data = df_data.stack()
-        if isinstance(data, pd.DataFrame):
-            error = "Unable to read plate wavelength data as pandas series."
-            raise AllotropeConversionError(error)
-
-        data.index = data.index.map("".join)
-        return PlateWavelengthData(wavelength, data)
+        return PlateWavelengthData(
+            wavelength,
+            data={
+                f"{num_to_chars(row)}{col}": value
+                for row, *data in df_data.itertuples()
+                for col, value in enumerate(data, start=1)
+            },
+        )
 
 
 @dataclass(frozen=True)
@@ -210,7 +208,7 @@ class PlateRawData:
 
 @dataclass(frozen=True)
 class PlateReducedData:
-    data: pd.Series[float]
+    data: dict[str, float]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
@@ -219,16 +217,13 @@ class PlateReducedData:
             msg="Unable to find reduced data for plate block.",
         )
         df_data = raw_data.iloc[:, 2 : header.num_columns + 2].astype(float)
-        rows, _ = df_data.shape
-        df_data.index = pd.Index([num_to_chars(i) for i in range(rows)])
-
-        data = df_data.stack()
-        if isinstance(data, pd.DataFrame):
-            error = "Unable to read plate reduced data as pandas series."
-            raise AllotropeConversionError(error)
-
-        data.index = data.index.map("".join)
-        return PlateReducedData(data)
+        return PlateReducedData(
+            data={
+                f"{num_to_chars(row)}{col}": value
+                for row, *data in df_data.itertuples()
+                for col, value in enumerate(data, start=1)
+            }
+        )
 
 
 @dataclass(frozen=True)
