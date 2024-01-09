@@ -194,13 +194,7 @@ class PlateRawData:
     kinetic_data: list[PlateKineticData]
 
     @staticmethod
-    def create(
-        reader: CsvReader,
-        header: PlateHeader,
-    ) -> Optional[PlateRawData]:
-        if header.data_type == DataType.REDUCED.value:
-            return None
-
+    def create(reader: CsvReader, header: PlateHeader) -> PlateRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for plate block raw data.",
@@ -219,13 +213,7 @@ class PlateReducedData:
     data: pd.Series[float]
 
     @staticmethod
-    def create(
-        reader: CsvReader,
-        header: PlateHeader,
-    ) -> Optional[PlateReducedData]:
-        if not reader.current_line_exists():
-            return None
-
+    def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
         raw_data = assert_not_none(
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
@@ -254,8 +242,16 @@ class PlateData:
         header: PlateHeader,
     ) -> PlateData:
         return PlateData(
-            raw_data=PlateRawData.create(reader, header),
-            reduced_data=PlateReducedData.create(reader, header),
+            raw_data=(
+                None
+                if header.data_type == DataType.REDUCED.value
+                else PlateRawData.create(reader, header)
+            ),
+            reduced_data=(
+                PlateReducedData.create(reader, header)
+                if reader.current_line_exists()
+                else None
+            ),
         )
 
     def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
@@ -317,13 +313,7 @@ class TimeRawData:
     wavelength_data: list[TimeWavelengthData]
 
     @staticmethod
-    def create(
-        reader: CsvReader,
-        header: PlateHeader,
-    ) -> Optional[TimeRawData]:
-        if header.data_type == DataType.REDUCED.value:
-            return None
-
+    def create(reader: CsvReader, header: PlateHeader) -> TimeRawData:
         columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find data columns for time block raw data.",
@@ -343,10 +333,7 @@ class TimeReducedData:
     data: list[str]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[TimeReducedData]:
-        if not reader.current_line_exists():
-            return None
-
+    def create(reader: CsvReader) -> TimeReducedData:
         _, _, *columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find columns for time block reduced data.",
@@ -373,8 +360,14 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         return TimeData(
-            raw_data=TimeRawData.create(reader, header),
-            reduced_data=TimeReducedData.create(reader),
+            raw_data=(
+                None
+                if header.data_type == DataType.REDUCED.value
+                else TimeRawData.create(reader, header)
+            ),
+            reduced_data=(
+                TimeReducedData.create(reader) if reader.current_line_exists() else None
+            ),
         )
 
     def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
