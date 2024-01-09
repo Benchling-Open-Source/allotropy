@@ -45,6 +45,12 @@ class DataType(Enum):
     REDUCED = "Reduced"
 
 
+class ScanPosition(Enum):
+    BOTTOM = "Bottom"
+    TOP = "Top"
+    NONE = None
+
+
 @dataclass(frozen=True)
 class Block:
     block_type: str
@@ -105,7 +111,7 @@ class PlateHeader:
     concept: str
     read_mode: str
     unit: str
-    scan_position: Optional[str]
+    scan_position: ScanPosition
     reads_per_well: float
     pmt_gain: Optional[str]
     num_rows: int
@@ -465,7 +471,7 @@ class FluorescencePlateBlock(PlateBlock):
             export_format,
             read_type,
             _,  # Read mode
-            scan_position,
+            raw_scan_position,
             data_type,
             _,  # Pre-read, always FALSE
             kinetic_points_raw,
@@ -541,6 +547,14 @@ class FluorescencePlateBlock(PlateBlock):
 
         if cutoff_filters is not None and len(cutoff_filters) != num_wavelengths:
             error = "Unable to find expected number of cutoff filter values."
+            raise AllotropeConversionError(error)
+
+        if raw_scan_position == "TRUE":
+            scan_position = ScanPosition.BOTTOM
+        elif raw_scan_position == "FALSE":
+            scan_position = ScanPosition.TOP
+        else:
+            error = f"{raw_scan_position} is not a valid scan position."
             raise AllotropeConversionError(error)
 
         return PlateHeader(
@@ -643,7 +657,7 @@ class LuminescencePlateBlock(PlateBlock):
             concept="luminescence",
             read_mode="Luminescence",
             unit="RLU",
-            scan_position=None,
+            scan_position=ScanPosition.NONE,
             reads_per_well=try_int(reads_per_well, "reads_per_well"),
             pmt_gain=pmt_gain,
             num_rows=try_int(num_rows, "num_rows"),
@@ -720,7 +734,7 @@ class AbsorbancePlateBlock(PlateBlock):
             concept="absorbance",
             read_mode="Absorbance",
             unit="mAU",
-            scan_position=None,
+            scan_position=ScanPosition.NONE,
             reads_per_well=0,
             pmt_gain=None,
             num_rows=try_int(num_rows_raw, "num_rows"),
