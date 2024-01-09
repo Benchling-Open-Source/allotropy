@@ -106,14 +106,6 @@ class SchemaCleaner:
             for key, value in schema.get("properties", {}).items():
                 all_values[key].append(value)
 
-        import uuid
-        id = uuid.uuid4()
-        print("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
-        print(f"COMBINING OBJECT SCHEMAS {id}")
-        for schema in schemas:
-            print(schema)
-        print("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
-
         combined_props = {}
 
         for key, values in dict(all_values).items():
@@ -130,42 +122,20 @@ class SchemaCleaner:
                 msg = f"Error combining schemas, conflicting values for key '{key}': {[f'{value}' for value in values]}"
                 raise AssertionError(msg)
 
-        #print(schemas)
-        ret = self._create_object_schema(
+        return self._create_object_schema(
             combined_props,
             sorted(set.union(*[set(schema.get("required", [])) for schema in schemas]))
         )
-        print("\n******************************\n")
-        print(f"RESULT {id}")
-        print(ret)
-        print("\n******************************\n")
-        return ret
 
     def _try_combine_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
+        schemas = self._flatten_schemas(schemas)
+
         if any(self._is_array_schema(schema) for schema in schemas):
-            print("!!!! HERE !!!!")
-            for s in schemas:
-                print("#################################################")
-                print(s)
-                print(self._is_array_schema(s))
-                pass
-
-            schemas = self._flatten_schemas(schemas)
-
-            print("AFTER PULLING")
-            for s in schemas:
-                print("#################################################")
-                print(s)
-                print(self._is_array_schema(s))
-                pass
-
             if not all(self._is_array_schema(schema) for schema in schemas):
                 msg = f"Could not combine array and object schemas: {schemas}"
                 raise AssertionError(msg)
-            print("CALLING TRY COMBINE FROM ITEMS")
             return {"items": self._combine_allof_schemas([schema["items"] for schema in schemas])}
 
-        print("CALLING FROM COMBINE SCHEMAS")
         return self._try_combine_object_schemas(schemas)
 
     def _get_required(self, schema: dict[str, Any]) -> list[str]:
@@ -203,7 +173,6 @@ class SchemaCleaner:
         any_required_keys = self._required_anywhere(schemas)
         if not self._required_anywhere(schemas):
             try:
-                print("CALLING FROM COMBINE ANYOF 1")
                 return [self._try_combine_schemas(schemas)]
             except AssertionError:
                 pass
@@ -218,7 +187,7 @@ class SchemaCleaner:
             # If there are required keys, we need to combine the schemas first so we can cross check the required
             # keys against covering sets.
             try:
-                print("CALLING FROM COMBINE ANYOF 2")
+                #print("CALLING FROM COMBINE ANYOF 2")
                 combined = self._try_combine_schemas([schemas[j] for j in indices])
             except AssertionError:
                 continue
@@ -291,20 +260,11 @@ class SchemaCleaner:
 
     def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
         if not all(self._is_class_schema(schema) for schema in schemas):
-            for s in schemas:
-                #print("***************%%%%%%%%%%********")
-                #print(s)
-                #print(self._is_class_schema(s))
-                #print("***************%%%%%%%%%%********")
-                pass
             if any(self._is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
                 raise AssertionError(msg)
             return schemas
 
-        schemas = self._flatten_schemas(schemas)
-
-        print("CALLING FROM COMBINE ALLOF")
         return self._try_combine_schemas(schemas)
 
     def _clean_allof(self, values: list[Any]) -> dict[str, Any]:
@@ -345,7 +305,6 @@ class SchemaCleaner:
                 return self._combine_allof_schemas(derefed_values)
             # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
             # but we don't save the result.
-            print("CALLING FROM CLEAN ALLOF")
             self._try_combine_schemas(derefed_values)
 
         return {"allOf": values}
@@ -504,17 +463,17 @@ class SchemaCleaner:
             cleaned["$defs"] = self._clean_defs(cleaned)
             #print(cleaned["$defs"])
 
-        print("DOING CLEAN")
-        print("$defs" in cleaned)
+        #print("DOING CLEAN")
+        #print("$defs" in cleaned)
         ret = self._clean(cleaned)
-        print("$defs" in ret)
+        #print("$defs" in ret)
         return ret
 
     def clean_file(self, schema_path: str) -> None:
         schema = get_schema(schema_path)
         schema = self.clean(schema)
         self.add_missing_units()
-        print("DONE HERE")
-        print("$defs" in schema)
+        #print("DONE HERE")
+        #print("$defs" in schema)
         with open(schema_path, "w") as f:
             json.dump(schema, f, indent=2)
