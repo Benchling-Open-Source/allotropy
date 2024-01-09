@@ -715,25 +715,17 @@ class BlockList:
     blocks: list[Block]
 
     @staticmethod
-    def create_block(reader: CsvReader) -> Block:
-        if reader.match("^Group"):
-            return GroupBlock.create(reader)
-        elif reader.match("^Plate"):
-            return PlateBlock.create(reader)
-        elif reader.match("^Note"):
-            return NoteBlock.create(reader)
-
-        error = f"Expected block '{reader.get()}' to start with Group, Plate or Note."
-        raise AllotropeConversionError(error)
-
-    @staticmethod
     def create(reader: CsvReader) -> BlockList:
-        return BlockList(
-            blocks=[
-                BlockList.create_block(sub_reader)
-                for sub_reader in BlockList._iter_blocks(reader)
-            ]
-        )
+        blocks: list[Block] = []
+        for sub_reader in BlockList._iter_blocks(reader):
+            if sub_reader.match("^Group"):
+                blocks.append(GroupBlock.create(sub_reader))
+            elif sub_reader.match("^Plate"):
+                blocks.append(PlateBlock.create(sub_reader))
+            elif not sub_reader.match("^Note"):
+                error = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
+                raise AllotropeConversionError(error)
+        return BlockList(blocks)
 
     @staticmethod
     def _get_n_blocks(reader: CsvReader) -> int:
