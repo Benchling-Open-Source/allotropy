@@ -86,6 +86,9 @@ class SchemaCleaner:
     def _is_ref_schema(self, schema: dict[str, Any]) -> bool:
         return isinstance(schema, dict) and "$ref" in schema
 
+    def _is_ref_schema_array(self, schema: dict[str, Any]) -> bool:
+        return self._is_array_schema(schema) and self._is_ref_schema(schema["items"])
+
     def _create_object_schema(self, properties: dict[str, Any], required: list[str]):
         schema = {"properties": properties}
         if required:
@@ -96,42 +99,73 @@ class SchemaCleaner:
         return all(value == values[0] for value in values[1:])
 
     def _try_combine_object_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
+
+
         all_values = defaultdict(list)
         for schema in schemas:
             for key, value in schema.get("properties", {}).items():
                 all_values[key].append(value)
 
+        import uuid
+        id = uuid.uuid4()
+        print("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
+        print(f"COMBINING OBJECT SCHEMAS {id}")
+        for schema in schemas:
+            print(schema)
+        print("\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n")
+
         combined_props = {}
+
         for key, values in dict(all_values).items():
             if len(values) == 1:
                 combined_props[key] = values[0]
-            elif all(self._is_object_schema(value) for value in values):
-                combined_props[key] = self._clean_allof(self._dereference_values(values))
+            elif all(self._is_class_schema(value) for value in values):
+                combined_props[key] = self._clean_allof(values)
             elif self._all_values_equal(values):
                 combined_props[key] = values[0]
+            elif any(self._is_ref_schema(value) or self._is_ref_schema_array(value) for value in values):
+                combined_props[key] = self._clean_allof(self._dereference_values(values))
             else:
+                # self._is_ref_schema(value) or self._is_ref_schema_array(value)
                 msg = f"Error combining schemas, conflicting values for key '{key}': {[f'{value}' for value in values]}"
                 raise AssertionError(msg)
 
-        return self._create_object_schema(
+        #print(schemas)
+        ret = self._create_object_schema(
             combined_props,
             sorted(set.union(*[set(schema.get("required", [])) for schema in schemas]))
         )
+        print("\n******************************\n")
+        print(f"RESULT {id}")
+        print(ret)
+        print("\n******************************\n")
+        return ret
 
     def _try_combine_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
-        if self._is_array_schema(schemas[0]):
+        if any(self._is_array_schema(schema) for schema in schemas):
+            print("!!!! HERE !!!!")
+            for s in schemas:
+                print("#################################################")
+                print(s)
+                print(self._is_array_schema(s))
+                pass
+
+            schemas = self._flatten_schemas(schemas)
+
+            print("AFTER PULLING")
+            for s in schemas:
+                print("#################################################")
+                print(s)
+                print(self._is_array_schema(s))
+                pass
+
             if not all(self._is_array_schema(schema) for schema in schemas):
                 msg = f"Could not combine array and object schemas: {schemas}"
                 raise AssertionError(msg)
-            min_items = schemas[0].get("minItems", 0)
-            if not all(schema.get("minItems", 0) == min_items for schema in schemas):
-                msg = f"Error combining array schemas, differing number of minItems: {schemas}"
-                raise AssertionError(msg)
-            return {
-                "items": self._try_combine_object_schemas([schema["items"] for schema in schemas]),
-                "minItems": min_items
-            }
+            print("CALLING TRY COMBINE FROM ITEMS")
+            return {"items": self._combine_allof_schemas([schema["items"] for schema in schemas])}
 
+        print("CALLING FROM COMBINE SCHEMAS")
         return self._try_combine_object_schemas(schemas)
 
     def _get_required(self, schema: dict[str, Any]) -> list[str]:
@@ -169,6 +203,7 @@ class SchemaCleaner:
         any_required_keys = self._required_anywhere(schemas)
         if not self._required_anywhere(schemas):
             try:
+                print("CALLING FROM COMBINE ANYOF 1")
                 return [self._try_combine_schemas(schemas)]
             except AssertionError:
                 pass
@@ -183,6 +218,7 @@ class SchemaCleaner:
             # If there are required keys, we need to combine the schemas first so we can cross check the required
             # keys against covering sets.
             try:
+                print("CALLING FROM COMBINE ANYOF 2")
                 combined = self._try_combine_schemas([schemas[j] for j in indices])
             except AssertionError:
                 continue
@@ -206,6 +242,7 @@ class SchemaCleaner:
     def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
         result = copy.deepcopy(value)
         if self._is_ref_schema(value):
+            #print(value)
             if self._is_unit_name_ref(value["$ref"]) or "tQuantityValue" in value["$ref"]:
                 return result
             # NOTE: assumes ref is cleaned.
@@ -254,13 +291,20 @@ class SchemaCleaner:
 
     def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
         if not all(self._is_class_schema(schema) for schema in schemas):
+            for s in schemas:
+                #print("***************%%%%%%%%%%********")
+                #print(s)
+                #print(self._is_class_schema(s))
+                #print("***************%%%%%%%%%%********")
+                pass
             if any(self._is_class_schema(schema) for schema in schemas):
-                msg = f"_combine_allof_schemas can only be called with list of object schema dictionaries: {schemas}"
+                msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
                 raise AssertionError(msg)
             return schemas
 
         schemas = self._flatten_schemas(schemas)
 
+        print("CALLING FROM COMBINE ALLOF")
         return self._try_combine_schemas(schemas)
 
     def _clean_allof(self, values: list[Any]) -> dict[str, Any]:
@@ -301,6 +345,7 @@ class SchemaCleaner:
                 return self._combine_allof_schemas(derefed_values)
             # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
             # but we don't save the result.
+            print("CALLING FROM CLEAN ALLOF")
             self._try_combine_schemas(derefed_values)
 
         return {"allOf": values}
@@ -340,7 +385,7 @@ class SchemaCleaner:
         if isinstance(value, dict):
             return self._clean(value)
         elif isinstance(value, list):
-            return [self._clean_value(v) for v in value]
+            return list(filter(lambda v: bool(v), (self._clean_value(v) for v in value)))
         return value
 
     def _is_quantity_value(self, values: list[dict[str, Any]]) -> bool:
@@ -423,14 +468,15 @@ class SchemaCleaner:
         # an allOf with the parent schema and the rest, combine this way.
         if self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
             allof_values = [
-                self._create_object_schema(schema.get("properties", {}), schema.get("required", [])),
-                *schema.get("allOf", [])
+                self._create_object_schema(schema.pop("properties", {}), schema.pop("required", [])),
+                *schema.pop("allOf", [])
             ]
             if "anyOf" in schema:
-                allof_values.append({"anyOf": schema["anyOf"]})
+                allof_values.append({"anyOf": schema.pop("anyOf")})
             if "oneOf" in schema:
-                allof_values.append({"oneOf": schema["oneOf"]})
-            return self._clean({"allOf": allof_values})
+                allof_values.append({"oneOf": schema.pop("oneOf")})
+            schema["allOf"] = allof_values
+            # return self._clean({"allOf": allof_values})
 
         cleaned = {}
         for key, value in schema.items():
@@ -442,10 +488,13 @@ class SchemaCleaner:
                 cleaned[key] = self._clean_ref_value(value)
             elif key == "anyOf":
                 cleaned |= self._clean_anyof(value)
-            else:
+            elif not self._should_skip_key(key):
                 cleaned[key] = self._clean_value(value)
 
-        return cleaned
+        return {key: value for key, value in cleaned.items() if value}
+
+    def _should_skip_key(self, key: str) -> bool:
+        return key in ("if", "then", "$comment", "prefixItems", "minItems", "maxItems", "contains")
 
     def clean(self, schema: dict[str, Any]) -> dict[str, Any]:
         # Call clean defs first, because we store some metadata about overriden definitions that is used in
@@ -453,11 +502,19 @@ class SchemaCleaner:
         cleaned = copy.deepcopy(schema)
         if "$defs" in cleaned:
             cleaned["$defs"] = self._clean_defs(cleaned)
-        return self._clean(cleaned)
+            #print(cleaned["$defs"])
+
+        print("DOING CLEAN")
+        print("$defs" in cleaned)
+        ret = self._clean(cleaned)
+        print("$defs" in ret)
+        return ret
 
     def clean_file(self, schema_path: str) -> None:
         schema = get_schema(schema_path)
         schema = self.clean(schema)
         self.add_missing_units()
+        print("DONE HERE")
+        print("$defs" in schema)
         with open(schema_path, "w") as f:
             json.dump(schema, f, indent=2)

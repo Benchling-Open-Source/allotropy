@@ -55,8 +55,8 @@ def test_clean_http_refs():
     defs_schema = {
         "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
             "$defs": {
-                "orderedItem": {"properties": {"key": {}}},
-                "tNumberArray": {"properties": {"key": {}}},
+                "orderedItem": {"properties": {"key": "value"}},
+                "tNumberArray": {"properties": {"key": "value"}},
             }
         }
     }
@@ -401,7 +401,6 @@ def test_singular_anyof():
                         "key1": "value"
                     }
                 },
-                "minItems": 1
             }
         ]
     }
@@ -411,7 +410,6 @@ def test_singular_anyof():
                 "key1": "value",
             }
         },
-        "minItems": 1
     })
 
 
@@ -674,7 +672,6 @@ def test_combine_anyof_with_required_values():
                     },
                     "required": ["key1"]
                 },
-                "minItems": 0
             },
             {
                 "items": {
@@ -683,7 +680,6 @@ def test_combine_anyof_with_required_values():
                         "key3": "value"
                     }
                 },
-                "minItems": 0
             },
         ]
     })
@@ -824,7 +820,6 @@ def test_combine_anyof_with_parent_object():
                 },
             ]
         },
-        "minItems": 1
     })
 
 
@@ -1450,7 +1445,6 @@ def test_combine_allof_items() -> None:
             },
             "required": ["key1"]
         },
-        "minItems": 1
     })
 
 
@@ -1576,7 +1570,21 @@ def test_combine_nested_oneof() -> None:
         }
     })
 
-@pytest.mark.skip()
+
+def test_missing_values() -> None:
+    import json
+    with open("tests/allotrope/schema_parser/test_schema.json") as f:
+        schema = json.load(f)
+
+    cleaned = SchemaCleaner().clean(schema)
+
+    with open("tests/allotrope/schema_parser/output_schema.json", "w") as f:
+        json.dump(cleaned, f)
+
+    assert "detector offset setting" in json.dumps(cleaned)
+
+
+#@pytest.mark.skip()
 def test_load_model() -> None:
     from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
         Model,
