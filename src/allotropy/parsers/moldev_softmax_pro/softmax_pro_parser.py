@@ -82,7 +82,7 @@ class SoftmaxproParser(VendorParser):
     def _get_plate_reader_document_item(
         self, plate_block: PlateBlock, position: str
     ) -> PlateReaderDocumentItem:
-        plate_block_type = plate_block.plate_block_type
+        plate_block_type = plate_block.get_plate_block_type()
 
         measurement_document: list[
             Union[
