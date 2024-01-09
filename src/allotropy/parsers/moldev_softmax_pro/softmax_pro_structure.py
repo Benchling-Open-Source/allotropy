@@ -375,30 +375,6 @@ class PlateBlock(Block):
     block_data: Union[PlateData, TimeData]
 
     @staticmethod
-    def create(reader: CsvReader) -> PlateBlock:
-        header_series = PlateBlock.read_header(reader)
-        cls = PlateBlock.get_plate_block_cls(header_series)
-        header = cls.parse_header(header_series)
-
-        if header.export_format == ExportFormat.TIME_FORMAT.value:
-            return cls(
-                block_type="Plate",
-                raw_lines=reader.lines,
-                header=header,
-                block_data=TimeData.create(reader, header),
-            )
-        elif header.export_format == ExportFormat.PLATE_FORMAT.value:
-            return cls(
-                block_type="Plate",
-                raw_lines=reader.lines,
-                header=header,
-                block_data=PlateData.create(reader, header),
-            )
-        else:
-            error = f"unrecognized export format {header.export_format}"
-            raise AllotropeConversionError(error)
-
-    @staticmethod
     def read_header(reader: CsvReader) -> pd.Series[str]:
         raw_header_series = assert_not_none(
             reader.pop_as_series(sep="\t"),
@@ -721,7 +697,27 @@ class BlockList:
             if sub_reader.match("^Group"):
                 blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
-                blocks.append(PlateBlock.create(sub_reader))
+                header_series = PlateBlock.read_header(sub_reader)
+                cls = PlateBlock.get_plate_block_cls(header_series)
+                header = cls.parse_header(header_series)
+
+                block_data: Union[TimeData, PlateData]
+                if header.export_format == ExportFormat.TIME_FORMAT.value:
+                    block_data = TimeData.create(sub_reader, header)
+                elif header.export_format == ExportFormat.PLATE_FORMAT.value:
+                    block_data = PlateData.create(sub_reader, header)
+                else:
+                    error = f"unrecognized export format {header.export_format}"
+                    raise AllotropeConversionError(error)
+
+                blocks.append(
+                    cls(
+                        block_type="Plate",
+                        raw_lines=sub_reader.lines,
+                        header=header,
+                        block_data=block_data,
+                    )
+                )
             elif not sub_reader.match("^Note"):
                 error = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
                 raise AllotropeConversionError(error)
