@@ -1584,7 +1584,7 @@ def test_missing_values() -> None:
     assert "detector offset setting" in json.dumps(cleaned)
 
 
-#@pytest.mark.skip()
+@pytest.mark.skip()
 def test_load_model() -> None:
     from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
         Model,

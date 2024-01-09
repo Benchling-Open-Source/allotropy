@@ -128,9 +128,9 @@ class SchemaCleaner:
         )
 
     def _try_combine_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
-        schemas = self._flatten_schemas(schemas)
-
         if any(self._is_array_schema(schema) for schema in schemas):
+            schemas = self._flatten_schemas(schemas)
+
             if not all(self._is_array_schema(schema) for schema in schemas):
                 msg = f"Could not combine array and object schemas: {schemas}"
                 raise AssertionError(msg)
@@ -187,7 +187,6 @@ class SchemaCleaner:
             # If there are required keys, we need to combine the schemas first so we can cross check the required
             # keys against covering sets.
             try:
-                #print("CALLING FROM COMBINE ANYOF 2")
                 combined = self._try_combine_schemas([schemas[j] for j in indices])
             except AssertionError:
                 continue
@@ -211,7 +210,6 @@ class SchemaCleaner:
     def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
         result = copy.deepcopy(value)
         if self._is_ref_schema(value):
-            #print(value)
             if self._is_unit_name_ref(value["$ref"]) or "tQuantityValue" in value["$ref"]:
                 return result
             # NOTE: assumes ref is cleaned.
@@ -264,6 +262,8 @@ class SchemaCleaner:
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
                 raise AssertionError(msg)
             return schemas
+
+        schemas = self._flatten_schemas(schemas)
 
         return self._try_combine_schemas(schemas)
 
@@ -435,7 +435,6 @@ class SchemaCleaner:
             if "oneOf" in schema:
                 allof_values.append({"oneOf": schema.pop("oneOf")})
             schema["allOf"] = allof_values
-            # return self._clean({"allOf": allof_values})
 
         cleaned = {}
         for key, value in schema.items():
@@ -461,19 +460,13 @@ class SchemaCleaner:
         cleaned = copy.deepcopy(schema)
         if "$defs" in cleaned:
             cleaned["$defs"] = self._clean_defs(cleaned)
-            #print(cleaned["$defs"])
 
-        #print("DOING CLEAN")
-        #print("$defs" in cleaned)
         ret = self._clean(cleaned)
-        #print("$defs" in ret)
         return ret
 
     def clean_file(self, schema_path: str) -> None:
         schema = get_schema(schema_path)
         schema = self.clean(schema)
         self.add_missing_units()
-        #print("DONE HERE")
-        #print("$defs" in schema)
         with open(schema_path, "w") as f:
             json.dump(schema, f, indent=2)
