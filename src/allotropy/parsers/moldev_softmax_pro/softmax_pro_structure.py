@@ -58,18 +58,7 @@ class Block:
 
     @staticmethod
     def create(reader: CsvReader) -> Block:
-        block_cls_by_type: dict[str, type[Block]] = {
-            "Group": GroupBlock,
-            "Note": NoteBlock,
-            "Plate": PlateBlock,
-        }
-
-        for key, cls in block_cls_by_type.items():
-            if reader.match(f"^{key}"):
-                return cls.create(reader)
-
-        error = f"Expected block '{reader.get()}' to start with one of {sorted(block_cls_by_type.keys())}."
-        raise AllotropeConversionError(error)
+        raise NotImplementedError
 
 
 @dataclass(frozen=True)
@@ -726,9 +715,27 @@ class BlockList:
     blocks: list[Block]
 
     @staticmethod
+    def create_block(reader: CsvReader) -> Block:
+        block_cls_by_type: dict[str, type[Block]] = {
+            "Group": GroupBlock,
+            "Note": NoteBlock,
+            "Plate": PlateBlock,
+        }
+
+        for key, cls in block_cls_by_type.items():
+            if reader.match(f"^{key}"):
+                return cls.create(reader)
+
+        error = f"Expected block '{reader.get()}' to start with one of {sorted(block_cls_by_type.keys())}."
+        raise AllotropeConversionError(error)
+
+    @staticmethod
     def create(reader: CsvReader) -> BlockList:
         return BlockList(
-            blocks=[Block.create(block) for block in BlockList._iter_blocks(reader)]
+            blocks=[
+                BlockList.create_block(sub_reader)
+                for sub_reader in BlockList._iter_blocks(reader)
+            ]
         )
 
     @staticmethod
