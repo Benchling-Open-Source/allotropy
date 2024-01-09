@@ -7,6 +7,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.units import (
     Cell,
     Centimeter,
+    CountsPerMilliliter,
     CubicMillimeter,
     DegreeCelsius,
     GramPerLiter,
@@ -17,6 +18,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Micrometer,
     MilliAbsorbanceUnit,
     MilligramPerMilliliter,
+    Milliliter,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
@@ -44,6 +46,18 @@ from allotropy.allotrope.models.shared.definitions.units import (
 
 @dataclass
 class TQuantityValueCentimeter(Centimeter, TQuantityValueWithOptionalUnit):
+    pass
+
+
+@dataclass
+class TQuantityValueCountsPerMilliliter(
+    CountsPerMilliliter, TQuantityValueWithOptionalUnit
+):
+    pass
+
+
+@dataclass
+class TQuantityValueMilliliter(Milliliter, TQuantityValueWithOptionalUnit):
     pass
 
 

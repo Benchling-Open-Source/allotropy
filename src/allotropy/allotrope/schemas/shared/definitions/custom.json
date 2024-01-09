@@ -99,6 +99,16 @@
             }
         ]
     },
+    "tQuantityValueMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/Milliliter"
+            }
+        ]
+    },
     "tQuantityValueMicroliter": {
         "allOf": [
             {
@@ -146,6 +156,16 @@
             },
             {
                 "$ref": "#/$defs/TODO"
+            }
+        ]
+    },
+    "tQuantityValueCountsPerMilliliter": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/CountsPerMilliliter"
             }
         ]
     },
