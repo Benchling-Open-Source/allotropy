@@ -40,8 +40,14 @@ class LinesReader:
         self.lines = lines
         self.current_line = 0
 
+    def line_exists(self, line: int) -> bool:
+        return 0 <= line < len(self.lines)
+
     def current_line_exists(self) -> bool:
-        return 0 <= self.current_line < len(self.lines)
+        return self.line_exists(self.current_line)
+
+    def get_line(self, line: int) -> Optional[str]:
+        return self.lines[line] if self.line_exists(line) else None
 
     def get(self) -> Optional[str]:
         return self.lines[self.current_line] if self.current_line_exists() else None
