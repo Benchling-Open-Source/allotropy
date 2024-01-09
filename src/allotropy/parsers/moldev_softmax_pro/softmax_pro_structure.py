@@ -717,7 +717,7 @@ class BlockList:
     @staticmethod
     def create(reader: CsvReader) -> BlockList:
         blocks: list[Block] = []
-        for sub_reader in BlockList._iter_blocks(reader):
+        for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
                 blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
@@ -736,7 +736,7 @@ class BlockList:
         raise AllotropeConversionError(msg)
 
     @staticmethod
-    def _iter_blocks(reader: CsvReader) -> Iterator[CsvReader]:
+    def _iter_blocks_reader(reader: CsvReader) -> Iterator[CsvReader]:
         n_blocks = BlockList._get_n_blocks(reader)
         for _ in range(n_blocks):
             yield CsvReader(list(reader.pop_until(END_LINE_REGEX)))
