@@ -448,6 +448,40 @@ class PlateBlock(Block):
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
 
+    @classmethod
+    def check_export_version(cls, export_version: str) -> None:
+        if export_version != EXPORT_VERSION:
+            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
+            raise AllotropeConversionError(error)
+
+    @classmethod
+    def check_read_type(cls, read_type: str) -> None:
+        if read_type != ReadType.ENDPOINT.value:
+            error = "Only Endpoint measurements can be processed at this time."
+            raise AllotropeConversionError(error)
+
+    @classmethod
+    def check_num_wavelengths(
+        cls, wavelengths: list[float], num_wavelengths: int
+    ) -> None:
+        if len(wavelengths) != num_wavelengths:
+            error = "Unable to find expected number of wavelength values."
+            raise AllotropeConversionError(error)
+
+    @classmethod
+    def get_num_wavelengths(cls, num_wavelengths_raw: Optional[str]) -> int:
+        return try_int_or_none(num_wavelengths_raw) or 1
+
+    @classmethod
+    def get_wavelengths(cls, wavelengths_str: Optional[str]) -> list[float]:
+        return [
+            try_float(wavelength, "wavelength")
+            for wavelength in assert_not_none(
+                wavelengths_str,
+                msg="Unable to find wavelengths list.",
+            ).split()
+        ]
+
     def iter_wells(self) -> Iterator[str]:
         for row in range(self.header.num_rows):
             for col in range(1, self.header.num_columns + 1):
@@ -496,29 +530,12 @@ class FluorescencePlateBlock(PlateBlock):
             num_rows,
         ] = header[:31]
 
-        if export_version != EXPORT_VERSION:
-            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
-            raise AllotropeConversionError(error)
+        cls.check_export_version(export_version)
+        cls.check_read_type(read_type)
 
-        if read_type != ReadType.ENDPOINT.value:
-            error = "Only Endpoint measurements can be processed at this time."
-            raise AllotropeConversionError(error)
-
-        num_wavelengths = try_int_or_none(num_wavelengths_raw) or 1
-
-        assert_not_none(
-            wavelengths_str,
-            msg="Unable to find wavelengths list.",
-        )
-
-        wavelengths = [
-            try_float(wavelength, "wavelength")
-            for wavelength in wavelengths_str.split()
-        ]
-
-        if len(wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of wavelength values."
-            raise AllotropeConversionError(error)
+        num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
+        wavelengths = cls.get_wavelengths(wavelengths_str)
+        cls.check_num_wavelengths(wavelengths, num_wavelengths)
 
         assert_not_none(
             excitation_wavelengths_str,
@@ -619,29 +636,12 @@ class LuminescencePlateBlock(PlateBlock):
             num_rows,
         ] = header[:30]
 
-        if export_version != EXPORT_VERSION:
-            error = f"Invalid export version {export_version}"
-            raise AllotropeConversionError(error)
+        cls.check_export_version(export_version)
+        cls.check_read_type(read_type)
 
-        if read_type != ReadType.ENDPOINT.value:
-            error = "Only Endpoint measurements can be processed at this time."
-            raise AllotropeConversionError(error)
-
-        num_wavelengths = try_int_or_none(num_wavelengths_raw) or 1
-
-        assert_not_none(
-            wavelengths_str,
-            msg="Unable to find wavelengths list.",
-        )
-
-        wavelengths = [
-            try_float(wavelength, "wavelength")
-            for wavelength in wavelengths_str.split()
-        ]
-
-        if len(wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of wavelength values."
-            raise AllotropeConversionError(error)
+        num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
+        wavelengths = cls.get_wavelengths(wavelengths_str)
+        cls.check_num_wavelengths(wavelengths, num_wavelengths)
 
         return PlateHeader(
             name=name,
@@ -698,29 +698,12 @@ class AbsorbancePlateBlock(PlateBlock):
             num_rows_raw,
         ] = header[:21]
 
-        if export_version != EXPORT_VERSION:
-            error = f"Invalid export version {export_version}"
-            raise AllotropeConversionError(error)
+        cls.check_export_version(export_version)
+        cls.check_read_type(read_type)
 
-        if read_type != ReadType.ENDPOINT.value:
-            error = "Only Endpoint measurements can be processed at this time."
-            raise AllotropeConversionError(error)
-
-        num_wavelengths = try_int_or_none(num_wavelengths_raw) or 1
-
-        assert_not_none(
-            wavelengths_str,
-            msg="Unable to find wavelengths list.",
-        )
-
-        wavelengths = [
-            try_float(wavelength, "wavelength")
-            for wavelength in wavelengths_str.split()
-        ]
-
-        if len(wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of wavelength values."
-            raise AllotropeConversionError(error)
+        num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
+        wavelengths = cls.get_wavelengths(wavelengths_str)
+        cls.check_num_wavelengths(wavelengths, num_wavelengths)
 
         return PlateHeader(
             name=name,
