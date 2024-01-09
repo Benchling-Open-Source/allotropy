@@ -391,7 +391,6 @@ class PlateBlock(Block):
     block_type: str
     header: PlateHeader
     block_data: Union[PlateData, TimeData]
-    plate_block_type: str = "Abstract"
 
     @staticmethod
     def create(reader: CsvReader) -> PlateBlock:
@@ -442,6 +441,10 @@ class PlateBlock(Block):
         return cls
 
     @classmethod
+    def get_plate_block_type(cls) -> str:
+        raise NotImplementedError
+
+    @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
         raise NotImplementedError
 
@@ -453,7 +456,9 @@ class PlateBlock(Block):
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    plate_block_type: str = "Fluorescence"
+    @classmethod
+    def get_plate_block_type(cls) -> str:
+        return "Fluorescence"
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -575,7 +580,9 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    plate_block_type: str = "Luminescence"
+    @classmethod
+    def get_plate_block_type(cls) -> str:
+        return "Luminescence"
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -661,7 +668,9 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    plate_block_type: str = "Absorbance"
+    @classmethod
+    def get_plate_block_type(cls) -> str:
+        return "Absorbance"
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
