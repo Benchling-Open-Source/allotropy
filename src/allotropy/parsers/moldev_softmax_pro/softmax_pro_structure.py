@@ -101,14 +101,14 @@ class Block:
         raise NotImplementedError
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupDataElementEntry:
     name: str
     value: float
     aggregated: bool
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupDataElement:
     sample: str
     position: str
@@ -116,7 +116,7 @@ class GroupDataElement:
     entries: list[GroupDataElementEntry]
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
@@ -175,7 +175,7 @@ class GroupSampleData:
             )
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupData:
     name: str
     sample_data: list[GroupSampleData]
@@ -207,7 +207,7 @@ class GroupData:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupColumns:
     data: dict[str, str]
 
@@ -231,7 +231,7 @@ class GroupColumns:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class GroupSummaries:
     data: list[str]
 
