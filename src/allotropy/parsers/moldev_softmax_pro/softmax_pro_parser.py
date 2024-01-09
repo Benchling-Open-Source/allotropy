@@ -38,6 +38,7 @@ from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
     PlateBlock,
+    ScanPosition,
 )
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -119,17 +120,6 @@ class SoftmaxproParser(VendorParser):
             )
         )
 
-    def _get_fluorescence_plate_block_scan_position(
-        self, plate_block: PlateBlock
-    ) -> ScanPositionSettingPlateReader:
-        if plate_block.header.scan_position == "TRUE":
-            return ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
-        elif plate_block.header.scan_position == "FALSE":
-            return ScanPositionSettingPlateReader.top_scan_position__plate_reader_
-        else:
-            error = "Unable to find valid scan position."
-            raise AllotropeConversionError(error)
-
     def _get_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
     ) -> list[
@@ -158,8 +148,10 @@ class SoftmaxproParser(VendorParser):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
-                            scan_position_setting__plate_reader_=self._get_fluorescence_plate_block_scan_position(
-                                plate_block
+                            scan_position_setting__plate_reader_=(
+                                ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+                                if plate_block.header.scan_position == ScanPosition.TOP
+                                else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
                             ),
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 data_element.wavelength
