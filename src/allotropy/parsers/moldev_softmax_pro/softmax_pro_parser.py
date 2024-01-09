@@ -1,8 +1,14 @@
+from collections.abc import Iterator
+import math
 from typing import Union
 import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
+    DataSourceAggregateDocument1,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -28,6 +34,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TRelativeFluorescenceUnit,
     TRelativeLightUnit,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TQuantityValue,
+    ValueEnum,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
@@ -73,9 +83,14 @@ class SoftmaxproParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate_block, position)
-                    for plate_block in data.get_plate_block()
+                    for plate_block in data.block_list.plate_blocks.values()
                     for position in plate_block.iter_wells()
                 ],
+                calculated_data_aggregate_document=CalculatedDataAggregateDocument(
+                    calculated_data_document=list(
+                        self._iter_calculated_data_documents(data)
+                    ),
+                ),
             ),
         )
 
@@ -131,17 +146,21 @@ class SoftmaxproParser(VendorParser):
     ]:
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=data_element.uuid,
                 fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                    else TQuantityValueDegreeCelsius(
+                        ValueEnum.NaN
+                        if math.isnan(data_element.temperature)
+                        else data_element.temperature
+                    )
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
-                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_identifier=data_element.sample_identifier,
                 ),
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -178,9 +197,7 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-            for idx, data_element in enumerate(
-                plate_block.block_data.iter_wavelengths(position)
-            )
+            for idx, data_element in enumerate(plate_block.iter_data_elements(position))
         ]
 
     def _get_luminescence_measurement_document(
@@ -199,17 +216,21 @@ class SoftmaxproParser(VendorParser):
 
         return [
             LuminescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=data_element.uuid,
                 luminescence=TRelativeLightUnit(value=data_element.value),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                    else TQuantityValueDegreeCelsius(
+                        ValueEnum.NaN
+                        if math.isnan(data_element.temperature)
+                        else data_element.temperature
+                    )
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
-                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_identifier=data_element.sample_identifier,
                 ),
                 device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -225,7 +246,7 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-            for data_element in plate_block.block_data.iter_wavelengths(position)
+            for data_element in plate_block.iter_data_elements(position)
         ]
 
     def _get_absorbance_measurement_document(
@@ -239,17 +260,21 @@ class SoftmaxproParser(VendorParser):
     ]:
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=data_element.uuid,
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(data_element.temperature)
+                    else TQuantityValueDegreeCelsius(
+                        ValueEnum.NaN
+                        if math.isnan(data_element.temperature)
+                        else data_element.temperature
+                    )
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
-                    sample_identifier=f"{plate_block.header.name} {data_element.position}",
+                    sample_identifier=data_element.sample_identifier,
                 ),
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -263,5 +288,65 @@ class SoftmaxproParser(VendorParser):
                     ]
                 ),
             )
-            for data_element in plate_block.block_data.iter_wavelengths(position)
+            for data_element in plate_block.iter_data_elements(position)
         ]
+
+    def _iter_calculated_data_documents(
+        self, data: Data
+    ) -> Iterator[CalculatedDataDocumentItem]:
+        for plate_block in data.block_list.plate_blocks.values():
+            for reduced_data_element in plate_block.iter_reduced_data():
+                yield CalculatedDataDocumentItem(
+                    calculated_data_identifier=str(uuid.uuid4()),
+                    calculated_data_name="Reduced",
+                    calculated_result=TQuantityValue(
+                        unit="unitless",
+                        value=reduced_data_element.value,
+                    ),
+                    data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=w.uuid,
+                                data_source_feature=plate_block.get_plate_block_type(),
+                            )
+                            for w in plate_block.iter_data_elements(
+                                reduced_data_element.position
+                            )
+                        ]
+                    ),
+                )
+
+        for group_block in data.block_list.group_blocks:
+            for group_sample_data in group_block.group_data.sample_data:
+                for group_data_element in group_sample_data.data_elements:
+                    plate_block = data.block_list.plate_blocks[group_data_element.plate]
+                    for entrie in group_data_element.entries:
+                        yield CalculatedDataDocumentItem(
+                            calculated_data_identifier=str(uuid.uuid4()),
+                            calculated_data_name=entrie.name,
+                            calculation_description=group_block.group_columns.data.get(
+                                entrie.name
+                            ),
+                            calculated_result=TQuantityValue(
+                                unit="unitless",
+                                value=entrie.value,
+                            ),
+                            data_source_aggregate_document=DataSourceAggregateDocument1(
+                                data_source_document=[
+                                    DataSourceDocumentItem(
+                                        data_source_identifier=data_element.uuid,
+                                        data_source_feature=plate_block.get_plate_block_type(),
+                                    )
+                                    for data_element in (
+                                        group_sample_data.iter_aggregated_data_sources(
+                                            data.block_list
+                                        )
+                                        if entrie.aggregated
+                                        else group_sample_data.iter_simple_data_sources(
+                                            plate_block,
+                                            group_data_element,
+                                        )
+                                    )
+                                ]
+                            ),
+                        )
