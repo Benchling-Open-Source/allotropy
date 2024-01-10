@@ -40,11 +40,9 @@ def can_parse_as_float_non_nan(value: Any) -> bool:
 
 
 def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
-    new_data = data
-    for column in data.columns:
-        if re.match(pattern, column):
-            new_data = new_data.drop(columns=[column])
-    return new_data
+    return data.drop(
+        columns=[column for column in data.columns if re.match(pattern, column)]
+    )
 
 
 def try_str_from_series_multikey_or_none(
