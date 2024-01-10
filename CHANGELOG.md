@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Simplify Moldev Softmax Pro parsing with dataclasses
+- Update plate reader schema in Moldev Softmax Pro
 ### Deprecated
 ### Removed
 ### Security
