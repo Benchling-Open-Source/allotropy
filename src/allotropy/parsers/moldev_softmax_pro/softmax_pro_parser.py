@@ -322,17 +322,17 @@ class SoftmaxproParser(VendorParser):
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
                     plate_block = data.block_list.plate_blocks[group_data_element.plate]
-                    for entrie in group_data_element.entries:
+                    for entry in group_data_element.entries:
                         calculated_documents.append(
                             CalculatedDataDocumentItem(
                                 calculated_data_identifier=str(uuid.uuid4()),
-                                calculated_data_name=entrie.name,
+                                calculated_data_name=entry.name,
                                 calculation_description=group_block.group_columns.data.get(
-                                    entrie.name
+                                    entry.name
                                 ),
                                 calculated_result=TQuantityValue(
                                     unit="unitless",
-                                    value=entrie.value,
+                                    value=entry.value,
                                 ),
                                 data_source_aggregate_document=DataSourceAggregateDocument1(
                                     data_source_document=[
@@ -344,7 +344,7 @@ class SoftmaxproParser(VendorParser):
                                             group_sample_data.iter_aggregated_data_sources(
                                                 data.block_list
                                             )
-                                            if entrie.aggregated
+                                            if entry.aggregated
                                             else group_sample_data.iter_simple_data_sources(
                                                 plate_block,
                                                 group_data_element,
