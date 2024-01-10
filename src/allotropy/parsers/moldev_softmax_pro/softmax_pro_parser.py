@@ -57,6 +57,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 DEVICE_TYPE = "plate reader"
 EPOCH = "1970-01-01T00:00:00-00:00"
 NULL = "null"
+REDUCED = "Reduced"
 
 
 def float_or_nan(value: float) -> Union[ValueEnum, float]:
@@ -295,7 +296,7 @@ class SoftmaxproParser(VendorParser):
         return [
             CalculatedDataDocumentItem(
                 calculated_data_identifier=str(uuid.uuid4()),
-                calculated_data_name="Reduced",
+                calculated_data_name=REDUCED,
                 calculated_result=TQuantityValue(
                     unit="unitless",
                     value=reduced_data_element.value,
