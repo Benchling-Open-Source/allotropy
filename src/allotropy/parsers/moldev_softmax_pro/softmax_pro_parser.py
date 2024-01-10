@@ -303,10 +303,10 @@ class SoftmaxproParser(VendorParser):
                 data_source_aggregate_document=DataSourceAggregateDocument1(
                     data_source_document=[
                         DataSourceDocumentItem(
-                            data_source_identifier=w.uuid,
+                            data_source_identifier=data_element.uuid,
                             data_source_feature=plate_block.get_plate_block_type(),
                         )
-                        for w in plate_block.iter_data_elements(
+                        for data_element in plate_block.iter_data_elements(
                             reduced_data_element.position
                         )
                     ]
