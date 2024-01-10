@@ -46,7 +46,7 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
 
 
 def try_str_from_series_multikey_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     possible_keys: list[str],
 ) -> Optional[str]:
     for key in possible_keys:
@@ -57,7 +57,7 @@ def try_str_from_series_multikey_or_none(
 
 
 def try_str_from_series_multikey(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     possible_keys: list[str],
     msg: Optional[str] = None,
 ) -> str:
