@@ -909,22 +909,29 @@ def test_combine_anyof_with_parent_anyof_required_keys():
                     "key1": "value",
                     "key2": "otherValue"
                 },
-                "required": ["key1", "key2"]
+                "required": [
+                    "key1",
+                    "key2"
+                ]
             },
             {
                 "properties": {
                     "key1": "value",
                     "key2": "otherValue"
                 },
-                "required": ["key2"]
+                "required": [
+                    "key1"
+                ]
             },
             {
                 "properties": {
                     "key1": "value",
                     "key2": "otherValue"
                 },
-                "required": ["key1"]
-            },
+                "required": [
+                    "key2"
+                ]
+            }
         ]
     })
 
@@ -1671,7 +1678,7 @@ def test_deeply_nested_anyof_allof() -> None:
                                     },
                                     {
                                         "properties": {
-                                            "key2": "value2b"
+                                            "key2": "value2a"
                                         }
                                     }
                                 ]
@@ -1694,7 +1701,7 @@ def test_deeply_nested_anyof_allof() -> None:
                                     },
                                     {
                                         "properties": {
-                                            "key2": "value2a"
+                                            "key2": "value2b"
                                         }
                                     }
                                 ]
@@ -1738,7 +1745,7 @@ def test_anyof() -> None:
     with open("tests/allotrope/schema_parser/anyof_test_schema.json") as f:
         schema = json.load(f)
 
-    cleaned = SchemaCleaner()._clean_anyof(schema)
+    cleaned = SchemaCleaner()._combine_anyof(schema)
 
     with open("tests/allotrope/schema_parser/anyof_output_schema.json", "w") as f:
         json.dump(cleaned, f)
