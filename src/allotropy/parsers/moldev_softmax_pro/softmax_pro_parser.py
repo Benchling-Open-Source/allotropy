@@ -1,4 +1,3 @@
-from collections.abc import Iterator
 import math
 from typing import Union
 import uuid
@@ -87,9 +86,7 @@ class SoftmaxproParser(VendorParser):
                     for position in plate_block.iter_wells()
                 ],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
-                    calculated_data_document=list(
-                        self._iter_calculated_data_documents(data)
-                    ),
+                    calculated_data_document=self._get_calc_docs(data)
                 ),
             ),
         )
@@ -291,62 +288,70 @@ class SoftmaxproParser(VendorParser):
             for data_element in plate_block.iter_data_elements(position)
         ]
 
-    def _iter_calculated_data_documents(
-        self, data: Data
-    ) -> Iterator[CalculatedDataDocumentItem]:
-        for plate_block in data.block_list.plate_blocks.values():
-            for reduced_data_element in plate_block.iter_reduced_data():
-                yield CalculatedDataDocumentItem(
-                    calculated_data_identifier=str(uuid.uuid4()),
-                    calculated_data_name="Reduced",
-                    calculated_result=TQuantityValue(
-                        unit="unitless",
-                        value=reduced_data_element.value,
-                    ),
-                    data_source_aggregate_document=DataSourceAggregateDocument1(
-                        data_source_document=[
-                            DataSourceDocumentItem(
-                                data_source_identifier=w.uuid,
-                                data_source_feature=plate_block.get_plate_block_type(),
-                            )
-                            for w in plate_block.iter_data_elements(
-                                reduced_data_element.position
-                            )
-                        ]
-                    ),
-                )
+    def _get_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
+        return self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
 
+    def _get_reduced_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
+        return [
+            CalculatedDataDocumentItem(
+                calculated_data_identifier=str(uuid.uuid4()),
+                calculated_data_name="Reduced",
+                calculated_result=TQuantityValue(
+                    unit="unitless",
+                    value=reduced_data_element.value,
+                ),
+                data_source_aggregate_document=DataSourceAggregateDocument1(
+                    data_source_document=[
+                        DataSourceDocumentItem(
+                            data_source_identifier=w.uuid,
+                            data_source_feature=plate_block.get_plate_block_type(),
+                        )
+                        for w in plate_block.iter_data_elements(
+                            reduced_data_element.position
+                        )
+                    ]
+                ),
+            )
+            for plate_block in data.block_list.plate_blocks.values()
+            for reduced_data_element in plate_block.iter_reduced_data()
+        ]
+
+    def _get_group_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
+        calculated_documents = []
         for group_block in data.block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for group_data_element in group_sample_data.data_elements:
                     plate_block = data.block_list.plate_blocks[group_data_element.plate]
                     for entrie in group_data_element.entries:
-                        yield CalculatedDataDocumentItem(
-                            calculated_data_identifier=str(uuid.uuid4()),
-                            calculated_data_name=entrie.name,
-                            calculation_description=group_block.group_columns.data.get(
-                                entrie.name
-                            ),
-                            calculated_result=TQuantityValue(
-                                unit="unitless",
-                                value=entrie.value,
-                            ),
-                            data_source_aggregate_document=DataSourceAggregateDocument1(
-                                data_source_document=[
-                                    DataSourceDocumentItem(
-                                        data_source_identifier=data_element.uuid,
-                                        data_source_feature=plate_block.get_plate_block_type(),
-                                    )
-                                    for data_element in (
-                                        group_sample_data.iter_aggregated_data_sources(
-                                            data.block_list
+                        calculated_documents.append(
+                            CalculatedDataDocumentItem(
+                                calculated_data_identifier=str(uuid.uuid4()),
+                                calculated_data_name=entrie.name,
+                                calculation_description=group_block.group_columns.data.get(
+                                    entrie.name
+                                ),
+                                calculated_result=TQuantityValue(
+                                    unit="unitless",
+                                    value=entrie.value,
+                                ),
+                                data_source_aggregate_document=DataSourceAggregateDocument1(
+                                    data_source_document=[
+                                        DataSourceDocumentItem(
+                                            data_source_identifier=data_element.uuid,
+                                            data_source_feature=plate_block.get_plate_block_type(),
                                         )
-                                        if entrie.aggregated
-                                        else group_sample_data.iter_simple_data_sources(
-                                            plate_block,
-                                            group_data_element,
+                                        for data_element in (
+                                            group_sample_data.iter_aggregated_data_sources(
+                                                data.block_list
+                                            )
+                                            if entrie.aggregated
+                                            else group_sample_data.iter_simple_data_sources(
+                                                plate_block,
+                                                group_data_element,
+                                            )
                                         )
-                                    )
-                                ]
-                            ),
+                                    ]
+                                ),
+                            )
                         )
+        return calculated_documents
