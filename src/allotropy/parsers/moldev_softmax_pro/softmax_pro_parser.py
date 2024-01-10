@@ -62,7 +62,7 @@ from allotropy.parsers.utils.values import (
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-def float_or_nan(value: float) -> Union[ValueEnum, float]:
+def float_or_value_enum(value: float) -> Union[ValueEnum, float]:
     return ValueEnum.NaN if math.isnan(value) else value
 
 
@@ -156,7 +156,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_nan(data_element.temperature)
+                        float_or_value_enum(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -224,7 +224,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_nan(data_element.temperature)
+                        float_or_value_enum(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
