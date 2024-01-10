@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
@@ -364,7 +365,7 @@ class TimeData:
 
 
 @dataclass(frozen=True)
-class PlateBlock(Block):
+class PlateBlock(ABC, Block):
     header: PlateHeader
     block_data: Union[PlateData, TimeData]
 
@@ -392,9 +393,10 @@ class PlateBlock(Block):
             raise AllotropeConversionError(msg)
         return cls
 
-    @classmethod
-    def get_plate_block_type(cls) -> str:
-        raise NotImplementedError
+    @staticmethod
+    @abstractmethod
+    def get_plate_block_type() -> str:
+        ...
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
@@ -442,8 +444,8 @@ class PlateBlock(Block):
 
 @dataclass(frozen=True)
 class FluorescencePlateBlock(PlateBlock):
-    @classmethod
-    def get_plate_block_type(cls) -> str:
+    @staticmethod
+    def get_plate_block_type() -> str:
         return "Fluorescence"
 
     @classmethod
@@ -552,8 +554,8 @@ class FluorescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class LuminescencePlateBlock(PlateBlock):
-    @classmethod
-    def get_plate_block_type(cls) -> str:
+    @staticmethod
+    def get_plate_block_type() -> str:
         return "Luminescence"
 
     @classmethod
@@ -623,8 +625,8 @@ class LuminescencePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class AbsorbancePlateBlock(PlateBlock):
-    @classmethod
-    def get_plate_block_type(cls) -> str:
+    @staticmethod
+    def get_plate_block_type() -> str:
         return "Absorbance"
 
     @classmethod
