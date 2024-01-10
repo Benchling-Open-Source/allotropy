@@ -59,6 +59,10 @@ EPOCH = "1970-01-01T00:00:00-00:00"
 NULL = "null"
 
 
+def float_or_nan(value: float) -> Union[ValueEnum, float]:
+    return ValueEnum.NaN if math.isnan(value) else value
+
+
 class SoftmaxproParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents.contents, encoding=None)
@@ -149,9 +153,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        ValueEnum.NaN
-                        if math.isnan(data_element.temperature)
-                        else data_element.temperature
+                        float_or_nan(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -219,9 +221,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        ValueEnum.NaN
-                        if math.isnan(data_element.temperature)
-                        else data_element.temperature
+                        float_or_nan(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
