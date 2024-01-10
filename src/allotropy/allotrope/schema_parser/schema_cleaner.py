@@ -26,6 +26,7 @@ class SchemaCleaner:
         self.definitions = self._load_definitions()
         self.replaced_definitions = defaultdict(list)
 
+        self.num_tabs = 0
         self.cleaning_defs = False
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
@@ -99,8 +100,6 @@ class SchemaCleaner:
         return all(value == values[0] for value in values[1:])
 
     def _try_combine_object_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
-
-
         all_values = defaultdict(list)
         for schema in schemas:
             for key, value in schema.get("properties", {}).items():
@@ -118,7 +117,6 @@ class SchemaCleaner:
             elif any(self._is_ref_schema(value) or self._is_ref_schema_array(value) for value in values):
                 combined_props[key] = self._clean_allof(self._dereference_values(values))
             else:
-                # self._is_ref_schema(value) or self._is_ref_schema_array(value)
                 msg = f"Error combining schemas, conflicting values for key '{key}': {[f'{value}' for value in values]}"
                 raise AssertionError(msg)
 
@@ -160,8 +158,9 @@ class SchemaCleaner:
         return [self._flatten_schema(value) for value in values]
 
     def _combine_anyof_schemas(self, schemas: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        self.print("HERE")
         schemas = self._flatten_schemas(schemas)
-
+        self.print("FLATTENED")
         # For schemas without required values, we want to combine them as much as possible, but sometimes
         # can't due to keys with conflcting values. To do this, we take the power set of combinations and
         # try to combine each. When we succeed, remove other sets that are covered by that powerset.
@@ -171,10 +170,13 @@ class SchemaCleaner:
         # are conflicting defintions for keys. This is possible, but not very common in practice. This special
         # case helps short circuit the power set explosion for long lists of anyOf that just add a couple fields.
         any_required_keys = self._required_anywhere(schemas)
+        self.print(f"REQUIRED? {any_required_keys}")
         if not self._required_anywhere(schemas):
             try:
+                self.print("^^^^^^^^^^ TRYING ^^^^^^^^^^^^^")
                 return [self._try_combine_schemas(schemas)]
             except AssertionError:
+                self.print("FAILED!")
                 pass
 
         successful = []
@@ -210,7 +212,7 @@ class SchemaCleaner:
     def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
         result = copy.deepcopy(value)
         if self._is_ref_schema(value):
-            if self._is_unit_name_ref(value["$ref"]) or "tQuantityValue" in value["$ref"]:
+            if self._is_unit_name_ref(value["$ref"]) or "QuantityValue" in value["$ref"]:
                 return result
             # NOTE: assumes ref is cleaned.
             # NOTE: we do not futher deference values because we don't want to remove all
@@ -236,7 +238,7 @@ class SchemaCleaner:
         # Returns True is "required" key is found anywhere in a value recursively.
         # Used to check if there are any reqiured keys in a schema to determine if it should be combined.
         if self._is_ref_schema(value):
-            if self._is_unit_name_ref(value["$ref"]) or "tQuantityValue" in value["$ref"]:
+            if self._is_unit_name_ref(value["$ref"]) or "QuantityValue" in value["$ref"]:
                 return False
             return self._required_anywhere(self._dereference_value(value))
         if isinstance(value, dict):
@@ -255,12 +257,14 @@ class SchemaCleaner:
                 for add_schema in schemas_list
             ] if new_schemas else [[schema] for schema in schemas_list]
         return self._clean_value({key: [{"allOf": schemas} for schemas in new_schemas]})
+        # return self._clean_value({key: [self._try_combine_object_schemas(schemas) for schemas in new_schemas]})
 
     def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
         if not all(self._is_class_schema(schema) for schema in schemas):
             if any(self._is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
                 raise AssertionError(msg)
+
             return schemas
 
         schemas = self._flatten_schemas(schemas)
@@ -268,6 +272,7 @@ class SchemaCleaner:
         return self._try_combine_schemas(schemas)
 
     def _clean_allof(self, values: list[Any]) -> dict[str, Any]:
+        self.print("IN CLEAN ALLOF ^^^^^^^^^^^^")
         if not all(isinstance(value, dict) for value in values):
             msg = "Unhandled case: expected every item in an allOf to be a dictionary"
             raise AssertionError(msg)
@@ -277,6 +282,12 @@ class SchemaCleaner:
         if len(values) == 1:
             # datamodel-codegen can not handle single-value allOf entries.
             return values[0]
+
+        if all(self._is_ref_schema(schema) for schema in values) and all("QuantityValue" in schema["$ref"] for schema in values):
+            unique = set(schema["$ref"].split("/")[-1] for schema in values) - set(["tQuantityValue", "tNullableQuantityValue"])
+            if len(unique) == 1:
+                return {"$ref": f"#/$defs/{next(iter(unique))}"}
+            assert False, "On no"
 
         # datamodel-codegen can not handle oneOf nested inside allOf. Fix this by reversing the order,
         # making a oneOf with each possible product of allOf
@@ -288,11 +299,11 @@ class SchemaCleaner:
             return self._fix_quantity_value_reference(values)
 
         # Deference values and check for oneOf/anyOf inversion again.
-        derefed_values = self._clean_value(self._dereference_values(values))
+        derefed_values = self._dereference_values(values)
         if any("oneOf" in value for value in derefed_values):
             return self._invert_allof(derefed_values, "oneOf")
 
-        if any("anyOf" in value for value in values):
+        if any("anyOf" in value for value in derefed_values):
             return self._invert_allof(derefed_values, "anyOf")
 
         # We don't combine allOf for definitions because we don't want to flatten definitions and prevent
@@ -303,9 +314,16 @@ class SchemaCleaner:
             # is broken in python<3.10.
             if self._required_anywhere(derefed_values):
                 return self._combine_allof_schemas(derefed_values)
+
+            if any("allOf" in schema for schema in derefed_values):
+                return self._combine_allof_schemas(derefed_values)
+
             # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
             # but we don't save the result.
             self._try_combine_schemas(derefed_values)
+
+            # NOTE: alt - always combine
+            # return self._combine_allof_schemas(derefed_values)
 
         return {"allOf": values}
 
@@ -422,7 +440,12 @@ class SchemaCleaner:
         self.cleaning_defs = False
         return cleaned
 
+    def print(self, msg):
+        print("\t" * self.num_tabs + msg)
+
     def _clean(self, schema: dict[str, Any]) -> dict[str, Any]:
+        self.print("ENTER CLEAN")
+        self.num_tabs += 1
         # If a schema is has properties on it and anyOf/oneOf/allOf composed components, it is essentially
         # an allOf with the parent schema and the rest, combine this way.
         if self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
@@ -438,6 +461,7 @@ class SchemaCleaner:
 
         cleaned = {}
         for key, value in schema.items():
+            self.print(f"PROCESSING {key}")
             if key in ("$defs", "$custom"):
                 cleaned[key] = value
             elif key == "allOf":
@@ -445,10 +469,13 @@ class SchemaCleaner:
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
             elif key == "anyOf":
-                cleaned |= self._clean_anyof(value)
+                ret = self._clean_anyof(value)
+                cleaned |= ret
             elif not self._should_skip_key(key):
                 cleaned[key] = self._clean_value(value)
 
+        self.num_tabs -= 1
+        self.print("EXITING CLEAN")
         return {key: value for key, value in cleaned.items() if value}
 
     def _should_skip_key(self, key: str) -> bool:
