@@ -56,10 +56,6 @@ class Block:
     block_type: str
     raw_lines: list[str]
 
-    @staticmethod
-    def create(reader: CsvReader) -> Block:
-        raise NotImplementedError
-
 
 @dataclass(frozen=True)
 class GroupBlock(Block):
@@ -79,9 +75,7 @@ class GroupBlock(Block):
 # TODO do we need to do anything with these?
 @dataclass(frozen=True)
 class NoteBlock(Block):
-    @staticmethod
-    def create(reader: CsvReader) -> NoteBlock:
-        return NoteBlock(block_type="Note", raw_lines=reader.lines)
+    pass
 
 
 @dataclass(frozen=True)
