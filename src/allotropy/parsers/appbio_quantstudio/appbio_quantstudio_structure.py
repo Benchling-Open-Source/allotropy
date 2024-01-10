@@ -189,9 +189,8 @@ class WellItem(Referenceable):
                 reporter_dye_setting=try_str_from_series_or_none(
                     data, "Allele1 Reporter"
                 ),
-                position=try_str_from_series_or_none(
-                    data, "Well Position", default="UNDEFINED"
-                ),
+                position=try_str_from_series_or_none(data, "Well Position")
+                or "UNDEFINED",
                 well_location_identifier=try_str_from_series_or_none(
                     data, "Well Position"
                 ),
@@ -206,9 +205,8 @@ class WellItem(Referenceable):
                 reporter_dye_setting=try_str_from_series_or_none(
                     data, "Allele2 Reporter"
                 ),
-                position=try_str_from_series_or_none(
-                    data, "Well Position", default="UNDEFINED"
-                ),
+                position=try_str_from_series_or_none(data, "Well Position")
+                or "UNDEFINED",
                 well_location_identifier=try_str_from_series_or_none(
                     data, "Well Position"
                 ),
@@ -239,9 +237,7 @@ class WellItem(Referenceable):
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
             reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
-            position=try_str_from_series_or_none(
-                data, "Well Position", default="UNDEFINED"
-            ),
+            position=try_str_from_series_or_none(data, "Well Position") or "UNDEFINED",
             well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
             quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
             sample_role_type=try_str_from_series_or_none(data, "Task"),
