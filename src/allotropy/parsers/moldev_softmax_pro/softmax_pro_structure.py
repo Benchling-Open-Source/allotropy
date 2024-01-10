@@ -509,6 +509,8 @@ class FluorescencePlateBlock(PlateBlock):
             error = "Unable to find expected number of excitation values."
             raise AllotropeConversionError(error)
 
+        # cutoff filters is an optional field in the input file
+        # if present it contains a list of string numbers separated by spaces
         cutoff_filters = (
             [
                 try_int(cutoff_filters, "cutoff filters")
@@ -518,6 +520,7 @@ class FluorescencePlateBlock(PlateBlock):
             else None
         )
 
+        # if there are cutoff filters check that the size match number of wavelengths
         if cutoff_filters is not None and len(cutoff_filters) != num_wavelengths:
             error = "Unable to find expected number of cutoff filter values."
             raise AllotropeConversionError(error)
