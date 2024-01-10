@@ -31,12 +31,12 @@ END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
 
 
-def is_float(value: Any) -> bool:
+def can_parse_as_float_non_nan(value: Any) -> bool:
     try:
         number = float(value)
-        return False if math.isnan(number) else True
-    except Exception:
+    except ValueError:
         return False
+    return not math.isnan(number)
 
 
 def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
@@ -129,7 +129,7 @@ class GroupSampleData:
         column_info = [
             (column, data[column].iloc[1:].isnull().all())
             for column in data.columns
-            if is_float(top_row[column])
+            if can_parse_as_float_non_nan(top_row[column])
         ]
 
         return GroupSampleData(
