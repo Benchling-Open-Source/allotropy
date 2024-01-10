@@ -61,7 +61,7 @@ def assert_not_none(
 def df_to_series(
     df: pd.DataFrame,
     msg: str,
-) -> pd.Series:  # type: ignore[type-arg]
+) -> pd.Series[Any]:
     n_rows, _ = df.shape
     if n_rows == 1:
         return pd.Series(df.iloc[0], index=df.columns)
@@ -75,7 +75,7 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
 
 
 def try_str_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     default: Optional[str] = None,
 ) -> Optional[str]:
@@ -84,7 +84,7 @@ def try_str_from_series_or_none(
 
 
 def try_str_from_series(
-    series: pd.Series,  # type: ignore[type-arg]
+    series: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> str:
@@ -92,7 +92,7 @@ def try_str_from_series(
 
 
 def try_int_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[int]:
     try:
@@ -104,7 +104,7 @@ def try_int_from_series_or_none(
 
 
 def try_int_from_series(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> int:
@@ -112,7 +112,7 @@ def try_int_from_series(
 
 
 def try_float_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[float]:
     try:
@@ -124,7 +124,7 @@ def try_float_from_series_or_none(
 
 
 def try_float_from_series(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> float:
@@ -132,7 +132,7 @@ def try_float_from_series(
 
 
 def try_bool_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[bool]:
     try:
