@@ -111,7 +111,8 @@ class SchemaCleaner:
             if len(values) == 1:
                 combined_props[key] = values[0]
             elif all(self._is_class_schema(value) for value in values):
-                combined_props[key] = self._clean_allof(values)
+                # combined_props[key] = self._clean_allof(values)
+                combined_props = self._try_combine_schemas(value)
             elif self._all_values_equal(values):
                 combined_props[key] = values[0]
             elif any(self._is_ref_schema(value) or self._is_ref_schema_array(value) for value in values):
