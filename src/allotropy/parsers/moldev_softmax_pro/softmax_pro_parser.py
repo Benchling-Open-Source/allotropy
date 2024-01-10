@@ -58,6 +58,7 @@ DEVICE_TYPE = "plate reader"
 EPOCH = "1970-01-01T00:00:00-00:00"
 NULL = "null"
 REDUCED = "Reduced"
+UNITLESS = "(unitless)"
 
 
 def float_or_nan(value: float) -> Union[ValueEnum, float]:
@@ -298,7 +299,7 @@ class SoftmaxproParser(VendorParser):
                 calculated_data_identifier=str(uuid.uuid4()),
                 calculated_data_name=REDUCED,
                 calculated_result=TQuantityValue(
-                    unit="unitless",
+                    unit=UNITLESS,
                     value=reduced_data_element.value,
                 ),
                 data_source_aggregate_document=DataSourceAggregateDocument1(
@@ -332,7 +333,7 @@ class SoftmaxproParser(VendorParser):
                                     entry.name
                                 ),
                                 calculated_result=TQuantityValue(
-                                    unit="unitless",
+                                    unit=UNITLESS,
                                     value=entry.value,
                                 ),
                                 data_source_aggregate_document=DataSourceAggregateDocument1(
