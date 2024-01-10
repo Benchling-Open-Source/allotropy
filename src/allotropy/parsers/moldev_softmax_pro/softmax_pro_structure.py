@@ -47,7 +47,7 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
 
 def try_str_from_series_multikey_or_none(
     data: pd.Series[Any],
-    possible_keys: list[str],
+    possible_keys: set[str],
 ) -> Optional[str]:
     for key in possible_keys:
         value = try_str_from_series_or_none(data, key)
@@ -58,7 +58,7 @@ def try_str_from_series_multikey_or_none(
 
 def try_str_from_series_multikey(
     data: pd.Series[Any],
-    possible_keys: list[str],
+    possible_keys: set[str],
     msg: Optional[str] = None,
 ) -> str:
     return assert_not_none(
@@ -137,7 +137,7 @@ class GroupSampleData:
                     sample=identifier,
                     position=try_str_from_series_multikey(
                         row,
-                        ["Well", "Wells"],
+                        {"Well", "Wells"},
                         msg="Unable to find well position in group data.",
                     ),
                     plate=try_str_from_series(row, "WellPlateName"),
