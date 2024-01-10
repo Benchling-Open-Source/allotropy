@@ -163,9 +163,7 @@ class SchemaCleaner:
         return [self._flatten_schema(value) for value in values]
 
     def _combine_anyof_schemas(self, schemas: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        self.print("HERE")
         schemas = self._flatten_schemas(schemas)
-        self.print("FLATTENED")
         # For schemas without required values, we want to combine them as much as possible, but sometimes
         # can't due to keys with conflcting values. To do this, we take the power set of combinations and
         # try to combine each. When we succeed, remove other sets that are covered by that powerset.
