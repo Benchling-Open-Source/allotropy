@@ -44,6 +44,13 @@ from allotropy.exceptions import (
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.moldev_softmax_pro.constants import (
+    DEVICE_TYPE,
+    EPOCH,
+    NULL,
+    REDUCED,
+    UNITLESS,
+)
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
     PlateBlock,
@@ -53,12 +60,6 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
 )
 from allotropy.parsers.vendor_parser import VendorParser
-
-DEVICE_TYPE = "plate reader"
-EPOCH = "1970-01-01T00:00:00-00:00"
-NULL = "null"
-REDUCED = "Reduced"
-UNITLESS = "(unitless)"
 
 
 def float_or_nan(value: float) -> Union[ValueEnum, float]:
