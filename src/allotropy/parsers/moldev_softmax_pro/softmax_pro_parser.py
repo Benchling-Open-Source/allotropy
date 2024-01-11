@@ -76,7 +76,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_model(self, file_name: str, data: Data) -> Model:
         return Model(
-            field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=NULL,
