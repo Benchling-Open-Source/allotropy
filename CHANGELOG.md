@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add calculated data documents to Unchained Labs Lunatic adapter
 - Parser for ChemoMetic NucleoView
 - Add non numeric options for tQuantityValue value property
+- Parser for Nanodrop Eight
 ### Fixed
 ### Changed
 - Simplify Moldev Softmax Pro parsing with dataclasses
