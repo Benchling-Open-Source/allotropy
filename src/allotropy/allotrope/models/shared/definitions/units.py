@@ -4,7 +4,7 @@ from typing import Optional
 
 @dataclass
 class HasUnit:
-    unit: Optional[str]
+    unit: Optional[str] = None
 
 
 @dataclass
