@@ -14,8 +14,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePicogramPerMilliliter,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
     TQuantityValue,
-    ValueEnum,
 )
 from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophotometry import (
     CalculatedDataAggregateDocument,
@@ -61,14 +62,14 @@ def _get_str(data_frame: pd.DataFrame, row: int, column: str) -> Optional[str]:
     return str(data_frame.iloc[row][column])
 
 
-def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> float | ValueEnum:
+def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
     try:
         return float(data_frame.iloc[row][column])
     except (ValueError, TypeError):
-        return ValueEnum.NaN
+        return InvalidJsonFloat.NaN
 
 
-def _get_concentration(conc: float | ValueEnum, unit: Optional[str]) -> Optional[T]:
+def _get_concentration(conc: JsonFloat, unit: Optional[str]) -> Optional[T]:
     if unit in CONCENTRATION_UNIT_TO_TQUANTITY and isinstance(conc, float):
         cls = CONCENTRATION_UNIT_TO_TQUANTITY[unit]
         return cls(value=conc)  # type: ignore[return-value]
