@@ -266,9 +266,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        ValueEnum.NaN
-                        if math.isnan(data_element.temperature)
-                        else data_element.temperature
+                        float_or_value_enum(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
