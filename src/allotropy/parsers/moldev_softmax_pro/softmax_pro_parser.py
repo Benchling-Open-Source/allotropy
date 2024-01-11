@@ -35,8 +35,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
     TQuantityValue,
-    ValueEnum,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
@@ -62,8 +63,8 @@ from allotropy.parsers.utils.values import (
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-def float_or_value_enum(value: float) -> Union[ValueEnum, float]:
-    return ValueEnum.NaN if math.isnan(value) else value
+def float_or_value_enum(value: float) -> JsonFloat:
+    return InvalidJsonFloat.NaN if math.isnan(value) else value
 
 
 class SoftmaxproParser(VendorParser):
