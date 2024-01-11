@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from typing import Any, NamedTuple, Optional
-import uuid
 
 import pandas as pd
 
@@ -35,6 +34,7 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     VICELL_BLU_SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 property_lookup = {
@@ -115,7 +115,7 @@ class ViCellBluParser(VendorParser):
                         measurement_time=self._get_date_time(
                             _get_value(sample, "Analysis date/time")
                         ),
-                        measurement_identifier=str(uuid.uuid4()),
+                        measurement_identifier=random_uuid_str(),
                         sample_document=SampleDocument(sample_identifier=_get_value(sample, "Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
