@@ -32,6 +32,11 @@ END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
 
 
+def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
+    number = try_float_or_none(value)
+    return None if number is None or math.isnan(number) else number
+
+
 def can_parse_as_float_non_nan(value: Any) -> bool:
     try:
         number = float(value)
@@ -425,8 +430,8 @@ class PlateReducedData:
         reduced_data_elements = []
         for row, *data in df_data.itertuples():
             for col, str_value in enumerate(data, start=1):
-                value = try_float_or_none(str_value)
-                if value is not None and not math.isnan(value):
+                value = try_non_nan_float_or_none(str_value)
+                if value is not None:
                     reduced_data_elements.append(
                         ReducedDataElement(
                             position=f"{num_to_chars(row)}{col}",
@@ -472,9 +477,7 @@ class TimeKineticData:
         wavelength: float,
         row: pd.Series[float],
     ) -> TimeKineticData:
-        temperature = try_float_or_none(str(row.iloc[1]))
-        if temperature is not None and math.isnan(temperature):
-            temperature = None
+        temperature = try_non_nan_float_or_none(str(row.iloc[1]))
 
         return TimeKineticData(
             temperature=temperature,
@@ -563,8 +566,8 @@ class TimeReducedData:
 
         reduced_data_elements = []
         for pos, str_value in data[2 : header.num_wells + 2].items():
-            value = try_float_or_none(str_value)
-            if value is not None and not math.isnan(value):
+            value = try_non_nan_float_or_none(str_value)
+            if value is not None:
                 reduced_data_elements.append(
                     ReducedDataElement(
                         position=str(pos),
