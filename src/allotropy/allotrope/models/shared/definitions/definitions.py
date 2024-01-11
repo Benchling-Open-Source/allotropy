@@ -71,14 +71,6 @@ class TQuantityValue:
     field_type: Optional[TClass] = None
 
 
-@dataclass
-class TNullableQuantityValue:
-    value: Optional[float]
-    unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
-
-
 # NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
 @dataclass
 class TQuantityValueWithOptionalUnit:
