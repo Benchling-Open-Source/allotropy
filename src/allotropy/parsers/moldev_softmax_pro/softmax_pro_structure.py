@@ -6,7 +6,8 @@ from dataclasses import dataclass
 from enum import Enum
 import math
 import re
-from typing import Optional, Union
+from typing import Any, Optional, Union
+import uuid
 
 import pandas as pd
 
@@ -22,11 +23,54 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int,
     try_int_or_none,
+    try_str_from_series,
+    try_str_from_series_or_none,
 )
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
+
+
+def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
+    number = try_float_or_none(value)
+    return None if number is None or math.isnan(number) else number
+
+
+def can_parse_as_float_non_nan(value: Any) -> bool:
+    try:
+        number = float(value)
+    except ValueError:
+        return False
+    return not math.isnan(number)
+
+
+def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
+    return data.drop(
+        columns=[column for column in data.columns if re.match(pattern, column)]
+    )
+
+
+def try_str_from_series_multikey_or_none(
+    data: pd.Series[Any],
+    possible_keys: set[str],
+) -> Optional[str]:
+    for key in possible_keys:
+        value = try_str_from_series_or_none(data, key)
+        if value is not None:
+            return value
+    return None
+
+
+def try_str_from_series_multikey(
+    data: pd.Series[Any],
+    possible_keys: set[str],
+    msg: Optional[str] = None,
+) -> str:
+    return assert_not_none(
+        try_str_from_series_multikey_or_none(data, possible_keys),
+        msg=msg,
+    )
 
 
 class ReadType(Enum):
@@ -55,21 +99,162 @@ class ScanPosition(Enum):
 @dataclass(frozen=True)
 class Block:
     block_type: str
-    raw_lines: list[str]
+
+
+@dataclass(frozen=True)
+class GroupDataElementEntry:
+    name: str
+    value: float
+    aggregated: bool
+
+
+@dataclass(frozen=True)
+class GroupDataElement:
+    sample: str
+    position: str
+    plate: str
+    entries: list[GroupDataElementEntry]
+
+
+@dataclass(frozen=True)
+class GroupSampleData:
+    identifier: str
+    data_elements: list[GroupDataElement]
+
+    @staticmethod
+    def create(data: pd.DataFrame) -> GroupSampleData:
+        top_row = data.iloc[0]
+        identifier = top_row["Sample"]
+        data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        column_info = [
+            (column, data[column].iloc[1:].isnull().all())
+            for column in data.columns
+            if can_parse_as_float_non_nan(top_row[column])
+        ]
+
+        return GroupSampleData(
+            identifier=identifier,
+            data_elements=[
+                GroupDataElement(
+                    sample=identifier,
+                    position=try_str_from_series_multikey(
+                        row,
+                        {"Well", "Wells"},
+                        msg="Unable to find well position in group data.",
+                    ),
+                    plate=try_str_from_series(row, "WellPlateName"),
+                    entries=[
+                        GroupDataElementEntry(
+                            name=column_name,
+                            value=(
+                                try_float(top_row[column_name], column_name)
+                                if aggregated
+                                else try_float(row[column_name], column_name)
+                            ),
+                            aggregated=aggregated,
+                        )
+                        for column_name, aggregated in column_info
+                    ],
+                )
+                for _, row in data.iterrows()
+            ],
+        )
+
+    def iter_simple_data_sources(
+        self, plate: PlateBlock, group_data_element: GroupDataElement
+    ) -> Iterator[DataElement]:
+        yield from plate.iter_data_elements(group_data_element.position)
+
+    def iter_aggregated_data_sources(
+        self, block_list: BlockList
+    ) -> Iterator[DataElement]:
+        for group_data_element in self.data_elements:
+            yield from self.iter_simple_data_sources(
+                block_list.plate_blocks[group_data_element.plate],
+                group_data_element,
+            )
+
+
+@dataclass(frozen=True)
+class GroupData:
+    name: str
+    sample_data: list[GroupSampleData]
+
+    @staticmethod
+    def create(reader: CsvReader) -> GroupData:
+        name = assert_not_none(
+            reader.pop(),
+            msg="Unable to find group block name.",
+        ).removeprefix("Group: ")
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(sep="\t", header=0),
+            msg="Unable to find group block data.",
+        ).replace(r"^\s+$", None, regex=True)
+
+        assert_not_none(
+            data.get("Sample"),
+            msg=f"Unable to find sample identifier column in group data {name}",
+        )
+
+        samples = data["Sample"].ffill()
+        return GroupData(
+            name=name,
+            sample_data=[
+                GroupSampleData.create(data.iloc[sample_entries.index])
+                for _, sample_entries in samples.groupby(samples)
+            ],
+        )
+
+
+@dataclass(frozen=True)
+class GroupColumns:
+    data: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> GroupColumns:
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(sep="\t", header=0),
+            msg="Unable to find group block columns.",
+        )
+
+        if "Formula Name" not in data:
+            error = "Unable to find formula name in group block columns."
+            raise AllotropeConversionError(error)
+
+        if "Formula" not in data:
+            error = "Unable to find formula in group block columns."
+            raise AllotropeConversionError(error)
+
+        return GroupColumns(
+            data=dict(zip(data["Formula Name"], data["Formula"])),
+        )
+
+
+@dataclass(frozen=True)
+class GroupSummaries:
+    data: list[str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> GroupSummaries:
+        data = list(reader.pop_until_empty())
+        reader.drop_empty()
+        return GroupSummaries(data)
 
 
 @dataclass(frozen=True)
 class GroupBlock(Block):
-    name: str
-    group_data: list[str]
+    group_data: GroupData
+    group_columns: GroupColumns
+    group_summaries: GroupSummaries
 
     @staticmethod
     def create(reader: CsvReader) -> GroupBlock:
         return GroupBlock(
             block_type="Group",
-            raw_lines=reader.lines,
-            name=(reader.pop() or "").removeprefix("Group: "),
-            group_data=list(reader.pop_until("Group Column")),
+            group_data=GroupData.create(reader),
+            group_columns=GroupColumns.create(reader),
+            group_summaries=GroupSummaries.create(reader),
         )
 
 
@@ -104,8 +289,21 @@ class PlateHeader:
 
 @dataclass
 class DataElement:
+    uuid: str
+    plate: str
     temperature: Optional[float]
     wavelength: float
+    position: str
+    value: float
+    sample_id: Optional[str] = None
+
+    @property
+    def sample_identifier(self) -> str:
+        return self.sample_id if self.sample_id else f"{self.plate} {self.position}"
+
+
+@dataclass(frozen=True)
+class ReducedDataElement:
     position: str
     value: float
 
@@ -113,16 +311,35 @@ class DataElement:
 @dataclass(frozen=True)
 class PlateWavelengthData:
     wavelength: float
-    data: dict[str, float]
+    data_elements: dict[str, DataElement]
 
     @staticmethod
-    def create(wavelength: float, df_data: pd.DataFrame) -> PlateWavelengthData:
+    def create(
+        plate_name: str,
+        temperature: Optional[float],
+        wavelength: float,
+        df_data: pd.DataFrame,
+    ) -> PlateWavelengthData:
+        data = {
+            f"{num_to_chars(row)}{col}": value
+            for row, *data in df_data.itertuples()
+            for col, value in enumerate(data, start=1)
+        }
         return PlateWavelengthData(
             wavelength,
-            data={
-                f"{num_to_chars(row)}{col}": value
-                for row, *data in df_data.itertuples()
-                for col, value in enumerate(data, start=1)
+            data_elements={
+                str(position): DataElement(
+                    uuid=str(uuid.uuid4()),
+                    plate=plate_name,
+                    temperature=temperature,
+                    wavelength=wavelength,
+                    position=str(position),
+                    value=try_float(
+                        value,
+                        f"value from block plate {plate_name} and wavelength {wavelength}",
+                    ),
+                )
+                for position, value in data.items()
             },
         )
 
@@ -145,19 +362,23 @@ class PlateKineticData:
         data.columns = pd.Index(columns)
 
         temperature = try_float_or_none(str(data.iloc[0, 1]))
-        if temperature is not None and math.isnan(temperature):
-            temperature = None
 
         return PlateKineticData(
             temperature=temperature,
             wavelength_data=PlateKineticData._get_wavelength_data(
-                header, data.iloc[:, 2:].astype(float)
+                header.name,
+                temperature,
+                header,
+                data.iloc[:, 2:].astype(float),
             ),
         )
 
     @staticmethod
     def _get_wavelength_data(
-        header: PlateHeader, w_data: pd.DataFrame
+        plate_name: str,
+        temperature: Optional[float],
+        header: PlateHeader,
+        w_data: pd.DataFrame,
     ) -> list[PlateWavelengthData]:
         wavelength_data = []
         for idx in range(header.num_wavelengths):
@@ -165,7 +386,12 @@ class PlateKineticData:
             start = idx * (header.num_columns + 1)
             end = start + header.num_columns
             wavelength_data.append(
-                PlateWavelengthData.create(wavelength, w_data.iloc[:, start:end])
+                PlateWavelengthData.create(
+                    plate_name,
+                    temperature,
+                    wavelength,
+                    w_data.iloc[:, start:end],
+                )
             )
         return wavelength_data
 
@@ -191,7 +417,7 @@ class PlateRawData:
 
 @dataclass(frozen=True)
 class PlateReducedData:
-    data: dict[str, float]
+    data: list[ReducedDataElement]
 
     @staticmethod
     def create(reader: CsvReader, header: PlateHeader) -> PlateReducedData:
@@ -199,19 +425,25 @@ class PlateReducedData:
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
-        df_data = raw_data.iloc[:, 2 : header.num_columns + 2].astype(float)
-        return PlateReducedData(
-            data={
-                f"{num_to_chars(row)}{col}": value
-                for row, *data in df_data.itertuples()
-                for col, value in enumerate(data, start=1)
-            }
-        )
+        df_data = raw_data.iloc[:, 2 : header.num_columns + 2]
+
+        reduced_data_elements = []
+        for row, *data in df_data.itertuples():
+            for col, str_value in enumerate(data, start=1):
+                value = try_non_nan_float_or_none(str_value)
+                if value is not None:
+                    reduced_data_elements.append(
+                        ReducedDataElement(
+                            position=f"{num_to_chars(row)}{col}",
+                            value=value,
+                        )
+                    )
+        return PlateReducedData(data=reduced_data_elements)
 
 
 @dataclass(frozen=True)
 class PlateData:
-    raw_data: Optional[PlateRawData]
+    raw_data: PlateRawData
     reduced_data: Optional[PlateReducedData]
 
     @staticmethod
@@ -220,11 +452,7 @@ class PlateData:
         header: PlateHeader,
     ) -> PlateData:
         return PlateData(
-            raw_data=(
-                None
-                if header.data_type == DataType.REDUCED.value
-                else PlateRawData.create(reader, header)
-            ),
+            raw_data=PlateRawData.create(reader, header),
             reduced_data=(
                 PlateReducedData.create(reader, header)
                 if reader.current_line_exists()
@@ -232,35 +460,41 @@ class PlateData:
             ),
         )
 
-    def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
-        raw_data = assert_not_none(
-            self.raw_data,
-            msg="Unable to find plate block raw data.",
-        )
-
-        for kinetic_data in raw_data.kinetic_data:
+    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
+        for kinetic_data in self.raw_data.kinetic_data:
             for wavelength_data in kinetic_data.wavelength_data:
-                yield DataElement(
-                    temperature=kinetic_data.temperature,
-                    wavelength=wavelength_data.wavelength,
-                    position=position,
-                    value=wavelength_data.data[position],
-                )
+                yield wavelength_data.data_elements[position]
 
 
 @dataclass(frozen=True)
 class TimeKineticData:
     temperature: Optional[float]
-    data: pd.Series[float]
+    data_elements: dict[str, DataElement]
 
     @staticmethod
-    def create(row: pd.Series[float]) -> TimeKineticData:
-        temperature = try_float_or_none(str(row.iloc[1]))
-        if temperature is not None and math.isnan(temperature):
-            temperature = None
+    def create(
+        plate_name: str,
+        wavelength: float,
+        row: pd.Series[float],
+    ) -> TimeKineticData:
+        temperature = try_non_nan_float_or_none(str(row.iloc[1]))
+
         return TimeKineticData(
             temperature=temperature,
-            data=row.iloc[2:].astype(float),
+            data_elements={
+                str(position): DataElement(
+                    uuid=str(uuid.uuid4()),
+                    plate=plate_name,
+                    temperature=temperature,
+                    wavelength=wavelength,
+                    position=str(position),
+                    value=try_float(
+                        str(value),
+                        f"value from plate block {plate_name} and wavelength {wavelength}",
+                    ),
+                )
+                for position, value in row.iloc[2:].items()
+            },
         )
 
 
@@ -272,6 +506,7 @@ class TimeWavelengthData:
     @staticmethod
     def create(
         reader: CsvReader,
+        plate_name: str,
         wavelength: float,
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
@@ -282,7 +517,10 @@ class TimeWavelengthData:
         data.columns = pd.Index(columns)
         return TimeWavelengthData(
             wavelength=wavelength,
-            kinetic_data=[TimeKineticData.create(row) for _, row in data.iterrows()],
+            kinetic_data=[
+                TimeKineticData.create(plate_name, wavelength, row)
+                for _, row in data.iterrows()
+            ],
         )
 
 
@@ -299,37 +537,49 @@ class TimeRawData:
 
         return TimeRawData(
             wavelength_data=[
-                TimeWavelengthData.create(reader, header.wavelengths[idx], columns)
-                for idx in range(header.num_wavelengths)
+                TimeWavelengthData.create(
+                    reader,
+                    header.name,
+                    wavelength,
+                    columns,
+                )
+                for wavelength in header.wavelengths
             ]
         )
 
 
 @dataclass(frozen=True)
 class TimeReducedData:
-    columns: list[str]
-    data: list[str]
+    data: list[ReducedDataElement]
 
     @staticmethod
-    def create(reader: CsvReader) -> TimeReducedData:
-        _, _, *columns = assert_not_none(
+    def create(reader: CsvReader, header: PlateHeader) -> TimeReducedData:
+        columns = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find columns for time block reduced data.",
         )
-        _, _, *data = assert_not_none(
+        data = assert_not_none(
             reader.pop_as_series(sep="\t"),
             msg="unable to find reduced data from time block.",
         )
-        return TimeReducedData(columns, data)
+        data.index = pd.Index(columns)
 
-    def iter_data(self) -> Iterator[tuple[str, float]]:
-        for pos, value in zip(self.columns, self.data):
-            yield pos, try_float(value, "time block reduced data element")
+        reduced_data_elements = []
+        for pos, str_value in data[2 : header.num_wells + 2].items():
+            value = try_non_nan_float_or_none(str_value)
+            if value is not None:
+                reduced_data_elements.append(
+                    ReducedDataElement(
+                        position=str(pos),
+                        value=value,
+                    )
+                )
+        return TimeReducedData(data=reduced_data_elements)
 
 
 @dataclass(frozen=True)
 class TimeData:
-    raw_data: Optional[TimeRawData]
+    raw_data: TimeRawData
     reduced_data: Optional[TimeReducedData]
 
     @staticmethod
@@ -338,30 +588,18 @@ class TimeData:
         header: PlateHeader,
     ) -> TimeData:
         return TimeData(
-            raw_data=(
-                None
-                if header.data_type == DataType.REDUCED.value
-                else TimeRawData.create(reader, header)
-            ),
+            raw_data=TimeRawData.create(reader, header),
             reduced_data=(
-                TimeReducedData.create(reader) if reader.current_line_exists() else None
+                TimeReducedData.create(reader, header)
+                if reader.current_line_exists()
+                else None
             ),
         )
 
-    def iter_wavelengths(self, position: str) -> Iterator[DataElement]:
-        raw_data = assert_not_none(
-            self.raw_data,
-            msg="Unable to find plate block raw data.",
-        )
-
-        for wavelength_data in raw_data.wavelength_data:
+    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
+        for wavelength_data in self.raw_data.wavelength_data:
             for kinetic_data in wavelength_data.kinetic_data:
-                yield DataElement(
-                    temperature=kinetic_data.temperature,
-                    wavelength=wavelength_data.wavelength,
-                    position=position,
-                    value=kinetic_data.data[position],
-                )
+                yield kinetic_data.data_elements[position]
 
 
 @dataclass(frozen=True)
@@ -440,6 +678,13 @@ class PlateBlock(ABC, Block):
         for row in range(self.header.num_rows):
             for col in range(1, self.header.num_columns + 1):
                 yield f"{num_to_chars(row)}{col}"
+
+    def iter_data_elements(self, position: str) -> Iterator[DataElement]:
+        yield from self.block_data.iter_data_elements(position)
+
+    def iter_reduced_data(self) -> Iterator[ReducedDataElement]:
+        if self.block_data.reduced_data:
+            yield from self.block_data.reduced_data.data
 
 
 @dataclass(frozen=True)
@@ -687,14 +932,21 @@ class AbsorbancePlateBlock(PlateBlock):
 
 @dataclass(frozen=True)
 class BlockList:
-    blocks: list[Block]
+    plate_blocks: dict[str, PlateBlock]
+    group_blocks: list[GroupBlock]
 
     @staticmethod
     def create(reader: CsvReader) -> BlockList:
-        blocks: list[Block] = []
+        plate_blocks = {}
+        group_blocks = []
+
         for sub_reader in BlockList._iter_blocks_reader(reader):
             if sub_reader.match("^Group"):
-                blocks.append(GroupBlock.create(sub_reader))
+                if "WellPlateName" in assert_not_none(
+                    sub_reader.get_line(sub_reader.current_line + 1),
+                    msg="Unable to get columns from group block",
+                ):
+                    group_blocks.append(GroupBlock.create(sub_reader))
             elif sub_reader.match("^Plate"):
                 header_series = PlateBlock.read_header(sub_reader)
                 cls = PlateBlock.get_plate_block_cls(header_series)
@@ -709,18 +961,19 @@ class BlockList:
                     error = f"unrecognized export format {header.export_format}"
                     raise AllotropeConversionError(error)
 
-                blocks.append(
-                    cls(
-                        block_type="Plate",
-                        raw_lines=sub_reader.lines,
-                        header=header,
-                        block_data=block_data,
-                    )
+                plate_blocks[header.name] = cls(
+                    block_type="Plate",
+                    header=header,
+                    block_data=block_data,
                 )
             elif not sub_reader.match("^Note"):
                 error = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
                 raise AllotropeConversionError(error)
-        return BlockList(blocks)
+
+        return BlockList(
+            plate_blocks=plate_blocks,
+            group_blocks=group_blocks,
+        )
 
     @staticmethod
     def _get_n_blocks(reader: CsvReader) -> int:
@@ -743,11 +996,17 @@ class BlockList:
 class Data:
     block_list: BlockList
 
-    def get_plate_block(self) -> list[PlateBlock]:
-        return [
-            block for block in self.block_list.blocks if isinstance(block, PlateBlock)
-        ]
-
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        return Data(block_list=BlockList.create(reader))
+        block_list = BlockList.create(reader)
+
+        for group_block in block_list.group_blocks:
+            for group_sample_data in group_block.group_data.sample_data:
+                for group_data_element in group_sample_data.data_elements:
+                    plate_block = block_list.plate_blocks[group_data_element.plate]
+                    for data_element in plate_block.iter_data_elements(
+                        group_data_element.position
+                    ):
+                        data_element.sample_id = group_data_element.sample
+
+        return Data(block_list)
