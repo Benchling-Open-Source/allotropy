@@ -1,177 +1,177 @@
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
 class HasUnit:
-    unit: Optional[str]
+    # TODO(brian): Ideally this wouldn't have a default value.
+    unit: str = ""
 
 
 @dataclass
 class Centimeter(HasUnit):
-    unit: Optional[str] = "cm"
+    unit = "cm"
 
 
 @dataclass
 class Millimeter(HasUnit):
-    unit: Optional[str] = "mm"
+    unit = "mm"
 
 
 @dataclass
 class Nanometer(HasUnit):
-    unit: Optional[str] = "nm"
+    unit = "nm"
 
 
 @dataclass
 class Micrometer(HasUnit):
-    unit: Optional[str] = "μm"
+    unit = "μm"
 
 
 @dataclass
 class Hertz(HasUnit):
-    unit: Optional[str] = "Hz"
+    unit = "Hz"
 
 
 @dataclass
 class CubicMillimeter(HasUnit):
-    unit: Optional[str] = "mm^3"
+    unit = "mm^3"
 
 
 @dataclass
 class Unitless(HasUnit):
-    unit: Optional[str] = "(unitless)"
+    unit = "(unitless)"
 
 
 @dataclass
 class SecondTime(HasUnit):
-    unit: Optional[str] = "s"
+    unit = "s"
 
 
 @dataclass
 class Percent(HasUnit):
-    unit: Optional[str] = "%"
+    unit = "%"
 
 
 @dataclass
 class Cell(HasUnit):
-    unit: Optional[str] = "cell"
+    unit = "cell"
 
 
 @dataclass
 class Microliter(HasUnit):
-    unit: Optional[str] = "μL"
+    unit = "μL"
 
 
 @dataclass
 class NumberPerMicroliter(HasUnit):
-    unit: Optional[str] = "#/μL"
+    unit = "#/μL"
 
 
 @dataclass
 class MilliSecond(HasUnit):
-    unit: Optional[str] = "ms"
+    unit = "ms"
 
 
 @dataclass
 class MillionCellsPerMilliliter(HasUnit):
-    unit: Optional[str] = "10^6 cells/mL"
+    unit = "10^6 cells/mL"
 
 
 @dataclass
 class TODO(HasUnit):
-    unit: Optional[str] = "TODO"
+    unit = "TODO"
 
 
 @dataclass
 class DegreeCelsius(HasUnit):
-    unit: Optional[str] = "degC"
+    unit = "degC"
 
 
 @dataclass
 class Number(HasUnit):
-    unit: Optional[str] = "#"
+    unit = "#"
 
 
 @dataclass
 class NanogramPerMicroliter(HasUnit):
-    unit: Optional[str] = "ng/uL"
+    unit = "ng/uL"
 
 
 @dataclass
 class MicrogramPerMicroliter(HasUnit):
-    unit: Optional[str] = "ug/uL"
+    unit = "ug/uL"
 
 
 @dataclass
 class PicogramPerMilliliter(HasUnit):
-    unit: Optional[str] = "pg/mL"
+    unit = "pg/mL"
 
 
 @dataclass
 class NanogramPerMilliliter(HasUnit):
-    unit: Optional[str] = "ng/mL"
+    unit = "ng/mL"
 
 
 @dataclass
 class MicrogramPerMilliliter(HasUnit):
-    unit: Optional[str] = "ug/mL"
+    unit = "ug/mL"
 
 
 @dataclass
 class MilligramPerMilliliter(HasUnit):
-    unit: Optional[str] = "mg/mL"
+    unit = "mg/mL"
 
 
 @dataclass
 class GramPerLiter(HasUnit):
-    unit: Optional[str] = "g/L"
+    unit = "g/L"
 
 
 @dataclass
 class UnitPerLiter(HasUnit):
-    unit: Optional[str] = "U/L"
+    unit = "U/L"
 
 
 @dataclass
 class MillimeterOfMercury(HasUnit):
-    unit: Optional[str] = "mmHg"
+    unit = "mmHg"
 
 
 @dataclass
 class OpticalDensity(HasUnit):
-    unit: Optional[str] = "OD"
+    unit = "OD"
 
 
 @dataclass
 class PH(HasUnit):
-    unit: Optional[str] = "pH"
+    unit = "pH"
 
 
 @dataclass
 class MilliOsmolesPerKilogram(HasUnit):
-    unit: Optional[str] = "mosm/kg"
+    unit = "mosm/kg"
 
 
 @dataclass
 class MillimolePerLiter(HasUnit):
-    unit: Optional[str] = "mmol/L"
+    unit = "mmol/L"
 
 
 @dataclass
 class MilliAbsorbanceUnit(HasUnit):
-    unit: Optional[str] = "mAU"
+    unit = "mAU"
 
 
 @dataclass
 class RelativeFluorescenceUnit(HasUnit):
-    unit: Optional[str] = "RFU"
+    unit = "RFU"
 
 
 @dataclass
 class RelativeLightUnit(HasUnit):
-    unit: Optional[str] = "RLU"
+    unit = "RLU"
 
 
 @dataclass
 class SquareCentimetersPerGram(HasUnit):
-    unit: Optional[str] = "cm^2/g"
+    unit = "cm^2/g"

@@ -74,19 +74,20 @@ class TNullableQuantityValue:
     field_type: Optional[TClass] = None
 
 
-# NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
+# TODO(brian): Delete in favor of TQuantityValue
 @dataclass
 class TQuantityValueWithOptionalUnit:
     value: Union[float, ValueEnum]
-    unit: Optional[TUnit]
+    unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
 
 
+# TODO(brian): Delete in favor of TNullableQuantityValue
 @dataclass
 class TNullableQuantityValueWithOptionalUnit:
     value: Optional[float]
-    unit: Optional[TUnit]
+    unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
 
