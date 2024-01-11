@@ -120,7 +120,7 @@ class ViCellXRParser(VendorParser):
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=str(uuid.uuid4()),
                         measurement_time=self._get_date_time(
-                            sample.get(DATE_HEADER[file_version])
+                            sample[DATE_HEADER[file_version]]
                         ),
                         sample_document=SampleDocument(
                             sample_identifier=sample["Sample ID"]
