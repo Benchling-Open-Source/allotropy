@@ -63,7 +63,7 @@ from allotropy.parsers.utils.values import (
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-def float_or_invalid_json_float(value: float) -> JsonFloat:
+def to_json_float(value: float) -> JsonFloat:
     return InvalidJsonFloat.NaN if math.isnan(value) else value
 
 
@@ -157,7 +157,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_invalid_json_float(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -225,7 +225,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_invalid_json_float(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -267,7 +267,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_invalid_json_float(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
