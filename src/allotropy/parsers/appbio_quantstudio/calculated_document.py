@@ -15,7 +15,6 @@ class DataSource:
 
 @dataclass
 class CalculatedDocument(Referenceable):
-    uuid: str
     name: str
     value: float
     data_sources: list[DataSource]

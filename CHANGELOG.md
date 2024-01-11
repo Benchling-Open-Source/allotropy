@@ -9,10 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add calculated data documents to Unchained Labs Lunatic adapter
 - Parser for ChemoMetic NucleoView
 - Add non numeric options for tQuantityValue value property
+- Add support for non-numeric values to ChemoMetic NucleoView
+- Increase test coverage of calculated data documents on Perkin Elmer Envision.
+- Add calculated data documents to Moldev Softmax Pro
+- Add multi-analyte-profiling BENCHLING/2024/01 schema
 - Parser for Nanodrop Eight
 ### Fixed
+- Perkin Elmer Envision: calculated data name now captures string to the left - rather than right - of the ‘=’ in the Formula cell.
+
 ### Changed
 - Simplify Moldev Softmax Pro parsing with dataclasses
+- Update plate reader schema in Moldev Softmax Pro
 ### Deprecated
 ### Removed
 ### Security
