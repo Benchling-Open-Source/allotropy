@@ -1,5 +1,5 @@
 import math
-from typing import Union
+from typing import Optional, Union
 import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
@@ -65,6 +65,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 def to_json_float(value: float) -> JsonFloat:
     return InvalidJsonFloat.NaN if math.isnan(value) else value
+
+
+def _handle_temperature(
+    temperature: Optional[float],
+) -> Optional[TQuantityValueDegreeCelsius]:
+    if temperature is None:
+        return None
+    return TQuantityValueDegreeCelsius(to_json_float(temperature))
 
 
 class SoftmaxproParser(VendorParser):
@@ -153,13 +161,7 @@ class SoftmaxproParser(VendorParser):
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
                 fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
-                compartment_temperature=(
-                    None
-                    if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(
-                        to_json_float(data_element.temperature)
-                    )
-                ),
+                compartment_temperature=_handle_temperature(data_element.temperature),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
@@ -221,13 +223,7 @@ class SoftmaxproParser(VendorParser):
             LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
                 luminescence=TRelativeLightUnit(value=data_element.value),
-                compartment_temperature=(
-                    None
-                    if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(
-                        to_json_float(data_element.temperature)
-                    )
-                ),
+                compartment_temperature=_handle_temperature(data_element.temperature),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
@@ -263,13 +259,7 @@ class SoftmaxproParser(VendorParser):
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
-                compartment_temperature=(
-                    None
-                    if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(
-                        to_json_float(data_element.temperature)
-                    )
-                ),
+                compartment_temperature=_handle_temperature(data_element.temperature),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
                     well_plate_identifier=plate_block.header.name,
