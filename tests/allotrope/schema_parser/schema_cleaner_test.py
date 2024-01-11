@@ -1111,6 +1111,54 @@ def test_combine_allof():
     })
 
 
+
+
+def test_combine_allof_all_same_value() -> None:
+    schemas = [
+        {
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/tQuantityValueSecondTime"
+                },
+                {
+                    "$ref": "#/$defs/tQuantityValueMilliliter"
+                }
+            ]
+        },
+        {
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/tQuantityValueSecondTime"
+                },
+                {
+                    "$ref": "#/$defs/tQuantityValueMilliliter"
+                }
+            ]
+        },
+        {
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/tQuantityValueSecondTime"
+                },
+                {
+                    "$ref": "#/$defs/tQuantityValueMilliliter"
+                }
+            ]
+        }
+    ]
+
+    assert SchemaCleaner()._combine_allof(schemas) == {
+        "oneOf": [
+            {
+                "$ref": "#/$defs/tQuantityValueSecondTime"
+            },
+            {
+                "$ref": "#/$defs/tQuantityValueMilliliter"
+            }
+        ]
+    }
+
+
 def test_combine_allof_key_with_matching_value():
     schema = {
         "allOf": [
@@ -1365,6 +1413,7 @@ def test_combine_allof_with_nested_anyof_with_required_keys() -> None:
     })
 
 
+# @pytest.mark.skip()
 def test_combine_allof_nested_oneof_and_anyof() -> None:
     schema = {
         "allOf": [
@@ -1606,6 +1655,7 @@ def test_combine_nested_oneof() -> None:
     })
 
 
+# @pytest.mark.skip()
 def test_deeply_nested_anyof_allof() -> None:
     schema = {
         "allOf": [
@@ -1739,7 +1789,7 @@ def test_load_model() -> None:
     model = Model()
 
 
-#@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_anyof() -> None:
     import json
     with open("tests/allotrope/schema_parser/anyof_test_schema.json") as f:
