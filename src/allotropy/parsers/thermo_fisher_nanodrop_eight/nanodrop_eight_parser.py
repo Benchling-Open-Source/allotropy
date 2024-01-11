@@ -193,7 +193,9 @@ class NanodropEightParser(VendorParser):
                 UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                     measurement_identifier=str(_get_str(data, row, "A260 uuid")),
                     sample_document=SampleDocument(
-                        sample_identifier=str(_get_str(data, row, "Sample ID")),
+                        sample_identifier=str(_get_str(data, row, "Sample ID"))
+                        if _get_str(data, row, "Sample ID")
+                        else "NA",
                         well_plate_identifier=_get_str(data, row, "Plate ID"),
                         location_identifier=_get_str(data, row, "Well"),
                     ),
@@ -229,7 +231,9 @@ class NanodropEightParser(VendorParser):
                 UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                     measurement_identifier=str(_get_str(data, row, "A280 uuid")),
                     sample_document=SampleDocument(
-                        sample_identifier=str(_get_str(data, row, "Sample ID")),
+                        sample_identifier=str(_get_str(data, row, "Sample ID"))
+                        if _get_str(data, row, "Sample ID")
+                        else "NA",
                         well_plate_identifier=_get_str(data, row, "Plate ID"),
                         location_identifier=_get_str(data, row, "Well"),
                     ),
