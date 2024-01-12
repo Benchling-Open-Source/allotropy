@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Increase test coverage of calculated data documents on Perkin Elmer Envision.
 - Add calculated data documents to Moldev Softmax Pro
 - Add multi-analyte-profiling BENCHLING/2024/01 schema
+- Add context manager to handle backups to schema generation script
 ### Fixed
 - Perkin Elmer Envision: calculated data name now captures string to the left - rather than right - of the ‘=’ in the Formula cell.
 
