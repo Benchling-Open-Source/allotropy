@@ -79,11 +79,14 @@ class TNullableQuantityValue:
     field_type: Optional[TClass] = None
 
 
+# TODO(brian): The following two classes are now identical to the precending two classes. Delete.
+
+
 # NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
 @dataclass
 class TQuantityValueWithOptionalUnit:
     value: JsonFloat
-    unit: Optional[TUnit]
+    unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
 
@@ -91,7 +94,7 @@ class TQuantityValueWithOptionalUnit:
 @dataclass
 class TNullableQuantityValueWithOptionalUnit:
     value: Optional[float]
-    unit: Optional[TUnit]
+    unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
 
