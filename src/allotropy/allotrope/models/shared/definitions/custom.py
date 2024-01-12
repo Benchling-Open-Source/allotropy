@@ -43,96 +43,96 @@ from allotropy.allotrope.models.shared.definitions.units import (
 
 
 @dataclass
-class TQuantityValueCentimeter(Centimeter, TQuantityValueWithOptionalUnit):
+class TQuantityValueCentimeter(TQuantityValueWithOptionalUnit, Centimeter):
     pass
 
 
 @dataclass
-class TQuantityValueMillimeter(Millimeter, TQuantityValueWithOptionalUnit):
+class TQuantityValueMillimeter(TQuantityValueWithOptionalUnit, Millimeter):
     pass
 
 
 @dataclass
-class TQuantityValueNanometer(Nanometer, TQuantityValueWithOptionalUnit):
+class TQuantityValueNanometer(TQuantityValueWithOptionalUnit, Nanometer):
     pass
 
 
 @dataclass
-class TQuantityValueMicrometer(Micrometer, TQuantityValueWithOptionalUnit):
+class TQuantityValueMicrometer(TQuantityValueWithOptionalUnit, Micrometer):
     pass
 
 
 @dataclass
-class TQuantityValueHertz(Hertz, TQuantityValueWithOptionalUnit):
+class TQuantityValueHertz(TQuantityValueWithOptionalUnit, Hertz):
     pass
 
 
 @dataclass
-class TQuantityValueCubicMillimeter(CubicMillimeter, TQuantityValueWithOptionalUnit):
+class TQuantityValueCubicMillimeter(TQuantityValueWithOptionalUnit, CubicMillimeter):
     pass
 
 
 @dataclass
-class TQuantityValueUnitless(Unitless, TQuantityValueWithOptionalUnit):
+class TQuantityValueUnitless(TQuantityValueWithOptionalUnit, Unitless):
     pass
 
 
 @dataclass
-class TQuantityValueSecondTime(SecondTime, TQuantityValueWithOptionalUnit):
+class TQuantityValueSecondTime(TQuantityValueWithOptionalUnit, SecondTime):
     pass
 
 
 @dataclass
-class TQuantityValuePercent(Percent, TQuantityValueWithOptionalUnit):
+class TQuantityValuePercent(TQuantityValueWithOptionalUnit, Percent):
     pass
 
 
 @dataclass
-class TQuantityValueCell(Cell, TQuantityValueWithOptionalUnit):
+class TQuantityValueCell(TQuantityValueWithOptionalUnit, Cell):
     pass
 
 
 @dataclass
-class TQuantityValueMicroliter(Microliter, TQuantityValueWithOptionalUnit):
+class TQuantityValueMicroliter(TQuantityValueWithOptionalUnit, Microliter):
     pass
 
 
 @dataclass
 class TQuantityValueNumberPerMicroliter(
-    NumberPerMicroliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, NumberPerMicroliter
 ):
     pass
 
 
 @dataclass
-class TQuantityValueMilliSecond(MilliSecond, TQuantityValueWithOptionalUnit):
+class TQuantityValueMilliSecond(TQuantityValueWithOptionalUnit, MilliSecond):
     pass
 
 
 @dataclass
 class TQuantityValueMillionCellsPerMilliliter(
-    MillionCellsPerMilliliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MillionCellsPerMilliliter
 ):
     pass
 
 
 @dataclass
-class TQuantityValueTODO(TODO, TQuantityValueWithOptionalUnit):
+class TQuantityValueTODO(TQuantityValueWithOptionalUnit, TODO):
     pass
 
 
 @dataclass
-class TQuantityValueGramPerLiter(GramPerLiter, TQuantityValueWithOptionalUnit):
+class TQuantityValueGramPerLiter(TQuantityValueWithOptionalUnit, GramPerLiter):
     pass
 
 
 @dataclass
-class TQuantityValueDegreeCelsius(DegreeCelsius, TQuantityValueWithOptionalUnit):
+class TQuantityValueDegreeCelsius(TQuantityValueWithOptionalUnit, DegreeCelsius):
     pass
 
 
 @dataclass
-class TQuantityValueNumber(Number, TQuantityValueWithOptionalUnit):
+class TQuantityValueNumber(TQuantityValueWithOptionalUnit, Number):
     pass
 
 
@@ -145,177 +145,177 @@ class TQuantityValueNanogramPerMicroliter(
 
 @dataclass
 class TQuantityValueMicrogramPerMicroliter(
-    MicrogramPerMicroliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MicrogramPerMicroliter
 ):
     pass
 
 
 @dataclass
 class TQuantityValuePicogramPerMilliliter(
-    PicogramPerMilliliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, PicogramPerMilliliter
 ):
     pass
 
 
 @dataclass
 class TQuantityValueNanogramPerMilliliter(
-    NanogramPerMilliliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, NanogramPerMilliliter
 ):
     pass
 
 
 @dataclass
 class TQuantityValueMicrogramPerMilliliter(
-    MicrogramPerMilliliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MicrogramPerMilliliter
 ):
     pass
 
 
 @dataclass
 class TQuantityValueMilligramPerMilliliter(
-    MilligramPerMilliliter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MilligramPerMilliliter
 ):
     pass
 
 
 @dataclass
-class TQuantityValueUnitPerLiter(UnitPerLiter, TQuantityValueWithOptionalUnit):
+class TQuantityValueUnitPerLiter(TQuantityValueWithOptionalUnit, UnitPerLiter):
     pass
 
 
 @dataclass
 class TQuantityValueMillimeterOfMercury(
-    MillimeterOfMercury, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MillimeterOfMercury
 ):
     pass
 
 
 @dataclass
-class TQuantityValueOpticalDensity(OpticalDensity, TQuantityValueWithOptionalUnit):
+class TQuantityValueOpticalDensity(TQuantityValueWithOptionalUnit, OpticalDensity):
     pass
 
 
 @dataclass
-class TQuantityValuePH(PH, TQuantityValueWithOptionalUnit):
+class TQuantityValuePH(TQuantityValueWithOptionalUnit, PH):
     pass
 
 
 @dataclass
 class TQuantityValueMilliOsmolesPerKilogram(
-    MilliOsmolesPerKilogram, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MilliOsmolesPerKilogram
 ):
     pass
 
 
 @dataclass
 class TQuantityValueMillimolePerLiter(
-    MillimolePerLiter, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MillimolePerLiter
 ):
     pass
 
 
 @dataclass
 class TQuantityValueMilliAbsorbanceUnit(
-    MilliAbsorbanceUnit, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, MilliAbsorbanceUnit
 ):
     pass
 
 
 @dataclass
 class TRelativeFluorescenceUnit(
-    RelativeFluorescenceUnit, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, RelativeFluorescenceUnit
 ):
     pass
 
 
 @dataclass
-class TRelativeLightUnit(RelativeLightUnit, TQuantityValueWithOptionalUnit):
+class TRelativeLightUnit(TQuantityValueWithOptionalUnit, RelativeLightUnit):
     pass
 
 
 @dataclass
 class TQuantityValueSquareCentimetersPerGram(
-    SquareCentimetersPerGram, TQuantityValueWithOptionalUnit
+    TQuantityValueWithOptionalUnit, SquareCentimetersPerGram
 ):
     pass
 
 
 @dataclass
-class TNullableQuantityValueCell(Cell, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValueCell(TNullableQuantityValueWithOptionalUnit, Cell):
     pass
 
 
 @dataclass
 class TNullableQuantityValueGramPerLiter(
-    GramPerLiter, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, GramPerLiter
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMicrometer(
-    Micrometer, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, Micrometer
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMilliOsmolesPerKilogram(
-    MilliOsmolesPerKilogram, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, MilliOsmolesPerKilogram
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMillimeterOfMercury(
-    MillimeterOfMercury, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, MillimeterOfMercury
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMillimolePerLiter(
-    MillimolePerLiter, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, MillimolePerLiter
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMillionCellsPerMilliliter(
-    MillionCellsPerMilliliter, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, MillionCellsPerMilliliter
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueOpticalDensity(
-    OpticalDensity, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, OpticalDensity
 ):
     pass
 
 
 @dataclass
-class TNullableQuantityValuePH(PH, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValuePH(TNullableQuantityValueWithOptionalUnit, PH):
     pass
 
 
 @dataclass
-class TNullableQuantityValuePercent(Percent, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValuePercent(TNullableQuantityValueWithOptionalUnit, Percent):
     pass
 
 
 @dataclass
-class TNullableQuantityValueTODO(TODO, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValueTODO(TNullableQuantityValueWithOptionalUnit, TODO):
     pass
 
 
 @dataclass
 class TNullableQuantityValueUnitPerLiter(
-    UnitPerLiter, TNullableQuantityValueWithOptionalUnit
+    TNullableQuantityValueWithOptionalUnit, UnitPerLiter
 ):
     pass
 
 
 @dataclass
-class TNullableQuantityValueUnitless(Unitless, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValueUnitless(TNullableQuantityValueWithOptionalUnit, Unitless):
     pass
