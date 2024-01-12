@@ -71,7 +71,9 @@ def lint_file(model_path: str) -> None:
     )
 
 
-def _get_schema_and_model_paths(root_dir: str, rel_schema_path: Path) -> tuple[Path, Path]:
+def _get_schema_and_model_paths(
+    root_dir: Path, rel_schema_path: Path
+) -> tuple[Path, Path]:
     schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
     model_file = re.sub(
         "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
@@ -80,11 +82,18 @@ def _get_schema_and_model_paths(root_dir: str, rel_schema_path: Path) -> tuple[P
     return schema_path, model_path
 
 
-def _generate_schema(model_path: str, schema_path: str) -> bool:
+def _generate_schema(
+    model_path: Path, schema_path: Path, rel_schema_path: Path
+) -> None:
+    # get_schema adds extra defs from shared definitions to the schema.
+    schema = get_schema(str(rel_schema_path))
+    with open(schema_path, "w") as f:
+        json.dump(schema, f)
+
     # Generate models
     generate(
-        input_=Path(schema_path),
-        output=Path(model_path),
+        input_=schema_path,
+        output=model_path,
         output_model_type=DataModelType.DataclassesDataclass,
         input_file_type=InputFileType.JsonSchema,
         # Specify base_class as empty when using dataclass
@@ -93,17 +102,21 @@ def _generate_schema(model_path: str, schema_path: str) -> bool:
         use_union_operator=False,
     )
     # Import classes from shared files, remove unused classes, format.
-    modify_file(model_path, schema_path)
-    lint_file(model_path)
+    modify_file(str(model_path), str(schema_path))
+    lint_file(str(model_path))
 
 
-def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_regex: Optional[str] = None) -> list[str]:
+def generate_schemas(
+    root_dir: Path,
+    *,
+    dry_run: Optional[bool] = False,
+    schema_regex: Optional[str] = None,
+) -> list[str]:
     """Generate schemas from JSON schema files.
 
     :root_dir: The root directory of the project.
     :dry_run: If true, does not save changes to any models, but still returns the list of models that would change.
     :schema_regex: If set, filters schemas to generate using regex.
-
     :return: A list of model files that were changed.
     """
     schema_cleaner = SchemaCleaner()

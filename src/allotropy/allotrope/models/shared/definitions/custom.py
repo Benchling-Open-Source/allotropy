@@ -2,8 +2,8 @@
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    TNullableQuantityValueWithOptionalUnit,
-    TQuantityValueWithOptionalUnit,
+    TNullableQuantityValue,
+    TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
     Cell,
@@ -101,7 +101,7 @@ class TNullableQuantityValueCountsTimesSecond(
 
 
 @dataclass
-class TQuantityValueCubicMillimeter(CubicMillimeter, TQuantityValueWithOptionalUnit):
+class TQuantityValueCubicMillimeter(CubicMillimeter, TQuantityValue):
     pass
 
 
@@ -161,9 +161,7 @@ class TNullableQuantityValueMicrogramPerMicroliter(
 
 
 @dataclass
-class TQuantityValueMicrogramPerMilliliter(
-    MicrogramPerMilliliter, TQuantityValueWithOptionalUnit
-):
+class TQuantityValueMicrogramPerMilliliter(MicrogramPerMilliliter, TQuantityValue):
     pass
 
 
@@ -199,9 +197,7 @@ class TNullableQuantityValueMicrometer(
 
 
 @dataclass
-class TQuantityValueMilliAbsorbanceUnit(
-    MilliAbsorbanceUnit, TQuantityValueWithOptionalUnit
-):
+class TQuantityValueMilliAbsorbanceUnit(MilliAbsorbanceUnit, TQuantityValue):
     pass
 
 
@@ -249,7 +245,7 @@ class TQuantityValueMilliOsmolesPerKilogram(
 
 @dataclass
 class TNullableQuantityValueMilliOsmolesPerKilogram(
-    MilliOsmolesPerKilogram, TNullableQuantityValueWithOptionalUnit
+    MilliOsmolesPerKilogram, TNullableQuantityValue
 ):
     pass
 
@@ -313,7 +309,7 @@ class TQuantityValueMillimeterOfMercury(
 
 @dataclass
 class TNullableQuantityValueMillimeterOfMercury(
-    MillimeterOfMercury, TNullableQuantityValueWithOptionalUnit
+    MillimeterOfMercury, TNullableQuantityValue
 ):
     pass
 
@@ -327,7 +323,7 @@ class TQuantityValueMillimolePerLiter(
 
 @dataclass
 class TNullableQuantityValueMillimolePerLiter(
-    MillimolePerLiter, TNullableQuantityValueWithOptionalUnit
+    MillimolePerLiter, TNullableQuantityValue
 ):
     pass
 
@@ -341,7 +337,7 @@ class TQuantityValueMillionCellsPerMilliliter(
 
 @dataclass
 class TNullableQuantityValueMillionCellsPerMilliliter(
-    MillionCellsPerMilliliter, TNullableQuantityValueWithOptionalUnit
+    MillionCellsPerMilliliter, TNullableQuantityValue
 ):
     pass
 
