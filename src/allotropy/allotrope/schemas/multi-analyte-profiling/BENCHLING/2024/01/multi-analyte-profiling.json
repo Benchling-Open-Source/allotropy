@@ -595,7 +595,7 @@
                                       "fluorescence": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tRelativeFluorescenceUnit"
+                                        "$ref": "#/$custom/tQuantityValueRelativeFluorescenceUnit"
                                       }
                                     }
                                   }

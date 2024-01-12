@@ -309,7 +309,7 @@
             }
         ]
     },
-    "tRelativeFluorescenceUnit": {
+    "tQuantityValueRelativeFluorescenceUnit": {
         "allOf": [
             {
                 "$ref": "#/$defs/RelativeFluorescenceUnit"
@@ -319,7 +319,7 @@
             }
         ]
     },
-    "tRelativeLightUnit": {
+    "tQuantityValueRelativeLightUnit": {
         "allOf": [
             {
                 "$ref": "#/$defs/RelativeLightUnit"
