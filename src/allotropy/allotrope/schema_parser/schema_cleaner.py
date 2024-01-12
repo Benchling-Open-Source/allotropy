@@ -12,6 +12,36 @@ from allotropy.allotrope.schemas import (
 )
 
 
+def is_array_schema(schema: dict[str, Any]) -> bool:
+    return isinstance(schema, dict) and "items" in schema
+
+
+def is_direct_object_schema(schema: dict[str, Any]) -> bool:
+    return isinstance(schema, dict) and any(key in schema for key in ["properties", "required"])
+
+
+def is_composed_object_schema(schema: dict[str, Any]) -> bool:
+    return isinstance(schema, dict) and any(key in schema for key in ["anyOf", "oneOf", "allOf"])
+
+
+def is_object_schema(schema: dict[str, Any]) -> bool:
+    return is_direct_object_schema(schema) or is_composed_object_schema(schema)
+
+
+def is_class_schema(schema: dict[str, Any]) -> bool:
+    return is_object_schema(schema) or is_array_schema(schema)
+
+
+def is_ref_schema(schema: dict[str, Any]) -> bool:
+    return isinstance(schema, dict) and "$ref" in schema
+
+
+def is_ref_schema_array(schema: dict[str, Any]) -> bool:
+    return is_array_schema(schema) and is_ref_schema(schema["items"])
+
+
+
+
 class SchemaCleaner:
     def __init__(self):
         self.unit_to_name: dict[str, str] = {}
@@ -35,6 +65,21 @@ class SchemaCleaner:
     def _is_unit_name_ref(self, ref: str) -> Optional[str]:
         return ref.split("/")[-1] in self.unit_to_name.values()
 
+    def _is_quantity_value(self, values: list[dict[str, Any]]) -> bool:
+        # Check if this schema is a special case of allOf: [tQuantityValue, unit] and if so replace.
+        if len(values) != 2:
+            return False
+        quantity_value_found = False
+        unit_found = False
+        for value in values:
+            if not is_ref_schema(value):
+                return False
+            if value["$ref"].endswith("$defs/tQuantityValue"):
+                quantity_value_found = True
+            if self._is_unit_name_ref(value["$ref"]):
+                unit_found = True
+        return quantity_value_found and unit_found
+
     def _add_unit(self, unit: str, unit_iri: str) -> None:
         self.unit_to_name[unit] = unit_name_from_iri(unit_iri)
         self.unit_to_iri[unit] = unit_iri
@@ -45,27 +90,6 @@ class SchemaCleaner:
                 unit=unit,
                 unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
             )
-
-    def _is_array_schema(self, schema: dict[str, Any]) -> bool:
-        return isinstance(schema, dict) and "items" in schema
-
-    def _is_direct_object_schema(self, schema: dict[str, Any]) -> bool:
-        return isinstance(schema, dict) and any(key in schema for key in ["properties", "required"])
-
-    def _is_composed_object_schema(self, schema: dict[str, Any]) -> bool:
-        return isinstance(schema, dict) and any(key in schema for key in ["anyOf", "oneOf", "allOf"])
-
-    def _is_object_schema(self, schema: dict[str, Any]) -> bool:
-        return self._is_direct_object_schema(schema) or self._is_composed_object_schema(schema)
-
-    def _is_class_schema(self, schema: dict[str, Any]) -> bool:
-        return self._is_object_schema(schema) or self._is_array_schema(schema)
-
-    def _is_ref_schema(self, schema: dict[str, Any]) -> bool:
-        return isinstance(schema, dict) and "$ref" in schema
-
-    def _is_ref_schema_array(self, schema: dict[str, Any]) -> bool:
-        return self._is_array_schema(schema) and self._is_ref_schema(schema["items"])
 
     def _create_object_schema(self, properties: dict[str, Any], required: list[str]):
         schema = {"properties": properties}
@@ -78,11 +102,11 @@ class SchemaCleaner:
 
     def _try_combine_object_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
         # Combines object schemas, array schemas ARE NOT ALLWOED
-        if any(self._is_array_schema(schema) for schema in schemas):
+        if any(is_array_schema(schema) for schema in schemas):
             msg = "Unexpected array schema in _try_combine_object_schemas"
             raise AssertionError(msg)
 
-        if any(self._is_composed_object_schema(schema) for schema in schemas):
+        if any(is_composed_object_schema(schema) for schema in schemas):
             msg = "Unexpected composed object schema in _try_combine_object_schemas"
             raise AssertionError(msg)
 
@@ -95,11 +119,11 @@ class SchemaCleaner:
         for key, values in dict(all_values).items():
             if len(values) == 1:
                 combined_props[key] = values[0]
-            elif all(self._is_class_schema(value) for value in values):
+            elif all(is_class_schema(value) for value in values):
                 combined_props[key] = self._combine_allof(values)
             elif self._all_values_equal(values):
                 combined_props[key] = values[0]
-            elif any(self._is_ref_schema(value) or self._is_ref_schema_array(value) for value in values):
+            elif any(is_ref_schema(value) or is_ref_schema_array(value) for value in values):
                 combined_props[key] = self._combine_allof(self._dereference_values(values))
             else:
                 msg = f"Error combining schemas, conflicting values for key '{key}': {[f'{value}' for value in values]}"
@@ -116,8 +140,8 @@ class SchemaCleaner:
         if any("anyOf" in schema for schema in schemas):
             return {"anyOf": [self._combine_allof(schema["allOf"]) for schema in self._invert_allof(schemas, "anyOf")["anyOf"]]}
 
-        if any(self._is_array_schema(schema) for schema in schemas):
-            if not all(self._is_array_schema(schema) for schema in schemas):
+        if any(is_array_schema(schema) for schema in schemas):
+            if not all(is_array_schema(schema) for schema in schemas):
                 msg = f"Could not combine array and object schemas: {schemas}"
                 raise AssertionError(msg)
             return {"items": self._try_combine_schemas([schema["items"] for schema in schemas])}
@@ -125,13 +149,13 @@ class SchemaCleaner:
         return self._try_combine_object_schemas(schemas)
 
     def _get_required(self, schema: dict[str, Any]) -> list[str]:
-        if self._is_array_schema(schema):
+        if is_array_schema(schema):
             return schema["items"].get("required", [])
         return schema.get("required", [])
 
     def _flatten_schema(self, value: dict[str, Any]) -> dict[str, Any]:
         # Flattens a composed schema into a single list of schemas and combines them.
-        if not self._is_composed_object_schema(value):
+        if not is_composed_object_schema(value):
             return value
 
         value = copy.deepcopy(value)
@@ -144,7 +168,7 @@ class SchemaCleaner:
                 raise AssertionError(msg)
             allof_values.append(value.pop("oneOf")[0])
 
-        if self._is_class_schema(value):
+        if is_class_schema(value):
             allof_values.append(value)
 
         if len(allof_values) == 1 and "allOf" not in allof_values[0]:
@@ -197,14 +221,14 @@ class SchemaCleaner:
 
     def _combine_anyof(self, values: list[Any]) -> dict[str, Any]:
         # values = self._clean_value(values)
-        if all(self._is_class_schema(value) for value in values):
+        if all(is_class_schema(value) for value in values):
             values = self._combine_anyof_schemas(values)
 
         return {"anyOf": values} if len(values) > 1 else values[0]
 
     def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
         result = copy.deepcopy(value)
-        if self._is_ref_schema(value):
+        if is_ref_schema(value):
             if self._is_unit_name_ref(value["$ref"]) or "QuantityValue" in value["$ref"]:
                 return result
             # NOTE: assumes ref is cleaned.
@@ -230,7 +254,7 @@ class SchemaCleaner:
     def _required_anywhere(self, value: Any) -> bool:
         # Returns True is "required" key is found anywhere in a value recursively.
         # Used to check if there are any reqiured keys in a schema to determine if it should be combined.
-        if self._is_ref_schema(value):
+        if is_ref_schema(value):
             if self._is_unit_name_ref(value["$ref"]) or "QuantityValue" in value["$ref"]:
                 return False
             return self._required_anywhere(self._dereference_value(value))
@@ -252,8 +276,8 @@ class SchemaCleaner:
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
     def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
-        if not all(self._is_class_schema(schema) for schema in schemas):
-            if any(self._is_class_schema(schema) for schema in schemas):
+        if not all(is_class_schema(schema) for schema in schemas):
+            if any(is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
                 raise AssertionError(msg)
 
@@ -273,8 +297,8 @@ class SchemaCleaner:
         if self._all_values_equal(values):
             return values[0]
 
-        if all(self._is_ref_schema(schema) for schema in values) and all("QuantityValue" in schema["$ref"] for schema in values):
-            unique = {schema["$ref"].split("/")[-1] for schema in values} - {"tQuantityValue", "tNullableQuantityValue"}
+        if all(is_ref_schema(schema) for schema in values) and all("QuantityValue" in schema["$ref"] for schema in values):
+            unique = {schema["$ref"].split("/")[-1] for schema in values} - {"tQuantityValue"}
             if len(unique) == 1:
                 return {"$ref": f"#/$defs/{next(iter(unique))}"}
             msg = f"Unable to combine multiple different tQuantityValue references: {values}"
@@ -344,21 +368,6 @@ class SchemaCleaner:
 
         return cleaned_ref
 
-    def _is_quantity_value(self, values: list[dict[str, Any]]) -> bool:
-        # Check if this schema is a special case of allOf: [tQuantityValue, unit] and if so replace.
-        if len(values) != 2:
-            return False
-        quantity_value_found = False
-        unit_found = False
-        for value in values:
-            if not self._is_ref_schema(value):
-                return False
-            if value["$ref"].endswith("$defs/tQuantityValue"):
-                quantity_value_found = True
-            if self._is_unit_name_ref(value["$ref"]):
-                unit_found = True
-        return quantity_value_found and unit_found
-
     def _fix_quantity_value_reference(self, values: list[dict[str, Any]]) -> dict[str, Any]:
         for value in values:
             if value["$ref"].endswith("$defs/tQuantityValue"):
@@ -383,7 +392,7 @@ class SchemaCleaner:
         # If a schema is has properties on it and anyOf/oneOf/allOf composed components, it is essentially
         # an allOf with the parent schema and the rest, combine this way.
         schema = copy.deepcopy(schema)
-        if self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
+        if is_direct_object_schema(schema) and is_composed_object_schema(schema):
             allof_values = [
                 self._create_object_schema(schema.pop("properties", {}), schema.pop("required", [])),
                 *schema.pop("allOf", [])
@@ -410,8 +419,6 @@ class SchemaCleaner:
             elif key == "anyOf":
                 clean_value = self._clean_value(value)
                 cleaned |= self._combine_anyof(clean_value)
-            elif self._is_class_schema(value):
-                cleaned[key] = self._clean_schema(value)
             else:
                 cleaned[key] = self._clean_value(value)
 
@@ -499,8 +506,7 @@ class SchemaCleaner:
         return self._clean_schema(cleaned)
 
     def clean_file(self, schema_path: str) -> None:
-        schema = get_schema(schema_path)
+        schema = self.clean(get_schema(schema_path))
 
-        schema = self.clean(schema)
         with open(schema_path, "w") as f:
             json.dump(schema, f, indent=2)

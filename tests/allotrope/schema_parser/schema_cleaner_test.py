@@ -7,7 +7,7 @@ import pytest
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 
 
-def validate_cleaned_schema(schema: dict[str, Any], expected: dict[str, Any], *, test_defs: Optional[bool] = False):
+def validate_cleaned_schema(schema: dict[str, Any], expected: dict[str, Any], *, test_defs: Optional[bool] = False) -> SchemaCleaner:
     # Add $defs/<core schema>/$defs/tQuantityValue as it is used for many tests.
     if "$defs" not in schema:
         schema["$defs"] = {}
@@ -42,7 +42,8 @@ def validate_cleaned_schema(schema: dict[str, Any], expected: dict[str, Any], *,
             "unit"
         ]
     }
-    actual = SchemaCleaner().clean(schema)
+    schema_cleaner = SchemaCleaner()
+    actual = schema_cleaner.clean(schema)
 
     if not test_defs:
         actual.pop("$defs", None)
@@ -56,6 +57,8 @@ def validate_cleaned_schema(schema: dict[str, Any], expected: dict[str, Any], *,
         expected,
         actual,
     )
+
+    return schema_cleaner
 
 
 def test_clean_http_refs():
@@ -144,11 +147,12 @@ def test_add_missing_unit() -> None:
             }
         }
     }
-    validate_cleaned_schema(schema, {
+    schema_cleaner = validate_cleaned_schema(schema, {
         "properties": {
             "$ref": "#/$defs/FakeUnit"
         },
     })
+    assert schema_cleaner.get_referenced_units() == {"fake-unit": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"}
 
 
 def test_fix_quantity_value_reference_add_missing_unit() -> None:
