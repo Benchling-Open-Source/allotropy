@@ -85,7 +85,7 @@ def generate_schemas(
     os.chdir(os.path.join(root_dir))
     models_changed = []
     for rel_schema_path in schema_paths:
-        if str(rel_schema_path).startswith("shared"):
+        if rel_schema_path.parts[0] == "shared":
             continue
         if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
             continue
