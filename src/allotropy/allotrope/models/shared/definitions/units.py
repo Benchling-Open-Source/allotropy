@@ -39,6 +39,7 @@ class CubicMillimeter(HasUnit):
     unit: Optional[str] = "mm^3"
 
 
+@dataclass
 class Unitless(HasUnit):
     unit: Optional[str] = UNITLESS
 
