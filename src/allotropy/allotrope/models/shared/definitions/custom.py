@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    TNullableQuantityValueWithOptionalUnit,
+    TNullableQuantityValue,
     TQuantityValueWithOptionalUnit,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
@@ -241,81 +241,73 @@ class TQuantityValueSquareCentimetersPerGram(
 
 
 @dataclass
-class TNullableQuantityValueCell(Cell, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValueCell(Cell, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValueGramPerLiter(
-    GramPerLiter, TNullableQuantityValueWithOptionalUnit
-):
+class TNullableQuantityValueGramPerLiter(GramPerLiter, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValueMicrometer(
-    Micrometer, TNullableQuantityValueWithOptionalUnit
-):
+class TNullableQuantityValueMicrometer(Micrometer, TNullableQuantityValue):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMilliOsmolesPerKilogram(
-    MilliOsmolesPerKilogram, TNullableQuantityValueWithOptionalUnit
+    MilliOsmolesPerKilogram, TNullableQuantityValue
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMillimeterOfMercury(
-    MillimeterOfMercury, TNullableQuantityValueWithOptionalUnit
+    MillimeterOfMercury, TNullableQuantityValue
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMillimolePerLiter(
-    MillimolePerLiter, TNullableQuantityValueWithOptionalUnit
+    MillimolePerLiter, TNullableQuantityValue
 ):
     pass
 
 
 @dataclass
 class TNullableQuantityValueMillionCellsPerMilliliter(
-    MillionCellsPerMilliliter, TNullableQuantityValueWithOptionalUnit
+    MillionCellsPerMilliliter, TNullableQuantityValue
 ):
     pass
 
 
 @dataclass
-class TNullableQuantityValueOpticalDensity(
-    OpticalDensity, TNullableQuantityValueWithOptionalUnit
-):
+class TNullableQuantityValueOpticalDensity(OpticalDensity, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValuePH(PH, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValuePH(PH, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValuePercent(Percent, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValuePercent(Percent, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValueTODO(TODO, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValueTODO(TODO, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValueUnitPerLiter(
-    UnitPerLiter, TNullableQuantityValueWithOptionalUnit
-):
+class TNullableQuantityValueUnitPerLiter(UnitPerLiter, TNullableQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValueUnitless(Unitless, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValueUnitless(Unitless, TNullableQuantityValue):
     pass

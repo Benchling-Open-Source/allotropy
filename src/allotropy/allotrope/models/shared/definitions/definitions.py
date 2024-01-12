@@ -91,14 +91,6 @@ class TQuantityValueWithOptionalUnit:
     field_type: Optional[TClass] = None
 
 
-@dataclass
-class TNullableQuantityValueWithOptionalUnit:
-    value: Optional[float]
-    unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
-
-
 class FieldComponentDatatype(Enum):
     double = "double"
     float = "float"  # noqa: A003
