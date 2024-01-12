@@ -349,8 +349,6 @@ def get_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -375,8 +373,6 @@ def get_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -553,8 +549,6 @@ def get_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -824,8 +818,6 @@ def get_model2() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=384,
-                            unit="#",
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -850,8 +842,6 @@ def get_model2() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
