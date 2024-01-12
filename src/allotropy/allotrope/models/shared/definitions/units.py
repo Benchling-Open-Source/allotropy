@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
+UNITLESS = "(unitless)"
+
 
 @dataclass
 class Centimeter:
@@ -34,7 +36,7 @@ class CubicMillimeter:
 
 @dataclass
 class Unitless:
-    unit: Optional[str] = "(unitless)"
+    unit: Optional[str] = UNITLESS
 
 
 @dataclass
