@@ -83,13 +83,8 @@ def _get_schema_and_model_paths(
 
 
 def _generate_schema(
-    model_path: Path, schema_path: Path, rel_schema_path: Path
+    model_path: Path, schema_path: Path
 ) -> None:
-    # get_schema adds extra defs from shared definitions to the schema.
-    schema = get_schema(str(rel_schema_path))
-    with open(schema_path, "w") as f:
-        json.dump(schema, f)
-
     # Generate models
     generate(
         input_=schema_path,

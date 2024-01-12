@@ -498,7 +498,7 @@ class SchemaCleaner:
         # If a schema is has properties on it and anyOf/oneOf/allOf composed components, it is essentially
         # an allOf with the parent schema and the rest, combine this way.
         schema = copy.deepcopy(schema)
-        if self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
+        if not self.cleaning_defs and self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
             allof_values = [
                 self._create_object_schema(schema.pop("properties", {}), schema.pop("required", [])),
                 *schema.pop("allOf", [])
@@ -517,17 +517,20 @@ class SchemaCleaner:
                 cleaned[key] = value
                 continue
 
-            #self.print(f"PROCESSING {key}")
-
             if key == "allOf":
                 clean_value = self._clean_value(value)
-                cleaned |= self._combine_allof(clean_value)
+                if self.cleaning_defs:
+                    cleaned[key] = clean_value
+                else:
+                    cleaned |= self._combine_allof(clean_value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
             elif key == "anyOf":
                 clean_value = self._clean_value(value)
-                ret = self._combine_anyof(clean_value)
-                cleaned |= ret
+                if self.cleaning_defs:
+                    cleaned[key] = clean_value
+                else:
+                    cleaned |= self._combine_anyof(clean_value)
             elif self._is_class_schema(value):
                 cleaned[key] = self._clean_schema(value)
             else:
@@ -537,7 +540,7 @@ class SchemaCleaner:
         return {key: value for key, value in cleaned.items() if value}
 
     def _should_skip_key(self, key: str) -> bool:
-        return key in ("if", "then", "$comment", "prefixItems", "minItems", "maxItems", "contains")
+        return key in ("if", "then", "$comment", "prefixItems")
 
     def clean(self, schema: dict[str, Any]) -> dict[str, Any]:
         # Call clean defs first, because we store some metadata about overriden definitions that is used in

@@ -17,7 +17,14 @@ def validate_cleaned_schema(schema: dict[str, Any], expected: dict[str, Any], *,
         "type": "object",
         "properties": {
             "value": {
-                "type": "number"
+                "oneOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "enum": ["NaN", "+Infinity", "-Infinity"]
+                    }
+                ]
             },
             "unit": {
                 "$ref": "#/$defs/tUnit"
@@ -819,7 +826,8 @@ def test_combine_anyof_with_parent_object():
                     }
                 }
             ]
-        }
+        },
+        "minItems": 1,
     })
 
 
