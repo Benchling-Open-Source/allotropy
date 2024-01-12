@@ -540,7 +540,7 @@ class SchemaCleaner:
         return {key: value for key, value in cleaned.items() if value}
 
     def _should_skip_key(self, key: str) -> bool:
-        return key in ("if", "then", "$comment", "prefixItems")
+        return key in ("if", "then", "$comment", "prefixItems", "minItems", "maxItems", "contains")
 
     def clean(self, schema: dict[str, Any]) -> dict[str, Any]:
         # Call clean defs first, because we store some metadata about overriden definitions that is used in
