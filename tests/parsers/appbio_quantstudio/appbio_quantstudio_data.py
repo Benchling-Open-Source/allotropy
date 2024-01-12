@@ -2570,9 +2570,6 @@ def get_rel_std_curve_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -2597,9 +2594,6 @@ def get_rel_std_curve_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -2731,9 +2725,6 @@ def get_rel_std_curve_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -2758,9 +2749,6 @@ def get_rel_std_curve_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -3215,9 +3203,6 @@ def get_broken_calc_doc_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -3242,9 +3227,6 @@ def get_broken_calc_doc_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
