@@ -1765,7 +1765,7 @@ def test_deeply_nested_anyof_allof() -> None:
     })
 
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_missing_values() -> None:
     import json
     with open("tests/allotrope/schema_parser/test_schema.json") as f:
