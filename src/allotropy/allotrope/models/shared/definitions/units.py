@@ -2,6 +2,53 @@
 from dataclasses import dataclass
 from typing import Optional
 
+UNITLESS = "(unitless)"
+
+
+@dataclass
+class Centimeter:
+    unit: Optional[str] = "cm"
+
+
+@dataclass
+class Millimeter:
+    unit: Optional[str] = "mm"
+
+
+@dataclass
+class Nanometer:
+    unit: Optional[str] = "nm"
+
+
+@dataclass
+class Micrometer:
+    unit: Optional[str] = "μm"
+
+
+@dataclass
+class Hertz:
+    unit: Optional[str] = "Hz"
+
+
+@dataclass
+class CubicMillimeter:
+    unit: Optional[str] = "mm^3"
+
+
+@dataclass
+class Unitless:
+    unit: Optional[str] = UNITLESS
+
+
+@dataclass
+class SecondTime:
+    unit: Optional[str] = "s"
+
+
+@dataclass
+class Percent:
+    unit: Optional[str] = "%"
+
 
 @dataclass
 class Cell:
@@ -24,11 +71,6 @@ class CountsTimesSecond:
 
 
 @dataclass
-class CubicMillimeter:
-    unit: Optional[str] = "mm^3"
-
-
-@dataclass
 class DegreeCelsius:
     unit: Optional[str] = "degC"
 
@@ -36,11 +78,6 @@ class DegreeCelsius:
 @dataclass
 class GramPerLiter:
     unit: Optional[str] = "g/L"
-
-
-@dataclass
-class Hertz:
-    unit: Optional[str] = "Hz"
 
 
 @dataclass
@@ -56,11 +93,6 @@ class MicrogramPerMilliliter:
 @dataclass
 class Microliter:
     unit: Optional[str] = "μL"
-
-
-@dataclass
-class Micrometer:
-    unit: Optional[str] = "µm"
 
 
 @dataclass
@@ -96,11 +128,6 @@ class MilligramPerMilliliter:
 @dataclass
 class Milliliter:
     unit: Optional[str] = "mL"
-
-
-@dataclass
-class Millimeter:
-    unit: Optional[str] = "mm"
 
 
 @dataclass
@@ -149,11 +176,6 @@ class NanogramPerMilliliter:
 
 
 @dataclass
-class Nanometer:
-    unit: Optional[str] = "nm"
-
-
-@dataclass
 class Number:
     unit: Optional[str] = "#"
 
@@ -172,10 +194,6 @@ class OpticalDensity:
 class PH:
     unit: Optional[str] = "pH"
 
-
-@dataclass
-class Percent:
-    unit: Optional[str] = "%"
 
 
 @dataclass
@@ -204,11 +222,6 @@ class RelativeLightUnit:
 
 
 @dataclass
-class SecondTime:
-    unit: Optional[str] = "s"
-
-
-@dataclass
 class SquareCentimetersPerGram:
     unit: Optional[str] = "cm^2/g"
 
@@ -221,8 +234,3 @@ class TODO:
 @dataclass
 class UnitPerLiter:
     unit: Optional[str] = "U/L"
-
-
-@dataclass
-class Unitless:
-    unit: Optional[str] = "(unitless)"

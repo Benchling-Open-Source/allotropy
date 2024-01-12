@@ -118,7 +118,6 @@ class Header:
 
 @dataclass
 class WellItem(Referenceable):
-    uuid: str
     identifier: int
     target_dna_description: str
     sample_identifier: str

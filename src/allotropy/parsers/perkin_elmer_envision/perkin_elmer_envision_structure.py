@@ -100,6 +100,10 @@ class CalculatedPlateInfo(PlateInfo):
             "Formula",
             msg="Unable to find expected formula for calculated results section.",
         )
+        name = assert_not_none(
+            search(r"^([^=]*)=", formula),
+            msg="Unable to find expected formula name for calculated results section.",
+        ).group(1)
 
         return CalculatedPlateInfo(
             number=plate_number,
@@ -111,10 +115,7 @@ class CalculatedPlateInfo(PlateInfo):
                 "Chamber temperature at start",
             ),
             formula=formula,
-            name=assert_not_none(
-                search(r"=\s*(.*)", formula),
-                msg="Unable to find expected formula description for calculated results section.",
-            ).group(1),
+            name=name.strip(),
         )
 
 

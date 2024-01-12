@@ -52,9 +52,20 @@ class TStatisticDatumRole(Enum):
     minimum_value_role = "minimum value role"
 
 
+class InvalidJsonFloat(Enum):
+    """Enum to represent valid float values that are invalid in JSON."""
+
+    NaN = "NaN"
+    field_Infinity = "+Infinity"
+    field_Infinity_1 = "-Infinity"
+
+
+JsonFloat = Union[float, InvalidJsonFloat]
+
+
 @dataclass
 class TQuantityValue:
-    value: float
+    value: JsonFloat
     unit: TUnit
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
@@ -71,7 +82,7 @@ class TNullableQuantityValue:
 # NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
 @dataclass
 class TQuantityValueWithOptionalUnit:
-    value: float
+    value: JsonFloat
     unit: Optional[TUnit]
     has_statistic_datum_role: Optional[TStatisticDatumRole] = None
     field_type: Optional[TClass] = None
