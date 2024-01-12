@@ -58,6 +58,18 @@ class DiagnosticTraceAggregateDocument:
     diagnostic_trace_document: Optional[list[DiagnosticTraceDocumentItem]] = None
 
 
+@dataclass
+class DataSourceDocumentItem:
+    data_source_identifier: TStringValue
+    data_source_feature: TStringValue
+    field_index: Optional[int] = None
+
+
+@dataclass
+class DataSourceAggregateDocument:
+    data_source_document: list[DataSourceDocumentItem]
+
+
 class StatisticalFeature(Enum):
     inner_diameter = "inner diameter"
     plate_heater_temperature = "plate heater temperature"
@@ -259,15 +271,6 @@ class StatisticsAggregateDocument:
     statistics_document: Optional[list[StatisticsDocumentItem]] = None
 
 
-@dataclass
-class Manifest:
-    vocabulary: list[str]
-    json_schemas: list[str]
-    field_id: Optional[str] = None
-    field_type: Optional[str] = None
-    shapes: Optional[list[str]] = None
-
-
 class ScanPositionSettingPlateReader(Enum):
     bottom_scan_position__plate_reader_ = "bottom scan position (plate reader)"
     scan_position_configuration__plate_reader_ = (
@@ -277,34 +280,12 @@ class ScanPositionSettingPlateReader(Enum):
 
 
 @dataclass
-class Asm:
-    field_asm_manifest: Optional[Union[str, Manifest]] = None
-
-
-@dataclass
-class DataSourceDocumentItem:
-    data_source_identifier: TStringValue
-    data_source_feature: TStringValue
-    field_index: Optional[int] = None
-
-
-@dataclass
-class DataSourceAggregateDocument:
-    data_source_document: list[DataSourceDocumentItem]
-
-
-@dataclass
-class SampleDocument:
-    sample_identifier: TStringValue
-    location_identifier: TStringValue
-    description: Optional[Any] = None
-    batch_identifier: Optional[TStringValue] = None
-    sample_role_type: Optional[TClass] = None
-    written_name: Optional[TStringValue] = None
-    well_location_identifier: Optional[TStringValue] = None
-    vial_location_identifier: Optional[TStringValue] = None
-    well_plate_identifier: Optional[TStringValue] = None
-    mass_concentration: Optional[TQuantityValuePicogramPerMilliliter] = None
+class Manifest:
+    vocabulary: list[str]
+    json_schemas: list[str]
+    field_id: Optional[str] = None
+    field_type: Optional[str] = None
+    shapes: Optional[list[str]] = None
 
 
 @dataclass
@@ -382,6 +363,11 @@ class CalculatedDataAggregateDocument:
 
 
 @dataclass
+class ProcessedDataAggregateDocumentModel:
+    processed_data_document: list[ProcessedDataDocumentItem]
+
+
+@dataclass
 class CalculatedDataDocumentItem1:
     calculated_data_name: TStringValue
     calculated_result: TQuantityValue
@@ -397,8 +383,17 @@ class CalculatedDataAggregateDocumentModel:
 
 
 @dataclass
-class ProcessedDataAggregateDocumentModel:
-    processed_data_document: list[ProcessedDataDocumentItem]
+class SampleDocument:
+    sample_identifier: TStringValue
+    location_identifier: TStringValue
+    description: Optional[Any] = None
+    batch_identifier: Optional[TStringValue] = None
+    sample_role_type: Optional[TClass] = None
+    written_name: Optional[TStringValue] = None
+    well_location_identifier: Optional[TStringValue] = None
+    vial_location_identifier: Optional[TStringValue] = None
+    well_plate_identifier: Optional[TStringValue] = None
+    mass_concentration: Optional[TQuantityValuePicogramPerMilliliter] = None
 
 
 @dataclass
@@ -420,33 +415,6 @@ class DeviceControlDocument:
         ScanPositionSettingPlateReader
     ] = None
     detector_carriage_speed_setting: Optional[TStringValue] = None
-
-
-@dataclass
-class FluorescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: Optional[TQuantityValueNanometer] = None
-    detector_bandwidth_setting: Optional[TQuantityValueNanometer] = None
-    wavelength_filter_cutoff_setting: Optional[TQuantityValueNanometer] = None
-    excitation_bandwidth_setting: Optional[TQuantityValueNanometer] = None
-    excitation_wavelength_setting: Optional[TQuantityValueNanometer] = None
-    field_index: Optional[int] = None
-
-
-FluorescencePointDetectionDeviceControlDocument = list[
-    FluorescencePointDetectionDeviceControlDocumentItem
-]
-
-
-@dataclass
-class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
-    detector_wavelength_setting: Optional[TQuantityValueNanometer] = None
-    detector_bandwidth_setting: Optional[TQuantityValueNanometer] = None
-    field_index: Optional[int] = None
-
-
-LuminescencePointDetectionDeviceControlDocument = list[
-    LuminescencePointDetectionDeviceControlDocumentItem
-]
 
 
 @dataclass
@@ -472,18 +440,47 @@ UltravioletAbsorbancePointDetectionDeviceControlDocument = list[
 
 
 @dataclass
-class FluorescencePointDetectionDeviceControlAggregateDocument:
-    device_control_document: FluorescencePointDetectionDeviceControlDocument
-
-
-@dataclass
-class LuminescencePointDetectionDeviceControlAggregateDocument:
-    device_control_document: LuminescencePointDetectionDeviceControlDocument
-
-
-@dataclass
 class UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument:
     device_control_document: UltravioletAbsorbancePointDetectionDeviceControlDocument
+
+
+@dataclass
+class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
+    measurement_identifier: TStringValue
+    device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
+    sample_document: SampleDocument
+    absorbance: TQuantityValueMilliAbsorbanceUnit
+    measurement_time: Optional[TDateTimeStampValue] = None
+    detection_type: Optional[TStringValue] = None
+    processed_data_aggregate_document: Optional[
+        ProcessedDataAggregateDocumentModel
+    ] = None
+    calculated_data_aggregate_document: Optional[
+        CalculatedDataAggregateDocumentModel
+    ] = None
+    statistics_aggregate_document: Optional[StatisticsAggregateDocument] = None
+    compartment_temperature: Optional[TQuantityValueDegreeCelsius] = None
+    mass_concentration: Optional[TQuantityValuePicogramPerMilliliter] = None
+
+
+@dataclass
+class FluorescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
+    detector_wavelength_setting: Optional[TQuantityValueNanometer] = None
+    detector_bandwidth_setting: Optional[TQuantityValueNanometer] = None
+    wavelength_filter_cutoff_setting: Optional[TQuantityValueNanometer] = None
+    excitation_bandwidth_setting: Optional[TQuantityValueNanometer] = None
+    excitation_wavelength_setting: Optional[TQuantityValueNanometer] = None
+    field_index: Optional[int] = None
+
+
+FluorescencePointDetectionDeviceControlDocument = list[
+    FluorescencePointDetectionDeviceControlDocumentItem
+]
+
+
+@dataclass
+class FluorescencePointDetectionDeviceControlAggregateDocument:
+    device_control_document: FluorescencePointDetectionDeviceControlDocument
 
 
 @dataclass
@@ -506,6 +503,23 @@ class FluorescencePointDetectionMeasurementDocumentItems:
 
 
 @dataclass
+class LuminescencePointDetectionDeviceControlDocumentItem(DeviceControlDocument):
+    detector_wavelength_setting: Optional[TQuantityValueNanometer] = None
+    detector_bandwidth_setting: Optional[TQuantityValueNanometer] = None
+    field_index: Optional[int] = None
+
+
+LuminescencePointDetectionDeviceControlDocument = list[
+    LuminescencePointDetectionDeviceControlDocumentItem
+]
+
+
+@dataclass
+class LuminescencePointDetectionDeviceControlAggregateDocument:
+    device_control_document: LuminescencePointDetectionDeviceControlDocument
+
+
+@dataclass
 class LuminescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
     device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument
@@ -525,22 +539,8 @@ class LuminescencePointDetectionMeasurementDocumentItems:
 
 
 @dataclass
-class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-    measurement_identifier: TStringValue
-    device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
-    sample_document: SampleDocument
-    absorbance: TQuantityValueMilliAbsorbanceUnit
-    measurement_time: Optional[TDateTimeStampValue] = None
-    detection_type: Optional[TStringValue] = None
-    processed_data_aggregate_document: Optional[
-        ProcessedDataAggregateDocumentModel
-    ] = None
-    calculated_data_aggregate_document: Optional[
-        CalculatedDataAggregateDocumentModel
-    ] = None
-    statistics_aggregate_document: Optional[StatisticsAggregateDocument] = None
-    compartment_temperature: Optional[TQuantityValueDegreeCelsius] = None
-    mass_concentration: Optional[TQuantityValuePicogramPerMilliliter] = None
+class Asm:
+    field_asm_manifest: Optional[Union[str, Manifest]] = None
 
 
 @dataclass

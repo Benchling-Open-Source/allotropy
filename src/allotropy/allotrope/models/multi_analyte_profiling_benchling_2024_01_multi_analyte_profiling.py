@@ -28,20 +28,6 @@ class DeviceControlAggregateDocument:
 
 
 @dataclass
-class Manifest:
-    vocabulary: list[str]
-    json_schemas: list[str]
-    field_id: Optional[str] = None
-    field_type: Optional[str] = None
-    shapes: Optional[list[str]] = None
-
-
-@dataclass
-class Asm:
-    field_asm_manifest: Optional[Union[str, Manifest]] = None
-
-
-@dataclass
 class DataSourceDocumentItem:
     data_source_identifier: TStringValue
     data_source_feature: TStringValue
@@ -51,6 +37,15 @@ class DataSourceDocumentItem:
 @dataclass
 class DataSourceAggregateDocument:
     data_source_document: list[DataSourceDocumentItem]
+
+
+@dataclass
+class Manifest:
+    vocabulary: list[str]
+    json_schemas: list[str]
+    field_id: Optional[str] = None
+    field_type: Optional[str] = None
+    shapes: Optional[list[str]] = None
 
 
 @dataclass
@@ -139,32 +134,6 @@ class SampleDocument:
 
 
 @dataclass
-class ErrorDocumentItem:
-    error: TStringValue
-    error_feature: Optional[TStringValue] = None
-
-
-@dataclass
-class ErrorAggregateDocument:
-    error_document: Optional[list[ErrorDocumentItem]] = None
-
-
-@dataclass
-class CalculatedDataDocumentItem:
-    calculated_data_name: TStringValue
-    calculated_result: TQuantityValue
-    data_source_aggregate_document: Optional[DataSourceAggregateDocument] = None
-    calculated_data_identifier: Optional[TStringValue] = None
-    calculation_description: Optional[TStringValue] = None
-    field_index: Optional[int] = None
-
-
-@dataclass
-class CalculatedDataAggregateDocument:
-    calculated_data_document: list[CalculatedDataDocumentItem]
-
-
-@dataclass
 class AnalyteDocumentItem:
     analyte_identifier: TStringValue
     analyte_name: TStringValue
@@ -176,6 +145,17 @@ class AnalyteDocumentItem:
 @dataclass
 class AnalyteAggregateDocument:
     analyte_document: list[AnalyteDocumentItem]
+
+
+@dataclass
+class ErrorDocumentItem:
+    error: TStringValue
+    error_feature: Optional[TStringValue] = None
+
+
+@dataclass
+class ErrorAggregateDocument:
+    error_document: Optional[list[ErrorDocumentItem]] = None
 
 
 @dataclass
@@ -205,6 +185,26 @@ class MultiAnalyteProfilingDocumentItem:
     measurement_aggregate_document: MeasurementAggregateDocument
     analyst: Optional[TStringValue] = None
     submitter: Optional[TStringValue] = None
+
+
+@dataclass
+class CalculatedDataDocumentItem:
+    calculated_data_name: TStringValue
+    calculated_result: TQuantityValue
+    data_source_aggregate_document: Optional[DataSourceAggregateDocument] = None
+    calculated_data_identifier: Optional[TStringValue] = None
+    calculation_description: Optional[TStringValue] = None
+    field_index: Optional[int] = None
+
+
+@dataclass
+class CalculatedDataAggregateDocument:
+    calculated_data_document: list[CalculatedDataDocumentItem]
+
+
+@dataclass
+class Asm:
+    field_asm_manifest: Optional[Union[str, Manifest]] = None
 
 
 @dataclass
