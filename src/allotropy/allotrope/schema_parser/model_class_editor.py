@@ -36,16 +36,7 @@ def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[st
 
     # Match schemas to get classes to remove from the generated code and imports to add.
     for name, component_schema in schema_mapping.items():
-        if name == "tDatacubeData":
-            print("HERE")
-            print(shared_schema_mapping.get(name, []))
         for schema_model in shared_schema_mapping.get(name, []):
-            if name == "tDatacubeData":
-                print("HERE")
-                print(json.dumps(schema_model.schema, indent=2))
-                print("^^^^^^")
-                print(json.dumps(component_schema, indent=2))
-                print(schema_model.schema == component_schema)
             # TODO: log warning visible in script output if schema name is found but no schemas match.
             if schema_model.schema == component_schema:
                 classes_to_skip.add(schema_model.import_info[1])
