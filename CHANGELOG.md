@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Simplify Moldev Softmax Pro parsing with dataclasses
 - Update plate reader schema in Moldev Softmax Pro
+- Standardized on UNITLESS constant ("(unitless)") for unitless values. Changed Perkin Elmer Envision, which formerly used "unitless".
 ### Deprecated
 ### Removed
 ### Security

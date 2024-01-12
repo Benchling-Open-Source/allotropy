@@ -22,9 +22,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
+    TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     ReadType,
@@ -274,7 +275,9 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(31441),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                    31441
+                                ),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
@@ -341,7 +344,9 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(80368),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                    80368
+                                ),
                             ),
                         ],
                     )
@@ -355,7 +360,7 @@ def get_model() -> Model:
                         calculated_data_identifier="",
                         calculated_result=TQuantityValue(
                             value=3,
-                            unit="unitless",
+                            unit=UNITLESS,
                         ),
                         data_source_aggregate_document=DataSourceAggregateDocument1(
                             data_source_document=[
