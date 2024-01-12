@@ -106,11 +106,17 @@ def _generate_schema(
     lint_file(str(model_path))
 
 
-def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False) -> list[str]:
+def generate_schemas(
+    root_dir: Path,
+    *,
+    dry_run: Optional[bool] = False,
+    schema_regex: Optional[str] = None,
+) -> list[str]:
     """Generate schemas from JSON schema files.
 
     :root_dir: The root directory of the project.
     :dry_run: If true, does not save changes to any models, but still returns the list of models that would change.
+    :schema_regex: If set, filters schemas to generate using regex.
     :return: A list of model files that were changed.
     """
 
@@ -119,7 +125,9 @@ def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False) -> list
     os.chdir(os.path.join(root_dir))
     models_changed = []
     for rel_schema_path in schema_paths:
-        if str(rel_schema_path).startswith("shared"):
+        if rel_schema_path.parts[0] == "shared":
+            continue
+        if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
             continue
 
         print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
