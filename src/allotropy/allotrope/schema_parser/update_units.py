@@ -34,8 +34,8 @@ class {unit_name}:
 from dataclasses import dataclass
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    TNullableQuantityValueWithOptionalUnit,
-    TQuantityValueWithOptionalUnit,
+    TNullableQuantityValue,
+    TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.units import (
 """)
@@ -47,12 +47,12 @@ from allotropy.allotrope.models.shared.definitions.units import (
             f.write(f"""
 
 @dataclass
-class TQuantityValue{unit_name}({unit_name}, TQuantityValueWithOptionalUnit):
+class TQuantityValue{unit_name}({unit_name}, TQuantityValue):
     pass
 
 
 @dataclass
-class TNullableQuantityValue{unit_name}({unit_name}, TNullableQuantityValueWithOptionalUnit):
+class TNullableQuantityValue{unit_name}({unit_name}, TNullableQuantityValue):
     pass
 """)
 
