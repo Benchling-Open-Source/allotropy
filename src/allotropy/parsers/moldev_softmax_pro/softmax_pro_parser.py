@@ -35,9 +35,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
     TQuantityValue,
-    ValueEnum,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
@@ -49,7 +51,6 @@ from allotropy.parsers.moldev_softmax_pro.constants import (
     EPOCH,
     NULL,
     REDUCED,
-    UNITLESS,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
@@ -62,8 +63,8 @@ from allotropy.parsers.utils.values import (
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-def float_or_value_enum(value: float) -> Union[ValueEnum, float]:
-    return ValueEnum.NaN if math.isnan(value) else value
+def to_json_float(value: float) -> JsonFloat:
+    return InvalidJsonFloat.NaN if math.isnan(value) else value
 
 
 class SoftmaxproParser(VendorParser):
@@ -75,7 +76,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_model(self, file_name: str, data: Data) -> Model:
         return Model(
-            field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=NULL,
@@ -156,7 +157,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_value_enum(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -224,7 +225,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_value_enum(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -266,7 +267,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_value_enum(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
