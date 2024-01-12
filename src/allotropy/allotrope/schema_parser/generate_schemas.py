@@ -66,7 +66,12 @@ def files_equal(path1: str, path2: str) -> bool:
     return True
 
 
-def generate_schemas(root_dir: Path, *, dry_run: Optional[bool] = False, schema_regex: Optional[str] = None) -> list[str]:
+def generate_schemas(
+    root_dir: Path,
+    *,
+    dry_run: Optional[bool] = False,
+    schema_regex: Optional[str] = None,
+) -> list[str]:
     """Generate schemas from JSON schema files.
 
     :root_dir: The root directory of the project.

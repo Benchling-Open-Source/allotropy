@@ -10,7 +10,7 @@ ROOT_DIR = Path(__file__).parent.parent
 
 @click.command()
 @click.option("-r", "--regex", help="Regex to determine which schemas to generate.")
-def _generate_schemas(regex):
+def _generate_schemas(regex: str) -> None:
     generate_schemas(ROOT_DIR, schema_regex=regex)
 
 
