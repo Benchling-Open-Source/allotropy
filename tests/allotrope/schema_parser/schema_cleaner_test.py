@@ -827,7 +827,6 @@ def test_combine_anyof_with_parent_object():
                 }
             ]
         },
-        "minItems": 1,
     })
 
 

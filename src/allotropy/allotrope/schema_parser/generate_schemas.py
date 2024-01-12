@@ -20,6 +20,7 @@ from allotropy.allotrope.schema_parser.backup_manager import (
 )
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
+from allotropy.allotrope.schema_parser.update_units import update_unit_files
 from allotropy.allotrope.schemas import get_schema
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
@@ -116,6 +117,7 @@ def generate_schemas(
     """
     schema_cleaner = SchemaCleaner()
 
+    unit_to_iri = {}
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
         os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
         schema_paths = list(Path(".").rglob("*.json"))
@@ -132,6 +134,7 @@ def generate_schemas(
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
                 schema_cleaner.clean_file(str(schema_path))
+                unit_to_iri |= schema_cleaner.get_referenced_units()
                 _generate_schema(model_path, schema_path)
 
                 if is_file_changed(model_path):
@@ -139,6 +142,7 @@ def generate_schemas(
                 else:
                     restore_backup(model_path)
 
+        update_unit_files(unit_to_iri)
         for path in [UNITS_MODELS_PATH, CUSTOM_MODELS_PATH]:
             lint_file(path)
 

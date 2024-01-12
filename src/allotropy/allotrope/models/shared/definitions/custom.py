@@ -54,499 +54,499 @@ from allotropy.allotrope.models.shared.definitions.units import (
 )
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueCell(Cell, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueCell(Cell, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueCentimeter(Centimeter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueCentimeter(Centimeter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueCounts(Counts, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueCounts(Counts, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueCountsTimesSecond(CountsTimesSecond, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueCountsTimesSecond(
     CountsTimesSecond, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueCubicMillimeter(CubicMillimeter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueCubicMillimeter(CubicMillimeter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueDegreeCelsius(DegreeCelsius, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueDegreeCelsius(DegreeCelsius, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueGramPerLiter(GramPerLiter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueGramPerLiter(GramPerLiter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueHertz(Hertz, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueHertz(Hertz, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMicrogramPerMicroliter(MicrogramPerMicroliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMicrogramPerMicroliter(
     MicrogramPerMicroliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMicrogramPerMilliliter(MicrogramPerMilliliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMicrogramPerMilliliter(
     MicrogramPerMilliliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMicroliter(Microliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMicroliter(Microliter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMicrometer(Micrometer, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMicrometer(Micrometer, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilliAbsorbanceUnit(MilliAbsorbanceUnit, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilliAbsorbanceUnit(
     MilliAbsorbanceUnit, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilliAbsorbanceUnitTimesMilliliter(
     MilliAbsorbanceUnitTimesMilliliter, TQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilliAbsorbanceUnitTimesMilliliter(
     MilliAbsorbanceUnitTimesMilliliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilliAbsorbanceUnitTimesSecond(
     MilliAbsorbanceUnitTimesSecond, TQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilliAbsorbanceUnitTimesSecond(
     MilliAbsorbanceUnitTimesSecond, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilliOsmolesPerKilogram(MilliOsmolesPerKilogram, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilliOsmolesPerKilogram(
     MilliOsmolesPerKilogram, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilliSecond(MilliSecond, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilliSecond(MilliSecond, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilligramPerMilliliter(MilligramPerMilliliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilligramPerMilliliter(
     MilligramPerMilliliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMilliliter(Milliliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMilliliter(Milliliter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMillimeter(Millimeter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMillimeter(Millimeter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMillimeterOfMercury(MillimeterOfMercury, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMillimeterOfMercury(
     MillimeterOfMercury, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMillimolePerLiter(MillimolePerLiter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMillimolePerLiter(
     MillimolePerLiter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMillionCellsPerMilliliter(
     MillionCellsPerMilliliter, TQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMillionCellsPerMilliliter(
     MillionCellsPerMilliliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMillivolt(Millivolt, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMillivolt(Millivolt, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueMillivoltTimesSecond(MillivoltTimesSecond, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueMillivoltTimesSecond(
     MillivoltTimesSecond, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNanoCoulomb(NanoCoulomb, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNanoCoulomb(NanoCoulomb, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNanoCoulombTimesSecond(NanoCoulombTimesSecond, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNanoCoulombTimesSecond(
     NanoCoulombTimesSecond, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNanogramPerMicroliter(NanogramPerMicroliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNanogramPerMicroliter(
     NanogramPerMicroliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNanogramPerMilliliter(NanogramPerMilliliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNanogramPerMilliliter(
     NanogramPerMilliliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNanometer(Nanometer, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNanometer(Nanometer, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNumber(Number, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNumber(Number, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueNumberPerMicroliter(NumberPerMicroliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueNumberPerMicroliter(
     NumberPerMicroliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueOpticalDensity(OpticalDensity, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueOpticalDensity(OpticalDensity, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValuePH(PH, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValuePH(PH, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValuePercent(Percent, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValuePercent(Percent, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValuePicoAmpere(PicoAmpere, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValuePicoAmpere(PicoAmpere, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValuePicoAmpereTimesSecond(PicoAmpereTimesSecond, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValuePicoAmpereTimesSecond(
     PicoAmpereTimesSecond, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValuePicogramPerMilliliter(PicogramPerMilliliter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValuePicogramPerMilliliter(
     PicogramPerMilliliter, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueRelativeFluorescenceUnit(RelativeFluorescenceUnit, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueRelativeFluorescenceUnit(
     RelativeFluorescenceUnit, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueRelativeLightUnit(RelativeLightUnit, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueRelativeLightUnit(
     RelativeLightUnit, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueSecondTime(SecondTime, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueSecondTime(SecondTime, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueSquareCentimetersPerGram(SquareCentimetersPerGram, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueSquareCentimetersPerGram(
     SquareCentimetersPerGram, TNullableQuantityValue
 ):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueTODO(TODO, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueTODO(TODO, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueUnitPerLiter(UnitPerLiter, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueUnitPerLiter(UnitPerLiter, TNullableQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValueUnitless(Unitless, TQuantityValue):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValueUnitless(Unitless, TNullableQuantityValue):
     pass

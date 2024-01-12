@@ -4,201 +4,231 @@ from dataclasses import dataclass
 UNITLESS = "(unitless)"
 
 
-@dataclass
+@dataclass(frozen=True)
 class HasUnit:
     unit: str
 
 
-@dataclass
+@dataclass(frozen=True)
+class Cell(HasUnit):
+    unit: str = "cell"
+
+
+@dataclass(frozen=True)
 class Centimeter(HasUnit):
     unit: str = "cm"
 
 
-@dataclass
-class Millimeter(HasUnit):
-    unit: str = "mm"
+@dataclass(frozen=True)
+class Counts(HasUnit):
+    unit: str = "Counts"
 
 
-@dataclass
-class Nanometer(HasUnit):
-    unit: str = "nm"
+@dataclass(frozen=True)
+class CountsTimesSecond(HasUnit):
+    unit: str = "Counts.s"
 
 
-@dataclass
-class Micrometer(HasUnit):
-    unit: str = "μm"
-
-
-@dataclass
-class Hertz(HasUnit):
-    unit: str = "Hz"
-
-
-@dataclass
+@dataclass(frozen=True)
 class CubicMillimeter(HasUnit):
     unit: str = "mm^3"
 
 
-@dataclass
-class Unitless(HasUnit):
-    unit: str = UNITLESS
+@dataclass(frozen=True)
+class DegreeCelsius(HasUnit):
+    unit: str = "degC"
 
 
-@dataclass
-class SecondTime(HasUnit):
-    unit: str = "s"
-
-
-@dataclass
-class Percent(HasUnit):
-    unit: str = "%"
-
-
-@dataclass
-class Counts:
-    unit: str = "Counts"
-
-
-@dataclass
-class CountsTimesSecond:
-    unit: str = "Counts.s"
-
-
-@dataclass
-class TODO(HasUnit):
-    unit: str = "TODO"
-
-
-@dataclass
-class GramPerLiter:
+@dataclass(frozen=True)
+class GramPerLiter(HasUnit):
     unit: str = "g/L"
 
 
-@dataclass
+@dataclass(frozen=True)
+class Hertz(HasUnit):
+    unit: str = "Hz"
+
+
+@dataclass(frozen=True)
+class MicrogramPerMicroliter(HasUnit):
+    unit: str = "ug/uL"
+
+
+@dataclass(frozen=True)
+class MicrogramPerMilliliter(HasUnit):
+    unit: str = "ug/mL"
+
+
+@dataclass(frozen=True)
+class Microliter(HasUnit):
+    unit: str = "μL"
+
+
+@dataclass(frozen=True)
+class Micrometer(HasUnit):
+    unit: str = "µm"
+
+
+@dataclass(frozen=True)
+class MilliAbsorbanceUnit(HasUnit):
+    unit: str = "mAU"
+
+
+@dataclass(frozen=True)
+class MilliAbsorbanceUnitTimesMilliliter(HasUnit):
+    unit: str = "mAU.mL"
+
+
+@dataclass(frozen=True)
+class MilliAbsorbanceUnitTimesSecond(HasUnit):
+    unit: str = "mAU.s"
+
+
+@dataclass(frozen=True)
+class MilliOsmolesPerKilogram(HasUnit):
+    unit: str = "mosm/kg"
+
+
+@dataclass(frozen=True)
+class MilliSecond(HasUnit):
+    unit: str = "ms"
+
+
+@dataclass(frozen=True)
+class MilligramPerMilliliter(HasUnit):
+    unit: str = "mg/mL"
+
+
+@dataclass(frozen=True)
+class Milliliter(HasUnit):
+    unit: str = "mL"
+
+
+@dataclass(frozen=True)
+class Millimeter(HasUnit):
+    unit: str = "mm"
+
+
+@dataclass(frozen=True)
+class MillimeterOfMercury(HasUnit):
+    unit: str = "mmHg"
+
+
+@dataclass(frozen=True)
+class MillimolePerLiter(HasUnit):
+    unit: str = "mmol/L"
+
+
+@dataclass(frozen=True)
+class MillionCellsPerMilliliter(HasUnit):
+    unit: str = "10^6 cells/mL"
+
+
+@dataclass(frozen=True)
+class Millivolt(HasUnit):
+    unit: str = "mV"
+
+
+@dataclass(frozen=True)
+class MillivoltTimesSecond(HasUnit):
+    unit: str = "mV.s"
+
+
+@dataclass(frozen=True)
+class NanoCoulomb(HasUnit):
+    unit: str = "nC"
+
+
+@dataclass(frozen=True)
+class NanoCoulombTimesSecond(HasUnit):
+    unit: str = "nC.s"
+
+
+@dataclass(frozen=True)
 class NanogramPerMicroliter(HasUnit):
     unit: str = "ng/uL"
 
 
-@dataclass
-class MicrogramPerMilliliter:
-    unit: str = "ug/mL"
-
-
-@dataclass
-class Microliter:
-    unit: str = "μL"
-
-
-@dataclass
-class MilliAbsorbanceUnit:
-    unit: str = "mAU"
-
-
-@dataclass
-class MilliAbsorbanceUnitTimesMilliliter:
-    unit: str = "mAU.mL"
-
-
-@dataclass
-class MilliAbsorbanceUnitTimesSecond:
-    unit: str = "mAU.s"
-
-
-@dataclass
-class MilliOsmolesPerKilogram:
-    unit: str = "mosm/kg"
-
-
-@dataclass
-class MilliSecond:
-    unit: str = "ms"
-
-
-@dataclass
-class MilligramPerMilliliter:
-    unit: str = "mg/mL"
-
-
-@dataclass
-class Milliliter:
-    unit: str = "mL"
-
-
-@dataclass
-class UnitPerLiter(HasUnit):
-    unit: str = "U/L"
-
-
-@dataclass
-class MillimolePerLiter:
-    unit: str = "mmol/L"
-
-
-@dataclass
-class MillionCellsPerMilliliter:
-    unit: str = "10^6 cells/mL"
-
-
-@dataclass
-class Millivolt:
-    unit: str = "mV"
-
-
-@dataclass
-class MillivoltTimesSecond:
-    unit: str = "mV.s"
-
-
-@dataclass
-class NanoCoulomb:
-    unit: str = "nC"
-
-
-@dataclass
-class NanoCoulombTimesSecond:
-    unit: str = "nC.s"
-
-
-@dataclass
-class NanogramPerMilliliter:
+@dataclass(frozen=True)
+class NanogramPerMilliliter(HasUnit):
     unit: str = "ng/mL"
 
 
-@dataclass
-class Number:
+@dataclass(frozen=True)
+class Nanometer(HasUnit):
+    unit: str = "nm"
+
+
+@dataclass(frozen=True)
+class Number(HasUnit):
     unit: str = "#"
 
 
-@dataclass
-class NumberPerMicroliter:
+@dataclass(frozen=True)
+class NumberPerMicroliter(HasUnit):
     unit: str = "#/μL"
 
 
-@dataclass
-class OpticalDensity:
+@dataclass(frozen=True)
+class OpticalDensity(HasUnit):
     unit: str = "OD"
 
 
-@dataclass
-class PicoAmpere:
+@dataclass(frozen=True)
+class PH(HasUnit):
+    unit: str = "pH"
+
+
+@dataclass(frozen=True)
+class Percent(HasUnit):
+    unit: str = "%"
+
+
+@dataclass(frozen=True)
+class PicoAmpere(HasUnit):
     unit: str = "pA"
 
 
-@dataclass
-class PicoAmpereTimesSecond:
+@dataclass(frozen=True)
+class PicoAmpereTimesSecond(HasUnit):
     unit: str = "pA.s"
 
 
-@dataclass
-class PicogramPerMilliliter:
+@dataclass(frozen=True)
+class PicogramPerMilliliter(HasUnit):
     unit: str = "pg/mL"
 
 
-@dataclass
+@dataclass(frozen=True)
 class RelativeFluorescenceUnit(HasUnit):
     unit: str = "RFU"
 
 
-@dataclass
-class SquareCentimetersPerGram:
+@dataclass(frozen=True)
+class RelativeLightUnit(HasUnit):
+    unit: str = "RLU"
+
+
+@dataclass(frozen=True)
+class SecondTime(HasUnit):
+    unit: str = "s"
+
+
+@dataclass(frozen=True)
+class SquareCentimetersPerGram(HasUnit):
     unit: str = "cm^2/g"
+
+
+@dataclass(frozen=True)
+class TODO(HasUnit):
+    unit: str = "TODO"
+
+
+@dataclass(frozen=True)
+class UnitPerLiter(HasUnit):
+    unit: str = "U/L"
+
+
+@dataclass(frozen=True)
+class Unitless(HasUnit):
+    unit: str = UNITLESS

@@ -4,13 +4,9 @@ import json
 import os
 from pathlib import Path
 import re
-import sys
-from typing import Any, Optional
+from typing import Any, Callable, Optional
 
-from allotropy.allotrope.schema_parser.update_units import (
-    unit_name_from_iri,
-    update_unit_files,
-)
+from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
 from allotropy.allotrope.schemas import get_schema
 
 SCHEMAS_DIR = os.path.join(Path(__file__).parent.parent, "schemas")
@@ -21,26 +17,19 @@ SHARED_MODELS_DIR = os.path.join(MODELS_DIR, "shared", "definitions")
 
 class SchemaCleaner:
     def __init__(self):
-        self.unit_to_name = self._load_units()
-        self.missing_unit_to_iri = {}
-        self.missing_referenced_units = []
+        self.unit_to_name: dict[str, str] = {}
+        self.unit_to_iri: dict[str, str] = {}
+        self.referenced_units = set()
         self.definitions = self._load_definitions()
         self.replaced_definitions = defaultdict(list)
 
-        self.cleaning_defs = False
+        self._load_units()
+
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
 
-        self.num_tabs = 0
-        self.current_path = []
-        self.paths_to_clean = set()
-
-    def add_missing_units(self) -> None:
-        # Update unit schemas and models with all units found in cleaned schemas.
-        if not self.missing_referenced_units:
-            return
-        update_unit_files({unit: iri for unit, iri in self.missing_unit_to_iri.items() if unit in self.missing_referenced_units})
-        self.missing_referenced_units = []
+    def get_referenced_units(self) -> dict[str, str]:
+        return {unit: iri for unit, iri in self.unit_to_iri.items() if unit in self.referenced_units}
 
     def _is_unit_name_ref(self, ref: str) -> Optional[str]:
         return ref.split("/")[-1] in self.unit_to_name.values()
@@ -52,26 +41,32 @@ class SchemaCleaner:
         unit = unit_match.groups()[0]
         if unit not in self.unit_to_name:
             return None
-        if unit in self.missing_unit_to_iri:
-            self.missing_referenced_units.append(unit)
+        self.referenced_units.add(unit)
         return self.unit_to_name[unit]
 
     def _load_definitions(self) -> dict[str, Any]:
         with open(os.path.join(SHARED_SCHEMAS_DIR, "definitions.json")) as f:
             return dict(json.load(f).items())
 
+    def _add_unit(self, unit: str, unit_iri: str) -> None:
+        self.unit_to_name[unit] = unit_name_from_iri(unit_iri)
+        self.unit_to_iri[unit] = unit_iri
+
     def _load_units(self) -> dict[str, str]:
         with open(os.path.join(SHARED_SCHEMAS_DIR, "units.json")) as f:
             units_schema = json.load(f)
-            return {unit["properties"]["unit"]["const"]: name for name, unit in units_schema.items()}
+            for unit_schema in units_schema.values():
+                self._add_unit(
+                    unit=unit_schema["properties"]["unit"]["const"],
+                    unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
+                )
 
     def _add_embeded_units(self, unit_schemas: dict[str, Any]):
         for unit, unit_schema in unit_schemas.items():
-            if unit in self.unit_to_name:
-                continue
-            unit_iri = unit_schema["properties"]["unit"]["$asm.unit-iri"]
-            self.missing_unit_to_iri[unit] = unit_iri
-            self.unit_to_name[unit] = unit_name_from_iri(unit_iri)
+            self._add_unit(
+                unit=unit,
+                unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
+            )
 
     def _is_array_schema(self, schema: dict[str, Any]) -> bool:
         return isinstance(schema, dict) and "items" in schema
@@ -105,8 +100,6 @@ class SchemaCleaner:
 
     def _try_combine_object_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
         # Combines object schemas, array schemas ARE NOT ALLWOED
-        #self.print("\n=================\nTRY COMBINE OBJECT SCHEMAS\n==================\n")
-        #self.print(json.dumps(schemas, indent=2))
         if any(self._is_array_schema(schema) for schema in schemas):
             assert False, "NO ARRAY SCHEMAS"
 
@@ -123,12 +116,10 @@ class SchemaCleaner:
             if len(values) == 1:
                 combined_props[key] = values[0]
             elif all(self._is_class_schema(value) for value in values):
-                #self.print("##### CALLING INTO COMBINE ALLOF")
                 combined_props[key] = self._combine_allof(values)
             elif self._all_values_equal(values):
                 combined_props[key] = values[0]
             elif any(self._is_ref_schema(value) or self._is_ref_schema_array(value) for value in values):
-                #self.print("##### CALLING INTO COMBINE ALLOF 2")
                 combined_props[key] = self._combine_allof(self._dereference_values(values))
             else:
                 msg = f"Error combining schemas, conflicting values for key '{key}': {[f'{value}' for value in values]}"
@@ -140,9 +131,6 @@ class SchemaCleaner:
         )
 
     def _try_combine_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
-        #self.print("\n=================\nTRY COMBINE\n==================\n")
-        #self.print(json.dumps(schemas))
-
         schemas = self._flatten_schemas(schemas)
 
         if any("anyOf" in schema for schema in schemas):
@@ -150,15 +138,10 @@ class SchemaCleaner:
 
         if any(self._is_array_schema(schema) for schema in schemas):
             if not all(self._is_array_schema(schema) for schema in schemas):
-                #self.print("!!! HERE !!!!")
                 msg = f"Could not combine array and object schemas: {schemas}"
                 raise AssertionError(msg)
-            #return {"items": self._combine_allof_schemas([schema["items"] for schema in schemas])}
-            #self.print("\n\n!!!!! CALLING FROM IS ARRAY?!?")
             return {"items": self._try_combine_schemas([schema["items"] for schema in schemas])}
 
-        #self.print("\n\n$$$$$$$ CALLING TRY COMBINE OBJECT SCHEMA FROM TRY COMBINE")
-        #print(schemas)
         return self._try_combine_object_schemas(schemas)
 
     def _get_required(self, schema: dict[str, Any]) -> list[str]:
@@ -167,7 +150,6 @@ class SchemaCleaner:
         return schema.get("required", [])
 
     def _flatten_schema(self, value: dict[str, Any]) -> dict[str, Any]:
-        #print("\n=========== FLATTEN SCHEMA ============\n")
         # Flattens a composed schema into a single list of schemas and combines them.
         if not self._is_composed_object_schema(value):
             return value
@@ -218,8 +200,6 @@ class SchemaCleaner:
             # If there are required keys, we need to combine the schemas first so we can cross check the required
             # keys against covering sets.
             try:
-                #print(schemas)
-                #self.print(f"HERE {i}/{total}")
                 combined = self._try_combine_schemas([schemas[j] for j in indices])
             except AssertionError:
                 continue
@@ -279,7 +259,6 @@ class SchemaCleaner:
         return False
 
     def _invert_allof(self, schemas: list[dict[str, Any]], key: str):
-        #self.print("\n=================\nINVERT ALL OF\n==================\n")
         new_schemas = []
         for schema in schemas:
             schemas_list = schema[key] if key in schema else [schema]
@@ -288,13 +267,9 @@ class SchemaCleaner:
                 for new_schema in new_schemas
                 for add_schema in schemas_list
             ] if new_schemas else [[schema] for schema in schemas_list]
-        # return {key: [self._combine_allof(schemas) for schemas in new_schemas]}
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
     def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
-        #self.print("\n=================\nCOMBINE ALL OF SCHEMAS\n==================\n")
-        #self.print(json.dumps(schemas))
-        #self.print(f"{len(schemas)}")
         if not all(self._is_class_schema(schema) for schema in schemas):
             if any(self._is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
@@ -305,13 +280,9 @@ class SchemaCleaner:
         return self._try_combine_schemas(schemas)
 
     def _combine_allof(self, values: list[Any]) -> dict[str, Any]:
-        #self.print("IN COMBINE ALLOF ^^^^^^^^^^^^")
-        #self.print(json.dumps(values, indent=2))
         if not all(isinstance(value, dict) for value in values):
             msg = "Unhandled case: expected every item in an allOf to be a dictionary"
             raise AssertionError(msg)
-
-        # values = self._clean_value(values)
 
         if len(values) == 1:
             # datamodel-codegen can not handle single-value allOf entries.
@@ -329,9 +300,7 @@ class SchemaCleaner:
         # datamodel-codegen can not handle oneOf nested inside allOf. Fix this by reversing the order,
         # making a oneOf with each possible product of allOf
         if any("oneOf" in value for value in values):
-            #self.print("---- CALLING INVERT ON ONEOF")
             return self._clean_schema(self._invert_allof(values, "oneOf"))
-            # return self._invert_allof(values, "oneOf")
 
         # This must come after fixing oneOf because oneOf may break into multiple quantity values
         if self._is_quantity_value(values):
@@ -340,37 +309,23 @@ class SchemaCleaner:
         # Deference values and check for oneOf/anyOf inversion again.
         derefed_values = self._dereference_values(values)
         if any("oneOf" in value for value in derefed_values):
-            #self.print("---- CALLING INVERT ON ONEOF AFTER CLEAN")
             return self._clean_schema(self._invert_allof(derefed_values, "oneOf"))
-            # return self._invert_allof(derefed_values, "oneOf")
 
         if any("anyOf" in value for value in derefed_values):
-            #self.print("---- CALLING INVERT ON AYNOF AFTER CLEAN")
             return self._clean_schema(self._invert_allof(derefed_values, "anyOf"))
-            # return self._invert_allof(derefed_values, "anyOf")
 
-        # We don't combine allOf for definitions because we don't want to flatten definitions and prevent
-        # inheritance in generated dataclasses.
-        if not self.cleaning_defs:
-            # If any object in the allOf has required fields, we must combine them in order for the generation
-            # script to generate valid dataclasses. This is because dataclass inheritance with optional fields
-            # is broken in python<3.10.
-            if self._required_anywhere(derefed_values):
-                #self.print("<<<<<<<< CALLING COMBINE ALLOF SCHEMAS DUE TO REQUIRED")
-                return self._combine_allof_schemas(derefed_values)
+        # If any object in the allOf has required fields, we must combine them in order for the generation
+        # script to generate valid dataclasses. This is because dataclass inheritance with optional fields
+        # is broken in python<3.10.
+        if self._required_anywhere(derefed_values):
+            return self._combine_allof_schemas(derefed_values)
 
-            if any("allOf" in schema for schema in derefed_values):
-                #self.print("<<<<<<<< CALLING COMBINE ALLOF SCHEMAS DUE TO NESTED ALLOF")
-                return self._combine_allof_schemas(derefed_values)
+        if any("allOf" in schema for schema in derefed_values):
+            return self._combine_allof_schemas(derefed_values)
 
-            # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
-            # but we don't save the result.
-            #self.print("<<<<<<<< CALLING COMBINE SCHEMAS TO TEST")
-            self._try_combine_schemas(derefed_values)
-
-            # NOTE: alt - always combine
-            # #self.print("<<<<<<<< CALLING COMBINE ALLOF SCHEMAS")
-            # return self._combine_allof_schemas(derefed_values)
+        # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
+        # but we don't save the result.
+        self._try_combine_schemas(derefed_values)
 
         return {"allOf": values}
 
@@ -430,75 +385,21 @@ class SchemaCleaner:
         msg = f"Failed to find value unit in quantity value reference: {values}"
         raise AssertionError(msg)
 
-    def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
-        self.cleaning_defs = True
-        for schema_name, defs_schema in schema["$defs"].items():
-            # Replace web address reference name with a version that can be followed in datamodel-codegen
-            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
-            # Units are treated specially. We rename the unit (to avoid non-variable names) and store
-            # them in separate shared unit schema file, in order to allow for shared imports.
-            if cleaned_schema_name.endswith("units_schema"):
-                self._add_embeded_units(defs_schema["$defs"])
-            elif "$defs" in defs_schema:
-                # Store defs that are replaced with definitions in common/definitions before cleaning.
-                # NOTE: this does not attempt to handle futher nested $defs, in schemas, but we have not
-                # observed that in any schema files yet.
-                self.definitions[cleaned_schema_name] = {"$defs": {}}
-                for def_name, def_schema in defs_schema["$defs"].items():
-                    if self.definitions.get(def_name) == def_schema:
-                        self.replaced_definitions[cleaned_schema_name].append(def_name)
-                    else:
-                        self.definitions[cleaned_schema_name]["$defs"][def_name] = def_schema
-            else:
-                self.definitions[cleaned_schema_name] = defs_schema
-
-        cleaned = {}
-        for schema_name, defs_schema in schema["$defs"].items():
-            # Replace web address reference name with a version that can be followed in datamodel-codegen
-            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
-            if cleaned_schema_name.endswith("units_schema"):
-                continue
-            elif "$defs" in defs_schema:
-                # For references nested inside definitions, we need to change the ref into the full reference
-                # path in order for the generation script to find them. e.g.
-                #   {"someSchema": {"$ref": "#/$defs/someThing"}}
-                #       becomes
-                #   {"someSchema": {"$ref": "#/$defs/someSchema/$defs/someThing"}}
-                self.enclosing_schema_name = cleaned_schema_name
-                self.enclosing_schema_keys = defs_schema["$defs"].keys()
-                cleaned_defs = {}
-                for def_name, def_schema in defs_schema["$defs"].items():
-                    if def_name not in self.replaced_definitions[cleaned_schema_name]:
-                        cleaned_defs[def_name] = self._clean_schema(def_schema)
-                self.enclosing_schema_name = None
-                self.enclosing_schema_keys = None
-                cleaned[cleaned_schema_name] = {"$defs": cleaned_defs}
-            else:
-                cleaned[cleaned_schema_name] = self._clean_schema(defs_schema)
-
-        self.definitions |= cleaned
-        self.cleaning_defs = False
-        return cleaned
-
-    def print(self, msg):
-        if self.cleaning_defs:
-            return
-        print("|  " * self.num_tabs + msg)
-
-    def _clean_value(self, value: Any) -> Any:
+    def _clean_value(self, value: Any, cleaning_function: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None) -> Any:
+        # Fan out function for handling dict/list values. Calls cleaning_function on dictionaries
+        # (assumed to be schemas). Allows passing custom cleaning_fuction to handle cleaning definitions.
+        cleaning_function = cleaning_function or self._clean_schema
         if isinstance(value, dict):
-            return self._clean_schema(value)
+            return cleaning_function(value)
         elif isinstance(value, list):
-            return list(filter(lambda v: bool(v), (self._clean_value(v) for v in value)))
+            return list(filter(lambda v: bool(v), (self._clean_value(v, cleaning_function) for v in value)))
         return value
 
     def _clean_schema(self, schema: dict[str, Any]) -> dict[str, Any]:
-        #self.print("IN CLEAN SCHEMA")
-        self.num_tabs += 1
         # If a schema is has properties on it and anyOf/oneOf/allOf composed components, it is essentially
         # an allOf with the parent schema and the rest, combine this way.
         schema = copy.deepcopy(schema)
-        if not self.cleaning_defs and self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
+        if self._is_direct_object_schema(schema) and self._is_composed_object_schema(schema):
             allof_values = [
                 self._create_object_schema(schema.pop("properties", {}), schema.pop("required", [])),
                 *schema.pop("allOf", [])
@@ -511,43 +412,105 @@ class SchemaCleaner:
 
         cleaned = {}
         for key, value in schema.items():
-            if self._should_skip_key(key):
+            if self._should_filter_key(key):
                 continue
-            if key in ("$defs", "$custom"):
+            if self._should_skip_key(key):
                 cleaned[key] = value
                 continue
 
             if key == "allOf":
                 clean_value = self._clean_value(value)
-                if self.cleaning_defs:
-                    cleaned[key] = clean_value
-                else:
-                    cleaned |= self._combine_allof(clean_value)
+                cleaned |= self._combine_allof(clean_value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
             elif key == "anyOf":
                 clean_value = self._clean_value(value)
-                if self.cleaning_defs:
-                    cleaned[key] = clean_value
-                else:
-                    cleaned |= self._combine_anyof(clean_value)
+                cleaned |= self._combine_anyof(clean_value)
             elif self._is_class_schema(value):
                 cleaned[key] = self._clean_schema(value)
             else:
                 cleaned[key] = self._clean_value(value)
 
-        self.num_tabs -= 1
         return {key: value for key, value in cleaned.items() if value}
 
-    def _should_skip_key(self, key: str) -> bool:
+    def _should_filter_key(self, key: str) -> bool:
         return key in ("if", "then", "$comment", "prefixItems", "minItems", "maxItems", "contains")
+
+    def _should_skip_key(self, key: str) -> bool:
+        return key in ("$defs", "$custom")
+
+    def _clean_def_schema(self, schema: dict[str, Any]) -> dict[str, Any]:
+        cleaned = {}
+        for key, value in schema.items():
+            if self._should_filter_key(key):
+                continue
+            if self._should_skip_key(key):
+                cleaned[key] = value
+                continue
+
+            if key == "$ref":
+                cleaned[key] = self._clean_ref_value(value)
+            else:
+                cleaned[key] = self._clean_value(value, self._clean_def_schema)
+
+        return {key: value for key, value in cleaned.items() if value}
+
+    def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
+        for schema_name, defs_schema in schema.items():
+            # Replace web address reference name with a version that can be followed in datamodel-codegen
+            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
+            # Units are treated specially. We rename the unit (to avoid non-variable names) and store
+            # them in separate shared unit schema file, in order to allow for shared imports.
+            if cleaned_schema_name.endswith("units_schema"):
+                self._add_embeded_units(defs_schema["$defs"])
+            elif "$defs" in defs_schema:
+                # Store defs that are replaced with definitions in common/definitions before cleaning.
+                # NOTE: this does not attempt to handle futher nested $defs in schemas, but we have not
+                # observed that in any schema files yet.
+                self.definitions[cleaned_schema_name] = {"$defs": {}}
+                for def_name, def_schema in defs_schema["$defs"].items():
+                    if self.definitions.get(def_name) == def_schema:
+                        self.replaced_definitions[cleaned_schema_name].append(def_name)
+                    else:
+                        self.definitions[cleaned_schema_name]["$defs"][def_name] = def_schema
+            else:
+                self.definitions[cleaned_schema_name] = defs_schema
+
+        cleaned = {}
+        for schema_name, defs_schema in schema.items():
+            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
+            if cleaned_schema_name.endswith("units_schema"):
+                continue
+            elif "$defs" in defs_schema:
+                # For references nested inside definitions, we need to change the ref into the full reference
+                # path in order for the generation script to find them. e.g.
+                #   {"someSchema": {"$ref": "#/$defs/someThing"}}
+                #       becomes
+                #   {"someSchema": {"$ref": "#/$defs/someSchema/$defs/someThing"}}
+                # To accomplish this, we set enclosing_schema_name/keys while cleaning the def schema,
+                # and use them in clean_ref_value
+                self.enclosing_schema_name = cleaned_schema_name
+                self.enclosing_schema_keys = defs_schema["$defs"].keys()
+                cleaned_defs = {}
+                for def_name, def_schema in defs_schema["$defs"].items():
+                    if def_name not in self.replaced_definitions[cleaned_schema_name]:
+                        cleaned_defs[def_name] = self._clean_def_schema(def_schema)
+                self.enclosing_schema_name = None
+                self.enclosing_schema_keys = None
+                cleaned[cleaned_schema_name] = {"$defs": cleaned_defs}
+            else:
+                cleaned[cleaned_schema_name] = self._clean_def_schema(defs_schema)
+
+        self.definitions |= cleaned
+        return cleaned
 
     def clean(self, schema: dict[str, Any]) -> dict[str, Any]:
         # Call clean defs first, because we store some metadata about overriden definitions that is used in
         # the main body.
         cleaned = copy.deepcopy(schema)
-        if "$defs" in cleaned:
-            cleaned["$defs"] = self._clean_defs(cleaned)
+
+        # Definitions are cleaned differently, because we don't want to change ty
+        cleaned["$defs"] = self._clean_defs(cleaned.get("$defs", {}))
 
         return self._clean_schema(cleaned)
 
@@ -555,6 +518,5 @@ class SchemaCleaner:
         schema = get_schema(schema_path)
 
         schema = self.clean(schema)
-        self.add_missing_units()
         with open(schema_path, "w") as f:
             json.dump(schema, f, indent=2)
