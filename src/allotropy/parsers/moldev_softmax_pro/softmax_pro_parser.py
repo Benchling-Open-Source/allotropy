@@ -152,7 +152,9 @@ class SoftmaxproParser(VendorParser):
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
-                fluorescence=TQuantityValueRelativeFluorescenceUnit(value=data_element.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                    value=data_element.value
+                ),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None

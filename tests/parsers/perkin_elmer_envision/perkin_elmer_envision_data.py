@@ -274,7 +274,9 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TQuantityValueRelativeFluorescenceUnit(31441),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                    31441
+                                ),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
@@ -341,7 +343,9 @@ def get_model() -> Model:
                                     unit="degC",
                                     field_type=None,
                                 ),
-                                fluorescence=TQuantityValueRelativeFluorescenceUnit(80368),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                    80368
+                                ),
                             ),
                         ],
                     )
