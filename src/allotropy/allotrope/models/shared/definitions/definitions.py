@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum
-from typing import final, Generic, Optional, TypeVar, Union
+from typing import Any, final, Generic, Optional, TypeVar, Union
 
 from allotropy.allotrope.models.shared.definitions.units import HasUnit
 from allotropy.exceptions import AllotropeConversionError
@@ -117,6 +117,21 @@ class PartialPossibleValueWithPossibleUnit(
     @property
     def field_type(self) -> Optional[TClass]:
         return self._field_type
+
+    @final
+    def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, PartialPossibleValueWithPossibleUnit):
+            return False
+        return (
+            self.value == other.value
+            and self.unit == other.unit
+            and self.has_statistic_datum_role == other.has_statistic_datum_role
+            and self.field_type == other.field_type
+        )
+
+    @final
+    def __hash__(self) -> int:
+        raise NotImplementedError
 
 
 class PossibleValueWithPossibleUnit(
