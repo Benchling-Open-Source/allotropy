@@ -63,14 +63,6 @@ def lint_file(model_path: str) -> None:
     )
 
 
-def files_equal(path1: str, path2: str) -> bool:
-    with open(path1) as file1, open(path2) as file2:
-        for line1, line2 in zip(file1, file2):
-            if line1 != line2 and not line1.startswith("#   timestamp:"):
-                return False
-    return True
-
-
 def _get_schema_and_model_paths(
     root_dir: Path, rel_schema_path: Path
 ) -> tuple[Path, Path]:

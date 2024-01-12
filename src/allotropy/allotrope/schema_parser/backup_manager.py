@@ -1,5 +1,6 @@
 from collections.abc import Iterator
 from contextlib import contextmanager
+from itertools import zip_longest
 from pathlib import Path
 import shutil
 from typing import Optional, Union
@@ -7,9 +8,9 @@ from typing import Optional, Union
 PathType = Union[Path, str]
 
 
-def files_equal(path1: PathType, path2: PathType) -> bool:
+def _files_equal(path1: PathType, path2: PathType) -> bool:
     with open(str(path1)) as file1, open(str(path2)) as file2:
-        for line1, line2 in zip(file1, file2):
+        for line1, line2 in zip_longest(file1, file2, fillvalue=""):
             if line1 != line2 and not line1.startswith("#   timestamp:"):
                 return False
     return True
@@ -21,8 +22,9 @@ def _get_backup_path(path: PathType) -> Path:
 
 
 def is_file_changed(path: PathType) -> bool:
-    if _get_backup_path(path).exists():
-        return not files_equal(path, _get_backup_path(path))
+    backup_path = _get_backup_path(path)
+    if backup_path.exists():
+        return not _files_equal(path, backup_path)
     return True
 
 
@@ -32,8 +34,9 @@ def _backup_file(path: PathType) -> None:
 
 
 def restore_backup(path: PathType) -> None:
-    if _get_backup_path(path).exists():
-        _get_backup_path(path).rename(path)
+    backup_path = _get_backup_path(path)
+    if backup_path.exists():
+        backup_path.rename(path)
 
 
 def _remove_backup(path: PathType) -> None:
