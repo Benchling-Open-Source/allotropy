@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from collections.abc import Mapping
+from typing import Any, Optional, Union
 import uuid
 
 import pandas as pd
@@ -40,7 +41,15 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
 from allotropy.parsers.vendor_parser import VendorParser
 
-property_lookup = {
+property_lookup: Mapping[
+    str,
+    Union[
+        type[TQuantityValueUnitless],
+        type[TQuantityValueMillionCellsPerMilliliter],
+        type[TQuantityValueMicrometer],
+        type[TQuantityValueCell],
+    ],
+] = {
     "Dilution factor": TQuantityValueUnitless,
     "Total cells/ml (x10^6)": TQuantityValueMillionCellsPerMilliliter,
     "Avg. diam. (microns)": TQuantityValueMicrometer,

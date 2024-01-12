@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import Any, NamedTuple, Optional
+from collections.abc import Mapping
+from typing import Any, NamedTuple, Optional, Union
 import uuid
 
 import pandas as pd
@@ -37,7 +38,16 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
 from allotropy.parsers.vendor_parser import VendorParser
 
-property_lookup = {
+property_lookup: Mapping[
+    str,
+    Union[
+        type[TQuantityValueCell],
+        type[TQuantityValueMicrometer],
+        type[TQuantityValueMillionCellsPerMilliliter],
+        type[TQuantityValuePercent],
+        type[TQuantityValueUnitless],
+    ],
+] = {
     "Average viable diameter (μm)": TQuantityValueMicrometer,
     "Average circularity": TQuantityValueUnitless,
     "Average diameter (μm)": TQuantityValueMicrometer,

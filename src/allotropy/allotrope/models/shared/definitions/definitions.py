@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Union
+from typing import final, Generic, Optional, TypeVar, Union
 
+from allotropy.allotrope.models.shared.definitions.units import HasUnit
 from allotropy.exceptions import AllotropeConversionError
 
 
@@ -62,30 +64,101 @@ class InvalidJsonFloat(Enum):
 
 JsonFloat = Union[float, InvalidJsonFloat]
 
+ValueType = TypeVar("ValueType")
 
-@dataclass
-class TQuantityValue:
-    value: JsonFloat
-    unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+
+class IPossibleValueWithPossibleUnit(Generic[ValueType], HasUnit, ABC):
+    @property
+    @abstractmethod
+    def value(self) -> ValueType:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def has_statistic_datum_role(self) -> Optional[TStatisticDatumRole]:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def field_type(self) -> Optional[TClass]:
+        raise NotImplementedError
+
+
+class PartialPossibleValueWithPossibleUnit(
+    Generic[ValueType],
+    IPossibleValueWithPossibleUnit[ValueType],
+    ABC,
+):
+    _value: ValueType
+    _has_statistic_datum_role: Optional[TStatisticDatumRole]
+    _field_type: Optional[TClass]
+
+    def __init__(
+        self,
+        value: ValueType,
+        has_statistic_datum_role: Optional[TStatisticDatumRole] = None,
+        field_type: Optional[TClass] = None,
+    ) -> None:
+        self._value = value
+        self._has_statistic_datum_role = has_statistic_datum_role
+        self._field_type = field_type
+
+    @final
+    @property
+    def value(self) -> ValueType:
+        return self._value
+
+    @final
+    @property
+    def has_statistic_datum_role(self) -> Optional[TStatisticDatumRole]:
+        return self._has_statistic_datum_role
+
+    @final
+    @property
+    def field_type(self) -> Optional[TClass]:
+        return self._field_type
+
+
+class PossibleValueWithPossibleUnit(
+    Generic[ValueType],
+    PartialPossibleValueWithPossibleUnit[ValueType],
+):
+    _unit: str
+
+    def __init__(
+        self,
+        value: ValueType,
+        unit: str,
+        has_statistic_datum_role: Optional[TStatisticDatumRole] = None,
+        field_type: Optional[TClass] = None,
+    ) -> None:
+        super().__init__(value, has_statistic_datum_role, field_type)
+        self._unit = unit
+
+    @final
+    @property
+    def unit(self) -> str:
+        return self._unit
+
+
+class TQuantityValue(
+    PossibleValueWithPossibleUnit[JsonFloat],
+):
+    pass
 
 
 # NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
-@dataclass
-class TQuantityValueWithOptionalUnit:
-    value: JsonFloat
-    unit: Optional[TUnit]
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+class TQuantityValueWithOptionalUnit(
+    PartialPossibleValueWithPossibleUnit[JsonFloat], ABC
+):
+    # TODO(brian): fold into TQuantityValue
+    pass
 
 
-@dataclass
-class TNullableQuantityValueWithOptionalUnit:
-    value: Optional[float]
-    unit: Optional[TUnit]
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+class TNullableQuantityValueWithOptionalUnit(
+    PartialPossibleValueWithPossibleUnit[Optional[JsonFloat]], ABC
+):
+    pass
 
 
 class FieldComponentDatatype(Enum):

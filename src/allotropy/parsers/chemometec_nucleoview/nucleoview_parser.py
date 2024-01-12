@@ -1,4 +1,5 @@
-from typing import Any, Optional
+from collections.abc import Mapping
+from typing import Any, Optional, Union
 import uuid
 
 import pandas as pd
@@ -38,7 +39,15 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
 from allotropy.parsers.vendor_parser import VendorParser
 
-_PROPERTY_LOOKUP = {
+_PROPERTY_LOOKUP: Mapping[
+    str,
+    Union[
+        type[TQuantityValueMicrometer],
+        type[TQuantityValueMillionCellsPerMilliliter],
+        type[TQuantityValuePercent],
+        type[TQuantityValueUnitless],
+    ],
+] = {
     "Dead (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
     "Estimated cell diameter (um)": TQuantityValueMicrometer,
     "Live (cells/ml)": TQuantityValueMillionCellsPerMilliliter,

@@ -1,172 +1,229 @@
-from dataclasses import dataclass
-from typing import Optional
+from abc import ABC, abstractmethod
+from typing import final
 
 
-@dataclass
-class Centimeter:
-    unit: Optional[str] = "cm"
+class HasUnit(ABC):
+    @property
+    @abstractmethod
+    def unit(self) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class Millimeter:
-    unit: Optional[str] = "mm"
+class HasUnitMethod(ABC):
+    @classmethod
+    def get_clazz_unit(cls) -> str:
+        return cls._get_unit()
 
+    @property
+    @final
+    def unit(self) -> str:
+        return self._get_unit()
 
-@dataclass
-class Nanometer:
-    unit: Optional[str] = "nm"
+    @classmethod
+    @abstractmethod
+    def _get_unit(cls) -> str:
+        raise NotImplementedError
 
 
-@dataclass
-class Micrometer:
-    unit: Optional[str] = "μm"
+class Centimeter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "cm"
 
 
-@dataclass
-class Hertz:
-    unit: Optional[str] = "Hz"
+class Millimeter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mm"
 
 
-@dataclass
-class CubicMillimeter:
-    unit: Optional[str] = "mm^3"
+class Nanometer(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mm"
 
 
-@dataclass
-class Unitless:
-    unit: Optional[str] = "(unitless)"
+class Micrometer(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "μm"
 
 
-@dataclass
-class SecondTime:
-    unit: Optional[str] = "s"
+class Hertz(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "Hz"
 
 
-@dataclass
-class Percent:
-    unit: Optional[str] = "%"
+class CubicMillimeter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mm^3"
 
 
-@dataclass
-class Cell:
-    unit: Optional[str] = "cell"
+class Unitless(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "(unitless)"
 
 
-@dataclass
-class Microliter:
-    unit: Optional[str] = "μL"
+class SecondTime(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "s"
 
 
-@dataclass
-class NumberPerMicroliter:
-    unit: Optional[str] = "#/μL"
+class Percent(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "%"
 
 
-@dataclass
-class MilliSecond:
-    unit: Optional[str] = "ms"
+class Cell(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "cell"
 
 
-@dataclass
-class MillionCellsPerMilliliter:
-    unit: Optional[str] = "10^6 cells/mL"
+class Microliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "μL"
 
 
-@dataclass
-class TODO:
-    unit: Optional[str] = "TODO"
+class NumberPerMicroliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "μL"
 
 
-@dataclass
-class DegreeCelsius:
-    unit: Optional[str] = "degC"
+class MilliSecond(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "ms"
 
 
-@dataclass
-class Number:
-    unit: Optional[str] = "#"
+class MillionCellsPerMilliliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "10^6 cells/mL"
 
 
-@dataclass
-class NanogramPerMicroliter:
-    unit: Optional[str] = "ng/uL"
+class TODO(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "TODO"
 
 
-@dataclass
-class MicrogramPerMicroliter:
-    unit: Optional[str] = "ug/uL"
+class DegreeCelsius(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "degC"
 
 
-@dataclass
-class PicogramPerMilliliter:
-    unit: Optional[str] = "pg/mL"
+class Number(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "#"
 
 
-@dataclass
-class NanogramPerMilliliter:
-    unit: Optional[str] = "ng/mL"
+class NanogramPerMicroliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "ng/uL"
 
 
-@dataclass
-class MicrogramPerMilliliter:
-    unit: Optional[str] = "ug/mL"
+class MicrogramPerMicroliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "ug/uL"
 
 
-@dataclass
-class MilligramPerMilliliter:
-    unit: Optional[str] = "mg/mL"
+class PicogramPerMilliliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "pg/mL"
 
 
-@dataclass
-class GramPerLiter:
-    unit: Optional[str] = "g/L"
+class NanogramPerMilliliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "pg/mL"
 
 
-@dataclass
-class UnitPerLiter:
-    unit: Optional[str] = "U/L"
+class MicrogramPerMilliliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "ug/mL"
 
 
-@dataclass
-class MillimeterOfMercury:
-    unit: Optional[str] = "mmHg"
+class MilligramPerMilliliter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mg/mL"
 
 
-@dataclass
-class OpticalDensity:
-    unit: Optional[str] = "OD"
+class GramPerLiter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "g/L"
 
 
-@dataclass
-class PH:
-    unit: Optional[str] = "pH"
+class UnitPerLiter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "U/L"
 
 
-@dataclass
-class MilliOsmolesPerKilogram:
-    unit: Optional[str] = "mosm/kg"
+class MillimeterOfMercury(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mmHg"
 
 
-@dataclass
-class MillimolePerLiter:
-    unit: Optional[str] = "mmol/L"
+class OpticalDensity(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "OD"
 
 
-@dataclass
-class MilliAbsorbanceUnit:
-    unit: Optional[str] = "mAU"
+class PH(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "pH"
 
 
-@dataclass
-class RelativeFluorescenceUnit:
-    unit: Optional[str] = "RFU"
+class MilliOsmolesPerKilogram(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mosm/kg"
 
 
-@dataclass
-class RelativeLightUnit:
-    unit: Optional[str] = "RLU"
+class MillimolePerLiter(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mmol/L"
 
 
-@dataclass
-class SquareCentimetersPerGram:
-    unit: Optional[str] = "cm^2/g"
+class MilliAbsorbanceUnit(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "mAU"
+
+
+class RelativeFluorescenceUnit(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "RFU"
+
+
+class RelativeLightUnit(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "RLU"
+
+
+class SquareCentimetersPerGram(HasUnitMethod):
+    @classmethod
+    def _get_unit(cls) -> str:
+        return "cm^2/g"

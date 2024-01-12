@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Any, Union
 
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -38,9 +39,14 @@ ALL_MOLAR_CONCENTRATION_CLASSES: list[
     TNullableQuantityValueGramPerLiter,
     TNullableQuantityValueUnitPerLiter,
 ]
-MOLAR_CONCENTRATION_CLS_BY_UNIT = {
-    cls.unit: cls for cls in ALL_MOLAR_CONCENTRATION_CLASSES
-}
+MOLAR_CONCENTRATION_CLS_BY_UNIT: Mapping[
+    str,
+    Union[
+        type[TNullableQuantityValueMillimolePerLiter],
+        type[TNullableQuantityValueGramPerLiter],
+        type[TNullableQuantityValueUnitPerLiter],
+    ],
+] = {cls.get_clazz_unit(): cls for cls in ALL_MOLAR_CONCENTRATION_CLASSES}
 
 ANALYTE_MAPPINGS: dict[str, dict[str, str]] = {
     "NH4+": {

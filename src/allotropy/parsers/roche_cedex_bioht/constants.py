@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from typing import Union
 
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -27,9 +28,29 @@ MOLAR_CONCENTRATION_CLASSES: list[
     TNullableQuantityValueUnitPerLiter,
 ]
 
-MOLAR_CONCENTRATION_CLS_BY_UNIT = {cls.unit: cls for cls in MOLAR_CONCENTRATION_CLASSES}
+MOLAR_CONCENTRATION_CLS_BY_UNIT: Mapping[
+    str,
+    Union[
+        type[TNullableQuantityValueMillimolePerLiter],
+        type[TNullableQuantityValueGramPerLiter],
+        type[TNullableQuantityValueUnitPerLiter],
+    ],
+] = {cls.get_clazz_unit(): cls for cls in MOLAR_CONCENTRATION_CLASSES}
 
-NON_AGGREGABLE_PROPERTIES = {
+NON_AGGREGABLE_PROPERTIES: Mapping[
+    str,
+    Union[
+        type[TNullableQuantityValueCell],
+        type[TNullableQuantityValueMicrometer],
+        type[TNullableQuantityValueMilliOsmolesPerKilogram],
+        type[TNullableQuantityValueMillimeterOfMercury],
+        type[TNullableQuantityValueMillionCellsPerMilliliter],
+        type[TNullableQuantityValueOpticalDensity],
+        type[TNullableQuantityValuePH],
+        type[TNullableQuantityValuePercent],
+        type[TNullableQuantityValueTODO],
+    ],
+] = {
     "pco2": TNullableQuantityValueMillimeterOfMercury,
     "co2_saturation": TNullableQuantityValuePercent,
     "po2": TNullableQuantityValueMillimeterOfMercury,
