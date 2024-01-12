@@ -79,18 +79,6 @@ class TNullableQuantityValue:
     field_type: Optional[TClass] = None
 
 
-# TODO(brian): The following two classes are now identical to the preceding two classes. Delete.
-
-
-# NOTE: this is defined to allow override of unit default for TQuaniityValue<Unit> (otherwise mypy gets mad)
-@dataclass
-class TQuantityValueWithOptionalUnit:
-    value: JsonFloat
-    unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
-
-
 class FieldComponentDatatype(Enum):
     double = "double"
     float = "float"  # noqa: A003
