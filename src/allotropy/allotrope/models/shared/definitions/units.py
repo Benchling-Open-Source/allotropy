@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import final
 
+UNITLESS = "(unitless)"
+
 
 class HasUnit(ABC):
     @property
@@ -64,7 +66,7 @@ class CubicMillimeter(HasUnitMethod):
 class Unitless(HasUnitMethod):
     @classmethod
     def _get_unit(cls) -> str:
-        return "(unitless)"
+        return UNITLESS
 
 
 class SecondTime(HasUnitMethod):

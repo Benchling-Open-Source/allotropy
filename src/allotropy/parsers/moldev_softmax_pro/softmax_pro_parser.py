@@ -39,6 +39,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
@@ -50,7 +51,6 @@ from allotropy.parsers.moldev_softmax_pro.constants import (
     EPOCH,
     NULL,
     REDUCED,
-    UNITLESS,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
@@ -76,7 +76,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_model(self, file_name: str, data: Data) -> Model:
         return Model(
-            field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=NULL,
