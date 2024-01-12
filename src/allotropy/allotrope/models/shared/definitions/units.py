@@ -5,7 +5,7 @@ UNITLESS = "(unitless)"
 
 @dataclass
 class HasUnit:
-    unit: str = ""
+    unit: str
 
 
 @dataclass
