@@ -1440,7 +1440,7 @@
         "fluorescence": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tRelativeFluorescenceUnit"
+          "$ref": "#/$custom/tQuantityValueRelativeFluorescenceUnit"
         },
         "mass concentration": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
@@ -1554,7 +1554,7 @@
         "luminescence": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002507",
           "$asm.pattern": "quantity datum",
-          "$ref": "#/$custom/tRelativeLightUnit"
+          "$ref": "#/$custom/tQuantityValueRelativeLightUnit"
         },
         "mass concentration": {
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",

@@ -200,12 +200,12 @@ class TQuantityValueMilliAbsorbanceUnit(MilliAbsorbanceUnit, TQuantityValue):
 
 
 @dataclass
-class TRelativeFluorescenceUnit(RelativeFluorescenceUnit, TQuantityValue):
+class TQuantityValueRelativeFluorescenceUnit(RelativeFluorescenceUnit, TQuantityValue):
     pass
 
 
 @dataclass
-class TRelativeLightUnit(RelativeLightUnit, TQuantityValue):
+class TQuantityValueRelativeLightUnit(RelativeLightUnit, TQuantityValue):
     pass
 
 
