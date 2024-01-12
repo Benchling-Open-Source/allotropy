@@ -1,18 +1,15 @@
 from collections import defaultdict
 import copy
 import json
-import os
-from pathlib import Path
 import re
 from typing import Any, Callable, Optional
 
 from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
-from allotropy.allotrope.schemas import get_schema
-
-SCHEMAS_DIR = os.path.join(Path(__file__).parent.parent, "schemas")
-SHARED_SCHEMAS_DIR = os.path.join(SCHEMAS_DIR, "shared", "definitions")
-MODELS_DIR = os.path.join(Path(__file__).parent.parent, "models")
-SHARED_MODELS_DIR = os.path.join(MODELS_DIR, "shared", "definitions")
+from allotropy.allotrope.schemas import (
+    get_schema,
+    get_shared_definitions,
+    get_shared_unit_definitions,
+)
 
 
 class SchemaCleaner:
@@ -20,10 +17,14 @@ class SchemaCleaner:
         self.unit_to_name: dict[str, str] = {}
         self.unit_to_iri: dict[str, str] = {}
         self.referenced_units = set()
-        self.definitions = self._load_definitions()
         self.replaced_definitions = defaultdict(list)
 
-        self._load_units()
+        self.definitions = get_shared_definitions()
+        for unit_schema in get_shared_unit_definitions().values():
+            self._add_unit(
+                unit=unit_schema["properties"]["unit"]["const"],
+                unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
+            )
 
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
@@ -34,32 +35,9 @@ class SchemaCleaner:
     def _is_unit_name_ref(self, ref: str) -> Optional[str]:
         return ref.split("/")[-1] in self.unit_to_name.values()
 
-    def _get_unit_name(self, unit: str) -> Optional[str]:
-        unit_match = re.match(r"(?:\#/\$defs/)?(?:.*schema_)?(.*)", unit)
-        if not unit_match:
-            return None
-        unit = unit_match.groups()[0]
-        if unit not in self.unit_to_name:
-            return None
-        self.referenced_units.add(unit)
-        return self.unit_to_name[unit]
-
-    def _load_definitions(self) -> dict[str, Any]:
-        with open(os.path.join(SHARED_SCHEMAS_DIR, "definitions.json")) as f:
-            return dict(json.load(f).items())
-
     def _add_unit(self, unit: str, unit_iri: str) -> None:
         self.unit_to_name[unit] = unit_name_from_iri(unit_iri)
         self.unit_to_iri[unit] = unit_iri
-
-    def _load_units(self) -> dict[str, str]:
-        with open(os.path.join(SHARED_SCHEMAS_DIR, "units.json")) as f:
-            units_schema = json.load(f)
-            for unit_schema in units_schema.values():
-                self._add_unit(
-                    unit=unit_schema["properties"]["unit"]["const"],
-                    unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
-                )
 
     def _add_embeded_units(self, unit_schemas: dict[str, Any]):
         for unit, unit_schema in unit_schemas.items():
@@ -101,10 +79,12 @@ class SchemaCleaner:
     def _try_combine_object_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
         # Combines object schemas, array schemas ARE NOT ALLWOED
         if any(self._is_array_schema(schema) for schema in schemas):
-            assert False, "NO ARRAY SCHEMAS"
+            msg = "Unexpected array schema in _try_combine_object_schemas"
+            raise AssertionError(msg)
 
         if any(self._is_composed_object_schema(schema) for schema in schemas):
-           assert False, "NO COMPOSED SCHEMAS"
+            msg = "Unexpected composed object schema in _try_combine_object_schemas"
+            raise AssertionError(msg)
 
         all_values = defaultdict(list)
         for schema in schemas:
@@ -159,7 +139,9 @@ class SchemaCleaner:
         if "anyOf" in value:
             allof_values.append({"anyOf": value.pop("anyOf")})
         if "oneOf" in value:
-            assert len(value["oneOf"]) > 1, "Can't flatten oneOf with more than one value"
+            if len(value["oneOf"]) > 1:
+                msg = "Cannot flatten oneOf with more than one value in _flatten_schema"
+                raise AssertionError(msg)
             allof_values.append(value.pop("oneOf")[0])
 
         if self._is_class_schema(value):
@@ -288,21 +270,22 @@ class SchemaCleaner:
             # datamodel-codegen can not handle single-value allOf entries.
             return values[0]
 
-        if all(values[0] == value for value in values):
+        if self._all_values_equal(values):
             return values[0]
 
         if all(self._is_ref_schema(schema) for schema in values) and all("QuantityValue" in schema["$ref"] for schema in values):
             unique = {schema["$ref"].split("/")[-1] for schema in values} - {"tQuantityValue", "tNullableQuantityValue"}
             if len(unique) == 1:
                 return {"$ref": f"#/$defs/{next(iter(unique))}"}
-            assert False, f"Unable to combine multiple different quantity value references: {values}"
+            msg = f"Unable to combine multiple different tQuantityValue references: {values}"
+            raise AssertionError(msg)
 
         # datamodel-codegen can not handle oneOf nested inside allOf. Fix this by reversing the order,
         # making a oneOf with each possible product of allOf
         if any("oneOf" in value for value in values):
             return self._clean_schema(self._invert_allof(values, "oneOf"))
 
-        # This must come after fixing oneOf because oneOf may break into multiple quantity values
+        # This must come after fixing oneOf because oneOf may break into multiple quantity values.
         if self._is_quantity_value(values):
             return self._fix_quantity_value_reference(values)
 
@@ -310,16 +293,16 @@ class SchemaCleaner:
         derefed_values = self._dereference_values(values)
         if any("oneOf" in value for value in derefed_values):
             return self._clean_schema(self._invert_allof(derefed_values, "oneOf"))
-
         if any("anyOf" in value for value in derefed_values):
             return self._clean_schema(self._invert_allof(derefed_values, "anyOf"))
 
         # If any object in the allOf has required fields, we must combine them in order for the generation
         # script to generate valid dataclasses. This is because dataclass inheritance with optional fields
-        # is broken in python<3.10.
+        # is broken in python < 3.10.
         if self._required_anywhere(derefed_values):
             return self._combine_allof_schemas(derefed_values)
 
+        # If there is an allOf nested with this allOf, combine it.
         if any("allOf" in schema for schema in derefed_values):
             return self._combine_allof_schemas(derefed_values)
 
@@ -329,7 +312,7 @@ class SchemaCleaner:
 
         return {"allOf": values}
 
-    def _get_reference(self, value: Any) -> tuple[Optional[str], Optional[str]]:
+    def _get_reference_from_url(self, value: Any) -> tuple[Optional[str], Optional[str]]:
         # Identify URL-like references, and return a sanitized version that can be followed by generation script.
         # Return schema_name and definition name separately for use in other logic.
         ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*schema)(\#/\$defs/)?(.*)?", str(value))
@@ -340,23 +323,24 @@ class SchemaCleaner:
         return schema_name, def_name
 
     def _clean_ref_value(self, value: str) -> str:
-        schema_name, def_name = self._get_reference(value)
+        schema_name, def_name = self._get_reference_from_url(value)
         if def_name in self.replaced_definitions.get(schema_name, []):
             return f"#/$defs/{def_name}"
-        elif def_name and self._get_unit_name(def_name):
-            return f"#/$defs/{self._get_unit_name(def_name)}"
+        elif def_name and def_name in self.unit_to_name:
+            self.referenced_units.add(def_name)
+            return f"#/$defs/{self.unit_to_name[def_name]}"
 
         if schema_name and def_name:
             cleaned_ref = f"#/$defs/{schema_name}/$defs/{def_name}"
         elif schema_name or def_name:
-            cleaned_ref = f"#/$defs/{schema_name or def_name}"
+            return f"#/$defs/{schema_name or def_name}"
         else:
             cleaned_ref = value
 
         def_name = cleaned_ref.split("/")[-1]
 
         if self.enclosing_schema_name and def_name not in self.definitions and def_name in self.enclosing_schema_keys:
-            cleaned_ref = f"#/$defs/{self.enclosing_schema_name}/$defs/{def_name}"
+            return f"#/$defs/{self.enclosing_schema_name}/$defs/{def_name}"
 
         return cleaned_ref
 
@@ -458,7 +442,7 @@ class SchemaCleaner:
     def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
         for schema_name, defs_schema in schema.items():
             # Replace web address reference name with a version that can be followed in datamodel-codegen
-            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
+            cleaned_schema_name = self._get_reference_from_url(schema_name)[0] or schema_name
             # Units are treated specially. We rename the unit (to avoid non-variable names) and store
             # them in separate shared unit schema file, in order to allow for shared imports.
             if cleaned_schema_name.endswith("units_schema"):
@@ -478,7 +462,7 @@ class SchemaCleaner:
 
         cleaned = {}
         for schema_name, defs_schema in schema.items():
-            cleaned_schema_name = self._get_reference(schema_name)[0] or schema_name
+            cleaned_schema_name = self._get_reference_from_url(schema_name)[0] or schema_name
             if cleaned_schema_name.endswith("units_schema"):
                 continue
             elif "$defs" in defs_schema:
