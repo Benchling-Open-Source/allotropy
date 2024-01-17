@@ -13,6 +13,11 @@ from datamodel_code_generator import (
     PythonVersion,
 )
 
+from allotropy.allotrope.schema_parser.backup_manager import (
+    backup,
+    is_file_changed,
+    restore_backup,
+)
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schemas import get_schema
 
@@ -58,12 +63,39 @@ def lint_file(model_path: str) -> None:
     )
 
 
-def files_equal(path1: str, path2: str) -> bool:
-    with open(path1) as file1, open(path2) as file2:
-        for line1, line2 in zip(file1, file2):
-            if line1 != line2 and not line1.startswith("#   timestamp:"):
-                return False
-    return True
+def _get_schema_and_model_paths(
+    root_dir: Path, rel_schema_path: Path
+) -> tuple[Path, Path]:
+    schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
+    model_file = re.sub(
+        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
+    ).lower()
+    model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
+    return schema_path, model_path
+
+
+def _generate_schema(
+    model_path: Path, schema_path: Path, rel_schema_path: Path
+) -> None:
+    # get_schema adds extra defs from shared definitions to the schema.
+    schema = get_schema(str(rel_schema_path))
+    with open(schema_path, "w") as f:
+        json.dump(schema, f)
+
+    # Generate models
+    generate(
+        input_=schema_path,
+        output=model_path,
+        output_model_type=DataModelType.DataclassesDataclass,
+        input_file_type=InputFileType.JsonSchema,
+        # Specify base_class as empty when using dataclass
+        base_class="",
+        target_python_version=PythonVersion.PY_39,
+        use_union_operator=False,
+    )
+    # Import classes from shared files, remove unused classes, format.
+    modify_file(str(model_path), str(schema_path))
+    lint_file(str(model_path))
 
 
 def generate_schemas(
@@ -89,50 +121,16 @@ def generate_schemas(
             continue
         if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
             continue
+
         print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-        schema_name = rel_schema_path.stem
-        schema_path = os.path.join(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-        output_file = re.sub(
-            "/|-", "_", f"{rel_schema_path.parent}_{schema_name}.py"
-        ).lower()
-        model_path = os.path.join(root_dir, MODEL_DIR_PATH, output_file)
-        model_backup_path = f"{model_path}.bak"
-        schema_backup_path = f"{schema_path}.bak"
+        schema_path, model_path = _get_schema_and_model_paths(root_dir, rel_schema_path)
 
-        # Backup model to do diff after generation
-        if os.path.exists(model_path):
-            os.rename(model_path, model_backup_path)
+        with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
+            _generate_schema(model_path, schema_path, rel_schema_path)
 
-        # Backup schema and override with extra defs
-        schema = get_schema(str(rel_schema_path))
-        os.rename(schema_path, schema_backup_path)
-        with open(schema_path, "w") as f:
-            json.dump(schema, f)
-
-        # Generate models
-        generate(
-            input_=Path(schema_path),
-            output=Path(model_path),
-            output_model_type=DataModelType.DataclassesDataclass,
-            input_file_type=InputFileType.JsonSchema,
-            # Specify base_class as empty when using dataclass
-            base_class="",
-            target_python_version=PythonVersion.PY_39,
-            use_union_operator=False,
-        )
-        # Import classes from shared files, remove unused classes, format.
-        modify_file(model_path, schema_path)
-        lint_file(model_path)
-
-        # Restore backups
-        if os.path.exists(model_backup_path):
-            files_are_equal = files_equal(model_path, model_backup_path)
-            if not files_are_equal:
-                models_changed.append(os.path.basename(model_path))
-            if files_are_equal or dry_run:
-                os.rename(model_backup_path, model_path)
+            if is_file_changed(model_path):
+                models_changed.append(Path(model_path).stem)
             else:
-                os.remove(model_backup_path)
-        os.rename(schema_backup_path, schema_path)
+                restore_backup(model_path)
 
     return models_changed
