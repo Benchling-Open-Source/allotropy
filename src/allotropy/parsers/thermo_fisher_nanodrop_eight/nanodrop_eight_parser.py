@@ -1,4 +1,5 @@
-from typing import Optional, TypeVar
+from collections.abc import Mapping
+from typing import Optional, Union
 import uuid
 
 import pandas as pd
@@ -43,9 +44,24 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
-T = TypeVar("T")
+ConcentrationType = Union[
+    TQuantityValueMicrogramPerMicroliter,
+    TQuantityValueMicrogramPerMilliliter,
+    TQuantityValueMilligramPerMilliliter,
+    TQuantityValueNanogramPerMicroliter,
+    TQuantityValueNanogramPerMilliliter,
+    TQuantityValuePicogramPerMilliliter,
+]
+ConcentrationClassType = Union[
+    type[TQuantityValueMicrogramPerMicroliter],
+    type[TQuantityValueMicrogramPerMilliliter],
+    type[TQuantityValueMilligramPerMilliliter],
+    type[TQuantityValueNanogramPerMicroliter],
+    type[TQuantityValueNanogramPerMilliliter],
+    type[TQuantityValuePicogramPerMilliliter],
+]
 
-CONCENTRATION_UNIT_TO_TQUANTITY = {
+CONCENTRATION_UNIT_TO_TQUANTITY: Mapping[str, ConcentrationClassType] = {
     "ug/ul": TQuantityValueMicrogramPerMicroliter,
     "ug/ml": TQuantityValueMicrogramPerMilliliter,
     "mg/ml": TQuantityValueMilligramPerMilliliter,
@@ -81,10 +97,12 @@ def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
         return InvalidJsonFloat.NaN
 
 
-def _get_concentration(conc: JsonFloat, unit: Optional[str]) -> Optional[T]:
+def _get_concentration(
+    conc: JsonFloat, unit: Optional[str]
+) -> Optional[ConcentrationType]:
     if unit in CONCENTRATION_UNIT_TO_TQUANTITY and isinstance(conc, float):
-        cls = CONCENTRATION_UNIT_TO_TQUANTITY[unit]
-        return cls(value=conc)  # type: ignore[return-value]
+        cls = CONCENTRATION_UNIT_TO_TQUANTITY[str(unit)]
+        return cls(value=conc)
 
     return None
 
