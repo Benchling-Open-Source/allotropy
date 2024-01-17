@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add calculated data documents to Moldev Softmax Pro
 - Add multi-analyte-profiling BENCHLING/2024/01 schema
 - Parser for Nanodrop Eight
+- Add context manager to handle backups to schema generation script
 - Add --regex argument to schema generation script
 
 ### Fixed
@@ -22,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Simplify Moldev Softmax Pro parsing with dataclasses
 - Update plate reader schema in Moldev Softmax Pro
+- Standardized on UNITLESS constant ("(unitless)") for unitless values. Changed Perkin Elmer Envision, which formerly used "unitless".
 ### Deprecated
 ### Removed
 ### Security
