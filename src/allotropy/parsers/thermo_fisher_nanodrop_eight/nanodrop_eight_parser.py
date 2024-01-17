@@ -18,6 +18,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophotometry import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -146,7 +147,7 @@ class NanodropEightParser(VendorParser):
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/280",
             calculated_result=TQuantityValue(
-                value=_get_float(data, row, "260/280"), unit="unitless"
+                value=_get_float(data, row, "260/280"), unit=UNITLESS
             ),
             calculated_data_identifier=str(uuid.uuid4()),
             data_source_aggregate_document=DataSourceAggregateDocument1(
@@ -167,7 +168,7 @@ class NanodropEightParser(VendorParser):
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/230",
             calculated_result=TQuantityValue(
-                value=_get_float(data, row, "260/230"), unit="unitless"
+                value=_get_float(data, row, "260/230"), unit=UNITLESS
             ),
             calculated_data_identifier=str(uuid.uuid4()),
             data_source_aggregate_document=DataSourceAggregateDocument1(
