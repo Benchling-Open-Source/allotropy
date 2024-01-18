@@ -100,8 +100,8 @@ def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
 def _get_concentration(
     conc: JsonFloat, unit: Optional[str]
 ) -> Optional[ConcentrationType]:
-    if unit in CONCENTRATION_UNIT_TO_TQUANTITY and isinstance(conc, float):
-        cls = CONCENTRATION_UNIT_TO_TQUANTITY[str(unit)]
+    if unit and unit in CONCENTRATION_UNIT_TO_TQUANTITY and isinstance(conc, float):
+        cls = CONCENTRATION_UNIT_TO_TQUANTITY[unit]
         return cls(value=conc)
 
     return None
