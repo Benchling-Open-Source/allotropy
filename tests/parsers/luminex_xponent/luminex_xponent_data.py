@@ -1,5 +1,9 @@
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.luminex_xponent.luminex_xponent_structure import Data, Header
+from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
+    CalibrationItem,
+    Data,
+    Header,
+)
 
 
 def get_reader() -> CsvReader:
@@ -24,6 +28,11 @@ def get_reader() -> CsvReader:
             "ProtocolAnalysis,Off,,,,,,,,,,,,,,,,,,,,,,",
             ",,,,,,,,,,,,,,,,,,,,,,,",
             "Most Recent Calibration and Verification Results:,,,,,,,,,,,,,,,,,,,,,,,",
+            "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,,,,,,,,,,,,,,,,,",
+            "Last F3DCAL2 Calibration,Failed 05/17/2023 09:25:33,,,,,,,,,,,,,,,,,,,,,,",
+            "Last Fluidics Test,Passed 05/17/2023 09:28:43,,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "CALInfo:,,,,,,,,,,,,,,,,,,,,,,,",
         ]
     )
 
@@ -42,5 +51,22 @@ def get_data() -> Data:
             detector_gain_setting="Standard PMT",  # ProtocolReporterGain
             analyst="waldo",  # Operator row
             data_system_instance_identifier="ABCDEFG123456",  # ComputerName
-        )
+        ),
+        calibration_data=[
+            CalibrationItem(
+                name="F3DeCAL1 Calibration",
+                report="Passed",
+                time="2023-05-17T09:25:11",
+            ),
+            CalibrationItem(
+                name="F3DCAL2 Calibration",
+                report="Failed",
+                time="2023-05-17T09:25:33",
+            ),
+            CalibrationItem(
+                name="Fluidics Test",
+                report="Passed",
+                time="2023-05-17T09:28:43",
+            ),
+        ],
     )

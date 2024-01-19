@@ -16,6 +16,9 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
+EMPTY_CSV_LINE = r"^,*$"
+CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
+
 
 @dataclass(frozen=True)
 class Header:
@@ -87,23 +90,59 @@ class Header:
 
 
 @dataclass(frozen=True)
+class CalibrationItem:
+    name: str
+    report: str
+    time: str
+
+
+@dataclass(frozen=True)
 class Data:
     header: Header
+    calibration_data: list[CalibrationItem]
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        header_df = Data._get_header_df(reader)
+        header_data = Data._get_header_data(reader)
 
-        return Data(header=Header.create(header_df))
+        return Data(
+            header=Header.create(header_data),
+            calibration_data=Data._get_calibration_data(reader),
+        )
 
     @staticmethod
-    def _get_header_df(reader: CsvReader) -> pd.DataFrame:
+    def _get_header_data(reader: CsvReader) -> pd.DataFrame:
         header_lines = assert_not_none(
-            reader.pop_until("Most Recent Calibration and Verification Results")
+            reader.pop_until(CALIBRATION_BLOCK_HEADER), "Unable to find Header block."
         )
-        header_df = pd.read_csv(
+        header_data = pd.read_csv(
             StringIO("\n".join(header_lines)),
             header=None,
             index_col=0,
         ).dropna(how="all")
-        return header_df.T
+        return header_data.T
+
+    @staticmethod
+    def _get_calibration_data(reader: CsvReader) -> list[CalibrationItem]:
+        reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
+        calibration_lines = assert_not_none(
+            reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
+            "Unable to find Calibration Block",
+        )
+
+        calibration_list = []
+
+        for line in calibration_lines:
+            # each line follows the pattern "Last <calibration_name>,<calibration_report> <calibration_time>,,,,"
+            # example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
+            line = line.split(',')
+            calibration_result = line[1].split(maxsplit=1)
+
+            calibration_list.append(
+                CalibrationItem(
+                    name=line[0].replace("Last", "").strip(),
+                    report=calibration_result[0],
+                    time=parser.parse(calibration_result[1]).isoformat(),
+                )
+            )
+        return calibration_list
