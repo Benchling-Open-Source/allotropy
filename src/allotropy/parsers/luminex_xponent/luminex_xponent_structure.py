@@ -100,14 +100,14 @@ class CalibrationItem:
 class Data:
     header: Header
     calibration_data: list[CalibrationItem]
+    minimum_bead_count_setting: float
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        header_data = Data._get_header_data(reader)
-
         return Data(
-            header=Header.create(header_data),
+            header=Header.create(Data._get_header_data(reader)),
             calibration_data=Data._get_calibration_data(reader),
+            minimum_bead_count_setting=Data._get_minimum_bead_count_setting(reader),
         )
 
     @staticmethod
@@ -127,7 +127,7 @@ class Data:
         reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
         calibration_lines = assert_not_none(
             reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
-            "Unable to find Calibration Block",
+            "Unable to find Calibration Block.",
         )
 
         calibration_list = []
@@ -146,3 +146,14 @@ class Data:
                 )
             )
         return calibration_list
+
+    def _get_minimum_bead_count_setting(reader: CsvReader) -> str:
+        reader.drop_until(match_pat="Samples,")
+        samples_info = assert_not_none(reader.pop(), "Unable to find Samples info.")
+        try:
+            min_bead_count_setting = samples_info.split(',')[3]
+        except IndexError as e:
+            error = "Unable to find minimum bead count setting in Samples info."
+            raise AllotropeConversionError(error) from e
+
+        return try_float(min_bead_count_setting, "minimum bead count setting")

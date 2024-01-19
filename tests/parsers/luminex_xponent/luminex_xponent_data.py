@@ -33,6 +33,22 @@ def get_reader() -> CsvReader:
             "Last Fluidics Test,Passed 05/17/2023 09:28:43,,,,,,,,,,,,,,,,,,,,,,",
             ",,,,,,,,,,,,,,,,,,,,,,,",
             "CALInfo:,,,,,,,,,,,,,,,,,,,,,,,",
+            "Classification Calibrator Extended,,,,,,,,,,,,,,,,,,,,,,,",
+            "Lot,ExpirationDate,CalibrationTime,DDTemp,CL1Temp,CL2Temp,CL3Temp,DDVolts,CL1Volts,CL2Volts,CL3Volts,DDRVal,CL1RVal,CL2RVal,CL3RVal,Result,MachineSerialNo,,,,,,,",
+            "B12345,02/08/2024,5/17/2023 9:24:54 AM,23.43,24.37,24.37,24.21,76.41,106.07,113.08,109.61,530,1062,1225,1222,Pass,FM3DD12341234,,,,,,,",
+            "B67890,01/28/2024,5/17/2023 9:25:19 AM,23.32,24.45,24.34,24.27,49.23,106.36,113.31,109.86,270,1070,1236,1231,Pass,FM3DD12341234,,,,,,,",
+            "Reporter Calibrator,,,,,,,,,,,,,,,,,,,,,,,",
+            "Lot,ExpirationDate,CalibrationTime,RP1(1)Volts,RP1(1)Val,RP1(2)Volts,RP1(2)Val,Result,MachineSerialNo,,,,,,,,,,,,,,,",
+            "B11121,02/08/2024,5/17/2023 9:25:41 AM,583.9,3374.5,727.46,15391.5,Pass,FM3DD12341234,,,,,,,,,,,,,,,",
+            "Lot,ExpirationDate,CalibrationTime,RP1Volts,RP1Val,Result,MachineSerialNo,,,,,,,,,,,,,,,,,",
+            "B31415,02/08/2024,5/17/2023 9:25:58 AM,727.28,15508,Pass,FM3DD12341234,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "Samples,96,Min Events,100,Per Bead,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "Results,,,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Median,,,,,,,,,,,,,,,,,,,,,,",
         ]
     )
 
@@ -69,4 +85,5 @@ def get_data() -> Data:
                 time="2023-05-17T09:28:43",
             ),
         ],
+        minimum_bead_count_setting=100,
     )
