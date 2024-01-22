@@ -2,10 +2,15 @@ import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.luminex_xponent.luminex_xponent_structure import Data, Header
+from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
+    CalibrationItem,
+    Data,
+    Header,
+)
 from tests.parsers.luminex_xponent.luminex_xponent_data import get_data, get_reader
 
 
+@pytest.mark.short
 def test_create_header() -> None:
     data = pd.DataFrame.from_dict(
         {
@@ -73,6 +78,45 @@ def test_create_heder_without_required_col(required_col: str) -> None:
     ).T
     with pytest.raises(AllotropeConversionError):
         Header.create(header_data=data.drop(columns=[required_col]))
+
+
+@pytest.mark.short
+def test_create_calibration_item() -> None:
+    name = "Device Calibration"
+    report = "Passed"
+    time = "05/17/2023 09:25:11"
+
+    calibration_item = CalibrationItem.create(
+        f"Last {name},{report} 05/17/2023 09:25:11"
+    )
+
+    assert calibration_item == CalibrationItem(name, report, "2023-05-17T09:25:11")
+
+
+@pytest.mark.short
+def test_create_calibration_item_invalid_line_format() -> None:
+    bad_line = "Bad line."
+    error = f"Expected at least two columns on the calibration line, got: {bad_line}"
+    with pytest.raises(AllotropeConversionError, match=error):
+        CalibrationItem.create(bad_line)
+
+
+@pytest.mark.short
+def test_create_calibration_item_invalid_calibration_result() -> None:
+    bad_result = "bad_result"
+    bad_line = f"Last CalReport, {bad_result}"
+    error = f"Invalid calibration result format, got: {bad_result}"
+    with pytest.raises(AllotropeConversionError, match=error):
+        CalibrationItem.create(bad_line)
+
+
+@pytest.mark.short
+def test_create_calibration_item_invalid_calibration_result() -> None:
+    invalid_date = "bad"
+    bad_line = f"Last CalReport, Passed {invalid_date}"
+    error = "Invalid calibration time format."
+    with pytest.raises(AllotropeConversionError, match=error):
+        CalibrationItem.create(bad_line)
 
 
 def test_create_data() -> None:

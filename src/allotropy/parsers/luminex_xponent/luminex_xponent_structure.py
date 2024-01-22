@@ -95,6 +95,35 @@ class CalibrationItem:
     report: str
     time: str
 
+    @staticmethod
+    def create(calibration_line: str) -> CalibrationItem:
+        """Createds a CalibrationItem from a calibration line.
+
+        Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
+        example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
+        """
+        calibration_data = calibration_line.split(',')
+        if len(calibration_data) < 2:
+            error = f"Expected at least two columns on the calibration line, got: {calibration_line}"
+            raise AllotropeConversionError(error)
+
+        calibration_result = calibration_data[1].split(maxsplit=1)
+        if len(calibration_result) != 2:
+            error = f"Invalid calibration result format, got: {calibration_data[1]}"
+            raise AllotropeConversionError(error)
+
+        try:
+            callibration_time = parser.parse(calibration_result[1]).isoformat()
+        except parser.ParserError as e:
+            error = "Invalid calibration time format."
+            raise AllotropeConversionError(error) from e
+
+        return CalibrationItem(
+            name=calibration_data[0].replace("Last", "").strip(),
+            report=calibration_result[0],
+            time=callibration_time,
+        )
+
 
 @dataclass(frozen=True)
 class Data:
@@ -133,18 +162,8 @@ class Data:
         calibration_list = []
 
         for line in calibration_lines:
-            # each line follows the pattern "Last <calibration_name>,<calibration_report> <calibration_time>,,,,"
-            # example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
-            line = line.split(',')
-            calibration_result = line[1].split(maxsplit=1)
+            calibration_list.append(CalibrationItem.create(line))
 
-            calibration_list.append(
-                CalibrationItem(
-                    name=line[0].replace("Last", "").strip(),
-                    report=calibration_result[0],
-                    time=parser.parse(calibration_result[1]).isoformat(),
-                )
-            )
         return calibration_list
 
     def _get_minimum_bead_count_setting(reader: CsvReader) -> str:
