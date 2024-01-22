@@ -63,8 +63,8 @@ class Header:
         try:
             model_number = program_data.iloc[2]
         except IndexError as e:
-            error = "Unable to find model number in Program row."
-            raise AllotropeConversionError(error) from e
+            msg = "Unable to find model number in Program row."
+            raise AllotropeConversionError(msg) from e
 
         return str(model_number)
 
@@ -75,16 +75,16 @@ class Header:
         try:
             plate_well_count = protocol_plate_data.iloc[3]
         except IndexError as e:
-            error = "Unable to find plate well count in ProtocolPlate row."
-            raise AllotropeConversionError(error) from e
+            msg = "Unable to find plate well count in ProtocolPlate row."
+            raise AllotropeConversionError(msg) from e
 
         return try_float(plate_well_count, "plate well count")
 
     @staticmethod
     def _try_col_from_header(header_data: pd.DataFrame, key: str) -> pd.Series:
         if key not in header_data:
-            error = f"Unable to find {key} data on header block."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find {key} data on header block."
+            raise AllotropeConversionError(msg)
 
         return header_data[key]
 
@@ -104,19 +104,19 @@ class CalibrationItem:
         """
         calibration_data = calibration_line.split(',')
         if len(calibration_data) < 2:
-            error = f"Expected at least two columns on the calibration line, got: {calibration_line}"
-            raise AllotropeConversionError(error)
+            msg = f"Expected at least two columns on the calibration line, got: {calibration_line}"
+            raise AllotropeConversionError(msg)
 
         calibration_result = calibration_data[1].split(maxsplit=1)
         if len(calibration_result) != 2:
-            error = f"Invalid calibration result format, got: {calibration_data[1]}"
-            raise AllotropeConversionError(error)
+            msg = f"Invalid calibration result format, got: {calibration_data[1]}"
+            raise AllotropeConversionError(msg)
 
         try:
             callibration_time = parser.parse(calibration_result[1]).isoformat()
         except parser.ParserError as e:
-            error = "Invalid calibration time format."
-            raise AllotropeConversionError(error) from e
+            msg = "Invalid calibration time format."
+            raise AllotropeConversionError(msg) from e
 
         return CalibrationItem(
             name=calibration_data[0].replace("Last", "").strip(),
@@ -172,7 +172,7 @@ class Data:
         try:
             min_bead_count_setting = samples_info.split(',')[3]
         except IndexError as e:
-            error = "Unable to find minimum bead count setting in Samples info."
-            raise AllotropeConversionError(error) from e
+            msg = "Unable to find minimum bead count setting in Samples info."
+            raise AllotropeConversionError(msg) from e
 
         return try_float(min_bead_count_setting, "minimum bead count setting")
