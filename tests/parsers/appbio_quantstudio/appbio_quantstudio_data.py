@@ -416,8 +416,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -425,8 +423,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -445,8 +441,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -454,8 +448,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -477,8 +469,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -486,8 +476,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -505,8 +493,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -514,8 +500,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="passive reference dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -592,8 +576,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -601,8 +583,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -621,8 +601,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -630,8 +608,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -653,8 +629,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -662,8 +636,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -681,8 +653,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -690,8 +660,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="passive reference dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -881,8 +849,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -890,8 +856,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -910,8 +874,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -919,8 +881,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -942,8 +902,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -951,8 +909,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -970,8 +926,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -979,8 +933,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="passive reference dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -998,8 +950,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="temperature",
                                                 unit="degrees C",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -1007,15 +957,11 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="(unitless)",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             ),
                                             TDatacubeComponent(
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="slope",
                                                 unit="(unitless)",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             ),
                                         ],
                                     ),
@@ -2623,8 +2569,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2632,8 +2576,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2652,8 +2594,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2661,8 +2601,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2778,8 +2716,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2787,8 +2723,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2807,8 +2741,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2816,8 +2748,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -3256,8 +3186,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -3265,8 +3193,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -3285,8 +3211,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -3294,8 +3218,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
