@@ -22,9 +22,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
+    TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     ReadType,
@@ -218,43 +219,25 @@ def get_model() -> Model:
                                             shaking_configuration_description=None,
                                             detector_distance_setting__plate_reader_=TQuantityValueMillimeter(
                                                 value=11.9,
-                                                has_statistic_datum_role=None,
-                                                unit="mm",
-                                                field_type=None,
                                             ),
                                             integration_time=None,
                                             number_of_averages=TQuantityValueNumber(
                                                 value=50.0,
-                                                has_statistic_datum_role=None,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             detector_gain_setting="2",
                                             scan_position_setting__plate_reader_=ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
                                             detector_carriage_speed_setting=None,
                                             detector_wavelength_setting=TQuantityValueNanometer(
                                                 value=665.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             detector_bandwidth_setting=TQuantityValueNanometer(
                                                 value=75.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             excitation_bandwidth_setting=TQuantityValueNanometer(
                                                 value=75.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             excitation_wavelength_setting=TQuantityValueNanometer(
                                                 value=320.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             wavelength_filter_cutoff_setting=None,
                                             field_index=None,
@@ -270,11 +253,10 @@ def get_model() -> Model:
                                 ),
                                 compartment_temperature=TQuantityValueDegreeCelsius(
                                     value=23.17,
-                                    has_statistic_datum_role=None,
-                                    unit="degC",
-                                    field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(31441),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                    31441
+                                ),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
                                 measurement_identifier="",
@@ -285,43 +267,25 @@ def get_model() -> Model:
                                             shaking_configuration_description=None,
                                             detector_distance_setting__plate_reader_=TQuantityValueMillimeter(
                                                 value=11.9,
-                                                has_statistic_datum_role=None,
-                                                unit="mm",
-                                                field_type=None,
                                             ),
                                             integration_time=None,
                                             number_of_averages=TQuantityValueNumber(
                                                 value=50.0,
-                                                has_statistic_datum_role=None,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             detector_gain_setting="2",
                                             scan_position_setting__plate_reader_=ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
                                             detector_carriage_speed_setting=None,
                                             detector_wavelength_setting=TQuantityValueNanometer(
                                                 value=620.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             detector_bandwidth_setting=TQuantityValueNanometer(
                                                 value=10.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             excitation_bandwidth_setting=TQuantityValueNanometer(
                                                 value=75.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             excitation_wavelength_setting=TQuantityValueNanometer(
                                                 value=320.0,
-                                                has_statistic_datum_role=None,
-                                                unit="nm",
-                                                field_type=None,
                                             ),
                                             wavelength_filter_cutoff_setting=None,
                                             field_index=None,
@@ -337,11 +301,10 @@ def get_model() -> Model:
                                 ),
                                 compartment_temperature=TQuantityValueDegreeCelsius(
                                     value=23.17,
-                                    has_statistic_datum_role=None,
-                                    unit="degC",
-                                    field_type=None,
                                 ),
-                                fluorescence=TRelativeFluorescenceUnit(80368),
+                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                    80368
+                                ),
                             ),
                         ],
                     )
@@ -355,7 +318,7 @@ def get_model() -> Model:
                         calculated_data_identifier="",
                         calculated_result=TQuantityValue(
                             value=3,
-                            unit="unitless",
+                            unit=UNITLESS,
                         ),
                         data_source_aggregate_document=DataSourceAggregateDocument1(
                             data_source_document=[

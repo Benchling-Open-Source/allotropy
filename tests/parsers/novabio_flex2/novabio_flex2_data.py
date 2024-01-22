@@ -138,115 +138,73 @@ def get_model() -> Model:
                                 analyte_name="ammonium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=0.48,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="bicarbonate",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=29.3,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="calcium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=0.82,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="glucose",
                                 molar_concentration=TNullableQuantityValueGramPerLiter(
                                     value=2.65,
-                                    has_statistic_datum_role=None,
-                                    unit="g/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="glutamate",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=0.33,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="glutamine",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=1.83,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="lactate",
                                 molar_concentration=TNullableQuantityValueGramPerLiter(
                                     value=0.18,
-                                    has_statistic_datum_role=None,
-                                    unit="g/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="potassium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=4.22,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                             AnalyteDocumentItem(
                                 analyte_name="sodium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=151.6,
-                                    has_statistic_datum_role=None,
-                                    unit="mmol/L",
-                                    field_type=None,
                                 ),
                             ),
                         ]
                     ),
                     pco2=TNullableQuantityValueMillimeterOfMercury(
                         value=46.8,
-                        has_statistic_datum_role=None,
-                        unit="mmHg",
-                        field_type=None,
                     ),
                     co2_saturation=TNullableQuantityValuePercent(
                         value=6.6,
-                        has_statistic_datum_role=None,
-                        unit="%",
-                        field_type=None,
                     ),
                     po2=TNullableQuantityValueMillimeterOfMercury(
                         value=191.6,
-                        has_statistic_datum_role=None,
-                        unit="mmHg",
-                        field_type=None,
                     ),
                     o2_saturation=TNullableQuantityValuePercent(
                         value=100.0,
-                        has_statistic_datum_role=None,
-                        unit="%",
-                        field_type=None,
                     ),
                     optical_density=None,
                     pH=TNullableQuantityValuePH(
                         value=7.4,
-                        has_statistic_datum_role=None,
-                        unit="pH",
-                        field_type=None,
                     ),
                     osmolality=None,
                     viability__cell_counter_=None,

@@ -349,8 +349,6 @@ def get_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -375,8 +373,6 @@ def get_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -396,8 +392,6 @@ def get_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.2,
-                                                    unit="(unitless)",
-                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=False,
                                                 automatic_baseline_determination_enabled_setting=False,
@@ -406,19 +400,13 @@ def get_model() -> Model:
                                                 genotyping_determination_method=None,
                                                 genotyping_determination_method_setting=TQuantityValueUnitless(
                                                     value=0.0,
-                                                    unit="(unitless)",
-                                                    field_type=None,
                                                 ),
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=None,
-                                                unit="(unitless)",
-                                                field_type=None,
                                             ),
                                             normalized_reporter_result=TQuantityValueUnitless(
                                                 value=1.13,
-                                                unit="(unitless)",
-                                                field_type=None,
                                             ),
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
                                                 label="normalized reporter",
@@ -428,8 +416,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -437,8 +423,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -457,8 +441,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -466,8 +448,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -489,8 +469,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -498,8 +476,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -517,8 +493,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -526,8 +500,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="passive reference dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -561,8 +533,6 @@ def get_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -582,8 +552,6 @@ def get_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.2,
-                                                    unit="(unitless)",
-                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=False,
                                                 automatic_baseline_determination_enabled_setting=False,
@@ -592,19 +560,13 @@ def get_model() -> Model:
                                                 genotyping_determination_method=None,
                                                 genotyping_determination_method_setting=TQuantityValueUnitless(
                                                     value=0.0,
-                                                    unit="(unitless)",
-                                                    field_type=None,
                                                 ),
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=None,
-                                                unit="(unitless)",
-                                                field_type=None,
                                             ),
                                             normalized_reporter_result=TQuantityValueUnitless(
                                                 value=0.402,
-                                                unit="(unitless)",
-                                                field_type=None,
                                             ),
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
                                                 label="normalized reporter",
@@ -614,8 +576,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -623,8 +583,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -643,8 +601,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -652,8 +608,6 @@ def get_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -675,8 +629,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -684,8 +636,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -703,8 +653,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -712,8 +660,6 @@ def get_model() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="passive reference dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -762,9 +708,6 @@ def get_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=1.261,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -782,9 +725,6 @@ def get_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.088,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -802,9 +742,6 @@ def get_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.397,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -822,9 +759,6 @@ def get_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.006,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                 ]
@@ -852,8 +786,6 @@ def get_model2() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=384,
-                            unit="#",
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -878,8 +810,6 @@ def get_model2() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -899,8 +829,6 @@ def get_model2() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.277,
-                                                    unit="(unitless)",
-                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -911,8 +839,6 @@ def get_model2() -> Model:
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=18.717,
-                                                unit="(unitless)",
-                                                field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
@@ -923,8 +849,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -932,8 +856,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -952,8 +874,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -961,8 +881,6 @@ def get_model2() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -984,8 +902,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -993,8 +909,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -1012,8 +926,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.integer,
                                                 concept="cycle count",
                                                 unit="#",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -1021,8 +933,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="passive reference dye fluorescence",
                                                 unit="RFU",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                     ),
@@ -1040,8 +950,6 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="temperature",
                                                 unit="degrees C",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             )
                                         ],
                                         measures=[
@@ -1049,15 +957,11 @@ def get_model2() -> Model:
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="reporter dye fluorescence",
                                                 unit="(unitless)",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             ),
                                             TDatacubeComponent(
                                                 field_componentDatatype=FieldComponentDatatype.double,
                                                 concept="slope",
                                                 unit="(unitless)",
-                                                scale=None,
-                                                field_asm_fill_value=None,
                                             ),
                                         ],
                                     ),
@@ -2602,9 +2506,6 @@ def get_rel_std_curve_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -2629,9 +2530,6 @@ def get_rel_std_curve_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -2651,9 +2549,6 @@ def get_rel_std_curve_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
-                                                    unit="(unitless)",
-                                                    has_statistic_datum_role=None,
-                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -2664,9 +2559,6 @@ def get_rel_std_curve_model() -> Model:
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.155,
-                                                unit="(unitless)",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
@@ -2677,8 +2569,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2686,8 +2576,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2706,8 +2594,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2715,8 +2601,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2760,9 +2644,6 @@ def get_rel_std_curve_model() -> Model:
                                 calculated_data_description=None,
                                 calculated_datum=TQuantityValueUnitless(
                                     value=794.91,
-                                    unit="(unitless)",
-                                    has_statistic_datum_role=None,
-                                    field_type=None,
                                 ),
                             )
                         ]
@@ -2772,9 +2653,6 @@ def get_rel_std_curve_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -2799,9 +2677,6 @@ def get_rel_std_curve_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -2821,9 +2696,6 @@ def get_rel_std_curve_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
-                                                    unit="(unitless)",
-                                                    has_statistic_datum_role=None,
-                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -2834,9 +2706,6 @@ def get_rel_std_curve_model() -> Model:
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.2,
-                                                unit="(unitless)",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
@@ -2847,8 +2716,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2856,8 +2723,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2876,8 +2741,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -2885,8 +2748,6 @@ def get_rel_std_curve_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -2930,9 +2791,6 @@ def get_rel_std_curve_model() -> Model:
                                 calculated_data_description=None,
                                 calculated_datum=TQuantityValueUnitless(
                                     value=769.776,
-                                    unit="(unitless)",
-                                    has_statistic_datum_role=None,
-                                    field_type=None,
                                 ),
                             )
                         ]
@@ -2972,9 +2830,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=818.012,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -2999,9 +2854,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=29.535,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -3026,9 +2878,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.051,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -3049,9 +2898,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.658,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -3072,9 +2918,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.798,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -3099,9 +2942,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=818.012,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                     CalculatedDataDocumentItem(
@@ -3122,9 +2962,6 @@ def get_rel_std_curve_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.967,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     ),
                 ]
@@ -3286,9 +3123,6 @@ def get_broken_calc_doc_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         plate_well_count=TQuantityValueNumber(
                             value=96,
-                            unit="#",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
@@ -3313,9 +3147,6 @@ def get_broken_calc_doc_model() -> Model:
                                             detection_type=None,
                                             total_cycle_number_setting=TQuantityValueNumber(
                                                 value=1.0,
-                                                unit="#",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             denaturing_temperature_setting=None,
                                             denaturing_time_setting=None,
@@ -3335,9 +3166,6 @@ def get_broken_calc_doc_model() -> Model:
                                             data_processing_document=DataProcessingDocument(
                                                 cycle_threshold_value_setting=TQuantityValueUnitless(
                                                     value=0.133,
-                                                    unit="(unitless)",
-                                                    has_statistic_datum_role=None,
-                                                    field_type=None,
                                                 ),
                                                 automatic_cycle_threshold_enabled_setting=True,
                                                 automatic_baseline_determination_enabled_setting=True,
@@ -3348,9 +3176,6 @@ def get_broken_calc_doc_model() -> Model:
                                             ),
                                             cycle_threshold_result=TNullableQuantityValueUnitless(
                                                 value=30.155,
-                                                unit="(unitless)",
-                                                has_statistic_datum_role=None,
-                                                field_type=None,
                                             ),
                                             normalized_reporter_result=None,
                                             normalized_reporter_data_cube=NormalizedReporterDataCube(
@@ -3361,8 +3186,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -3370,8 +3193,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="normalized report result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -3390,8 +3211,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.integer,
                                                             concept="cycle count",
                                                             unit="#",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                     measures=[
@@ -3399,8 +3218,6 @@ def get_broken_calc_doc_model() -> Model:
                                                             field_componentDatatype=FieldComponentDatatype.double,
                                                             concept="baseline corrected reporter result",
                                                             unit="(unitless)",
-                                                            scale=None,
-                                                            field_asm_fill_value=None,
                                                         )
                                                     ],
                                                 ),
@@ -3459,9 +3276,6 @@ def get_broken_calc_doc_model() -> Model:
                         calculated_data_description=None,
                         calculated_datum=TQuantityValueUnitless(
                             value=0.051,
-                            unit="(unitless)",
-                            has_statistic_datum_role=None,
-                            field_type=None,
                         ),
                     )
                 ]
