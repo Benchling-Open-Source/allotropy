@@ -31,14 +31,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
-    TRelativeLightUnit,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
@@ -50,7 +51,6 @@ from allotropy.parsers.moldev_softmax_pro.constants import (
     EPOCH,
     NULL,
     REDUCED,
-    UNITLESS,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
@@ -152,7 +152,9 @@ class SoftmaxproParser(VendorParser):
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
-                fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                    value=data_element.value
+                ),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
@@ -220,7 +222,7 @@ class SoftmaxproParser(VendorParser):
         return [
             LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
-                luminescence=TRelativeLightUnit(value=data_element.value),
+                luminescence=TQuantityValueRelativeLightUnit(value=data_element.value),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
