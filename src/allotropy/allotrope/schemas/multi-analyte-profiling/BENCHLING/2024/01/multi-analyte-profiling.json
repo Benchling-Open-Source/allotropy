@@ -526,7 +526,7 @@
                                         "$asm.pattern": "quantity datum",
                                         "$ref": "#/$custom/tQuantityValueUnitless"
                                       },
-                                      "detector gain settings": {
+                                      "detector gain setting": {
                                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002250",
                                         "$asm.pattern": "value datum",
                                         "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
