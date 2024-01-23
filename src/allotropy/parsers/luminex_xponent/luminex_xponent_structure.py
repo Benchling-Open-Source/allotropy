@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from io import StringIO
-from typing import Optional
+from typing import Any, Optional
 
 from dateutil import parser
 import pandas as pd
@@ -18,6 +18,8 @@ from allotropy.parsers.utils.values import (
 
 EMPTY_CSV_LINE = r"^,*$"
 CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
+MINIMUM_CALIBRATION_LINE_COLS = 2
+EXPECTED_CALIBRATION_RESULT_LEN = 2
 
 
 @dataclass(frozen=True)
@@ -83,7 +85,7 @@ class Header:
         return try_float(plate_well_count, "plate well count")
 
     @staticmethod
-    def _try_col_from_header(header_data: pd.DataFrame, key: str) -> pd.Series:
+    def _try_col_from_header(header_data: pd.DataFrame, key: str) -> pd.Series[Any]:
         if key not in header_data:
             msg = f"Unable to find {key} data on header block."
             raise AllotropeConversionError(msg)
@@ -104,13 +106,14 @@ class CalibrationItem:
         Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
         example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
         """
-        calibration_data = calibration_line.split(',')
-        if len(calibration_data) < 2:
+        calibration_data = calibration_line.split(",")
+        if len(calibration_data) < MINIMUM_CALIBRATION_LINE_COLS:
             msg = f"Expected at least two columns on the calibration line, got: {calibration_line}"
             raise AllotropeConversionError(msg)
 
         calibration_result = calibration_data[1].split(maxsplit=1)
-        if len(calibration_result) != 2:
+
+        if len(calibration_result) != EXPECTED_CALIBRATION_RESULT_LEN:
             msg = f"Invalid calibration result format, got: {calibration_data[1]}"
             raise AllotropeConversionError(msg)
 
@@ -168,11 +171,12 @@ class Data:
 
         return calibration_list
 
-    def _get_minimum_bead_count_setting(reader: CsvReader) -> str:
+    @staticmethod
+    def _get_minimum_bead_count_setting(reader: CsvReader) -> float:
         reader.drop_until(match_pat="Samples,")
         samples_info = assert_not_none(reader.pop(), "Unable to find Samples info.")
         try:
-            min_bead_count_setting = samples_info.split(',')[3]
+            min_bead_count_setting = samples_info.split(",")[3]
         except IndexError as e:
             msg = "Unable to find minimum bead count setting in Samples info."
             raise AllotropeConversionError(msg) from e
