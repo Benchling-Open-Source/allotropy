@@ -30,8 +30,7 @@ class Header:
     analytical_method_identifier: str  # ProtocolName
     method_version: str  # ProtocolVersion
     experimental_data_identifier: str  # Batch
-    # TODO: change to float, extract only the number.
-    sample_volume_setting: str  # SampleVolume
+    sample_volume_setting: float  # SampleVolume
     plate_well_count: float  # ProtocolPlate, column 5 (after Type)
     measurement_time: str  # BatchStartTime  MM/DD/YYYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
     detector_gain_setting: str  # ProtocolReporterGain
@@ -50,7 +49,7 @@ class Header:
             analytical_method_identifier=try_str_from_series(info_row, "ProtocolName"),
             method_version=try_str_from_series(info_row, "ProtocolVersion"),
             experimental_data_identifier=try_str_from_series(info_row, "Batch"),
-            sample_volume_setting=try_str_from_series(info_row, "SampleVolume"),
+            sample_volume_setting=Header._get_sample_volume_setting(info_row),
             plate_well_count=Header._get_plate_well_count(header_data),
             measurement_time=parser.parse(raw_datetime).isoformat(),
             detector_gain_setting=try_str_from_series(info_row, "ProtocolReporterGain"),
@@ -60,6 +59,12 @@ class Header:
             # TODO: ask about NA in the Operator entry (was in a previous version of the requirements)
             analyst=try_str_from_series_or_none(info_row, "Operator"),
         )
+
+    @staticmethod
+    def _get_sample_volume_setting(info_row: pd.Series[Any]) -> float:
+        sample_volume = try_str_from_series(info_row, "SampleVolume")
+
+        return try_float(sample_volume.split()[0], "sample volume setting")
 
     @staticmethod
     def _get_model_number(header_data: pd.DataFrame) -> str:
