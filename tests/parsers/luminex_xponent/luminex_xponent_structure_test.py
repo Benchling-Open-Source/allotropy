@@ -88,7 +88,6 @@ def test_create_heder_without_required_col(required_col: str) -> None:
 def test_create_calibration_item() -> None:
     name = "Device Calibration"
     report = "Passed"
-    time = "05/17/2023 09:25:11"
 
     calibration_item = CalibrationItem.create(
         f"Last {name},{report} 05/17/2023 09:25:11"
@@ -108,16 +107,16 @@ def test_create_calibration_item_invalid_line_format() -> None:
 @pytest.mark.short
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
-    bad_line = f"Last CalReport, {bad_result}"
+    bad_line = f"Last CalReport,{bad_result}"
     error = f"Invalid calibration result format, got: {bad_result}"
     with pytest.raises(AllotropeConversionError, match=error):
         CalibrationItem.create(bad_line)
 
 
 @pytest.mark.short
-def test_create_calibration_item_invalid_calibration_result() -> None:
-    invalid_date = "bad"
-    bad_line = f"Last CalReport, Passed {invalid_date}"
+def test_create_calibration_item_invalid_calibration_time() -> None:
+    invalid_time = "bad datetime"
+    bad_line = f"Last CalReport, Passed {invalid_time}"
     error = "Invalid calibration time format."
     with pytest.raises(AllotropeConversionError, match=error):
         CalibrationItem.create(bad_line)
