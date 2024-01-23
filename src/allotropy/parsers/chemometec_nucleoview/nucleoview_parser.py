@@ -25,8 +25,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
     TDateTimeValue,
-    ValueEnum,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
@@ -66,7 +66,7 @@ def get_property_from_sample(
     try:
         value = float(value)
     except ValueError:
-        return property_type(value=ValueEnum.NaN)
+        return property_type(value=InvalidJsonFloat.NaN)
 
     # if the porperty type is measured in million cells per ml convert cells per ml
     if property_type == TQuantityValueMillionCellsPerMilliliter:
