@@ -98,7 +98,7 @@ the documentation available to us does not specify how this checksum is calculat
 
 ## Defining Files
 
-After forking the [`allotropy` repository`][allotropy_repo]
+After forking the [`allotropy` repository][allotropy_repo]
 and creating a new branch for our work,
 we make a new directory `./src/allotropy/parsers/example_weyland_yutani/` for our work
 and create three files in that directory:
@@ -301,12 +301,16 @@ and will probably have many more input-output pairs to check.
 
 ## Exercises
 
-To check your understanding,
-look for the keyword `TODO` in the Weyland-Yutani example's source code
-and fill in the missing methods.
-You can submit your work as a pull request for review,
-but note that we will *not* merge it
-(so that others can do the exercises as well).
+We have left the keyword `TODO` in a few places in the Weyland-Yutani example
+to serve as thought exercises
+and as examples of potential extensions to the base parser for handling more complex files.
+We hope you will work through them,
+but please do not submit fixes:
+we would like other people to be able to work through them too.
+Improvements or extensions to this tutorial,
+on the other hand,
+are very welcome,
+and should be submitted as pull requests in the usual way.
 
 [allotrope]: https://www.allotrope.org/product-overview
 [allotropy_repo]: https://github.com/Benchling-Open-Source/allotropy
