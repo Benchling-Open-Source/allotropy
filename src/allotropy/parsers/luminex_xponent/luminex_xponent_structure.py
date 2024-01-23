@@ -23,6 +23,7 @@ CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
 @dataclass(frozen=True)
 class Header:
     model_number: str
+    software_version: str
     equipment_serial_number: str  # SN
     analytical_method_identifier: str  # ProtocolName
     method_version: str  # ProtocolVersion
@@ -41,6 +42,7 @@ class Header:
 
         return Header(
             model_number=Header._get_model_number(header_data),
+            software_version=try_str_from_series(info_row, "Build"),
             equipment_serial_number=try_str_from_series(info_row, "SN"),
             analytical_method_identifier=try_str_from_series(info_row, "ProtocolName"),
             method_version=try_str_from_series(info_row, "ProtocolVersion"),

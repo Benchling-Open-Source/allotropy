@@ -58,6 +58,7 @@ def get_data() -> Data:
         header=Header(
             model_number="FlexMAP 3D",  # Program, col 4
             equipment_serial_number="FM3DD12341234",  # SN
+            software_version="4.3.229.0",  # Build
             analytical_method_identifier="foo_bar",  # ProtocolName
             method_version="3",  # ProtocolVersion
             experimental_data_identifier="ABCD_1234_20231225",  # Batch

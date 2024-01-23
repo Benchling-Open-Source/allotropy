@@ -15,6 +15,7 @@ def test_create_header() -> None:
     data = pd.DataFrame.from_dict(
         {
             "Program": ["xPonent", None, "Model"],
+            "Build": ["1.1.0"],
             "SN": ["SN1234"],
             "Batch": ["ABC_0000"],
             "ComputerName": ["AAA000"],
@@ -31,6 +32,7 @@ def test_create_header() -> None:
 
     assert header == Header(
         model_number="Model",  # Program, col 4
+        software_version="1.1.0",  # Build
         equipment_serial_number="SN1234",  # SN
         analytical_method_identifier="Order66",  # ProtocolName
         method_version="5",  # ProtocolVersion
@@ -48,6 +50,7 @@ def test_create_header() -> None:
     "required_col",
     [
         "Program",
+        "Build",
         "SN",
         "Batch",
         "ComputerName",
@@ -64,6 +67,7 @@ def test_create_heder_without_required_col(required_col: str) -> None:
     data = pd.DataFrame.from_dict(
         {
             "Program": ["xPonent", None, "Model"],
+            "Build": ["1.0.1"],
             "SN": ["SN1234"],
             "Batch": ["ABC_0000"],
             "ComputerName": ["AAA000"],
