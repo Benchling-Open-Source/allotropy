@@ -26,6 +26,9 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )
+from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
+    NanodropEightParser,
+)
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
     UnchainedLabsLunaticParser,
 )
@@ -45,6 +48,7 @@ class Vendor(Enum):
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
+    THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
 
 
@@ -63,6 +67,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
+    Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
 }
 
