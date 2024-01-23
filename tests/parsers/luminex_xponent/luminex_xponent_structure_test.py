@@ -37,7 +37,7 @@ def test_create_header() -> None:
         analytical_method_identifier="Order66",  # ProtocolName
         method_version="5",  # ProtocolVersion
         experimental_data_identifier="ABC_0000",  # Batch
-        sample_volume="1 uL",  # SampleVolume
+        sample_volume_setting="1 uL",  # SampleVolume
         plate_well_count=10,  # ProtocolPlate, column 5 (after Type)
         measurement_time="2024-01-17T07:41:29",  # BatchStartTime  MM/DD/YYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
         detector_gain_setting="Pro MAP",  # ProtocolReporterGain

@@ -30,7 +30,8 @@ class Header:
     analytical_method_identifier: str  # ProtocolName
     method_version: str  # ProtocolVersion
     experimental_data_identifier: str  # Batch
-    sample_volume: str  # SampleVolume
+    # TODO: change to float, extract only the number.
+    sample_volume_setting: str  # SampleVolume
     plate_well_count: float  # ProtocolPlate, column 5 (after Type)
     measurement_time: str  # BatchStartTime  MM/DD/YYYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
     detector_gain_setting: str  # ProtocolReporterGain
@@ -49,7 +50,7 @@ class Header:
             analytical_method_identifier=try_str_from_series(info_row, "ProtocolName"),
             method_version=try_str_from_series(info_row, "ProtocolVersion"),
             experimental_data_identifier=try_str_from_series(info_row, "Batch"),
-            sample_volume=try_str_from_series(info_row, "SampleVolume"),
+            sample_volume_setting=try_str_from_series(info_row, "SampleVolume"),
             plate_well_count=Header._get_plate_well_count(header_data),
             measurement_time=parser.parse(raw_datetime).isoformat(),
             detector_gain_setting=try_str_from_series(info_row, "ProtocolReporterGain"),

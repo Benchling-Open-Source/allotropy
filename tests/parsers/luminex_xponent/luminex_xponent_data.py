@@ -62,7 +62,7 @@ def get_data() -> Data:
             analytical_method_identifier="foo_bar",  # ProtocolName
             method_version="3",  # ProtocolVersion
             experimental_data_identifier="ABCD_1234_20231225",  # Batch
-            sample_volume="50 uL",  # SampleVolume
+            sample_volume_setting="50 uL",  # SampleVolume
             plate_well_count=96,  # ProtocolPlate, column 5 (after Type)
             measurement_time="2023-05-17T18:42:29",  # BatchStartTime  MM/DD/YYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
             detector_gain_setting="Standard PMT",  # ProtocolReporterGain
