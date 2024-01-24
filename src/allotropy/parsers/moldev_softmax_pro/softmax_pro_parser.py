@@ -1,6 +1,5 @@
 import math
 from typing import Union
-import uuid
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -57,6 +56,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     PlateBlock,
     ScanPosition,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
@@ -298,7 +298,7 @@ class SoftmaxproParser(VendorParser):
     def _get_reduced_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
         return [
             CalculatedDataDocumentItem(
-                calculated_data_identifier=str(uuid.uuid4()),
+                calculated_data_identifier=random_uuid_str(),
                 calculated_data_name=REDUCED,
                 calculated_result=TQuantityValue(
                     unit=UNITLESS,
@@ -329,7 +329,7 @@ class SoftmaxproParser(VendorParser):
                     for entry in group_data_element.entries:
                         calculated_documents.append(
                             CalculatedDataDocumentItem(
-                                calculated_data_identifier=str(uuid.uuid4()),
+                                calculated_data_identifier=random_uuid_str(),
                                 calculated_data_name=entry.name,
                                 calculation_description=group_block.group_columns.data.get(
                                     entry.name

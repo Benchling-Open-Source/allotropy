@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from typing import Any, Optional
-import uuid
 
 import pandas as pd
 
@@ -38,6 +37,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 property_lookup = {
@@ -118,7 +118,7 @@ class ViCellXRParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=str(uuid.uuid4()),
+                        measurement_identifier=random_uuid_str(),
                         measurement_time=self._get_date_time(
                             sample.get(DATE_HEADER[file_version])
                         ),

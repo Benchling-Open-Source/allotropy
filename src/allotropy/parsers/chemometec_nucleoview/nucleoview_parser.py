@@ -1,5 +1,4 @@
 from typing import Any, Optional
-import uuid
 
 import pandas as pd
 
@@ -36,6 +35,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
@@ -122,7 +122,7 @@ class ChemometecNucleoviewParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=str(uuid.uuid4()),
+                        measurement_identifier=random_uuid_str(),
                         measurement_time=self._get_date_time_or_epoch(
                             _get_value(data_frame, row, "datetime")
                         ),
