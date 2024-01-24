@@ -25,14 +25,10 @@ def build_quantity(well_item: WellItem) -> Optional[CalculatedDocument]:
     if (quantity := well_item.result.quantity) is None:
         return None
 
-    # quantity calc docs should not be included in calculated aggregate document
-    # so they are marked as already iterated on creation
-
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="quantity",
         value=quantity,
-        iterated=True,
         data_sources=[
             DataSource(feature="cycle threshold result", reference=well_item),
         ],

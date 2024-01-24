@@ -1,5 +1,4 @@
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
-    build_quantity,
     iter_calculated_data_documents,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
@@ -49,10 +48,6 @@ def create_data(reader: LinesReader) -> Data:
                 well_item,
                 header.experiment_type,
             )
-
-        for well_item in well.items.values():
-            if quantity := build_quantity(well_item):
-                well.add_calculated_document(quantity)
 
     endogenous_control = (
         try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""

@@ -14,7 +14,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                            "measurement identifier": "cfa5c225-8584-4144-946f-484cd91c0712",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP1",
                             "sample document": {
@@ -120,7 +120,7 @@
                             }
                         },
                         {
-                            "measurement identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                            "measurement identifier": "8400774f-7654-46d3-8bac-b70f490cdf9b",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP2",
                             "sample document": {
@@ -229,42 +229,6 @@
                     "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
                     "experiment type": "standard curve qPCR experiment",
                     "container type": "qPCR reaction block"
-                },
-                "calculated data aggregate document": {
-                    "calculated data document": [
-                        {
-                            "calculated data identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
-                            "data source aggregate document": {
-                                "data source document": [
-                                    {
-                                        "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
-                                        "data source feature": "cycle threshold result"
-                                    }
-                                ]
-                            },
-                            "calculated data name": "quantity",
-                            "calculated datum": {
-                                "value": 5720.562,
-                                "unit": "(unitless)"
-                            }
-                        },
-                        {
-                            "calculated data identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
-                            "data source aggregate document": {
-                                "data source document": [
-                                    {
-                                        "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
-                                        "data source feature": "cycle threshold result"
-                                    }
-                                ]
-                            },
-                            "calculated data name": "quantity",
-                            "calculated datum": {
-                                "value": 5720.562,
-                                "unit": "(unitless)"
-                            }
-                        }
-                    ]
                 }
             },
             {
@@ -275,7 +239,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                            "measurement identifier": "40539ec4-4f8f-4090-b54f-d6b0a76ad514",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP1",
                             "sample document": {
@@ -381,7 +345,7 @@
                             }
                         },
                         {
-                            "measurement identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                            "measurement identifier": "02236f98-1170-4368-9b92-446d0de4de1f",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP2",
                             "sample document": {
@@ -490,42 +454,6 @@
                     "experimental data identifier": "QuantStudio 96-Well Standard Curve Example",
                     "experiment type": "standard curve qPCR experiment",
                     "container type": "qPCR reaction block"
-                },
-                "calculated data aggregate document": {
-                    "calculated data document": [
-                        {
-                            "calculated data identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
-                            "data source aggregate document": {
-                                "data source document": [
-                                    {
-                                        "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
-                                        "data source feature": "cycle threshold result"
-                                    }
-                                ]
-                            },
-                            "calculated data name": "quantity",
-                            "calculated datum": {
-                                "value": 5605.765,
-                                "unit": "(unitless)"
-                            }
-                        },
-                        {
-                            "calculated data identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
-                            "data source aggregate document": {
-                                "data source document": [
-                                    {
-                                        "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
-                                        "data source feature": "cycle threshold result"
-                                    }
-                                ]
-                            },
-                            "calculated data name": "quantity",
-                            "calculated datum": {
-                                "value": 5605.765,
-                                "unit": "(unitless)"
-                            }
-                        }
-                    ]
                 }
             }
         ],
@@ -536,20 +464,20 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.11"
+            "ASM converter version": "0.1.13"
         },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
-                    "calculated data identifier": "7fa15718-4147-47e2-bb51-13dd53adad00",
+                    "calculated data identifier": "7f22d162-23dd-4292-a77c-70d4225cf455",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
+                                "data source identifier": "a1ebc966-5a4b-446f-a68e-3bb587e4655c",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
+                                "data source identifier": "1dc03227-25ab-4ab2-8af2-beba76d15724",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -561,15 +489,47 @@
                     }
                 },
                 {
-                    "calculated data identifier": "c135b5d1-7cc5-4332-8931-ed4cad5b3837",
+                    "calculated data identifier": "a1ebc966-5a4b-446f-a68e-3bb587e4655c",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
+                                "data source identifier": "cfa5c225-8584-4144-946f-484cd91c0712",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity",
+                    "calculated datum": {
+                        "value": 5720.562,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "1dc03227-25ab-4ab2-8af2-beba76d15724",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "40539ec4-4f8f-4090-b54f-d6b0a76ad514",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity",
+                    "calculated datum": {
+                        "value": 5605.765,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "b89f256f-121d-4832-adaa-452682868155",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a1ebc966-5a4b-446f-a68e-3bb587e4655c",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
+                                "data source identifier": "1dc03227-25ab-4ab2-8af2-beba76d15724",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -581,15 +541,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "339e12bb-419b-4871-a849-34b5cb35bc40",
+                    "calculated data identifier": "ab44fb18-8278-456d-b0f9-76ca1469eb4c",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                                "data source identifier": "cfa5c225-8584-4144-946f-484cd91c0712",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                                "data source identifier": "40539ec4-4f8f-4090-b54f-d6b0a76ad514",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -601,15 +561,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "41bbe8ad-6c24-4346-a859-802e95886f99",
+                    "calculated data identifier": "31bf9dc1-7217-40b4-b33b-a8cf230f1ca4",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
+                                "data source identifier": "cfa5c225-8584-4144-946f-484cd91c0712",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
+                                "data source identifier": "40539ec4-4f8f-4090-b54f-d6b0a76ad514",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -621,15 +581,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "dbdd9abb-6d81-491f-9093-6cf8aaad5dbe",
+                    "calculated data identifier": "24771e1f-92a0-4c29-98af-59be5896a1ef",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
+                                "data source identifier": "55ea1987-dcf2-4a9b-b98a-c5a090b9ea4f",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
+                                "data source identifier": "0e892a69-b47d-473b-92eb-bb369cc54f45",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -641,15 +601,47 @@
                     }
                 },
                 {
-                    "calculated data identifier": "d6df9212-0e46-45d1-862e-23131b55f701",
+                    "calculated data identifier": "55ea1987-dcf2-4a9b-b98a-c5a090b9ea4f",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
+                                "data source identifier": "8400774f-7654-46d3-8bac-b70f490cdf9b",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity",
+                    "calculated datum": {
+                        "value": 5720.562,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "0e892a69-b47d-473b-92eb-bb369cc54f45",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "02236f98-1170-4368-9b92-446d0de4de1f",
+                                "data source feature": "cycle threshold result"
+                            }
+                        ]
+                    },
+                    "calculated data name": "quantity",
+                    "calculated datum": {
+                        "value": 5605.765,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "bf28128e-2971-4602-8774-ad2f0fed06d2",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "55ea1987-dcf2-4a9b-b98a-c5a090b9ea4f",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
+                                "data source identifier": "0e892a69-b47d-473b-92eb-bb369cc54f45",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -661,15 +653,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "e7c81d5a-92f4-4ea6-8f28-12fff94811c9",
+                    "calculated data identifier": "3dad317c-97ad-4e53-8a04-6a68eed356ed",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                                "data source identifier": "8400774f-7654-46d3-8bac-b70f490cdf9b",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                                "data source identifier": "02236f98-1170-4368-9b92-446d0de4de1f",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -681,15 +673,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "4ab59e9d-8f28-471e-8cb6-3ea9ccb07996",
+                    "calculated data identifier": "4dde45df-d00f-40a5-bbdd-7768ac0c476e",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
+                                "data source identifier": "8400774f-7654-46d3-8bac-b70f490cdf9b",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
+                                "data source identifier": "02236f98-1170-4368-9b92-446d0de4de1f",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
