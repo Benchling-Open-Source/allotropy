@@ -19,7 +19,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from re import search
 from typing import Any, Optional, Union
-import uuid
 
 import numpy as np
 import pandas as pd
@@ -30,6 +29,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_from_series,
@@ -236,7 +236,7 @@ class CalculatedResultList:
         return CalculatedResultList(
             calculated_results=[
                 CalculatedResult(
-                    uuid=str(uuid.uuid4()),
+                    uuid=random_uuid_str(),
                     col=col,
                     row=row,
                     value=series.loc[col, row],
@@ -277,7 +277,7 @@ class ResultList:
         return ResultList(
             results=[
                 Result(
-                    uuid=str(uuid.uuid4()),
+                    uuid=random_uuid_str(),
                     col=col,
                     row=row,
                     value=int(series.loc[col, row]),

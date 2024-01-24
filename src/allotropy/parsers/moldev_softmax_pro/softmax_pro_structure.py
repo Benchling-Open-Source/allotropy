@@ -7,7 +7,6 @@ from enum import Enum
 import math
 import re
 from typing import Any, Optional, Union
-import uuid
 
 import pandas as pd
 
@@ -16,6 +15,7 @@ from allotropy.exceptions import (
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
@@ -329,7 +329,7 @@ class PlateWavelengthData:
             wavelength,
             data_elements={
                 str(position): DataElement(
-                    uuid=str(uuid.uuid4()),
+                    uuid=random_uuid_str(),
                     plate=plate_name,
                     temperature=temperature,
                     wavelength=wavelength,
@@ -483,7 +483,7 @@ class TimeKineticData:
             temperature=temperature,
             data_elements={
                 str(position): DataElement(
-                    uuid=str(uuid.uuid4()),
+                    uuid=random_uuid_str(),
                     plate=plate_name,
                     temperature=temperature,
                     wavelength=wavelength,

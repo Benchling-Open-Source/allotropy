@@ -13,7 +13,6 @@ from dataclasses import dataclass
 from io import StringIO
 import re
 from typing import Optional
-import uuid
 
 import numpy as np
 import pandas as pd
@@ -22,6 +21,7 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -181,7 +181,7 @@ class WellItem(Referenceable):
 
         return (
             WellItem(
-                uuid=str(uuid.uuid4()),
+                uuid=random_uuid_str(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele1}",
                 sample_identifier=sample_identifier,
@@ -198,7 +198,7 @@ class WellItem(Referenceable):
                 sample_role_type=try_str_from_series_or_none(data, "Task"),
             ),
             WellItem(
-                uuid=str(uuid.uuid4()),
+                uuid=random_uuid_str(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele2}",
                 sample_identifier=sample_identifier,
@@ -233,7 +233,7 @@ class WellItem(Referenceable):
         )
 
         return WellItem(
-            uuid=str(uuid.uuid4()),
+            uuid=random_uuid_str(),
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
