@@ -135,13 +135,13 @@ def get_data() -> Data:
                 Measurement(
                     sample_identifier="Unknown1",
                     location_identifier="A1",
-                    # dilution_factor_setting=1,
+                    dilution_factor_setting=1,
                     assay_bead_count=881.0,
                 ),
                 Measurement(
                     sample_identifier="Unknown2",
                     location_identifier="B1",
-                    # dilution_factor_setting=3,
+                    dilution_factor_setting=3,
                     assay_bead_count=728.0,
                 ),
             ]

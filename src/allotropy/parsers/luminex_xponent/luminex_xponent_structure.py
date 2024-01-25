@@ -181,19 +181,23 @@ class Analyte:
 class Measurement:
     sample_identifier: str
     location_identifier: str
-    # dilution_factor_setting: float
+    dilution_factor_setting: float
     assay_bead_count: float
     analytes: Optional[list[Analyte]] = None
     errors: Optional[list[ErrorDocument]] = None
 
     @staticmethod
-    def create(measurement_data: pd.Series[Any]) -> Measurement:
+    def create(
+        measurement_data: pd.Series[Any], dilution_factor_data: pd.DataFrame
+    ) -> Measurement:
+        location = try_str_from_series(measurement_data, "Location")
+        dilution_factor_setting = try_float_from_series(
+            dilution_factor_data.loc[location], "Dilution Factor"
+        )
         return Measurement(
             sample_identifier=try_str_from_series(measurement_data, "Sample"),
-            location_identifier=_get_location_identifier(
-                try_str_from_series(measurement_data, "Location")
-            ),
-            # dilution_factor_setting=1,  # TODO
+            location_identifier=_get_location_identifier(location),
+            dilution_factor_setting=dilution_factor_setting,
             assay_bead_count=try_float_from_series(measurement_data, "Total Events"),
         )
 
@@ -204,36 +208,37 @@ class MeasurementList:
 
     @staticmethod
     def create(reader: CsvReader) -> MeasurementList:
-        reader.drop_until_inclusive(MEDIAN_TABLE_HEADER)
-        median_table = assert_not_none(
-            reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header="infer"),
-            "Unable to find Median table.",
-        )
-        reader.drop_until_inclusive(DILUTION_FACTOR_TABLE_HEADER)
-        # ignore header
-        # dilution_factor_lines = assert_not_none(
-        #     reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
-        #     "Unable to find Dilution Factor table.",
-        # )
-        # dilution_factor_df = pd.read_csv(
-        #     StringIO("\n".join(dilution_factor_lines)),
-        #     header=[0],
-        #     index_col=[0],
-        # ).dropna(how="all", axis=1)
-        # print(dilution_factor_df)
-        # print(dilution_factor_df.loc['1(1,A1)'])
-        # dilution_factor_dict = {
-        #     _get_location_identifier(line[0]): try_float(line[2], "dilution factor")
-        #     for line in dilution_factor_lines
-        # }
-        # print(dilution_factor_dict)
+        median_table = MeasurementList._get_median_table(reader)
+
+        dilution_factor_data = MeasurementList._get_dilution_factor_data(reader)
 
         return MeasurementList(
             measurements=[
-                Measurement.create(median_table.iloc[i])
+                Measurement.create(median_table.iloc[i], dilution_factor_data)
                 for i in range(len(median_table))
             ]
         )
+
+    @staticmethod
+    def _get_median_table(reader: CsvReader) -> pd.DataFrame:
+        reader.drop_until_inclusive(MEDIAN_TABLE_HEADER)
+        return assert_not_none(
+            reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header="infer"),
+            "Unable to find Median table.",
+        )
+
+    @staticmethod
+    def _get_dilution_factor_data(reader: CsvReader) -> pd.DataFrame:
+        reader.drop_until_inclusive(DILUTION_FACTOR_TABLE_HEADER)
+        dilution_factor_lines = assert_not_none(
+            reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
+            "Unable to find Dilution Factor table.",
+        )
+        return pd.read_csv(
+            StringIO("\n".join(dilution_factor_lines)),
+            header=[0],
+            index_col=[0],
+        ).dropna(how="all", axis=1)
 
 
 @dataclass(frozen=True)
