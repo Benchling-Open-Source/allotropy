@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from io import StringIO
 from re import search
-from typing import Optional
+from typing import Literal, Optional, Union
 
 import chardet
 import pandas as pd
@@ -121,7 +121,7 @@ class CsvReader(LinesReader):
         self,
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
-        header: Optional[int] = None,
+        header: Optional[Union[int, Literal["infer"]]] = None,
         sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
