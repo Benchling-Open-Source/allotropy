@@ -1,5 +1,6 @@
+from itertools import chain
 import math
-from typing import Union
+from typing import Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -295,25 +296,45 @@ class SoftmaxproParser(VendorParser):
     def _get_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
         return self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
 
+    def _get_calc_docs_data_sources(
+        self, plate_block: PlateBlock, position: str
+    ) -> list[DataSourceDocumentItem]:
+        return [
+            DataSourceDocumentItem(
+                data_source_identifier=data_source.uuid,
+                data_source_feature=plate_block.get_plate_block_type(),
+            )
+            for data_source in plate_block.iter_data_elements(position)
+        ]
+
+    def _build_calc_doc(
+        self,
+        name: str,
+        value: float,
+        data_sources: list[DataSourceDocumentItem],
+        description: Optional[str] = None,
+    ) -> CalculatedDataDocumentItem:
+        return CalculatedDataDocumentItem(
+            calculated_data_identifier=random_uuid_str(),
+            calculated_data_name=name,
+            calculation_description=description,
+            calculated_result=TQuantityValue(
+                unit=UNITLESS,
+                value=value,
+            ),
+            data_source_aggregate_document=DataSourceAggregateDocument1(
+                data_source_document=data_sources,
+            ),
+        )
+
     def _get_reduced_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
         return [
-            CalculatedDataDocumentItem(
-                calculated_data_identifier=random_uuid_str(),
-                calculated_data_name=REDUCED,
-                calculated_result=TQuantityValue(
-                    unit=UNITLESS,
-                    value=reduced_data_element.value,
-                ),
-                data_source_aggregate_document=DataSourceAggregateDocument1(
-                    data_source_document=[
-                        DataSourceDocumentItem(
-                            data_source_identifier=data_element.uuid,
-                            data_source_feature=plate_block.get_plate_block_type(),
-                        )
-                        for data_element in plate_block.iter_data_elements(
-                            reduced_data_element.position
-                        )
-                    ]
+            self._build_calc_doc(
+                name=REDUCED,
+                value=reduced_data_element.value,
+                data_sources=self._get_calc_docs_data_sources(
+                    plate_block,
+                    reduced_data_element.position,
                 ),
             )
             for plate_block in data.block_list.plate_blocks.values()
@@ -325,62 +346,41 @@ class SoftmaxproParser(VendorParser):
         for group_block in data.block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
                 for aggregated_entry in group_sample_data.aggregated_entries:
-                    data_sources = []
-                    for group_data_element in group_sample_data.data_elements:
-                        plate_block = data.block_list.plate_blocks[
-                            group_data_element.plate
-                        ]
-                        for data_source in plate_block.iter_data_elements(
-                            group_data_element.position
-                        ):
-                            data_sources.append(
-                                DataSourceDocumentItem(
-                                    data_source_identifier=data_source.uuid,
-                                    data_source_feature=plate_block.get_plate_block_type(),
-                                )
-                            )
-
                     calculated_documents.append(
-                        CalculatedDataDocumentItem(
-                            calculated_data_identifier=random_uuid_str(),
-                            calculated_data_name=aggregated_entry.name,
-                            calculation_description=group_block.group_columns.data.get(
+                        self._build_calc_doc(
+                            name=aggregated_entry.name,
+                            value=aggregated_entry.value,
+                            data_sources=list(
+                                chain.from_iterable(
+                                    self._get_calc_docs_data_sources(
+                                        data.block_list.plate_blocks[
+                                            group_data_element.plate
+                                        ],
+                                        group_data_element.position,
+                                    )
+                                    for group_data_element in group_sample_data.data_elements
+                                )
+                            ),
+                            description=group_block.group_columns.data.get(
                                 aggregated_entry.name
-                            ),
-                            calculated_result=TQuantityValue(
-                                unit=UNITLESS,
-                                value=aggregated_entry.value,
-                            ),
-                            data_source_aggregate_document=DataSourceAggregateDocument1(
-                                data_source_document=data_sources,
                             ),
                         )
                     )
 
                 for group_data_element in group_sample_data.data_elements:
-                    plate_block = data.block_list.plate_blocks[group_data_element.plate]
                     for entry in group_data_element.entries:
                         calculated_documents.append(
-                            CalculatedDataDocumentItem(
-                                calculated_data_identifier=random_uuid_str(),
-                                calculated_data_name=entry.name,
-                                calculation_description=group_block.group_columns.data.get(
+                            self._build_calc_doc(
+                                name=entry.name,
+                                value=entry.value,
+                                data_sources=self._get_calc_docs_data_sources(
+                                    data.block_list.plate_blocks[
+                                        group_data_element.plate
+                                    ],
+                                    group_data_element.position,
+                                ),
+                                description=group_block.group_columns.data.get(
                                     entry.name
-                                ),
-                                calculated_result=TQuantityValue(
-                                    unit=UNITLESS,
-                                    value=entry.value,
-                                ),
-                                data_source_aggregate_document=DataSourceAggregateDocument1(
-                                    data_source_document=[
-                                        DataSourceDocumentItem(
-                                            data_source_identifier=data_source.uuid,
-                                            data_source_feature=plate_block.get_plate_block_type(),
-                                        )
-                                        for data_source in plate_block.iter_data_elements(
-                                            group_data_element.position
-                                        )
-                                    ]
                                 ),
                             )
                         )
