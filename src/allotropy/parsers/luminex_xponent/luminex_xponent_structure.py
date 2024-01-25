@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from io import StringIO
+import re
 from typing import Any, Optional
+import uuid
+
 
 from dateutil import parser
 import pandas as pd
@@ -12,14 +15,30 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
+    try_float_from_series,
     try_str_from_series,
     try_str_from_series_or_none,
 )
 
 EMPTY_CSV_LINE = r"^,*$"
 CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
+MEDIAN_TABLE_HEADER = "DataType:,Median"
+COUNT_TABLE_HEADER = "DataType:,Count"
+UNITS_TABLE_HEADER = "DataType:,Units"
+DILUTION_FACTOR_TABLE_HEADER = "DataType:,Dilution Factor"
+ERROS_TABLE_HEADER = "DataType:,Warnings/Errors"
 MINIMUM_CALIBRATION_LINE_COLS = 2
 EXPECTED_CALIBRATION_RESULT_LEN = 2
+LOCATION_REGEX = r"\d+,(\w+)"
+
+
+def _get_location_identifier(location: str) -> str:
+    match = assert_not_none(
+        re.search(LOCATION_REGEX, location),
+        msg="Unable to find location identifier.",
+    )
+
+    return match.group(1)
 
 
 @dataclass(frozen=True)
@@ -137,17 +156,104 @@ class CalibrationItem:
 
 
 @dataclass(frozen=True)
+class ErrorDocument:
+    error: str
+
+    @staticmethod
+    def create() -> ErrorDocument:
+        pass
+
+
+@dataclass(frozen=True)
+class Analyte:
+    analyte_identifier: str
+    analyte_name: str
+    assay_bead_identifier: str
+    assay_bead_count: float
+    fluorescence: float
+
+    @staticmethod
+    def create() -> Analyte:
+        pass
+
+
+@dataclass(frozen=True)
+class Measurement:
+    sample_identifier: str
+    location_identifier: str
+    # dilution_factor_setting: float
+    assay_bead_count: float
+    analytes: Optional[list[Analyte]] = None
+    errors: Optional[list[ErrorDocument]] = None
+
+    @staticmethod
+    def create(measurement_data: pd.Series[Any]) -> Measurement:
+        return Measurement(
+            sample_identifier=try_str_from_series(measurement_data, "Sample"),
+            location_identifier=_get_location_identifier(
+                try_str_from_series(measurement_data, "Location")
+            ),
+            # dilution_factor_setting=1,  # TODO
+            assay_bead_count=try_float_from_series(measurement_data, "Total Events"),
+        )
+
+
+@dataclass(frozen=True)
+class MeasurementList:
+    measurements: list[Measurement]
+
+    @staticmethod
+    def create(reader: CsvReader) -> MeasurementList:
+        reader.drop_until_inclusive(MEDIAN_TABLE_HEADER)
+        median_table = assert_not_none(
+            reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header="infer"),
+            "Unable to find Median table.",
+        )
+        reader.drop_until_inclusive(DILUTION_FACTOR_TABLE_HEADER)
+        # ignore header
+        # dilution_factor_lines = assert_not_none(
+        #     reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
+        #     "Unable to find Dilution Factor table.",
+        # )
+        # dilution_factor_df = pd.read_csv(
+        #     StringIO("\n".join(dilution_factor_lines)),
+        #     header=[0],
+        #     index_col=[0],
+        # ).dropna(how="all", axis=1)
+        # print(dilution_factor_df)
+        # print(dilution_factor_df.loc['1(1,A1)'])
+        # dilution_factor_dict = {
+        #     _get_location_identifier(line[0]): try_float(line[2], "dilution factor")
+        #     for line in dilution_factor_lines
+        # }
+        # print(dilution_factor_dict)
+
+        return MeasurementList(
+            measurements=[
+                Measurement.create(median_table.iloc[i])
+                for i in range(len(median_table))
+            ]
+        )
+
+
+@dataclass(frozen=True)
 class Data:
     header: Header
     calibration_data: list[CalibrationItem]
     minimum_bead_count_setting: float
+    measurement_list: MeasurementList
 
+    # Row in the Median table = mesurement / sample
+    # column = Analyte
+    # Several analytes per row (always the same number)
+    # As many measurements as rows in the Median table
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
             header=Header.create(Data._get_header_data(reader)),
             calibration_data=Data._get_calibration_data(reader),
             minimum_bead_count_setting=Data._get_minimum_bead_count_setting(reader),
+            measurement_list=MeasurementList.create(reader),
         )
 
     @staticmethod

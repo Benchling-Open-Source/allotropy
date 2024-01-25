@@ -3,6 +3,8 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     CalibrationItem,
     Data,
     Header,
+    Measurement,
+    MeasurementList,
 )
 
 
@@ -49,6 +51,47 @@ def get_reader() -> CsvReader:
             "Results,,,,,,,,,,,,,,,,,,,,,,,",
             ",,,,,,,,,,,,,,,,,,,,,,,",
             "DataType:,Median,,,,,,,,,,,,,,,,,,,,,,",
+            "Location,Sample,alpha,bravo,charlie,Total Events",
+            "\"1(1,A1)\",Unknown1,10921.5,37214,24978,881",
+            "\"2(1,B1)\",Unknown2,8244,35052,22609,728",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Net MFI,,,,,,,,,,,,,,,,,,,,,,",
+            "Location,Sample,alpha,bravo,charlie,Total Events",
+            "\"1(1,A1)\",Unknown1,10921.5,37214,24978,881",
+            "\"2(1,B1)\",Unknown2,8244,35052,22609,728",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Count,,,,,,,,,,,,,,,,,,,,,,",
+            "Location,Sample,alpha,bravo,charlie,Total Events",
+            "\"1(1,A1)\",Unknown1,30,42,42,881",
+            "\"2(1,B1)\",Unknown2,26,33,33,728",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Units,,,,,,,,,,,,,,,,,,,,,,",
+            "Analyte:,alpha,bravo,charlie,,",
+            "BeadID:,28,35,37,,",
+            "Units:,Bead,Bead,Bead,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Per Bead Count,,,,,,,,,,,,,,,,,,,,,,",
+            "Analyte:,alpha,bravo,charlie,,",
+            "BeadID:,28,35,37,,",
+            "Per Bead:,25,25,25,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Dilution Factor,,,,,,,,,,,,,,,,,,,,,,",
+            "Location,Sample,Dilution Factor,,,,,,,,,,,,,,,,,,,,,",
+            "\"1(1,A1)\",Unknown1,1,,,,,,,,,,,,,,,,,,,,,",
+            "\"2(1,B1)\",Unknown2,3,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Analysis Types,,,,,,,,,,,,,,,,,,,,,,",
+            "Analyte:,alpha,bravo,charlie,,",
+            "AnalysisType,None,None,None,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "DataType:,Warnings/Errors,,,,,,,,,,,,,,,,,,,,,,",
+            "Location,Status,Message,,,,,,,,,,,,,,,,,,,,,",
+            "\"1,A1\",Warning,The acquisition had at least one region that did not reach the maximum count.  (0x4FF010AB),,,,,,,,,,,,,,,,,,,,,",
+            "\"1,A1\",Warning,The acquisition had at least one region that did not reach the specified count.,,,,,,,,,,,,,,,,,,,,,",
+            ",,,,,,,,,,,,,,,,,,,,,,,",
+            "-- CRC --,,,,,,,,,,,,,,,,,,,,,,,",
         ]
     )
 
@@ -87,4 +130,20 @@ def get_data() -> Data:
             ),
         ],
         minimum_bead_count_setting=100,
+        measurement_list=MeasurementList(
+            measurements=[
+                Measurement(
+                    sample_identifier="Unknown1",
+                    location_identifier="A1",
+                    # dilution_factor_setting=1,
+                    assay_bead_count=881.0,
+                ),
+                Measurement(
+                    sample_identifier="Unknown2",
+                    location_identifier="B1",
+                    # dilution_factor_setting=3,
+                    assay_bead_count=728.0,
+                ),
+            ]
+        ),
     )
