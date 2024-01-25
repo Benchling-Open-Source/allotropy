@@ -105,7 +105,6 @@ class Block:
 class GroupDataElementEntry:
     name: str
     value: float
-    aggregated: bool
 
 
 @dataclass(frozen=True)
@@ -120,17 +119,26 @@ class GroupDataElement:
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
+    aggregated_entries: list[GroupDataElementEntry]
 
     @staticmethod
     def create(data: pd.DataFrame) -> GroupSampleData:
         top_row = data.iloc[0]
         identifier = top_row["Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
-        column_info = [
-            (column, data[column].iloc[1:].isnull().all())
+        numeric_columns = [
+            column
             for column in data.columns
             if can_parse_as_float_non_nan(top_row[column])
         ]
+
+        normal_columns = []
+        aggregated_columns = []
+        for column in numeric_columns:
+            if data[column].iloc[1:].isnull().all():
+                aggregated_columns.append(column)
+            else:
+                normal_columns.append(column)
 
         return GroupSampleData(
             identifier=identifier,
@@ -146,33 +154,21 @@ class GroupSampleData:
                     entries=[
                         GroupDataElementEntry(
                             name=column_name,
-                            value=(
-                                try_float(top_row[column_name], column_name)
-                                if aggregated
-                                else try_float(row[column_name], column_name)
-                            ),
-                            aggregated=aggregated,
+                            value=try_float(row[column_name], column_name),
                         )
-                        for column_name, aggregated in column_info
+                        for column_name in normal_columns
                     ],
                 )
                 for _, row in data.iterrows()
             ],
+            aggregated_entries=[
+                GroupDataElementEntry(
+                    name=column_name,
+                    value=try_float(top_row[column_name], column_name),
+                )
+                for column_name in aggregated_columns
+            ],
         )
-
-    def iter_simple_data_sources(
-        self, plate: PlateBlock, group_data_element: GroupDataElement
-    ) -> Iterator[DataElement]:
-        yield from plate.iter_data_elements(group_data_element.position)
-
-    def iter_aggregated_data_sources(
-        self, block_list: BlockList
-    ) -> Iterator[DataElement]:
-        for group_data_element in self.data_elements:
-            yield from self.iter_simple_data_sources(
-                block_list.plate_blocks[group_data_element.plate],
-                group_data_element,
-            )
 
 
 @dataclass(frozen=True)

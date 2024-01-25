@@ -324,6 +324,39 @@ class SoftmaxproParser(VendorParser):
         calculated_documents = []
         for group_block in data.block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
+                for aggregated_entry in group_sample_data.aggregated_entries:
+                    data_sources = []
+                    for group_data_element in group_sample_data.data_elements:
+                        plate_block = data.block_list.plate_blocks[
+                            group_data_element.plate
+                        ]
+                        for data_source in plate_block.iter_data_elements(
+                            group_data_element.position
+                        ):
+                            data_sources.append(
+                                DataSourceDocumentItem(
+                                    data_source_identifier=data_source.uuid,
+                                    data_source_feature=plate_block.get_plate_block_type(),
+                                )
+                            )
+
+                    calculated_documents.append(
+                        CalculatedDataDocumentItem(
+                            calculated_data_identifier=random_uuid_str(),
+                            calculated_data_name=aggregated_entry.name,
+                            calculation_description=group_block.group_columns.data.get(
+                                aggregated_entry.name
+                            ),
+                            calculated_result=TQuantityValue(
+                                unit=UNITLESS,
+                                value=aggregated_entry.value,
+                            ),
+                            data_source_aggregate_document=DataSourceAggregateDocument1(
+                                data_source_document=data_sources,
+                            ),
+                        )
+                    )
+
                 for group_data_element in group_sample_data.data_elements:
                     plate_block = data.block_list.plate_blocks[group_data_element.plate]
                     for entry in group_data_element.entries:
@@ -341,18 +374,11 @@ class SoftmaxproParser(VendorParser):
                                 data_source_aggregate_document=DataSourceAggregateDocument1(
                                     data_source_document=[
                                         DataSourceDocumentItem(
-                                            data_source_identifier=data_element.uuid,
+                                            data_source_identifier=data_source.uuid,
                                             data_source_feature=plate_block.get_plate_block_type(),
                                         )
-                                        for data_element in (
-                                            group_sample_data.iter_aggregated_data_sources(
-                                                data.block_list
-                                            )
-                                            if entry.aggregated
-                                            else group_sample_data.iter_simple_data_sources(
-                                                plate_block,
-                                                group_data_element,
-                                            )
+                                        for data_source in plate_block.iter_data_elements(
+                                            group_data_element.position
                                         )
                                     ]
                                 ),
