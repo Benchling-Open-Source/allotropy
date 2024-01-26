@@ -31,6 +31,7 @@ def assert_allotrope_dicts_equal(expected: DictType, actual: DictType) -> None:
         r"\['measurement identifier'\]",
         r"\['data source identifier'\]",
         r"\['calculated data identifier'\]",
+        r"\['analyte identifier'\]",
     ]
     # Uncomment for more info
     # print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
