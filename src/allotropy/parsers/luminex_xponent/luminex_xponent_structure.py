@@ -224,10 +224,12 @@ class MeasurementList:
     def create(reader: CsvReader) -> MeasurementList:
         median_data = MeasurementList._get_median_data(reader)
 
-        count_data = MeasurementList._get_count_data(reader)
+        count_data = MeasurementList._get_table_as_df(reader, "Count")
         bead_ids_data = MeasurementList._get_bead_ids_data(reader)
-        dilution_factor_data = MeasurementList._get_dilution_factor_data(reader)
-        errors_data = MeasurementList._get_errors_data(reader)
+        dilution_factor_data = MeasurementList._get_table_as_df(
+            reader, "Dilution Factor"
+        )
+        errors_data = MeasurementList._get_table_as_df(reader, "Warnings/Errors")
 
         return MeasurementList(
             measurements=[
@@ -254,18 +256,6 @@ class MeasurementList:
     def _get_bead_ids_data(reader: CsvReader) -> pd.Series[str]:
         units_df = MeasurementList._get_table_as_df(reader, "Units")
         return units_df.loc["BeadID:"]
-
-    @staticmethod
-    def _get_count_data(reader: CsvReader) -> pd.DataFrame:
-        return MeasurementList._get_table_as_df(reader, "Count")
-
-    @staticmethod
-    def _get_dilution_factor_data(reader: CsvReader) -> pd.DataFrame:
-        return MeasurementList._get_table_as_df(reader, "Dilution Factor")
-
-    @staticmethod
-    def _get_errors_data(reader: CsvReader) -> pd.DataFrame:
-        return MeasurementList._get_table_as_df(reader, "Warnings/Errors")
 
     @staticmethod
     def _get_table_as_df(reader: CsvReader, table_name: str) -> pd.DataFrame:
