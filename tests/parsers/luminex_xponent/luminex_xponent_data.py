@@ -89,8 +89,8 @@ def get_reader() -> CsvReader:
             ",,,,,,,,,,,,,,,,,,,,,,,",
             "DataType:,Warnings/Errors,,,,,,,,,,,,,,,,,,,,,,",
             "Location,Status,Message,,,,,,,,,,,,,,,,,,,,,",
-            '"1,A1",Warning,The acquisition had at least one region that did not reach the maximum count.  (0x4FF010AB),,,,,,,,,,,,,,,,,,,,,',
-            '"1,A1",Warning,The acquisition had at least one region that did not reach the specified count.,,,,,,,,,,,,,,,,,,,,,',
+            '"1,A1",Warning,maximum count.  (0x4FF010AB),,,,,,,,,,,,,,,,,,,,,',
+            '"1,A1",Warning,specified count.,,,,,,,,,,,,,,,,,,,,,',
             ",,,,,,,,,,,,,,,,,,,,,,,",
             "-- CRC --,,,,,,,,,,,,,,,,,,,,,,,",
         ]
@@ -157,6 +157,10 @@ def get_data() -> Data:
                             assay_bead_count=42,
                             fluorescence=24978,
                         ),
+                    ],
+                    errors=[
+                        "maximum count.  (0x4FF010AB)",
+                        "specified count.",
                     ],
                 ),
                 Measurement(

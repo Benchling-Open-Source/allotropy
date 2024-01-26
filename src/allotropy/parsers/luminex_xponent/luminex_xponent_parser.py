@@ -7,6 +7,8 @@ from allotropy.allotrope.models.multi_analyte_profiling_benchling_2024_01_multi_
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
@@ -105,6 +107,14 @@ class LuminexXponentParser(VendorParser):
         header_data: Header,
         minimum_bead_count_setting: float,
     ) -> MeasurementDocumentItem:
+        error_aggregate_document = None
+        if measurement.errors:
+            error_aggregate_document = ErrorAggregateDocument(
+                error_document=[
+                    ErrorDocumentItem(error=error) for error in measurement.errors
+                ]
+            )
+
         return MeasurementDocumentItem(
             measurement_identifier=random_uuid_str(),
             measurement_time=self._get_date_time(header_data.measurement_time),
@@ -147,6 +157,5 @@ class LuminexXponentParser(VendorParser):
                     for analyte in measurement.analytes
                 ]
             ),
-            # TODO
-            error_aggregate_document=None,
+            error_aggregate_document=error_aggregate_document,
         )

@@ -190,6 +190,10 @@ def test_create_measurement_list() -> None:
                         fluorescence=37214,
                     ),
                 ],
+                errors=[
+                    "Warning msg. (0x4FF010AB)",
+                    "Another Warning.",
+                ],
             )
         ]
     )

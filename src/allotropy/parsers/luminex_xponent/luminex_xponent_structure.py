@@ -23,16 +23,7 @@ CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
 TABLE_HEADER_PATTERN = "DataType:,{}"
 MINIMUM_CALIBRATION_LINE_COLS = 2
 EXPECTED_CALIBRATION_RESULT_LEN = 2
-LOCATION_REGEX = r"\d+,(\w+)"
-
-
-def _get_location_identifier(location: str) -> str:
-    match = assert_not_none(
-        re.search(LOCATION_REGEX, location),
-        msg="Unable to find location identifier.",
-    )
-
-    return match.group(1)
+LOCATION_REGEX = r"\d+\((?P<well_location>\d+,(?P<location_id>\w+))\)"
 
 
 @dataclass(frozen=True)
@@ -69,7 +60,6 @@ class Header:
             data_system_instance_identifier=try_str_from_series(
                 info_row, "ComputerName"
             ),
-            # TODO: ask about NA in the Operator entry (was in a previous version of the requirements)
             analyst=try_str_from_series_or_none(info_row, "Operator"),
         )
 
@@ -150,11 +140,6 @@ class CalibrationItem:
 
 
 @dataclass(frozen=True)
-class ErrorDocument:
-    error: str
-
-
-@dataclass(frozen=True)
 class Analyte:
     analyte_name: str
     assay_bead_identifier: str
@@ -169,7 +154,7 @@ class Measurement:
     dilution_factor_setting: float
     assay_bead_count: float
     analytes: list[Analyte]
-    errors: Optional[list[ErrorDocument]] = None
+    errors: Optional[list[str]] = None
 
     @staticmethod
     def create(
@@ -177,6 +162,7 @@ class Measurement:
         count_data: pd.DataFrame,
         bead_ids_data: pd.Series[str],
         dilution_factor_data: pd.DataFrame,
+        errors_data: pd.DataFrame,
     ) -> Measurement:
         location = try_str_from_series(median_data, "Location")
         dilution_factor_setting = try_float_from_series(
@@ -185,9 +171,11 @@ class Measurement:
         # analyte names are columns 3 through the penultimate
         analyte_names = list(median_data.index)[2:-1]
 
+        well_location, location_id = Measurement._get_location_details(location)
+
         return Measurement(
             sample_identifier=try_str_from_series(median_data, "Sample"),
-            location_identifier=_get_location_identifier(location),
+            location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
             assay_bead_count=try_float_from_series(median_data, "Total Events"),
             analytes=[
@@ -201,7 +189,31 @@ class Measurement:
                 )
                 for analyte in analyte_names
             ],
+            errors=Measurement._get_errors(errors_data, well_location),
         )
+
+    @staticmethod
+    def _get_location_details(location: str) -> tuple[str, str]:
+        match = assert_not_none(
+            re.search(LOCATION_REGEX, location),
+            msg=f"Invalid location format: {location}",
+        )
+
+        return match.group("well_location"), match.group("location_id")
+
+    @staticmethod
+    def _get_errors(
+        errors_data: pd.DataFrame, well_location: str
+    ) -> Optional[list[str]]:
+        try:
+            measurement_errors = errors_data.loc[well_location]
+        except KeyError:
+            return None
+
+        return [
+            measurement_errors.iloc[i]["Message"]
+            for i in range(len(measurement_errors))
+        ]
 
 
 @dataclass(frozen=True)
@@ -215,6 +227,7 @@ class MeasurementList:
         count_data = MeasurementList._get_count_data(reader)
         bead_ids_data = MeasurementList._get_bead_ids_data(reader)
         dilution_factor_data = MeasurementList._get_dilution_factor_data(reader)
+        errors_data = MeasurementList._get_errors_data(reader)
 
         return MeasurementList(
             measurements=[
@@ -223,6 +236,7 @@ class MeasurementList:
                     count_data=count_data,
                     bead_ids_data=bead_ids_data,
                     dilution_factor_data=dilution_factor_data,
+                    errors_data=errors_data,
                 )
                 for i in range(len(median_data))
             ]
@@ -248,6 +262,10 @@ class MeasurementList:
     @staticmethod
     def _get_dilution_factor_data(reader: CsvReader) -> pd.DataFrame:
         return MeasurementList._get_table_as_df(reader, "Dilution Factor")
+
+    @staticmethod
+    def _get_errors_data(reader: CsvReader) -> pd.DataFrame:
+        return MeasurementList._get_table_as_df(reader, "Warnings/Errors")
 
     @staticmethod
     def _get_table_as_df(reader: CsvReader, table_name: str) -> pd.DataFrame:
