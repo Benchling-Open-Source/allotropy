@@ -30,16 +30,16 @@ LOCATION_REGEX = r"\d+\((?P<well_location>\d+,(?P<location_id>\w+))\)"
 class Header:
     model_number: str
     software_version: str
-    equipment_serial_number: str  # SN
-    analytical_method_identifier: str  # ProtocolName
-    method_version: str  # ProtocolVersion
-    experimental_data_identifier: str  # Batch
-    sample_volume_setting: float  # SampleVolume
-    plate_well_count: float  # ProtocolPlate, column 5 (after Type)
-    measurement_time: str  # BatchStartTime  MM/DD/YYYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
-    detector_gain_setting: str  # ProtocolReporterGain
-    data_system_instance_identifier: str  # ComputerName
-    analyst: Optional[str] = None  # Operator row
+    equipment_serial_number: str
+    analytical_method_identifier: str
+    method_version: str
+    experimental_data_identifier: str
+    sample_volume_setting: float
+    plate_well_count: float
+    measurement_time: str
+    detector_gain_setting: str
+    data_system_instance_identifier: str
+    analyst: Optional[str] = None
 
     @staticmethod
     def create(header_data: pd.DataFrame) -> Header:
