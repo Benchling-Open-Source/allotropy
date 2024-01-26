@@ -161,15 +161,6 @@ class Analyte:
     assay_bead_count: float
     fluorescence: float
 
-    @staticmethod
-    def create(analyte_name: str, fluorescence: float) -> Analyte:
-        return Analyte(
-            analyte_name=analyte_name,
-            assay_bead_identifier="29",
-            assay_bead_count=1,
-            fluorescence=fluorescence,
-        )
-
 
 @dataclass(frozen=True)
 class Measurement:
@@ -177,14 +168,14 @@ class Measurement:
     location_identifier: str
     dilution_factor_setting: float
     assay_bead_count: float
-    analytes: Optional[list[Analyte]] = None
+    analytes: list[Analyte]
     errors: Optional[list[ErrorDocument]] = None
 
     @staticmethod
     def create(
         median_data: pd.Series[Any],
         count_data: pd.DataFrame,
-        units_data: pd.DataFrame,
+        bead_ids_data: pd.Series[str],
         dilution_factor_data: pd.DataFrame,
     ) -> Measurement:
         location = try_str_from_series(median_data, "Location")
@@ -202,9 +193,11 @@ class Measurement:
             analytes=[
                 Analyte(
                     analyte_name=analyte,
-                    assay_bead_identifier=units_data[analyte].iloc[0],
-                    assay_bead_count=count_data.loc[location][analyte],
-                    fluorescence=median_data[analyte],
+                    assay_bead_identifier=try_str_from_series(bead_ids_data, analyte),
+                    assay_bead_count=try_float_from_series(
+                        count_data.loc[location], analyte
+                    ),
+                    fluorescence=try_float_from_series(median_data, analyte),
                 )
                 for analyte in analyte_names
             ],
@@ -219,15 +212,18 @@ class MeasurementList:
     def create(reader: CsvReader) -> MeasurementList:
         median_data = MeasurementList._get_median_data(reader)
 
-        measurement_data = {
-            "count_data": MeasurementList._get_count_data(reader),
-            "units_data": MeasurementList._get_units_data(reader),
-            "dilution_factor_data": MeasurementList._get_dilution_factor_data(reader),
-        }
+        count_data = MeasurementList._get_count_data(reader)
+        bead_ids_data = MeasurementList._get_bead_ids_data(reader)
+        dilution_factor_data = MeasurementList._get_dilution_factor_data(reader)
 
         return MeasurementList(
             measurements=[
-                Measurement.create(median_data=median_data.iloc[i], **measurement_data)
+                Measurement.create(
+                    median_data=median_data.iloc[i],
+                    count_data=count_data,
+                    bead_ids_data=bead_ids_data,
+                    dilution_factor_data=dilution_factor_data,
+                )
                 for i in range(len(median_data))
             ]
         )
@@ -241,12 +237,9 @@ class MeasurementList:
         )
 
     @staticmethod
-    def _get_units_data(reader: CsvReader) -> pd.DataFrame:
-        reader.drop_until_inclusive(TABLE_HEADER_PATTERN.format("Units"))
-        return assert_not_none(
-            reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header="infer"),
-            msg="Unable to find Units table.",
-        )
+    def _get_bead_ids_data(reader: CsvReader) -> pd.Series[str]:
+        units_df = MeasurementList._get_table_as_df(reader, "Units")
+        return units_df.loc["BeadID:"]
 
     @staticmethod
     def _get_count_data(reader: CsvReader) -> pd.DataFrame:
@@ -266,11 +259,12 @@ class MeasurementList:
         """
         reader.drop_until_inclusive(match_pat=TABLE_HEADER_PATTERN.format(table_name))
 
-        table_lines = assert_not_none(
-            # TODO: pop_csv_block_as_lines will not be None, validate emptyness instead
-            reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
-            f"Unable to find {table_name} table.",
-        )
+        table_lines = reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE)
+
+        if not table_lines:
+            msg = f"Unable to find {table_name} table."
+            raise AllotropeConversionError(msg)
+
         return pd.read_csv(
             StringIO("\n".join(table_lines)),
             header=[0],
@@ -309,11 +303,10 @@ class Data:
     @staticmethod
     def _get_calibration_data(reader: CsvReader) -> list[CalibrationItem]:
         reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
-        calibration_lines = assert_not_none(
-            # TODO: pop_csv_block_as_lines will not be None, validate emptyness instead
-            reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE),
-            "Unable to find Calibration Block.",
-        )
+        calibration_lines = reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE)
+        if not calibration_lines:
+            msg = "Unable to find Calibration Block."
+            raise AllotropeConversionError(msg)
 
         calibration_list = []
 
