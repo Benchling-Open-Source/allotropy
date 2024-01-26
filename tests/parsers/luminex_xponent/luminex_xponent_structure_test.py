@@ -2,12 +2,55 @@ import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
+    Analyte,
     CalibrationItem,
     Data,
     Header,
+    Measurement,
+    MeasurementList,
 )
 from tests.parsers.luminex_xponent.luminex_xponent_data import get_data, get_reader
+
+
+def get_result_lines(remove: str = "") -> list[str]:
+    lines = [
+        "DataType:,Median,,,,,,,,,,,,,,,,,,,,,,",
+        "Location,Sample,alpha,bravo,Total Events",
+        '"1(1,A1)",Unknown1,10921.5,37214,881',
+        ",,,,,,,,,,,,,,,,,,,,,,,",
+        "DataType:,Count,,,,,,,,,,,,,,,,,,,,,,",
+        "Location,Sample,alpha,bravo,Total Events",
+        '"1(1,A1)",Unknown1,30,42,881',
+        ",,,,,,,,,,,,,,,,,,,,,,,",
+        "DataType:,Units,,,,,,,,,,,,,,,,,,,,,,",
+        "Analyte:,alpha,bravo,,",
+        "BeadID:,28,35,,",
+        "Units:,Bead,Bead,,",
+        ",,,,,,,,,,,,,,,,,,,,,,,",
+        "DataType:,Dilution Factor,,,,,,,,,,,,,,,,,,,,,,",
+        "Location,Sample,Dilution Factor,,,,,,,,,,,,,,,,,,,,,",
+        '"1(1,A1)",Unknown1,1,,,,,,,,,,,,,,,,,,,,,',
+        ",,,,,,,,,,,,,,,,,,,,,,,",
+        "DataType:,Warnings/Errors,,,,,,,,,,,,,,,,,,,,,,",
+        "Location,Status,Message,,,,,,,,,,,,,,,,,,,,,",
+        '"1,A1",Warning,Warning msg. (0x4FF010AB),,,,,,,,,,,,,,,,,,,,,',
+        '"1,A1",Warning,Another Warning.,,,,,,,,,,,,,,,,,,,,,',
+        ",,,,,,,,,,,,,,,,,,,,,,,",
+    ]
+    headers = {
+        "Median": 0,
+        "Count": 4,
+        "Units": 8,
+        "Dilution Factor": 13,
+        "Warnings/Errors": 17,
+    }
+
+    if remove in headers:
+        del lines[headers[remove]]
+
+    return lines
 
 
 @pytest.mark.short
@@ -120,6 +163,52 @@ def test_create_calibration_item_invalid_calibration_time() -> None:
     error = "Invalid calibration time format."
     with pytest.raises(AllotropeConversionError, match=error):
         CalibrationItem.create(bad_line)
+
+
+@pytest.mark.short
+def test_create_measurement_list() -> None:
+    reader = CsvReader(get_result_lines())
+
+    assert MeasurementList.create(reader) == MeasurementList(
+        measurements=[
+            Measurement(
+                sample_identifier="Unknown1",
+                location_identifier="A1",
+                dilution_factor_setting=1,
+                assay_bead_count=881,
+                analytes=[
+                    Analyte(
+                        analyte_name="alpha",
+                        assay_bead_identifier="28",
+                        assay_bead_count=30,
+                        fluorescence=10921.5,
+                    ),
+                    Analyte(
+                        analyte_name="bravo",
+                        assay_bead_identifier="35",
+                        assay_bead_count=42,
+                        fluorescence=37214,
+                    ),
+                ],
+            )
+        ]
+    )
+
+
+@pytest.mark.parametrize(
+    "table_name",
+    ["Median", "Count", "Units", "Dilution Factor"],
+)
+@pytest.mark.short
+def test_create_measurement_list_without_required_table_then_raise(
+    table_name: str,
+) -> None:
+    reader = CsvReader(get_result_lines(remove=table_name))
+
+    with pytest.raises(
+        AllotropeConversionError, match=f"Unable to find {table_name} table."
+    ):
+        MeasurementList.create(reader)
 
 
 def test_create_data() -> None:
