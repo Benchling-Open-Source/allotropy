@@ -186,12 +186,14 @@ class Measurement:
         count_data: pd.DataFrame,
         units_data: pd.DataFrame,
         dilution_factor_data: pd.DataFrame,
-        analyte_names: list[str],
     ) -> Measurement:
         location = try_str_from_series(median_data, "Location")
         dilution_factor_setting = try_float_from_series(
             dilution_factor_data.loc[location], "Dilution Factor"
         )
+        # analyte names are columns 3 through the penultimate
+        analyte_names = list(median_data.index)[2:-1]
+
         return Measurement(
             sample_identifier=try_str_from_series(median_data, "Sample"),
             location_identifier=_get_location_identifier(location),
@@ -216,23 +218,16 @@ class MeasurementList:
     @staticmethod
     def create(reader: CsvReader) -> MeasurementList:
         median_data = MeasurementList._get_median_data(reader)
-        count_data = MeasurementList._get_count_data(reader)
-        units_data = MeasurementList._get_units_data(reader)
-        dilution_factor_data = MeasurementList._get_dilution_factor_data(reader)
-        reader.current_line = 0
-        MeasurementList._get_table_from_reader_as_df(reader, "Units")
-        # analyte names are columns 3 through the penultimate
-        analyte_names = list(median_data.columns)[2:-1]
+
+        measurement_data = {
+            "count_data": MeasurementList._get_count_data(reader),
+            "units_data": MeasurementList._get_units_data(reader),
+            "dilution_factor_data": MeasurementList._get_dilution_factor_data(reader),
+        }
 
         return MeasurementList(
             measurements=[
-                Measurement.create(
-                    median_data=median_data.iloc[i],
-                    count_data=count_data,
-                    dilution_factor_data=dilution_factor_data,
-                    units_data=units_data,
-                    analyte_names=analyte_names,
-                )
+                Measurement.create(median_data=median_data.iloc[i], **measurement_data)
                 for i in range(len(median_data))
             ]
         )
@@ -255,16 +250,20 @@ class MeasurementList:
 
     @staticmethod
     def _get_count_data(reader: CsvReader) -> pd.DataFrame:
-        return MeasurementList._get_table_from_reader_as_df(reader, "Count")
+        return MeasurementList._get_table_as_df(reader, "Count")
 
     @staticmethod
     def _get_dilution_factor_data(reader: CsvReader) -> pd.DataFrame:
-        return MeasurementList._get_table_from_reader_as_df(reader, "Dilution Factor")
+        return MeasurementList._get_table_as_df(reader, "Dilution Factor")
 
     @staticmethod
-    def _get_table_from_reader_as_df(
-        reader: CsvReader, table_name: str
-    ) -> pd.DataFrame:
+    def _get_table_as_df(reader: CsvReader, table_name: str) -> pd.DataFrame:
+        """Returns a dataframe that has the well location as index.
+
+        Results tables in luminex xponent output files have the location as first column.
+        Having this column as the index of the dataframe allows for easier lookup when
+        retrieving measurement data.
+        """
         reader.drop_until_inclusive(match_pat=TABLE_HEADER_PATTERN.format(table_name))
 
         table_lines = assert_not_none(
@@ -286,10 +285,6 @@ class Data:
     minimum_bead_count_setting: float
     measurement_list: MeasurementList
 
-    # Row in the Median table = mesurement / sample
-    # column = Analyte
-    # Several analytes per row (always the same number)
-    # As many measurements as rows in the Median table
     @staticmethod
     def create(reader: CsvReader) -> Data:
         return Data(
