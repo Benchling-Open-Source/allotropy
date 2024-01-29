@@ -1,6 +1,7 @@
 from typing import Any, Optional
 
 import pandas as pd
+from pandas import Timestamp
 
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     CellCountingAggregateDocument,
@@ -108,11 +109,11 @@ class ChemometecNucleoviewParser(VendorParser):
             if _get_value(data, i, "Total (cells/ml)")
         ]
 
-    def _get_date_time_or_epoch(self, time_val: Any) -> TDateTimeValue:
+    def _get_date_time_or_epoch(self, time_val: Optional[Timestamp]) -> TDateTimeValue:
         if time_val is None:
             # return epoch time 1970-01-01
             return self._get_date_time("1970-01-01")
-        return self._get_date_time(time_val)
+        return self._get_date_time_from_timestamp(time_val)
 
     def _get_cell_counting_document_item(
         self, data_frame: pd.DataFrame, row: int
