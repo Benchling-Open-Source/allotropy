@@ -5,8 +5,6 @@ from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexPars
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.novabio_flex2.novabio_flex2_data import get_data, get_model
 from tests.parsers.test_utils import (
-    CALCULATED_DATA_IDENTIFIER,
-    DATA_SOURCE_IDENTIFIER,
     from_file,
     MEASUREMENT_IDENTIFIER,
     validate_contents,
@@ -21,8 +19,6 @@ OUTPUT_FILES = (
 VENDOR_TYPE = Vendor.NOVABIO_FLEX2
 
 IDENTIFIERS_TO_EXCLUDE = [
-    CALCULATED_DATA_IDENTIFIER,
-    DATA_SOURCE_IDENTIFIER,
     MEASUREMENT_IDENTIFIER,
 ]
 
