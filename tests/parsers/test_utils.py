@@ -14,6 +14,10 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import VendorType
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
 
+CALCULATED_DATA_IDENTIFIER = "calculated data identifier"
+DATA_SOURCE_IDENTIFIER = "data source identifier"
+MEASUREMENT_IDENTIFIER = "measurement identifier"
+
 DictType = Mapping[str, Any]
 
 
@@ -37,9 +41,9 @@ def _assert_allotrope_dicts_equal(
     expected_replaced = _replace_asm_converter_name_and_version(expected)
 
     identifiers_to_exclude = identifiers_to_exclude or [
-        "calculated data identifier",
-        "data source identifier",
-        "measurement identifier",
+        CALCULATED_DATA_IDENTIFIER,
+        DATA_SOURCE_IDENTIFIER,
+        MEASUREMENT_IDENTIFIER,
     ]
     exclude_regex_paths = [
         fr"\['{exclude_id}'\]" for exclude_id in identifiers_to_exclude
