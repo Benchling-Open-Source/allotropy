@@ -27,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_ANALYST,
@@ -63,6 +64,14 @@ def _get_value(sample: _Sample, column: str) -> Optional[Any]:
     if column not in data_frame.columns:
         return None
     return data_frame[column][row]
+
+
+def _get_value_not_none(sample: _Sample, column: str) -> Any:
+    value = _get_value(sample, column)
+    if value is None:
+        msg = f"Missing value for column '{column}'."
+        raise AllotropeConversionError(msg)
+    return value
 
 
 def get_property_from_sample(sample: _Sample, property_name: str) -> Any:
@@ -113,7 +122,7 @@ class ViCellBluParser(VendorParser):
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_time=self._get_date_time(
-                            _get_value(sample, "Analysis date/time")
+                            _get_value_not_none(sample, "Analysis date/time")
                         ),
                         measurement_identifier=random_uuid_str(),
                         sample_document=SampleDocument(sample_identifier=_get_value(sample, "Sample ID")),  # type: ignore[arg-type]
