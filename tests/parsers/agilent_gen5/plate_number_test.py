@@ -34,6 +34,11 @@ def test_plate_number_parse_datetime(date_: str, time_: str, expected: str) -> N
             "10:48:38",
             "time data '2/1/2024 10:48:38' does not match format '%m/%d/%Y %I:%M:%S %p'",
         ),
+        (
+            "2/1/2024",
+            "10:48:38 EST",
+            "time data '2/1/2024 10:48:38 EST' does not match format '%m/%d/%Y %I:%M:%S %p'",
+        ),
     ],
 )
 def test_plate_number_parse_datetime_fails(
