@@ -29,7 +29,7 @@ def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictTyp
     return new_dict
 
 
-def assert_allotrope_dicts_equal(
+def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
     identifiers_to_exclude: Optional[list[str]] = None,
@@ -71,11 +71,17 @@ def validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None
     )
 
 
-def validate_contents(allotrope_dict: DictType, expected_file: str) -> None:
+def validate_contents(
+    allotrope_dict: DictType,
+    expected_file: str,
+    identifiers_to_exclude: Optional[list[str]] = None,
+) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     with open(expected_file) as f:
         expected_dict = json.load(f)
-        assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
+    _assert_allotrope_dicts_equal(
+        expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
+    )
 
 
 def build_series(elements: list[tuple[Any]]) -> pd.Series[Any]:
