@@ -8,10 +8,13 @@ from allotropy.parser_factory import get_parser, Vendor
 from allotropy.parsers.agilent_gen5.plate_data import PlateNumber
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
-PARSER_UTC = get_parser(Vendor.AGILENT_GEN5).timestamp_parser
-PARSER_UTC_MINUS_5 = get_parser(
-    Vendor.AGILENT_GEN5, timezone(timedelta(hours=-5))
-).timestamp_parser
+
+def _get_parser(default_timezone: Optional[timezone] = None) -> TimestampParser:
+    return get_parser(Vendor.AGILENT_GEN5, default_timezone).timestamp_parser
+
+
+PARSER_UTC = _get_parser()
+PARSER_UTC_MINUS_5 = _get_parser(timezone(timedelta(hours=-5)))
 
 
 @pytest.mark.parametrize(
