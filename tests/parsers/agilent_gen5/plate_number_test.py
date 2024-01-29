@@ -17,33 +17,16 @@ def test_plate_number_parse_datetime(date_: str, time_: str, expected: str) -> N
 
 
 @pytest.mark.parametrize(
-    "date_,time_,expected",
+    "date_,time_",
     [
-        (
-            "1/31/2024",
-            "10:48:38",
-            "time data '1/31/2024 10:48:38' does not match format '%m/%d/%Y %I:%M:%S %p'",
-        ),
-        (
-            "31/1/2024",
-            "10:48:38",
-            "time data '31/1/2024 10:48:38' does not match format '%m/%d/%Y %I:%M:%S %p'",
-        ),
-        (
-            "2/1/2024",
-            "10:48:38",
-            "time data '2/1/2024 10:48:38' does not match format '%m/%d/%Y %I:%M:%S %p'",
-        ),
-        (
-            "2/1/2024",
-            "10:48:38 EST",
-            "time data '2/1/2024 10:48:38 EST' does not match format '%m/%d/%Y %I:%M:%S %p'",
-        ),
+        ("1/31/2024", "10:48:38"),
+        ("31/1/2024", "10:48:38"),
+        ("2/1/2024", "10:48:38"),
+        ("2/1/2024", "10:48:38 EST"),
     ],
 )
-def test_plate_number_parse_datetime_fails(
-    date_: str, time_: str, expected: str
-) -> None:
+def test_plate_number_parse_datetime_fails(date_: str, time_: str) -> None:
+    expected = f"time data '{date_} {time_}' does not match format '%m/%d/%Y %I:%M:%S %p'"
     # TODO(brian): should raise AllotropeConversionError
     with pytest.raises(ValueError, match=expected):
         PlateNumber._parse_datetime(date_, time_)
