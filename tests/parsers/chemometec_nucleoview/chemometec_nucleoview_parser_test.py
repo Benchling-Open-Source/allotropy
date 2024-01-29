@@ -1,7 +1,14 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    from_file,
+    MEASUREMENT_IDENTIFIER,
+    validate_contents,
+    validate_schema,
+)
 
 OUTPUT_FILES = (
     "chemometec_nucleoview_example01.csv",
@@ -14,6 +21,12 @@ OUTPUT_FILES = (
 
 VENDOR_TYPE = Vendor.CHEMOMETEC_NUCLEOVIEW
 SCHEMA_FILE = "cell-counting/BENCHLING/2023/11/cell-counting.json"
+
+IDENTIFIERS_TO_EXCLUDE = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
@@ -33,4 +46,4 @@ def test_parse_chemometec_nucleoview_to_asm_expected_contents(output_file: str) 
         + "json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)

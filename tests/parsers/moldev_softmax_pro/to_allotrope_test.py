@@ -4,9 +4,22 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    from_file,
+    MEASUREMENT_IDENTIFIER,
+    validate_contents,
+    validate_schema,
+)
 
 VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
+
+IDENTIFIERS_TO_EXCLUDE = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
 
 
 @pytest.mark.parametrize(
@@ -29,7 +42,7 @@ def test_to_allotrope(file_name: str) -> None:
     expected_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.json"
     allotrope_dict = from_file(test_file, VENDOR_TYPE)
     validate_schema(allotrope_dict, "plate-reader/BENCHLING/2023/09/plate-reader.json")
-    validate_contents(allotrope_dict, expected_file)
+    validate_contents(allotrope_dict, expected_file, IDENTIFIERS_TO_EXCLUDE)
 
 
 def test_handles_unrecognized_read_mode() -> None:

@@ -12,7 +12,14 @@ from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_filename,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    from_file,
+    MEASUREMENT_IDENTIFIER,
+    validate_contents,
+    validate_schema,
+)
 
 OUTPUT_FILES = (
     "Beckman_Vi-Cell-BLU_example01",
@@ -22,6 +29,12 @@ OUTPUT_FILES = (
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_BLU
 SCHEMA_FILE = "cell-counting/BENCHLING/2023/11/cell-counting.json"
 TEST_DATA_DIR = "tests/parsers/beckman_vi_cell_blu/testdata/"
+
+IDENTIFIERS_TO_EXCLUDE = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
 
 
 def _get_test_file_path(output_file: str) -> str:
@@ -44,7 +57,7 @@ def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
     test_filepath = _get_test_file_path(output_file)
     expected_filepath = _get_expected_file_path(output_file)
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)
 
 
 def _clear_measurement_identifier(model: Model) -> None:

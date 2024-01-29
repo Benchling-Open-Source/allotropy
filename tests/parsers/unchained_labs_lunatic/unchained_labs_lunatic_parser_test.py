@@ -1,7 +1,14 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    from_file,
+    MEASUREMENT_IDENTIFIER,
+    validate_contents,
+    validate_schema,
+)
 
 OUTPUT_FILES = (
     "Demo_A260_dsDNA_Data",
@@ -10,6 +17,12 @@ OUTPUT_FILES = (
 
 VENDOR_TYPE = Vendor.UNCHAINED_LABS_LUNATIC
 SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
+
+IDENTIFIERS_TO_EXCLUDE = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
@@ -20,4 +33,4 @@ def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(allotrope_dict, SCHEMA_FILE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)

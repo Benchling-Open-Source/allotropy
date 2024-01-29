@@ -6,7 +6,14 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
 )
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get_model
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    from_file,
+    MEASUREMENT_IDENTIFIER,
+    validate_contents,
+    validate_schema,
+)
 
 OUTPUT_FILES = (
     "roche_cedex_bioht_example01",
@@ -18,6 +25,12 @@ OUTPUT_FILES = (
 VENDOR_TYPE = Vendor.ROCHE_CEDEX_BIOHT
 SCHEMA_FILE = "cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.json"
 
+IDENTIFIERS_TO_EXCLUDE = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
+
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
@@ -25,7 +38,7 @@ def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
     expected_filepath = f"tests/parsers/roche_cedex_bioht/testdata/{output_file}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(allotrope_dict, SCHEMA_FILE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)
 
 
 @pytest.mark.short

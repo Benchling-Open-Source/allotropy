@@ -9,6 +9,7 @@ from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import (
     DictType,
     from_file,
+    MEASUREMENT_IDENTIFIER,
     model_from_file,
     validate_contents,
     validate_schema,
@@ -26,13 +27,15 @@ ABSORBENCE_FILENAMES = [
     "kinetic_multiplate",
 ]
 
+IDENTIFIERS_TO_EXCLUDE = [MEASUREMENT_IDENTIFIER]
+
 
 def _validate_allotrope_dict(allotrope_dict: DictType, expected_filepath: str) -> None:
     validate_schema(
         allotrope_dict,
         "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json",
     )
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)
 
 
 @pytest.mark.parametrize("filename", ABSORBENCE_FILENAMES)
@@ -72,7 +75,7 @@ def test_to_allotrope_fluorescence(filename: str) -> None:
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(allotrope_dict, "fluorescence/BENCHLING/2023/09/fluorescence.json")
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)
 
 
 @pytest.mark.parametrize(
@@ -89,7 +92,7 @@ def test_to_allotrope_luminescence(filename: str) -> None:
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(allotrope_dict, "luminescence/BENCHLING/2023/09/luminescence.json")
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)
 
 
 def test_to_allotrope_invalid_plate_data() -> None:

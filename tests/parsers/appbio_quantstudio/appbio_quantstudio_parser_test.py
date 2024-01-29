@@ -19,7 +19,14 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_rel_std_curve_data,
     get_rel_std_curve_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    from_file,
+    MEASUREMENT_IDENTIFIER,
+    validate_contents,
+    validate_schema,
+)
 
 OUTPUT_FILES = (
     "appbio_quantstudio_example01",
@@ -35,6 +42,12 @@ OUTPUT_FILES = (
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
+IDENTIFIERS_TO_EXCLUDE = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
+
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
@@ -49,7 +62,7 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     expected_filepath = test_filepath.replace(".txt", ".json")
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, IDENTIFIERS_TO_EXCLUDE)
 
 
 @pytest.mark.short
