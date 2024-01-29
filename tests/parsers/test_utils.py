@@ -18,6 +18,13 @@ CALCULATED_DATA_IDENTIFIER = "calculated data identifier"
 DATA_SOURCE_IDENTIFIER = "data source identifier"
 MEASUREMENT_IDENTIFIER = "measurement identifier"
 
+# Use this only for tests that need to exclude all identifiers
+ALL_IDENTIFIERS = [
+    CALCULATED_DATA_IDENTIFIER,
+    DATA_SOURCE_IDENTIFIER,
+    MEASUREMENT_IDENTIFIER,
+]
+
 DictType = Mapping[str, Any]
 
 
