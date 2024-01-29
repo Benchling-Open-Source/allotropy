@@ -20,8 +20,8 @@ def test_plate_number_parse_datetime(date_: str, time_: str, expected: str) -> N
 
 
 def test_plate_number_parse_datetime_fails() -> None:
-    date_ = "28/2/-1"
-    time_ = "10:48:38"
-    msg = "Could not parse time '28/2/-1 10:48:38'"
+    date_ = "mydate"
+    time_ = "mytime"
+    msg = "Could not parse time 'mydate mytime'"
     with pytest.raises(AllotropeConversionError, match=msg):
         PlateNumber._parse_datetime(date_, time_, TIMESTAMP_PARSER)
