@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Removed hardcoding of date parsing around Gen5 plate numbers
 ### Changed
 ### Deprecated
 ### Removed
