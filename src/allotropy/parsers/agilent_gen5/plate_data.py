@@ -44,7 +44,6 @@ METADATA_PREFIXES = frozenset(
         "Reading Type",
     }
 )
-GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
 
 def try_float(value: str) -> Union[str, float]:
