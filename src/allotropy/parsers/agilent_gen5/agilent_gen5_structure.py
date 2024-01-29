@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 
 @dataclass(frozen=True)
@@ -12,9 +13,11 @@ class Data:
     plates: list[PlateData]
 
     @staticmethod
-    def create(section_lines_reader: SectionLinesReader) -> Data:
+    def create(
+        section_lines_reader: SectionLinesReader, timestamp_parser: TimestampParser
+    ) -> Data:
         plates: list[PlateData] = [
-            PlateData.create(lines_reader)
+            PlateData.create(lines_reader, timestamp_parser)
             for lines_reader in section_lines_reader.iter_sections("^Software Version")
         ]
 
