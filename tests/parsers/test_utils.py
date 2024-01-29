@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 import json
-from typing import Any
+from typing import Any, Optional
 
 from deepdiff import DeepDiff
 import jsonschema
@@ -13,33 +14,43 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import VendorType
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
 
-DictType = dict[str, Any]
+DictType = Mapping[str, Any]
 
 
-def replace_asm_converter_name_and_version(allotrope_dict: DictType) -> None:
-    for key, value in allotrope_dict.items():
+def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictType:
+    new_dict = dict(allotrope_dict)
+    for key, value in new_dict.items():
         if key == "data system document":
             value["ASM converter name"] = ASM_CONVERTER_NAME
             value["ASM converter version"] = ASM_CONVERTER_VERSION
         if isinstance(value, dict):
-            replace_asm_converter_name_and_version(value)
+            _replace_asm_converter_name_and_version(value)
+
+    return new_dict
 
 
-def assert_allotrope_dicts_equal(expected: DictType, actual: DictType) -> None:
-    replace_asm_converter_name_and_version(expected)
-    exclude_regex = [
-        r"\['measurement identifier'\]",
-        r"\['data source identifier'\]",
-        r"\['calculated data identifier'\]",
+def assert_allotrope_dicts_equal(
+    expected: DictType,
+    actual: DictType,
+    identifiers_to_exclude: Optional[list[str]] = None,
+) -> None:
+    expected_replaced = _replace_asm_converter_name_and_version(expected)
+
+    identifiers_to_exclude = identifiers_to_exclude or [
+        "calculated data identifier",
+        "data source identifier",
+        "measurement identifier",
     ]
-    # Uncomment for more info
-    # print(DeepDiff(expected, actual, exclude_regex_paths=exclude_regex))
-    assert not DeepDiff(
-        expected,
+    exclude_regex_paths = [
+        fr"\['{exclude_id}'\]" for exclude_id in identifiers_to_exclude
+    ]
+    ddiff = DeepDiff(
+        expected_replaced,
         actual,
-        exclude_regex_paths=exclude_regex,
+        exclude_regex_paths=exclude_regex_paths,
         ignore_type_in_groups=[(float, np.float64), (int, np.int64)],
     )
+    assert not ddiff
 
 
 def from_file(test_file: str, vendor_type: VendorType) -> DictType:
