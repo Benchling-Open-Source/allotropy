@@ -49,12 +49,13 @@ class LuminexXponentParser(VendorParser):
         return self._get_model(named_file_contents.original_file_name, data)
 
     def _get_model(self, file_name: str, data: Data) -> Model:
+        header = data.header
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/multi-analyte-profiling/BENCHLING/2024/01/multi-analyte-profiling.manifest",
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    model_number=data.header.model_number,
-                    equipment_serial_number=data.header.equipment_serial_number,
+                    model_number=header.model_number,
+                    equipment_serial_number=header.equipment_serial_number,
                     calibration_aggregate_document=CalibrationAggregateDocument(
                         calibration_document=[
                             CalibrationDocumentItem(
@@ -69,28 +70,28 @@ class LuminexXponentParser(VendorParser):
                     ),
                 ),
                 data_system_document=DataSystemDocument(
-                    data_system_instance_identifier=data.header.data_system_instance_identifier,
+                    data_system_instance_identifier=header.data_system_instance_identifier,
                     file_name=file_name,
                     software_name=DEFAULT_SOFTWARE_NAME,
-                    software_version=data.header.software_version,
+                    software_version=header.software_version,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 multi_analyte_profiling_document=[
                     MultiAnalyteProfilingDocumentItem(
-                        analyst=data.header.analyst,
+                        analyst=header.analyst,
                         measurement_aggregate_document=MeasurementAggregateDocument(
-                            analytical_method_identifier=data.header.analytical_method_identifier,
-                            method_version=data.header.method_version,
-                            experimental_data_identifier=data.header.experimental_data_identifier,
+                            analytical_method_identifier=header.analytical_method_identifier,
+                            method_version=header.method_version,
+                            experimental_data_identifier=header.experimental_data_identifier,
                             container_type=DEFAULT_CONTAINER_TYPE,
                             plate_well_count=TQuantityValueNumber(
-                                value=data.header.plate_well_count
+                                value=header.plate_well_count
                             ),
                             measurement_document=[
                                 self._get_measurement_document_item(
                                     measurement,
-                                    data.header,
+                                    header,
                                     data.minimum_bead_count_setting,
                                 )
                                 for measurement in data.measurement_list.measurements
