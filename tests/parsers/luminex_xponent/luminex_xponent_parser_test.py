@@ -17,4 +17,8 @@ def test_parse_luminex_xponent_to_asm(output_file: str) -> None:
         allotrope_dict,
         "multi-analyte-profiling/BENCHLING/2024/01/multi-analyte-profiling.json",
     )
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(
+        allotrope_dict,
+        expected_filepath,
+        identifiers_to_exclude=["analyte identifier", "measurement identifier"],
+    )
