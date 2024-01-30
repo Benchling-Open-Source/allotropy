@@ -5,6 +5,7 @@ from typing import Any
 
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_excel
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
     DEFAULT_VERSION,
@@ -12,6 +13,8 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.types import IOType
+
+DATE_FORMAT = "%d %b %Y  %I:%M:%S %p"
 
 
 class ViCellXRReader:
@@ -21,6 +24,13 @@ class ViCellXRReader:
         self.file_version = self._get_file_version()
         self.data = self._read_data()
 
+    # TODO(brian): Move wrapping to a utility function
+    def _read_excel(
+        self,
+        **kwargs: Any,
+    ) -> pd.DataFrame:
+        return read_excel(contents=self.contents, date_format=DATE_FORMAT, **kwargs)
+
     def _read_data(self) -> pd.DataFrame:
         header_row = 4
         if self.file_version == XrVersion._2_04:
@@ -28,19 +38,15 @@ class ViCellXRReader:
 
         header = self._get_file_header(header_row)
         skiprows = header_row + 1
-        file_data: pd.DataFrame = pd.read_excel(
-            self.contents,
+        return self._read_excel(
             skiprows=skiprows,
             names=header,
             parse_dates=[DATE_HEADER[self.file_version]],
-            date_format="%d %b %Y  %I:%M:%S %p",
         )
-        return file_data
 
     def _get_file_header(self, header_row: int) -> list[str]:
         """Combine the two rows that forms the header."""
-        header = pd.read_excel(
-            self.contents,
+        header = self._read_excel(
             nrows=2,
             skiprows=header_row,
             header=None,
@@ -52,8 +58,8 @@ class ViCellXRReader:
         return header_list
 
     def _get_file_info(self) -> pd.Series[Any]:
-        info: pd.Series[Any] = pd.read_excel(
-            self.contents, nrows=3, header=None, usecols=[0]
+        info: pd.Series[Any] = self._read_excel(
+            nrows=3, header=None, usecols=[0]
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
         return info
