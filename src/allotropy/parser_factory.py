@@ -18,6 +18,9 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
+from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
+    LuminexXponentParser,
+)
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
@@ -44,6 +47,7 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
+    LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
@@ -63,6 +67,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
+    Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
