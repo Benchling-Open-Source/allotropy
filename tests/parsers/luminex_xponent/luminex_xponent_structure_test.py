@@ -126,7 +126,12 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         },
         orient="index",
     ).T
-    with pytest.raises(AllotropeConversionError):
+
+    error_msg = f"Expected non-null value for {required_col}."
+    if required_col in ("Program", "ProtocolPlate"):
+        error_msg = f"Unable to find {required_col} data on header block."
+
+    with pytest.raises(AllotropeConversionError, match=error_msg):
         Header.create(data.drop(columns=[required_col]), TIMESTAMP_PARSER)
 
 
