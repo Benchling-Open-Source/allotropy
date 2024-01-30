@@ -23,7 +23,7 @@ from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophotometry import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
@@ -161,15 +161,14 @@ class NanodropEightParser(VendorParser):
         return calculated_data_documents
 
     def _get_260_280(self, data: pd.DataFrame, row: int) -> CalculatedDataDocumentItem:
-
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/280",
             calculated_result=TQuantityValue(
                 value=_get_float(data, row, "260/280"), unit=UNITLESS
             ),
             calculated_data_identifier=str(uuid.uuid4()),
-            data_source_aggregate_document=DataSourceAggregateDocument1(
-                [
+            data_source_aggregate_document=DataSourceAggregateDocument(
+                data_source_document=[
                     DataSourceDocumentItem(
                         data_source_feature="absorbance",
                         data_source_identifier=_get_str(data, row, "A260 uuid"),
@@ -189,8 +188,8 @@ class NanodropEightParser(VendorParser):
                 value=_get_float(data, row, "260/230"), unit=UNITLESS
             ),
             calculated_data_identifier=str(uuid.uuid4()),
-            data_source_aggregate_document=DataSourceAggregateDocument1(
-                [
+            data_source_aggregate_document=DataSourceAggregateDocument(
+                data_source_document=[
                     DataSourceDocumentItem(
                         data_source_feature="absorbance",
                         data_source_identifier=_get_str(data, row, "A260 uuid"),
