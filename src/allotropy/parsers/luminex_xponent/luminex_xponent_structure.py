@@ -5,11 +5,11 @@ from io import StringIO
 import re
 from typing import Any, Optional
 
-from dateutil import parser
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
@@ -41,7 +41,9 @@ class Header:
     analyst: Optional[str] = None
 
     @classmethod
-    def create(cls, header_data: pd.DataFrame) -> Header:
+    def create(
+        cls, header_data: pd.DataFrame, timestamp_parser: TimestampParser
+    ) -> Header:
         info_row = header_data.iloc[0]
         raw_datetime = try_str_from_series(info_row, "BatchStartTime")
 
@@ -54,7 +56,7 @@ class Header:
             experimental_data_identifier=try_str_from_series(info_row, "Batch"),
             sample_volume_setting=cls._get_sample_volume_setting(info_row),
             plate_well_count=cls._get_plate_well_count(header_data),
-            measurement_time=parser.parse(raw_datetime).isoformat(),
+            measurement_time=timestamp_parser.parse(raw_datetime),
             detector_gain_setting=try_str_from_series(info_row, "ProtocolReporterGain"),
             data_system_instance_identifier=try_str_from_series(
                 info_row, "ComputerName"
@@ -110,7 +112,9 @@ class CalibrationItem:
     time: str
 
     @classmethod
-    def create(cls, calibration_line: str) -> CalibrationItem:
+    def create(
+        cls, calibration_line: str, timestamp_parser: TimestampParser
+    ) -> CalibrationItem:
         """Create a CalibrationItem from a calibration line.
 
         Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
@@ -127,11 +131,7 @@ class CalibrationItem:
             msg = f"Invalid calibration result format, got: {calibration_data[1]}"
             raise AllotropeConversionError(msg)
 
-        try:
-            callibration_time = parser.parse(calibration_result[1]).isoformat()
-        except parser.ParserError as e:
-            msg = "Invalid calibration time format."
-            raise AllotropeConversionError(msg) from e
+        callibration_time = timestamp_parser.parse(calibration_result[1])
 
         return CalibrationItem(
             name=calibration_data[0].replace("Last", "").strip(),
@@ -289,10 +289,10 @@ class Data:
     measurement_list: MeasurementList
 
     @classmethod
-    def create(cls, reader: CsvReader) -> Data:
+    def create(cls, reader: CsvReader, timestamp_parser: TimestampParser) -> Data:
         return Data(
-            header=Header.create(cls._get_header_data(reader)),
-            calibration_data=cls._get_calibration_data(reader),
+            header=Header.create(cls._get_header_data(reader), timestamp_parser),
+            calibration_data=cls._get_calibration_data(reader, timestamp_parser),
             minimum_bead_count_setting=cls._get_minimum_bead_count_setting(reader),
             measurement_list=MeasurementList.create(reader),
         )
@@ -310,7 +310,9 @@ class Data:
         return header_data.T
 
     @classmethod
-    def _get_calibration_data(cls, reader: CsvReader) -> list[CalibrationItem]:
+    def _get_calibration_data(
+        cls, reader: CsvReader, timestamp_parser: TimestampParser
+    ) -> list[CalibrationItem]:
         reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
         calibration_lines = reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE)
         if not calibration_lines:
@@ -320,7 +322,7 @@ class Data:
         calibration_list = []
 
         for line in calibration_lines:
-            calibration_list.append(CalibrationItem.create(line))
+            calibration_list.append(CalibrationItem.create(line, timestamp_parser))
 
         return calibration_list
 
