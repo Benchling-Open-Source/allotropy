@@ -467,6 +467,40 @@
                     "$asm.pattern": "value datum",
                     "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                     "$ref": "#/$defs/tStringValue"
+                  },
+                  "mass concentration": {
+                    "oneOf": [
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueNanogramPerMicroliter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueMicrogramPerMicroliter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueNanogramPerMilliliter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueMicrogramPerMilliliter"
+                      },
+                      {
+                        "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+                        "$asm.pattern": "quantity datum",
+                        "$ref": "#/$custom/tQuantityValueMilligramPerMilliliter"
+                      }
+                    ]
                   }
                 }
               },
@@ -898,40 +932,6 @@
           "$asm.pattern": "value datum",
           "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
           "$ref": "#/$defs/tStringValue"
-        },
-        "mass concentration": {
-          "oneOf": [
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueNanogramPerMicroliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueMicrogramPerMicroliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueNanogramPerMilliliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueMicrogramPerMilliliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueMilligramPerMilliliter"
-            }
-          ]
         }
       },
       "required": [
@@ -1127,40 +1127,6 @@
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001157",
           "$asm.pattern": "quantity datum",
           "$ref": "#/$custom/tQuantityValueMilliAbsorbanceUnit"
-        },
-        "mass concentration": {
-          "oneOf": [
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueNanogramPerMicroliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueMicrogramPerMicroliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueNanogramPerMilliliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueMicrogramPerMilliliter"
-            },
-            {
-              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
-              "$asm.pattern": "quantity datum",
-              "$ref": "#/$custom/tQuantityValueMilligramPerMilliliter"
-            }
-          ]
         }
       }
     },
