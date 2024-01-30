@@ -991,8 +991,8 @@
           "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
           "$ref": "#/$defs/tStringValue"
         },
-        "integration time": {
-          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001671",
+        "exposure duration setting": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
           "$asm.pattern": "quantity datum",
           "$ref": "#/$custom/tQuantityValueSecondTime"
         }
