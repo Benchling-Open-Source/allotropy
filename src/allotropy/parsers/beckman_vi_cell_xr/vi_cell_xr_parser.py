@@ -42,6 +42,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 property_lookup = {
     "Dilution factor": TQuantityValueUnitless,
+    "Total cells": TQuantityValueCell,
     "Total cells/ml (x10^6)": TQuantityValueMillionCellsPerMilliliter,
     "Avg. diam. (microns)": TQuantityValueMicrometer,
     "Viable cells": TQuantityValueCell,
@@ -95,7 +96,6 @@ class ViCellXRParser(VendorParser):
     ) -> CellCountingDocumentItem:
         required_fields_list = [
             "Viability (%)",
-            "Total cells",
             "Viable cells/ml (x10^6)",
         ]
         # Required fields
@@ -103,7 +103,6 @@ class ViCellXRParser(VendorParser):
             viability__cell_counter_ = TQuantityValuePercent(
                 value=sample["Viability (%)"]
             )
-            total_cell_count = TQuantityValueCell(value=sample["Total cells"])
             viable_cell_density__cell_counter_ = (
                 TQuantityValueMillionCellsPerMilliliter(
                     value=sample["Viable cells/ml (x10^6)"]
@@ -144,7 +143,9 @@ class ViCellXRParser(VendorParser):
                                     ),
                                     viability__cell_counter_=viability__cell_counter_,
                                     viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
-                                    total_cell_count=total_cell_count,
+                                    total_cell_count=get_property_from_sample(
+                                        sample, "Total cells"
+                                    ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
                                         sample, "Total cells/ml (x10^6)"
                                     ),
