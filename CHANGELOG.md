@@ -6,14 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add Luminex xPONENT Adapter
 ### Fixed
-- Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
 ### Changed
 - Corrections to the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.14] - 2024-01-31
+### Added
+- Add Luminex xPONENT Adapter
+### Fixed
+- Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
+- Check for raw data indicator in plate header for Moldev Softmax Pro
 
 ## [0.1.13] - 2024-01-19
 ### Added
