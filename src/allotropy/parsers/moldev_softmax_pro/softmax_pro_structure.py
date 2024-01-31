@@ -651,7 +651,7 @@ class PlateBlock(ABC, Block):
 
     @classmethod
     def check_data_type(cls, data_type: str) -> None:
-        if data_type not in (DataType.RAW.value, DataType.BOTH):
+        if data_type not in (DataType.RAW.value, DataType.BOTH.value):
             error = "The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates"
             raise AllotropeConversionError(error)
 
