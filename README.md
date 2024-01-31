@@ -14,6 +14,7 @@ We currently have parser support for the following instruments:
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - ChemoMetec Nucleoview
+  - Luminex xPONENT
   - MolDev SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
