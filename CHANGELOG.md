@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add Luminex xPONENT Adapter
 ### Fixed
+- Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
 ### Changed
 - Corrections to the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
 ### Deprecated
