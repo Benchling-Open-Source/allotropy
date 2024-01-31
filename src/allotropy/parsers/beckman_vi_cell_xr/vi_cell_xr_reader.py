@@ -24,7 +24,6 @@ class ViCellXRReader:
         self.file_version = self._get_file_version()
         self.data = self._read_data()
 
-    # TODO(brian): Move wrapping to a utility function
     def _read_excel(
         self,
         **kwargs: Any,
