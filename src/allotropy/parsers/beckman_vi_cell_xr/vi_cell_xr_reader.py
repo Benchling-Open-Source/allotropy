@@ -35,7 +35,7 @@ class ViCellXRReader:
         )
 
         # Do the datetime conversion and remove all rows that fail to pass as datetime
-        # This fixes an issue where some files has the first row as a sequence of numbers
+        # This fixes an issue where some files have a hidden invalid first row
         file_data[date_header] = pd.to_datetime(
             file_data[date_header], format="%d %b %Y  %I:%M:%S %p", errors="coerce"
         )
