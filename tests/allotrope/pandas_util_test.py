@@ -7,20 +7,28 @@ import pytest
 from allotropy.allotrope.pandas_util import read_excel
 from allotropy.exceptions import AllotropeConversionError
 
-FILENAME = "HelloWorld.xlsx"
-FILENAME_TWO_SHEETS = "HelloWorldTwoSheets.xlsx"
+CSV_FILE = "HelloWorld.csv"
+EXCEL_FILE = "HelloWorld.xlsx"
+EXCEL_FILE_TWO_SHEETS = "HelloWorldTwoSheets.xlsx"
+EXPECTED_DATA_FRAME = pd.DataFrame({"Hello": ["World"]})
+
+
+def _get_path(filename: str) -> str:
+    return f"tests/allotrope/testdata/{filename}"
 
 
 def _read_excel(filename: str, **kwargs: Any) -> pd.DataFrame:
-    path = f"tests/allotrope/testdata/{filename}"
+    path = _get_path(filename)
     return read_excel(path, **kwargs)
 
 
-@pytest.mark.parametrize("filename", [FILENAME, FILENAME_TWO_SHEETS])
+def _test_df(actual: pd.DataFrame) -> None:
+    pd.testing.assert_frame_equal(actual, EXPECTED_DATA_FRAME)
+
+
+@pytest.mark.parametrize("filename", [EXCEL_FILE, EXCEL_FILE_TWO_SHEETS])
 def test_read_excel(filename: str) -> None:
-    actual = _read_excel(filename)
-    expected = pd.DataFrame({"Hello": ["World"]})
-    pd.testing.assert_frame_equal(actual, expected)
+    _test_df(_read_excel(filename))
 
 
 def test_read_excel_fails_parsing() -> None:
@@ -28,11 +36,11 @@ def test_read_excel_fails_parsing() -> None:
         "Error calling pd.read_excel(): Missing column provided to 'parse_dates': 'MissingColumn' (sheet: 0)"
     )
     with pytest.raises(AllotropeConversionError, match=expected_regex):
-        _read_excel(FILENAME, parse_dates=["MissingColumn"])
+        _read_excel(EXCEL_FILE, parse_dates=["MissingColumn"])
 
 
-def test_read_excel_fails_multiple_sheets_returned() -> None:
+def test_read_excel_fails_invalid_output() -> None:
     with pytest.raises(
         AllotropeConversionError, match="Expected a single-sheet Excel file."
     ):
-        _read_excel(FILENAME_TWO_SHEETS, sheet_name=[0, 1])
+        _read_excel(EXCEL_FILE_TWO_SHEETS, sheet_name=[0, 1])

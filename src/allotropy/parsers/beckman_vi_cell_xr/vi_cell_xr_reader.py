@@ -28,7 +28,7 @@ class ViCellXRReader:
         self,
         **kwargs: Any,
     ) -> pd.DataFrame:
-        return read_excel(contents=self.contents, date_format=DATE_FORMAT, **kwargs)
+        return read_excel(self.contents, date_format=DATE_FORMAT, **kwargs)
 
     def _read_data(self) -> pd.DataFrame:
         header_row = 4

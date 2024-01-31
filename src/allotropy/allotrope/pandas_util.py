@@ -1,12 +1,14 @@
-from typing import Any
+from typing import Any, Union
 
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.types import IOType
 
 
 def read_excel(
-    io: Any,
+    # io is untyped in pd.read_excel(), but this seems reasonable.
+    io: Union[str, IOType],
     **kwargs: Any,
 ) -> pd.DataFrame:
     """Wrap pd.read_excel() and raise AllotropeConversionError for failures.
@@ -17,7 +19,10 @@ def read_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeConversionError(msg) from e
-    if not isinstance(df_or_dict, pd.DataFrame):
-        msg = "Expected a single-sheet Excel file."
-        raise AllotropeConversionError(msg)
-    return df_or_dict
+    return _df_or_bust(df_or_dict, "Expected a single-sheet Excel file.")
+
+
+def _df_or_bust(possible_df: Any, error_message: str) -> pd.DataFrame:
+    if isinstance(possible_df, pd.DataFrame):
+        return possible_df
+    raise AllotropeConversionError(error_message)
