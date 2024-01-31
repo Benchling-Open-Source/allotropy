@@ -6,12 +6,13 @@ from allotropy.exceptions import AllotropeConversionError
 
 
 def read_excel(
+    io: Any,
     **kwargs: Any,
 ) -> pd.DataFrame:
     try:
-        df_or_dict = pd.read_excel(**kwargs)
+        df_or_dict = pd.read_excel(io, **kwargs)
     except Exception as e:
-        msg = "Error calling pd.read_excel()."
+        msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeConversionError(msg) from e
     if not isinstance(df_or_dict, pd.DataFrame):
         msg = "Expected a single-sheet Excel file."
