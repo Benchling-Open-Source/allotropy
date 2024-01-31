@@ -88,6 +88,7 @@ class ExportFormat(Enum):
 class DataType(Enum):
     RAW = "Raw"
     REDUCED = "Reduced"
+    BOTH = "Both"
 
 
 class ScanPosition(Enum):
@@ -649,6 +650,12 @@ class PlateBlock(ABC, Block):
             raise AllotropeConversionError(error)
 
     @classmethod
+    def check_data_type(cls, data_type: str) -> None:
+        if data_type not in (DataType.RAW.value, DataType.BOTH):
+            error = "The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates"
+            raise AllotropeConversionError(error)
+
+    @classmethod
     def check_num_wavelengths(
         cls, wavelengths: list[float], num_wavelengths: int
     ) -> None:
@@ -727,6 +734,7 @@ class FluorescencePlateBlock(PlateBlock):
 
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
+        cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -836,6 +844,7 @@ class LuminescencePlateBlock(PlateBlock):
 
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
+        cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -898,6 +907,7 @@ class AbsorbancePlateBlock(PlateBlock):
 
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
+        cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
