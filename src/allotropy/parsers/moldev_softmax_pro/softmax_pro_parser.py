@@ -97,7 +97,11 @@ class SoftmaxproParser(VendorParser):
                     for position in plate_block.iter_wells()
                 ],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
-                    calculated_data_document=self._get_calc_docs(data)
+                    calculated_data_document=(
+                        None
+                        if len(self._get_calc_docs(data)) == 0
+                        else self._get_calc_docs(data)
+                    )
                 ),
             ),
         )

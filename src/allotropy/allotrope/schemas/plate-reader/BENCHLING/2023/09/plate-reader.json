@@ -292,9 +292,6 @@
               "type": "object",
               "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002889",
               "$asm.pattern": "aggregate datum",
-              "required": [
-                "calculated data document"
-              ],
               "properties": {
                 "calculated data document": {
                   "type": "array",
