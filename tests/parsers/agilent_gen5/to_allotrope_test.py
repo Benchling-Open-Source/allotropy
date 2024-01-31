@@ -1,5 +1,3 @@
-from typing import Any
-
 import pytest
 
 from allotropy.allotrope.allotrope import serialize_allotrope
@@ -9,6 +7,7 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import (
+    DictType,
     from_file,
     model_from_file,
     validate_contents,
@@ -28,9 +27,7 @@ ABSORBENCE_FILENAMES = [
 ]
 
 
-def _validate_allotrope_dict(
-    allotrope_dict: dict[str, Any], expected_filepath: str
-) -> None:
+def _validate_allotrope_dict(allotrope_dict: DictType, expected_filepath: str) -> None:
     validate_schema(
         allotrope_dict,
         "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json",
