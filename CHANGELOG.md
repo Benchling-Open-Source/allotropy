@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Luminex xPONENT Adapter
 ### Fixed
 - Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
+- Total cells column no longer required for vi-cell XR
+- Ignore invalid first row when present for vi-cell XR files
 ### Changed
 ### Deprecated
 ### Removed
