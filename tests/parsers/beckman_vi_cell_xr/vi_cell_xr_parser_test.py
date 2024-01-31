@@ -13,6 +13,7 @@ OUTPUT_FILES = (
     "v2.06/Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
     "v2.06/Beckman_Vi-Cell-XR_example06_instrumentOutput.xlsx",
     "v2.06/Beckman_Vi-Cell-XR_no_total_cells.xlsx",
+    "v2.06/Beckman_Vi-Cell-XR_invalid_first_row.xlsx",
 )
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_XR
