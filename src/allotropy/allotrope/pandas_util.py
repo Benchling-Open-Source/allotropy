@@ -9,7 +9,9 @@ def read_excel(
     io: Any,
     **kwargs: Any,
 ) -> pd.DataFrame:
-    """Wrap pd.read_excel() and raise AllotropeConversionError for failures."""
+    """Wrap pd.read_excel() and raise AllotropeConversionError for failures.
+
+    pd.read_excel() can return a DataFrame or a dictionary of DataFrames. The latter is intentionally not supported."""
     try:
         df_or_dict = pd.read_excel(io, **kwargs)
     except Exception as e:
