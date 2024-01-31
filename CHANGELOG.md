@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Luminex xPONENT Adapter
 ### Fixed
 - Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
+- Check for raw data indicator in plate header for Moldev Softmax Pro
 ### Changed
 ### Deprecated
 ### Removed
