@@ -7,6 +7,7 @@ import pytest
 from allotropy.allotrope.pandas_util import read_csv, read_excel
 from allotropy.exceptions import AllotropeConversionError
 
+CSV_FILE = "HelloWorld.csv"
 EXCEL_FILE = "HelloWorld.xlsx"
 EXCEL_FILE_TWO_SHEETS = "HelloWorldTwoSheets.xlsx"
 EXPECTED_DATA_FRAME = pd.DataFrame({"Hello": ["World"]})
