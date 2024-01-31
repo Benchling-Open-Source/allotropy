@@ -1,12 +1,13 @@
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.types import IOType
 
 
 class NucleoviewReader:
     @classmethod
     def read(cls, contents: IOType) -> pd.DataFrame:
-        df = pd.read_csv(
+        df = read_csv(
             contents,
             skipfooter=1,
             sep=";",
