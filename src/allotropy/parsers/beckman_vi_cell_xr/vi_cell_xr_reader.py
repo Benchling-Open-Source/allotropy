@@ -15,7 +15,6 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 from allotropy.types import IOType
 
 
-
 class ViCellXRReader:
     def __init__(self, contents: IOType) -> None:
         self.contents = contents
