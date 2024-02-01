@@ -45,6 +45,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class SampleProperty(Enum):
     DILUTION_FACTOR = ("Dilution factor", TQuantityValueUnitless)
     TOTAL_CELLS_ML = ("Total cells/ml (x10^6)", TQuantityValueMillionCellsPerMilliliter)
+    TOTAL_CELLS = ("Total cells", TQuantityValueCell)
     AVERAGE_DIAMETER = ("Avg. diam. (microns)", TQuantityValueMicrometer)
     VIABLE_CELLS = ("Viable cells", TQuantityValueCell)
     AVERAGE_CIRCULARITY = ("Avg. circ.", TQuantityValueUnitless)
@@ -57,11 +58,8 @@ class SampleProperty(Enum):
 def get_property_from_sample(
     sample: pd.Series[Any], sample_property: SampleProperty
 ) -> Any:
-    return (
-        sample_property.data_type(value=value)
-        if (value := sample.get(sample_property.column_name))
-        else None
-    )
+    value = sample.get(sample_property.column_name)
+    return sample_property.data_type(value=value) if value else None
 
 
 class ViCellXRParser(VendorParser):
@@ -155,7 +153,7 @@ class ViCellXRParser(VendorParser):
                                     viability__cell_counter_=viability__cell_counter_,
                                     viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
                                     total_cell_count=get_property_from_sample(
-                                        sample, TOTAL_CELLS
+                                        sample, SampleProperty.TOTAL_CELLS
                                     ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
                                         sample, SampleProperty.TOTAL_CELLS_ML
