@@ -96,9 +96,7 @@ class SoftmaxproParser(VendorParser):
                     for plate_block in data.block_list.plate_blocks.values()
                     for position in plate_block.iter_wells()
                 ],
-                calculated_data_aggregate_document=CalculatedDataAggregateDocument(
-                    calculated_data_document=self._get_calc_docs(data)
-                ),
+                calculated_data_aggregate_document=self._get_calc_docs(data),
             ),
         )
 
@@ -295,8 +293,9 @@ class SoftmaxproParser(VendorParser):
             for data_element in plate_block.iter_data_elements(position)
         ]
 
-    def _get_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
-        return self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
+    def _get_calc_docs(self, data: Data) -> Optional[CalculatedDataAggregateDocument]:
+        calc_docs = self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
+        return CalculatedDataAggregateDocument(calc_docs) if calc_docs else None
 
     def _get_calc_docs_data_sources(
         self, plate_block: PlateBlock, position: str

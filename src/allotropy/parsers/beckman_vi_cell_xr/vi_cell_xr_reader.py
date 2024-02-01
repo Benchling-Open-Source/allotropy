@@ -37,11 +37,18 @@ class ViCellXRReader:
 
         header = self._get_file_header(header_row)
         skiprows = header_row + 1
-        return self._read_excel(
-            skiprows=skiprows,
-            names=header,
-            parse_dates=[DATE_HEADER[self.file_version]],
+        date_header = DATE_HEADER[self.file_version]
+
+        file_data = self._read_excel(skiprows=skiprows, names=header)
+
+        # Do the datetime conversion and remove all rows that fail to pass as datetime
+        # This fixes an issue where some files have a hidden invalid first row
+        file_data[date_header] = pd.to_datetime(
+            file_data[date_header], format="%d %b %Y  %I:%M:%S %p", errors="coerce"
         )
+        file_data = file_data.dropna(subset=date_header)
+
+        return file_data
 
     def _get_file_header(self, header_row: int) -> list[str]:
         """Combine the two rows that forms the header."""
