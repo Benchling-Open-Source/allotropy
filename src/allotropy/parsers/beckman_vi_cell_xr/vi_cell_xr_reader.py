@@ -24,10 +24,7 @@ class ViCellXRReader:
         self.file_version = self._get_file_version()
         self.data = self._read_data()
 
-    def _read_excel(
-        self,
-        **kwargs: Any,
-    ) -> pd.DataFrame:
+    def _read_excel(self, **kwargs: Any) -> pd.DataFrame:
         return read_excel(self.contents, date_format=DATE_FORMAT, **kwargs)
 
     def _read_data(self) -> pd.DataFrame:
