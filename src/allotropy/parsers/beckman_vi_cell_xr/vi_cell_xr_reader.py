@@ -14,7 +14,6 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 )
 from allotropy.types import IOType
 
-DATE_FORMAT = "%d %b %Y  %I:%M:%S %p"
 
 
 class ViCellXRReader:
@@ -25,7 +24,7 @@ class ViCellXRReader:
         self.data = self._read_data()
 
     def _read_excel(self, **kwargs: Any) -> pd.DataFrame:
-        return read_excel(self.contents, date_format=DATE_FORMAT, **kwargs)
+        return read_excel(self.contents, **kwargs)
 
     def _read_data(self) -> pd.DataFrame:
         header_row = 4
