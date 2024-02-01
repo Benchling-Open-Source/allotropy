@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from enum import Enum
 from typing import Any, Optional
 
 import pandas as pd
@@ -40,17 +41,31 @@ from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReade
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
-property_lookup = {
-    "Dilution factor": TQuantityValueUnitless,
-    "Total cells/ml (x10^6)": TQuantityValueMillionCellsPerMilliliter,
-    "Avg. diam. (microns)": TQuantityValueMicrometer,
-    "Viable cells": TQuantityValueCell,
-    "Avg. circ.": TQuantityValueUnitless,
-}
+
+class SampleProperty(Enum):
+    DILUTION_FACTOR = ("Dilution factor", TQuantityValueUnitless)
+    TOTAL_CELLS_ML = ("Total cells/ml (x10^6)", TQuantityValueMillionCellsPerMilliliter)
+    AVERAGE_DIAMETER = ("Avg. diam. (microns)", TQuantityValueMicrometer)
+    VIABLE_CELLS = ("Viable cells", TQuantityValueCell)
+    AVERAGE_CIRCULARITY = ("Avg. circ.", TQuantityValueUnitless)
+
+    def __init__(self, name: str, data_type: Any) -> None:
+        self.name_: str = name
+        self.data_type: Any = data_type
+
+    @property
+    def name(self) -> str:
+        return self.name_
 
 
-def get_property_from_sample(sample: pd.Series[Any], property_name: str) -> Any:
-    return property_lookup[property_name](value=value) if (value := sample.get(property_name)) else None  # type: ignore[arg-type]
+def get_property_from_sample(
+    sample: pd.Series[Any], sample_property: SampleProperty
+) -> Any:
+    return (
+        sample_property.data_type(value=value)
+        if (value := sample.get(sample_property.name))
+        else None
+    )
 
 
 class ViCellXRParser(VendorParser):
@@ -139,23 +154,24 @@ class ViCellXRParser(VendorParser):
                                     data_processing_document=DataProcessingDocument(
                                         cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
                                         cell_density_dilution_factor=get_property_from_sample(
-                                            sample, "Dilution factor"
+                                            sample,
+                                            SampleProperty.DILUTION_FACTOR,
                                         ),
                                     ),
                                     viability__cell_counter_=viability__cell_counter_,
                                     viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
                                     total_cell_count=total_cell_count,
                                     total_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Total cells/ml (x10^6)"
+                                        sample, SampleProperty.TOTAL_CELLS_ML
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
-                                        sample, "Avg. diam. (microns)"
+                                        sample, SampleProperty.AVERAGE_DIAMETER
                                     ),
                                     viable_cell_count=get_property_from_sample(
-                                        sample, "Viable cells"
+                                        sample, SampleProperty.VIABLE_CELLS
                                     ),
                                     average_total_cell_circularity=get_property_from_sample(
-                                        sample, "Avg. circ."
+                                        sample, SampleProperty.AVERAGE_CIRCULARITY
                                     ),
                                 ),
                             ]
