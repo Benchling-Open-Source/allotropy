@@ -57,13 +57,9 @@ class SampleProperty(Enum):
         TQuantityValueMillionCellsPerMilliliter,
     )
 
-    def __init__(self, name: str, data_type: Any) -> None:
-        self.name_: str = name
+    def __init__(self, column_name: str, data_type: Any) -> None:
+        self.column_name: str = column_name
         self.data_type: Any = data_type
-
-    @property
-    def name(self) -> str:
-        return self.name_
 
 
 class _Sample(NamedTuple):
@@ -90,7 +86,7 @@ def _get_value_not_none(sample: _Sample, column: str) -> Any:
 def get_property_from_sample(sample: _Sample, sample_property: SampleProperty) -> Any:
     return (
         sample_property.data_type(value=value)
-        if (value := _get_value(sample, sample_property.name))
+        if (value := _get_value(sample, sample_property.column_name))
         else None
     )
 

@@ -49,13 +49,9 @@ class SampleProperty(Enum):
     VIABLE_CELLS = ("Viable cells", TQuantityValueCell)
     AVERAGE_CIRCULARITY = ("Avg. circ.", TQuantityValueUnitless)
 
-    def __init__(self, name: str, data_type: Any) -> None:
-        self.name_: str = name
+    def __init__(self, column_name: str, data_type: Any) -> None:
+        self.column_name: str = column_name
         self.data_type: Any = data_type
-
-    @property
-    def name(self) -> str:
-        return self.name_
 
 
 def get_property_from_sample(
@@ -63,7 +59,7 @@ def get_property_from_sample(
 ) -> Any:
     return (
         sample_property.data_type(value=value)
-        if (value := sample.get(sample_property.name))
+        if (value := sample.get(sample_property.column_name))
         else None
     )
 
