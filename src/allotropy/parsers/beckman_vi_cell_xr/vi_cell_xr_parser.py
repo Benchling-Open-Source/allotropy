@@ -40,13 +40,21 @@ from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReade
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
+DILUTION_FACTOR = "Dilution factor"
+TOTAL_CELLS = "Total cells"
+TOTAL_CELLS_ML = "Total cells/ml (x10^6)"
+AVG_DIAM_MICRONS = "Avg. diam. (microns)"
+VIABLE_CELLS = "Viable cells"
+AVG_CIRC = "Avg. circ."
+
+
 property_lookup = {
-    "Dilution factor": TQuantityValueUnitless,
-    "Total cells": TQuantityValueCell,
-    "Total cells/ml (x10^6)": TQuantityValueMillionCellsPerMilliliter,
-    "Avg. diam. (microns)": TQuantityValueMicrometer,
-    "Viable cells": TQuantityValueCell,
-    "Avg. circ.": TQuantityValueUnitless,
+    DILUTION_FACTOR: TQuantityValueUnitless,
+    TOTAL_CELLS: TQuantityValueCell,
+    TOTAL_CELLS_ML: TQuantityValueMillionCellsPerMilliliter,
+    AVG_DIAM_MICRONS: TQuantityValueMicrometer,
+    VIABLE_CELLS: TQuantityValueCell,
+    AVG_CIRC: TQuantityValueUnitless,
 }
 
 
@@ -138,25 +146,25 @@ class ViCellXRParser(VendorParser):
                                     data_processing_document=DataProcessingDocument(
                                         cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
                                         cell_density_dilution_factor=get_property_from_sample(
-                                            sample, "Dilution factor"
+                                            sample, DILUTION_FACTOR
                                         ),
                                     ),
                                     viability__cell_counter_=viability__cell_counter_,
                                     viable_cell_density__cell_counter_=viable_cell_density__cell_counter_,
                                     total_cell_count=get_property_from_sample(
-                                        sample, "Total cells"
+                                        sample, TOTAL_CELLS
                                     ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Total cells/ml (x10^6)"
+                                        sample, TOTAL_CELLS_ML
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
-                                        sample, "Avg. diam. (microns)"
+                                        sample, AVG_DIAM_MICRONS
                                     ),
                                     viable_cell_count=get_property_from_sample(
-                                        sample, "Viable cells"
+                                        sample, VIABLE_CELLS
                                     ),
                                     average_total_cell_circularity=get_property_from_sample(
-                                        sample, "Avg. circ."
+                                        sample, AVG_CIRC
                                     ),
                                 ),
                             ]
