@@ -41,7 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update plate reader schema in Moldev Softmax Pro
 - Standardized on UNITLESS constant ("(unitless)") for unitless values. Changed Perkin Elmer Envision, which formerly used "unitless".
 - Increase test coverage of calculated data documents on Perkin Elmer Envision.
-- Replace null with N/A as placeholder string in Moldev Softmax Pro
 
 ## [0.1.12] - 2023-12-12
 ### Added
