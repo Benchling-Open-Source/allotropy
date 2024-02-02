@@ -1,9 +1,6 @@
-import io
 import itertools
 from typing import Any, Union
-import uuid
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType as FluorescenceContainerType,
     MeasurementAggregateDocument as FluorescenceMeasurementAggregateDocument,
@@ -20,10 +17,17 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
     MeasurementAggregateDocument as AbsorbanceMeasurementAggregateDocument,
     Model as AbsorbanceModel,
 )
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
+from allotropy.parsers.lines_reader import read_to_lines
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -34,8 +38,8 @@ class AgilentGen5Parser(VendorParser):
         if first_plate.plate_type.read_mode == ReadMode.ABSORBANCE:
             return AbsorbanceModel(
                 measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
-                    measurement_identifier=str(uuid.uuid4()),
-                    measurement_time=self.get_date_time(
+                    measurement_identifier=random_uuid_str(),
+                    measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
                     analytical_method_identifier=first_plate.file_paths.protocol_file_path,
@@ -51,8 +55,8 @@ class AgilentGen5Parser(VendorParser):
         elif first_plate.plate_type.read_mode == ReadMode.FLUORESCENCE:
             return FluorescenceModel(
                 measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
-                    measurement_identifier=str(uuid.uuid4()),
-                    measurement_time=self.get_date_time(
+                    measurement_identifier=random_uuid_str(),
+                    measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
                     analytical_method_identifier=first_plate.file_paths.protocol_file_path,
@@ -68,8 +72,8 @@ class AgilentGen5Parser(VendorParser):
         elif first_plate.plate_type.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceModel(
                 measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
-                    measurement_identifier=str(uuid.uuid4()),
-                    measurement_time=self.get_date_time(
+                    measurement_identifier=random_uuid_str(),
+                    measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
                     analytical_method_identifier=first_plate.file_paths.protocol_file_path,
@@ -83,11 +87,15 @@ class AgilentGen5Parser(VendorParser):
                 )
             )
 
-        msg = f"Unrecognized read mode: {first_plate.plate_type.read_mode}"
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", first_plate.plate_type.read_mode, ReadMode._member_names_
+        )
         raise AllotropeConversionError(msg)
 
-    def _parse(self, contents: io.IOBase, filename: str) -> Any:  # noqa: ARG002
-        section_lines_reader = SectionLinesReader(contents, encoding=None)
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
+        contents = named_file_contents.contents
+        lines = read_to_lines(contents, encoding=None)
+        section_lines_reader = SectionLinesReader(lines)
         data = Data.create(section_lines_reader)
 
         first_plate = data.plates[0]

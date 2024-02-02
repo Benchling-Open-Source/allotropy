@@ -1,10 +1,10 @@
-import io
-from typing import cast
-
 import pandas as pd
+
+from allotropy.allotrope.pandas_util import read_csv
+from allotropy.types import IOType
 
 
 class ViCellBluReader:
     @classmethod
-    def read(cls, contents: io.IOBase) -> pd.DataFrame:
-        return cast(pd.DataFrame, pd.read_csv(contents, index_col=False))  # type: ignore[call-overload]
+    def read(cls, contents: IOType) -> pd.DataFrame:
+        return read_csv(contents, index_col=False)

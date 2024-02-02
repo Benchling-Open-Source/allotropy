@@ -5,7 +5,7 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 
 EMPTY_CSV_LINE = r"^,*$"
@@ -13,7 +13,7 @@ PROTOCOL_ID = "Weyland Yutani Example"
 ASSAY_ID = "Example Assay"
 
 
-@dataclass
+@dataclass(frozen=True)
 class BasicAssayInfo:
     protocol_id: str
     assay_id: str
@@ -33,7 +33,7 @@ class BasicAssayInfo:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Instrument:
     serial_number: str
     nickname: str
@@ -44,14 +44,14 @@ class Instrument:
         return Instrument(serial_number="", nickname="")
 
 
-@dataclass
+@dataclass(frozen=True)
 class Result:
     col: str
     row: str
     value: float
 
 
-@dataclass
+@dataclass(frozen=True)
 class Plate:
     number: str
     results: list[Result]
@@ -62,7 +62,7 @@ class Plate:
             return []
         pivoted = df.T
         if pivoted.iloc[1, 0] != "A":
-            msg = "Column header(s) not found"
+            msg = "Column header(s) not found."
             raise AllotropeConversionError(msg)
         stripped = pivoted.drop(0, axis=0).drop(0, axis=1)
         rows, cols = stripped.shape
@@ -79,7 +79,7 @@ class Plate:
         ]
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     plates: list[Plate]
     number_of_wells: Optional[float]

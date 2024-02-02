@@ -1,9 +1,11 @@
+from __future__ import annotations
+
 import re
-from typing import Optional, TypeVar, Union
+from typing import Any, Optional, TypeVar, Union
 
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 
 PrimitiveValue = Union[str, int, float]
 
@@ -12,7 +14,7 @@ def try_int(value: Optional[str], value_name: str) -> int:
     try:
         return int(assert_not_none(value, value_name))
     except ValueError as e:
-        msg = f"Invalid integer string: '{value}'"
+        msg = f"Invalid integer string: '{value}'."
         raise AllotropeConversionError(msg) from e
 
 
@@ -27,7 +29,7 @@ def try_float(value: Optional[str], value_name: str) -> float:
     try:
         return float(assert_not_none(value, value_name))
     except ValueError as e:
-        msg = f"Invalid float string: '{value}'"
+        msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
 
 
@@ -53,19 +55,15 @@ def assert_not_none(
     value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
 ) -> T:
     if value is None:
-        error = msg or f"Expected non-null value{f' for {name}' if name else ''}"
+        error = msg or f"Expected non-null value{f' for {name}' if name else ''}."
         raise AllotropeConversionError(error)
     return value
-
-
-def value_or_none(value: str) -> Optional[str]:
-    return value.strip() or None
 
 
 def df_to_series(
     df: pd.DataFrame,
     msg: str,
-) -> pd.Series:  # type: ignore[type-arg]
+) -> pd.Series[Any]:
     n_rows, _ = df.shape
     if n_rows == 1:
         return pd.Series(df.iloc[0], index=df.columns)
@@ -79,7 +77,7 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
 
 
 def try_str_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     default: Optional[str] = None,
 ) -> Optional[str]:
@@ -88,7 +86,7 @@ def try_str_from_series_or_none(
 
 
 def try_str_from_series(
-    series: pd.Series,  # type: ignore[type-arg]
+    series: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> str:
@@ -96,19 +94,19 @@ def try_str_from_series(
 
 
 def try_int_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[int]:
     try:
         value = data.get(key)
         return try_int(str(value), key)
     except Exception as e:
-        msg = f"Unable to convert {key} to integer value"
+        msg = f"Unable to convert '{value}' (with key '{key}') to integer value."
         raise AllotropeConversionError(msg) from e
 
 
 def try_int_from_series(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> int:
@@ -116,19 +114,19 @@ def try_int_from_series(
 
 
 def try_float_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[float]:
     try:
         value = data.get(key)
         return try_float_or_none(str(value))
     except Exception as e:
-        msg = f"Unable to convert {key} to float value"
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
         raise AllotropeConversionError(msg) from e
 
 
 def try_float_from_series(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> float:
@@ -136,12 +134,21 @@ def try_float_from_series(
 
 
 def try_bool_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[bool]:
     try:
         value = data.get(key)
         return None if value is None else bool(value)
     except Exception as e:
-        msg = f"Unable to convert {key} to bool value"
+        msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
+
+
+def num_to_chars(n: int) -> str:
+    d, m = divmod(n, 26)  # 26 is the number of ASCII letters
+    return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
+
+
+def str_or_none(value: Any) -> Optional[str]:
+    return None if value is None else str(value)

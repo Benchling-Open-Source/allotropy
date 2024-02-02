@@ -11,6 +11,7 @@ from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
 )
+from allotropy.exceptions import AllotropeConversionError
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
@@ -69,8 +70,8 @@ class ClassLines:
         elif " = " in self.lines[0]:
             match = re.match("(\\S+) =", self.lines[0])
         if not match:
-            error = f"Could not determine class name for : {''.join(self.lines)}"
-            raise ValueError(error)
+            error = f"Could not determine class name for: {''.join(self.lines)}."
+            raise AllotropeConversionError(error)
         return match.groups()[0]
 
 

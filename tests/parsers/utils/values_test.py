@@ -2,7 +2,7 @@ from typing import Optional
 
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import (
     assert_not_none,
     natural_sort_key,
@@ -10,7 +10,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int,
     try_int_or_none,
-    value_or_none,
 )
 
 
@@ -20,7 +19,7 @@ def test_assert_not_none() -> None:
 
 
 def test_assert_not_none_fails() -> None:
-    with pytest.raises(Exception, match="^Expected non-null value$"):
+    with pytest.raises(Exception, match="^Expected non-null value.$"):
         assert_not_none(None)
 
 
@@ -30,7 +29,7 @@ def test_assert_not_none_fails_with_message() -> None:
 
 
 def test_assert_not_none_fails_with_name() -> None:
-    with pytest.raises(Exception, match="^Expected non-null value for param_name$"):
+    with pytest.raises(Exception, match="^Expected non-null value for param_name.$"):
         assert_not_none(None, "param_name")
 
 
@@ -65,8 +64,8 @@ def test_try_float() -> None:
 @pytest.mark.parametrize(
     "value,expected_regex",
     [
-        (None, "Expected non-null value for param"),
-        ("a", "Invalid float string: 'a'"),
+        (None, "Expected non-null value for param."),
+        ("a", "Invalid float string: 'a'."),
     ],
 )
 def test_try_float_fails(value: Optional[str], expected_regex: str) -> None:
@@ -100,8 +99,8 @@ def test_try_int() -> None:
 @pytest.mark.parametrize(
     "value,expected_regex",
     [
-        (None, "Expected non-null value for param"),
-        ("a", "Invalid integer string: 'a'"),
+        (None, "Expected non-null value for param."),
+        ("a", "Invalid integer string: 'a'."),
     ],
 )
 def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
@@ -121,16 +120,3 @@ def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
 )
 def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> None:
     assert try_int_or_none(value) == expected
-
-
-@pytest.mark.short
-@pytest.mark.parametrize(
-    "value,expected",
-    [
-        ("", None),
-        ("  ", None),
-        (" 1 ", "1"),
-    ],
-)
-def test_value_or_none(value: str, expected: Optional[str]) -> None:
-    assert value_or_none(value) == expected

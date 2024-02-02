@@ -1,0 +1,911 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
+    "spectrophotometry aggregate document": {
+        "spectrophotometry document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d11e8b85-9bf5-4d41-850b-a32c0ee821f5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "alpha",
+                                "location identifier": "A1"
+                            },
+                            "absorbance": {
+                                "value": 10.854,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 542.7,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "b2d7f6ae-90c7-416a-a123-897f982119bb",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "alpha",
+                                "location identifier": "A1"
+                            },
+                            "absorbance": {
+                                "value": 5.978,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f19fb58f-3d57-46c9-99ee-2c5ecf3a1c58",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "bravo",
+                                "location identifier": "B1"
+                            },
+                            "absorbance": {
+                                "value": 11.625,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 581.2,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "ef8ac7d9-fd95-4617-be0e-9428bbba709c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "bravo",
+                                "location identifier": "B1"
+                            },
+                            "absorbance": {
+                                "value": 6.413,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "19ff8ce1-6cb2-4580-a3aa-8d988ec73798",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "charlie",
+                                "location identifier": "C1"
+                            },
+                            "absorbance": {
+                                "value": 6.233,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 311.6,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "fa3d97fe-64b8-4e10-b4ef-0ccf278e7aab",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "charlie",
+                                "location identifier": "C1"
+                            },
+                            "absorbance": {
+                                "value": 3.376,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7ebd62f6-af8f-40a9-9f1f-089563739db3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "delta",
+                                "location identifier": "D1"
+                            },
+                            "absorbance": {
+                                "value": 9.693,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 484.6,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "0d412cea-6eb4-4bb4-bea4-76bcec9c3620",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "delta",
+                                "location identifier": "D1"
+                            },
+                            "absorbance": {
+                                "value": 5.315,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "8ced41d1-f95f-40c4-a2d9-8d7b3fda1791",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "echo",
+                                "location identifier": "E1"
+                            },
+                            "absorbance": {
+                                "value": 9.28,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 464.0,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "000c4669-92df-40e7-a749-caf57c6b5f79",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "echo",
+                                "location identifier": "E1"
+                            },
+                            "absorbance": {
+                                "value": 5.049,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "2b91fa59-cf4b-4b3a-a2c6-46a1a1ad4c5d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "foxtrot",
+                                "location identifier": "F1"
+                            },
+                            "absorbance": {
+                                "value": 6.396,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 319.8,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "f3371985-61a9-4fa5-9a08-4bb979292479",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "foxtrot",
+                                "location identifier": "F1"
+                            },
+                            "absorbance": {
+                                "value": 3.464,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "819b94a3-78be-4af6-83d8-434fa5ca83c5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "golf",
+                                "location identifier": "G1"
+                            },
+                            "absorbance": {
+                                "value": 8.936,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 446.8,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "82938e4f-aab3-4ce5-870b-06b9f7c61f28",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "golf",
+                                "location identifier": "G1"
+                            },
+                            "absorbance": {
+                                "value": 4.871,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:20:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "326601dc-e35e-450c-b87e-be31e6d8ae55",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "hotel",
+                                "location identifier": "H1"
+                            },
+                            "absorbance": {
+                                "value": 9.728,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 486.4,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "91e40f64-2152-47dd-ba86-31a0c5a860e0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "hotel",
+                                "location identifier": "H1"
+                            },
+                            "absorbance": {
+                                "value": 5.328,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2022-04-06T16:22:00+00:00",
+                    "measurement document": [
+                        {
+                            "measurement identifier": "319c86f8-bacc-4a6e-bf39-972fbee271d7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 260,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "india",
+                                "location identifier": "A2"
+                            },
+                            "absorbance": {
+                                "value": 9.97,
+                                "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 498.5,
+                                            "unit": "ng/uL"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "8380aaa2-c13b-48f8-a9cc-55c523acacd3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "absorbance detector",
+                                        "detector wavelength setting": {
+                                            "value": 280,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "india",
+                                "location identifier": "A2"
+                            },
+                            "absorbance": {
+                                "value": 5.449,
+                                "unit": "mAU"
+                            }
+                        }
+                    ],
+                    "experiment type": "DNA-50"
+                },
+                "analyst": "Default"
+            }
+        ],
+        "device system document": {
+            "device identifier": "Nanodrop",
+            "model number": "Nanodrop Eight"
+        },
+        "data system document": {
+            "file name": "Thermo_NanoDrop_Eight_example04.txt",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.12"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.82,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d11e8b85-9bf5-4d41-850b-a32c0ee821f5",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "b2d7f6ae-90c7-416a-a123-897f982119bb",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "b2102bc3-0072-48fe-bbd6-e4e5ba1b2eda"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.23,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d11e8b85-9bf5-4d41-850b-a32c0ee821f5",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "faafcf95-380d-4a35-a3fb-4b233f63348b"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.81,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f19fb58f-3d57-46c9-99ee-2c5ecf3a1c58",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "ef8ac7d9-fd95-4617-be0e-9428bbba709c",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "9554994d-e9eb-42ba-8ad9-347152f15c9c"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.24,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f19fb58f-3d57-46c9-99ee-2c5ecf3a1c58",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "fb850104-b497-47b5-8896-37676179fe4a"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.85,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "19ff8ce1-6cb2-4580-a3aa-8d988ec73798",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "fa3d97fe-64b8-4e10-b4ef-0ccf278e7aab",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c925ffb8-e4c9-40eb-883e-9573b9331e62"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.29,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "19ff8ce1-6cb2-4580-a3aa-8d988ec73798",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "32716ae8-a898-484d-909c-09a33fdd861a"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.82,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "7ebd62f6-af8f-40a9-9f1f-089563739db3",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "0d412cea-6eb4-4bb4-bea4-76bcec9c3620",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "9154e74a-04b3-4c0c-b176-0c8f92f8ec9e"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.25,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "7ebd62f6-af8f-40a9-9f1f-089563739db3",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "95420e7e-bda6-4b10-a65c-031b3bbe6ecf"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.84,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8ced41d1-f95f-40c4-a2d9-8d7b3fda1791",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "000c4669-92df-40e7-a749-caf57c6b5f79",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "009eb0c6-3125-49fd-a3cb-899749fad4eb"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.27,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "8ced41d1-f95f-40c4-a2d9-8d7b3fda1791",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "bf1f9d9b-391e-41a5-a71f-ad2fbb3f485a"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.85,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "2b91fa59-cf4b-4b3a-a2c6-46a1a1ad4c5d",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "f3371985-61a9-4fa5-9a08-4bb979292479",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "53af8fc5-baa8-43fe-bc14-b83de139bfc5"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.25,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "2b91fa59-cf4b-4b3a-a2c6-46a1a1ad4c5d",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "437c83da-4644-4a26-812f-0d9bdf6b3395"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.83,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "819b94a3-78be-4af6-83d8-434fa5ca83c5",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "82938e4f-aab3-4ce5-870b-06b9f7c61f28",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "9914e05b-8ac8-44ac-85cf-e74360402980"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.23,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "819b94a3-78be-4af6-83d8-434fa5ca83c5",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "1d3b68e0-1d29-4afb-9683-c85245f1e9e3"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.83,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "326601dc-e35e-450c-b87e-be31e6d8ae55",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "91e40f64-2152-47dd-ba86-31a0c5a860e0",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c7b72598-6bc0-424c-9983-624823c381af"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.18,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "326601dc-e35e-450c-b87e-be31e6d8ae55",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "e48c64f8-d186-4036-a370-cf74ba6788d5"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 1.83,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "319c86f8-bacc-4a6e-bf39-972fbee271d7",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "8380aaa2-c13b-48f8-a9cc-55c523acacd3",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "9eb240e8-2387-488b-a1fb-79b29194912f"
+                },
+                {
+                    "calculated data name": "A260/230",
+                    "calculated result": {
+                        "value": 2.24,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "319c86f8-bacc-4a6e-bf39-972fbee271d7",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "8621627a-62f1-4d94-9a17-77aadb8eab4e"
+                }
+            ]
+        }
+    }
+}

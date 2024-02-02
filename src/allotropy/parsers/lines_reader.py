@@ -1,42 +1,54 @@
-# mypy: disallow_any_generics = False
-
 from collections.abc import Iterator
-from io import IOBase, StringIO
+from io import StringIO
 from re import search
-from typing import Optional
+from typing import Literal, Optional, Union
 
 import chardet
 import pandas as pd
 
-from allotropy.allotrope.allotrope import AllotropyError
+from allotropy.allotrope.pandas_util import read_csv
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.types import IOType
 
 EMPTY_STR_PATTERN = r"^\s*$"
+
+
+def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
+    stream_contents = io_.read()
+    raw_contents = (
+        _decode(stream_contents, encoding)
+        if isinstance(stream_contents, bytes)
+        else stream_contents
+    )
+    contents = raw_contents.replace("\r\n", "\n")
+    return contents.split("\n")
 
 
 def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
     if not encoding:
         encoding = chardet.detect(bytes_content)["encoding"]
         if not encoding:
-            error = "Unable to detect input file encoding"
-            raise AllotropyError(error)
+            error = "Unable to detect text encoding for file. The file may be empty."
+            raise AllotropeConversionError(error)
     return bytes_content.decode(encoding)
 
 
 class LinesReader:
-    def __init__(self, io_: IOBase, encoding: Optional[str] = "UTF-8"):
-        stream_contents = io_.read()
-        self.raw_contents = (
-            _decode(stream_contents, encoding)
-            if isinstance(stream_contents, bytes)
-            else stream_contents
-        )
-        self.contents = self.raw_contents.replace("\r\n", "\n")
-        self.lines: list[str] = self.contents.split("\n")
-        self.n_lines = len(self.lines)
+    lines: list[str]
+    current_line: int
+
+    def __init__(self, lines: list[str]) -> None:
+        self.lines = lines
         self.current_line = 0
 
+    def line_exists(self, line: int) -> bool:
+        return 0 <= line < len(self.lines)
+
     def current_line_exists(self) -> bool:
-        return 0 <= self.current_line < self.n_lines
+        return self.line_exists(self.current_line)
+
+    def get_line(self, line: int) -> Optional[str]:
+        return self.lines[line] if self.line_exists(line) else None
 
     def get(self) -> Optional[str]:
         return self.lines[self.current_line] if self.current_line_exists() else None
@@ -99,17 +111,8 @@ class LinesReader:
                 yield line
 
 
-class ListReader(LinesReader):
-    def __init__(self, lines: list[str]):
-        self.contents = "\n".join(lines)
-        self.raw_contents = self.contents
-        self.lines: list[str] = lines
-        self.n_lines = len(self.lines)
-        self.current_line = 0
-
-
 class CsvReader(LinesReader):
-    def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list:
+    def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list[str]:
         self.drop_empty(empty_pat)
         lines = list(self.pop_until_empty(empty_pat))
         self.drop_empty(empty_pat)
@@ -119,14 +122,18 @@ class CsvReader(LinesReader):
         self,
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
-        header: Optional[int] = None,
+        header: Optional[Union[int, Literal["infer"]]] = None,
+        sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
-            return pd.read_csv(
+            return read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
+                sep=sep,
                 dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
             )
         return None
 
@@ -135,3 +142,7 @@ class CsvReader(LinesReader):
         while self.match(match_pat):
             self.drop_until_empty()
             self.drop_empty()
+
+    def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
+        line = self.pop()
+        return None if line is None else pd.Series(line.split(sep))

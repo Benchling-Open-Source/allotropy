@@ -7,7 +7,7 @@ from typing import Union
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 
 
-@dataclass
+@dataclass(frozen=True)
 class DataSource:
     feature: str
     reference: Union[CalculatedDocument, Referenceable]
@@ -15,7 +15,6 @@ class DataSource:
 
 @dataclass
 class CalculatedDocument(Referenceable):
-    uuid: str
     name: str
     value: float
     data_sources: list[DataSource]

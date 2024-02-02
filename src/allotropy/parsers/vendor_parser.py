@@ -1,35 +1,36 @@
 from abc import ABC, abstractmethod
-import io
 from typing import Any
 
-import chardet
+from pandas import Timestamp
 
-from allotropy.allotrope.allotrope import AllotropeConversionError
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
 
 class VendorParser(ABC):
+    timestamp_parser: TimestampParser
+
+    """Base class for all vendor parsers."""
+
     def __init__(self, timestamp_parser: TimestampParser):
-        self.timestamp_parser = timestamp_parser
+        self.timestamp_parser = assert_not_none(timestamp_parser, "timestamp_parser")
 
     @abstractmethod
-    def _parse(self, contents: io.IOBase, filename: str) -> Any:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
 
-    def to_allotrope(self, contents: io.IOBase, filename: str) -> Any:
-        return self._parse(contents, filename)
-
-    def _read_contents(self, contents: io.IOBase) -> Any:
-        file_bytes = contents.read()
-        encoding = chardet.detect(file_bytes)["encoding"]
-        if not encoding:
-            error = "Did not detect encoding in input file"
-            raise AllotropeConversionError(error)
-        return file_bytes.decode(encoding)
-
-    def get_date_time(self, time: Any) -> TDateTimeValue:
+    def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")
 
-        return self.timestamp_parser.parse(str(time))
+        return self.timestamp_parser.parse(time)
+
+    # TODO(brian): Calling str() to pass to _get_date_time() potentially loses information.
+    def _get_date_time_from_timestamp(self, timestamp: Timestamp) -> TDateTimeValue:
+        # TODO(brian): fail if timestamp is not a Timestamp?
+
+        assert_not_none(timestamp, "timestamp")
+
+        time = str(timestamp)
+        return self._get_date_time(time)

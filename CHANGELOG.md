@@ -6,18 +6,64 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add parser structure documentation
+- pandas_utils module wraps pandas functions to throw AllotropeConversionError.
 ### Fixed
+- Total cells column no longer required for vi-cell XR
+- Ignore invalid first row when present for vi-cell XR files
+### Changed
+- Corrections to the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
+- Replace null with N/A in Moldev Softmax Pro
+### Deprecated
+### Removed
+### Security
+
+## [0.1.14] - 2024-01-31
+### Added
+- Add Luminex xPONENT Adapter
+### Fixed
+- Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
+- Check for raw data indicator in plate header for Moldev Softmax Pro
+
+## [0.1.13] - 2024-01-19
+### Added
+- Add parser for ChemoMetic NucleoView
+- Add parser for Nanodrop Eight
+- Add calculated data documents to Unchained Labs Lunatic adapter
+- Add calculated data documents to Moldev Softmax Pro
+- Add multi-analyte-profiling BENCHLING/2024/01 schema
+- Add non-numeric options for tQuantityValue value property
+- Add support for non-numeric values to ChemoMetic NucleoView
+- Add context manager to handle backups to schema generation script
+- Add --regex argument to schema generation script
+### Fixed
+- Perkin Elmer Envision: calculated data name now captures string to the left - rather than right - of the ‘=’ in the Formula cell.
+### Changed
+- Simplify Moldev Softmax Pro parsing with dataclasses
+- Update plate reader schema in Moldev Softmax Pro
+- Standardized on UNITLESS constant ("(unitless)") for unitless values. Changed Perkin Elmer Envision, which formerly used "unitless".
+- Increase test coverage of calculated data documents on Perkin Elmer Envision.
+
+## [0.1.12] - 2023-12-12
+### Added
+- Calculated data documents to PerkinElmer EnVision
+- Add Unchained Labs Lunatic adapter
+### Fixed
+- Fix per-well calculated documents in AppBio QuantStudio
+### Changed
+- Refactor builders as create methods in AppBio QuantStudio
+
+## [0.1.11] - 2023-12-04
+### Added
+- Add parser structure documentation
 ### Changed
 - Refactor Agilent Gen5 with explicit dataclasses structure
 - Update Benchman Vi-cell Blu adapter to use the new cell-counting BENCHLING/2023/11 schema
 - Update Benchman Vi-cell XR adapter to use the new cell-counting BENCHLING/2023/11 schema
 - Set mypy's disallow_any_generics to True. Ideally, new files should not suppress these warnings.
 - Refactor way to extract and validate information from pandas series in AppBio QuantStudio
-- Simplify csv lines reader
-### Deprecated
-### Removed
-### Security
+- Simplify CSV lines reader
+- Update PerkinElmer EnVision adapter to use the new plate-reader BENCHLING/2023/09 schema
+- Standaradize and clarify exception messages
 
 ## [0.1.10] - 2023-11-14
 ### Added

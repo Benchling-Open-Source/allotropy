@@ -1,6 +1,6 @@
 import pytest
 
-from allotropy.allotrope.allotrope import AllotropeConversionError, AllotropyError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
@@ -12,7 +12,7 @@ from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
 )
 from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
-output_files = (
+OUTPUT_FILES = (
     "PE_Envision_absorbance_example01",
     "PE_Envision_fluorescence_example01",
     "PE_Envision_fluorescence_example02",
@@ -24,7 +24,7 @@ output_files = (
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
 
 
-@pytest.mark.parametrize("output_file", output_files)
+@pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_perkin_elmer_envision_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.csv"
     expected_filepath = (
@@ -57,13 +57,15 @@ def test_get_model() -> None:
 
 def test_parse_missing_file() -> None:
     test_filepath = "tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.tsv"
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(
+        AllotropeConversionError, match=f"File not found: {test_filepath}"
+    ):
         from_file(test_filepath, VENDOR_TYPE)
 
 
 def test_parse_incorrect_vendor() -> None:
     test_filepath = "tests/parsers/perkin_elmer_envision/testdata/PE_Envision_fluorescence_example01.csv"
-    with pytest.raises(AllotropeConversionError):
+    with pytest.raises(AllotropeConversionError, match="No plate data found in file."):
         from_file(test_filepath, Vendor.AGILENT_GEN5)
 
 
@@ -71,5 +73,8 @@ def test_parse_file_missing_headers() -> None:
     test_filepath = (
         "tests/parsers/perkin_elmer_envision/testdata/example01_missing_header.csv"
     )
-    with pytest.raises(AllotropyError):
+    # TODO: Handle the underlying error better in src
+    with pytest.raises(
+        AllotropeConversionError, match="Unhandled error in PerkinElmerEnvisionParser"
+    ):
         from_file(test_filepath, VENDOR_TYPE)
