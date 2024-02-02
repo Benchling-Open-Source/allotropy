@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+from enum import Enum
 from typing import Any, NamedTuple, Optional
-import uuid
 
 import pandas as pd
 
@@ -28,6 +28,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_ANALYST,
@@ -35,22 +36,30 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     VICELL_BLU_SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
-property_lookup = {
-    "Average viable diameter (μm)": TQuantityValueMicrometer,
-    "Average circularity": TQuantityValueUnitless,
-    "Average diameter (μm)": TQuantityValueMicrometer,
-    "Average viable circularity": TQuantityValueUnitless,
-    "Dilution": TQuantityValueUnitless,
-    "Maximum Diameter (μm)": TQuantityValueMicrometer,
-    "Minimum Diameter (μm)": TQuantityValueMicrometer,
-    "Cell count": TQuantityValueCell,
-    "Total (x10^6) cells/mL": TQuantityValueMillionCellsPerMilliliter,
-    "Viability (%)": TQuantityValuePercent,
-    "Viable cells": TQuantityValueCell,
-    "Viable (x10^6) cells/mL": TQuantityValueMillionCellsPerMilliliter,
-}
+
+class SampleProperty(Enum):
+    AVERAGE_VIABLE_DIAMETER = ("Average viable diameter (μm)", TQuantityValueMicrometer)
+    AVERAGE_CIRCULARITY = ("Average circularity", TQuantityValueUnitless)
+    AVERAGE_DIAMETER = ("Average diameter (μm)", TQuantityValueMicrometer)
+    AVERAGE_VIABLE_CIRCULARITY = ("Average viable circularity", TQuantityValueUnitless)
+    DILUTION = ("Dilution", TQuantityValueUnitless)
+    MAXIMUM_DIAMETER = ("Maximum Diameter (μm)", TQuantityValueMicrometer)
+    MINIMUM_DIAMETER = ("Minimum Diameter (μm)", TQuantityValueMicrometer)
+    CELL_COUNT = ("Cell count", TQuantityValueCell)
+    TOTAL_CELLS_ML = ("Total (x10^6) cells/mL", TQuantityValueMillionCellsPerMilliliter)
+    VIABILITY = ("Viability (%)", TQuantityValuePercent)
+    VIABLE_CELLS = ("Viable cells", TQuantityValueCell)
+    VIABLE_CELLS_ML = (
+        "Viable (x10^6) cells/mL",
+        TQuantityValueMillionCellsPerMilliliter,
+    )
+
+    def __init__(self, column_name: str, data_type: Any) -> None:
+        self.column_name: str = column_name
+        self.data_type: Any = data_type
 
 
 class _Sample(NamedTuple):
@@ -65,10 +74,19 @@ def _get_value(sample: _Sample, column: str) -> Optional[Any]:
     return data_frame[column][row]
 
 
-def get_property_from_sample(sample: _Sample, property_name: str) -> Any:
+def _get_value_not_none(sample: _Sample, column: str) -> Any:
+    value = _get_value(sample, column)
+    if value is None:
+        msg = f"Missing value for column '{column}'."
+        raise AllotropeConversionError(msg)
+    return value
+
+
+# TODO(brian): make this a method on _Sample (which then probably shouldn't be a NamedTuple)
+def get_property_from_sample(sample: _Sample, sample_property: SampleProperty) -> Any:
     return (
-        property_lookup[property_name](value=value)
-        if (value := _get_value(sample, property_name))
+        sample_property.data_type(value=value)
+        if (value := _get_value(sample, sample_property.column_name))
         else None
     )
 
@@ -113,9 +131,9 @@ class ViCellBluParser(VendorParser):
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_time=self._get_date_time(
-                            _get_value(sample, "Analysis date/time")
+                            _get_value_not_none(sample, "Analysis date/time")
                         ),
-                        measurement_identifier=str(uuid.uuid4()),
+                        measurement_identifier=random_uuid_str(),
                         sample_document=SampleDocument(sample_identifier=_get_value(sample, "Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
@@ -133,41 +151,42 @@ class ViCellBluParser(VendorParser):
                                             sample, "Cell type"
                                         ),
                                         minimum_cell_diameter_setting=get_property_from_sample(
-                                            sample, "Minimum Diameter (μm)"
+                                            sample, SampleProperty.MINIMUM_DIAMETER
                                         ),
                                         maximum_cell_diameter_setting=get_property_from_sample(
-                                            sample, "Maximum Diameter (μm)"
+                                            sample, SampleProperty.MAXIMUM_DIAMETER
                                         ),
                                         cell_density_dilution_factor=get_property_from_sample(
-                                            sample, "Dilution"
+                                            sample, SampleProperty.DILUTION
                                         ),
                                     ),
                                     viability__cell_counter_=get_property_from_sample(
-                                        sample, "Viability (%)"
+                                        sample, SampleProperty.VIABILITY
                                     ),
                                     viable_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Viable (x10^6) cells/mL"
+                                        sample, SampleProperty.VIABLE_CELLS_ML
                                     ),
                                     total_cell_count=get_property_from_sample(
-                                        sample, "Cell count"
+                                        sample, SampleProperty.CELL_COUNT
                                     ),
                                     total_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, "Total (x10^6) cells/mL"
+                                        sample, SampleProperty.TOTAL_CELLS_ML
                                     ),
                                     average_total_cell_diameter=get_property_from_sample(
-                                        sample, "Average diameter (μm)"
+                                        sample, SampleProperty.AVERAGE_DIAMETER
                                     ),
                                     average_live_cell_diameter__cell_counter_=get_property_from_sample(
-                                        sample, "Average viable diameter (μm)"
+                                        sample, SampleProperty.AVERAGE_VIABLE_DIAMETER
                                     ),
                                     viable_cell_count=get_property_from_sample(
-                                        sample, "Viable cells"
+                                        sample, SampleProperty.VIABLE_CELLS
                                     ),
                                     average_total_cell_circularity=get_property_from_sample(
-                                        sample, "Average circularity"
+                                        sample, SampleProperty.AVERAGE_CIRCULARITY
                                     ),
                                     average_viable_cell_circularity=get_property_from_sample(
-                                        sample, "Average viable circularity"
+                                        sample,
+                                        SampleProperty.AVERAGE_VIABLE_CIRCULARITY,
                                     ),
                                 ),
                             ]

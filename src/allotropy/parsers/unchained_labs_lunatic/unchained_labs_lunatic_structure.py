@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any, Optional
-import uuid
 
 import pandas as pd
 
@@ -15,6 +14,7 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series,
     try_float_from_series_or_none,
@@ -57,7 +57,7 @@ class Measurement:
         if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
             raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
-        measurement_identifier = str(uuid.uuid4())
+        measurement_identifier = random_uuid_str()
         return Measurement(
             identifier=measurement_identifier,
             wavelength=float(wavelength_column[1:]),
@@ -90,7 +90,7 @@ class Measurement:
 
             calculated_data.append(
                 CalculatedDataItem(
-                    identifier=str(uuid.uuid4()),
+                    identifier=random_uuid_str(),
                     name=item["name"],
                     value=value,
                     unit=item["unit"],

@@ -7,7 +7,6 @@ from enum import Enum
 import math
 import re
 from typing import Any, Optional, Union
-import uuid
 
 import pandas as pd
 
@@ -16,6 +15,7 @@ from allotropy.exceptions import (
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
@@ -88,6 +88,7 @@ class ExportFormat(Enum):
 class DataType(Enum):
     RAW = "Raw"
     REDUCED = "Reduced"
+    BOTH = "Both"
 
 
 class ScanPosition(Enum):
@@ -105,7 +106,6 @@ class Block:
 class GroupDataElementEntry:
     name: str
     value: float
-    aggregated: bool
 
 
 @dataclass(frozen=True)
@@ -120,17 +120,26 @@ class GroupDataElement:
 class GroupSampleData:
     identifier: str
     data_elements: list[GroupDataElement]
+    aggregated_entries: list[GroupDataElementEntry]
 
     @staticmethod
     def create(data: pd.DataFrame) -> GroupSampleData:
         top_row = data.iloc[0]
         identifier = top_row["Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
-        column_info = [
-            (column, data[column].iloc[1:].isnull().all())
+        numeric_columns = [
+            column
             for column in data.columns
             if can_parse_as_float_non_nan(top_row[column])
         ]
+
+        normal_columns = []
+        aggregated_columns = []
+        for column in numeric_columns:
+            if data[column].iloc[1:].isnull().all():
+                aggregated_columns.append(column)
+            else:
+                normal_columns.append(column)
 
         return GroupSampleData(
             identifier=identifier,
@@ -146,33 +155,21 @@ class GroupSampleData:
                     entries=[
                         GroupDataElementEntry(
                             name=column_name,
-                            value=(
-                                try_float(top_row[column_name], column_name)
-                                if aggregated
-                                else try_float(row[column_name], column_name)
-                            ),
-                            aggregated=aggregated,
+                            value=try_float(row[column_name], column_name),
                         )
-                        for column_name, aggregated in column_info
+                        for column_name in normal_columns
                     ],
                 )
                 for _, row in data.iterrows()
             ],
+            aggregated_entries=[
+                GroupDataElementEntry(
+                    name=column_name,
+                    value=try_float(top_row[column_name], column_name),
+                )
+                for column_name in aggregated_columns
+            ],
         )
-
-    def iter_simple_data_sources(
-        self, plate: PlateBlock, group_data_element: GroupDataElement
-    ) -> Iterator[DataElement]:
-        yield from plate.iter_data_elements(group_data_element.position)
-
-    def iter_aggregated_data_sources(
-        self, block_list: BlockList
-    ) -> Iterator[DataElement]:
-        for group_data_element in self.data_elements:
-            yield from self.iter_simple_data_sources(
-                block_list.plate_blocks[group_data_element.plate],
-                group_data_element,
-            )
 
 
 @dataclass(frozen=True)
@@ -329,7 +326,7 @@ class PlateWavelengthData:
             wavelength,
             data_elements={
                 str(position): DataElement(
-                    uuid=str(uuid.uuid4()),
+                    uuid=random_uuid_str(),
                     plate=plate_name,
                     temperature=temperature,
                     wavelength=wavelength,
@@ -483,7 +480,7 @@ class TimeKineticData:
             temperature=temperature,
             data_elements={
                 str(position): DataElement(
-                    uuid=str(uuid.uuid4()),
+                    uuid=random_uuid_str(),
                     plate=plate_name,
                     temperature=temperature,
                     wavelength=wavelength,
@@ -653,6 +650,12 @@ class PlateBlock(ABC, Block):
             raise AllotropeConversionError(error)
 
     @classmethod
+    def check_data_type(cls, data_type: str) -> None:
+        if data_type not in (DataType.RAW.value, DataType.BOTH.value):
+            error = "The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates"
+            raise AllotropeConversionError(error)
+
+    @classmethod
     def check_num_wavelengths(
         cls, wavelengths: list[float], num_wavelengths: int
     ) -> None:
@@ -731,6 +734,7 @@ class FluorescencePlateBlock(PlateBlock):
 
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
+        cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -840,6 +844,7 @@ class LuminescencePlateBlock(PlateBlock):
 
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
+        cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)
@@ -902,6 +907,7 @@ class AbsorbancePlateBlock(PlateBlock):
 
         cls.check_export_version(export_version)
         cls.check_read_type(read_type)
+        cls.check_data_type(data_type)
 
         num_wavelengths = cls.get_num_wavelengths(num_wavelengths_raw)
         wavelengths = cls.get_wavelengths(wavelengths_str)

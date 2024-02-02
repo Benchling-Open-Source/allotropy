@@ -1,5 +1,7 @@
 import re
 
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+
 WAVELENGTH_COLUMNS_RE = re.compile(r"^A\d{3}$")
 NO_WAVELENGTH_COLUMN_ERROR_MSG = (
     "The file is required to include an absorbance measurement column (e.g. A280)"
@@ -32,13 +34,13 @@ CALCULATED_DATA_LOOKUP = {
             "column": "A260/A230",
             "name": "A260/A230",
             "feature": "absorbance",
-            "unit": "(unitless)",
+            "unit": UNITLESS,
         },
         {
             "column": "A260/A280",
             "name": "A260/A280",
             "feature": "absorbance",
-            "unit": "(unitless)",
+            "unit": UNITLESS,
         },
     ],
     "A280": [
@@ -58,7 +60,7 @@ CALCULATED_DATA_LOOKUP = {
             "column": "A260/A280",
             "name": "A260/A280",
             "feature": "absorbance",
-            "unit": "(unitless)",
+            "unit": UNITLESS,
         },
     ],
 }

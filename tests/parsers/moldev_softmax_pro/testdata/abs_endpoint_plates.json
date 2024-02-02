@@ -1,5 +1,5 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
     "plate reader aggregate document": {
         "plate reader document": [
             {
@@ -9220,8 +9220,8 @@
             }
         ],
         "device system document": {
-            "device identifier": "null",
-            "model number": "null"
+            "device identifier": "N/A",
+            "model number": "N/A"
         },
         "data system document": {
             "file name": "abs_endpoint_plates.txt",

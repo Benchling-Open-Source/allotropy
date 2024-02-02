@@ -1,6 +1,6 @@
+from itertools import chain
 import math
-from typing import Union
-import uuid
+from typing import Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -31,13 +31,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
-    TRelativeLightUnit,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
     TQuantityValue,
-    ValueEnum,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
@@ -49,21 +51,23 @@ from allotropy.parsers.moldev_softmax_pro.constants import (
     EPOCH,
     NULL,
     REDUCED,
-    UNITLESS,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     Data,
+    GroupBlock,
+    GroupSampleData,
     PlateBlock,
     ScanPosition,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-def float_or_value_enum(value: float) -> Union[ValueEnum, float]:
-    return ValueEnum.NaN if math.isnan(value) else value
+def to_json_float(value: float) -> JsonFloat:
+    return InvalidJsonFloat.NaN if math.isnan(value) else value
 
 
 class SoftmaxproParser(VendorParser):
@@ -75,7 +79,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_model(self, file_name: str, data: Data) -> Model:
         return Model(
-            field_asm_manifest="http://purl.allotrope.org/json-schemas/adm/plate-reader/BENCHLING/2023/09/plate-reader.schema",
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     device_identifier=NULL,
@@ -92,9 +96,7 @@ class SoftmaxproParser(VendorParser):
                     for plate_block in data.block_list.plate_blocks.values()
                     for position in plate_block.iter_wells()
                 ],
-                calculated_data_aggregate_document=CalculatedDataAggregateDocument(
-                    calculated_data_document=self._get_calc_docs(data)
-                ),
+                calculated_data_aggregate_document=self._get_calc_docs(data),
             ),
         )
 
@@ -151,12 +153,14 @@ class SoftmaxproParser(VendorParser):
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
-                fluorescence=TRelativeFluorescenceUnit(value=data_element.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                    value=data_element.value
+                ),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_value_enum(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -219,12 +223,12 @@ class SoftmaxproParser(VendorParser):
         return [
             LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
-                luminescence=TRelativeLightUnit(value=data_element.value),
+                luminescence=TQuantityValueRelativeLightUnit(value=data_element.value),
                 compartment_temperature=(
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_value_enum(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -266,7 +270,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        float_or_value_enum(data_element.temperature)
+                        to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -289,70 +293,104 @@ class SoftmaxproParser(VendorParser):
             for data_element in plate_block.iter_data_elements(position)
         ]
 
-    def _get_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
-        return self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
+    def _get_calc_docs(self, data: Data) -> Optional[CalculatedDataAggregateDocument]:
+        calc_docs = self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
+        return CalculatedDataAggregateDocument(calc_docs) if calc_docs else None
+
+    def _get_calc_docs_data_sources(
+        self, plate_block: PlateBlock, position: str
+    ) -> list[DataSourceDocumentItem]:
+        return [
+            DataSourceDocumentItem(
+                data_source_identifier=data_source.uuid,
+                data_source_feature=plate_block.get_plate_block_type(),
+            )
+            for data_source in plate_block.iter_data_elements(position)
+        ]
+
+    def _build_calc_doc(
+        self,
+        name: str,
+        value: float,
+        data_sources: list[DataSourceDocumentItem],
+        description: Optional[str] = None,
+    ) -> CalculatedDataDocumentItem:
+        return CalculatedDataDocumentItem(
+            calculated_data_identifier=random_uuid_str(),
+            calculated_data_name=name,
+            calculation_description=description,
+            calculated_result=TQuantityValue(
+                unit=UNITLESS,
+                value=value,
+            ),
+            data_source_aggregate_document=DataSourceAggregateDocument1(
+                data_source_document=data_sources,
+            ),
+        )
 
     def _get_reduced_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
         return [
-            CalculatedDataDocumentItem(
-                calculated_data_identifier=str(uuid.uuid4()),
-                calculated_data_name=REDUCED,
-                calculated_result=TQuantityValue(
-                    unit=UNITLESS,
-                    value=reduced_data_element.value,
-                ),
-                data_source_aggregate_document=DataSourceAggregateDocument1(
-                    data_source_document=[
-                        DataSourceDocumentItem(
-                            data_source_identifier=data_element.uuid,
-                            data_source_feature=plate_block.get_plate_block_type(),
-                        )
-                        for data_element in plate_block.iter_data_elements(
-                            reduced_data_element.position
-                        )
-                    ]
+            self._build_calc_doc(
+                name=REDUCED,
+                value=reduced_data_element.value,
+                data_sources=self._get_calc_docs_data_sources(
+                    plate_block,
+                    reduced_data_element.position,
                 ),
             )
             for plate_block in data.block_list.plate_blocks.values()
             for reduced_data_element in plate_block.iter_reduced_data()
         ]
 
+    def _get_group_agg_calc_docs(
+        self, data: Data, group_block: GroupBlock, group_sample_data: GroupSampleData
+    ) -> list[CalculatedDataDocumentItem]:
+        return [
+            self._build_calc_doc(
+                name=aggregated_entry.name,
+                value=aggregated_entry.value,
+                data_sources=list(
+                    chain.from_iterable(
+                        self._get_calc_docs_data_sources(
+                            data.block_list.plate_blocks[group_data_element.plate],
+                            group_data_element.position,
+                        )
+                        for group_data_element in group_sample_data.data_elements
+                    )
+                ),
+                description=group_block.group_columns.data.get(aggregated_entry.name),
+            )
+            for aggregated_entry in group_sample_data.aggregated_entries
+        ]
+
+    def _get_group_simple_calc_docs(
+        self, data: Data, group_block: GroupBlock, group_sample_data: GroupSampleData
+    ) -> list[CalculatedDataDocumentItem]:
+        calculated_documents = []
+        for group_data_element in group_sample_data.data_elements:
+            data_sources = self._get_calc_docs_data_sources(
+                data.block_list.plate_blocks[group_data_element.plate],
+                group_data_element.position,
+            )
+            for entry in group_data_element.entries:
+                calculated_documents.append(
+                    self._build_calc_doc(
+                        name=entry.name,
+                        value=entry.value,
+                        data_sources=data_sources,
+                        description=group_block.group_columns.data.get(entry.name),
+                    )
+                )
+        return calculated_documents
+
     def _get_group_calc_docs(self, data: Data) -> list[CalculatedDataDocumentItem]:
         calculated_documents = []
         for group_block in data.block_list.group_blocks:
             for group_sample_data in group_block.group_data.sample_data:
-                for group_data_element in group_sample_data.data_elements:
-                    plate_block = data.block_list.plate_blocks[group_data_element.plate]
-                    for entry in group_data_element.entries:
-                        calculated_documents.append(
-                            CalculatedDataDocumentItem(
-                                calculated_data_identifier=str(uuid.uuid4()),
-                                calculated_data_name=entry.name,
-                                calculation_description=group_block.group_columns.data.get(
-                                    entry.name
-                                ),
-                                calculated_result=TQuantityValue(
-                                    unit=UNITLESS,
-                                    value=entry.value,
-                                ),
-                                data_source_aggregate_document=DataSourceAggregateDocument1(
-                                    data_source_document=[
-                                        DataSourceDocumentItem(
-                                            data_source_identifier=data_element.uuid,
-                                            data_source_feature=plate_block.get_plate_block_type(),
-                                        )
-                                        for data_element in (
-                                            group_sample_data.iter_aggregated_data_sources(
-                                                data.block_list
-                                            )
-                                            if entry.aggregated
-                                            else group_sample_data.iter_simple_data_sources(
-                                                plate_block,
-                                                group_data_element,
-                                            )
-                                        )
-                                    ]
-                                ),
-                            )
-                        )
+                calculated_documents += self._get_group_agg_calc_docs(
+                    data, group_block, group_sample_data
+                )
+                calculated_documents += self._get_group_simple_calc_docs(
+                    data, group_block, group_sample_data
+                )
         return calculated_documents

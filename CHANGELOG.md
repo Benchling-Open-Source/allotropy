@@ -6,22 +6,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add calculated data documents to Unchained Labs Lunatic adapter
-- Parser for ChemoMetic NucleoView
-- Add non numeric options for tQuantityValue value property
-- Add support for non-numeric values to ChemoMetic NucleoView
-- Increase test coverage of calculated data documents on Perkin Elmer Envision.
-- Add calculated data documents to Moldev Softmax Pro
-- Add multi-analyte-profiling BENCHLING/2024/01 schema
+- pandas_utils module wraps pandas functions to throw AllotropeConversionError.
 ### Fixed
-- Perkin Elmer Envision: calculated data name now captures string to the left - rather than right - of the ‘=’ in the Formula cell.
-
+- Total cells column no longer required for vi-cell XR
+- Ignore invalid first row when present for vi-cell XR files
 ### Changed
-- Simplify Moldev Softmax Pro parsing with dataclasses
-- Update plate reader schema in Moldev Softmax Pro
+- Corrections to the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
+- Replace null with N/A in Moldev Softmax Pro
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.14] - 2024-01-31
+### Added
+- Add Luminex xPONENT Adapter
+### Fixed
+- Ignore calculated data documents entry in output of Moldev Softmax Pro when there are no calculated data documents
+- Check for raw data indicator in plate header for Moldev Softmax Pro
+
+## [0.1.13] - 2024-01-19
+### Added
+- Add parser for ChemoMetic NucleoView
+- Add parser for Nanodrop Eight
+- Add calculated data documents to Unchained Labs Lunatic adapter
+- Add calculated data documents to Moldev Softmax Pro
+- Add multi-analyte-profiling BENCHLING/2024/01 schema
+- Add non-numeric options for tQuantityValue value property
+- Add support for non-numeric values to ChemoMetic NucleoView
+- Add context manager to handle backups to schema generation script
+- Add --regex argument to schema generation script
+### Fixed
+- Perkin Elmer Envision: calculated data name now captures string to the left - rather than right - of the ‘=’ in the Formula cell.
+### Changed
+- Simplify Moldev Softmax Pro parsing with dataclasses
+- Update plate reader schema in Moldev Softmax Pro
+- Standardized on UNITLESS constant ("(unitless)") for unitless values. Changed Perkin Elmer Envision, which formerly used "unitless".
+- Increase test coverage of calculated data documents on Perkin Elmer Envision.
 
 ## [0.1.12] - 2023-12-12
 ### Added

@@ -1,7 +1,7 @@
 from typing import Any, Optional
-import uuid
 
 import pandas as pd
+from pandas import Timestamp
 
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     CellCountingAggregateDocument,
@@ -25,8 +25,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
     TDateTimeValue,
-    ValueEnum,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
@@ -36,6 +36,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
@@ -66,7 +67,7 @@ def get_property_from_sample(
     try:
         value = float(value)
     except ValueError:
-        return property_type(value=ValueEnum.NaN)
+        return property_type(value=InvalidJsonFloat.NaN)
 
     # if the porperty type is measured in million cells per ml convert cells per ml
     if property_type == TQuantityValueMillionCellsPerMilliliter:
@@ -108,11 +109,11 @@ class ChemometecNucleoviewParser(VendorParser):
             if _get_value(data, i, "Total (cells/ml)")
         ]
 
-    def _get_date_time_or_epoch(self, time_val: Any) -> TDateTimeValue:
+    def _get_date_time_or_epoch(self, time_val: Optional[Timestamp]) -> TDateTimeValue:
         if time_val is None:
             # return epoch time 1970-01-01
             return self._get_date_time("1970-01-01")
-        return self._get_date_time(time_val)
+        return self._get_date_time_from_timestamp(time_val)
 
     def _get_cell_counting_document_item(
         self, data_frame: pd.DataFrame, row: int
@@ -122,7 +123,7 @@ class ChemometecNucleoviewParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=str(uuid.uuid4()),
+                        measurement_identifier=random_uuid_str(),
                         measurement_time=self._get_date_time_or_epoch(
                             _get_value(data_frame, row, "datetime")
                         ),
