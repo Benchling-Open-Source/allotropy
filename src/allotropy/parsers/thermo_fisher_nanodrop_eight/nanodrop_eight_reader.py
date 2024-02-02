@@ -20,6 +20,6 @@ class NanoDropEightReader:
             # Prevent pandas from rounding decimal values, at the cost of some speed.
             float_precision="round_trip",
         )
-        raw_data = raw_data.rename(columns=lambda x: x.strip())
+        raw_data = raw_data.rename(columns=lambda x: x.strip().lower())
 
         return raw_data
