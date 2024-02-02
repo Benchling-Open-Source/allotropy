@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ignore invalid first row when present for vi-cell XR files
 ### Changed
 - Corrections to the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
+- Replace null with N/A in Moldev Softmax Pro
 ### Deprecated
 ### Removed
 ### Security
