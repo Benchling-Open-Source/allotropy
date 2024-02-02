@@ -7,6 +7,7 @@ from typing import Any, Optional
 
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
@@ -267,7 +268,7 @@ class MeasurementList:
             msg = f"Unable to find {table_name} table."
             raise AllotropeConversionError(msg)
 
-        return pd.read_csv(
+        return read_csv(
             StringIO("\n".join(table_lines)),
             header=[0],
             index_col=[0],
@@ -295,7 +296,7 @@ class Data:
         header_lines = assert_not_none(
             reader.pop_until(CALIBRATION_BLOCK_HEADER), "Unable to find Header block."
         )
-        header_data = pd.read_csv(
+        header_data = read_csv(
             StringIO("\n".join(header_lines)),
             header=None,
             index_col=0,
