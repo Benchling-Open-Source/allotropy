@@ -45,6 +45,13 @@ def test_to_allotrope_absorbance(filename: str) -> None:
     _validate_allotrope_dict(allotrope_dict, expected_filepath)
 
 
+def test_to_allotrope_absorbance_no_pm_in_time() -> None:
+    test_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
+    expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate.json"
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    _validate_allotrope_dict(allotrope_dict, expected_filepath)
+
+
 # Test allotrope_model_from_file().
 @pytest.mark.parametrize("filename", ABSORBENCE_FILENAMES)
 def test_model_from_file_absorbance(filename: str) -> None:
