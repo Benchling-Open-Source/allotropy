@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime as datetime_lib
 from io import StringIO
 from typing import Optional, Union
 
@@ -119,13 +118,9 @@ class PlateNumber:
         # TODO put more metadata in the right spots
         return metadata_dict
 
-    # TODO(brian): should be using TimestampParser
     @classmethod
     def _parse_datetime(cls, date_: str, time_: str) -> str:
-        return datetime_lib.strptime(  # noqa: DTZ007
-            f"{date_} {time_}",
-            GEN5_DATETIME_FORMAT,
-        ).isoformat()
+        return f"{date_} {time_}"
 
 
 @dataclass(frozen=True)
