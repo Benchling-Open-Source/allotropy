@@ -2,6 +2,7 @@ from io import StringIO
 
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers import lines_reader
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.types import IOType
@@ -13,7 +14,7 @@ class NanoDropEightReader:
         all_lines = lines_reader.read_to_lines(contents)
         reader = CsvReader(all_lines)
         lines = reader.pop_csv_block_as_lines()
-        raw_data = pd.read_csv(
+        raw_data = read_csv(
             StringIO("\n".join(lines)),
             sep="\t",
             dtype={"Plate ID": str, "Sample ID": str},
