@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
@@ -56,9 +57,7 @@ class Header:
     def create(reader: LinesReader) -> Header:
         lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
         csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        )
+        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
         data = pd.Series(raw_data["values"].values, index=raw_data["index"])
         data.index = data.index.str.strip()
         data = data.str.strip().replace("NA", None)
@@ -329,7 +328,7 @@ class WellList:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        raw_data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
+        raw_data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
         data = raw_data[raw_data["Sample Name"].notnull()]
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
@@ -382,7 +381,7 @@ class AmplificationData:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+        return read_csv(csv_stream, sep="\t", thousands=r",")
 
     @staticmethod
     def create(
@@ -424,7 +423,7 @@ class MulticomponentData:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+        return read_csv(csv_stream, sep="\t", thousands=r",")
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well) -> MulticomponentData:
@@ -481,7 +480,7 @@ class Result:
         reader.pop()  # remove title
         data_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(data_lines))
-        data = pd.read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
+        data = read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
 
         reader.drop_empty()
 
@@ -490,9 +489,7 @@ class Result:
 
         metadata_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(metadata_lines))
-        raw_data = pd.read_csv(
-            csv_stream, header=None, sep="=", names=["index", "values"]
-        )
+        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
         metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
         metadata.index = metadata.index.str.strip()
 
@@ -663,7 +660,7 @@ class MeltCurveRawData:
         reader.pop()  # remove title
         lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(lines))
-        return pd.read_csv(csv_stream, sep="\t", thousands=r",")
+        return read_csv(csv_stream, sep="\t", thousands=r",")
 
 
 @dataclass(frozen=True)
