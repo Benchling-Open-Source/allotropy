@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from datetime import datetime as datetime_lib
 from io import StringIO
 from typing import Optional, Union
 
@@ -31,7 +32,6 @@ from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
 from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
 METADATA_PREFIXES = frozenset(
@@ -44,6 +44,7 @@ METADATA_PREFIXES = frozenset(
         "Reading Type",
     }
 )
+GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
 
 def try_float(value: str) -> Union[str, float]:
@@ -94,14 +95,10 @@ class PlateNumber:
     plate_barcode: str
 
     @classmethod
-    def create(
-        cls, lines_reader: LinesReader, timestamp_parser: TimestampParser
-    ) -> PlateNumber:
+    def create(cls, lines_reader: LinesReader) -> PlateNumber:
         assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
         metadata_dict = cls._parse_metadata(lines_reader)
-        datetime_ = cls._parse_datetime(
-            metadata_dict["Date"], metadata_dict["Time"], timestamp_parser
-        )
+        datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
 
         return PlateNumber(
             datetime=datetime_,
@@ -122,11 +119,13 @@ class PlateNumber:
         # TODO put more metadata in the right spots
         return metadata_dict
 
+    # TODO(brian): should be using TimestampParser
     @classmethod
-    def _parse_datetime(
-        cls, date_: str, time_: str, timestamp_parser: TimestampParser
-    ) -> str:
-        return timestamp_parser.parse(f"{date_} {time_}")
+    def _parse_datetime(cls, date_: str, time_: str) -> str:
+        return datetime_lib.strptime(  # noqa: DTZ007
+            f"{date_} {time_}",
+            GEN5_DATETIME_FORMAT,
+        ).isoformat()
 
 
 @dataclass(frozen=True)
@@ -524,11 +523,9 @@ class PlateData:
     kinetic_data: KineticData
 
     @staticmethod
-    def create(
-        lines_reader: LinesReader, timestamp_parser: TimestampParser
-    ) -> PlateData:
+    def create(lines_reader: LinesReader) -> PlateData:
         file_paths = FilePaths.create(lines_reader)
-        plate_number = PlateNumber.create(lines_reader, timestamp_parser)
+        plate_number = PlateNumber.create(lines_reader)
         plate_type = PlateType.create(lines_reader)
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()

@@ -19,6 +19,7 @@ TIMEZONE_CODES_MAP = {
     },
 }
 
+
 # TODO: TimestampParser should support localization -- e.g., passing "dayfirst=True" to dateutil.parser.parse.
 class TimestampParser:
     default_timezone: tzinfo

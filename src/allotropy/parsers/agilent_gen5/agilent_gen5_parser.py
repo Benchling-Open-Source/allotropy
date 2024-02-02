@@ -96,7 +96,7 @@ class AgilentGen5Parser(VendorParser):
         contents = named_file_contents.contents
         lines = read_to_lines(contents, encoding=None)
         section_lines_reader = SectionLinesReader(lines)
-        data = Data.create(section_lines_reader, self.timestamp_parser)
+        data = Data.create(section_lines_reader)
 
         first_plate = data.plates[0]
         # TODO we just use the metadata for the first plate, but in theory they could all have
