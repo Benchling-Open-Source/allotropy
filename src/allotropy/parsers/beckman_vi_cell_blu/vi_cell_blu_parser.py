@@ -88,11 +88,6 @@ class _Sample:
         )
 
 
-# TODO(brian): inline this function
-def get_property_from_sample(sample: _Sample, sample_property: SampleProperty) -> Any:
-    return sample.get_property_value(sample_property)
-
-
 class ViCellBluParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents, filename = named_file_contents
@@ -152,43 +147,42 @@ class ViCellBluParser(VendorParser):
                                         cell_type_processing_method=sample.get_value(
                                             "Cell type"
                                         ),
-                                        minimum_cell_diameter_setting=get_property_from_sample(
-                                            sample, SampleProperty.MINIMUM_DIAMETER
+                                        minimum_cell_diameter_setting=sample.get_property_value(
+                                            SampleProperty.MINIMUM_DIAMETER
                                         ),
-                                        maximum_cell_diameter_setting=get_property_from_sample(
-                                            sample, SampleProperty.MAXIMUM_DIAMETER
+                                        maximum_cell_diameter_setting=sample.get_property_value(
+                                            SampleProperty.MAXIMUM_DIAMETER
                                         ),
-                                        cell_density_dilution_factor=get_property_from_sample(
-                                            sample, SampleProperty.DILUTION
+                                        cell_density_dilution_factor=sample.get_property_value(
+                                            SampleProperty.DILUTION
                                         ),
                                     ),
-                                    viability__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.VIABILITY
+                                    viability__cell_counter_=sample.get_property_value(
+                                        SampleProperty.VIABILITY
                                     ),
-                                    viable_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.VIABLE_CELLS_ML
+                                    viable_cell_density__cell_counter_=sample.get_property_value(
+                                        SampleProperty.VIABLE_CELLS_ML
                                     ),
-                                    total_cell_count=get_property_from_sample(
-                                        sample, SampleProperty.CELL_COUNT
+                                    total_cell_count=sample.get_property_value(
+                                        SampleProperty.CELL_COUNT
                                     ),
-                                    total_cell_density__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.TOTAL_CELLS_ML
+                                    total_cell_density__cell_counter_=sample.get_property_value(
+                                        SampleProperty.TOTAL_CELLS_ML
                                     ),
-                                    average_total_cell_diameter=get_property_from_sample(
-                                        sample, SampleProperty.AVERAGE_DIAMETER
+                                    average_total_cell_diameter=sample.get_property_value(
+                                        SampleProperty.AVERAGE_DIAMETER
                                     ),
-                                    average_live_cell_diameter__cell_counter_=get_property_from_sample(
-                                        sample, SampleProperty.AVERAGE_VIABLE_DIAMETER
+                                    average_live_cell_diameter__cell_counter_=sample.get_property_value(
+                                        SampleProperty.AVERAGE_VIABLE_DIAMETER
                                     ),
-                                    viable_cell_count=get_property_from_sample(
-                                        sample, SampleProperty.VIABLE_CELLS
+                                    viable_cell_count=sample.get_property_value(
+                                        SampleProperty.VIABLE_CELLS
                                     ),
-                                    average_total_cell_circularity=get_property_from_sample(
-                                        sample, SampleProperty.AVERAGE_CIRCULARITY
+                                    average_total_cell_circularity=sample.get_property_value(
+                                        SampleProperty.AVERAGE_CIRCULARITY
                                     ),
-                                    average_viable_cell_circularity=get_property_from_sample(
-                                        sample,
-                                        SampleProperty.AVERAGE_VIABLE_CIRCULARITY,
+                                    average_viable_cell_circularity=sample.get_property_value(
+                                        SampleProperty.AVERAGE_VIABLE_CIRCULARITY
                                     ),
                                 ),
                             ]
