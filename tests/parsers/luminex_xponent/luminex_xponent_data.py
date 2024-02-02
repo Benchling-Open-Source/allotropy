@@ -1,3 +1,4 @@
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Analyte,
@@ -10,8 +11,9 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
 
 
 def get_reader() -> CsvReader:
-    with open("tests/parsers/luminex_xponent/testdata/test_data.csv", "rb") as fp:
-        lines = read_to_lines(fp)
+    filename = "test_data.csv"
+    with open(f"tests/parsers/luminex_xponent/testdata/{filename}", "rb") as fp:
+        lines = read_to_lines(NamedFileContents(fp, filename))
     return CsvReader(lines)
 
 
