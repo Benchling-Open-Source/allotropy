@@ -11,10 +11,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Measurement,
     MeasurementList,
 )
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.luminex_xponent.luminex_xponent_data import get_data, get_reader
-
-TIMESTAMP_PARSER = TimestampParser()
 
 
 def get_result_lines(remove: str = "") -> list[str]:
@@ -74,7 +71,7 @@ def test_create_header() -> None:
         },
         orient="index",
     ).T
-    header = Header.create(data, TIMESTAMP_PARSER)
+    header = Header.create(data)
 
     assert header == Header(
         model_number="Model",  # Program, col 4
@@ -85,7 +82,7 @@ def test_create_header() -> None:
         experimental_data_identifier="ABC_0000",  # Batch
         sample_volume_setting=1,  # SampleVolume
         plate_well_count=10,  # ProtocolPlate, column 5 (after Type)
-        measurement_time="2024-01-17T07:41:29+00:00",  # BatchStartTime  MM/DD/YYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
+        measurement_time="1/17/2024 7:41:29 AM",  # BatchStartTime
         detector_gain_setting="Pro MAP",  # ProtocolReporterGain
         analyst=None,  # Operator row
         data_system_instance_identifier="AAA000",  # ComputerName
@@ -132,7 +129,7 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         error_msg = f"Unable to find {required_col} data on header block."
 
     with pytest.raises(AllotropeConversionError, match=error_msg):
-        Header.create(data.drop(columns=[required_col]), TIMESTAMP_PARSER)
+        Header.create(data.drop(columns=[required_col]))
 
 
 @pytest.mark.short
@@ -141,11 +138,11 @@ def test_create_calibration_item() -> None:
     report = "Passed"
 
     calibration_item = CalibrationItem.create(
-        f"Last {name},{report} 05/17/2023 09:25:11", TIMESTAMP_PARSER
+        f"Last {name},{report} 05/17/2023 09:25:11"
     )
 
     assert calibration_item == CalibrationItem(
-        name, report, "2023-05-17T09:25:11+00:00"
+        name, report, "05/17/2023 09:25:11"
     )
 
 
@@ -154,7 +151,7 @@ def test_create_calibration_item_invalid_line_format() -> None:
     bad_line = "Bad line."
     error = f"Expected at least two columns on the calibration line, got: {bad_line}"
     with pytest.raises(AllotropeConversionError, match=error):
-        CalibrationItem.create(bad_line, TIMESTAMP_PARSER)
+        CalibrationItem.create(bad_line)
 
 
 @pytest.mark.short
@@ -163,16 +160,7 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_line = f"Last CalReport,{bad_result}"
     error = f"Invalid calibration result format, got: {bad_result}"
     with pytest.raises(AllotropeConversionError, match=error):
-        CalibrationItem.create(bad_line, TIMESTAMP_PARSER)
-
-
-@pytest.mark.short
-def test_create_calibration_item_invalid_calibration_time() -> None:
-    invalid_time = "bad datetime"
-    bad_line = f"Last CalReport, Passed {invalid_time}"
-    error = f"Could not parse time '{invalid_time}'."
-    with pytest.raises(AllotropeConversionError, match=error):
-        CalibrationItem.create(bad_line, TIMESTAMP_PARSER)
+        CalibrationItem.create(bad_line)
 
 
 @pytest.mark.short
@@ -226,6 +214,6 @@ def test_create_measurement_list_without_required_table_then_raise(
 
 
 def test_create_data() -> None:
-    data = Data.create(get_reader(), TIMESTAMP_PARSER)
+    data = Data.create(get_reader())
 
     assert data == get_data()

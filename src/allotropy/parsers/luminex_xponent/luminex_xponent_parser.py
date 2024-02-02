@@ -45,7 +45,7 @@ class LuminexXponentParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents.contents)
         reader = CsvReader(lines)
-        data = Data.create(reader, self.timestamp_parser)
+        data = Data.create(reader)
         return self._get_model(named_file_contents.original_file_name, data)
 
     def _get_model(self, file_name: str, data: Data) -> Model:
@@ -61,7 +61,7 @@ class LuminexXponentParser(VendorParser):
                             CalibrationDocumentItem(
                                 calibration_name=calibration_item.name,
                                 calibration_report=calibration_item.report,
-                                calibration_time=calibration_item.time,
+                                calibration_time=self._get_date_time(calibration_item.time),
                             )
                             for calibration_item in data.calibration_data
                         ]
@@ -116,7 +116,7 @@ class LuminexXponentParser(VendorParser):
 
         return MeasurementDocumentItem(
             measurement_identifier=random_uuid_str(),
-            measurement_time=header_data.measurement_time,
+            measurement_time=self._get_date_time(header_data.measurement_time),
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 location_identifier=measurement.location_identifier,
