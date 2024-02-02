@@ -5,6 +5,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.roche_cedex_bioht.constants import (
     ANALYTES_LOOKUP,
     DATA_HEADER,
@@ -25,7 +26,7 @@ class RocheCedexBiohtReader:
 
     def read_title_data(self, contents: IOType) -> pd.Series[Any]:
         contents.seek(0)
-        return pd.read_csv(
+        return read_csv(
             contents,
             delimiter="\t",
             usecols=INFO_HEADER,
@@ -35,7 +36,7 @@ class RocheCedexBiohtReader:
 
     def read_samples_data(self, contents: IOType) -> pd.DataFrame:
         contents.seek(0)
-        sample_rows: pd.DataFrame = pd.read_csv(
+        sample_rows = read_csv(
             contents,
             delimiter="\t",
             usecols=DATA_HEADER,

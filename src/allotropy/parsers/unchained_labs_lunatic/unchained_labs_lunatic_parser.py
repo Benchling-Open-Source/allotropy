@@ -3,7 +3,6 @@ from __future__ import annotations
 from typing import Optional
 
 import numpy as np
-import pandas as pd
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -28,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
@@ -41,7 +41,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class UnchainedLabsLunaticParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents, filename = named_file_contents
-        data = pd.read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
+        data = read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
 
         return self._get_model(Data.create(data), filename)
 

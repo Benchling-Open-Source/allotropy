@@ -6,6 +6,7 @@ from typing import Literal, Optional, Union
 import chardet
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.types import IOType
 
@@ -126,7 +127,7 @@ class CsvReader(LinesReader):
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
-            return pd.read_csv(
+            return read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
                 sep=sep,
