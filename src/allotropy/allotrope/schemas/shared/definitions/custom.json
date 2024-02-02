@@ -309,7 +309,7 @@
             }
         ]
     },
-    "tRelativeFluorescenceUnit": {
+    "tQuantityValueRelativeFluorescenceUnit": {
         "allOf": [
             {
                 "$ref": "#/$defs/RelativeFluorescenceUnit"
@@ -319,13 +319,23 @@
             }
         ]
     },
-    "tRelativeLightUnit": {
+    "tQuantityValueRelativeLightUnit": {
         "allOf": [
             {
                 "$ref": "#/$defs/RelativeLightUnit"
             },
             {
                 "$ref": "#/$defs/tQuantityValue"
+            }
+        ]
+    },
+    "tQuantityValueSquareCentimetersPerGram":{
+        "allOf": [
+            {
+                "$ref": "#/$defs/tQuantityValue"
+            },
+            {
+                "$ref": "#/$defs/SquareCentimetersPerGram"
             }
         ]
     },

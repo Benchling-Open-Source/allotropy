@@ -32,13 +32,14 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
-    TRelativeLightUnit,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TDateTimeValue,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
@@ -287,7 +288,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                luminescence=TRelativeLightUnit(result.value),
+                luminescence=TQuantityValueRelativeLightUnit(result.value),
                 compartment_temperature=compartment_temperature,
             )
         else:  # read_type is FLUORESCENCE
@@ -300,7 +301,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                fluorescence=TRelativeFluorescenceUnit(result.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(result.value),
                 compartment_temperature=compartment_temperature,
             )
 
@@ -392,7 +393,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         calculation_description=calculated_plate.plate_info.formula,
                         calculated_result=TQuantityValue(
                             value=calculated_result.value,
-                            unit="unitless",
+                            unit=UNITLESS,
                         ),
                         data_source_aggregate_document=DataSourceAggregateDocument1(
                             data_source_document=[

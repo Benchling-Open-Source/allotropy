@@ -1,5 +1,3 @@
-import uuid
-
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
@@ -11,18 +9,18 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class NovaBioFlexParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents, filename = named_file_contents
-        return self._get_model(Data.create(contents, filename))
+        return self._get_model(Data.create(named_file_contents))
 
     def _get_model(self, data: Data) -> Model:
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=random_uuid_str(),
                 data_processing_time=self._get_date_time(data.title.processing_time),
                 analyst=data.sample_list.analyst,
                 device_system_document=DeviceSystemDocument(

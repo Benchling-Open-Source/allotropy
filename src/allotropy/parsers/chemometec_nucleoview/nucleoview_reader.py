@@ -1,12 +1,13 @@
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.types import IOType
 
 
 class NucleoviewReader:
     @classmethod
     def read(cls, contents: IOType) -> pd.DataFrame:
-        df = pd.read_csv(
+        df = read_csv(
             contents,
             skipfooter=1,
             sep=";",
@@ -34,5 +35,9 @@ class NucleoviewReader:
                 raw_data["Date time"] + raw_data["Time zone offset"]
             )
         raw_data["Sample ID"] = raw_data["Image"].str.split("-", n=3).str[3]
+        raw_data = raw_data.rename(
+            {"Estimated cell diameter [um]": "Estimated cell diameter (um)"},
+            axis=1,
+        )
 
         return raw_data

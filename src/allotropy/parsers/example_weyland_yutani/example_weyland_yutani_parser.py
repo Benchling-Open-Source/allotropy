@@ -1,5 +1,3 @@
-import uuid
-
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -24,6 +22,7 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure i
     Data,
 )
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -40,7 +39,7 @@ class ExampleWeylandYutaniParser(VendorParser):
 
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=random_uuid_str(),
                 measurement_time=self._get_measurement_time(data),
                 analytical_method_identifier=data.basic_assay_info.protocol_id,
                 experimental_data_identifier=data.basic_assay_info.assay_id,

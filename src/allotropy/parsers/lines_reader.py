@@ -1,11 +1,12 @@
 from collections.abc import Iterator
 from io import StringIO
 from re import search
-from typing import Optional
+from typing import Literal, Optional, Union
 
 import chardet
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 
@@ -42,8 +43,14 @@ class LinesReader:
         self.lines = lines
         self.current_line = 0
 
+    def line_exists(self, line: int) -> bool:
+        return 0 <= line < len(self.lines)
+
     def current_line_exists(self) -> bool:
-        return 0 <= self.current_line < len(self.lines)
+        return self.line_exists(self.current_line)
+
+    def get_line(self, line: int) -> Optional[str]:
+        return self.lines[line] if self.line_exists(line) else None
 
     def get(self) -> Optional[str]:
         return self.lines[self.current_line] if self.current_line_exists() else None
@@ -117,12 +124,12 @@ class CsvReader(LinesReader):
         self,
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
-        header: Optional[int] = None,
+        header: Optional[Union[int, Literal["infer"]]] = None,
         sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
-            return pd.read_csv(
+            return read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
                 sep=sep,
