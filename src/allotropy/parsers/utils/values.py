@@ -76,12 +76,20 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     return df
 
 
+def try_str_from_series_or_default(
+    data: pd.Series[Any],
+    key: str,
+    default: str,
+) -> str:
+    value = data.get(key)
+    return default if value is None else str(value)
+
+
 def try_str_from_series_or_none(
     data: pd.Series[Any],
     key: str,
-    default: Optional[str] = None,
 ) -> Optional[str]:
-    value = data.get(key, default)
+    value = data.get(key)
     return None if value is None else str(value)
 
 
