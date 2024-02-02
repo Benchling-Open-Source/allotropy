@@ -141,9 +141,7 @@ def test_create_calibration_item() -> None:
         f"Last {name},{report} 05/17/2023 09:25:11"
     )
 
-    assert calibration_item == CalibrationItem(
-        name, report, "05/17/2023 09:25:11"
-    )
+    assert calibration_item == CalibrationItem(name, report, "05/17/2023 09:25:11")
 
 
 @pytest.mark.short

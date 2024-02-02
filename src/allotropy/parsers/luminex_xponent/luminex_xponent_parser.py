@@ -61,7 +61,9 @@ class LuminexXponentParser(VendorParser):
                             CalibrationDocumentItem(
                                 calibration_name=calibration_item.name,
                                 calibration_report=calibration_item.report,
-                                calibration_time=self._get_date_time(calibration_item.time),
+                                calibration_time=self._get_date_time(
+                                    calibration_item.time
+                                ),
                             )
                             for calibration_item in data.calibration_data
                         ]

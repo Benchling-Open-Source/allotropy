@@ -109,9 +109,7 @@ class CalibrationItem:
     time: str
 
     @classmethod
-    def create(
-        cls, calibration_line: str
-    ) -> CalibrationItem:
+    def create(cls, calibration_line: str) -> CalibrationItem:
         """Create a CalibrationItem from a calibration line.
 
         Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
@@ -305,9 +303,7 @@ class Data:
         return header_data.T
 
     @classmethod
-    def _get_calibration_data(
-        cls, reader: CsvReader
-    ) -> list[CalibrationItem]:
+    def _get_calibration_data(cls, reader: CsvReader) -> list[CalibrationItem]:
         reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
         calibration_lines = reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE)
         if not calibration_lines:
