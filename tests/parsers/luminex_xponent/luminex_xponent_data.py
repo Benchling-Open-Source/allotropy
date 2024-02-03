@@ -26,7 +26,7 @@ def get_data() -> Data:
             experimental_data_identifier="ABCD_1234_20231225",  # Batch
             sample_volume_setting=50,  # SampleVolume
             plate_well_count=96,  # ProtocolPlate, column 5 (after Type)
-            measurement_time="2023-05-17T18:42:29+00:00",  # BatchStartTime  MM/DD/YYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
+            measurement_time="5/17/2023 6:42:29 PM",  # BatchStartTime  MM/DD/YYY HH:MM:SS %p ->  YYYY-MM-DD HH:MM:SS
             detector_gain_setting="Standard PMT",  # ProtocolReporterGain
             analyst="waldo",  # Operator row
             data_system_instance_identifier="ABCDEFG123456",  # ComputerName
@@ -35,17 +35,17 @@ def get_data() -> Data:
             CalibrationItem(
                 name="F3DeCAL1 Calibration",
                 report="Passed",
-                time="2023-05-17T09:25:11+00:00",
+                time="05/17/2023 09:25:11",
             ),
             CalibrationItem(
                 name="F3DCAL2 Calibration",
                 report="Failed",
-                time="2023-05-17T09:25:33+00:00",
+                time="05/17/2023 09:25:33",
             ),
             CalibrationItem(
                 name="Fluidics Test",
                 report="Passed",
-                time="2023-05-17T09:28:43+00:00",
+                time="05/17/2023 09:28:43",
             ),
         ],
         minimum_bead_count_setting=100,
