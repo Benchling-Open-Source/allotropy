@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Fix mixup of Plate ID and Plate Position in Unchained Labs Lunatic Parser
 ### Changed
 ### Deprecated
 ### Removed
