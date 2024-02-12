@@ -64,7 +64,7 @@ def model_from_file(test_file: str, vendor_type: VendorType) -> Any:
     return allotrope_model_from_file(test_file, vendor_type)
 
 
-def validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None:
+def _validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None:
     """Check that the newly created allotrope_dict matches the pre-defined schema from Allotrope."""
     allotrope_schema = get_schema(schema_relative_path)
     jsonschema.validate(
@@ -74,7 +74,7 @@ def validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None
     )
 
 
-def validate_contents(
+def _validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
     identifiers_to_exclude: Optional[list[str]] = None,
@@ -85,3 +85,15 @@ def validate_contents(
     _assert_allotrope_dicts_equal(
         expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
     )
+
+
+def generate_allotrope_and_validate(
+    test_file: str,
+    vendor_type: VendorType,
+    schema_relative_path: str,
+    expected_output_file: str,
+    identifiers_to_exclude: Optional[list[str]] = None,
+) -> None:
+    allotrope_dict = from_file(test_file, vendor_type)
+    _validate_schema(allotrope_dict, schema_relative_path)
+    _validate_contents(allotrope_dict, expected_output_file, identifiers_to_exclude)

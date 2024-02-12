@@ -1,7 +1,9 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    generate_allotrope_and_validate,
+)
 
 OUTPUT_FILES = (
     "Demo_A260_dsDNA_Data",
@@ -18,6 +20,6 @@ def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
     expected_filepath = (
         f"tests/parsers/unchained_labs_lunatic/testdata/{output_file}.json"
     )
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA_FILE)
-    validate_contents(allotrope_dict, expected_filepath)
+    generate_allotrope_and_validate(
+        test_filepath, VENDOR_TYPE, SCHEMA_FILE, expected_filepath
+    )

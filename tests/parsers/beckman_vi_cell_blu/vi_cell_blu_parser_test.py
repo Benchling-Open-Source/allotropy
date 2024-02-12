@@ -12,7 +12,9 @@ from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_filename,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    generate_allotrope_and_validate,
+)
 
 OUTPUT_FILES = (
     "Beckman_Vi-Cell-BLU_example01",
@@ -33,18 +35,12 @@ def _get_expected_file_path(output_file: str) -> str:
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_vi_cell_blu_to_asm_schema_is_valid(output_file: str) -> None:
-    test_filepath = _get_test_file_path(output_file)
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA_FILE)
-
-
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
     test_filepath = _get_test_file_path(output_file)
     expected_filepath = _get_expected_file_path(output_file)
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+    generate_allotrope_and_validate(
+        test_filepath, VENDOR_TYPE, SCHEMA_FILE, expected_filepath
+    )
 
 
 def _clear_measurement_identifier(model: Model) -> None:

@@ -1,7 +1,9 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import (
+    generate_allotrope_and_validate,
+)
 
 valid_files = (
     "Weyland_Yutani_simple_correct",
@@ -17,6 +19,6 @@ VENDOR_TYPE = Vendor.EXAMPLE_WEYLAND_YUTANI
 def test_parse_weyland_yutani_to_asm(filestem: str) -> None:
     test_filepath = f"{TESTDATA}/{filestem}.csv"
     expected_filepath = f"{TESTDATA}/{filestem}.json"
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA)
-    validate_contents(allotrope_dict, expected_filepath)
+    generate_allotrope_and_validate(
+        test_filepath, VENDOR_TYPE, SCHEMA, expected_filepath
+    )
