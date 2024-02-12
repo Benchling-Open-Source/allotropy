@@ -7,7 +7,7 @@
                     "measurement time": "2022-09-01T14:25:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "1c6035e8-bfa2-4517-bfa6-20fcdb3e9bd8",
+                            "measurement identifier": "e153a79b-72f4-4ceb-a6cf-d5b30d002fc9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -26,6 +26,16 @@
                             "absorbance": {
                                 "value": 4.142,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.142,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -37,7 +47,7 @@
                     "measurement time": "2022-09-01T14:25:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "aef96986-c941-4a8f-bf74-0788d618890e",
+                            "measurement identifier": "0485fb6a-8ce3-4652-8334-b361c8c54797",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -56,6 +66,16 @@
                             "absorbance": {
                                 "value": 4.153,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.153,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -67,7 +87,7 @@
                     "measurement time": "2022-09-01T14:25:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "dbf717e2-360f-4d11-8f82-033cd1046e9b",
+                            "measurement identifier": "68737c98-fb36-47f5-b957-359155fbe0cd",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -86,6 +106,16 @@
                             "absorbance": {
                                 "value": 4.138,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.138,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -97,7 +127,7 @@
                     "measurement time": "2022-09-01T14:25:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "5ee55ebd-808c-448c-a5a6-8fbcc7f196d5",
+                            "measurement identifier": "42c9a889-d0ef-45b3-88bf-65413e174759",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -116,6 +146,16 @@
                             "absorbance": {
                                 "value": 4.158,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.158,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -127,7 +167,7 @@
                     "measurement time": "2022-09-01T14:25:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "68476cf5-b508-47b7-8e9c-1bfed5686d91",
+                            "measurement identifier": "cd391bf1-d751-4873-b27e-55587a1b9d06",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -146,6 +186,16 @@
                             "absorbance": {
                                 "value": 4.18,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.18,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -157,7 +207,7 @@
                     "measurement time": "2022-09-01T14:25:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "1fcc4a91-5fcf-414a-90a4-54ff0989b4b7",
+                            "measurement identifier": "a079615e-b0a4-4cab-8bfd-2c5611dacfd6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -176,6 +226,16 @@
                             "absorbance": {
                                 "value": 4.185,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.185,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -187,7 +247,7 @@
                     "measurement time": "2022-09-01T14:28:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "5f20b426-c410-488b-9c34-e42b6558f511",
+                            "measurement identifier": "7a95dd7c-e170-4740-b81f-2934b85d6331",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -206,6 +266,16 @@
                             "absorbance": {
                                 "value": 4.56,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.56,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -217,7 +287,7 @@
                     "measurement time": "2022-09-01T14:28:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "7371e536-6416-4911-a477-4421ec124982",
+                            "measurement identifier": "a31abf6f-120f-4fe8-ba11-63aa92d415fb",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -236,6 +306,16 @@
                             "absorbance": {
                                 "value": 4.544,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.544,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -247,7 +327,7 @@
                     "measurement time": "2022-09-01T14:28:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "0f01ede6-720f-4436-bb21-5700d0d87aea",
+                            "measurement identifier": "61dcbf0b-197a-4fb6-83ad-17a21a80e344",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -266,6 +346,16 @@
                             "absorbance": {
                                 "value": 4.548,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.548,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -277,7 +367,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "cbf082cd-ff5c-49b5-99c5-47c6da27d19d",
+                            "measurement identifier": "0713c043-7be9-4a1b-97b5-885bb41a2472",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -296,6 +386,16 @@
                             "absorbance": {
                                 "value": 41.724,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 41.72,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -307,7 +407,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "2e8094cf-c95f-4412-90f8-af8b39e3e14f",
+                            "measurement identifier": "74f254cb-9100-41cd-b0fe-6943c29c7aa4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -326,6 +426,16 @@
                             "absorbance": {
                                 "value": 50.116,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 50.12,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -337,7 +447,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "3844eb8a-2f5d-4b1e-8efc-1106fba8105b",
+                            "measurement identifier": "1607747f-a085-495d-8dbf-3b324ecdf919",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -356,6 +466,16 @@
                             "absorbance": {
                                 "value": 44.989,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 44.99,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -367,7 +487,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "196ce8fa-5fa4-4842-a631-57cec0cdd9e0",
+                            "measurement identifier": "f8de98a0-10c2-44a8-8ad1-e65f938beca1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -386,6 +506,16 @@
                             "absorbance": {
                                 "value": 62.522,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 62.52,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -397,7 +527,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "9860b421-2b02-46ae-b7d7-7ce4a724c85a",
+                            "measurement identifier": "15b40d89-6c71-4084-8bc4-9eb33471ee00",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -416,6 +546,16 @@
                             "absorbance": {
                                 "value": -5.338,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -5.338,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -427,7 +567,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "b166c6f7-7ec9-458a-8ca1-3cebef1623fa",
+                            "measurement identifier": "a018e2d0-a1d3-4a29-9d73-16a60161d9af",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -446,6 +586,16 @@
                             "absorbance": {
                                 "value": -8.199,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": -8.199,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -457,7 +607,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "13dc543f-592d-4aa4-8ad8-e26fcb763133",
+                            "measurement identifier": "de49513e-c1bc-48b4-8cdf-8839fa2ea1b9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -476,6 +626,16 @@
                             "absorbance": {
                                 "value": 4.919,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.919,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -487,7 +647,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "46d3500b-0453-41c7-8776-04c5536cd6ed",
+                            "measurement identifier": "9b729eeb-cfd6-454a-80da-7ff64d781b2e",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -506,6 +666,16 @@
                             "absorbance": {
                                 "value": 4.871,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.871,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -517,7 +687,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "9bdd8ab9-2832-46da-b6f3-e0e02436e61c",
+                            "measurement identifier": "40c3b245-f082-40c8-808c-1afe08ccb591",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -536,6 +706,16 @@
                             "absorbance": {
                                 "value": 4.829,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.829,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -547,7 +727,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "64a9a0ba-dad0-4451-88b7-af758a432841",
+                            "measurement identifier": "25b74627-6f1f-4ec5-9ffd-cab7691547c2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -566,6 +746,16 @@
                             "absorbance": {
                                 "value": 5.333,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 5.333,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -577,7 +767,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "c0d31b4a-35a6-4305-9dca-d8b50ffecc1e",
+                            "measurement identifier": "e8f67a0b-fd6f-4b63-9d09-672fb5c33b33",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -596,6 +786,16 @@
                             "absorbance": {
                                 "value": 5.3,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 5.3,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -607,7 +807,7 @@
                     "measurement time": "2022-09-01T14:39:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "17980122-7267-48ba-bd33-0b95b759357d",
+                            "measurement identifier": "6fa1552f-b4ef-400e-83cb-d05cf1f6cf7e",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -626,6 +826,16 @@
                             "absorbance": {
                                 "value": 5.326,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 5.326,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -637,7 +847,7 @@
                     "measurement time": "2022-09-01T14:42:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "155d304f-b947-4fce-af4e-4077efdf3d76",
+                            "measurement identifier": "1fbb318c-207d-459b-9eff-4de99dd5481a",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -656,6 +866,16 @@
                             "absorbance": {
                                 "value": 6.969,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 6.969,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -667,7 +887,7 @@
                     "measurement time": "2022-09-01T14:42:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "d4d93b2b-d0fe-4d18-863f-e6a1fe11c63c",
+                            "measurement identifier": "10520488-71f3-4add-aa06-701c891a9be9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -686,6 +906,16 @@
                             "absorbance": {
                                 "value": 6.935,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 6.935,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -697,7 +927,7 @@
                     "measurement time": "2022-09-01T14:42:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "b2e22003-a1d0-4bda-acb2-23300371a2ae",
+                            "measurement identifier": "594b75fe-1f15-4c26-b6d3-8a9cea2ec7bc",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -716,6 +946,16 @@
                             "absorbance": {
                                 "value": 6.972,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 6.972,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -727,7 +967,7 @@
                     "measurement time": "2022-09-01T14:42:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "25a92fbf-5fd5-4f7f-bffb-3130ffa01b70",
+                            "measurement identifier": "a384f497-ba36-4f7e-ba6e-d97646e57748",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -746,6 +986,16 @@
                             "absorbance": {
                                 "value": 4.813,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.813,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -757,7 +1007,7 @@
                     "measurement time": "2022-09-01T14:42:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "9285457c-615c-40a4-b7c8-b60c759d0277",
+                            "measurement identifier": "0c650cec-7e29-4260-bd95-70765c5b6426",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -776,6 +1026,16 @@
                             "absorbance": {
                                 "value": 4.795,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.795,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -787,7 +1047,7 @@
                     "measurement time": "2022-09-01T14:42:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "8cad517f-f5ed-4e3c-96f5-6dbb8b02a342",
+                            "measurement identifier": "d6c118f0-2c73-4be0-88e8-5cf3a791e38b",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -806,6 +1066,16 @@
                             "absorbance": {
                                 "value": 4.812,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.812,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -817,7 +1087,7 @@
                     "measurement time": "2022-09-01T14:44:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "0c591705-eda0-4123-a42e-456fef1653be",
+                            "measurement identifier": "f06d3da2-e940-4916-a7b6-33058facd53d",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -836,6 +1106,16 @@
                             "absorbance": {
                                 "value": 4.199,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.199,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -847,7 +1127,7 @@
                     "measurement time": "2022-09-01T14:44:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "b22f9d0b-f275-4c8f-9269-287c27251b72",
+                            "measurement identifier": "a4d06203-6075-4360-825a-8296c7210d86",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -866,6 +1146,16 @@
                             "absorbance": {
                                 "value": 4.175,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.175,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -877,7 +1167,7 @@
                     "measurement time": "2022-09-01T14:44:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "0d7067c9-8477-4381-babd-77d8208c4d21",
+                            "measurement identifier": "ac830667-dbd9-4113-b973-e916f082e815",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -896,6 +1186,16 @@
                             "absorbance": {
                                 "value": 4.163,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.163,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -907,7 +1207,7 @@
                     "measurement time": "2022-09-01T14:44:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "da9373bc-3898-49be-8169-6db6490907e4",
+                            "measurement identifier": "b97635e1-7caa-475a-a799-07a7e05a5be6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -926,6 +1226,16 @@
                             "absorbance": {
                                 "value": 4.514,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.514,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -937,7 +1247,7 @@
                     "measurement time": "2022-09-01T14:44:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "ce73a9e4-2142-4c5b-8e07-05b16d73490c",
+                            "measurement identifier": "856fd4a5-d877-454d-85db-b0fea1758618",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -956,6 +1266,16 @@
                             "absorbance": {
                                 "value": 4.528,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.528,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -967,7 +1287,7 @@
                     "measurement time": "2022-09-01T14:44:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "4d0236b4-2e03-4be7-b0c1-755ee3679676",
+                            "measurement identifier": "4444d18e-2ce2-439a-bff7-cd58eed18937",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -986,6 +1306,16 @@
                             "absorbance": {
                                 "value": 4.558,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.558,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -997,7 +1327,7 @@
                     "measurement time": "2022-09-01T14:45:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "66e2681b-25b1-4317-ae81-4f1cadaa62ef",
+                            "measurement identifier": "21cf1ff6-be9c-486b-b715-327d702d6d1c",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1016,6 +1346,16 @@
                             "absorbance": {
                                 "value": 4.572,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.572,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1027,7 +1367,7 @@
                     "measurement time": "2022-09-01T14:45:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "d99ee65f-269e-4de3-890a-a8b0608d2307",
+                            "measurement identifier": "358157e4-a095-472c-a82a-4daa7ba3f797",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1046,6 +1386,16 @@
                             "absorbance": {
                                 "value": 4.54,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.54,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1057,7 +1407,7 @@
                     "measurement time": "2022-09-01T14:45:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "c96cf316-ac51-4269-a231-989f218ae48f",
+                            "measurement identifier": "ecde5cd5-630c-44af-877c-a401a247daab",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1076,6 +1426,16 @@
                             "absorbance": {
                                 "value": 4.546,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.546,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1087,7 +1447,7 @@
                     "measurement time": "2022-09-01T14:45:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "65ba66a6-72a1-4ac2-a29b-dfc9e0f47853",
+                            "measurement identifier": "4cea5fa5-2487-4805-a9a8-c3fa59e9af35",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1106,6 +1466,16 @@
                             "absorbance": {
                                 "value": 4.532,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.532,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1117,7 +1487,7 @@
                     "measurement time": "2022-09-01T14:45:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "70fb186d-b39b-4605-bded-1aa714e6b5b9",
+                            "measurement identifier": "9e9a2b04-c63c-4d18-a69f-7082bade0431",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1136,6 +1506,16 @@
                             "absorbance": {
                                 "value": 4.542,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.542,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1147,7 +1527,7 @@
                     "measurement time": "2022-09-01T14:45:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "5b750792-b046-46a9-8938-606fd7e09b3c",
+                            "measurement identifier": "c75179b2-c73a-4101-b58e-3046c81685aa",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1166,6 +1546,16 @@
                             "absorbance": {
                                 "value": 4.537,
                                 "unit": "mAU"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "mass concentration": {
+                                            "value": 4.537,
+                                            "unit": "mg/mL"
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]
@@ -1180,7 +1570,7 @@
         "data system document": {
             "file name": "Thermo_NanoDrop_Eight_example02.txt",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.12"
+            "ASM converter version": "0.1.14"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1193,16 +1583,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "2d94a03f-9a27-433c-9edd-bcbabc624ec9",
+                                "data source identifier": "cdc29cd7-25c9-44c9-b807-94150e9b648c",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "1c6035e8-bfa2-4517-bfa6-20fcdb3e9bd8",
+                                "data source identifier": "e153a79b-72f4-4ceb-a6cf-d5b30d002fc9",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "a0701a19-d42f-4725-983a-5a1ac34d14be"
+                    "calculated data identifier": "fe90a041-ac82-415c-b865-c8e3284cfd8c"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1213,16 +1603,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "ec667fdd-53c6-4069-ae56-5a14e05c7d10",
+                                "data source identifier": "49438d37-13af-4a8e-abc9-e2570001b255",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "aef96986-c941-4a8f-bf74-0788d618890e",
+                                "data source identifier": "0485fb6a-8ce3-4652-8334-b361c8c54797",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "189933f5-ef6e-4e0a-8cdf-5367ad9da623"
+                    "calculated data identifier": "8cbdd2d7-8345-49aa-9034-2e3f1f10c72b"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1233,16 +1623,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "14be0bc3-21c8-4986-bd6d-1b2ddb773f93",
+                                "data source identifier": "febcd5c4-1393-4374-92a4-6f8a609a5130",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "dbf717e2-360f-4d11-8f82-033cd1046e9b",
+                                "data source identifier": "68737c98-fb36-47f5-b957-359155fbe0cd",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "b27d7ad7-636f-4882-886a-2def262d2e51"
+                    "calculated data identifier": "486f39b7-5ae5-4bc6-b48f-40052f460936"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1253,16 +1643,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "0950dbaa-4c37-4288-adc6-6c60b875cd71",
+                                "data source identifier": "a3284ab8-ab4c-42fc-a47f-19d6d6de4aa8",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "5ee55ebd-808c-448c-a5a6-8fbcc7f196d5",
+                                "data source identifier": "42c9a889-d0ef-45b3-88bf-65413e174759",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "ed81ab0a-69e4-4abf-ad17-b2798e88f0fd"
+                    "calculated data identifier": "bbdc7697-da62-4d07-8ef5-f7e609d0d596"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1273,16 +1663,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "70dcec2b-0a30-4c8e-8da0-1c8f874a05ab",
+                                "data source identifier": "9b374b65-bad0-4f8f-a4b5-9b110c2c368b",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "68476cf5-b508-47b7-8e9c-1bfed5686d91",
+                                "data source identifier": "cd391bf1-d751-4873-b27e-55587a1b9d06",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "2760787b-1399-40e8-8c39-4451d014c0d7"
+                    "calculated data identifier": "fbffc439-b427-4471-9322-9a4af2529b95"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1293,16 +1683,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "526b22fb-cdc3-46eb-a5cd-3dec316cd81d",
+                                "data source identifier": "3aaf88b1-c81a-4e97-b0e6-a53bcc0d6516",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "1fcc4a91-5fcf-414a-90a4-54ff0989b4b7",
+                                "data source identifier": "a079615e-b0a4-4cab-8bfd-2c5611dacfd6",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "b9a0529b-9d3d-4599-91c1-cf4d42670ecb"
+                    "calculated data identifier": "5fef2d9c-5be6-42ce-a568-da3f3910a416"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1313,16 +1703,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "cfb69db9-246d-4f76-8933-1e13812a4487",
+                                "data source identifier": "6d3b05ab-2b41-4156-8965-eac382edda02",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "5f20b426-c410-488b-9c34-e42b6558f511",
+                                "data source identifier": "7a95dd7c-e170-4740-b81f-2934b85d6331",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "b2fa3a78-502d-48bf-b012-1691166b3e0e"
+                    "calculated data identifier": "37c6ab55-cfc3-44f1-9020-b26951166d06"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1333,16 +1723,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "417061f9-0208-410c-b861-d336ad1db91d",
+                                "data source identifier": "4c45747d-4fc1-4bd7-84be-4b36c835c5e3",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "7371e536-6416-4911-a477-4421ec124982",
+                                "data source identifier": "a31abf6f-120f-4fe8-ba11-63aa92d415fb",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "9ca9214d-76d6-4c66-ad45-4043735d4199"
+                    "calculated data identifier": "7d0d515e-346e-46cc-b3b2-5d43dc62134b"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1353,16 +1743,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "f70b7694-c27a-439f-876d-b11058f8fa9f",
+                                "data source identifier": "9e8e748f-cdbd-4be9-84c3-158786b8eb51",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "0f01ede6-720f-4436-bb21-5700d0d87aea",
+                                "data source identifier": "61dcbf0b-197a-4fb6-83ad-17a21a80e344",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "47e22359-e893-43bf-ab6d-ecd2e5845565"
+                    "calculated data identifier": "8866ffa7-4047-4253-b5f5-4c4685497e33"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1373,16 +1763,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "33d19798-71e9-4f53-8b63-de7250aca5a2",
+                                "data source identifier": "59ab782c-47fc-47c4-9555-92e8d3ba33f9",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "cbf082cd-ff5c-49b5-99c5-47c6da27d19d",
+                                "data source identifier": "0713c043-7be9-4a1b-97b5-885bb41a2472",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "c1409528-8215-40b9-9e00-f7e7096d7ed2"
+                    "calculated data identifier": "96b39800-ca1e-4a6c-8df5-52cfc587dbe8"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1393,16 +1783,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "62ec0c48-228c-496d-9a08-2965dfaf1a45",
+                                "data source identifier": "10500c52-5fd6-43a7-8c17-62baf2f66ef4",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "2e8094cf-c95f-4412-90f8-af8b39e3e14f",
+                                "data source identifier": "74f254cb-9100-41cd-b0fe-6943c29c7aa4",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "7ae6cd21-1dc9-4250-a340-77662cdbb610"
+                    "calculated data identifier": "66f4e84f-59f2-4c6e-aaef-c331ad952664"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1413,16 +1803,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "2002c906-7120-47f7-8c9e-c329c7f26e46",
+                                "data source identifier": "7cae66aa-f5f2-4889-9c8d-31e1ca00b28e",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "3844eb8a-2f5d-4b1e-8efc-1106fba8105b",
+                                "data source identifier": "1607747f-a085-495d-8dbf-3b324ecdf919",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "3a789492-e680-4e10-a3d7-341365cd0268"
+                    "calculated data identifier": "603b4749-3fe2-402e-8ac2-d0f9517b96ec"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1433,16 +1823,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "2cb0e233-0104-40ea-811a-cd16e24d0f9a",
+                                "data source identifier": "c1be4350-364b-4554-b1e7-ce748527b618",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "196ce8fa-5fa4-4842-a631-57cec0cdd9e0",
+                                "data source identifier": "f8de98a0-10c2-44a8-8ad1-e65f938beca1",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "68bb373c-55f7-4705-a72e-2c81152db87e"
+                    "calculated data identifier": "771b35c8-ce63-4651-a77f-b9d4ab587560"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1453,16 +1843,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "3389b51c-2c42-4124-9bed-54be4fec3a70",
+                                "data source identifier": "0666f797-5d12-43bc-90aa-58b1c0e20769",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "9860b421-2b02-46ae-b7d7-7ce4a724c85a",
+                                "data source identifier": "15b40d89-6c71-4084-8bc4-9eb33471ee00",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "c3c41180-87af-4c8c-b0c3-c23efd6288a3"
+                    "calculated data identifier": "ef3e2e8c-a727-4bd7-b6cc-f38fbebe6191"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1473,16 +1863,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "17ef520e-f1fd-460c-8608-8fbd9d539648",
+                                "data source identifier": "c7faa345-68f9-43d5-9a71-ee1aa00c22f8",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "b166c6f7-7ec9-458a-8ca1-3cebef1623fa",
+                                "data source identifier": "a018e2d0-a1d3-4a29-9d73-16a60161d9af",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "eb21e6e8-e697-41ad-ad60-3072f396a0ba"
+                    "calculated data identifier": "bddd9d8e-17df-4ad3-ac23-3cd30529b067"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1493,16 +1883,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "b4100814-0bf0-4c4f-a19e-24bc323bc78a",
+                                "data source identifier": "1721a8ab-008c-48d8-92ec-343de7a01d5d",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "13dc543f-592d-4aa4-8ad8-e26fcb763133",
+                                "data source identifier": "de49513e-c1bc-48b4-8cdf-8839fa2ea1b9",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "1d047f56-93fd-4228-866e-9a4b74496a13"
+                    "calculated data identifier": "294528e3-9872-4bd7-8323-526110bdc39b"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1513,16 +1903,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "a6b7f46b-7730-4b9f-bb35-dd2e1b9deded",
+                                "data source identifier": "a0e3e993-ce13-4499-8f75-8cf9bc20eca7",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "46d3500b-0453-41c7-8776-04c5536cd6ed",
+                                "data source identifier": "9b729eeb-cfd6-454a-80da-7ff64d781b2e",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "a4910171-1de2-402e-9270-e099eaff60dc"
+                    "calculated data identifier": "29d23f13-ab6b-4159-81c8-ef58b58a3043"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1533,16 +1923,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "8b586482-00d2-4c4a-afeb-ec352398c136",
+                                "data source identifier": "84c9268b-c5f5-41fc-9585-5c21437169bb",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "9bdd8ab9-2832-46da-b6f3-e0e02436e61c",
+                                "data source identifier": "40c3b245-f082-40c8-808c-1afe08ccb591",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "7ca149fc-859c-42f1-93fd-1b7fb5f44773"
+                    "calculated data identifier": "7e639f63-bd95-46cd-9036-c032ebc57e3b"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1553,16 +1943,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "086b3676-9d52-4d26-b342-25f7f072de6e",
+                                "data source identifier": "d41898d6-ad3f-473c-a0f1-44d32195c081",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "64a9a0ba-dad0-4451-88b7-af758a432841",
+                                "data source identifier": "25b74627-6f1f-4ec5-9ffd-cab7691547c2",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "d6f05835-0cf3-4e0e-872a-8b65c83a42d8"
+                    "calculated data identifier": "ac6199b8-50f5-4439-b432-b70cc7fc88a0"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1573,16 +1963,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "3d2a1b59-612c-489f-9a85-d9109786d083",
+                                "data source identifier": "32026c48-8b16-4383-9b18-6783859711af",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "c0d31b4a-35a6-4305-9dca-d8b50ffecc1e",
+                                "data source identifier": "e8f67a0b-fd6f-4b63-9d09-672fb5c33b33",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "5ee27f0b-9b34-47c5-8b07-6ccfffa94dd6"
+                    "calculated data identifier": "aa722769-ee28-4469-8bb3-f1f9c9e50e79"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1593,16 +1983,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "ce15d6f2-29ba-4d2c-9265-cab975dc9e96",
+                                "data source identifier": "52bfe28a-5446-4953-9114-a20bb6d720b7",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "17980122-7267-48ba-bd33-0b95b759357d",
+                                "data source identifier": "6fa1552f-b4ef-400e-83cb-d05cf1f6cf7e",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "ef6deb96-3156-4772-88f2-e99988fcb534"
+                    "calculated data identifier": "e77ae1e0-2796-4115-b4a1-45607c5cdbff"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1613,16 +2003,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "dfedf29e-4435-44cf-8f55-f7a6c9cdc2a4",
+                                "data source identifier": "ff8cdb77-26ae-4a6f-accc-7beb4a47181d",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "155d304f-b947-4fce-af4e-4077efdf3d76",
+                                "data source identifier": "1fbb318c-207d-459b-9eff-4de99dd5481a",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "86109c54-f682-4637-87c1-29f835738bf9"
+                    "calculated data identifier": "a1ab6e96-d295-45d9-a85c-30ee81963add"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1633,16 +2023,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "42aee082-3a1e-4464-a717-ec6c87194ac9",
+                                "data source identifier": "8ffa45bd-f1c5-427a-a7f8-77b665ad65c2",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "d4d93b2b-d0fe-4d18-863f-e6a1fe11c63c",
+                                "data source identifier": "10520488-71f3-4add-aa06-701c891a9be9",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "c08ac793-426d-4b67-841c-cc9e52966053"
+                    "calculated data identifier": "e97b9a0d-650d-4944-bbca-3999fe96050c"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1653,16 +2043,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "7e7b61e6-d2eb-4032-900c-804752bff437",
+                                "data source identifier": "2ec7d9df-7e07-47c6-8952-9f6f0ad11c80",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "b2e22003-a1d0-4bda-acb2-23300371a2ae",
+                                "data source identifier": "594b75fe-1f15-4c26-b6d3-8a9cea2ec7bc",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "fc73057a-f953-44f3-b873-5c290f37b024"
+                    "calculated data identifier": "e3680612-20fb-422b-833e-9d23dcf3e7ca"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1673,16 +2063,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "47adbee4-1663-483c-865f-1c0e29547bd6",
+                                "data source identifier": "75cf2408-1c4b-4501-b917-26e69d4c58c1",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "25a92fbf-5fd5-4f7f-bffb-3130ffa01b70",
+                                "data source identifier": "a384f497-ba36-4f7e-ba6e-d97646e57748",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "dd1d6352-4061-4709-a602-19916f17d5a5"
+                    "calculated data identifier": "cb57de2c-740c-4008-af44-fe81420521c9"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1693,16 +2083,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "fca83b1d-f7ae-47f9-9064-fd81358704f0",
+                                "data source identifier": "b15c347e-2c98-49eb-8720-b1989c7b135e",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "9285457c-615c-40a4-b7c8-b60c759d0277",
+                                "data source identifier": "0c650cec-7e29-4260-bd95-70765c5b6426",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "37b13ce7-1947-43be-bca6-faa5a1270dd2"
+                    "calculated data identifier": "46ca12aa-cd9f-4149-8eda-87652800b0ea"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1713,16 +2103,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "0a4066be-62c7-4f10-ba24-159ff2f6b770",
+                                "data source identifier": "ee7caeef-94b9-4dd7-b10c-a3f30a14afd1",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "8cad517f-f5ed-4e3c-96f5-6dbb8b02a342",
+                                "data source identifier": "d6c118f0-2c73-4be0-88e8-5cf3a791e38b",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "4760b107-cc1a-44d8-8e24-753ab10b45b8"
+                    "calculated data identifier": "e90ae725-6b08-46a2-beb4-d4b40ced1f62"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1733,16 +2123,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "48bebeec-52d1-4ccf-a4a9-de0f92c9332f",
+                                "data source identifier": "8ba5886e-3daa-4a7f-bca5-bec31cd9c152",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "0c591705-eda0-4123-a42e-456fef1653be",
+                                "data source identifier": "f06d3da2-e940-4916-a7b6-33058facd53d",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "4ef794f8-2bac-435d-a55f-849f43a9c501"
+                    "calculated data identifier": "9a9ce5b6-b671-4d2b-93c2-69f73c8342fe"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1753,16 +2143,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "be9de735-3d33-4737-8a83-fdfd815e7115",
+                                "data source identifier": "7d1917ce-4cc5-45da-9d9b-d7176240f41b",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "b22f9d0b-f275-4c8f-9269-287c27251b72",
+                                "data source identifier": "a4d06203-6075-4360-825a-8296c7210d86",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "e3e8e133-0b7f-41ca-b9a2-59fdc1b2fe3b"
+                    "calculated data identifier": "ee9a54a0-9296-4745-927f-9ea13c7a16f4"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1773,16 +2163,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "00485250-3ad7-4dd5-90f4-5f8c86114a5d",
+                                "data source identifier": "b883bb64-f582-46b9-9d96-427ff6e06ac4",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "0d7067c9-8477-4381-babd-77d8208c4d21",
+                                "data source identifier": "ac830667-dbd9-4113-b973-e916f082e815",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "666352bb-776a-49f0-9cd1-9ff12fbf6171"
+                    "calculated data identifier": "9ebf9cac-261c-45b9-8441-34ed57ff0630"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1793,16 +2183,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "33cf3065-8178-4847-af10-386169dccc67",
+                                "data source identifier": "e2f4968e-b30f-4c85-b4d3-a08ac7842eab",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "da9373bc-3898-49be-8169-6db6490907e4",
+                                "data source identifier": "b97635e1-7caa-475a-a799-07a7e05a5be6",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "451d1e85-6357-4a0a-ad17-e552ba2c05fe"
+                    "calculated data identifier": "c77190f4-ad4a-497e-adde-3022298731b9"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1813,16 +2203,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "d4402245-4fdd-41c7-bdc8-eb95de30f344",
+                                "data source identifier": "9a53fc48-9128-4f00-8e31-f42d1cea903e",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "ce73a9e4-2142-4c5b-8e07-05b16d73490c",
+                                "data source identifier": "856fd4a5-d877-454d-85db-b0fea1758618",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "32b11b57-40d6-4cc5-9c76-71bcc1a77b74"
+                    "calculated data identifier": "838ad7b1-2e85-4686-bb4a-b0637f280c08"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1833,16 +2223,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "de58f32a-98f6-4abd-88f9-bffa13655650",
+                                "data source identifier": "d3aeb4e4-6ad8-4eb8-a9e3-b60dc98c0e94",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "4d0236b4-2e03-4be7-b0c1-755ee3679676",
+                                "data source identifier": "4444d18e-2ce2-439a-bff7-cd58eed18937",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "701ced90-00cf-4bb5-ae61-59fe0a5ace73"
+                    "calculated data identifier": "89404d69-05ec-437e-9d71-125973636ef9"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1853,16 +2243,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "59da030d-c067-4120-ac0c-8ad35c0c581b",
+                                "data source identifier": "9300bdef-9bd7-4e29-b49f-aed2e34c1c5e",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "66e2681b-25b1-4317-ae81-4f1cadaa62ef",
+                                "data source identifier": "21cf1ff6-be9c-486b-b715-327d702d6d1c",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "4b986e4e-c25b-40e2-8438-2edf6c158add"
+                    "calculated data identifier": "ae98289b-4468-4752-ac8e-debcb801a7b8"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1873,16 +2263,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "270ef7a4-56ad-43e1-adc8-3d29c451010a",
+                                "data source identifier": "21949b48-02fe-4640-9408-85d4a00dfce7",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "d99ee65f-269e-4de3-890a-a8b0608d2307",
+                                "data source identifier": "358157e4-a095-472c-a82a-4daa7ba3f797",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "0a181fee-8284-4a93-8504-feeb6f900a42"
+                    "calculated data identifier": "85f0bbf0-2aae-4f90-aee1-8f5a624f415f"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1893,16 +2283,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "28c02a04-08a9-48c2-81bc-4c95923f48ad",
+                                "data source identifier": "54c32edd-3860-47fe-9c59-a5a44892352c",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "c96cf316-ac51-4269-a231-989f218ae48f",
+                                "data source identifier": "ecde5cd5-630c-44af-877c-a401a247daab",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "476b3b19-4fae-44f9-8eda-36e0a1a9cccd"
+                    "calculated data identifier": "5093cd0c-9b19-424c-996a-3c2aac90141e"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1913,16 +2303,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "0aa1b01a-6afb-48f6-a0ec-3b46e777fa70",
+                                "data source identifier": "5073aab4-89e3-4e2f-ae4a-feb91ec8d236",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "65ba66a6-72a1-4ac2-a29b-dfc9e0f47853",
+                                "data source identifier": "4cea5fa5-2487-4805-a9a8-c3fa59e9af35",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "3003ce2f-fccc-4832-8a5d-cfdeba5316d0"
+                    "calculated data identifier": "3768b13b-f47e-4163-b974-92c66bc69379"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1933,16 +2323,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "3e1dc20d-ccd3-4cc6-b1f0-d372fcb59c93",
+                                "data source identifier": "b0274a2c-2a7b-4a11-a602-0d5bdba8d72b",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "70fb186d-b39b-4605-bded-1aa714e6b5b9",
+                                "data source identifier": "9e9a2b04-c63c-4d18-a69f-7082bade0431",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "c14010f6-77f9-4bd5-bfa4-712241784a47"
+                    "calculated data identifier": "43f461f9-756f-4054-b7a2-5f98f54ef0af"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -1953,16 +2343,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "06fe2915-4eb0-4dbb-8138-f212cb0306ad",
+                                "data source identifier": "14c296f5-fcf8-4087-a23e-a98a688abe33",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "5b750792-b046-46a9-8938-606fd7e09b3c",
+                                "data source identifier": "c75179b2-c73a-4101-b58e-3046c81685aa",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "cb980d9e-606a-4822-9ac6-e22b518ac430"
+                    "calculated data identifier": "abd21379-02e9-49da-9b6a-254243677867"
                 }
             ]
         }

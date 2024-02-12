@@ -137,8 +137,8 @@ class NanodropEightParser(VendorParser):
         )
 
     def _add_measurement_uuids(self, data: pd.DataFrame) -> pd.DataFrame:
-        data["A260 uuid"] = [str(uuid.uuid4()) for _ in range(len(data.index))]
-        data["A280 uuid"] = [str(uuid.uuid4()) for _ in range(len(data.index))]
+        data["a260 uuid"] = [str(uuid.uuid4()) for _ in range(len(data.index))]
+        data["a280 uuid"] = [str(uuid.uuid4()) for _ in range(len(data.index))]
         return data
 
     def _get_spectrophotometry_document(
@@ -173,11 +173,11 @@ class NanodropEightParser(VendorParser):
                 data_source_document=[
                     DataSourceDocumentItem(
                         data_source_feature="absorbance",
-                        data_source_identifier=_get_str(data, row, "A260 uuid"),
+                        data_source_identifier=_get_str(data, row, "a260 uuid"),
                     ),
                     DataSourceDocumentItem(
                         data_source_feature="absorbance",
-                        data_source_identifier=_get_str(data, row, "A280 uuid"),
+                        data_source_identifier=_get_str(data, row, "a280 uuid"),
                     ),
                 ]
             ),
@@ -194,7 +194,7 @@ class NanodropEightParser(VendorParser):
                 data_source_document=[
                     DataSourceDocumentItem(
                         data_source_feature="absorbance",
-                        data_source_identifier=_get_str(data, row, "A260 uuid"),
+                        data_source_identifier=_get_str(data, row, "a260 uuid"),
                     )
                 ]
             ),
@@ -204,12 +204,12 @@ class NanodropEightParser(VendorParser):
         self, data: pd.DataFrame, row: int
     ) -> SpectrophotometryDocumentItem:
         return SpectrophotometryDocumentItem(
-            analyst=_get_str_or_none(data, row, "User ID"),
+            analyst=_get_str_or_none(data, row, "user id"),
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self._get_date_time(
-                    _get_str(data, row, "Date") + " " + _get_str(data, row, "Time")
+                    _get_str(data, row, "date") + " " + _get_str(data, row, "time")
                 ),
-                experiment_type=_get_str_or_none(data, row, "NA Type"),
+                experiment_type=_get_str_or_none(data, row, "na type"),
                 measurement_document=self._get_measurement_document(data=data, row=row),
             ),
         )
@@ -218,19 +218,27 @@ class NanodropEightParser(VendorParser):
         self, data: pd.DataFrame, row: int
     ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
         measurement_docs = []
-        na_type = _get_str_or_none(data, row, "NA Type")
+        na_type = _get_str_or_none(data, row, "na type")
         concentration_col = self._get_concentration_col(data)
+        a280_col = "a280"
+        if a280_col not in data.columns and "a280 10mm" in data.columns:
+            a280_col = "a280 10mm"
 
-        if _get_str_or_none(data, row, "A260"):
+        if _get_str_or_none(data, row, "a260"):
             # capture concentration on the A260 measurement document if the experiment type is
             # DNA or RNA, protein and other concentration is captured on A280 measurment
+            # if there is no experiment type and no 280 column add the concentration here
+
             mass_concentration = None
             processed_data_aggregate_document = None
 
-            if na_type is not None and "NA" in na_type and concentration_col:
+            if concentration_col and (
+                (na_type is not None and "NA" in na_type)
+                or (na_type is None and a280_col not in data.columns)
+            ):
                 mass_concentration = _get_concentration(
                     _get_float(data, row, concentration_col),
-                    _get_str_or_none(data, row, "Units"),
+                    _get_str_or_none(data, row, "units"),
                 )
 
             if mass_concentration is not None:
@@ -242,13 +250,13 @@ class NanodropEightParser(VendorParser):
 
             measurement_docs.append(
                 UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                    measurement_identifier=_get_str(data, row, "A260 uuid"),
+                    measurement_identifier=_get_str(data, row, "a260 uuid"),
                     sample_document=SampleDocument(
-                        sample_identifier=_get_str(data, row, "Sample ID")
-                        if _get_str_or_none(data, row, "Sample ID")
+                        sample_identifier=_get_str(data, row, "sample id")
+                        if _get_str_or_none(data, row, "sample id")
                         else "NA",
-                        well_plate_identifier=_get_str_or_none(data, row, "Plate ID"),
-                        location_identifier=_get_str_or_none(data, row, "Well"),
+                        well_plate_identifier=_get_str_or_none(data, row, "plate ID"),
+                        location_identifier=_get_str_or_none(data, row, "well"),
                     ),
                     processed_data_aggregate_document=processed_data_aggregate_document,
                     device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
@@ -262,23 +270,21 @@ class NanodropEightParser(VendorParser):
                         ]
                     ),
                     absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        _get_float(data, row, "A260")
+                        _get_float(data, row, "a260")
                     ),
                 )
             )
 
-        a280_col = "A280"
-        if a280_col not in data.columns and "A280 10mm" in data.columns:
-            a280_col = "A280 10mm"
-
         if _get_str_or_none(data, row, a280_col):
             # capture concentration on the A280 measurement document if the experiment type is
-            # something other than DNA or RNA
+            # something other than DNA or RNA or if the experiment type is not specified
             mass_concentration = None
-            if na_type is not None and "NA" not in na_type and concentration_col:
+            if (na_type is not None and "NA" not in na_type and concentration_col) or (
+                na_type is None and concentration_col
+            ):
                 mass_concentration = _get_concentration(
                     _get_float(data, row, str(concentration_col)),
-                    _get_str_or_none(data, row, "Units"),
+                    _get_str_or_none(data, row, "units"),
                 )
             processed_data_aggregate_document = None
             if mass_concentration:
@@ -286,20 +292,20 @@ class NanodropEightParser(VendorParser):
                     processed_data_document=[
                         ProcessedDataDocumentItem(
                             # capture concentration on the A280 measurement document if the experiment type is
-                            # something other than DNA or RNA
+                            # something other than DNA or RNA or n ot specified
                             mass_concentration=mass_concentration
                         )
                     ]
                 )
             measurement_docs.append(
                 UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                    measurement_identifier=_get_str(data, row, "A280 uuid"),
+                    measurement_identifier=_get_str(data, row, "a280 uuid"),
                     sample_document=SampleDocument(
-                        sample_identifier=_get_str(data, row, "Sample ID")
-                        if _get_str_or_none(data, row, "Sample ID")
+                        sample_identifier=_get_str(data, row, "sample id")
+                        if _get_str_or_none(data, row, "sample id")
                         else "NA",
-                        well_plate_identifier=_get_str_or_none(data, row, "Plate ID"),
-                        location_identifier=_get_str_or_none(data, row, "Well"),
+                        well_plate_identifier=_get_str_or_none(data, row, "plate id"),
+                        location_identifier=_get_str_or_none(data, row, "well"),
                     ),
                     processed_data_aggregate_document=processed_data_aggregate_document,
                     device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
