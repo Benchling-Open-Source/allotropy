@@ -12,6 +12,7 @@ from tests.parsers.test_utils import (
 )
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
+SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
 ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
@@ -22,8 +23,6 @@ ABSORBENCE_FILENAMES = [
     "kinetic_singleplate",
     "kinetic_multiplate",
 ]
-
-SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
 
 @pytest.mark.parametrize("filename", ABSORBENCE_FILENAMES)
