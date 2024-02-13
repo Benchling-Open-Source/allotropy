@@ -7,7 +7,6 @@ from typing import Any, Optional
 from deepdiff import DeepDiff
 import jsonschema
 import numpy as np
-import pandas as pd
 
 from allotropy.allotrope.schemas import get_schema
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
@@ -86,9 +85,3 @@ def validate_contents(
     _assert_allotrope_dicts_equal(
         expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
     )
-
-
-def build_series(elements: list[tuple[Any]]) -> pd.Series[Any]:
-    index, data = list(zip(*elements))
-    # pd.Series has a Generic.
-    return pd.Series(data=data, index=index)  # type: ignore[no-any-return]
