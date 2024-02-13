@@ -22,6 +22,7 @@ OUTPUT_FILES = (
 )
 
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
+SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
@@ -31,7 +32,7 @@ def test_parse_perkin_elmer_envision_to_asm(output_file: str) -> None:
         f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "plate-reader/BENCHLING/2023/09/plate-reader.json")
+    validate_schema(allotrope_dict, SCHEMA_FILE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
