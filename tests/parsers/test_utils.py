@@ -86,7 +86,7 @@ def _validate_contents(
         expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
     )
 
-
+    
 def generate_allotrope_and_validate(
     test_file: str,
     vendor_type: VendorType,
@@ -97,3 +97,4 @@ def generate_allotrope_and_validate(
     allotrope_dict = from_file(test_file, vendor_type)
     _validate_schema(allotrope_dict, schema_relative_path)
     _validate_contents(allotrope_dict, expected_output_file, identifiers_to_exclude)
+
