@@ -14,5 +14,9 @@ def test_parse_luminex_xponent_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.csv"
     expected_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.json"
     generate_allotrope_and_validate(
-        test_filepath, VENDOR_TYPE, SCHEMA_FILE, expected_filepath
+        test_filepath,
+        VENDOR_TYPE,
+        SCHEMA_FILE,
+        expected_filepath,
+        identifiers_to_exclude=["analyte identifier", "measurement identifier"],
     )
