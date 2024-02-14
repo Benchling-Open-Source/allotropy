@@ -64,10 +64,11 @@ def _get_existing_indent(expected_file: str) -> int:
         for i in range(len(line)):
             if not line[i] == " ":
                 return i
-    raise ValueError("Couldn't determine existing indent")
+    msg = "Couldn't determine existing indent"
+    raise ValueError(msg)
 
 
-def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str):
+def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
     existing_indent = _get_existing_indent(expected_file)
     with tempfile.NamedTemporaryFile(mode="w+") as tmp:
         try:
@@ -119,7 +120,7 @@ def generate_allotrope_and_validate(
     schema_relative_path: str,
     expected_output_file: str,
     identifiers_to_exclude: Optional[list[str]] = None,
-    write_actual_to_expected_on_fail: bool = True,  # noqa: FBT001, FBT002
+    write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     allotrope_dict = from_file(test_file, vendor)
     _validate_schema(allotrope_dict, schema_relative_path)
