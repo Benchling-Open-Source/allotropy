@@ -65,11 +65,13 @@ def _validate_contents(
     with open(expected_file) as f:
         expected_dict = json.load(f)
     expected_replaced = _replace_asm_converter_name_and_version(expected_dict)
-    identifiers_to_exclude = [
-        # CALCULATED_DATA_IDENTIFIER,
-        # DATA_SOURCE_IDENTIFIER,
-        # MEASUREMENT_IDENTIFIER,
+    identifiers_to_exclude = identifiers_to_exclude or [
+        CALCULATED_DATA_IDENTIFIER,
+        DATA_SOURCE_IDENTIFIER,
+        MEASUREMENT_IDENTIFIER,
     ]
+    # TODO: remove this, param, and above constants once test ids are stable
+    identifiers_to_exclude = []
     exclude_regex_paths = [
         fr"\['{exclude_id}'\]" for exclude_id in identifiers_to_exclude
     ]
@@ -106,3 +108,6 @@ def generate_allotrope_and_validate(
         identifiers_to_exclude,
         write_actual_to_expected_on_fail,
     )
+
+    # Ensure that tests fail if the param is set to True. We never want to commit with a True value.
+    assert not write_actual_to_expected_on_fail
