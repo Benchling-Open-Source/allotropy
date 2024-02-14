@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import json
+import shutil
+import tempfile
 from typing import Any, Optional
 from unittest import mock
 
@@ -55,6 +57,26 @@ def _validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> Non
     )
 
 
+def _get_existing_indent(expected_file: str) -> int:
+    with open(expected_file) as f:
+        f.readline()
+        line = f.readline()
+        for i in range(len(line)):
+            if not line[i] == " ":
+                return i
+
+
+def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str):
+    existing_indent = _get_existing_indent(expected_file)
+    with tempfile.NamedTemporaryFile(mode="w+") as tmp:
+        try:
+            json.dump(allotrope_dict, tmp, indent=existing_indent)
+        except Exception as e:
+            msg = "Failed to overwrite expected file with actual file"
+            raise Exception(msg) from e
+        shutil.copy(tmp.name, expected_file)
+
+
 def _validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
@@ -86,9 +108,7 @@ def _validate_contents(
         assert not ddiff
     except AssertionError:
         if write_actual_to_expected_on_fail:
-            # TODO: write to a temp file first, then copy iff it succeeds
-            with open(expected_file, "w") as expected_file_overwritten:
-                json.dump(allotrope_dict, expected_file_overwritten, indent=4)
+            _write_actual_to_expected(allotrope_dict, expected_file)
         raise
 
 
