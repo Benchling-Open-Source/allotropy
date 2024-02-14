@@ -12,6 +12,7 @@ OUTPUT_FILES = (
 )
 
 VENDOR_TYPE = Vendor.NOVABIO_FLEX2
+SCHEMA_FILE = "cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.json"
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
@@ -21,7 +22,7 @@ def test_parse_novabio_flex_to_asm(output_file: str) -> None:
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_schema(
         allotrope_dict,
-        "cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.json",
+        SCHEMA_FILE,
     )
     validate_contents(allotrope_dict, expected_filepath)
 

@@ -31,6 +31,7 @@ from tests.parsers.test_utils import (
 )
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
+SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
 ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
@@ -46,7 +47,7 @@ ABSORBENCE_FILENAMES = [
 def _validate_allotrope_dict(allotrope_dict: DictType, expected_filepath: str) -> None:
     validate_schema(
         allotrope_dict,
-        "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json",
+        SCHEMA_FILE,
     )
     validate_contents(allotrope_dict, expected_filepath)
 

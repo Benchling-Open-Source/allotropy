@@ -34,13 +34,14 @@ OUTPUT_FILES = (
 )
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
+SCHEMA_FILE = "pcr/BENCHLING/2023/09/qpcr.json"
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "pcr/BENCHLING/2023/09/qpcr.json")
+    validate_schema(allotrope_dict, SCHEMA_FILE)
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
