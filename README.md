@@ -1,7 +1,7 @@
 \*Allotrope® is a registered trademark of the Allotrope Foundation; no affiliation with the Allotrope Foundation is claimed or implied.
 
 # Introduction
-Welcome to `allotropy` -- a Python library by Benchling for converting instrument data into Allotrope Simple Model (ASM).
+Welcome to `allotropy` -- a Python library by Benchling for converting instrument data into the Allotrope Simple Model (ASM).
 
 The objective of this library is to read text or Excel based instrument software output and return a JSON representation that conforms to the published ASM schema. The code in this library does not convert from proprietary/binary output formats and so has no need to interact with any of the specific vendor softwares.
 
