@@ -1,21 +1,21 @@
 {
-  "$asm.manifest": "http://purl.allotrope.org/manifests/luminescence/BENCHLING/2023/09/luminescence.manifest",
   "measurement aggregate document": {
-    "measurement identifier": "75fbdd68-be90-48f1-a93c-af99f9941662",
-    "measurement time": "2022-10-10T21:15:37+00:00",
-    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_LUMread_POS-NEG-CON-Normalization_defaultExport.prt",
-    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_LUMread_POS-NEG-CON_Norm_singlePlate.xpt",
-    "container type": "well plate",
-    "plate well count": { "value": 96, "unit": "#" },
+    "measurement identifier": "TEST_AGILENT_GEN5_0",
+    "plate well count": {
+      "value": 96,
+      "unit": "#"
+    },
     "measurement document": [
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -35,25 +35,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8718.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8718.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 99.846
+              "processed data": 99.846,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -73,25 +86,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3118.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3118.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 34.111
+              "processed data": 34.111,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL9"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL9",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -111,25 +137,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3507.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3507.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 38.678
+              "processed data": 38.678,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL17"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL17",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -149,25 +188,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5574.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5574.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 62.947
+              "processed data": 62.947,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL25"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL25",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -187,25 +239,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2931.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2931.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 31.918
+              "processed data": 31.918,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL33"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL33",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -225,25 +290,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[1221.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                1221.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 11.843
+              "processed data": 11.843,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL41"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL41",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -263,25 +341,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2769.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2769.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 30.02
+              "processed data": 30.02,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL49"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL49",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -301,25 +392,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5747.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5747.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 64.973
+              "processed data": 64.973,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL57"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL57",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -339,25 +443,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8081.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8081.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 92.372
+              "processed data": 92.372,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL65"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL65",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -377,25 +494,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7764.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7764.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 88.651
+              "processed data": 88.651,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL73"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL73",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -415,25 +545,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[9215.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                9215.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 105.684
+              "processed data": 105.684,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -453,25 +596,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[210.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                210.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": -0.02
+              "processed data": -0.02,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -491,25 +647,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8782.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8782.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 100.601
+              "processed data": 100.601,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -529,25 +698,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[9406.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                9406.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 107.927
+              "processed data": 107.927,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL10"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL10",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -567,25 +749,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8372.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8372.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 95.79
+              "processed data": 95.79,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL18"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL18",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -605,25 +800,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3696.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3696.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 40.897
+              "processed data": 40.897,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL26"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL26",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -643,25 +851,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[1389.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                1389.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 13.815
+              "processed data": 13.815,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL34"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL34",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -681,25 +902,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8758.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8758.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 100.317
+              "processed data": 100.317,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL42"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL42",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -719,25 +953,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4504.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4504.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 50.379
+              "processed data": 50.379,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL50"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL50",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -757,25 +1004,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[9335.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                9335.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 107.09
+              "processed data": 107.09,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL58"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL58",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -795,25 +1055,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4342.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4342.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 48.485
+              "processed data": 48.485,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL66"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL66",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -833,25 +1106,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6291.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6291.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 71.363
+              "processed data": 71.363,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL74"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL74",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -871,25 +1157,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5215.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5215.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 58.732
+              "processed data": 58.732,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -909,25 +1208,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[213.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                213.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 0.015
+              "processed data": 0.015,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -947,25 +1259,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8747.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8747.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 100.187
+              "processed data": 100.187,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -985,25 +1310,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7099.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7099.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 80.85
+              "processed data": 80.85,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL11"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL11",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1023,25 +1361,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5630.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5630.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 63.605
+              "processed data": 63.605,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL19"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL19",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1061,25 +1412,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6148.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6148.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 69.679
+              "processed data": 69.679,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL27"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL27",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1099,25 +1463,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4025.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4025.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 44.758
+              "processed data": 44.758,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL35"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL35",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1137,25 +1514,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[788.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                788.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 6.758
+              "processed data": 6.758,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL43"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL43",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1175,25 +1565,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7432.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7432.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 84.76
+              "processed data": 84.76,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL51"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL51",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1213,25 +1616,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7409.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7409.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 84.485
+              "processed data": 84.485,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL59"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL59",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1251,25 +1667,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8279.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8279.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 94.694
+              "processed data": 94.694,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL67"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL67",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1289,25 +1718,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6756.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6756.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 76.824
+              "processed data": 76.824,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL75"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL75",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1327,25 +1769,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7635.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7635.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 87.142
+              "processed data": 87.142,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1365,25 +1820,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[209.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                209.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": -0.034
+              "processed data": -0.034,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1403,25 +1871,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8905.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8905.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 102.043
+              "processed data": 102.043,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1441,25 +1922,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3067.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3067.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 33.511
+              "processed data": 33.511,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL12"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL12",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1479,25 +1973,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4650.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4650.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 52.097
+              "processed data": 52.097,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL20"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL20",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1517,25 +2024,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6572.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6572.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 74.66
+              "processed data": 74.66,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL28"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL28",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1555,25 +2075,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5779.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5779.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 65.345
+              "processed data": 65.345,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL36"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL36",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1593,25 +2126,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6313.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6313.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 71.623
+              "processed data": 71.623,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL44"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL44",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1631,25 +2177,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7406.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7406.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 84.45
+              "processed data": 84.45,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL52"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL52",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1669,25 +2228,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6347.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6347.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 72.018
+              "processed data": 72.018,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL60"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL60",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1707,25 +2279,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2017.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2017.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 21.188
+              "processed data": 21.188,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL68"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL68",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1745,25 +2330,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[637.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                637.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 4.991
+              "processed data": 4.991,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL76"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL76",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1783,25 +2381,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6139.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6139.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 69.574
+              "processed data": 69.574,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1821,25 +2432,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[211.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                211.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": -0.012
+              "processed data": -0.012,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1859,25 +2483,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[215.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                215.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 0.036
+              "processed data": 0.036,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1897,25 +2534,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7964.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7964.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 91.005
+              "processed data": 91.005,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL13"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL13",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1935,25 +2585,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2899.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2899.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 31.543
+              "processed data": 31.543,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL21"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL21",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1973,25 +2636,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2593.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2593.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 27.945
+              "processed data": 27.945,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL29"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL29",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2011,25 +2687,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3175.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3175.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 34.78
+              "processed data": 34.78,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL37"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL37",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2049,25 +2738,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7041.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7041.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 80.16
+              "processed data": 80.16,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL45"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL45",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2087,25 +2789,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5795.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5795.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 65.537
+              "processed data": 65.537,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL53"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL53",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2125,25 +2840,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3219.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3219.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 35.296
+              "processed data": 35.296,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL61"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL61",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2163,25 +2891,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3532.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3532.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 38.976
+              "processed data": 38.976,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL69"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL69",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2201,25 +2942,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4786.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4786.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 53.697
+              "processed data": 53.697,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL77"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL77",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2239,25 +2993,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2111.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2111.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 22.296
+              "processed data": 22.296,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2277,25 +3044,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8826.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8826.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 101.123
+              "processed data": 101.123,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2315,25 +3095,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[218.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                218.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 0.072
+              "processed data": 0.072,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2353,25 +3146,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3461.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3461.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 38.134
+              "processed data": 38.134,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL14"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL14",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2391,25 +3197,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6364.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6364.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 72.217
+              "processed data": 72.217,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL22"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL22",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2429,25 +3248,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[507.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                507.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 3.461
+              "processed data": 3.461,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL30"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL30",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2467,25 +3299,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3247.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3247.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 35.626
+              "processed data": 35.626,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL38"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL38",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2505,25 +3350,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3352.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3352.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 36.864
+              "processed data": 36.864,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL46"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL46",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2543,25 +3401,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6466.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6466.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 73.413
+              "processed data": 73.413,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL54"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL54",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2581,25 +3452,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6984.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6984.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 79.492
+              "processed data": 79.492,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL62"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL62",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2619,25 +3503,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7172.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7172.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 81.705
+              "processed data": 81.705,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL70"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL70",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2657,25 +3554,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4322.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4322.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 48.251
+              "processed data": 48.251,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL78"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL78",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2695,25 +3605,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5312.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5312.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 59.862
+              "processed data": 59.862,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2733,25 +3656,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8716.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8716.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 99.83
+              "processed data": 99.83,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2771,25 +3707,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[210.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                210.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": -0.027
+              "processed data": -0.027,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2809,25 +3758,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8969.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8969.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 102.797
+              "processed data": 102.797,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL15"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL15",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2847,25 +3809,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2049.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2049.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 21.567
+              "processed data": 21.567,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL23"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL23",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2885,25 +3860,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4265.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4265.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 47.577
+              "processed data": 47.577,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL31"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL31",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2923,25 +3911,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5958.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5958.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 67.452
+              "processed data": 67.452,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL39"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL39",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2961,25 +3962,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5409.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5409.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 61.007
+              "processed data": 61.007,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL47"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL47",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2999,25 +4013,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6971.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6971.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 79.338
+              "processed data": 79.338,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL55"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL55",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3037,25 +4064,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[3026.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                3026.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 33.038
+              "processed data": 33.038,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL63"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL63",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3075,25 +4115,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4669.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4669.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 52.321
+              "processed data": 52.321,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL71"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL71",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3113,25 +4166,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7990.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7990.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 91.311
+              "processed data": 91.311,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL79"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL79",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3151,25 +4217,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[4385.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                4385.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 48.985
+              "processed data": 48.985,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3189,25 +4268,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8663.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8663.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 99.202
+              "processed data": 99.202,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEGCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEGCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3227,25 +4319,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[210.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                210.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": -0.03
+              "processed data": -0.03,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL8"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL8",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3265,25 +4370,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6942.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6942.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 78.997
+              "processed data": 78.997,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL16"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL16",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3303,25 +4421,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7026.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7026.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 79.989
+              "processed data": 79.989,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL24"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL24",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3341,25 +4472,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[9139.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                9139.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 104.788
+              "processed data": 104.788,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL32"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL32",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3379,25 +4523,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[1138.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                1138.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 10.863
+              "processed data": 10.863,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL40"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL40",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3417,25 +4574,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[5623.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                5623.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 63.522
+              "processed data": 63.522,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL48"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL48",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3455,22 +4625,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[920.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                920.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
-            { "data processing description": "NormLum", "processed data": 8.31 }
+            {
+              "processed data": 8.31,
+              "data processing description": "NormLum"
+            }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL56"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL56",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3490,25 +4676,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[6086.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                6086.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 68.953
+              "processed data": 68.953,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL64"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL64",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3528,25 +4727,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[2329.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                2329.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 24.845
+              "processed data": 24.845,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL72"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL72",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3566,25 +4778,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[715.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                715.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 5.901
+              "processed data": 5.901,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL80"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL80",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3604,25 +4829,38 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[7069.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                7069.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 80.498
+              "processed data": 80.498,
+              "data processing description": "NormLum"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POSCON"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POSCON",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3642,17 +4880,33 @@
               }
             ]
           },
-          "data": { "dimensions": [["Lum"]], "measures": [[8490.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "Lum"
+              ]
+            ],
+            "measures": [
+              [
+                8490.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "NormLum",
-              "processed data": 97.17
+              "processed data": 97.17,
+              "data processing description": "NormLum"
             }
           ]
         }
       }
-    ]
-  }
+    ],
+    "measurement time": "2022-10-10T21:15:37+00:00",
+    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_LUMread_POS-NEG-CON-Normalization_defaultExport.prt",
+    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_LUMread_POS-NEG-CON_Norm_singlePlate.xpt",
+    "container type": "well plate"
+  },
+  "$asm.manifest": "http://purl.allotrope.org/manifests/luminescence/BENCHLING/2023/09/luminescence.manifest"
 }

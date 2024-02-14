@@ -1,219 +1,219 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
-    "measurement aggregate document": {
-        "measurement identifier": "aac78195-c69b-4a1d-8895-d9c4c0cdea90",
-        "data processing time": "2023-09-17T13:04:06+00:00",
-        "analyst": "ADMIN",
-        "device system document": {
-            "model number": "CEDEX BIO HT",
-            "device serial number": "123456"
+  "measurement aggregate document": {
+    "measurement identifier": "TEST_ROCHE_CEDEX_BIOHT_0",
+    "analyst": "ADMIN",
+    "device system document": {
+      "model number": "CEDEX BIO HT",
+      "device serial number": "123456"
+    },
+    "measurement document": [
+      {
+        "sample document": {
+          "sample identifier": "SMPL1",
+          "sample role type": "Sample"
         },
-        "measurement document": [
+        "measurement time": "2023-09-15T16:56:26+00:00",
+        "analyte aggregate document": {
+          "analyte document": [
             {
-                "sample document": {
-                    "sample identifier": "SMPL1",
-                    "sample role type": "Sample"
-                },
-                "measurement time": "2023-09-15T16:56:26+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
-                        {
-                            "analyte name": "ammonia",
-                            "molar concentration": {
-                                "value": 1.846,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 6.32,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 2.45,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 0.02,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "ldh",
-                            "molar concentration": {
-                                "value": 88.09,
-                                "unit": "U/L"
-                            }
-                        },
-                        {
-                            "analyte name": "total protein",
-                            "molar concentration": {
-                                "value": 4.6,
-                                "unit": "g/L"
-                            }
-                        }
-                    ]
-                }
+              "analyte name": "ammonia",
+              "molar concentration": {
+                "value": 1.846,
+                "unit": "mmol/L"
+              }
             },
             {
-                "sample document": {
-                    "sample identifier": "SMPL2",
-                    "sample role type": "Sample"
-                },
-                "measurement time": "2023-09-15T16:57:30+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
-                        {
-                            "analyte name": "ammonia",
-                            "molar concentration": {
-                                "value": 1.87,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 6.71,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 2.4,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": null,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "ldh",
-                            "molar concentration": {
-                                "value": null,
-                                "unit": "U/L"
-                            }
-                        },
-                        {
-                            "analyte name": "total protein",
-                            "molar concentration": {
-                                "value": 4.7,
-                                "unit": "g/L"
-                            }
-                        }
-                    ]
-                }
+              "analyte name": "glucose",
+              "molar concentration": {
+                "value": 6.32,
+                "unit": "g/L"
+              }
             },
             {
-                "sample document": {
-                    "sample identifier": "SMPL3",
-                    "sample role type": "Sample"
-                },
-                "measurement time": "2023-09-15T16:59:06+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
-                        {
-                            "analyte name": "ammonia",
-                            "molar concentration": {
-                                "value": 1.817,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 6.71,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 2.43,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": null,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "ldh",
-                            "molar concentration": {
-                                "value": null,
-                                "unit": "U/L"
-                            }
-                        },
-                        {
-                            "analyte name": "total protein",
-                            "molar concentration": {
-                                "value": 4.8,
-                                "unit": "g/L"
-                            }
-                        }
-                    ]
-                }
+              "analyte name": "glutamine",
+              "molar concentration": {
+                "value": 2.45,
+                "unit": "mmol/L"
+              }
             },
             {
-                "sample document": {
-                    "sample identifier": "SMPL4",
-                    "sample role type": "Sample"
-                },
-                "measurement time": "2023-09-16T10:13:37+00:00",
-                "analyte aggregate document": {
-                    "analyte document": [
-                        {
-                            "analyte name": "ammonia",
-                            "molar concentration": {
-                                "value": 3.788,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glucose",
-                            "molar concentration": {
-                                "value": 4.09,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "glutamine",
-                            "molar concentration": {
-                                "value": 2.07,
-                                "unit": "mmol/L"
-                            }
-                        },
-                        {
-                            "analyte name": "lactate",
-                            "molar concentration": {
-                                "value": 1.89,
-                                "unit": "g/L"
-                            }
-                        },
-                        {
-                            "analyte name": "ldh",
-                            "molar concentration": {
-                                "value": 334.84,
-                                "unit": "U/L"
-                            }
-                        }
-                    ]
-                }
+              "analyte name": "lactate",
+              "molar concentration": {
+                "value": 0.02,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "ldh",
+              "molar concentration": {
+                "value": 88.09,
+                "unit": "U/L"
+              }
+            },
+            {
+              "analyte name": "total protein",
+              "molar concentration": {
+                "value": 4.6,
+                "unit": "g/L"
+              }
             }
-        ]
-    }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "sample identifier": "SMPL2",
+          "sample role type": "Sample"
+        },
+        "measurement time": "2023-09-15T16:57:30+00:00",
+        "analyte aggregate document": {
+          "analyte document": [
+            {
+              "analyte name": "ammonia",
+              "molar concentration": {
+                "value": 1.87,
+                "unit": "mmol/L"
+              }
+            },
+            {
+              "analyte name": "glucose",
+              "molar concentration": {
+                "value": 6.71,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "glutamine",
+              "molar concentration": {
+                "value": 2.4,
+                "unit": "mmol/L"
+              }
+            },
+            {
+              "analyte name": "lactate",
+              "molar concentration": {
+                "value": null,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "ldh",
+              "molar concentration": {
+                "value": null,
+                "unit": "U/L"
+              }
+            },
+            {
+              "analyte name": "total protein",
+              "molar concentration": {
+                "value": 4.7,
+                "unit": "g/L"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "sample identifier": "SMPL3",
+          "sample role type": "Sample"
+        },
+        "measurement time": "2023-09-15T16:59:06+00:00",
+        "analyte aggregate document": {
+          "analyte document": [
+            {
+              "analyte name": "ammonia",
+              "molar concentration": {
+                "value": 1.817,
+                "unit": "mmol/L"
+              }
+            },
+            {
+              "analyte name": "glucose",
+              "molar concentration": {
+                "value": 6.71,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "glutamine",
+              "molar concentration": {
+                "value": 2.43,
+                "unit": "mmol/L"
+              }
+            },
+            {
+              "analyte name": "lactate",
+              "molar concentration": {
+                "value": null,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "ldh",
+              "molar concentration": {
+                "value": null,
+                "unit": "U/L"
+              }
+            },
+            {
+              "analyte name": "total protein",
+              "molar concentration": {
+                "value": 4.8,
+                "unit": "g/L"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sample document": {
+          "sample identifier": "SMPL4",
+          "sample role type": "Sample"
+        },
+        "measurement time": "2023-09-16T10:13:37+00:00",
+        "analyte aggregate document": {
+          "analyte document": [
+            {
+              "analyte name": "ammonia",
+              "molar concentration": {
+                "value": 3.788,
+                "unit": "mmol/L"
+              }
+            },
+            {
+              "analyte name": "glucose",
+              "molar concentration": {
+                "value": 4.09,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "glutamine",
+              "molar concentration": {
+                "value": 2.07,
+                "unit": "mmol/L"
+              }
+            },
+            {
+              "analyte name": "lactate",
+              "molar concentration": {
+                "value": 1.89,
+                "unit": "g/L"
+              }
+            },
+            {
+              "analyte name": "ldh",
+              "molar concentration": {
+                "value": 334.84,
+                "unit": "U/L"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "data processing time": "2023-09-17T13:04:06+00:00"
+  },
+  "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest"
 }
