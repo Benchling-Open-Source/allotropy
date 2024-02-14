@@ -7,7 +7,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-11-20T16:30:16+02:00",
-                            "measurement identifier": "08222a88-7587-492c-8812-9a1930bcec98",
+                            "measurement identifier": "TEST_CHEMOMETEC_NUCLEOVIEW_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -65,7 +65,7 @@
             "file name": "chemometec_nucleoview_example05.csv",
             "software name": "NucleoView",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.12"
+            "ASM converter version": "0.1.16"
         }
     }
 }
