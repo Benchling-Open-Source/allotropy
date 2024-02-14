@@ -64,6 +64,7 @@ def _get_existing_indent(expected_file: str) -> int:
         for i in range(len(line)):
             if not line[i] == " ":
                 return i
+    raise ValueError("Couldn't determine existing indent")
 
 
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str):

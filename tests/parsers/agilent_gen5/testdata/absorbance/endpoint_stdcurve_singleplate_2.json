@@ -1,21 +1,21 @@
 {
-  "$asm.manifest": "http://purl.allotrope.org/manifests/ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.manifest",
   "measurement aggregate document": {
-    "measurement identifier": "df4f1c4e-9f0a-4050-9d15-3fb04ba4db68",
-    "measurement time": "2022-08-26T10:14:27+00:00",
-    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_08_26_mockBCA.prt",
-    "experimental data identifier": "\\\\Mac\\Home\\Downloads\\ExampleFiles\\2022_08_22_mockBCA.xpt",
-    "container type": "well plate",
-    "plate well count": { "value": 96, "unit": "#" },
+    "measurement identifier": "TEST_AGILENT_GEN5_0",
+    "plate well count": {
+      "value": 96,
+      "unit": "#"
+    },
     "measurement document": [
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -35,30 +35,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[3.411]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                3.411
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1000.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 3.41
+              "processed data": 3.41,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 1014.822
+              "processed data": 1014.822,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1000.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -78,30 +94,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[3.329]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                3.329
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1000.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 3.329
+              "processed data": 3.329,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 990.579
+              "processed data": 990.579,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1000.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -121,30 +153,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[3.343]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                3.343
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1000.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 3.342
+              "processed data": 3.342,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 994.599
+              "processed data": 994.599,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1000.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -164,30 +212,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.586]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.586
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.586
+              "processed data": 2.586,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 769.537
+              "processed data": 769.537,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -207,30 +271,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.616]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.616
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.615
+              "processed data": 2.615,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 778.272
+              "processed data": 778.272,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -250,30 +330,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.575]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.575
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.574
+              "processed data": 2.574,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 766.005
+              "processed data": 766.005,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -293,30 +389,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.327]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.327
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.326
+              "processed data": 1.326,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 394.83
+              "processed data": 394.83,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -336,30 +448,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.34]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.34
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.34
+              "processed data": 1.34,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 398.812
+              "processed data": 398.812,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -379,30 +507,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.359]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.359
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.358
+              "processed data": 1.358,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 404.199
+              "processed data": 404.199,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -422,30 +566,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.485]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.485
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.484
+              "processed data": 1.484,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 441.695
+              "processed data": 441.695,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -465,30 +625,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.493]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.493
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.492
+              "processed data": 1.492,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 444.179
+              "processed data": 444.179,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -508,30 +684,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.457]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.457
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.456
+              "processed data": 1.456,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 433.382
+              "processed data": 433.382,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -551,30 +743,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.137]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.137
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 333.33 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.136
+              "processed data": 1.136,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 338.275
+              "processed data": 338.275,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 333.33,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -594,30 +802,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.11]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.11
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 333.33 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.109
+              "processed data": 1.109,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 330.194
+              "processed data": 330.194,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 333.33,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -637,30 +861,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.114]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.114
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 333.33 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.114
+              "processed data": 1.114,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 331.533
+              "processed data": 331.533,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 333.33,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -680,30 +920,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.293]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.293
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.293
+              "processed data": 1.293,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 384.768
+              "processed data": 384.768,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -723,30 +979,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.308]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.308
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.307
+              "processed data": 1.307,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 389.136
+              "processed data": 389.136,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -766,30 +1038,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.287]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.287
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.287
+              "processed data": 1.287,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 383.003
+              "processed data": 383.003,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -809,30 +1097,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.664]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.664
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.663
+              "processed data": 0.663,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 197.415
+              "processed data": 197.415,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -852,30 +1156,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.67]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.67
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.67
+              "processed data": 0.67,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 199.406
+              "processed data": 199.406,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -895,30 +1215,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.679]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.679
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.679
+              "processed data": 0.679,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 202.099
+              "processed data": 202.099,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -938,30 +1274,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.742]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.742
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.742
+              "processed data": 0.742,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 220.847
+              "processed data": 220.847,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -981,30 +1333,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.746]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.746
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.746
+              "processed data": 0.746,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 222.089
+              "processed data": 222.089,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1024,30 +1392,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.728]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.728
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.728
+              "processed data": 0.728,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 216.691
+              "processed data": 216.691,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1067,30 +1451,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.379]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.379
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 111.11 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.378
+              "processed data": 0.378,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 112.759
+              "processed data": 112.759,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 111.11,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1110,30 +1510,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.37]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.37
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 111.11 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.369
+              "processed data": 0.369,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 110.063
+              "processed data": 110.063,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 111.11,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1153,30 +1569,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.371]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.371
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 111.11 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.371
+              "processed data": 0.371,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 110.51
+              "processed data": 110.51,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 111.11,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1196,30 +1628,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.647]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.647
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.646
+              "processed data": 0.646,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 192.384
+              "processed data": 192.384,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1239,30 +1687,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.654]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.654
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.653
+              "processed data": 0.653,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 194.568
+              "processed data": 194.568,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1282,30 +1746,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.644]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.644
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.643
+              "processed data": 0.643,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 191.501
+              "processed data": 191.501,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1325,30 +1805,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.332]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.332
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.331
+              "processed data": 0.331,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 98.707
+              "processed data": 98.707,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1368,30 +1864,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.335]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.335
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.334
+              "processed data": 0.334,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 99.703
+              "processed data": 99.703,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1411,30 +1923,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.34]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.34
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.339
+              "processed data": 0.339,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 101.05
+              "processed data": 101.05,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1454,30 +1982,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.371]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.371
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.37
+              "processed data": 0.37,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 110.424
+              "processed data": 110.424,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1497,30 +2041,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.373]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.373
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.373
+              "processed data": 0.373,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 111.045
+              "processed data": 111.045,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1540,30 +2100,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.364]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.364
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.363
+              "processed data": 0.363,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 108.345
+              "processed data": 108.345,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1583,30 +2159,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.126]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.126
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 37.037 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.126
+              "processed data": 0.126,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 37.586
+              "processed data": 37.586,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 37.037,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1626,30 +2218,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.123]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.123
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 37.037 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.123
+              "processed data": 0.123,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 36.688
+              "processed data": 36.688,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 37.037,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1669,30 +2277,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.124]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.124
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 37.037 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.123
+              "processed data": 0.123,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 36.836
+              "processed data": 36.836,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 37.037,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1712,30 +2336,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.323]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.323
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.323
+              "processed data": 0.323,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 96.192
+              "processed data": 96.192,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1755,30 +2395,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.327]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.327
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.326
+              "processed data": 0.326,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 97.284
+              "processed data": 97.284,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1798,30 +2454,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.322]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.322
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.321
+              "processed data": 0.321,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 95.75
+              "processed data": 95.75,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1841,30 +2513,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.166]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.166
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.165
+              "processed data": 0.165,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 49.354
+              "processed data": 49.354,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1884,30 +2572,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.168]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.168
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.167
+              "processed data": 0.167,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 49.851
+              "processed data": 49.851,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1927,30 +2631,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.17]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.17
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.169
+              "processed data": 0.169,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 50.525
+              "processed data": 50.525,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1970,30 +2690,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.186]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.186
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.185
+              "processed data": 0.185,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 55.212
+              "processed data": 55.212,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2013,30 +2749,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.187]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.187
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.186
+              "processed data": 0.186,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 55.522
+              "processed data": 55.522,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2056,30 +2808,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.182]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.182
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.181
+              "processed data": 0.181,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 54.173
+              "processed data": 54.173,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2099,30 +2867,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.042]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.042
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 12.346 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.041
+              "processed data": 0.041,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 12.529
+              "processed data": 12.529,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 12.346,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2142,30 +2926,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.041]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.041
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 12.346 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.04
+              "processed data": 0.04,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 12.228
+              "processed data": 12.228,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 12.346,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2185,30 +2985,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.041]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.041
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 12.346 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.041
+              "processed data": 0.041,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 12.279
+              "processed data": 12.279,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 12.346,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2228,30 +3044,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.894]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.894
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.893
+              "processed data": 2.893,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 861.031
+              "processed data": 861.031,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2271,30 +3103,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.805]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.805
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.804
+              "processed data": 2.804,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 834.539
+              "processed data": 834.539,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2314,30 +3162,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.89]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.89
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.889
+              "processed data": 2.889,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 859.719
+              "processed data": 859.719,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2357,30 +3221,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.482]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.482
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.482
+              "processed data": 2.482,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 738.606
+              "processed data": 738.606,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2400,30 +3280,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.441]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.441
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.44
+              "processed data": 2.44,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 726.237
+              "processed data": 726.237,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2443,30 +3339,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[2.407]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                2.407
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 2.406
+              "processed data": 2.406,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 716.146
+              "processed data": 716.146,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2486,30 +3398,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.349]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.349
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.348
+              "processed data": 1.348,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 401.387
+              "processed data": 401.387,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2529,30 +3457,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.378]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.378
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.378
+              "processed data": 1.378,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 410.063
+              "processed data": 410.063,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2572,30 +3516,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.352]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.352
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.0 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.351
+              "processed data": 1.351,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 402.183
+              "processed data": 402.183,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.0,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2615,30 +3575,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.014]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.014
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 4.1152 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.013
+              "processed data": 0.013,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 4.177
+              "processed data": 4.177,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 4.1152,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2658,30 +3634,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.014]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.014
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 4.1152 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.013
+              "processed data": 0.013,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 4.076
+              "processed data": 4.076,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 4.1152,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2701,30 +3693,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.014]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.014
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 4.1152 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.013
+              "processed data": 0.013,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 4.094
+              "processed data": 4.094,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 4.1152,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2744,30 +3752,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.447]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.447
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.446
+              "processed data": 1.446,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 430.516
+              "processed data": 430.516,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2787,30 +3811,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.402]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.402
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.402
+              "processed data": 1.402,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 417.269
+              "processed data": 417.269,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2830,30 +3870,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.445]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.445
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.444
+              "processed data": 1.444,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 429.859
+              "processed data": 429.859,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2873,30 +3929,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.241]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.241
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.241
+              "processed data": 1.241,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 369.303
+              "processed data": 369.303,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2916,30 +3988,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.22]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.22
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.22
+              "processed data": 1.22,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 363.118
+              "processed data": 363.118,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2959,30 +4047,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[1.204]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                1.204
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 1.203
+              "processed data": 1.203,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 358.073
+              "processed data": 358.073,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3002,30 +4106,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.675]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.675
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.674
+              "processed data": 0.674,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 200.693
+              "processed data": 200.693,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3045,30 +4165,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.689]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.689
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.688
+              "processed data": 0.688,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 205.032
+              "processed data": 205.032,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3088,30 +4224,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.676]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.676
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.5 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.675
+              "processed data": 0.675,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 201.091
+              "processed data": 201.091,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.5,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3131,30 +4283,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.005]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.005
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.3717 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.004
+              "processed data": 0.004,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 1.392
+              "processed data": 1.392,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.3717,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3174,30 +4342,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.005]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.005
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.3717 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.004
+              "processed data": 0.004,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 1.359
+              "processed data": 1.359,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.3717,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "STD7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "STD7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3217,30 +4401,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.005]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.005
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 1.3717 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.004
+              "processed data": 0.004,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 1.365
+              "processed data": 1.365,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 1.3717,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3260,30 +4460,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.723]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.723
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.723
+              "processed data": 0.723,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 215.258
+              "processed data": 215.258,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3303,30 +4519,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.701]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.701
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.701
+              "processed data": 0.701,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 208.635
+              "processed data": 208.635,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3346,30 +4578,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.722]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.722
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.722
+              "processed data": 0.722,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 214.929
+              "processed data": 214.929,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3389,30 +4637,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.621]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.621
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.62
+              "processed data": 0.62,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 184.651
+              "processed data": 184.651,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3432,30 +4696,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.61]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.61
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.61
+              "processed data": 0.61,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 181.559
+              "processed data": 181.559,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3475,30 +4755,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.602]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.602
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.601
+              "processed data": 0.601,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 179.036
+              "processed data": 179.036,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3518,30 +4814,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.337]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.337
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.337
+              "processed data": 0.337,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 100.347
+              "processed data": 100.347,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3561,30 +4873,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.345]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.345
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.344
+              "processed data": 0.344,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 102.516
+              "processed data": 102.516,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3604,30 +4932,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.338]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.338
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.25 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.337
+              "processed data": 0.337,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 100.545
+              "processed data": 100.545,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.25,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "BLK"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "BLK",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3647,29 +4991,42 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.001]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.001
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.0
+              "processed data": 0.0,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 0.276
+              "processed data": 0.276,
+              "data processing description": "[Concentration]"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "BLK"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "BLK",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3689,29 +5046,42 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.001]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.001
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.0
+              "processed data": 0.0,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 0.229
+              "processed data": 0.229,
+              "data processing description": "[Concentration]"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "BLK"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "BLK",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3731,29 +5101,42 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.0]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.0
+              ]
+            ]
+          }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 0.101
+              "processed data": 0.101,
+              "data processing description": "[Concentration]"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3773,30 +5156,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.362]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.362
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.361
+              "processed data": 0.361,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 107.629
+              "processed data": 107.629,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3816,30 +5215,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.351]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.351
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.35
+              "processed data": 0.35,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 104.317
+              "processed data": 104.317,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3859,30 +5274,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.361]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.361
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.361
+              "processed data": 0.361,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 107.465
+              "processed data": 107.465,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3902,30 +5333,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.31]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.31
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.31
+              "processed data": 0.31,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 92.325
+              "processed data": 92.325,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3945,30 +5392,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.305]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.305
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.304
+              "processed data": 0.304,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 90.779
+              "processed data": 90.779,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3988,30 +5451,46 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.301]] }
+          "data": {
+            "dimensions": [
+              [
+                "450"
+              ]
+            ],
+            "measures": [
+              [
+                0.301
+              ]
+            ]
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.3
+              "processed data": 0.3,
+              "data processing description": "Blank 450nm:450"
             },
             {
-              "data processing description": "[Concentration]",
-              "processed data": 89.518
+              "processed data": 89.518,
+              "data processing description": "[Concentration]"
             }
           ]
+        },
+        "mass concentration": {
+          "value": 0.125,
+          "unit": "pg/mL"
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6:4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4031,108 +5510,21 @@
               }
             ]
           },
-          "data": { "dimensions": [["450"]], "measures": [[0.169]] }
-        },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.168
-            },
-            {
-              "data processing description": "[Concentration]",
-              "processed data": 50.173
-            }
-          ]
-        }
-      },
-      {
-        "sample document": {
-          "well location identifier": "H11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
-        },
-        "data cube": {
-          "label": "endpoint data",
-          "cube-structure": {
+          "data": {
             "dimensions": [
-              {
-                "@componentDatatype": "int",
-                "concept": "wavelength",
-                "unit": "nm"
-              }
+              [
+                "450"
+              ]
             ],
             "measures": [
-              {
-                "@componentDatatype": "double",
-                "concept": "absorbance",
-                "unit": "mAU"
-              }
+              [
+                0.169
+              ]
             ]
-          },
-          "data": { "dimensions": [["450"]], "measures": [[0.172]] }
+          }
         },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.172
-            },
-            {
-              "data processing description": "[Concentration]",
-              "processed data": 51.258
-            }
-          ]
-        }
-      },
-      {
-        "sample document": {
-          "well location identifier": "H12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6:4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
-        },
-        "data cube": {
-          "label": "endpoint data",
-          "cube-structure": {
-            "dimensions": [
-              {
-                "@componentDatatype": "int",
-                "concept": "wavelength",
-                "unit": "nm"
-              }
-            ],
-            "measures": [
-              {
-                "@componentDatatype": "double",
-                "concept": "absorbance",
-                "unit": "mAU"
-              }
-            ]
-          },
-          "data": { "dimensions": [["450"]], "measures": [[0.169]] }
-        },
-        "mass concentration": { "unit": "pg/mL", "value": 0.125 },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "Blank 450nm:450",
-              "processed data": 0.168
-            },
-            {
-              "data processing description": "[Concentration]",
-              "processed data": 50.273
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
+              "processed data": 0.168,
+              "data processing description": "Blank 450nm:450"
