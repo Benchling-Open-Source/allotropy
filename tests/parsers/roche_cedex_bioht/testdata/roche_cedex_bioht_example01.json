@@ -1,6 +1,8 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     "measurement aggregate document": {
-        "measurement identifier": "TEST_ROCHE_CEDEX_BIOHT_0",
+        "measurement identifier": "aac78195-c69b-4a1d-8895-d9c4c0cdea90",
+        "data processing time": "2023-09-17T13:04:06+00:00",
         "analyst": "ADMIN",
         "device system document": {
             "model number": "CEDEX BIO HT",
@@ -212,8 +214,6 @@
                     ]
                 }
             }
-        ],
-        "data processing time": "2023-09-17T13:04:06+00:00"
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest"
+        ]
+    }
 }

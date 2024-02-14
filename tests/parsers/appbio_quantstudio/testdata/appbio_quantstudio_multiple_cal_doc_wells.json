@@ -14,7 +14,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "measurement identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP1",
                             "sample document": {
@@ -120,7 +120,7 @@
                             }
                         },
                         {
-                            "measurement identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "measurement identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP2",
                             "sample document": {
@@ -233,11 +233,11 @@
                 "calculated data aggregate document": {
                     "calculated data document": [
                         {
-                            "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "calculated data identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
                             "data source aggregate document": {
                                 "data source document": [
                                     {
-                                        "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                        "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
                                         "data source feature": "cycle threshold result"
                                     }
                                 ]
@@ -249,11 +249,11 @@
                             }
                         },
                         {
-                            "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "calculated data identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
                             "data source aggregate document": {
                                 "data source document": [
                                     {
-                                        "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                        "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
                                         "data source feature": "cycle threshold result"
                                     }
                                 ]
@@ -275,7 +275,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "measurement identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP1",
                             "sample document": {
@@ -381,7 +381,7 @@
                             }
                         },
                         {
-                            "measurement identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "measurement identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
                             "measurement time": "2010-10-21T00:51:26-04:00",
                             "target DNA description": "GROUP2",
                             "sample document": {
@@ -494,11 +494,11 @@
                 "calculated data aggregate document": {
                     "calculated data document": [
                         {
-                            "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "calculated data identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
                             "data source aggregate document": {
                                 "data source document": [
                                     {
-                                        "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                        "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
                                         "data source feature": "cycle threshold result"
                                     }
                                 ]
@@ -510,11 +510,11 @@
                             }
                         },
                         {
-                            "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                            "calculated data identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
                             "data source aggregate document": {
                                 "data source document": [
                                     {
-                                        "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                        "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
                                         "data source feature": "cycle threshold result"
                                     }
                                 ]
@@ -536,20 +536,20 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.16"
+            "ASM converter version": "0.1.11"
         },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "7fa15718-4147-47e2-bb51-13dd53adad00",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -561,15 +561,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "c135b5d1-7cc5-4332-8931-ed4cad5b3837",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "cc4e5fba-6c30-4e9b-b5ce-241b1bf4346f",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "94ea6366-1e3a-485e-9a70-5203b2164361",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -581,15 +581,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "339e12bb-419b-4871-a849-34b5cb35bc40",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -601,15 +601,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "41bbe8ad-6c24-4346-a859-802e95886f99",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "a1f124b1-61da-4756-a09a-383f6dfc6fb5",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "ec52ec57-2342-4222-8216-257625cc8e07",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -621,15 +621,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "dbdd9abb-6d81-491f-9093-6cf8aaad5dbe",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -641,15 +641,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "d6df9212-0e46-45d1-862e-23131b55f701",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "ad02be44-2fc5-4cb3-a5fd-2c847b427cab",
                                 "data source feature": "quantity"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "42ac99ae-0b0e-4937-bf90-c6d7ad71f64b",
                                 "data source feature": "quantity"
                             }
                         ]
@@ -661,15 +661,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "e7c81d5a-92f4-4ea6-8f28-12fff94811c9",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -681,15 +681,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                    "calculated data identifier": "4ab59e9d-8f28-471e-8cb6-3ea9ccb07996",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "b65876ab-9b26-42f2-9829-f004a8f4dd21",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "TEST_APPBIO_QUANTSTUDIO_0",
+                                "data source identifier": "c9464a7b-df68-412a-ade6-633aef5cb33e",
                                 "data source feature": "cycle threshold result"
                             }
                         ]

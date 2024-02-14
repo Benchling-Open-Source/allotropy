@@ -1,6 +1,8 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     "measurement aggregate document": {
-        "measurement identifier": "TEST_ROCHE_CEDEX_BIOHT_0",
+        "measurement identifier": "6914bf74-7316-490d-832a-4554c0538790",
+        "data processing time": "2022-10-20T16:34:37+00:00",
         "analyst": "ADMIN",
         "device system document": {
             "model number": "CEDEX BIO HT",
@@ -10,8 +12,8 @@
             {
                 "sample document": {
                     "sample identifier": "Plate1_1",
-                    "batch identifier": "P_391",
-                    "sample role type": "Sample"
+                    "sample role type": "Sample",
+                    "batch identifier": "P_391"
                 },
                 "measurement time": "2022-10-20T09:45:25+00:00",
                 "analyte aggregate document": {
@@ -40,8 +42,8 @@
             {
                 "sample document": {
                     "sample identifier": "Plate1_1",
-                    "batch identifier": "P_492",
-                    "sample role type": "Sample"
+                    "sample role type": "Sample",
+                    "batch identifier": "P_492"
                 },
                 "measurement time": "2022-10-20T09:45:25+00:00",
                 "analyte aggregate document": {
@@ -63,8 +65,8 @@
             {
                 "sample document": {
                     "sample identifier": "Plate1_2",
-                    "batch identifier": "P_391",
-                    "sample role type": "Sample"
+                    "sample role type": "Sample",
+                    "batch identifier": "P_391"
                 },
                 "measurement time": "2022-10-20T09:45:55+00:00",
                 "analyte aggregate document": {
@@ -129,8 +131,8 @@
             {
                 "sample document": {
                     "sample identifier": "Plate1_3",
-                    "batch identifier": "pep1",
-                    "sample role type": "Sample"
+                    "sample role type": "Sample",
+                    "batch identifier": "pep1"
                 },
                 "measurement time": "2022-10-20T09:46:27+00:00",
                 "analyte aggregate document": {
@@ -145,8 +147,6 @@
                     ]
                 }
             }
-        ],
-        "data processing time": "2022-10-20T16:34:37+00:00"
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest"
+        ]
+    }
 }
