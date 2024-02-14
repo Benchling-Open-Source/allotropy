@@ -12,7 +12,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -25,7 +25,7 @@ class RocheCedexBiohtParser(VendorParser):
     def _get_model(self, data: Data) -> Model:
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=random_uuid_str(),
+                measurement_identifier=get_id_generator().generate_id(),
                 data_processing_time=self._get_date_time(
                     data.title.data_processing_time
                 ),

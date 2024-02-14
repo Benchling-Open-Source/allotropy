@@ -33,7 +33,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Header,
     Measurement,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 DEFAULT_SOFTWARE_NAME = "xPONENT"
@@ -117,7 +117,7 @@ class LuminexXponentParser(VendorParser):
             )
 
         return MeasurementDocumentItem(
-            measurement_identifier=random_uuid_str(),
+            measurement_identifier=get_id_generator().generate_id(),
             measurement_time=self._get_date_time(header_data.measurement_time),
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
@@ -144,7 +144,7 @@ class LuminexXponentParser(VendorParser):
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     AnalyteDocumentItem(
-                        analyte_identifier=random_uuid_str(),
+                        analyte_identifier=get_id_generator().generate_id(),
                         analyte_name=analyte.analyte_name,
                         assay_bead_identifier=analyte.assay_bead_identifier,
                         assay_bead_count=TQuantityValueNumber(

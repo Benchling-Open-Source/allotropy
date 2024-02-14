@@ -40,7 +40,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataItem,
     CalculatedDataSource,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -94,7 +94,7 @@ class AppbioAbsoluteQParser(VendorParser):
     ) -> DPCRDocumentItem:
         measurement_documents = []
         for _, well_item in well_data.iterrows():
-            measurement_identifier = random_uuid_str()
+            measurement_identifier = get_id_generator().generate_id()
 
             key = str((well_item["Group"], well_item["Target"]))
             group_ids[key].append(measurement_identifier)
@@ -174,7 +174,7 @@ class AppbioAbsoluteQParser(VendorParser):
                     continue
 
                 datum_value = float(group[calculated_data_item.column])
-                calculated_data_id = random_uuid_str()
+                calculated_data_id = get_id_generator().generate_id()
                 calculated_data_ids[calculated_data_item.name] = calculated_data_id
 
                 data_source_document = [
@@ -201,7 +201,7 @@ class AppbioAbsoluteQParser(VendorParser):
             # TODO: this should be inproved (repeat less code)
             for calculated_data_item in defered_calculated_data_items:
                 datum_value = float(group[calculated_data_item.column])
-                calculated_data_id = random_uuid_str()
+                calculated_data_id = get_id_generator().generate_id()
 
                 data_source_document = [
                     DataSourceDocumentItem(

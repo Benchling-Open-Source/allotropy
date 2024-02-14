@@ -42,7 +42,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
     NanoDropEightReader,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -137,8 +137,12 @@ class NanodropEightParser(VendorParser):
         )
 
     def _add_measurement_uuids(self, data: pd.DataFrame) -> pd.DataFrame:
-        data["a260 uuid"] = [random_uuid_str() for _ in range(len(data.index))]
-        data["a280 uuid"] = [random_uuid_str() for _ in range(len(data.index))]
+        data["a260 uuid"] = [
+            get_id_generator().generate_id() for _ in range(len(data.index))
+        ]
+        data["a280 uuid"] = [
+            get_id_generator().generate_id() for _ in range(len(data.index))
+        ]
         return data
 
     def _get_spectrophotometry_document(
@@ -168,7 +172,7 @@ class NanodropEightParser(VendorParser):
             calculated_result=TQuantityValue(
                 value=_get_float(data, row, "260/280"), unit=UNITLESS
             ),
-            calculated_data_identifier=random_uuid_str(),
+            calculated_data_identifier=get_id_generator().generate_id(),
             data_source_aggregate_document=DataSourceAggregateDocument(
                 data_source_document=[
                     DataSourceDocumentItem(
@@ -189,7 +193,7 @@ class NanodropEightParser(VendorParser):
             calculated_result=TQuantityValue(
                 value=_get_float(data, row, "260/230"), unit=UNITLESS
             ),
-            calculated_data_identifier=random_uuid_str(),
+            calculated_data_identifier=get_id_generator().generate_id(),
             data_source_aggregate_document=DataSourceAggregateDocument(
                 data_source_document=[
                     DataSourceDocumentItem(
