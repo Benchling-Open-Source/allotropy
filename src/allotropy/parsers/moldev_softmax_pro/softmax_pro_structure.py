@@ -15,7 +15,7 @@ from allotropy.exceptions import (
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
@@ -326,7 +326,7 @@ class PlateWavelengthData:
             wavelength,
             data_elements={
                 str(position): DataElement(
-                    uuid=random_uuid_str(),
+                    uuid=get_id_generator().generate_id(),
                     plate=plate_name,
                     temperature=temperature,
                     wavelength=wavelength,
@@ -480,7 +480,7 @@ class TimeKineticData:
             temperature=temperature,
             data_elements={
                 str(position): DataElement(
-                    uuid=random_uuid_str(),
+                    uuid=get_id_generator().generate_id(),
                     plate=plate_name,
                     temperature=temperature,
                     wavelength=wavelength,

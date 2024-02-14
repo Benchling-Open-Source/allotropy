@@ -38,7 +38,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -125,7 +125,7 @@ class ViCellXRParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=random_uuid_str(),
+                        measurement_identifier=get_id_generator().generate_id(),
                         measurement_time=self._get_date_time(
                             str(sample.get(DATE_HEADER[file_version]))
                         ),

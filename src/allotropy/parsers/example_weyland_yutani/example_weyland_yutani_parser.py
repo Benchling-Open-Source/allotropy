@@ -22,7 +22,7 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure i
     Data,
 )
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -40,7 +40,7 @@ class ExampleWeylandYutaniParser(VendorParser):
 
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=random_uuid_str(),
+                measurement_identifier=get_id_generator().generate_id(),
                 measurement_time=self._get_measurement_time(data),
                 analytical_method_identifier=data.basic_assay_info.protocol_id,
                 experimental_data_identifier=data.basic_assay_info.assay_id,

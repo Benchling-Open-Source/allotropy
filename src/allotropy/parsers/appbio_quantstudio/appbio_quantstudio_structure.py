@@ -22,7 +22,7 @@ from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -181,7 +181,7 @@ class WellItem(Referenceable):
 
         return (
             WellItem(
-                uuid=random_uuid_str(),
+                uuid=get_id_generator().generate_id(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele1}",
                 sample_identifier=sample_identifier,
@@ -198,7 +198,7 @@ class WellItem(Referenceable):
                 sample_role_type=try_str_from_series_or_none(data, "Task"),
             ),
             WellItem(
-                uuid=random_uuid_str(),
+                uuid=get_id_generator().generate_id(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele2}",
                 sample_identifier=sample_identifier,
@@ -233,7 +233,7 @@ class WellItem(Referenceable):
         )
 
         return WellItem(
-            uuid=random_uuid_str(),
+            uuid=get_id_generator().generate_id(),
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,

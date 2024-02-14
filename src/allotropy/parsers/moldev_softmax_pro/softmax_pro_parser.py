@@ -59,7 +59,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     PlateBlock,
     ScanPosition,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.uuids import get_id_generator
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
@@ -316,7 +316,7 @@ class SoftmaxproParser(VendorParser):
         description: Optional[str] = None,
     ) -> CalculatedDataDocumentItem:
         return CalculatedDataDocumentItem(
-            calculated_data_identifier=random_uuid_str(),
+            calculated_data_identifier=get_id_generator().generate_id(),
             calculated_data_name=name,
             calculation_description=description,
             calculated_result=TQuantityValue(
