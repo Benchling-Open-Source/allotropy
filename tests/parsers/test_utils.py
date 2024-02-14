@@ -10,7 +10,7 @@ import numpy as np
 
 from allotropy.allotrope.schemas import get_schema
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
-from allotropy.parser_factory import VendorType
+from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
 
 CALCULATED_DATA_IDENTIFIER = "calculated data identifier"
@@ -56,12 +56,12 @@ def _assert_allotrope_dicts_equal(
     assert not ddiff
 
 
-def from_file(test_file: str, vendor_type: VendorType) -> DictType:
-    return allotrope_from_file(test_file, vendor_type)
+def from_file(test_file: str, vendor: Vendor) -> DictType:
+    return allotrope_from_file(test_file, vendor)
 
 
-def model_from_file(test_file: str, vendor_type: VendorType) -> Any:
-    return allotrope_model_from_file(test_file, vendor_type)
+def model_from_file(test_file: str, vendor: Vendor) -> Any:
+    return allotrope_model_from_file(test_file, vendor)
 
 
 def _validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None:
@@ -89,11 +89,11 @@ def _validate_contents(
 
 def generate_allotrope_and_validate(
     test_file: str,
-    vendor_type: VendorType,
+    vendor: Vendor,
     schema_relative_path: str,
     expected_output_file: str,
     identifiers_to_exclude: Optional[list[str]] = None,
 ) -> None:
-    allotrope_dict = from_file(test_file, vendor_type)
+    allotrope_dict = from_file(test_file, vendor)
     _validate_schema(allotrope_dict, schema_relative_path)
     _validate_contents(allotrope_dict, expected_output_file, identifiers_to_exclude)
