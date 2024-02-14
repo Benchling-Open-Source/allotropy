@@ -6,16 +6,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.16] - 2024-02-08
+### Added
+### Fixed
+- Fix mixup of Plate ID and Plate Position in Unchained Labs Lunatic Parser
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.15] - 2024-02-02
+### Added
 - pandas_utils module wraps pandas functions to throw AllotropeConversionError.
 ### Fixed
 - Total cells column no longer required for vi-cell XR
 - Ignore invalid first row when present for vi-cell XR files
+- Capture concentration on Nanodrop Eight files that do not have NA Type column
+- Removed hardcoding of date parsing around Gen5 plate numbers
 ### Changed
 - Corrections to the spectrophotometry/BENCHLING/2023/12 schema to account for feedback from Allotrope Modeling Working Group
 - Replace null with N/A in Moldev Softmax Pro
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.14] - 2024-01-31
 ### Added

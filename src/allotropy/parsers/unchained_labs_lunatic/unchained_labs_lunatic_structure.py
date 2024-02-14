@@ -63,9 +63,9 @@ class Measurement:
             wavelength=float(wavelength_column[1:]),
             absorbance=try_float_from_series(well_plate_data, wavelength_column),
             sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
-            location_identifier=try_str_from_series(well_plate_data, "Plate ID"),
+            location_identifier=try_str_from_series(well_plate_data, "Plate Position"),
             well_plate_identifier=try_str_from_series_or_none(
-                well_plate_data, "Plate Position"
+                well_plate_data, "Plate ID"
             ),
             calculated_data=Measurement._get_calculated_data(
                 well_plate_data, wavelength_column, measurement_identifier
