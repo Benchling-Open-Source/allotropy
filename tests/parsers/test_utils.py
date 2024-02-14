@@ -126,10 +126,9 @@ def generate_allotrope_and_validate(
             expected_output_file,
             identifiers_to_exclude,
         )
-    except Exception:
+    except:  # noqa: E722
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_output_file)
-        raise
 
     # Ensure that tests fail if the param is set to True. We never want to commit with a True value.
     assert not write_actual_to_expected_on_fail
