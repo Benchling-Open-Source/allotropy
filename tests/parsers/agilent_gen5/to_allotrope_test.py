@@ -22,10 +22,10 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
+from allotropy.to_allotrope import allotrope_model_from_file
 from tests.parsers.test_utils import (
     DictType,
     from_file,
-    model_from_file,
     validate_contents,
     validate_schema,
 )
@@ -73,7 +73,7 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
 def test_model_from_file_absorbance() -> None:
     filename = ABSORBENCE_FILENAMES[0]
     test_filepath = f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.txt"
-    allotrope_model = model_from_file(test_filepath, VENDOR_TYPE)
+    allotrope_model = allotrope_model_from_file(test_filepath, VENDOR_TYPE)
     assert isinstance(allotrope_model, Model)
 
     # Test many model fields fully. Don't test everything as that would mean a lot of hardcoding (or not-human-readable
