@@ -98,7 +98,7 @@ def generate_allotrope_and_validate(
     schema_relative_path: str,
     expected_output_file: str,
     identifiers_to_exclude: Optional[list[str]] = None,
-    write_actual_to_expected_on_fail: bool = True,  # noqa: FBT001, FBT002
+    write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     allotrope_dict = from_file(test_file, vendor)
     _validate_schema(allotrope_dict, schema_relative_path)
