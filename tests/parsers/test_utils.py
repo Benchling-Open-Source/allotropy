@@ -88,7 +88,7 @@ def _validate_contents(
         if write_actual_to_expected_on_fail:
             # TODO: write to a temp file first, then copy iff it succeeds
             with open(expected_file, "w") as expected_file_overwritten:
-                json.dump(allotrope_dict, expected_file_overwritten, indent=2)
+                json.dump(allotrope_dict, expected_file_overwritten, indent=4)
         raise
 
 
