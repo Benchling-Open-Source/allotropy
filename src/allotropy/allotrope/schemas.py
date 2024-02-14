@@ -38,3 +38,11 @@ def get_schema_path_from_manifest(manifest: str) -> str:
 
 def get_schema_from_manifest(manifest: str) -> dict[str, Any]:
     return get_schema(get_schema_path_from_manifest(manifest))
+
+
+def get_schema_from_model(model: Any):
+    manifest = getattr(model, "manifest", getattr(model, "field_asm_manifest", None))
+    if not manifest:
+        msg = f"No 'manifest' or 'field_asn_manifest' found in model: {type(model)}"
+        raise ValueError(msg)
+    return get_schema_from_manifest(manifest)

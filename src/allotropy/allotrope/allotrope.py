@@ -14,7 +14,7 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ProcessedDataDocumentItem,
 )
-from allotropy.allotrope.schemas import get_schema_from_manifest
+from allotropy.allotrope.schemas import get_schema_from_model
 from allotropy.exceptions import AllotropeConversionError
 
 # TODO: gather exceptions when parsing models from schema and publish them in model
@@ -148,13 +148,7 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
         raise AllotropeConversionError(msg) from e
 
     try:
-        manifest = getattr(
-            model, "manifest", getattr(model, "field_asm_manifest", None)
-        )
-        if not manifest:
-            msg = f"No 'manifest' or 'field_asn_manifest' found in model: {type(model)}"
-            raise ValueError(msg)
-        allotrope_schema = get_schema_from_manifest(manifest)
+        allotrope_schema = get_schema_from_model(model)
     except Exception as e:
         msg = f"Failed to retrive schema for model: {e}"
         raise AllotropeConversionError(msg) from e
