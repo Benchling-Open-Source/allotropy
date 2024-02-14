@@ -156,7 +156,7 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
             raise ValueError(msg)
         allotrope_schema = get_schema_from_manifest(manifest)
     except Exception as e:
-        msg = f"Failed to retrive schema based from model: {e}"
+        msg = f"Failed to retrive schema for model: {e}"
         raise AllotropeConversionError(msg) from e
 
     try:
