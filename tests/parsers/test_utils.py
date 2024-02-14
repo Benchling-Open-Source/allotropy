@@ -77,7 +77,7 @@ def _validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> Non
 def _validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
-    identifiers_to_exclude: Optional[list[str]] = None,
+    identifiers_to_exclude: Optional[list[str]],
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     with open(expected_file) as f:
