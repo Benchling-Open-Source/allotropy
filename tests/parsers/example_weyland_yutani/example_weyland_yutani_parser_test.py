@@ -8,7 +8,7 @@ valid_files = (
     "Weyland_Yutani_checksum_correct",
 )
 
-SCHEMA = "fluorescence/BENCHLING/2023/09/fluorescence.json"
+SCHEMA_FILE = "fluorescence/BENCHLING/2023/09/fluorescence.json"
 TESTDATA = "tests/parsers/example_weyland_yutani/testdata"
 VENDOR_TYPE = Vendor.EXAMPLE_WEYLAND_YUTANI
 
@@ -18,5 +18,5 @@ def test_parse_weyland_yutani_to_asm(filestem: str) -> None:
     test_filepath = f"{TESTDATA}/{filestem}.csv"
     expected_filepath = f"{TESTDATA}/{filestem}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA)
+    validate_schema(allotrope_dict, SCHEMA_FILE)
     validate_contents(allotrope_dict, expected_filepath)
