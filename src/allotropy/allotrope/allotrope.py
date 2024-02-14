@@ -5,6 +5,7 @@ from typing import Any, Callable, cast
 
 import cattrs
 from cattrs.gen import make_dict_unstructure_fn, override
+import jsonschema
 
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
     AnalyteDocumentItem,
@@ -13,6 +14,8 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ProcessedDataDocumentItem,
 )
+from allotropy.allotrope.schemas import get_schema_from_manifest
+from allotropy.exceptions import AllotropeConversionError
 
 # TODO: gather exceptions when parsing models from schema and publish them in model
 SPECIAL_KEYS = {
@@ -135,3 +138,34 @@ def serialize_allotrope(model: Any) -> dict[str, Any]:
     converter.register_unstructure_hook_factory(is_dataclass, unstructure_dataclass_fn)
     result = converter.unstructure(model)
     return cast(dict[str, Any], result)
+
+
+def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
+    try:
+        allotrope_dict = serialize_allotrope(model)
+    except Exception as e:
+        msg = f"Failed to serialize allotrope model: {e}"
+        raise AllotropeConversionError(msg) from e
+
+    try:
+        manifest = getattr(
+            model, "manifest", getattr(model, "field_asm_manifest", None)
+        )
+        if not manifest:
+            msg = f"No 'manifest' or 'field_asn_manifest' found in model: {type(model)}"
+            raise ValueError(msg)
+        allotrope_schema = get_schema_from_manifest(manifest)
+    except Exception as e:
+        msg = f"Failed to retrive schema based from model: {e}"
+        raise AllotropeConversionError(msg) from e
+
+    try:
+        jsonschema.validate(
+            allotrope_dict,
+            allotrope_schema,
+            format_checker=jsonschema.validators.Draft202012Validator.FORMAT_CHECKER,
+        )
+    except Exception as e:
+        msg = f"Failed to validate allotrope model against schema: {e}"
+        raise AllotropeConversionError(msg) from e
+    return allotrope_dict

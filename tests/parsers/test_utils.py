@@ -5,10 +5,8 @@ import json
 from typing import Any, Optional
 
 from deepdiff import DeepDiff
-import jsonschema
 import numpy as np
 
-from allotropy.allotrope.schemas import get_schema
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import VendorType
 from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
@@ -62,16 +60,6 @@ def from_file(test_file: str, vendor_type: VendorType) -> DictType:
 
 def model_from_file(test_file: str, vendor_type: VendorType) -> Any:
     return allotrope_model_from_file(test_file, vendor_type)
-
-
-def validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None:
-    """Check that the newly created allotrope_dict matches the pre-defined schema from Allotrope."""
-    allotrope_schema = get_schema(schema_relative_path)
-    jsonschema.validate(
-        allotrope_dict,
-        allotrope_schema,
-        format_checker=jsonschema.validators.Draft202012Validator.FORMAT_CHECKER,
-    )
 
 
 def validate_contents(
