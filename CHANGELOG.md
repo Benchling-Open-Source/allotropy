@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Handle invalid values in SoftmaxPro well measurements, filling with "NaN"
 ### Changed
 ### Deprecated
 ### Removed
