@@ -38,7 +38,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
-from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
 class SampleProperty(Enum):
@@ -124,7 +124,7 @@ class ViCellXRParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=random_uuid_str(),
+                        measurement_identifier=self.random_uuid_str(),
                         measurement_time=self._get_date_time(
                             str(sample.get(DATE_HEADER[file_version]))
                         ),

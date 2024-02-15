@@ -27,7 +27,7 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AgilentGen5Parser(VendorParser):
@@ -37,7 +37,7 @@ class AgilentGen5Parser(VendorParser):
         if first_plate.plate_type.read_mode == ReadMode.ABSORBANCE:
             return AbsorbanceModel(
                 measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
-                    measurement_identifier=random_uuid_str(),
+                    measurement_identifier=self.random_uuid_str(),
                     measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
@@ -54,7 +54,7 @@ class AgilentGen5Parser(VendorParser):
         elif first_plate.plate_type.read_mode == ReadMode.FLUORESCENCE:
             return FluorescenceModel(
                 measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
-                    measurement_identifier=random_uuid_str(),
+                    measurement_identifier=self.random_uuid_str(),
                     measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
@@ -71,7 +71,7 @@ class AgilentGen5Parser(VendorParser):
         elif first_plate.plate_type.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceModel(
                 measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
-                    measurement_identifier=random_uuid_str(),
+                    measurement_identifier=self.random_uuid_str(),
                     measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),

@@ -36,7 +36,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
-from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
     "Dead (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
@@ -122,7 +122,7 @@ class ChemometecNucleoviewParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=random_uuid_str(),
+                        measurement_identifier=self.random_uuid_str(),
                         measurement_time=self._get_date_time_or_epoch(
                             _get_value(data_frame, row, "datetime")
                         ),

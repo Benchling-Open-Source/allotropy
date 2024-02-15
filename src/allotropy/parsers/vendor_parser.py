@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, final
 import uuid
 
 from pandas import Timestamp
@@ -25,6 +25,11 @@ class VendorParser(ABC):
     @abstractmethod
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
+
+    # TODO: make protected
+    @final
+    def random_uuid_str(self) -> str:
+        return random_uuid_str()
 
     def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")

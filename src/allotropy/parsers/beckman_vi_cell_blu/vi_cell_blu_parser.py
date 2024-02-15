@@ -37,7 +37,7 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     VICELL_BLU_SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
-from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
 class SampleProperty(Enum):
@@ -129,7 +129,7 @@ class ViCellBluParser(VendorParser):
                         measurement_time=self._get_date_time(
                             sample.get_value_not_none("Analysis date/time")
                         ),
-                        measurement_identifier=random_uuid_str(),
+                        measurement_identifier=self.random_uuid_str(),
                         sample_document=SampleDocument(sample_identifier=sample.get_value("Sample ID")),  # type: ignore[arg-type]
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
