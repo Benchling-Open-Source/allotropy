@@ -52,7 +52,7 @@ def test_natural_sort_key(key: str, expected: list[str]) -> None:
     assert natural_sort_key(key) == expected
 
 
-def _try_float(value: Optional[str]) -> float:
+def _try_float(value: str) -> float:
     return try_float(value, "param")
 
 
@@ -68,7 +68,7 @@ def test_try_float() -> None:
         ("a", "Invalid float string: 'a'."),
     ],
 )
-def test_try_float_fails(value: Optional[str], expected_regex: str) -> None:
+def test_try_float_fails(value: str, expected_regex: str) -> None:
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         _try_float(value)
 
