@@ -115,7 +115,7 @@ def validate_contents(
         _assert_allotrope_dicts_equal(
             expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
         )
-    except:  # noqa: E722
+    except:
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_file)
         raise
