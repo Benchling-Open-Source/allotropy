@@ -39,7 +39,7 @@ class ExampleWeylandYutaniParser(VendorParser):
 
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=self.random_uuid_str(),
+                measurement_identifier=self._random_uuid_str(),
                 measurement_time=self._get_measurement_time(data),
                 analytical_method_identifier=data.basic_assay_info.protocol_id,
                 experimental_data_identifier=data.basic_assay_info.assay_id,

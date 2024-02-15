@@ -93,7 +93,7 @@ class AppbioAbsoluteQParser(VendorParser):
     ) -> DPCRDocumentItem:
         measurement_documents = []
         for _, well_item in well_data.iterrows():
-            measurement_identifier = self.random_uuid_str()
+            measurement_identifier = self._random_uuid_str()
 
             key = str((well_item["Group"], well_item["Target"]))
             group_ids[key].append(measurement_identifier)
@@ -172,7 +172,7 @@ class AppbioAbsoluteQParser(VendorParser):
                     continue
 
                 datum_value = float(group[calculated_data_item.column])
-                calculated_data_id = self.random_uuid_str()
+                calculated_data_id = self._random_uuid_str()
                 calculated_data_ids[calculated_data_item.name] = calculated_data_id
 
                 data_source_document = [
@@ -199,7 +199,7 @@ class AppbioAbsoluteQParser(VendorParser):
             # TODO: this should be inproved (repeat less code)
             for calculated_data_item in defered_calculated_data_items:
                 datum_value = float(group[calculated_data_item.column])
-                calculated_data_id = self.random_uuid_str()
+                calculated_data_id = self._random_uuid_str()
 
                 data_source_document = [
                     DataSourceDocumentItem(

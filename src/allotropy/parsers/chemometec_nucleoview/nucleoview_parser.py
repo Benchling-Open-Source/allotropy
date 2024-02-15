@@ -122,7 +122,7 @@ class ChemometecNucleoviewParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=self.random_uuid_str(),
+                        measurement_identifier=self._random_uuid_str(),
                         measurement_time=self._get_date_time_or_epoch(
                             _get_value(data_frame, row, "datetime")
                         ),
