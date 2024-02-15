@@ -84,7 +84,6 @@ class _Sample:
         if value is None:
             msg = f"Missing value for column '{column}'."
             raise AllotropeConversionError(msg)
-
         return value
 
     def get_property_value(self, sample_property: SampleProperty) -> Any:
