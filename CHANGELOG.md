@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ### Deprecated
 ### Removed
+- Removed unused InvalidJsonFloat enum values
 ### Security
 
 ## [0.1.16] - 2024-02-08
