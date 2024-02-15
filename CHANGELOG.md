@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Automatic validation of generated model in to_allotrope methods with error messages
 ### Fixed
+- Handle invalid values in SoftmaxPro well measurements, filling with "NaN"
 ### Changed
 ### Deprecated
 ### Removed
