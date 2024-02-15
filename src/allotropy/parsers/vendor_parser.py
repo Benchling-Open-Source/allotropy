@@ -10,6 +10,17 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
 
+class IdGenerator(ABC):
+    @abstractmethod
+    def generate_id(self) -> str:
+        raise NotImplementedError
+
+
+class UuidGenerator(IdGenerator):
+    def generate_id(self) -> str:
+        return str(uuid.uuid4())
+
+
 class VendorParser(ABC):
     timestamp_parser: TimestampParser
 
@@ -25,7 +36,12 @@ class VendorParser(ABC):
     @classmethod
     @final
     def random_uuid_str(cls) -> str:
-        return str(uuid.uuid4())
+        return cls._get_id_generator().generate_id()
+
+    @classmethod
+    @final
+    def _get_id_generator(cls) -> IdGenerator:
+        return UuidGenerator()
 
     def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")

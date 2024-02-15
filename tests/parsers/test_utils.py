@@ -75,8 +75,8 @@ class TestIdGenerator:
 
 def from_file(test_file: str, vendor: Vendor) -> DictType:
     with mock.patch(
-        "allotropy.parsers.vendor_parser.VendorParser.random_uuid_str",
-        return_value=TestIdGenerator(vendor).generate_id(),
+        "allotropy.parsers.vendor_parser.VendorParser._get_id_generator",
+        return_value=TestIdGenerator(vendor),
     ):
         return allotrope_from_file(test_file, vendor)
 
