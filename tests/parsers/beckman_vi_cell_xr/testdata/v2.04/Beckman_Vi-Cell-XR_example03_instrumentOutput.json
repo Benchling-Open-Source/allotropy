@@ -7,7 +7,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-18T09:08:24+00:00",
-                            "measurement identifier": "f0d31e64-8870-420d-a1a3-513e6b4c8194",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -30,10 +30,6 @@
                                             "value": 1.8099467588424683,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1752,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -47,7 +43,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.61550412902832,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1752,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1723,
@@ -70,7 +70,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:13:22+00:00",
-                            "measurement identifier": "b4180a96-3c26-4a0b-827e-9f7e3dbe2865",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -93,10 +93,6 @@
                                             "value": 3.2090853286743166,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4728,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -110,7 +106,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.795691354370117,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4728,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 3055,
@@ -133,7 +133,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:13:33+00:00",
-                            "measurement identifier": "b59ee5b0-99ec-4b44-bba7-6e5d3824636f",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -156,10 +156,6 @@
                                             "value": 3.0704320503234865,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4540,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -173,7 +169,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.810836656188965,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4540,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 2923,
@@ -196,7 +196,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:13:35+00:00",
-                            "measurement identifier": "1d2ea8df-b8f1-49d4-9d13-69be89f811f4",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -219,10 +219,6 @@
                                             "value": 2.697538478469849,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4358,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -236,7 +232,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.494943482971191,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4358,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 2568,
@@ -259,7 +259,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:13:36+00:00",
-                            "measurement identifier": "9144d444-953e-4d8c-8cae-311cc7fa6d2a",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -282,10 +282,6 @@
                                             "value": 2.481155021286011,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4057,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -299,7 +295,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.467296464538574,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4057,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 2362,
@@ -322,7 +322,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:13:39+00:00",
-                            "measurement identifier": "6352bee6-43c7-4d05-abc5-ac4bfe6aa861",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -345,10 +345,6 @@
                                             "value": 0.5799231959342956,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4101,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -362,7 +358,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 10.091128213500976,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4101,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 552,
@@ -385,7 +385,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:13:50+00:00",
-                            "measurement identifier": "75d404b8-97b8-4886-9229-219aa0207d16",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -408,10 +408,6 @@
                                             "value": 3.507400138473511,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4911,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -425,7 +421,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.763769967651367,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4911,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 3339,
@@ -448,7 +448,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:14:08+00:00",
-                            "measurement identifier": "4c5277c8-1052-4f7d-8887-49df34a7e85b",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -471,10 +471,6 @@
                                             "value": 3.0546759201049807,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4553,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -488,7 +484,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.59937749633789,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4553,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 2908,
@@ -511,7 +511,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:14:15+00:00",
-                            "measurement identifier": "ffd387f1-5c03-4916-ad79-72f1bfe04a9b",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -534,10 +534,6 @@
                                             "value": 1.2668876482009888,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 3160,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -551,7 +547,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.13992105255127,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 3160,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1206,
@@ -574,7 +574,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:14:26+00:00",
-                            "measurement identifier": "38b43912-b02b-4e9a-929a-69dbcddb5936",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -597,10 +597,6 @@
                                             "value": 1.133486254310608,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2901,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -614,7 +610,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.105061395263672,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2901,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1079,
@@ -637,7 +637,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:14:31+00:00",
-                            "measurement identifier": "a2cbd9bc-5e89-4597-8aa3-10bfaf91f9c9",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -660,10 +660,6 @@
                                             "value": 1.4769685102462768,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2980,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -677,7 +673,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.578362329101562,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2980,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1406,
@@ -700,7 +700,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-24T09:19:46+00:00",
-                            "measurement identifier": "4252adc8-a93c-4eed-9568-5ae77c4c5448",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -723,10 +723,6 @@
                                             "value": 1.1229822469711304,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2759,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -740,7 +736,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.081515176391601,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2759,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1069,
@@ -763,7 +763,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:38:11+00:00",
-                            "measurement identifier": "1aa7ff41-3abf-4e41-8c75-6933b68c11d3",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -786,10 +786,6 @@
                                             "value": 0.5452598763465881,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 767,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -803,7 +799,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.616611344909668,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 767,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 519,
@@ -826,7 +826,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:38:24+00:00",
-                            "measurement identifier": "ae44e4ab-93af-4faf-91b4-cd38b30c3157",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -849,10 +849,6 @@
                                             "value": 0.8267682028770447,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1046,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -866,7 +862,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.16023240814209,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1046,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 787,
@@ -889,7 +889,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:38:26+00:00",
-                            "measurement identifier": "86a5c7bc-599b-4cc8-9050-b41fa011a736",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -912,10 +912,6 @@
                                             "value": 0.6786612106323242,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 961,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -929,7 +925,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.599280221557617,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 961,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 646,
@@ -952,7 +952,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:38:27+00:00",
-                            "measurement identifier": "83de237f-4b80-4ed4-958a-a899c6c85a73",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -975,10 +975,6 @@
                                             "value": 0.6282418204307556,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 901,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -992,7 +988,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.33806215057373,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 901,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 598,
@@ -1015,7 +1015,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:38:30+00:00",
-                            "measurement identifier": "0cc31f9c-f707-4810-8e3f-62707d96b9f7",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1038,10 +1038,6 @@
                                             "value": 0.05568143112421036,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1045,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1055,7 +1051,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 9.678506715393066,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1045,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 53,
@@ -1078,7 +1078,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:43:26+00:00",
-                            "measurement identifier": "53c68413-e62b-425a-ad50-d442d4391f77",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1101,10 +1101,6 @@
                                             "value": 0.901346964931488,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1102,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1118,7 +1114,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.195168359375,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1102,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 858,
@@ -1141,7 +1141,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:43:44+00:00",
-                            "measurement identifier": "0ab67521-9e53-4c09-841a-7e3fe3821a85",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1164,10 +1164,6 @@
                                             "value": 1.0925205780029297,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1285,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1181,7 +1177,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.08920846710205,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1285,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1040,
@@ -1204,7 +1204,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:43:51+00:00",
-                            "measurement identifier": "9515ef55-6044-432d-add0-05f003390e93",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1227,10 +1227,6 @@
                                             "value": 0.6345442367553711,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1410,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1244,7 +1240,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.811142785644531,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1410,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 604,
@@ -1267,7 +1267,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:44:02+00:00",
-                            "measurement identifier": "1a96c421-63cd-455a-a336-32c6d5cd5f91",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1290,10 +1290,6 @@
                                             "value": 0.5032436681747436,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1161,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1307,7 +1303,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.8708275390625,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1161,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 479,
@@ -1330,7 +1330,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:44:13+00:00",
-                            "measurement identifier": "9fd83fcc-f82b-4d42-ae1c-e57df2f1aa37",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1353,10 +1353,6 @@
                                             "value": 0.7700463963508606,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1479,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1370,7 +1366,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.407616479492187,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1479,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 733,
@@ -1393,7 +1393,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-26T09:44:21+00:00",
-                            "measurement identifier": "e85697e6-f0c2-4c2f-9df5-409a4b7ad598",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1416,10 +1416,6 @@
                                             "value": 0.6124857498168945,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1263,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1433,7 +1429,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 11.807673318481445,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1263,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 583,
@@ -1456,7 +1456,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:13:28+00:00",
-                            "measurement identifier": "af315664-6754-4f72-9204-a0dbfc566dcb",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1479,10 +1479,6 @@
                                             "value": 2.0651949478149416,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2242,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1496,7 +1492,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.604998452758789,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2242,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1966,
@@ -1519,7 +1519,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:13:44+00:00",
-                            "measurement identifier": "ee4131b0-21b4-44c5-9cc5-f14a196d524d",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1542,10 +1542,6 @@
                                             "value": 3.0105589462280276,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 3136,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1559,7 +1555,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.512700898742676,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 3136,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 2866,
@@ -1582,7 +1582,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:13:46+00:00",
-                            "measurement identifier": "cc75393b-d162-4240-aceb-52e4c4fde01d",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1605,10 +1605,6 @@
                                             "value": 2.0630942417144778,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2221,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1622,7 +1618,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.350641114807129,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2221,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1964,
@@ -1645,7 +1645,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:13:47+00:00",
-                            "measurement identifier": "f3b5fec2-f924-4110-8dd5-0ac2f60957fa",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1668,10 +1668,6 @@
                                             "value": 1.9486000371932983,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2102,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1685,7 +1681,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.533931596374511,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2102,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1855,
@@ -1708,7 +1708,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:13:52+00:00",
-                            "measurement identifier": "1a61cce8-f005-48b2-84cf-4faf84cd957f",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1731,10 +1731,6 @@
                                             "value": 0.04097576943993569,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1031,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1748,7 +1744,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 9.848688943481445,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1031,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 39,
@@ -1771,7 +1771,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:18:07+00:00",
-                            "measurement identifier": "0290515a-9070-454e-935e-08943e12f64a",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1794,10 +1794,6 @@
                                             "value": 4.079870565032959,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4096,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1811,7 +1807,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.07056890258789,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4096,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 3884,
@@ -1834,7 +1834,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:18:21+00:00",
-                            "measurement identifier": "5606b25e-a383-4a86-93f7-282684888371",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1857,10 +1857,6 @@
                                             "value": 4.628181798553467,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 4641,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1874,7 +1870,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 14.025838716125488,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4641,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 4406,
@@ -1897,7 +1897,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:18:23+00:00",
-                            "measurement identifier": "82929a72-8c90-4955-901d-d921fb61f54a",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1920,10 +1920,6 @@
                                             "value": 1.212266666984558,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1753,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -1937,7 +1933,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.43000779876709,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1753,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1154,
@@ -1960,7 +1960,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:18:24+00:00",
-                            "measurement identifier": "638a4581-89c6-4267-9958-5f79d0686443",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -1983,10 +1983,6 @@
                                             "value": 1.204913838005066,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1791,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -2000,7 +1996,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.350288255310058,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1791,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1147,
@@ -2023,7 +2023,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:18:27+00:00",
-                            "measurement identifier": "5235cf4c-dced-4b4d-99bc-70d233c065c7",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2046,10 +2046,6 @@
                                             "value": 1.746922476387024,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2306,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -2063,7 +2059,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.920673234558105,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2306,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1663,
@@ -2086,7 +2086,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2022-10-28T09:18:29+00:00",
-                            "measurement identifier": "f5023a71-2f49-4461-9e70-3240a689deca",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -2109,10 +2109,6 @@
                                             "value": 0.7784496379852295,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1246,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -2126,7 +2122,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 12.895398957824707,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1246,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 741,
@@ -2153,7 +2153,7 @@
             "software name": "Vi-Cell XR",
             "software version": "2.04",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.9"
+            "ASM converter version": "0.1.17"
         }
     }
 }
