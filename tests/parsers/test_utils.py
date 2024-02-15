@@ -9,7 +9,7 @@ import numpy as np
 
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import VendorType
-from allotropy.to_allotrope import allotrope_from_file, allotrope_model_from_file
+from allotropy.to_allotrope import allotrope_from_file
 
 CALCULATED_DATA_IDENTIFIER = "calculated data identifier"
 DATA_SOURCE_IDENTIFIER = "data source identifier"
@@ -56,10 +56,6 @@ def _assert_allotrope_dicts_equal(
 
 def from_file(test_file: str, vendor_type: VendorType) -> DictType:
     return allotrope_from_file(test_file, vendor_type)
-
-
-def model_from_file(test_file: str, vendor_type: VendorType) -> Any:
-    return allotrope_model_from_file(test_file, vendor_type)
 
 
 def validate_contents(
