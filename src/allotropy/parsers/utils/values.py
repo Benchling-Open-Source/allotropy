@@ -25,9 +25,10 @@ def try_int_or_none(value: Optional[str]) -> Optional[int]:
         return None
 
 
-def try_float(value: Optional[str], value_name: str) -> float:
+def try_float(value: str, value_name: str) -> float:
+    assert_not_none(value, value_name)
     try:
-        return float(assert_not_none(value, value_name))
+        return float(value)
     except ValueError as e:
         msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
