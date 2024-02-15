@@ -26,8 +26,9 @@ class VendorParser(ABC):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
 
+    # TODO: make protected
     @final
-    def _random_uuid_str(self) -> str:
+    def random_uuid_str(self) -> str:
         return random_uuid_str()
 
     def _get_date_time(self, time: str) -> TDateTimeValue:

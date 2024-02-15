@@ -37,7 +37,7 @@ class AgilentGen5Parser(VendorParser):
         if first_plate.plate_type.read_mode == ReadMode.ABSORBANCE:
             return AbsorbanceModel(
                 measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
-                    measurement_identifier=self._random_uuid_str(),
+                    measurement_identifier=self.random_uuid_str(),
                     measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
@@ -54,7 +54,7 @@ class AgilentGen5Parser(VendorParser):
         elif first_plate.plate_type.read_mode == ReadMode.FLUORESCENCE:
             return FluorescenceModel(
                 measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
-                    measurement_identifier=self._random_uuid_str(),
+                    measurement_identifier=self.random_uuid_str(),
                     measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
@@ -71,7 +71,7 @@ class AgilentGen5Parser(VendorParser):
         elif first_plate.plate_type.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceModel(
                 measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
-                    measurement_identifier=self._random_uuid_str(),
+                    measurement_identifier=self.random_uuid_str(),
                     measurement_time=self._get_date_time(
                         first_plate.plate_number.datetime
                     ),
