@@ -56,6 +56,8 @@ class InvalidJsonFloat(Enum):
     """Enum to represent valid float values that are invalid in JSON."""
 
     NaN = "NaN"
+    field_Infinity = "+Infinity"
+    field_Infinity_1 = "-Infinity"
 
 
 JsonFloat = Union[float, InvalidJsonFloat]
