@@ -7,7 +7,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-03-02T08:31:38+00:00",
-                            "measurement identifier": "5caabbf0-64fc-4ee5-9fdf-866d55a0ba9a",
+                            "measurement identifier": "TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -30,10 +30,6 @@
                                             "value": 3.06,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 1027,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -47,7 +43,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.9,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1027,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 1011,
@@ -70,7 +70,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-03-03T12:28:16+00:00",
-                            "measurement identifier": "0234b4cf-dd5d-4ef0-bdac-b21c0d453c6e",
+                            "measurement identifier": "TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -93,10 +93,6 @@
                                             "value": 6.34,
                                             "unit": "10^6 cells/mL"
                                         },
-                                        "total cell count": {
-                                            "value": 2123,
-                                            "unit": "cell"
-                                        },
                                         "data processing document": {
                                             "cell type processing method": "CHO",
                                             "cell density dilution factor": {
@@ -110,7 +106,11 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.8,
-                                            "unit": "μm"
+                                            "unit": "\u03bcm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2123,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 2098,
@@ -133,7 +133,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-03-07T09:25:16+00:00",
-                            "measurement identifier": "f5dbf306-2d2f-4ad7-945f-8d51ee651e43",
+                            "measurement identifier": "TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -152,119 +152,4 @@
                                             "value": 98.8,
                                             "unit": "%"
                                         },
-                                        "viable cell density (cell counter)": {
-                                            "value": 9.21,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 3082,
-                                            "unit": "cell"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 3.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 9.32,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 13.7,
-                                            "unit": "μm"
-                                        },
-                                        "viable cell count": {
-                                            "value": 3046,
-                                            "unit": "cell"
-                                        },
-                                        "average total cell circularity": {
-                                            "value": 0.883,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "analyst": "Vi-Cell XR"
-            },
-            {
-                "measurement aggregate document": {
-                    "measurement document": [
-                        {
-                            "measurement time": "2023-03-07T09:28:13+00:00",
-                            "measurement identifier": "3aaa2f20-9837-47b7-bc7f-1c5cb12ff0fd",
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "brightfield imager (cell counter)",
-                                        "detection type": "brightfield"
-                                    }
-                                ]
-                            },
-                            "sample document": {
-                                "sample identifier": "CLB004"
-                            },
-                            "processed data aggregate document": {
-                                "processed data document": [
-                                    {
-                                        "viability (cell counter)": {
-                                            "value": 98.8,
-                                            "unit": "%"
-                                        },
-                                        "viable cell density (cell counter)": {
-                                            "value": 4.54,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 1519,
-                                            "unit": "cell"
-                                        },
-                                        "data processing document": {
-                                            "cell type processing method": "CHO",
-                                            "cell density dilution factor": {
-                                                "value": 3.0,
-                                                "unit": "(unitless)"
-                                            }
-                                        },
-                                        "total cell density (cell counter)": {
-                                            "value": 4.59,
-                                            "unit": "10^6 cells/mL"
-                                        },
-                                        "average total cell diameter": {
-                                            "value": 13.6,
-                                            "unit": "μm"
-                                        },
-                                        "viable cell count": {
-                                            "value": 1501,
-                                            "unit": "cell"
-                                        },
-                                        "average total cell circularity": {
-                                            "value": 0.892,
-                                            "unit": "(unitless)"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "analyst": "Vi-Cell XR"
-            }
-        ],
-        "device system document": {
-            "model number": "Vi-Cell XR",
-            "equipment serial number": "AV123456789"
-        },
-        "data system document": {
-            "file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
-            "software name": "Vi-Cell XR",
-            "software version": "2.06",
-            "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.9"
-        }
-    }
-}
+                                        

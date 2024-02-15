@@ -1,21 +1,21 @@
 {
-  "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
   "measurement aggregate document": {
-    "measurement identifier": "ee8d47b1-2bae-41c0-a274-7effbe807f6c",
-    "measurement time": "2022-10-10T20:43:05+00:00",
-    "analytical method identifier": "C:\\Users\\Public\\Documents\\Protocols\\2022_10_10_DAPI_GFP_POS-NEG-CON-Normalization_defaultExport.prt",
-    "experimental data identifier": "C:\\Users\\Public\\Documents\\Experiments\\2022_10_10_DAPI_GFP_POS-NEG-CON_Norm_singlePlate.xpt",
-    "container type": "well plate",
-    "plate well count": { "value": 96, "unit": "#" },
+    "measurement identifier": "TEST_ID_0",
+    "plate well count": {
+      "value": 96,
+      "unit": "#"
+    },
     "measurement document": [
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POS"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POS",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -36,39 +36,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8940.0, 8605.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8940.0,
+                8605.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.992
+              "processed data": 0.992,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.988
+              "processed data": 0.988,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.997
+              "processed data": 0.997,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.998
+              "processed data": 0.998,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -89,39 +101,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3254.0, 1873.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3254.0,
+                1873.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.332
+              "processed data": 0.332,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.174
+              "processed data": 0.174,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.437
+              "processed data": 0.437,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.333
+              "processed data": 0.333,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -142,39 +166,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7345.0, 3180.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7345.0,
+                3180.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.807
+              "processed data": 0.807,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.332
+              "processed data": 0.332,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.408
+              "processed data": 0.408,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.424
+              "processed data": 0.424,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -195,39 +231,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[653.0, 3956.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                653.0,
+                3956.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.03
+              "processed data": 0.03,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.426
+              "processed data": 0.426,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.4
+              "processed data": 0.4,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.431
+              "processed data": 0.431,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -248,39 +296,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2011.0, 4549.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2011.0,
+                4549.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.188
+              "processed data": 0.188,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.498
+              "processed data": 0.498,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.45
+              "processed data": 0.45,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.748
+              "processed data": 0.748,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL9"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL9",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -301,39 +361,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4712.0, 1309.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4712.0,
+                1309.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.501
+              "processed data": 0.501,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.106
+              "processed data": 0.106,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.668
+              "processed data": 0.668,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.366
+              "processed data": 0.366,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL11"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL11",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -354,39 +426,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3016.0, 9400.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3016.0,
+                9400.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.305
+              "processed data": 0.305,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.084
+              "processed data": 1.084,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.542
+              "processed data": 0.542,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.783
+              "processed data": 0.783,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL13"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL13",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -407,39 +491,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9085.0, 3509.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9085.0,
+                3509.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.009
+              "processed data": 1.009,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.372
+              "processed data": 0.372,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.541
+              "processed data": 0.541,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.275
+              "processed data": 0.275,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL15"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL15",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -460,39 +556,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1100.0, 3136.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1100.0,
+                3136.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.082
+              "processed data": 0.082,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.327
+              "processed data": 0.327,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.564
+              "processed data": 0.564,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.547
+              "processed data": 0.547,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL17"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL17",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -513,39 +621,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2608.0, 2405.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2608.0,
+                2405.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.257
+              "processed data": 0.257,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.238
+              "processed data": 0.238,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.613
+              "processed data": 0.613,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.515
+              "processed data": 0.515,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL19"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL19",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -566,39 +686,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[5669.0, 1055.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                5669.0,
+                1055.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.613
+              "processed data": 0.613,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.075
+              "processed data": 0.075,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.572
+              "processed data": 0.572,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.624
+              "processed data": 0.624,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "A12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL21"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL21",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -619,39 +751,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[390.0, 427.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                390.0,
+                427.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POS"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POS",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -672,39 +816,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9072.0, 8741.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9072.0,
+                8741.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.008
+              "processed data": 1.008,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.004
+              "processed data": 1.004,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.997
+              "processed data": 0.997,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.998
+              "processed data": 0.998,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -725,39 +881,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[5366.0, 889.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                5366.0,
+                889.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.577
+              "processed data": 0.577,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.055
+              "processed data": 0.055,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.437
+              "processed data": 0.437,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.333
+              "processed data": 0.333,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -778,39 +946,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6901.0, 8248.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                6901.0,
+                8248.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.756
+              "processed data": 0.756,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.945
+              "processed data": 0.945,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.408
+              "processed data": 0.408,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.424
+              "processed data": 0.424,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -831,39 +1011,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1485.0, 6755.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1485.0,
+                6755.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.127
+              "processed data": 0.127,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.764
+              "processed data": 0.764,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.4
+              "processed data": 0.4,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.431
+              "processed data": 0.431,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -884,39 +1076,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3425.0, 8946.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3425.0,
+                8946.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.352
+              "processed data": 0.352,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.029
+              "processed data": 1.029,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.45
+              "processed data": 0.45,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.748
+              "processed data": 0.748,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL9"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL9",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -937,39 +1141,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8922.0, 1958.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8922.0,
+                1958.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.99
+              "processed data": 0.99,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.184
+              "processed data": 0.184,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.668
+              "processed data": 0.668,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.366
+              "processed data": 0.366,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL11"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL11",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -990,39 +1206,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4423.0, 5694.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4423.0,
+                5694.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.468
+              "processed data": 0.468,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.636
+              "processed data": 0.636,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.542
+              "processed data": 0.542,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.783
+              "processed data": 0.783,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL13"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL13",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1043,39 +1271,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7289.0, 3263.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7289.0,
+                3263.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.801
+              "processed data": 0.801,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.342
+              "processed data": 0.342,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.541
+              "processed data": 0.541,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.275
+              "processed data": 0.275,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL15"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL15",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1096,39 +1336,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8260.0, 8658.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8260.0,
+                8658.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.913
+              "processed data": 0.913,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.994
+              "processed data": 0.994,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.564
+              "processed data": 0.564,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.547
+              "processed data": 0.547,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL17"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL17",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1149,39 +1401,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1360.0, 5288.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1360.0,
+                5288.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.112
+              "processed data": 0.112,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.587
+              "processed data": 0.587,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.613
+              "processed data": 0.613,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.515
+              "processed data": 0.515,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL19"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL19",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1202,39 +1466,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3668.0, 4539.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3668.0,
+                4539.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.38
+              "processed data": 0.38,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.496
+              "processed data": 0.496,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.572
+              "processed data": 0.572,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.624
+              "processed data": 0.624,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "B12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL21"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL21",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1255,39 +1531,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[391.0, 425.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                391.0,
+                425.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POS"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POS",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1308,39 +1596,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9109.0, 8700.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9109.0,
+                8700.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.012
+              "processed data": 1.012,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.999
+              "processed data": 0.999,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.997
+              "processed data": 0.997,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.998
+              "processed data": 0.998,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1361,39 +1661,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7312.0, 3750.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7312.0,
+                3750.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.803
+              "processed data": 0.803,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.401
+              "processed data": 0.401,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.437
+              "processed data": 0.437,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.333
+              "processed data": 0.333,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1414,39 +1726,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[770.0, 3639.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                770.0,
+                3639.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.044
+              "processed data": 0.044,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.387
+              "processed data": 0.387,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.408
+              "processed data": 0.408,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.424
+              "processed data": 0.424,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1467,39 +1791,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4464.0, 3244.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4464.0,
+                3244.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.473
+              "processed data": 0.473,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.34
+              "processed data": 0.34,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.4
+              "processed data": 0.4,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.431
+              "processed data": 0.431,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1520,39 +1856,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4774.0, 3835.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4774.0,
+                3835.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.509
+              "processed data": 0.509,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.411
+              "processed data": 0.411,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.45
+              "processed data": 0.45,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.748
+              "processed data": 0.748,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL9"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL9",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1573,39 +1921,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4102.0, 2162.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4102.0,
+                2162.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.431
+              "processed data": 0.431,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.209
+              "processed data": 0.209,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.668
+              "processed data": 0.668,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.366
+              "processed data": 0.366,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL11"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL11",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1626,39 +1986,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6838.0, 5849.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                6838.0,
+                5849.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.748
+              "processed data": 0.748,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.655
+              "processed data": 0.655,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.542
+              "processed data": 0.542,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.783
+              "processed data": 0.783,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL13"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL13",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1679,39 +2051,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2350.0, 1854.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2350.0,
+                1854.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.227
+              "processed data": 0.227,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.172
+              "processed data": 0.172,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.541
+              "processed data": 0.541,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.275
+              "processed data": 0.275,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL15"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL15",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1732,39 +2116,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7907.0, 7287.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7907.0,
+                7287.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.872
+              "processed data": 0.872,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.829
+              "processed data": 0.829,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.564
+              "processed data": 0.564,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.547
+              "processed data": 0.547,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL17"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL17",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1785,39 +2181,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9380.0, 3865.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9380.0,
+                3865.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.043
+              "processed data": 1.043,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.415
+              "processed data": 0.415,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.613
+              "processed data": 0.613,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.515
+              "processed data": 0.515,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL19"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL19",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1838,39 +2246,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7335.0, 8008.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7335.0,
+                8008.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.806
+              "processed data": 0.806,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.916
+              "processed data": 0.916,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.572
+              "processed data": 0.572,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.624
+              "processed data": 0.624,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "C12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL21"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL21",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1891,39 +2311,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[391.0, 416.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                391.0,
+                416.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": -0.002
+              "processed data": -0.002,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "POS"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "POS",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1944,39 +2376,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8806.0, 8710.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8806.0,
+                8710.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.977
+              "processed data": 0.977,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.001
+              "processed data": 1.001,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.997
+              "processed data": 0.997,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.998
+              "processed data": 0.998,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL1"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL1",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -1997,39 +2441,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[703.0, 6229.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                703.0,
+                6229.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.036
+              "processed data": 0.036,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.701
+              "processed data": 0.701,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.437
+              "processed data": 0.437,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.333
+              "processed data": 0.333,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL3"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL3",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2050,39 +2506,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[594.0, 708.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                594.0,
+                708.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.023
+              "processed data": 0.023,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.033
+              "processed data": 0.033,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.408
+              "processed data": 0.408,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.424
+              "processed data": 0.424,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL5"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL5",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2103,39 +2571,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8764.0, 2054.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8764.0,
+                2054.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.972
+              "processed data": 0.972,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.196
+              "processed data": 0.196,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.4
+              "processed data": 0.4,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.431
+              "processed data": 0.431,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL7"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL7",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2156,39 +2636,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6878.0, 9166.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                6878.0,
+                9166.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.753
+              "processed data": 0.753,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.056
+              "processed data": 1.056,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.45
+              "processed data": 0.45,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.748
+              "processed data": 0.748,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL9"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL9",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2209,39 +2701,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6858.0, 8417.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                6858.0,
+                8417.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.751
+              "processed data": 0.751,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.965
+              "processed data": 0.965,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.668
+              "processed data": 0.668,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.366
+              "processed data": 0.366,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL11"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL11",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2262,39 +2766,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[5961.0, 6699.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                5961.0,
+                6699.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.646
+              "processed data": 0.646,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.758
+              "processed data": 0.758,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.542
+              "processed data": 0.542,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.783
+              "processed data": 0.783,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL13"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL13",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2315,39 +2831,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1475.0, 2219.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1475.0,
+                2219.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.126
+              "processed data": 0.126,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.216
+              "processed data": 0.216,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.541
+              "processed data": 0.541,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.275
+              "processed data": 0.275,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL15"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL15",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2368,39 +2896,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3749.0, 766.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3749.0,
+                766.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.39
+              "processed data": 0.39,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.04
+              "processed data": 0.04,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.564
+              "processed data": 0.564,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.547
+              "processed data": 0.547,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL17"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL17",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2421,39 +2961,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9344.0, 7204.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9344.0,
+                7204.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.039
+              "processed data": 1.039,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.819
+              "processed data": 0.819,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.613
+              "processed data": 0.613,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.515
+              "processed data": 0.515,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL19"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL19",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2474,39 +3026,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4605.0, 8783.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4605.0,
+                8783.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.489
+              "processed data": 0.489,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.009
+              "processed data": 1.009,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.572
+              "processed data": 0.572,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.624
+              "processed data": 0.624,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "D12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL21"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL21",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2527,36 +3091,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[380.0, 437.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                380.0,
+                437.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": -0.002
-            },
-            { "data processing description": "normGFP", "processed data": 0.0 },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.001
+              "processed data": -0.002,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.001
+              "processed data": 0.0,
+              "data processing description": "normGFP"
+            },
+            {
+              "processed data": -0.001,
+              "data processing description": "meanNormDAPI"
+            },
+            {
+              "processed data": -0.001,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEG"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEG",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2577,39 +3156,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[391.0, 432.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                391.0,
+                432.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2630,39 +3221,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4626.0, 872.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4626.0,
+                872.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.491
+              "processed data": 0.491,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.053
+              "processed data": 0.053,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.462
+              "processed data": 0.462,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.305
+              "processed data": 0.305,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2683,39 +3286,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[937.0, 5121.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                937.0,
+                5121.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.063
+              "processed data": 0.063,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.567
+              "processed data": 0.567,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.147
+              "processed data": 0.147,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.42
+              "processed data": 0.42,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2736,39 +3351,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8756.0, 6583.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8756.0,
+                6583.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.971
+              "processed data": 0.971,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.743
+              "processed data": 0.743,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.669
+              "processed data": 0.669,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.792
+              "processed data": 0.792,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL8"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL8",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2789,39 +3416,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7952.0, 1492.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7952.0,
+                1492.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.878
+              "processed data": 0.878,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.128
+              "processed data": 0.128,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.634
+              "processed data": 0.634,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.686
+              "processed data": 0.686,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL10"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL10",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2842,39 +3481,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3708.0, 1282.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3708.0,
+                1282.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.385
+              "processed data": 0.385,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.103
+              "processed data": 0.103,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.504
+              "processed data": 0.504,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.301
+              "processed data": 0.301,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL12"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL12",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2895,39 +3546,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4488.0, 1487.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4488.0,
+                1487.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.476
+              "processed data": 0.476,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.127
+              "processed data": 0.127,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.308
+              "processed data": 0.308,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.474
+              "processed data": 0.474,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL14"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL14",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -2948,39 +3611,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2714.0, 2611.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2714.0,
+                2611.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.269
+              "processed data": 0.269,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.263
+              "processed data": 0.263,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.625
+              "processed data": 0.625,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.559
+              "processed data": 0.559,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL16"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL16",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3001,39 +3676,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2697.0, 7907.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2697.0,
+                7907.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.268
+              "processed data": 0.268,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.904
+              "processed data": 0.904,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.313
+              "processed data": 0.313,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.522
+              "processed data": 0.522,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL18"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL18",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3054,39 +3741,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6899.0, 4030.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                6899.0,
+                4030.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.755
+              "processed data": 0.755,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.435
+              "processed data": 0.435,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.623
+              "processed data": 0.623,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.561
+              "processed data": 0.561,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL20"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL20",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3107,39 +3806,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4405.0, 6520.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4405.0,
+                6520.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.466
+              "processed data": 0.466,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.736
+              "processed data": 0.736,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.605
+              "processed data": 0.605,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.814
+              "processed data": 0.814,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "E12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL22"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL22",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3160,39 +3871,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8927.0, 8507.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8927.0,
+                8507.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.991
+              "processed data": 0.991,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.976
+              "processed data": 0.976,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 1.001
+              "processed data": 1.001,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.98
+              "processed data": 0.98,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEG"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEG",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3213,39 +3936,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[384.0, 422.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                384.0,
+                422.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": -0.001
+              "processed data": -0.001,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.0
+              "processed data": -0.0,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3266,39 +4001,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[3088.0, 1745.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                3088.0,
+                1745.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.313
+              "processed data": 0.313,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.158
+              "processed data": 0.158,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.462
+              "processed data": 0.462,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.305
+              "processed data": 0.305,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3319,39 +4066,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1481.0, 4157.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1481.0,
+                4157.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.126
+              "processed data": 0.126,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.45
+              "processed data": 0.45,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.147
+              "processed data": 0.147,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.42
+              "processed data": 0.42,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3372,39 +4131,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4342.0, 8684.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4342.0,
+                8684.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.458
+              "processed data": 0.458,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.997
+              "processed data": 0.997,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.669
+              "processed data": 0.669,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.792
+              "processed data": 0.792,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL8"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL8",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3425,39 +4196,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[727.0, 8718.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                727.0,
+                8718.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.039
+              "processed data": 0.039,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.002
+              "processed data": 1.002,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.634
+              "processed data": 0.634,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.686
+              "processed data": 0.686,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL10"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL10",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3478,39 +4261,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2405.0, 2587.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2405.0,
+                2587.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.234
+              "processed data": 0.234,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.26
+              "processed data": 0.26,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.504
+              "processed data": 0.504,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.301
+              "processed data": 0.301,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL12"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL12",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3531,39 +4326,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4429.0, 1209.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4429.0,
+                1209.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.469
+              "processed data": 0.469,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.094
+              "processed data": 0.094,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.308
+              "processed data": 0.308,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.474
+              "processed data": 0.474,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL14"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL14",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3584,39 +4391,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[5086.0, 8559.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                5086.0,
+                8559.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.545
+              "processed data": 0.545,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.982
+              "processed data": 0.982,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.625
+              "processed data": 0.625,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.559
+              "processed data": 0.559,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL16"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL16",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3637,39 +4456,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1698.0, 6893.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1698.0,
+                6893.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.151
+              "processed data": 0.151,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.781
+              "processed data": 0.781,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.313
+              "processed data": 0.313,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.522
+              "processed data": 0.522,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL18"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL18",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3690,39 +4521,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4696.0, 3019.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4696.0,
+                3019.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.5
+              "processed data": 0.5,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.313
+              "processed data": 0.313,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.623
+              "processed data": 0.623,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.561
+              "processed data": 0.561,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL20"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL20",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3743,39 +4586,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9190.0, 9020.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9190.0,
+                9020.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.021
+              "processed data": 1.021,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.038
+              "processed data": 1.038,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.605
+              "processed data": 0.605,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.814
+              "processed data": 0.814,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "F12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL22"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL22",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3796,39 +4651,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9145.0, 8378.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                9145.0,
+                8378.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 1.016
+              "processed data": 1.016,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.961
+              "processed data": 0.961,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 1.001
+              "processed data": 1.001,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.98
+              "processed data": 0.98,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEG"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEG",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3849,36 +4716,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[394.0, 436.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                394.0,
+                436.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.0
-            },
-            { "data processing description": "normGFP", "processed data": 0.0 },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.0
+              "processed data": 0.0,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.0
+              "processed data": 0.0,
+              "data processing description": "normGFP"
+            },
+            {
+              "processed data": -0.0,
+              "data processing description": "meanNormDAPI"
+            },
+            {
+              "processed data": -0.0,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3899,39 +4781,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1131.0, 4462.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1131.0,
+                4462.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.086
+              "processed data": 0.086,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.487
+              "processed data": 0.487,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.462
+              "processed data": 0.462,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.305
+              "processed data": 0.305,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -3952,39 +4846,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2153.0, 2751.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2153.0,
+                2751.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.204
+              "processed data": 0.204,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.28
+              "processed data": 0.28,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.147
+              "processed data": 0.147,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.42
+              "processed data": 0.42,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4005,39 +4911,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8562.0, 6128.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8562.0,
+                6128.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.948
+              "processed data": 0.948,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.688
+              "processed data": 0.688,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.669
+              "processed data": 0.669,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.792
+              "processed data": 0.792,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL8"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL8",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4058,39 +4976,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7278.0, 5083.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7278.0,
+                5083.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.799
+              "processed data": 0.799,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.562
+              "processed data": 0.562,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.634
+              "processed data": 0.634,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.686
+              "processed data": 0.686,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL10"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL10",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4111,39 +5041,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[4400.0, 5017.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                4400.0,
+                5017.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.465
+              "processed data": 0.465,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.554
+              "processed data": 0.554,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.504
+              "processed data": 0.504,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.301
+              "processed data": 0.301,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL12"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL12",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4164,39 +5106,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1634.0, 8512.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1634.0,
+                8512.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.144
+              "processed data": 0.144,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.977
+              "processed data": 0.977,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.308
+              "processed data": 0.308,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.474
+              "processed data": 0.474,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL14"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL14",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4217,39 +5171,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6977.0, 6587.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                6977.0,
+                6587.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.764
+              "processed data": 0.764,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.744
+              "processed data": 0.744,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.625
+              "processed data": 0.625,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.559
+              "processed data": 0.559,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL16"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL16",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4270,39 +5236,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1960.0, 2193.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1960.0,
+                2193.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.182
+              "processed data": 0.182,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.213
+              "processed data": 0.213,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.313
+              "processed data": 0.313,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.522
+              "processed data": 0.522,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL18"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL18",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4323,39 +5301,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2578.0, 7168.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2578.0,
+                7168.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.254
+              "processed data": 0.254,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.814
+              "processed data": 0.814,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.623
+              "processed data": 0.623,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.561
+              "processed data": 0.561,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL20"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL20",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4376,39 +5366,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7895.0, 9134.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7895.0,
+                9134.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.871
+              "processed data": 0.871,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.052
+              "processed data": 1.052,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.605
+              "processed data": 0.605,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.814
+              "processed data": 0.814,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "G12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL22"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL22",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4429,39 +5431,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8841.0, 8596.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8841.0,
+                8596.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.981
+              "processed data": 0.981,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.987
+              "processed data": 0.987,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 1.001
+              "processed data": 1.001,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.98
+              "processed data": 0.98,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H1",
-          "plate barcode": "Plate 1",
-          "sample identifier": "NEG"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "NEG",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4482,36 +5496,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[395.0, 436.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                395.0,
+                436.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.0
-            },
-            { "data processing description": "normGFP", "processed data": 0.0 },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": -0.0
+              "processed data": 0.0,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": -0.0
+              "processed data": 0.0,
+              "data processing description": "normGFP"
+            },
+            {
+              "processed data": -0.0,
+              "data processing description": "meanNormDAPI"
+            },
+            {
+              "processed data": -0.0,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H2",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL2"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL2",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4532,39 +5561,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8646.0, 4743.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8646.0,
+                4743.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.958
+              "processed data": 0.958,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.521
+              "processed data": 0.521,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.462
+              "processed data": 0.462,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.305
+              "processed data": 0.305,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H3",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL4"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL4",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4585,39 +5626,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2057.0, 3614.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2057.0,
+                3614.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.193
+              "processed data": 0.193,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.384
+              "processed data": 0.384,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.147
+              "processed data": 0.147,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.42
+              "processed data": 0.42,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H4",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL6"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL6",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4638,39 +5691,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[2943.0, 6543.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                2943.0,
+                6543.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.296
+              "processed data": 0.296,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.739
+              "processed data": 0.739,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.669
+              "processed data": 0.669,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.792
+              "processed data": 0.792,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H5",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL8"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL8",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4691,39 +5756,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[7471.0, 9151.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                7471.0,
+                9151.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.822
+              "processed data": 0.822,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 1.054
+              "processed data": 1.054,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.634
+              "processed data": 0.634,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.686
+              "processed data": 0.686,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H6",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL10"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL10",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4744,39 +5821,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8406.0, 2814.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                8406.0,
+                2814.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.93
+              "processed data": 0.93,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.288
+              "processed data": 0.288,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.504
+              "processed data": 0.504,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.301
+              "processed data": 0.301,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H7",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL12"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL12",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4797,39 +5886,51 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[1643.0, 6206.0]]
+            "dimensions": [
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]
+            ],
+            "measures": [
+              [
+                1643.0,
+                6206.0
+              ]
+            ]
           }
         },
         "processed data aggregate document": {
           "processed data document": [
             {
-              "data processing description": "normDAPI",
-              "processed data": 0.145
+              "processed data": 0.145,
+              "data processing description": "normDAPI"
             },
             {
-              "data processing description": "normGFP",
-              "processed data": 0.698
+              "processed data": 0.698,
+              "data processing description": "normGFP"
             },
             {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.308
+              "processed data": 0.308,
+              "data processing description": "meanNormDAPI"
             },
             {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.474
+              "processed data": 0.474,
+              "data processing description": "meanNormGFP"
             }
           ]
         }
       },
       {
+        "device control aggregate document": {
+          "device control document": [
+            {}
+          ]
+        },
         "sample document": {
           "well location identifier": "H8",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL14"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
+          "sample identifier": "SPL14",
+          "plate barcode": "Plate 1"
         },
         "data cube": {
           "label": "endpoint data",
@@ -4850,243 +5951,8 @@
             ]
           },
           "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8314.0, 2475.0]]
-          }
-        },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "normDAPI",
-              "processed data": 0.92
-            },
-            {
-              "data processing description": "normGFP",
-              "processed data": 0.247
-            },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.625
-            },
-            {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.559
-            }
-          ]
-        }
-      },
-      {
-        "sample document": {
-          "well location identifier": "H9",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL16"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
-        },
-        "data cube": {
-          "label": "endpoint data",
-          "cube-structure": {
             "dimensions": [
-              {
-                "@componentDatatype": "int",
-                "concept": "wavelength",
-                "unit": "nm"
-              }
-            ],
-            "measures": [
-              {
-                "@componentDatatype": "double",
-                "concept": "fluorescence",
-                "unit": "RFU"
-              }
-            ]
-          },
-          "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[6005.0, 2020.0]]
-          }
-        },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "normDAPI",
-              "processed data": 0.652
-            },
-            {
-              "data processing description": "normGFP",
-              "processed data": 0.192
-            },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.313
-            },
-            {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.522
-            }
-          ]
-        }
-      },
-      {
-        "sample document": {
-          "well location identifier": "H10",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL18"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
-        },
-        "data cube": {
-          "label": "endpoint data",
-          "cube-structure": {
-            "dimensions": [
-              {
-                "@componentDatatype": "int",
-                "concept": "wavelength",
-                "unit": "nm"
-              }
-            ],
-            "measures": [
-              {
-                "@componentDatatype": "double",
-                "concept": "fluorescence",
-                "unit": "RFU"
-              }
-            ]
-          },
-          "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[8865.0, 6089.0]]
-          }
-        },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "normDAPI",
-              "processed data": 0.984
-            },
-            {
-              "data processing description": "normGFP",
-              "processed data": 0.684
-            },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.623
-            },
-            {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.561
-            }
-          ]
-        }
-      },
-      {
-        "sample document": {
-          "well location identifier": "H11",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL20"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
-        },
-        "data cube": {
-          "label": "endpoint data",
-          "cube-structure": {
-            "dimensions": [
-              {
-                "@componentDatatype": "int",
-                "concept": "wavelength",
-                "unit": "nm"
-              }
-            ],
-            "measures": [
-              {
-                "@componentDatatype": "double",
-                "concept": "fluorescence",
-                "unit": "RFU"
-              }
-            ]
-          },
-          "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[917.0, 3992.0]]
-          }
-        },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "normDAPI",
-              "processed data": 0.061
-            },
-            {
-              "data processing description": "normGFP",
-              "processed data": 0.43
-            },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": 0.605
-            },
-            {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.814
-            }
-          ]
-        }
-      },
-      {
-        "sample document": {
-          "well location identifier": "H12",
-          "plate barcode": "Plate 1",
-          "sample identifier": "SPL22"
-        },
-        "device control aggregate document": {
-          "device control document": [{}]
-        },
-        "data cube": {
-          "label": "endpoint data",
-          "cube-structure": {
-            "dimensions": [
-              {
-                "@componentDatatype": "int",
-                "concept": "wavelength",
-                "unit": "nm"
-              }
-            ],
-            "measures": [
-              {
-                "@componentDatatype": "double",
-                "concept": "fluorescence",
-                "unit": "RFU"
-              }
-            ]
-          },
-          "data": {
-            "dimensions": [["360/40,460/40", "485/20,528/20"]],
-            "measures": [[9160.0, 8665.0]]
-          }
-        },
-        "processed data aggregate document": {
-          "processed data document": [
-            {
-              "data processing description": "normDAPI",
-              "processed data": 1.018
-            },
-            {
-              "data processing description": "normGFP",
-              "processed data": 0.995
-            },
-            {
-              "data processing description": "meanNormDAPI",
-              "processed data": 1.001
-            },
-            {
-              "data processing description": "meanNormGFP",
-              "processed data": 0.98
-            }
-          ]
-        }
-      }
-    ]
-  }
-}
+              [
+                "360/40,460/40",
+                "485/20,528/20"
+              ]

@@ -14,7 +14,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "939947dc-0005-46cf-a91a-18f0e1e5fddc",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -39,7 +39,7 @@
                                     {
                                         "number concentration": {
                                             "value": 0.0,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 0,
@@ -62,7 +62,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "6e3664f8-e279-4266-95f7-275284e6faea",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -87,7 +87,7 @@
                                     {
                                         "number concentration": {
                                             "value": 0.0,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 0,
@@ -110,7 +110,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "d4dd5093-70c8-4a66-a1a5-350a21075cc7",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -135,7 +135,7 @@
                                     {
                                         "number concentration": {
                                             "value": 39.21,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 343,
@@ -158,7 +158,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "70b4c5bf-7f52-4667-b93b-412f7a9f01c9",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -183,7 +183,7 @@
                                     {
                                         "number concentration": {
                                             "value": 38.78,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 340,
@@ -206,7 +206,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "e217e976-f965-4c03-9b35-9f74969d918a",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -231,7 +231,7 @@
                                     {
                                         "number concentration": {
                                             "value": 3.85,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 34,
@@ -254,7 +254,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "11814970-146e-4eca-9c62-9c80c594192c",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -279,7 +279,7 @@
                                     {
                                         "number concentration": {
                                             "value": 4.08,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 36,
@@ -302,7 +302,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "ded6976d-4774-43f3-8232-f1da35b5c0e5",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -327,7 +327,7 @@
                                     {
                                         "number concentration": {
                                             "value": 177.63,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 1511,
@@ -350,7 +350,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "d47d5303-1066-499e-8ed2-8dfa806d8b1f",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene A",
                             "sample document": {
@@ -375,7 +375,7 @@
                                     {
                                         "number concentration": {
                                             "value": 166.17,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 1416,
@@ -398,7 +398,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "2d11f07a-4af5-49fc-ba75-a2e493200479",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -423,7 +423,7 @@
                                     {
                                         "number concentration": {
                                             "value": 9.07,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 80,
@@ -446,7 +446,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "ea079700-c2fb-4e0e-818b-5b7e56fea606",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -471,7 +471,7 @@
                                     {
                                         "number concentration": {
                                             "value": 10.91,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 96,
@@ -494,7 +494,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "7b62ee3a-0fad-4b7c-92f8-815fc5af805f",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -519,7 +519,7 @@
                                     {
                                         "number concentration": {
                                             "value": 615.58,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 4775,
@@ -542,7 +542,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "9baa73e0-2700-439c-8a9d-42424c2e251b",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -567,7 +567,7 @@
                                     {
                                         "number concentration": {
                                             "value": 634.18,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 4899,
@@ -590,7 +590,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "66e31ce0-2b0e-4c81-b703-ce32ad9fa5a4",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -615,7 +615,7 @@
                                     {
                                         "number concentration": {
                                             "value": 18.83,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 165,
@@ -638,7 +638,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "1ff3b1f6-59a8-4449-b8f8-c9fa95d911ec",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -663,7 +663,7 @@
                                     {
                                         "number concentration": {
                                             "value": 17.05,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 149,
@@ -686,7 +686,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "2cc0b3cb-f6f1-4a11-9a72-b84c545cdb9e",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -711,7 +711,7 @@
                                     {
                                         "number concentration": {
                                             "value": 2667.86,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 13963,
@@ -734,7 +734,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "bf55e5df-119f-4140-9277-9b29e0fe59d3",
+                            "measurement identifier": "TEST_ID_0",
                             "measurement time": "2023-05-19T00:00:00+00:00",
                             "target DNA description": "Gene B",
                             "sample document": {
@@ -759,7 +759,7 @@
                                     {
                                         "number concentration": {
                                             "value": 1600.77,
-                                            "unit": "#/μL"
+                                            "unit": "#/\u03bcL"
                                         },
                                         "positive partition count": {
                                             "value": 10196,
@@ -779,44 +779,44 @@
             "file name": "Appbio_AbsoluteQ_example03.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.4"
+            "ASM converter version": "0.1.17"
         },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
-                    "calculated data identifier": "ba5ace84-2bc4-4e1d-b505-b4ca996587a6",
+                    "calculated data identifier": "TEST_ID_0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "939947dc-0005-46cf-a91a-18f0e1e5fddc",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "6e3664f8-e279-4266-95f7-275284e6faea",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "d4dd5093-70c8-4a66-a1a5-350a21075cc7",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "70b4c5bf-7f52-4667-b93b-412f7a9f01c9",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "e217e976-f965-4c03-9b35-9f74969d918a",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "11814970-146e-4eca-9c62-9c80c594192c",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "ded6976d-4774-43f3-8232-f1da35b5c0e5",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "d47d5303-1066-499e-8ed2-8dfa806d8b1f",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             }
                         ]
@@ -828,39 +828,39 @@
                     }
                 },
                 {
-                    "calculated data identifier": "72c38963-2345-4197-ba11-038213354719",
+                    "calculated data identifier": "TEST_ID_0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "939947dc-0005-46cf-a91a-18f0e1e5fddc",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "6e3664f8-e279-4266-95f7-275284e6faea",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "d4dd5093-70c8-4a66-a1a5-350a21075cc7",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "70b4c5bf-7f52-4667-b93b-412f7a9f01c9",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "e217e976-f965-4c03-9b35-9f74969d918a",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "11814970-146e-4eca-9c62-9c80c594192c",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "ded6976d-4774-43f3-8232-f1da35b5c0e5",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "d47d5303-1066-499e-8ed2-8dfa806d8b1f",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             }
                         ]
@@ -868,43 +868,43 @@
                     "calculated data name": "Pooled Concentration",
                     "calculated datum": {
                         "value": 52.68,
-                        "unit": "#/μL"
+                        "unit": "#/\u03bcL"
                     }
                 },
                 {
-                    "calculated data identifier": "108a92ea-6359-4125-b2ad-293075e3418f",
+                    "calculated data identifier": "TEST_ID_0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "939947dc-0005-46cf-a91a-18f0e1e5fddc",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "6e3664f8-e279-4266-95f7-275284e6faea",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "d4dd5093-70c8-4a66-a1a5-350a21075cc7",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "70b4c5bf-7f52-4667-b93b-412f7a9f01c9",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "e217e976-f965-4c03-9b35-9f74969d918a",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "11814970-146e-4eca-9c62-9c80c594192c",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "ded6976d-4774-43f3-8232-f1da35b5c0e5",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "d47d5303-1066-499e-8ed2-8dfa806d8b1f",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             }
                         ]
@@ -916,39 +916,39 @@
                     }
                 },
                 {
-                    "calculated data identifier": "1b278aa8-15d8-4379-a8e7-76f006361624",
+                    "calculated data identifier": "TEST_ID_0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "2d11f07a-4af5-49fc-ba75-a2e493200479",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "ea079700-c2fb-4e0e-818b-5b7e56fea606",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "7b62ee3a-0fad-4b7c-92f8-815fc5af805f",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "9baa73e0-2700-439c-8a9d-42424c2e251b",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "66e31ce0-2b0e-4c81-b703-ce32ad9fa5a4",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "1ff3b1f6-59a8-4449-b8f8-c9fa95d911ec",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "2cc0b3cb-f6f1-4a11-9a72-b84c545cdb9e",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             },
                             {
-                                "data source identifier": "bf55e5df-119f-4140-9277-9b29e0fe59d3",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "total partition count"
                             }
                         ]
@@ -960,39 +960,39 @@
                     }
                 },
                 {
-                    "calculated data identifier": "a7e26e65-ca0f-4d17-a7f8-8caa6160ec96",
+                    "calculated data identifier": "TEST_ID_0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "2d11f07a-4af5-49fc-ba75-a2e493200479",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "ea079700-c2fb-4e0e-818b-5b7e56fea606",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "7b62ee3a-0fad-4b7c-92f8-815fc5af805f",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "9baa73e0-2700-439c-8a9d-42424c2e251b",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "66e31ce0-2b0e-4c81-b703-ce32ad9fa5a4",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "1ff3b1f6-59a8-4449-b8f8-c9fa95d911ec",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "2cc0b3cb-f6f1-4a11-9a72-b84c545cdb9e",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             },
                             {
-                                "data source identifier": "bf55e5df-119f-4140-9277-9b29e0fe59d3",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "number concentration"
                             }
                         ]
@@ -1000,55 +1000,25 @@
                     "calculated data name": "Pooled Concentration",
                     "calculated datum": {
                         "value": 546.32,
-                        "unit": "#/μL"
+                        "unit": "#/\u03bcL"
                     }
                 },
                 {
-                    "calculated data identifier": "e8295956-a3b9-4462-a91b-a08c45c55240",
+                    "calculated data identifier": "TEST_ID_0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "2d11f07a-4af5-49fc-ba75-a2e493200479",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "ea079700-c2fb-4e0e-818b-5b7e56fea606",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "7b62ee3a-0fad-4b7c-92f8-815fc5af805f",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
                             },
                             {
-                                "data source identifier": "9baa73e0-2700-439c-8a9d-42424c2e251b",
+                                "data source identifier": "TEST_ID_0",
                                 "data source feature": "positive partition count"
-                            },
-                            {
-                                "data source identifier": "66e31ce0-2b0e-4c81-b703-ce32ad9fa5a4",
-                                "data source feature": "positive partition count"
-                            },
-                            {
-                                "data source identifier": "1ff3b1f6-59a8-4449-b8f8-c9fa95d911ec",
-                                "data source feature": "positive partition count"
-                            },
-                            {
-                                "data source identifier": "2cc0b3cb-f6f1-4a11-9a72-b84c545cdb9e",
-                                "data source feature": "positive partition count"
-                            },
-                            {
-                                "data source identifier": "bf55e5df-119f-4140-9277-9b29e0fe59d3",
-                                "data source feature": "positive partition count"
-                            }
-                        ]
-                    },
-                    "calculated data name": "Pooled Positives",
-                    "calculated datum": {
-                        "value": 34323.0,
-                        "unit": "#"
-                    }
-                }
-            ]
-        }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
-}
