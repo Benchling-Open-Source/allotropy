@@ -8,10 +8,8 @@ from typing import Any, Optional
 from unittest import mock
 
 from deepdiff import DeepDiff
-import jsonschema
 import numpy as np
 
-from allotropy.allotrope.schemas import get_schema
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file
@@ -75,40 +73,12 @@ class TestIdGenerator:
         return current_id
 
 
-def _get_patch_location() -> str:
-    # # TODO: Use match/case when we don't have to support Python 3.9 anymore
-    # if vendor == Vendor.APPBIO_QUANTSTUDIO:
-    #     # TODO: This is called in multiple modules, so we'll need to patch it in multiple places and/or refactor.
-    #     return (
-    #         "allotropy.parsers.moldev_softmax_pro.softmax_pro_parser.get_id_generator"
-    #     )
-    # elif vendor == Vendor.MOLDEV_SOFTMAX_PRO:
-    #     return (
-    #         "allotropy.parsers.moldev_softmax_pro.softmax_pro_parser.get_id_generator"
-    #     )
-    # elif vendor == Vendor.UNCHAINED_LABS_LUNATIC:
-    #     return "allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure.get_id_generator"
-    # vendor_module_name = vendor.name.lower()
-    # return f"allotropy.parsers.{vendor_module_name}.{vendor_module_name}_parser.get_id_generator"
-    return "allotropy.parsers.vendor_parser.VendorParser.random_uuid_str"
-
-
 def from_file(test_file: str, vendor: Vendor) -> DictType:
     with mock.patch(
-        _get_patch_location(),
+        "allotropy.parsers.vendor_parser.VendorParser.random_uuid_str",
         return_value=TestIdGenerator(vendor).generate_id(),
     ):
         return allotrope_from_file(test_file, vendor)
-
-
-def validate_schema(allotrope_dict: DictType, schema_relative_path: str) -> None:
-    """Check that the newly created allotrope_dict matches the pre-defined schema from Allotrope."""
-    allotrope_schema = get_schema(schema_relative_path)
-    jsonschema.validate(
-        allotrope_dict,
-        allotrope_schema,
-        format_checker=jsonschema.validators.Draft202012Validator.FORMAT_CHECKER,
-    )
 
 
 def _get_existing_indent(expected_file: str) -> int:
