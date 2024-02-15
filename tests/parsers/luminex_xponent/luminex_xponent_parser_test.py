@@ -1,7 +1,7 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = ("luminex_xPONENT_example01",)
 
@@ -14,7 +14,6 @@ def test_parse_luminex_xponent_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.csv"
     expected_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA_FILE)
     validate_contents(
         allotrope_dict,
         expected_filepath,

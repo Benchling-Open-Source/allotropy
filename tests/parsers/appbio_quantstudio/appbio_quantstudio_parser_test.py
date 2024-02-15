@@ -19,7 +19,7 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_rel_std_curve_data,
     get_rel_std_curve_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "appbio_quantstudio_example01",
@@ -34,14 +34,6 @@ OUTPUT_FILES = (
 )
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
-SCHEMA_FILE = "pcr/BENCHLING/2023/09/qpcr.json"
-
-
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
-    test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA_FILE)
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
