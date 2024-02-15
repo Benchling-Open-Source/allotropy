@@ -42,9 +42,8 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
     NanoDropEightReader,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 ConcentrationType = Union[
     TQuantityValueMicrogramPerMicroliter,

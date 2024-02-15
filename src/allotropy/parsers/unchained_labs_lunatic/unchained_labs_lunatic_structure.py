@@ -14,13 +14,13 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series,
     try_float_from_series_or_none,
     try_str_from_series,
     try_str_from_series_or_none,
 )
+from allotropy.parsers.vendor_parser import random_uuid_str
 
 
 @dataclass(frozen=True)

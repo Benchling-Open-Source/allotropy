@@ -37,8 +37,7 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     VICELL_BLU_SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 class SampleProperty(Enum):

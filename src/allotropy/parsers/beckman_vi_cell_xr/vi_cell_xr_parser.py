@@ -38,8 +38,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 class SampleProperty(Enum):

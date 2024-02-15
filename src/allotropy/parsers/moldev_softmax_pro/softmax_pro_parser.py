@@ -59,11 +59,10 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     PlateBlock,
     ScanPosition,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 def to_json_float(value: float) -> JsonFloat:

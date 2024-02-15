@@ -33,8 +33,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Header,
     Measurement,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 DEFAULT_SOFTWARE_NAME = "xPONENT"
 DEFAULT_CONTAINER_TYPE = "well plate"

@@ -40,8 +40,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataItem,
     CalculatedDataSource,
 )
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 class AppbioAbsoluteQParser(VendorParser):

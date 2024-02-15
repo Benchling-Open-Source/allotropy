@@ -16,7 +16,6 @@ from allotropy.exceptions import (
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
@@ -27,6 +26,7 @@ from allotropy.parsers.utils.values import (
     try_str_from_series,
     try_str_from_series_or_none,
 )
+from allotropy.parsers.vendor_parser import random_uuid_str
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"

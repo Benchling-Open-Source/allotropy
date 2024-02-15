@@ -9,8 +9,7 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 class NovaBioFlexParser(VendorParser):

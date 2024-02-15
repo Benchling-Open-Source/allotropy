@@ -12,8 +12,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 class RocheCedexBiohtParser(VendorParser):

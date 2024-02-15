@@ -17,7 +17,7 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import (
 )
 from allotropy.parsers.appbio_quantstudio.decorators import cache
 from allotropy.parsers.appbio_quantstudio.views import ViewData
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.vendor_parser import random_uuid_str
 
 
 @cache

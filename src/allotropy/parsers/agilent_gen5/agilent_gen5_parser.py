@@ -27,8 +27,7 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.vendor_parser import VendorParser
+from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
 
 
 class AgilentGen5Parser(VendorParser):

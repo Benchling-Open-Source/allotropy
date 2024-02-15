@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any
+import uuid
 
 from pandas import Timestamp
 
@@ -7,6 +8,10 @@ from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeV
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
+
+
+def random_uuid_str() -> str:
+    return str(uuid.uuid4())
 
 
 class VendorParser(ABC):
