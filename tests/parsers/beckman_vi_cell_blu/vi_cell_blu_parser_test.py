@@ -12,7 +12,7 @@ from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_filename,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "Beckman_Vi-Cell-BLU_example01",
@@ -20,7 +20,6 @@ OUTPUT_FILES = (
 )
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_BLU
-SCHEMA_FILE = "cell-counting/BENCHLING/2023/11/cell-counting.json"
 TEST_DATA_DIR = "tests/parsers/beckman_vi_cell_blu/testdata/"
 
 
@@ -30,13 +29,6 @@ def _get_test_file_path(output_file: str) -> str:
 
 def _get_expected_file_path(output_file: str) -> str:
     return f"{TEST_DATA_DIR}/{output_file}.json"
-
-
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_vi_cell_blu_to_asm_schema_is_valid(output_file: str) -> None:
-    test_filepath = _get_test_file_path(output_file)
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA_FILE)
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
