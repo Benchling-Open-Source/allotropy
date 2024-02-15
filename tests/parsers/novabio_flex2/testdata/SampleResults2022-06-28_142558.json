@@ -1,0 +1,108 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
+    "measurement aggregate document": {
+        "measurement identifier": "978d9525-2684-4df2-ab53-6f38294f6df7",
+        "data processing time": "2022-06-28T14:25:58+00:00",
+        "analyst": "ANALYST1",
+        "device system document": {
+            "model number": "NovaBio Flex2"
+        },
+        "measurement document": [
+            {
+                "sample document": {
+                    "sample identifier": "SMPL_1234",
+                    "sample role type": "Spent Media",
+                    "batch identifier": "BATCH_123"
+                },
+                "measurement time": "2022-06-24T14:34:52+00:00",
+                "analyte aggregate document": {
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.48,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 29.3,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 0.82,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 2.65,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.33,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 1.83,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.18,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 4.22,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 151.6,
+                                "unit": "mmol/L"
+                            }
+                        }
+                    ]
+                },
+                "pCO2": {
+                    "value": 46.8,
+                    "unit": "mmHg"
+                },
+                "CO2 saturation": {
+                    "value": 6.6,
+                    "unit": "%"
+                },
+                "pO2": {
+                    "value": 191.6,
+                    "unit": "mmHg"
+                },
+                "O2 saturation": {
+                    "value": 100.0,
+                    "unit": "%"
+                },
+                "pH": {
+                    "value": 7.4,
+                    "unit": "pH"
+                }
+            }
+        ]
+    }
+}

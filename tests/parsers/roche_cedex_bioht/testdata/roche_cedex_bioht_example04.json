@@ -1,0 +1,152 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
+    "measurement aggregate document": {
+        "measurement identifier": "6914bf74-7316-490d-832a-4554c0538790",
+        "data processing time": "2022-10-20T16:34:37+00:00",
+        "analyst": "ADMIN",
+        "device system document": {
+            "model number": "CEDEX BIO HT",
+            "device serial number": "555555"
+        },
+        "measurement document": [
+            {
+                "sample document": {
+                    "sample identifier": "Plate1_1",
+                    "sample role type": "Sample",
+                    "batch identifier": "P_391"
+                },
+                "measurement time": "2022-10-20T09:45:25+00:00",
+                "analyte aggregate document": {
+                    "analyte document": [
+                        {
+                            "analyte name": "acetate",
+                            "molar concentration": {
+                                "value": 4.72,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": null,
+                                "unit": "mmol/L"
+                            }
+                        }
+                    ]
+                },
+                "optical density": {
+                    "value": 3.6227,
+                    "unit": "OD"
+                }
+            },
+            {
+                "sample document": {
+                    "sample identifier": "Plate1_1",
+                    "sample role type": "Sample",
+                    "batch identifier": "P_492"
+                },
+                "measurement time": "2022-10-20T09:45:25+00:00",
+                "analyte aggregate document": {
+                    "analyte document": [
+                        {
+                            "analyte name": "acetate",
+                            "molar concentration": {
+                                "value": 5.42,
+                                "unit": "mmol/L"
+                            }
+                        }
+                    ]
+                },
+                "optical density": {
+                    "value": 4.2069,
+                    "unit": "OD"
+                }
+            },
+            {
+                "sample document": {
+                    "sample identifier": "Plate1_2",
+                    "sample role type": "Sample",
+                    "batch identifier": "P_391"
+                },
+                "measurement time": "2022-10-20T09:45:55+00:00",
+                "analyte aggregate document": {
+                    "analyte document": [
+                        {
+                            "analyte name": "acetate",
+                            "molar concentration": {
+                                "value": 4.88,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 78.4,
+                                "unit": "mmol/L"
+                            }
+                        }
+                    ]
+                },
+                "optical density": {
+                    "value": 3.7082,
+                    "unit": "OD"
+                }
+            },
+            {
+                "sample document": {
+                    "sample identifier": "Plate1_3",
+                    "sample role type": "Sample"
+                },
+                "measurement time": "2022-10-20T09:46:27+00:00",
+                "analyte aggregate document": {
+                    "analyte document": [
+                        {
+                            "analyte name": "acetate",
+                            "molar concentration": {
+                                "value": 4.9,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 79.53,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "total protein",
+                            "molar concentration": {
+                                "value": 4.7,
+                                "unit": "g/L"
+                            }
+                        }
+                    ]
+                },
+                "optical density": {
+                    "value": 3.6555,
+                    "unit": "OD"
+                }
+            },
+            {
+                "sample document": {
+                    "sample identifier": "Plate1_3",
+                    "sample role type": "Sample",
+                    "batch identifier": "pep1"
+                },
+                "measurement time": "2022-10-20T09:46:27+00:00",
+                "analyte aggregate document": {
+                    "analyte document": [
+                        {
+                            "analyte name": "total protein",
+                            "molar concentration": {
+                                "value": null,
+                                "unit": "g/L"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

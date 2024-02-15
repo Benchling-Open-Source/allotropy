@@ -7,7 +7,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "1fc444d9-389e-4df9-8a82-54460605f853",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -48,7 +48,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "0aa05f76-8803-440a-b800-5a70a1615a44",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -89,7 +89,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "125f1c1b-168a-456e-b8dd-cd9b479e80b6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -130,7 +130,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "fe045c3d-5cbe-498b-b7d9-53b8f9d2f932",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -171,7 +171,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "e069ed55-9e07-4d9b-bb63-ffcaf2b3c800",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -212,7 +212,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "8c9238d3-1891-4d30-8a04-2c2efde25657",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -253,7 +253,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "TEST_ID_0",
+                            "measurement identifier": "67f11633-fe2c-45cf-bbf5-968edfd7a6e1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -297,7 +297,7 @@
         "data system document": {
             "file name": "Thermo_NanoDrop_Eight_example01.txt",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.14"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -310,16 +310,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_ID_0",
+                                "data source identifier": "4f7f1d5d-f118-4511-bdd7-2650e60399cf",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "TEST_ID_0",
+                                "data source identifier": "1fc444d9-389e-4df9-8a82-54460605f853",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "TEST_ID_0"
+                    "calculated data identifier": "859b1c65-9547-4260-80bd-4ab832f910d8"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -330,16 +330,16 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_ID_0",
+                                "data source identifier": "2846bd4b-c3df-4995-a512-d052f5222084",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "TEST_ID_0",
+                                "data source identifier": "0aa05f76-8803-440a-b800-5a70a1615a44",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "TEST_ID_0"
+                    "calculated data identifier": "55b1bd11-feaa-4bf7-afce-af3990ee9c60"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -350,9 +350,98 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "TEST_ID_0",
+                                "data source identifier": "d3b130a8-d02a-4f0f-95b1-c8d455212ee1",
                                 "data source feature": "absorbance"
                             },
                             {
-                                "data source identifier": "TEST_ID_0",
+                                "data source identifier": "125f1c1b-168a-456e-b8dd-cd9b479e80b6",
                                 "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "c2ba6367-3b77-4b91-96d2-01875f17e027"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 0.57,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "d8fccc6e-cb47-4f32-8f7c-0bde02dafb61",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "fe045c3d-5cbe-498b-b7d9-53b8f9d2f932",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "d98cc683-5d13-4ceb-94f3-96ebfe79697f"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 0.58,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "a4bf9400-f354-4547-9a7a-883825926579",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "e069ed55-9e07-4d9b-bb63-ffcaf2b3c800",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "8d5762c8-7358-47df-81f2-0c1befc3d8e4"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 0.58,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "fda2fbe9-35de-40ef-a706-176d056cd27d",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "8c9238d3-1891-4d30-8a04-2c2efde25657",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "8ba8e74f-9bb2-4dd0-95c1-0cb22999d9b8"
+                },
+                {
+                    "calculated data name": "A260/280",
+                    "calculated result": {
+                        "value": 0.59,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "f0f784ae-a484-4bc9-bb37-6423b03c3242",
+                                "data source feature": "absorbance"
+                            },
+                            {
+                                "data source identifier": "67f11633-fe2c-45cf-bbf5-968edfd7a6e1",
+                                "data source feature": "absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "4096b8a3-4e4c-4ca2-a2ac-455402d39c96"
+                }
+            ]
+        }
+    }
+}
