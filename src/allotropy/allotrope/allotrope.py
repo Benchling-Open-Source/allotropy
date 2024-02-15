@@ -150,7 +150,7 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
     try:
         allotrope_schema = get_schema_from_model(model)
     except Exception as e:
-        msg = f"Failed to retrive schema for model: {e}"
+        msg = f"Failed to retrieve schema for model: {e}"
         raise AllotropeConversionError(msg) from e
 
     try:

@@ -43,6 +43,6 @@ def get_schema_from_manifest(manifest: str) -> dict[str, Any]:
 def get_schema_from_model(model: Any) -> dict[str, Any]:
     manifest = getattr(model, "manifest", getattr(model, "field_asm_manifest", None))
     if not manifest:
-        msg = f"No 'manifest' or 'field_asn_manifest' found in model: {type(model)}"
+        msg = f"No 'manifest' or 'field_asm_manifest' found in model: {type(model)}"
         raise ValueError(msg)
     return get_schema_from_manifest(manifest)
