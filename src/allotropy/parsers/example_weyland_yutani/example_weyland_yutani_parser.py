@@ -22,7 +22,7 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure i
     Data,
 )
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 

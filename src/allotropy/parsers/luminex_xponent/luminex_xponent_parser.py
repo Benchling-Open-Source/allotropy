@@ -33,7 +33,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Header,
     Measurement,
 )
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 DEFAULT_SOFTWARE_NAME = "xPONENT"

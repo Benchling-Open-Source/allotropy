@@ -27,7 +27,7 @@ from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 

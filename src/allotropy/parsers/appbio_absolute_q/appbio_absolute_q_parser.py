@@ -40,7 +40,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataItem,
     CalculatedDataSource,
 )
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 

@@ -59,7 +59,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     PlateBlock,
     ScanPosition,
 )
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )

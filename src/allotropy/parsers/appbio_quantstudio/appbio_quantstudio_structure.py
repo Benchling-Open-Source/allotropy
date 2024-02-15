@@ -22,7 +22,7 @@ from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,

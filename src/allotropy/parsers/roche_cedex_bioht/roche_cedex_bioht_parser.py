@@ -12,7 +12,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 

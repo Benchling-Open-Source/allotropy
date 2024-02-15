@@ -29,7 +29,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_from_series,

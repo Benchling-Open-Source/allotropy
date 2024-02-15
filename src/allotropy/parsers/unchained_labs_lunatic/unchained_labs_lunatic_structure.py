@@ -14,7 +14,7 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.utils.values import (
     try_float_from_series,
     try_float_from_series_or_none,

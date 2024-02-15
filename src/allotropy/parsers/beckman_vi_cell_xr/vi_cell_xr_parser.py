@@ -38,7 +38,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 

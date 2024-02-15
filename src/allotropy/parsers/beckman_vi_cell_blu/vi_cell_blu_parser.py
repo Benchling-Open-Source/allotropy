@@ -37,7 +37,7 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     VICELL_BLU_SOFTWARE_NAME,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 

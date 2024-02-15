@@ -36,7 +36,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
-from allotropy.parsers.utils.uuids import get_id_generator
+from allotropy.parsers.utils.id_generator import get_id_generator
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
