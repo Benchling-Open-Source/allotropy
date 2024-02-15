@@ -16,7 +16,6 @@ from allotropy.exceptions import (
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
@@ -34,6 +33,8 @@ EXPORT_VERSION = "1.3"
 
 
 def random_uuid_str() -> str:
+    from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
+
     return SoftmaxproParser.random_uuid_str()
 
 

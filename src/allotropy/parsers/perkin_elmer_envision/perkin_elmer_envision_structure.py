@@ -29,9 +29,6 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
-    UnchainedLabsLunaticParser,
-)
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_from_series,
@@ -42,6 +39,10 @@ from allotropy.parsers.utils.values import (
 
 
 def random_uuid_str() -> str:
+    from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
+        UnchainedLabsLunaticParser,
+    )
+
     return UnchainedLabsLunaticParser.random_uuid_str()
 
 

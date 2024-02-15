@@ -2,9 +2,6 @@ from collections.abc import Iterator
 from typing import Optional
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
-    AppBioQuantStudioParser,
-)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
     WellList,
@@ -23,6 +20,10 @@ from allotropy.parsers.appbio_quantstudio.views import ViewData
 
 
 def random_uuid_str() -> str:
+    from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
+        AppBioQuantStudioParser,
+    )
+
     return AppBioQuantStudioParser.random_uuid_str()
 
 
