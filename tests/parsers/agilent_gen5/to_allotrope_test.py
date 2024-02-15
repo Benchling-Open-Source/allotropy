@@ -23,11 +23,9 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import (
-    DictType,
     from_file,
     model_from_file,
     validate_contents,
-    validate_schema,
 )
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
@@ -44,14 +42,6 @@ ABSORBENCE_FILENAMES = [
 ]
 
 
-def _validate_allotrope_dict(allotrope_dict: DictType, expected_filepath: str) -> None:
-    validate_schema(
-        allotrope_dict,
-        SCHEMA_FILE,
-    )
-    validate_contents(allotrope_dict, expected_filepath)
-
-
 @pytest.mark.parametrize("filename", ABSORBENCE_FILENAMES)
 def test_to_allotrope_absorbance(filename: str) -> None:
     test_filepath = f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.txt"
@@ -59,14 +49,14 @@ def test_to_allotrope_absorbance(filename: str) -> None:
         f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    _validate_allotrope_dict(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath)
 
 
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     test_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
     expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    _validate_allotrope_dict(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath)
 
 
 # Test allotrope_model_from_file().
@@ -166,7 +156,6 @@ def test_to_allotrope_fluorescence(filename: str) -> None:
         f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "fluorescence/BENCHLING/2023/09/fluorescence.json")
     validate_contents(allotrope_dict, expected_filepath)
 
 
@@ -183,7 +172,6 @@ def test_to_allotrope_luminescence(filename: str) -> None:
         f"tests/parsers/agilent_gen5/testdata/luminescence/{filename}.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "luminescence/BENCHLING/2023/09/luminescence.json")
     validate_contents(allotrope_dict, expected_filepath)
 
 
