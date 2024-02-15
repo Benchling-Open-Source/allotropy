@@ -110,7 +110,6 @@ def validate_contents(
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
-
     with open(expected_file) as f:
         expected_dict = json.load(f)
 
