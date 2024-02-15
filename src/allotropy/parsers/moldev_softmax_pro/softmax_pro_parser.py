@@ -62,7 +62,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
-from allotropy.parsers.vendor_parser import random_uuid_str, VendorParser
+from allotropy.parsers.vendor_parser import VendorParser
 
 
 def to_json_float(value: float) -> JsonFloat:
@@ -315,7 +315,7 @@ class SoftmaxproParser(VendorParser):
         description: Optional[str] = None,
     ) -> CalculatedDataDocumentItem:
         return CalculatedDataDocumentItem(
-            calculated_data_identifier=random_uuid_str(),
+            calculated_data_identifier=self.random_uuid_str(),
             calculated_data_name=name,
             calculation_description=description,
             calculated_result=TQuantityValue(

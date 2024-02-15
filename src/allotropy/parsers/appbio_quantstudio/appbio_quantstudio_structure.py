@@ -22,6 +22,7 @@ from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -36,7 +37,10 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_default,
     try_str_from_series_or_none,
 )
-from allotropy.parsers.vendor_parser import random_uuid_str
+
+
+def random_uuid_str() -> str:
+    return SoftmaxproParser.random_uuid_str()
 
 
 @dataclass(frozen=True)

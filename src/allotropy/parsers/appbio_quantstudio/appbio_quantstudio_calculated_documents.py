@@ -2,6 +2,9 @@ from collections.abc import Iterator
 from typing import Optional
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
+    AppBioQuantStudioParser,
+)
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
     WellList,
@@ -17,7 +20,10 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import (
 )
 from allotropy.parsers.appbio_quantstudio.decorators import cache
 from allotropy.parsers.appbio_quantstudio.views import ViewData
-from allotropy.parsers.vendor_parser import random_uuid_str
+
+
+def random_uuid_str() -> str:
+    return AppBioQuantStudioParser.random_uuid_str()
 
 
 @cache

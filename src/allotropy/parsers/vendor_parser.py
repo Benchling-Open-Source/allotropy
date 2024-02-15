@@ -40,8 +40,3 @@ class VendorParser(ABC):
 
         time = str(timestamp)
         return self._get_date_time(time)
-
-
-# TODO: delete this function
-def random_uuid_str() -> str:
-    return VendorParser.random_uuid_str()
