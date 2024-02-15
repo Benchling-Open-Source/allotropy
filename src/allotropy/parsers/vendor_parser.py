@@ -10,10 +10,6 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
 
-def random_uuid_str() -> str:
-    return str(uuid.uuid4())
-
-
 class VendorParser(ABC):
     timestamp_parser: TimestampParser
 
@@ -26,10 +22,10 @@ class VendorParser(ABC):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
 
-    # TODO: make protected
+    @classmethod
     @final
-    def random_uuid_str(self) -> str:
-        return random_uuid_str()
+    def random_uuid_str(cls) -> str:
+        return str(uuid.uuid4())
 
     def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")
@@ -44,3 +40,8 @@ class VendorParser(ABC):
 
         time = str(timestamp)
         return self._get_date_time(time)
+
+
+# TODO: delete this function
+def random_uuid_str() -> str:
+    return VendorParser.random_uuid_str()
