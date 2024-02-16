@@ -81,6 +81,7 @@ def from_file(test_file: str, vendor: Vendor) -> DictType:
         return allotrope_from_file(test_file, vendor)
 
 
+# TODO: Choose a constant indent, convert all files to use it, and delete this function.
 def _get_existing_indent(expected_file: str) -> int:
     with open(expected_file) as f:
         f.readline()
@@ -96,6 +97,7 @@ def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> N
     existing_indent = _get_existing_indent(expected_file)
     with tempfile.NamedTemporaryFile(mode="w+") as tmp:
         json.dump(allotrope_dict, tmp, indent=existing_indent)
+        tmp.write("\n")
         tmp.seek(0)
         json.load(tmp)  # Ensure this file can be opened as JSON before we copy it
         shutil.copy(tmp.name, expected_file)
