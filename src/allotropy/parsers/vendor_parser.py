@@ -16,6 +16,7 @@ class IdGenerator(ABC):
         raise NotImplementedError
 
 
+@final
 class UuidGenerator(IdGenerator):
     def generate_id(self) -> str:
         return str(uuid.uuid4())
