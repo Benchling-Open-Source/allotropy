@@ -163,41 +163,62 @@ class NanodropEightParser(VendorParser):
         return calculated_data_documents
 
     def _get_260_280(self, data: pd.DataFrame, row: int) -> CalculatedDataDocumentItem:
+        data_source_doc_items = []
+        if _get_str_or_none(data, row, "a260"):
+            data_source_doc_items.append(
+                DataSourceDocumentItem(
+                    data_source_feature="absorbance",
+                    data_source_identifier=_get_str(data, row, "a260 uuid"),
+                )
+            )
+
+        if _get_str_or_none(data, row, "a280") or _get_str_or_none(
+            data, row, "a280 10mm"
+        ):
+            data_source_doc_items.append(
+                DataSourceDocumentItem(
+                    data_source_feature="absorbance",
+                    data_source_identifier=_get_str(data, row, "a280 uuid"),
+                )
+            )
+
+        data_source_doc = None
+        if len(data_source_doc_items):
+            data_source_doc = DataSourceAggregateDocument(
+                data_source_document=data_source_doc_items
+            )
+
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/280",
             calculated_result=TQuantityValue(
                 value=_get_float(data, row, "260/280"), unit=UNITLESS
             ),
             calculated_data_identifier=random_uuid_str(),
-            data_source_aggregate_document=DataSourceAggregateDocument(
-                data_source_document=[
-                    DataSourceDocumentItem(
-                        data_source_feature="absorbance",
-                        data_source_identifier=_get_str(data, row, "a260 uuid"),
-                    ),
-                    DataSourceDocumentItem(
-                        data_source_feature="absorbance",
-                        data_source_identifier=_get_str(data, row, "a280 uuid"),
-                    ),
-                ]
-            ),
+            data_source_aggregate_document=data_source_doc,
         )
 
     def _get_260_230(self, data: pd.DataFrame, row: int) -> CalculatedDataDocumentItem:
+        data_source_doc_items = []
+        if _get_str_or_none(data, row, "a260"):
+            data_source_doc_items.append(
+                DataSourceDocumentItem(
+                    data_source_feature="absorbance",
+                    data_source_identifier=_get_str(data, row, "a260 uuid"),
+                )
+            )
+
+        data_source_doc = None
+        if len(data_source_doc_items):
+            data_source_doc = DataSourceAggregateDocument(
+                data_source_document=data_source_doc_items
+            )
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/230",
             calculated_result=TQuantityValue(
                 value=_get_float(data, row, "260/230"), unit=UNITLESS
             ),
             calculated_data_identifier=random_uuid_str(),
-            data_source_aggregate_document=DataSourceAggregateDocument(
-                data_source_document=[
-                    DataSourceDocumentItem(
-                        data_source_feature="absorbance",
-                        data_source_identifier=_get_str(data, row, "a260 uuid"),
-                    )
-                ]
-            ),
+            data_source_aggregate_document=data_source_doc,
         )
 
     def _get_spectrophotometry_document_item(
