@@ -96,6 +96,10 @@ def validate_contents(
     with open(expected_file) as f:
         expected_dict = json.load(f)
 
+    # Ensure that allotrope_dict can be written via json.dump()
+    with tempfile.TemporaryFile(mode="w+") as tmp:
+        json.dump(allotrope_dict, tmp)
+
     try:
         _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
     except:
