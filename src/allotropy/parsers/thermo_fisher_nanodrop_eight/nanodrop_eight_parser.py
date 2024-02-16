@@ -182,9 +182,9 @@ class NanodropEightParser(VendorParser):
                 )
             )
 
-        data_source_doc = None
+        data_source_aggregate_document = None
         if len(data_source_doc_items):
-            data_source_doc = DataSourceAggregateDocument(
+            data_source_aggregate_document = DataSourceAggregateDocument(
                 data_source_document=data_source_doc_items
             )
 
@@ -194,7 +194,7 @@ class NanodropEightParser(VendorParser):
                 value=_get_float(data, row, "260/280"), unit=UNITLESS
             ),
             calculated_data_identifier=random_uuid_str(),
-            data_source_aggregate_document=data_source_doc,
+            data_source_aggregate_document=data_source_aggregate_document,
         )
 
     def _get_260_230(self, data: pd.DataFrame, row: int) -> CalculatedDataDocumentItem:
@@ -207,9 +207,9 @@ class NanodropEightParser(VendorParser):
                 )
             )
 
-        data_source_doc = None
+        data_source_aggregate_document = None
         if len(data_source_doc_items):
-            data_source_doc = DataSourceAggregateDocument(
+            data_source_aggregate_document = DataSourceAggregateDocument(
                 data_source_document=data_source_doc_items
             )
         return CalculatedDataDocumentItem(
@@ -218,7 +218,7 @@ class NanodropEightParser(VendorParser):
                 value=_get_float(data, row, "260/230"), unit=UNITLESS
             ),
             calculated_data_identifier=random_uuid_str(),
-            data_source_aggregate_document=data_source_doc,
+            data_source_aggregate_document=data_source_aggregate_document,
         )
 
     def _get_spectrophotometry_document_item(
