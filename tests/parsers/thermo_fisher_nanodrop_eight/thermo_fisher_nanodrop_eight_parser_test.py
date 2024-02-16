@@ -52,4 +52,6 @@ def test_parse_thermo_fisher_nanodrop_eight_data_source_ids(
     ]
 
     for data_source_id in data_source_ids:
-        assert data_source_id in measurement_ids
+        assert (
+            data_source_id in measurement_ids
+        ), f"data source identifier {data_source_id} is referenced but is not found in any measurement document"
