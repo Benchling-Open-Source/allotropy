@@ -96,7 +96,7 @@ def _get_existing_indent(expected_file: str) -> int:
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
     existing_indent = _get_existing_indent(expected_file)
     with tempfile.NamedTemporaryFile(mode="w+") as tmp:
-        json.dump(allotrope_dict, tmp, indent=existing_indent)
+        json.dump(allotrope_dict, tmp, indent=existing_indent, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
         json.load(tmp)  # Ensure this file can be opened as JSON before we copy it
@@ -113,6 +113,7 @@ def validate_contents(
     with open(expected_file) as f:
         expected_dict = json.load(f)
 
+    _write_actual_to_expected(allotrope_dict, expected_file)
     try:
         _assert_allotrope_dicts_equal(
             expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
