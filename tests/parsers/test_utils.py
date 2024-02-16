@@ -45,7 +45,7 @@ def _assert_allotrope_dicts_equal(
         DATA_SOURCE_IDENTIFIER,
         MEASUREMENT_IDENTIFIER,
     ]
-    # TODO: remove identifiers_to_exclude once test ids are stable
+    # TODO: remove identifiers_to_exclude (and the above constants) once test ids are stable
     identifiers_to_exclude = []
     exclude_regex_paths = [
         fr"\['{exclude_id}'\]" for exclude_id in identifiers_to_exclude
