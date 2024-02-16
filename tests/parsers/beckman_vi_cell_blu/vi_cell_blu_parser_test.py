@@ -1,6 +1,3 @@
-import json
-import tempfile
-
 from more_itertools import one
 import pytest
 
@@ -40,8 +37,6 @@ def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
     expected_filepath = _get_expected_file_path(output_file)
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
-    with tempfile.TemporaryFile(mode="w+") as tmp:
-        json.dump(allotrope_dict, tmp)
 
 
 def _clear_measurement_identifier(model: Model) -> None:
