@@ -1,6 +1,3 @@
-import json
-import tempfile
-
 from more_itertools import one
 import pytest
 
@@ -39,13 +36,10 @@ def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
     test_filepath = _get_test_file_path(output_file)
     expected_filepath = _get_expected_file_path(output_file)
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
-    with tempfile.TemporaryFile(mode="w+") as tmp:
-        # TODO: fix src so json.dump can execute without error
-        with pytest.raises(
-            TypeError, match="Object of type int64 is not JSON serializable"
-        ):
-            json.dump(allotrope_dict, tmp)
+    with pytest.raises(
+        TypeError, match="Object of type int64 is not JSON serializable"
+    ):
+        validate_contents(allotrope_dict, expected_filepath)
 
 
 def _clear_measurement_identifier(model: Model) -> None:
