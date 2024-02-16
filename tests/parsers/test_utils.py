@@ -113,7 +113,6 @@ def validate_contents(
     with open(expected_file) as f:
         expected_dict = json.load(f)
 
-    _write_actual_to_expected(allotrope_dict, expected_file)
     try:
         _assert_allotrope_dicts_equal(
             expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
