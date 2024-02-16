@@ -183,7 +183,7 @@ class NanodropEightParser(VendorParser):
             )
 
         data_source_aggregate_document = None
-        if len(data_source_doc_items):
+        if data_source_doc_items:
             data_source_aggregate_document = DataSourceAggregateDocument(
                 data_source_document=data_source_doc_items
             )
@@ -208,7 +208,7 @@ class NanodropEightParser(VendorParser):
             )
 
         data_source_aggregate_document = None
-        if len(data_source_doc_items):
+        if data_source_doc_items:
             data_source_aggregate_document = DataSourceAggregateDocument(
                 data_source_document=data_source_doc_items
             )
