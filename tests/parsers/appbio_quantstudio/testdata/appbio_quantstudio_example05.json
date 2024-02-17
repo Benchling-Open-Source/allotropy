@@ -29654,7 +29654,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.18"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -30283,11 +30283,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_81",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
                                 "data source feature": "rq"
                             }
                         ]
@@ -30303,11 +30303,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_78",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -30323,7 +30323,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_78",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30331,7 +30331,7 @@
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_78",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -30463,35 +30463,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_78",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_81",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_65",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_66",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_82",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_80",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_79",
                                 "data source feature": "rq"
                             }
                         ]
@@ -30507,7 +30483,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_83",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_82",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30535,7 +30511,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_84",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_83",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30599,7 +30575,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_84",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30675,11 +30651,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_92",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
                                 "data source feature": "rq"
                             }
                         ]
@@ -30695,11 +30671,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_88",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -30715,15 +30691,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_90",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_88",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_88",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_87",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -30739,15 +30715,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_88",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_87",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_86",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_87",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_86",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -30763,7 +30739,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_86",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_85",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30827,7 +30803,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_87",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_86",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30855,35 +30831,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_65",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_66",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_93",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_91",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_89",
                                 "data source feature": "rq"
                             }
                         ]
@@ -30899,7 +30851,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_94",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_92",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30927,7 +30879,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_93",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -30991,7 +30943,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_94",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -31067,11 +31019,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_101",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_100",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
                                 "data source feature": "rq"
                             }
                         ]
@@ -31087,11 +31039,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_100",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -31107,15 +31059,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_95",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_98",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_67",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -31131,59 +31083,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_97",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_65",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_66",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_98",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_65",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_66",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_102",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_100",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_96",
                                 "data source feature": "rq"
                             }
                         ]
@@ -31199,7 +31103,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_103",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_99",
                     "data source aggregate document": {
                         "data source document": [
                             {
