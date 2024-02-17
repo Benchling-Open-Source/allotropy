@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ### Fixed
 - Cast sample identifier to string when saving it in SoftmaxPro parser
+- Handle style bug in xlsx files produced by VI-Cell XR instrument
 ### Changed
 ### Deprecated
 ### Removed
