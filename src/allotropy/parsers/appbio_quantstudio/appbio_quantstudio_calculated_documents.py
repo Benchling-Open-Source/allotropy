@@ -132,6 +132,7 @@ def build_ct_sd(
     )
 
 
+@cache
 def build_delta_ct_mean(
     view_data: ViewData[WellItem],
     sample: str,
