@@ -5,6 +5,10 @@ from typing import Any, Optional, TypeVar, Union
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
 from allotropy.exceptions import AllotropeConversionError
 
 PrimitiveValue = Union[str, int, float]
@@ -39,6 +43,11 @@ def try_float_or_none(value: Optional[str]) -> Optional[float]:
         return float(value or "")
     except ValueError:
         return None
+
+
+def try_float_or_nan(value: Optional[str]) -> JsonFloat:
+    float_value = try_float_or_none(value)
+    return InvalidJsonFloat.NaN if float_value is None else float_value
 
 
 def natural_sort_key(key: str) -> list[str]:
