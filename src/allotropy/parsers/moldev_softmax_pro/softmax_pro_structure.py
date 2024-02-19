@@ -126,7 +126,7 @@ class GroupSampleData:
     @staticmethod
     def create(data: pd.DataFrame) -> GroupSampleData:
         top_row = data.iloc[0]
-        identifier = top_row["Sample"]
+        identifier = str(top_row["Sample"])
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         numeric_columns = [
             column
