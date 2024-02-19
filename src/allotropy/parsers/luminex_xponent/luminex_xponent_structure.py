@@ -250,7 +250,7 @@ class MeasurementList:
     @classmethod
     def _get_bead_ids_data(cls, reader: CsvReader) -> pd.Series[str]:
         units_df = MeasurementList._get_table_as_df(reader, "Units")
-        return units_df.loc["BeadID:"]  # type: ignore[return-value]
+        return units_df.loc["BeadID:"]  # type: ignore[arg-type]
 
     @classmethod
     def _get_table_as_df(cls, reader: CsvReader, table_name: str) -> pd.DataFrame:
