@@ -10,7 +10,7 @@ from typing import Any, Optional, Union
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -21,6 +21,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
     try_float,
+    try_float_or_nan,
     try_float_or_none,
     try_int,
     try_int_or_none,
@@ -292,7 +293,7 @@ class DataElement:
     temperature: Optional[float]
     wavelength: float
     position: str
-    value: float | InvalidJsonFloat
+    value: JsonFloat
     sample_id: Optional[str] = None
 
     @property
@@ -332,7 +333,7 @@ class PlateWavelengthData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float_or_none(value) or InvalidJsonFloat.NaN,
+                    value=try_float_or_nan(value),
                 )
                 for position, value in data.items()
             },
