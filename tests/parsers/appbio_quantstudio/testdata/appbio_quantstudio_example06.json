@@ -14,7 +14,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "59b414b5-af15-495e-b9ab-40daa69c9cea",
+                            "measurement identifier": "e8ca119a-0427-4bfd-b0a1-ed1dad51fcf5",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "TGF-B",
                             "sample document": {
@@ -134,7 +134,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "69e3942e-adae-4c30-90e3-7d65e6294aec",
+                            "measurement identifier": "aa3dc28f-901e-4caa-80f4-3af618a05a35",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "TGF-B",
                             "sample document": {
@@ -254,7 +254,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "170ea5d1-0b66-4d33-8f2e-2ff662a7952b",
+                            "measurement identifier": "fa408271-e3ed-47bf-9645-feb89466a86a",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "TGF-B",
                             "sample document": {
@@ -374,7 +374,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "b3b1b512-8902-48b8-a65b-2d576b24952b",
+                            "measurement identifier": "f5920642-7d38-43b5-9d7c-004cbd7f5f76",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "TGF-B",
                             "sample document": {
@@ -494,7 +494,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "33743657-799d-4571-8562-7a2e8f0183e8",
+                            "measurement identifier": "4d53b5c3-d7cd-494e-8647-009a6c8f7d0f",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "TGF-B",
                             "sample document": {
@@ -614,7 +614,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "65d0afc1-c669-4d50-9dca-66c130801b1b",
+                            "measurement identifier": "c553341c-7133-4c82-b548-1a3ada70c084",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "GAPDH",
                             "sample document": {
@@ -734,7 +734,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "426140ce-aaf8-47a9-9a77-b0871244224a",
+                            "measurement identifier": "1227f4c0-5fc1-448b-88a1-ce5cad45be52",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "GAPDH",
                             "sample document": {
@@ -854,7 +854,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "29160c01-b2bc-4db3-9672-455f854c8cd2",
+                            "measurement identifier": "7d22af48-1665-47eb-b3c9-422231f762cb",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "GAPDH",
                             "sample document": {
@@ -974,7 +974,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "398d87ba-85ac-4a40-9e2e-303c3992f03e",
+                            "measurement identifier": "51812a69-8a06-428e-a9e1-ff221f70bcc5",
                             "measurement time": "2010-10-20T02:23:34-04:00",
                             "target DNA description": "GAPDH",
                             "sample document": {
@@ -1094,24 +1094,24 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.6"
+            "ASM converter version": "0.1.15"
         },
         "calculated data aggregate document": {
             "calculated data document": [
                 {
-                    "calculated data identifier": "27b3070e-dab7-4fdb-8a28-02723f37d549",
+                    "calculated data identifier": "572f8544-ea0f-47a2-a6b0-e41aae7c3982",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "59b414b5-af15-495e-b9ab-40daa69c9cea",
+                                "data source identifier": "e8ca119a-0427-4bfd-b0a1-ed1dad51fcf5",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "69e3942e-adae-4c30-90e3-7d65e6294aec",
+                                "data source identifier": "aa3dc28f-901e-4caa-80f4-3af618a05a35",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "b3b1b512-8902-48b8-a65b-2d576b24952b",
+                                "data source identifier": "f5920642-7d38-43b5-9d7c-004cbd7f5f76",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1127,27 +1127,27 @@
                     }
                 },
                 {
-                    "calculated data identifier": "95ec8f62-ae01-4742-91ac-0892a706251d",
+                    "calculated data identifier": "d0d6eba8-c27b-441e-97f9-be95471358d3",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "59b414b5-af15-495e-b9ab-40daa69c9cea",
+                                "data source identifier": "e8ca119a-0427-4bfd-b0a1-ed1dad51fcf5",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "69e3942e-adae-4c30-90e3-7d65e6294aec",
+                                "data source identifier": "aa3dc28f-901e-4caa-80f4-3af618a05a35",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "b3b1b512-8902-48b8-a65b-2d576b24952b",
+                                "data source identifier": "f5920642-7d38-43b5-9d7c-004cbd7f5f76",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "65d0afc1-c669-4d50-9dca-66c130801b1b",
+                                "data source identifier": "c553341c-7133-4c82-b548-1a3ada70c084",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "426140ce-aaf8-47a9-9a77-b0871244224a",
+                                "data source identifier": "1227f4c0-5fc1-448b-88a1-ce5cad45be52",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1163,11 +1163,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "9bea53ff-4290-412a-9aa4-d7c4ef2052f7",
+                    "calculated data identifier": "c4fd6313-2e36-4772-8d99-0208c6479cc3",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "96caf440-bc2a-42e5-9f97-2fb9ae97c854",
+                                "data source identifier": "8c734694-2d89-4961-9783-5af31558b4f3",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1183,11 +1183,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "96caf440-bc2a-42e5-9f97-2fb9ae97c854",
+                    "calculated data identifier": "8c734694-2d89-4961-9783-5af31558b4f3",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "587b37d7-7ec1-4b22-9fc3-a2de74514138",
+                                "data source identifier": "82f5d0c9-cdeb-4fd6-a99f-7601fcf21854",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -1203,15 +1203,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "587b37d7-7ec1-4b22-9fc3-a2de74514138",
+                    "calculated data identifier": "82f5d0c9-cdeb-4fd6-a99f-7601fcf21854",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "a3d1aa8c-e08f-4b04-9351-f9d49a816feb",
+                                "data source identifier": "a490a2ef-90b5-4ca1-845e-222b7d809ded",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "4d3d2746-9c0c-4d83-b4dc-ed4b9bf41c9e",
+                                "data source identifier": "17f4b6f8-0ff6-48e3-bb2c-09e005871afb",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -1227,15 +1227,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "a3d1aa8c-e08f-4b04-9351-f9d49a816feb",
+                    "calculated data identifier": "a490a2ef-90b5-4ca1-845e-222b7d809ded",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "d2ee5ee9-3bdd-4c23-8899-e9d79f80a9da",
+                                "data source identifier": "04648ea9-4310-4565-bbc4-b07392a92ee2",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "16c7e113-75c3-4e52-a865-ccd93a3a26f1",
+                                "data source identifier": "3abf68d7-4d43-42e9-a2d2-aac0545491e1",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1251,19 +1251,19 @@
                     }
                 },
                 {
-                    "calculated data identifier": "d2ee5ee9-3bdd-4c23-8899-e9d79f80a9da",
+                    "calculated data identifier": "04648ea9-4310-4565-bbc4-b07392a92ee2",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "59b414b5-af15-495e-b9ab-40daa69c9cea",
+                                "data source identifier": "e8ca119a-0427-4bfd-b0a1-ed1dad51fcf5",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "69e3942e-adae-4c30-90e3-7d65e6294aec",
+                                "data source identifier": "aa3dc28f-901e-4caa-80f4-3af618a05a35",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "b3b1b512-8902-48b8-a65b-2d576b24952b",
+                                "data source identifier": "f5920642-7d38-43b5-9d7c-004cbd7f5f76",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1279,15 +1279,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "16c7e113-75c3-4e52-a865-ccd93a3a26f1",
+                    "calculated data identifier": "3abf68d7-4d43-42e9-a2d2-aac0545491e1",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "65d0afc1-c669-4d50-9dca-66c130801b1b",
+                                "data source identifier": "c553341c-7133-4c82-b548-1a3ada70c084",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "426140ce-aaf8-47a9-9a77-b0871244224a",
+                                "data source identifier": "1227f4c0-5fc1-448b-88a1-ce5cad45be52",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1303,15 +1303,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "4d3d2746-9c0c-4d83-b4dc-ed4b9bf41c9e",
+                    "calculated data identifier": "17f4b6f8-0ff6-48e3-bb2c-09e005871afb",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "3751bdb0-a2a8-49cb-a7ff-7340bc3d6729",
+                                "data source identifier": "6dddbd0a-143f-4ac3-a7ae-21883cdfafc0",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "c1363f3e-2f24-407a-872e-24275e24867d",
+                                "data source identifier": "36bb983e-3104-438c-93e9-da3755faf7b1",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1327,15 +1327,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "3751bdb0-a2a8-49cb-a7ff-7340bc3d6729",
+                    "calculated data identifier": "6dddbd0a-143f-4ac3-a7ae-21883cdfafc0",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "170ea5d1-0b66-4d33-8f2e-2ff662a7952b",
+                                "data source identifier": "fa408271-e3ed-47bf-9645-feb89466a86a",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "33743657-799d-4571-8562-7a2e8f0183e8",
+                                "data source identifier": "4d53b5c3-d7cd-494e-8647-009a6c8f7d0f",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1351,15 +1351,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "c1363f3e-2f24-407a-872e-24275e24867d",
+                    "calculated data identifier": "36bb983e-3104-438c-93e9-da3755faf7b1",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "29160c01-b2bc-4db3-9672-455f854c8cd2",
+                                "data source identifier": "7d22af48-1665-47eb-b3c9-422231f762cb",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "398d87ba-85ac-4a40-9e2e-303c3992f03e",
+                                "data source identifier": "51812a69-8a06-428e-a9e1-ff221f70bcc5",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1375,11 +1375,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "5de8a66a-cbe5-48c8-bb2b-b36279efaff8",
+                    "calculated data identifier": "9f50bac9-5946-40de-ba8f-83049564de27",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "96caf440-bc2a-42e5-9f97-2fb9ae97c854",
+                                "data source identifier": "8c734694-2d89-4961-9783-5af31558b4f3",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1395,15 +1395,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "339a7c6f-d256-4375-a015-a524e8655cfc",
+                    "calculated data identifier": "9b2121ae-68d5-4680-b150-89c56ec6b184",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "65d0afc1-c669-4d50-9dca-66c130801b1b",
+                                "data source identifier": "c553341c-7133-4c82-b548-1a3ada70c084",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "426140ce-aaf8-47a9-9a77-b0871244224a",
+                                "data source identifier": "1227f4c0-5fc1-448b-88a1-ce5cad45be52",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1419,15 +1419,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "8bd7a964-6b63-4951-9e16-28c879debd58",
+                    "calculated data identifier": "9f6abc43-2d82-44cb-a52d-b28cd0df4155",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "170ea5d1-0b66-4d33-8f2e-2ff662a7952b",
+                                "data source identifier": "fa408271-e3ed-47bf-9645-feb89466a86a",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "33743657-799d-4571-8562-7a2e8f0183e8",
+                                "data source identifier": "4d53b5c3-d7cd-494e-8647-009a6c8f7d0f",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
@@ -1443,23 +1443,23 @@
                     }
                 },
                 {
-                    "calculated data identifier": "bda06a48-b72f-4123-aa45-ad1833964799",
+                    "calculated data identifier": "2fec433e-fa80-4bcd-9575-da435ce2ca7d",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "170ea5d1-0b66-4d33-8f2e-2ff662a7952b",
+                                "data source identifier": "fa408271-e3ed-47bf-9645-feb89466a86a",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "33743657-799d-4571-8562-7a2e8f0183e8",
+                                "data source identifier": "4d53b5c3-d7cd-494e-8647-009a6c8f7d0f",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "29160c01-b2bc-4db3-9672-455f854c8cd2",
+                                "data source identifier": "7d22af48-1665-47eb-b3c9-422231f762cb",
                                 "data source feature": "ct mean"
                             },
                             {
-                                "data source identifier": "398d87ba-85ac-4a40-9e2e-303c3992f03e",
+                                "data source identifier": "51812a69-8a06-428e-a9e1-ff221f70bcc5",
                                 "data source feature": "ct mean"
                             }
                         ]
@@ -1475,11 +1475,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "06b0a04d-e1b7-4d41-9feb-b17388c92de7",
+                    "calculated data identifier": "61314f03-dd5b-4f0e-adfc-4eade8303634",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "1bdf69e3-0c45-4efe-9512-2be56d05a0d2",
+                                "data source identifier": "f4f421d7-19af-487a-9910-4d9aeee44090",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1495,11 +1495,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "1bdf69e3-0c45-4efe-9512-2be56d05a0d2",
+                    "calculated data identifier": "f4f421d7-19af-487a-9910-4d9aeee44090",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "4d5b3199-e93d-4bc4-bc47-92273f18e3ab",
+                                "data source identifier": "14be2571-2fb6-4dad-98eb-0ebacbc5e6a3",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -1515,15 +1515,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "4d5b3199-e93d-4bc4-bc47-92273f18e3ab",
+                    "calculated data identifier": "14be2571-2fb6-4dad-98eb-0ebacbc5e6a3",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "273409e1-94f3-4193-9564-883460170260",
+                                "data source identifier": "17f4b6f8-0ff6-48e3-bb2c-09e005871afb",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "42faaf56-5d8d-47b6-99c4-1bda2686910b",
+                                "data source identifier": "17f4b6f8-0ff6-48e3-bb2c-09e005871afb",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -1539,59 +1539,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "273409e1-94f3-4193-9564-883460170260",
+                    "calculated data identifier": "c0802e5f-4537-4de2-b24d-6ccecf3d56e7",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "3751bdb0-a2a8-49cb-a7ff-7340bc3d6729",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "c1363f3e-2f24-407a-872e-24275e24867d",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "42faaf56-5d8d-47b6-99c4-1bda2686910b",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "3751bdb0-a2a8-49cb-a7ff-7340bc3d6729",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "c1363f3e-2f24-407a-872e-24275e24867d",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "7a2a90ef-9224-4369-ac1e-52b550e60923",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "1bdf69e3-0c45-4efe-9512-2be56d05a0d2",
+                                "data source identifier": "f4f421d7-19af-487a-9910-4d9aeee44090",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1607,15 +1559,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "ff3ad260-8452-430c-a8a6-08635bcda427",
+                    "calculated data identifier": "264abab3-c520-4c22-957c-cd33f71ac071",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "29160c01-b2bc-4db3-9672-455f854c8cd2",
+                                "data source identifier": "7d22af48-1665-47eb-b3c9-422231f762cb",
                                 "data source feature": "cycle threshold result"
                             },
                             {
-                                "data source identifier": "398d87ba-85ac-4a40-9e2e-303c3992f03e",
+                                "data source identifier": "51812a69-8a06-428e-a9e1-ff221f70bcc5",
                                 "data source feature": "cycle threshold result"
                             }
                         ]
