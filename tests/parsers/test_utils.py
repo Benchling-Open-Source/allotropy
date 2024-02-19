@@ -83,7 +83,7 @@ def from_file(test_file: str, vendor: Vendor) -> DictType:
 
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
     with tempfile.NamedTemporaryFile(mode="w+") as tmp:
-        json.dump(allotrope_dict, tmp, ensure_ascii=False)
+        json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
         json.load(tmp)  # Ensure this file can be opened as JSON before we copy it

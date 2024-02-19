@@ -1,1 +1,270 @@
-{"$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest", "cell counting aggregate document": {"cell counting document": [{"measurement aggregate document": {"measurement document": [{"measurement time": "2023-03-02T08:31:38+00:00", "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0", "device control aggregate document": {"device control document": [{"device type": "brightfield imager (cell counter)", "detection type": "brightfield"}]}, "sample document": {"sample identifier": "CLB001"}, "processed data aggregate document": {"processed data document": [{"viability (cell counter)": {"value": 98.4, "unit": "%"}, "viable cell density (cell counter)": {"value": 3.06, "unit": "10^6 cells/mL"}, "data processing document": {"cell type processing method": "CHO", "cell density dilution factor": {"value": 3.0, "unit": "(unitless)"}}, "total cell density (cell counter)": {"value": 3.1, "unit": "10^6 cells/mL"}, "average total cell diameter": {"value": 13.9, "unit": "μm"}, "total cell count": {"value": 1027, "unit": "cell"}, "viable cell count": {"value": 1011, "unit": "cell"}, "average total cell circularity": {"value": 0.88, "unit": "(unitless)"}}]}}]}, "analyst": "Vi-Cell XR"}, {"measurement aggregate document": {"measurement document": [{"measurement time": "2023-03-03T12:28:16+00:00", "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_1", "device control aggregate document": {"device control document": [{"device type": "brightfield imager (cell counter)", "detection type": "brightfield"}]}, "sample document": {"sample identifier": "CLB002"}, "processed data aggregate document": {"processed data document": [{"viability (cell counter)": {"value": 98.8, "unit": "%"}, "viable cell density (cell counter)": {"value": 6.34, "unit": "10^6 cells/mL"}, "data processing document": {"cell type processing method": "CHO", "cell density dilution factor": {"value": 3.0, "unit": "(unitless)"}}, "total cell density (cell counter)": {"value": 6.42, "unit": "10^6 cells/mL"}, "average total cell diameter": {"value": 13.8, "unit": "μm"}, "total cell count": {"value": 2123, "unit": "cell"}, "viable cell count": {"value": 2098, "unit": "cell"}, "average total cell circularity": {"value": 0.88, "unit": "(unitless)"}}]}}]}, "analyst": "Vi-Cell XR"}, {"measurement aggregate document": {"measurement document": [{"measurement time": "2023-03-07T09:25:16+00:00", "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_2", "device control aggregate document": {"device control document": [{"device type": "brightfield imager (cell counter)", "detection type": "brightfield"}]}, "sample document": {"sample identifier": "CLB003"}, "processed data aggregate document": {"processed data document": [{"viability (cell counter)": {"value": 98.8, "unit": "%"}, "viable cell density (cell counter)": {"value": 9.21, "unit": "10^6 cells/mL"}, "data processing document": {"cell type processing method": "CHO", "cell density dilution factor": {"value": 3.0, "unit": "(unitless)"}}, "total cell density (cell counter)": {"value": 9.32, "unit": "10^6 cells/mL"}, "average total cell diameter": {"value": 13.7, "unit": "μm"}, "total cell count": {"value": 3082, "unit": "cell"}, "viable cell count": {"value": 3046, "unit": "cell"}, "average total cell circularity": {"value": 0.883, "unit": "(unitless)"}}]}}]}, "analyst": "Vi-Cell XR"}, {"measurement aggregate document": {"measurement document": [{"measurement time": "2023-03-07T09:28:13+00:00", "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_3", "device control aggregate document": {"device control document": [{"device type": "brightfield imager (cell counter)", "detection type": "brightfield"}]}, "sample document": {"sample identifier": "CLB004"}, "processed data aggregate document": {"processed data document": [{"viability (cell counter)": {"value": 98.8, "unit": "%"}, "viable cell density (cell counter)": {"value": 4.54, "unit": "10^6 cells/mL"}, "data processing document": {"cell type processing method": "CHO", "cell density dilution factor": {"value": 3.0, "unit": "(unitless)"}}, "total cell density (cell counter)": {"value": 4.59, "unit": "10^6 cells/mL"}, "average total cell diameter": {"value": 13.6, "unit": "μm"}, "total cell count": {"value": 1519, "unit": "cell"}, "viable cell count": {"value": 1501, "unit": "cell"}, "average total cell circularity": {"value": 0.892, "unit": "(unitless)"}}]}}]}, "analyst": "Vi-Cell XR"}], "device system document": {"model number": "Vi-Cell XR", "equipment serial number": "AV123456789"}, "data system document": {"file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx", "software name": "Vi-Cell XR", "software version": "2.06", "ASM converter name": "allotropy", "ASM converter version": "0.1.17"}}}
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2023-03-02T08:31:38+00:00",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB001"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 98.4,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.06,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 3.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.1,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.9,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1027,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1011,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.88,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-Cell XR"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2023-03-03T12:28:16+00:00",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB002"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 98.8,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.34,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 3.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.42,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.8,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2123,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 2098,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.88,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-Cell XR"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2023-03-07T09:25:16+00:00",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB003"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 98.8,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 9.21,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 3.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 9.32,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.7,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 3082,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 3046,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.883,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-Cell XR"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2023-03-07T09:28:13+00:00",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB004"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 98.8,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.54,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "CHO",
+                                            "cell density dilution factor": {
+                                                "value": 3.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.59,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.6,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1519,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1501,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.892,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-Cell XR"
+            }
+        ],
+        "device system document": {
+            "model number": "Vi-Cell XR",
+            "equipment serial number": "AV123456789"
+        },
+        "data system document": {
+            "file name": "Beckman_Vi-Cell-XR_example05_instrumentOutput.xlsx",
+            "software name": "Vi-Cell XR",
+            "software version": "2.06",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.17"
+        }
+    }
+}
