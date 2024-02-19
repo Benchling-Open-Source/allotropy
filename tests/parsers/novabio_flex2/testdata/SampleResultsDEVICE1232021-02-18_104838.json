@@ -1,12 +1,10 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     "measurement aggregate document": {
-        "measurement identifier": "4398251f-cdd2-498d-8e46-ed660df33fc5",
-        "data processing time": "2021-02-18T10:48:38+00:00",
+        "measurement identifier": "NOVABIO_FLEX2_TEST_ID_0",
         "analyst": "Unither",
         "device system document": {
-            "model number": "NovaBio Flex2",
-            "device identifier": "DEVICE123"
+            "device identifier": "DEVICE123",
+            "model number": "NovaBio Flex2"
         },
         "measurement document": [
             {
@@ -16,71 +14,72 @@
                 },
                 "measurement time": "2021-02-18T10:28:04+00:00",
                 "analyte aggregate document": {
-                    "analyte document":[
-                    {
-                        "analyte name": "ammonium",
-                        "molar concentration": {
-                            "value": 0.25,
-                            "unit": "mmol/L"
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.25,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 5.6,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 1.09,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 0.78,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.16,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 0.56,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.0,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 4.47,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 127.5,
+                                "unit": "mmol/L"
+                            }
                         }
-                    },
-                    {
-                        "analyte name": "bicarbonate",
-                        "molar concentration": {
-                            "value": 5.6,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "calcium",
-                        "molar concentration": {
-                            "value": 1.09,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glucose",
-                        "molar concentration": {
-                            "value": 0.78,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamate",
-                        "molar concentration": {
-                            "value": 0.16,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamine",
-                        "molar concentration": {
-                            "value": 0.56,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "lactate",
-                        "molar concentration": {
-                            "value": 0.0,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "potassium",
-                        "molar concentration": {
-                            "value": 4.47,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "sodium",
-                        "molar concentration": {
-                            "value": 127.5,
-                            "unit": "mmol/L"
-                        }
-                    }
-                ]},
+                    ]
+                },
                 "pCO2": {
                     "value": 10.3,
                     "unit": "mmHg"
@@ -133,71 +132,72 @@
                 },
                 "measurement time": "2021-02-18T10:33:17+00:00",
                 "analyte aggregate document": {
-                    "analyte document":[
-                    {
-                        "analyte name": "ammonium",
-                        "molar concentration": {
-                            "value": 0.25,
-                            "unit": "mmol/L"
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.25,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 6.6,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 1.09,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 0.79,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.12,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 0.58,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.0,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 4.47,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 128.1,
+                                "unit": "mmol/L"
+                            }
                         }
-                    },
-                    {
-                        "analyte name": "bicarbonate",
-                        "molar concentration": {
-                            "value": 6.6,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "calcium",
-                        "molar concentration": {
-                            "value": 1.09,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glucose",
-                        "molar concentration": {
-                            "value": 0.79,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamate",
-                        "molar concentration": {
-                            "value": 0.12,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamine",
-                        "molar concentration": {
-                            "value": 0.58,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "lactate",
-                        "molar concentration": {
-                            "value": 0.0,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "potassium",
-                        "molar concentration": {
-                            "value": 4.47,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "sodium",
-                        "molar concentration": {
-                            "value": 128.1,
-                            "unit": "mmol/L"
-                        }
-                    }
-                ]},
+                    ]
+                },
                 "pCO2": {
                     "value": 14.5,
                     "unit": "mmHg"
@@ -250,71 +250,72 @@
                 },
                 "measurement time": "2021-02-18T10:38:33+00:00",
                 "analyte aggregate document": {
-                    "analyte document":[
-                    {
-                        "analyte name": "ammonium",
-                        "molar concentration": {
-                            "value": 0.27,
-                            "unit": "mmol/L"
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.27,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 6.7,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 1.0,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 0.76,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.15,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 0.7,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.0,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 5.13,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 124.3,
+                                "unit": "mmol/L"
+                            }
                         }
-                    },
-                    {
-                        "analyte name": "bicarbonate",
-                        "molar concentration": {
-                            "value": 6.7,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "calcium",
-                        "molar concentration": {
-                            "value": 1.0,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glucose",
-                        "molar concentration": {
-                            "value": 0.76,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamate",
-                        "molar concentration": {
-                            "value": 0.15,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamine",
-                        "molar concentration": {
-                            "value": 0.7,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "lactate",
-                        "molar concentration": {
-                            "value": 0.0,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "potassium",
-                        "molar concentration": {
-                            "value": 5.13,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "sodium",
-                        "molar concentration": {
-                            "value": 124.3,
-                            "unit": "mmol/L"
-                        }
-                    }
-                ]},
+                    ]
+                },
                 "pCO2": {
                     "value": 13.8,
                     "unit": "mmHg"
@@ -343,71 +344,72 @@
                 },
                 "measurement time": "2021-02-18T10:41:08+00:00",
                 "analyte aggregate document": {
-                    "analyte document":[
-                    {
-                        "analyte name": "ammonium",
-                        "molar concentration": {
-                            "value": 0.29,
-                            "unit": "mmol/L"
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.29,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 7.3,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 1.03,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 0.73,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.17,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 0.59,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.0,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 4.66,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 123.1,
+                                "unit": "mmol/L"
+                            }
                         }
-                    },
-                    {
-                        "analyte name": "bicarbonate",
-                        "molar concentration": {
-                            "value": 7.3,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "calcium",
-                        "molar concentration": {
-                            "value": 1.03,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glucose",
-                        "molar concentration": {
-                            "value": 0.73,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamate",
-                        "molar concentration": {
-                            "value": 0.17,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamine",
-                        "molar concentration": {
-                            "value": 0.59,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "lactate",
-                        "molar concentration": {
-                            "value": 0.0,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "potassium",
-                        "molar concentration": {
-                            "value": 4.66,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "sodium",
-                        "molar concentration": {
-                            "value": 123.1,
-                            "unit": "mmol/L"
-                        }
-                    }
-                ]},
+                    ]
+                },
                 "pCO2": {
                     "value": 17.9,
                     "unit": "mmHg"
@@ -436,71 +438,72 @@
                 },
                 "measurement time": "2021-02-18T10:43:33+00:00",
                 "analyte aggregate document": {
-                    "analyte document":[
-                    {
-                        "analyte name": "ammonium",
-                        "molar concentration": {
-                            "value": 0.34,
-                            "unit": "mmol/L"
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.34,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 6.7,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 1.0,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 0.67,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.22,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 0.8,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.0,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 5.18,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 123.0,
+                                "unit": "mmol/L"
+                            }
                         }
-                    },
-                    {
-                        "analyte name": "bicarbonate",
-                        "molar concentration": {
-                            "value": 6.7,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "calcium",
-                        "molar concentration": {
-                            "value": 1.0,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glucose",
-                        "molar concentration": {
-                            "value": 0.67,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamate",
-                        "molar concentration": {
-                            "value": 0.22,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamine",
-                        "molar concentration": {
-                            "value": 0.8,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "lactate",
-                        "molar concentration": {
-                            "value": 0.0,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "potassium",
-                        "molar concentration": {
-                            "value": 5.18,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "sodium",
-                        "molar concentration": {
-                            "value": 123.0,
-                            "unit": "mmol/L"
-                        }
-                    }
-                ]},
+                    ]
+                },
                 "pCO2": {
                     "value": 15.1,
                     "unit": "mmHg"
@@ -529,71 +532,72 @@
                 },
                 "measurement time": "2021-02-18T10:46:05+00:00",
                 "analyte aggregate document": {
-                    "analyte document":[
-                    {
-                        "analyte name": "ammonium",
-                        "molar concentration": {
-                            "value": 0.25,
-                            "unit": "mmol/L"
+                    "analyte document": [
+                        {
+                            "analyte name": "ammonium",
+                            "molar concentration": {
+                                "value": 0.25,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "bicarbonate",
+                            "molar concentration": {
+                                "value": 4.8,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "calcium",
+                            "molar concentration": {
+                                "value": 0.91,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glucose",
+                            "molar concentration": {
+                                "value": 0.59,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamate",
+                            "molar concentration": {
+                                "value": 0.14,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "glutamine",
+                            "molar concentration": {
+                                "value": 0.47,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "lactate",
+                            "molar concentration": {
+                                "value": 0.0,
+                                "unit": "g/L"
+                            }
+                        },
+                        {
+                            "analyte name": "potassium",
+                            "molar concentration": {
+                                "value": 4.36,
+                                "unit": "mmol/L"
+                            }
+                        },
+                        {
+                            "analyte name": "sodium",
+                            "molar concentration": {
+                                "value": 128.2,
+                                "unit": "mmol/L"
+                            }
                         }
-                    },
-                    {
-                        "analyte name": "bicarbonate",
-                        "molar concentration": {
-                            "value": 4.8,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "calcium",
-                        "molar concentration": {
-                            "value": 0.91,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glucose",
-                        "molar concentration": {
-                            "value": 0.59,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamate",
-                        "molar concentration": {
-                            "value": 0.14,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "glutamine",
-                        "molar concentration": {
-                            "value": 0.47,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "lactate",
-                        "molar concentration": {
-                            "value": 0.0,
-                            "unit": "g/L"
-                        }
-                    },
-                    {
-                        "analyte name": "potassium",
-                        "molar concentration": {
-                            "value": 4.36,
-                            "unit": "mmol/L"
-                        }
-                    },
-                    {
-                        "analyte name": "sodium",
-                        "molar concentration": {
-                            "value": 128.2,
-                            "unit": "mmol/L"
-                        }
-                    }
-                ]},
+                    ]
+                },
                 "pCO2": {
                     "value": 10.1,
                     "unit": "mmHg"
@@ -615,6 +619,8 @@
                     "unit": "pH"
                 }
             }
-        ]
-    }
+        ],
+        "data processing time": "2021-02-18T10:48:38+00:00"
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest"
 }

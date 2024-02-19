@@ -7,7 +7,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2024-02-13T09:49:24+00:00",
-                            "measurement identifier": "8fff69db-3350-4da7-b102-6d1bdb6d0ce3",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -43,7 +43,7 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 17.9,
-                                            "unit": "\u03bcm"
+                                            "unit": "μm"
                                         },
                                         "total cell count": {
                                             "value": 4469,

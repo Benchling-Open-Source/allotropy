@@ -6,7 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.19] - 2024-02-19
+### Added
+### Fixed
+- Fix try_float_or_none bug with evaluating 0 as NaN
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.18] - 2024-02-19
+### Added
 - Add try_float_or_nan util and fix bug with evaluating 0 as NaN
+- Singleton UUID generator, allowing tests to generate stable ids
 ### Fixed
 - Cast sample identifier to string when saving it in SoftmaxPro parser
 - Handle style bug in xlsx files produced by VI-Cell XR instrument
