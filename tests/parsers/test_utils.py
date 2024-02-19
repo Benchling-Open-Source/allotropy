@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import json
+import tempfile
 from typing import Any, Optional
 
 from deepdiff import DeepDiff
@@ -69,3 +70,7 @@ def validate_contents(
     _assert_allotrope_dicts_equal(
         expected_dict, allotrope_dict, identifiers_to_exclude=identifiers_to_exclude
     )
+
+    # Ensure that allotrope_dict can be written via json.dump()
+    with tempfile.TemporaryFile(mode="w+") as tmp:
+        json.dump(allotrope_dict, tmp)
