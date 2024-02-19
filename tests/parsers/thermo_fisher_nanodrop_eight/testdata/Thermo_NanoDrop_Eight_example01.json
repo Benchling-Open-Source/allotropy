@@ -7,7 +7,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "f692658e-62f2-4383-8770-f0d97d2c17df",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_7",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -48,7 +48,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "33648fe5-69d6-46ec-b8b0-f62f8cc5f96b",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_8",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -89,7 +89,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "1f74997c-c531-4413-b094-213a2f818b55",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_9",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -130,7 +130,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "3e6087d0-5bcc-4f67-a333-6f9dc553a4a8",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_10",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -171,7 +171,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "a2efa96d-26c7-4665-9c72-7c95ffef9d94",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_11",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -212,7 +212,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "6e523c9f-5563-4fcd-90db-a4fda8eeaf24",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_12",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -253,7 +253,7 @@
                     "measurement time": "2020-05-26T15:36:00+00:00",
                     "measurement document": [
                         {
-                            "measurement identifier": "b809b0cd-9c86-4ca6-860b-d9eddf6cdef9",
+                            "measurement identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_13",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -297,7 +297,7 @@
         "data system document": {
             "file name": "Thermo_NanoDrop_Eight_example01.txt",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.19"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -310,12 +310,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "f692658e-62f2-4383-8770-f0d97d2c17df",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_7",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "d727b9fe-37a9-4e83-9289-5075d2353bae"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_14"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -326,12 +326,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "33648fe5-69d6-46ec-b8b0-f62f8cc5f96b",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_8",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "61fe2cbc-74bb-4f15-898d-78f133ef1502"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_15"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -342,12 +342,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "1f74997c-c531-4413-b094-213a2f818b55",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_9",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "0c7c8928-178a-4d00-b914-7544d4242fd5"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_16"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -358,12 +358,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "3e6087d0-5bcc-4f67-a333-6f9dc553a4a8",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_10",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "e74e289f-b384-407e-9bbf-ac17458aeba1"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_17"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -374,12 +374,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "a2efa96d-26c7-4665-9c72-7c95ffef9d94",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_11",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "6414dc58-0337-4492-8a53-a53e996416dd"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_18"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -390,12 +390,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "6e523c9f-5563-4fcd-90db-a4fda8eeaf24",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_12",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "8171f47d-330a-4f82-ab7e-cb314117f938"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_19"
                 },
                 {
                     "calculated data name": "A260/280",
@@ -406,12 +406,12 @@
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "b809b0cd-9c86-4ca6-860b-d9eddf6cdef9",
+                                "data source identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_13",
                                 "data source feature": "absorbance"
                             }
                         ]
                     },
-                    "calculated data identifier": "0e31c318-2983-47c1-b47e-57574c6421c3"
+                    "calculated data identifier": "THERMO_FISHER_NANODROP_EIGHT_TEST_ID_20"
                 }
             ]
         }
