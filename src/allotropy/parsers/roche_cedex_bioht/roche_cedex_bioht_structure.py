@@ -39,8 +39,8 @@ class Title:
 
         return Title(
             title_data.get("data processing time"),  # type: ignore[arg-type]
-            analyst,  # type: ignore[arg-type]
-            title_data.get("model number"),  # type: ignore[arg-type]
+            analyst,
+            title_data.get("model number"),
             str(device_serial_number),
         )
 
@@ -54,8 +54,8 @@ class Analyte:
     @staticmethod
     def create(data: pd.Series) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
-        concentration_value: Optional[float] = data.get("concentration value")  # type: ignore[assignment]
-        unit: Optional[str] = data.get("concentration unit")  # type: ignore[assignment]
+        concentration_value: Optional[float] = data.get("concentration value")
+        unit: Optional[str] = data.get("concentration unit")
 
         return Analyte(analyte_name, concentration_value, unit)
 

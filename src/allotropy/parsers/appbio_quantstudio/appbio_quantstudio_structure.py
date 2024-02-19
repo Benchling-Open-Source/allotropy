@@ -522,7 +522,7 @@ class Result:
             msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
-        cycle_threshold_result = assert_not_none(
+        cycle_threshold_result = assert_not_none(  # type: ignore[var-annotated]
             target_data.get(f"{allele} Ct"),
             msg="Unable to find cycle threshold result",
         )
@@ -580,7 +580,7 @@ class Result:
             msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
-        cycle_threshold_result = assert_not_none(
+        cycle_threshold_result = assert_not_none(  # type: ignore[var-annotated]
             target_data.get("CT"),
             msg="Unable to find cycle threshold result",
         )

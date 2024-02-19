@@ -144,7 +144,9 @@ class ViCellXRParser(VendorParser):
                             processed_data_document=[
                                 ProcessedDataDocumentItem(
                                     data_processing_document=DataProcessingDocument(
-                                        cell_type_processing_method=sample.get("Cell type"),  # type: ignore[arg-type]
+                                        cell_type_processing_method=sample.get(
+                                            "Cell type"
+                                        ),
                                         cell_density_dilution_factor=get_property_from_sample(
                                             sample,
                                             SampleProperty.DILUTION_FACTOR,
