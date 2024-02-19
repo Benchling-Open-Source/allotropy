@@ -1,4 +1,7 @@
-from allotropy.allotrope.allotrope import serialize_allotrope
+from allotropy.allotrope.allotrope import (
+    serialize_allotrope,
+    serialize_and_validate_allotrope,
+)
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
     AnalyteDocumentItem,
 )
@@ -22,7 +25,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 
 
-def test_basic() -> None:
+def test_serialize_and_validate_allotrope() -> None:
     model = Model()
     model.measurement_aggregate_document = MeasurementAggregateDocument(
         measurement_identifier="blah",
@@ -36,7 +39,7 @@ def test_basic() -> None:
             )
         ],
     )
-    assert serialize_allotrope(model) == {
+    assert serialize_and_validate_allotrope(model) == {
         "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
         "measurement aggregate document": {
             "measurement identifier": "blah",

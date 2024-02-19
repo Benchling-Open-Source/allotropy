@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Optional
 
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
@@ -71,7 +72,13 @@ class _Sample:
     def get_value(self, column: str) -> Optional[Any]:
         if column not in self.data_frame.columns:
             return None
-        return self.data_frame[column][self.row]
+        value = self.data_frame[column][self.row]
+
+        # https://stackoverflow.com/questions/50916422/python-typeerror-object-of-type-int64-is-not-json-serializable
+        if isinstance(value, np.int64):
+            return int(value)
+
+        return value
 
     def get_value_not_none(self, column: str) -> Any:
         value = self.get_value(column)

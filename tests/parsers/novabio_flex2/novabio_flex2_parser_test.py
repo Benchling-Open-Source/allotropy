@@ -4,7 +4,7 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.novabio_flex2.novabio_flex2_data import get_data, get_model
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "SampleResultsDEVICE1232021-02-18_104838",
@@ -19,10 +19,6 @@ def test_parse_novabio_flex_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/novabio_flex2/testdata/{output_file}.csv"
     expected_filepath = f"tests/parsers/novabio_flex2/testdata/{output_file}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(
-        allotrope_dict,
-        "cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.json",
-    )
     validate_contents(allotrope_dict, expected_filepath)
 
 

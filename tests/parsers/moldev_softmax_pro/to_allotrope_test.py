@@ -4,9 +4,10 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
+SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
 
 
 @pytest.mark.parametrize(
@@ -22,13 +23,13 @@ VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
         "MD_SMP_luminescence_endpoint_example03",
         "MD_SMP_luminescence_endpoint_example08",
         "MD_SMP_luminescence_endpoint_example09",
+        "group_cols_with_int_sample_names",
     ],
 )
 def test_to_allotrope(file_name: str) -> None:
     test_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
     expected_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.json"
     allotrope_dict = from_file(test_file, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "plate-reader/BENCHLING/2023/09/plate-reader.json")
     validate_contents(allotrope_dict, expected_file)
 
 

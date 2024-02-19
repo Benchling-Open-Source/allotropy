@@ -10,6 +10,7 @@ from typing import Any, Optional, Union
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -20,6 +21,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
     try_float,
+    try_float_or_nan,
     try_float_or_none,
     try_int,
     try_int_or_none,
@@ -125,7 +127,7 @@ class GroupSampleData:
     @staticmethod
     def create(data: pd.DataFrame) -> GroupSampleData:
         top_row = data.iloc[0]
-        identifier = top_row["Sample"]
+        identifier = str(top_row["Sample"])
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         numeric_columns = [
             column
@@ -291,7 +293,7 @@ class DataElement:
     temperature: Optional[float]
     wavelength: float
     position: str
-    value: float
+    value: JsonFloat
     sample_id: Optional[str] = None
 
     @property
@@ -331,10 +333,7 @@ class PlateWavelengthData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float(
-                        value,
-                        f"value from block plate {plate_name} and wavelength {wavelength}",
-                    ),
+                    value=try_float_or_nan(value),
                 )
                 for position, value in data.items()
             },
@@ -366,7 +365,7 @@ class PlateKineticData:
                 header.name,
                 temperature,
                 header,
-                data.iloc[:, 2:].astype(float),
+                data.iloc[:, 2:],
             ),
         )
 
@@ -485,10 +484,7 @@ class TimeKineticData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=try_float(
-                        str(value),
-                        f"value from plate block {plate_name} and wavelength {wavelength}",
-                    ),
+                    value=value,
                 )
                 for position, value in row.iloc[2:].items()
             },
