@@ -162,7 +162,7 @@ class Measurement:
     ) -> Measurement:
         location = try_str_from_series(median_data, "Location")
         dilution_factor_setting = try_float_from_series(
-            dilution_factor_data.loc[location], "Dilution Factor"  # type: ignore[arg-type]
+            dilution_factor_data.loc[location], "Dilution Factor"
         )
         # analyte names are columns 3 through the penultimate
         analyte_names = list(median_data.index)[2:-1]
@@ -179,7 +179,7 @@ class Measurement:
                     analyte_name=analyte,
                     assay_bead_identifier=try_str_from_series(bead_ids_data, analyte),
                     assay_bead_count=try_float_from_series(
-                        count_data.loc[location], analyte  # type: ignore[arg-type]
+                        count_data.loc[location], analyte
                     ),
                     fluorescence=try_float_from_series(median_data, analyte),
                 )
@@ -250,7 +250,7 @@ class MeasurementList:
     @classmethod
     def _get_bead_ids_data(cls, reader: CsvReader) -> pd.Series[str]:
         units_df = MeasurementList._get_table_as_df(reader, "Units")
-        return units_df.loc["BeadID:"]  # type: ignore[arg-type]
+        return units_df.loc["BeadID:"]
 
     @classmethod
     def _get_table_as_df(cls, reader: CsvReader, table_name: str) -> pd.DataFrame:
