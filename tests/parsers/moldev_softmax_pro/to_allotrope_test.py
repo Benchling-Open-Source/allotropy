@@ -24,6 +24,7 @@ SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
         "MD_SMP_luminescence_endpoint_example08",
         "MD_SMP_luminescence_endpoint_example09",
         "group_cols_with_int_sample_names",
+        "softmaxpro_no_calc_docs"
     ],
 )
 def test_to_allotrope(file_name: str) -> None:
