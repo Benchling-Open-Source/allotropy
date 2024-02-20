@@ -60,7 +60,7 @@ class Header:
     barcode: Optional[str]
     analyst: Optional[str]
     experimental_data_identifier: Optional[str]
-    pcr_stage_number: str
+    pcr_stage_number: int
     software_name: Optional[str]
     software_version: Optional[str]
 
@@ -235,9 +235,8 @@ class WellItem(Referenceable):
                 reporter_dye_setting=try_str_from_series_or_none(
                     data, "Allele1 Reporter"
                 ),
-                position=try_str_from_series_or_none(
-                    data, "Well Position", default="UNDEFINED"
-                ),
+                position=try_str_from_series_or_none(data, "Well Position")
+                or "UNDEFINED",
                 well_location_identifier=try_str_from_series_or_none(
                     data, "Well Position"
                 ),
@@ -252,9 +251,8 @@ class WellItem(Referenceable):
                 reporter_dye_setting=try_str_from_series_or_none(
                     data, "Allele2 Reporter"
                 ),
-                position=try_str_from_series_or_none(
-                    data, "Well Position", default="UNDEFINED"
-                ),
+                position=try_str_from_series_or_none(data, "Well Position")
+                or "UNDEFINED",
                 well_location_identifier=try_str_from_series_or_none(
                     data, "Well Position"
                 ),
@@ -285,9 +283,7 @@ class WellItem(Referenceable):
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
             reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
-            position=try_str_from_series_or_none(
-                data, "Well Position", default="UNDEFINED"
-            ),
+            position=try_str_from_series_or_none(data, "Well Position") or "UNDEFINED",
             well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
             quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
             sample_role_type=try_str_from_series_or_none(data, "Task"),
@@ -317,13 +313,13 @@ class Well:
     def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
         self._multicomponent_data = multicomponent_data
 
-    '''@property
+    """@property
     def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
         return self._melt_curve_raw_data
 
     @melt_curve_raw_data.setter
     def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self._melt_curve_raw_data = melt_curve_raw_data'''
+        self._melt_curve_raw_data = melt_curve_raw_data"""
 
     @property
     def calculated_documents(self) -> list[CalculatedDocument]:
@@ -513,7 +509,7 @@ class MulticomponentData:
         return MulticomponentData(
             cycle=stage_data["Cycle Number"].tolist(),
             columns={
-                name: stage_data[name].tolist()
+                str(name): stage_data[name].tolist()
                 for name in stage_data
                 if name
                 not in [

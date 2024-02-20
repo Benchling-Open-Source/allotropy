@@ -11,6 +11,9 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data_creator import (
     create_data,
 )
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
+    DesignAndAnalysisReader,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     Data,
     Header,
@@ -22,9 +25,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.calculated_document 
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.referenceable import (
     Referenceable,
-)
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
-    DesignAndAnalysisReader,
 )
 from tests.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data import (
     get_broken_calc_doc_data,
@@ -100,6 +100,9 @@ def test_header_builder() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=experimental_data_identifier,
+        pcr_stage_number=1,
+        software_name="",
+        software_version="",
     )
 
 

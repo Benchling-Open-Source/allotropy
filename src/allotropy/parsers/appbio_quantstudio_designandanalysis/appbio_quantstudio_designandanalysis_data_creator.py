@@ -35,11 +35,12 @@ def create_data(reader: DesignAndAnalysisReader) -> Data:
                 multi_data, well, header
             )
 
-        for well_item in well.items.values():
-            well_item.melt_curve_raw_data = MeltCurveRawData.create(
-                melt_data,
-                well_item,
-            )
+        if melt_data:
+            for well_item in well.items.values():
+                well_item.melt_curve_raw_data = MeltCurveRawData.create(
+                    melt_data,
+                    well_item,
+                )
 
         for well_item in well.items.values():
             well_item.amplification_data = AmplificationData.create(

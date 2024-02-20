@@ -15,7 +15,6 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     ExperimentType,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
-    MeltingCurveDataCube,
     Model,
     NormalizedReporterDataCube,
     PassiveReferenceDyeDataCube,
@@ -206,7 +205,6 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             passive_reference_dye_data_cube=self.get_passive_reference_dye_data_cube(
                 data, well
             ),
-            melting_curve_data_cube=self.get_melting_curve_data_cube(well_item),
         )
 
     def get_device_control_document_item(
@@ -218,7 +216,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             total_cycle_number_setting=TQuantityValueNumber(
                 value=well_item.amplification_data.total_cycle_number_setting,
             ),
-            PCR_detection_chemistry=data.header.pcr_detection_chemistry,
+            PCR_detection_chemistry=data.header.pcr_detection_chemistry or "N/A",
             reporter_dye_setting=well_item.reporter_dye_setting,
             quencher_dye_setting=well_item.quencher_dye_setting,
             passive_reference_dye_setting=data.header.passive_reference_dye_setting,
@@ -379,42 +377,6 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     well.multicomponent_data.get_column(
                         data.header.passive_reference_dye_setting
                     )
-                ],
-            ),
-        )
-
-    def get_melting_curve_data_cube(self, well: Well) -> Optional[MeltingCurveDataCube]:
-        if well.melt_curve_raw_data is None:
-            return None
-
-        return MeltingCurveDataCube(
-            label="melting curve",
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="temperature",
-                        unit="degrees C",
-                    ),
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="reporter dye fluorescence",
-                        unit="(unitless)",
-                    ),
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="slope",
-                        unit="(unitless)",
-                    ),
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=[well.melt_curve_raw_data.reading],
-                measures=[
-                    well.melt_curve_raw_data.fluorescence,
-                    well.melt_curve_raw_data.derivative,
                 ],
             ),
         )

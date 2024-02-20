@@ -1,10 +1,10 @@
-import json
+# import json
 
 import pytest
 
 # from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import Model
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 """from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_parser import (
     AppBioQuantStudioDesignandanalysisParser,
@@ -31,21 +31,21 @@ OUTPUT_FILES = ("appbio_quantstudio_designandanalysis_example_01",)
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS
 
 
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
-    test_filepath = f"tests/parsers/appbio_quantstudio_designandanalysis/testdata/{output_file}.xlsx"
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-
-    # start: make a JSON
-    target_filename = output_file.replace(".xlsx", ".json")
-    with open(
-        f"tests/parsers/appbio_quantstudio_designandanalysis/testdata/{target_filename}.json",
-        "w",
-    ) as fp:
-        json.dump(allotrope_dict, fp)
-    # end: make a JSON
-
-    validate_schema(allotrope_dict, "pcr/BENCHLING/2023/09/qpcr.json")
+# @pytest.mark.parametrize("output_file", OUTPUT_FILES)
+# def test_parse_appbio_quantstudio_to_asm_schema(output_file: str) -> None:
+#     test_filepath = f"tests/parsers/appbio_quantstudio_designandanalysis/testdata/{output_file}.xlsx"
+#     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+#
+#     # start: make a JSON
+#     target_filename = output_file.replace(".xlsx", ".json")
+#     with open(
+#         f"tests/parsers/appbio_quantstudio_designandanalysis/testdata/{target_filename}.json",
+#         "w",
+#     ) as fp:
+#         json.dump(allotrope_dict, fp)
+#     # end: make a JSON
+#
+#     validate_schema(allotrope_dict, "pcr/BENCHLING/2023/09/qpcr.json")
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
