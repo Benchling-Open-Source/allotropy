@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from io import IOBase
-
 import numpy as np
 import pandas as pd
 
+from allotropy.types import IOType
+
 
 class DesignAndAnalysisReader:
-    def __init__(self, contents: IOBase) -> None:
+    def __init__(self, contents: IOType) -> None:
         self.contents = contents
         self.data = self._read_data()
         self.metadata = self._read_metadata()

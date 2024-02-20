@@ -41,9 +41,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     AmplificationData,
     Data,
     Header,
-    MeltCurveRawData,
     MulticomponentData,
-    RawData,
     Result,
     Well,
     WellItem,
@@ -156,7 +154,6 @@ def get_data() -> Data:
                 "VIC": [1654662.500],
             },
         ),
-        _melt_curve_raw_data=None,
     )
 
     return Data(
@@ -173,16 +170,11 @@ def get_data() -> Data:
             measurement_method_identifier="Ct",
             pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
+            pcr_stage_number=1,
+            software_name="",
+            software_version="",
         ),
         wells=WellList([well]),
-        raw_data=RawData(
-            [
-                "Well\tWell Position\tCycle\tx1-m1\tx2-m2\tx3-m3\tx4-m4\tx5-m5",
-                "1\t      A1\t1\t882,830.500\t1,748,809.500\t1,648,195.400\t1,513,508.200\t3,796.012",
-                "",
-                "",
-            ]
-        ),
         endogenous_control="",
         reference_sample="",
         calculated_documents=[
@@ -294,11 +286,6 @@ def get_data2() -> Data:
                 "SYBR": [34014.32],
             },
         ),
-        _melt_curve_raw_data=MeltCurveRawData(
-            reading=[1],
-            fluorescence=[3.478],
-            derivative=[0.093],
-        ),
     )
 
     return Data(
@@ -315,16 +302,11 @@ def get_data2() -> Data:
             measurement_method_identifier="Ct",
             pcr_detection_chemistry="SYBR_GREEN",
             passive_reference_dye_setting="ROX",
+            pcr_stage_number=1,
+            software_name="",
+            software_version="",
         ),
         wells=WellList([well]),
-        raw_data=RawData(
-            [
-                "Well\tWell Position\tCycle\tx1-m1\tx2-m2\tx3-m3\tx4-m4\tx5-m5",
-                "1\t      A1\t1\t36,431.130\t4,790.476\t4,560.821\t56,089.960\t-387.130",
-                "",
-                "",
-            ]
-        ),
         endogenous_control="",
         reference_sample="",
         calculated_documents=[],
@@ -1208,9 +1190,11 @@ def get_genotyping_data() -> Data:
             measurement_method_identifier="Ct",
             pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
+            pcr_stage_number=1,
+            software_name="",
+            software_version="",
         ),
         wells=WellList([well]),
-        raw_data=None,
         endogenous_control="",
         reference_sample="",
         calculated_documents=[],
@@ -1454,6 +1438,9 @@ def get_rel_std_curve_data() -> Data:
             barcode="",
             analyst=None,
             experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
+            pcr_stage_number=1,
+            software_name="",
+            software_version="",
         ),
         wells=WellList(
             wells=[
@@ -1506,7 +1493,6 @@ def get_rel_std_curve_data() -> Data:
                         )
                     },
                     _multicomponent_data=None,
-                    _melt_curve_raw_data=None,
                     _calculated_documents=[
                         CalculatedDocument(
                             uuid="94cf744d-d243-47bd-a723-aca6c6517af5",
@@ -1614,7 +1600,6 @@ def get_rel_std_curve_data() -> Data:
                         )
                     },
                     _multicomponent_data=None,
-                    _melt_curve_raw_data=None,
                     _calculated_documents=[
                         CalculatedDocument(
                             uuid="51066bef-10b0-4782-a8c9-ee7383fe3256",
@@ -1675,7 +1660,6 @@ def get_rel_std_curve_data() -> Data:
                 ),
             ]
         ),
-        raw_data=None,
         endogenous_control="RNaseP",
         reference_sample="800",
         calculated_documents=[
@@ -3149,6 +3133,9 @@ def get_broken_calc_doc_data() -> Data:
             barcode="",
             analyst=None,
             experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
+            pcr_stage_number=1,
+            software_name="",
+            software_version="",
         ),
         wells=WellList(
             wells=[
@@ -3201,11 +3188,9 @@ def get_broken_calc_doc_data() -> Data:
                         )
                     },
                     _multicomponent_data=None,
-                    _melt_curve_raw_data=None,
                 )
             ]
         ),
-        raw_data=None,
         endogenous_control="RNaseP",
         reference_sample="800",
         calculated_documents=[
