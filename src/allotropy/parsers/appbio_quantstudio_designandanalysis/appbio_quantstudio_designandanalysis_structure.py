@@ -450,11 +450,8 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
-    def get_data(
-        reader: DesignAndAnalysisReader,
-    ) -> tuple[pd.DataFrame, pd.Series[str]]:
-        # The example I have doesn't have this metadata, so returning an empty Series for now)
-        return reader.data["Results"], pd.Series()
+    def get_data(reader: DesignAndAnalysisReader) -> pd.DataFrame:
+        return reader.data["Results"]
 
     @staticmethod
     def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
@@ -598,8 +595,6 @@ class Result:
 class Data:
     header: Header
     wells: WellList
-    endogenous_control: str
-    reference_sample: str
 
     @staticmethod
     def create(reader: DesignAndAnalysisReader) -> Data:
@@ -608,7 +603,7 @@ class Data:
 
         amp_data = AmplificationData.get_data(reader)
         multi_data = MulticomponentData.get_data(reader)
-        results_data, results_metadata = Result.get_data(reader)
+        results_data = Result.get_data(reader)
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = MulticomponentData.create(
@@ -627,16 +622,7 @@ class Data:
                     header.experiment_type,
                 )
 
-        endogenous_control = (
-            try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""
-        )
-        reference_sample = (
-            try_str_from_series_or_none(results_metadata, "Reference Sample") or ""
-        )
-
         return Data(
             header,
             wells,
-            endogenous_control,
-            reference_sample,
         )
