@@ -150,18 +150,6 @@ class WellItem(Referenceable):
     sample_role_type: Optional[str]
     _amplification_data: Optional[AmplificationData] = None
     _result: Optional[Result] = None
-    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
-
-    @property
-    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
-        return assert_not_none(
-            self._melt_curve_raw_data,
-            msg=f"Unable to find melt curve data for target '{self.target_dna_description}' in well {self.identifier} .",
-        )
-
-    @melt_curve_raw_data.setter
-    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self._melt_curve_raw_data = melt_curve_raw_data
 
     @property
     def amplification_data(self) -> AmplificationData:
@@ -282,7 +270,6 @@ class Well:
     identifier: int
     items: dict[str, WellItem]
     _multicomponent_data: Optional[MulticomponentData] = None
-    # _melt_curve_raw_data: Optional[MeltCurveRawData] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -298,14 +285,6 @@ class Well:
     @multicomponent_data.setter
     def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
         self._multicomponent_data = multicomponent_data
-
-    """@property
-    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
-        return self._melt_curve_raw_data
-
-    @melt_curve_raw_data.setter
-    def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
-        self._melt_curve_raw_data = melt_curve_raw_data"""
 
     @staticmethod
     def create_genotyping(identifier: int, well_data: pd.Series[str]) -> Well:
@@ -630,39 +609,6 @@ class Result:
 
 
 @dataclass(frozen=True)
-class MeltCurveRawData:
-    reading: list[float]
-    fluorescence: list[Optional[float]]
-    derivative: list[Optional[float]]
-
-    @staticmethod
-    def create(data: pd.DataFrame, well_item: WellItem) -> MeltCurveRawData:
-        well_data = assert_not_empty_df(
-            data[data["Well"] == well_item.identifier],
-            msg=f"Unable to find Melt Curve Raw data for well {well_item.identifier}.",
-        )
-
-        target_data = assert_not_empty_df(
-            well_data[well_data["Target"] == well_item.target_dna_description],
-            msg=f"Unable to find Melt Curve Raw data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
-        )
-
-        return MeltCurveRawData(
-            reading=target_data["Temperature"].tolist(),
-            fluorescence=target_data["Fluorescence"].tolist(),
-            derivative=target_data["Derivative"].tolist(),
-        )
-
-    @staticmethod
-    def get_data(reader: DesignAndAnalysisReader) -> Optional[pd.DataFrame]:
-        assert_not_empty_df(
-            reader.data["Melt Curve Raw"],
-            msg="Unable to find 'Melt Curve Raw' sheet in file.",
-        )
-        return reader.data["Melt Curve Raw"]
-
-
-@dataclass(frozen=True)
 class Data:
     header: Header
     wells: WellList
@@ -677,19 +623,11 @@ class Data:
         amp_data = AmplificationData.get_data(reader)
         multi_data = MulticomponentData.get_data(reader)
         results_data, results_metadata = Result.get_data(reader)
-        melt_data = MeltCurveRawData.get_data(reader)
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = MulticomponentData.create(
                     multi_data, well, header
                 )
-
-            if melt_data:
-                for well_item in well.items.values():
-                    well_item.melt_curve_raw_data = MeltCurveRawData.create(
-                        melt_data,
-                        well_item,
-                    )
 
             for well_item in well.items.values():
                 well_item.amplification_data = AmplificationData.create(
