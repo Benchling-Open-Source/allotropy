@@ -8,7 +8,6 @@ from typing import Any
 from unittest import mock
 
 from deepdiff import DeepDiff
-import numpy as np
 
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.parser_factory import Vendor
@@ -38,7 +37,6 @@ def _assert_allotrope_dicts_equal(
     ddiff = DeepDiff(
         expected_replaced,
         actual,
-        ignore_type_in_groups=[(float, np.float64), (int, np.int64)],
     )
     assert not ddiff
 

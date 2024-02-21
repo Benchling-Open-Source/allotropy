@@ -77,6 +77,9 @@ class _Sample:
         # https://stackoverflow.com/questions/50916422/python-typeerror-object-of-type-int64-is-not-json-serializable
         if isinstance(value, np.int64):
             return int(value)
+        # (and similar)
+        elif isinstance(value, np.float64):
+            return float(value)
 
         return value
 
