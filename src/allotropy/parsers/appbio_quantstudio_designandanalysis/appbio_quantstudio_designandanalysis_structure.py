@@ -215,12 +215,7 @@ class WellList:
 
     @staticmethod
     def create(contents: DesignQuantstudioContents) -> WellList:
-        assert_not_empty_df(
-            contents.data["Results"],
-            msg="Unable to find 'Results' sheet in file.",
-        )
-
-        raw_data = contents.data["Results"]
+        raw_data = contents.get_non_empty_sheet("Results")
         data = raw_data[raw_data["Sample"].notnull()]
         return WellList(
             [
@@ -242,11 +237,7 @@ class AmplificationData:
 
     @staticmethod
     def get_data(contents: DesignQuantstudioContents) -> pd.DataFrame:
-        assert_not_empty_df(
-            contents.data["Amplification Data"],
-            msg="Unable to find 'Amplification Data' sheet in file.",
-        )
-        return contents.data["Amplification Data"]
+        return contents.get_non_empty_sheet("Amplification Data")
 
     @staticmethod
     def create(
@@ -283,10 +274,7 @@ class MulticomponentData:
 
     @staticmethod
     def get_data(contents: DesignQuantstudioContents) -> Optional[pd.DataFrame]:
-        if "Multicomponent" in contents.data:
-            if not contents.data["Multicomponent"].empty:
-                return contents.data["Multicomponent"]
-        return None
+        return contents.get_non_empty_sheet_or_none("Multicomponent")
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well, header: Header) -> MulticomponentData:
@@ -347,7 +335,7 @@ class Result:
 
     @staticmethod
     def get_data(contents: DesignQuantstudioContents) -> pd.DataFrame:
-        return contents.data["Results"]
+        return contents.get_non_empty_sheet("Results")
 
     @staticmethod
     def create(data: pd.DataFrame, well_item: WellItem) -> Result:
