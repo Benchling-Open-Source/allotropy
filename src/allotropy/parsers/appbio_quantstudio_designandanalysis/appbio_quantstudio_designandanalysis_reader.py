@@ -13,14 +13,13 @@ class DesignAndAnalysisReader:
         self.metadata = self._read_metadata()
 
     def _read_data(self) -> dict[str, pd.DataFrame]:
-        skiprows = 25
         file_data = pd.read_excel(
             self.contents,
-            skiprows=skiprows,
+            skiprows=24,
             sheet_name=None,
         )
-        for _, sheet in file_data.items():
-            sheet.replace(np.nan, None)
+        for sheet in file_data.values():
+            sheet.replace(np.nan, None, inplace=True)
         return file_data
 
     def _read_metadata(self) -> pd.Series[str]:
@@ -29,6 +28,7 @@ class DesignAndAnalysisReader:
             nrows=24,
             usecols="A:B",
             names=["index", "values"],
+            header=None,
         ).replace(np.nan, None)
 
         metadata = pd.Series(raw_metadata["values"].values, index=raw_metadata["index"])
