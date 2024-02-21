@@ -3,7 +3,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     iter_calculated_data_documents,
 )
 
-# from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignAndAnalysisReader,
 )
