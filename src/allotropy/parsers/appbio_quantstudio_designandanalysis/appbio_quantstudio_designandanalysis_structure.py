@@ -736,3 +736,51 @@ class Data:
     wells: WellList
     endogenous_control: str
     reference_sample: str
+
+    @staticmethod
+    def create(reader: DesignAndAnalysisReader) -> Data:
+        header = Header.create(reader)
+        wells = WellList.create(reader, header.experiment_type)
+
+        amp_data = AmplificationData.get_data(reader)
+        multi_data = MulticomponentData.get_data(reader)
+        results_data, results_metadata = Result.get_data(reader)
+        melt_data = MeltCurveRawData.get_data(reader)
+        for well in wells:
+            if multi_data is not None:
+                well.multicomponent_data = MulticomponentData.create(
+                    multi_data, well, header
+                )
+
+            if melt_data:
+                for well_item in well.items.values():
+                    well_item.melt_curve_raw_data = MeltCurveRawData.create(
+                        melt_data,
+                        well_item,
+                    )
+
+            for well_item in well.items.values():
+                well_item.amplification_data = AmplificationData.create(
+                    amp_data,
+                    well_item,
+                )
+
+                well_item.result = Result.create(
+                    results_data,
+                    well_item,
+                    header.experiment_type,
+                )
+
+        endogenous_control = (
+            try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""
+        )
+        reference_sample = (
+            try_str_from_series_or_none(results_metadata, "Reference Sample") or ""
+        )
+
+        return Data(
+            header,
+            wells,
+            endogenous_control,
+            reference_sample,
+        )

@@ -33,9 +33,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data_creator import (
-    create_data,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignAndAnalysisReader,
 )
@@ -50,7 +47,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         reader = DesignAndAnalysisReader(named_file_contents.contents)
-        data = create_data(reader)
+        data = Data.create(reader)
         return self._get_model(data, named_file_contents.original_file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
