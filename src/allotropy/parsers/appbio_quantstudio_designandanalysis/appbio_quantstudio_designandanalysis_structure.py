@@ -214,9 +214,8 @@ class WellList:
         return iter(self.wells)
 
     @staticmethod
-    def create(contents: DesignQuantstudioContents) -> WellList:
-        raw_data = contents.get_non_empty_sheet("Results")
-        data = raw_data[raw_data["Sample"].notnull()]
+    def create(results_data: pd.DataFrame) -> WellList:
+        data = results_data[results_data["Sample"].notnull()]
         return WellList(
             [
                 Well.create(
@@ -234,10 +233,6 @@ class AmplificationData:
     cycle: list[float]
     rn: list[Optional[float]]
     delta_rn: list[Optional[float]]
-
-    @staticmethod
-    def get_data(contents: DesignQuantstudioContents) -> pd.DataFrame:
-        return contents.get_non_empty_sheet("Amplification Data")
 
     @staticmethod
     def create(
@@ -271,10 +266,6 @@ class MulticomponentData:
             self.columns.get(name),
             msg=f"Unable to obtain '{name}' from multicomponent data.",
         )
-
-    @staticmethod
-    def get_data(contents: DesignQuantstudioContents) -> Optional[pd.DataFrame]:
-        return contents.get_non_empty_sheet_or_none("Multicomponent")
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well, header: Header) -> MulticomponentData:
@@ -332,10 +323,6 @@ class Result:
     r_squared: Optional[float]
     slope: Optional[float]
     efficiency: Optional[float]
-
-    @staticmethod
-    def get_data(contents: DesignQuantstudioContents) -> pd.DataFrame:
-        return contents.get_non_empty_sheet("Results")
 
     @staticmethod
     def create(data: pd.DataFrame, well_item: WellItem) -> Result:
@@ -407,12 +394,13 @@ class Data:
 
     @staticmethod
     def create(contents: DesignQuantstudioContents) -> Data:
-        header = Header.create(contents.header)
-        wells = WellList.create(contents)
+        amp_data = contents.get_non_empty_sheet("Amplification Data")
+        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
+        results_data = contents.get_non_empty_sheet("Results")
 
-        amp_data = AmplificationData.get_data(contents)
-        multi_data = MulticomponentData.get_data(contents)
-        results_data = Result.get_data(contents)
+        header = Header.create(contents.header)
+        wells = WellList.create(results_data)
+
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = MulticomponentData.create(
