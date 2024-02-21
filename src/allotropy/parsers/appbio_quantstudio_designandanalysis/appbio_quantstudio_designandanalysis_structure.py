@@ -272,17 +272,19 @@ class MulticomponentData:
     @staticmethod
     def create(data: pd.DataFrame, well: Well, header: Header) -> MulticomponentData:
         well_data = assert_not_empty_df(
-            data[data["Well"] == well.identifier],
+            data[assert_df_column(data, "Well") == well.identifier],
             msg=f"Unable to find multi component data for well {well.identifier}.",
         )
 
         stage_data = assert_not_empty_df(
-            well_data[well_data["Stage Number"] == header.pcr_stage_number],
+            well_data[
+                assert_df_column(well_data, "Stage Number") == header.pcr_stage_number
+            ],
             msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
         )
 
         return MulticomponentData(
-            cycle=stage_data["Cycle Number"].tolist(),
+            cycle=assert_df_column(stage_data, "Cycle Number").tolist(),
             columns={
                 str(name): stage_data[name].tolist()
                 for name in stage_data
