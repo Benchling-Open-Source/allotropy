@@ -406,22 +406,6 @@ class WellList:
         )
 
 
-# @dataclass(frozen=True)
-# class RawData:
-#    df: pd.DataFrame
-
-#    @staticmethod
-#    def create(reader: DesignAndAnalysisReader) -> Optional[RawData]:
-## if reader.match(r"^\[Raw Data\]"):
-##    reader.pop()  # remove title
-##    return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
-## return None
-
-#       if not reader.data["Raw Data"].empty:
-#           return RawData(df=reader.data["Raw Data"])
-#       return None
-
-
 @dataclass(frozen=True)
 class AmplificationData:
     total_cycle_number_setting: float
@@ -765,7 +749,6 @@ class MeltCurveRawData:
 class Data:
     header: Header
     wells: WellList
-    # raw_data: Optional[RawData]
     endogenous_control: str
     reference_sample: str
     calculated_documents: list[CalculatedDocument]

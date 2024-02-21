@@ -13,7 +13,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     Header,
     MeltCurveRawData,
     MulticomponentData,
-    # RawData,
     Result,
     WellList,
 )
@@ -23,7 +22,6 @@ from allotropy.parsers.utils.values import try_str_from_series_or_none
 def create_data(reader: DesignAndAnalysisReader) -> Data:
     header = Header.create(reader)
     wells = WellList.create(reader, header.experiment_type)
-    # raw_data = RawData.create(reader)
 
     amp_data = AmplificationData.get_data(reader)
     multi_data = MulticomponentData.get_data(reader)
@@ -68,7 +66,6 @@ def create_data(reader: DesignAndAnalysisReader) -> Data:
     return Data(
         header,
         wells,
-        # raw_data,
         endogenous_control,
         reference_sample,
         list(
