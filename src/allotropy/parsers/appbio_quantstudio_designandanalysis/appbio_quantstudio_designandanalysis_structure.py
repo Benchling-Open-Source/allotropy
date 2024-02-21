@@ -46,17 +46,14 @@ class Header:
     software_version: Optional[str]
 
     @staticmethod
-    def create(contents: DesignQuantstudioContents) -> Header:
-        """experiments_type_options = {
-            "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
-            "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
-            "Comparative Cт (ΔΔCт)": ExperimentType.comparative_CT_qPCR_experiment,
-            "Melt Curve": ExperimentType.melt_curve_qPCR_experiment,
-            "Genotyping": ExperimentType.genotyping_qPCR_experiment,
-            "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
-        }"""
+    def create(header: pd.Series[str]) -> Header:
+        software_info = assert_not_none(
+            re.match(
+                "(.*) v(.+)",
+                try_str_from_series(header, "Software Name and Version"),
+            )
+        )
 
-        header = contents.header
         return Header(
             measurement_time=try_str_from_series(header, "Run End Data/Time"),
             plate_well_count=assert_not_none(
@@ -72,14 +69,7 @@ class Header:
                 ),
                 msg="Unable to interpret plate well count",
             ),
-            # experiment_type=assert_not_none(
-            #    experiments_type_options.get(
-            #        try_str_from_series(data, "Experiment Type"),
-            #    ),
-            #    msg="Unable to find valid experiment type",
-            # ),
-            # default to this for now as it's not in the data file
-            experiment_type=ExperimentType.melt_curve_qPCR_experiment,
+            experiment_type=ExperimentType.melt_curve_qPCR_experiment,  # default to this for now as it's not in the data file
             device_identifier=(
                 try_str_from_series_or_none(header, "Instrument Name") or "NA"
             ),
@@ -104,21 +94,17 @@ class Header:
                 try_int(
                     assert_not_none(
                         re.match(
-                            r"(Stage )(\d+)",
+                            r"Stage (\d+)",
                             try_str_from_series(header, r"PCR Stage/Step Number"),
                         ),
                         msg="Unable to find PCR Stage Number",
-                    ).group(2),
+                    ).group(1),
                     "PCR Stage Number",
                 ),
                 msg=r"Unable to interpret PCR Stage/Step Number",
             ),
-            software_name=try_str_from_series(
-                header, "Software Name and Version"
-            ).split(" v")[0],
-            software_version=try_str_from_series(
-                header, "Software Name and Version"
-            ).split(" v")[1],
+            software_name=software_info.group(1),
+            software_version=software_info.group(2),
         )
 
 
@@ -597,7 +583,7 @@ class Data:
 
     @staticmethod
     def create(contents: DesignQuantstudioContents) -> Data:
-        header = Header.create(contents)
+        header = Header.create(contents.header)
         wells = WellList.create(contents, header.experiment_type)
 
         amp_data = AmplificationData.get_data(contents)
