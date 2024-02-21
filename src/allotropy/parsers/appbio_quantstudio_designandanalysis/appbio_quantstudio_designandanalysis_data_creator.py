@@ -1,8 +1,3 @@
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
-    build_quantity,
-    iter_calculated_data_documents,
-)
-
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignAndAnalysisReader,
 )
@@ -51,10 +46,6 @@ def create_data(reader: DesignAndAnalysisReader) -> Data:
                 header.experiment_type,
             )
 
-        for well_item in well.items.values():
-            if quantity := build_quantity(well_item):
-                well.add_calculated_document(quantity)
-
     endogenous_control = (
         try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""
     )
@@ -67,12 +58,4 @@ def create_data(reader: DesignAndAnalysisReader) -> Data:
         wells,
         endogenous_control,
         reference_sample,
-        list(
-            iter_calculated_data_documents(
-                wells,
-                header.experiment_type,
-                reference_sample,
-                endogenous_control,
-            )
-        ),
     )

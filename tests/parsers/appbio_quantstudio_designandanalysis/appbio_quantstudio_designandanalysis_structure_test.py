@@ -20,12 +20,6 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     Result,
     WellItem,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.calculated_document import (
-    CalculatedDocument,
-)
-from allotropy.parsers.appbio_quantstudio_designandanalysis.referenceable import (
-    Referenceable,
-)
 from tests.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data import (
     get_broken_calc_doc_data,
     get_data,
@@ -37,25 +31,9 @@ from tests.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_desig
 
 def rm_uuid(data: Data) -> Data:
     for well in data.wells:
-        for doc in well.calculated_documents:
-            rm_uuid_calc_doc(doc)
-
         for well_item in well.items.values():
             well_item.uuid = ""
-
-    for calc_doc in data.calculated_documents:
-        rm_uuid_calc_doc(calc_doc)
-
     return data
-
-
-def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
-    calc_doc.uuid = ""
-    for source in calc_doc.data_sources:
-        if isinstance(source.reference, CalculatedDocument):
-            rm_uuid_calc_doc(source.reference)
-        elif isinstance(source.reference, Referenceable):
-            source.reference.uuid = ""
 
 
 @pytest.mark.short
