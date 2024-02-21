@@ -9,8 +9,8 @@ import uuid
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
-    DesignAndAnalysisReader,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
+    DesignQuantstudioContents,
 )
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
@@ -46,9 +46,7 @@ class Header:
     software_version: Optional[str]
 
     @staticmethod
-    def create(reader: DesignAndAnalysisReader) -> Header:
-        data = reader.metadata
-
+    def create(contents: DesignQuantstudioContents) -> Header:
         """experiments_type_options = {
             "Standard Curve": ExperimentType.standard_curve_qPCR_experiment,
             "Relative Standard Curve": ExperimentType.relative_standard_curve_qPCR_experiment,
@@ -58,14 +56,15 @@ class Header:
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }"""
 
+        header = contents.header
         return Header(
-            measurement_time=try_str_from_series(data, "Run End Data/Time"),
+            measurement_time=try_str_from_series(header, "Run End Data/Time"),
             plate_well_count=assert_not_none(
                 try_int(
                     assert_not_none(
                         re.match(
                             "(96)|(384)",
-                            try_str_from_series(data, "Block Type"),
+                            try_str_from_series(header, "Block Type"),
                         ),
                         msg="Unable to find plate well count",
                     ).group(),
@@ -82,31 +81,31 @@ class Header:
             # default to this for now as it's not in the data file
             experiment_type=ExperimentType.melt_curve_qPCR_experiment,
             device_identifier=(
-                try_str_from_series_or_none(data, "Instrument Name") or "NA"
+                try_str_from_series_or_none(header, "Instrument Name") or "NA"
             ),
-            model_number=try_str_from_series(data, "Instrument Type"),
+            model_number=try_str_from_series(header, "Instrument Type"),
             device_serial_number=try_str_from_series_or_none(
-                data, "Instrument Serial Number"
+                header, "Instrument Serial Number"
             )
             or "NA",
             measurement_method_identifier=try_str_from_series(
-                data, "Quantification Cycle Method"
+                header, "Quantification Cycle Method"
             ),
-            pcr_detection_chemistry=try_str_from_series_or_none(data, "Chemistry"),
+            pcr_detection_chemistry=try_str_from_series_or_none(header, "Chemistry"),
             passive_reference_dye_setting=try_str_from_series_or_none(
-                data, "Passive Reference"
+                header, "Passive Reference"
             ),
-            barcode=try_str_from_series_or_none(data, "Barcode"),
-            analyst=try_str_from_series_or_none(data, "Operator"),
+            barcode=try_str_from_series_or_none(header, "Barcode"),
+            analyst=try_str_from_series_or_none(header, "Operator"),
             experimental_data_identifier=try_str_from_series_or_none(
-                data, "Experiment Name"
+                header, "Experiment Name"
             ),
             pcr_stage_number=assert_not_none(
                 try_int(
                     assert_not_none(
                         re.match(
                             r"(Stage )(\d+)",
-                            try_str_from_series(data, r"PCR Stage/Step Number"),
+                            try_str_from_series(header, r"PCR Stage/Step Number"),
                         ),
                         msg="Unable to find PCR Stage Number",
                     ).group(2),
@@ -114,11 +113,11 @@ class Header:
                 ),
                 msg=r"Unable to interpret PCR Stage/Step Number",
             ),
-            software_name=try_str_from_series(data, "Software Name and Version").split(
-                " v"
-            )[0],
+            software_name=try_str_from_series(
+                header, "Software Name and Version"
+            ).split(" v")[0],
             software_version=try_str_from_series(
-                data, "Software Name and Version"
+                header, "Software Name and Version"
             ).split(" v")[1],
         )
 
@@ -306,14 +305,14 @@ class WellList:
 
     @staticmethod
     def create(
-        reader: DesignAndAnalysisReader, experiment_type: ExperimentType
+        contents: DesignQuantstudioContents, experiment_type: ExperimentType
     ) -> WellList:
         assert_not_empty_df(
-            reader.data["Results"],
+            contents.data["Results"],
             msg="Unable to find 'Results' sheet in file.",
         )
 
-        raw_data = reader.data["Results"]
+        raw_data = contents.data["Results"]
         data = raw_data[raw_data["Sample"].notnull()]
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
@@ -345,12 +344,12 @@ class AmplificationData:
     delta_rn: list[Optional[float]]
 
     @staticmethod
-    def get_data(reader: DesignAndAnalysisReader) -> pd.DataFrame:
+    def get_data(contents: DesignQuantstudioContents) -> pd.DataFrame:
         assert_not_empty_df(
-            reader.data["Amplification Data"],
+            contents.data["Amplification Data"],
             msg="Unable to find 'Amplification Data' sheet in file.",
         )
-        return reader.data["Amplification Data"]
+        return contents.data["Amplification Data"]
 
     @staticmethod
     def create(
@@ -386,10 +385,10 @@ class MulticomponentData:
         )
 
     @staticmethod
-    def get_data(reader: DesignAndAnalysisReader) -> Optional[pd.DataFrame]:
-        if "Multicomponent" in reader.data:
-            if not reader.data["Multicomponent"].empty:
-                return reader.data["Multicomponent"]
+    def get_data(contents: DesignQuantstudioContents) -> Optional[pd.DataFrame]:
+        if "Multicomponent" in contents.data:
+            if not contents.data["Multicomponent"].empty:
+                return contents.data["Multicomponent"]
         return None
 
     @staticmethod
@@ -450,8 +449,8 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
-    def get_data(reader: DesignAndAnalysisReader) -> pd.DataFrame:
-        return reader.data["Results"]
+    def get_data(contents: DesignQuantstudioContents) -> pd.DataFrame:
+        return contents.data["Results"]
 
     @staticmethod
     def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
@@ -597,13 +596,13 @@ class Data:
     wells: WellList
 
     @staticmethod
-    def create(reader: DesignAndAnalysisReader) -> Data:
-        header = Header.create(reader)
-        wells = WellList.create(reader, header.experiment_type)
+    def create(contents: DesignQuantstudioContents) -> Data:
+        header = Header.create(contents)
+        wells = WellList.create(contents, header.experiment_type)
 
-        amp_data = AmplificationData.get_data(reader)
-        multi_data = MulticomponentData.get_data(reader)
-        results_data = Result.get_data(reader)
+        amp_data = AmplificationData.get_data(contents)
+        multi_data = MulticomponentData.get_data(contents)
+        results_data = Result.get_data(contents)
         for well in wells:
             if multi_data is not None:
                 well.multicomponent_data = MulticomponentData.create(

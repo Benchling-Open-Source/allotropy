@@ -6,7 +6,7 @@ import pandas as pd
 from allotropy.types import IOType
 
 
-class DesignAndAnalysisReader:
+class DesignQuantstudioContents:
     def __init__(self, contents: IOType) -> None:
         self.contents = contents
         self.header = self._read_header()
