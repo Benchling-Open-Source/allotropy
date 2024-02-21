@@ -3,12 +3,10 @@ from __future__ import annotations
 from collections.abc import Iterator
 from dataclasses import dataclass
 
-# from io import StringIO
 import re
 from typing import Optional
 import uuid
 
-# import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
