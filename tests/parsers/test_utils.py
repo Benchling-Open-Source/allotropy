@@ -38,7 +38,7 @@ def _assert_allotrope_dicts_equal(
     ddiff = DeepDiff(
         expected_replaced,
         actual,
-        ignore_type_in_groups=[(float, np.float64), (int, np.int64)],
+        ignore_type_in_groups=[(float, np.float64)],
     )
     assert not ddiff
 
