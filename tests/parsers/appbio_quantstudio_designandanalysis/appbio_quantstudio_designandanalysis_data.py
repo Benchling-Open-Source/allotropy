@@ -171,8 +171,6 @@ def get_data() -> Data:
             software_version="",
         ),
         wells=WellList([well]),
-        endogenous_control="",
-        reference_sample="",
     )
 
 
@@ -253,8 +251,6 @@ def get_data2() -> Data:
             software_version="",
         ),
         wells=WellList([well]),
-        endogenous_control="",
-        reference_sample="",
     )
 
 
@@ -1140,8 +1136,6 @@ def get_genotyping_data() -> Data:
             software_version="",
         ),
         wells=WellList([well]),
-        endogenous_control="",
-        reference_sample="",
     )
 
 
@@ -1490,8 +1484,6 @@ def get_rel_std_curve_data() -> Data:
                 ),
             ]
         ),
-        endogenous_control="RNaseP",
-        reference_sample="800",
     )
 
 
@@ -2118,8 +2110,6 @@ def get_broken_calc_doc_data() -> Data:
                 )
             ]
         ),
-        endogenous_control="RNaseP",
-        reference_sample="800",
     )
 
 
