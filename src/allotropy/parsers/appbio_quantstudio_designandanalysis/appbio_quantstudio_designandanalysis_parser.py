@@ -74,7 +74,6 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                         analyst=data.header.analyst,
                         measurement_aggregate_document=MeasurementAggregateDocument(
                             experimental_data_identifier=data.header.experimental_data_identifier,
-                            experiment_type=data.header.experiment_type,
                             container_type=ContainerType.qPCR_reaction_block,
                             plate_well_count=TQuantityValueNumber(
                                 value=data.header.plate_well_count

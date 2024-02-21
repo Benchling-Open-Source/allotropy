@@ -5,7 +5,6 @@ from typing import Optional
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
@@ -63,7 +62,6 @@ def test_header_builder() -> None:
     assert Header.create(header_contents) == Header(
         measurement_time="2010-10-01 01:44:54 AM EDT",
         plate_well_count=96,
-        experiment_type=ExperimentType.genotyping_qPCR_experiment,
         device_identifier=device_identifier,
         model_number=model_number,
         device_serial_number=device_serial_number,
@@ -138,7 +136,7 @@ def test_results_builder() -> None:
         quencher_dye_setting=None,
         sample_role_type="PC_ALLELE_1",
     )
-    result = Result.create(data, well_item, ExperimentType.genotyping_qPCR_experiment)
+    result = Result.create(data, well_item)
     assert isinstance(result, Result)
     assert result.cycle_threshold_value_setting == 0.219
     assert result.cycle_threshold_result is None
