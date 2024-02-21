@@ -8,7 +8,6 @@ import uuid
 
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
@@ -31,7 +30,6 @@ from allotropy.parsers.utils.values import (
 class Header:
     measurement_time: str
     plate_well_count: int
-    experiment_type: ExperimentType
     device_identifier: str
     model_number: str
     device_serial_number: str
@@ -69,7 +67,6 @@ class Header:
                 ),
                 msg="Unable to interpret plate well count",
             ),
-            experiment_type=ExperimentType.melt_curve_qPCR_experiment,  # default to this for now as it's not in the data file
             device_identifier=(
                 try_str_from_series_or_none(header, "Instrument Name") or "NA"
             ),
@@ -145,70 +142,7 @@ class WellItem:
         self._result = result
 
     @staticmethod
-    def create_genotyping(data: pd.Series[str]) -> tuple[WellItem, WellItem]:
-        identifier = try_int_from_series(data, "Well")
-
-        snp_name = try_str_from_series(
-            data,
-            "SNP Assay Name",
-            msg=f"Unable to find snp name for well {identifier}",
-        )
-
-        sample_identifier = try_str_from_series(
-            data,
-            "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
-        )
-
-        allele1 = try_str_from_series(
-            data,
-            "Allele1 Name",
-            msg=f"Unable to find allele 1 for well {identifier}",
-        )
-
-        allele2 = try_str_from_series(
-            data,
-            "Allele2 Name",
-            msg=f"Unable to find allele 2 for well {identifier}",
-        )
-
-        return (
-            WellItem(
-                uuid=str(uuid.uuid4()),
-                identifier=identifier,
-                target_dna_description=f"{snp_name}-{allele1}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=try_str_from_series_or_none(
-                    data, "Allele1 Reporter"
-                ),
-                position=try_str_from_series_or_none(data, "Well Position")
-                or "UNDEFINED",
-                well_location_identifier=try_str_from_series_or_none(
-                    data, "Well Position"
-                ),
-                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-                sample_role_type=try_str_from_series_or_none(data, "Task"),
-            ),
-            WellItem(
-                uuid=str(uuid.uuid4()),
-                identifier=identifier,
-                target_dna_description=f"{snp_name}-{allele2}",
-                sample_identifier=sample_identifier,
-                reporter_dye_setting=try_str_from_series_or_none(
-                    data, "Allele2 Reporter"
-                ),
-                position=try_str_from_series_or_none(data, "Well Position")
-                or "UNDEFINED",
-                well_location_identifier=try_str_from_series_or_none(
-                    data, "Well Position"
-                ),
-                quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-                sample_role_type=try_str_from_series_or_none(data, "Task"),
-            ),
-        )
-
-    @staticmethod
-    def create_generic(data: pd.Series[str]) -> WellItem:
+    def create(data: pd.Series[str]) -> WellItem:
         identifier = try_int_from_series(data, "Well")
 
         target_dna_description = try_str_from_series(
@@ -258,21 +192,11 @@ class Well:
         self._multicomponent_data = multicomponent_data
 
     @staticmethod
-    def create_genotyping(identifier: int, well_data: pd.Series[str]) -> Well:
+    def create(identifier: int, well_data: pd.DataFrame) -> Well:
         return Well(
             identifier=identifier,
             items={
-                well_item.target_dna_description: well_item
-                for well_item in WellItem.create_genotyping(well_data)
-            },
-        )
-
-    @staticmethod
-    def create_generic(identifier: int, well_data: pd.DataFrame) -> Well:
-        return Well(
-            identifier=identifier,
-            items={
-                item_data["Target"]: WellItem.create_generic(item_data)
+                item_data["Target"]: WellItem.create(item_data)
                 for _, item_data in well_data.iterrows()
             },
         )
@@ -290,9 +214,7 @@ class WellList:
         return iter(self.wells)
 
     @staticmethod
-    def create(
-        contents: DesignQuantstudioContents, experiment_type: ExperimentType
-    ) -> WellList:
+    def create(contents: DesignQuantstudioContents) -> WellList:
         assert_not_empty_df(
             contents.data["Results"],
             msg="Unable to find 'Results' sheet in file.",
@@ -300,20 +222,9 @@ class WellList:
 
         raw_data = contents.data["Results"]
         data = raw_data[raw_data["Sample"].notnull()]
-
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return WellList(
-                [
-                    Well.create_genotyping(
-                        try_int(str(identifier), "genotyping well identifier"),
-                        well_data,
-                    )
-                    for identifier, well_data in data.iterrows()
-                ]
-            )
         return WellList(
             [
-                Well.create_generic(
+                Well.create(
                     try_int(str(identifier), "well identifier"),
                     well_data,
                 )
@@ -439,74 +350,7 @@ class Result:
         return contents.data["Results"]
 
     @staticmethod
-    def create_genotyping(data: pd.DataFrame, well_item: WellItem) -> Result:
-        well_data = assert_not_empty_df(
-            data[data["Well"] == well_item.identifier],
-            msg=f"Unable to find result data for well {well_item.identifier}.",
-        )
-
-        snp_assay_name, _ = well_item.target_dna_description.split("-")
-        target_data = df_to_series(
-            assert_not_empty_df(
-                well_data[well_data["SNP Assay Name"] == snp_assay_name],
-                msg=f"Unable to find result data for well {well_item.identifier}.",
-            ),
-            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
-        )
-
-        _, raw_allele = well_item.target_dna_description.split("-")
-        allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = try_float_from_series(
-            target_data,
-            f"{allele} Ct Threshold",
-            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
-        )
-
-        cycle_threshold_result = assert_not_none(
-            target_data.get(f"{allele} Ct"),
-            msg="Unable to find cycle threshold result",
-        )
-
-        return Result(
-            cycle_threshold_value_setting=cycle_threshold_value_setting,
-            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
-                target_data, f"{allele} Automatic Ct Threshold"
-            ),
-            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
-                target_data, f"{allele} Automatic Baseline"
-            ),
-            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
-            baseline_corrected_reporter_result=try_float_from_series_or_none(
-                target_data, f"{allele} Delta Rn"
-            ),
-            genotyping_determination_result=try_str_from_series_or_none(
-                target_data, "Call"
-            ),
-            genotyping_determination_method_setting=try_float_from_series_or_none(
-                target_data, "Threshold Value"
-            ),
-            quantity=try_float_from_series_or_none(target_data, "Quantity"),
-            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
-            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
-            ct_mean=try_float_from_series_or_none(target_data, "Ct Mean"),
-            ct_sd=try_float_from_series_or_none(target_data, "Ct SD"),
-            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
-            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
-            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
-            rq=try_float_from_series_or_none(target_data, "RQ"),
-            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
-            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
-            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
-            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
-            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
-            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
-            slope=try_float_from_series_or_none(target_data, "Slope"),
-            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
-        )
-
-    @staticmethod
-    def create_generic(data: pd.DataFrame, well_item: WellItem) -> Result:
+    def create(data: pd.DataFrame, well_item: WellItem) -> Result:
         well_data = assert_not_empty_df(
             data[data["Well"] == well_item.identifier],
             msg=f"Unable to find result data for well {well_item.identifier}.",
@@ -567,14 +411,6 @@ class Result:
             efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
         )
 
-    @staticmethod
-    def create(
-        data: pd.DataFrame, well_item: WellItem, experiment_type: ExperimentType
-    ) -> Result:
-        if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return Result.create_genotyping(data, well_item)
-        return Result.create_generic(data, well_item)
-
 
 @dataclass(frozen=True)
 class Data:
@@ -584,7 +420,7 @@ class Data:
     @staticmethod
     def create(contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = WellList.create(contents, header.experiment_type)
+        wells = WellList.create(contents)
 
         amp_data = AmplificationData.get_data(contents)
         multi_data = MulticomponentData.get_data(contents)
@@ -604,7 +440,6 @@ class Data:
                 well_item.result = Result.create(
                     results_data,
                     well_item,
-                    header.experiment_type,
                 )
 
         return Data(
