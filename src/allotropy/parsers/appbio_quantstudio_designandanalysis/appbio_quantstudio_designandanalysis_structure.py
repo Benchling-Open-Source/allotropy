@@ -338,13 +338,16 @@ class Result:
     @staticmethod
     def create(data: pd.DataFrame, well_item: WellItem) -> Result:
         well_data = assert_not_empty_df(
-            data[data["Well"] == well_item.identifier],
+            data[assert_df_column(data, "Well") == well_item.identifier],
             msg=f"Unable to find result data for well {well_item.identifier}.",
         )
 
         target_data = df_to_series(
             assert_not_empty_df(
-                well_data[well_data["Target"] == well_item.target_dna_description],
+                well_data[
+                    assert_df_column(well_data, "Target")
+                    == well_item.target_dna_description
+                ],
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
             msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
