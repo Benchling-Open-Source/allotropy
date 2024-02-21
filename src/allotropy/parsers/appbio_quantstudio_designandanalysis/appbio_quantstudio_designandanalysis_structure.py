@@ -1,11 +1,3 @@
-# header
-# sample setup
-# raw data
-# amplification data
-# multicomponent data
-# results
-# melt curve raw data
-
 from __future__ import annotations
 
 from collections.abc import Iterator
