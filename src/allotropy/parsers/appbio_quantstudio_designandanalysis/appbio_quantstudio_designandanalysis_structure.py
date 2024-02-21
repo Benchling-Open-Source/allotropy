@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-
 import re
 from typing import Optional
 import uuid
@@ -12,9 +11,6 @@ import pandas as pd
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignAndAnalysisReader,
-)
-from allotropy.parsers.appbio_quantstudio_designandanalysis.referenceable import (
-    Referenceable,
 )
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
@@ -128,7 +124,7 @@ class Header:
 
 
 @dataclass
-class WellItem(Referenceable):
+class WellItem:
     uuid: str
     identifier: int
     target_dna_description: str
