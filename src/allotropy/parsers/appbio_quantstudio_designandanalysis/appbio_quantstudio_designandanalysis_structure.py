@@ -21,7 +21,6 @@ import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 
-# from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_reader import (
     DesignAndAnalysisReader,
 )
