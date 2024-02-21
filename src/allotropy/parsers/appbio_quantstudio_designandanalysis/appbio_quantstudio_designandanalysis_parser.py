@@ -62,9 +62,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     data_system_instance_identifier="localhost",
                     file_name=file_name,
                     UNC_path="",  # unknown
-                    # software_name="Thermo QuantStudio",
                     software_name=data.header.software_name,
-                    # software_version="1.0",
                     software_version=data.header.software_version,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
