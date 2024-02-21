@@ -94,6 +94,14 @@ def df_to_series(
     raise AllotropeConversionError(msg)
 
 
+def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
+    df_column = df.get(column)
+    if df_column is None:
+        msg = f"Unable to find column '{column}'"
+        raise AllotropeConversionError(msg)
+    return pd.Series(df_column)
+
+
 def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     if df.empty:
         raise AllotropeConversionError(msg)
