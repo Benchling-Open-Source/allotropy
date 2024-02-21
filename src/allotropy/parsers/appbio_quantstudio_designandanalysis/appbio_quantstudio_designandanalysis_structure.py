@@ -61,14 +61,6 @@ class Header:
 
     @staticmethod
     def create(reader: DesignAndAnalysisReader) -> Header:
-        # lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
-        # csv_stream = StringIO("\n".join(lines))
-        # raw_data = pd.read_csv(
-        #    csv_stream, header=None, sep="=", names=["index", "values"]
-        # )
-        # data = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        # data.index = data.index.str.strip()
-        # data = data.str.strip().replace("NA", None)
         data = reader.metadata
 
         """experiments_type_options = {
@@ -351,17 +343,6 @@ class WellList:
     def create(
         reader: DesignAndAnalysisReader, experiment_type: ExperimentType
     ) -> WellList:
-        # assert_not_none(
-        #    reader.drop_until(r"^\[Sample Setup\]"),
-        #    msg="Unable to find 'Sample Setup' section in file.",
-        # )
-
-        # reader.pop()  # remove title
-        # lines = list(reader.pop_until(r"^\[.+\]"))
-        # csv_stream = StringIO("\n".join(lines))
-        # raw_data = pd.read_csv(csv_stream, sep="\t").replace(np.nan, None)
-        # data = raw_data[raw_data["Sample Name"].notnull()]
-
         assert_not_empty_df(
             reader.data["Results"],
             msg="Unable to find 'Results' sheet in file.",
@@ -400,16 +381,6 @@ class AmplificationData:
 
     @staticmethod
     def get_data(reader: DesignAndAnalysisReader) -> pd.DataFrame:
-        # assert_not_none(
-        #    reader.drop_until(r"^\[Amplification Data\]"),
-        #    msg="Unable to find 'Amplification Data' section in file.",
-        # )
-
-        # reader.pop()  # remove title
-        # lines = list(reader.pop_until(r"^\[.+\]"))
-        # csv_stream = StringIO("\n".join(lines))
-        # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
         assert_not_empty_df(
             reader.data["Amplification Data"],
             msg="Unable to find 'Amplification Data' sheet in file.",
@@ -451,13 +422,6 @@ class MulticomponentData:
 
     @staticmethod
     def get_data(reader: DesignAndAnalysisReader) -> Optional[pd.DataFrame]:
-        # if not reader.match(r"^\[Multicomponent Data\]"):
-        #    return None
-        # reader.pop()  # remove title
-        # lines = list(reader.pop_until(r"^\[.+\]"))
-        # csv_stream = StringIO("\n".join(lines))
-        # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
-
         if "Multicomponent" in reader.data:
             if not reader.data["Multicomponent"].empty:
                 return reader.data["Multicomponent"]
@@ -524,32 +488,6 @@ class Result:
     def get_data(
         reader: DesignAndAnalysisReader,
     ) -> tuple[pd.DataFrame, pd.Series[str]]:
-        # assert_not_none(
-        #    reader.drop_until(r"^\[Results\]"),
-        #    msg="Unable to find 'Results' section in file.",
-        # )
-
-        # reader.pop()  # remove title
-        # data_lines = list(reader.pop_until_empty())
-        # csv_stream = StringIO("\n".join(data_lines))
-        # data = pd.read_csv(csv_stream, sep="\t", thousands=r",").replace(np.nan, None)
-
-        # reader.drop_empty()
-
-        # if reader.match(r"\[.+\]"):
-        #    return data, pd.Series()
-
-        # metadata_lines = list(reader.pop_until_empty())
-        # csv_stream = StringIO("\n".join(metadata_lines))
-        # raw_data = pd.read_csv(
-        #    csv_stream, header=None, sep="=", names=["index", "values"]
-        # )
-        # metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
-        # metadata.index = metadata.index.str.strip()
-
-        # reader.drop_empty()
-
-        # return data, metadata.str.strip()
         # The example I have doesn't have this metadata, so returning an empty Series for now)
         return reader.data["Results"], pd.Series()
 
@@ -717,12 +655,6 @@ class MeltCurveRawData:
 
     @staticmethod
     def get_data(reader: DesignAndAnalysisReader) -> Optional[pd.DataFrame]:
-        # if not reader.match(r"^\[Melt Curve Raw Data\]"):
-        #    return None
-        # reader.pop()  # remove title
-        # lines = list(reader.pop_until_empty())
-        # csv_stream = StringIO("\n".join(lines))
-        # return pd.read_csv(csv_stream, sep="\t", thousands=r",")
         assert_not_empty_df(
             reader.data["Melt Curve Raw"],
             msg="Unable to find 'Melt Curve Raw' sheet in file.",
