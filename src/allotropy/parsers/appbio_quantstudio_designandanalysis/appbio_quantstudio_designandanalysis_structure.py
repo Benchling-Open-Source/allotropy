@@ -12,6 +12,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     DesignQuantstudioContents,
 )
 from allotropy.parsers.utils.values import (
+    assert_df_column,
     assert_not_empty_df,
     assert_not_none,
     df_to_series,
@@ -196,7 +197,7 @@ class Well:
         return Well(
             identifier=identifier,
             items={
-                item_data["Target"]: WellItem.create(item_data)
+                try_str_from_series(item_data, "Target"): WellItem.create(item_data)
                 for _, item_data in well_data.iterrows()
             },
         )
@@ -215,7 +216,8 @@ class WellList:
 
     @staticmethod
     def create(results_data: pd.DataFrame) -> WellList:
-        data = results_data[results_data["Sample"].notnull()]
+        assert_df_column(results_data, "Well")
+        data = results_data[assert_df_column(results_data, "Sample").notnull()]
         return WellList(
             [
                 Well.create(
