@@ -17,6 +17,7 @@ from allotropy.parsers.utils.values import (
     assert_not_none,
     df_to_series,
     try_bool_from_series_or_none,
+    try_float,
     try_float_from_series,
     try_float_from_series_or_none,
     try_float_or_none,
@@ -241,20 +242,26 @@ class AmplificationData:
         amplification_data: pd.DataFrame, well_item: WellItem
     ) -> AmplificationData:
         well_data = assert_not_empty_df(
-            amplification_data[amplification_data["Well"] == well_item.identifier],
+            amplification_data[
+                assert_df_column(amplification_data, "Well") == well_item.identifier
+            ],
             msg=f"Unable to find amplification data for well {well_item.identifier}.",
         )
 
         target_data = assert_not_empty_df(
-            well_data[well_data["Target"] == well_item.target_dna_description],
+            well_data[
+                assert_df_column(well_data, "Target")
+                == well_item.target_dna_description
+            ],
             msg=f"Unable to find amplification data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
         )
 
+        cycle_number = assert_df_column(target_data, "Cycle Number")
         return AmplificationData(
-            total_cycle_number_setting=float(target_data["Cycle Number"].max()),
-            cycle=target_data["Cycle Number"].tolist(),
-            rn=target_data["Rn"].tolist(),
-            delta_rn=target_data["dRn"].tolist(),
+            total_cycle_number_setting=try_float(cycle_number.max(), "Cycle Number"),
+            cycle=cycle_number.tolist(),
+            rn=assert_df_column(target_data, "Rn").tolist(),
+            delta_rn=assert_df_column(target_data, "dRn").tolist(),
         )
 
 
