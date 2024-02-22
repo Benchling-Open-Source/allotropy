@@ -287,15 +287,25 @@ to make them available to users of the package:
 
 ## Testing
 
-Tests for this new code go in `./tests/parsers/example_weyland_yutani/`.
+Tests for this new code go in `tests/parsers/example_weyland_yutani/`.
 To write these,
 we create two input CSV files,
-which we put in the `./testdata` directory below our tests directory.
-We then use the command-line program `./scripts/csv_as_json.py`
+which we put in the `testdata` directory below our tests directory.
+We then use the script `csv-as-json`
 to convert these CSV files to JSON,
 inspect the JSON to make sure it's correct,
-and save it in the same `./testdata` directory.
+and save it in the same `testdata` directory:
+
+```
+hatch run scripts:csv-as-json --infile tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv --vendor EXAMPLE_WEYLAND_YUTANI --outfile tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.json
+```
+
 Our tests then compare the generated JSON against the saved files.
+
+If we make changes to our parser, we may need to update the results of the test file.
+We can do this via the script above, but we can also set `write_actual_to_expected_on_fail=True`
+in the test function `validate_contents` to overwrite the contents of the file.
+
 More complex parsers may require tests against helper methods,
 and will probably have many more input-output pairs to check.
 
