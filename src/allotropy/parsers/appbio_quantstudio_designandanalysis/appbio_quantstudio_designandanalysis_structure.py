@@ -4,13 +4,13 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 import re
 from typing import Optional
-import uuid
 
 import pandas as pd
 
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_df_column,
     assert_not_empty_df,
@@ -160,7 +160,7 @@ class WellItem:
         )
 
         return WellItem(
-            uuid=str(uuid.uuid4()),
+            uuid=random_uuid_str(),
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
