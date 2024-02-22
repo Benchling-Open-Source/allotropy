@@ -26,7 +26,7 @@ from tests.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_desig
     get_rel_std_curve_model,
 )"""
 
-OUTPUT_FILES = ("appbio_quantstudio_designandanalysis_example_01",)
+OUTPUT_FILES = ("appbio_quantstudio_designandanalysis_QS1_Standard_Curve_example01",)
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS
 
