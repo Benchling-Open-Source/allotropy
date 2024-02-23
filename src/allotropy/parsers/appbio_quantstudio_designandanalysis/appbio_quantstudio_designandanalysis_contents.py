@@ -14,32 +14,39 @@ from allotropy.types import IOType
 
 class DesignQuantstudioContents:
     def __init__(self, contents: IOType) -> None:
-        self.contents = contents
-        self.header = self._read_header()
-        self.data = self._read_data()
+        self.raw_contents = pd.read_excel(contents, header=None, sheet_name=None)
+        self.contents = {
+            name: df.replace(np.nan, None) for name, df in self.raw_contents.items()
+        }
 
-    def _read_header(self) -> pd.Series[str]:
-        raw_header = pd.read_excel(
-            self.contents,
-            nrows=24,
-            usecols="A:B",
-            names=["index", "values"],
-            header=None,
-        ).replace(np.nan, None)
+        self.header = self._get_header()
+        self.data = self._get_data(
+            self.header.size + 1
+        )  # plus 1 for empty line between header and data
 
-        header = pd.Series(raw_header["values"].values, index=raw_header["index"])
+    def _get_header(self) -> pd.Series[str]:
+        sheet = assert_not_none(
+            self.contents.get("Results"),
+            msg="Unable to find 'Results' sheet.",
+        )
+
+        data = {}
+        for _, * (title, value, *_) in sheet.itertuples():
+            if title is None:
+                break
+            data[str(title)] = None if value is None else str(value)
+
+        header = pd.Series(data)
         header.index = header.index.str.strip()
         return header
 
-    def _read_data(self) -> dict[str, pd.DataFrame]:
-        file_data = pd.read_excel(
-            self.contents,
-            skiprows=24,
-            sheet_name=None,
-        )
-        for sheet in file_data.values():
-            sheet.replace(np.nan, None, inplace=True)
-        return file_data
+    def _get_data(self, drop_n_columns: int) -> dict[str, pd.DataFrame]:
+        data_structure = {}
+        for name, sheet in self.contents.items():
+            data = sheet.iloc[drop_n_columns:].reset_index(drop=True)
+            data.columns = pd.Index(data.iloc[0])
+            data_structure[name] = data.drop(0)
+        return data_structure
 
     def get_sheet_or_none(self, sheet_name: str) -> Optional[pd.DataFrame]:
         return self.data.get(sheet_name)
