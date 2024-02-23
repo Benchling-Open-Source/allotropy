@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.20] - 2024-02-23
+### Added
+### Fixed
 - Remove duplicated delta ct mean calculated data documents in AppBio Quantstudio
+- Fix problem in NanoDrop Eight parser where data source IDs were being used that did not refer to any existing measurement ID.
 ### Changed
 - Allow n/a absorbance values in Unchained Labs Lunatic Parser
 ### Deprecated
