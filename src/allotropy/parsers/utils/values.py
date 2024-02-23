@@ -131,6 +131,18 @@ def try_int_from_series(
     return assert_not_none(try_int_from_series_or_none(data, key), key, msg)
 
 
+def try_float_from_series_or_nan(
+    data: pd.Series[Any],
+    key: str,
+) -> JsonFloat:
+    try:
+        value = data.get(key)
+        return try_float_or_nan(str(value))
+    except Exception as e:
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
+        raise AllotropeConversionError(msg) from e
+
+
 def try_float_from_series_or_none(
     data: pd.Series[Any],
     key: str,
