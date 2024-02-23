@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Remove duplicated delta ct mean calculated data documents in AppBio Quantstudio
 ### Changed
+- Allow n/a absorbance values in Unchained Labs Lunatic Parser
 ### Deprecated
 ### Removed
 ### Security

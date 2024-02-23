@@ -65,7 +65,7 @@
                                 "well plate identifier": "Plate 1"
                             },
                             "absorbance": {
-                                "value": 1.0,
+                                "value": "NaN",
                                 "unit": "mAU"
                             }
                         }
@@ -1164,7 +1164,7 @@
             "file name": "Demo_A260_dsDNA_Data.csv",
             "software name": "Lunatic and Stunner Analysis",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.19"
         },
         "calculated data aggregate document": {
             "calculated data document": [
