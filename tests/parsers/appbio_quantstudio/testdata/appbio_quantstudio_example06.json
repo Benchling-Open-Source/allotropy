@@ -1094,7 +1094,7 @@
             "software name": "Thermo QuantStudio",
             "software version": "1.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.18"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1475,11 +1475,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1495,11 +1495,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -1515,15 +1515,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_26",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_16",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -1539,59 +1539,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_24",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_14",
-                                "data source feature": "ct mean"
-                            },
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_15",
-                                "data source feature": "ct mean"
-                            }
-                        ]
-                    },
-                    "data processing document": {
-                        "reference DNA description": "GAPDH",
-                        "reference sample description": "Liver"
-                    },
-                    "calculated data name": "delta ct mean",
-                    "calculated datum": {
-                        "value": -2.969,
-                        "unit": "(unitless)"
-                    }
-                },
-                {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_29",
-                    "data source aggregate document": {
-                        "data source document": [
-                            {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_27",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_TEST_ID_25",
                                 "data source feature": "rq"
                             }
                         ]
@@ -1607,7 +1559,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_30",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_TEST_ID_28",
                     "data source aggregate document": {
                         "data source document": [
                             {
