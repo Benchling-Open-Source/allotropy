@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Remove duplicated delta ct mean calculated data documents in AppBio Quantstudio
 ### Changed
 ### Deprecated
 ### Removed
