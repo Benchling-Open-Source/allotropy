@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Security
 
+## [0.1.19] - 2024-02-19
+### Added
+### Fixed
+- Fix try_float_or_none bug with evaluating 0 as NaN
+### Changed
+### Deprecated
+### Removed
+### Security
+
 ## [0.1.18] - 2024-02-19
 ### Added
 - Add try_float_or_nan util and fix bug with evaluating 0 as NaN

@@ -17,5 +17,4 @@ def test_parse_luminex_xponent_to_asm(output_file: str) -> None:
     validate_contents(
         allotrope_dict,
         expected_filepath,
-        identifiers_to_exclude=["analyte identifier", "measurement identifier"],
     )
