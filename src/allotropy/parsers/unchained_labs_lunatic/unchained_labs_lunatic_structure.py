@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Any, Optional
-import uuid
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
@@ -15,8 +15,9 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
-    try_float_from_series,
+    try_float_from_series_or_nan,
     try_float_from_series_or_none,
     try_str_from_series,
     try_str_from_series_or_none,
@@ -42,7 +43,7 @@ class CalculatedDataItem:
 class Measurement:
     identifier: str
     wavelength: float
-    absorbance: float
+    absorbance: JsonFloat
     sample_identifier: str
     location_identifier: str
     well_plate_identifier: Optional[str]
@@ -57,15 +58,15 @@ class Measurement:
         if not WAVELENGTH_COLUMNS_RE.match(wavelength_column):
             raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
-        measurement_identifier = str(uuid.uuid4())
+        measurement_identifier = random_uuid_str()
         return Measurement(
             identifier=measurement_identifier,
             wavelength=float(wavelength_column[1:]),
-            absorbance=try_float_from_series(well_plate_data, wavelength_column),
+            absorbance=try_float_from_series_or_nan(well_plate_data, wavelength_column),
             sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
-            location_identifier=try_str_from_series(well_plate_data, "Plate ID"),
+            location_identifier=try_str_from_series(well_plate_data, "Plate Position"),
             well_plate_identifier=try_str_from_series_or_none(
-                well_plate_data, "Plate Position"
+                well_plate_data, "Plate ID"
             ),
             calculated_data=Measurement._get_calculated_data(
                 well_plate_data, wavelength_column, measurement_identifier
@@ -90,7 +91,7 @@ class Measurement:
 
             calculated_data.append(
                 CalculatedDataItem(
-                    identifier=str(uuid.uuid4()),
+                    identifier=random_uuid_str(),
                     name=item["name"],
                     value=value,
                     unit=item["unit"],

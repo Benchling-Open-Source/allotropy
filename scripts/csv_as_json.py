@@ -15,6 +15,9 @@ def main() -> None:
     vendor = Vendor[args.vendor]
     with open(args.infile) as reader:
         asm_schema = allotrope_from_io(reader, args.infile, vendor)
+    if args.outfile:
+        with open(args.outfile, "w") as out:
+            json.dump(asm_schema, out, indent=4)
     print(json.dumps(asm_schema, indent=4))  # noqa: T201
 
 
@@ -23,6 +26,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--infile", type=str, required=True, help="file to convert")
     parser.add_argument("--vendor", type=str, required=True, help="vendor identifier")
+    parser.add_argument(
+        "--outfile", type=str, required=False, help="file to write results to"
+    )
     args = parser.parse_args()
     return args
 

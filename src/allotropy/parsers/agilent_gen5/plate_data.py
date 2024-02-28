@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime as datetime_lib
 from io import StringIO
 from typing import Optional, Union
 
@@ -94,21 +93,19 @@ class PlateNumber:
     datetime: str
     plate_barcode: str
 
-    @staticmethod
-    def create(lines_reader: LinesReader) -> PlateNumber:
+    @classmethod
+    def create(cls, lines_reader: LinesReader) -> PlateNumber:
         assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
-        metadata_dict = PlateNumber._parse_metadata(lines_reader)
+        metadata_dict = cls._parse_metadata(lines_reader)
+        datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
 
         return PlateNumber(
-            datetime=datetime_lib.strptime(  # noqa: DTZ007
-                f"{metadata_dict['Date']} {metadata_dict['Time']}",
-                GEN5_DATETIME_FORMAT,
-            ).isoformat(),
+            datetime=datetime_,
             plate_barcode=metadata_dict["Plate Number"],
         )
 
-    @staticmethod
-    def _parse_metadata(lines_reader: LinesReader) -> dict:
+    @classmethod
+    def _parse_metadata(cls, lines_reader: LinesReader) -> dict:
         metadata_dict: dict = {}
         for metadata_line in lines_reader.pop_until_empty():
             line_split = metadata_line.split("\t")
@@ -120,6 +117,10 @@ class PlateNumber:
             metadata_dict[line_split[0]] = line_split[1]
         # TODO put more metadata in the right spots
         return metadata_dict
+
+    @classmethod
+    def _parse_datetime(cls, date_: str, time_: str) -> str:
+        return f"{date_} {time_}"
 
 
 @dataclass(frozen=True)
