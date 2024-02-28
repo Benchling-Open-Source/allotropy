@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Add missing ct mean calculated data documents to relative std curve experiments in AppBio Quantstudio
 ### Changed
 ### Deprecated
 ### Removed
