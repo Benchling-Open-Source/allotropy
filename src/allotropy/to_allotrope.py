@@ -2,7 +2,7 @@ from datetime import tzinfo
 from pathlib import Path
 from typing import Any, Optional
 
-from allotropy.allotrope.allotrope import serialize_allotrope
+from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import get_parser, VendorType
@@ -16,7 +16,7 @@ def allotrope_from_io(
     default_timezone: Optional[tzinfo] = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_io(contents, filename, vendor_type, default_timezone)
-    return serialize_allotrope(model)
+    return serialize_and_validate_allotrope(model)
 
 
 def allotrope_model_from_io(
@@ -36,7 +36,7 @@ def allotrope_from_file(
     default_timezone: Optional[tzinfo] = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_file(filepath, vendor_type, default_timezone)
-    return serialize_allotrope(model)
+    return serialize_and_validate_allotrope(model)
 
 
 def allotrope_model_from_file(

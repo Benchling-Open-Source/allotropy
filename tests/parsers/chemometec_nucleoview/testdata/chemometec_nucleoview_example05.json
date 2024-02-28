@@ -1,0 +1,71 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2023-11-20T16:30:16+02:00",
+                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dark field imager (cell counter)",
+                                        "detection type": "dark field"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "cellsABCD"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 68.2,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2.45,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 3.58,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 1.14,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": "NaN",
+                                            "unit": "μm"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "DrScientist"
+            }
+        ],
+        "device system document": {
+            "model number": "NucleoView NC-200",
+            "equipment serial number": "s/n 9000201099909999"
+        },
+        "data system document": {
+            "file name": "chemometec_nucleoview_example05.csv",
+            "software name": "NucleoView",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.17"
+        }
+    }
+}
