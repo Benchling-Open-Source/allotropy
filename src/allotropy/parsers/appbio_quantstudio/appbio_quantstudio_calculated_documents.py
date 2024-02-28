@@ -576,6 +576,9 @@ def iter_relative_standard_curve_calc_docs(
         if calc_doc := build_quantity_sd(view_st_data, sample, target):
             yield from calc_doc.iter_struct()
 
+        if calc_doc := build_ct_mean(view_st_data, sample, target):
+            yield from calc_doc.iter_struct()
+
         if calc_doc := build_ct_sd(view_st_data, sample, target):
             yield from calc_doc.iter_struct()
 
