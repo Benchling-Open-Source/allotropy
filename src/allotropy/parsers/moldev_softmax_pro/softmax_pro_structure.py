@@ -421,11 +421,13 @@ class PlateReducedData:
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
-        df_data = raw_data.iloc[:, 2 : header.num_columns + 2]
+
+        start = 2
+        df_data = raw_data.iloc[:, start : (start + header.num_columns)]
 
         reduced_data_elements = []
         for row, *data in df_data.itertuples():
-            for col, str_value in enumerate(data, start=1):
+            for col, str_value in zip(df_data.columns, data):
                 value = try_non_nan_float_or_none(str_value)
                 if value is not None:
                     reduced_data_elements.append(
