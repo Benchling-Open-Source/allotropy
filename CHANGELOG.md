@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Add missing ct mean calculated data documents to relative std curve experiments in AppBio Quantstudio
 ### Changed
+- Made Vendor enum extend str and removed VendorType
 ### Deprecated
 ### Removed
 ### Security

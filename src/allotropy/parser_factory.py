@@ -1,6 +1,6 @@
 from datetime import tzinfo
 from enum import Enum
-from typing import Optional, Union
+from typing import Optional
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
@@ -39,7 +39,7 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-class Vendor(Enum):
+class Vendor(str, Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
@@ -54,9 +54,6 @@ class Vendor(Enum):
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
-
-
-VendorType = Union[Vendor, str]
 
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
@@ -78,7 +75,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 
 
 def get_parser(
-    vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
+    vendor_type: Vendor, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
     try:
         timestamp_parser = TimestampParser(default_timezone)

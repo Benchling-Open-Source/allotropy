@@ -5,14 +5,14 @@ from typing import Any, Optional
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parser_factory import get_parser, VendorType
+from allotropy.parser_factory import get_parser, Vendor
 from allotropy.types import IOType
 
 
 def allotrope_from_io(
     contents: IOType,
     filename: str,
-    vendor_type: VendorType,
+    vendor_type: Vendor,
     default_timezone: Optional[tzinfo] = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_io(contents, filename, vendor_type, default_timezone)
@@ -22,7 +22,7 @@ def allotrope_from_io(
 def allotrope_model_from_io(
     contents: IOType,
     filename: str,
-    vendor_type: VendorType,
+    vendor_type: Vendor,
     default_timezone: Optional[tzinfo] = None,
 ) -> Any:
     named_file_contents = NamedFileContents(contents, filename)
@@ -32,7 +32,7 @@ def allotrope_model_from_io(
 
 def allotrope_from_file(
     filepath: str,
-    vendor_type: VendorType,
+    vendor_type: Vendor,
     default_timezone: Optional[tzinfo] = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_file(filepath, vendor_type, default_timezone)
@@ -41,7 +41,7 @@ def allotrope_from_file(
 
 def allotrope_model_from_file(
     filepath: str,
-    vendor_type: VendorType,
+    vendor_type: Vendor,
     default_timezone: Optional[tzinfo] = None,
 ) -> Any:
     try:
