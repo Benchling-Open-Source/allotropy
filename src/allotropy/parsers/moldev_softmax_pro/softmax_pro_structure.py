@@ -320,9 +320,9 @@ class PlateWavelengthData:
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
         data = {
-            f"{num_to_chars(row)}{col}": value
-            for row, *data in df_data.itertuples()
-            for col, value in enumerate(data, start=1)
+            f"{num_to_chars(row_idx)}{col}": value
+            for row_idx, *row_data in df_data.itertuples()
+            for col, value in zip(df_data.columns, row_data)
         }
         return PlateWavelengthData(
             wavelength,
