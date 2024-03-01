@@ -39,7 +39,7 @@ from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-class Vendor(str, Enum):
+class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
