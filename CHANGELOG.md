@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 ### Fixed
 ### Changed
+- Infer size of plate to read all data available in Moldev Softmax
 ### Deprecated
 ### Removed
 ### Security
