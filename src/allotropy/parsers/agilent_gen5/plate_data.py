@@ -53,14 +53,14 @@ def try_float(value: str) -> Union[str, float]:
         return value
 
 
-def read_data_section(lines_reader: LinesReader) -> str:
+def read_data_section(reader: LinesReader) -> str:
     data_section = "\n".join(
         [
-            lines_reader.pop() or "",
-            *lines_reader.pop_until_empty(),
+            reader.pop() or "",
+            *reader.pop_until_empty(),
         ]
     )
-    lines_reader.drop_empty()
+    reader.drop_empty()
     return data_section
 
 
@@ -76,12 +76,12 @@ class FilePaths:
     protocol_file_path: str
 
     @staticmethod
-    def create(lines_reader: LinesReader) -> FilePaths:
+    def create(reader: LinesReader) -> FilePaths:
         assert_not_none(
-            lines_reader.drop_until("^Experiment File Path"),
+            reader.drop_until("^Experiment File Path"),
             "Experiment File Path",
         )
-        file_paths = lines_reader.pop_until_empty()
+        file_paths = reader.pop_until_empty()
         return FilePaths(
             experiment_file_path=f"{next(file_paths)}\t".split("\t")[1],
             protocol_file_path=f"{next(file_paths)}\t".split("\t")[1],
@@ -96,9 +96,9 @@ class HeaderData:
     equipment_serial_number: str
 
     @classmethod
-    def create(cls, lines_reader: LinesReader) -> HeaderData:
-        assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
-        metadata_dict = cls._parse_metadata(lines_reader)
+    def create(cls, reader: LinesReader) -> HeaderData:
+        assert_not_none(reader.drop_until("^Plate Number"), "Plate Number")
+        metadata_dict = cls._parse_metadata(reader)
         datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
 
         return HeaderData(
@@ -109,9 +109,9 @@ class HeaderData:
         )
 
     @classmethod
-    def _parse_metadata(cls, lines_reader: LinesReader) -> dict:
+    def _parse_metadata(cls, reader: LinesReader) -> dict:
         metadata_dict: dict = {}
-        for metadata_line in lines_reader.pop_until_empty():
+        for metadata_line in reader.pop_until_empty():
             line_split = metadata_line.split("\t")
             if line_split[0] not in METADATA_PREFIXES:
                 msg = msg_for_error_on_unrecognized_value(
@@ -133,9 +133,9 @@ class PlateType:
     read_names: list[str]
 
     @staticmethod
-    def create(lines_reader: LinesReader) -> PlateType:
-        assert_not_none(lines_reader.drop_until("^Plate Type"), "Plate Type")
-        data_section = read_data_section(lines_reader)
+    def create(reader: LinesReader) -> PlateType:
+        assert_not_none(reader.drop_until("^Plate Type"), "Plate Type")
+        data_section = read_data_section(reader)
 
         read_mode = PlateType.get_read_mode(data_section)
         read_type = PlateType.get_read_type(data_section)
@@ -425,10 +425,10 @@ class KineticData:
 
     @staticmethod
     def create(
-        lines_reader: LinesReader,
+        reader: LinesReader,
         results: Results,
     ) -> KineticData:
-        kinetic_data = read_data_section(lines_reader)
+        kinetic_data = read_data_section(reader)
 
         kinetic_data_io = StringIO(kinetic_data)
         df = pd.read_table(kinetic_data_io)
@@ -459,12 +459,12 @@ class KineticData:
 
     def parse_blank_kinetic_data(
         self,
-        lines_reader: LinesReader,
+        reader: LinesReader,
         blank_kinetic_data_label: str,
         results: Results,
         plate_type: PlateType,
     ) -> None:
-        blank_kinetic_data = read_data_section(lines_reader)
+        blank_kinetic_data = read_data_section(reader)
 
         blank_kinetic_data_io = StringIO(blank_kinetic_data)
         df = pd.read_table(blank_kinetic_data_io)
@@ -522,18 +522,18 @@ class PlateData:
     kinetic_data: KineticData
 
     @staticmethod
-    def create(lines_reader: LinesReader) -> PlateData:
-        file_paths = FilePaths.create(lines_reader)
-        header_data = HeaderData.create(lines_reader)
-        plate_type = PlateType.create(lines_reader)
+    def create(reader: LinesReader) -> PlateData:
+        file_paths = FilePaths.create(reader)
+        header_data = HeaderData.create(reader)
+        plate_type = PlateType.create(reader)
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()
         results = Results.create()
         curve_name = CurveName.create_default()
         kinetic_data = KineticData.create_default()
 
-        while lines_reader.current_line_exists():
-            data_section = read_data_section(lines_reader)
+        while reader.current_line_exists():
+            data_section = read_data_section(reader)
             if data_section.startswith("Layout"):
                 layout_data = LayoutData.create(data_section)
             elif data_section.startswith("Actual Temperature"):
@@ -557,13 +557,13 @@ class PlateData:
             ):
                 if data_section.startswith("Blank"):
                     kinetic_data.parse_blank_kinetic_data(
-                        lines_reader,
+                        reader,
                         data_section.strip(),
                         results,
                         plate_type,
                     )
                 else:
-                    kinetic_data = KineticData.create(lines_reader, results)
+                    kinetic_data = KineticData.create(reader, results)
 
         return PlateData(
             file_paths=file_paths,
