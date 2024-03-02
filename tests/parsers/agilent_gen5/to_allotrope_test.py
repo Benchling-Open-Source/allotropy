@@ -27,6 +27,10 @@ from tests.parsers.test_utils import (
     from_file,
     validate_contents,
 )
+from allotropy.parsers.agilent_gen5.constants import (
+    MULTIPLATE_FILE_ERROR,
+    NO_PLATE_DATA_ERROR,
+)
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
@@ -35,10 +39,8 @@ ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
     "endpoint_stdcurve_singleplate_2",
-    "endpoint_stdcurve_multiplate",
     "kinetic_helper_gene_growth_curve",
     "kinetic_singleplate",
-    "kinetic_multiplate",
 ]
 
 
@@ -143,38 +145,36 @@ def test_model_from_file_absorbance() -> None:
     )
 
 
-@pytest.mark.parametrize(
-    "filename",
-    [
-        "endpoint_singleplate",
-        "endpoint_multiplate",
-    ],
-)
-def test_to_allotrope_fluorescence(filename: str) -> None:
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.txt"
-    expected_filepath = (
-        f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.json"
-    )
+def test_to_allotrope_fluorescence() -> None:
+    fluorescence_path = "tests/parsers/agilent_gen5/testdata/fluorescence"
+    test_filepath = f"{fluorescence_path}/endpoint_singleplate.txt"
+
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
+
+
+def test_to_allotrope_luminescence() -> None:
+    luminescence_path = "tests/parsers/agilent_gen5/testdata/luminescence"
+    test_filepath = f"{luminescence_path}/endpoint_singleplate.txt"
+
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
 
 
 @pytest.mark.parametrize(
-    "filename",
+    "filepath",
     [
-        "endpoint_singleplate",
-        "endpoint_multiplate",
+        "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_multiplate.txt",
+        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_multiplate.txt",
+        "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_multiplate.txt",
+        "tests/parsers/agilent_gen5/testdata/luminescence/endpoint_multiplate.txt",
     ],
 )
-def test_to_allotrope_luminescence(filename: str) -> None:
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/luminescence/{filename}.txt"
-    expected_filepath = (
-        f"tests/parsers/agilent_gen5/testdata/luminescence/{filename}.json"
-    )
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+def test_to_allotrope_invalid_multiplate_file(filepath: str) -> None:
+    with pytest.raises(AllotropeConversionError, match=MULTIPLATE_FILE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
 
 
 def test_to_allotrope_invalid_plate_data() -> None:
-    with pytest.raises(AllotropeConversionError, match="No plate data found in file."):
+    with pytest.raises(AllotropeConversionError, match=NO_PLATE_DATA_ERROR):
         from_file("tests/parsers/agilent_gen5/testdata/garbage.txt", VENDOR_TYPE)
