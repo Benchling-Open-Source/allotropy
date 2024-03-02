@@ -91,7 +91,9 @@ class FilePaths:
 @dataclass(frozen=True)
 class HeaderData:
     datetime: str
-    plate_barcode: str
+    well_plate_identifier: str
+    model_number: str
+    equipment_serial_number: str
 
     @classmethod
     def create(cls, lines_reader: LinesReader) -> HeaderData:
@@ -101,7 +103,9 @@ class HeaderData:
 
         return HeaderData(
             datetime=datetime_,
-            plate_barcode=metadata_dict["Plate Number"],
+            well_plate_identifier=metadata_dict["Plate Number"],
+            model_number=metadata_dict["Reader Type:"],
+            equipment_serial_number=metadata_dict["Reader Serial Number:"],
         )
 
     @classmethod
@@ -115,7 +119,6 @@ class HeaderData:
                 )
                 raise AllotropeConversionError(msg)
             metadata_dict[line_split[0]] = line_split[1]
-        # TODO put more metadata in the right spots
         return metadata_dict
 
     @classmethod
@@ -345,14 +348,14 @@ class Results:
         for well_pos in self.wells:
             self.measurement_docs.append(
                 plate_type.data_point_cls(
-                    plate_type.read_type,
-                    self.measurements[well_pos],
-                    well_pos,
-                    header_data.plate_barcode,
-                    layout_data.layout.get(well_pos),
-                    layout_data.concentrations.get(well_pos),
-                    self.processed_datas[well_pos],
-                    actual_temperature.value,
+                    read_type=plate_type.read_type,
+                    measurements=self.measurements[well_pos],
+                    well_location=well_pos,
+                    plate_barcode=header_data.well_plate_identifier,
+                    sample_identifier=layout_data.layout.get(well_pos),
+                    concentration=layout_data.concentrations.get(well_pos),
+                    processed_data=self.processed_datas[well_pos],
+                    temperature=actual_temperature.value,
                 ).to_measurement_doc()
             )
 
@@ -400,7 +403,7 @@ class CurveName:
                 {
                     "statistical feature": key,
                     "feature": try_float(value),
-                    "group": f"{header_data.plate_barcode} {results.wells[0]}-{results.wells[-1]}",
+                    "group": f"{header_data.well_plate_identifier} {results.wells[0]}-{results.wells[-1]}",
                 }
                 for key, value in zip(keys, values)
             ]
@@ -560,10 +563,7 @@ class PlateData:
                         plate_type,
                     )
                 else:
-                    kinetic_data = KineticData.create(
-                        lines_reader,
-                        results,
-                    )
+                    kinetic_data = KineticData.create(lines_reader, results)
 
         return PlateData(
             file_paths=file_paths,

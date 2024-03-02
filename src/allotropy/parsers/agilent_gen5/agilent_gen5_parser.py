@@ -40,7 +40,7 @@ class AgilentGen5Parser(VendorParser):
                 measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
                     measurement_identifier=random_uuid_str(),
                     measurement_time=self._get_date_time(
-                        first_plate.plate_number.datetime
+                        first_plate.header_data.datetime
                     ),
                     analytical_method_identifier=first_plate.file_paths.protocol_file_path,
                     experimental_data_identifier=first_plate.file_paths.experiment_file_path,
@@ -57,7 +57,7 @@ class AgilentGen5Parser(VendorParser):
                 measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
                     measurement_identifier=random_uuid_str(),
                     measurement_time=self._get_date_time(
-                        first_plate.plate_number.datetime
+                        first_plate.header_data.datetime
                     ),
                     analytical_method_identifier=first_plate.file_paths.protocol_file_path,
                     experimental_data_identifier=first_plate.file_paths.experiment_file_path,
@@ -74,7 +74,7 @@ class AgilentGen5Parser(VendorParser):
                 measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
                     measurement_identifier=random_uuid_str(),
                     measurement_time=self._get_date_time(
-                        first_plate.plate_number.datetime
+                        first_plate.header_data.datetime
                     ),
                     analytical_method_identifier=first_plate.file_paths.protocol_file_path,
                     experimental_data_identifier=first_plate.file_paths.experiment_file_path,
