@@ -89,17 +89,17 @@ class FilePaths:
 
 
 @dataclass(frozen=True)
-class PlateNumber:
+class HeaderData:
     datetime: str
     plate_barcode: str
 
     @classmethod
-    def create(cls, lines_reader: LinesReader) -> PlateNumber:
+    def create(cls, lines_reader: LinesReader) -> HeaderData:
         assert_not_none(lines_reader.drop_until("^Plate Number"), "Plate Number")
         metadata_dict = cls._parse_metadata(lines_reader)
         datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
 
-        return PlateNumber(
+        return HeaderData(
             datetime=datetime_,
             plate_barcode=metadata_dict["Plate Number"],
         )
@@ -311,7 +311,7 @@ class Results:
         self,
         results: str,
         plate_type: PlateType,
-        plate_number: PlateNumber,
+        header_data: HeaderData,
         layout_data: LayoutData,
         actual_temperature: ActualTemperature,
     ) -> None:
@@ -348,7 +348,7 @@ class Results:
                     plate_type.read_type,
                     self.measurements[well_pos],
                     well_pos,
-                    plate_number.plate_barcode,
+                    header_data.plate_barcode,
                     layout_data.layout.get(well_pos),
                     layout_data.concentrations.get(well_pos),
                     self.processed_datas[well_pos],
@@ -385,7 +385,7 @@ class CurveName:
     @staticmethod
     def create(
         stdcurve: str,
-        plate_number: PlateNumber,
+        header_data: HeaderData,
         results: Results,
     ) -> CurveName:
         lines = stdcurve.splitlines()
@@ -400,13 +400,14 @@ class CurveName:
                 {
                     "statistical feature": key,
                     "feature": try_float(value),
-                    "group": f"{plate_number.plate_barcode} {results.wells[0]}-{results.wells[-1]}",
+                    "group": f"{header_data.plate_barcode} {results.wells[0]}-{results.wells[-1]}",
                 }
                 for key, value in zip(keys, values)
             ]
         )
 
 
+# TODO: this class will probably be removed since kinetic is not supported at this point by allotropy
 @dataclass(frozen=True)
 class KineticData:
     temperatures: list
@@ -511,7 +512,7 @@ class KineticData:
 @dataclass(frozen=True)
 class PlateData:
     file_paths: FilePaths
-    plate_number: PlateNumber
+    header_data: HeaderData
     plate_type: PlateType
     results: Results
     curve_name: CurveName
@@ -520,7 +521,7 @@ class PlateData:
     @staticmethod
     def create(lines_reader: LinesReader) -> PlateData:
         file_paths = FilePaths.create(lines_reader)
-        plate_number = PlateNumber.create(lines_reader)
+        header_data = HeaderData.create(lines_reader)
         plate_type = PlateType.create(lines_reader)
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()
@@ -538,14 +539,14 @@ class PlateData:
                 results.parse_results(
                     data_section,
                     plate_type,
-                    plate_number,
+                    header_data,
                     layout_data,
                     actual_temperature,
                 )
             elif data_section.startswith("Curve Name"):
                 curve_name = CurveName.create(
                     data_section,
-                    plate_number,
+                    header_data,
                     results,
                 )
             elif len(data_section.split("\n")) == 1 and any(
@@ -566,7 +567,7 @@ class PlateData:
 
         return PlateData(
             file_paths=file_paths,
-            plate_number=plate_number,
+            header_data=header_data,
             plate_type=plate_type,
             results=results,
             curve_name=curve_name,
