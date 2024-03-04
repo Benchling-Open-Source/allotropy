@@ -75,6 +75,28 @@ def try_str_from_series_multikey(
     )
 
 
+NUM_WELLS_TO_N_COLUMNS: dict[int, int] = {
+    6: 3,
+    12: 4,
+    24: 6,
+    48: 8,
+    96: 12,
+    384: 24,
+    1536: 48,
+}
+
+
+def num_wells_to_n_columns(well_count: int) -> int:
+    if n_columns := NUM_WELLS_TO_N_COLUMNS.get(well_count):
+        return n_columns
+
+    num_wells = ",".join([str(num_wells) for num_wells in NUM_WELLS_TO_N_COLUMNS])
+    msg = (
+        f"Unknown number of wells '{well_count}'. Only accepted values are {num_wells}"
+    )
+    raise AllotropeConversionError(msg)
+
+
 class ReadType(Enum):
     ENDPOINT = "Endpoint"
     KINETIC = "Kinetic"
@@ -320,9 +342,9 @@ class PlateWavelengthData:
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
         data = {
-            f"{num_to_chars(row)}{col}": value
-            for row, *data in df_data.itertuples()
-            for col, value in enumerate(data, start=1)
+            f"{num_to_chars(row_idx)}{col}": value
+            for row_idx, *row_data in df_data.itertuples()
+            for col, value in zip(df_data.columns, row_data)
         }
         return PlateWavelengthData(
             wavelength,
@@ -421,11 +443,13 @@ class PlateReducedData:
             reader.pop_csv_block_as_df(sep="\t", header=0),
             msg="Unable to find reduced data for plate block.",
         )
-        df_data = raw_data.iloc[:, 2 : header.num_columns + 2]
+
+        start = 2
+        df_data = raw_data.iloc[:, start : (start + header.num_columns)]
 
         reduced_data_elements = []
         for row, *data in df_data.itertuples():
-            for col, str_value in enumerate(data, start=1):
+            for col, str_value in zip(df_data.columns, data):
                 value = try_non_nan_float_or_none(str_value)
                 if value is not None:
                     reduced_data_elements.append(
@@ -713,7 +737,7 @@ class FluorescencePlateBlock(PlateBlock):
             num_wavelengths_raw,
             wavelengths_str,
             _,  # first_column
-            num_columns_raw,
+            _,  # num_columns
             num_wells_raw,
             excitation_wavelengths_str,
             _,  # cutoff
@@ -774,6 +798,9 @@ class FluorescencePlateBlock(PlateBlock):
             error = f"{raw_scan_position} is not a valid scan position."
             raise AllotropeConversionError(error)
 
+        num_wells = try_int(num_wells_raw, "num_wells")
+        num_columns = num_wells_to_n_columns(num_wells)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -783,8 +810,8 @@ class FluorescencePlateBlock(PlateBlock):
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=num_wavelengths,
             wavelengths=wavelengths,
-            num_columns=try_int(num_columns_raw, "num_columns"),
-            num_wells=try_int(num_wells_raw, "num_wells"),
+            num_columns=num_columns,
+            num_wells=num_wells,
             concept="fluorescence",
             read_mode="Fluorescence",
             unit="RFU",
@@ -823,7 +850,7 @@ class LuminescencePlateBlock(PlateBlock):
             num_wavelengths_raw,
             wavelengths_str,
             _,  # first_column
-            num_columns_raw,
+            _,  # num_columns,
             num_wells_raw,
             _,  # excitation_wavelengths_str
             _,  # cutoff
@@ -846,6 +873,9 @@ class LuminescencePlateBlock(PlateBlock):
         wavelengths = cls.get_wavelengths(wavelengths_str)
         cls.check_num_wavelengths(wavelengths, num_wavelengths)
 
+        num_wells = try_int(num_wells_raw, "num_wells")
+        num_columns = num_wells_to_n_columns(num_wells)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -855,8 +885,8 @@ class LuminescencePlateBlock(PlateBlock):
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=num_wavelengths,
             wavelengths=wavelengths,
-            num_columns=try_int(num_columns_raw, "num_columns"),
-            num_wells=try_int(num_wells_raw, "num_wells"),
+            num_columns=num_columns,
+            num_wells=num_wells,
             concept="luminescence",
             read_mode="Luminescence",
             unit="RLU",
@@ -895,7 +925,7 @@ class AbsorbancePlateBlock(PlateBlock):
             num_wavelengths_raw,
             wavelengths_str,
             _,  # first_column
-            num_columns_raw,
+            _,  # num_columns
             num_wells_raw,
             _,
             num_rows_raw,
@@ -909,6 +939,9 @@ class AbsorbancePlateBlock(PlateBlock):
         wavelengths = cls.get_wavelengths(wavelengths_str)
         cls.check_num_wavelengths(wavelengths, num_wavelengths)
 
+        num_wells = try_int(num_wells_raw, "num_wells")
+        num_columns = num_wells_to_n_columns(num_wells)
+
         return PlateHeader(
             name=name,
             export_version=export_version,
@@ -918,8 +951,8 @@ class AbsorbancePlateBlock(PlateBlock):
             kinetic_points=try_int(kinetic_points_raw, "kinetic_points"),
             num_wavelengths=num_wavelengths,
             wavelengths=wavelengths,
-            num_columns=try_int(num_columns_raw, "num_columns"),
-            num_wells=try_int(num_wells_raw, "num_wells"),
+            num_columns=num_columns,
+            num_wells=num_wells,
             concept="absorbance",
             read_mode="Absorbance",
             unit="mAU",
