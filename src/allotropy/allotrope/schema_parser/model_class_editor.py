@@ -44,6 +44,8 @@ def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[st
                     schema_model.import_info[1]
                 )
 
+    # print(classes_to_skip)
+    # print(imports_to_add)
     return classes_to_skip, dict(imports_to_add)
 
 

@@ -1,0 +1,186 @@
+[
+    {
+        "properties": {
+            "device control aggregate document": {
+                "properties": {
+                    "device control document": {
+                        "items": {
+                            "allOf": [
+                                {
+                                    "properties": {
+                                        "detector wavelength setting": {
+                                            "$ref": "#/$defs/tQuantityValueNanometer"
+                                        },
+                                        "detector bandwidth setting": {
+                                            "$ref": "#/$defs/tQuantityValueNanometer"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "processed data document": {
+                "properties": {
+                    "peak list": {
+                        "properties": {
+                            "peak": {
+                                "items": {
+                                    "allOf": [
+                                        {
+                                            "properties": {
+                                                "peak height": {
+                                                    "$ref": "#/$defs/tQuantityValueMilliAbsorbanceUnit"
+                                                },
+                                                "peak area": {
+                                                    "oneOf": [
+                                                        {
+                                                            "$ref": "#/$defs/tQuantityValueMilliAbsorbanceUnitTimesSecond"
+                                                        },
+                                                        {
+                                                            "$ref": "#/$defs/tQuantityValueMilliAbsorbanceUnitTimesMilliliter"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "properties": {
+                                                "blah": {
+                                                    "$ref": "#/$defs/tStringValue"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "properties": {
+            "device control aggregate document": {
+                "properties": {
+                    "device control document": {
+                        "items": {
+                            "allOf": [
+                                {
+                                    "properties": {
+                                        "detector wavelength setting": {
+                                            "$ref": "#/$defs/tQuantityValueNanometer"
+                                        },
+                                        "detector bandwidth setting": {
+                                            "$ref": "#/$defs/tQuantityValueNanometer"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "processed data aggregate document": {
+                "properties": {
+                    "processed data document": {
+                        "items": {
+                            "properties": {
+                                "peak list": {
+                                    "properties": {
+                                        "peak": {
+                                            "items": {
+                                                "allOf": [
+                                                    {
+                                                        "properties": {
+                                                            "peak height": {
+                                                                "$ref": "#/$defs/tQuantityValueMillivolt"
+                                                            },
+                                                            "peak area": {
+                                                                "$ref": "#/$defs/tQuantityValueMillivoltTimesSecond"
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "properties": {
+                                                            "blah": {
+                                                                "$ref": "#/$defs/tStringValue"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "properties": {
+            "device control aggregate document": {
+                "properties": {
+                    "device control document": {
+                        "items": {
+                            "allOf": [
+                                {
+                                    "properties": {
+                                        "detector wavelength setting": {
+                                            "$ref": "#/$defs/tQuantityValueNanometer"
+                                        },
+                                        "detector bandwidth setting": {
+                                            "$ref": "#/$defs/tQuantityValueNanometer"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "processed data aggregate document": {
+                "properties": {
+                    "processed data document": {
+                        "items": {
+                            "properties": {
+                                "peak list": {
+                                    "properties": {
+                                        "peak": {
+                                            "items": {
+                                                "allOf": [
+                                                    {
+                                                        "properties": {
+                                                            "peak height": {
+                                                                "$ref": "#/$defs/tQuantityValueNanoCoulomb"
+                                                            },
+                                                            "peak area": {
+                                                                "$ref": "#/$defs/tQuantityValueNanoCoulombTimesSecond"
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "properties": {
+                                                            "blah": {
+                                                                "$ref": "#/$defs/tStringValue"
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+]
