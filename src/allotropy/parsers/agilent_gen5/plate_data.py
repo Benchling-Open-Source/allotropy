@@ -127,25 +127,26 @@ class HeaderData:
 
 
 @dataclass(frozen=True)
-class PlateType:
+class ReadData:
     read_mode: ReadMode
     read_type: ReadType
     read_names: list[str]
 
-    @staticmethod
-    def create(reader: LinesReader) -> PlateType:
-        assert_not_none(reader.drop_until("^Plate Type"), "Plate Type")
-        data_section = read_data_section(reader)
+    @classmethod
+    def create(cls, reader: LinesReader) -> ReadData:
+        assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
+        reader.pop()
+        reader.drop_empty()
+        procedure_details = read_data_section(reader)
 
-        read_mode = PlateType.get_read_mode(data_section)
-        read_type = PlateType.get_read_type(data_section)
+        read_mode = cls.get_read_mode(procedure_details)
+        read_type = cls.get_read_type(procedure_details)
         read_names: list = []
-        for procedure_chunk in PlateType._parse_procedure_chunks(data_section):
-            read_names.extend(
-                PlateType._parse_procedure_chunk(procedure_chunk, read_mode)
-            )
+        procedure_chunks = cls._parse_procedure_chunks(procedure_details)
+        for procedure_chunk in procedure_chunks:
+            read_names.extend(cls._parse_procedure_chunk(procedure_chunk, read_mode))
 
-        return PlateType(
+        return ReadData(
             read_mode=read_mode,
             read_type=read_type,
             read_names=read_names,
@@ -166,12 +167,12 @@ class PlateType:
         raise AllotropeConversionError(msg)
 
     @staticmethod
-    def get_read_mode(data_section: str) -> ReadMode:
-        if ReadMode.ABSORBANCE.value in data_section:
+    def get_read_mode(procedure_details: str) -> ReadMode:
+        if ReadMode.ABSORBANCE.value in procedure_details:
             return ReadMode.ABSORBANCE
-        elif ReadMode.FLUORESCENCE.value in data_section:
+        elif ReadMode.FLUORESCENCE.value in procedure_details:
             return ReadMode.FLUORESCENCE
-        elif ReadMode.LUMINESCENCE.value in data_section:
+        elif ReadMode.LUMINESCENCE.value in procedure_details:
             return ReadMode.LUMINESCENCE
 
         msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
@@ -180,6 +181,9 @@ class PlateType:
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
         # TODO parse the rest of the procedure details
+
+        # TODO: only Endpoint measurements are supported
+        # this should raise for any other read type.
         if ReadType.KINETIC.value in procedure_details:
             return ReadType.KINETIC
         elif ReadType.AREASCAN.value in procedure_details:
@@ -217,6 +221,7 @@ class PlateType:
         use_wavelength_names = False
         read_line_length = 2
         wavelength_line_length = 2
+
         for line in procedure_chunk:
             split_line = line.strip().split("\t")
             if split_line[0] == "Read":
@@ -313,7 +318,7 @@ class Results:
     def parse_results(
         self,
         results: str,
-        plate_type: PlateType,
+        read_data: ReadData,
         header_data: HeaderData,
         layout_data: LayoutData,
         actual_temperature: ActualTemperature,
@@ -337,8 +342,8 @@ class Results:
                 well_value: Union[str, float] = try_float(values[col_num])
                 if Results._is_processed_data_label(
                     label,
-                    plate_type.read_mode,
-                    plate_type.read_names,
+                    read_data.read_mode,
+                    read_data.read_names,
                 ):
                     self.processed_datas[well_pos].append([label, well_value])
                 else:
@@ -347,8 +352,8 @@ class Results:
 
         for well_pos in self.wells:
             self.measurement_docs.append(
-                plate_type.data_point_cls(
-                    read_type=plate_type.read_type,
+                read_data.data_point_cls(
+                    read_type=read_data.read_type,
                     measurements=self.measurements[well_pos],
                     well_location=well_pos,
                     plate_barcode=header_data.well_plate_identifier,
@@ -462,7 +467,7 @@ class KineticData:
         reader: LinesReader,
         blank_kinetic_data_label: str,
         results: Results,
-        plate_type: PlateType,
+        read_data: ReadData,
     ) -> None:
         blank_kinetic_data = read_data_section(reader)
 
@@ -478,7 +483,7 @@ class KineticData:
                     blank_kinetic_data_label,
                     self._blank_data_cube(
                         measures,
-                        plate_type,
+                        read_data,
                     ),
                 ]
             )
@@ -486,18 +491,18 @@ class KineticData:
     def _blank_data_cube(
         self,
         measures: list[float],
-        plate_type: PlateType,
+        read_data: ReadData,
     ) -> TDatacube:
-        structure_dimensions = READTYPE_TO_DIMENSIONS[plate_type.read_type]
+        structure_dimensions = READTYPE_TO_DIMENSIONS[read_data.read_type]
         structure_measures = [
             (
                 "double",
-                plate_type.read_mode.lower(),
-                plate_type.data_point_cls.unit,
+                read_data.read_mode.lower(),
+                read_data.data_point_cls.unit,
             )
         ]
         return TDatacube(
-            label=f"{plate_type.read_type.value.lower()} data",
+            label=f"{read_data.read_type.value.lower()} data",
             cube_structure=TDatacubeStructure(
                 [
                     TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
@@ -516,7 +521,7 @@ class KineticData:
 class PlateData:
     file_paths: FilePaths
     header_data: HeaderData
-    plate_type: PlateType
+    read_data: ReadData
     results: Results
     curve_name: CurveName
     kinetic_data: KineticData
@@ -525,7 +530,7 @@ class PlateData:
     def create(reader: LinesReader) -> PlateData:
         file_paths = FilePaths.create(reader)
         header_data = HeaderData.create(reader)
-        plate_type = PlateType.create(reader)
+        read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()
         results = Results.create()
@@ -541,7 +546,7 @@ class PlateData:
             elif data_section.startswith("Results"):
                 results.parse_results(
                     data_section,
-                    plate_type,
+                    read_data,
                     header_data,
                     layout_data,
                     actual_temperature,
@@ -553,14 +558,14 @@ class PlateData:
                     results,
                 )
             elif len(data_section.split("\n")) == 1 and any(
-                read_name in data_section for read_name in plate_type.read_names
+                read_name in data_section for read_name in read_data.read_names
             ):
                 if data_section.startswith("Blank"):
                     kinetic_data.parse_blank_kinetic_data(
                         reader,
                         data_section.strip(),
                         results,
-                        plate_type,
+                        read_data,
                     )
                 else:
                     kinetic_data = KineticData.create(reader, results)
@@ -568,7 +573,7 @@ class PlateData:
         return PlateData(
             file_paths=file_paths,
             header_data=header_data,
-            plate_type=plate_type,
+            read_data=read_data,
             results=results,
             curve_name=curve_name,
             kinetic_data=kinetic_data,

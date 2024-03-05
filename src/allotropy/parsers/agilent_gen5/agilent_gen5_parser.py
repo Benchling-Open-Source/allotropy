@@ -36,7 +36,7 @@ class AgilentGen5Parser(VendorParser):
         self, plate_data: PlateData
     ) -> Union[AbsorbanceModel, FluorescenceModel, LuminescenceModel]:
         measurement_docs = plate_data.results.measurement_docs
-        if plate_data.plate_type.read_mode == ReadMode.ABSORBANCE:
+        if plate_data.read_data.read_mode == ReadMode.ABSORBANCE:
             return AbsorbanceModel(
                 measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
                     measurement_identifier=random_uuid_str(),
@@ -53,7 +53,7 @@ class AgilentGen5Parser(VendorParser):
                     measurement_document=measurement_docs,
                 )
             )
-        elif plate_data.plate_type.read_mode == ReadMode.FLUORESCENCE:
+        elif plate_data.read_data.read_mode == ReadMode.FLUORESCENCE:
             return FluorescenceModel(
                 measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
                     measurement_identifier=random_uuid_str(),
@@ -70,7 +70,7 @@ class AgilentGen5Parser(VendorParser):
                     measurement_document=measurement_docs,
                 )
             )
-        elif plate_data.plate_type.read_mode == ReadMode.LUMINESCENCE:
+        elif plate_data.read_data.read_mode == ReadMode.LUMINESCENCE:
             return LuminescenceModel(
                 measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
                     measurement_identifier=random_uuid_str(),
@@ -89,7 +89,7 @@ class AgilentGen5Parser(VendorParser):
             )
 
         msg = msg_for_error_on_unrecognized_value(
-            "read mode", plate_data.plate_type.read_mode, ReadMode._member_names_
+            "read mode", plate_data.read_data.read_mode, ReadMode._member_names_
         )
         raise AllotropeConversionError(msg)
 
