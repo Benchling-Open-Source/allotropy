@@ -23,10 +23,10 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
-from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
 )
+from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
 )
