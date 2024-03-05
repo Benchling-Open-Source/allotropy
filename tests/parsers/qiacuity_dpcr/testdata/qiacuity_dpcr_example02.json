@@ -19,8 +19,9 @@
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "1",
+                                "sample role type": "Sample Role",
                                 "well location identifier": "A1",
-                                "well plate identifier": "None"
+                                "well plate identifier": "9234983"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -59,8 +60,9 @@
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "2",
+                                "sample role type": "Control Sample Role",
                                 "well location identifier": "B1",
-                                "well plate identifier": "None"
+                                "well plate identifier": "324"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -99,8 +101,9 @@
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "3",
+                                "sample role type": "Control Sample Role",
                                 "well location identifier": "C1",
-                                "well plate identifier": "None"
+                                "well plate identifier": "234"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -139,8 +142,9 @@
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "4",
+                                "sample role type": "Blank Role",
                                 "well location identifier": "D1",
-                                "well plate identifier": "None"
+                                "well plate identifier": "32432432"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -179,8 +183,9 @@
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "5",
+                                "sample role type": "Sample Role",
                                 "well location identifier": "E1",
-                                "well plate identifier": "None"
+                                "well plate identifier": "234"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -219,8 +224,9 @@
                             "target DNA description": "5p",
                             "sample document": {
                                 "sample identifier": "6",
+                                "sample role type": "Sample Role",
                                 "well location identifier": "F1",
-                                "well plate identifier": "None"
+                                "well plate identifier": "34"
                             },
                             "device control aggregate document": {
                                 "device control document": [
@@ -258,7 +264,7 @@
             }
         ],
         "data system document": {
-            "file name": "qiacuity_dpcr_example01.csv",
+            "file name": "qiacuity_dpcr_example02.csv",
             "software name": "Qiacuity Software Suite",
             "ASM converter name": "allotropy",
             "ASM converter version": "0.1.19"

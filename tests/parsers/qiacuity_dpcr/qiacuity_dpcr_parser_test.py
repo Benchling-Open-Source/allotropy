@@ -4,6 +4,7 @@ from tests.parsers.test_utils import from_file, validate_contents
 
 output_files = (
     "qiacuity_dpcr_example01.csv",
+    "qiacuity_dpcr_example02.csv"
 )
 
 VENDOR_TYPE = Vendor.QIACUITY_DPCR
