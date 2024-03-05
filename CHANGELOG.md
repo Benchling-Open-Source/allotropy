@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Add missing ct mean calculated data documents to relative std curve experiments in AppBio Quantstudio
 ### Changed
+- Infer size of plate to read all data available in Moldev Softmax
 ### Deprecated
 ### Removed
 ### Security
