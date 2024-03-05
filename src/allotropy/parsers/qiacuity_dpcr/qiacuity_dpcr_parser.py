@@ -97,22 +97,17 @@ class QiacuitydPCRParser(VendorParser):
             )
             measurement_documents.append(measurement_document)
         # TODO: Hardcoded plate well count to 0 since it's a required field
-        # Joe is going to create an issue in the allotrope repo to make this field optional
-        # Make an issue in our repo to update our pcr schemas to relax constraint
-        # Issue for me to update the schema, do I update the version of the schema? Nate will have an opinion.
+        #  ASM will be modified to optional in future version
         measurement_aggregate_document = MeasurementAggregateDocument(
             measurement_document=measurement_documents,
             plate_well_count=TQuantityValueNumber(value=0),
         )
-        # TODO: Add something that removes the whole field if all field values are None
-
         return DPCRDocumentItem(
             measurement_aggregate_document=measurement_aggregate_document
         )
 
     def _get_device_system_document(self) -> DeviceSystemDocument:
         device_system_document = DeviceSystemDocument(
-            # TODO: why is device identifier referenced twice?
             device_identifier=DEVICE_IDENTIFIER,
             brand_name=BRAND_NAME,
             product_manufacturer=PRODUCT_MANUFACTURER,
@@ -177,7 +172,7 @@ class QiacuitydPCRParser(VendorParser):
         well_location_identifier = self._get_value_by_col_name(
             well_item, WELL_COLUMN_NAME, required=False
         )
-        # TODO: Make a helper for all of these "only set if not none" optional document fields
+        # TODO: Make a helper for all of these "only set if not none" optional document fields?
         if well_location_identifier is not None:
             sample_document.well_location_identifier = well_location_identifier
 
@@ -197,7 +192,7 @@ class QiacuitydPCRParser(VendorParser):
         )
 
     def _get_processed_data_document(
-        self, well_item: pd.Series, dp_document: DataProcessingDocument
+        self, well_item: pd.Series
     ) -> ProcessedDataDocumentItem:
         number_concentration = TQuantityValueNumberPerMicroliter(
             value=self._get_value_by_col_name(
@@ -237,6 +232,8 @@ class QiacuitydPCRParser(VendorParser):
     def _get_value_by_col_name(
         self, well_item: pd.series, col_name: str, required: bool
     ):
+        # This function get the value by column name, raises an error if required column doesn't exist,
+        # returns None if the field is optional
         try:
             col_value = well_item[col_name]
             return col_value
