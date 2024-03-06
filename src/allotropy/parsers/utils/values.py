@@ -40,7 +40,7 @@ def try_float(value: str, value_name: str) -> float:
 
 def try_float_or_none(value: Optional[str]) -> Optional[float]:
     try:
-        return float("" if value is None else value)
+        return float("" if _is_none_value(value) else value)
     except ValueError:
         return None
 
@@ -92,7 +92,11 @@ def try_str_from_series_or_default(
     default: str,
 ) -> str:
     value = data.get(key)
-    return default if value is None else str(value)
+    return default if _is_none_value(value) else str(value)
+
+
+def _is_none_value(value: Any) -> bool:
+    return value in (None, "None")
 
 
 def try_str_from_series_or_none(
@@ -100,7 +104,7 @@ def try_str_from_series_or_none(
     key: str,
 ) -> Optional[str]:
     value = data.get(key)
-    return None if value is None else str(value)
+    return None if _is_none_value(value) else str(value)
 
 
 def try_str_from_series(
@@ -169,7 +173,7 @@ def try_bool_from_series_or_none(
 ) -> Optional[bool]:
     try:
         value = data.get(key)
-        return None if value is None else bool(value)
+        return None if _is_none_value(value) else bool(value)
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
@@ -181,4 +185,4 @@ def num_to_chars(n: int) -> str:
 
 
 def str_or_none(value: Any) -> Optional[str]:
-    return None if value is None else str(value)
+    return None if _is_none_value(value) else str(value)

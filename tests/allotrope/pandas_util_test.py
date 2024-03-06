@@ -58,7 +58,7 @@ def test_read_excel(filename: str) -> None:
 
 def test_read_excel_fails_parsing() -> None:
     expected_regex = re.escape(
-        "Error calling pd.read_excel(): Missing column provided to 'parse_dates': 'MissingColumn' (sheet: 0)"
+        "Error calling pd.read_excel(): Missing column provided to 'parse_dates': 'MissingColumn'"
     )
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         _read_excel(EXCEL_FILE, parse_dates=["MissingColumn"])
