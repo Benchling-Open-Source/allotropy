@@ -85,6 +85,16 @@ NUM_WELLS_TO_N_COLUMNS: dict[int, int] = {
     1536: 48,
 }
 
+NUM_WELLS_TO_N_ROWS: dict[int, int] = {
+    6: 2,
+    12: 3,
+    24: 4,
+    48: 6,
+    96: 8,
+    384: 16,
+    1536: 32,
+}
+
 
 def num_wells_to_n_columns(well_count: int) -> int:
     if n_columns := NUM_WELLS_TO_N_COLUMNS.get(well_count):
@@ -698,8 +708,10 @@ class PlateBlock(ABC, Block):
         ]
 
     def iter_wells(self) -> Iterator[str]:
-        for row in range(self.header.num_rows):
-            for col in range(1, self.header.num_columns + 1):
+        rows = NUM_WELLS_TO_N_ROWS[self.header.num_wells]
+        cols = NUM_WELLS_TO_N_COLUMNS[self.header.num_wells]
+        for row in range(rows):
+            for col in range(1, cols + 1):
                 yield f"{num_to_chars(row)}{col}"
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:

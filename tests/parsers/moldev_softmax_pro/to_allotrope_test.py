@@ -25,6 +25,7 @@ SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
         "MD_SMP_luminescence_endpoint_example09",
         "MD_SMP_absorbance_endpoint_partial_plate_example01",
         "MD_SMP_absorbance_endpoint_partial_plate_example02",
+        "MD_SMP_absorbance_endpoint_first_row_example01",
         "group_cols_with_int_sample_names",
         "softmaxpro_no_calc_docs",
     ],
