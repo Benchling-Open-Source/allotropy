@@ -82,10 +82,7 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_aggregate_document = ProcessedDataAggregateDocument(
                 processed_data_document=[
                     self._get_processed_data_document(
-                        well_item=well_item,
-                        dp_document=self._get_data_processing_document(
-                            well_item=well_item
-                        ),
+                        well_item=well_item
                     )
                 ]
             )
@@ -134,12 +131,12 @@ class QiacuitydPCRParser(VendorParser):
         measurement_id = random_uuid_str()
         # There is no measurement time in the file, so assign to unix epoch
         measurement_time = EPOCH
-        target_dna_description = self._get_value_by_col_name(
-            well_item, TARGET_COLUMN_NAME, required=True
+        target_dna_description = self._try_str_from_series(
+            well_item, TARGET_COLUMN_NAME
         )
         total_partition_count = TQuantityValueNumber(
-            self._get_value_by_col_name(
-                well_item, PARTITIONS_COLUMN_NAME, required=True
+            self._try_str_from_series(
+                well_item, PARTITIONS_COLUMN_NAME
             )
         )
         return MeasurementDocumentItem(
@@ -154,23 +151,30 @@ class QiacuitydPCRParser(VendorParser):
 
     def _get_sample_document(self, well_item: pd.Series) -> SampleDocument:
         sample_identifier = str(
-            self._get_value_by_col_name(
-                well_item, SAMPLE_IDENTIFIER_COLUMN_NAME, required=True
+            self._try_str_from_series(
+                well_item, SAMPLE_IDENTIFIER_COLUMN_NAME
             )
         )
         sample_document = SampleDocument(sample_identifier=sample_identifier)
 
-        sample_role_type = self._get_value_by_col_name(
-            well_item, SAMPLE_TYPE_COLUMN_NAME, required=False
+        sample_role_type = self._try_str_from_series_or_none(
+            well_item, SAMPLE_TYPE_COLUMN_NAME
         )
         # TODO: When the sample role type model is updated in this repo, we should update this
         # Map sample role types to valid sample role types from ASM
         if sample_role_type is not None:
-            sample_role_type = SAMPLE_ROLE_TYPE_MAPPING[sample_role_type]
-            sample_document.sample_role_type = sample_role_type
+            try:
+                sample_role_type = SAMPLE_ROLE_TYPE_MAPPING[sample_role_type]
+                sample_document.sample_role_type = sample_role_type
+            except KeyError as e:
+                error_message = (
+                        f"Unexpected sample type found: {sample_role_type}. "
+                        f"Must be one of {list(SAMPLE_ROLE_TYPE_MAPPING.keys())}"
+                    )
+                raise AllotropeConversionError(error_message) from e
 
-        well_location_identifier = self._get_value_by_col_name(
-            well_item, WELL_COLUMN_NAME, required=False
+        well_location_identifier = self._try_str_from_series_or_none(
+            well_item, WELL_COLUMN_NAME
         )
         # TODO: Make a helper for all of these "only set if not none" optional document fields?
         if well_location_identifier is not None:
@@ -178,8 +182,8 @@ class QiacuitydPCRParser(VendorParser):
 
         # ASM expects a string- ok to cast?
         well_plate_identifier = str(
-            self._get_value_by_col_name(
-                well_item, WELL_PLATE_IDENTIFIER_COLUMN_NAME, required=False
+            self._try_str_from_series_or_none(
+                well_item, WELL_PLATE_IDENTIFIER_COLUMN_NAME
             )
         )
         if well_plate_identifier is not None:
@@ -191,58 +195,43 @@ class QiacuitydPCRParser(VendorParser):
             device_type=DEVICE_TYPE, device_identifier=DEVICE_IDENTIFIER
         )
 
-    def _get_processed_data_document(
-        self, well_item: pd.Series
-    ) -> ProcessedDataDocumentItem:
-        number_concentration = TQuantityValueNumberPerMicroliter(
-            value=self._get_value_by_col_name(
-                well_item, CONCENTRATION_COLUMN_NAME, required=True
-            )
-        )
-        positive_partition_count = TQuantityValueNumber(
-            value=self._get_value_by_col_name(
-                well_item, POSITIVE_COUNT_COLUMN_NAME, required=True
-            )
-        )
+    def _get_processed_data_document(self, well_item: pd.Series) -> ProcessedDataDocumentItem:
+
+
+        number_concentration = TQuantityValueNumberPerMicroliter(value=self._try_str_from_series(well_item, CONCENTRATION_COLUMN_NAME))
+        positive_partition_count = TQuantityValueNumber(value=self._try_str_from_series(well_item, POSITIVE_COUNT_COLUMN_NAME))
         processed_data_document = ProcessedDataDocumentItem(
             number_concentration=number_concentration,
-            positive_partition_count=positive_partition_count,
+            positive_partition_count=positive_partition_count
         )
+        # If the fluorescence intensity threshold setting exists, create a data processing document for it and add to processed data document
+        fluor_intensity_threshold = self._try_str_from_series_or_none(well_item, FIT_SETTING_COLUMN_NAME)
+        if fluor_intensity_threshold is not None:
+            data_processing_document = DataProcessingDocument(flourescence_intensity_threshold_setting=TQuantityValueUnitless(fluor_intensity_threshold))
+            processed_data_document.data_processing_document = data_processing_document
+
         # Negative partition count is optional
         negative_partition_count = TQuantityValueNumber(
-            value=self._get_value_by_col_name(
-                well_item, NEGATIVE_COUNT_COLUMN_NAME, required=False
+            value=self._try_str_from_series_or_none(
+                well_item, NEGATIVE_COUNT_COLUMN_NAME
             )
         )
         if negative_partition_count is not None:
             processed_data_document.negative_partition_count = negative_partition_count
         return processed_data_document
-
-    def _get_data_processing_document(
-        self, well_item: pd.Series
-    ) -> DataProcessingDocument:
-        return DataProcessingDocument(
-            flourescence_intensity_threshold_setting=TQuantityValueUnitless(
-                value=self._get_value_by_col_name(
-                    well_item, FIT_SETTING_COLUMN_NAME, required=False
-                )
-            )
-        )
-
-    def _get_value_by_col_name(
-        self, well_item: pd.series, col_name: str, required: bool
-    ):
-        # This function get the value by column name, raises an error if required column doesn't exist,
-        # returns None if the field is optional
+    def _try_str_from_series(self, well_item: pd.series, col_name: str):
         try:
             col_value = well_item[col_name]
             return col_value
         except KeyError as e:
-            if required:
-                error_message = (
+            error_message = (
                     f"Instrument file is missing expected column name {col_name}"
                 )
-                raise AllotropeConversionError(error_message) from e
-            else:
-                # If the value is optional and doesn't exist, return None
-                return None
+            raise AllotropeConversionError(error_message) from e
+
+    def _try_str_from_series_or_none(self, well_item: pd.series, col_name: str):
+        try:
+            col_value = well_item[col_name]
+            return col_value
+        except KeyError:
+            return None
