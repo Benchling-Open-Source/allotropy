@@ -488,6 +488,9 @@
                         "items": {
                           "anyOf": [
                             {
+                              "$ref": "#/$defs/opticalImagingMeasurementDocumentItems"
+                            },
+                            {
                               "$ref": "#/$defs/ultravioletAbsorbancePointDetectionMeasurementDocumentItems"
                             },
                             {
@@ -1185,6 +1188,156 @@
       "required": [
         "device type"
       ]
+    },
+    "opticalImagingDeviceControlDocument": {
+      "type": "array",
+      "$asm.array-ordered": true,
+      "$asm.array-mixed": false,
+      "$asm.pattern": "indexed datum",
+      "items": {
+        "allOf": [
+          {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "excitation wavelength setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "detector wavelength setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "magnification setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002226",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueUnitless"
+              },
+              "exposure duration setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002862",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueMilliSecond"
+              },
+              "illumination setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002861",
+                "$asm.pattern": "quantity datum",
+                    "oneOf": [
+                      {
+                        "$ref": "#/$custom/tQuantityValuePercent"
+                      },
+                      {
+                        "$ref": "#/$custom/tQuantityValueUnitless"
+                      }
+                    ]
+              },
+              "image count setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002932",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueUnitless"
+              },
+              "auto focus setting": {
+                "$asm.property-class": "TODO",
+                "$asm.pattern": "boolean datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
+                "$ref": "#/$defs/tBooleanValue"
+              },
+              "transmitted light setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002452",
+                "$asm.pattern": "class datum",
+                "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
+                "type": "string",
+                "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
+                "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+                "enum": [
+                  "lightfield",
+                  "darkfield",
+                  "phase contrast"
+                ],
+                "$asm.value-sub-class-of": "http://purl.allotrope.org/ontologies/role#AFRL_0000035"
+              },
+              "fluorescent tag setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002870",
+                "$asm.pattern": "value datum",
+                "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                "$ref": "#/$defs/tStringValue"
+              }
+            }
+          },
+          {
+            "$ref": "#/$defs/deviceControlDocument"
+          },
+          {
+            "properties": {
+               "@index": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2147483647
+               }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "opticalImagingDeviceControlAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "device control document": {
+          "$ref": "#/$defs/opticalImagingDeviceControlDocument"
+        }
+      }
+    },
+    "opticalImagingMeasurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "properties": {
+        "device control aggregate document": {
+          "$ref": "#/$defs/opticalImagingDeviceControlAggregateDocument"
+        },
+        "imageAggregateDocument": {
+          "type": "object",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002869",
+          "$asm.pattern": "aggregate datum",
+          "required": [
+            "image document"
+          ],
+          "properties": {
+            "image document": {
+              "type": "array",
+              "$asm.array-ordered": false,
+              "$asm.array-mixed": false,
+              "$asm.pattern": "indexed datum",
+              "required": [
+                "experimental data identifier"
+              ],
+              "items": {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002225",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "experimental data identifier": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001977",
+                    "$asm.pattern": "value datum",
+                    "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "@index": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2147483647
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "ultravioletAbsorbancePointDetectionDeviceControlDocument": {
       "type": "array",
