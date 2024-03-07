@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Add missing ct mean calculated data documents to relative std curve experiments in AppBio Quantstudio
 ### Changed
-- Removed VendorType. No functional changes except to type checkers.
+- Moved VendorType to to_allotrope.
 ### Deprecated
 ### Removed
 ### Security
