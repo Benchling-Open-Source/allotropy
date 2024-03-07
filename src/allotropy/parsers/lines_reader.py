@@ -3,20 +3,17 @@ from io import StringIO
 from re import search
 from typing import Literal, Optional, Union
 
-import chardet
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(
-    named_file_contents: NamedFileContents, encoding: Optional[str] = "UTF-8"
-) -> list[str]:
+def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
     stream_contents = named_file_contents.contents.read()
+    encoding = named_file_contents.encoding
     raw_contents = (
         _decode(stream_contents, encoding)
         if isinstance(stream_contents, bytes)
@@ -27,12 +24,8 @@ def read_to_lines(
 
 
 def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
-    if not encoding:
-        encoding = chardet.detect(bytes_content)["encoding"]
-        if not encoding:
-            error = "Unable to detect text encoding for file. The file may be empty."
-            raise AllotropeConversionError(error)
-    return bytes_content.decode(encoding)
+    encoding_to_use = encoding or "UTF-8"
+    return bytes_content.decode(encoding_to_use)
 
 
 class LinesReader:
