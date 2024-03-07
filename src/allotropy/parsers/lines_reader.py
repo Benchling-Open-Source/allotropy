@@ -7,6 +7,7 @@ import chardet
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
+from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 
@@ -25,13 +26,22 @@ def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
     return contents.split("\n")
 
 
-def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
+def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
     if not encoding:
-        encoding = chardet.detect(bytes_content)["encoding"]
-        if not encoding:
-            error = "Unable to detect text encoding for file. The file may be empty."
-            raise AllotropeConversionError(error)
-    return bytes_content.decode(encoding)
+        return DEFAULT_ENCODING
+    if encoding != CHARDET_ENCODING:
+        return encoding
+
+    detected = chardet.detect(bytes_content)["encoding"]
+    if not detected:
+        error = "Unable to detect text encoding for file. The file may be empty."
+        raise AllotropeConversionError(error)
+    return detected
+
+
+def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
+    encoding_to_use = _determine_encoding(bytes_content, encoding)
+    return bytes_content.decode(encoding_to_use)
 
 
 class LinesReader:
