@@ -75,11 +75,11 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 
 
 def get_parser(
-    vendor_type: Vendor, default_timezone: Optional[tzinfo] = None
+    vendor: Vendor, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
+    timestamp_parser = TimestampParser(default_timezone)
     try:
-        timestamp_parser = TimestampParser(default_timezone)
-        return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
-    except (ValueError, KeyError) as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor_type}."
+        return _VENDOR_TO_PARSER[vendor](timestamp_parser)
+    except KeyError as e:
+        error = f"Failed to create parser, unregistered vendor: {vendor}."
         raise AllotropeConversionError(error) from e
