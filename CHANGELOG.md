@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Fixed Softmax Pro handling of partially filled plates
 ### Changed
 - Moved VendorType to to_allotrope.
 ### Deprecated
