@@ -31,13 +31,11 @@ from tests.parsers.test_utils import (
 VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
-UTF_16_FILENAME = "endpoint_stdcurve_multiplate"
-
 ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
     "endpoint_stdcurve_singleplate_2",
-    UTF_16_FILENAME,
+    "endpoint_stdcurve_multiplate",
     "kinetic_helper_gene_growth_curve",
     "kinetic_singleplate",
     "kinetic_multiplate",
@@ -50,8 +48,7 @@ def test_to_allotrope_absorbance(filename: str) -> None:
     expected_filepath = (
         f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
     )
-    encoding = "UTF-16" if filename == UTF_16_FILENAME else None
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE, encoding=encoding)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
