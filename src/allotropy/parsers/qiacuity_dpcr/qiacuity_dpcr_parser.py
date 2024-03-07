@@ -27,6 +27,14 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_reader import QiacuitydPCRReader
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import (
+    try_float_from_series,
+    try_float_from_series_or_none,
+    try_int_from_series,
+    try_int_from_series_or_none,
+    try_str_from_series,
+    try_str_from_series_or_none,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 BRAND_NAME = "Qiacuity Digital PCR System"
@@ -129,11 +137,9 @@ class QiacuitydPCRParser(VendorParser):
         measurement_id = random_uuid_str()
         # There is no measurement time in the file, so assign to unix epoch
         measurement_time = EPOCH
-        target_dna_description = self._try_val_from_series(
-            well_item, TARGET_COLUMN_NAME
-        )
+        target_dna_description = try_str_from_series(well_item, TARGET_COLUMN_NAME)
         total_partition_count = TQuantityValueNumber(
-            self._try_val_from_series(well_item, PARTITIONS_COLUMN_NAME)
+            try_float_from_series(well_item, PARTITIONS_COLUMN_NAME)
         )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
@@ -146,12 +152,13 @@ class QiacuitydPCRParser(VendorParser):
         )
 
     def _get_sample_document(self, well_item: pd.Series[str]) -> SampleDocument:
-        sample_identifier = str(
-            self._try_val_from_series(well_item, SAMPLE_IDENTIFIER_COLUMN_NAME)
+        sample_identifier = try_str_from_series(
+            well_item, SAMPLE_IDENTIFIER_COLUMN_NAME
         )
+
         sample_document = SampleDocument(sample_identifier=sample_identifier)
 
-        sample_role_type = self._try_val_from_series_or_none(
+        sample_role_type = try_str_from_series_or_none(
             well_item, SAMPLE_TYPE_COLUMN_NAME
         )
         # TODO: When the sample role type model is updated in this repo, we should update this
@@ -167,18 +174,15 @@ class QiacuitydPCRParser(VendorParser):
                 )
                 raise AllotropeConversionError(error_message) from e
 
-        well_location_identifier = self._try_val_from_series_or_none(
+        well_location_identifier = try_str_from_series_or_none(
             well_item, WELL_COLUMN_NAME
         )
-        # TODO: Make a helper for all of these "only set if not none" optional document fields?
+
         if well_location_identifier is not None:
             sample_document.well_location_identifier = well_location_identifier
 
-        # ASM expects a string- ok to cast?
-        well_plate_identifier = str(
-            self._try_val_from_series_or_none(
-                well_item, WELL_PLATE_IDENTIFIER_COLUMN_NAME
-            )
+        well_plate_identifier = try_str_from_series_or_none(
+            well_item, WELL_PLATE_IDENTIFIER_COLUMN_NAME
         )
         if well_plate_identifier is not None:
             sample_document.well_plate_identifier = well_plate_identifier
@@ -194,17 +198,17 @@ class QiacuitydPCRParser(VendorParser):
     ) -> ProcessedDataDocumentItem:
 
         number_concentration = TQuantityValueNumberPerMicroliter(
-            value=self._try_val_from_series(well_item, CONCENTRATION_COLUMN_NAME)
+            value=try_float_from_series(well_item, CONCENTRATION_COLUMN_NAME)
         )
         positive_partition_count = TQuantityValueNumber(
-            value=self._try_val_from_series(well_item, POSITIVE_COUNT_COLUMN_NAME)
+            value=try_int_from_series(well_item, POSITIVE_COUNT_COLUMN_NAME)
         )
         processed_data_document = ProcessedDataDocumentItem(
             number_concentration=number_concentration,
             positive_partition_count=positive_partition_count,
         )
         # If the fluorescence intensity threshold setting exists, create a data processing document for it and add to processed data document
-        fluor_intensity_threshold = self._try_val_from_series_or_none(
+        fluor_intensity_threshold = try_int_from_series_or_none(
             well_item, FIT_SETTING_COLUMN_NAME
         )
         if fluor_intensity_threshold is not None:
@@ -216,32 +220,12 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_document.data_processing_document = data_processing_document
 
         # Negative partition count is optional
-        negative_partition_count = TQuantityValueNumber(
-            value=self._try_val_from_series_or_none(
-                well_item, NEGATIVE_COUNT_COLUMN_NAME
-            )
+        negative_partition_count = try_float_from_series_or_none(
+            well_item, NEGATIVE_COUNT_COLUMN_NAME
         )
+
         if negative_partition_count is not None:
-            processed_data_document.negative_partition_count = negative_partition_count
-        return processed_data_document
-
-    def _try_val_from_series(
-        self, well_item: pd.Series[str], col_name: str
-    ) -> str or float:
-        try:
-            col_value = well_item[col_name]
-            return col_value
-        except KeyError as e:
-            error_message = (
-                f"Instrument file is missing expected column name {col_name}"
+            processed_data_document.negative_partition_count = TQuantityValueNumber(
+                negative_partition_count
             )
-            raise AllotropeConversionError(error_message) from e
-
-    def _try_val_from_series_or_none(
-        self, well_item: pd.Series[str], col_name: str
-    ) -> str or float or None:
-        try:
-            col_value = well_item[col_name]
-            return col_value
-        except KeyError:
-            return None
+        return processed_data_document

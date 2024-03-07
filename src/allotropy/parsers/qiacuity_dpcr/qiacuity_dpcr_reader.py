@@ -13,5 +13,6 @@ class QiacuitydPCRReader:
         column_names = qiacuity_dpcr_data.columns.tolist()
         # Rename the blank column to specify that it's the Well Name column
         column_names[0] = "Well Name"
-        qiacuity_dpcr_data.columns = column_names
+        column_index = pd.Index(column_names)
+        qiacuity_dpcr_data.columns = column_index
         self.well_data = qiacuity_dpcr_data
