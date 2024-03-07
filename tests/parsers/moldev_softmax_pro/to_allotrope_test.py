@@ -91,13 +91,18 @@ def test_data_source_id_references(
     test_filepath = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     data_source_ids = []
-    if "calculated data aggregate document" in allotrope_dict["plate reader aggregate document"]:
+    if (
+        "calculated data aggregate document"
+        in allotrope_dict["plate reader aggregate document"]
+    ):
         data_source_ids = [
             dsd["data source identifier"]
             for calc_doc in allotrope_dict["plate reader aggregate document"][
                 "calculated data aggregate document"
             ]["calculated data document"]
-            for dsd in calc_doc["data source aggregate document"]["data source document"]
+            for dsd in calc_doc["data source aggregate document"][
+                "data source document"
+            ]
         ]
     measurement_ids = [
         meas_doc["measurement identifier"]
