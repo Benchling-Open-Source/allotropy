@@ -139,7 +139,7 @@ class QiacuitydPCRParser(VendorParser):
         measurement_time = EPOCH
         target_dna_description = try_str_from_series(well_item, TARGET_COLUMN_NAME)
         total_partition_count = TQuantityValueNumber(
-            try_float_from_series(well_item, PARTITIONS_COLUMN_NAME)
+            try_int_from_series(well_item, PARTITIONS_COLUMN_NAME)
         )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
@@ -208,7 +208,7 @@ class QiacuitydPCRParser(VendorParser):
             positive_partition_count=positive_partition_count,
         )
         # If the fluorescence intensity threshold setting exists, create a data processing document for it and add to processed data document
-        fluor_intensity_threshold = try_int_from_series_or_none(
+        fluor_intensity_threshold = try_float_from_series_or_none(
             well_item, FIT_SETTING_COLUMN_NAME
         )
         if fluor_intensity_threshold is not None:
@@ -220,7 +220,7 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_document.data_processing_document = data_processing_document
 
         # Negative partition count is optional
-        negative_partition_count = try_float_from_series_or_none(
+        negative_partition_count = try_int_from_series_or_none(
             well_item, NEGATIVE_COUNT_COLUMN_NAME
         )
 
