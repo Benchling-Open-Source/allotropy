@@ -39,6 +39,7 @@ def _assert_allotrope_dicts_equal(
         expected_replaced,
         actual,
         ignore_type_in_groups=[(float, np.float64)],
+        ignore_nan_inequality=True,
     )
     assert not ddiff
 
