@@ -1,6 +1,6 @@
 from datetime import tzinfo
 from enum import Enum
-from typing import Optional, Union
+from typing import Optional
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
@@ -58,9 +58,6 @@ class Vendor(Enum):
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
 
 
-VendorType = Union[Vendor, str]
-
-
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
@@ -81,11 +78,11 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 
 
 def get_parser(
-    vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
+    vendor: Vendor, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
+    timestamp_parser = TimestampParser(default_timezone)
     try:
-        timestamp_parser = TimestampParser(default_timezone)
-        return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
-    except (ValueError, KeyError) as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor_type}."
+        return _VENDOR_TO_PARSER[vendor](timestamp_parser)
+    except KeyError as e:
+        error = f"Failed to create parser, unregistered vendor: {vendor}."
         raise AllotropeConversionError(error) from e

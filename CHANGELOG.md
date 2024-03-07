@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Qiacuity dPCR adapter
 ### Fixed
 ### Changed
+- Moved VendorType to to_allotrope.
 ### Deprecated
 ### Removed
 ### Security
