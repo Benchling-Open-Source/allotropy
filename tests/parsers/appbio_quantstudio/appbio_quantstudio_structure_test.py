@@ -20,7 +20,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
 from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
-from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.lines_reader import LinesReader
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -56,7 +56,7 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
 
 def _read_to_lines(io_: IOType) -> list[str]:
     named_file_contents = NamedFileContents(io_, "test.csv")
-    return read_to_lines(named_file_contents)
+    return named_file_contents.read_to_lines("UTF-8")
 
 
 @pytest.mark.short

@@ -4,14 +4,13 @@ import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers import lines_reader
 from allotropy.parsers.lines_reader import CsvReader
 
 
 class NanoDropEightReader:
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
-        all_lines = lines_reader.read_to_lines(named_file_contents)
+        all_lines = named_file_contents.read_to_lines("UTF-8")
         reader = CsvReader(all_lines)
         lines = reader.pop_csv_block_as_lines()
         raw_data = read_csv(

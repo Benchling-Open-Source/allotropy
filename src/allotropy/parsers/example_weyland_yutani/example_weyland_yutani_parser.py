@@ -21,14 +21,14 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure import (
     Data,
 )
-from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ExampleWeylandYutaniParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        lines = read_to_lines(named_file_contents)
+        lines = named_file_contents.read_to_lines("UTF-8")
         reader = CsvReader(lines)
         return self._get_model(Data.create(reader))
 

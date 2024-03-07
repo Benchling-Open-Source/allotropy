@@ -49,13 +49,13 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Well,
     WellItem,
 )
-from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        lines = read_to_lines(named_file_contents)
+        lines = named_file_contents.read_to_lines("UTF-8")
         reader = LinesReader(lines)
         data = create_data(reader)
         file_name = named_file_contents.original_file_name

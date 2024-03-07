@@ -1,5 +1,5 @@
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Analyte,
     CalibrationItem,
@@ -14,7 +14,7 @@ def get_reader() -> CsvReader:
     filename = "tests/parsers/luminex_xponent/testdata/test_data.csv"
     with open(filename, "rb") as fp:
         named_file_contents = NamedFileContents(fp, filename)
-        lines = read_to_lines(named_file_contents)
+        lines = named_file_contents.read_to_lines("UTF-8")
     return CsvReader(lines)
 
 

@@ -27,7 +27,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Data,
     Header,
@@ -43,7 +43,7 @@ DEFAULT_DEVICE_TYPE = "multi analyte profiling analyzer"
 
 class LuminexXponentParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        lines = read_to_lines(named_file_contents)
+        lines = named_file_contents.read_to_lines("UTF-8")
         reader = CsvReader(lines)
         data = Data.create(reader)
         return self._get_model(named_file_contents.original_file_name, data)

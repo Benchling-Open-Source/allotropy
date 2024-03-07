@@ -26,7 +26,6 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
-from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -93,7 +92,7 @@ class AgilentGen5Parser(VendorParser):
         raise AllotropeConversionError(msg)
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
-        lines = read_to_lines(named_file_contents, encoding=None)
+        lines = named_file_contents.read_to_lines(None)
         section_lines_reader = SectionLinesReader(lines)
         data = Data.create(section_lines_reader)
 

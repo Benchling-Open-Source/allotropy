@@ -5,7 +5,7 @@ from typing import Optional
 import pytest
 
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.lines_reader import LinesReader
 
 INPUT_LINES = [
     "data section",
@@ -31,7 +31,7 @@ def _read_to_lines(encoding: Optional[str] = None) -> list[str]:
     input_text = "\n".join(INPUT_LINES)
     io_ = BytesIO(input_text.encode("UTF-8"))
     named_file_contents = NamedFileContents(io_, "test.csv")
-    return read_to_lines(named_file_contents, encoding)
+    return named_file_contents.read_to_lines(encoding)
 
 
 def test_read_to_lines() -> None:

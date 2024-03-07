@@ -6,16 +6,8 @@ from typing import Literal, Optional, Union
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
-from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
-
-
-# TODO(brian): inline this function
-def read_to_lines(
-    named_file_contents: NamedFileContents, encoding: Optional[str] = "UTF-8"
-) -> list[str]:
-    return named_file_contents.read_to_lines(encoding)
 
 
 class LinesReader:
