@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import final, Optional
 
 import chardet
 
@@ -6,6 +6,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.types import IOType
 
 
+@final
 class NamedFileContents:
     """
     A file's contents and the name of the file whence they came.
