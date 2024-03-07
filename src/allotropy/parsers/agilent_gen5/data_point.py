@@ -60,26 +60,8 @@ class DataPoint(ABC):
     def generate_data_cube(self) -> TDatacube:
         structure_dimensions = READTYPE_TO_DIMENSIONS[self.read_type]
         structure_measures = [("double", self.read_mode.lower(), self.unit)]
-        num_measurements_with_temperature = 3
-        if self.read_type == ReadType.AREASCAN:
-            data_dimensions = [
-                [m[0] for m in self.measurements],
-                [m[1] for m in self.measurements],
-            ]
-            data_measures = [[m[2] for m in self.measurements]]
-        elif (
-            self.read_type == ReadType.KINETIC
-            and len(self.measurements[0]) == num_measurements_with_temperature
-        ):
-            structure_measures.append(("double", "temperature", "C"))
-            data_dimensions = [[m[0] for m in self.measurements]]
-            data_measures = [
-                [m[1] for m in self.measurements],
-                [m[2] for m in self.measurements],
-            ]
-        else:
-            data_dimensions = [[m[0] for m in self.measurements]]
-            data_measures = [[m[1] for m in self.measurements]]
+        data_dimensions = [[m[0] for m in self.measurements]]
+        data_measures = [[m[1] for m in self.measurements]]
 
         return TDatacube(
             label=f"{self.read_type.value.lower()} data",

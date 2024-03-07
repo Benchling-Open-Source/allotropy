@@ -4,28 +4,17 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
-from io import StringIO
 from typing import Optional, Union
 
-import numpy as np
-import pandas as pd
-
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
+    UNSUPORTED_READ_TYPE_ERROR,
     ReadMode,
     ReadType,
-    READTYPE_TO_DIMENSIONS,
 )
 from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
@@ -139,8 +128,11 @@ class ReadData:
         reader.drop_empty()
         procedure_details = read_data_section(reader)
 
-        read_mode = cls.get_read_mode(procedure_details)
         read_type = cls.get_read_type(procedure_details)
+        if read_type != ReadType.ENDPOINT:
+            raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
+
+        read_mode = cls.get_read_mode(procedure_details)
         read_names: list = []
         procedure_chunks = cls._parse_procedure_chunks(procedure_details)
         for procedure_chunk in procedure_chunks:
@@ -232,7 +224,7 @@ class ReadData:
                     use_wavelength_names = True
                 else:
                     read_names.append(split_line[-1])
-            elif split_line[0].startswith("Wavelengths"):
+            if split_line[0].startswith("Wavelengths"):
                 if use_wavelength_names:
                     split_line_colon = split_line[0].split(":  ")
                     if len(split_line_colon) != wavelength_line_length:
@@ -415,108 +407,6 @@ class CurveName:
         )
 
 
-# TODO: this class will probably be removed since kinetic is not supported at this point by allotropy
-@dataclass(frozen=True)
-class KineticData:
-    temperatures: list
-    kinetic_times: list[int]
-
-    @staticmethod
-    def create_default() -> KineticData:
-        return KineticData(
-            temperatures=[],
-            kinetic_times=[],
-        )
-
-    @staticmethod
-    def create(
-        reader: LinesReader,
-        results: Results,
-    ) -> KineticData:
-        kinetic_data = read_data_section(reader)
-
-        kinetic_data_io = StringIO(kinetic_data)
-        df = pd.read_table(kinetic_data_io)
-        df_columns = kinetic_data.split("\n")[0].split("\t")
-        df = df[
-            df["A1"].notna()
-        ]  # drop incomplete rows, particularly rows only with "0:00:00"
-
-        kinetic_times = [hhmmss_to_sec(hhmmss) for hhmmss in df["Time"]]
-        temperatures = df[df_columns[1]].replace(np.nan, None).tolist()
-        has_temperatures = any(temp is not None for temp in temperatures)
-        for well_pos in df_columns[
-            2:
-        ]:  # first column is Time, second column is T∞ READ_NAME with no values
-            results.wells.append(well_pos)
-            values = df[well_pos].tolist()
-            if has_temperatures:
-                results.measurements[well_pos].extend(
-                    list(zip(kinetic_times, values, temperatures))
-                )
-            else:
-                results.measurements[well_pos].extend(list(zip(kinetic_times, values)))
-
-        return KineticData(
-            temperatures=temperatures,
-            kinetic_times=kinetic_times,
-        )
-
-    def parse_blank_kinetic_data(
-        self,
-        reader: LinesReader,
-        blank_kinetic_data_label: str,
-        results: Results,
-        read_data: ReadData,
-    ) -> None:
-        blank_kinetic_data = read_data_section(reader)
-
-        blank_kinetic_data_io = StringIO(blank_kinetic_data)
-        df = pd.read_table(blank_kinetic_data_io)
-        df.dropna(axis=0)  # drop incomplete rows
-        df_columns = blank_kinetic_data.split("\n")[0].split("\t")
-
-        for well_pos in df_columns[1:]:  # first column is Time
-            measures = df[well_pos].tolist()
-            results.processed_datas[well_pos].append(
-                [
-                    blank_kinetic_data_label,
-                    self._blank_data_cube(
-                        measures,
-                        read_data,
-                    ),
-                ]
-            )
-
-    def _blank_data_cube(
-        self,
-        measures: list[float],
-        read_data: ReadData,
-    ) -> TDatacube:
-        structure_dimensions = READTYPE_TO_DIMENSIONS[read_data.read_type]
-        structure_measures = [
-            (
-                "double",
-                read_data.read_mode.lower(),
-                read_data.data_point_cls.unit,
-            )
-        ]
-        return TDatacube(
-            label=f"{read_data.read_type.value.lower()} data",
-            cube_structure=TDatacubeStructure(
-                [
-                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
-                    for data_type, concept, unit in structure_dimensions
-                ],
-                [
-                    TDatacubeComponent(FieldComponentDatatype(data_type), concept, unit)
-                    for data_type, concept, unit in structure_measures
-                ],
-            ),
-            data=TDatacubeData([self.kinetic_times], [measures]),  # type: ignore[list-item]
-        )
-
-
 @dataclass(frozen=True)
 class PlateData:
     file_paths: FilePaths
@@ -524,7 +414,6 @@ class PlateData:
     read_data: ReadData
     results: Results
     curve_name: CurveName
-    kinetic_data: KineticData
 
     @staticmethod
     def create(reader: LinesReader) -> PlateData:
@@ -535,7 +424,6 @@ class PlateData:
         actual_temperature = ActualTemperature.create_default()
         results = Results.create()
         curve_name = CurveName.create_default()
-        kinetic_data = KineticData.create_default()
 
         while reader.current_line_exists():
             data_section = read_data_section(reader)
@@ -557,18 +445,6 @@ class PlateData:
                     header_data,
                     results,
                 )
-            elif len(data_section.split("\n")) == 1 and any(
-                read_name in data_section for read_name in read_data.read_names
-            ):
-                if data_section.startswith("Blank"):
-                    kinetic_data.parse_blank_kinetic_data(
-                        reader,
-                        data_section.strip(),
-                        results,
-                        read_data,
-                    )
-                else:
-                    kinetic_data = KineticData.create(reader, results)
 
         return PlateData(
             file_paths=file_paths,
@@ -576,5 +452,4 @@ class PlateData:
             read_data=read_data,
             results=results,
             curve_name=curve_name,
-            kinetic_data=kinetic_data,
         )

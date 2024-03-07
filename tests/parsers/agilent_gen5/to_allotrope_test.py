@@ -30,6 +30,7 @@ from tests.parsers.test_utils import (
 from allotropy.parsers.agilent_gen5.constants import (
     MULTIPLATE_FILE_ERROR,
     NO_PLATE_DATA_ERROR,
+    UNSUPORTED_READ_TYPE_ERROR,
 )
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
@@ -39,8 +40,6 @@ ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
     "endpoint_stdcurve_singleplate_2",
-    "kinetic_helper_gene_growth_curve",
-    "kinetic_singleplate",
 ]
 
 
@@ -159,6 +158,18 @@ def test_to_allotrope_luminescence() -> None:
 
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
+
+
+@pytest.mark.parametrize(
+    "filepath",
+    [
+        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
+        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_singleplate.txt",
+    ],
+)
+def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
+    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
 
 
 @pytest.mark.parametrize(

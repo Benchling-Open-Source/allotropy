@@ -4,6 +4,7 @@ from typing import Optional
 
 MULTIPLATE_FILE_ERROR = "Only a single plate per file can be processed at this time. Please refer to Gen5 documentation for how to generate single plate exports from multi-plate experiments"
 NO_PLATE_DATA_ERROR = "No plate data found in file."
+UNSUPORTED_READ_TYPE_ERROR = "Only Endpoint measurements can be processed at this time."
 
 
 class ReadMode(str, Enum):
