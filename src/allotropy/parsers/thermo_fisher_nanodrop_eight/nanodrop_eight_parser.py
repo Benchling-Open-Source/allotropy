@@ -111,10 +111,9 @@ def _get_concentration(
 
 class NanodropEightParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents, filename = named_file_contents
-        data = NanoDropEightReader.read(contents)
+        data = NanoDropEightReader.read(named_file_contents)
         data = self._add_measurement_uuids(data)
-        return self._get_model(data, filename)
+        return self._get_model(data, named_file_contents.original_file_name)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
         return Model(
