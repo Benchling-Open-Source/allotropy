@@ -508,7 +508,7 @@ class TimeKineticData:
                     temperature=temperature,
                     wavelength=wavelength,
                     position=str(position),
-                    value=value,
+                    value=try_float_or_nan(str(value)),
                 )
                 for position, value in row.iloc[2:].items()
             },
