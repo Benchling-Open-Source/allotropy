@@ -375,13 +375,30 @@ class PlateKineticData:
         header: PlateHeader,
         columns: pd.Series[str],
     ) -> PlateKineticData:
+
+        # use plate dimensions to determine how many rows of plate block to read
+        dimensions = assert_not_none(
+            NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
+            msg="unable to determine plate dimensions",
+        )
+        rows = dimensions[1]
+        lines = []
+        # read number of rows in plate
+        for _row in range(rows):
+            lines.append(reader.pop() or "")
+        reader.drop_empty()
+
+        # convert rows to df
         data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t"),
+            reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
         data.columns = pd.Index(columns)
 
-        temperature = try_float_or_none(str(data.iloc[0, 1]))
+        # get temprature from the first column of the first row with value
+        temperature = try_float_or_none(
+            str(data.iloc[int(pd.to_numeric(data.first_valid_index())), 1])
+        )
 
         return PlateKineticData(
             temperature=temperature,
