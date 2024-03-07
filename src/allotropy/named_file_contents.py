@@ -13,6 +13,9 @@ class NamedFileContents:
     we accept an IO object for file contents. However, some vendor file parsers extract information
     from the original file name produced by the instrument. Thus, we use this class to support
     as many cases as possible.
+
+    An encoding of None means that an encoding was not specified. Currently, if encoding is not specified
+    (and contents is a bytes object), we attempt to detect the encoding using chardet.
     """
 
     contents: IOType
