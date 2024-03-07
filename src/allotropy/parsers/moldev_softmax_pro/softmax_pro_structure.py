@@ -75,32 +75,24 @@ def try_str_from_series_multikey(
     )
 
 
-NUM_WELLS_TO_N_COLUMNS: dict[int, int] = {
-    6: 3,
-    12: 4,
-    24: 6,
-    48: 8,
-    96: 12,
-    384: 24,
-    1536: 48,
-}
-
-NUM_WELLS_TO_N_ROWS: dict[int, int] = {
-    6: 2,
-    12: 3,
-    24: 4,
-    48: 6,
-    96: 8,
-    384: 16,
-    1536: 32,
+NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
+    6: (3, 2),
+    12: (4, 3),
+    24: (6, 4),
+    48: (8, 6),
+    96: (12, 8),
+    384: (24, 16),
+    1536: (48, 32),
 }
 
 
 def num_wells_to_n_columns(well_count: int) -> int:
-    if n_columns := NUM_WELLS_TO_N_COLUMNS.get(well_count):
-        return n_columns
+    if dimensions := NUM_WELLS_TO_PLATE_DIMENSIONS.get(well_count):
+        return dimensions[0]
 
-    num_wells = ",".join([str(num_wells) for num_wells in NUM_WELLS_TO_N_COLUMNS])
+    num_wells = ",".join(
+        [str(num_wells) for num_wells in NUM_WELLS_TO_PLATE_DIMENSIONS]
+    )
     msg = (
         f"Unknown number of wells '{well_count}'. Only accepted values are {num_wells}"
     )
@@ -708,8 +700,7 @@ class PlateBlock(ABC, Block):
         ]
 
     def iter_wells(self) -> Iterator[str]:
-        rows = NUM_WELLS_TO_N_ROWS[self.header.num_wells]
-        cols = NUM_WELLS_TO_N_COLUMNS[self.header.num_wells]
+        cols, rows = NUM_WELLS_TO_PLATE_DIMENSIONS[self.header.num_wells]
         for row in range(rows):
             for col in range(1, cols + 1):
                 yield f"{num_to_chars(row)}{col}"
