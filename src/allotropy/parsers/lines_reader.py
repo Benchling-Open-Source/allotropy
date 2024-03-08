@@ -147,3 +147,22 @@ class CsvReader(LinesReader):
     def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
         line = self.pop()
         return None if line is None else pd.Series(line.split(sep))
+
+    def lines_as_df(
+        self,
+        *,
+        lines: list[str],
+        header: Optional[Union[int, Literal["infer"]]] = None,
+        sep: Optional[str] = ",",
+        as_str: bool = False,
+    ) -> Optional[pd.DataFrame]:
+        if lines:
+            return read_csv(
+                StringIO("\n".join(lines)),
+                header=header,
+                sep=sep,
+                dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
+            )
+        return None
