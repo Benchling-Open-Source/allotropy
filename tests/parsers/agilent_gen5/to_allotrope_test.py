@@ -172,6 +172,18 @@ def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
         from_file(filepath, VENDOR_TYPE)
 
 
+def test_to_allotrope_unsupported_spectral_scan_file() -> None:
+    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_114129_BNCH654563_spectralScan_example01.txt"
+    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
+
+
+def test_to_allotrope_unsupported_area_scan_file() -> None:
+    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_125255_BNCH786865_areaScan_example01.txt"
+    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
+
+
 @pytest.mark.parametrize(
     "filepath",
     [
