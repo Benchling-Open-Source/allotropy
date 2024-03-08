@@ -64,8 +64,10 @@ SAMPLE_ROLE_TYPE_MAPPING = {
 
 class QiacuitydPCRParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents, filename = named_file_contents
+        contents = named_file_contents.contents
         reader = QiacuitydPCRReader(contents)
+
+        filename = named_file_contents.original_file_name
         return self._get_model(reader.well_data, filename)
 
     def _get_model(self, qiacuity_data: pd.DataFrame, file_name: str) -> Model:
