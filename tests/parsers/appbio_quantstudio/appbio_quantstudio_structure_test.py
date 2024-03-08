@@ -54,8 +54,8 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
             source.reference.uuid = ""
 
 
-def _read_to_lines(io_: IOType) -> list[str]:
-    named_file_contents = NamedFileContents(io_, "test.csv")
+def _read_to_lines(io_: IOType, encoding: Optional[str] = None) -> list[str]:
+    named_file_contents = NamedFileContents(io_, "test.csv", encoding=encoding)
     return read_to_lines(named_file_contents)
 
 
@@ -142,7 +142,7 @@ def test_header_builder_invalid_plate_well_count() -> None:
 @pytest.mark.short
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
-    lines = _read_to_lines(header_contents)
+    lines = _read_to_lines(header_contents, encoding="UTF-8")
     lines_reader = LinesReader(lines)
     with pytest.raises(
         AllotropeConversionError,

@@ -13,10 +13,9 @@ from allotropy.named_file_contents import NamedFileContents
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(
-    named_file_contents: NamedFileContents, encoding: Optional[str] = "UTF-8"
-) -> list[str]:
+def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
     stream_contents = named_file_contents.contents.read()
+    encoding = named_file_contents.encoding
     raw_contents = (
         _decode(stream_contents, encoding)
         if isinstance(stream_contents, bytes)
