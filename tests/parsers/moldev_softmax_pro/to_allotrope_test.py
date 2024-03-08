@@ -102,7 +102,7 @@ def test_data_source_id_references(
     file_name: str,
 ) -> None:
     test_filepath = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE, CHARDET_ENCODING)
     data_source_ids = []
     if (
         "calculated data aggregate document"
