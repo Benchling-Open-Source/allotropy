@@ -355,6 +355,9 @@
                         },
                         "minItems": 1
                       },
+                      "image aggregate document": {
+                        "$ref": "#/$defs/opticalImagingAggregateDocument"
+                      },
                       "diagnostic trace aggregate document": {
                         "type": "object",
                         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002705",
