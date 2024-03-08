@@ -31,6 +31,7 @@ from tests.parsers.test_utils import (
 VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
+# This file was manually changed to use UTF-16 encoding to test encoding code paths. git history doesn't show this.
 UTF_16_FILENAME = "endpoint_stdcurve_multiplate"
 
 ABSORBENCE_FILENAMES = [
