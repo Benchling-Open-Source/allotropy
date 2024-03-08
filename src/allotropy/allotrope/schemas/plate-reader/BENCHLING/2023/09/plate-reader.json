@@ -477,6 +477,53 @@
                     "$asm.pattern": "value datum",
                     "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                     "$ref": "#/$defs/tStringValue"
+                  },
+                  "image feature aggregate document": {
+                    "type": "object",
+                    "$asm.property-class": "TODO",
+                    "$asm.pattern": "aggregate datum",
+                    "required": [
+                      "image feature document"
+                    ],
+                    "properties": {
+                      "image feature document": {
+                        "type": "array",
+                        "$asm.array-ordered": true,
+                        "$asm.array-mixed": false,
+                        "$asm.pattern": "indexed datum",
+                        "items": {
+                          "type": "object",
+                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
+                          "$asm.pattern": "aggregate datum",
+                          "required": [
+                            "image feature identifier"
+                          ],
+                          "properties": {
+                            "image feature identifier": {
+                              "$asm.property-class": "TODO",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "image feature name": {
+                              "$asm.property-class": "TODO",
+                              "$asm.pattern": "value datum",
+                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+                              "$ref": "#/$defs/tStringValue"
+                            },
+                            "data source aggregate document": {
+                              "$ref": "#/$defs/dataSourceAggregateDocument"
+                            },
+                            "image feature result": {
+                              "$asm.property-class": "TODO",
+                              "$asm.pattern": "quantity datum",
+                              "$ref": "#/$custom/tQuantityValueUnitless"
+                            }
+                          }
+                        },
+                        "minItems": 1
+                      }
+                    }
                   }
                 }
               },
