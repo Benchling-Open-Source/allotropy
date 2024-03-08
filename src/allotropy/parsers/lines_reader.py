@@ -14,34 +14,44 @@ from allotropy.named_file_contents import NamedFileContents
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
+class FileReader:
+
+    named_file_contents: NamedFileContents
+
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
+        self.named_file_contents = named_file_contents
+
+    def read_to_lines(self) -> list[str]:
+        stream_contents = self.named_file_contents.contents.read()
+        raw_contents = (
+            self._decode(stream_contents)
+            if isinstance(stream_contents, bytes)
+            else stream_contents
+        )
+        contents = raw_contents.replace("\r\n", "\n")
+        return contents.split("\n")
+
+    def _determine_encoding(self, bytes_content: bytes) -> str:
+        encoding = self.named_file_contents.encoding
+        if not encoding:
+            return DEFAULT_ENCODING
+        if encoding != CHARDET_ENCODING:
+            return encoding
+
+        detected = chardet.detect(bytes_content)["encoding"]
+        if not detected:
+            error = "Unable to detect text encoding for file. The file may be empty."
+            raise AllotropeConversionError(error)
+        return detected
+
+    def _decode(self, bytes_content: bytes) -> str:
+        encoding_to_use = self._determine_encoding(bytes_content)
+        return bytes_content.decode(encoding_to_use)
+
+
 def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
-    stream_contents = named_file_contents.contents.read()
-    encoding = named_file_contents.encoding
-    raw_contents = (
-        _decode(stream_contents, encoding)
-        if isinstance(stream_contents, bytes)
-        else stream_contents
-    )
-    contents = raw_contents.replace("\r\n", "\n")
-    return contents.split("\n")
-
-
-def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
-    if not encoding:
-        return DEFAULT_ENCODING
-    if encoding != CHARDET_ENCODING:
-        return encoding
-
-    detected = chardet.detect(bytes_content)["encoding"]
-    if not detected:
-        error = "Unable to detect text encoding for file. The file may be empty."
-        raise AllotropeConversionError(error)
-    return detected
-
-
-def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
-    encoding_to_use = _determine_encoding(bytes_content, encoding)
-    return bytes_content.decode(encoding_to_use)
+    file_reader = FileReader(named_file_contents)
+    return file_reader.read_to_lines()
 
 
 class LinesReader:
