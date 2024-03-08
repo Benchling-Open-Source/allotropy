@@ -8,7 +8,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
@@ -124,7 +124,7 @@ class UnchainedLabsLunaticParser(VendorParser):
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),
-                    data_source_aggregate_document=DataSourceAggregateDocument1(
+                    data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[
                             DataSourceDocumentItem(
                                 data_source_identifier=item.identifier,
