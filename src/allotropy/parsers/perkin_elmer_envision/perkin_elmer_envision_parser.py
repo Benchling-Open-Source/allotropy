@@ -83,9 +83,9 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 class PerkinElmerEnvisionParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents, filename = named_file_contents
-        lines = read_to_lines(named_file_contents.contents)
+        lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
+        filename = named_file_contents.original_file_name
         try:
             return self._get_model(Data.create(reader), filename)
         except Exception as error:

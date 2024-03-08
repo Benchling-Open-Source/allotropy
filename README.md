@@ -20,6 +20,7 @@ We currently have parser support for the following instruments:
   - MolDev SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
+  - Qiacuity dPCR
   - Roche Cedex BioHT
   - Thermo Fisher NanoDrop Eight
   - Unchained Labs Lunatic

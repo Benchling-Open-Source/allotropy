@@ -8,13 +8,15 @@ import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.types import IOType
+from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
-    stream_contents = io_.read()
+def read_to_lines(
+    named_file_contents: NamedFileContents, encoding: Optional[str] = "UTF-8"
+) -> list[str]:
+    stream_contents = named_file_contents.contents.read()
     raw_contents = (
         _decode(stream_contents, encoding)
         if isinstance(stream_contents, bytes)
@@ -146,3 +148,22 @@ class CsvReader(LinesReader):
     def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
         line = self.pop()
         return None if line is None else pd.Series(line.split(sep))
+
+    def lines_as_df(
+        self,
+        *,
+        lines: list[str],
+        header: Optional[Union[int, Literal["infer"]]] = None,
+        sep: Optional[str] = ",",
+        as_str: bool = False,
+    ) -> Optional[pd.DataFrame]:
+        if lines:
+            return read_csv(
+                StringIO("\n".join(lines)),
+                header=header,
+                sep=sep,
+                dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
+            )
+        return None

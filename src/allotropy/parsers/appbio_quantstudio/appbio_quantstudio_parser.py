@@ -55,10 +55,10 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class AppBioQuantStudioParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents, file_name = named_file_contents
-        lines = read_to_lines(raw_contents)
+        lines = read_to_lines(named_file_contents)
         reader = LinesReader(lines)
         data = create_data(reader)
+        file_name = named_file_contents.original_file_name
         return self._get_model(data, file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
