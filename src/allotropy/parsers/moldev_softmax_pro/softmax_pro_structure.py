@@ -75,22 +75,24 @@ def try_str_from_series_multikey(
     )
 
 
-NUM_WELLS_TO_N_COLUMNS: dict[int, int] = {
-    6: 3,
-    12: 4,
-    24: 6,
-    48: 8,
-    96: 12,
-    384: 24,
-    1536: 48,
+NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
+    6: (3, 2),
+    12: (4, 3),
+    24: (6, 4),
+    48: (8, 6),
+    96: (12, 8),
+    384: (24, 16),
+    1536: (48, 32),
 }
 
 
 def num_wells_to_n_columns(well_count: int) -> int:
-    if n_columns := NUM_WELLS_TO_N_COLUMNS.get(well_count):
-        return n_columns
+    if dimensions := NUM_WELLS_TO_PLATE_DIMENSIONS.get(well_count):
+        return dimensions[0]
 
-    num_wells = ",".join([str(num_wells) for num_wells in NUM_WELLS_TO_N_COLUMNS])
+    num_wells = ",".join(
+        [str(num_wells) for num_wells in NUM_WELLS_TO_PLATE_DIMENSIONS]
+    )
     msg = (
         f"Unknown number of wells '{well_count}'. Only accepted values are {num_wells}"
     )
@@ -373,13 +375,30 @@ class PlateKineticData:
         header: PlateHeader,
         columns: pd.Series[str],
     ) -> PlateKineticData:
+
+        # use plate dimensions to determine how many rows of plate block to read
+        dimensions = assert_not_none(
+            NUM_WELLS_TO_PLATE_DIMENSIONS.get(header.num_wells),
+            msg="unable to determine plate dimensions",
+        )
+        rows = dimensions[1]
+        lines = []
+        # read number of rows in plate
+        for _row in range(rows):
+            lines.append(reader.pop() or "")
+        reader.drop_empty()
+
+        # convert rows to df
         data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t"),
+            reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
         data.columns = pd.Index(columns)
 
-        temperature = try_float_or_none(str(data.iloc[0, 1]))
+        # get temprature from the first column of the first row with value
+        temperature = try_float_or_none(
+            str(data.iloc[int(pd.to_numeric(data.first_valid_index())), 1])
+        )
 
         return PlateKineticData(
             temperature=temperature,
@@ -698,8 +717,9 @@ class PlateBlock(ABC, Block):
         ]
 
     def iter_wells(self) -> Iterator[str]:
-        for row in range(self.header.num_rows):
-            for col in range(1, self.header.num_columns + 1):
+        cols, rows = NUM_WELLS_TO_PLATE_DIMENSIONS[self.header.num_wells]
+        for row in range(rows):
+            for col in range(1, cols + 1):
                 yield f"{num_to_chars(row)}{col}"
 
     def iter_data_elements(self, position: str) -> Iterator[DataElement]:
