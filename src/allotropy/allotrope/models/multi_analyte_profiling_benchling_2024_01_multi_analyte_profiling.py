@@ -17,7 +17,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    TDateTimeStampValue,
+    TDateTimeValue,
     TQuantityValue,
     TStringValue,
 )
@@ -60,7 +60,7 @@ class DeviceDocumentItem:
 class ReferenceMaterialDocument:
     reference_material_identifier: Optional[TStringValue] = None
     batch_identifier: Optional[TStringValue] = None
-    expiry_time_prescription: Optional[TDateTimeStampValue] = None
+    expiry_time_prescription: Optional[TDateTimeValue] = None
 
 
 @dataclass
@@ -78,8 +78,8 @@ class CalibrationResultAggregateDocument:
 class CalibrationDocumentItem:
     calibration_name: Optional[TStringValue] = None
     calibration_description: Optional[TStringValue] = None
-    calibration_time: Optional[TDateTimeStampValue] = None
-    expiry_time_prescription: Optional[TDateTimeStampValue] = None
+    calibration_time: Optional[TDateTimeValue] = None
+    expiry_time_prescription: Optional[TDateTimeValue] = None
     calibration_report: Optional[TStringValue] = None
     reference_material_document: Optional[ReferenceMaterialDocument] = None
     calibration_result_aggregate_document: Optional[
@@ -177,7 +177,7 @@ class ErrorAggregateDocument:
 @dataclass
 class MeasurementDocumentItem:
     measurement_identifier: TStringValue
-    measurement_time: TDateTimeStampValue
+    measurement_time: TDateTimeValue
     sample_document: SampleDocument
     device_control_aggregate_document: DeviceControlAggregateDocument
     assay_bead_count: TQuantityValueNumber

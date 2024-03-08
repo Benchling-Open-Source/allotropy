@@ -30,8 +30,6 @@ TBooleanOrNullArray = list[Optional[bool]]
 TBooleanValue = Union[bool, TBooleanValueItem]
 TClass = str
 TDateTimeValue = Union[str, TDateTimeValueItem]
-# TODO(brian): inline this
-TDateTimeStampValue = TDateTimeValue
 TNumberArray = list[float]
 TNumberOrNullArray = list[Optional[float]]
 TStringArray = list[str]

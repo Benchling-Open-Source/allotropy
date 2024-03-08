@@ -21,7 +21,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TClass,
     TDatacube,
-    TDateTimeStampValue,
+    TDateTimeValue,
     TQuantityValue,
     TStringValue,
 )
@@ -414,7 +414,7 @@ class FluorescenceCellCountingDeviceControlAggregateDocument:
 
 @dataclass
 class FluorescenceCellCountingMeasurementDocumentItem:
-    measurement_time: TDateTimeStampValue
+    measurement_time: TDateTimeValue
     measurement_identifier: TStringValue
     device_control_aggregate_document: FluorescenceCellCountingDeviceControlAggregateDocument
     sample_document: SampleDocument
@@ -456,7 +456,7 @@ class ProcessedDataAggregateDocument1:
 
 @dataclass
 class CellCountingDetectorMeasurementDocumentItem:
-    measurement_time: TDateTimeStampValue
+    measurement_time: TDateTimeValue
     measurement_identifier: TStringValue
     device_control_aggregate_document: CellCountingDetectorDeviceControlAggregateDocument
     sample_document: SampleDocument

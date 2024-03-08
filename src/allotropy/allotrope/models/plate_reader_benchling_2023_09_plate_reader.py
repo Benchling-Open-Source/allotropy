@@ -22,7 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TClass,
-    TDateTimeStampValue,
+    TDateTimeValue,
     TQuantityValue,
     TStringValue,
 )
@@ -450,7 +450,7 @@ class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
     device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
     absorbance: TQuantityValueMilliAbsorbanceUnit
-    measurement_time: Optional[TDateTimeStampValue] = None
+    measurement_time: Optional[TDateTimeValue] = None
     detection_type: Optional[TStringValue] = None
     processed_data_aggregate_document: Optional[
         ProcessedDataAggregateDocumentModel
@@ -489,7 +489,7 @@ class FluorescencePointDetectionMeasurementDocumentItems:
     device_control_aggregate_document: FluorescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
     fluorescence: TQuantityValueRelativeFluorescenceUnit
-    measurement_time: Optional[TDateTimeStampValue] = None
+    measurement_time: Optional[TDateTimeValue] = None
     detection_type: Optional[TStringValue] = None
     processed_data_aggregate_document: Optional[
         ProcessedDataAggregateDocumentModel
@@ -525,7 +525,7 @@ class LuminescencePointDetectionMeasurementDocumentItems:
     device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
     luminescence: TQuantityValueRelativeLightUnit
-    measurement_time: Optional[TDateTimeStampValue] = None
+    measurement_time: Optional[TDateTimeValue] = None
     detection_type: Optional[TStringValue] = None
     processed_data_aggregate_document: Optional[
         ProcessedDataAggregateDocumentModel
@@ -545,7 +545,7 @@ class Asm:
 
 @dataclass
 class MeasurementAggregateDocument:
-    measurement_time: TDateTimeStampValue
+    measurement_time: TDateTimeValue
     plate_well_count: TQuantityValueNumber
     measurement_document: list[
         Union[
