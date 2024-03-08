@@ -72,7 +72,7 @@ def to_json_float(value: float) -> JsonFloat:
 
 class SoftmaxproParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        lines = read_to_lines(named_file_contents, encoding=None)
+        lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
         data = Data.create(reader)
         return self._get_model(named_file_contents.original_file_name, data)
