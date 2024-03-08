@@ -15,7 +15,8 @@ class NamedFileContents:
     as many cases as possible.
 
     An encoding of None means that an encoding was not specified. Currently, if encoding is not specified
-    (and contents is a bytes object), we attempt to detect the encoding using chardet.
+    (and contents is a bytes object), we assume DEFAULT_ENCODING. If CHARDET_ENCODING is specified, we
+    will [try to] use chardet to detect the encoding.
     """
 
     contents: IOType

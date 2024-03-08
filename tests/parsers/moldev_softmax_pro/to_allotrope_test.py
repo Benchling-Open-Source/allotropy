@@ -2,6 +2,7 @@ import re
 
 import pytest
 
+from allotropy.constants import CHARDET_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import from_file, validate_contents
@@ -39,7 +40,7 @@ SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
 def test_to_allotrope(file_name: str) -> None:
     test_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
     expected_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.json"
-    allotrope_dict = from_file(test_file, VENDOR_TYPE)
+    allotrope_dict = from_file(test_file, VENDOR_TYPE, CHARDET_ENCODING)
     validate_contents(allotrope_dict, expected_file)
 
 
@@ -101,7 +102,7 @@ def test_data_source_id_references(
     file_name: str,
 ) -> None:
     test_filepath = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE, CHARDET_ENCODING)
     data_source_ids = []
     if (
         "calculated data aggregate document"
