@@ -91,7 +91,8 @@ def remove_style_xml_file(contents: IOType) -> IOType:
 
 class ViCellXRParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents, filename = named_file_contents
+        contents = named_file_contents.contents
+        filename = named_file_contents.original_file_name
 
         if filename.endswith("xlsx"):
             contents = remove_style_xml_file(contents)
