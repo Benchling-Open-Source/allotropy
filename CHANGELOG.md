@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Add Qiacuity dPCR adapter
+- Add optical imaging to plate reader schema
 ### Fixed
 ### Changed
 ### Deprecated
