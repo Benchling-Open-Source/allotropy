@@ -1227,7 +1227,18 @@
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
       "$asm.pattern": "aggregate datum",
+      "required": [
+        "measurement identifier",
+        "sample document",
+        "device control aggregate document"
+      ],
       "properties": {
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
         "device control aggregate document": {
           "$ref": "#/$defs/opticalImagingDeviceControlAggregateDocument"
         },
@@ -1236,6 +1247,37 @@
         },
         "sample document": {
           "$ref": "#/$defs/sampleDocument"
+        },
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "processed data aggregate document": {
+          "$ref": "#/$defs/processedDataAggregateDocument"
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "compartment temperature": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+        },
+        "mass concentration": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
         }
       }
     },
