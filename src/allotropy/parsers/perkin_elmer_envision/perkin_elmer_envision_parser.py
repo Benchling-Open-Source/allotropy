@@ -6,7 +6,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlDocument,
@@ -395,7 +395,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                             value=calculated_result.value,
                             unit=UNITLESS,
                         ),
-                        data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier=source_result.uuid,

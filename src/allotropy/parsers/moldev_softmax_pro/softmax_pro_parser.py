@@ -6,7 +6,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
@@ -323,7 +323,7 @@ class SoftmaxproParser(VendorParser):
                 unit=UNITLESS,
                 value=value,
             ),
-            data_source_aggregate_document=DataSourceAggregateDocument1(
+            data_source_aggregate_document=DataSourceAggregateDocument(
                 data_source_document=data_sources,
             ),
         )
