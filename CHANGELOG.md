@@ -6,14 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Add Qiacuity dPCR adapter
 ### Fixed
 ### Changed
-- Added ability to specify encoding in top-level functions. Not passing an encoding defaults to UTF-8. To auto-detect encoding with chardet, pass in CHARDET_ENCODING
-- Loosen requirement for jsonschema package to increase package compatibility
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.23] - 2024-03-12
+### Added
+- Add Qiacuity dPCR adapter
+### Changed
+- Added ability to specify encoding in top-level functions. Not passing an encoding defaults to UTF-8. To auto-detect encoding with chardet, pass in CHARDET_ENCODING
+- Loosen requirement for jsonschema package to increase package compatibility
 
 ## [0.1.22] - 2024-03-07
 ### Fixed
