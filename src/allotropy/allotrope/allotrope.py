@@ -157,6 +157,7 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
         jsonschema.validate(
             allotrope_dict,
             allotrope_schema,
+            cls=jsonschema.validators.Draft202012Validator,
         )
     except Exception as e:
         msg = f"Failed to validate allotrope model against schema: {e}"
