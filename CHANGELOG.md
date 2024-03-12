@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Qiacuity dPCR adapter
 ### Fixed
 ### Changed
-- Added ability to specify encoding in top-level functions. Not passing an encoding defaults to UTF-8. To auto-detect encoding with chardet, pass in CHARDET_ENCODING.
+- Added ability to specify encoding in top-level functions. Not passing an encoding defaults to UTF-8. To auto-detect encoding with chardet, pass in CHARDET_ENCODING
+- Loosen requirement for jsonschema package to increase package compatibility
 ### Deprecated
 ### Removed
 ### Security
@@ -18,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed Softmax Pro handling of partially filled plates
 ### Changed
-- Moved VendorType to to_allotrope.
+- Moved VendorType to to_allotrope
 
 ## [0.1.21] - 2024-03-05
 ### Fixed
@@ -29,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.20] - 2024-02-23
 ### Fixed
 - Remove duplicated delta ct mean calculated data documents in AppBio Quantstudio
-- Fix problem in NanoDrop Eight parser where data source IDs were being used that did not refer to any existing measurement ID.
+- Fix problem in NanoDrop Eight parser where data source IDs were being used that did not refer to any existing measurement ID
 ### Changed
 - Allow n/a absorbance values in Unchained Labs Lunatic Parser
 
