@@ -496,7 +496,7 @@
                         "$asm.pattern": "indexed datum",
                         "items": {
                           "type": "object",
-                          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002659",
+                          "$asm.property-class": "TODO",
                           "$asm.pattern": "aggregate datum",
                           "required": [
                             "image feature identifier"
@@ -1176,7 +1176,7 @@
                 "$ref": "#/$defs/tBooleanValue"
               },
               "transmitted light setting": {
-                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002452",
+                "$asm.property-class": "TODO",
                 "$asm.pattern": "class datum",
                 "description": "A class reference is the SKOS preferred label of a class. This label MUST be unique within the transitive closure of the vocabulary referenced by the manifest.",
                 "type": "string",
