@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from itertools import chain
 import math
 from typing import Optional, Union
@@ -18,6 +19,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
@@ -65,6 +67,13 @@ from allotropy.parsers.utils.values import (
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
+MeasurementDocumentItems = Union[
+    OpticalImagingMeasurementDocumentItems,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+]
+
 
 def to_json_float(value: float) -> JsonFloat:
     return InvalidJsonFloat.NaN if math.isnan(value) else value
@@ -105,13 +114,7 @@ class SoftmaxproParser(VendorParser):
     ) -> PlateReaderDocumentItem:
         plate_block_type = plate_block.get_plate_block_type()
 
-        measurement_document: list[
-            Union[
-                UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-                FluorescencePointDetectionMeasurementDocumentItems,
-                LuminescencePointDetectionMeasurementDocumentItems,
-            ]
-        ]
+        measurement_document: Sequence[MeasurementDocumentItems]
 
         if plate_block_type == "Absorbance":
             measurement_document = self._get_absorbance_measurement_document(
@@ -137,19 +140,13 @@ class SoftmaxproParser(VendorParser):
                 measurement_time=EPOCH,
                 plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
                 container_type=ContainerType.well_plate,
-                measurement_document=measurement_document,
+                measurement_document=list(measurement_document),
             )
         )
 
     def _get_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[
-        Union[
-            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-            FluorescencePointDetectionMeasurementDocumentItems,
-            LuminescencePointDetectionMeasurementDocumentItems,
-        ]
-    ]:
+    ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
@@ -208,13 +205,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_luminescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[
-        Union[
-            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-            FluorescencePointDetectionMeasurementDocumentItems,
-            LuminescencePointDetectionMeasurementDocumentItems,
-        ]
-    ]:
+    ) -> list[LuminescencePointDetectionMeasurementDocumentItems]:
         reads_per_well = assert_not_none(
             plate_block.header.reads_per_well,
             msg="Unable to find plate block reads per well.",
@@ -255,13 +246,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_absorbance_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[
-        Union[
-            UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-            FluorescencePointDetectionMeasurementDocumentItems,
-            LuminescencePointDetectionMeasurementDocumentItems,
-        ]
-    ]:
+    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
