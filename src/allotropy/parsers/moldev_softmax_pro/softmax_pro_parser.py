@@ -1,6 +1,7 @@
+from collections.abc import Sequence
 from itertools import chain
 import math
-from typing import Optional, Sequence, Union
+from typing import Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
