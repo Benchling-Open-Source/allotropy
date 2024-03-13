@@ -1,6 +1,6 @@
 from itertools import chain
 import math
-from typing import Optional, Union
+from typing import Optional, Sequence, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -113,7 +113,7 @@ class SoftmaxproParser(VendorParser):
     ) -> PlateReaderDocumentItem:
         plate_block_type = plate_block.get_plate_block_type()
 
-        measurement_document: list[MeasurementDocumentItems]
+        measurement_document: Sequence[MeasurementDocumentItems]
 
         if plate_block_type == "Absorbance":
             measurement_document = self._get_absorbance_measurement_document(
@@ -139,13 +139,13 @@ class SoftmaxproParser(VendorParser):
                 measurement_time=EPOCH,
                 plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
                 container_type=ContainerType.well_plate,
-                measurement_document=measurement_document,
+                measurement_document=list(measurement_document),
             )
         )
 
     def _get_fluorescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[MeasurementDocumentItems]:
+    ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
@@ -204,7 +204,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_luminescence_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[MeasurementDocumentItems]:
+    ) -> list[LuminescencePointDetectionMeasurementDocumentItems]:
         reads_per_well = assert_not_none(
             plate_block.header.reads_per_well,
             msg="Unable to find plate block reads per well.",
@@ -245,7 +245,7 @@ class SoftmaxproParser(VendorParser):
 
     def _get_absorbance_measurement_document(
         self, plate_block: PlateBlock, position: str
-    ) -> list[MeasurementDocumentItems]:
+    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
