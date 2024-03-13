@@ -31,7 +31,7 @@ class DataPoint(ABC):
         read_type: ReadType,
         measurements: list[Any],
         well_location: str,
-        plate_barcode: str,
+        well_plate_identifier: str,
         sample_identifier: Optional[str],
         concentration: Optional[float],
         processed_data: list[list],
@@ -40,7 +40,7 @@ class DataPoint(ABC):
         self.read_type = read_type
         self.measurements = measurements
         self.well_location = well_location
-        self.plate_barcode = plate_barcode
+        self.well_plate_identifier = well_plate_identifier
         self.sample_identifier = sample_identifier
         self.concentration = concentration
         self.processed_data = processed_data
@@ -49,7 +49,7 @@ class DataPoint(ABC):
     def generate_sample_doc(self) -> SampleDocument:
         sample_doc = SampleDocument(
             well_location_identifier=self.well_location,
-            plate_barcode=self.plate_barcode,
+            plate_barcode=self.well_plate_identifier,
             # TODO extract from Layout and map values to Allotrope's enum
             # sample_role_type=self.sample_role_type,
         )

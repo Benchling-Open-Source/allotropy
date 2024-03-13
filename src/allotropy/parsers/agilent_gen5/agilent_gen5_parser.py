@@ -1,4 +1,3 @@
-import itertools
 from typing import Any, Union
 
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
@@ -49,7 +48,6 @@ class AgilentGen5Parser(VendorParser):
                     plate_well_count=TQuantityValueNumber(
                         len(plate_data.results.wells)
                     ),
-                    # TODO read_type=self.read_type.value?,
                     measurement_document=measurement_docs,
                 )
             )
@@ -66,7 +64,6 @@ class AgilentGen5Parser(VendorParser):
                     plate_well_count=TQuantityValueNumber(
                         len(plate_data.results.wells)
                     ),
-                    # TODO read_type=self.read_type.value?,
                     measurement_document=measurement_docs,
                 )
             )
@@ -83,7 +80,6 @@ class AgilentGen5Parser(VendorParser):
                     plate_well_count=TQuantityValueNumber(
                         len(plate_data.results.wells)
                     ),
-                    # TODO read_type=self.read_type.value?,
                     measurement_document=measurement_docs,
                 )
             )
@@ -99,11 +95,3 @@ class AgilentGen5Parser(VendorParser):
         data = Data.create(section_lines_reader)
 
         return self._create_model(data.plate_data)
-
-        # TODO stats docs
-        # statistics_docs = [plate.statistics_doc for plate in plates]
-        # all_statistics_docs = list(itertools.chain.from_iterable(statistics_docs))
-        # if all_statistics_docs:
-        #     allotrope_dict["measurement aggregate document"]["statistics aggregate document"] = {
-        #         "statistics document": all_statistics_docs,
-        #     }

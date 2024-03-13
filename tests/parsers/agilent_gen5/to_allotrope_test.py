@@ -22,15 +22,15 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from allotropy.to_allotrope import allotrope_model_from_file
-from tests.parsers.test_utils import (
-    from_file,
-    validate_contents,
-)
 from allotropy.parsers.agilent_gen5.constants import (
     MULTIPLATE_FILE_ERROR,
     NO_PLATE_DATA_ERROR,
     UNSUPORTED_READ_TYPE_ERROR,
+)
+from allotropy.to_allotrope import allotrope_model_from_file
+from tests.parsers.test_utils import (
+    from_file,
+    validate_contents,
 )
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5

@@ -12,15 +12,23 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
-    UNSUPORTED_READ_TYPE_ERROR,
+    EMISSION_LABEL,
+    EXCITATION_LABEL,
+    GAIN_LABEL,
+    MEASUREMENTS_DATA_POINT_LABEL,
+    MIRROR_LABEL,
+    OPTICS_LABEL,
+    READ_HEIGHT_LABEL,
+    READ_SPEED_LABEL,
     ReadMode,
     ReadType,
+    UNSUPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
 from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
 METADATA_PREFIXES = frozenset(
     {
@@ -35,7 +43,7 @@ METADATA_PREFIXES = frozenset(
 GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
 
-def try_float(value: str) -> Union[str, float]:
+def try_float_or_value(value: str) -> Union[str, float]:
     try:
         return float(value)
     except ValueError:
@@ -120,6 +128,17 @@ class ReadData:
     read_mode: ReadMode
     read_type: ReadType
     read_names: list[str]
+    wavelengths: list[float]
+    step_label: Optional[str]
+    number_of_averages: Optional[float]
+    emissions: Optional[list[str]]
+    optics: Optional[list[str]]
+    gains: Optional[list[float]]
+    detector_distance: Optional[float]
+    detector_carriage_speed: Optional[str]
+    excitations: Optional[list[str]]
+    wavelength_filter_cut_offs: Optional[list[float]]
+    scan_positions: Optional[list[str]]
 
     @classmethod
     def create(cls, reader: LinesReader) -> ReadData:
@@ -133,15 +152,55 @@ class ReadData:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
-        read_names: list = []
-        procedure_chunks = cls._parse_procedure_chunks(procedure_details)
+        read_names = []
+        procedure_chunks = cls._get_procedure_chunks(procedure_details)
+
         for procedure_chunk in procedure_chunks:
             read_names.extend(cls._parse_procedure_chunk(procedure_chunk, read_mode))
 
+        device_control_data = cls._get_device_control_data(procedure_details, read_mode)
+
+        wavelengths = [
+            try_float(wavelength, "Wavelength")
+            for wavelength in device_control_data.get("Wavelengths", [])
+        ]
+        gains = [
+            try_float(gain, "Gain") for gain in device_control_data.get(GAIN_LABEL, [])
+        ]
+        number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_LABEL)
+        read_height = device_control_data.get(READ_HEIGHT_LABEL, "")
+
+        mirrors = device_control_data.get(MIRROR_LABEL, [])
+        optics = device_control_data.get(OPTICS_LABEL, [])
+        scan_positions = []
+        wavelength_filter_cut_offs = []
+        if mirrors and read_mode == ReadMode.FLUORESCENCE:
+            for mirror in mirrors:
+                position, cutoff, *_ = mirror.split(" ")
+                scan_positions.append(position)
+                wavelength_filter_cut_offs.append(try_float(cutoff, "Cutoff"))
+        elif optics and read_mode == ReadMode.FLUORESCENCE:
+            scan_positions = optics
+
         return ReadData(
             read_mode=read_mode,
+            # TODO: Remove read_type
             read_type=read_type,
             read_names=read_names,
+            step_label=device_control_data.get("Step Label"),
+            # Absorbance attributes
+            wavelengths=wavelengths,
+            detector_carriage_speed=device_control_data.get(READ_SPEED_LABEL),
+            number_of_averages=try_float_or_none(number_of_averages),
+            # Luminescence attributes
+            emissions=device_control_data.get(EMISSION_LABEL),
+            optics=device_control_data.get(OPTICS_LABEL),
+            gains=gains,
+            detector_distance=(try_float_or_none(read_height.split(" ")[0])),
+            # Fluorescence attributes
+            excitations=device_control_data.get(EXCITATION_LABEL),
+            wavelength_filter_cut_offs=wavelength_filter_cut_offs,
+            scan_positions=scan_positions,
         )
 
     @property
@@ -172,10 +231,6 @@ class ReadData:
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
-        # TODO parse the rest of the procedure details
-
-        # TODO: only Endpoint measurements are supported
-        # this should raise for any other read type.
         if ReadType.KINETIC.value in procedure_details:
             return ReadType.KINETIC
         elif ReadType.AREASCAN.value in procedure_details:
@@ -186,8 +241,24 @@ class ReadData:
         # check for this last, because other modes still contain the word "Endpoint"
         return ReadType.ENDPOINT
 
+    @classmethod
+    def _get_device_control_data(
+        cls, procedure_details: str, read_mode: ReadMode
+    ) -> dict:
+        if read_mode == ReadMode.ABSORBANCE:
+            return cls._parse_absorbance_read_data(procedure_details)
+        elif read_mode == ReadMode.FLUORESCENCE:
+            return cls._parse_fluorescence_read_data(procedure_details)
+        elif read_mode == ReadMode.LUMINESCENCE:
+            return cls._parse_luminescence_read_data(procedure_details)
+
+        msg = msg_for_error_on_unrecognized_value(
+            "read mode", read_mode, ReadMode._member_names_
+        )
+        raise AllotropeConversionError(msg)
+
     @staticmethod
-    def _parse_procedure_chunks(procedure_details: str) -> list[list[str]]:
+    def _get_procedure_chunks(procedure_details: str) -> list[list[str]]:
         procedure_chunks = []
         current_chunk: list[str] = []
         procedure_lines = procedure_details.splitlines()
@@ -201,11 +272,133 @@ class ReadData:
 
         return procedure_chunks
 
+    @classmethod
+    def _get_step_label(cls, read_line: str, read_mode: str) -> Optional[str]:
+        read_data_len = 2
+        split_line = read_line.split("\t")
+        if len(split_line) != read_data_len:
+            msg = (
+                f"Expected the Read data line {split_line} to contain exactly 2 values."
+            )
+            raise AllotropeConversionError(msg)
+        if split_line[1] != f"{read_mode.title()} Endpoint":
+            return split_line[1]
+
+        return None
+
+    @classmethod
+    def _parse_absorbance_read_data(cls, procedure_details: str) -> dict:
+        read_mode = ReadMode.ABSORBANCE
+        read_data_dict: dict = {"Wavelengths": []}
+        read_lines: list[str] = procedure_details.splitlines()
+        datum_len = 2
+
+        for line in read_lines:
+            strp_line = str(line.strip())
+
+            if strp_line.startswith("Read\t"):
+                read_data_dict["Step Label"] = cls._get_step_label(strp_line, read_mode)
+
+            elif strp_line.startswith("Wavelengths"):
+                wavelengths = strp_line.split(":  ")
+                if len(wavelengths) != datum_len:
+                    msg = f"Expected the Wavelengths data line {wavelengths} to contain exactly 2 values."
+                    raise AllotropeConversionError(msg)
+                read_data_dict["Wavelengths"].extend(wavelengths[-1].split(", "))
+
+            elif strp_line.startswith("Pathlength Correction"):
+                corrections = strp_line.split(": ")
+                if len(corrections) != datum_len:
+                    msg = f"Expected the Pathlength Correction data line {corrections} to contain exactly 2 values."
+                    raise AllotropeConversionError(msg)
+                read_data_dict["Wavelengths"].extend(corrections[1].split("/"))
+
+            elif strp_line.startswith("Read Speed"):
+                read_speed_line = [
+                    detail.strip().split(": ") for detail in strp_line.split(",")
+                ]
+                read_data_dict.update(
+                    {
+                        read_detail[0]: read_detail[1]
+                        for read_detail in read_speed_line
+                        if len(read_detail) == datum_len
+                    }
+                )
+
+        return read_data_dict
+
+    @classmethod
+    def _parse_fluorescence_read_data(cls, procedure_details: str) -> dict:
+        read_mode = ReadMode.FLUORESCENCE
+        list_labels = frozenset(
+            {EMISSION_LABEL, EXCITATION_LABEL, OPTICS_LABEL, GAIN_LABEL, MIRROR_LABEL}
+        )
+        read_data_dict: dict = {label: [] for label in list_labels}
+        read_lines: list[str] = procedure_details.splitlines()
+        datum_len = 2
+
+        for line in read_lines:
+            strp_line = str(line.strip())
+            if strp_line.startswith("Read\t"):
+                read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
+
+            line_data: list[str] = strp_line.split(",  ")
+            for read_datum in line_data:
+                splitted_datum = read_datum.split(": ")
+                if len(splitted_datum) != datum_len:
+                    continue
+                if splitted_datum[0] in list_labels:
+                    read_data_dict[splitted_datum[0]].append(splitted_datum[1])
+                else:
+                    read_data_dict[splitted_datum[0]] = splitted_datum[1]
+
+        return read_data_dict
+
+    @classmethod
+    def _parse_luminescence_read_data(cls, procedure_details: str) -> dict:
+        read_mode = ReadMode.LUMINESCENCE
+        list_labels = frozenset({EMISSION_LABEL, OPTICS_LABEL, GAIN_LABEL})
+        read_data_dict: dict = {
+            EMISSION_LABEL: [],
+            OPTICS_LABEL: [],
+            GAIN_LABEL: [],
+        }
+        read_lines: list[str] = procedure_details.splitlines()
+
+        for line in read_lines:
+            strp_line = str(line.strip())
+            if strp_line.startswith("Read\t"):
+                read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
+
+            elif strp_line.startswith(EMISSION_LABEL):
+                splitted_line = strp_line.split(": ")
+                read_data_dict[EMISSION_LABEL].append(splitted_line[1])
+
+            elif strp_line.startswith(OPTICS_LABEL) or strp_line.startswith(
+                MIRROR_LABEL
+            ):
+                # both optics and gain labels are found in this line
+                for optics_line_datum in strp_line.split(", "):
+                    splitted_datum = optics_line_datum.strip().split(": ")
+                    if splitted_datum[0] in list_labels:
+                        read_data_dict[splitted_datum[0]].append(splitted_datum[1])
+
+            elif strp_line.startswith(READ_HEIGHT_LABEL):
+                read_data_dict[READ_HEIGHT_LABEL] = strp_line.split(": ")[1]
+
+            elif strp_line.startswith(READ_SPEED_LABEL):
+                read_speed = strp_line.split(", ")[0].split(": ")[1]
+                read_data_dict[READ_SPEED_LABEL] = read_speed
+
+        return read_data_dict
+
     @staticmethod
     def _parse_procedure_chunk(
         procedure_chunk: list[str],
         read_mode: ReadMode,
     ) -> list[str]:
+        # TODO: remove when using wavelenghts and bandwiths along with stepLabels
+
         # if no user-defined name is specified for protocols,
         # e.g. it just says "Absorbance Endpoint",
         # Gen5 defaults to using the wavelength as the name
@@ -224,7 +417,7 @@ class ReadData:
                     use_wavelength_names = True
                 else:
                     read_names.append(split_line[-1])
-            if split_line[0].startswith("Wavelengths"):
+            elif split_line[0].startswith("Wavelengths"):
                 if use_wavelength_names:
                     split_line_colon = split_line[0].split(":  ")
                     if len(split_line_colon) != wavelength_line_length:
@@ -331,7 +524,7 @@ class Results:
                 well_pos = f"{current_row}{col_num}"
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
-                well_value: Union[str, float] = try_float(values[col_num])
+                well_value: Union[str, float] = try_float_or_value(values[col_num])
                 if Results._is_processed_data_label(
                     label,
                     read_data.read_mode,
@@ -348,7 +541,7 @@ class Results:
                     read_type=read_data.read_type,
                     measurements=self.measurements[well_pos],
                     well_location=well_pos,
-                    plate_barcode=header_data.well_plate_identifier,
+                    well_plate_identifier=header_data.well_plate_identifier,
                     sample_identifier=layout_data.layout.get(well_pos),
                     concentration=layout_data.concentrations.get(well_pos),
                     processed_data=self.processed_datas[well_pos],
@@ -399,7 +592,7 @@ class CurveName:
             statistics_doc=[
                 {
                     "statistical feature": key,
-                    "feature": try_float(value),
+                    "feature": try_float_or_value(value),
                     "group": f"{header_data.well_plate_identifier} {results.wells[0]}-{results.wells[-1]}",
                 }
                 for key, value in zip(keys, values)
