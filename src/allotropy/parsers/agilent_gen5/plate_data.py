@@ -12,14 +12,14 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
-    EMISSION_LABEL,
-    EXCITATION_LABEL,
-    GAIN_LABEL,
-    MEASUREMENTS_DATA_POINT_LABEL,
-    MIRROR_LABEL,
-    OPTICS_LABEL,
-    READ_HEIGHT_LABEL,
-    READ_SPEED_LABEL,
+    EMISSION_KEY,
+    EXCITATION_KEY,
+    GAIN_KEY,
+    MEASUREMENTS_DATA_POINT_KEY,
+    MIRROR_KEY,
+    OPTICS_KEY,
+    READ_HEIGHT_KEY,
+    READ_SPEED_KEY,
     ReadMode,
     ReadType,
     UNSUPORTED_READ_TYPE_ERROR,
@@ -165,13 +165,13 @@ class ReadData:
             for wavelength in device_control_data.get("Wavelengths", [])
         ]
         gains = [
-            try_float(gain, "Gain") for gain in device_control_data.get(GAIN_LABEL, [])
+            try_float(gain, "Gain") for gain in device_control_data.get(GAIN_KEY, [])
         ]
-        number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_LABEL)
-        read_height = device_control_data.get(READ_HEIGHT_LABEL, "")
+        number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
+        read_height = device_control_data.get(READ_HEIGHT_KEY, "")
 
-        mirrors = device_control_data.get(MIRROR_LABEL, [])
-        optics = device_control_data.get(OPTICS_LABEL, [])
+        mirrors = device_control_data.get(MIRROR_KEY, [])
+        optics = device_control_data.get(OPTICS_KEY, [])
         scan_positions = []
         wavelength_filter_cut_offs = []
         if mirrors and read_mode == ReadMode.FLUORESCENCE:
@@ -190,15 +190,15 @@ class ReadData:
             step_label=device_control_data.get("Step Label"),
             # Absorbance attributes
             wavelengths=wavelengths,
-            detector_carriage_speed=device_control_data.get(READ_SPEED_LABEL),
+            detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
             number_of_averages=try_float_or_none(number_of_averages),
             # Luminescence attributes
-            emissions=device_control_data.get(EMISSION_LABEL),
-            optics=device_control_data.get(OPTICS_LABEL),
+            emissions=device_control_data.get(EMISSION_KEY),
+            optics=device_control_data.get(OPTICS_KEY),
             gains=gains,
             detector_distance=(try_float_or_none(read_height.split(" ")[0])),
             # Fluorescence attributes
-            excitations=device_control_data.get(EXCITATION_LABEL),
+            excitations=device_control_data.get(EXCITATION_KEY),
             wavelength_filter_cut_offs=wavelength_filter_cut_offs,
             scan_positions=scan_positions,
         )
@@ -245,17 +245,47 @@ class ReadData:
     def _get_device_control_data(
         cls, procedure_details: str, read_mode: ReadMode
     ) -> dict:
-        if read_mode == ReadMode.ABSORBANCE:
-            return cls._parse_absorbance_read_data(procedure_details)
-        elif read_mode == ReadMode.FLUORESCENCE:
-            return cls._parse_fluorescence_read_data(procedure_details)
-        elif read_mode == ReadMode.LUMINESCENCE:
-            return cls._parse_luminescence_read_data(procedure_details)
-
-        msg = msg_for_error_on_unrecognized_value(
-            "read mode", read_mode, ReadMode._member_names_
+        list_keys = frozenset(
+            {
+                EMISSION_KEY,
+                EXCITATION_KEY,
+                OPTICS_KEY,
+                GAIN_KEY,
+                MIRROR_KEY,
+                "Wavelengths",
+            }
         )
-        raise AllotropeConversionError(msg)
+        read_data_dict: dict = {label: [] for label in list_keys}
+        read_lines: list[str] = procedure_details.splitlines()
+        datum_len = 2
+
+        for line in read_lines:
+            strp_line = str(line.strip())
+            if strp_line.startswith("Read\t"):
+                read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
+                continue
+
+            elif strp_line.startswith("Wavelengths"):
+                wavelengths = strp_line.split(":  ")
+                read_data_dict["Wavelengths"].extend(wavelengths[1].split(", "))
+                continue
+
+            elif strp_line.startswith("Pathlength Correction"):
+                corrections = strp_line.split(": ")
+                read_data_dict["Wavelengths"].extend(corrections[1].split("/"))
+                continue
+
+            line_data: list[str] = strp_line.split(",  ")
+            for read_datum in line_data:
+                splitted_datum = read_datum.split(": ")
+                if len(splitted_datum) != datum_len:
+                    continue
+                if splitted_datum[0] in list_keys:
+                    read_data_dict[splitted_datum[0]].append(splitted_datum[1])
+                else:
+                    read_data_dict[splitted_datum[0]] = splitted_datum[1]
+
+        return read_data_dict
 
     @staticmethod
     def _get_procedure_chunks(procedure_details: str) -> list[list[str]]:
@@ -285,112 +315,6 @@ class ReadData:
             return split_line[1]
 
         return None
-
-    @classmethod
-    def _parse_absorbance_read_data(cls, procedure_details: str) -> dict:
-        read_mode = ReadMode.ABSORBANCE
-        read_data_dict: dict = {"Wavelengths": []}
-        read_lines: list[str] = procedure_details.splitlines()
-        datum_len = 2
-
-        for line in read_lines:
-            strp_line = str(line.strip())
-
-            if strp_line.startswith("Read\t"):
-                read_data_dict["Step Label"] = cls._get_step_label(strp_line, read_mode)
-
-            elif strp_line.startswith("Wavelengths"):
-                wavelengths = strp_line.split(":  ")
-                if len(wavelengths) != datum_len:
-                    msg = f"Expected the Wavelengths data line {wavelengths} to contain exactly 2 values."
-                    raise AllotropeConversionError(msg)
-                read_data_dict["Wavelengths"].extend(wavelengths[-1].split(", "))
-
-            elif strp_line.startswith("Pathlength Correction"):
-                corrections = strp_line.split(": ")
-                if len(corrections) != datum_len:
-                    msg = f"Expected the Pathlength Correction data line {corrections} to contain exactly 2 values."
-                    raise AllotropeConversionError(msg)
-                read_data_dict["Wavelengths"].extend(corrections[1].split("/"))
-
-            elif strp_line.startswith("Read Speed"):
-                read_speed_line = [
-                    detail.strip().split(": ") for detail in strp_line.split(",")
-                ]
-                read_data_dict.update(
-                    {
-                        read_detail[0]: read_detail[1]
-                        for read_detail in read_speed_line
-                        if len(read_detail) == datum_len
-                    }
-                )
-
-        return read_data_dict
-
-    @classmethod
-    def _parse_fluorescence_read_data(cls, procedure_details: str) -> dict:
-        read_mode = ReadMode.FLUORESCENCE
-        list_labels = frozenset(
-            {EMISSION_LABEL, EXCITATION_LABEL, OPTICS_LABEL, GAIN_LABEL, MIRROR_LABEL}
-        )
-        read_data_dict: dict = {label: [] for label in list_labels}
-        read_lines: list[str] = procedure_details.splitlines()
-        datum_len = 2
-
-        for line in read_lines:
-            strp_line = str(line.strip())
-            if strp_line.startswith("Read\t"):
-                read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
-
-            line_data: list[str] = strp_line.split(",  ")
-            for read_datum in line_data:
-                splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) != datum_len:
-                    continue
-                if splitted_datum[0] in list_labels:
-                    read_data_dict[splitted_datum[0]].append(splitted_datum[1])
-                else:
-                    read_data_dict[splitted_datum[0]] = splitted_datum[1]
-
-        return read_data_dict
-
-    @classmethod
-    def _parse_luminescence_read_data(cls, procedure_details: str) -> dict:
-        read_mode = ReadMode.LUMINESCENCE
-        list_labels = frozenset({EMISSION_LABEL, OPTICS_LABEL, GAIN_LABEL})
-        read_data_dict: dict = {
-            EMISSION_LABEL: [],
-            OPTICS_LABEL: [],
-            GAIN_LABEL: [],
-        }
-        read_lines: list[str] = procedure_details.splitlines()
-
-        for line in read_lines:
-            strp_line = str(line.strip())
-            if strp_line.startswith("Read\t"):
-                read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
-
-            elif strp_line.startswith(EMISSION_LABEL):
-                splitted_line = strp_line.split(": ")
-                read_data_dict[EMISSION_LABEL].append(splitted_line[1])
-
-            elif strp_line.startswith(OPTICS_LABEL) or strp_line.startswith(
-                MIRROR_LABEL
-            ):
-                # both optics and gain labels are found in this line
-                for optics_line_datum in strp_line.split(", "):
-                    splitted_datum = optics_line_datum.strip().split(": ")
-                    if splitted_datum[0] in list_labels:
-                        read_data_dict[splitted_datum[0]].append(splitted_datum[1])
-
-            elif strp_line.startswith(READ_HEIGHT_LABEL):
-                read_data_dict[READ_HEIGHT_LABEL] = strp_line.split(": ")[1]
-
-            elif strp_line.startswith(READ_SPEED_LABEL):
-                read_speed = strp_line.split(", ")[0].split(": ")[1]
-                read_data_dict[READ_SPEED_LABEL] = read_speed
-
-        return read_data_dict
 
     @staticmethod
     def _parse_procedure_chunk(
