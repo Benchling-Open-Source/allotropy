@@ -122,6 +122,18 @@ class LinesReader:
                 yield line
 
 
+class InvertedLinesReader(LinesReader):
+    def __init__(self, lines: list[str]) -> None:
+        self.lines = lines
+        self.current_line = len(lines) - 1
+
+    def pop(self) -> Optional[str]:
+        line = self.get()
+        if line is not None:
+            self.current_line -= 1
+        return line
+
+
 class CsvReader(LinesReader):
     def pop_csv_block_as_lines(self, empty_pat: str = EMPTY_STR_PATTERN) -> list[str]:
         self.drop_empty(empty_pat)
