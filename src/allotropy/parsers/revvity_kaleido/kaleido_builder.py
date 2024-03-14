@@ -18,7 +18,7 @@ def get_version(reader: CsvReader) -> str:
     inv_reader = InvertedLinesReader(reader.lines)
     last_line = assert_not_none(
         inv_reader.pop_data(),
-        msg="Unable to get last line of input file.",
+        msg="Unable to find last line of input file.",
     )
     return assert_not_none(
         re.search(r"Exported with Kaleido (\d)", last_line),
