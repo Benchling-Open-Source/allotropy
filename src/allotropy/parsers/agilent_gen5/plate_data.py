@@ -492,45 +492,11 @@ class Results:
 
 
 @dataclass(frozen=True)
-class CurveName:
-    statistics_doc: list
-
-    @staticmethod
-    def create_default() -> CurveName:
-        return CurveName(statistics_doc=[])
-
-    @staticmethod
-    def create(
-        stdcurve: str,
-        header_data: HeaderData,
-        results: Results,
-    ) -> CurveName:
-        lines = stdcurve.splitlines()
-        num_lines = 2
-        if len(lines) != num_lines:
-            msg = f"Expected the std curve data '{lines}' to contain exactly {num_lines} lines."
-            raise AllotropeConversionError(msg)
-        keys = lines[0].split("\t")
-        values = lines[1].split("\t")
-        return CurveName(
-            statistics_doc=[
-                {
-                    "statistical feature": key,
-                    "feature": try_float_or_value(value),
-                    "group": f"{header_data.well_plate_identifier} {results.wells[0]}-{results.wells[-1]}",
-                }
-                for key, value in zip(keys, values)
-            ]
-        )
-
-
-@dataclass(frozen=True)
 class PlateData:
     file_paths: FilePaths
     header_data: HeaderData
     read_data: ReadData
     results: Results
-    curve_name: CurveName
 
     @staticmethod
     def create(reader: LinesReader) -> PlateData:
@@ -540,7 +506,6 @@ class PlateData:
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()
         results = Results.create()
-        curve_name = CurveName.create_default()
 
         while reader.current_line_exists():
             data_section = read_data_section(reader)
@@ -556,17 +521,10 @@ class PlateData:
                     layout_data,
                     actual_temperature,
                 )
-            elif data_section.startswith("Curve Name"):
-                curve_name = CurveName.create(
-                    data_section,
-                    header_data,
-                    results,
-                )
 
         return PlateData(
             file_paths=file_paths,
             header_data=header_data,
             read_data=read_data,
             results=results,
-            curve_name=curve_name,
         )
