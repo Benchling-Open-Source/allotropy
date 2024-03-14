@@ -2,11 +2,21 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     Model,
 )
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.revvity_kaleido.kaleido_structure import (
+    Data,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class KaleidoParser(VendorParser):
-    def to_allotrope(self, _: NamedFileContents) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        lines = read_to_lines(named_file_contents)
+        reader = CsvReader(lines)
+        Data.create(reader)
+        return self._get_model()
+
+    def _get_model(self) -> Model:
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         )
