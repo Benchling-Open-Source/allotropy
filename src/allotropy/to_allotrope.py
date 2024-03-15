@@ -16,8 +16,11 @@ def allotrope_from_io(
     filename: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
+    encoding: Optional[str] = None,
 ) -> dict[str, Any]:
-    model = allotrope_model_from_io(contents, filename, vendor_type, default_timezone)
+    model = allotrope_model_from_io(
+        contents, filename, vendor_type, default_timezone, encoding
+    )
     return serialize_and_validate_allotrope(model)
 
 
@@ -26,13 +29,14 @@ def allotrope_model_from_io(
     filename: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
+    encoding: Optional[str] = None,
 ) -> Any:
     try:
         vendor = Vendor(vendor_type)
     except ValueError as e:
         error = f"Failed to create parser, unregistered vendor: {vendor_type}."
         raise AllotropeConversionError(error) from e
-    named_file_contents = NamedFileContents(contents, filename)
+    named_file_contents = NamedFileContents(contents, filename, encoding)
     parser = get_parser(vendor, default_timezone=default_timezone)
     return parser.to_allotrope(named_file_contents)
 
@@ -41,8 +45,9 @@ def allotrope_from_file(
     filepath: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
+    encoding: Optional[str] = None,
 ) -> dict[str, Any]:
-    model = allotrope_model_from_file(filepath, vendor_type, default_timezone)
+    model = allotrope_model_from_file(filepath, vendor_type, default_timezone, encoding)
     return serialize_and_validate_allotrope(model)
 
 
@@ -50,11 +55,16 @@ def allotrope_model_from_file(
     filepath: str,
     vendor_type: VendorType,
     default_timezone: Optional[tzinfo] = None,
+    encoding: Optional[str] = None,
 ) -> Any:
     try:
         with open(filepath, "rb") as f:
             return allotrope_model_from_io(
-                f, Path(filepath).name, vendor_type, default_timezone=default_timezone
+                f,
+                Path(filepath).name,
+                vendor_type,
+                default_timezone=default_timezone,
+                encoding=encoding,
             )
     except FileNotFoundError as e:
         msg = f"File not found: {filepath}."

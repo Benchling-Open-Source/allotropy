@@ -49,7 +49,7 @@ def test_to_allotrope_absorbance(filename: str) -> None:
     expected_filepath = (
         f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
     )
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    allotrope_dict = from_file(test_filepath)
     validate_contents(allotrope_dict, expected_filepath)
 
 

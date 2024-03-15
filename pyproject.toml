@@ -38,7 +38,7 @@ classifiers = [
 dependencies = [
   "cattrs == 23.1.2",
   "chardet >= 5.2.0",
-  "jsonschema >= 4.17.0",
+  "jsonschema >= 4.3.3",
   "numpy >= 1.25.0",
   "openpyxl >= 3.1.0",
   "pandas >= 2.1.0",

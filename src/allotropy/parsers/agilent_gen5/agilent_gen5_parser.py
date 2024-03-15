@@ -90,7 +90,7 @@ class AgilentGen5Parser(VendorParser):
         raise AllotropeConversionError(msg)
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
-        lines = read_to_lines(named_file_contents, encoding=None)
+        lines = read_to_lines(named_file_contents)
         section_lines_reader = SectionLinesReader(lines)
         data = Data.create(section_lines_reader)
 
