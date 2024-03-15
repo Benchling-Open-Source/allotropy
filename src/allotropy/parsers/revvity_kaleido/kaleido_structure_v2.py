@@ -85,11 +85,34 @@ class MeasurementBasicInfo:
 
 
 @dataclass(frozen=True)
+class PlateType:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> PlateType:
+        assert_not_none(
+            reader.drop_until_inclusive("^Plate Type"),
+            msg="Unable to find Plate Type section.",
+        )
+
+        elements = {}
+        for raw_line in reader.pop_until("^Platemap"):
+            if raw_line == "":
+                continue
+
+            key, _, value, *_ = raw_line.split(",")
+            elements[key.rstrip(":")] = value
+
+        return PlateType(elements)
+
+
+@dataclass(frozen=True)
 class DataV2:
     background_info: BackgroundInfo
     results: Results
     analysis_results: Optional[AnalysisResults]
     measurement_basic_info: MeasurementBasicInfo
+    plate_type: PlateType
 
     @staticmethod
     def create(reader: CsvReader) -> DataV2:
@@ -98,4 +121,5 @@ class DataV2:
             results=Results.create(reader),
             analysis_results=AnalysisResults.create(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
+            plate_type=PlateType.create(reader),
         )
