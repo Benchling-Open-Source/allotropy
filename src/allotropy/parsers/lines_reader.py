@@ -146,6 +146,7 @@ class CsvReader(LinesReader):
         empty_pat: str = EMPTY_STR_PATTERN,
         *,
         header: Optional[Union[int, Literal["infer"]]] = None,
+        index_col: Optional[int] = None,
         sep: Optional[str] = ",",
         as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
@@ -153,6 +154,7 @@ class CsvReader(LinesReader):
             return read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
+                index_col=index_col,
                 sep=sep,
                 dtype=str if as_str else None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
