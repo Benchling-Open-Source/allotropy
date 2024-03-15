@@ -107,12 +107,37 @@ class PlateType:
 
 
 @dataclass(frozen=True)
+class Platemap:
+    data: pd.DataFrame
+
+    @staticmethod
+    def create(reader: CsvReader) -> Platemap:
+        assert_not_none(
+            reader.drop_until_inclusive("^Platemap"),
+            msg="Unable to find Platemap section.",
+        )
+
+        assert_not_none(
+            reader.pop_if_match("^Plate"),
+            msg="Unable to find platemap start indicator.",
+        )
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(header=0, index_col=0),
+            msg="Unable to find platemap information.",
+        )
+
+        return Platemap(data)
+
+
+@dataclass(frozen=True)
 class DataV2:
     background_info: BackgroundInfo
     results: Results
     analysis_results: Optional[AnalysisResults]
     measurement_basic_info: MeasurementBasicInfo
     plate_type: PlateType
+    platemap: Platemap
 
     @staticmethod
     def create(reader: CsvReader) -> DataV2:
@@ -122,4 +147,5 @@ class DataV2:
             analysis_results=AnalysisResults.create(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
             plate_type=PlateType.create(reader),
+            platemap=Platemap.create(reader),
         )
