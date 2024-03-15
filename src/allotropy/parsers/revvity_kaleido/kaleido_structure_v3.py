@@ -83,11 +83,34 @@ class AnalysisResults:
 
 
 @dataclass(frozen=True)
+class MeasurementInfo:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> MeasurementInfo:
+        assert_not_none(
+            reader.drop_until_inclusive("^Measurement Information"),
+            msg="Unable to find Measurement Information section.",
+        )
+
+        elements = {}
+        for raw_line in reader.pop_until("^Instrument Information"):
+            if raw_line == "":
+                continue
+
+            key, _, value, *_ = raw_line.split(",")
+            elements[key.rstrip(":")] = value
+
+        return MeasurementInfo(elements)
+
+
+@dataclass(frozen=True)
 class DataV3:
     ensight_results: EnsightResults
     background_info: BackgroundInfo
     results: Results
     analysis_results: Optional[AnalysisResults]
+    measurement_info: MeasurementInfo
 
     @staticmethod
     def create(reader: CsvReader) -> DataV3:
@@ -96,4 +119,5 @@ class DataV3:
             background_info=BackgroundInfo.create(reader),
             results=Results.create(reader),
             analysis_results=AnalysisResults.create(reader),
+            measurement_info=MeasurementInfo.create(reader),
         )
