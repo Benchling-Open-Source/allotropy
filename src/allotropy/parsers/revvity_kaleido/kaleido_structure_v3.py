@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Optional
 
 import pandas as pd
 
@@ -67,10 +68,26 @@ class Results:
 
 
 @dataclass(frozen=True)
+class AnalysisResults:
+    @staticmethod
+    def create(reader: CsvReader) -> Optional[AnalysisResults]:
+        section_title = assert_not_none(
+            reader.drop_until("^Results for|^Measurement Information"),
+            msg="Unable to find Analysis Result or Measurement Basic section.",
+        )
+
+        if section_title.startswith("Measurement Information"):
+            return None
+
+        return AnalysisResults()
+
+
+@dataclass(frozen=True)
 class DataV3:
     ensight_results: EnsightResults
     background_info: BackgroundInfo
     results: Results
+    analysis_results: Optional[AnalysisResults]
 
     @staticmethod
     def create(reader: CsvReader) -> DataV3:
@@ -78,4 +95,5 @@ class DataV3:
             ensight_results=EnsightResults.create(reader),
             background_info=BackgroundInfo.create(reader),
             results=Results.create(reader),
+            analysis_results=AnalysisResults.create(reader),
         )
