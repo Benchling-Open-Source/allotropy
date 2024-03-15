@@ -63,10 +63,33 @@ class AnalysisResults:
 
 
 @dataclass(frozen=True)
+class MeasurementBasicInfo:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> MeasurementBasicInfo:
+        assert_not_none(
+            reader.drop_until_inclusive("^Measurement Basic Information"),
+            msg="Unable to find Measurement Basic Information section.",
+        )
+
+        elements = {}
+        for raw_line in reader.pop_until("^Plate Type"):
+            if raw_line == "":
+                continue
+
+            key, _, value, *_ = raw_line.split(",")
+            elements[key.rstrip(":")] = value
+
+        return MeasurementBasicInfo(elements)
+
+
+@dataclass(frozen=True)
 class DataV2:
     background_info: BackgroundInfo
     results: Results
     analysis_results: Optional[AnalysisResults]
+    measurement_basic_info: MeasurementBasicInfo
 
     @staticmethod
     def create(reader: CsvReader) -> DataV2:
@@ -74,4 +97,5 @@ class DataV2:
             background_info=BackgroundInfo.create(reader),
             results=Results.create(reader),
             analysis_results=AnalysisResults.create(reader),
+            measurement_basic_info=MeasurementBasicInfo.create(reader),
         )
