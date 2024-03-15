@@ -192,6 +192,28 @@ class Platemap:
 
 
 @dataclass(frozen=True)
+class DetailsMeasurementSequence:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> DetailsMeasurementSequence:
+        assert_not_none(
+            reader.drop_until_inclusive("^Details of Measurement Sequence"),
+            msg="Unable to find Details of Measurement Sequence section.",
+        )
+
+        elements = {}
+        for raw_line in reader.pop_until("^Post Processing Sequence"):
+            if raw_line == "":
+                continue
+
+            key, _, _, value, *_ = raw_line.split(",")
+            elements[key.rstrip(":")] = value
+
+        return DetailsMeasurementSequence(elements)
+
+
+@dataclass(frozen=True)
 class DataV3:
     ensight_results: EnsightResults
     background_info: BackgroundInfo
@@ -202,6 +224,7 @@ class DataV3:
     protocol_info: ProtocolInfo
     plate_type_info: PlateTypeInfo
     platemap: Platemap
+    details_measurement_sequence: DetailsMeasurementSequence
 
     @staticmethod
     def create(reader: CsvReader) -> DataV3:
@@ -215,4 +238,5 @@ class DataV3:
             protocol_info=ProtocolInfo.create(reader),
             plate_type_info=PlateTypeInfo.create(reader),
             platemap=Platemap.create(reader),
+            details_measurement_sequence=DetailsMeasurementSequence.create(reader),
         )
