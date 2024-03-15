@@ -36,6 +36,11 @@ from tests.parsers.test_utils import (
 VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
+# This file was manually changed to use UTF-16 encoding to test encoding code paths. git history doesn't show this.
+UTF_16_FILEPATH = (
+    "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_multiplate.txt"
+)
+
 ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
@@ -49,7 +54,7 @@ def test_to_allotrope_absorbance(filename: str) -> None:
     expected_filepath = (
         f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
     )
-    allotrope_dict = from_file(test_filepath)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
@@ -187,15 +192,16 @@ def test_to_allotrope_unsupported_area_scan_file() -> None:
 @pytest.mark.parametrize(
     "filepath",
     [
-        "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_multiplate.txt",
+        UTF_16_FILEPATH,
         "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_multiplate.txt",
         "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_multiplate.txt",
         "tests/parsers/agilent_gen5/testdata/luminescence/endpoint_multiplate.txt",
     ],
 )
 def test_to_allotrope_invalid_multiplate_file(filepath: str) -> None:
+    encoding = "UTF-16" if filepath == UTF_16_FILEPATH else None
     with pytest.raises(AllotropeConversionError, match=MULTIPLATE_FILE_ERROR):
-        from_file(filepath, VENDOR_TYPE)
+        from_file(filepath, VENDOR_TYPE, encoding=encoding)
 
 
 def test_to_allotrope_invalid_plate_data() -> None:
