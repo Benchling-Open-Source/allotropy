@@ -173,6 +173,25 @@ class PlateTypeInfo:
 
 
 @dataclass(frozen=True)
+class Platemap:
+    data: pd.DataFrame
+
+    @staticmethod
+    def create(reader: CsvReader) -> Platemap:
+        assert_not_none(
+            reader.drop_until_inclusive("^Platemap"),
+            msg="Unable to find Platemap section.",
+        )
+
+        data = assert_not_none(
+            reader.pop_csv_block_as_df(header=0, index_col=0),
+            msg="Unable to find platemap information.",
+        )
+
+        return Platemap(data)
+
+
+@dataclass(frozen=True)
 class DataV3:
     ensight_results: EnsightResults
     background_info: BackgroundInfo
@@ -182,6 +201,7 @@ class DataV3:
     instrument_info: InstrumentInfo
     protocol_info: ProtocolInfo
     plate_type_info: PlateTypeInfo
+    platemap: Platemap
 
     @staticmethod
     def create(reader: CsvReader) -> DataV3:
@@ -194,4 +214,5 @@ class DataV3:
             instrument_info=InstrumentInfo.create(reader),
             protocol_info=ProtocolInfo.create(reader),
             plate_type_info=PlateTypeInfo.create(reader),
+            platemap=Platemap.create(reader),
         )
