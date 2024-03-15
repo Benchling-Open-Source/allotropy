@@ -127,6 +127,28 @@ class InstrumentInfo:
 
 
 @dataclass(frozen=True)
+class ProtocolInfo:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> ProtocolInfo:
+        assert_not_none(
+            reader.drop_until_inclusive("^Protocol Information"),
+            msg="Unable to find Protocol Information section.",
+        )
+
+        elements = {}
+        for raw_line in reader.pop_until("^Plate Type Information"):
+            if raw_line == "":
+                continue
+
+            key, _, value, *_ = raw_line.split(",")
+            elements[key.rstrip(":")] = value
+
+        return ProtocolInfo(elements)
+
+
+@dataclass(frozen=True)
 class DataV3:
     ensight_results: EnsightResults
     background_info: BackgroundInfo
@@ -134,6 +156,7 @@ class DataV3:
     analysis_results: Optional[AnalysisResults]
     measurement_info: MeasurementInfo
     instrument_info: InstrumentInfo
+    protocol_info: ProtocolInfo
 
     @staticmethod
     def create(reader: CsvReader) -> DataV3:
@@ -144,4 +167,5 @@ class DataV3:
             analysis_results=AnalysisResults.create(reader),
             measurement_info=MeasurementInfo.create(reader),
             instrument_info=InstrumentInfo.create(reader),
+            protocol_info=ProtocolInfo.create(reader),
         )
