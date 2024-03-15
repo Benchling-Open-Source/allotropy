@@ -131,6 +131,28 @@ class Platemap:
 
 
 @dataclass(frozen=True)
+class Measurements:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> Measurements:
+        assert_not_none(
+            reader.drop_until_inclusive("^Measurements"),
+            msg="Unable to find Measurements section.",
+        )
+
+        elements = {}
+        for raw_line in reader.pop_until("^Analysis"):
+            if raw_line == "":
+                continue
+
+            key, _, _, _, value, *_ = raw_line.split(",")
+            elements[key.rstrip(":")] = value
+
+        return Measurements(elements)
+
+
+@dataclass(frozen=True)
 class DataV2:
     background_info: BackgroundInfo
     results: Results
@@ -138,6 +160,7 @@ class DataV2:
     measurement_basic_info: MeasurementBasicInfo
     plate_type: PlateType
     platemap: Platemap
+    measurements: Measurements
 
     @staticmethod
     def create(reader: CsvReader) -> DataV2:
@@ -148,4 +171,5 @@ class DataV2:
             measurement_basic_info=MeasurementBasicInfo.create(reader),
             plate_type=PlateType.create(reader),
             platemap=Platemap.create(reader),
+            measurements=Measurements.create(reader),
         )
