@@ -1,97 +1,177 @@
+from collections.abc import Sequence
 from typing import Any, Union
 
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
-    ContainerType as FluorescenceContainerType,
-    MeasurementAggregateDocument as FluorescenceMeasurementAggregateDocument,
-    Model as FluorescenceModel,
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ContainerType,
+    DataSystemDocument,
+    DeviceSystemDocument,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+    MeasurementAggregateDocument,
+    Model,
+    PlateReaderAggregateDocument,
+    PlateReaderDocumentItem,
+    SampleDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
-from allotropy.allotrope.models.luminescence_benchling_2023_09_luminescence import (
-    ContainerType as LuminescenceContainerType,
-    MeasurementAggregateDocument as LuminescenceMeasurementAggregateDocument,
-    Model as LuminescenceModel,
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
 )
-from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
-from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
-    ContainerType as AbsorbanceContainerType,
-    MeasurementAggregateDocument as AbsorbanceMeasurementAggregateDocument,
-    Model as AbsorbanceModel,
-)
-from allotropy.exceptions import (
-    AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
-)
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
-from allotropy.parsers.agilent_gen5.constants import ReadMode
+from allotropy.parsers.agilent_gen5.constants import (
+    DEFAULT_SOFTWARE_NAME,
+    DEVICE_TYPE,
+    ReadMode,
+)
 from allotropy.parsers.agilent_gen5.plate_data import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
+MeasurementDocumentItems = Union[
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+]
+
 
 class AgilentGen5Parser(VendorParser):
-    def _create_model(
-        self, plate_data: PlateData
-    ) -> Union[AbsorbanceModel, FluorescenceModel, LuminescenceModel]:
-        measurement_docs = plate_data.results.measurement_docs
-        if plate_data.read_data.read_mode == ReadMode.ABSORBANCE:
-            return AbsorbanceModel(
-                measurement_aggregate_document=AbsorbanceMeasurementAggregateDocument(
-                    measurement_identifier=random_uuid_str(),
-                    measurement_time=self._get_date_time(
-                        plate_data.header_data.datetime
-                    ),
-                    analytical_method_identifier=plate_data.file_paths.protocol_file_path,
-                    experimental_data_identifier=plate_data.file_paths.experiment_file_path,
-                    container_type=AbsorbanceContainerType.well_plate,
-                    plate_well_count=TQuantityValueNumber(
-                        len(plate_data.results.wells)
-                    ),
-                    measurement_document=measurement_docs,
-                )
-            )
-        elif plate_data.read_data.read_mode == ReadMode.FLUORESCENCE:
-            return FluorescenceModel(
-                measurement_aggregate_document=FluorescenceMeasurementAggregateDocument(
-                    measurement_identifier=random_uuid_str(),
-                    measurement_time=self._get_date_time(
-                        plate_data.header_data.datetime
-                    ),
-                    analytical_method_identifier=plate_data.file_paths.protocol_file_path,
-                    experimental_data_identifier=plate_data.file_paths.experiment_file_path,
-                    container_type=FluorescenceContainerType.well_plate,
-                    plate_well_count=TQuantityValueNumber(
-                        len(plate_data.results.wells)
-                    ),
-                    measurement_document=measurement_docs,
-                )
-            )
-        elif plate_data.read_data.read_mode == ReadMode.LUMINESCENCE:
-            return LuminescenceModel(
-                measurement_aggregate_document=LuminescenceMeasurementAggregateDocument(
-                    measurement_identifier=random_uuid_str(),
-                    measurement_time=self._get_date_time(
-                        plate_data.header_data.datetime
-                    ),
-                    analytical_method_identifier=plate_data.file_paths.protocol_file_path,
-                    experimental_data_identifier=plate_data.file_paths.experiment_file_path,
-                    container_type=LuminescenceContainerType.well_plate,
-                    plate_well_count=TQuantityValueNumber(
-                        len(plate_data.results.wells)
-                    ),
-                    measurement_document=measurement_docs,
-                )
-            )
+    def _create_model(self, plate_data: PlateData, file_name: str) -> Model:
+        header_data = plate_data.header_data
+        results = plate_data.results
 
-        msg = msg_for_error_on_unrecognized_value(
-            "read mode", plate_data.read_data.read_mode, ReadMode._member_names_
+        return Model(
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+            plate_reader_aggregate_document=PlateReaderAggregateDocument(
+                device_system_document=DeviceSystemDocument(
+                    device_identifier="NA",
+                    model_number=header_data.model_number,
+                    equipment_serial_number=header_data.equipment_serial_number,
+                ),
+                data_system_document=DataSystemDocument(
+                    file_name=file_name,
+                    software_name=DEFAULT_SOFTWARE_NAME,
+                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
+                plate_reader_document=[
+                    self._get_plate_reader_document_item(plate_data, well_position)
+                    for well_position in results.wells
+                ],
+            ),
         )
-        raise AllotropeConversionError(msg)
+
+    def _get_plate_reader_document_item(
+        self, plate_data: PlateData, well_position: str
+    ) -> PlateReaderDocumentItem:
+        file_paths = plate_data.file_paths
+        plate_well_count = len(plate_data.results.wells)
+        read_mode = plate_data.read_data.read_mode
+
+        measurement_document: Sequence[MeasurementDocumentItems]
+
+        if read_mode == ReadMode.ABSORBANCE:
+            measurement_document = self._get_absorbance_measurement_document(
+                plate_data, well_position
+            )
+        elif read_mode == ReadMode.FLUORESCENCE:
+            measurement_document = self._get_fluorescence_measurement_document()
+        elif read_mode == ReadMode.LUMINESCENCE:
+            measurement_document = self._get_luminescence_measurement_document()
+
+        return PlateReaderDocumentItem(
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_time=self._get_date_time(plate_data.header_data.datetime),
+                analytical_method_identifier=file_paths.protocol_file_path,
+                experimental_data_identifier=file_paths.experiment_file_path,
+                plate_well_count=TQuantityValueNumber(plate_well_count),
+                container_type=ContainerType.well_plate,
+                measurement_document=list(measurement_document),
+            )
+        )
+
+    def _get_sample_document(
+        self, plate_data: PlateData, well_position: str
+    ) -> SampleDocument:
+        well_plate_identifier = plate_data.header_data.well_plate_identifier
+        sample_identifier = plate_data.layout_data.sample_identifiers.get(
+            well_position, f"{well_plate_identifier} {well_position}"
+        )
+        return SampleDocument(
+            sample_identifier=sample_identifier,
+            location_identifier=well_position,
+            # TODO: check if plate identifier can be extracted from filename
+            well_plate_identifier=plate_data.header_data.well_plate_identifier,
+        )
+
+    def _get_wavelength_from_label(self, label: str) -> float:
+        return float(label.split(":")[-1].split(" ")[0])
+
+    def _get_absorbance_measurement_document(
+        self, plate_data: PlateData, well_position: str
+    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
+        read_data = plate_data.read_data
+
+        measurements = plate_data.results.measurements[well_position]
+
+        sample_document = self._get_sample_document(plate_data, well_position)
+
+        return [
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+                measurement_identifier=random_uuid_str(),
+                sample_document=sample_document,
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[
+                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                            device_type=DEVICE_TYPE,
+                            detection_type=read_data.read_mode.value,
+                            detector_wavelength_setting=TQuantityValueNanometer(
+                                value=self._get_wavelength_from_label(label)
+                            ),
+                            number_of_averages=(
+                                TQuantityValueNumber(read_data.number_of_averages)
+                                if read_data.number_of_averages
+                                else None
+                            ),
+                            detector_carriage_speed_setting=read_data.detector_carriage_speed,
+                        )
+                    ]
+                ),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(absorbance),
+                compartment_temperature=(
+                    TQuantityValueDegreeCelsius(
+                        value=plate_data.compartment_temperature
+                    )
+                    if plate_data.compartment_temperature
+                    else None
+                ),
+            )
+            for label, absorbance in measurements
+        ]
+
+    def _get_fluorescence_measurement_document(
+        self,
+    ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
+        return []
+
+    def _get_luminescence_measurement_document(
+        self,
+    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
+        return []
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)
         section_lines_reader = SectionLinesReader(lines)
         data = Data.create(section_lines_reader)
 
-        return self._create_model(data.plate_data)
+        return self._create_model(
+            data.plate_data, named_file_contents.original_file_name
+        )

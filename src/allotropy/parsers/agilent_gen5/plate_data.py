@@ -353,22 +353,17 @@ class ReadData:
 
 @dataclass(frozen=True)
 class LayoutData:
-    layout: dict
-    concentrations: dict
+    sample_identifiers: dict
 
     @staticmethod
     def create_default() -> LayoutData:
-        return LayoutData(
-            layout={},
-            concentrations={},
-        )
+        return LayoutData(sample_identifiers={})
 
     @staticmethod
     def create(layout_str: str) -> LayoutData:
-        layout = {}
-        concentrations = {}
+        identifiers = {}
 
-        layout_lines = layout_str.splitlines()
+        layout_lines: list[str] = layout_str.splitlines()
         # first line is "Layout", second line is column numbers
         current_row = "A"
         for i in range(2, len(layout_lines)):
@@ -378,15 +373,14 @@ class LayoutData:
             label = split_line[-1]
             for j in range(1, len(split_line) - 1):
                 well_loc = f"{current_row}{j}"
-                if label == "Well ID":
-                    layout[well_loc] = split_line[j]
-                elif label == "Conc/Dil" and split_line[j]:
-                    concentrations[well_loc] = float(split_line[j])
+                if label == "Name":
+                    identifiers[well_loc] = split_line[j]
+                elif label == "Well ID":
+                    # give prevalence to the "Name" field if present
+                    sample_id = identifiers.get(well_loc)
+                    identifiers[well_loc] = sample_id if sample_id else split_line[j]
 
-        return LayoutData(
-            layout=layout,
-            concentrations=concentrations,
-        )
+        return LayoutData(sample_identifiers=identifiers)
 
 
 @dataclass(frozen=True)
@@ -428,16 +422,13 @@ class Results:
         self,
         results: str,
         read_data: ReadData,
-        header_data: HeaderData,
-        layout_data: LayoutData,
-        actual_temperature: ActualTemperature,
     ) -> None:
         result_lines = results.splitlines()
         if result_lines[0].strip() != "Results":
             msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
             raise AllotropeConversionError(msg)
-        # result_lines[1] contains column numbers
 
+        # result_lines[1] contains column numbers
         current_row = "A"
         for row_num in range(2, len(result_lines)):
             values = result_lines[row_num].split("\t")
@@ -448,46 +439,24 @@ class Results:
                 well_pos = f"{current_row}{col_num}"
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
-                well_value: Union[str, float] = try_float_or_value(values[col_num])
-                if Results._is_processed_data_label(
-                    label,
-                    read_data.read_mode,
-                    read_data.read_names,
-                ):
+                well_value: float = try_float(values[col_num], "well value")
+                if self._is_calculated_data_label(label, read_data):
                     self.processed_datas[well_pos].append([label, well_value])
                 else:
                     label_only = label.split(":")[-1]
                     self.measurements[well_pos].append([label_only, well_value])
 
-        for well_pos in self.wells:
-            self.measurement_docs.append(
-                read_data.data_point_cls(
-                    read_type=read_data.read_type,
-                    measurements=self.measurements[well_pos],
-                    well_location=well_pos,
-                    well_plate_identifier=header_data.well_plate_identifier,
-                    sample_identifier=layout_data.layout.get(well_pos),
-                    concentration=layout_data.concentrations.get(well_pos),
-                    processed_data=self.processed_datas[well_pos],
-                    temperature=actual_temperature.value,
-                ).to_measurement_doc()
-            )
-
     @staticmethod
-    def _is_processed_data_label(
-        label: str,
-        read_mode: ReadMode,
-        read_names: list,
-    ) -> bool:
-        if read_mode == ReadMode.LUMINESCENCE:
+    def _is_calculated_data_label(label: str, read_data: ReadData) -> bool:
+        if read_data.read_mode == ReadMode.LUMINESCENCE:
             return not any(
                 (label.startswith(read_name) and label.split(":")[-1] == "Lum")
-                for read_name in read_names
+                for read_name in read_data.read_names
             )
         else:
             return not any(
                 (label.startswith(read_name) and label.split(":")[-1][0].isdigit())
-                for read_name in read_names
+                for read_name in read_data.read_names
             )
 
 
@@ -496,7 +465,9 @@ class PlateData:
     file_paths: FilePaths
     header_data: HeaderData
     read_data: ReadData
+    layout_data: LayoutData
     results: Results
+    compartment_temperature: Optional[float]
 
     @staticmethod
     def create(reader: LinesReader) -> PlateData:
@@ -508,6 +479,7 @@ class PlateData:
         results = Results.create()
 
         while reader.current_line_exists():
+            # TODO: get lines from reader instead of calling read_data_section
             data_section = read_data_section(reader)
             if data_section.startswith("Layout"):
                 layout_data = LayoutData.create(data_section)
@@ -517,14 +489,13 @@ class PlateData:
                 results.parse_results(
                     data_section,
                     read_data,
-                    header_data,
-                    layout_data,
-                    actual_temperature,
                 )
 
         return PlateData(
             file_paths=file_paths,
             header_data=header_data,
             read_data=read_data,
+            layout_data=layout_data,
             results=results,
+            compartment_temperature=actual_temperature.value,
         )

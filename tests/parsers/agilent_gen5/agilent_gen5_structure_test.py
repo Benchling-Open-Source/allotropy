@@ -1,7 +1,7 @@
 import pytest
 
 from allotropy.parsers.agilent_gen5.constants import ReadMode
-from allotropy.parsers.agilent_gen5.plate_data import ReadData
+from allotropy.parsers.agilent_gen5.plate_data import LayoutData, ReadData
 from allotropy.parsers.lines_reader import LinesReader
 
 
@@ -141,3 +141,45 @@ def test_create_read_data_fluorescence() -> None:
     assert read_data.gains == [35, 35]
     assert read_data.detector_distance == 7  # Read Height
     assert read_data.number_of_averages == 10  # Measurements/Data Point
+
+
+def test_create_layout_data() -> None:
+    layout_data = [
+        "Layout",
+        "\t1\t2\t3",
+        "A\tSPL1\tSPL9\tSPL17\tWell ID",
+        "B\tSPL2\tSPL10\tSPL18\tWell ID",
+    ]
+
+    layout_data = LayoutData.create("\n".join(layout_data))
+
+    assert layout_data.sample_identifiers == {
+        "A1": "SPL1",
+        "A2": "SPL9",
+        "A3": "SPL17",
+        "B1": "SPL2",
+        "B2": "SPL10",
+        "B3": "SPL18",
+    }
+
+
+def test_create_layout_data_with_name_rows() -> None:
+    layout_data = [
+        "Layout",
+        "\t1\t2\t3",
+        "A\tSPL1\tSPL9\tSPL17\tWell ID",
+        "A\tName_A1\tName_A2\tName_A3\tName",
+        "B\tSPL2\tSPL10\tSPL18\tWell ID",
+        "B\tName_B1\tName_B2\tName_B3\tName",
+    ]
+
+    layout_data = LayoutData.create("\n".join(layout_data))
+
+    assert layout_data.sample_identifiers == {
+        "A1": "Name_A1",
+        "A2": "Name_A2",
+        "A3": "Name_A3",
+        "B1": "Name_B1",
+        "B2": "Name_B2",
+        "B3": "Name_B3",
+    }

@@ -14,6 +14,9 @@ MIRROR_KEY = "Mirror"
 READ_HEIGHT_KEY = "Read Height"
 READ_SPEED_KEY = "Read Speed"
 
+DEFAULT_SOFTWARE_NAME = "Gen5"
+DEVICE_TYPE = "plate reader"
+
 
 class ReadMode(str, Enum):
     ABSORBANCE = "Absorbance"
