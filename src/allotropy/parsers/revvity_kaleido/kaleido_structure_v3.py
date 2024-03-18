@@ -125,6 +125,12 @@ class InstrumentInfo:
 
         return InstrumentInfo(elements)
 
+    def get_instrument_serial_number(self) -> str:
+        return assert_not_none(
+            self.elements.get("Instrument Serial Number"),
+            msg="Unable to find Instrument Serial Number in Instrument Information section.",
+        )
+
 
 @dataclass(frozen=True)
 class ProtocolInfo:
@@ -240,3 +246,6 @@ class DataV3:
             platemap=Platemap.create(reader),
             details_measurement_sequence=DetailsMeasurementSequence.create(reader),
         )
+
+    def get_equipment_serial_number(self) -> str:
+        return self.instrument_info.get_instrument_serial_number()

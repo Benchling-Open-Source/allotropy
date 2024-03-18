@@ -83,6 +83,12 @@ class MeasurementBasicInfo:
 
         return MeasurementBasicInfo(elements)
 
+    def get_instrument_serial_number(self) -> str:
+        return assert_not_none(
+            self.elements.get("Instrument Serial Number"),
+            msg="Unable to find Instrument Serial Number in Measurement Basic Information section.",
+        )
+
 
 @dataclass(frozen=True)
 class PlateType:
@@ -173,3 +179,6 @@ class DataV2:
             platemap=Platemap.create(reader),
             measurements=Measurements.create(reader),
         )
+
+    def get_equipment_serial_number(self) -> str:
+        return self.measurement_basic_info.get_instrument_serial_number()
