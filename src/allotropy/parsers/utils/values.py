@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import re
 from typing import Any, Optional, TypeVar, Union
 
@@ -38,6 +39,19 @@ def try_float(value: str, value_name: str) -> float:
         raise AllotropeConversionError(msg) from e
 
 
+def try_non_nan_float(value: str) -> float:
+    float_value = try_non_nan_float_or_none(value)
+    if float_value is None:
+        msg = f"Invalid non nan float string: '{value}'."
+        raise AllotropeConversionError(msg)
+    return float_value
+
+
+def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
+    float_value = try_float_or_none(value)
+    return None if float_value is None or math.isnan(float_value) else float_value
+
+
 def try_float_or_none(value: Optional[str]) -> Optional[float]:
     try:
         return float("" if value is None else value)
@@ -46,7 +60,7 @@ def try_float_or_none(value: Optional[str]) -> Optional[float]:
 
 
 def try_float_or_nan(value: Optional[str]) -> JsonFloat:
-    float_value = try_float_or_none(value)
+    float_value = try_non_nan_float_or_none(value)
     return InvalidJsonFloat.NaN if float_value is None else float_value
 
 
@@ -129,6 +143,18 @@ def try_int_from_series(
     msg: Optional[str] = None,
 ) -> int:
     return assert_not_none(try_int_from_series_or_none(data, key), key, msg)
+
+
+def try_float_from_series_or_nan(
+    data: pd.Series[Any],
+    key: str,
+) -> JsonFloat:
+    try:
+        value = data.get(key)
+        return try_float_or_nan(str(value))
+    except Exception as e:
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
+        raise AllotropeConversionError(msg) from e
 
 
 def try_float_from_series_or_none(

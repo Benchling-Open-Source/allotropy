@@ -8,7 +8,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
@@ -40,9 +40,10 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class UnchainedLabsLunaticParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents, filename = named_file_contents
+        raw_contents = named_file_contents.contents
         data = read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
 
+        filename = named_file_contents.original_file_name
         return self._get_model(Data.create(data), filename)
 
     def _get_model(self, data: Data, filename: str) -> Model:
@@ -124,7 +125,7 @@ class UnchainedLabsLunaticParser(VendorParser):
                         value=calculated_data_item.value,
                         unit=calculated_data_item.unit,
                     ),
-                    data_source_aggregate_document=DataSourceAggregateDocument1(
+                    data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[
                             DataSourceDocumentItem(
                                 data_source_identifier=item.identifier,

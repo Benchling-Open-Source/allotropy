@@ -136,6 +136,7 @@ class Data:
 
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> Data:
-        contents, filename = named_file_contents
+        contents = named_file_contents.contents
+        filename = named_file_contents.original_file_name
         data = read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))

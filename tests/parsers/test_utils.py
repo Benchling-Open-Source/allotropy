@@ -4,7 +4,7 @@ from collections.abc import Mapping
 import json
 import shutil
 import tempfile
-from typing import Any
+from typing import Any, Optional
 from unittest import mock
 
 from deepdiff import DeepDiff
@@ -39,6 +39,7 @@ def _assert_allotrope_dicts_equal(
         expected_replaced,
         actual,
         ignore_type_in_groups=[(float, np.float64)],
+        ignore_nan_inequality=True,
     )
     assert not ddiff
 
@@ -57,12 +58,14 @@ class TestIdGenerator:
         return current_id
 
 
-def from_file(test_file: str, vendor: Vendor) -> DictType:
+def from_file(
+    test_file: str, vendor: Vendor, encoding: Optional[str] = None
+) -> DictType:
     with mock.patch(
         "allotropy.parsers.utils.uuids._IdGeneratorFactory.get_id_generator",
         return_value=TestIdGenerator(vendor),
     ):
-        return allotrope_from_file(test_file, vendor)
+        return allotrope_from_file(test_file, vendor, encoding=encoding)
 
 
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:

@@ -6,20 +6,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add optical imaging to plate reader schema
 ### Fixed
 ### Changed
 ### Deprecated
 ### Removed
 ### Security
 
-## [0.1.19] - 2024-02-19
+## [0.1.23] - 2024-03-12
 ### Added
+- Add Qiacuity dPCR adapter
+### Changed
+- Added ability to specify encoding in top-level functions. Not passing an encoding defaults to UTF-8. To auto-detect encoding with chardet, pass in CHARDET_ENCODING
+- Loosen requirement for jsonschema package to increase package compatibility
+
+## [0.1.22] - 2024-03-07
+### Fixed
+- Fixed Softmax Pro handling of partially filled plates
+### Changed
+- Moved VendorType to to_allotrope
+
+## [0.1.21] - 2024-03-05
+### Fixed
+- Add missing ct mean calculated data documents to relative std curve experiments in AppBio Quantstudio
+### Changed
+- Infer size of plate to read all data available in Moldev Softmax
+
+## [0.1.20] - 2024-02-23
+### Fixed
+- Remove duplicated delta ct mean calculated data documents in AppBio Quantstudio
+- Fix problem in NanoDrop Eight parser where data source IDs were being used that did not refer to any existing measurement ID
+### Changed
+- Allow n/a absorbance values in Unchained Labs Lunatic Parser
+
+## [0.1.19] - 2024-02-19
 ### Fixed
 - Fix try_float_or_none bug with evaluating 0 as NaN
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.18] - 2024-02-19
 ### Added
@@ -28,29 +50,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Cast sample identifier to string when saving it in SoftmaxPro parser
 - Handle style bug in xlsx files produced by VI-Cell XR instrument
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.17] - 2024-02-15
 ### Added
 - Automatic validation of generated model in to_allotrope methods with error messages
 ### Fixed
 - Handle invalid values in SoftmaxPro well measurements, filling with "NaN"
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.16] - 2024-02-08
-### Added
 ### Fixed
 - Fix mixup of Plate ID and Plate Position in Unchained Labs Lunatic Parser
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.15] - 2024-02-02
 ### Added

@@ -7,14 +7,16 @@ import chardet
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
+from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.types import IOType
+from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
-    stream_contents = io_.read()
+def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
+    stream_contents = named_file_contents.contents.read()
+    encoding = named_file_contents.encoding
     raw_contents = (
         _decode(stream_contents, encoding)
         if isinstance(stream_contents, bytes)
@@ -24,13 +26,22 @@ def read_to_lines(io_: IOType, encoding: Optional[str] = "UTF-8") -> list[str]:
     return contents.split("\n")
 
 
-def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
+def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
     if not encoding:
-        encoding = chardet.detect(bytes_content)["encoding"]
-        if not encoding:
-            error = "Unable to detect text encoding for file. The file may be empty."
-            raise AllotropeConversionError(error)
-    return bytes_content.decode(encoding)
+        return DEFAULT_ENCODING
+    if encoding != CHARDET_ENCODING:
+        return encoding
+
+    detected = chardet.detect(bytes_content)["encoding"]
+    if not detected:
+        error = "Unable to detect text encoding for file. The file may be empty."
+        raise AllotropeConversionError(error)
+    return detected
+
+
+def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
+    encoding_to_use = _determine_encoding(bytes_content, encoding)
+    return bytes_content.decode(encoding_to_use)
 
 
 class LinesReader:
@@ -146,3 +157,22 @@ class CsvReader(LinesReader):
     def pop_as_series(self, sep: str = " ") -> Optional["pd.Series[str]"]:
         line = self.pop()
         return None if line is None else pd.Series(line.split(sep))
+
+    def lines_as_df(
+        self,
+        *,
+        lines: list[str],
+        header: Optional[Union[int, Literal["infer"]]] = None,
+        sep: Optional[str] = ",",
+        as_str: bool = False,
+    ) -> Optional[pd.DataFrame]:
+        if lines:
+            return read_csv(
+                StringIO("\n".join(lines)),
+                header=header,
+                sep=sep,
+                dtype=str if as_str else None,
+                # Prevent pandas from rounding decimal values, at the cost of some speed.
+                float_precision="round_trip",
+            )
+        return None
