@@ -1,15 +1,22 @@
 from typing import Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
+    MeasurementAggregateDocument,
     Model,
     PlateReaderAggregateDocument,
+    PlateReaderDocumentItem,
+)
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueNumber,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.revvity_kaleido.kaleido_builder import create_data
+from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
 from allotropy.parsers.vendor_parser import VendorParser
@@ -25,7 +32,7 @@ class KaleidoParser(VendorParser):
     def _get_model(self, file_name: str, data: Union[DataV2, DataV3]) -> Model:
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
-                plate_reader_document=[],
+                plate_reader_document=self._get_plate_reader_document(data),
                 device_system_document=self._get_device_system_document(data),
                 data_system_document=self._get_data_system_document(
                     file_name, data.version
@@ -53,4 +60,29 @@ class KaleidoParser(VendorParser):
             software_version=version,
             ASM_converter_name=ASM_CONVERTER_NAME,
             ASM_converter_version=ASM_CONVERTER_VERSION,
+        )
+
+    def _get_plate_reader_document(
+        self, data: Union[DataV2, DataV3]
+    ) -> list[PlateReaderDocumentItem]:
+        return [
+            PlateReaderDocumentItem(
+                measurement_aggregate_document=self._get_measurement_aggregate_document(
+                    data, well_position
+                )
+            )
+            for well_position in data.iter_wells()
+        ]
+
+    def _get_measurement_aggregate_document(
+        self, data: Union[DataV2, DataV3], _: WellPosition
+    ) -> MeasurementAggregateDocument:
+        return MeasurementAggregateDocument(
+            container_type=ContainerType.well_plate,
+            measurement_time=self._get_date_time(data.get_measurement_time()),
+            plate_well_count=TQuantityValueNumber(value=data.get_plate_well_count()),
+            experiment_type=data.get_experiment_type(),
+            analytical_method_identifier=data.get_analytical_method_id(),
+            experimental_data_identifier=data.get_experimentl_data_id(),
+            measurement_document=[],
         )

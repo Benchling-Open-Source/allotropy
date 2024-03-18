@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
+import re
 from typing import Optional
 
 import pandas as pd
 
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
 from allotropy.parsers.utils.values import (
     assert_not_none,
 )
@@ -13,7 +16,7 @@ from allotropy.parsers.utils.values import (
 
 @dataclass(frozen=True)
 class BackgroundInfo:
-    info: str
+    experiment_type: str
 
     @staticmethod
     def create(reader: CsvReader) -> BackgroundInfo:
@@ -21,7 +24,13 @@ class BackgroundInfo:
             reader.drop_until_inclusive("^Results for"),
             msg="Unable to find background information.",
         )
-        return BackgroundInfo(line)
+
+        experiment_type = assert_not_none(
+            re.match("^Results for.(.+) 1", line),
+            msg="Unable to find experiment type from background information section.",
+        ).group(1)
+
+        return BackgroundInfo(experiment_type)
 
 
 @dataclass(frozen=True)
@@ -41,10 +50,26 @@ class Results:
             msg="Unable to find results table.",
         )
 
+        for column in results:
+            if str(column).startswith("Unnamed"):
+                results = results.drop(columns=column)
+
         return Results(
             barcode=barcode,
             results=results,
         )
+
+    def iter_wells(self) -> Iterator[WellPosition]:
+        for row, row_series in self.results.iterrows():
+            for column in row_series.index:
+                yield WellPosition(column=str(column), row=str(row))
+
+    def get_plate_well_dimentions(self) -> tuple[int, int]:
+        return self.results.shape
+
+    def get_plate_well_count(self) -> int:
+        n_rows, n_columns = self.get_plate_well_dimentions()
+        return n_rows * n_columns
 
 
 @dataclass(frozen=True)
@@ -87,6 +112,24 @@ class MeasurementBasicInfo:
         return assert_not_none(
             self.elements.get("Instrument Serial Number"),
             msg="Unable to find Instrument Serial Number in Measurement Basic Information section.",
+        )
+
+    def get_measurement_time(self) -> str:
+        return assert_not_none(
+            self.elements.get("Measurement Started"),
+            msg="Unable to find Measurement time in Measurement Basic Information section.",
+        )
+
+    def get_protocol_signature(self) -> str:
+        return assert_not_none(
+            self.elements.get("Protocol Signature"),
+            msg="Unable to find Protocol Signature in Measurement Basic Information section.",
+        )
+
+    def get_measurement_signature(self) -> str:
+        return assert_not_none(
+            self.elements.get("Measurement Signature"),
+            msg="Unable to find Measurement Signature in Measurement Basic Information section.",
         )
 
 
@@ -184,3 +227,21 @@ class DataV2:
 
     def get_equipment_serial_number(self) -> str:
         return self.measurement_basic_info.get_instrument_serial_number()
+
+    def iter_wells(self) -> Iterator[WellPosition]:
+        yield from self.results.iter_wells()
+
+    def get_plate_well_count(self) -> int:
+        return self.results.get_plate_well_count()
+
+    def get_measurement_time(self) -> str:
+        return self.measurement_basic_info.get_measurement_time()
+
+    def get_experiment_type(self) -> str:
+        return self.background_info.experiment_type
+
+    def get_analytical_method_id(self) -> str:
+        return self.measurement_basic_info.get_protocol_signature()
+
+    def get_experimentl_data_id(self) -> str:
+        return self.measurement_basic_info.get_measurement_signature()
