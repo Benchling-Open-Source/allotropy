@@ -160,6 +160,7 @@ class Measurements:
 
 @dataclass(frozen=True)
 class DataV2:
+    version: str
     background_info: BackgroundInfo
     results: Results
     analysis_results: Optional[AnalysisResults]
@@ -169,8 +170,9 @@ class DataV2:
     measurements: Measurements
 
     @staticmethod
-    def create(reader: CsvReader) -> DataV2:
+    def create(version: str, reader: CsvReader) -> DataV2:
         return DataV2(
+            version=version,
             background_info=BackgroundInfo.create(reader),
             results=Results.create(reader),
             analysis_results=AnalysisResults.create(reader),

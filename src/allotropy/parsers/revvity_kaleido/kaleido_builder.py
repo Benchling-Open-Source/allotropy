@@ -10,8 +10,8 @@ from allotropy.parsers.utils.values import assert_not_none
 
 
 class Version(Enum):
-    V2 = "2"
-    V3 = "3"
+    V2 = "2.0"
+    V3 = "3.0"
 
 
 def get_version(reader: CsvReader) -> str:
@@ -21,7 +21,7 @@ def get_version(reader: CsvReader) -> str:
         msg="Unable to find last line of input file.",
     )
     return assert_not_none(
-        re.search(r"Exported with Kaleido (\d)", last_line),
+        re.search(r"Exported with Kaleido ([\d.]+)", last_line),
         msg="Unable to find Revvity Kaleido version in input file.",
     ).group(1)
 
@@ -29,10 +29,10 @@ def get_version(reader: CsvReader) -> str:
 def create_data(reader: CsvReader) -> Union[DataV2, DataV3]:
     version = get_version(reader)
 
-    if version == Version.V2.value:
-        return DataV2.create(reader)
-    elif version == Version.V3.value:
-        return DataV3.create(reader)
+    if version.startswith(Version.V2.value):
+        return DataV2.create(version, reader)
+    elif version.startswith(Version.V3.value):
+        return DataV3.create(version, reader)
     else:
         valid_versions = ", ".join([f"v{v.value}.0+" for v in Version])
         error = (

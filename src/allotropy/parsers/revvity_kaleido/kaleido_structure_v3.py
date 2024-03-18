@@ -221,6 +221,7 @@ class DetailsMeasurementSequence:
 
 @dataclass(frozen=True)
 class DataV3:
+    version: str
     ensight_results: EnsightResults
     background_info: BackgroundInfo
     results: Results
@@ -233,8 +234,9 @@ class DataV3:
     details_measurement_sequence: DetailsMeasurementSequence
 
     @staticmethod
-    def create(reader: CsvReader) -> DataV3:
+    def create(version: str, reader: CsvReader) -> DataV3:
         return DataV3(
+            version=version,
             ensight_results=EnsightResults.create(reader),
             background_info=BackgroundInfo.create(reader),
             results=Results.create(reader),
