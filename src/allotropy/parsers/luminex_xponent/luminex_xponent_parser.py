@@ -43,7 +43,7 @@ DEFAULT_DEVICE_TYPE = "multi analyte profiling analyzer"
 
 class LuminexXponentParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        lines = read_to_lines(named_file_contents.contents)
+        lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
         data = Data.create(reader)
         return self._get_model(named_file_contents.original_file_name, data)

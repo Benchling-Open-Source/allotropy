@@ -28,8 +28,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class ExampleWeylandYutaniParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents = named_file_contents.contents
-        lines = read_to_lines(raw_contents)
+        lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
         return self._get_model(Data.create(reader))
 

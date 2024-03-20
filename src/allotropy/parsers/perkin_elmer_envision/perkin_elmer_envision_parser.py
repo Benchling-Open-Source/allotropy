@@ -6,7 +6,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlDocument,
@@ -19,6 +19,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
@@ -64,6 +65,7 @@ class ReadType(Enum):
 
 
 MeasurementDocumentItems = Union[
+    OpticalImagingMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
@@ -83,9 +85,9 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 class PerkinElmerEnvisionParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents, filename = named_file_contents
-        lines = read_to_lines(named_file_contents.contents)
+        lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
+        filename = named_file_contents.original_file_name
         try:
             return self._get_model(Data.create(reader), filename)
         except Exception as error:
@@ -395,7 +397,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                             value=calculated_result.value,
                             unit=UNITLESS,
                         ),
-                        data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier=source_result.uuid,

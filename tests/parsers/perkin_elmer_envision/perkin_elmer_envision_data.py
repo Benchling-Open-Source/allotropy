@@ -2,7 +2,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
@@ -320,7 +320,7 @@ def get_model() -> Model:
                             value=3,
                             unit=UNITLESS,
                         ),
-                        data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier="f2d4dd7c-0b02-4bd6-a6c5-8acd944e8d56",
