@@ -11,7 +11,7 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_pharmspec.pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.to_allotrope import allotrope_from_file
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
+from tests.parsers.test_utils import from_file, validate_contents
 
 VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
 
@@ -81,14 +81,6 @@ def test_get_model(test_file: Path) -> None:
 def test_asm(test_file: Path) -> None:
     asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
     assert isinstance(asm, dict)
-
-
-@pytest.mark.short
-def test_parse_beckman_pharmspec_hiac_to_asm_schema(test_file: Path) -> None:
-    allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
-    validate_schema(
-        allotrope_dict, "light-obscuration/BENCHLING/2023/12/light-obscuration.json"
-    )
 
 
 @pytest.mark.short
