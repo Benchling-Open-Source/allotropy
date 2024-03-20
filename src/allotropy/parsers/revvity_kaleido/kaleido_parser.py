@@ -1,25 +1,126 @@
+from abc import ABC, abstractmethod
 from typing import Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
+    LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
+    SampleDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNumber,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.revvity_kaleido.kaleido_builder import create_data
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
+
+MeasurementItem = Union[
+    OpticalImagingMeasurementDocumentItems,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+]
+
+
+class MeasurementParser(ABC):
+    @abstractmethod
+    def parse(
+        self, data: Union[DataV2, DataV3], well_position: WellPosition
+    ) -> MeasurementItem:
+        pass
+
+
+class FluorescenceMeasurementParser(MeasurementParser):
+    def parse(
+        self, data: Union[DataV2, DataV3], well_position: WellPosition
+    ) -> MeasurementItem:
+        return FluorescencePointDetectionMeasurementDocumentItems(
+            measurement_identifier=random_uuid_str(),
+            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                value=data.get_well_value(well_position)
+            ),
+            sample_document=SampleDocument(
+                sample_identifier="",
+                location_identifier="",
+            ),
+            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    FluorescencePointDetectionDeviceControlDocumentItem(
+                        device_type="",
+                    ),
+                ]
+            ),
+        )
+
+
+class AbsorbanceMeasurementParser(MeasurementParser):
+    def parse(
+        self, data: Union[DataV2, DataV3], well_position: WellPosition
+    ) -> MeasurementItem:
+        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+            measurement_identifier=random_uuid_str(),
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=data.get_well_value(well_position)
+            ),
+            sample_document=SampleDocument(
+                sample_identifier="",
+                location_identifier="",
+            ),
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        device_type="",
+                    ),
+                ]
+            ),
+        )
+
+
+class LuminescenceMeasurementParser(MeasurementParser):
+    def parse(
+        self, data: Union[DataV2, DataV3], well_position: WellPosition
+    ) -> MeasurementItem:
+        return LuminescencePointDetectionMeasurementDocumentItems(
+            measurement_identifier=random_uuid_str(),
+            luminescence=TQuantityValueRelativeLightUnit(
+                value=data.get_well_value(well_position)
+            ),
+            sample_document=SampleDocument(
+                sample_identifier="",
+                location_identifier="",
+            ),
+            device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    LuminescencePointDetectionDeviceControlDocumentItem(
+                        device_type="",
+                    )
+                ]
+            ),
+        )
 
 
 class KaleidoParser(VendorParser):
@@ -65,17 +166,23 @@ class KaleidoParser(VendorParser):
     def _get_plate_reader_document(
         self, data: Union[DataV2, DataV3]
     ) -> list[PlateReaderDocumentItem]:
+        measurement_parser = self._get_measurement_document_parser(
+            data.get_experiment_type()
+        )
         return [
             PlateReaderDocumentItem(
                 measurement_aggregate_document=self._get_measurement_aggregate_document(
-                    data, well_position
+                    data, measurement_parser, well_position
                 )
             )
             for well_position in data.iter_wells()
         ]
 
     def _get_measurement_aggregate_document(
-        self, data: Union[DataV2, DataV3], _: WellPosition
+        self,
+        data: Union[DataV2, DataV3],
+        measurement_parser: MeasurementParser,
+        well_position: WellPosition,
     ) -> MeasurementAggregateDocument:
         return MeasurementAggregateDocument(
             container_type=ContainerType.well_plate,
@@ -84,5 +191,19 @@ class KaleidoParser(VendorParser):
             experiment_type=data.get_experiment_type(),
             analytical_method_identifier=data.get_analytical_method_id(),
             experimental_data_identifier=data.get_experimentl_data_id(),
-            measurement_document=[],
+            measurement_document=[measurement_parser.parse(data, well_position)],
         )
+
+    def _get_measurement_document_parser(
+        self, experiment_type: str
+    ) -> MeasurementParser:
+        experiment_type_lower = experiment_type.lower()
+        if "fluorescence" in experiment_type_lower or "alpha" in experiment_type_lower:
+            return FluorescenceMeasurementParser()
+        elif "abs" in experiment_type_lower:
+            return AbsorbanceMeasurementParser()
+        elif "luminescence" in experiment_type_lower:
+            return LuminescenceMeasurementParser()
+        else:
+            error = f"Unable to find valid experiment type in '{experiment_type}'"
+            raise AllotropeConversionError(error)

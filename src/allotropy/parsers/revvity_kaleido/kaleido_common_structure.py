@@ -5,3 +5,6 @@ from dataclasses import dataclass
 class WellPosition:
     column: str
     row: str
+
+    def __repr__(self) -> str:
+        return self.row + self.column

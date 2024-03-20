@@ -7,10 +7,12 @@ from typing import Optional
 
 import pandas as pd
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    try_float,
 )
 
 
@@ -92,6 +94,15 @@ class Results:
     def get_plate_well_count(self) -> int:
         n_rows, n_columns = self.get_plate_well_dimentions()
         return n_rows * n_columns
+
+    def get_well_value(self, well_position: WellPosition) -> float:
+        try:
+            value = self.results.loc[well_position.row, well_position.column]
+        except KeyError as e:
+            error = f"Unable to get well at position '{well_position}' from results section."
+            raise AllotropeConversionError(error) from e
+
+        return try_float(str(value), f"result well at '{well_position}'")
 
 
 @dataclass(frozen=True)
@@ -314,3 +325,6 @@ class DataV3:
 
     def get_experimentl_data_id(self) -> str:
         return self.measurement_info.get_measurement_signature()
+
+    def get_well_value(self, well_position: WellPosition) -> float:
+        return self.results.get_well_value(well_position)
