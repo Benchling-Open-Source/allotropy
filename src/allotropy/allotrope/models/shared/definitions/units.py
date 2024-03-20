@@ -64,8 +64,8 @@ class Microliter(HasUnit):
 
 
 @dataclass
-class Milliliter:
-    unit: Optional[str] = "mL"
+class Milliliter(HasUnit):
+    unit: str = "mL"
 
 
 @dataclass
