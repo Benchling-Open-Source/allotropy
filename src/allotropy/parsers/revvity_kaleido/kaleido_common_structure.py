@@ -1,5 +1,21 @@
 from dataclasses import dataclass
 
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+
+PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
+    "B": SampleRoleType.blank_role.value,
+    "-": "N/A",
+    "C": SampleRoleType.control_sample_role.value,
+    "S": SampleRoleType.standard_sample_role.value,
+    "U": SampleRoleType.unknown_sample_role.value,
+    "E": SampleRoleType.control_sample_role.value,
+    "ZL": SampleRoleType.control_sample_role.value,
+    "ZH": SampleRoleType.control_sample_role.value,
+    "LB": SampleRoleType.control_sample_role.value,
+    "LC": SampleRoleType.control_sample_role.value,
+    "LH": SampleRoleType.control_sample_role.value,
+}
+
 
 @dataclass(frozen=True)
 class WellPosition:

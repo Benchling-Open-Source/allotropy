@@ -9,7 +9,10 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
+from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
+    PLATEMAP_TO_SAMPLE_ROLE_TYPE,
+    WellPosition,
+)
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
@@ -42,10 +45,13 @@ class Results:
 
     @staticmethod
     def create(reader: CsvReader) -> Results:
-        barcode = assert_not_none(
-            reader.drop_until_inclusive("^Barcode"),
+        barcode_line = assert_not_none(
+            reader.drop_until_inclusive("^Barcode:(.+),"),
             msg="Unable to find background information.",
         )
+
+        raw_barcode, *_ = barcode_line.split(",")
+        barcode = raw_barcode.removeprefix("Barcode:")
 
         results = assert_not_none(
             reader.pop_csv_block_as_df(header=0, index_col=0),
@@ -189,6 +195,19 @@ class Platemap:
 
         return Platemap(data)
 
+    def get_well_value(self, well_position: WellPosition) -> str:
+        try:
+            return str(self.data.loc[well_position.row, well_position.column])
+        except KeyError as e:
+            error = f"Unable to get well at position '{well_position}' from platemap section."
+            raise AllotropeConversionError(error) from e
+
+    def get_sample_role_type(self, well_position: WellPosition) -> str:
+        return assert_not_none(
+            PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(self.get_well_value(well_position)),
+            msg=f"Unable to find sample role type for well position '{well_position}'.",
+        )
+
 
 @dataclass(frozen=True)
 class Measurements:
@@ -259,3 +278,12 @@ class DataV2:
 
     def get_well_value(self, well_position: WellPosition) -> float:
         return self.results.get_well_value(well_position)
+
+    def get_platemap_well_value(self, well_position: WellPosition) -> str:
+        return self.platemap.get_well_value(well_position)
+
+    def get_well_plate_identifier(self) -> str:
+        return self.results.barcode
+
+    def get_sample_role_type(self, well_position: WellPosition) -> str:
+        return self.platemap.get_sample_role_type(well_position)

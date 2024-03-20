@@ -58,14 +58,21 @@ class FluorescenceMeasurementParser(MeasurementParser):
     def parse(
         self, data: Union[DataV2, DataV3], well_position: WellPosition
     ) -> MeasurementItem:
+        well_plate_identifier = data.get_well_plate_identifier()
+        sample_identifier = (
+            data.get_platemap_well_value(well_position)
+            or f"{well_plate_identifier}_{well_position}"
+        )
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             fluorescence=TQuantityValueRelativeFluorescenceUnit(
                 value=data.get_well_value(well_position)
             ),
             sample_document=SampleDocument(
-                sample_identifier="",
-                location_identifier="",
+                sample_identifier=sample_identifier,
+                location_identifier=str(well_position),
+                well_plate_identifier=well_plate_identifier,
+                sample_role_type=data.get_sample_role_type(well_position),
             ),
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
@@ -81,14 +88,21 @@ class AbsorbanceMeasurementParser(MeasurementParser):
     def parse(
         self, data: Union[DataV2, DataV3], well_position: WellPosition
     ) -> MeasurementItem:
+        well_plate_identifier = data.get_well_plate_identifier()
+        sample_identifier = (
+            data.get_platemap_well_value(well_position)
+            or f"{well_plate_identifier}_{well_position}"
+        )
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             absorbance=TQuantityValueMilliAbsorbanceUnit(
                 value=data.get_well_value(well_position)
             ),
             sample_document=SampleDocument(
-                sample_identifier="",
-                location_identifier="",
+                sample_identifier=sample_identifier,
+                location_identifier=str(well_position),
+                well_plate_identifier=well_plate_identifier,
+                sample_role_type=data.get_sample_role_type(well_position),
             ),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
@@ -104,14 +118,21 @@ class LuminescenceMeasurementParser(MeasurementParser):
     def parse(
         self, data: Union[DataV2, DataV3], well_position: WellPosition
     ) -> MeasurementItem:
+        well_plate_identifier = data.get_well_plate_identifier()
+        sample_identifier = (
+            data.get_platemap_well_value(well_position)
+            or f"{well_plate_identifier}_{well_position}"
+        )
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             luminescence=TQuantityValueRelativeLightUnit(
                 value=data.get_well_value(well_position)
             ),
             sample_document=SampleDocument(
-                sample_identifier="",
-                location_identifier="",
+                sample_identifier=sample_identifier,
+                location_identifier=str(well_position),
+                well_plate_identifier=well_plate_identifier,
+                sample_role_type=data.get_sample_role_type(well_position),
             ),
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
