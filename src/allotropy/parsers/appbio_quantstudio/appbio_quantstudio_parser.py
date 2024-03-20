@@ -38,6 +38,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
@@ -54,10 +55,10 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class AppBioQuantStudioParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents, file_name = named_file_contents
-        lines = read_to_lines(raw_contents)
+        lines = read_to_lines(named_file_contents)
         reader = LinesReader(lines)
         data = create_data(reader)
+        file_name = named_file_contents.original_file_name
         return self._get_model(data, file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
@@ -276,7 +277,7 @@ class AppBioQuantStudioParser(VendorParser):
                         TDatacubeComponent(
                             field_componentDatatype=FieldComponentDatatype.double,
                             concept="normalized report result",
-                            unit="(unitless)",
+                            unit=UNITLESS,
                         ),
                     ],
                 ),
@@ -299,7 +300,7 @@ class AppBioQuantStudioParser(VendorParser):
                         TDatacubeComponent(
                             field_componentDatatype=FieldComponentDatatype.double,
                             concept="baseline corrected reporter result",
-                            unit="(unitless)",
+                            unit=UNITLESS,
                         ),
                     ],
                 ),
@@ -397,12 +398,12 @@ class AppBioQuantStudioParser(VendorParser):
                     TDatacubeComponent(
                         field_componentDatatype=FieldComponentDatatype.double,
                         concept="reporter dye fluorescence",
-                        unit="(unitless)",
+                        unit=UNITLESS,
                     ),
                     TDatacubeComponent(
                         field_componentDatatype=FieldComponentDatatype.double,
                         concept="slope",
-                        unit="(unitless)",
+                        unit=UNITLESS,
                     ),
                 ],
             ),

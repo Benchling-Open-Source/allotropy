@@ -1,8 +1,15 @@
+from __future__ import annotations
+
+import math
 import re
 from typing import Any, Optional, TypeVar, Union
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
 from allotropy.exceptions import AllotropeConversionError
 
 PrimitiveValue = Union[str, int, float]
@@ -23,19 +30,38 @@ def try_int_or_none(value: Optional[str]) -> Optional[int]:
         return None
 
 
-def try_float(value: Optional[str], value_name: str) -> float:
+def try_float(value: str, value_name: str) -> float:
+    assert_not_none(value, value_name)
     try:
-        return float(assert_not_none(value, value_name))
+        return float(value)
     except ValueError as e:
         msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
 
 
+def try_non_nan_float(value: str) -> float:
+    float_value = try_non_nan_float_or_none(value)
+    if float_value is None:
+        msg = f"Invalid non nan float string: '{value}'."
+        raise AllotropeConversionError(msg)
+    return float_value
+
+
+def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
+    float_value = try_float_or_none(value)
+    return None if float_value is None or math.isnan(float_value) else float_value
+
+
 def try_float_or_none(value: Optional[str]) -> Optional[float]:
     try:
-        return float(value or "")
+        return float("" if value is None else value)
     except ValueError:
         return None
+
+
+def try_float_or_nan(value: Optional[str]) -> JsonFloat:
+    float_value = try_non_nan_float_or_none(value)
+    return InvalidJsonFloat.NaN if float_value is None else float_value
 
 
 def natural_sort_key(key: str) -> list[str]:
@@ -61,7 +87,7 @@ def assert_not_none(
 def df_to_series(
     df: pd.DataFrame,
     msg: str,
-) -> pd.Series:  # type: ignore[type-arg]
+) -> pd.Series[Any]:
     n_rows, _ = df.shape
     if n_rows == 1:
         return pd.Series(df.iloc[0], index=df.columns)
@@ -74,17 +100,25 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     return df
 
 
-def try_str_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+def try_str_from_series_or_default(
+    data: pd.Series[Any],
     key: str,
-    default: Optional[str] = None,
+    default: str,
+) -> str:
+    value = data.get(key)
+    return default if value is None else str(value)
+
+
+def try_str_from_series_or_none(
+    data: pd.Series[Any],
+    key: str,
 ) -> Optional[str]:
-    value = data.get(key, default)
+    value = data.get(key)
     return None if value is None else str(value)
 
 
 def try_str_from_series(
-    series: pd.Series,  # type: ignore[type-arg]
+    series: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> str:
@@ -92,7 +126,7 @@ def try_str_from_series(
 
 
 def try_int_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[int]:
     try:
@@ -104,15 +138,27 @@ def try_int_from_series_or_none(
 
 
 def try_int_from_series(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> int:
     return assert_not_none(try_int_from_series_or_none(data, key), key, msg)
 
 
+def try_float_from_series_or_nan(
+    data: pd.Series[Any],
+    key: str,
+) -> JsonFloat:
+    try:
+        value = data.get(key)
+        return try_float_or_nan(str(value))
+    except Exception as e:
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
+        raise AllotropeConversionError(msg) from e
+
+
 def try_float_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[float]:
     try:
@@ -124,7 +170,7 @@ def try_float_from_series_or_none(
 
 
 def try_float_from_series(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
     msg: Optional[str] = None,
 ) -> float:
@@ -132,7 +178,7 @@ def try_float_from_series(
 
 
 def try_bool_from_series_or_none(
-    data: pd.Series,  # type: ignore[type-arg]
+    data: pd.Series[Any],
     key: str,
 ) -> Optional[bool]:
     try:

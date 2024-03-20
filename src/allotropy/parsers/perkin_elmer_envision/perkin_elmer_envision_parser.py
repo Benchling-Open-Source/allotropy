@@ -6,7 +6,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument1,
+    DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlDocument,
@@ -19,6 +19,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
@@ -32,13 +33,14 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
-    TRelativeFluorescenceUnit,
-    TRelativeLightUnit,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TDateTimeValue,
     TQuantityValue,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
@@ -63,6 +65,7 @@ class ReadType(Enum):
 
 
 MeasurementDocumentItems = Union[
+    OpticalImagingMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
@@ -82,9 +85,9 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 class PerkinElmerEnvisionParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents, filename = named_file_contents
-        lines = read_to_lines(named_file_contents.contents)
+        lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
+        filename = named_file_contents.original_file_name
         try:
             return self._get_model(Data.create(reader), filename)
         except Exception as error:
@@ -287,7 +290,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                luminescence=TRelativeLightUnit(result.value),
+                luminescence=TQuantityValueRelativeLightUnit(result.value),
                 compartment_temperature=compartment_temperature,
             )
         else:  # read_type is FLUORESCENCE
@@ -300,7 +303,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                fluorescence=TRelativeFluorescenceUnit(result.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(result.value),
                 compartment_temperature=compartment_temperature,
             )
 
@@ -392,9 +395,9 @@ class PerkinElmerEnvisionParser(VendorParser):
                         calculation_description=calculated_plate.plate_info.formula,
                         calculated_result=TQuantityValue(
                             value=calculated_result.value,
-                            unit="unitless",
+                            unit=UNITLESS,
                         ),
-                        data_source_aggregate_document=DataSourceAggregateDocument1(
+                        data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier=source_result.uuid,

@@ -13,6 +13,7 @@ keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
   { name = "Benchling Open Source", email = "opensource@benchling.com" },
   { name = "Lukas Boelling", email = "lukas.boelling@deepgenomics.com" },
+  { name = "Danielle Chou", email = "danielle.chou@benchling.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
   { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
@@ -37,7 +38,7 @@ classifiers = [
 dependencies = [
   "cattrs == 23.1.2",
   "chardet >= 5.2.0",
-  "jsonschema >= 4.17.0",
+  "jsonschema >= 4.3.3",
   "numpy >= 1.25.0",
   "openpyxl >= 3.1.0",
   "pandas >= 2.1.0",
@@ -92,7 +93,7 @@ dependencies = [
   "autoflake == 2.2.0",
   # black pinned for compatability with datamodel-code-generator
   "black == 22.3.0",
-  "datamodel-code-generator == 0.21.5",
+  "datamodel-code-generator == 0.25.2",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
   "pydantic == 1.10.9",
@@ -101,14 +102,16 @@ dependencies = [
 
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
-generate-schemas = "scripts/generate_schemas.py"
+generate-schemas = "scripts/generate_schemas.py {args:}"
+csv-as-json = "scripts/csv_as_json.py {args:}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
   # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
   "cattrs == 23.1.2",
   "more-itertools >= 10.1.0",
-  "mypy >= 1.6.0",
+  "mypy == 1.8.0",
+  "pandas-stubs == 2.1.4.231227",
   # For pytest types
   "pytest >= 7.4.0",
 ]

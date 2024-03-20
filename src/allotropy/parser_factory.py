@@ -1,6 +1,6 @@
 from datetime import tzinfo
 from enum import Enum
-from typing import Optional, Union
+from typing import Optional
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
@@ -19,13 +19,20 @@ from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
+from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
+    LuminexXponentParser,
+)
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
 )
+from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
+)
+from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
+    NanodropEightParser,
 )
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
     UnchainedLabsLunaticParser,
@@ -43,14 +50,14 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
+    LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
+    QIACUITY_DPCR = "QIACUITY_DPCR"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
+    THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
-
-
-VendorType = Union[Vendor, str]
 
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
@@ -62,20 +69,23 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
+    Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
+    Vendor.QIACUITY_DPCR: QiacuitydPCRParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
+    Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
 }
 
 
 def get_parser(
-    vendor_type: VendorType, default_timezone: Optional[tzinfo] = None
+    vendor: Vendor, default_timezone: Optional[tzinfo] = None
 ) -> VendorParser:
+    timestamp_parser = TimestampParser(default_timezone)
     try:
-        timestamp_parser = TimestampParser(default_timezone)
-        return _VENDOR_TO_PARSER[Vendor(vendor_type)](timestamp_parser)
-    except (ValueError, KeyError) as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor_type}."
+        return _VENDOR_TO_PARSER[vendor](timestamp_parser)
+    except KeyError as e:
+        error = f"Failed to create parser, unregistered vendor: {vendor}."
         raise AllotropeConversionError(error) from e

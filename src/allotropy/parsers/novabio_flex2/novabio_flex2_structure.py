@@ -7,6 +7,7 @@ from typing import Any, Optional
 import numpy as np
 import pandas as pd
 
+from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -135,6 +136,7 @@ class Data:
 
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> Data:
-        contents, filename = named_file_contents
-        data = pd.read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
+        contents = named_file_contents.contents
+        filename = named_file_contents.original_file_name
+        data = read_csv(contents, parse_dates=["Date & Time"]).replace(np.nan, None)
         return Data(Title.create(filename), SampleList.create(data))
