@@ -1,197 +1,256 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/12/light-obscuration.manifest",
+    "$asm.manifest": "http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest",
     "light obscuration aggregate document": {
         "light obscuration document": [
             {
                 "measurement aggregate document": {
+                    "analyst": "MFC7094",
                     "measurement document": [
                         {
                             "measurement identifier": "Run1",
-                            "distribution document": [
-                                {
-                                    "distribution": [
-                                        {
-                                            "particle size": {
-                                                "value": 2.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 48.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 10.0,
-                                                "unit": "Counts/mL"
-                                            }
+                            "measurement time": "2022-08-12T07:51:50.000000Z",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "flush volume setting": {
+                                            "value": 0,
+                                            "unit": "mL"
                                         },
-                                        {
-                                            "particle size": {
-                                                "value": 5.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 1.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 20.0,
-                                                "unit": "Counts/mL"
-                                            }
+                                        "detector view volume": {
+                                            "value": 100,
+                                            "unit": "mL"
                                         },
-                                        {
-                                            "particle size": {
-                                                "value": 10.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 30.0,
-                                                "unit": "Counts/mL"
-                                            }
-                                        },
-                                        {
-                                            "particle size": {
-                                                "value": 25.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 40.0,
-                                                "unit": "Counts/mL"
-                                            }
-                                        },
-                                        {
-                                            "particle size": {
-                                                "value": 50.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 50.0,
-                                                "unit": "Counts/mL"
-                                            }
+                                        "repetition setting": 2,
+                                        "sample volume setting": {
+                                            "value": 0.2,
+                                            "unit": "mL"
                                         }
-                                    ],
-                                    "data processing omission setting": false
-                                }
-                            ]
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "ExampleTimepoint"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "dilution factor setting": {
+                                                "value": 1,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "distribution aggregate document": {
+                                            "distribution document": [
+                                                {
+                                                    "distribution": [
+                                                        {
+                                                            "particle size": {
+                                                                "value": 2.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 48.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 10.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 5.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 1.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 20.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 10.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 30.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 25.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 40.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 50.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 50.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
                         },
                         {
                             "measurement identifier": "Run2",
-                            "distribution document": [
-                                {
-                                    "distribution": [
-                                        {
-                                            "particle size": {
-                                                "value": 2.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 24.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 60.0,
-                                                "unit": "Counts/mL"
-                                            }
+                            "measurement time": "2022-08-12T07:51:50.000000Z",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "flush volume setting": {
+                                            "value": 0,
+                                            "unit": "mL"
                                         },
-                                        {
-                                            "particle size": {
-                                                "value": 5.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 9.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 70.0,
-                                                "unit": "Counts/mL"
-                                            }
+                                        "detector view volume": {
+                                            "value": 100,
+                                            "unit": "mL"
                                         },
-                                        {
-                                            "particle size": {
-                                                "value": 10.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 4.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 80.0,
-                                                "unit": "Counts/mL"
-                                            }
-                                        },
-                                        {
-                                            "particle size": {
-                                                "value": 25.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 90.0,
-                                                "unit": "Counts/mL"
-                                            }
-                                        },
-                                        {
-                                            "particle size": {
-                                                "value": 50.0,
-                                                "unit": "\u03bcm"
-                                            },
-                                            "cumulative count": {
-                                                "value": 0.0,
-                                                "unit": "(unitless)"
-                                            },
-                                            "cumulative particle density": {
-                                                "value": 100.0,
-                                                "unit": "Counts/mL"
-                                            }
+                                        "repetition setting": 2,
+                                        "sample volume setting": {
+                                            "value": 0.2,
+                                            "unit": "mL"
                                         }
-                                    ],
-                                    "data processing omission setting": false
-                                }
-                            ]
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "ExampleTimepoint"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "dilution factor setting": {
+                                                "value": 1,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "distribution aggregate document": {
+                                            "distribution document": [
+                                                {
+                                                    "distribution": [
+                                                        {
+                                                            "particle size": {
+                                                                "value": 2.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 24.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 60.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 5.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 9.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 70.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 10.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 4.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 80.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 25.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 90.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 50.0,
+                                                                "unit": "\u03bcm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 100.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
                         }
                     ]
-                },
-                "detector view volume": {
-                    "value": 100,
-                    "unit": "mL"
-                },
-                "flush volume setting": {
-                    "value": 0,
-                    "unit": "mL"
-                },
-                "dilution factor setting": {
-                    "value": 1,
-                    "unit": "(unitless)"
-                },
-                "repetition setting": 2,
-                "sample volume setting": {
-                    "value": 0.2,
-                    "unit": "mL"
-                },
-                "detector identifier": "",
-                "sample identifier": "ExampleTimepoint",
-                "detector model number": "HRLD150@10ml",
-                "measurement time": "2022-08-12T07:51:50.000000Z",
-                "analyst": "MFC7094",
-                "equipment serial number": "1808303021"
+                }
             }
         ],
+        "device system document": {
+            "equipment serial number": "1808303021",
+            "device document": [
+                {
+                    "detector identifier": "",
+                    "detector model number": "HRLD150@10ml"
+                }
+            ]
+        },
         "calculated data aggregate document": {
             "calculated data document": [
                 {

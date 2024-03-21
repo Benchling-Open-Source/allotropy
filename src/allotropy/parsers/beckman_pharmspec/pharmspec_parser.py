@@ -4,6 +4,12 @@ import pandas as pd
 
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
     CalculatedDataDocumentItem,
+    DataProcessingDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItemModel,
+    DeviceDocumentItem,
+    DeviceSystemDocument,
+    DistributionAggregateDocument,
     DistributionDocumentItem,
     DistributionItem,
     LightObscurationAggregateDocument,
@@ -11,6 +17,9 @@ from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscur
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     Model,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
+    SampleDocument,
     TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
@@ -113,9 +122,7 @@ class PharmSpecParser(VendorParser):
                     item[prop] = get_property_from_sample(prop, float(elem[c]))
             items.append(DistributionItem(**item))
         # TODO get test example for data_processing_omission_setting
-        dd = DistributionDocumentItem(
-            distribution=items, data_processing_omission_setting=False
-        )
+        dd = DistributionDocumentItem(distribution=items)
         return [dd]
 
     def _create_calculated_document_items(
@@ -158,35 +165,68 @@ class PharmSpecParser(VendorParser):
             else:
                 measurement_doc_items.append(
                     MeasurementDocumentItem(
-                        name, self._create_distribution_document_items(gdf)
-                    )
-                )
-        model = Model(
-            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/12/light-obscuration.manifest",
-            light_obscuration_aggregate_document=LightObscurationAggregateDocument(
-                light_obscuration_document=[
-                    LightObscurationDocumentItem(
-                        dilution_factor_setting=TQuantityValueUnitless(df.at[13, 2]),
-                        detector_model_number=str(df.at[2, 5]),
-                        analyst=str(df.at[6, 5]),
-                        repetition_setting=int(df.at[11, 5]),
-                        sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
-                        detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
-                        sample_identifier=str(df.at[2, 2]),
-                        equipment_serial_number=str(df.at[4, 5]),
-                        detector_identifier="",
-                        measurement_aggregate_document=MeasurementAggregateDocument(
-                            measurement_document=measurement_doc_items
-                        ),
-                        flush_volume_setting=TQuantityValueMilliliter(
-                            0
-                        ),  # TODO get test example for this
+                        measurement_identifier=name,
                         measurement_time=pd.to_datetime(
                             str(df.at[8, 5]).replace(".", "-")
                         ).isoformat(timespec="microseconds")
                         + "Z",
+                        device_control_aggregate_document=DeviceControlAggregateDocument(
+                            device_control_document=[
+                                DeviceControlDocumentItemModel(
+                                    flush_volume_setting=TQuantityValueMilliliter(0),
+                                    detector_view_volume=TQuantityValueMilliliter(
+                                        df.at[9, 5]
+                                    ),
+                                    repetition_setting=int(df.at[11, 5]),
+                                    sample_volume_setting=TQuantityValueMilliliter(
+                                        df.at[11, 2]
+                                    ),
+                                )
+                            ]
+                        ),
+                        sample_document=SampleDocument(
+                            sample_identifier=str(df.at[2, 2]),
+                        ),
+                        processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                            processed_data_document=[
+                                ProcessedDataDocumentItem(
+                                    data_processing_document=DataProcessingDocument(
+                                        dilution_factor_setting=TQuantityValueUnitless(
+                                            df.at[13, 2]
+                                        ),
+                                    ),
+                                    distribution_aggregate_document=DistributionAggregateDocument(
+                                        distribution_document=self._create_distribution_document_items(
+                                            gdf
+                                        )
+                                    ),
+                                )
+                            ]
+                        ),
+                    )
+                )
+        model = Model(
+            field_asm_manifest="http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest",
+            light_obscuration_aggregate_document=LightObscurationAggregateDocument(
+                light_obscuration_document=[
+                    LightObscurationDocumentItem(
+                        measurement_aggregate_document=MeasurementAggregateDocument(
+                            analyst=str(df.at[6, 5]),
+                            submitter=None,
+                            measurement_document=measurement_doc_items,
+                        )
                     )
                 ],
+                data_system_document=None,
+                device_system_document=DeviceSystemDocument(
+                    equipment_serial_number=str(df.at[4, 5]),
+                    device_document=[
+                        DeviceDocumentItem(
+                            detector_identifier="",
+                            detector_model_number=str(df.at[2, 5]),
+                        )
+                    ],
+                ),
                 calculated_data_aggregate_document=calc_agg_doc,
             ),
         )

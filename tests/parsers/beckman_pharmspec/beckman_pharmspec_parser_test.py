@@ -3,8 +3,13 @@ from pathlib import Path
 import pytest
 
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+    DeviceSystemDocument,
+    DistributionAggregateDocument,
+    DistributionItem,
     LightObscurationAggregateDocument,
     MeasurementDocumentItem,
+    ProcessedDataAggregateDocument,
+    SampleDocument,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import Vendor
@@ -30,24 +35,42 @@ def test_get_model(test_file: Path) -> None:
     assert isinstance(
         model.light_obscuration_aggregate_document, LightObscurationAggregateDocument
     )
+    assert isinstance(
+        model.light_obscuration_aggregate_document.device_system_document,
+        DeviceSystemDocument,
+    )
     assert (
-        model.light_obscuration_aggregate_document.light_obscuration_document[
-            0
-        ].equipment_serial_number
+        model.light_obscuration_aggregate_document.device_system_document.equipment_serial_number
         == "1808303021"
     )
+
     assert (
         model.light_obscuration_aggregate_document.light_obscuration_document[
             0
-        ].sample_identifier
+        ].measurement_aggregate_document.measurement_document
+        is not None
+    )
+
+    assert isinstance(
+        model.light_obscuration_aggregate_document.light_obscuration_document[
+            0
+        ].measurement_aggregate_document.measurement_document[0],
+        MeasurementDocumentItem,
+    )
+
+    assert isinstance(
+        model.light_obscuration_aggregate_document.light_obscuration_document[0]
+        .measurement_aggregate_document.measurement_document[0]
+        .sample_document,
+        SampleDocument,
+    )
+
+    assert (
+        model.light_obscuration_aggregate_document.light_obscuration_document[0]
+        .measurement_aggregate_document.measurement_document[0]
+        .sample_document.sample_identifier
         == "ExampleTimepoint"
     )
-    assert model.light_obscuration_aggregate_document.light_obscuration_document[
-        0
-    ].measurement_aggregate_document
-    assert model.light_obscuration_aggregate_document.light_obscuration_document[
-        0
-    ].measurement_aggregate_document.measurement_document
 
     # # Single distribution document
 
@@ -64,16 +87,50 @@ def test_get_model(test_file: Path) -> None:
     ].measurement_aggregate_document.measurement_document:
         assert isinstance(elem, MeasurementDocumentItem)
         assert isinstance(elem.measurement_identifier, str)
-        assert isinstance(elem.distribution_document, list)
-        assert len(elem.distribution_document) == 1
-        assert isinstance(elem.distribution_document[0].distribution, list)
+        assert isinstance(
+            elem.processed_data_aggregate_document, ProcessedDataAggregateDocument
+        )
+        assert len(elem.processed_data_aggregate_document.processed_data_document) == 1
+        assert isinstance(
+            elem.processed_data_aggregate_document.processed_data_document[
+                0
+            ].distribution_aggregate_document,
+            DistributionAggregateDocument,
+        )
+        assert (
+            len(
+                elem.processed_data_aggregate_document.processed_data_document[
+                    0
+                ].distribution_aggregate_document.distribution_document,
+            )
+            == 1
+        )
+
+        assert isinstance(
+            elem.processed_data_aggregate_document.processed_data_document[0]
+            .distribution_aggregate_document.distribution_document[0]
+            .distribution[0],
+            DistributionItem,
+        )
 
         # 5 rows in the distribution document
-        assert len(elem.distribution_document[0].distribution) == 5
+        assert (
+            len(
+                elem.processed_data_aggregate_document.processed_data_document[0]
+                .distribution_aggregate_document.distribution_document[0]
+                .distribution
+            )
+            == 5
+        )
 
         # Ensure correct order and particle sizes
         for i, particle_size in enumerate([2, 5, 10, 25, 50]):
-            test = elem.distribution_document[0].distribution[i].particle_size
+            test = (
+                elem.processed_data_aggregate_document.processed_data_document[0]
+                .distribution_aggregate_document.distribution_document[0]
+                .distribution[i]
+                .particle_size
+            )
             assert test.value == particle_size
 
 
