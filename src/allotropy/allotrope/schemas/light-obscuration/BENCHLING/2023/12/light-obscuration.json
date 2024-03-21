@@ -134,7 +134,7 @@
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                             "$ref": "#/$defs/tStringValue"
                           },
-                          "dectector model number": {
+                          "detector model number": {
                             "$asm.property-class": "http://purl.obolibrary.org/obo/IAO_0000017",
                             "$asm.pattern": "value datum",
                             "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
@@ -193,7 +193,6 @@
                         "items": {
                           "required": [
                             "measurement identifier",
-                            "distribution document",
                             "measurement time"
                           ],
                           "type": "object",
