@@ -251,6 +251,9 @@
                   }
                 }
               }
+            },
+            "calculated data aggregate document": {
+              "$ref": "#/$defs/tCalculatedDataAggregateDocument"
             }
           }
         }
@@ -264,6 +267,116 @@
     "$asm.manifest"
   ],
   "$defs": {
+    "tDataSourceAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002894",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "data source document"
+      ],
+      "properties": {
+        "data source document": {
+          "type": "array",
+          "$asm.array-ordered": true,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "allOf": [
+              {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002895",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "data source identifier": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002896",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "data source feature": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002898",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  }
+                },
+                "required": [
+                  "data source identifier",
+                  "data source feature"
+                ]
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "tCalculatedDataAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002889",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "calculated data document"
+      ],
+      "properties": {
+        "calculated data document": {
+          "type": "array",
+          "$asm.array-ordered": true,
+          "$asm.array-mixed": false,
+          "$asm.pattern": "indexed datum",
+          "items": {
+            "allOf": [
+              {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002890",
+                "$asm.pattern": "aggregate datum",
+                "properties": {
+                  "data source aggregate document": {
+                    "allOf": [
+                      {
+                        "$ref": "#/$defs/tDataSourceAggregateDocument"
+                      }
+                    ]
+                  },
+                  "calculated data identifier": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002893",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "calculated data name": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002891",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "calculation description": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002141",
+                    "$asm.pattern": "value datum",
+                    "$ref": "#/$defs/tStringValue"
+                  },
+                  "calculated result": {
+                    "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002892",
+                    "$asm.pattern": "quantity datum",
+                    "anyOf": [
+                      {
+                        "$ref": "#/$custom/tQuantityValueMicrometer"
+                      },
+                      {
+                        "$ref": "#/$custom/tQuantityValueUnitless"
+                      },
+                      {
+                        "$ref": "#/$custom/tQuantityValueCountsPerMilliliter"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "calculated data name",
+                  "calculated result"
+                ]
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    },
     "deviceControlDocumentItem": {
       "type": "object",
       "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
