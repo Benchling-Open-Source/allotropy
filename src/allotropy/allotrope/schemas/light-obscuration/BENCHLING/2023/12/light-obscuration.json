@@ -504,6 +504,9 @@
                 "type": "object",
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002193",
                 "$asm.pattern": "aggregate datum",
+                "required": [
+                  "distribution"
+                ],
                 "properties": {
                   "distribution": {
                     "type": "array",
