@@ -240,9 +240,6 @@
                             },
                             "processed data aggregate document": {
                               "$ref": "#/$defs/processedDataAggregateDocument"
-                            },
-                            "distribution aggregate document": {
-                              "$ref": "#/$defs/distributionAggregateDocument"
                             }
                           }
                         }
