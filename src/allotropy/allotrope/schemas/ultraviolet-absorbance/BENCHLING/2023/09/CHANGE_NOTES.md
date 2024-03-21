@@ -1,4 +1,4 @@
-DEPRECATED - TO NOT USE. This is replaced by plate-reader/BENCHLING/2023/09/plate-reader.json
+DEPRECATED - DO NOT USE. This is replaced by plate-reader/BENCHLING/2023/09/plate-reader.json
 
 Base schema: http://purl.allotrope.org/json-schemas/adm/ultraviolet-absorbance/REC/2023/03/ultraviolet-absorbance.schema
 

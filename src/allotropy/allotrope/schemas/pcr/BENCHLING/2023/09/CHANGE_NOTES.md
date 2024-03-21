@@ -15,7 +15,7 @@ Changes:
   * Reasoning: these fields are covered in "device system document"
   * Proposal: TODO these should be added back to conform with ASM since they are optional.
 
-* Missing "processed data aggregate document" and "statistics aggregate document" from technique aggreagete document
+* Missing "processed data aggregate document" and "statistics aggregate document" from technique aggregate document
   * Reasoning: Not added during initial implementation while ASM was being figured out.
   * Proposal: TODO update supported schema to match ASM
 

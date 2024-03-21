@@ -4,6 +4,6 @@ The most recent schema for cell culture analyzers is http://purl.allotrope.org/j
 
 This was a proposed new schema for cell culture analyzers that is more in line with these more modern schemas.
 
-Alltrope has deprecated cell-culture-analyzer models in favor of "solution analyzer" models: https://gitlab.com/allotrope/adm/-/blob/develop/purl/json-schemas/adm/solution-analyzer/REC/2023/12/solution-analyzer.schema.json
+Allotrope has deprecated cell-culture-analyzer models in favor of "solution analyzer" models: https://gitlab.com/allotrope/adm/-/blob/develop/purl/json-schemas/adm/solution-analyzer/REC/2023/12/solution-analyzer.schema.json
 
-We will update parser to use this model instaed in the future.
+We will update parser to use this model instead in the future.
