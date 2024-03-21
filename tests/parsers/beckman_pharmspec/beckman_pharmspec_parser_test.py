@@ -145,3 +145,18 @@ def test_parse_beckman_pharmspec_hiac_to_asm_contents(test_file: Path) -> None:
     expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
     allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
+
+
+@pytest.mark.short
+def test_get_software_version_report_string() -> None:
+    parser = PharmSpecParser(TimestampParser())
+    tests = [
+        ["HIAC PharmSpec v3.0 Summary Report", "3.0"],
+        ["HIAC PharmSpec v3.0.1 Summary Report", "3.0.1"],
+        ["HIAC PharmSpec v3 Summary Report", "3"],
+        ["HIAC PharmSpec v Summary Report", "Unknown"],
+        ["HIAC PharmSpec v3.0.10 Summary Report", "3.0.10"],
+        ["HIAC PharmSpec v3.0.10.40 Summary Report", "3.0.10"],
+    ]
+    for t in tests:
+        assert parser._get_software_version_report_string(t[0]) == t[1]

@@ -1,3 +1,4 @@
+import re
 from typing import Any
 
 import pandas as pd
@@ -5,6 +6,7 @@ import pandas as pd
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
     CalculatedDataDocumentItem,
     DataProcessingDocument,
+    DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItemModel,
     DeviceDocumentItem,
@@ -28,7 +30,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
 from allotropy.parsers.vendor_parser import VendorParser
 
 # This map is used to coerce the column names coming in the raw data
@@ -59,7 +63,7 @@ def get_property_from_sample(property_name: str, value: Any) -> Any:
 class PharmSpecParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
-        return self._setup_model(df)
+        return self._setup_model(df, named_file_contents.original_file_name)
 
     def _get_data_using_key_bounds(
         self, df: pd.DataFrame, start_key: str, end_key: str
@@ -145,7 +149,13 @@ class PharmSpecParser(VendorParser):
                 )
         return items
 
-    def _setup_model(self, df: pd.DataFrame) -> Model:
+    def _get_software_version_report_string(self, report_string: str) -> str:
+        match = re.search(r"v(\d+(?:\.\d+)?(?:\.\d+)?)", report_string)
+        if match:
+            return match.group(1)
+        return "Unknown"
+
+    def _setup_model(self, df: pd.DataFrame, file_name: str) -> Model:
         """Build the Model
 
         :param df: the raw dataframe
@@ -217,7 +227,15 @@ class PharmSpecParser(VendorParser):
                         )
                     )
                 ],
-                data_system_document=None,
+                data_system_document=DataSystemDocument(
+                    file_name=file_name,
+                    software_name=PHARMSPEC_SOFTWARE_NAME,
+                    software_version=self._get_software_version_report_string(
+                        df.at[0, 2]
+                    ),
+                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
                 device_system_document=DeviceSystemDocument(
                     equipment_serial_number=str(df.at[4, 5]),
                     device_document=[
