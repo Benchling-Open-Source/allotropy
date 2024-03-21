@@ -14,6 +14,15 @@ class TBooleanValueItem:
 
 
 @dataclass
+class TIntValueItem:
+    value: int
+    field_type: str
+
+
+TIntValue = Union[int, TIntValueItem]
+
+
+@dataclass
 class TDateTimeValueItem:
     field_type: TClass
     value: str

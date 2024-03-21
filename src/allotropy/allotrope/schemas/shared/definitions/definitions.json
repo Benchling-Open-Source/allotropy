@@ -35,6 +35,35 @@
             }
         ]
     },
+    "tIntValue": {
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#int",
+        "oneOf": [
+            {
+                "type": "integer",
+                "minimum": -2147483648,
+                "maximum": 2147483647
+            },
+            {
+                "type": "object",
+                "required": [
+                    "@type",
+                    "value"
+                ],
+                "properties": {
+                    "value": {
+                        "type": "integer",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "@type": {
+                        "type": "string",
+                        "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
+                        "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel"
+                    }
+                }
+            }
+        ]
+    },
     "tBooleanValue": {
         "description": "A boolean value.",
         "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
@@ -372,54 +401,54 @@
     },
     "tDimensionData": {
         "properties": {
-          "dimensions": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/$defs/tDimensionArray"
-                },
-                {
-                  "$ref": "#/$defs/tFunction"
+            "dimensions": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/tDimensionArray"
+                        },
+                        {
+                            "$ref": "#/$defs/tFunction"
+                        }
+                    ]
                 }
-              ]
             }
-          }
         },
         "required": [
-          "dimensions"
+            "dimensions"
         ]
-      },
-      "tMeasureData": {
+    },
+    "tMeasureData": {
         "oneOf": [
-          {
-            "properties": {
-              "measures": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/$defs/tMeasureArray"
-                }
-              }
+            {
+                "properties": {
+                    "measures": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/$defs/tMeasureArray"
+                        }
+                    }
+                },
+                "required": [
+                    "measures"
+                ]
             },
-            "required": [
-              "measures"
-            ]
-          },
-          {
-            "properties": {
-              "points": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/$defs/tTupleData"
-                }
-              }
-            },
-            "required": [
-              "points"
-            ]
-          }
+            {
+                "properties": {
+                    "points": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/$defs/tTupleData"
+                        }
+                    }
+                },
+                "required": [
+                    "points"
+                ]
+            }
         ]
-      },
+    },
     "tTupleData": {
         "$comment": "heterogenous array of data used in point arrays",
         "type": "array",

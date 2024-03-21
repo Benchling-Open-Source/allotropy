@@ -64,6 +64,11 @@ class Microliter(HasUnit):
 
 
 @dataclass
+class Milliliter(HasUnit):
+    unit: str = "mL"
+
+
+@dataclass
 class NumberPerMicroliter(HasUnit):
     unit: str = "#/μL"
 
@@ -176,3 +181,8 @@ class RelativeLightUnit(HasUnit):
 @dataclass
 class SquareCentimetersPerGram(HasUnit):
     unit: str = "cm^2/g"
+
+
+@dataclass
+class CountsPerMilliliter(HasUnit):
+    unit: str = "Counts/mL"

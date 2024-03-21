@@ -1,0 +1,1 @@
+PHARMSPEC_SOFTWARE_NAME = "PharmSpec"
