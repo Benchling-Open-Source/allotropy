@@ -38,6 +38,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
+VData = Union[DataV2, DataV3]
 MeasurementItem = Union[
     OpticalImagingMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
@@ -48,13 +49,11 @@ MeasurementItem = Union[
 
 class MeasurementParser(ABC):
     @abstractmethod
-    def parse(
-        self, data: Union[DataV2, DataV3], well_position: WellPosition
-    ) -> MeasurementItem:
+    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         pass
 
     def get_sample_document(
-        self, data: Union[DataV2, DataV3], well_position: WellPosition
+        self, data: VData, well_position: WellPosition
     ) -> SampleDocument:
         well_plate_identifier = data.get_well_plate_identifier()
         sample_identifier = (
@@ -70,9 +69,7 @@ class MeasurementParser(ABC):
 
 
 class FluorescenceMeasurementParser(MeasurementParser):
-    def parse(
-        self, data: Union[DataV2, DataV3], well_position: WellPosition
-    ) -> MeasurementItem:
+    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             fluorescence=TQuantityValueRelativeFluorescenceUnit(
@@ -90,9 +87,7 @@ class FluorescenceMeasurementParser(MeasurementParser):
 
 
 class AbsorbanceMeasurementParser(MeasurementParser):
-    def parse(
-        self, data: Union[DataV2, DataV3], well_position: WellPosition
-    ) -> MeasurementItem:
+    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             absorbance=TQuantityValueMilliAbsorbanceUnit(
@@ -110,9 +105,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
 
 
 class LuminescenceMeasurementParser(MeasurementParser):
-    def parse(
-        self, data: Union[DataV2, DataV3], well_position: WellPosition
-    ) -> MeasurementItem:
+    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             luminescence=TQuantityValueRelativeLightUnit(
@@ -136,7 +129,7 @@ class KaleidoParser(VendorParser):
         data = create_data(reader)
         return self._get_model(named_file_contents.original_file_name, data)
 
-    def _get_model(self, file_name: str, data: Union[DataV2, DataV3]) -> Model:
+    def _get_model(self, file_name: str, data: VData) -> Model:
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 plate_reader_document=self._get_plate_reader_document(data),
@@ -148,9 +141,7 @@ class KaleidoParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         )
 
-    def _get_device_system_document(
-        self, data: Union[DataV2, DataV3]
-    ) -> DeviceSystemDocument:
+    def _get_device_system_document(self, data: VData) -> DeviceSystemDocument:
         return DeviceSystemDocument(
             device_identifier="EnSight",
             model_number="EnSight",
@@ -169,9 +160,7 @@ class KaleidoParser(VendorParser):
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 
-    def _get_plate_reader_document(
-        self, data: Union[DataV2, DataV3]
-    ) -> list[PlateReaderDocumentItem]:
+    def _get_plate_reader_document(self, data: VData) -> list[PlateReaderDocumentItem]:
         measurement_parser = self._get_measurement_document_parser(
             data.get_experiment_type()
         )
@@ -186,7 +175,7 @@ class KaleidoParser(VendorParser):
 
     def _get_measurement_aggregate_document(
         self,
-        data: Union[DataV2, DataV3],
+        data: VData,
         measurement_parser: MeasurementParser,
         well_position: WellPosition,
     ) -> MeasurementAggregateDocument:
