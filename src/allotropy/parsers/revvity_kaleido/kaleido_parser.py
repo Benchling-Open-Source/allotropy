@@ -8,6 +8,8 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
+    ImageFeatureAggregateDocument,
+    ImageFeatureDocumentItem,
     LuminescencePointDetectionDeviceControlAggregateDocument,
     LuminescencePointDetectionDeviceControlDocumentItem,
     LuminescencePointDetectionMeasurementDocumentItems,
@@ -238,13 +240,23 @@ class ImagingMeasurementParser(MeasurementParser):
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[self.get_device_control_document(data)],
             ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(  # CONSULT this should be in here?
                 processed_data_document=[
                     ProcessedDataDocumentItem(
-                        # data_processing_document: Optional[dict[str, Any]] = None
-                        # data_source_aggregate_document: Optional[DataSourceAggregateDocument] = None
-                        # processed_data_identifier: Optional[TStringValue] = None
-                        # image_feature_aggregate_document: Optional[ImageFeatureAggregateDocument] = None
+                        image_feature_aggregate_document=ImageFeatureAggregateDocument(
+                            image_feature_document=[
+                                ImageFeatureDocumentItem(
+                                    image_feature_identifier=random_uuid_str(),
+                                    image_feature_name=data.get_image_feature_name(),
+                                    image_feature_result=TQuantityValueUnitless(
+                                        value=data.get_image_feature_result(
+                                            well_position  # CONSULT from which matrix
+                                        )
+                                    ),
+                                    # data_source_aggregate_document=DataSourceAggregateDocument()  # CONSULT
+                                ),
+                            ]
+                        )
                     )
                 ]
             ),

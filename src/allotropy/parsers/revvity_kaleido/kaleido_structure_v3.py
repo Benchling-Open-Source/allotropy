@@ -121,17 +121,60 @@ class Results:
 
 @dataclass(frozen=True)
 class AnalysisResults:
+    analysis_parameter: str
+    results: pd.DataFrame
+
     @staticmethod
     def create(reader: CsvReader) -> Optional[AnalysisResults]:
         section_title = assert_not_none(
             reader.drop_until("^Results for|^Measurement Information"),
-            msg="Unable to find Analysis Result or Measurement Basic section.",
+            msg="Unable to find Analysis Result or Measurement Information section.",
         )
 
         if section_title.startswith("Measurement Information"):
             return None
 
-        return AnalysisResults()
+        barcode_line = assert_not_none(
+            reader.drop_until_inclusive("^Barcode:(.+),"),
+            msg="Unable to find background information.",
+        )
+
+        analysis_parameter = None
+        for element in barcode_line.split(","):
+            key, value = element.split(":", maxsplit=1)
+            if "AnalysisParameter" in key:
+                analysis_parameter = value
+
+        analysis_parameter = assert_not_none(
+            analysis_parameter,
+            msg="Unable to find analysis parameter in Analysis Results section.",
+        )
+
+        results = assert_not_none(
+            reader.pop_csv_block_as_df(header=0, index_col=0),
+            msg="Unable to find results table.",
+        )
+
+        for column in results:
+            if str(column).startswith("Unnamed"):
+                results = results.drop(columns=column)
+
+        return AnalysisResults(
+            analysis_parameter=analysis_parameter,
+            results=results,
+        )
+
+    def get_image_feature_name(self) -> str:
+        return self.analysis_parameter
+
+    def get_image_feature_result(self, well_position: WellPosition) -> float:
+        try:
+            value = self.results.loc[well_position.row, well_position.column]
+        except KeyError as e:
+            error = f"Unable to get well at position '{well_position}' from analysis results section."
+            raise AllotropeConversionError(error) from e
+
+        return try_float(str(value), f"analysis result well at '{well_position}'")
 
 
 @dataclass(frozen=True)
@@ -467,3 +510,15 @@ class DataV3:
 
     def get_fluorescent_tag(self) -> Optional[str]:
         return self.details_measurement_sequence.get_fluorescent_tag()
+
+    def get_image_feature_name(self) -> str:
+        return assert_not_none(
+            self.analysis_results,
+            msg="Unable to find Analysis results section.",
+        ).get_image_feature_name()
+
+    def get_image_feature_result(self, well_position: WellPosition) -> float:
+        return assert_not_none(
+            self.analysis_results,
+            msg="Unable to find Analysis results section.",
+        ).get_image_feature_result(well_position)
