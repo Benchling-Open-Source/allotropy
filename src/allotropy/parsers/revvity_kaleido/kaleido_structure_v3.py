@@ -271,9 +271,13 @@ class Platemap:
             error = f"Unable to get well at position '{well_position}' from platemap section."
             raise AllotropeConversionError(error) from e
 
-    def get_sample_role_type(self, well_position: WellPosition) -> str:
+    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
+        value = self.get_well_value(well_position)
+        if value == "-":
+            return None
+
         return assert_not_none(
-            PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(self.get_well_value(well_position)),
+            PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(value),
             msg=f"Unable to find sample role type for well position '{well_position}'.",
         )
 
@@ -398,7 +402,7 @@ class DataV3:
     def get_well_plate_identifier(self) -> str:
         return self.results.barcode
 
-    def get_sample_role_type(self, well_position: WellPosition) -> str:
+    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
         return self.platemap.get_sample_role_type(well_position)
 
     def get_number_of_averages(self) -> Optional[float]:

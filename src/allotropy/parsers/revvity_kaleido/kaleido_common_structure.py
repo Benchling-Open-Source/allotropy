@@ -7,7 +7,6 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 
 PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
     "B": SampleRoleType.blank_role.value,
-    "-": "N/A",
     "C": SampleRoleType.control_sample_role.value,
     "S": SampleRoleType.standard_sample_role.value,
     "U": SampleRoleType.unknown_sample_role.value,
