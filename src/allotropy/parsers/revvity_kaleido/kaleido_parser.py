@@ -92,7 +92,7 @@ class FluorescenceMeasurementParser(MeasurementParser):
         excitation_wavelength = data.get_excitation_wavelength()
         return FluorescencePointDetectionDeviceControlDocumentItem(
             device_type="fluorescence detector",
-            detection_type=data.get_experiment_type(),
+            detection_type="fluorescence",
             number_of_averages=(
                 None
                 if number_of_averages is None
