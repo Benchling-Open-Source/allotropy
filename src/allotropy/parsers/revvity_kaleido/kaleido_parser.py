@@ -23,6 +23,8 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
+    TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
@@ -36,6 +38,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosit
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 VData = Union[DataV2, DataV3]
@@ -69,6 +72,39 @@ class MeasurementParser(ABC):
 
 
 class FluorescenceMeasurementParser(MeasurementParser):
+    def get_device_control_document(
+        self, data: VData
+    ) -> FluorescencePointDetectionDeviceControlDocumentItem:
+        number_of_averages = data.get_number_of_averages()
+        detector_distance = data.get_detector_distance()
+        detector_wavelength = data.get_emission_wavelength()
+        excitation_wavelength = data.get_excitation_wavelength()
+        return FluorescencePointDetectionDeviceControlDocumentItem(
+            device_type="fluorescence detector",
+            detection_type=data.get_experiment_type(),
+            number_of_averages=(
+                None
+                if number_of_averages is None
+                else TQuantityValueNumber(value=number_of_averages)
+            ),
+            detector_distance_setting__plate_reader_=(
+                None
+                if detector_distance is None
+                else TQuantityValueMillimeter(value=detector_distance)
+            ),
+            scan_position_setting__plate_reader_=data.get_scan_position(),
+            detector_wavelength_setting=(
+                None
+                if detector_wavelength is None
+                else TQuantityValueNanometer(value=detector_wavelength)
+            ),
+            excitation_wavelength_setting=(
+                None
+                if excitation_wavelength is None
+                else TQuantityValueNanometer(value=excitation_wavelength)
+            ),
+        )
+
     def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
@@ -77,16 +113,38 @@ class FluorescenceMeasurementParser(MeasurementParser):
             ),
             sample_document=self.get_sample_document(data, well_position),
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[
-                    FluorescencePointDetectionDeviceControlDocumentItem(
-                        device_type="",
-                    ),
-                ]
+                device_control_document=[self.get_device_control_document(data)]
             ),
         )
 
 
 class AbsorbanceMeasurementParser(MeasurementParser):
+    def get_device_control_document(
+        self, data: VData
+    ) -> UltravioletAbsorbancePointDetectionDeviceControlDocumentItem:
+        detector_distance = data.get_detector_distance()
+        detector_wavelength = data.get_excitation_wavelength()
+        return UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+            device_type="absorbance detector",
+            detection_type=data.get_experiment_type(),
+            number_of_averages=TQuantityValueNumber(
+                value=assert_not_none(
+                    data.get_number_of_averages(),
+                    msg="Unable to find number of averages",
+                ),
+            ),
+            detector_distance_setting__plate_reader_=(
+                None
+                if detector_distance is None
+                else TQuantityValueMillimeter(value=detector_distance)
+            ),
+            detector_wavelength_setting=(
+                None
+                if detector_wavelength is None
+                else TQuantityValueNanometer(value=detector_wavelength)
+            ),
+        )
+
     def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
@@ -95,16 +153,26 @@ class AbsorbanceMeasurementParser(MeasurementParser):
             ),
             sample_document=self.get_sample_document(data, well_position),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[
-                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                        device_type="",
-                    ),
-                ]
+                device_control_document=[self.get_device_control_document(data)]
             ),
         )
 
 
 class LuminescenceMeasurementParser(MeasurementParser):
+    def get_device_control_document(
+        self, data: VData
+    ) -> LuminescencePointDetectionDeviceControlDocumentItem:
+        detector_distance = data.get_detector_distance()
+        return LuminescencePointDetectionDeviceControlDocumentItem(
+            device_type="luminescence detector",
+            detection_type=data.get_experiment_type(),
+            detector_distance_setting__plate_reader_=(
+                None
+                if detector_distance is None
+                else TQuantityValueMillimeter(value=detector_distance)
+            ),
+        )
+
     def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
@@ -113,11 +181,7 @@ class LuminescenceMeasurementParser(MeasurementParser):
             ),
             sample_document=self.get_sample_document(data, well_position),
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[
-                    LuminescencePointDetectionDeviceControlDocumentItem(
-                        device_type="",
-                    )
-                ]
+                device_control_document=[self.get_device_control_document(data)]
             ),
         )
 

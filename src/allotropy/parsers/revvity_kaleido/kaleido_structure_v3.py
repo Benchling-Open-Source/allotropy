@@ -7,10 +7,14 @@ from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ScanPositionSettingPlateReader,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     PLATEMAP_TO_SAMPLE_ROLE_TYPE,
+    SCAN_POSITION_CONVERTION,
     WellPosition,
 )
 from allotropy.parsers.utils.values import (
@@ -295,6 +299,44 @@ class DetailsMeasurementSequence:
 
         return DetailsMeasurementSequence(elements)
 
+    def get_number_of_averages(self) -> Optional[float]:
+        number_of_flashes = self.elements.get("Number of Flashes")
+        if number_of_flashes is None:
+            return None
+        return try_float(number_of_flashes, "number of flashes")
+
+    def get_detector_distance(self) -> Optional[float]:
+        detector_distance = self.elements.get(
+            "Distance between Plate and Detector [mm]"
+        )
+        if detector_distance is None:
+            return None
+        return try_float(detector_distance, "detector distance")
+
+    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
+        position = self.elements.get("Excitation / Emission")
+        if position is None:
+            return None
+
+        return assert_not_none(
+            SCAN_POSITION_CONVERTION.get(position),
+            msg=f"'{position}' is not a valid scan position, expected TOP or BOTTOM.",
+        )
+
+    def get_emission_wavelength(self) -> Optional[float]:
+        emission_wavelength = self.elements.get("Emission Wavelength [nm]")
+        if emission_wavelength is None:
+            return None
+        return try_float(emission_wavelength, "emission wavelength")
+
+    def get_excitation_wavelength(self) -> Optional[float]:
+        excitation_wavelength = self.elements.get("Excitation Wavelength [nm]")
+        if excitation_wavelength is None:
+            return None
+        return try_float(
+            excitation_wavelength.removesuffix("nm"), "excitation wavelength"
+        )
+
 
 @dataclass(frozen=True)
 class DataV3:
@@ -358,3 +400,18 @@ class DataV3:
 
     def get_sample_role_type(self, well_position: WellPosition) -> str:
         return self.platemap.get_sample_role_type(well_position)
+
+    def get_number_of_averages(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_number_of_averages()
+
+    def get_detector_distance(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_detector_distance()
+
+    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
+        return self.details_measurement_sequence.get_scan_position()
+
+    def get_emission_wavelength(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_emission_wavelength()
+
+    def get_excitation_wavelength(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_excitation_wavelength()
