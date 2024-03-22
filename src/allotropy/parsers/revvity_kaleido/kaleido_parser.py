@@ -68,9 +68,11 @@ class MeasurementParser(ABC):
         self, data: VData, well_position: WellPosition
     ) -> SampleDocument:
         well_plate_identifier = data.get_well_plate_identifier()
+        platemap_value = data.get_platemap_well_value(well_position)
         sample_identifier = (
-            data.get_platemap_well_value(well_position)
-            or f"{well_plate_identifier}_{well_position}"
+            f"{well_plate_identifier}_{well_position}"
+            if platemap_value == "-"
+            else platemap_value
         )
         return SampleDocument(
             sample_identifier=sample_identifier,
