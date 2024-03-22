@@ -202,8 +202,7 @@ class ImagingMeasurementParser(MeasurementParser):
         self, data: VData
     ) -> OpticalImagingDeviceControlDocumentItem:
         detector_distance = data.get_focus_height()
-        # CONSULT detector wavelength setting / excitation wavelength setting
-        # two values, units in input
+        detector_wavelength = data.get_emission_wavelength()
         excitation_wavelength = data.get_excitation_wavelength()
         exposure_duration = data.get_exposure_duration()
         illumination = data.get_illumination()
@@ -214,6 +213,11 @@ class ImagingMeasurementParser(MeasurementParser):
                 None
                 if detector_distance is None
                 else TQuantityValueMillimeter(value=detector_distance)
+            ),
+            detector_wavelength_setting=(
+                None
+                if detector_wavelength is None
+                else TQuantityValueNanometer(value=detector_wavelength)
             ),
             excitation_wavelength_setting=(
                 None
