@@ -117,9 +117,11 @@ class AnalysisResults:
 
         analysis_parameter = None
         for element in barcode_line.split(","):
-            key, value = element.split(":", maxsplit=1)
-            if "AnalysisParameter" in key:
-                analysis_parameter = value
+            if re.search("^.+:.+$", element):
+                key, value = element.split(":", maxsplit=1)
+                if "AnalysisParameter" in key:
+                    analysis_parameter = value
+                    break
 
         analysis_parameter = assert_not_none(
             analysis_parameter,
