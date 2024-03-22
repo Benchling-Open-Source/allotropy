@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
+    TransmittedLightSetting,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 
@@ -22,6 +23,13 @@ PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
 SCAN_POSITION_CONVERTION = {
     "TOP": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
     "BOTTOM": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
+}
+
+
+TRANSMITTED_LIGHT_CONVERTION = {
+    "BRIGHTFIELD": TransmittedLightSetting.lightfield,
+    "DARKFIELD": TransmittedLightSetting.darkfield,
+    "PHASE CONTRAST": TransmittedLightSetting.phase_contrast,
 }
 
 

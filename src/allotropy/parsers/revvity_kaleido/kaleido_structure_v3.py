@@ -9,12 +9,14 @@ import pandas as pd
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
+    TransmittedLightSetting,
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     PLATEMAP_TO_SAMPLE_ROLE_TYPE,
     SCAN_POSITION_CONVERTION,
+    TRANSMITTED_LIGHT_CONVERTION,
     WellPosition,
 )
 from allotropy.parsers.utils.values import (
@@ -341,6 +343,37 @@ class DetailsMeasurementSequence:
             excitation_wavelength.removesuffix("nm"), "excitation wavelength"
         )
 
+    def get_focus_height(self) -> Optional[float]:
+        focus_height = self.elements.get("Focus Height [µm]")
+        if focus_height is None:
+            return None
+        return try_float(focus_height, "focus height")
+
+    def get_exposure_duration(self) -> Optional[float]:
+        exposure_duration = self.elements.get("Exposure Time [ms]")
+        if exposure_duration is None:
+            return None
+        return try_float(exposure_duration, "exposure duration")
+
+    def get_illumination(self) -> Optional[float]:
+        illumination = self.elements.get("Excitation Power [%]")
+        if illumination is None:
+            return None
+        return try_float(illumination, "excitation power")
+
+    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
+        channel = self.elements.get("Channel")
+        if channel is None:
+            return None
+        return assert_not_none(
+            TRANSMITTED_LIGHT_CONVERTION.get(channel),
+            msg=f"Unable to find transmitted light value for '{channel}'",
+        )
+
+    def get_fluorescent_tag(self) -> Optional[str]:
+        channel = self.elements.get("Channel")
+        return None if channel == "BRIGHTFIELD" else channel
+
 
 @dataclass(frozen=True)
 class DataV3:
@@ -419,3 +452,18 @@ class DataV3:
 
     def get_excitation_wavelength(self) -> Optional[float]:
         return self.details_measurement_sequence.get_excitation_wavelength()
+
+    def get_focus_height(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_focus_height()
+
+    def get_exposure_duration(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_exposure_duration()
+
+    def get_illumination(self) -> Optional[float]:
+        return self.details_measurement_sequence.get_illumination()
+
+    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
+        return self.details_measurement_sequence.get_transmitted_light()
+
+    def get_fluorescent_tag(self) -> Optional[str]:
+        return self.details_measurement_sequence.get_fluorescent_tag()

@@ -13,9 +13,13 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingDeviceControlAggregateDocument,
+    OpticalImagingDeviceControlDocumentItem,
     OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
@@ -24,10 +28,13 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
+    TQuantityValueMilliSecond,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TQuantityValuePercent,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
+    TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
@@ -186,6 +193,64 @@ class LuminescenceMeasurementParser(MeasurementParser):
         )
 
 
+class ImagingMeasurementParser(MeasurementParser):
+    def get_device_control_document(
+        self, data: VData
+    ) -> OpticalImagingDeviceControlDocumentItem:
+        detector_distance = data.get_focus_height()
+        # CONSULT detector wavelength setting / excitation wavelength setting
+        # two values, units in input
+        excitation_wavelength = data.get_excitation_wavelength()
+        exposure_duration = data.get_exposure_duration()
+        illumination = data.get_illumination()
+        return OpticalImagingDeviceControlDocumentItem(
+            device_type="imaging detector",
+            detection_type=data.get_experiment_type(),
+            detector_distance_setting__plate_reader_=(
+                None
+                if detector_distance is None
+                else TQuantityValueMillimeter(value=detector_distance)
+            ),
+            excitation_wavelength_setting=(
+                None
+                if excitation_wavelength is None
+                else TQuantityValueNanometer(value=excitation_wavelength)
+            ),
+            magnification_setting=TQuantityValueUnitless(value=4),
+            exposure_duration_setting=(
+                None
+                if exposure_duration is None
+                else TQuantityValueMilliSecond(value=exposure_duration)
+            ),
+            illumination_setting=(
+                None
+                if illumination is None
+                else TQuantityValuePercent(value=illumination)
+            ),
+            transmitted_light_setting=data.get_transmitted_light(),
+            fluorescent_tag_setting=data.get_fluorescent_tag(),
+        )
+
+    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
+        return OpticalImagingMeasurementDocumentItems(
+            measurement_identifier=random_uuid_str(),
+            sample_document=self.get_sample_document(data, well_position),
+            device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
+                device_control_document=[self.get_device_control_document(data)],
+            ),
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                processed_data_document=[
+                    ProcessedDataDocumentItem(
+                        # data_processing_document: Optional[dict[str, Any]] = None
+                        # data_source_aggregate_document: Optional[DataSourceAggregateDocument] = None
+                        # processed_data_identifier: Optional[TStringValue] = None
+                        # image_feature_aggregate_document: Optional[ImageFeatureAggregateDocument] = None
+                    )
+                ]
+            ),
+        )
+
+
 class KaleidoParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
@@ -263,6 +328,8 @@ class KaleidoParser(VendorParser):
             return AbsorbanceMeasurementParser()
         elif "luminescence" in experiment_type_lower:
             return LuminescenceMeasurementParser()
+        elif "img" in experiment_type_lower:
+            return ImagingMeasurementParser()
         else:
             error = f"Unable to find valid experiment type in '{experiment_type}'"
             raise AllotropeConversionError(error)
