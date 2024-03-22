@@ -252,9 +252,14 @@ class Platemap:
             raise AllotropeConversionError(error) from e
 
     def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
-        value = self.get_well_value(well_position)
-        if value == "-":
+        raw_value = self.get_well_value(well_position)
+        if raw_value == "-":
             return None
+
+        value = assert_not_none(
+            re.match(r"^([A-Z]+)\d+$", raw_value),
+            msg=f"Unable to understand platemap value '{raw_value}' for well position '{well_position}'.",
+        ).group(1)
 
         return assert_not_none(
             PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(value),
