@@ -270,8 +270,14 @@ class Platemap:
 
 
 @dataclass(frozen=True)
+class MeasurementElement:
+    title: str
+    value: str
+
+
+@dataclass(frozen=True)
 class Measurements:
-    elements: dict[str, str]
+    elements: list[MeasurementElement]
 
     @staticmethod
     def create(reader: CsvReader) -> Measurements:
@@ -280,84 +286,94 @@ class Measurements:
             msg="Unable to find Measurements section.",
         )
 
-        elements = {}
+        elements = []
         for raw_line in reader.pop_until("^Analysis"):
             if raw_line == "":
                 continue
 
             key, _, _, _, value, *_ = raw_line.split(",")
-            elements[key.rstrip(":")] = value
+            elements.append(
+                MeasurementElement(title=key.rstrip(":"), value=value),
+            )
 
         return Measurements(elements)
 
+    def try_element_or_none(self, title: str) -> Optional[MeasurementElement]:
+        for element in self.elements:
+            if element.title == title:
+                return element
+        return None
+
     def get_number_of_averages(self) -> Optional[float]:
-        number_of_flashes = self.elements.get("Number of flashes")
+        number_of_flashes = self.try_element_or_none("Number of flashes")
         if number_of_flashes is None:
             return None
-        return try_float(number_of_flashes, "number of flashes")
+        return try_float(number_of_flashes.value, "number of flashes")
 
     def get_detector_distance(self) -> Optional[float]:
-        detector_distance = self.elements.get(
+        detector_distance = self.try_element_or_none(
             "Distance between Plate and Detector [mm]"
         )
         if detector_distance is None:
             return None
-        return try_float(detector_distance, "detector distance")
+        return try_float(detector_distance.value, "detector distance")
 
     def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
-        position = self.elements.get("Excitation / Emission")
+        position = self.try_element_or_none("Excitation / Emission")
         if position is None:
             return None
 
         return assert_not_none(
-            SCAN_POSITION_CONVERTION.get(position),
-            msg=f"'{position}' is not a valid scan position, expected TOP or BOTTOM.",
+            SCAN_POSITION_CONVERTION.get(position.value),
+            msg=f"'{position.value}' is not a valid scan position, expected TOP or BOTTOM.",
         )
 
     def get_emission_wavelength(self) -> Optional[float]:
-        emission_wavelength = self.elements.get("Emission wavelength [nm]")
+        emission_wavelength = self.try_element_or_none("Emission wavelength [nm]")
         if emission_wavelength is None:
             return None
-        return try_float(emission_wavelength, "emission wavelength")
+        return try_float(emission_wavelength.value, "emission wavelength")
 
     def get_excitation_wavelength(self) -> Optional[float]:
-        excitation_wavelength = self.elements.get("Excitation wavelength [nm]")
+        excitation_wavelength = self.try_element_or_none("Excitation wavelength [nm]")
         if excitation_wavelength is None:
             return None
         return try_float(
-            excitation_wavelength.removesuffix("nm"), "excitation wavelength"
+            excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
         )
 
     def get_focus_height(self) -> Optional[float]:
-        focus_height = self.elements.get("Focus Height [µm]")
+        focus_height = self.try_element_or_none("Focus Height [µm]")
         if focus_height is None:
             return None
-        return try_float(focus_height, "focus height")
+        return try_float(focus_height.value, "focus height")
 
     def get_exposure_duration(self) -> Optional[float]:
-        exposure_duration = self.elements.get("Exposure Time [ms]")
+        exposure_duration = self.try_element_or_none("Exposure Time [ms]")
         if exposure_duration is None:
             return None
-        return try_float(exposure_duration, "exposure duration")
+        return try_float(exposure_duration.value, "exposure duration")
 
     def get_illumination(self) -> Optional[float]:
-        illumination = self.elements.get("Excitation Power [%]")
+        illumination = self.try_element_or_none("Excitation Power [%]")
         if illumination is None:
             return None
-        return try_float(illumination, "excitation power")
+        return try_float(illumination.value, "excitation power")
 
     def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
-        channel = self.elements.get("Channel")
+        channel = self.try_element_or_none("Channel")
         if channel is None:
             return None
         return assert_not_none(
-            TRANSMITTED_LIGHT_CONVERTION.get(channel),
-            msg=f"Unable to find transmitted light value for '{channel}'",
+            TRANSMITTED_LIGHT_CONVERTION.get(channel.value),
+            msg=f"Unable to find transmitted light value for '{channel.value}'",
         )
 
     def get_fluorescent_tag(self) -> Optional[str]:
-        channel = self.elements.get("Channel")
-        return None if channel == "BRIGHTFIELD" else channel
+        channel = self.try_element_or_none("Channel")
+        return (
+            None if channel is None or channel.value == "BRIGHTFIELD" else channel.value
+        )
 
 
 @dataclass(frozen=True)
