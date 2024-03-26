@@ -352,7 +352,7 @@ class KaleidoParser(VendorParser):
                 data, well_position, measurement_parser
             ),
             processed_data_aggregate_document=self.get_processed_data_aggregate_document(
-                data, well_position
+                data, well_position, measurement_parser
             ),
         )
 
@@ -374,9 +374,15 @@ class KaleidoParser(VendorParser):
         )
 
     def get_processed_data_aggregate_document(
-        self, data: VData, well_position: WellPosition
+        self,
+        data: VData,
+        well_position: WellPosition,
+        measurement_parser: MeasurementParser,
     ) -> Optional[ProcessedDataAggregateDocument]:
-        if not data.analysis_results:
+        if (
+            measurement_parser.get_experiment_type() != ExperimentType.OPTICAL_IMAGING
+            or not data.analysis_results
+        ):
             return None
 
         return ProcessedDataAggregateDocument(
