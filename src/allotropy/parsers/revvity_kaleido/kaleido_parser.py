@@ -10,6 +10,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
+    ImageDocumentItem,
     ImageFeatureAggregateDocument,
     ImageFeatureDocumentItem,
     LuminescencePointDetectionDeviceControlAggregateDocument,
@@ -17,6 +18,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingAggregateDocument,
     OpticalImagingDeviceControlAggregateDocument,
     OpticalImagingDeviceControlDocumentItem,
     OpticalImagingMeasurementDocumentItems,
@@ -346,9 +348,29 @@ class KaleidoParser(VendorParser):
             analytical_method_identifier=data.get_analytical_method_id(),
             experimental_data_identifier=data.get_experimentl_data_id(),
             measurement_document=measurement_parser.parse(data, well_position),
+            image_aggregate_document=self.get_image_aggregate_document(
+                data, well_position, measurement_parser
+            ),
             processed_data_aggregate_document=self.get_processed_data_aggregate_document(
                 data, well_position
             ),
+        )
+
+    def get_image_aggregate_document(
+        self,
+        data: VData,
+        well_position: WellPosition,
+        measurement_parser: MeasurementParser,
+    ) -> Optional[OpticalImagingAggregateDocument]:
+        if measurement_parser.get_experiment_type() != ExperimentType.OPTICAL_IMAGING:
+            return None
+
+        return OpticalImagingAggregateDocument(
+            image_document=[
+                ImageDocumentItem(
+                    experimental_data_identifier=data.get_well_str_value(well_position),
+                )
+            ]
         )
 
     def get_processed_data_aggregate_document(
