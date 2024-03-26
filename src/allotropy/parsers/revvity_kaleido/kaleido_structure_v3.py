@@ -361,6 +361,7 @@ class MeasurementElement:
 
 @dataclass(frozen=True)
 class Channel:
+    name: str
     excitation_wavelength: float
     excitation_power: float
     exposure_time: float
@@ -374,11 +375,13 @@ class Channel:
 
     @staticmethod
     def create(
+        name: MeasurementElement,
         excitation_wavelength: MeasurementElement,
         excitation_power: MeasurementElement,
         exposure_time: MeasurementElement,
         additional_focus_offset: MeasurementElement,
     ) -> Channel:
+        Channel.check_element_title(name, "Channel")
         Channel.check_element_title(excitation_wavelength, "Excitation wavelength [nm]")
         Channel.check_element_title(excitation_power, "Excitation Power [%]")
         Channel.check_element_title(exposure_time, "Exposure Time [ms]")
@@ -387,6 +390,7 @@ class Channel:
         )
 
         return Channel(
+            name.value,
             try_float(
                 excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
             ),
@@ -394,6 +398,18 @@ class Channel:
             try_float(exposure_time.value, "exposure time"),
             try_float(additional_focus_offset.value, "additional focus offset"),
         )
+
+    def get_exposure_duration(self) -> float:
+        return self.exposure_time
+
+    def get_illumination(self) -> float:
+        return self.excitation_power
+
+    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
+        return TRANSMITTED_LIGHT_CONVERTION.get(self.name)
+
+    def get_fluorescent_tag(self) -> Optional[str]:
+        return None if self.name == "BRIGHTFIELD" else self.name
 
 
 @dataclass(frozen=True)
@@ -428,6 +444,7 @@ class DetailsMeasurementSequence:
         try:
             return [
                 Channel.create(
+                    name=elements[idx],
                     excitation_wavelength=elements[idx + 1],
                     excitation_power=elements[idx + 2],
                     exposure_time=elements[idx + 3],
@@ -489,33 +506,6 @@ class DetailsMeasurementSequence:
         if focus_height is None:
             return None
         return try_float(focus_height.value, "focus height")
-
-    def get_exposure_duration(self) -> Optional[float]:
-        exposure_duration = self.try_element_or_none("Exposure Time [ms]")
-        if exposure_duration is None:
-            return None
-        return try_float(exposure_duration.value, "exposure duration")
-
-    def get_illumination(self) -> Optional[float]:
-        illumination = self.try_element_or_none("Excitation Power [%]")
-        if illumination is None:
-            return None
-        return try_float(illumination.value, "excitation power")
-
-    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
-        channel = self.try_element_or_none("Channel")
-        if channel is None:
-            return None
-        return assert_not_none(
-            TRANSMITTED_LIGHT_CONVERTION.get(channel.value),
-            msg=f"Unable to find transmitted light value for '{channel.value}'",
-        )
-
-    def get_fluorescent_tag(self) -> Optional[str]:
-        channel = self.try_element_or_none("Channel")
-        return (
-            None if channel is None or channel.value == "BRIGHTFIELD" else channel.value
-        )
 
 
 @dataclass(frozen=True)
@@ -602,14 +592,5 @@ class DataV3:
     def get_focus_height(self) -> Optional[float]:
         return self.details_measurement_sequence.get_focus_height()
 
-    def get_exposure_duration(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_exposure_duration()
-
-    def get_illumination(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_illumination()
-
-    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
-        return self.details_measurement_sequence.get_transmitted_light()
-
-    def get_fluorescent_tag(self) -> Optional[str]:
-        return self.details_measurement_sequence.get_fluorescent_tag()
+    def get_channels(self) -> list[Channel]:
+        return self.details_measurement_sequence.channels

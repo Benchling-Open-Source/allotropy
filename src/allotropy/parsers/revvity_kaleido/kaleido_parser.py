@@ -46,13 +46,20 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.revvity_kaleido.kaleido_builder import create_data
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
+from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import (
+    Channel as ChannelV2,
+    DataV2,
+)
+from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import (
+    Channel as ChannelV3,
+    DataV3,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 VData = Union[DataV2, DataV3]
+VChannel = Union[ChannelV2, ChannelV3]
 MeasurementItem = Union[
     OpticalImagingMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
@@ -207,13 +214,12 @@ class LuminescenceMeasurementParser(MeasurementParser):
 
 class ImagingMeasurementParser(MeasurementParser):
     def get_device_control_document(
-        self, data: VData
+        self, data: VData, channel: VChannel
     ) -> OpticalImagingDeviceControlDocumentItem:
         detector_distance = data.get_focus_height()
-        detector_wavelength = data.get_emission_wavelength()
-        excitation_wavelength = data.get_excitation_wavelength()
-        exposure_duration = data.get_exposure_duration()
-        illumination = data.get_illumination()
+        detector_wavelength = data.get_emission_wavelength()  # CONSULT where to find?
+        exposure_duration = channel.get_exposure_duration()
+        illumination = channel.get_illumination()
         return OpticalImagingDeviceControlDocumentItem(
             device_type="imaging detector",
             detection_type=data.get_experiment_type(),
@@ -229,10 +235,11 @@ class ImagingMeasurementParser(MeasurementParser):
             ),
             excitation_wavelength_setting=(
                 None
-                if excitation_wavelength is None
-                else TQuantityValueNanometer(value=excitation_wavelength)
+                if channel.excitation_wavelength is None
+                else TQuantityValueNanometer(value=channel.excitation_wavelength)
             ),
             magnification_setting=TQuantityValueUnitless(value=4),
+            # CONSULT is always 4?
             exposure_duration_setting=(
                 None
                 if exposure_duration is None
@@ -243,8 +250,8 @@ class ImagingMeasurementParser(MeasurementParser):
                 if illumination is None
                 else TQuantityValuePercent(value=illumination)
             ),
-            transmitted_light_setting=data.get_transmitted_light(),
-            fluorescent_tag_setting=data.get_fluorescent_tag(),
+            transmitted_light_setting=channel.get_transmitted_light(),
+            fluorescent_tag_setting=channel.get_fluorescent_tag(),
         )
 
     def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
@@ -252,10 +259,14 @@ class ImagingMeasurementParser(MeasurementParser):
             OpticalImagingMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
                 sample_document=self.get_sample_document(data, well_position),
+                # CONSULT should add channel name?
                 device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
-                    device_control_document=[self.get_device_control_document(data)],
+                    device_control_document=[
+                        self.get_device_control_document(data, channel)
+                    ],
                 ),
             )
+            for channel in data.get_channels()
         ]
 
 
