@@ -1,10 +1,19 @@
 from dataclasses import dataclass
+from enum import Enum
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
+
+
+class ExperimentType(Enum):
+    FLUORESCENCE = "fluorescence"
+    ABSORBANCE = "absorbance"
+    LUMINESCENCE = "luminescence"
+    OPTICAL_IMAGING = "optical imaging"
+
 
 PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
     "B": SampleRoleType.blank_role.value,

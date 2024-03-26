@@ -45,7 +45,10 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.revvity_kaleido.kaleido_builder import create_data
-from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
+from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
+    ExperimentType,
+    WellPosition,
+)
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import (
     Channel as ChannelV2,
     DataV2,
@@ -73,6 +76,10 @@ class MeasurementParser(ABC):
     def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
         pass
 
+    @abstractmethod
+    def get_experiment_type(self) -> ExperimentType:
+        pass
+
     def get_sample_document(
         self, data: VData, well_position: WellPosition
     ) -> SampleDocument:
@@ -92,6 +99,9 @@ class MeasurementParser(ABC):
 
 
 class FluorescenceMeasurementParser(MeasurementParser):
+    def get_experiment_type(self) -> ExperimentType:
+        return ExperimentType.FLUORESCENCE
+
     def get_device_control_document(
         self, data: VData
     ) -> FluorescencePointDetectionDeviceControlDocumentItem:
@@ -141,6 +151,9 @@ class FluorescenceMeasurementParser(MeasurementParser):
 
 
 class AbsorbanceMeasurementParser(MeasurementParser):
+    def get_experiment_type(self) -> ExperimentType:
+        return ExperimentType.ABSORBANCE
+
     def get_device_control_document(
         self, data: VData
     ) -> UltravioletAbsorbancePointDetectionDeviceControlDocumentItem:
@@ -183,6 +196,9 @@ class AbsorbanceMeasurementParser(MeasurementParser):
 
 
 class LuminescenceMeasurementParser(MeasurementParser):
+    def get_experiment_type(self) -> ExperimentType:
+        return ExperimentType.LUMINESCENCE
+
     def get_device_control_document(
         self, data: VData
     ) -> LuminescencePointDetectionDeviceControlDocumentItem:
@@ -213,6 +229,9 @@ class LuminescenceMeasurementParser(MeasurementParser):
 
 
 class ImagingMeasurementParser(MeasurementParser):
+    def get_experiment_type(self) -> ExperimentType:
+        return ExperimentType.OPTICAL_IMAGING
+
     def get_device_control_document(
         self, data: VData, channel: VChannel
     ) -> OpticalImagingDeviceControlDocumentItem:
