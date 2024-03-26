@@ -341,8 +341,46 @@ class MeasurementElement:
 
 
 @dataclass(frozen=True)
+class Channel:
+    excitation_wavelength: float
+    excitation_power: float
+    exposure_time: float
+    additional_focus_offset: float
+
+    @staticmethod
+    def check_element_title(element: MeasurementElement, expected_title: str) -> None:
+        if element.title != expected_title:
+            msg = f"Expected to get '{expected_title}' but '{element.title}' was found."
+            raise AllotropeConversionError(msg)
+
+    @staticmethod
+    def create(
+        excitation_wavelength: MeasurementElement,
+        excitation_power: MeasurementElement,
+        exposure_time: MeasurementElement,
+        additional_focus_offset: MeasurementElement,
+    ) -> Channel:
+        Channel.check_element_title(excitation_wavelength, "Excitation wavelength [nm]")
+        Channel.check_element_title(excitation_power, "Excitation Power [%]")
+        Channel.check_element_title(exposure_time, "Exposure Time [ms]")
+        Channel.check_element_title(
+            additional_focus_offset, "Additional Focus offset [mm]"
+        )
+
+        return Channel(
+            try_float(
+                excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
+            ),
+            try_float(excitation_power.value, "excitation power"),
+            try_float(exposure_time.value, "exposure time"),
+            try_float(additional_focus_offset.value, "additional focus offset"),
+        )
+
+
+@dataclass(frozen=True)
 class DetailsMeasurementSequence:
     elements: list[MeasurementElement]
+    channels: list[Channel]
 
     @staticmethod
     def create(reader: CsvReader) -> DetailsMeasurementSequence:
@@ -361,7 +399,27 @@ class DetailsMeasurementSequence:
                 MeasurementElement(title=key.rstrip(":"), value=value),
             )
 
-        return DetailsMeasurementSequence(elements)
+        return DetailsMeasurementSequence(
+            elements,
+            channels=DetailsMeasurementSequence.create_channels(elements),
+        )
+
+    @staticmethod
+    def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
+        try:
+            return [
+                Channel.create(
+                    excitation_wavelength=elements[idx + 1],
+                    excitation_power=elements[idx + 2],
+                    exposure_time=elements[idx + 3],
+                    additional_focus_offset=elements[idx + 4],
+                )
+                for idx, element in enumerate(elements)
+                if element.title == "Channel"
+            ]
+        except IndexError as e:
+            msg = "Unable to get channel elements from Measurement section."
+            raise AllotropeConversionError(msg) from e
 
     def try_element_or_none(self, title: str) -> Optional[MeasurementElement]:
         for element in self.elements:
