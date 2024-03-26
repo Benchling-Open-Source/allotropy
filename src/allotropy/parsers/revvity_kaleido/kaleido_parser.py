@@ -217,7 +217,6 @@ class ImagingMeasurementParser(MeasurementParser):
         self, data: VData, channel: VChannel
     ) -> OpticalImagingDeviceControlDocumentItem:
         detector_distance = data.get_focus_height()
-        detector_wavelength = data.get_emission_wavelength()  # CONSULT where to find?
         exposure_duration = channel.get_exposure_duration()
         illumination = channel.get_illumination()
         return OpticalImagingDeviceControlDocumentItem(
@@ -228,18 +227,12 @@ class ImagingMeasurementParser(MeasurementParser):
                 if detector_distance is None
                 else TQuantityValueMillimeter(value=detector_distance)
             ),
-            detector_wavelength_setting=(
-                None
-                if detector_wavelength is None
-                else TQuantityValueNanometer(value=detector_wavelength)
-            ),
             excitation_wavelength_setting=(
                 None
                 if channel.excitation_wavelength is None
                 else TQuantityValueNanometer(value=channel.excitation_wavelength)
             ),
             magnification_setting=TQuantityValueUnitless(value=4),
-            # CONSULT is always 4?
             exposure_duration_setting=(
                 None
                 if exposure_duration is None
@@ -259,7 +252,6 @@ class ImagingMeasurementParser(MeasurementParser):
             OpticalImagingMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
                 sample_document=self.get_sample_document(data, well_position),
-                # CONSULT should add channel name?
                 device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                     device_control_document=[
                         self.get_device_control_document(data, channel)
@@ -335,17 +327,15 @@ class KaleidoParser(VendorParser):
             analytical_method_identifier=data.get_analytical_method_id(),
             experimental_data_identifier=data.get_experimentl_data_id(),
             measurement_document=measurement_parser.parse(data, well_position),
-            # CONSULT how many for non imaingin?
             processed_data_aggregate_document=self.get_processed_data_aggregate_document(
                 data, well_position
             ),
         )
 
-    # CONSULT is this only constructed in imaging?
     def get_processed_data_aggregate_document(
         self, data: VData, well_position: WellPosition
     ) -> Optional[ProcessedDataAggregateDocument]:
-        if not data.analysis_results:  # CONSULT is this only true with imaging?
+        if not data.analysis_results:
             return None
 
         return ProcessedDataAggregateDocument(
@@ -367,7 +357,7 @@ class KaleidoParser(VendorParser):
                                             data_source_identifier=data.get_well_str_value(
                                                 well_position
                                             ),
-                                            data_source_feature="",  # CONSULT value?
+                                            data_source_feature="image feature",  # wait for actual value
                                         )
                                     ]
                                 ),
@@ -375,7 +365,7 @@ class KaleidoParser(VendorParser):
                             for analysis_result in data.analysis_results
                             if "Analysis Quality"
                             not in analysis_result.get_image_feature_name()
-                            # CONSULT what to do with boolean values?
+                            # ANSWER discard the matrix if it does not contain float values
                         ]
                     )
                 )

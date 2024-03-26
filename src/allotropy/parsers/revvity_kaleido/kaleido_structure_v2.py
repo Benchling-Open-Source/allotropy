@@ -373,7 +373,6 @@ class Measurements:
 
     @staticmethod
     def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
-        # CONSULT how to create channels?
         try:
             return [
                 Channel.create(
