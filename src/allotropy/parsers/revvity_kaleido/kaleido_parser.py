@@ -63,7 +63,7 @@ MeasurementItem = Union[
 
 class MeasurementParser(ABC):
     @abstractmethod
-    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
+    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
         pass
 
     def get_sample_document(
@@ -118,17 +118,19 @@ class FluorescenceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
-        return FluorescencePointDetectionMeasurementDocumentItems(
-            measurement_identifier=random_uuid_str(),
-            fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                value=data.get_well_float_value(well_position)
-            ),
-            sample_document=self.get_sample_document(data, well_position),
-            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[self.get_device_control_document(data)]
-            ),
-        )
+    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+        return [
+            FluorescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=random_uuid_str(),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                    value=data.get_well_float_value(well_position)
+                ),
+                sample_document=self.get_sample_document(data, well_position),
+                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[self.get_device_control_document(data)]
+                ),
+            )
+        ]
 
 
 class AbsorbanceMeasurementParser(MeasurementParser):
@@ -158,17 +160,19 @@ class AbsorbanceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
-        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-            measurement_identifier=random_uuid_str(),
-            absorbance=TQuantityValueMilliAbsorbanceUnit(
-                value=data.get_well_float_value(well_position)
-            ),
-            sample_document=self.get_sample_document(data, well_position),
-            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[self.get_device_control_document(data)]
-            ),
-        )
+    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+        return [
+            UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+                measurement_identifier=random_uuid_str(),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(
+                    value=data.get_well_float_value(well_position)
+                ),
+                sample_document=self.get_sample_document(data, well_position),
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[self.get_device_control_document(data)]
+                ),
+            )
+        ]
 
 
 class LuminescenceMeasurementParser(MeasurementParser):
@@ -186,17 +190,19 @@ class LuminescenceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
-        return LuminescencePointDetectionMeasurementDocumentItems(
-            measurement_identifier=random_uuid_str(),
-            luminescence=TQuantityValueRelativeLightUnit(
-                value=data.get_well_float_value(well_position)
-            ),
-            sample_document=self.get_sample_document(data, well_position),
-            device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[self.get_device_control_document(data)]
-            ),
-        )
+    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+        return [
+            LuminescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=random_uuid_str(),
+                luminescence=TQuantityValueRelativeLightUnit(
+                    value=data.get_well_float_value(well_position)
+                ),
+                sample_document=self.get_sample_document(data, well_position),
+                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[self.get_device_control_document(data)]
+                ),
+            )
+        ]
 
 
 class ImagingMeasurementParser(MeasurementParser):
@@ -241,14 +247,16 @@ class ImagingMeasurementParser(MeasurementParser):
             fluorescent_tag_setting=data.get_fluorescent_tag(),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> MeasurementItem:
-        return OpticalImagingMeasurementDocumentItems(
-            measurement_identifier=random_uuid_str(),
-            sample_document=self.get_sample_document(data, well_position),
-            device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
-                device_control_document=[self.get_device_control_document(data)],
-            ),
-        )
+    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+        return [
+            OpticalImagingMeasurementDocumentItems(
+                measurement_identifier=random_uuid_str(),
+                sample_document=self.get_sample_document(data, well_position),
+                device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
+                    device_control_document=[self.get_device_control_document(data)],
+                ),
+            )
+        ]
 
 
 class KaleidoParser(VendorParser):
@@ -315,12 +323,14 @@ class KaleidoParser(VendorParser):
             experiment_type=data.get_experiment_type(),
             analytical_method_identifier=data.get_analytical_method_id(),
             experimental_data_identifier=data.get_experimentl_data_id(),
-            measurement_document=[measurement_parser.parse(data, well_position)],
+            measurement_document=measurement_parser.parse(data, well_position),
+            # CONSULT how many for non imaingin?
             processed_data_aggregate_document=self.get_processed_data_aggregate_document(
                 data, well_position
             ),
         )
 
+    # CONSULT is this only constructed in imaging?
     def get_processed_data_aggregate_document(
         self, data: VData, well_position: WellPosition
     ) -> Optional[ProcessedDataAggregateDocument]:
