@@ -120,7 +120,7 @@ class FluorescenceMeasurementParser(MeasurementParser):
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                value=data.get_well_value(well_position)
+                value=data.get_well_float_value(well_position)
             ),
             sample_document=self.get_sample_document(data, well_position),
             device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
@@ -160,7 +160,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             absorbance=TQuantityValueMilliAbsorbanceUnit(
-                value=data.get_well_value(well_position)
+                value=data.get_well_float_value(well_position)
             ),
             sample_document=self.get_sample_document(data, well_position),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
@@ -188,7 +188,7 @@ class LuminescenceMeasurementParser(MeasurementParser):
         return LuminescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=random_uuid_str(),
             luminescence=TQuantityValueRelativeLightUnit(
-                value=data.get_well_value(well_position)
+                value=data.get_well_float_value(well_position)
             ),
             sample_document=self.get_sample_document(data, well_position),
             device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(

@@ -109,14 +109,18 @@ class Results:
         n_rows, n_columns = self.get_plate_well_dimentions()
         return n_rows * n_columns
 
-    def get_well_value(self, well_position: WellPosition) -> float:
+    def get_well_float_value(self, well_position: WellPosition) -> float:
+        return try_float(
+            self.get_well_str_value(well_position),
+            f"result well at '{well_position}'",
+        )
+
+    def get_well_str_value(self, well_position: WellPosition) -> str:
         try:
-            value = self.results.loc[well_position.row, well_position.column]
+            return str(self.results.loc[well_position.row, well_position.column])
         except KeyError as e:
             error = f"Unable to get well at position '{well_position}' from results section."
             raise AllotropeConversionError(error) from e
-
-        return try_float(str(value), f"result well at '{well_position}'")
 
 
 @dataclass(frozen=True)
@@ -550,8 +554,11 @@ class DataV3:
     def get_experimentl_data_id(self) -> str:
         return self.measurement_info.get_measurement_signature()
 
-    def get_well_value(self, well_position: WellPosition) -> float:
-        return self.results.get_well_value(well_position)
+    def get_well_float_value(self, well_position: WellPosition) -> float:
+        return self.results.get_well_float_value(well_position)
+
+    def get_well_str_value(self, well_position: WellPosition) -> str:
+        return self.results.get_well_str_value(well_position)
 
     def get_platemap_well_value(self, well_position: WellPosition) -> str:
         return self.platemap.get_well_value(well_position)
