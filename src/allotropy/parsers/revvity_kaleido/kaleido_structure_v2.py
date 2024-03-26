@@ -141,15 +141,16 @@ class AnalysisResult:
     def get_image_feature_name(self) -> str:
         return self.analysis_parameter
 
-    def get_image_feature_result(self, well_position: WellPosition) -> float:
+    def get_result(self, well_position: WellPosition) -> str:
         try:
-            value = self.results.loc[well_position.row, well_position.column]
+            return str(self.results.loc[well_position.row, well_position.column])
         except KeyError as e:
             error = f"Unable to get well at position '{well_position}' from analysis result '{self.analysis_parameter}'."
             raise AllotropeConversionError(error) from e
 
+    def get_image_feature_result(self, well_position: WellPosition) -> float:
         return try_float(
-            str(value),
+            self.get_result(well_position),
             f"analysis result '{self.analysis_parameter}' at '{well_position}'",
         )
 
