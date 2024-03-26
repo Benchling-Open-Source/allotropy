@@ -22,6 +22,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
+    try_float_or_none,
 )
 
 
@@ -165,6 +166,11 @@ class AnalysisResult:
     def get_image_feature_name(self) -> str:
         return self.analysis_parameter
 
+    def is_valid_result(self) -> bool:
+        a1 = WellPosition(column="1", row="A")
+        first_result = self.get_result(a1)
+        return try_float_or_none(first_result) is not None
+
     def get_result(self, well_position: WellPosition) -> str:
         try:
             return str(self.results.loc[well_position.row, well_position.column])
@@ -194,7 +200,9 @@ class AnalysisResultList:
 
         analysis_results = []
         while reader.match("^Barcode"):
-            analysis_results.append(AnalysisResult.create(reader))
+            analysis_result = AnalysisResult.create(reader)
+            if analysis_result.is_valid_result():
+                analysis_results.append(analysis_result)
 
         return analysis_results
 

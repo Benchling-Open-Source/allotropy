@@ -410,9 +410,6 @@ class KaleidoParser(VendorParser):
                                 ),
                             )
                             for analysis_result in data.analysis_results
-                            if "Analysis Quality"
-                            not in analysis_result.get_image_feature_name()
-                            # ANSWER discard the matrix if it does not contain float values
                         ]
                     )
                 )
