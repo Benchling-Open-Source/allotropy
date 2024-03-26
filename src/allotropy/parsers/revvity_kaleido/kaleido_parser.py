@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Union
+from typing import Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -246,26 +248,6 @@ class ImagingMeasurementParser(MeasurementParser):
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[self.get_device_control_document(data)],
             ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(  # CONSULT this should be in here?
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        image_feature_aggregate_document=ImageFeatureAggregateDocument(
-                            image_feature_document=[
-                                ImageFeatureDocumentItem(
-                                    image_feature_identifier=random_uuid_str(),
-                                    image_feature_name=data.get_image_feature_name(),
-                                    image_feature_result=TQuantityValueUnitless(
-                                        value=data.get_image_feature_result(
-                                            well_position  # CONSULT from which matrix
-                                        )
-                                    ),
-                                    # data_source_aggregate_document=DataSourceAggregateDocument()  # CONSULT
-                                ),
-                            ]
-                        )
-                    )
-                ]
-            ),
         )
 
 
@@ -334,6 +316,49 @@ class KaleidoParser(VendorParser):
             analytical_method_identifier=data.get_analytical_method_id(),
             experimental_data_identifier=data.get_experimentl_data_id(),
             measurement_document=[measurement_parser.parse(data, well_position)],
+            processed_data_aggregate_document=self.get_processed_data_aggregate_document(
+                data, well_position
+            ),
+        )
+
+    def get_processed_data_aggregate_document(
+        self, data: VData, well_position: WellPosition
+    ) -> Optional[ProcessedDataAggregateDocument]:
+        if not data.analysis_results:  # CONSULT is this only true with imaging?
+            return None
+
+        return ProcessedDataAggregateDocument(
+            processed_data_document=[
+                ProcessedDataDocumentItem(
+                    image_feature_aggregate_document=ImageFeatureAggregateDocument(
+                        image_feature_document=[
+                            ImageFeatureDocumentItem(
+                                image_feature_identifier=random_uuid_str(),
+                                image_feature_name=analysis_result.get_image_feature_name(),
+                                image_feature_result=TQuantityValueUnitless(
+                                    value=analysis_result.get_image_feature_result(
+                                        well_position
+                                    )
+                                ),
+                                data_source_aggregate_document=DataSourceAggregateDocument(
+                                    data_source_document=[
+                                        DataSourceDocumentItem(
+                                            data_source_identifier=data.get_well_str_value(
+                                                well_position
+                                            ),
+                                            data_source_feature="",  # CONSULT value?
+                                        )
+                                    ]
+                                ),
+                            )
+                            for analysis_result in data.analysis_results
+                            if "Analysis Quality"
+                            not in analysis_result.get_image_feature_name()
+                            # CONSULT what to do with boolean values?
+                        ]
+                    )
+                )
+            ]
         )
 
     def _get_measurement_document_parser(

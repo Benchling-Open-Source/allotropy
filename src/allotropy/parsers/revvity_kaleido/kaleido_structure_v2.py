@@ -100,20 +100,12 @@ class Results:
 
 
 @dataclass(frozen=True)
-class AnalysisResults:
+class AnalysisResult:
     analysis_parameter: str
     results: pd.DataFrame
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[AnalysisResults]:
-        section_title = assert_not_none(
-            reader.drop_until("^Results for|^Measurement Basic Information"),
-            msg="Unable to find Analysis Result or Measurement Basic Information section.",
-        )
-
-        if section_title.startswith("Measurement Basic Information"):
-            return None
-
+    def create(reader: CsvReader) -> AnalysisResult:
         barcode_line = assert_not_none(
             reader.drop_until_inclusive("^Barcode:(.+),"),
             msg="Unable to find background information.",
@@ -141,7 +133,7 @@ class AnalysisResults:
             if str(column).startswith("Unnamed"):
                 results = results.drop(columns=column)
 
-        return AnalysisResults(
+        return AnalysisResult(
             analysis_parameter=analysis_parameter,
             results=results,
         )
@@ -153,10 +145,33 @@ class AnalysisResults:
         try:
             value = self.results.loc[well_position.row, well_position.column]
         except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from analysis results section."
+            error = f"Unable to get well at position '{well_position}' from analysis result '{self.analysis_parameter}'."
             raise AllotropeConversionError(error) from e
 
-        return try_float(str(value), f"analysis result well at '{well_position}'")
+        return try_float(
+            str(value),
+            f"analysis result '{self.analysis_parameter}' at '{well_position}'",
+        )
+
+
+class AnalysisResultList:
+    @staticmethod
+    def create(reader: CsvReader) -> list[AnalysisResult]:
+        section_title = assert_not_none(
+            reader.drop_until("^Results for|^Measurement Basic Information"),
+            msg="Unable to find Analysis Result or Measurement Basic Information section.",
+        )
+
+        if section_title.startswith("Measurement Basic Information"):
+            return []
+
+        reader.drop_until("^Barcode")
+
+        analysis_results = []
+        while reader.match("^Barcode"):
+            analysis_results.append(AnalysisResult.create(reader))
+
+        return analysis_results
 
 
 @dataclass(frozen=True)
@@ -440,7 +455,7 @@ class DataV2:
     version: str
     background_info: BackgroundInfo
     results: Results
-    analysis_results: Optional[AnalysisResults]
+    analysis_results: list[AnalysisResult]
     measurement_basic_info: MeasurementBasicInfo
     plate_type: PlateType
     platemap: Platemap
@@ -452,7 +467,7 @@ class DataV2:
             version=version,
             background_info=BackgroundInfo.create(reader),
             results=Results.create(reader),
-            analysis_results=AnalysisResults.create(reader),
+            analysis_results=AnalysisResultList.create(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
             plate_type=PlateType.create(reader),
             platemap=Platemap.create(reader),
@@ -524,15 +539,3 @@ class DataV2:
 
     def get_fluorescent_tag(self) -> Optional[str]:
         return self.measurements.get_fluorescent_tag()
-
-    def get_image_feature_name(self) -> str:
-        return assert_not_none(
-            self.analysis_results,
-            msg="Unable to find Analysis results section.",
-        ).get_image_feature_name()
-
-    def get_image_feature_result(self, well_position: WellPosition) -> float:
-        return assert_not_none(
-            self.analysis_results,
-            msg="Unable to find Analysis results section.",
-        ).get_image_feature_result(well_position)
