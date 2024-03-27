@@ -4,8 +4,8 @@ import re
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader, InvertedLinesReader
 from allotropy.parsers.revvity_kaleido.kaleido_structure import Data
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
+from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import create_data_v2
+from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import create_data_v3
 from allotropy.parsers.utils.values import assert_not_none
 
 
@@ -30,9 +30,9 @@ def create_data(reader: CsvReader) -> Data:
     version = get_version(reader)
 
     if version.startswith(Version.V2.value):
-        return DataV2.create(version, reader)
+        return create_data_v2(version, reader)
     elif version.startswith(Version.V3.value):
-        return DataV3.create(version, reader)
+        return create_data_v3(version, reader)
     else:
         valid_versions = ", ".join([f"v{v.value}.0+" for v in Version])
         error = (

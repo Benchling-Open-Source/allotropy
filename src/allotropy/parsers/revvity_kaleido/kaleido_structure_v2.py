@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-from dataclasses import dataclass
 import re
 
 from allotropy.parsers.lines_reader import CsvReader
@@ -140,17 +137,14 @@ def create_measurements(reader: CsvReader) -> Measurements:
     )
 
 
-@dataclass(frozen=True)
-class DataV2(Data):
-    @staticmethod
-    def create(version: str, reader: CsvReader) -> DataV2:
-        return DataV2(
-            version=version,
-            background_info=create_background_info(reader),
-            results=create_results(reader),
-            analysis_results=create_analysis_results(reader),
-            measurement_info=create_measurement_info(reader),
-            plate_type=PlateType.create(reader),
-            platemap=create_platemap(reader),
-            measurements=create_measurements(reader),
-        )
+def create_data_v2(version: str, reader: CsvReader) -> Data:
+    return Data(
+        version=version,
+        background_info=create_background_info(reader),
+        results=create_results(reader),
+        analysis_results=create_analysis_results(reader),
+        measurement_info=create_measurement_info(reader),
+        plate_type=PlateType.create(reader),
+        platemap=create_platemap(reader),
+        measurements=create_measurements(reader),
+    )
