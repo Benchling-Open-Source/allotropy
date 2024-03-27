@@ -242,7 +242,7 @@ class ImagingMeasurementParser(MeasurementParser):
         illumination = channel.get_illumination()
         return OpticalImagingDeviceControlDocumentItem(
             device_type="imaging detector",
-            detection_type=data.get_experiment_type(),
+            detection_type="optical-imaging",
             detector_distance_setting__plate_reader_=(
                 None
                 if detector_distance is None
