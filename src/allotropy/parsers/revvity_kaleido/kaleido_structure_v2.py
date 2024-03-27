@@ -19,6 +19,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     WellPosition,
 )
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
+    AnalysisResult,
     BackgroundInfo,
     Data,
     Results,
@@ -26,7 +27,6 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
-    try_float_or_none,
 )
 
 
@@ -68,87 +68,24 @@ def create_results(reader: CsvReader) -> Results:
     )
 
 
-@dataclass(frozen=True)
-class AnalysisResult:
-    analysis_parameter: str
-    results: pd.DataFrame
+def create_analysis_results(reader: CsvReader) -> list[AnalysisResult]:
+    section_title = assert_not_none(
+        reader.drop_until("^Results for|^Measurement Basic Information"),
+        msg="Unable to find Analysis Result or Measurement Basic Information section.",
+    )
 
-    @staticmethod
-    def create(reader: CsvReader) -> AnalysisResult:
-        barcode_line = assert_not_none(
-            reader.drop_until_inclusive("^Barcode:(.+),"),
-            msg="Unable to find background information.",
-        )
+    if section_title.startswith("Measurement Basic Information"):
+        return []
 
-        analysis_parameter = None
-        for element in barcode_line.split(","):
-            if re.search("^.+:.+$", element):
-                key, value = element.split(":", maxsplit=1)
-                if "AnalysisParameter" in key:
-                    analysis_parameter = value
-                    break
+    reader.drop_until("^Barcode")
 
-        analysis_parameter = assert_not_none(
-            analysis_parameter,
-            msg="Unable to find analysis parameter in Analysis Results section.",
-        )
+    analysis_results = []
+    while reader.match("^Barcode"):
+        analysis_result = AnalysisResult.create(reader)
+        if analysis_result.is_valid_result():
+            analysis_results.append(analysis_result)
 
-        results = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
-            msg="Unable to find results table.",
-        )
-
-        for column in results:
-            if str(column).startswith("Unnamed"):
-                results = results.drop(columns=column)
-
-        return AnalysisResult(
-            analysis_parameter=analysis_parameter,
-            results=results,
-        )
-
-    def get_image_feature_name(self) -> str:
-        return self.analysis_parameter
-
-    def is_valid_result(self) -> bool:
-        a1 = WellPosition(column="1", row="A")
-        first_result = self.get_result(a1)
-        return try_float_or_none(first_result) is not None
-
-    def get_result(self, well_position: WellPosition) -> str:
-        try:
-            return str(self.results.loc[well_position.row, well_position.column])
-        except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from analysis result '{self.analysis_parameter}'."
-            raise AllotropeConversionError(error) from e
-
-    def get_image_feature_result(self, well_position: WellPosition) -> float:
-        return try_float(
-            self.get_result(well_position),
-            f"analysis result '{self.analysis_parameter}' at '{well_position}'",
-        )
-
-
-class AnalysisResultList:
-    @staticmethod
-    def create(reader: CsvReader) -> list[AnalysisResult]:
-        section_title = assert_not_none(
-            reader.drop_until("^Results for|^Measurement Basic Information"),
-            msg="Unable to find Analysis Result or Measurement Basic Information section.",
-        )
-
-        if section_title.startswith("Measurement Basic Information"):
-            return []
-
-        reader.drop_until("^Barcode")
-
-        analysis_results = []
-        while reader.match("^Barcode"):
-            analysis_result = AnalysisResult.create(reader)
-            if analysis_result.is_valid_result():
-                analysis_results.append(analysis_result)
-
-        return analysis_results
+    return analysis_results
 
 
 @dataclass(frozen=True)
@@ -419,7 +356,6 @@ class Measurements:
 
 @dataclass(frozen=True)
 class DataV2(Data):
-    analysis_results: list[AnalysisResult]
     measurement_basic_info: MeasurementBasicInfo
     plate_type: PlateType
     platemap: Platemap
@@ -431,7 +367,7 @@ class DataV2(Data):
             version=version,
             background_info=create_background_info(reader),
             results=create_results(reader),
-            analysis_results=AnalysisResultList.create(reader),
+            analysis_results=create_analysis_results(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
             plate_type=PlateType.create(reader),
             platemap=Platemap.create(reader),
