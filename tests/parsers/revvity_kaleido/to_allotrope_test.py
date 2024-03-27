@@ -7,6 +7,7 @@ from tests.parsers.test_utils import from_file, validate_contents
 VENDOR_TYPE = Vendor.REVVITY_KALEIDO
 
 
+@pytest.mark.kaleido
 @pytest.mark.parametrize(
     "file_name",
     [
