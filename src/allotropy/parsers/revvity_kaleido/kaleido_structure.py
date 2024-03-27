@@ -2,11 +2,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from allotropy.parsers.lines_reader import CsvReader
+
+@dataclass
+class BackgroundInfo:
+    experiment_type: str
 
 
 @dataclass(frozen=True)
 class Data:
-    @staticmethod
-    def create(_: CsvReader) -> Data:
-        return Data()
+    version: str
+    background_info: BackgroundInfo
+
+    def get_experiment_type(self) -> str:
+        return self.background_info.experiment_type

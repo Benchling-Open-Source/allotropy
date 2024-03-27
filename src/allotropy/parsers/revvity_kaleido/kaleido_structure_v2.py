@@ -19,6 +19,10 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     TRANSMITTED_LIGHT_CONVERTION,
     WellPosition,
 )
+from allotropy.parsers.revvity_kaleido.kaleido_structure import (
+    BackgroundInfo,
+    Data,
+)
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
@@ -26,23 +30,18 @@ from allotropy.parsers.utils.values import (
 )
 
 
-@dataclass(frozen=True)
-class BackgroundInfo:
-    experiment_type: str
+def create_background_info(reader: CsvReader) -> BackgroundInfo:
+    line = assert_not_none(
+        reader.drop_until_inclusive("^Results for.(.+) 1"),
+        msg="Unable to find background information.",
+    )
 
-    @staticmethod
-    def create(reader: CsvReader) -> BackgroundInfo:
-        line = assert_not_none(
-            reader.drop_until_inclusive("^Results for"),
-            msg="Unable to find background information.",
-        )
+    experiment_type = assert_not_none(
+        re.match("^Results for.(.+) 1", line),
+        msg="Unable to find experiment type from background information section.",
+    ).group(1)
 
-        experiment_type = assert_not_none(
-            re.match("^Results for.(.+) 1", line),
-            msg="Unable to find experiment type from background information section.",
-        ).group(1)
-
-        return BackgroundInfo(experiment_type)
+    return BackgroundInfo(experiment_type)
 
 
 @dataclass(frozen=True)
@@ -450,9 +449,7 @@ class Measurements:
 
 
 @dataclass(frozen=True)
-class DataV2:
-    version: str
-    background_info: BackgroundInfo
+class DataV2(Data):
     results: Results
     analysis_results: list[AnalysisResult]
     measurement_basic_info: MeasurementBasicInfo
@@ -464,7 +461,7 @@ class DataV2:
     def create(version: str, reader: CsvReader) -> DataV2:
         return DataV2(
             version=version,
-            background_info=BackgroundInfo.create(reader),
+            background_info=create_background_info(reader),
             results=Results.create(reader),
             analysis_results=AnalysisResultList.create(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
@@ -484,9 +481,6 @@ class DataV2:
 
     def get_measurement_time(self) -> str:
         return self.measurement_basic_info.get_measurement_time()
-
-    def get_experiment_type(self) -> str:
-        return self.background_info.experiment_type
 
     def get_analytical_method_id(self) -> str:
         return self.measurement_basic_info.get_protocol_signature()
