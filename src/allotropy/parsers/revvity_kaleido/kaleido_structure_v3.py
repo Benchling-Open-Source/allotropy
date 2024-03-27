@@ -19,6 +19,13 @@ from allotropy.parsers.utils.values import assert_not_none
 
 
 def create_background_info(reader: CsvReader) -> BackgroundInfo:
+    assert_not_none(
+        reader.pop_if_match("^EnSight Results from"),
+        msg="Unable to find EnSight section.",
+    )
+
+    reader.drop_until("^Result for")
+
     line = assert_not_none(
         reader.drop_until_inclusive("^Result for.(.+) 1"),
         msg="Unable to find background information.",
@@ -30,28 +37,6 @@ def create_background_info(reader: CsvReader) -> BackgroundInfo:
     ).group(1)
 
     return BackgroundInfo(experiment_type)
-
-
-@dataclass(frozen=True)
-class EnsightResults:
-    elements: dict[str, str]
-
-    @staticmethod
-    def create(reader: CsvReader) -> EnsightResults:
-        assert_not_none(
-            reader.pop_if_match("^EnSight Results from"),
-            msg="Unable to find EnSight section.",
-        )
-
-        elements = {}
-        for raw_line in reader.pop_until("^Result for"):
-            if raw_line == "":
-                continue
-
-            key, value, *_ = raw_line.split(",")
-            elements[key.rstrip(":")] = value
-
-        return EnsightResults(elements)
 
 
 def create_results(reader: CsvReader) -> Results:
@@ -185,13 +170,10 @@ def create_measurements(reader: CsvReader) -> Measurements:
 
 @dataclass(frozen=True)
 class DataV3(Data):
-    ensight_results: EnsightResults
-
     @staticmethod
     def create(version: str, reader: CsvReader) -> DataV3:
         return DataV3(
             version=version,
-            ensight_results=EnsightResults.create(reader),
             background_info=create_background_info(reader),
             results=create_results(reader),
             analysis_results=create_analysis_results(reader),
