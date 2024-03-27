@@ -4,8 +4,6 @@ from dataclasses import dataclass
 import re
 from typing import Optional
 
-import pandas as pd
-
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
@@ -13,15 +11,14 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
-    PLATEMAP_TO_SAMPLE_ROLE_TYPE,
     SCAN_POSITION_CONVERTION,
     TRANSMITTED_LIGHT_CONVERTION,
-    WellPosition,
 )
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
     Data,
+    Platemap,
     PlateType,
     Results,
 )
@@ -89,6 +86,25 @@ def create_analysis_results(reader: CsvReader) -> list[AnalysisResult]:
     return analysis_results
 
 
+def create_platemap(reader: CsvReader) -> Platemap:
+    assert_not_none(
+        reader.drop_until_inclusive("^Platemap"),
+        msg="Unable to find Platemap section.",
+    )
+
+    assert_not_none(
+        reader.pop_if_match("^Plate"),
+        msg="Unable to find platemap start indicator.",
+    )
+
+    data = assert_not_none(
+        reader.pop_csv_block_as_df(header=0, index_col=0),
+        msg="Unable to find platemap information.",
+    )
+
+    return Platemap(data)
+
+
 @dataclass(frozen=True)
 class MeasurementBasicInfo:
     elements: dict[str, str]
@@ -132,52 +148,6 @@ class MeasurementBasicInfo:
         return assert_not_none(
             self.elements.get("Measurement Signature"),
             msg="Unable to find Measurement Signature in Measurement Basic Information section.",
-        )
-
-
-@dataclass(frozen=True)
-class Platemap:
-    data: pd.DataFrame
-
-    @staticmethod
-    def create(reader: CsvReader) -> Platemap:
-        assert_not_none(
-            reader.drop_until_inclusive("^Platemap"),
-            msg="Unable to find Platemap section.",
-        )
-
-        assert_not_none(
-            reader.pop_if_match("^Plate"),
-            msg="Unable to find platemap start indicator.",
-        )
-
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
-            msg="Unable to find platemap information.",
-        )
-
-        return Platemap(data)
-
-    def get_well_value(self, well_position: WellPosition) -> str:
-        try:
-            return str(self.data.loc[well_position.row, well_position.column])
-        except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from platemap section."
-            raise AllotropeConversionError(error) from e
-
-    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
-        raw_value = self.get_well_value(well_position)
-        if raw_value == "-":
-            return None
-
-        value = assert_not_none(
-            re.match(r"^([A-Z]+)\d+$", raw_value),
-            msg=f"Unable to understand platemap value '{raw_value}' for well position '{well_position}'.",
-        ).group(1)
-
-        return assert_not_none(
-            PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(value),
-            msg=f"Unable to find sample role type for well position '{well_position}'.",
         )
 
 
@@ -336,7 +306,6 @@ class Measurements:
 @dataclass(frozen=True)
 class DataV2(Data):
     measurement_basic_info: MeasurementBasicInfo
-    platemap: Platemap
     measurements: Measurements
 
     @staticmethod
@@ -348,7 +317,7 @@ class DataV2(Data):
             analysis_results=create_analysis_results(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
             plate_type=PlateType.create(reader),
-            platemap=Platemap.create(reader),
+            platemap=create_platemap(reader),
             measurements=Measurements.create(reader),
         )
 
@@ -363,12 +332,6 @@ class DataV2(Data):
 
     def get_experimentl_data_id(self) -> str:
         return self.measurement_basic_info.get_measurement_signature()
-
-    def get_platemap_well_value(self, well_position: WellPosition) -> str:
-        return self.platemap.get_well_value(well_position)
-
-    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
-        return self.platemap.get_sample_role_type(well_position)
 
     def get_number_of_averages(self) -> Optional[float]:
         return self.measurements.get_number_of_averages()

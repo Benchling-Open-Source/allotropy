@@ -2,12 +2,19 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+import re
+from typing import Optional
 
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.revvity_kaleido.kaleido_common_structure import WellPosition
+from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
+    PLATEMAP_TO_SAMPLE_ROLE_TYPE,
+    WellPosition,
+)
 from allotropy.parsers.utils.values import (
+    assert_not_none,
     try_float,
     try_float_or_none,
 )
@@ -125,12 +132,40 @@ class PlateType:
 
 
 @dataclass(frozen=True)
+class Platemap:
+    data: pd.DataFrame
+
+    def get_well_value(self, well_position: WellPosition) -> str:
+        try:
+            return str(self.data.loc[well_position.row, well_position.column])
+        except KeyError as e:
+            error = f"Unable to get well at position '{well_position}' from platemap section."
+            raise AllotropeConversionError(error) from e
+
+    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
+        raw_value = self.get_well_value(well_position)
+        if raw_value == "-":
+            return None
+
+        value = assert_not_none(
+            re.match(r"^([A-Z]+)\d+$", raw_value),
+            msg=f"Unable to understand platemap value '{raw_value}' for well position '{well_position}'.",
+        ).group(1)
+
+        return assert_not_none(
+            PLATEMAP_TO_SAMPLE_ROLE_TYPE.get(value),
+            msg=f"Unable to find sample role type for well position '{well_position}'.",
+        )
+
+
+@dataclass(frozen=True)
 class Data:
     version: str
     background_info: BackgroundInfo
     results: Results
     analysis_results: list[AnalysisResult]
     plate_type: PlateType
+    platemap: Platemap
 
     def get_experiment_type(self) -> str:
         return self.background_info.experiment_type
@@ -149,3 +184,9 @@ class Data:
 
     def get_well_plate_identifier(self) -> str:
         return self.results.barcode
+
+    def get_platemap_well_value(self, well_position: WellPosition) -> str:
+        return self.platemap.get_well_value(well_position)
+
+    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
+        return self.platemap.get_sample_role_type(well_position)
