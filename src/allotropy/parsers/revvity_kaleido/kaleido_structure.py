@@ -7,10 +7,16 @@ from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ScanPositionSettingPlateReader,
+    TransmittedLightSetting,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     PLATEMAP_TO_SAMPLE_ROLE_TYPE,
+    SCAN_POSITION_CONVERTION,
+    TRANSMITTED_LIGHT_CONVERTION,
     WellPosition,
 )
 from allotropy.parsers.utils.values import (
@@ -159,6 +165,143 @@ class Platemap:
 
 
 @dataclass(frozen=True)
+class MeasurementElement:
+    title: str
+    value: str
+
+
+@dataclass(frozen=True)
+class Channel:
+    name: str
+    excitation_wavelength: float
+    excitation_power: float
+    exposure_time: float
+    additional_focus_offset: float
+
+    @staticmethod
+    def check_element_title(element: MeasurementElement, expected_title: str) -> None:
+        if element.title != expected_title:
+            msg = f"Expected to get '{expected_title}' but '{element.title}' was found."
+            raise AllotropeConversionError(msg)
+
+    @staticmethod
+    def create(
+        name: MeasurementElement,
+        excitation_wavelength: MeasurementElement,
+        excitation_power: MeasurementElement,
+        exposure_time: MeasurementElement,
+        additional_focus_offset: MeasurementElement,
+    ) -> Channel:
+        Channel.check_element_title(name, "Channel")
+        Channel.check_element_title(excitation_wavelength, "Excitation wavelength [nm]")
+        Channel.check_element_title(excitation_power, "Excitation Power [%]")
+        Channel.check_element_title(exposure_time, "Exposure Time [ms]")
+        Channel.check_element_title(
+            additional_focus_offset, "Additional Focus offset [mm]"
+        )
+
+        return Channel(
+            name.value,
+            try_float(
+                excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
+            ),
+            try_float(excitation_power.value, "excitation power"),
+            try_float(exposure_time.value, "exposure time"),
+            try_float(additional_focus_offset.value, "additional focus offset"),
+        )
+
+    def get_exposure_duration(self) -> float:
+        return self.exposure_time
+
+    def get_illumination(self) -> float:
+        return self.excitation_power
+
+    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
+        return TRANSMITTED_LIGHT_CONVERTION.get(self.name)
+
+    def get_fluorescent_tag(self) -> Optional[str]:
+        return None if self.name == "BRIGHTFIELD" else self.name
+
+
+@dataclass(frozen=True)
+class Measurements:
+    elements: list[MeasurementElement]
+    channels: list[Channel]
+    number_of_flashes: str
+    detector_distance: str
+    position: str
+    emission_wavelength: str
+    excitation_wavelength: str
+    focus_height: str
+
+    @staticmethod
+    def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
+        try:
+            return [
+                Channel.create(
+                    name=elements[idx],
+                    excitation_wavelength=elements[idx + 1],
+                    excitation_power=elements[idx + 2],
+                    exposure_time=elements[idx + 3],
+                    additional_focus_offset=elements[idx + 4],
+                )
+                for idx, element in enumerate(elements)
+                if element.title == "Channel"
+            ]
+        except IndexError as e:
+            msg = "Unable to get channel elements from Measurement section."
+            raise AllotropeConversionError(msg) from e
+
+    def try_element_or_none(self, title: str) -> Optional[MeasurementElement]:
+        for element in self.elements:
+            if element.title == title:
+                return element
+        return None
+
+    def get_number_of_averages(self) -> Optional[float]:
+        number_of_flashes = self.try_element_or_none(self.number_of_flashes)
+        if number_of_flashes is None:
+            return None
+        return try_float(number_of_flashes.value, self.number_of_flashes)
+
+    def get_detector_distance(self) -> Optional[float]:
+        detector_distance = self.try_element_or_none(self.detector_distance)
+        if detector_distance is None:
+            return None
+        return try_float(detector_distance.value, self.detector_distance)
+
+    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
+        position = self.try_element_or_none(self.position)
+        if position is None:
+            return None
+
+        return assert_not_none(
+            SCAN_POSITION_CONVERTION.get(position.value),
+            msg=f"'{position.value}' is not a valid scan position, expected TOP or BOTTOM.",
+        )
+
+    def get_emission_wavelength(self) -> Optional[float]:
+        emission_wavelength = self.try_element_or_none(self.emission_wavelength)
+        if emission_wavelength is None:
+            return None
+        return try_float(emission_wavelength.value, self.emission_wavelength)
+
+    def get_excitation_wavelength(self) -> Optional[float]:
+        excitation_wavelength = self.try_element_or_none(self.excitation_wavelength)
+        if excitation_wavelength is None:
+            return None
+        return try_float(
+            excitation_wavelength.value.removesuffix("nm"), self.excitation_wavelength
+        )
+
+    def get_focus_height(self) -> Optional[float]:
+        focus_height = self.try_element_or_none(self.focus_height)
+        if focus_height is None:
+            return None
+        return try_float(focus_height.value, self.focus_height)
+
+
+@dataclass(frozen=True)
 class Data:
     version: str
     background_info: BackgroundInfo
@@ -166,6 +309,7 @@ class Data:
     analysis_results: list[AnalysisResult]
     plate_type: PlateType
     platemap: Platemap
+    measurements: Measurements
 
     def get_experiment_type(self) -> str:
         return self.background_info.experiment_type
@@ -190,3 +334,24 @@ class Data:
 
     def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
         return self.platemap.get_sample_role_type(well_position)
+
+    def get_number_of_averages(self) -> Optional[float]:
+        return self.measurements.get_number_of_averages()
+
+    def get_detector_distance(self) -> Optional[float]:
+        return self.measurements.get_detector_distance()
+
+    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
+        return self.measurements.get_scan_position()
+
+    def get_emission_wavelength(self) -> Optional[float]:
+        return self.measurements.get_emission_wavelength()
+
+    def get_excitation_wavelength(self) -> Optional[float]:
+        return self.measurements.get_excitation_wavelength()
+
+    def get_focus_height(self) -> Optional[float]:
+        return self.measurements.get_focus_height()
+
+    def get_channels(self) -> list[Channel]:
+        return self.measurements.channels

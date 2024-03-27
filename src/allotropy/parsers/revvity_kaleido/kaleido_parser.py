@@ -51,20 +51,14 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     ExperimentType,
     WellPosition,
 )
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import (
-    Channel as ChannelV2,
-    DataV2,
-)
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import (
-    Channel as ChannelV3,
-    DataV3,
-)
+from allotropy.parsers.revvity_kaleido.kaleido_structure import Channel
+from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
+from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 VData = Union[DataV2, DataV3]
-VChannel = Union[ChannelV2, ChannelV3]
 MeasurementItem = Union[
     OpticalImagingMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
@@ -235,7 +229,7 @@ class ImagingMeasurementParser(MeasurementParser):
         return ExperimentType.OPTICAL_IMAGING
 
     def get_device_control_document(
-        self, data: VData, channel: VChannel
+        self, data: VData, channel: Channel
     ) -> OpticalImagingDeviceControlDocumentItem:
         detector_distance = data.get_focus_height()
         exposure_duration = channel.get_exposure_duration()

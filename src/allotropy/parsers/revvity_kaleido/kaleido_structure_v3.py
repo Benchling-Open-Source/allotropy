@@ -2,30 +2,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
-from typing import Optional
 
-from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
-    ScanPositionSettingPlateReader,
-    TransmittedLightSetting,
-)
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
-    SCAN_POSITION_CONVERTION,
-    TRANSMITTED_LIGHT_CONVERTION,
-)
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
     Data,
+    MeasurementElement,
+    Measurements,
     Platemap,
     PlateType,
     Results,
 )
-from allotropy.parsers.utils.values import (
-    assert_not_none,
-    try_float,
-)
+from allotropy.parsers.utils.values import assert_not_none
 
 
 def create_background_info(reader: CsvReader) -> BackgroundInfo:
@@ -124,6 +113,34 @@ def create_platemap(reader: CsvReader) -> Platemap:
     return Platemap(data)
 
 
+def create_measurements(reader: CsvReader) -> Measurements:
+    assert_not_none(
+        reader.drop_until_inclusive("^Details of Measurement Sequence"),
+        msg="Unable to find Details of Measurement Sequence section.",
+    )
+
+    elements = []
+    for raw_line in reader.pop_until("^Post Processing Sequence"):
+        if raw_line == "":
+            continue
+
+        key, _, _, value, *_ = raw_line.split(",")
+        elements.append(
+            MeasurementElement(title=key.rstrip(":"), value=value),
+        )
+
+    return Measurements(
+        elements,
+        channels=Measurements.create_channels(elements),
+        number_of_flashes="Number of Flashes",
+        detector_distance="Distance between Plate and Detector [mm]",
+        position="Excitation / Emission",
+        emission_wavelength="Emission Wavelength [nm]",
+        excitation_wavelength="Excitation Wavelength [nm]",
+        focus_height="Focus Height [µm]",
+    )
+
+
 @dataclass(frozen=True)
 class MeasurementInfo:
     elements: dict[str, str]
@@ -215,167 +232,11 @@ class ProtocolInfo:
 
 
 @dataclass(frozen=True)
-class MeasurementElement:
-    title: str
-    value: str
-
-
-@dataclass(frozen=True)
-class Channel:
-    name: str
-    excitation_wavelength: float
-    excitation_power: float
-    exposure_time: float
-    additional_focus_offset: float
-
-    @staticmethod
-    def check_element_title(element: MeasurementElement, expected_title: str) -> None:
-        if element.title != expected_title:
-            msg = f"Expected to get '{expected_title}' but '{element.title}' was found."
-            raise AllotropeConversionError(msg)
-
-    @staticmethod
-    def create(
-        name: MeasurementElement,
-        excitation_wavelength: MeasurementElement,
-        excitation_power: MeasurementElement,
-        exposure_time: MeasurementElement,
-        additional_focus_offset: MeasurementElement,
-    ) -> Channel:
-        Channel.check_element_title(name, "Channel")
-        Channel.check_element_title(excitation_wavelength, "Excitation wavelength [nm]")
-        Channel.check_element_title(excitation_power, "Excitation Power [%]")
-        Channel.check_element_title(exposure_time, "Exposure Time [ms]")
-        Channel.check_element_title(
-            additional_focus_offset, "Additional Focus offset [mm]"
-        )
-
-        return Channel(
-            name.value,
-            try_float(
-                excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
-            ),
-            try_float(excitation_power.value, "excitation power"),
-            try_float(exposure_time.value, "exposure time"),
-            try_float(additional_focus_offset.value, "additional focus offset"),
-        )
-
-    def get_exposure_duration(self) -> float:
-        return self.exposure_time
-
-    def get_illumination(self) -> float:
-        return self.excitation_power
-
-    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
-        return TRANSMITTED_LIGHT_CONVERTION.get(self.name)
-
-    def get_fluorescent_tag(self) -> Optional[str]:
-        return None if self.name == "BRIGHTFIELD" else self.name
-
-
-@dataclass(frozen=True)
-class DetailsMeasurementSequence:
-    elements: list[MeasurementElement]
-    channels: list[Channel]
-
-    @staticmethod
-    def create(reader: CsvReader) -> DetailsMeasurementSequence:
-        assert_not_none(
-            reader.drop_until_inclusive("^Details of Measurement Sequence"),
-            msg="Unable to find Details of Measurement Sequence section.",
-        )
-
-        elements = []
-        for raw_line in reader.pop_until("^Post Processing Sequence"):
-            if raw_line == "":
-                continue
-
-            key, _, _, value, *_ = raw_line.split(",")
-            elements.append(
-                MeasurementElement(title=key.rstrip(":"), value=value),
-            )
-
-        return DetailsMeasurementSequence(
-            elements,
-            channels=DetailsMeasurementSequence.create_channels(elements),
-        )
-
-    @staticmethod
-    def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
-        try:
-            return [
-                Channel.create(
-                    name=elements[idx],
-                    excitation_wavelength=elements[idx + 1],
-                    excitation_power=elements[idx + 2],
-                    exposure_time=elements[idx + 3],
-                    additional_focus_offset=elements[idx + 4],
-                )
-                for idx, element in enumerate(elements)
-                if element.title == "Channel"
-            ]
-        except IndexError as e:
-            msg = "Unable to get channel elements from Measurement section."
-            raise AllotropeConversionError(msg) from e
-
-    def try_element_or_none(self, title: str) -> Optional[MeasurementElement]:
-        for element in self.elements:
-            if element.title == title:
-                return element
-        return None
-
-    def get_number_of_averages(self) -> Optional[float]:
-        number_of_flashes = self.try_element_or_none("Number of Flashes")
-        if number_of_flashes is None:
-            return None
-        return try_float(number_of_flashes.value, "number of flashes")
-
-    def get_detector_distance(self) -> Optional[float]:
-        detector_distance = self.try_element_or_none(
-            "Distance between Plate and Detector [mm]"
-        )
-        if detector_distance is None:
-            return None
-        return try_float(detector_distance.value, "detector distance")
-
-    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
-        position = self.try_element_or_none("Excitation / Emission")
-        if position is None:
-            return None
-
-        return assert_not_none(
-            SCAN_POSITION_CONVERTION.get(position.value),
-            msg=f"'{position.value}' is not a valid scan position, expected TOP or BOTTOM.",
-        )
-
-    def get_emission_wavelength(self) -> Optional[float]:
-        emission_wavelength = self.try_element_or_none("Emission Wavelength [nm]")
-        if emission_wavelength is None:
-            return None
-        return try_float(emission_wavelength.value, "emission wavelength")
-
-    def get_excitation_wavelength(self) -> Optional[float]:
-        excitation_wavelength = self.try_element_or_none("Excitation Wavelength [nm]")
-        if excitation_wavelength is None:
-            return None
-        return try_float(
-            excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
-        )
-
-    def get_focus_height(self) -> Optional[float]:
-        focus_height = self.try_element_or_none("Focus Height [µm]")
-        if focus_height is None:
-            return None
-        return try_float(focus_height.value, "focus height")
-
-
-@dataclass(frozen=True)
 class DataV3(Data):
     ensight_results: EnsightResults
     measurement_info: MeasurementInfo
     instrument_info: InstrumentInfo
     protocol_info: ProtocolInfo
-    details_measurement_sequence: DetailsMeasurementSequence
 
     @staticmethod
     def create(version: str, reader: CsvReader) -> DataV3:
@@ -390,7 +251,7 @@ class DataV3(Data):
             protocol_info=ProtocolInfo.create(reader),
             plate_type=PlateType.create(reader),
             platemap=create_platemap(reader),
-            details_measurement_sequence=DetailsMeasurementSequence.create(reader),
+            measurements=create_measurements(reader),
         )
 
     def get_equipment_serial_number(self) -> str:
@@ -404,24 +265,3 @@ class DataV3(Data):
 
     def get_experimentl_data_id(self) -> str:
         return self.measurement_info.get_measurement_signature()
-
-    def get_number_of_averages(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_number_of_averages()
-
-    def get_detector_distance(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_detector_distance()
-
-    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
-        return self.details_measurement_sequence.get_scan_position()
-
-    def get_emission_wavelength(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_emission_wavelength()
-
-    def get_excitation_wavelength(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_excitation_wavelength()
-
-    def get_focus_height(self) -> Optional[float]:
-        return self.details_measurement_sequence.get_focus_height()
-
-    def get_channels(self) -> list[Channel]:
-        return self.details_measurement_sequence.channels
