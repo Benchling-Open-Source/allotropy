@@ -15,6 +15,11 @@ class ExperimentType(Enum):
     OPTICAL_IMAGING = "optical imaging"
 
 
+class Version(Enum):
+    V2 = "2.0"
+    V3 = "3.0"
+
+
 PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
     "B": SampleRoleType.blank_role.value,
     "C": SampleRoleType.control_sample_role.value,
