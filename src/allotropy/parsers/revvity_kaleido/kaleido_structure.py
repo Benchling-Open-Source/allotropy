@@ -124,6 +124,35 @@ class AnalysisResult:
 
 
 @dataclass(frozen=True)
+class MeasurementInfo:
+    elements: dict[str, str]
+
+    def get_instrument_serial_number(self) -> str:
+        return assert_not_none(
+            self.elements.get("Instrument Serial Number"),
+            msg="Unable to find Instrument Serial Number in Measurement Information section.",
+        )
+
+    def get_measurement_time(self) -> str:
+        return assert_not_none(
+            self.elements.get("Measurement Started"),
+            msg="Unable to find Measurement time in Measurement Information section.",
+        )
+
+    def get_protocol_signature(self) -> str:
+        return assert_not_none(
+            self.elements.get("Protocol Signature"),
+            msg="Unable to find Protocol Signature in Measurement Information section.",
+        )
+
+    def get_measurement_signature(self) -> str:
+        return assert_not_none(
+            self.elements.get("Measurement Signature"),
+            msg="Unable to find Measurement Signature in Measurement Information section.",
+        )
+
+
+@dataclass(frozen=True)
 class PlateType:
     elements: dict[str, str]
 
@@ -307,6 +336,7 @@ class Data:
     background_info: BackgroundInfo
     results: Results
     analysis_results: list[AnalysisResult]
+    measurement_info: MeasurementInfo
     plate_type: PlateType
     platemap: Platemap
     measurements: Measurements
@@ -355,3 +385,15 @@ class Data:
 
     def get_channels(self) -> list[Channel]:
         return self.measurements.channels
+
+    def get_equipment_serial_number(self) -> str:
+        return self.measurement_info.get_instrument_serial_number()
+
+    def get_measurement_time(self) -> str:
+        return self.measurement_info.get_measurement_time()
+
+    def get_analytical_method_id(self) -> str:
+        return self.measurement_info.get_protocol_signature()
+
+    def get_experimentl_data_id(self) -> str:
+        return self.measurement_info.get_measurement_signature()
