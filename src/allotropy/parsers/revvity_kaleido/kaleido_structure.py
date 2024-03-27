@@ -111,11 +111,26 @@ class AnalysisResult:
 
 
 @dataclass(frozen=True)
+class PlateType:
+    elements: dict[str, str]
+
+    @staticmethod
+    def create(reader: CsvReader) -> PlateType:
+        assert_not_none(
+            reader.drop_until_inclusive("^Plate Type"),
+            msg="Unable to find Plate Type section.",
+        )
+        reader.drop_until("^Platemap")
+        return PlateType({})
+
+
+@dataclass(frozen=True)
 class Data:
     version: str
     background_info: BackgroundInfo
     results: Results
     analysis_results: list[AnalysisResult]
+    plate_type: PlateType
 
     def get_experiment_type(self) -> str:
         return self.background_info.experiment_type

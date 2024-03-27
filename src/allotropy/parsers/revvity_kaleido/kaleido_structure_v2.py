@@ -22,6 +22,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
     Data,
+    PlateType,
     Results,
 )
 from allotropy.parsers.utils.values import (
@@ -132,28 +133,6 @@ class MeasurementBasicInfo:
             self.elements.get("Measurement Signature"),
             msg="Unable to find Measurement Signature in Measurement Basic Information section.",
         )
-
-
-@dataclass(frozen=True)
-class PlateType:
-    elements: dict[str, str]
-
-    @staticmethod
-    def create(reader: CsvReader) -> PlateType:
-        assert_not_none(
-            reader.drop_until_inclusive("^Plate Type"),
-            msg="Unable to find Plate Type section.",
-        )
-
-        elements = {}
-        for raw_line in reader.pop_until("^Platemap"):
-            if raw_line == "":
-                continue
-
-            key, _, value, *_ = raw_line.split(",")
-            elements[key.rstrip(":")] = value
-
-        return PlateType(elements)
 
 
 @dataclass(frozen=True)
@@ -357,7 +336,6 @@ class Measurements:
 @dataclass(frozen=True)
 class DataV2(Data):
     measurement_basic_info: MeasurementBasicInfo
-    plate_type: PlateType
     platemap: Platemap
     measurements: Measurements
 

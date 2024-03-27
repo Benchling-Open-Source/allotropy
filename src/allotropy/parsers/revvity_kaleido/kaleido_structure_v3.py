@@ -22,6 +22,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     AnalysisResult,
     BackgroundInfo,
     Data,
+    PlateType,
     Results,
 )
 from allotropy.parsers.utils.values import (
@@ -200,30 +201,6 @@ class ProtocolInfo:
             self.elements.get("Protocol Signature"),
             msg="Unable to find Protocol Signature in Protocol Information section.",
         )
-
-
-@dataclass(frozen=True)
-class PlateTypeInfo:
-    elements: dict[str, str]
-
-    @staticmethod
-    def create(reader: CsvReader) -> PlateTypeInfo:
-        assert_not_none(
-            reader.drop_until_inclusive("^Plate Type Information"),
-            msg="Unable to find Plate Type Information section.",
-        )
-
-        elements: dict[str, str] = {}
-        # for raw_line in reader.pop_until("^Platemap"):
-        #     if raw_line == "":
-        #         continue
-
-        #     key, _, value, *_ = raw_line.split(",")
-        #     elements[key.rstrip(":")] = value
-
-        reader.drop_until("^Platemap")
-
-        return PlateTypeInfo(elements)
 
 
 @dataclass(frozen=True)
@@ -428,7 +405,6 @@ class DataV3(Data):
     measurement_info: MeasurementInfo
     instrument_info: InstrumentInfo
     protocol_info: ProtocolInfo
-    plate_type_info: PlateTypeInfo
     platemap: Platemap
     details_measurement_sequence: DetailsMeasurementSequence
 
@@ -443,7 +419,7 @@ class DataV3(Data):
             measurement_info=MeasurementInfo.create(reader),
             instrument_info=InstrumentInfo.create(reader),
             protocol_info=ProtocolInfo.create(reader),
-            plate_type_info=PlateTypeInfo.create(reader),
+            plate_type=PlateType.create(reader),
             platemap=Platemap.create(reader),
             details_measurement_sequence=DetailsMeasurementSequence.create(reader),
         )
