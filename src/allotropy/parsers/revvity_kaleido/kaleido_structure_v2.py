@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from collections.abc import Iterator
 from dataclasses import dataclass
 import re
 from typing import Optional
@@ -22,6 +21,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     BackgroundInfo,
     Data,
+    Results,
 )
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -44,59 +44,28 @@ def create_background_info(reader: CsvReader) -> BackgroundInfo:
     return BackgroundInfo(experiment_type)
 
 
-@dataclass(frozen=True)
-class Results:
-    barcode: str
-    results: pd.DataFrame
+def create_results(reader: CsvReader) -> Results:
+    barcode_line = assert_not_none(
+        reader.drop_until_inclusive("^Barcode:(.+),"),
+        msg="Unable to find background information.",
+    )
 
-    @staticmethod
-    def create(reader: CsvReader) -> Results:
-        barcode_line = assert_not_none(
-            reader.drop_until_inclusive("^Barcode:(.+),"),
-            msg="Unable to find background information.",
-        )
+    raw_barcode, *_ = barcode_line.split(",")
+    barcode = raw_barcode.removeprefix("Barcode:")
 
-        raw_barcode, *_ = barcode_line.split(",")
-        barcode = raw_barcode.removeprefix("Barcode:")
+    results = assert_not_none(
+        reader.pop_csv_block_as_df(header=0, index_col=0),
+        msg="Unable to find results table.",
+    )
 
-        results = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
-            msg="Unable to find results table.",
-        )
+    for column in results:
+        if str(column).startswith("Unnamed"):
+            results = results.drop(columns=column)
 
-        for column in results:
-            if str(column).startswith("Unnamed"):
-                results = results.drop(columns=column)
-
-        return Results(
-            barcode=barcode,
-            results=results,
-        )
-
-    def iter_wells(self) -> Iterator[WellPosition]:
-        for row, row_series in self.results.iterrows():
-            for column in row_series.index:
-                yield WellPosition(column=str(column), row=str(row))
-
-    def get_plate_well_dimentions(self) -> tuple[int, int]:
-        return self.results.shape
-
-    def get_plate_well_count(self) -> int:
-        n_rows, n_columns = self.get_plate_well_dimentions()
-        return n_rows * n_columns
-
-    def get_well_float_value(self, well_position: WellPosition) -> float:
-        return try_float(
-            self.get_well_str_value(well_position),
-            f"result well at '{well_position}'",
-        )
-
-    def get_well_str_value(self, well_position: WellPosition) -> str:
-        try:
-            return str(self.results.loc[well_position.row, well_position.column])
-        except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from results section."
-            raise AllotropeConversionError(error) from e
+    return Results(
+        barcode=barcode,
+        results=results,
+    )
 
 
 @dataclass(frozen=True)
@@ -450,7 +419,6 @@ class Measurements:
 
 @dataclass(frozen=True)
 class DataV2(Data):
-    results: Results
     analysis_results: list[AnalysisResult]
     measurement_basic_info: MeasurementBasicInfo
     plate_type: PlateType
@@ -462,7 +430,7 @@ class DataV2(Data):
         return DataV2(
             version=version,
             background_info=create_background_info(reader),
-            results=Results.create(reader),
+            results=create_results(reader),
             analysis_results=AnalysisResultList.create(reader),
             measurement_basic_info=MeasurementBasicInfo.create(reader),
             plate_type=PlateType.create(reader),
@@ -473,12 +441,6 @@ class DataV2(Data):
     def get_equipment_serial_number(self) -> str:
         return self.measurement_basic_info.get_instrument_serial_number()
 
-    def iter_wells(self) -> Iterator[WellPosition]:
-        yield from self.results.iter_wells()
-
-    def get_plate_well_count(self) -> int:
-        return self.results.get_plate_well_count()
-
     def get_measurement_time(self) -> str:
         return self.measurement_basic_info.get_measurement_time()
 
@@ -488,17 +450,8 @@ class DataV2(Data):
     def get_experimentl_data_id(self) -> str:
         return self.measurement_basic_info.get_measurement_signature()
 
-    def get_well_float_value(self, well_position: WellPosition) -> float:
-        return self.results.get_well_float_value(well_position)
-
-    def get_well_str_value(self, well_position: WellPosition) -> str:
-        return self.results.get_well_str_value(well_position)
-
     def get_platemap_well_value(self, well_position: WellPosition) -> str:
         return self.platemap.get_well_value(well_position)
-
-    def get_well_plate_identifier(self) -> str:
-        return self.results.barcode
 
     def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
         return self.platemap.get_sample_role_type(well_position)
