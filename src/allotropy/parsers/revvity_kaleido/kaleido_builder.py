@@ -1,9 +1,9 @@
 from enum import Enum
 import re
-from typing import Union
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader, InvertedLinesReader
+from allotropy.parsers.revvity_kaleido.kaleido_structure import Data
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
 from allotropy.parsers.utils.values import assert_not_none
@@ -26,7 +26,7 @@ def get_version(reader: CsvReader) -> str:
     ).group(1)
 
 
-def create_data(reader: CsvReader) -> Union[DataV2, DataV3]:
+def create_data(reader: CsvReader) -> Data:
     version = get_version(reader)
 
     if version.startswith(Version.V2.value):

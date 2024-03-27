@@ -51,14 +51,11 @@ from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     ExperimentType,
     WellPosition,
 )
-from allotropy.parsers.revvity_kaleido.kaleido_structure import Channel
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import DataV2
-from allotropy.parsers.revvity_kaleido.kaleido_structure_v3 import DataV3
+from allotropy.parsers.revvity_kaleido.kaleido_structure import Channel, Data
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
-VData = Union[DataV2, DataV3]
 MeasurementItem = Union[
     OpticalImagingMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
@@ -69,7 +66,7 @@ MeasurementItem = Union[
 
 class MeasurementParser(ABC):
     @abstractmethod
-    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
         pass
 
     @abstractmethod
@@ -77,7 +74,7 @@ class MeasurementParser(ABC):
         pass
 
     def get_sample_document(
-        self, data: VData, well_position: WellPosition
+        self, data: Data, well_position: WellPosition
     ) -> SampleDocument:
         well_plate_identifier = data.get_well_plate_identifier()
         platemap_value = data.get_platemap_well_value(well_position)
@@ -99,7 +96,7 @@ class FluorescenceMeasurementParser(MeasurementParser):
         return ExperimentType.FLUORESCENCE
 
     def get_device_control_document(
-        self, data: VData
+        self, data: Data
     ) -> FluorescencePointDetectionDeviceControlDocumentItem:
         number_of_averages = data.get_number_of_averages()
         detector_distance = data.get_detector_distance()
@@ -131,7 +128,7 @@ class FluorescenceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -151,7 +148,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
         return ExperimentType.ABSORBANCE
 
     def get_device_control_document(
-        self, data: VData
+        self, data: Data
     ) -> UltravioletAbsorbancePointDetectionDeviceControlDocumentItem:
         detector_distance = data.get_detector_distance()
         detector_wavelength = data.get_excitation_wavelength()
@@ -176,7 +173,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -196,7 +193,7 @@ class LuminescenceMeasurementParser(MeasurementParser):
         return ExperimentType.LUMINESCENCE
 
     def get_device_control_document(
-        self, data: VData
+        self, data: Data
     ) -> LuminescencePointDetectionDeviceControlDocumentItem:
         detector_distance = data.get_detector_distance()
         return LuminescencePointDetectionDeviceControlDocumentItem(
@@ -209,7 +206,7 @@ class LuminescenceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
         return [
             LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -229,7 +226,7 @@ class ImagingMeasurementParser(MeasurementParser):
         return ExperimentType.OPTICAL_IMAGING
 
     def get_device_control_document(
-        self, data: VData, channel: Channel
+        self, data: Data, channel: Channel
     ) -> OpticalImagingDeviceControlDocumentItem:
         detector_distance = data.get_focus_height()
         exposure_duration = channel.get_exposure_duration()
@@ -262,7 +259,7 @@ class ImagingMeasurementParser(MeasurementParser):
             fluorescent_tag_setting=channel.get_fluorescent_tag(),
         )
 
-    def parse(self, data: VData, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
         return [
             OpticalImagingMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -284,7 +281,7 @@ class KaleidoParser(VendorParser):
         data = create_data(reader)
         return self._get_model(named_file_contents.original_file_name, data)
 
-    def _get_model(self, file_name: str, data: VData) -> Model:
+    def _get_model(self, file_name: str, data: Data) -> Model:
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 plate_reader_document=self._get_plate_reader_document(data),
@@ -296,7 +293,7 @@ class KaleidoParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         )
 
-    def _get_device_system_document(self, data: VData) -> DeviceSystemDocument:
+    def _get_device_system_document(self, data: Data) -> DeviceSystemDocument:
         return DeviceSystemDocument(
             device_identifier="EnSight",
             model_number="EnSight",
@@ -315,7 +312,7 @@ class KaleidoParser(VendorParser):
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 
-    def _get_plate_reader_document(self, data: VData) -> list[PlateReaderDocumentItem]:
+    def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
         measurement_parser = self._get_measurement_document_parser(
             data.get_experiment_type()
         )
@@ -330,7 +327,7 @@ class KaleidoParser(VendorParser):
 
     def _get_measurement_aggregate_document(
         self,
-        data: VData,
+        data: Data,
         measurement_parser: MeasurementParser,
         well_position: WellPosition,
     ) -> MeasurementAggregateDocument:
@@ -352,7 +349,7 @@ class KaleidoParser(VendorParser):
 
     def get_image_aggregate_document(
         self,
-        data: VData,
+        data: Data,
         well_position: WellPosition,
         measurement_parser: MeasurementParser,
     ) -> Optional[OpticalImagingAggregateDocument]:
@@ -369,7 +366,7 @@ class KaleidoParser(VendorParser):
 
     def get_processed_data_aggregate_document(
         self,
-        data: VData,
+        data: Data,
         well_position: WellPosition,
         measurement_parser: MeasurementParser,
     ) -> Optional[ProcessedDataAggregateDocument]:
