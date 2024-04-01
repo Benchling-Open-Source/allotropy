@@ -41,7 +41,7 @@ SCAN_POSITION_CONVERTION = {
 
 
 TRANSMITTED_LIGHT_CONVERTION = {
-    "BRIGHTFIELD": TransmittedLightSetting.lightfield,
+    "BRIGHTFIELD": TransmittedLightSetting.brightfield,
     "DARKFIELD": TransmittedLightSetting.darkfield,
     "PHASE CONTRAST": TransmittedLightSetting.phase_contrast,
 }
