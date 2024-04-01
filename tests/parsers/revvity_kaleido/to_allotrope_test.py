@@ -15,6 +15,8 @@ VENDOR_TYPE = Vendor.REVVITY_KALEIDO
         "fluorescence/fluorescence_endpoint_single_plate_example_01",
         "luminescence/luminescence_endpoint_single_plate_example_01",
         "optical_imaging/optical_imaging_endpoint_single_plate_example_01",
+        "optical_imaging/optical_imaging_endpoint_single_plate_example_02",
+        "optical_imaging/optical_imaging_endpoint_single_plate_example_03",
     ],
 )
 def test_to_allotrope(file_name: str) -> None:
