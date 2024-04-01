@@ -14,13 +14,13 @@ class Data:
 
     @staticmethod
     def create(section_lines_reader: SectionLinesReader) -> Data:
-        plate_readers = list(section_lines_reader.iter_sections("^Software Version"))
+        plates = list(section_lines_reader.iter_sections("^Software Version"))
 
-        if not plate_readers:
+        if not plates:
             msg = "No plate data found in file."
             raise AllotropeConversionError(msg)
 
-        if len(plate_readers) > 1:
+        if len(plates) > 1:
             raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
 
-        return Data(PlateData.create(plate_readers[0]))
+        return Data(PlateData.create(plates[0]))
