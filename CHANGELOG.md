@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+- Add encoding inference to Beckman Vi Cell Blu adapter
 ### Changed
 ### Deprecated
 ### Removed
