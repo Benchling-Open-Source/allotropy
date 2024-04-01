@@ -7,7 +7,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.biorad_bioplex.biorad_bioplex_structure import (
     AnalyteDocumentData,
     AnalyteSample,
-    DeviceSettings,
+    DeviceWellSettings,
     SampleDocumentAggregate,
     validate_xml_structure,
     WellSystemLevelMetadata,
@@ -35,7 +35,7 @@ def test_create_device_settings():
     test_filepath = "tests/parsers/biorad_bioplex/testdata/well_xml_example.xml"
     tree = ElementTree.parse(test_filepath)
     well_settings_xml = tree.getroot()
-    well_settings = DeviceSettings.create(well_settings_xml)
+    well_settings = DeviceWellSettings.create(well_settings_xml)
 
     assert well_settings.well_name == "A1"
     assert well_settings.detector_gain_setting == "2198"

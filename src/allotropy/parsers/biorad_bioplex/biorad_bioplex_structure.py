@@ -36,7 +36,7 @@ class AnalyteSample:
     analyte_error_code: int
 
     @staticmethod
-    def create(analyte_xml):
+    def create(analyte_xml: ElementTree.Element):
         return AnalyteSample(
             analyte_name=analyte_xml[0].text,
             analyte_region=try_int_or_none(analyte_xml.attrib[REGION_NUMBER]),
@@ -62,16 +62,18 @@ class SampleDocument:
 
 @dataclass
 class SampleDocumentAggregate:
+    # This data class pulld from the <Samples> part of the xml.
     samples: list[SampleDocument] = field(default_factory=list)
     # Default to empty dictionary.
     analyte_region_dict: dict[str, str] = field(default_factory=dict)
 
     @staticmethod
-    def create(samples_xml):
+    def create(samples_xml: ElementTree.Element):
+
         sample_documents = SampleDocumentAggregate()
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
-                # TODO: add catch of non mapping sample roles?
+                # TODO: add catch of non mapping sample roles
                 sample_type = SAMPLE_ROLE_TYPE_MAPPING[child_sample_type.tag]
                 # NOTE: Assumption here is that the description and label are always here
                 # This element is the "description"
@@ -111,38 +113,45 @@ class SampleDocumentAggregate:
 
 
 @dataclass
-class DeviceSettings:
+class DeviceWellSettings:
+    # This data class is for all metadata needed in the <Wells> section, used in measurement and device control docs.
     well_name: str
     sample_volume_setting: int
     detector_gain_setting: str
     minimum_assay_bead_count_setting: str
+    well_total_events: int
+    acquisition_time: str
 
     @staticmethod
-    def create(well_xml):
+    def create(well_xml: ElementTree.Element):
         well_name = get_well_name(well_xml.attrib)
+        well_acq_time = well_xml[2].text
+        total_events = try_int_or_none(well_xml[9].text)
         sample_volume = int(well_xml[6][0].text)
         # RP1 Gain. 16th element of Run Conditions
         detector_gain_setting = well_xml[5][15].text
         # Assuming second element of Run Settings
         min_assay_bead_count_setting = well_xml[6][1].attrib
-        return DeviceSettings(
+        return DeviceWellSettings(
             well_name=well_name,
             sample_volume_setting=sample_volume,
             detector_gain_setting=detector_gain_setting,
             minimum_assay_bead_count_setting=min_assay_bead_count_setting,
+            acquisition_time=well_acq_time,
+            well_total_events=total_events,
         )
 
 
 @dataclass
-class DeviceSettingsAggregate:
-    all_device_settings: list[DeviceSettings] = field(default_factory=list)
+class DeviceWellSettingsAggregate:
+    all_device_settings: list[DeviceWellSettings] = field(default_factory=list)
 
     @staticmethod
-    def create(wells_xml):
-        device_settings_aggregate = DeviceSettingsAggregate()
+    def create(wells_xml: ElementTree.Element):
+        device_settings_aggregate = DeviceWellSettingsAggregate()
         for well_xml in wells_xml:
             device_settings_aggregate.all_device_settings.append(
-                DeviceSettings.create(well_xml)
+                DeviceWellSettings.create(well_xml)
             )
         return device_settings_aggregate
 
@@ -155,7 +164,11 @@ class AnalyteDocumentData:
     fluorescence: float
 
     @staticmethod
-    def create(bead_region_xml, analyte_region_dict, regions_of_interest):
+    def create(
+        bead_region_xml: ElementTree.Element,
+        analyte_region_dict: dict,
+        regions_of_interest: list,
+    ):
         # Look up analyte name from sample
         assay_bead_identifier = bead_region_xml.attrib[REGION_NUMBER]
         # Look up bead region -> analyte name
@@ -187,7 +200,7 @@ class WellSystemLevelMetadata:
     regions_of_interest: list[int] = field(default_factory=list)
 
     @staticmethod
-    def create(xml_well):
+    def create(xml_well: ElementTree.Element):
         serial_number = xml_well[7][3].text
         controller_version = xml_well[7][0].text
         user = xml_well[1].text
@@ -206,7 +219,7 @@ class WellSystemLevelMetadata:
         )
 
 
-def validate_xml_structure(full_xml):
+def validate_xml_structure(full_xml: ElementTree.Element):
     expected_tags = [
         SAMPLES,
         DOC_LOCATION_TAG,
@@ -231,7 +244,7 @@ def validate_xml_structure(full_xml):
 
 
 @staticmethod
-def get_well_name(well_attrib):
+def get_well_name(well_attrib: dict) -> str:
     row_name = ROW_NAMES[int(well_attrib[ROW_NUMBER]) - 1]
     column_name = str(well_attrib[COLUMN_NUMBER])
     well_name = row_name + column_name
