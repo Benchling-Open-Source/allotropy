@@ -66,8 +66,7 @@ def create_analysis_results(reader: CsvReader) -> list[AnalysisResult]:
 
     analysis_results = []
     while reader.match("^Barcode"):
-        analysis_result = AnalysisResult.create(reader)
-        if analysis_result.is_valid_result():
+        if analysis_result := AnalysisResult.create(reader):
             analysis_results.append(analysis_result)
 
     return analysis_results

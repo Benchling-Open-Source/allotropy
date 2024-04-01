@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+import logging
 import re
 from typing import Optional
 
@@ -68,7 +69,7 @@ class AnalysisResult:
     results: pd.DataFrame
 
     @staticmethod
-    def create(reader: CsvReader) -> AnalysisResult:
+    def create(reader: CsvReader) -> Optional[AnalysisResult]:
         barcode_line = assert_not_none(
             reader.drop_until_inclusive("^Barcode:(.+),"),
             msg="Unable to find background information.",
@@ -87,14 +88,29 @@ class AnalysisResult:
             msg="Unable to find analysis parameter in Analysis Results section.",
         )
 
-        results = assert_not_none(
-            reader.pop_csv_block_as_df(header=0, index_col=0),
-            msg="Unable to find results table.",
-        )
+        try:
+            results = assert_not_none(
+                reader.pop_csv_block_as_df(header=0, index_col=0),
+                msg="Unable to find results table.",
+            )
+        except AllotropeConversionError:
+            logging.warning(
+                f"Unable to read analysis result '{analysis_parameter}'. Ignoring"
+            )
+            return None
 
         for column in results:
             if str(column).startswith("Unnamed"):
                 results = results.drop(columns=column)
+
+        try:
+            a1_str_value = str(results.iloc[0, 0])
+        except IndexError as e:
+            error = f"Unable to find first position of analysis result '{analysis_parameter}'."
+            raise AllotropeConversionError(error) from e
+
+        if try_float_or_none(a1_str_value) is None:
+            return None
 
         return AnalysisResult(
             analysis_parameter=analysis_parameter,
@@ -103,11 +119,6 @@ class AnalysisResult:
 
     def get_image_feature_name(self) -> str:
         return self.analysis_parameter
-
-    def is_valid_result(self) -> bool:
-        a1 = WellPosition(column="1", row="A")
-        first_result = self.get_result(a1)
-        return try_float_or_none(first_result) is not None
 
     def get_result(self, well_position: WellPosition) -> str:
         try:
