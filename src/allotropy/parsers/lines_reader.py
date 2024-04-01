@@ -14,24 +14,7 @@ from allotropy.named_file_contents import NamedFileContents
 EMPTY_STR_PATTERN = r"^\s*$"
 
 
-def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
-    stream_contents = named_file_contents.contents.read()
-    encoding = named_file_contents.encoding
-    raw_contents = (
-        _decode(stream_contents, encoding)
-        if isinstance(stream_contents, bytes)
-        else stream_contents
-    )
-    contents = raw_contents.replace("\r\n", "\n")
-    return contents.split("\n")
-
-
-def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
-    if not encoding:
-        return DEFAULT_ENCODING
-    if encoding != CHARDET_ENCODING:
-        return encoding
-
+def detect_encoding(bytes_content: bytes) -> str:
     detected = chardet.detect(bytes_content)["encoding"]
     if not detected:
         error = "Unable to detect text encoding for file. The file may be empty."
@@ -39,9 +22,28 @@ def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
     return detected
 
 
-def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
-    encoding_to_use = _determine_encoding(bytes_content, encoding)
-    return bytes_content.decode(encoding_to_use)
+def read_chardet_bytes(bytes_contents: bytes) -> str:
+    return bytes_contents.decode(detect_encoding(bytes_contents))
+
+
+def read_file_raw_contents(named_file_contents: NamedFileContents) -> str:
+    stream_contents = named_file_contents.contents.read()
+    encoding = named_file_contents.encoding
+
+    if not isinstance(stream_contents, bytes):
+        return stream_contents
+
+    if not encoding:
+        return stream_contents.decode(DEFAULT_ENCODING)
+
+    if encoding != CHARDET_ENCODING:
+        return stream_contents.decode(encoding)
+
+    return read_chardet_bytes(stream_contents)
+
+
+def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
+    return read_file_raw_contents(named_file_contents).replace("\r\n", "\n").split("\n")
 
 
 class LinesReader:
