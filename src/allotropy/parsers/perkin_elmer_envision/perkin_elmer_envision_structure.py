@@ -66,7 +66,7 @@ class PlateInfo:
 
         return df_to_series(
             assert_not_none(
-                reader.pop_csv_block_as_df(),
+                reader.pop_csv_block_as_df(header=None),
                 "Plate information CSV block",
             )
         ).replace(np.nan, None)
@@ -223,7 +223,7 @@ class CalculatedResultList:
         reader.pop_if_match("^Calculated results")
 
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "results data",
         )
         series = (
@@ -264,7 +264,7 @@ class ResultList:
         reader.pop_if_match("^Results")
 
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "reader data",
         )
         series = (
@@ -358,7 +358,7 @@ class BasicAssayInfo:
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until_inclusive("^Basic assay information")
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "Basic assay information",
         )
         data = data.T
@@ -378,7 +378,7 @@ class PlateType:
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until_inclusive("^Plate type")
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "Plate type",
         )
         return PlateType(
@@ -437,7 +437,7 @@ class PlateMap:
         *_, group_n = assert_not_none(reader.pop(), "Platemap group").split(",")
 
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "Platemap data",
         ).replace(" ", "", regex=True)
 
@@ -501,7 +501,7 @@ class Filter:
             return None
 
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "Filter information",
         )
         series = df_to_series(data.T)
@@ -554,7 +554,7 @@ class Labels:
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
         data = assert_not_none(
-            reader.pop_csv_block_as_df(),
+            reader.pop_csv_block_as_df(header=None),
             "Labels",
         )
         series = df_to_series(data.T).replace(np.nan, None)
