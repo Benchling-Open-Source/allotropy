@@ -421,9 +421,9 @@ class DeviceControlDocument:
     integration_time: Optional[TQuantityValueSecondTime] = None
     number_of_averages: Optional[TQuantityValueNumber] = None
     detector_gain_setting: Optional[TStringValue] = None
-    scan_position_setting__plate_reader_: Optional[ScanPositionSettingPlateReader] = (
-        None
-    )
+    scan_position_setting__plate_reader_: Optional[
+        ScanPositionSettingPlateReader
+    ] = None
     detector_carriage_speed_setting: Optional[TStringValue] = None
 
 
@@ -498,9 +498,7 @@ class UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument:
 @dataclass
 class UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
-    device_control_aggregate_document: (
-        UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
-    )
+    device_control_aggregate_document: UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
     absorbance: TQuantityValueMilliAbsorbanceUnit
     measurement_time: Optional[TDateTimeStampValue] = None
@@ -537,9 +535,7 @@ class FluorescencePointDetectionDeviceControlAggregateDocument:
 @dataclass
 class FluorescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
-    device_control_aggregate_document: (
-        FluorescencePointDetectionDeviceControlAggregateDocument
-    )
+    device_control_aggregate_document: FluorescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
     fluorescence: TQuantityValueRelativeFluorescenceUnit
     measurement_time: Optional[TDateTimeStampValue] = None
@@ -573,9 +569,7 @@ class LuminescencePointDetectionDeviceControlAggregateDocument:
 @dataclass
 class LuminescencePointDetectionMeasurementDocumentItems:
     measurement_identifier: TStringValue
-    device_control_aggregate_document: (
-        LuminescencePointDetectionDeviceControlAggregateDocument
-    )
+    device_control_aggregate_document: LuminescencePointDetectionDeviceControlAggregateDocument
     sample_document: SampleDocument
     luminescence: TQuantityValueRelativeLightUnit
     measurement_time: Optional[TDateTimeStampValue] = None
@@ -612,9 +606,9 @@ class MeasurementAggregateDocument:
     container_type: Optional[ContainerType] = None
     well_volume: Optional[TQuantityValueMicroliter] = None
     image_aggregate_document: Optional[OpticalImagingAggregateDocument] = None
-    diagnostic_trace_aggregate_document: Optional[DiagnosticTraceAggregateDocument] = (
-        None
-    )
+    diagnostic_trace_aggregate_document: Optional[
+        DiagnosticTraceAggregateDocument
+    ] = None
     processed_data_aggregate_document: Optional[ProcessedDataAggregateDocument] = None
     calculated_data_aggregate_document: Optional[
         CalculatedDataAggregateDocumentModel
