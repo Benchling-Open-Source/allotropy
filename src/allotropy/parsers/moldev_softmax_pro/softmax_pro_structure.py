@@ -390,7 +390,7 @@ class PlateKineticData:
 
         # convert rows to df
         data = assert_not_none(
-            reader.lines_as_df(lines=lines, sep="\t"),
+            reader.lines_as_df(lines=lines, sep="\t", header=None),
             msg="unable to find data from plate block.",
         )
         data.columns = pd.Index(columns)

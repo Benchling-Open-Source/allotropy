@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from io import StringIO
 from re import search
-from typing import Any, Literal, Optional, Union
+from typing import Any, Optional
 
 import chardet
 import pandas as pd
@@ -158,19 +158,15 @@ class CsvReader(LinesReader):
 
     def lines_as_df(
         self,
-        *,
         lines: list[str],
-        header: Optional[Union[int, Literal["infer"]]] = None,
-        sep: Optional[str] = ",",
-        as_str: bool = False,
+        **kwargs: Any,
     ) -> Optional[pd.DataFrame]:
         if lines:
             return read_csv(
                 StringIO("\n".join(lines)),
-                header=header,
-                sep=sep,
-                dtype=str if as_str else None,
+                dtype=None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
+                **kwargs,
             )
         return None
