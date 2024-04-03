@@ -25,6 +25,12 @@ CALCULATED_DATA_LOOKUP = {
             "unit": "ng/mL",
         },
         {
+            "column": "Concentration (ng/ul)",
+            "name": "Concentration",
+            "feature": "absorbance",
+            "unit": "ng/mL",
+        },
+        {
             "column": "Background (A260)",
             "name": "Background (A260)",
             "feature": "absorbance",

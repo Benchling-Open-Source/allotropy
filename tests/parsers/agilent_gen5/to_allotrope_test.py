@@ -22,6 +22,11 @@ from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultravi
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
+from allotropy.parsers.agilent_gen5.constants import (
+    MULTIPLATE_FILE_ERROR,
+    NO_PLATE_DATA_ERROR,
+    UNSUPORTED_READ_TYPE_ERROR,
+)
 from allotropy.to_allotrope import allotrope_model_from_file
 from tests.parsers.test_utils import (
     from_file,
@@ -32,16 +37,14 @@ VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
 
 # This file was manually changed to use UTF-16 encoding to test encoding code paths. git history doesn't show this.
-UTF_16_FILENAME = "endpoint_stdcurve_multiplate"
+UTF_16_FILEPATH = (
+    "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_multiplate.txt"
+)
 
 ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
     "endpoint_stdcurve_singleplate_2",
-    UTF_16_FILENAME,
-    "kinetic_helper_gene_growth_curve",
-    "kinetic_singleplate",
-    "kinetic_multiplate",
 ]
 
 
@@ -51,8 +54,7 @@ def test_to_allotrope_absorbance(filename: str) -> None:
     expected_filepath = (
         f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
     )
-    encoding = "UTF-16" if filename == UTF_16_FILENAME else None
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE, encoding=encoding)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
@@ -147,38 +149,61 @@ def test_model_from_file_absorbance() -> None:
     )
 
 
-@pytest.mark.parametrize(
-    "filename",
-    [
-        "endpoint_singleplate",
-        "endpoint_multiplate",
-    ],
-)
-def test_to_allotrope_fluorescence(filename: str) -> None:
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.txt"
-    expected_filepath = (
-        f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.json"
-    )
+def test_to_allotrope_fluorescence() -> None:
+    fluorescence_path = "tests/parsers/agilent_gen5/testdata/fluorescence"
+    test_filepath = f"{fluorescence_path}/endpoint_singleplate.txt"
+
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
+
+
+def test_to_allotrope_luminescence() -> None:
+    luminescence_path = "tests/parsers/agilent_gen5/testdata/luminescence"
+    test_filepath = f"{luminescence_path}/endpoint_singleplate.txt"
+
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
 
 
 @pytest.mark.parametrize(
-    "filename",
+    "filepath",
     [
-        "endpoint_singleplate",
-        "endpoint_multiplate",
+        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
+        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_singleplate.txt",
     ],
 )
-def test_to_allotrope_luminescence(filename: str) -> None:
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/luminescence/{filename}.txt"
-    expected_filepath = (
-        f"tests/parsers/agilent_gen5/testdata/luminescence/{filename}.json"
-    )
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
+    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
+
+
+def test_to_allotrope_unsupported_spectral_scan_file() -> None:
+    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_114129_BNCH654563_spectralScan_example01.txt"
+    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
+
+
+def test_to_allotrope_unsupported_area_scan_file() -> None:
+    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_125255_BNCH786865_areaScan_example01.txt"
+    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
+
+
+@pytest.mark.parametrize(
+    "filepath",
+    [
+        UTF_16_FILEPATH,
+        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_multiplate.txt",
+        "tests/parsers/agilent_gen5/testdata/fluorescence/endpoint_multiplate.txt",
+        "tests/parsers/agilent_gen5/testdata/luminescence/endpoint_multiplate.txt",
+    ],
+)
+def test_to_allotrope_invalid_multiplate_file(filepath: str) -> None:
+    encoding = "UTF-16" if filepath == UTF_16_FILEPATH else None
+    with pytest.raises(AllotropeConversionError, match=MULTIPLATE_FILE_ERROR):
+        from_file(filepath, VENDOR_TYPE, encoding=encoding)
 
 
 def test_to_allotrope_invalid_plate_data() -> None:
-    with pytest.raises(AllotropeConversionError, match="No plate data found in file."):
+    with pytest.raises(AllotropeConversionError, match=NO_PLATE_DATA_ERROR):
         from_file("tests/parsers/agilent_gen5/testdata/garbage.txt", VENDOR_TYPE)
