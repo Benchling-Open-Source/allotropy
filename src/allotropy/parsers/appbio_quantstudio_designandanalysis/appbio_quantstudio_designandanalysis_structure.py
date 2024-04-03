@@ -44,6 +44,8 @@ class Header:
     pcr_stage_number: int
     software_name: Optional[str]
     software_version: Optional[str]
+    block_serial_number: Optional[str]
+    heated_cover_serial_number: Optional[str]
 
     @staticmethod
     def create(header: pd.Series[str]) -> Header:
@@ -88,6 +90,12 @@ class Header:
             analyst=try_str_from_series_or_none(header, "Operator"),
             experimental_data_identifier=try_str_from_series_or_none(
                 header, "Experiment Name"
+            ),
+            block_serial_number=try_str_from_series_or_none(
+                header, "Block Serial Number"
+            ),
+            heated_cover_serial_number=try_str_from_series_or_none(
+                header, "Heated Cover Serial Number"
             ),
             pcr_stage_number=assert_not_none(
                 try_int(

@@ -48,6 +48,8 @@ def test_header_builder() -> None:
         experimental_data_identifier=experimental_data_identifier,
         pcr_stage_number="Stage 2 Step 2",
         software_name_and_version="Design & Analysis Software v2.7.0",
+        block_serial_number="1",
+        heated_cover_serial_number="2",
     )
 
     assert Header.create(header_contents) == Header(
@@ -65,6 +67,8 @@ def test_header_builder() -> None:
         pcr_stage_number=2,
         software_name="Design & Analysis Software",
         software_version="2.7.0",
+        block_serial_number="1",
+        heated_cover_serial_number="2",
     )
 
 
@@ -182,6 +186,8 @@ def get_raw_header_contents(
     ] = "QuantStudio 96-Well Presence-Absence Example",
     pcr_stage_number: Optional[str] = "Stage 2 Step 2",
     software_name_and_version: Optional[str] = "Design & Analysis Software v2.7.0",
+    block_serial_number: Optional[str] = "1",
+    heated_cover_serial_number: Optional[str] = "2",
 ) -> pd.Series[str]:
     return pd.Series(
         {
@@ -198,5 +204,7 @@ def get_raw_header_contents(
             "Experiment Name": experimental_data_identifier,
             "PCR Stage/Step Number": pcr_stage_number,
             "Software Name and Version": software_name_and_version,
+            "Block Serial Number": block_serial_number,
+            "Heated Cover Serial Number": heated_cover_serial_number,
         }
     )
