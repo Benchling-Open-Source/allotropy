@@ -54,6 +54,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
         return Model(
             qPCR_aggregate_document=QPCRAggregateDocument(
                 device_system_document=DeviceSystemDocument(
+                    product_manufacturer="ThermoFisher Scientific",
                     device_identifier=data.header.device_identifier,
                     model_number=data.header.model_number,
                     device_serial_number=data.header.device_serial_number,
