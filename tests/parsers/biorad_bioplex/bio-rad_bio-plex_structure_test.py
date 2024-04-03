@@ -15,7 +15,7 @@ from allotropy.parsers.biorad_bioplex.biorad_bioplex_structure import (
 
 
 @pytest.mark.short
-def test_create_analyte_sample():
+def test_create_analyte_sample() -> None:
     analyte_xml_string = """
     <MWAnalyte RegionNumber="18">
         <AnalyteName>Pn4</AnalyteName>
@@ -31,7 +31,7 @@ def test_create_analyte_sample():
 
 
 @pytest.mark.short
-def test_create_device_settings():
+def test_create_device_settings() -> None:
     test_filepath = "tests/parsers/biorad_bioplex/testdata/well_xml_example.xml"
     tree = DefusedElementTree.parse(test_filepath)
     well_settings_xml = tree.getroot()
@@ -43,7 +43,7 @@ def test_create_device_settings():
 
 
 @pytest.mark.short
-def test_create_analyte_document_data():
+def test_create_analyte_document_data() -> None:
     bead_xml_string = """
                     <BeadRegion RegionNumber="62">
                     <RegionCount>46</RegionCount>
@@ -71,7 +71,7 @@ def test_create_analyte_document_data():
     assert analyte_document_data.fluorescence == 992.5
 
 
-def test_sample_aggregate_doc():
+def test_sample_aggregate_doc() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex/testdata/bio-rad_bio-plex_manager_example_01.xml"
     )
@@ -86,7 +86,7 @@ def test_sample_aggregate_doc():
 
 
 @pytest.mark.short
-def test_well_sytem_level_metadata():
+def test_well_sytem_level_metadata() -> None:
     test_filepath = "tests/parsers/biorad_bioplex/testdata/well_xml_example.xml"
     tree = DefusedElementTree.parse(test_filepath)
     well_system_xml = tree.getroot()
@@ -119,7 +119,7 @@ def test_well_sytem_level_metadata():
 
 
 @pytest.mark.short
-def test_validate_xml_structure():
+def test_validate_xml_structure() -> None:
     test_filepath = (
         "tests/parsers/biorad_bioplex/testdata/bio-rad_bio-plex_manager_example_01.xml"
     )
@@ -132,7 +132,7 @@ def test_validate_xml_structure():
 
 
 @pytest.mark.short
-def test_validate_xml_structure_missing_tags():
+def test_validate_xml_structure_missing_tags() -> None:
     test_filepath = "tests/parsers/biorad_bioplex/testdata/bio-rad_bio-plex_manager_missing_children.xml"
     tree = DefusedElementTree.parse(test_filepath)
     root = tree.getroot()

@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from defusedxml import ElementTree as DefusedElementTree
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.values import get_val_from_xml, try_int_or_none
+from allotropy.parsers.utils.values import get_val_from_xml
 
 WELLS_TAG = "Wells"
 DOC_LOCATION_TAG = "NativeDocumentLocation"
@@ -41,8 +41,8 @@ class AnalyteSample:
     def create(analyte_xml):
         return AnalyteSample(
             analyte_name=analyte_xml[0].text,
-            analyte_region=try_int_or_none(analyte_xml.attrib[REGION_NUMBER]),
-            analyte_error_code=try_int_or_none(analyte_xml[1].attrib[CODE]),
+            analyte_region=int(analyte_xml.attrib[REGION_NUMBER]),
+            analyte_error_code=int(analyte_xml[1].attrib[CODE]),
         )
 
 
@@ -112,7 +112,7 @@ class SampleDocumentAggregate:
         sample_dilution: float,
         sample_type: str,
         sample_description: str,
-    ):
+    ) -> SampleDocument:
         well_name = get_well_name(well_xml.attrib)
         mappings = WellAnalyteMapping(well_name=well_name, analytes=[])
         for analyte in well_xml[0]:
@@ -177,8 +177,8 @@ class AnalyteDocumentData:
     @staticmethod
     def create(
         bead_region_xml: str,
-        analyte_region_dict: dict,
-        regions_of_interest: list,
+        analyte_region_dict: dict[str, str],
+        regions_of_interest: list[str],
     ):
         # Look up analyte name from sample
         assay_bead_identifier = bead_region_xml.attrib[REGION_NUMBER]

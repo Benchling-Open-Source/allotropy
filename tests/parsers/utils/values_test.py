@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Optional
 
 from defusedxml import ElementTree as DefusedElementTree
@@ -133,7 +135,9 @@ def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> Non
         ([0, "RunProtocolDocumentName", None], "qux_15PLEX_ASSAY"),
     ],
 )
-def test_get_val_from_xml_1_index(inputs: list, expected_output_val: str) -> None:
+def test_get_val_from_xml_1_index(
+    inputs: list[int, str, int | None], expected_output_val: str
+) -> None:
     xml_string = """<Well RowNo="1" ColNo="1" WellNo="1">
         <RunProtocolDocumentName>qux_15PLEX_ASSAY</RunProtocolDocumentName>
             <RunConditions>
@@ -158,7 +162,7 @@ def test_get_val_from_xml_1_index(inputs: list, expected_output_val: str) -> Non
 
 
 @pytest.mark.short
-def test_get_val_raise_error():
+def test_get_val_raise_error() -> None:
     xml_string = """<Well RowNo="1" ColNo="1" WellNo="1">
         <RunProtocolDocumentName>qux_15PLEX_ASSAY</RunProtocolDocumentName>
             <RunConditions>
