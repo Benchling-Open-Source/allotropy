@@ -4,6 +4,7 @@ import math
 import re
 from typing import Any, Optional, TypeVar, Union
 
+from defusedxml import ElementTree as DefusedElementTree
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -196,3 +197,20 @@ def num_to_chars(n: int) -> str:
 
 def str_or_none(value: Any) -> Optional[str]:
     return None if value is None else str(value)
+
+
+def get_val_from_xml(
+    xml_object: DefusedElementTree.Element,
+    index_1: int,
+    xml_tag_name: str,
+    index_2: Optional[int] = None,
+) -> str:
+    try:
+        if index_2 is None:
+            val_from_xml = xml_object[index_1]
+        else:
+            val_from_xml = xml_object[index_1][index_2]
+        return val_from_xml.text
+    except IndexError as e:
+        msg = f"Unable to find '{xml_tag_name}' from xml."
+        raise AllotropeConversionError(msg) from e

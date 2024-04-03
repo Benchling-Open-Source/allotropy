@@ -1,6 +1,6 @@
 import re
-from xml.etree import ElementTree
 
+from defusedxml import ElementTree as DefusedElementTree
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
@@ -23,7 +23,7 @@ def test_create_analyte_sample():
     </MWAnalyte>
     """
     analyte_name = "Pn4"
-    analyte_xml = ElementTree.fromstring(analyte_xml_string)
+    analyte_xml = DefusedElementTree.fromstring(analyte_xml_string)
     analyte_sample = AnalyteSample.create(analyte_xml)
     assert analyte_sample.analyte_name == analyte_name
     assert analyte_sample.analyte_region == 18
@@ -33,7 +33,7 @@ def test_create_analyte_sample():
 @pytest.mark.short
 def test_create_device_settings():
     test_filepath = "tests/parsers/biorad_bioplex/testdata/well_xml_example.xml"
-    tree = ElementTree.parse(test_filepath)
+    tree = DefusedElementTree.parse(test_filepath)
     well_settings_xml = tree.getroot()
     well_settings = DeviceWellSettings.create(well_settings_xml)
 
@@ -59,7 +59,7 @@ def test_create_analyte_document_data():
                 """
     analyte_region_dict = {"62": "Pn4"}
     regions_of_interest = ["62"]
-    bead_xml = ElementTree.fromstring(bead_xml_string)
+    bead_xml = DefusedElementTree.fromstring(bead_xml_string)
     analyte_document_data = AnalyteDocumentData.create(
         bead_xml,
         analyte_region_dict=analyte_region_dict,
@@ -75,7 +75,7 @@ def test_sample_aggregate_doc():
     test_filepath = (
         "tests/parsers/biorad_bioplex/testdata/bio-rad_bio-plex_manager_example_01.xml"
     )
-    tree = ElementTree.parse(test_filepath)
+    tree = DefusedElementTree.parse(test_filepath)
     root = tree.getroot()
     for child in root:
         if child.tag == "Samples":
@@ -88,7 +88,7 @@ def test_sample_aggregate_doc():
 @pytest.mark.short
 def test_well_sytem_level_metadata():
     test_filepath = "tests/parsers/biorad_bioplex/testdata/well_xml_example.xml"
-    tree = ElementTree.parse(test_filepath)
+    tree = DefusedElementTree.parse(test_filepath)
     well_system_xml = tree.getroot()
     well_system = WellSystemLevelMetadata.create(well_system_xml)
 
@@ -123,7 +123,7 @@ def test_validate_xml_structure():
     test_filepath = (
         "tests/parsers/biorad_bioplex/testdata/bio-rad_bio-plex_manager_example_01.xml"
     )
-    tree = ElementTree.parse(test_filepath)
+    tree = DefusedElementTree.parse(test_filepath)
     root = tree.getroot()
     try:
         validate_xml_structure(root)
@@ -134,7 +134,7 @@ def test_validate_xml_structure():
 @pytest.mark.short
 def test_validate_xml_structure_missing_tags():
     test_filepath = "tests/parsers/biorad_bioplex/testdata/bio-rad_bio-plex_manager_missing_children.xml"
-    tree = ElementTree.parse(test_filepath)
+    tree = DefusedElementTree.parse(test_filepath)
     root = tree.getroot()
     msg = "Missing expected tags in xml: ['NativeDocumentLocation', 'Wells']"
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
