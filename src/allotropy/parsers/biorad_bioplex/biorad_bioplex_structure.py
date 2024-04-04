@@ -40,7 +40,7 @@ class AnalyteSample:
     analyte_error_code: int
 
     @staticmethod
-    def create(analyte_xml):
+    def create(analyte_xml: ElementTree.Element) -> AnalyteSample:
         return AnalyteSample(
             analyte_name=analyte_xml[0].text,
             analyte_region=int(analyte_xml.attrib[REGION_NUMBER]),
@@ -72,7 +72,7 @@ class SampleDocumentAggregate:
     analyte_region_dict: dict[str, str] = field(default_factory=dict)
 
     @staticmethod
-    def create(samples_xml):
+    def create(samples_xml: ElementTree.Element) -> SampleDocumentAggregate:
         sample_documents = SampleDocumentAggregate()
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
@@ -108,7 +108,7 @@ class SampleDocumentAggregate:
 
     @staticmethod
     def _generate_sample_document(
-        sample_documents,
+        sample_documents: SampleDocumentAggregate,
         well_xml: ElementTree.Element,
         sample_id: str,
         sample_dilution: float,
@@ -148,7 +148,7 @@ class DeviceWellSettings:
     acquisition_time: str
 
     @staticmethod
-    def create(well_xml: ElementTree.Element):
+    def create(well_xml: ElementTree.Element) -> DeviceWellSettings:
         well_name = get_well_name(well_xml.attrib)
         well_acq_time = get_val_from_xml(well_xml, 2, "AcquisitionTime")
         total_events = get_val_from_xml(well_xml, 9, "TotalEvents")
@@ -180,7 +180,7 @@ class AnalyteDocumentData:
         bead_region_xml: ElementTree.Element,
         analyte_region_dict: dict[str, str],
         regions_of_interest: list[str],
-    ):
+    ) -> AnalyteDocumentData:
         # Look up analyte name from sample
         assay_bead_identifier = bead_region_xml.attrib[REGION_NUMBER]
         # Look up bead region -> analyte name
@@ -208,7 +208,7 @@ class WellSystemLevelMetadata:
     regions_of_interest: list[int] = field(default_factory=list)
 
     @staticmethod
-    def create(xml_well: ElementTree.Element):
+    def create(xml_well: ElementTree.Element) -> WellSystemLevelMetadata:
         serial_number = get_val_from_xml(xml_well, 7, "SerialNumber", 3)
         controller_version = get_val_from_xml(xml_well, 7, "MicroControllerVersion", 0)
         user = get_val_from_xml(xml_well, 1, "User")
