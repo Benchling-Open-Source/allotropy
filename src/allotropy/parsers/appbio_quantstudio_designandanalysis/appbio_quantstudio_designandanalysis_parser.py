@@ -10,6 +10,7 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     DeviceSystemDocument,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
+    MeltingCurveDataCube,
     Model,
     NormalizedReporterDataCube,
     PassiveReferenceDyeDataCube,
@@ -120,6 +121,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             passive_reference_dye_data_cube=self.get_passive_reference_dye_data_cube(
                 data, well
             ),
+            melting_curve_data_cube=self.get_melting_curve_data_cube(well_item),
         )
 
     def get_device_control_document_item(
@@ -292,6 +294,44 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     well.multicomponent_data.get_column(
                         data.header.passive_reference_dye_setting
                     )
+                ],
+            ),
+        )
+
+    def get_melting_curve_data_cube(
+        self, well_item: WellItem
+    ) -> Optional[MeltingCurveDataCube]:
+        if well_item.melt_curve_data is None:
+            return None
+
+        return MeltingCurveDataCube(
+            label="melt curve",
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        concept="temperature",
+                        unit="degC",
+                    ),
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        concept="fluorescence",
+                        unit="RFU",
+                    ),
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        concept="derivative",
+                        unit="unitless",
+                    ),
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=[well_item.melt_curve_data.temperature],
+                measures=[
+                    well_item.melt_curve_data.fluorescence,
+                    well_item.melt_curve_data.derivative,
                 ],
             ),
         )

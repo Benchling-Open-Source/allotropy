@@ -126,6 +126,7 @@ class WellItem:
     quencher_dye_setting: Optional[str]
     sample_role_type: Optional[str]
     _amplification_data: Optional[AmplificationData] = None
+    _melt_curve_data: Optional[MeltCurveData] = None
     _result: Optional[Result] = None
 
     @property
@@ -138,6 +139,14 @@ class WellItem:
     @amplification_data.setter
     def amplification_data(self, amplification_data: AmplificationData) -> None:
         self._amplification_data = amplification_data
+
+    @property
+    def melt_curve_data(self) -> Optional[MeltCurveData]:
+        return self._melt_curve_data
+
+    @melt_curve_data.setter
+    def melt_curve_data(self, melt_curve_data: MeltCurveData) -> None:
+        self._melt_curve_data = melt_curve_data
 
     @property
     def result(self) -> Result:
@@ -315,6 +324,36 @@ class MulticomponentData:
 
 
 @dataclass(frozen=True)
+class MeltCurveData:
+    target: str
+    temperature: list[float]
+    fluorescence: list[Optional[float]]
+    derivative: list[Optional[float]]
+
+    @staticmethod
+    def create(data: pd.DataFrame, well: Well, well_item: WellItem) -> MeltCurveData:
+        well_data = assert_not_empty_df(
+            data[assert_df_column(data, "Well") == well.identifier],
+            msg=f"Unable to find melt curve data for well {well.identifier}.",
+        )
+
+        target_data = assert_not_empty_df(
+            well_data[
+                assert_df_column(well_data, "Target")
+                == well_item.target_dna_description
+            ],
+            msg=f"Unable to find melt curve data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
+        )
+
+        return MeltCurveData(
+            target=well_item.target_dna_description,
+            temperature=assert_df_column(target_data, "Temperature").tolist(),
+            fluorescence=assert_df_column(target_data, "Fluorescence").tolist(),
+            derivative=assert_df_column(target_data, "Derivative").tolist(),
+        )
+
+
+@dataclass(frozen=True)
 class Result:
     cycle_threshold_value_setting: float
     cycle_threshold_result: Optional[float]
@@ -418,6 +457,7 @@ class Data:
         amp_data = contents.get_non_empty_sheet("Amplification Data")
         multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         results_data = contents.get_non_empty_sheet("Results")
+        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
 
         header = Header.create(contents.header)
         wells = WellList.create(results_data)
@@ -429,6 +469,11 @@ class Data:
                 )
 
             for well_item in well.items.values():
+                if melt_curve_data is not None:
+                    well_item.melt_curve_data = MeltCurveData.create(
+                        melt_curve_data, well, well_item
+                    )
+
                 well_item.amplification_data = AmplificationData.create(
                     amp_data,
                     well_item,
