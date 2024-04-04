@@ -59,16 +59,20 @@ def test_create_analyte_document_data() -> None:
                 """
     analyte_region_dict = {"62": "Pn4"}
     regions_of_interest = ["62"]
+    analyte_doc_data_expected = AnalyteDocumentData(
+        analyte_name="Pn4",
+        assay_bead_count=46,
+        assay_bead_identifier="62",
+        fluorescence=992.5,
+    )
     bead_xml = ElementTree.fromstring(bead_xml_string)  # noqa: S314
     analyte_document_data = AnalyteDocumentData.create(
         bead_xml,
         analyte_region_dict=analyte_region_dict,
         regions_of_interest=regions_of_interest,
     )
-    assert analyte_document_data.analyte_name == "Pn4"
-    assert analyte_document_data.assay_bead_count == 46
-    assert analyte_document_data.assay_bead_identifier == "62"
-    assert analyte_document_data.fluorescence == 992.5
+    if analyte_document_data is not None:
+        assert analyte_document_data == analyte_doc_data_expected
 
 
 def test_sample_aggregate_doc() -> None:

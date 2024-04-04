@@ -210,7 +210,7 @@ def get_val_from_xml(
             val_from_xml = xml_object[index_1]
         else:
             val_from_xml = xml_object[index_1][index_2]
-        return val_from_xml.text
+        return str(val_from_xml.text)
     except IndexError as e:
         msg = f"Unable to find '{xml_tag_name}' from xml."
         raise AllotropeConversionError(msg) from e

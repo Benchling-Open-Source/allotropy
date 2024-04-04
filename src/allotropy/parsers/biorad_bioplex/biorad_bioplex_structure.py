@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from dataclasses import dataclass, field
+from typing import Optional
 from xml.etree import ElementTree
 
 from allotropy.exceptions import AllotropeConversionError
@@ -42,7 +45,7 @@ class AnalyteSample:
     @staticmethod
     def create(analyte_xml: ElementTree.Element) -> AnalyteSample:
         return AnalyteSample(
-            analyte_name=analyte_xml[0].text,
+            analyte_name=str(analyte_xml[0].text),
             analyte_region=int(analyte_xml.attrib[REGION_NUMBER]),
             analyte_error_code=int(analyte_xml[1].attrib[CODE]),
         )
@@ -69,7 +72,7 @@ class SampleDocumentAggregate:
     # This data class pulled from the <Samples> part of the xml.
     samples: list[SampleDocument] = field(default_factory=list)
     # Default to empty dictionary.
-    analyte_region_dict: dict[str, str] = field(default_factory=dict)
+    analyte_region_dict: dict[int, str] = field(default_factory=dict)
 
     @staticmethod
     def create(samples_xml: ElementTree.Element) -> SampleDocumentAggregate:
@@ -180,7 +183,7 @@ class AnalyteDocumentData:
         bead_region_xml: ElementTree.Element,
         analyte_region_dict: dict[str, str],
         regions_of_interest: list[str],
-    ) -> AnalyteDocumentData:
+    ) -> Optional[AnalyteDocumentData]:
         # Look up analyte name from sample
         assay_bead_identifier = bead_region_xml.attrib[REGION_NUMBER]
         # Look up bead region -> analyte name
@@ -196,6 +199,8 @@ class AnalyteDocumentData:
                 assay_bead_count=assay_bead_count,
                 fluorescence=fluorescence,
             )
+        else:
+            return None
 
 
 @dataclass
@@ -232,7 +237,7 @@ class WellSystemLevelMetadata:
         )
 
 
-def validate_xml_structure(full_xml: ElementTree.Element):
+def validate_xml_structure(full_xml: ElementTree.Element) -> None:
     expected_tags = [
         SAMPLES,
         DOC_LOCATION_TAG,
