@@ -133,7 +133,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             total_cycle_number_setting=TQuantityValueNumber(
                 value=well_item.amplification_data.total_cycle_number_setting,
             ),
-            PCR_detection_chemistry=data.header.pcr_detection_chemistry or "N/A",
+            PCR_detection_chemistry=data.header.pcr_detection_chemistry,
             reporter_dye_setting=well_item.reporter_dye_setting,
             quencher_dye_setting=well_item.quencher_dye_setting,
             passive_reference_dye_setting=data.header.passive_reference_dye_setting,

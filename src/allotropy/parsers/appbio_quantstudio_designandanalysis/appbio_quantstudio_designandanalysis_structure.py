@@ -36,7 +36,7 @@ class Header:
     model_number: str
     device_serial_number: str
     measurement_method_identifier: str
-    pcr_detection_chemistry: Optional[str]
+    pcr_detection_chemistry: str
     passive_reference_dye_setting: Optional[str]
     barcode: Optional[str]
     analyst: Optional[str]
@@ -81,7 +81,9 @@ class Header:
             measurement_method_identifier=try_str_from_series(
                 header, "Quantification Cycle Method"
             ),
-            pcr_detection_chemistry=try_str_from_series_or_none(header, "Chemistry"),
+            pcr_detection_chemistry=(
+                try_str_from_series_or_none(header, "Chemistry") or "N/A"
+            ),
             passive_reference_dye_setting=try_str_from_series_or_none(
                 header, "Passive Reference"
             ),
