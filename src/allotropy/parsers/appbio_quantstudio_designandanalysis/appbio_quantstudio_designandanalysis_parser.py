@@ -71,23 +71,26 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                 qPCR_document=[
                     QPCRDocumentItem(
                         analyst=data.header.analyst,
-                        measurement_aggregate_document=MeasurementAggregateDocument(
-                            experimental_data_identifier=data.header.experimental_data_identifier,
-                            container_type=ContainerType.qPCR_reaction_block,
-                            plate_well_count=TQuantityValueNumber(
-                                value=data.header.plate_well_count
-                            ),
-                            measurement_document=[
-                                self.get_measurement_document_item(
-                                    data, well, well_item
-                                )
-                                for well_item in well.items.values()
-                            ],
+                        measurement_aggregate_document=self.get_measurement_aggregate_document(
+                            data, well
                         ),
                     )
                     for well in data.wells
                 ],
             )
+        )
+
+    def get_measurement_aggregate_document(
+        self, data: Data, well: Well
+    ) -> MeasurementAggregateDocument:
+        return MeasurementAggregateDocument(
+            experimental_data_identifier=data.header.experimental_data_identifier,
+            container_type=ContainerType.qPCR_reaction_block,
+            plate_well_count=TQuantityValueNumber(value=data.header.plate_well_count),
+            measurement_document=[
+                self.get_measurement_document_item(data, well, well_item)
+                for well_item in well.items.values()
+            ],
         )
 
     def get_measurement_document_item(
