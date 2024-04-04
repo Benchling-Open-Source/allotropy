@@ -101,12 +101,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             measurement_identifier=well_item.uuid,
             measurement_time=self._get_date_time(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
-            sample_document=SampleDocument(
-                sample_identifier=well_item.sample_identifier,
-                sample_role_type=well_item.sample_role_type,
-                well_location_identifier=well_item.well_location_identifier,
-                well_plate_identifier=data.header.barcode,
-            ),
+            sample_document=self.get_sample_document(data, well_item),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     self.get_device_control_document_item(data, well_item),
@@ -122,6 +117,14 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                 data, well
             ),
             melting_curve_data_cube=self.get_melting_curve_data_cube(well_item),
+        )
+
+    def get_sample_document(self, data: Data, well_item: WellItem) -> SampleDocument:
+        return SampleDocument(
+            sample_identifier=well_item.sample_identifier,
+            sample_role_type=well_item.sample_role_type,
+            well_location_identifier=well_item.well_location_identifier,
+            well_plate_identifier=data.header.barcode,
         )
 
     def get_device_control_document_item(

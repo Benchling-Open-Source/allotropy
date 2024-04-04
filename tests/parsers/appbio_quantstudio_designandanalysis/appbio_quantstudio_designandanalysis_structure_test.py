@@ -133,7 +133,6 @@ def test_results_builder() -> None:
         target_dna_description="RNaseP",
         sample_identifier="Unk_5K",
         reporter_dye_setting="FAM",
-        position="A1",
         well_location_identifier="A1",
         quencher_dye_setting="NFQ-MGB",
         sample_role_type="UNKNOWN",

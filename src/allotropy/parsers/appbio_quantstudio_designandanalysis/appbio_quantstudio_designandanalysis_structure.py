@@ -27,6 +27,18 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
+SAMPLE_ROLE_TYPES_MAP = {
+    "NTC": "negative control sample role",
+    "STANDARD": "standard sample role",
+    "UNKNOWN": "unknown sample role",
+    "POSITIVE CONTROL": "positive control sample role",
+    "IPC": "reference DNA control sample role",
+    "BLOCKED_IPC": "DNA amplification control sample role",
+    "POSITIVE_1/1": "homozygous control sample role",
+    "POSITIVE_2/2": "homozygous control sample role",
+    "POSITIVE_1/2": "heterozygous control sample role",
+}
+
 
 @dataclass(frozen=True)
 class Header:
@@ -123,7 +135,6 @@ class WellItem:
     target_dna_description: str
     sample_identifier: str
     reporter_dye_setting: Optional[str]
-    position: Optional[str]
     well_location_identifier: Optional[str]
     quencher_dye_setting: Optional[str]
     sample_role_type: Optional[str]
@@ -171,10 +182,19 @@ class WellItem:
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
-        sample_identifier = try_str_from_series(
+        well_position = try_str_from_series(
             data,
-            "Sample",
-            msg=f"Unable to find sample identifier for well {identifier}",
+            "Well Position",
+            msg=f"Unable to find well position for Well '{identifier}'.",
+        )
+
+        sample_identifier = try_str_from_series_or_none(data, "Sample") or well_position
+
+        raw_sample_role_type = try_str_from_series_or_none(data, "Task")
+        sample_role_type = (
+            None
+            if raw_sample_role_type is None
+            else SAMPLE_ROLE_TYPES_MAP.get(raw_sample_role_type)
         )
 
         return WellItem(
@@ -183,10 +203,9 @@ class WellItem:
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
             reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
-            position=try_str_from_series_or_none(data, "Well Position") or "UNDEFINED",
-            well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
+            well_location_identifier=well_position,
             quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
-            sample_role_type=try_str_from_series_or_none(data, "Task"),
+            sample_role_type=sample_role_type,
         )
 
 
