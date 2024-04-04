@@ -74,11 +74,10 @@ class Header:
             device_identifier=(
                 try_str_from_series_or_none(header, "Instrument Name") or "NA"
             ),
-            model_number=try_str_from_series(header, "Instrument Type"),
-            device_serial_number=try_str_from_series_or_none(
-                header, "Instrument Serial Number"
-            )
-            or "NA",
+            model_number=try_str_from_series_or_none(header, "Instrument Type") or "NA",
+            device_serial_number=(
+                try_str_from_series_or_none(header, "Instrument Serial Number") or "NA"
+            ),
             measurement_method_identifier=try_str_from_series(
                 header, "Quantification Cycle Method"
             ),
