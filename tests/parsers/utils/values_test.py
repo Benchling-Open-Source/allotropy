@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 from typing import Optional
+from xml.etree import ElementTree
 
-from defusedxml import ElementTree as DefusedElementTree
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
@@ -130,13 +130,13 @@ def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> Non
 @pytest.mark.parametrize(
     "inputs,expected_output_val",
     [
-        ([1, "RP1Gain", 1], "2198"),
-        ([2, "SerialNumber", 0], "LX12345678912"),
-        ([0, "RunProtocolDocumentName", None], "qux_15PLEX_ASSAY"),
+        ((1, "RP1Gain", 1), "2198"),
+        ((2, "SerialNumber", 0), "LX12345678912"),
+        ((0, "RunProtocolDocumentName", None), "qux_15PLEX_ASSAY"),
     ],
 )
 def test_get_val_from_xml_1_index(
-    inputs: list[int, str, int | None], expected_output_val: str
+    inputs: tuple[int, str, Optional[int]], expected_output_val: str
 ) -> None:
     xml_string = """<Well RowNo="1" ColNo="1" WellNo="1">
         <RunProtocolDocumentName>qux_15PLEX_ASSAY</RunProtocolDocumentName>
@@ -149,7 +149,7 @@ def test_get_val_from_xml_1_index(
                 <XYPlatformSerialNumber>LXY07068104</XYPlatformSerialNumber>
             </MachineInfo>
     </Well>"""
-    test_xml = DefusedElementTree.fromstring(xml_string)
+    test_xml = ElementTree.fromstring(xml_string)  # noqa: S314
     assert (
         get_val_from_xml(
             xml_object=test_xml,
@@ -171,7 +171,7 @@ def test_get_val_raise_error() -> None:
             </RunConditions>
             <TotalEvents>717</TotalEvents>
     </Well>"""
-    test_xml = DefusedElementTree.fromstring(xml_string)
+    test_xml = ElementTree.fromstring(xml_string)  # noqa: S314
     with pytest.raises(
         AllotropeConversionError, match="Unable to find 'SerialNumber' from xml."
     ):

@@ -3,8 +3,8 @@ from __future__ import annotations
 import math
 import re
 from typing import Any, Optional, TypeVar, Union
+from xml.etree import ElementTree
 
-from defusedxml import ElementTree as DefusedElementTree
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -200,7 +200,7 @@ def str_or_none(value: Any) -> Optional[str]:
 
 
 def get_val_from_xml(
-    xml_object: DefusedElementTree.Element,
+    xml_object: ElementTree.Element,
     index_1: int,
     xml_tag_name: str,
     index_2: Optional[int] = None,

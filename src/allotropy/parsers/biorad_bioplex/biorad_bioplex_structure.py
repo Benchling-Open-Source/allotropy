@@ -1,9 +1,10 @@
 from dataclasses import dataclass, field
-
-from defusedxml import ElementTree as DefusedElementTree
+from xml.etree import ElementTree
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.values import get_val_from_xml
+from allotropy.parsers.utils.values import (
+    get_val_from_xml,
+)
 
 WELLS_TAG = "Wells"
 DOC_LOCATION_TAG = "NativeDocumentLocation"
@@ -21,6 +22,7 @@ REGION_NUMBER = "RegionNumber"
 REGIONS_OF_INTEREST = "RegionsOfInterest"
 CODE = "Code"
 DILUTION = "Dilution"
+BEAD_COUNT = "BeadCount"
 ROW_NAMES = "ABCDEFGH"
 
 SAMPLE_ROLE_TYPE_MAPPING = {
@@ -59,7 +61,7 @@ class SampleDocument:
     description: str
     well_name: str
     sample_dilution: float
-    well_analyte_mapping: list[WellAnalyteMapping] = field(default_factory=list)
+    well_analyte_mapping: WellAnalyteMapping
 
 
 @dataclass
@@ -95,7 +97,7 @@ class SampleDocumentAggregate:
                                         sample_documents=sample_documents,
                                         well_xml=member_well,
                                         sample_id=sample_identifier,
-                                        sample_dilution=sample_dilution,
+                                        sample_dilution=float(sample_dilution),
                                         sample_type=sample_type,
                                         sample_description=sample_description,
                                     )
@@ -107,7 +109,7 @@ class SampleDocumentAggregate:
     @staticmethod
     def _generate_sample_document(
         sample_documents,
-        well_xml,
+        well_xml: ElementTree.Element,
         sample_id: str,
         sample_dilution: float,
         sample_type: str,
@@ -141,12 +143,12 @@ class DeviceWellSettings:
     well_name: str
     sample_volume_setting: int
     detector_gain_setting: str
-    minimum_assay_bead_count_setting: str
+    minimum_assay_bead_count_setting: int
     well_total_events: int
     acquisition_time: str
 
     @staticmethod
-    def create(well_xml):
+    def create(well_xml: ElementTree.Element):
         well_name = get_well_name(well_xml.attrib)
         well_acq_time = get_val_from_xml(well_xml, 2, "AcquisitionTime")
         total_events = get_val_from_xml(well_xml, 9, "TotalEvents")
@@ -154,16 +156,15 @@ class DeviceWellSettings:
         # RP1 Gain. 16th element of Run Conditions
         detector_gain_setting = get_val_from_xml(well_xml, 5, "RP1Gain", 15)
         # Assuming second element of Run Settings
-        min_assay_bead_count_setting = get_val_from_xml(
-            well_xml, 6, "StopReadingCriteria", 1
-        )
+        # Can't use util here because this pulls from attrib
+        min_assay_bead_count_setting = well_xml[6][1].attrib[BEAD_COUNT]
         return DeviceWellSettings(
             well_name=well_name,
             sample_volume_setting=sample_volume,
             detector_gain_setting=detector_gain_setting,
-            minimum_assay_bead_count_setting=min_assay_bead_count_setting,
+            minimum_assay_bead_count_setting=int(min_assay_bead_count_setting),
             acquisition_time=well_acq_time,
-            well_total_events=total_events,
+            well_total_events=int(total_events),
         )
 
 
@@ -171,12 +172,12 @@ class DeviceWellSettings:
 class AnalyteDocumentData:
     analyte_name: str
     assay_bead_identifier: str
-    assay_bead_count: str
+    assay_bead_count: int
     fluorescence: float
 
     @staticmethod
     def create(
-        bead_region_xml: str,
+        bead_region_xml: ElementTree.Element,
         analyte_region_dict: dict[str, str],
         regions_of_interest: list[str],
     ):
@@ -207,7 +208,7 @@ class WellSystemLevelMetadata:
     regions_of_interest: list[int] = field(default_factory=list)
 
     @staticmethod
-    def create(xml_well):
+    def create(xml_well: ElementTree.Element):
         serial_number = get_val_from_xml(xml_well, 7, "SerialNumber", 3)
         controller_version = get_val_from_xml(xml_well, 7, "MicroControllerVersion", 0)
         user = get_val_from_xml(xml_well, 1, "User")
@@ -215,12 +216,13 @@ class WellSystemLevelMetadata:
         analytical_method = get_val_from_xml(xml_well, 4, "RunProtocolDocumentLocation")
         regions = xml_well[6][4]
         if regions.tag != REGIONS_OF_INTEREST:
-            raise AllotropeConversionError(
-                msg=f"Could not find {REGIONS_OF_INTEREST} in instrument xml"
-            )
+            msg = f"Could not find {REGIONS_OF_INTEREST} in instrument xml"
+            raise AllotropeConversionError(msg)
+
         regions_of_interest = []
         for region in regions:
-            regions_of_interest.append(region.attrib[REGION_NUMBER])
+            int_region = int(region.attrib[REGION_NUMBER])
+            regions_of_interest.append(int_region)
         return WellSystemLevelMetadata(
             serial_number=serial_number,
             controller_version=controller_version,
@@ -230,7 +232,7 @@ class WellSystemLevelMetadata:
         )
 
 
-def validate_xml_structure(full_xml):
+def validate_xml_structure(full_xml: ElementTree.Element):
     expected_tags = [
         SAMPLES,
         DOC_LOCATION_TAG,
@@ -245,7 +247,7 @@ def validate_xml_structure(full_xml):
         for tag in expected_tags:
             if tag not in present_tags:
                 missing_tags.append(tag)
-    except DefusedElementTree.ParseError as err:
+    except ElementTree.ParseError as err:
         # Return all expected tags if XML parsing fails
         msg = "Error parsing xml"
         raise AllotropeConversionError(msg) from err
@@ -254,7 +256,7 @@ def validate_xml_structure(full_xml):
         raise AllotropeConversionError(msg)
 
 
-def get_well_name(well_attrib: dict) -> str:
+def get_well_name(well_attrib: dict[str, str]) -> str:
     row_name = ROW_NAMES[int(well_attrib[ROW_NUMBER]) - 1]
     column_name = str(well_attrib[COLUMN_NUMBER])
     well_name = row_name + column_name
