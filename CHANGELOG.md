@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Change lightfield with brightfield in transmitted light setting enum of plate reader schema
 - Fix missing case for concentration column without A260 prefix in Unchained Labs Lunatic
+- Fix Luminex Xponent adapter to account for the correct instrument file formatting
 ### Changed
 ### Deprecated
 ### Removed
