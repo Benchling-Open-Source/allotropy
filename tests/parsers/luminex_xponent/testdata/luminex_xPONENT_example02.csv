@@ -50,7 +50,7 @@
 "Results"
 
 "DataType:","Median"
-"Location","Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform","Total Events"
+"Location","Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform","Total Events"
 "1(1,A1)","Unknown1","10921.5","37214","24978","18216","9048.5","29681.5","34385","29026","31395","28313","25691","29049","27508","28957","36777","29256","29049","24058","26611","13923","23000","881"
 "2(1,B1)","Unknown2","8244","35052","22609","15293","8013.5","25886.5","31395","25714","29371","22816","21585.5","24058","24955","27542.5","34615","27071","26335","15795","21620","8091","19435","728"
 "3(1,C1)","Unknown3","5603","33948","19998.5","13295","7811.5","23218.5","26576.5","21252","27036.5","17066","17687","17905.5","22310","23736","31487","23414","22448","10499","17963","5007","16143","786"
@@ -149,7 +149,7 @@
 "96(1,H12)","Unknown96","16","28","22","475","19","33","29","72","21","12","194","21","33","20","32","10","173","15","21","18","35","3249"
 
 "DataType:","Net MFI"
-"Location","Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform","Total Events"
+"Location","Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform","Total Events"
 "1(1,A1)","Unknown1","10921.5","37214","24978","18216","9048.5","29681.5","34385","29026","31395","28313","25691","29049","27508","28957","36777","29256","29049","24058","26611","13923","23000","881"
 "2(1,B1)","Unknown2","8244","35052","22609","15293","8013.5","25886.5","31395","25714","29371","22816","21585.5","24058","24955","27542.5","34615","27071","26335","15795","21620","8091","19435","728"
 "3(1,C1)","Unknown3","5603","33948","19998.5","13295","7811.5","23218.5","26576.5","21252","27036.5","17066","17687","17905.5","22310","23736","31487","23414","22448","10499","17963","5007","16143","786"
@@ -248,7 +248,7 @@
 "96(1,H12)","Unknown96","16","28","22","475","19","33","29","72","21","12","194","21","33","20","32","10","173","15","21","18","35","3249"
 
 "DataType:","Count"
-"Location","Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform","Total Events"
+"Location","Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform","Total Events"
 "1(1,A1)","Unknown1","30","42","42","39","38","36","44","51","45","53","32","46","37","59","37","25","41","38","49","50","47","881"
 "2(1,B1)","Unknown2","26","33","33","27","36","28","28","44","31","54","38","39","41","38","32","35","33","30","25","41","36","728"
 "3(1,C1)","Unknown3","25","37","44","34","34","34","34","40","38","50","51","42","43","44","38","33","31","42","31","26","35","786"
@@ -347,7 +347,7 @@
 "96(1,H12)","Unknown96","94","157","191","69","197","198","169","197","173","217","36","175","182","201","175","162","25","203","83","204","141","3249"
 
 "DataType:","Avg Net MFI"
-"Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform"
+"Sample","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform"
 "Unknown1","10921.5","37214","24978","18216","9048.5","29681.5","34385","29026","31395","28313","25691","29049","27508","28957","36777","29256","29049","24058","26611","13923","23000"
 "Unknown2","8244","35052","22609","15293","8013.5","25886.5","31395","25714","29371","22816","21585.5","24058","24955","27542.5","34615","27071","26335","15795","21620","8091","19435"
 "Unknown3","5603","33948","19998.5","13295","7811.5","23218.5","26576.5","21252","27036.5","17066","17687","17905.5","22310","23736","31487","23414","22448","10499","17963","5007","16143"
@@ -446,12 +446,12 @@
 "Unknown96","16","28","22","475","19","33","29","72","21","12","194","21","33","20","32","10","173","15","21","18","35"
 
 "DataType:","Units"
-"Analyte:","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform"
+"Analyte:","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform"
 "BeadID:","28","35","37","39","44","46","48","53","55","62","57","65","68","15","72","75","78","25","33","19","21"
 "Units:","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead","Bead"
 
 "DataType:","Per Bead Count"
-"Analyte:","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform"
+"Analyte:","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform"
 "BeadID:","28","35","37","39","44","46","48","53","55","62","57","65","68","15","72","75","78","25","33","19","21"
 "Per Bead:","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25","25"
 
@@ -556,7 +556,7 @@
 
 
 "DataType:","Analysis Types"
-"Analyte:","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliet","kilo","lima","mike","november","oscar","papa","quebec","romeo","sienna","tango","uniform"
+"Analyte:","alpha","bravo","charlie","delta","echo","foxtrot","golf","hotel","india","juliett","kilo","lima","mike","november","oscar","papa","quebec","romeo","sierra","tango","uniform"
 "AnalysisType","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None","None"
 
 "DataType:","Audit Logs"
