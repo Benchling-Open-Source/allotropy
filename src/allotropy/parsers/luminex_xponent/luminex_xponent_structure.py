@@ -18,9 +18,9 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
-EMPTY_CSV_LINE = r"^,*$"
+LUMINEX_EMPTY_PATTERN = r"^[,\"\s]*$"
 CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
-TABLE_HEADER_PATTERN = "DataType:,{}"
+TABLE_HEADER_PATTERN = '"DataType:","{}"'
 MINIMUM_CALIBRATION_LINE_COLS = 2
 EXPECTED_CALIBRATION_RESULT_LEN = 2
 
@@ -116,7 +116,7 @@ class CalibrationItem:
         Each line should follow the pattern "Last <calibration_name>,<calibration_report> <calibration_time><,,,,"
         example: "Last F3DeCAL1 Calibration,Passed 05/17/2023 09:25:11,,,,,,"
         """
-        calibration_data = calibration_line.split(",")
+        calibration_data = calibration_line.replace('"', "").split(",")
         if len(calibration_data) < MINIMUM_CALIBRATION_LINE_COLS:
             msg = f"Expected at least two columns on the calibration line, got: {calibration_line}"
             raise AllotropeConversionError(msg)
@@ -243,7 +243,7 @@ class MeasurementList:
     def _get_median_data(cls, reader: CsvReader) -> pd.DataFrame:
         reader.drop_until_inclusive(TABLE_HEADER_PATTERN.format("Median"))
         return assert_not_none(
-            reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header="infer"),
+            reader.pop_csv_block_as_df(empty_pat=LUMINEX_EMPTY_PATTERN, header="infer"),
             msg="Unable to find Median table.",
         )
 
@@ -262,7 +262,7 @@ class MeasurementList:
         """
         reader.drop_until_inclusive(match_pat=TABLE_HEADER_PATTERN.format(table_name))
 
-        table_lines = reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE)
+        table_lines = reader.pop_csv_block_as_lines(empty_pat=LUMINEX_EMPTY_PATTERN)
 
         if not table_lines:
             msg = f"Unable to find {table_name} table."
@@ -296,17 +296,25 @@ class Data:
         header_lines = assert_not_none(
             reader.pop_until(CALIBRATION_BLOCK_HEADER), "Unable to find Header block."
         )
-        header_data = read_csv(
-            StringIO("\n".join(header_lines)),
-            header=None,
-            index_col=0,
-        ).dropna(how="all")
-        return header_data.T
+
+        header_dict = {}
+        for line in header_lines:
+            if not line:
+                continue
+            splitted_line = line.replace('"', "").split(",", maxsplit=1)
+            header_dict.update({splitted_line[0]: splitted_line[1].split(",")})
+
+        header_data = (
+            pd.DataFrame.from_dict(header_dict, orient="index").dropna(how="all").T
+        )
+        return header_data
 
     @classmethod
     def _get_calibration_data(cls, reader: CsvReader) -> list[CalibrationItem]:
         reader.drop_until_inclusive(CALIBRATION_BLOCK_HEADER)
-        calibration_lines = reader.pop_csv_block_as_lines(empty_pat=EMPTY_CSV_LINE)
+        calibration_lines = reader.pop_csv_block_as_lines(
+            empty_pat=LUMINEX_EMPTY_PATTERN
+        )
         if not calibration_lines:
             msg = "Unable to find Calibration Block."
             raise AllotropeConversionError(msg)
@@ -320,10 +328,10 @@ class Data:
 
     @classmethod
     def _get_minimum_bead_count_setting(cls, reader: CsvReader) -> float:
-        reader.drop_until(match_pat="Samples,")
+        reader.drop_until(match_pat='"Samples",')
         samples_info = assert_not_none(reader.pop(), "Unable to find Samples info.")
         try:
-            min_bead_count_setting = samples_info.split(",")[3]
+            min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
         except IndexError as e:
             msg = "Unable to find minimum bead count setting in Samples info."
             raise AllotropeConversionError(msg) from e
