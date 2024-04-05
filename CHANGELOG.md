@@ -7,7 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 ### Fixed
+### Changed
+### Deprecated
+### Removed
+### Security
+
+## [0.1.25] - 2024-04-05
+### Added
+### Fixed
 - Add encoding inference to Beckman Vi Cell Blu adapter
+- Fix Luminex Xponent adapter to account for the correct instrument file formatting
 ### Changed
 ### Deprecated
 ### Removed
@@ -19,7 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Change lightfield with brightfield in transmitted light setting enum of plate reader schema
 - Fix missing case for concentration column without A260 prefix in Unchained Labs Lunatic
-- Fix Luminex Xponent adapter to account for the correct instrument file formatting
 ### Changed
 ### Deprecated
 ### Removed
