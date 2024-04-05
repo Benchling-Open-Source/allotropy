@@ -297,17 +297,11 @@ class Data:
             reader.pop_until(CALIBRATION_BLOCK_HEADER), "Unable to find Header block."
         )
 
-        header_dict = {}
-        for line in header_lines:
-            if not line:
-                continue
-            splitted_line = line.replace('"', "").split(",", maxsplit=1)
-            header_dict.update({splitted_line[0]: splitted_line[1].split(",")})
+        header_data = read_csv(
+            StringIO("\n".join(header_lines)), header=None, index_col=0, names=range(7)
+        ).dropna(how="all")
 
-        header_data = (
-            pd.DataFrame.from_dict(header_dict, orient="index").dropna(how="all").T
-        )
-        return header_data
+        return header_data.T
 
     @classmethod
     def _get_calibration_data(cls, reader: CsvReader) -> list[CalibrationItem]:
