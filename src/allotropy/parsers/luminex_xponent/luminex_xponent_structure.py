@@ -298,7 +298,10 @@ class Data:
         )
 
         header_data = read_csv(
-            StringIO("\n".join(header_lines)), header=None, index_col=0, names=range(7)
+            StringIO("\n".join(header_lines)),
+            header=None,
+            index_col=0,
+            names=range(7),
         ).dropna(how="all")
 
         return header_data.T
