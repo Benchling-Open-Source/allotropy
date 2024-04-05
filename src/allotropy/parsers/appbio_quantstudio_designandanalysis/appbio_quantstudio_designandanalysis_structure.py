@@ -382,6 +382,8 @@ class Result:
     automatic_baseline_determination_enabled_setting: Optional[bool]
     normalized_reporter_result: Optional[float]
     baseline_corrected_reporter_result: Optional[float]
+    baseline_determination_start_cycle_setting: Optional[float]
+    baseline_determination_end_cycle_setting: Optional[float]
     genotyping_determination_result: Optional[str]
     genotyping_determination_method_setting: Optional[float]
     quantity: Optional[float]
@@ -420,18 +422,13 @@ class Result:
             msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
-        cycle_threshold_result = assert_not_none(
-            target_data.get("Cq"),
-            msg="Unable to find cycle threshold result",
-        )
-
         return Result(
             cycle_threshold_value_setting=try_float_from_series(
                 target_data,
                 "Threshold",
                 msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
             ),
-            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            cycle_threshold_result=try_float_or_none(str(target_data.get("Cq"))),
             automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
                 target_data, "Auto Threshold"
             ),
@@ -441,6 +438,12 @@ class Result:
             normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
             baseline_corrected_reporter_result=try_float_from_series_or_none(
                 target_data, "Delta Rn"
+            ),
+            baseline_determination_start_cycle_setting=try_float_from_series_or_none(
+                target_data, "Baseline Start"
+            ),
+            baseline_determination_end_cycle_setting=try_float_from_series_or_none(
+                target_data, "Baseline End"
             ),
             genotyping_determination_result=try_str_from_series_or_none(
                 target_data, "Call"

@@ -161,23 +161,8 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             )
         )
 
-        genotyping_determination_method_setting = (
-            None
-            if well_item.result.genotyping_determination_method_setting is None
-            else TQuantityValueUnitless(
-                value=well_item.result.genotyping_determination_method_setting
-            )
-        )
-
         return ProcessedDataDocumentItem(
-            data_processing_document=DataProcessingDocument(
-                automatic_cycle_threshold_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-                cycle_threshold_value_setting=TQuantityValueUnitless(
-                    value=well_item.result.cycle_threshold_value_setting,
-                ),
-                automatic_baseline_determination_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-                genotyping_determination_method_setting=genotyping_determination_method_setting,
-            ),
+            data_processing_document=self.get_data_processing_document(well_item),
             cycle_threshold_result=TNullableQuantityValueUnitless(
                 value=well_item.result.cycle_threshold_result,
             ),
@@ -230,6 +215,44 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     measures=[well_item.amplification_data.delta_rn],
                 ),
             ),
+        )
+
+    def get_data_processing_document(
+        self, well_item: WellItem
+    ) -> DataProcessingDocument:
+        baseline_determination_start_cycle_setting = (
+            None
+            if well_item.result.baseline_determination_start_cycle_setting is None
+            else TQuantityValueNumber(
+                value=well_item.result.baseline_determination_start_cycle_setting
+            )
+        )
+
+        baseline_determination_end_cycle_setting = (
+            None
+            if well_item.result.baseline_determination_end_cycle_setting is None
+            else TQuantityValueNumber(
+                value=well_item.result.baseline_determination_end_cycle_setting
+            )
+        )
+
+        genotyping_determination_method_setting = (
+            None
+            if well_item.result.genotyping_determination_method_setting is None
+            else TQuantityValueUnitless(
+                value=well_item.result.genotyping_determination_method_setting
+            )
+        )
+
+        return DataProcessingDocument(
+            automatic_cycle_threshold_enabled_setting=well_item.result.automatic_cycle_threshold_enabled_setting,
+            cycle_threshold_value_setting=TQuantityValueUnitless(
+                value=well_item.result.cycle_threshold_value_setting,
+            ),
+            automatic_baseline_determination_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
+            baseline_determination_start_cycle_setting=baseline_determination_start_cycle_setting,
+            baseline_determination_end_cycle_setting=baseline_determination_end_cycle_setting,
+            genotyping_determination_method_setting=genotyping_determination_method_setting,
         )
 
     def get_reporter_dye_data_cube(
