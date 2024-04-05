@@ -88,9 +88,9 @@ class Data:
 
     @staticmethod
     def create(reader: CsvReader) -> Data:
-        _ = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header=None)
-        middle = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header=None)
-        bottom = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE, header=None)
+        _ = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
+        middle = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
+        bottom = reader.pop_csv_block_as_df(empty_pat=EMPTY_CSV_LINE)
 
         plates = Plate.create(middle)
         return Data(

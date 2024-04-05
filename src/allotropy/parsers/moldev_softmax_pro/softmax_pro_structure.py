@@ -547,7 +547,7 @@ class TimeWavelengthData:
         columns: pd.Series[str],
     ) -> TimeWavelengthData:
         data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t", header=None),
+            reader.pop_csv_block_as_df(sep="\t"),
             msg="unable to find raw data from time block.",
         )
         data.columns = pd.Index(columns)
