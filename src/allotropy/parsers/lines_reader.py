@@ -159,6 +159,7 @@ class CsvReader(LinesReader):
     def lines_as_df(
         self,
         lines: list[str],
+        header: Optional[Union[int, Literal["infer"]]] = None,
         **kwargs: Any,
     ) -> Optional[pd.DataFrame]:
         if lines:
@@ -167,6 +168,7 @@ class CsvReader(LinesReader):
                 dtype=None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
+                header=header,
                 **kwargs,
             )
         return None
