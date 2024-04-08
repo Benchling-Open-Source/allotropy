@@ -68,13 +68,10 @@ class BackgroundInfo:
 @dataclass(frozen=True)
 class Results:
     barcode: str
-    results: dict[str, str]
-
-    def iter_wells(self) -> Iterator[str]:
-        yield from self.results
+    data: dict[str, str]
 
     def get_plate_well_count(self) -> int:
-        return len(self.results)
+        return len(self.data)
 
     def get_well_float_value(self, well_position: str) -> float:
         return try_float(
@@ -85,7 +82,7 @@ class Results:
     def get_well_str_value(self, well_position: str) -> str:
         return str(
             assert_not_none(
-                self.results.get(well_position),
+                self.data.get(well_position),
                 msg=f"Unable to get well at position '{well_position}' from results section.",
             )
         )
@@ -387,7 +384,7 @@ class Data:
     measurements: Measurements
 
     def iter_wells(self) -> Iterator[str]:
-        yield from self.results.iter_wells()
+        yield from self.results.data
 
     def get_plate_well_count(self) -> int:
         return self.results.get_plate_well_count()

@@ -58,7 +58,7 @@ def create_results(reader: CsvReader) -> Results:
 
     return Results(
         barcode=barcode,
-        results={
+        data={
             f"{row}{col}": values[col]
             for row, values in results.iterrows()
             for col in results.columns
