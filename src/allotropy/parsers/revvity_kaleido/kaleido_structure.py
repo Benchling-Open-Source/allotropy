@@ -113,7 +113,7 @@ class Results:
 @dataclass(frozen=True)
 class AnalysisResult:
     analysis_parameter: str
-    results: pd.DataFrame
+    results: dict[str, str]
 
     @staticmethod
     def create(reader: CsvReader) -> Optional[AnalysisResult]:
@@ -161,18 +161,23 @@ class AnalysisResult:
 
         return AnalysisResult(
             analysis_parameter=analysis_parameter,
-            results=results,
+            results={
+                f"{row}{col}": values[col]
+                for row, values in results.iterrows()
+                for col in results.columns
+            },
         )
 
     def get_image_feature_name(self) -> str:
         return self.analysis_parameter
 
     def get_result(self, well_position: WellPosition) -> str:
-        try:
-            return str(self.results.loc[well_position.row, well_position.column])
-        except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from analysis result '{self.analysis_parameter}'."
-            raise AllotropeConversionError(error) from e
+        return str(
+            assert_not_none(
+                self.results.get(str(well_position)),
+                msg=f"Unable to get well at position '{well_position}' from analysis result '{self.analysis_parameter}'.",
+            )
+        )
 
     def get_image_feature_result(self, well_position: WellPosition) -> float:
         return try_float(
