@@ -203,7 +203,6 @@ def get_val_from_xml(
     xml_object: ElementTree.Element,
     tag_name: str,
 ) -> str:
-    import pdb;pdb.set_trace()
     val_from_xml = xml_object.find(".//" + tag_name)
 
     if val_from_xml is not None:
