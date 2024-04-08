@@ -136,12 +136,14 @@ class CsvReader(LinesReader):
         header: Optional[Union[int, Literal["infer"]]] = None,
         sep: Optional[str] = ",",
         as_str: bool = False,
+        index_col: Optional[Union[int, Literal["infer"]]] = None,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return read_csv(
                 StringIO("\n".join(lines)),
                 header=header,
                 sep=sep,
+                index_col=index_col,
                 dtype=str if as_str else None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
