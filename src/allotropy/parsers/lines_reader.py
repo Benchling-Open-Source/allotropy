@@ -1,7 +1,7 @@
 from collections.abc import Iterator
 from io import StringIO
 from re import search
-from typing import Any, Literal, Optional, Union
+from typing import Literal, Optional, Union
 
 import chardet
 import pandas as pd
@@ -132,17 +132,19 @@ class CsvReader(LinesReader):
     def pop_csv_block_as_df(
         self,
         empty_pat: str = EMPTY_STR_PATTERN,
+        *,
         header: Optional[Union[int, Literal["infer"]]] = None,
-        **kwargs: Any,
+        sep: Optional[str] = ",",
+        as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines := self.pop_csv_block_as_lines(empty_pat):
             return read_csv(
                 StringIO("\n".join(lines)),
-                dtype=None,
+                header=header,
+                sep=sep,
+                dtype=str if as_str else None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
-                header=header,
-                **kwargs,
             )
         return None
 
@@ -158,17 +160,19 @@ class CsvReader(LinesReader):
 
     def lines_as_df(
         self,
+        *,
         lines: list[str],
         header: Optional[Union[int, Literal["infer"]]] = None,
-        **kwargs: Any,
+        sep: Optional[str] = ",",
+        as_str: bool = False,
     ) -> Optional[pd.DataFrame]:
         if lines:
             return read_csv(
                 StringIO("\n".join(lines)),
-                dtype=None,
+                header=header,
+                sep=sep,
+                dtype=str if as_str else None,
                 # Prevent pandas from rounding decimal values, at the cost of some speed.
                 float_precision="round_trip",
-                header=header,
-                **kwargs,
             )
         return None
