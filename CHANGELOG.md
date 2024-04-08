@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Security
 
+## [0.1.25] - 2024-04-05
+### Added
+### Fixed
+- Add encoding inference to Beckman Vi Cell Blu adapter
+- Fix Luminex Xponent adapter to account for the correct instrument file formatting
+### Changed
+### Deprecated
+### Removed
+### Security
+
 ## [0.1.24] - 2024-04-03
 ### Added
 - Add optical imaging to plate reader schema
