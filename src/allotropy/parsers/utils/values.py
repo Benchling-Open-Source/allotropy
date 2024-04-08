@@ -191,7 +191,7 @@ def try_bool_from_series_or_none(
 ) -> Optional[bool]:
     try:
         value = data.get(key)
-        return None if value is None else bool(value)
+        return None if value is None else str(value).lower() == "true"
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
