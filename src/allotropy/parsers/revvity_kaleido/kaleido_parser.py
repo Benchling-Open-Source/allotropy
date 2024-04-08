@@ -155,7 +155,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
         detector_wavelength = data.get_excitation_wavelength()
         return UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
             device_type="absorbance detector",
-            detection_type=data.get_experiment_type(),
+            detection_type=data.background_info.experiment_type,
             number_of_averages=TQuantityValueNumber(
                 value=assert_not_none(
                     data.get_number_of_averages(),
@@ -199,7 +199,7 @@ class LuminescenceMeasurementParser(MeasurementParser):
         detector_distance = data.get_detector_distance()
         return LuminescencePointDetectionDeviceControlDocumentItem(
             device_type="luminescence detector",
-            detection_type=data.get_experiment_type(),
+            detection_type=data.background_info.experiment_type,
             detector_distance_setting__plate_reader_=(
                 None
                 if detector_distance is None
@@ -271,7 +271,7 @@ class ImagingMeasurementParser(MeasurementParser):
                     ],
                 ),
             )
-            for channel in data.get_channels()
+            for channel in data.measurements.channels
         ]
 
 
@@ -315,7 +315,7 @@ class KaleidoParser(VendorParser):
 
     def _get_plate_reader_document(self, data: Data) -> list[PlateReaderDocumentItem]:
         measurement_parser = self._get_measurement_document_parser(
-            data.get_experiment_type()
+            data.background_info.experiment_type
         )
         return [
             PlateReaderDocumentItem(
@@ -336,7 +336,7 @@ class KaleidoParser(VendorParser):
             container_type=ContainerType.well_plate,
             measurement_time=self._get_date_time(data.get_measurement_time()),
             plate_well_count=TQuantityValueNumber(value=data.get_plate_well_count()),
-            experiment_type=data.get_experiment_type(),
+            experiment_type=data.background_info.experiment_type,
             analytical_method_identifier=data.get_analytical_method_id(),
             experimental_data_identifier=data.get_experimentl_data_id(),
             measurement_document=measurement_parser.parse(data, well_position),

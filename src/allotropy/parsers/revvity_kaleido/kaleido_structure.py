@@ -396,9 +396,6 @@ class Data:
     platemap: Platemap
     measurements: Measurements
 
-    def get_experiment_type(self) -> str:
-        return self.background_info.experiment_type
-
     def iter_wells(self) -> Iterator[WellPosition]:
         yield from self.results.iter_wells()
 
@@ -437,9 +434,6 @@ class Data:
 
     def get_focus_height(self) -> Optional[float]:
         return self.measurements.get_focus_height()
-
-    def get_channels(self) -> list[Channel]:
-        return self.measurements.channels
 
     def get_equipment_serial_number(self) -> str:
         return self.measurement_info.get_instrument_serial_number()
