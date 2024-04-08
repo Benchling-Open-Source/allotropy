@@ -97,10 +97,9 @@ class _Sample:
 
 class ViCellBluParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        return self._get_model(
-            data=ViCellBluReader.read(named_file_contents),
-            filename=named_file_contents.original_file_name,
-        )
+        contents = named_file_contents.contents
+        filename = named_file_contents.original_file_name
+        return self._get_model(ViCellBluReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
         return Model(

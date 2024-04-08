@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Security
 
+## [0.1.26] - 2024-04-08
+### Added
+### Fixed
+- Reverted "add encoding inference to Beckman Vi Cell Blu adapter" - it is causing unexpected behavior in other environments
+### Changed
+### Deprecated
+### Removed
+### Security
+
 ## [0.1.25] - 2024-04-05
 ### Added
 ### Fixed
