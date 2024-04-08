@@ -18163,6 +18163,2022 @@
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
+                                "sample identifier": "D1",
+                                "sample role type": "negative control sample role",
+                                "well location identifier": "D1"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "CT",
+                                        "PCR detection chemistry": "N/A",
+                                        "total cycle number setting": {
+                                            "value": 40.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "FAM",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 39.0,
+                                                "unit": "#"
+                                            },
+                                            "genotyping determination method setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "cycle threshold result": {
+                                            "value": null,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.5058415532112122,
+                                                        0.5047571063041687,
+                                                        0.5009442567825317,
+                                                        0.5010942816734314,
+                                                        0.5009832978248596,
+                                                        0.4997979402542114,
+                                                        0.4983784854412079,
+                                                        0.49846088886260986,
+                                                        0.4984281063079834,
+                                                        0.4981849789619446,
+                                                        0.497944712638855,
+                                                        0.49720069766044617,
+                                                        0.4966755509376526,
+                                                        0.4982755184173584,
+                                                        0.4992917478084564,
+                                                        0.5002347230911255,
+                                                        0.5010096430778503,
+                                                        0.500842273235321,
+                                                        0.500914990901947,
+                                                        0.5009717345237732,
+                                                        0.501217782497406,
+                                                        0.5020278692245483,
+                                                        0.503140926361084,
+                                                        0.5034008026123047,
+                                                        0.5034775137901306,
+                                                        0.503939151763916,
+                                                        0.5044339299201965,
+                                                        0.5055652856826782,
+                                                        0.50506591796875,
+                                                        0.5049600601196289,
+                                                        0.5055506825447083,
+                                                        0.5056291222572327,
+                                                        0.5057352781295776,
+                                                        0.5062581896781921,
+                                                        0.5063320398330688,
+                                                        0.5072147250175476,
+                                                        0.507167637348175,
+                                                        0.5073921084403992,
+                                                        0.5079867839813232,
+                                                        0.5098968148231506
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.009027199094586049,
+                                                        0.007667078493951653,
+                                                        0.003578555278723807,
+                                                        0.003452906476032582,
+                                                        0.0030662489338698657,
+                                                        0.001605217669630789,
+                                                        -8.991083696363437e-05,
+                                                        -0.00028318110915259557,
+                                                        -0.0005916373573699436,
+                                                        -0.0011104383969996452,
+                                                        -0.0016263784136801836,
+                                                        -0.0026460670856798246,
+                                                        -0.0034468875020643424,
+                                                        -0.0021225937159494706,
+                                                        -0.001382038018442276,
+                                                        -0.0007147364293641474,
+                                                        -0.00021549013623023265,
+                                                        -0.0006585336723503572,
+                                                        -0.0008614896993153194,
+                                                        -0.0010804197710800863,
+                                                        -0.0011100454910381015,
+                                                        -0.0005756324574867063,
+                                                        0.00026175098545799954,
+                                                        0.00024595354308787495,
+                                                        4.699102732286394e-05,
+                                                        0.0002329553075173256,
+                                                        0.00045205977020701545,
+                                                        0.0013077418390977662,
+                                                        0.0005327004315786048,
+                                                        0.0001511688888666833,
+                                                        0.00046611762035509026,
+                                                        0.0002688836392885656,
+                                                        9.936581804270857e-05,
+                                                        0.0003466036730662718,
+                                                        0.00014478013435204203,
+                                                        0.0007517916252399741,
+                                                        0.00042903026227647675,
+                                                        0.0003778276609096591,
+                                                        0.0006968295082429036,
+                                                        0.0023311866564793577
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "reporter dye data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "reporter dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            319753.8125,
+                                            320276.25,
+                                            320754.40625,
+                                            322187.78125,
+                                            323166.75,
+                                            323263.03125,
+                                            323289.375,
+                                            324034.6875,
+                                            324132.46875,
+                                            324179.15625,
+                                            323906.15625,
+                                            323350.15625,
+                                            323276.21875,
+                                            324102.4375,
+                                            324391.78125,
+                                            324572.15625,
+                                            324817.5,
+                                            324641.09375,
+                                            324373.5625,
+                                            324230.21875,
+                                            324614.5,
+                                            325016.5,
+                                            325174.375,
+                                            324912.9375,
+                                            324682.6875,
+                                            324713.25,
+                                            324715.875,
+                                            325255.0625,
+                                            324985.125,
+                                            324737.84375,
+                                            324840.6875,
+                                            324733.875,
+                                            324921.75,
+                                            325151.53125,
+                                            325133.4375,
+                                            325555.40625,
+                                            325502.0625,
+                                            325547.09375,
+                                            325728.34375,
+                                            326788.71875
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference dye data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "passive reference dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            632122.5,
+                                            634515.5625,
+                                            640299.5625,
+                                            642968.375,
+                                            645064.9375,
+                                            646787.4375,
+                                            648682.4375,
+                                            650070.4375,
+                                            650309.375,
+                                            650720.4375,
+                                            650486.1875,
+                                            650341.3125,
+                                            650880.0625,
+                                            650448.25,
+                                            649703.875,
+                                            648839.75,
+                                            648325.875,
+                                            648190.25,
+                                            647562.125,
+                                            647202.625,
+                                            647651.625,
+                                            647407.3125,
+                                            646288.875,
+                                            645435.875,
+                                            644880.25,
+                                            644350.125,
+                                            643723.3125,
+                                            643349.3125,
+                                            643450.875,
+                                            643096.125,
+                                            642548.25,
+                                            642237.3125,
+                                            642473.9375,
+                                            642264.25,
+                                            642134.8125,
+                                            641849.25,
+                                            641803.6875,
+                                            641608.5,
+                                            641214.1875,
+                                            640891.875
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "container type": "qPCR reaction block"
+                },
+                "analyst": "DEFAULT"
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_37",
+                            "measurement time": "2010-10-21T08:59:55-04:00",
+                            "target DNA description": "RNase P",
+                            "sample document": {
+                                "sample identifier": "D2",
+                                "sample role type": "negative control sample role",
+                                "well location identifier": "D2"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "CT",
+                                        "PCR detection chemistry": "N/A",
+                                        "total cycle number setting": {
+                                            "value": 40.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "FAM",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 39.0,
+                                                "unit": "#"
+                                            },
+                                            "genotyping determination method setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "cycle threshold result": {
+                                            "value": null,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.49997687339782715,
+                                                        0.4988972842693329,
+                                                        0.4970264434814453,
+                                                        0.495609849691391,
+                                                        0.4932628571987152,
+                                                        0.4931642413139343,
+                                                        0.49322623014450073,
+                                                        0.49338996410369873,
+                                                        0.494096964597702,
+                                                        0.4940720498561859,
+                                                        0.4929012954235077,
+                                                        0.4918462336063385,
+                                                        0.4931604862213135,
+                                                        0.4942930340766907,
+                                                        0.49456891417503357,
+                                                        0.49484649300575256,
+                                                        0.49479466676712036,
+                                                        0.4952084422111511,
+                                                        0.4953392446041107,
+                                                        0.4954086244106293,
+                                                        0.49573400616645813,
+                                                        0.4961841106414795,
+                                                        0.4969347417354584,
+                                                        0.4975969195365906,
+                                                        0.49847203493118286,
+                                                        0.49857500195503235,
+                                                        0.4979025721549988,
+                                                        0.49769723415374756,
+                                                        0.4979221522808075,
+                                                        0.4994438588619232,
+                                                        0.5017078518867493,
+                                                        0.5017644762992859,
+                                                        0.5020654797554016,
+                                                        0.5035187005996704,
+                                                        0.5030772686004639,
+                                                        0.5025330185890198,
+                                                        0.5029174089431763,
+                                                        0.5036932826042175,
+                                                        0.503619909286499,
+                                                        0.5027276873588562
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.008832261976668945,
+                                                        0.00744831414373073,
+                                                        0.005273114651399204,
+                                                        0.003552162156900875,
+                                                        0.0009008109597811417,
+                                                        0.0004978363705563057,
+                                                        0.0002554664966787597,
+                                                        0.00011484175143280554,
+                                                        0.0005174835409921493,
+                                                        0.00018821009503208378,
+                                                        -0.001286903042090091,
+                                                        -0.0026463235637032884,
+                                                        -0.0016364296531722648,
+                                                        -0.0008082405022390197,
+                                                        -0.0008367191083400764,
+                                                        -0.0008634989820650344,
+                                                        -0.0012196839251411888,
+                                                        -0.0011102671855543792,
+                                                        -0.0012838234970387367,
+                                                        -0.0015188023949641897,
+                                                        -0.0014977793435792845,
+                                                        -0.0013520335730018743,
+                                                        -0.0009057611834669447,
+                                                        -0.0005479420867786947,
+                                                        2.2814603369638177e-05,
+                                                        -0.0001785770772248267,
+                                                        -0.0011553655817023482,
+                                                        -0.0016650622873975766,
+                                                        -0.0017445028647815922,
+                                                        -0.0005271549881097663,
+                                                        0.0014324793322722758,
+                                                        0.0011847450403648892,
+                                                        0.0011813897920367152,
+                                                        0.002330251931861506,
+                                                        0.0015844612282110667,
+                                                        0.0007358525123229672,
+                                                        0.0008158841620355647,
+                                                        0.0012873991186328167,
+                                                        0.0009096670964704142,
+                                                        -0.0002869135356164158
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "reporter dye data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "reporter dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            312823.25,
+                                            313009.0625,
+                                            314332.25,
+                                            314888.65625,
+                                            315007.6875,
+                                            315759.75,
+                                            316298.3125,
+                                            316700.875,
+                                            317066.25,
+                                            317071.5625,
+                                            316319.25,
+                                            316196.84375,
+                                            317043.9375,
+                                            317239,
+                                            317093.5625,
+                                            317120.25,
+                                            317009.46875,
+                                            317030.90625,
+                                            316667.28125,
+                                            316645.84375,
+                                            317485.34375,
+                                            317415.0625,
+                                            317180.15625,
+                                            317278.375,
+                                            317668.8125,
+                                            317579.875,
+                                            317171.34375,
+                                            316926,
+                                            316899,
+                                            317041,
+                                            318197.5625,
+                                            318392.1875,
+                                            318399.65625,
+                                            319177.8125,
+                                            319073.09375,
+                                            318809.71875,
+                                            318985.375,
+                                            319632.75,
+                                            319580.1875,
+                                            319314.5
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference dye data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "passive reference dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            625675.4375,
+                                            627401.8125,
+                                            632425.625,
+                                            635355.9375,
+                                            638620.3125,
+                                            640273,
+                                            641284.4375,
+                                            641887.5625,
+                                            641708.5625,
+                                            641751.6875,
+                                            641749.6875,
+                                            642877.4375,
+                                            642881.875,
+                                            641803.5,
+                                            641151.4375,
+                                            640845.6875,
+                                            640688.9375,
+                                            640196.875,
+                                            639293.75,
+                                            639160.9375,
+                                            640434.875,
+                                            639712.25,
+                                            638273.25,
+                                            637621.25,
+                                            637285.125,
+                                            636975.125,
+                                            637014.875,
+                                            636784.75,
+                                            636442.875,
+                                            634788.0625,
+                                            634228.75,
+                                            634545.125,
+                                            634179.5625,
+                                            633894.625,
+                                            634242.6875,
+                                            634405.5,
+                                            634269.875,
+                                            634578.125,
+                                            634566.25,
+                                            635163.9375
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "container type": "qPCR reaction block"
+                },
+                "analyst": "DEFAULT"
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_38",
+                            "measurement time": "2010-10-21T08:59:55-04:00",
+                            "target DNA description": "RNase P",
+                            "sample document": {
+                                "sample identifier": "D3",
+                                "sample role type": "negative control sample role",
+                                "well location identifier": "D3"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "CT",
+                                        "PCR detection chemistry": "N/A",
+                                        "total cycle number setting": {
+                                            "value": 40.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "FAM",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 39.0,
+                                                "unit": "#"
+                                            },
+                                            "genotyping determination method setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "cycle threshold result": {
+                                            "value": null,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.4955340027809143,
+                                                        0.4944504499435425,
+                                                        0.49245503544807434,
+                                                        0.4905776083469391,
+                                                        0.48993614315986633,
+                                                        0.4896996021270752,
+                                                        0.48773515224456787,
+                                                        0.4869810938835144,
+                                                        0.4871562123298645,
+                                                        0.4873242676258087,
+                                                        0.48734942078590393,
+                                                        0.4889782965183258,
+                                                        0.4892544448375702,
+                                                        0.4887988269329071,
+                                                        0.4884306788444519,
+                                                        0.4886852204799652,
+                                                        0.4900188744068146,
+                                                        0.4909404218196869,
+                                                        0.49180173873901367,
+                                                        0.4917905926704407,
+                                                        0.4916066825389862,
+                                                        0.49268198013305664,
+                                                        0.493451327085495,
+                                                        0.4935329854488373,
+                                                        0.4936734437942505,
+                                                        0.4939323961734772,
+                                                        0.49504122138023376,
+                                                        0.4953595697879791,
+                                                        0.49474796652793884,
+                                                        0.4947044849395752,
+                                                        0.4954793155193329,
+                                                        0.496166467666626,
+                                                        0.49702736735343933,
+                                                        0.49736982583999634,
+                                                        0.49831146001815796,
+                                                        0.4988590180873871,
+                                                        0.5001602172851562,
+                                                        0.5004900693893433,
+                                                        0.4991699457168579,
+                                                        0.49852803349494934
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.009498999335292186,
+                                                        0.008082494810894786,
+                                                        0.00575412862840113,
+                                                        0.003543749840240358,
+                                                        0.0025693329661420307,
+                                                        0.001999840246325375,
+                                                        -0.00029756132320752255,
+                                                        -0.0013845713712865072,
+                                                        -0.0015424046119619274,
+                                                        -0.0017073010030432868,
+                                                        -0.0020150995299735895,
+                                                        -0.0007191754845772326,
+                                                        -0.0007759788523584211,
+                                                        -0.0015645484440470249,
+                                                        -0.0022656482195277427,
+                                                        -0.0023440582710400103,
+                                                        -0.001343356031216163,
+                                                        -0.0007547603053693664,
+                                                        -0.00022639507306815748,
+                                                        -0.0005704928286666734,
+                                                        -0.0010873546471467145,
+                                                        -0.00034500874010179766,
+                                                        9.138652531103902e-05,
+                                                        -0.00015990679837224914,
+                                                        -0.00035240013998455894,
+                                                        -0.0004263994477833922,
+                                                        0.0003494740719476263,
+                                                        0.0003348707926674698,
+                                                        -0.0006096841543983312,
+                                                        -0.000986117429787552,
+                                                        -0.0005442385370553794,
+                                                        -0.00019003807678780632,
+                                                        0.00033790992299997485,
+                                                        0.0003474167225314639,
+                                                        0.0009560992136675116,
+                                                        0.0011707055958711198,
+                                                        0.0021389531066147672,
+                                                        0.0021358535237762056,
+                                                        0.0004827781642653361,
+                                                        -0.0004920857446687511
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "reporter dye data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "reporter dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            307094.03125,
+                                            307422.9375,
+                                            307995.46875,
+                                            308527.59375,
+                                            309337.71875,
+                                            310106.03125,
+                                            310087.53125,
+                                            309930.75,
+                                            309974.09375,
+                                            310428.0625,
+                                            310621.78125,
+                                            311472.0625,
+                                            311505.34375,
+                                            311292.96875,
+                                            310760.90625,
+                                            310661.875,
+                                            311430.90625,
+                                            311905.4375,
+                                            312069.40625,
+                                            311825.90625,
+                                            311689.875,
+                                            312131.25,
+                                            312375.625,
+                                            312220.1875,
+                                            311918.28125,
+                                            311815.5625,
+                                            312346.625,
+                                            312433.75,
+                                            312065.34375,
+                                            311820.625,
+                                            311898.78125,
+                                            312100.40625,
+                                            312565.3125,
+                                            312714.8125,
+                                            313556.90625,
+                                            313732.84375,
+                                            314072.8125,
+                                            314204.21875,
+                                            313992.0625,
+                                            313717.53125
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference dye data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "passive reference dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            619723.4375,
+                                            621746.6875,
+                                            625428.625,
+                                            628906.8125,
+                                            631383.75,
+                                            633257.6875,
+                                            635770.3125,
+                                            636432.8125,
+                                            636293,
+                                            637005.125,
+                                            637369.75,
+                                            636985.4375,
+                                            636693.9375,
+                                            636852.9375,
+                                            636243.625,
+                                            635709.5625,
+                                            635548.8125,
+                                            635322.375,
+                                            634543.125,
+                                            634062.375,
+                                            634022.875,
+                                            633534.9375,
+                                            633042.4375,
+                                            632622.75,
+                                            631831.1875,
+                                            631292,
+                                            630950.75,
+                                            630721.125,
+                                            630756.1875,
+                                            630316.9375,
+                                            629489,
+                                            629023.5625,
+                                            628869.4375,
+                                            628737,
+                                            629238.8125,
+                                            628900.8125,
+                                            627944.4375,
+                                            627793.125,
+                                            629028.375,
+                                            629287.625
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "container type": "qPCR reaction block"
+                },
+                "analyst": "DEFAULT"
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_39",
+                            "measurement time": "2010-10-21T08:59:55-04:00",
+                            "target DNA description": "RNase P",
+                            "sample document": {
+                                "sample identifier": "D4",
+                                "sample role type": "negative control sample role",
+                                "well location identifier": "D4"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "qPCR",
+                                        "measurement method identifier": "CT",
+                                        "PCR detection chemistry": "N/A",
+                                        "total cycle number setting": {
+                                            "value": 40.0,
+                                            "unit": "#"
+                                        },
+                                        "reporter dye setting": "FAM",
+                                        "quencher dye setting": "NFQ-MGB",
+                                        "passive reference dye setting": "ROX"
+                                    }
+                                ]
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "cycle threshold value setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            },
+                                            "automatic cycle threshold enabled setting": true,
+                                            "automatic baseline determination enabled setting": true,
+                                            "baseline determination start cycle setting": {
+                                                "value": 3.0,
+                                                "unit": "#"
+                                            },
+                                            "baseline determination end cycle setting": {
+                                                "value": 39.0,
+                                                "unit": "#"
+                                            },
+                                            "genotyping determination method setting": {
+                                                "value": 0.07421777850389281,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "cycle threshold result": {
+                                            "value": null,
+                                            "unit": "(unitless)"
+                                        },
+                                        "normalized reporter data cube": {
+                                            "label": "normalized reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "normalized report result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.49400368332862854,
+                                                        0.4934155344963074,
+                                                        0.4917141795158386,
+                                                        0.4897153973579407,
+                                                        0.48724859952926636,
+                                                        0.4873298406600952,
+                                                        0.4868216812610626,
+                                                        0.4869807958602905,
+                                                        0.488403856754303,
+                                                        0.4889521300792694,
+                                                        0.4897270202636719,
+                                                        0.48938000202178955,
+                                                        0.48883387446403503,
+                                                        0.4898563623428345,
+                                                        0.4907016456127167,
+                                                        0.4898681342601776,
+                                                        0.48963817954063416,
+                                                        0.4908539950847626,
+                                                        0.4897966682910919,
+                                                        0.48942387104034424,
+                                                        0.4904186725616455,
+                                                        0.4908388555049896,
+                                                        0.4921862781047821,
+                                                        0.49265894293785095,
+                                                        0.4933312237262726,
+                                                        0.49338528513908386,
+                                                        0.4943316578865051,
+                                                        0.49523645639419556,
+                                                        0.49521124362945557,
+                                                        0.49549752473831177,
+                                                        0.4961213171482086,
+                                                        0.49772775173187256,
+                                                        0.49824127554893494,
+                                                        0.497210830450058,
+                                                        0.49699699878692627,
+                                                        0.49828705191612244,
+                                                        0.4994339644908905,
+                                                        0.4992513954639435,
+                                                        0.4982824921607971,
+                                                        0.49886032938957214
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        "baseline corrected reporter data cube": {
+                                            "label": "baseline corrected reporter",
+                                            "cube-structure": {
+                                                "dimensions": [
+                                                    {
+                                                        "@componentDatatype": "integer",
+                                                        "concept": "cycle count",
+                                                        "unit": "#"
+                                                    }
+                                                ],
+                                                "measures": [
+                                                    {
+                                                        "@componentDatatype": "double",
+                                                        "concept": "baseline corrected reporter result",
+                                                        "unit": "(unitless)"
+                                                    }
+                                                ]
+                                            },
+                                            "data": {
+                                                "dimensions": [
+                                                    [
+                                                        1,
+                                                        2,
+                                                        3,
+                                                        4,
+                                                        5,
+                                                        6,
+                                                        7,
+                                                        8,
+                                                        9,
+                                                        10,
+                                                        11,
+                                                        12,
+                                                        13,
+                                                        14,
+                                                        15,
+                                                        16,
+                                                        17,
+                                                        18,
+                                                        19,
+                                                        20,
+                                                        21,
+                                                        22,
+                                                        23,
+                                                        24,
+                                                        25,
+                                                        26,
+                                                        27,
+                                                        28,
+                                                        29,
+                                                        30,
+                                                        31,
+                                                        32,
+                                                        33,
+                                                        34,
+                                                        35,
+                                                        36,
+                                                        37,
+                                                        38,
+                                                        39,
+                                                        40
+                                                    ]
+                                                ],
+                                                "measures": [
+                                                    [
+                                                        0.008227081251347903,
+                                                        0.007306282181997572,
+                                                        0.005272276964499658,
+                                                        0.002940844569572489,
+                                                        0.00014139650386900892,
+                                                        -0.00011001260233129762,
+                                                        -0.0009508222383930544,
+                                                        -0.0011243578761943132,
+                                                        -3.394721921102584e-05,
+                                                        0.00018167586872624086,
+                                                        0.0006239158160994872,
+                                                        -5.575266281200098e-05,
+                                                        -0.0009345304575956815,
+                                                        -0.00024469281582540703,
+                                                        0.00026794021702763115,
+                                                        -0.0008982213725405953,
+                                                        -0.0014608263291132164,
+                                                        -0.0005776610220140178,
+                                                        -0.001967638052713836,
+                                                        -0.002673085540490681,
+                                                        -0.0020109342562185752,
+                                                        -0.001923401549903623,
+                                                        -0.0009086291871403064,
+                                                        -0.0007686145911006227,
+                                                        -0.0004289840397082113,
+                                                        -0.000707572863926096,
+                                                        -9.38503535339953e-05,
+                                                        0.00047829791712727043,
+                                                        0.00012043491535811623,
+                                                        7.406578718515344e-05,
+                                                        0.00036520796005284006,
+                                                        0.001638992306687561,
+                                                        0.0018198658867207749,
+                                                        0.0004567705508146579,
+                                                        -8.971134934621994e-05,
+                                                        0.0008676915428207831,
+                                                        0.0016819538805596854,
+                                                        0.0011667346165835,
+                                                        -0.0001348189235920817,
+                                                        0.00011036806815377875
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "reporter dye data cube": {
+                                "label": "reporter dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "reporter dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            302938.09375,
+                                            303508.875,
+                                            304138.21875,
+                                            304316.03125,
+                                            304393.03125,
+                                            305008.625,
+                                            305096.40625,
+                                            305660.25,
+                                            307064.84375,
+                                            307484.9375,
+                                            308465.46875,
+                                            308506.84375,
+                                            308358.9375,
+                                            308249.09375,
+                                            308438.53125,
+                                            308020.5625,
+                                            307938.65625,
+                                            308559.90625,
+                                            307692.90625,
+                                            307373.9375,
+                                            307809.59375,
+                                            307829.59375,
+                                            308087.53125,
+                                            308071.40625,
+                                            308371.875,
+                                            308383.6875,
+                                            308903.125,
+                                            309301.625,
+                                            309258.71875,
+                                            309419.40625,
+                                            309446.125,
+                                            310258.28125,
+                                            310688.09375,
+                                            309918.25,
+                                            309675.59375,
+                                            310400.34375,
+                                            310588.09375,
+                                            310444.28125,
+                                            310716.59375,
+                                            311154.15625
+                                        ]
+                                    ]
+                                }
+                            },
+                            "passive reference dye data cube": {
+                                "label": "passive reference dye",
+                                "cube-structure": {
+                                    "dimensions": [
+                                        {
+                                            "@componentDatatype": "integer",
+                                            "concept": "cycle count",
+                                            "unit": "#"
+                                        }
+                                    ],
+                                    "measures": [
+                                        {
+                                            "@componentDatatype": "double",
+                                            "concept": "passive reference dye fluorescence",
+                                            "unit": "RFU"
+                                        }
+                                    ]
+                                },
+                                "data": {
+                                    "dimensions": [
+                                        [
+                                            1,
+                                            2,
+                                            3,
+                                            4,
+                                            5,
+                                            6,
+                                            7,
+                                            8,
+                                            9,
+                                            10,
+                                            11,
+                                            12,
+                                            13,
+                                            14,
+                                            15,
+                                            16,
+                                            17,
+                                            18,
+                                            19,
+                                            20,
+                                            21,
+                                            22,
+                                            23,
+                                            24,
+                                            25,
+                                            26,
+                                            27,
+                                            28,
+                                            29,
+                                            30,
+                                            31,
+                                            32,
+                                            33,
+                                            34,
+                                            35,
+                                            36,
+                                            37,
+                                            38,
+                                            39,
+                                            40
+                                        ]
+                                    ],
+                                    "measures": [
+                                        [
+                                            613230.4375,
+                                            615118.1875,
+                                            618526.4375,
+                                            621414.0625,
+                                            624718.125,
+                                            625877.1875,
+                                            626710.8125,
+                                            627663.875,
+                                            628710.9375,
+                                            628865.125,
+                                            629872.25,
+                                            630403.4375,
+                                            630805.1875,
+                                            629264.25,
+                                            628566.3125,
+                                            628782.625,
+                                            628910.625,
+                                            628618.5,
+                                            628205.375,
+                                            628032.1875,
+                                            627646.5625,
+                                            627150,
+                                            625957.1875,
+                                            625323.875,
+                                            625080.8125,
+                                            625036.25,
+                                            624890.4375,
+                                            624553.4375,
+                                            624498.5625,
+                                            624462.0625,
+                                            623730.75,
+                                            623349.375,
+                                            623569.5625,
+                                            623313.5625,
+                                            623093.5,
+                                            622934.8125,
+                                            621880.1875,
+                                            621819.5625,
+                                            623575.1875,
+                                            623730
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "container type": "qPCR reaction block"
+                },
+                "analyst": "DEFAULT"
+            },
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 96,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_40",
+                            "measurement time": "2010-10-21T08:59:55-04:00",
+                            "target DNA description": "RNase P",
+                            "sample document": {
                                 "sample identifier": "1250.0",
                                 "sample role type": "standard sample role",
                                 "well location identifier": "D5"
@@ -18663,7 +20679,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_37",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_41",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -19167,7 +21183,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_38",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_42",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -19671,7 +21687,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_39",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_43",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -20175,7 +22191,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_40",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_44",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -20679,7 +22695,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_41",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_45",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -21183,7 +23199,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_42",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_46",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -21687,7 +23703,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_43",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_47",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -22191,7 +24207,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_44",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_48",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -22695,7 +24711,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_45",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_49",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -23199,7 +25215,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_46",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_50",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -23703,7 +25719,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_47",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_51",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -24207,7 +26223,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_48",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_52",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -24711,7 +26727,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_49",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_53",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -25215,7 +27231,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_50",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_54",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -25719,7 +27735,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_51",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_55",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -26223,7 +28239,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_52",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_56",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -26727,7 +28743,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_53",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_57",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -27231,7 +29247,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_54",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_58",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -27735,7 +29751,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_55",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_59",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -28239,7 +30255,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_56",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_60",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -28743,7 +30759,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_57",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_61",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -29247,7 +31263,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_58",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_62",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -29751,7 +31767,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_59",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_63",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -30255,7 +32271,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_60",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_64",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -30759,7 +32775,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_61",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_65",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -31263,7 +33279,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_62",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_66",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -31767,7 +33783,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_63",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_67",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -32271,7 +34287,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_64",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_68",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -32775,7 +34791,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_65",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_69",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -33279,7 +35295,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_66",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_70",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -33783,7 +35799,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_67",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_71",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -34287,7 +36303,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_68",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_72",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -34791,7 +36807,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_69",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_73",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -35295,7 +37311,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_70",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_74",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -35799,7 +37815,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_71",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_75",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -36303,7 +38319,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_72",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_76",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -36807,7 +38823,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_73",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_77",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -37311,7 +39327,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_74",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_78",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -37815,7 +39831,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_75",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -38319,7 +40335,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_76",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -38823,7 +40839,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_77",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_81",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -39327,7 +41343,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_78",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_82",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -39831,7 +41847,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_83",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -40335,7 +42351,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_84",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -40839,7 +42855,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_81",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_85",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -41343,7 +43359,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_82",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_86",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -41847,7 +43863,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_83",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -42351,7 +44367,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_84",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -42855,7 +44871,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_85",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_89",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -43359,7 +45375,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_86",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_90",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -43863,7 +45879,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -44367,7 +46383,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_92",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -44871,7 +46887,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_89",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_93",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -45375,7 +47391,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_90",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_94",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -45879,7 +47895,7 @@
                     },
                     "measurement document": [
                         {
-                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
+                            "measurement identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_95",
                             "measurement time": "2010-10-21T08:59:55-04:00",
                             "target DNA description": "RNase P",
                             "sample document": {
@@ -46383,7 +48399,7 @@
             "software name": "Design & Analysis Software",
             "software version": "2.7.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.24"
+            "ASM converter version": "0.1.26"
         }
     },
     "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/qpcr.manifest"

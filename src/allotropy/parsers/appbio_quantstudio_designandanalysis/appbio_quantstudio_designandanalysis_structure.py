@@ -255,14 +255,13 @@ class WellList:
     @staticmethod
     def create(results_data: pd.DataFrame) -> WellList:
         assert_df_column(results_data, "Well")
-        data = results_data[assert_df_column(results_data, "Sample").notnull()]
         return WellList(
             [
                 Well.create(
                     try_int(str(identifier), "well identifier"),
                     well_data,
                 )
-                for identifier, well_data in data.groupby("Well")
+                for identifier, well_data in results_data.groupby("Well")
             ]
         )
 
