@@ -34,13 +34,13 @@ PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
 }
 
 
-SCAN_POSITION_CONVERTION = {
+SCAN_POSITION_CONVERSION = {
     "TOP": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
     "BOTTOM": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
 }
 
 
-TRANSMITTED_LIGHT_CONVERTION = {
+TRANSMITTED_LIGHT_CONVERSION = {
     "BRIGHTFIELD": TransmittedLightSetting.brightfield,
     "DARKFIELD": TransmittedLightSetting.darkfield,
     "PHASE CONTRAST": TransmittedLightSetting.phase_contrast,

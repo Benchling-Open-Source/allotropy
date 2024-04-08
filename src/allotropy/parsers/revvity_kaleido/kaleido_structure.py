@@ -16,8 +16,8 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
     PLATEMAP_TO_SAMPLE_ROLE_TYPE,
-    SCAN_POSITION_CONVERTION,
-    TRANSMITTED_LIGHT_CONVERTION,
+    SCAN_POSITION_CONVERSION,
+    TRANSMITTED_LIGHT_CONVERSION,
     WellPosition,
 )
 from allotropy.parsers.utils.values import (
@@ -257,7 +257,7 @@ class Channel:
         return self.excitation_power
 
     def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
-        return TRANSMITTED_LIGHT_CONVERTION.get(self.name)
+        return TRANSMITTED_LIGHT_CONVERSION.get(self.name)
 
     def get_fluorescent_tag(self) -> Optional[str]:
         return None if self.name == "BRIGHTFIELD" else self.name
@@ -316,7 +316,7 @@ class Measurements:
             return None
 
         return assert_not_none(
-            SCAN_POSITION_CONVERTION.get(position.value),
+            SCAN_POSITION_CONVERSION.get(position.value),
             msg=f"'{position.value}' is not a valid scan position, expected TOP or BOTTOM.",
         )
 
