@@ -7,8 +7,6 @@ import logging
 import re
 from typing import Optional
 
-import pandas as pd
-
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
@@ -231,14 +229,15 @@ class PlateType:
 
 @dataclass(frozen=True)
 class Platemap:
-    data: pd.DataFrame
+    data: dict[str, str]
 
     def get_well_value(self, well_position: WellPosition) -> str:
-        try:
-            return str(self.data.loc[well_position.row, well_position.column])
-        except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from platemap section."
-            raise AllotropeConversionError(error) from e
+        return str(
+            assert_not_none(
+                self.data.get(str(well_position)),
+                msg=f"Unable to get well at position '{well_position}' from platemap section.",
+            )
+        )
 
     def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
         raw_value = self.get_well_value(well_position)

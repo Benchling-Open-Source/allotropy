@@ -109,7 +109,13 @@ def create_platemap(reader: CsvReader) -> Platemap:
         msg="Unable to find platemap information.",
     )
 
-    return Platemap(data)
+    return Platemap(
+        data={
+            f"{row}{col}": values[col]
+            for row, values in data.iterrows()
+            for col in data.columns
+        }
+    )
 
 
 def create_measurements(reader: CsvReader) -> Measurements:
