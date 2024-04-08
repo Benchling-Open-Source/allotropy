@@ -7,25 +7,19 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
-    Data,
     Header,
     Result,
     WellItem,
 )
 
 
-def rm_uuid(data: Data) -> Data:
-    for well in data.wells:
-        for well_item in well.items.values():
-            well_item.uuid = ""
-    return data
-
-
+@pytest.mark.design_quantstudio
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
     assert isinstance(Header.create(header_contents), Header)
 
 
+@pytest.mark.design_quantstudio
 def test_header_builder() -> None:
     measurement_time = "2010-10-01 01:44:54 AM EDT"
     device_identifier = "device1"
@@ -72,6 +66,7 @@ def test_header_builder() -> None:
     )
 
 
+@pytest.mark.design_quantstudio
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -91,6 +86,7 @@ def test_header_builder_required_parameter_none_then_raise(
         Header.create(header_contents)
 
 
+@pytest.mark.design_quantstudio
 def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
 
@@ -98,11 +94,13 @@ def test_header_builder_invalid_plate_well_count() -> None:
         Header.create(header_contents)
 
 
+@pytest.mark.design_quantstudio
 def test_header_builder_no_header_then_raise() -> None:
     with pytest.raises(AllotropeConversionError):
         Header.create(pd.Series())
 
 
+@pytest.mark.design_quantstudio
 def test_results_builder() -> None:
     data = pd.DataFrame(
         {
