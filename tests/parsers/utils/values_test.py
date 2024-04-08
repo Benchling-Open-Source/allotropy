@@ -128,16 +128,14 @@ def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> Non
 
 @pytest.mark.short
 @pytest.mark.parametrize(
-    "inputs,expected_output_val",
+    "tag_name,expected_output_val",
     [
-        ((1, "RP1Gain", 1), "2198"),
-        ((2, "SerialNumber", 0), "LX12345678912"),
-        ((0, "RunProtocolDocumentName", None), "qux_15PLEX_ASSAY"),
+        ("RP1Gain", "2198"),
+        ("SerialNumber", "LX12345678912"),
+        ("RunProtocolDocumentName", "qux_15PLEX_ASSAY"),
     ],
 )
-def test_get_val_from_xml_1_index(
-    inputs: tuple[int, str, Optional[int]], expected_output_val: str
-) -> None:
+def test_get_val_from_xml_1_index(tag_name: str, expected_output_val: str) -> None:
     xml_string = """<Well RowNo="1" ColNo="1" WellNo="1">
         <RunProtocolDocumentName>qux_15PLEX_ASSAY</RunProtocolDocumentName>
             <RunConditions>
@@ -153,9 +151,7 @@ def test_get_val_from_xml_1_index(
     assert (
         get_val_from_xml(
             xml_object=test_xml,
-            index_1=inputs[0],
-            xml_tag_name=inputs[1],
-            index_2=inputs[2],
+            tag_name=tag_name,
         )
         == expected_output_val
     )
@@ -175,4 +171,4 @@ def test_get_val_raise_error() -> None:
     with pytest.raises(
         AllotropeConversionError, match="Unable to find 'SerialNumber' from xml."
     ):
-        get_val_from_xml(test_xml, 2, "SerialNumber", 0)
+        get_val_from_xml(test_xml, "SerialNumber")

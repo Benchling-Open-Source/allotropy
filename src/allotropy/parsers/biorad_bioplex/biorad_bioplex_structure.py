@@ -80,18 +80,14 @@ class SampleDocumentAggregate:
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
                 # TODO: add catch of non mapping sample roles
-                sample_type = SAMPLE_ROLE_TYPE_MAPPING[child_sample_type.tag]
+                sample_type = map_sample_type(child_sample_type.tag)
                 # NOTE: Assumption here is that the description and label are always here
                 # This element is the "description"
-                sample_description = get_val_from_xml(
-                    child_sample_type, 0, "Sample Description"
-                )
+                sample_description = get_val_from_xml(child_sample_type, "Description")
                 # This element is the "label"
-                sample_identifier = get_val_from_xml(
-                    child_sample_type, 1, "Sample Identifier"
-                )
+                sample_identifier = get_val_from_xml(child_sample_type, "Label")
                 if child_sample_type[2].tag == DILUTION:
-                    sample_dilution = get_val_from_xml(child_sample_type, 2, "Dilution")
+                    sample_dilution = get_val_from_xml(child_sample_type, "Dilution")
                     for child in child_sample_type:
                         if child.tag == MEMBER_WELLS:
                             for member_well in child:
@@ -153,11 +149,11 @@ class DeviceWellSettings:
     @staticmethod
     def create(well_xml: ElementTree.Element) -> DeviceWellSettings:
         well_name = get_well_name(well_xml.attrib)
-        well_acq_time = get_val_from_xml(well_xml, 2, "AcquisitionTime")
-        total_events = get_val_from_xml(well_xml, 9, "TotalEvents")
-        sample_volume = int(get_val_from_xml(well_xml, 6, "SampleVolume", 0))
+        well_acq_time = get_val_from_xml(well_xml, "AcquisitionTime")
+        total_events = get_val_from_xml(well_xml, "TotalEvents")
+        sample_volume = int(get_val_from_xml(well_xml, "SampleVolume"))
         # RP1 Gain. 16th element of Run Conditions
-        detector_gain_setting = get_val_from_xml(well_xml, 5, "RP1Gain", 15)
+        detector_gain_setting = get_val_from_xml(well_xml, "RP1Gain")
         # Assuming second element of Run Settings
         # Can't use util here because this pulls from attrib
         min_assay_bead_count_setting = well_xml[6][1].attrib[BEAD_COUNT]
@@ -190,9 +186,9 @@ class AnalyteDocumentData:
         if assay_bead_identifier in regions_of_interest:
             analyte_name = analyte_region_dict[assay_bead_identifier]
             # Region Count is first element of bead region.
-            assay_bead_count = int(get_val_from_xml(bead_region_xml, 0, "RegionCount"))
+            assay_bead_count = int(get_val_from_xml(bead_region_xml, "RegionCount"))
             # Median
-            fluorescence = float(get_val_from_xml(bead_region_xml, 1, "Median"))
+            fluorescence = float(get_val_from_xml(bead_region_xml, "Median"))
             return AnalyteDocumentData(
                 analyte_name=analyte_name,
                 assay_bead_identifier=assay_bead_identifier,
@@ -214,11 +210,11 @@ class WellSystemLevelMetadata:
 
     @staticmethod
     def create(xml_well: ElementTree.Element) -> WellSystemLevelMetadata:
-        serial_number = get_val_from_xml(xml_well, 7, "SerialNumber", 3)
-        controller_version = get_val_from_xml(xml_well, 7, "MicroControllerVersion", 0)
-        user = get_val_from_xml(xml_well, 1, "User")
+        serial_number = get_val_from_xml(xml_well, "SerialNumber")
+        controller_version = get_val_from_xml(xml_well, "MicroControllerVersion")
+        user = get_val_from_xml(xml_well, "User")
         # This is the RunProtocolDocumentLocation
-        analytical_method = get_val_from_xml(xml_well, 4, "RunProtocolDocumentLocation")
+        analytical_method = get_val_from_xml(xml_well, "RunProtocolDocumentLocation")
         regions = xml_well[6][4]
         if regions.tag != REGIONS_OF_INTEREST:
             msg = f"Could not find {REGIONS_OF_INTEREST} in instrument xml"
@@ -266,3 +262,12 @@ def get_well_name(well_attrib: dict[str, str]) -> str:
     column_name = str(well_attrib[COLUMN_NUMBER])
     well_name = row_name + column_name
     return well_name
+
+
+def map_sample_type(sample_type_tag: str) -> str:
+    try:
+        sample_type = SAMPLE_ROLE_TYPE_MAPPING[sample_type_tag]
+        return sample_type
+    except KeyError as err:
+        msg = f"{sample_type_tag} is not in the valid list of sample role types: {SAMPLE_ROLE_TYPE_MAPPING.keys()}"
+        raise AllotropeConversionError(msg) from err

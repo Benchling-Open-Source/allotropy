@@ -201,16 +201,13 @@ def str_or_none(value: Any) -> Optional[str]:
 
 def get_val_from_xml(
     xml_object: ElementTree.Element,
-    index_1: int,
-    xml_tag_name: str,
-    index_2: Optional[int] = None,
+    tag_name: str,
 ) -> str:
-    try:
-        if index_2 is None:
-            val_from_xml = xml_object[index_1]
-        else:
-            val_from_xml = xml_object[index_1][index_2]
+    import pdb;pdb.set_trace()
+    val_from_xml = xml_object.find(".//" + tag_name)
+
+    if val_from_xml is not None:
         return str(val_from_xml.text)
-    except IndexError as e:
-        msg = f"Unable to find '{xml_tag_name}' from xml."
-        raise AllotropeConversionError(msg) from e
+    else:
+        msg = f"Unable to find '{tag_name}' from xml."
+        raise AllotropeConversionError(msg)
