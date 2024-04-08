@@ -60,15 +60,6 @@ TRANSMITTED_LIGHT_CONVERSION = {
 }
 
 
-@dataclass(frozen=True)
-class WellPosition:
-    column: str
-    row: str
-
-    def __repr__(self) -> str:
-        return self.row + self.column
-
-
 @dataclass
 class BackgroundInfo:
     experiment_type: str
@@ -79,30 +70,22 @@ class Results:
     barcode: str
     results: dict[str, str]
 
-    def iter_wells(self) -> Iterator[WellPosition]:
-        for position in self.results:
-            position_parts = assert_not_none(
-                re.match(r"^([A-Za-z]+)(\d+)$", position),
-                msg=f"bad result position '{position}' found in results section.",
-            )
-            yield WellPosition(
-                column=position_parts.group(2),
-                row=position_parts.group(1),
-            )
+    def iter_wells(self) -> Iterator[str]:
+        yield from self.results
 
     def get_plate_well_count(self) -> int:
         return len(self.results)
 
-    def get_well_float_value(self, well_position: WellPosition) -> float:
+    def get_well_float_value(self, well_position: str) -> float:
         return try_float(
             self.get_well_str_value(well_position),
             f"result well at '{well_position}'",
         )
 
-    def get_well_str_value(self, well_position: WellPosition) -> str:
+    def get_well_str_value(self, well_position: str) -> str:
         return str(
             assert_not_none(
-                self.results.get(str(well_position)),
+                self.results.get(well_position),
                 msg=f"Unable to get well at position '{well_position}' from results section.",
             )
         )
@@ -169,7 +152,7 @@ class AnalysisResult:
     def get_image_feature_name(self) -> str:
         return self.analysis_parameter
 
-    def get_result(self, well_position: WellPosition) -> str:
+    def get_result(self, well_position: str) -> str:
         return str(
             assert_not_none(
                 self.results.get(str(well_position)),
@@ -177,7 +160,7 @@ class AnalysisResult:
             )
         )
 
-    def get_image_feature_result(self, well_position: WellPosition) -> float:
+    def get_image_feature_result(self, well_position: str) -> float:
         return try_float(
             self.get_result(well_position),
             f"analysis result '{self.analysis_parameter}' at '{well_position}'",
@@ -231,15 +214,15 @@ class PlateType:
 class Platemap:
     data: dict[str, str]
 
-    def get_well_value(self, well_position: WellPosition) -> str:
+    def get_well_value(self, well_position: str) -> str:
         return str(
             assert_not_none(
-                self.data.get(str(well_position)),
+                self.data.get(well_position),
                 msg=f"Unable to get well at position '{well_position}' from platemap section.",
             )
         )
 
-    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
+    def get_sample_role_type(self, well_position: str) -> Optional[str]:
         raw_value = self.get_well_value(well_position)
         if raw_value == "-":
             return None
@@ -403,25 +386,25 @@ class Data:
     platemap: Platemap
     measurements: Measurements
 
-    def iter_wells(self) -> Iterator[WellPosition]:
+    def iter_wells(self) -> Iterator[str]:
         yield from self.results.iter_wells()
 
     def get_plate_well_count(self) -> int:
         return self.results.get_plate_well_count()
 
-    def get_well_float_value(self, well_position: WellPosition) -> float:
+    def get_well_float_value(self, well_position: str) -> float:
         return self.results.get_well_float_value(well_position)
 
-    def get_well_str_value(self, well_position: WellPosition) -> str:
+    def get_well_str_value(self, well_position: str) -> str:
         return self.results.get_well_str_value(well_position)
 
     def get_well_plate_identifier(self) -> str:
         return self.results.barcode
 
-    def get_platemap_well_value(self, well_position: WellPosition) -> str:
+    def get_platemap_well_value(self, well_position: str) -> str:
         return self.platemap.get_well_value(well_position)
 
-    def get_sample_role_type(self, well_position: WellPosition) -> Optional[str]:
+    def get_sample_role_type(self, well_position: str) -> Optional[str]:
         return self.platemap.get_sample_role_type(well_position)
 
     def get_number_of_averages(self) -> Optional[float]:

@@ -51,7 +51,6 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     Channel,
     Data,
     ExperimentType,
-    WellPosition,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
@@ -67,16 +66,14 @@ MeasurementItem = Union[
 
 class MeasurementParser(ABC):
     @abstractmethod
-    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: str) -> list[MeasurementItem]:
         pass
 
     @abstractmethod
     def get_experiment_type(self) -> ExperimentType:
         pass
 
-    def get_sample_document(
-        self, data: Data, well_position: WellPosition
-    ) -> SampleDocument:
+    def get_sample_document(self, data: Data, well_position: str) -> SampleDocument:
         well_plate_identifier = data.get_well_plate_identifier()
         platemap_value = data.get_platemap_well_value(well_position)
         sample_identifier = (
@@ -129,7 +126,7 @@ class FluorescenceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: str) -> list[MeasurementItem]:
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -174,7 +171,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: str) -> list[MeasurementItem]:
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -207,7 +204,7 @@ class LuminescenceMeasurementParser(MeasurementParser):
             ),
         )
 
-    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: str) -> list[MeasurementItem]:
         return [
             LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -260,7 +257,7 @@ class ImagingMeasurementParser(MeasurementParser):
             fluorescent_tag_setting=channel.get_fluorescent_tag(),
         )
 
-    def parse(self, data: Data, well_position: WellPosition) -> list[MeasurementItem]:
+    def parse(self, data: Data, well_position: str) -> list[MeasurementItem]:
         return [
             OpticalImagingMeasurementDocumentItems(
                 measurement_identifier=random_uuid_str(),
@@ -330,7 +327,7 @@ class KaleidoParser(VendorParser):
         self,
         data: Data,
         measurement_parser: MeasurementParser,
-        well_position: WellPosition,
+        well_position: str,
     ) -> MeasurementAggregateDocument:
         return MeasurementAggregateDocument(
             container_type=ContainerType.well_plate,
@@ -351,7 +348,7 @@ class KaleidoParser(VendorParser):
     def get_image_aggregate_document(
         self,
         data: Data,
-        well_position: WellPosition,
+        well_position: str,
         measurement_parser: MeasurementParser,
     ) -> Optional[OpticalImagingAggregateDocument]:
         if measurement_parser.get_experiment_type() != ExperimentType.OPTICAL_IMAGING:
@@ -368,7 +365,7 @@ class KaleidoParser(VendorParser):
     def get_processed_data_aggregate_document(
         self,
         data: Data,
-        well_position: WellPosition,
+        well_position: str,
         measurement_parser: MeasurementParser,
     ) -> Optional[ProcessedDataAggregateDocument]:
         if (
