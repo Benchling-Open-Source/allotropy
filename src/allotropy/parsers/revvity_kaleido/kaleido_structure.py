@@ -79,19 +79,21 @@ class BackgroundInfo:
 @dataclass(frozen=True)
 class Results:
     barcode: str
-    results: pd.DataFrame
+    results: dict[str, str]
 
     def iter_wells(self) -> Iterator[WellPosition]:
-        for row, row_series in self.results.iterrows():
-            for column in row_series.index:
-                yield WellPosition(column=str(column), row=str(row))
-
-    def get_plate_well_dimentions(self) -> tuple[int, int]:
-        return self.results.shape
+        for position in self.results:
+            position_parts = assert_not_none(
+                re.match(r"^([A-Za-z]+)(\d+)$", position),
+                msg=f"bad result position '{position}' found in results section.",
+            )
+            yield WellPosition(
+                column=position_parts.group(2),
+                row=position_parts.group(1),
+            )
 
     def get_plate_well_count(self) -> int:
-        n_rows, n_columns = self.get_plate_well_dimentions()
-        return n_rows * n_columns
+        return len(self.results)
 
     def get_well_float_value(self, well_position: WellPosition) -> float:
         return try_float(
@@ -100,11 +102,12 @@ class Results:
         )
 
     def get_well_str_value(self, well_position: WellPosition) -> str:
-        try:
-            return str(self.results.loc[well_position.row, well_position.column])
-        except KeyError as e:
-            error = f"Unable to get well at position '{well_position}' from results section."
-            raise AllotropeConversionError(error) from e
+        return str(
+            assert_not_none(
+                self.results.get(str(well_position)),
+                msg=f"Unable to get well at position '{well_position}' from results section.",
+            )
+        )
 
 
 @dataclass(frozen=True)
