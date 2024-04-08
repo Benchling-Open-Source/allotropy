@@ -3,7 +3,10 @@ import pytest
 from allotropy.parser_factory import Vendor
 from tests.parsers.test_utils import from_file, validate_contents
 
-OUTPUT_FILES = ("luminex_xPONENT_example01",)
+OUTPUT_FILES = (
+    "luminex_xPONENT_example02",
+    "luminex_xPONENT_example03",
+)
 
 VENDOR_TYPE = Vendor.LUMINEX_XPONENT
 SCHEMA_FILE = "multi-analyte-profiling/BENCHLING/2024/01/multi-analyte-profiling.json"
