@@ -47,11 +47,12 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.revvity_kaleido.kaleido_builder import create_data
-from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
+from allotropy.parsers.revvity_kaleido.kaleido_structure import (
+    Channel,
+    Data,
     ExperimentType,
     WellPosition,
 )
-from allotropy.parsers.revvity_kaleido.kaleido_structure import Channel, Data
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser

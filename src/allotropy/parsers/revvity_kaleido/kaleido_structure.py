@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+from enum import Enum
 import logging
 import re
 from typing import Optional
@@ -12,19 +13,62 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.revvity_kaleido.kaleido_common_structure import (
-    PLATEMAP_TO_SAMPLE_ROLE_TYPE,
-    SCAN_POSITION_CONVERSION,
-    TRANSMITTED_LIGHT_CONVERSION,
-    WellPosition,
-)
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
     try_float_or_none,
 )
+
+
+class ExperimentType(Enum):
+    FLUORESCENCE = "fluorescence"
+    ABSORBANCE = "absorbance"
+    LUMINESCENCE = "luminescence"
+    OPTICAL_IMAGING = "optical imaging"
+
+
+class Version(Enum):
+    V2 = "2.0"
+    V3 = "3.0"
+
+
+PLATEMAP_TO_SAMPLE_ROLE_TYPE = {
+    "B": SampleRoleType.blank_role.value,
+    "C": SampleRoleType.control_sample_role.value,
+    "S": SampleRoleType.standard_sample_role.value,
+    "U": SampleRoleType.unknown_sample_role.value,
+    "E": SampleRoleType.control_sample_role.value,
+    "ZL": SampleRoleType.control_sample_role.value,
+    "ZH": SampleRoleType.control_sample_role.value,
+    "LB": SampleRoleType.control_sample_role.value,
+    "LC": SampleRoleType.control_sample_role.value,
+    "LH": SampleRoleType.control_sample_role.value,
+}
+
+
+SCAN_POSITION_CONVERSION = {
+    "TOP": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
+    "BOTTOM": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
+}
+
+
+TRANSMITTED_LIGHT_CONVERSION = {
+    "BRIGHTFIELD": TransmittedLightSetting.brightfield,
+    "DARKFIELD": TransmittedLightSetting.darkfield,
+    "PHASE CONTRAST": TransmittedLightSetting.phase_contrast,
+}
+
+
+@dataclass(frozen=True)
+class WellPosition:
+    column: str
+    row: str
+
+    def __repr__(self) -> str:
+        return self.row + self.column
 
 
 @dataclass
