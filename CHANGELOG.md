@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ### Deprecated
 ### Removed
+- Revert kwargs to csv reader methods
 ### Security
 
 ## [0.1.25] - 2024-04-05
