@@ -166,29 +166,36 @@ class AnalysisResult:
 
 @dataclass(frozen=True)
 class MeasurementInfo:
-    elements: dict[str, str]
+    instrument_serial_number: str
+    measurement_time: str
+    protocol_signature: str
+    measurement_signature: str
 
-    def get_instrument_serial_number(self) -> str:
+    @staticmethod
+    def get_instrument_serial_number(elements: dict[str, str]) -> str:
         return assert_not_none(
-            self.elements.get("Instrument Serial Number"),
+            elements.get("Instrument Serial Number"),
             msg="Unable to find Instrument Serial Number in Measurement Information section.",
         )
 
-    def get_measurement_time(self) -> str:
+    @staticmethod
+    def get_measurement_time(elements: dict[str, str]) -> str:
         return assert_not_none(
-            self.elements.get("Measurement Started"),
+            elements.get("Measurement Started"),
             msg="Unable to find Measurement time in Measurement Information section.",
         )
 
-    def get_protocol_signature(self) -> str:
+    @staticmethod
+    def get_protocol_signature(elements: dict[str, str]) -> str:
         return assert_not_none(
-            self.elements.get("Protocol Signature"),
+            elements.get("Protocol Signature"),
             msg="Unable to find Protocol Signature in Measurement Information section.",
         )
 
-    def get_measurement_signature(self) -> str:
+    @staticmethod
+    def get_measurement_signature(elements: dict[str, str]) -> str:
         return assert_not_none(
-            self.elements.get("Measurement Signature"),
+            elements.get("Measurement Signature"),
             msg="Unable to find Measurement Signature in Measurement Information section.",
         )
 
@@ -421,15 +428,3 @@ class Data:
 
     def get_focus_height(self) -> Optional[float]:
         return self.measurements.get_focus_height()
-
-    def get_equipment_serial_number(self) -> str:
-        return self.measurement_info.get_instrument_serial_number()
-
-    def get_measurement_time(self) -> str:
-        return self.measurement_info.get_measurement_time()
-
-    def get_analytical_method_id(self) -> str:
-        return self.measurement_info.get_protocol_signature()
-
-    def get_experimentl_data_id(self) -> str:
-        return self.measurement_info.get_measurement_signature()

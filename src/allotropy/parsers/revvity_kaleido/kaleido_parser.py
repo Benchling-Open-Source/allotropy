@@ -296,7 +296,7 @@ class KaleidoParser(VendorParser):
             device_identifier="EnSight",
             model_number="EnSight",
             product_manufacturer="Revvity",
-            equipment_serial_number=data.get_equipment_serial_number(),
+            equipment_serial_number=data.measurement_info.instrument_serial_number,
         )
 
     def _get_data_system_document(
@@ -331,11 +331,13 @@ class KaleidoParser(VendorParser):
     ) -> MeasurementAggregateDocument:
         return MeasurementAggregateDocument(
             container_type=ContainerType.well_plate,
-            measurement_time=self._get_date_time(data.get_measurement_time()),
+            measurement_time=self._get_date_time(
+                data.measurement_info.measurement_time
+            ),
             plate_well_count=TQuantityValueNumber(value=data.get_plate_well_count()),
             experiment_type=data.background_info.experiment_type,
-            analytical_method_identifier=data.get_analytical_method_id(),
-            experimental_data_identifier=data.get_experimentl_data_id(),
+            analytical_method_identifier=data.measurement_info.protocol_signature,
+            experimental_data_identifier=data.measurement_info.measurement_signature,
             measurement_document=measurement_parser.parse(data, well_position),
             image_aggregate_document=self.get_image_aggregate_document(
                 data, well_position, measurement_parser
