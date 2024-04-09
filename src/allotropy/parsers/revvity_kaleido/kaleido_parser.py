@@ -74,17 +74,16 @@ class MeasurementParser(ABC):
         pass
 
     def get_sample_document(self, data: Data, well_position: str) -> SampleDocument:
-        well_plate_identifier = data.get_well_plate_identifier()
         platemap_value = data.get_platemap_well_value(well_position)
         sample_identifier = (
-            f"{well_plate_identifier}_{well_position}"
+            f"{data.results.barcode}_{well_position}"
             if platemap_value == "-"
             else platemap_value
         )
         return SampleDocument(
             sample_identifier=sample_identifier,
             location_identifier=str(well_position),
-            well_plate_identifier=well_plate_identifier,
+            well_plate_identifier=data.results.barcode,
             sample_role_type=data.get_sample_role_type(well_position),
         )
 
@@ -330,7 +329,9 @@ class KaleidoParser(VendorParser):
             measurement_time=self._get_date_time(
                 data.measurement_info.measurement_time
             ),
-            plate_well_count=TQuantityValueNumber(value=data.get_plate_well_count()),
+            plate_well_count=TQuantityValueNumber(
+                value=data.results.get_plate_well_count()
+            ),
             experiment_type=data.background_info.experiment_type,
             analytical_method_identifier=data.measurement_info.protocol_signature,
             experimental_data_identifier=data.measurement_info.measurement_signature,

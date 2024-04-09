@@ -356,17 +356,11 @@ class Data:
     def iter_wells(self) -> Iterator[str]:
         yield from self.results.data
 
-    def get_plate_well_count(self) -> int:
-        return self.results.get_plate_well_count()
-
     def get_well_float_value(self, well_position: str) -> float:
         return self.results.get_well_float_value(well_position)
 
     def get_well_str_value(self, well_position: str) -> str:
         return self.results.get_well_str_value(well_position)
-
-    def get_well_plate_identifier(self) -> str:
-        return self.results.barcode
 
     def get_platemap_well_value(self, well_position: str) -> str:
         return self.platemap.get_well_value(well_position)
