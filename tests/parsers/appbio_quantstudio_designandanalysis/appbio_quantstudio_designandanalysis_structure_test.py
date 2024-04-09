@@ -147,7 +147,7 @@ def test_results_builder() -> None:
     assert result.normalized_reporter_result is None
     assert result.baseline_corrected_reporter_result is None
     assert result.genotyping_determination_result is None
-    assert result.genotyping_determination_method_setting == None
+    assert result.genotyping_determination_method_setting is None
     assert result.quantity is None
     assert result.quantity_mean is None
     assert result.quantity_sd is None
