@@ -251,9 +251,11 @@ class MeasurementElement:
 @dataclass(frozen=True)
 class Channel:
     name: str
+    fluorescent_tag: Optional[str]
+    transmitted_light: Optional[TransmittedLightSetting]
     excitation_wavelength: float
-    excitation_power: float
-    exposure_time: float
+    illumination: float
+    exposure_duration: float
     additional_focus_offset: float
 
     @staticmethod
@@ -280,25 +282,17 @@ class Channel:
 
         return Channel(
             name.value,
-            try_float(
+            fluorescent_tag=None if name.value == "BRIGHTFIELD" else name.value,
+            transmitted_light=TRANSMITTED_LIGHT_CONVERSION.get(name.value),
+            excitation_wavelength=try_float(
                 excitation_wavelength.value.removesuffix("nm"), "excitation wavelength"
             ),
-            try_float(excitation_power.value, "excitation power"),
-            try_float(exposure_time.value, "exposure time"),
-            try_float(additional_focus_offset.value, "additional focus offset"),
+            illumination=try_float(excitation_power.value, "excitation power"),
+            exposure_duration=try_float(exposure_time.value, "exposure time"),
+            additional_focus_offset=try_float(
+                additional_focus_offset.value, "additional focus offset"
+            ),
         )
-
-    def get_exposure_duration(self) -> float:
-        return self.exposure_time
-
-    def get_illumination(self) -> float:
-        return self.excitation_power
-
-    def get_transmitted_light(self) -> Optional[TransmittedLightSetting]:
-        return TRANSMITTED_LIGHT_CONVERSION.get(self.name)
-
-    def get_fluorescent_tag(self) -> Optional[str]:
-        return None if self.name == "BRIGHTFIELD" else self.name
 
 
 @dataclass(frozen=True)

@@ -225,8 +225,6 @@ class ImagingMeasurementParser(MeasurementParser):
     def get_device_control_document(
         self, data: Data, channel: Channel
     ) -> OpticalImagingDeviceControlDocumentItem:
-        exposure_duration = channel.get_exposure_duration()
-        illumination = channel.get_illumination()
         return OpticalImagingDeviceControlDocumentItem(
             device_type="imaging detector",
             detection_type="optical-imaging",
@@ -243,16 +241,16 @@ class ImagingMeasurementParser(MeasurementParser):
             magnification_setting=TQuantityValueUnitless(value=4),
             exposure_duration_setting=(
                 None
-                if exposure_duration is None
-                else TQuantityValueMilliSecond(value=exposure_duration)
+                if channel.exposure_duration is None
+                else TQuantityValueMilliSecond(value=channel.exposure_duration)
             ),
             illumination_setting=(
                 None
-                if illumination is None
-                else TQuantityValuePercent(value=illumination)
+                if channel.illumination is None
+                else TQuantityValuePercent(value=channel.illumination)
             ),
-            transmitted_light_setting=channel.get_transmitted_light(),
-            fluorescent_tag_setting=channel.get_fluorescent_tag(),
+            transmitted_light_setting=channel.transmitted_light,
+            fluorescent_tag_setting=channel.fluorescent_tag,
         )
 
     def parse(self, data: Data, well_position: str) -> list[MeasurementItem]:
