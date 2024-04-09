@@ -7,6 +7,7 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+    ExperimentType,
     Header,
     Result,
     WellItem,
@@ -137,7 +138,7 @@ def test_results_builder() -> None:
         quencher_dye_setting="NFQ-MGB",
         sample_role_type="UNKNOWN",
     )
-    result = Result.create(data, well_item)
+    result = Result.create(data, well_item, ExperimentType.STANDARD_CURVE)
     assert isinstance(result, Result)
     assert result.cycle_threshold_value_setting == 0.1
     assert result.cycle_threshold_result == 28.037617
@@ -146,7 +147,7 @@ def test_results_builder() -> None:
     assert result.normalized_reporter_result is None
     assert result.baseline_corrected_reporter_result is None
     assert result.genotyping_determination_result is None
-    assert result.genotyping_determination_method_setting == 0.1
+    assert result.genotyping_determination_method_setting == None
     assert result.quantity is None
     assert result.quantity_mean is None
     assert result.quantity_sd is None

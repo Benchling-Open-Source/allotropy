@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
+from enum import Enum
 import re
 from typing import Optional
 
@@ -38,6 +39,17 @@ SAMPLE_ROLE_TYPES_MAP = {
     "POSITIVE_2/2": "homozygous control sample role",
     "POSITIVE_1/2": "heterozygous control sample role",
 }
+
+
+class ExperimentType(Enum):
+    STANDARD_CURVE = "Standard Curve Experiment"
+    RELATIVE_QUANTIFICATION = (
+        "Relative Quantification/Relative Standard Curve Experiment"
+    )
+    MELT_CURVE = "Melt Curve Experiment"
+    GENOTYPING = "Genotyping Experiment"
+    PRESENCE_ABSENCE = "Presence/Absence Experiment"
+    UNKNOWN = "Unknown experiment"
 
 
 @dataclass(frozen=True)
@@ -404,7 +416,9 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
-    def create(data: pd.DataFrame, well_item: WellItem) -> Result:
+    def create(
+        data: pd.DataFrame, well_item: WellItem, experiment_type: ExperimentType
+    ) -> Result:
         well_data = assert_not_empty_df(
             data[assert_df_column(data, "Well") == well_item.identifier],
             msg=f"Unable to find result data for well {well_item.identifier}.",
@@ -419,6 +433,19 @@ class Result:
                 msg=f"Unable to find result data for well {well_item.identifier}.",
             ),
             msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
+        )
+
+        genotyping_determination_result = (
+            try_str_from_series_or_none(target_data, "Call")
+            if experiment_type == ExperimentType.PRESENCE_ABSENCE
+            else None
+        )
+
+        genotyping_determination_method_setting = (
+            try_float_from_series_or_none(target_data, "Threshold")
+            if experiment_type
+            in (ExperimentType.PRESENCE_ABSENCE, ExperimentType.GENOTYPING)
+            else None
         )
 
         return Result(
@@ -444,12 +471,8 @@ class Result:
             baseline_determination_end_cycle_setting=try_float_from_series_or_none(
                 target_data, "Baseline End"
             ),
-            genotyping_determination_result=try_str_from_series_or_none(
-                target_data, "Call"
-            ),
-            genotyping_determination_method_setting=try_float_from_series_or_none(
-                target_data, "Threshold"
-            ),
+            genotyping_determination_result=genotyping_determination_result,
+            genotyping_determination_method_setting=genotyping_determination_method_setting,
             quantity=try_float_from_series_or_none(target_data, "Quantity"),
             quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
             quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
@@ -474,6 +497,35 @@ class Result:
 class Data:
     header: Header
     wells: WellList
+    experiment_type: ExperimentType
+
+    @staticmethod
+    def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:
+        if contents.get_non_empty_sheet_or_none("Standard Curve Result") is not None:
+            return ExperimentType.STANDARD_CURVE
+
+        if (
+            contents.get_non_empty_sheet_or_none("RQ Replicate Group Result")
+            is not None
+        ):
+            return ExperimentType.RELATIVE_QUANTIFICATION
+
+        if contents.get_non_empty_sheet_or_none("Genotyping Result") is not None:
+            return ExperimentType.GENOTYPING
+
+        if all(
+            contents.get_non_empty_sheet_or_none(sheet) is not None
+            for sheet in ["Melt Curve Raw", "Melt Curve Result"]
+        ):
+            return ExperimentType.MELT_CURVE
+
+        if all(
+            contents.get_non_empty_sheet_or_none(sheet) is not None
+            for sheet in ["Sample Call", "Well Call", "Target Call", "Control Status"]
+        ):
+            return ExperimentType.PRESENCE_ABSENCE
+
+        return ExperimentType.UNKNOWN
 
     @staticmethod
     def create(contents: DesignQuantstudioContents) -> Data:
@@ -481,6 +533,8 @@ class Data:
         multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         results_data = contents.get_non_empty_sheet("Results")
         melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+
+        experiment_type = Data.get_experiment_type(contents)
 
         header = Header.create(contents.header)
         wells = WellList.create(results_data)
@@ -505,9 +559,11 @@ class Data:
                 well_item.result = Result.create(
                     results_data,
                     well_item,
+                    experiment_type,
                 )
 
         return Data(
             header,
             wells,
+            experiment_type,
         )
