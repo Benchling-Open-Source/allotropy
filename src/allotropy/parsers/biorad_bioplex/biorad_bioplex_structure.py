@@ -79,7 +79,6 @@ class SampleDocumentAggregate:
         sample_documents = SampleDocumentAggregate()
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
-                # TODO: add catch of non mapping sample roles
                 sample_type = map_sample_type(child_sample_type.tag)
                 # NOTE: Assumption here is that the description and label are always here
                 # This element is the "description"
