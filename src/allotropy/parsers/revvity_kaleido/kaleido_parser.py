@@ -96,33 +96,33 @@ class FluorescenceMeasurementParser(MeasurementParser):
     def get_device_control_document(
         self, data: Data
     ) -> FluorescencePointDetectionDeviceControlDocumentItem:
-        number_of_averages = data.get_number_of_averages()
-        detector_distance = data.get_detector_distance()
-        detector_wavelength = data.get_emission_wavelength()
-        excitation_wavelength = data.get_excitation_wavelength()
         return FluorescencePointDetectionDeviceControlDocumentItem(
             device_type="fluorescence detector",
             detection_type="fluorescence",
             number_of_averages=(
                 None
-                if number_of_averages is None
-                else TQuantityValueNumber(value=number_of_averages)
+                if data.measurements.number_of_averages is None
+                else TQuantityValueNumber(value=data.measurements.number_of_averages)
             ),
             detector_distance_setting__plate_reader_=(
                 None
-                if detector_distance is None
-                else TQuantityValueMillimeter(value=detector_distance)
+                if data.measurements.detector_distance is None
+                else TQuantityValueMillimeter(value=data.measurements.detector_distance)
             ),
-            scan_position_setting__plate_reader_=data.get_scan_position(),
+            scan_position_setting__plate_reader_=data.measurements.scan_position,
             detector_wavelength_setting=(
                 None
-                if detector_wavelength is None
-                else TQuantityValueNanometer(value=detector_wavelength)
+                if data.measurements.emission_wavelength is None
+                else TQuantityValueNanometer(
+                    value=data.measurements.emission_wavelength
+                )
             ),
             excitation_wavelength_setting=(
                 None
-                if excitation_wavelength is None
-                else TQuantityValueNanometer(value=excitation_wavelength)
+                if data.measurements.excitation_wavelength is None
+                else TQuantityValueNanometer(
+                    value=data.measurements.excitation_wavelength
+                )
             ),
         )
 
@@ -148,26 +148,26 @@ class AbsorbanceMeasurementParser(MeasurementParser):
     def get_device_control_document(
         self, data: Data
     ) -> UltravioletAbsorbancePointDetectionDeviceControlDocumentItem:
-        detector_distance = data.get_detector_distance()
-        detector_wavelength = data.get_excitation_wavelength()
         return UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
             device_type="absorbance detector",
             detection_type=data.background_info.experiment_type,
             number_of_averages=TQuantityValueNumber(
                 value=assert_not_none(
-                    data.get_number_of_averages(),
+                    data.measurements.number_of_averages,
                     msg="Unable to find number of averages",
                 ),
             ),
             detector_distance_setting__plate_reader_=(
                 None
-                if detector_distance is None
-                else TQuantityValueMillimeter(value=detector_distance)
+                if data.measurements.detector_distance is None
+                else TQuantityValueMillimeter(value=data.measurements.detector_distance)
             ),
             detector_wavelength_setting=(
                 None
-                if detector_wavelength is None
-                else TQuantityValueNanometer(value=detector_wavelength)
+                if data.measurements.excitation_wavelength is None
+                else TQuantityValueNanometer(
+                    value=data.measurements.excitation_wavelength
+                )
             ),
         )
 
@@ -193,14 +193,13 @@ class LuminescenceMeasurementParser(MeasurementParser):
     def get_device_control_document(
         self, data: Data
     ) -> LuminescencePointDetectionDeviceControlDocumentItem:
-        detector_distance = data.get_detector_distance()
         return LuminescencePointDetectionDeviceControlDocumentItem(
             device_type="luminescence detector",
             detection_type=data.background_info.experiment_type,
             detector_distance_setting__plate_reader_=(
                 None
-                if detector_distance is None
-                else TQuantityValueMillimeter(value=detector_distance)
+                if data.measurements.detector_distance is None
+                else TQuantityValueMillimeter(value=data.measurements.detector_distance)
             ),
         )
 
@@ -226,7 +225,6 @@ class ImagingMeasurementParser(MeasurementParser):
     def get_device_control_document(
         self, data: Data, channel: Channel
     ) -> OpticalImagingDeviceControlDocumentItem:
-        detector_distance = data.get_focus_height()
         exposure_duration = channel.get_exposure_duration()
         illumination = channel.get_illumination()
         return OpticalImagingDeviceControlDocumentItem(
@@ -234,8 +232,8 @@ class ImagingMeasurementParser(MeasurementParser):
             detection_type="optical-imaging",
             detector_distance_setting__plate_reader_=(
                 None
-                if detector_distance is None
-                else TQuantityValueMillimeter(value=detector_distance)
+                if data.measurements.focus_height is None
+                else TQuantityValueMillimeter(value=data.measurements.focus_height)
             ),
             excitation_wavelength_setting=(
                 None

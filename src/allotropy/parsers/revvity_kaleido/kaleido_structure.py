@@ -303,14 +303,13 @@ class Channel:
 
 @dataclass(frozen=True)
 class Measurements:
-    elements: list[MeasurementElement]
     channels: list[Channel]
-    number_of_flashes: str
-    detector_distance: str
-    position: str
-    emission_wavelength: str
-    excitation_wavelength: str
-    focus_height: str
+    number_of_averages: Optional[float]
+    detector_distance: Optional[float]
+    scan_position: Optional[ScanPositionSettingPlateReader]
+    emission_wavelength: Optional[float]
+    excitation_wavelength: Optional[float]
+    focus_height: Optional[float]
 
     @staticmethod
     def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
@@ -330,53 +329,23 @@ class Measurements:
             msg = "Unable to get channel elements from Measurement section."
             raise AllotropeConversionError(msg) from e
 
-    def try_element_or_none(self, title: str) -> Optional[MeasurementElement]:
-        for element in self.elements:
+    @staticmethod
+    def try_element_or_none(
+        elements: list[MeasurementElement], title: str
+    ) -> Optional[MeasurementElement]:
+        for element in elements:
             if element.title == title:
                 return element
         return None
 
-    def get_number_of_averages(self) -> Optional[float]:
-        number_of_flashes = self.try_element_or_none(self.number_of_flashes)
-        if number_of_flashes is None:
+    @staticmethod
+    def get_element_float_value_or_none(
+        elements: list[MeasurementElement], title: str
+    ) -> Optional[float]:
+        element = Measurements.try_element_or_none(elements, title)
+        if element is None:
             return None
-        return try_float(number_of_flashes.value, self.number_of_flashes)
-
-    def get_detector_distance(self) -> Optional[float]:
-        detector_distance = self.try_element_or_none(self.detector_distance)
-        if detector_distance is None:
-            return None
-        return try_float(detector_distance.value, self.detector_distance)
-
-    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
-        position = self.try_element_or_none(self.position)
-        if position is None:
-            return None
-
-        return assert_not_none(
-            SCAN_POSITION_CONVERSION.get(position.value),
-            msg=f"'{position.value}' is not a valid scan position, expected TOP or BOTTOM.",
-        )
-
-    def get_emission_wavelength(self) -> Optional[float]:
-        emission_wavelength = self.try_element_or_none(self.emission_wavelength)
-        if emission_wavelength is None:
-            return None
-        return try_float(emission_wavelength.value, self.emission_wavelength)
-
-    def get_excitation_wavelength(self) -> Optional[float]:
-        excitation_wavelength = self.try_element_or_none(self.excitation_wavelength)
-        if excitation_wavelength is None:
-            return None
-        return try_float(
-            excitation_wavelength.value.removesuffix("nm"), self.excitation_wavelength
-        )
-
-    def get_focus_height(self) -> Optional[float]:
-        focus_height = self.try_element_or_none(self.focus_height)
-        if focus_height is None:
-            return None
-        return try_float(focus_height.value, self.focus_height)
+        return try_float_or_none(element.value)
 
 
 @dataclass(frozen=True)
@@ -410,21 +379,3 @@ class Data:
 
     def get_sample_role_type(self, well_position: str) -> Optional[str]:
         return self.platemap.get_sample_role_type(well_position)
-
-    def get_number_of_averages(self) -> Optional[float]:
-        return self.measurements.get_number_of_averages()
-
-    def get_detector_distance(self) -> Optional[float]:
-        return self.measurements.get_detector_distance()
-
-    def get_scan_position(self) -> Optional[ScanPositionSettingPlateReader]:
-        return self.measurements.get_scan_position()
-
-    def get_emission_wavelength(self) -> Optional[float]:
-        return self.measurements.get_emission_wavelength()
-
-    def get_excitation_wavelength(self) -> Optional[float]:
-        return self.measurements.get_excitation_wavelength()
-
-    def get_focus_height(self) -> Optional[float]:
-        return self.measurements.get_focus_height()

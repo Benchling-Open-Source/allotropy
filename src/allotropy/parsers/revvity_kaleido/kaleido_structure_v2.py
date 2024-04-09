@@ -11,8 +11,9 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     Platemap,
     PlateType,
     Results,
+    SCAN_POSITION_CONVERSION,
 )
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
 def create_background_info(reader: CsvReader) -> BackgroundInfo:
@@ -139,15 +140,42 @@ def create_measurements(reader: CsvReader) -> Measurements:
             MeasurementElement(title=key.rstrip(":"), value=value),
         )
 
+    scan_position_element = Measurements.try_element_or_none(
+        elements, "Excitation / Emission"
+    )
+    excitation_wavelength_element = Measurements.try_element_or_none(
+        elements, "Excitation wavelength [nm]"
+    )
+
     return Measurements(
-        elements,
         channels=Measurements.create_channels(elements),
-        number_of_flashes="Number of flashes",
-        detector_distance="Distance between Plate and Detector [mm]",
-        position="Excitation / Emission",
-        emission_wavelength="Emission wavelength [nm]",
-        excitation_wavelength="Excitation wavelength [nm]",
-        focus_height="Focus Height [µm]",
+        number_of_averages=Measurements.get_element_float_value_or_none(
+            elements, "Number of flashes"
+        ),
+        detector_distance=Measurements.get_element_float_value_or_none(
+            elements, "Distance between Plate and Detector [mm]"
+        ),
+        scan_position=(
+            None
+            if scan_position_element is None
+            else assert_not_none(
+                SCAN_POSITION_CONVERSION.get(scan_position_element.value),
+                msg=f"'{scan_position_element.value}' is not a valid scan position, expected TOP or BOTTOM.",
+            )
+        ),
+        emission_wavelength=Measurements.get_element_float_value_or_none(
+            elements, "Emission wavelength [nm]"
+        ),
+        excitation_wavelength=(
+            None
+            if excitation_wavelength_element is None
+            else try_float_or_none(
+                excitation_wavelength_element.value.removesuffix("nm")
+            )
+        ),
+        focus_height=Measurements.get_element_float_value_or_none(
+            elements, "Focus Height [µm]"
+        ),
     )
 
 
