@@ -172,7 +172,7 @@ def create_measurements(reader: CsvReader) -> Measurements:
         elements, "Excitation / Emission"
     )
     excitation_wavelength_element = Measurements.try_element_or_none(
-        elements, "Excitation wavelength [nm]"
+        elements, "Excitation Wavelength [nm]"
     )
 
     return Measurements(
