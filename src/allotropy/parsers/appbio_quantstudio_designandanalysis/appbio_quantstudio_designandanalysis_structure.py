@@ -106,7 +106,7 @@ class Header:
                 header, "Quantification Cycle Method"
             ),
             pcr_detection_chemistry=(
-                try_str_from_series_or_none(header, "Chemistry") or "N/A"
+                try_str_from_series_or_none(header, "Chemistry") or "NA"
             ),
             passive_reference_dye_setting=try_str_from_series_or_none(
                 header, "Passive Reference"
