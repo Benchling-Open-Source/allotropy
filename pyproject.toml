@@ -77,11 +77,7 @@ exclude_lines = [
 
 [tool.hatch.build.targets.sdist]
 exclude = [
-  "/docs",
-  "/tests",
   "/.github",
-  "/.vscode",
-  "/.idea",
 ]
 
 [tool.hatch.build.targets.wheel]
