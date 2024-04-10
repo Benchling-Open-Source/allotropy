@@ -7,6 +7,8 @@ import logging
 import re
 from typing import Optional
 
+import pandas as pd
+
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
@@ -114,7 +116,7 @@ class AnalysisResult:
         )
 
         try:
-            results = assert_not_none(
+            results_df = assert_not_none(
                 reader.pop_csv_block_as_df(header=0, index_col=0),
                 msg="Unable to find results table.",
             )
@@ -124,26 +126,28 @@ class AnalysisResult:
             )
             return None
 
-        for column in results:
+        for column in results_df:
             if str(column).startswith("Unnamed"):
-                results = results.drop(columns=column)
+                results_df = results_df.drop(columns=column)
 
-        try:
-            a1_str_value = str(results.iloc[0, 0])
-        except IndexError as e:
-            error = f"Unable to find first position of analysis result '{analysis_parameter}'."
-            raise AllotropeConversionError(error) from e
+        results = {
+            f"{row}{col}": values[col]
+            for row, values in results.iterrows()
+            for col in results.columns
+        }
 
-        if try_float_or_none(a1_str_value) is None:
+        a1_value = assert_not_none(
+            results.get("A1"),
+            msg=f"Unable to find first position of analysis result '{analysis_parameter}'.",
+        )
+
+        # if first value is not a valid float value the results are not useful
+        if try_float_or_none(str(a1_value)) is None:
             return None
 
         return AnalysisResult(
             analysis_parameter=analysis_parameter,
-            results={
-                f"{row}{col}": values[col]
-                for row, values in results.iterrows()
-                for col in results.columns
-            },
+            results=results,
         )
 
     def get_image_feature_name(self) -> str:
