@@ -150,9 +150,6 @@ class AnalysisResult:
             results=results,
         )
 
-    def get_image_feature_name(self) -> str:
-        return self.analysis_parameter
-
     def get_result(self, well_position: str) -> str:
         return str(
             assert_not_none(

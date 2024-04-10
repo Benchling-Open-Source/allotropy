@@ -380,7 +380,7 @@ class KaleidoParser(VendorParser):
                         image_feature_document=[
                             ImageFeatureDocumentItem(
                                 image_feature_identifier=random_uuid_str(),
-                                image_feature_name=analysis_result.get_image_feature_name(),
+                                image_feature_name=analysis_result.analysis_parameter,
                                 image_feature_result=TQuantityValueUnitless(
                                     value=analysis_result.get_image_feature_result(
                                         well_position
