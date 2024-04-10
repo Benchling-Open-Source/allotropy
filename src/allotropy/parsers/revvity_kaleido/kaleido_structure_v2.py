@@ -91,12 +91,7 @@ def create_measurement_info(reader: CsvReader) -> MeasurementInfo:
         key, _, value, *_ = raw_line.split(",")
         elements[key.rstrip(":")] = value
 
-    return MeasurementInfo(
-        instrument_serial_number=MeasurementInfo.get_instrument_serial_number(elements),
-        measurement_time=MeasurementInfo.get_measurement_time(elements),
-        protocol_signature=MeasurementInfo.get_protocol_signature(elements),
-        measurement_signature=MeasurementInfo.get_measurement_signature(elements),
-    )
+    return MeasurementInfo.create(elements)
 
 
 def create_platemap(reader: CsvReader) -> Platemap:

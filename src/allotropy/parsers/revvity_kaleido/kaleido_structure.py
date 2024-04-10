@@ -173,31 +173,32 @@ class MeasurementInfo:
     measurement_signature: str
 
     @staticmethod
-    def get_instrument_serial_number(elements: dict[str, str]) -> str:
-        return assert_not_none(
+    def create(elements: dict[str, str]) -> MeasurementInfo:
+        instrument_serial_number = assert_not_none(
             elements.get("Instrument Serial Number"),
             msg="Unable to find Instrument Serial Number in Measurement Information section.",
         )
 
-    @staticmethod
-    def get_measurement_time(elements: dict[str, str]) -> str:
-        return assert_not_none(
+        measurement_time = assert_not_none(
             elements.get("Measurement Started"),
             msg="Unable to find Measurement time in Measurement Information section.",
         )
 
-    @staticmethod
-    def get_protocol_signature(elements: dict[str, str]) -> str:
-        return assert_not_none(
+        protocol_signature = assert_not_none(
             elements.get("Protocol Signature"),
             msg="Unable to find Protocol Signature in Measurement Information section.",
         )
 
-    @staticmethod
-    def get_measurement_signature(elements: dict[str, str]) -> str:
-        return assert_not_none(
+        measurement_signature = assert_not_none(
             elements.get("Measurement Signature"),
             msg="Unable to find Measurement Signature in Measurement Information section.",
+        )
+
+        return MeasurementInfo(
+            instrument_serial_number,
+            measurement_time,
+            protocol_signature,
+            measurement_signature,
         )
 
 
