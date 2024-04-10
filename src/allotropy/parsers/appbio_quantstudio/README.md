@@ -11,7 +11,7 @@ classDiagram
         list[CalculatedDocument]: calculated_documents
     }
     class Header {
-        : str: measurement_time
+        str: measurement_time
         int: plate_well_count
         ExperimentType: experiment_type
         str: device_identifier
