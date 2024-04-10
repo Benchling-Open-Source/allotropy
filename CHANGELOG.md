@@ -12,6 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 ### Security
 
+## [0.1.27] - 2024-04-10
+### Added
+### Fixed
+### Changed
+- Exclude tests from sdist
+### Deprecated
+### Removed
+### Security
+
 ## [0.1.26] - 2024-04-08
 ### Added
 ### Fixed
