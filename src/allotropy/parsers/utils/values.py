@@ -15,6 +15,10 @@ from allotropy.exceptions import AllotropeConversionError
 PrimitiveValue = Union[str, int, float]
 
 
+def str_to_bool(value: str) -> bool:
+    return value.lower() in ("yes", "true", "t", "1")
+
+
 def try_int(value: Optional[str], value_name: str) -> int:
     try:
         return int(assert_not_none(value, value_name))
@@ -191,7 +195,7 @@ def try_bool_from_series_or_none(
 ) -> Optional[bool]:
     try:
         value = data.get(key)
-        return None if value is None else str(value).lower() == "true"
+        return None if value is None else str_to_bool(str(value))
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
