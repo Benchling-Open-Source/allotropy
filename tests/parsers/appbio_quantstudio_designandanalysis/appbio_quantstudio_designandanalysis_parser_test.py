@@ -1,7 +1,7 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents
+from allotropy.testing.utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "appbio_quantstudio_designandanalysis_QS1_Standard_Curve_example01",
