@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.24] - 2024-04-03
 ### Added
 - Add optical imaging to plate reader schema
+- Add Revvity Kaleido adapter
 ### Fixed
 - Change lightfield with brightfield in transmitted light setting enum of plate reader schema
 - Fix missing case for concentration column without A260 prefix in Unchained Labs Lunatic
