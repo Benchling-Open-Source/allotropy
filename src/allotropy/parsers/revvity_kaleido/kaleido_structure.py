@@ -7,8 +7,6 @@ import logging
 import re
 from typing import Optional
 
-import pandas as pd
-
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
     TransmittedLightSetting,
@@ -132,17 +130,19 @@ class AnalysisResult:
 
         results = {
             f"{row}{col}": values[col]
-            for row, values in results.iterrows()
-            for col in results.columns
+            for row, values in results_df.iterrows()
+            for col in results_df.columns
         }
 
-        a1_value = assert_not_none(
-            results.get("A1"),
-            msg=f"Unable to find first position of analysis result '{analysis_parameter}'.",
+        a1_value = str(
+            assert_not_none(
+                results.get("A1"),
+                msg=f"Unable to find first position of analysis result '{analysis_parameter}'.",
+            )
         )
 
         # if first value is not a valid float value the results are not useful
-        if try_float_or_none(str(a1_value)) is None:
+        if try_float_or_none(a1_value) is None:
             return None
 
         return AnalysisResult(
