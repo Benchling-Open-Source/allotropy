@@ -6,7 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Added allotropy.testing library, exposing test utils for validating ASM outside of allotropy
 ### Fixed
 ### Changed
 ### Deprecated
@@ -15,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.27] - 2024-04-10
 ### Added
+- Added allotropy.testing library, exposing test utils for validating ASM outside of allotropy
 ### Fixed
 ### Changed
 - Exclude tests from sdist
