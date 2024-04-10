@@ -57,7 +57,6 @@ class TestIdGenerator:
         self.next_id = 0
 
     def generate_id(self) -> str:
-
         current_id = f"{self.prefix}TEST_ID_{self.next_id}"
         self.next_id += 1
         return current_id
