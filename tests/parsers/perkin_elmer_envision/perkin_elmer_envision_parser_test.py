@@ -6,11 +6,11 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
     PerkinElmerEnvisionParser,
 )
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import from_file, validate_contents
 from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
     get_data,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "PE_Envision_absorbance_example01",
