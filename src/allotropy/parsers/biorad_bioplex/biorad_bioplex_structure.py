@@ -6,26 +6,46 @@ from xml.etree import ElementTree
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import (
+    get_attrib_from_xml,
+    get_element_from_xml,
     get_val_from_xml,
+    get_val_from_xml_or_none,
+    try_float,
+    try_float_or_none,
+    try_int,
 )
 
 WELLS_TAG = "Wells"
+RP1_GAIN = "RP1Gain"
+LABEL = "Label"
+RUN_CONDITIONS = "RunConditions"
+MACHINE_INFO = "MachineInfo"
 DOC_LOCATION_TAG = "NativeDocumentLocation"
 DESCRIPTION_TAG = "Description"
 PLATE_DIMENSIONS_TAG = "PlateDimensions"
 TOTAL_WELLS_ATTRIB = "TotalWells"
 VERSION_ATTRIB = "BioPlexManagerVersion"
+REGION_COUNT = "RegionCount"
 SAMPLES = "Samples"
+BEAD_MAP = "BeadMap"
+MEDIAN = "Median"
 MEMBER_WELLS = "MemberWells"
 ROW_NUMBER = "RowNo"
 COLUMN_NUMBER = "ColNo"
+SERIAL_NUMBER = "SerialNumber"
 WELL_NUMBER = "WellNumber"
 WELL_NO = "WellNo"
 REGION_NUMBER = "RegionNumber"
 REGIONS_OF_INTEREST = "RegionsOfInterest"
+STOP_READING_CRITERIA = "StopReadingCriteria"
+READING = "Reading"
+RUN_SETTINGS = "RunSettings"
+SAMPLE_VOLUME = "SampleVolume"
 CODE = "Code"
 DILUTION = "Dilution"
 BEAD_COUNT = "BeadCount"
+TOTAL_EVENTS = "TotalEvents"
+ACQ_TIME = "AcquisitionTime"
 ROW_NAMES = "ABCDEFGH"
 
 SAMPLE_ROLE_TYPE_MAPPING = {
@@ -46,8 +66,10 @@ class AnalyteSample:
     def create(analyte_xml: ElementTree.Element) -> AnalyteSample:
         return AnalyteSample(
             analyte_name=str(analyte_xml[0].text),
-            analyte_region=int(analyte_xml.attrib[REGION_NUMBER]),
-            analyte_error_code=int(analyte_xml[1].attrib[CODE]),
+            analyte_region=try_int(analyte_xml.attrib[REGION_NUMBER], "analyte_region"),
+            analyte_error_code=try_int(
+                get_attrib_from_xml(analyte_xml, READING, CODE), "analyte_error_code"
+            ),
         )
 
 
@@ -63,7 +85,7 @@ class SampleDocument:
     sample_identifier: str
     description: str
     well_name: str
-    sample_dilution: float
+    sample_dilution: Optional[float]
     well_analyte_mapping: WellAnalyteMapping
 
 
@@ -80,27 +102,25 @@ class SampleDocumentAggregate:
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
                 sample_type = map_sample_type(child_sample_type.tag)
-                # NOTE: Assumption here is that the description and label are always here
-                # This element is the "description"
-                sample_description = get_val_from_xml(child_sample_type, "Description")
-                # This element is the "label"
-                sample_identifier = get_val_from_xml(child_sample_type, "Label")
-                if child_sample_type[2].tag == DILUTION:
-                    sample_dilution = get_val_from_xml(child_sample_type, "Dilution")
-                    for child in child_sample_type:
-                        if child.tag == MEMBER_WELLS:
-                            for member_well in child:
-                                sample_document = (
-                                    SampleDocumentAggregate._generate_sample_document(
-                                        sample_documents=sample_documents,
-                                        well_xml=member_well,
-                                        sample_id=sample_identifier,
-                                        sample_dilution=float(sample_dilution),
-                                        sample_type=sample_type,
-                                        sample_description=sample_description,
-                                    )
+                sample_description = get_val_from_xml(
+                    child_sample_type, DESCRIPTION_TAG
+                )
+                sample_identifier = get_val_from_xml(child_sample_type, LABEL)
+                sample_dilution = get_val_from_xml_or_none(child_sample_type, DILUTION)
+                for child in child_sample_type:
+                    if child.tag == MEMBER_WELLS:
+                        for member_well in child:
+                            sample_document = (
+                                SampleDocumentAggregate._generate_sample_document(
+                                    sample_documents=sample_documents,
+                                    well_xml=member_well,
+                                    sample_id=sample_identifier,
+                                    sample_dilution=try_float_or_none(sample_dilution),
+                                    sample_type=sample_type,
+                                    sample_description=sample_description,
                                 )
-                                sample_documents.samples.append(sample_document)
+                            )
+                            sample_documents.samples.append(sample_document)
 
         return sample_documents
 
@@ -109,7 +129,7 @@ class SampleDocumentAggregate:
         sample_documents: SampleDocumentAggregate,
         well_xml: ElementTree.Element,
         sample_id: str,
-        sample_dilution: float,
+        sample_dilution: Optional[float],
         sample_type: str,
         sample_description: str,
     ) -> SampleDocument:
@@ -148,21 +168,25 @@ class DeviceWellSettings:
     @staticmethod
     def create(well_xml: ElementTree.Element) -> DeviceWellSettings:
         well_name = get_well_name(well_xml.attrib)
-        well_acq_time = get_val_from_xml(well_xml, "AcquisitionTime")
-        total_events = get_val_from_xml(well_xml, "TotalEvents")
-        sample_volume = int(get_val_from_xml(well_xml, "SampleVolume"))
-        # RP1 Gain. 16th element of Run Conditions
-        detector_gain_setting = get_val_from_xml(well_xml, "RP1Gain")
-        # Assuming second element of Run Settings
-        # Can't use util here because this pulls from attrib
-        min_assay_bead_count_setting = well_xml[6][1].attrib[BEAD_COUNT]
+        well_acq_time = get_val_from_xml(well_xml, ACQ_TIME)
+        total_events = get_val_from_xml(well_xml, TOTAL_EVENTS)
+        sample_volume = try_int(
+            get_val_from_xml(well_xml, RUN_SETTINGS, SAMPLE_VOLUME), "sample_volume"
+        )
+
+        detector_gain_setting = get_val_from_xml(well_xml, RUN_CONDITIONS, RP1_GAIN)
+        min_assay_bead_count_setting = get_attrib_from_xml(
+            well_xml, RUN_SETTINGS, BEAD_COUNT, STOP_READING_CRITERIA
+        )
         return DeviceWellSettings(
             well_name=well_name,
             sample_volume_setting=sample_volume,
             detector_gain_setting=detector_gain_setting,
-            minimum_assay_bead_count_setting=int(min_assay_bead_count_setting),
+            minimum_assay_bead_count_setting=try_int(
+                min_assay_bead_count_setting, "minimum_assay_bead_count_settings"
+            ),
             acquisition_time=well_acq_time,
-            well_total_events=int(total_events),
+            well_total_events=try_int(total_events, "well_total_events"),
         )
 
 
@@ -184,10 +208,13 @@ class AnalyteDocumentData:
         # Look up bead region -> analyte name
         if assay_bead_identifier in regions_of_interest:
             analyte_name = analyte_region_dict[assay_bead_identifier]
-            # Region Count is first element of bead region.
-            assay_bead_count = int(get_val_from_xml(bead_region_xml, "RegionCount"))
+            assay_bead_count = try_int(
+                get_val_from_xml(bead_region_xml, REGION_COUNT), "assay_bead_count"
+            )
             # Median
-            fluorescence = float(get_val_from_xml(bead_region_xml, "Median"))
+            fluorescence = try_float(
+                get_val_from_xml(bead_region_xml, MEDIAN), "fluorescence"
+            )
             return AnalyteDocumentData(
                 analyte_name=analyte_name,
                 assay_bead_identifier=assay_bead_identifier,
@@ -209,16 +236,13 @@ class WellSystemLevelMetadata:
 
     @staticmethod
     def create(xml_well: ElementTree.Element) -> WellSystemLevelMetadata:
-        serial_number = get_val_from_xml(xml_well, "SerialNumber")
-        controller_version = get_val_from_xml(xml_well, "MicroControllerVersion")
+        serial_number = get_val_from_xml(xml_well, MACHINE_INFO, SERIAL_NUMBER)
+        controller_version = get_val_from_xml(
+            xml_well, MACHINE_INFO, "MicroControllerVersion"
+        )
         user = get_val_from_xml(xml_well, "User")
-        # This is the RunProtocolDocumentLocation
         analytical_method = get_val_from_xml(xml_well, "RunProtocolDocumentLocation")
-        regions = xml_well[6][4]
-        if regions.tag != REGIONS_OF_INTEREST:
-            msg = f"Could not find {REGIONS_OF_INTEREST} in instrument xml"
-            raise AllotropeConversionError(msg)
-
+        regions = get_element_from_xml(xml_well, RUN_SETTINGS, REGIONS_OF_INTEREST)
         regions_of_interest = []
         for region in regions:
             int_region = int(region.attrib[REGION_NUMBER])

@@ -199,14 +199,48 @@ def str_or_none(value: Any) -> Optional[str]:
     return None if value is None else str(value)
 
 
+def get_element_from_xml(
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
+) -> ElementTree.Element:
+    if tag_name_2 is not None:
+        tag_finder = tag_name + "/" + tag_name_2
+        xml_element = xml_object.find(tag_finder)
+    else:
+        tag_finder = tag_name
+        xml_element = xml_object.find(tag_finder)
+    if xml_element is not None:
+        return xml_element
+    else:
+        msg = f"Unable to find '{tag_finder}' from xml."
+        raise AllotropeConversionError(msg)
+
+
 def get_val_from_xml(
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
+) -> str:
+    return str(get_element_from_xml(xml_object, tag_name, tag_name_2).text)
+
+
+def get_val_from_xml_or_none(
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
+) -> Optional[str]:
+    try:
+        val_from_xml = str(get_element_from_xml(xml_object, tag_name, tag_name_2).text)
+        return val_from_xml
+    except AllotropeConversionError:
+        return None
+
+
+def get_attrib_from_xml(
     xml_object: ElementTree.Element,
     tag_name: str,
+    attrib_name: str,
+    tag_name_2: Optional[str] = None,
 ) -> str:
-    val_from_xml = xml_object.find(".//" + tag_name)
-
-    if val_from_xml is not None:
-        return str(val_from_xml.text)
-    else:
-        msg = f"Unable to find '{tag_name}' from xml."
-        raise AllotropeConversionError(msg)
+    xml_element = get_element_from_xml(xml_object, tag_name, tag_name_2)
+    try:
+        attribute_val = xml_element.attrib[attrib_name]
+        return attribute_val
+    except KeyError as e:
+        msg = f"Unable to find '{attrib_name}' in {xml_element.attrib}"
+        raise AllotropeConversionError(msg) from e
