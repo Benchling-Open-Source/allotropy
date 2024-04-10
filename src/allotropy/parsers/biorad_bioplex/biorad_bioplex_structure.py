@@ -16,6 +16,8 @@ from allotropy.parsers.utils.values import (
 )
 
 WELLS_TAG = "Wells"
+ANALYTE_NAME = "AnalyteName"
+MW_ANALYTES = "MWAnalytes"
 RP1_GAIN = "RP1Gain"
 LABEL = "Label"
 RUN_CONDITIONS = "RunConditions"
@@ -65,7 +67,7 @@ class AnalyteSample:
     @staticmethod
     def create(analyte_xml: ElementTree.Element) -> AnalyteSample:
         return AnalyteSample(
-            analyte_name=str(analyte_xml[0].text),
+            analyte_name=get_val_from_xml(analyte_xml, ANALYTE_NAME),
             analyte_region=try_int(analyte_xml.attrib[REGION_NUMBER], "analyte_region"),
             analyte_error_code=try_int(
                 get_attrib_from_xml(analyte_xml, READING, CODE), "analyte_error_code"
@@ -135,7 +137,7 @@ class SampleDocumentAggregate:
     ) -> SampleDocument:
         well_name = get_well_name(well_xml.attrib)
         mappings = WellAnalyteMapping(well_name=well_name, analytes=[])
-        for analyte in well_xml[0]:
+        for analyte in get_element_from_xml(well_xml, MW_ANALYTES):
             # Create the analyte.
             new_analyte = AnalyteSample.create(analyte_xml=analyte)
             # Add the analyte to the well analyte mappings.
@@ -245,7 +247,7 @@ class WellSystemLevelMetadata:
         regions = get_element_from_xml(xml_well, RUN_SETTINGS, REGIONS_OF_INTEREST)
         regions_of_interest = []
         for region in regions:
-            int_region = int(region.attrib[REGION_NUMBER])
+            int_region = try_int(region.attrib[REGION_NUMBER], "int_region")
             regions_of_interest.append(int_region)
         return WellSystemLevelMetadata(
             serial_number=serial_number,
@@ -281,7 +283,7 @@ def validate_xml_structure(full_xml: ElementTree.Element) -> None:
 
 
 def get_well_name(well_attrib: dict[str, str]) -> str:
-    row_name = ROW_NAMES[int(well_attrib[ROW_NUMBER]) - 1]
+    row_name = ROW_NAMES[try_int(well_attrib[ROW_NUMBER], "row_number") - 1]
     column_name = str(well_attrib[COLUMN_NUMBER])
     well_name = row_name + column_name
     return well_name
