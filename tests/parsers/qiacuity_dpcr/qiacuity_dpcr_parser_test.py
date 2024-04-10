@@ -1,7 +1,7 @@
 import pytest
 
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents
+from allotropy.testing.utils import from_file, validate_contents
 
 output_files = ("qiacuity_dpcr_example01.csv", "qiacuity_dpcr_example02.csv")
 
