@@ -18,9 +18,10 @@ OUTPUT_FILES = (
     "appbio_quantstudio_designandanalysis_QS7Pro_Relative_Quantification_Biogroup_example12",
     "appbio_quantstudio_designandanalysis_QS7Pro_Relative_Standard_Curve_example13",
     "appbio_quantstudio_designandanalysis_QS7Pro_Standard_Curve_example14",
-    ## "appbio_quantstudio_designandanalysis_QS7Pro_Standard_Curve_TAC_example15",
-    ## "appbio_quantstudio_designandanalysis_OpenArray_GeneExp_example16",
-    ## "appbio_quantstudio_designandanalysis_OpenArray_Genotyping_example17",
+    # files with open array structure are not supported at the moment
+    # "appbio_quantstudio_designandanalysis_QS7Pro_Standard_Curve_TAC_example15",
+    # "appbio_quantstudio_designandanalysis_OpenArray_GeneExp_example16",
+    # "appbio_quantstudio_designandanalysis_OpenArray_Genotyping_example17",
 )
 
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS
