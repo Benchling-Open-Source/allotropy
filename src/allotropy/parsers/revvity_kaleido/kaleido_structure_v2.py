@@ -9,7 +9,6 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     MeasurementInfo,
     Measurements,
     Platemap,
-    PlateType,
     Results,
     SCAN_POSITION_CONVERSION,
 )
@@ -175,13 +174,26 @@ def create_measurements(reader: CsvReader) -> Measurements:
 
 
 def create_data_v2(version: str, reader: CsvReader) -> Data:
+    background_info = create_background_info(reader)
+    results = create_results(reader)
+    analysis_results = create_analysis_results(reader)
+    measurement_info = create_measurement_info(reader)
+
+    assert_not_none(
+        reader.drop_until_inclusive("^Plate Type"),
+        msg="Unable to find Plate Type section.",
+    )
+    reader.drop_until("^Platemap")
+
+    platemap = create_platemap(reader)
+    measurements = create_measurements(reader)
+
     return Data(
-        version=version,
-        background_info=create_background_info(reader),
-        results=create_results(reader),
-        analysis_results=create_analysis_results(reader),
-        measurement_info=create_measurement_info(reader),
-        plate_type=PlateType.create(reader),
-        platemap=create_platemap(reader),
-        measurements=create_measurements(reader),
+        version,
+        background_info,
+        results,
+        analysis_results,
+        measurement_info,
+        platemap,
+        measurements,
     )

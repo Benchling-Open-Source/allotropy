@@ -203,20 +203,6 @@ class MeasurementInfo:
 
 
 @dataclass(frozen=True)
-class PlateType:
-    elements: dict[str, str]
-
-    @staticmethod
-    def create(reader: CsvReader) -> PlateType:
-        assert_not_none(
-            reader.drop_until_inclusive("^Plate Type"),
-            msg="Unable to find Plate Type section.",
-        )
-        reader.drop_until("^Platemap")
-        return PlateType({})
-
-
-@dataclass(frozen=True)
 class Platemap:
     data: dict[str, str]
 
@@ -351,7 +337,6 @@ class Data:
     results: Results
     analysis_results: list[AnalysisResult]
     measurement_info: MeasurementInfo
-    plate_type: PlateType
     platemap: Platemap
     measurements: Measurements
 
