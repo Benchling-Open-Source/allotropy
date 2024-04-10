@@ -24,6 +24,7 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser impo
 from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
 )
+from allotropy.parsers.biorad_bioplex.biorad_bioplex_parser import BioradBioplexParser
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
@@ -51,6 +52,7 @@ class Vendor(Enum):
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
     BECKMAN_VI_CELL_BLU = "BECKMAN_VI_CELL_BLU"
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
+    BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
@@ -82,6 +84,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
+    Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
 }
 
 
