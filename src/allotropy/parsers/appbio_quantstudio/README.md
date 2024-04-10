@@ -39,7 +39,7 @@ classDiagram
     class MulticomponentData {
         list[float]: cycle
         dict[str, list[Optional[float]]]: columns
-        list[Optional[float]]: get_column(self, name: str)
+        list[Optional[float]]: get_column(name: str)
     }
     class MeltCurveRawData {
         list[float]: reading
@@ -59,10 +59,10 @@ classDiagram
         Optional[Result]: result
     }
     class AmplificationData {
-    total_cycle_number_setting: float
-    cycle: list[float]
-    rn: list[Optional[float]]
-    delta_rn: list[Optional[float]]
+        float: total_cycle_number_setting
+        list[float]: cycle
+        list[Optional[float]]: rn
+        list[Optional[float]]: delta_rn
     }
     class Result {
         float: cycle_threshold_value_setting
