@@ -6,31 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Added allotropy.testing library, exposing test utils for validating ASM outside of allotropy
 ### Fixed
 ### Changed
 ### Deprecated
 ### Removed
 ### Security
+
+## [0.1.27] - 2024-04-10
+### Added
+- Added allotropy.testing library, exposing test utils for validating ASM outside of allotropy
+### Changed
+- Exclude tests from sdist
 
 ## [0.1.26] - 2024-04-08
-### Added
 ### Fixed
 - Reverted "add encoding inference to Beckman Vi Cell Blu adapter" - it is causing unexpected behavior in other environments
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.25] - 2024-04-05
-### Added
 ### Fixed
 - Add encoding inference to Beckman Vi Cell Blu adapter
 - Fix Luminex Xponent adapter to account for the correct instrument file formatting
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.24] - 2024-04-03
 ### Added
@@ -39,10 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Change lightfield with brightfield in transmitted light setting enum of plate reader schema
 - Fix missing case for concentration column without A260 prefix in Unchained Labs Lunatic
-### Changed
-### Deprecated
-### Removed
-### Security
 
 ## [0.1.23] - 2024-03-12
 ### Added
