@@ -1,7 +1,7 @@
 import pytest
 
 from allotropy.parsers.agilent_gen5.constants import ReadMode
-from allotropy.parsers.agilent_gen5.plate_data import LayoutData, ReadData
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import LayoutData, ReadData
 from allotropy.parsers.lines_reader import LinesReader
 
 

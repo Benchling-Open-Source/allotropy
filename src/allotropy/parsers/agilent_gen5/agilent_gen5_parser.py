@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
@@ -23,14 +23,15 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.agilent_gen5.agilent_gen5_structure import Data
 from allotropy.parsers.agilent_gen5.constants import (
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
+    MULTIPLATE_FILE_ERROR,
     ReadMode,
 )
-from allotropy.parsers.agilent_gen5.plate_data import PlateData
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -105,10 +106,11 @@ class AgilentGen5Parser(VendorParser):
         sample_identifier = plate_data.layout_data.sample_identifiers.get(
             well_position, f"{well_plate_identifier} {well_position}"
         )
+
         return SampleDocument(
             sample_identifier=sample_identifier,
             location_identifier=well_position,
-            # TODO: check if plate identifier can be extracted from filename
+            # TODO: check if the well plate identifier can be extracted from filename
             well_plate_identifier=plate_data.header_data.well_plate_identifier,
         )
 
@@ -170,8 +172,15 @@ class AgilentGen5Parser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)
         section_lines_reader = SectionLinesReader(lines)
-        data = Data.create(section_lines_reader)
+        plates = list(section_lines_reader.iter_sections("^Software Version"))
 
-        return self._create_model(
-            data.plate_data, named_file_contents.original_file_name
-        )
+        if not plates:
+            msg = "No plate data found in file."
+            raise AllotropeConversionError(msg)
+
+        if len(plates) > 1:
+            raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
+
+        plate_data = PlateData.create(plates[0])
+
+        return self._create_model(plate_data, named_file_contents.original_file_name)
