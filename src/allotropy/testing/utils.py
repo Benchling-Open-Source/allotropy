@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from collections.abc import Mapping
+from collections.abc import Iterator, Mapping
+from contextlib import contextmanager
 import json
 import shutil
 import tempfile
@@ -32,6 +33,7 @@ def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictTyp
 def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
+    print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     expected_replaced = _replace_asm_converter_name_and_version(expected)
 
@@ -41,30 +43,38 @@ def _assert_allotrope_dicts_equal(
         ignore_type_in_groups=[(float, np.float64)],
         ignore_nan_inequality=True,
     )
-    assert not ddiff
+    if print_verbose_deep_diff:
+        print(ddiff)  # noqa: T201
+    assert not ddiff  # noqa: S101
 
 
 class TestIdGenerator:
-    vendor: Vendor
     next_id: int
+    prefix: Optional[str]
 
-    def __init__(self, vendor: Vendor) -> None:
-        self.vendor = vendor
+    def __init__(self, prefix: Optional[str]) -> None:
+        self.prefix = f"{prefix}_" if prefix else ""
         self.next_id = 0
 
     def generate_id(self) -> str:
-        current_id = f"{self.vendor.name}_TEST_ID_{self.next_id}"
+        current_id = f"{self.prefix}TEST_ID_{self.next_id}"
         self.next_id += 1
         return current_id
+
+
+@contextmanager
+def mock_uuid_generation(prefix: Optional[str]) -> Iterator[None]:
+    with mock.patch(
+        "allotropy.parsers.utils.uuids._IdGeneratorFactory.get_id_generator",
+        return_value=TestIdGenerator(prefix),
+    ):
+        yield
 
 
 def from_file(
     test_file: str, vendor: Vendor, encoding: Optional[str] = None
 ) -> DictType:
-    with mock.patch(
-        "allotropy.parsers.utils.uuids._IdGeneratorFactory.get_id_generator",
-        return_value=TestIdGenerator(vendor),
-    ):
+    with mock_uuid_generation(vendor.name):
         return allotrope_from_file(test_file, vendor, encoding=encoding)
 
 
@@ -81,6 +91,7 @@ def validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
+    print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     with open(expected_file) as f:
@@ -91,11 +102,13 @@ def validate_contents(
         json.dump(allotrope_dict, tmp)
 
     try:
-        _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
-    except:
+        _assert_allotrope_dicts_equal(
+            expected_dict, allotrope_dict, print_verbose_deep_diff
+        )
+    except Exception:
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_file)
         raise
 
     # Ensure that tests fail if the param is set to True. We never want to commit with a True value.
-    assert not write_actual_to_expected_on_fail
+    assert not write_actual_to_expected_on_fail  # noqa: S101
