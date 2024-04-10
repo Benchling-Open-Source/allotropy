@@ -13,20 +13,21 @@ from allotropy.types import IOType
 
 
 class DesignQuantstudioContents:
-    def __init__(self, contents: IOType) -> None:
-        self.raw_contents = pd.read_excel(contents, header=None, sheet_name=None)
-        self.contents = {
-            name: df.replace(np.nan, None) for name, df in self.raw_contents.items()
+    def __init__(self, contents_io: IOType) -> None:
+        raw_contents = pd.read_excel(contents_io, header=None, sheet_name=None)
+        contents = {
+            str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }
 
-        self.header = self._get_header()
+        self.header = self._get_header(contents)
         self.data = self._get_data(
-            self.header.size + 1
-        )  # plus 1 for empty line between header and data
+            self.header.size + 1,  # plus 1 for empty line between header and data
+            contents,
+        )
 
-    def _get_header(self) -> pd.Series[str]:
+    def _get_header(self, contents: dict[str, pd.DataFrame]) -> pd.Series[str]:
         sheet = assert_not_none(
-            self.contents.get("Results"),
+            contents.get("Results"),
             msg="Unable to find 'Results' sheet.",
         )
 
@@ -40,9 +41,11 @@ class DesignQuantstudioContents:
         header.index = header.index.str.strip()
         return header
 
-    def _get_data(self, drop_n_columns: int) -> dict[str, pd.DataFrame]:
+    def _get_data(
+        self, drop_n_columns: int, contents: dict[str, pd.DataFrame]
+    ) -> dict[str, pd.DataFrame]:
         data_structure = {}
-        for name, sheet in self.contents.items():
+        for name, sheet in contents.items():
             data = sheet.iloc[drop_n_columns:].reset_index(drop=True)
             data.columns = pd.Index(data.iloc[0])
             data_structure[name] = data.drop(0)
