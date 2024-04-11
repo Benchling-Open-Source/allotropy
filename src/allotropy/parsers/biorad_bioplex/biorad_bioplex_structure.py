@@ -3,10 +3,40 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Optional
 from xml.etree import ElementTree
-from typing import Any, Optional
 
-
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.biorad_bioplex.constants import (
+    ACQ_TIME,
+    ANALYTE_NAME,
+    BEAD_COUNT,
+    CODE,
+    COLUMN_NUMBER,
+    DESCRIPTION_TAG,
+    DILUTION,
+    DOC_LOCATION_TAG,
+    LABEL,
+    MACHINE_INFO,
+    MEDIAN,
+    MEMBER_WELLS,
+    MW_ANALYTES,
+    PLATE_DIMENSIONS_TAG,
+    READING,
+    REGION_COUNT,
+    REGION_NUMBER,
+    REGIONS_OF_INTEREST,
+    ROW_NAMES,
+    ROW_NUMBER,
+    RP1_GAIN,
+    RUN_CONDITIONS,
+    RUN_SETTINGS,
+    SAMPLE_VOLUME,
+    SAMPLES,
+    SERIAL_NUMBER,
+    STOP_READING_CRITERIA,
+    TOTAL_EVENTS,
+    WELLS_TAG,
+)
 from allotropy.parsers.utils.values import (
     get_attrib_from_xml,
     get_element_from_xml,
@@ -17,43 +47,6 @@ from allotropy.parsers.utils.values import (
     try_int,
 )
 
-from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-
-WELLS_TAG = "Wells"
-ANALYTE_NAME = "AnalyteName"
-MW_ANALYTES = "MWAnalytes"
-RP1_GAIN = "RP1Gain"
-LABEL = "Label"
-RUN_CONDITIONS = "RunConditions"
-MACHINE_INFO = "MachineInfo"
-DOC_LOCATION_TAG = "NativeDocumentLocation"
-DESCRIPTION_TAG = "Description"
-PLATE_DIMENSIONS_TAG = "PlateDimensions"
-TOTAL_WELLS_ATTRIB = "TotalWells"
-VERSION_ATTRIB = "BioPlexManagerVersion"
-REGION_COUNT = "RegionCount"
-SAMPLES = "Samples"
-BEAD_MAP = "BeadMap"
-MEDIAN = "Median"
-MEMBER_WELLS = "MemberWells"
-ROW_NUMBER = "RowNo"
-COLUMN_NUMBER = "ColNo"
-SERIAL_NUMBER = "SerialNumber"
-WELL_NUMBER = "WellNumber"
-WELL_NO = "WellNo"
-REGION_NUMBER = "RegionNumber"
-REGIONS_OF_INTEREST = "RegionsOfInterest"
-STOP_READING_CRITERIA = "StopReadingCriteria"
-READING = "Reading"
-RUN_SETTINGS = "RunSettings"
-SAMPLE_VOLUME = "SampleVolume"
-CODE = "Code"
-DILUTION = "Dilution"
-BEAD_COUNT = "BeadCount"
-TOTAL_EVENTS = "TotalEvents"
-ACQ_TIME = "AcquisitionTime"
-ROW_NAMES = "ABCDEFGH"
-
 SAMPLE_ROLE_TYPE_MAPPING = {
     "Blank": SampleRoleType.blank_role,
     "Control": SampleRoleType.control_sample_role,
@@ -61,33 +54,20 @@ SAMPLE_ROLE_TYPE_MAPPING = {
     "Unknown": SampleRoleType.unknown_sample_role,
 }
 
-ERROR_MAPPING = {
-    "1": "Low bead number",
-    "2": "Aggregated beads",
-    "3": "Classify efficiency",
-    "4": "Region selection",
-    "5": "Platform temperature"
-}
-
 
 @dataclass(frozen=True)
 class AnalyteSample:
     analyte_name: str
     analyte_region: int
-    analyte_error_code: int
+    analyte_error_code: str
 
     @staticmethod
     def create(analyte_xml: ElementTree.Element) -> AnalyteSample:
         return AnalyteSample(
             analyte_name=get_val_from_xml(analyte_xml, ANALYTE_NAME),
             analyte_region=try_int(analyte_xml.attrib[REGION_NUMBER], "analyte_region"),
-            analyte_error_code=try_int(
-                get_attrib_from_xml(analyte_xml, READING, CODE), "analyte_error_code"
-            ),
+            analyte_error_code=get_attrib_from_xml(analyte_xml, READING, CODE),
         )
-
-    @staticmethod
-    def _get_error_str_from_code(self):
 
 
 @dataclass(frozen=True)
@@ -98,7 +78,7 @@ class WellAnalyteMapping:
 
 @dataclass
 class SampleDocumentStructure:
-    sample_type: str
+    sample_type: SampleRoleType
     sample_identifier: str
     description: str
     well_name: str
@@ -109,9 +89,9 @@ class SampleDocumentStructure:
 @dataclass
 class SampleDocumentAggregate:
     # This data class pulled from the <Samples> part of the xml.
-    samples: list[SampleDocumentStructure] = field(default_factory=list)
+    samples_dict: dict[str, SampleDocumentStructure] = field(default_factory=dict)
     # Default to empty dictionary.
-    analyte_region_dict: dict[int, str] = field(default_factory=dict)
+    analyte_region_dict: dict[str, str] = field(default_factory=dict)
 
     @staticmethod
     def create(samples_xml: ElementTree.Element) -> SampleDocumentAggregate:
@@ -137,8 +117,9 @@ class SampleDocumentAggregate:
                                     sample_description=sample_description,
                                 )
                             )
-                            sample_documents.samples.append(sample_document)
-
+                            sample_documents.samples_dict[
+                                sample_document.well_name
+                            ] = sample_document
         return sample_documents
 
     @staticmethod
@@ -147,7 +128,7 @@ class SampleDocumentAggregate:
         well_xml: ElementTree.Element,
         sample_id: str,
         sample_dilution: Optional[float],
-        sample_type: str,
+        sample_type: SampleRoleType,
         sample_description: str,
     ) -> SampleDocumentStructure:
         well_name = get_well_name(well_xml.attrib)
@@ -225,7 +206,6 @@ class AnalyteDocumentData:
 
         # Look up bead region -> analyte name
         if assay_bead_identifier in regions_of_interest:
-
             analyte_name = analyte_region_dict[assay_bead_identifier]
             assay_bead_count = try_int(
                 get_val_from_xml(bead_region_xml, REGION_COUNT), "assay_bead_count"
@@ -251,7 +231,7 @@ class WellSystemLevelMetadata:
     controller_version: str
     user: str
     analytical_method: str
-    regions_of_interest: list[int] = field(default_factory=list)
+    regions_of_interest: list[str] = field(default_factory=list)
 
     @staticmethod
     def create(xml_well: ElementTree.Element) -> WellSystemLevelMetadata:
@@ -264,8 +244,8 @@ class WellSystemLevelMetadata:
         regions = get_element_from_xml(xml_well, RUN_SETTINGS, REGIONS_OF_INTEREST)
         regions_of_interest = []
         for region in regions:
-            region = str(region.attrib[REGION_NUMBER])
-            regions_of_interest.append(region)
+            region_str = str(region.attrib[REGION_NUMBER])
+            regions_of_interest.append(region_str)
         return WellSystemLevelMetadata(
             serial_number=serial_number,
             controller_version=controller_version,
@@ -306,7 +286,7 @@ def get_well_name(well_attrib: dict[str, str]) -> str:
     return well_name
 
 
-def map_sample_type(sample_type_tag: str) -> str:
+def map_sample_type(sample_type_tag: str) -> SampleRoleType:
     try:
         sample_type = SAMPLE_ROLE_TYPE_MAPPING[sample_type_tag]
         return sample_type
