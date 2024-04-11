@@ -17,6 +17,8 @@ READ_SPEED_KEY = "Read Speed"
 DEFAULT_SOFTWARE_NAME = "Gen5"
 DEVICE_TYPE = "plate reader"
 
+FILENAME_REGEX = r"^\d{6}_\d{6}_(?P<plate_identifier>.[^_]*)_.*\.txt$"
+
 
 class ReadMode(str, Enum):
     ABSORBANCE = "Absorbance"

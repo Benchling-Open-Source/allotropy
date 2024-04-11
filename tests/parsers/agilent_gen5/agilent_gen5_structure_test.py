@@ -1,8 +1,52 @@
 import pytest
 
-from allotropy.parsers.agilent_gen5.agilent_gen5_structure import LayoutData, ReadData
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
+    HeaderData,
+    LayoutData,
+    ReadData,
+)
 from allotropy.parsers.agilent_gen5.constants import ReadMode
 from allotropy.parsers.lines_reader import LinesReader
+
+
+@pytest.mark.short
+def test_create_header_data_no_well_plate_id_in_filename() -> None:
+    header_rows = [
+        "Plate Number	Plate 1",
+        "Date	10/10/2022",
+        "Time	9:00:04 PM",
+        "Reader Type:	Synergy H1",
+        "Reader Serial Number:	Serial01",
+        "Reading Type	Manual",
+    ]
+    reader = LinesReader(header_rows)
+    header_data = HeaderData.create(reader, "dummy_filename.txt")
+
+    assert header_data == HeaderData(
+        datetime="10/10/2022 9:00:04 PM",
+        well_plate_identifier="Plate 1",
+        model_number="Synergy H1",
+        equipment_serial_number="Serial01",
+    )
+
+
+@pytest.mark.short
+def test_create_header_data_with_well_plate_id_from_filename() -> None:
+    header_rows = [
+        "Plate Number	Plate 1",
+        "Date	10/10/2022",
+        "Time	9:00:04 PM",
+        "Reader Type:	Synergy H1",
+        "Reader Serial Number:	Serial01",
+        "Reading Type	Manual",
+    ]
+    well_plate_id = "PLATEID123"
+    matching_file_name = f"010307_114129_{well_plate_id}_std_01.txt"
+
+    reader = LinesReader(header_rows)
+    header_data = HeaderData.create(reader, matching_file_name)
+
+    assert header_data.well_plate_identifier == well_plate_id
 
 
 @pytest.mark.short

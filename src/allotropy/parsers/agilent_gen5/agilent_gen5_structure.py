@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+import re
 from typing import Optional, Union
 
 from allotropy.exceptions import (
@@ -14,6 +15,7 @@ from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataP
 from allotropy.parsers.agilent_gen5.constants import (
     EMISSION_KEY,
     EXCITATION_KEY,
+    FILENAME_REGEX,
     GAIN_KEY,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
@@ -93,14 +95,15 @@ class HeaderData:
     equipment_serial_number: str
 
     @classmethod
-    def create(cls, reader: LinesReader) -> HeaderData:
+    def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
         assert_not_none(reader.drop_until("^Plate Number"), "Plate Number")
         metadata_dict = cls._parse_metadata(reader)
         datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
+        plate_identifier = cls._get_identifier_from_filename_or_none(file_name)
 
         return HeaderData(
             datetime=datetime_,
-            well_plate_identifier=metadata_dict["Plate Number"],
+            well_plate_identifier=plate_identifier or metadata_dict["Plate Number"],
             model_number=metadata_dict["Reader Type:"],
             equipment_serial_number=metadata_dict["Reader Serial Number:"],
         )
@@ -121,6 +124,15 @@ class HeaderData:
     @classmethod
     def _parse_datetime(cls, date_: str, time_: str) -> str:
         return f"{date_} {time_}"
+
+    @classmethod
+    def _get_identifier_from_filename_or_none(cls, file_name: str) -> Optional[str]:
+        matches = re.match(FILENAME_REGEX, file_name)
+        if not matches:
+            return None
+
+        matches_dict = matches.groupdict()
+        return matches_dict["plate_identifier"]
 
 
 @dataclass(frozen=True)
@@ -470,9 +482,9 @@ class PlateData:
     compartment_temperature: Optional[float]
 
     @staticmethod
-    def create(reader: LinesReader) -> PlateData:
+    def create(reader: LinesReader, file_name: str) -> PlateData:
         file_paths = FilePaths.create(reader)
-        header_data = HeaderData.create(reader)
+        header_data = HeaderData.create(reader, file_name)
         read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
         actual_temperature = ActualTemperature.create_default()

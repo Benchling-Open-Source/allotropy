@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
@@ -25,13 +25,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import PlateData
 from allotropy.parsers.agilent_gen5.constants import (
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
     MULTIPLATE_FILE_ERROR,
     ReadMode,
 )
-from allotropy.parsers.agilent_gen5.agilent_gen5_structure import PlateData
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -181,6 +181,6 @@ class AgilentGen5Parser(VendorParser):
         if len(plates) > 1:
             raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
 
-        plate_data = PlateData.create(plates[0])
+        plate_data = PlateData.create(plates[0], named_file_contents.original_file_name)
 
         return self._create_model(plate_data, named_file_contents.original_file_name)
