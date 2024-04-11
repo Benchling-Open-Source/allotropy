@@ -1,25 +1,5 @@
-from more_itertools import one
 import pytest
 
-from allotropy.allotrope.models.shared.components.plate_reader import (
-    ProcessedDataDocumentItem,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValueNumber,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
-from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
-    ContainerType,
-    DeviceControlDocumentItem,
-    Model,
-)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.agilent_gen5.constants import (
@@ -27,7 +7,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     NO_PLATE_DATA_ERROR,
     UNSUPORTED_READ_TYPE_ERROR,
 )
-from allotropy.to_allotrope import allotrope_model_from_file
 from tests.parsers.test_utils import (
     from_file,
     validate_contents,
@@ -63,8 +42,8 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
-    allotrope_dict['plate reader aggregate document']['data system document'][
-        'file name'
+    allotrope_dict["plate reader aggregate document"]["data system document"][
+        "file name"
     ] = "endpoint_pathlength_correct_singleplate.txt"
 
     validate_contents(allotrope_dict, expected_filepath)
