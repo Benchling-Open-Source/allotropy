@@ -16,6 +16,10 @@ from allotropy.exceptions import AllotropeConversionError
 PrimitiveValue = Union[str, int, float]
 
 
+def str_to_bool(value: str) -> bool:
+    return value.lower() in ("yes", "true", "t", "1")
+
+
 def try_int(value: Optional[str], value_name: str) -> int:
     try:
         return int(assert_not_none(value, value_name))
@@ -93,6 +97,14 @@ def df_to_series(
     if n_rows == 1:
         return pd.Series(df.iloc[0], index=df.columns)
     raise AllotropeConversionError(msg)
+
+
+def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
+    df_column = df.get(column)
+    if df_column is None:
+        msg = f"Unable to find column '{column}'"
+        raise AllotropeConversionError(msg)
+    return pd.Series(df_column)
 
 
 def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
@@ -184,7 +196,7 @@ def try_bool_from_series_or_none(
 ) -> Optional[bool]:
     try:
         value = data.get(key)
-        return None if value is None else bool(value)
+        return None if value is None else str_to_bool(str(value))
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
         raise AllotropeConversionError(msg) from e
