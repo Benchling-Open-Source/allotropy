@@ -5,9 +5,9 @@ from typing import Optional
 import pandas as pd
 import pytest
 
+from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
-    ExperimentType,
     Header,
     Result,
     WellItem,
@@ -138,7 +138,9 @@ def test_results_builder() -> None:
         quencher_dye_setting="NFQ-MGB",
         sample_role_type="UNKNOWN",
     )
-    result = Result.create(data, well_item, ExperimentType.STANDARD_CURVE)
+    result = Result.create(
+        data, well_item, ExperimentType.standard_curve_qPCR_experiment
+    )
     assert isinstance(result, Result)
     assert result.cycle_threshold_value_setting == 0.1
     assert result.cycle_threshold_result == 28.037617

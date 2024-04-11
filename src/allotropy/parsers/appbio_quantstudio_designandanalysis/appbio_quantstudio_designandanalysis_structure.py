@@ -2,12 +2,13 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-from enum import Enum
 import re
 from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
@@ -39,17 +40,6 @@ SAMPLE_ROLE_TYPES_MAP = {
     "POSITIVE_2/2": "homozygous control sample role",
     "POSITIVE_1/2": "heterozygous control sample role",
 }
-
-
-class ExperimentType(Enum):
-    STANDARD_CURVE = "Standard Curve Experiment"
-    RELATIVE_QUANTIFICATION = (
-        "Relative Quantification/Relative Standard Curve Experiment"
-    )
-    MELT_CURVE = "Melt Curve Experiment"
-    GENOTYPING = "Genotyping Experiment"
-    PRESENCE_ABSENCE = "Presence/Absence Experiment"
-    UNKNOWN = "Unknown experiment"
 
 
 @dataclass(frozen=True)
@@ -437,14 +427,17 @@ class Result:
 
         genotyping_determination_result = (
             try_str_from_series_or_none(target_data, "Call")
-            if experiment_type == ExperimentType.PRESENCE_ABSENCE
+            if experiment_type == ExperimentType.presence_absence_qPCR_experiment
             else None
         )
 
         genotyping_determination_method_setting = (
             try_float_from_series_or_none(target_data, "Threshold")
             if experiment_type
-            in (ExperimentType.PRESENCE_ABSENCE, ExperimentType.GENOTYPING)
+            in (
+                ExperimentType.presence_absence_qPCR_experiment,
+                ExperimentType.genotyping_qPCR_experiment,
+            )
             else None
         )
 
@@ -502,27 +495,28 @@ class Data:
     @staticmethod
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:
         if contents.get_non_empty_sheet_or_none("Standard Curve Result") is not None:
-            return ExperimentType.STANDARD_CURVE
+            return ExperimentType.standard_curve_qPCR_experiment
 
         if (
             contents.get_non_empty_sheet_or_none("RQ Replicate Group Result")
             is not None
         ):
-            return ExperimentType.RELATIVE_QUANTIFICATION
+            return ExperimentType.relative_standard_curve_qPCR_experiment
 
         if contents.get_non_empty_sheet_or_none("Genotyping Result") is not None:
-            return ExperimentType.GENOTYPING
+            return ExperimentType.genotyping_qPCR_experiment
 
         if all(
             contents.get_non_empty_sheet_or_none(sheet) is not None
             for sheet in ["Melt Curve Raw", "Melt Curve Result"]
         ):
-            return ExperimentType.MELT_CURVE
+            return ExperimentType.melt_curve_qPCR_experiment
 
         if all(
             contents.get_non_empty_sheet_or_none(sheet) is not None
             for sheet in ["Sample Call", "Well Call", "Target Call", "Control Status"]
         ):
-            return ExperimentType.PRESENCE_ABSENCE
+            return ExperimentType.presence_absence_qPCR_experiment
 
-        return ExperimentType.UNKNOWN
+        error = "Unable to infer expermient type"
+        raise AllotropeConversionError(error)
