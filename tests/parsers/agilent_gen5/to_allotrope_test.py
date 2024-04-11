@@ -113,7 +113,7 @@ def test_model_from_file_absorbance() -> None:
     control_docs = device_control_aggregate_document.device_control_document
     assert control_docs
     control_doc = one(control_docs)
-    assert control_doc == DeviceControlDocumentItem()
+    assert control_doc == DeviceControlDocumentItem(device_type="absorbance detector")
 
     assert data_cube == TDatacube(
         label="endpoint data",

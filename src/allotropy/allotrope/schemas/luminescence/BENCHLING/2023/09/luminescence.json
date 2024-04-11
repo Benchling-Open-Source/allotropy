@@ -135,6 +135,9 @@
                             "type": "object",
                             "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
                             "$asm.pattern": "aggregate datum",
+                            "required": [
+                              "device type"
+                            ],
                             "properties": {
                               "device type": {
                                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002568",
