@@ -176,7 +176,7 @@ def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
 
     assert calculated_data_item.name == "Concentration"
     assert calculated_data_item.value == 4.5
-    assert calculated_data_item.unit == "ng/mL"
+    assert calculated_data_item.unit == "ng/uL"
     assert calculated_data_item.data_source_document[0].feature == "absorbance"
 
 
