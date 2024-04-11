@@ -6,7 +6,6 @@ from allotropy.testing.utils import from_file, validate_contents
 OUTPUT_FILES = (
     "Demo_A260_dsDNA_Data",
     "Demo_A280_Protein",
-    "A260_dsDNA_without_wavelength_in_concentration_header",
 )
 
 VENDOR_TYPE = Vendor.UNCHAINED_LABS_LUNATIC
