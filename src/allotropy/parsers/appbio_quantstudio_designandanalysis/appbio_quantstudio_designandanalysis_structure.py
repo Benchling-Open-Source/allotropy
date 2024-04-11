@@ -9,6 +9,8 @@ import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
+from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
@@ -131,8 +133,7 @@ class Header:
 
 
 @dataclass
-class WellItem:
-    uuid: str
+class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
@@ -413,6 +414,28 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
+    def get_reference_sample(contents: DesignQuantstudioContents) -> str:
+        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+        return try_str_from_series(
+            df_to_series(
+                data[assert_df_column(data, "Rq") == 1],
+                msg="Unable to find Rq related to reference sample.",
+            ),
+            "Sample",
+            msg="Unable to infer reference sample.",
+        )
+
+    @staticmethod
+    def get_reference_target(contents: DesignQuantstudioContents) -> str:
+        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+        sub_data = data[assert_df_column(data, "Rq").isnull()]
+        target = assert_df_column(sub_data, "Target").unique()
+        if target.size != 1:
+            error = "Unable to infer reference target."
+            raise AllotropeConversionError(error)
+        return str(target[0])
+
+    @staticmethod
     def _add_relative_data(data: pd.DataFrame, extra_data: pd.DataFrame) -> None:
         columns = [
             "Delta EqCq Mean",
@@ -532,6 +555,7 @@ class Data:
     header: Header
     wells: WellList
     experiment_type: ExperimentType
+    calculated_documents: list[CalculatedDocument]
 
     @staticmethod
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:
