@@ -17,7 +17,9 @@ class AbsorbanceDataPoint(DataPoint):
 
     def to_measurement_doc(self) -> MeasurementDocumentItem:
         measurement_doc = MeasurementDocumentItem(
-            DeviceControlAggregateDocument([DeviceControlDocumentItem(device_type="absorbance detector")]),
+            DeviceControlAggregateDocument(
+                [DeviceControlDocumentItem(device_type="absorbance detector")]
+            ),
             self.generate_sample_doc(),
         )
         measurement_doc.data_cube = self.generate_data_cube()
