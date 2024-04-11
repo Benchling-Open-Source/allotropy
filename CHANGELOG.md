@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Add AppBio Quantstudio Design and Analysis adapter
 ### Fixed
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
 ### Changed
