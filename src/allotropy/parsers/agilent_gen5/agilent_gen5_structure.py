@@ -410,7 +410,9 @@ class ActualTemperature:
             raise AllotropeConversionError(msg)
 
         return ActualTemperature(
-            value=float(actual_temperature.strip().split("\t")[-1]),
+            value=try_float(
+                actual_temperature.strip().split("\t")[-1], "Actual Temperature"
+            ),
         )
 
 

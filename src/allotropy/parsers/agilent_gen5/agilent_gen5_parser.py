@@ -110,7 +110,6 @@ class AgilentGen5Parser(VendorParser):
         return SampleDocument(
             sample_identifier=sample_identifier,
             location_identifier=well_position,
-            # TODO: check if the well plate identifier can be extracted from filename
             well_plate_identifier=plate_data.header_data.well_plate_identifier,
         )
 
@@ -123,8 +122,8 @@ class AgilentGen5Parser(VendorParser):
         read_data = plate_data.read_data
 
         measurements = plate_data.results.measurements[well_position]
-
         sample_document = self._get_sample_document(plate_data, well_position)
+        compartment_temperature = self._get_compartment_temperature(plate_data)
 
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
@@ -148,13 +147,7 @@ class AgilentGen5Parser(VendorParser):
                     ]
                 ),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(absorbance),
-                compartment_temperature=(
-                    TQuantityValueDegreeCelsius(
-                        value=plate_data.compartment_temperature
-                    )
-                    if plate_data.compartment_temperature
-                    else None
-                ),
+                compartment_temperature=compartment_temperature,
             )
             for label, absorbance in measurements
         ]
@@ -168,6 +161,16 @@ class AgilentGen5Parser(VendorParser):
         self,
     ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
         return []
+
+    def _get_compartment_temperature(
+        self,
+        plate_data: PlateData,
+    ) -> TQuantityValueDegreeCelsius:
+        return (
+            TQuantityValueDegreeCelsius(value=plate_data.compartment_temperature)
+            if plate_data.compartment_temperature
+            else None
+        )
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)
