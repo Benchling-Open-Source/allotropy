@@ -24,6 +24,7 @@ ABSORBENCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
     "endpoint_stdcurve_singleplate_2",
+    "010307_114129_BNCH654563_stdcurve_singleplate01",
 ]
 
 
@@ -46,6 +47,13 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
         "file name"
     ] = "endpoint_pathlength_correct_singleplate.txt"
 
+    validate_contents(allotrope_dict, expected_filepath)
+
+
+def test_to_allotrope_absorbance_well_plate_id_in_filename() -> None:
+    test_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/010307_114129_BNCH654563_stdcurve_singleplate01.txt"
+    expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/010307_114129_BNCH654563_stdcurve_singleplate01.json"
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
