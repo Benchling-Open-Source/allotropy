@@ -230,14 +230,38 @@ class Well:
         header: Header,
         well_data: pd.DataFrame,
         identifier: int,
+        experiment_type: ExperimentType,
     ) -> Well:
+        amp_data = contents.get_non_empty_sheet("Amplification Data")
+        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
         multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
+        results_data = contents.get_non_empty_sheet("Results")
+
+        well_items = {
+            try_str_from_series(item_data, "Target"): WellItem.create(item_data)
+            for _, item_data in well_data.iterrows()
+        }
+
+        for well_item in well_items.values():
+            if melt_curve_data is not None:
+                well_item.melt_curve_data = MeltCurveData.create(
+                    melt_curve_data, identifier, well_item
+                )
+
+            well_item.amplification_data = AmplificationData.create(
+                amp_data,
+                well_item,
+            )
+
+            well_item.result = Result.create(
+                results_data,
+                well_item,
+                experiment_type,
+            )
+
         return Well(
             identifier=identifier,
-            items={
-                try_str_from_series(item_data, "Target"): WellItem.create(item_data)
-                for _, item_data in well_data.iterrows()
-            },
+            items=well_items,
             multicomponent_data=(
                 None
                 if multi_data is None
@@ -263,41 +287,20 @@ class WellList:
         header: Header,
         experiment_type: ExperimentType,
     ) -> WellList:
-        amp_data = contents.get_non_empty_sheet("Amplification Data")
         results_data = contents.get_non_empty_sheet("Results")
-        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
-
         assert_df_column(results_data, "Well")
-
-        wells = [
-            Well.create(
-                contents,
-                header,
-                well_data,
-                try_int(str(identifier), "well identifier"),
-            )
-            for identifier, well_data in results_data.groupby("Well")
-        ]
-
-        for well in wells:
-            for well_item in well.items.values():
-                if melt_curve_data is not None:
-                    well_item.melt_curve_data = MeltCurveData.create(
-                        melt_curve_data, well, well_item
-                    )
-
-                well_item.amplification_data = AmplificationData.create(
-                    amp_data,
-                    well_item,
-                )
-
-                well_item.result = Result.create(
-                    results_data,
-                    well_item,
+        return WellList(
+            wells=[
+                Well.create(
+                    contents,
+                    header,
+                    well_data,
+                    try_int(str(identifier), "well identifier"),
                     experiment_type,
                 )
-
-        return WellList(wells)
+                for identifier, well_data in results_data.groupby("Well")
+            ]
+        )
 
 
 @dataclass(frozen=True)
@@ -385,10 +388,10 @@ class MeltCurveData:
     derivative: list[Optional[float]]
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well, well_item: WellItem) -> MeltCurveData:
+    def create(data: pd.DataFrame, well_id: int, well_item: WellItem) -> MeltCurveData:
         well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well.identifier],
-            msg=f"Unable to find melt curve data for well {well.identifier}.",
+            data[assert_df_column(data, "Well") == well_id],
+            msg=f"Unable to find melt curve data for well {well_id}.",
         )
 
         target_data = assert_not_empty_df(
