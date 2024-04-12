@@ -255,17 +255,50 @@ class WellList:
         return iter(self.wells)
 
     @staticmethod
-    def create(results_data: pd.DataFrame) -> WellList:
+    def create(
+        contents: DesignQuantstudioContents,
+        header: Header,
+        experiment_type: ExperimentType,
+    ) -> WellList:
+        amp_data = contents.get_non_empty_sheet("Amplification Data")
+        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
+        results_data = contents.get_non_empty_sheet("Results")
+        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+
         assert_df_column(results_data, "Well")
-        return WellList(
-            [
-                Well.create(
-                    try_int(str(identifier), "well identifier"),
-                    well_data,
+
+        wells = [
+            Well.create(
+                try_int(str(identifier), "well identifier"),
+                well_data,
+            )
+            for identifier, well_data in results_data.groupby("Well")
+        ]
+
+        for well in wells:
+            if multi_data is not None:
+                well.multicomponent_data = MulticomponentData.create(
+                    multi_data, well, header
                 )
-                for identifier, well_data in results_data.groupby("Well")
-            ]
-        )
+
+            for well_item in well.items.values():
+                if melt_curve_data is not None:
+                    well_item.melt_curve_data = MeltCurveData.create(
+                        melt_curve_data, well, well_item
+                    )
+
+                well_item.amplification_data = AmplificationData.create(
+                    amp_data,
+                    well_item,
+                )
+
+                well_item.result = Result.create(
+                    results_data,
+                    well_item,
+                    experiment_type,
+                )
+
+        return WellList(wells)
 
 
 @dataclass(frozen=True)
