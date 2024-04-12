@@ -4,7 +4,7 @@ import pytest
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents
+from allotropy.testing.utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "v2.04/Beckman_Vi-Cell-XR_example03_instrumentOutput.xls",

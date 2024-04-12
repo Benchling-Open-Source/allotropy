@@ -1183,7 +1183,7 @@
                 "$asm.lookup-property": "http://www.w3.org/2004/02/skos/core#prefLabel",
                 "$asm.type": "http://www.w3.org/2000/01/rdf-schema#Class",
                 "enum": [
-                  "lightfield",
+                  "brightfield",
                   "darkfield",
                   "phase contrast"
                 ],

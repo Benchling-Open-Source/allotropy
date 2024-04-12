@@ -7,6 +7,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import Data
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import from_file, validate_contents
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
     get_broken_calc_doc_model,
@@ -19,7 +20,6 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_rel_std_curve_data,
     get_rel_std_curve_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "appbio_quantstudio_example01",

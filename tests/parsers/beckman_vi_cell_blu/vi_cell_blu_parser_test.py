@@ -7,12 +7,12 @@ from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting im
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import from_file, validate_contents
 from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_data,
     get_filename,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "Beckman_Vi-Cell-BLU_example01",
