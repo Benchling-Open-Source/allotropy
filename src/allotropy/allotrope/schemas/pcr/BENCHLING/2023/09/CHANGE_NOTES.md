@@ -70,3 +70,25 @@ Changes:
     * Renamed "annealing duration setting" to "annealing time setting"
     * Renamed "primer extension temperature setting" to "extension temperature setting"
     * Renamed "primer extension duration setting" to "extension time setting"
+
+* Change name of "device serial number" to "equipment serial number" in "device system document"
+  * Reasoning: "device serial number" is alternative label of preferred label "equipment serial number"
+  * Proposal: TODO rename field to conform with ASM
+  
+* Remove "equipment serial number", "model number", "device identifier" as required for "device system document"
+  * Reasoning: Fields are not always provided by instruments
+  * Proposal: TODO adjust our schema to remove requirement and conform to ASM
+  
+* Add "processed data identifier" to "processed data document"
+  * Reasoning: "processed data identifier" should be present in all "processed data document". Left out in original schema proposal
+  * Proposal: TODO add "processed data identifier" as required field to "processed data document" to conform to ASM
+  
+* Add additional elements to "sample role type" enumerated list for "sample document"
+  * Reasoning: Additions will handle sample role cases in qPCR instrument outputs that currently do not fit in current schema
+  * Proposal: TODO add following sample role types to enum
+    * "positive control sample role"
+    * "negative control sample role"
+    * "heterozygous control sample role"
+    * "homozygous control sample role"
+    * "reference DNA control sample role"
+    * "DNA amplification control sample role"
