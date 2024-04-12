@@ -9,12 +9,10 @@ from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
 )
-from allotropy.types import IOType
 
 
 class DesignQuantstudioContents:
-    def __init__(self, contents_io: IOType) -> None:
-        raw_contents = pd.read_excel(contents_io, header=None, sheet_name=None)
+    def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }

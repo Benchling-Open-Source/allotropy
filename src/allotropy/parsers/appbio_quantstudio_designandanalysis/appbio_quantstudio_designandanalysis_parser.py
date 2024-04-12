@@ -1,5 +1,7 @@
 from typing import Optional
 
+import pandas as pd
+
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     BaselineCorrectedReporterDataCube,
     ContainerType,
@@ -50,7 +52,10 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents = DesignQuantstudioContents(named_file_contents.contents)
+        raw_contents = pd.read_excel(
+            named_file_contents.contents, header=None, sheet_name=None
+        )
+        contents = DesignQuantstudioContents(raw_contents)
         data = create_data(contents)
         return self._get_model(data, named_file_contents.original_file_name)
 
