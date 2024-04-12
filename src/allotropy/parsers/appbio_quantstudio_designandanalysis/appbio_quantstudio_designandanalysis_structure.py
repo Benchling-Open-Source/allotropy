@@ -215,7 +215,7 @@ class WellItem:
 class Well:
     identifier: int
     items: dict[str, WellItem]
-    _multicomponent_data: Optional[MulticomponentData] = None
+    multicomponent_data: Optional[MulticomponentData] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -224,22 +224,25 @@ class Well:
             msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
         )
 
-    @property
-    def multicomponent_data(self) -> Optional[MulticomponentData]:
-        return self._multicomponent_data
-
-    @multicomponent_data.setter
-    def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
-        self._multicomponent_data = multicomponent_data
-
     @staticmethod
-    def create(identifier: int, well_data: pd.DataFrame) -> Well:
+    def create(
+        contents: DesignQuantstudioContents,
+        header: Header,
+        well_data: pd.DataFrame,
+        identifier: int,
+    ) -> Well:
+        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
             items={
                 try_str_from_series(item_data, "Target"): WellItem.create(item_data)
                 for _, item_data in well_data.iterrows()
             },
+            multicomponent_data=(
+                None
+                if multi_data is None
+                else MulticomponentData.create(header, multi_data, identifier)
+            ),
         )
 
 
@@ -261,7 +264,6 @@ class WellList:
         experiment_type: ExperimentType,
     ) -> WellList:
         amp_data = contents.get_non_empty_sheet("Amplification Data")
-        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         results_data = contents.get_non_empty_sheet("Results")
         melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
 
@@ -269,18 +271,15 @@ class WellList:
 
         wells = [
             Well.create(
-                try_int(str(identifier), "well identifier"),
+                contents,
+                header,
                 well_data,
+                try_int(str(identifier), "well identifier"),
             )
             for identifier, well_data in results_data.groupby("Well")
         ]
 
         for well in wells:
-            if multi_data is not None:
-                well.multicomponent_data = MulticomponentData.create(
-                    multi_data, well, header
-                )
-
             for well_item in well.items.values():
                 if melt_curve_data is not None:
                     well_item.melt_curve_data = MeltCurveData.create(
@@ -348,10 +347,10 @@ class MulticomponentData:
         )
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well, header: Header) -> MulticomponentData:
+    def create(header: Header, data: pd.DataFrame, well_id: int) -> MulticomponentData:
         well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well.identifier],
-            msg=f"Unable to find multi component data for well {well.identifier}.",
+            data[assert_df_column(data, "Well") == well_id],
+            msg=f"Unable to find multi component data for well {well_id}.",
         )
 
         stage_data = assert_not_empty_df(
