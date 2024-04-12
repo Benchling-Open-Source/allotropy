@@ -18,3 +18,7 @@ Changes:
   * Reasoning: Not all cell counters provide total cell count
   * Proposal: remove "total cell count" from required in "processed data document", see https://gitlab.com/allotrope/adm/-/issues/610
   * NOTE: this is implemented in the 2023/12 release of cell-counting schema
+
+* Add "image aggregate document" to "measurement document" of "cell counting document"
+  * Reasoning: Recording of image files that cell counting instruments will generate along with results output
+  * Proposal: TODO Add "image aggregate document" as optional child of "measurement document"
