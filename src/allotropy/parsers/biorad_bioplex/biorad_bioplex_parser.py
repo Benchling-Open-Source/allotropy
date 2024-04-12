@@ -67,7 +67,6 @@ from allotropy.parsers.vendor_parser import VendorParser
 class BioradBioplexParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents.read()
-        # contents = named_file_contents.contents.read().decode("utf-8")
         xml_tree = Et.ElementTree(Et.fromstring(contents))  # noqa: S314
         root_xml = xml_tree.getroot()
         validate_xml_structure(root_xml)
