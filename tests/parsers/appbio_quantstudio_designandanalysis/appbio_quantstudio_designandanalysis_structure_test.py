@@ -7,10 +7,12 @@ import pytest
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
+    DesignQuantstudioContents,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     Header,
     Result,
-    WellItem,
 )
 
 
@@ -103,43 +105,50 @@ def test_header_builder_no_header_then_raise() -> None:
 
 @pytest.mark.design_quantstudio
 def test_results_builder() -> None:
+    raw_data = [
+        ("Well", 1),
+        ("Well Position", "A1"),
+        ("Omit", False),
+        ("Sample", "Unk_5K"),
+        ("Target", "RNaseP"),
+        ("Task", "UNKNOWN"),
+        ("Reporter", "FAM"),
+        ("Quencher", "NFQ-MGB"),
+        ("Amp Status", "AMP"),
+        ("Amp Score", 1.280378),
+        ("Curve Quality", None),
+        ("Result Quality Issues", None),
+        ("Cq", 28.037617),
+        ("Cq Confidence", 0.978006),
+        ("Cq Mean", 28.342053),
+        ("Cq SD", 0.172629),
+        ("Auto Threshold", False),
+        ("Threshold", 0.1),
+        ("Auto Baseline", True),
+        ("Baseline Start", 3),
+        ("Baseline End", 22),
+    ]
+
+    header = pd.DataFrame(
+        [
+            ["File Name", "file.xlsx"],
+            [None, None],
+        ]
+    )
+
     data = pd.DataFrame(
-        {
-            "Well": [1],
-            "Well Position": ["A1"],
-            "Omit": [False],
-            "Sample": ["Unk_5K"],
-            "Target": ["RNaseP"],
-            "Task": ["UNKNOWN"],
-            "Reporter": ["FAM"],
-            "Quencher": ["NFQ-MGB"],
-            "Amp Status": ["AMP"],
-            "Amp Score": [1.280378],
-            "Curve Quality": [None],
-            "Result Quality Issues": [None],
-            "Cq": [28.037617],
-            "Cq Confidence": [0.978006],
-            "Cq Mean": [28.342053],
-            "Cq SD": [0.172629],
-            "Auto Threshold": [False],
-            "Threshold": [0.1],
-            "Auto Baseline": [True],
-            "Baseline Start": [3],
-            "Baseline End": [22],
-        }
+        [
+            [title for title, _ in raw_data],
+            [value for _, value in raw_data],
+        ]
     )
-    well_item = WellItem(
-        uuid="2b557369-c679-4a6f-b2cb-6b899ef9ab9d",
-        identifier=1,
-        target_dna_description="RNaseP",
-        sample_identifier="Unk_5K",
-        reporter_dye_setting="FAM",
-        well_location_identifier="A1",
-        quencher_dye_setting="NFQ-MGB",
-        sample_role_type="UNKNOWN",
+
+    contents = DesignQuantstudioContents(
+        {"Results": pd.concat([header, data])},
     )
+
     result = Result.create(
-        data, well_item, ExperimentType.standard_curve_qPCR_experiment
+        contents, 1, "RNaseP", ExperimentType.standard_curve_qPCR_experiment
     )
     assert isinstance(result, Result)
     assert result.cycle_threshold_value_setting == 0.1
