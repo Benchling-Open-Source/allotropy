@@ -96,7 +96,7 @@ class ChemometecNucleoviewParser(VendorParser):
                     software_name=NUCLEOCOUNTER_SOFTWARE_NAME,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
-                    software_version=_get_value(data, 0, "Application SW version")
+                    software_version=_get_value(data, 0, "Application SW version"),
                 ),
                 cell_counting_document=self._get_cell_counting_document(data),
             ),
