@@ -398,6 +398,7 @@ class Result:
     ct_sd: Optional[float]
     delta_ct_mean: Optional[float]
     delta_ct_se: Optional[float]
+    delta_ct_sd: Optional[float]
     delta_delta_ct: Optional[float]
     rq: Optional[float]
     rq_min: Optional[float]
@@ -410,13 +411,40 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
+    def _add_relative_data(data: pd.DataFrame, extra_data: pd.DataFrame) -> None:
+        columns = [
+            "Delta EqCq Mean",
+            "Delta EqCq SD",
+            "Delta EqCq SE",
+            "Delta Delta EqCq",
+            "Rq",
+            "Rq Min",
+            "Rq Max",
+        ]
+        data[columns] = None
+        for _, row in extra_data.iterrows():
+            sample_cond = data["Sample"] == row["Sample"]
+            target_cond = data["Target"] == row["Target"]
+            data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
+
+    @staticmethod
     def create(
         contents: DesignQuantstudioContents,
         well_item_id: int,
         target_dna_description: str,
         experiment_type: ExperimentType,
     ) -> Result:
-        data = contents.get_non_empty_sheet("Results")
+        data_sheet = (
+            "Standard Curve Result"
+            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
+            else "Results"
+        )
+
+        data = contents.get_non_empty_sheet(data_sheet)
+
+        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
+            extra_data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+            Result._add_relative_data(data, extra_data)
 
         well_data = assert_not_empty_df(
             data[assert_df_column(data, "Well") == well_item_id],
@@ -479,16 +507,19 @@ class Result:
             quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
             ct_mean=try_float_from_series_or_none(target_data, "Cq Mean"),
             ct_sd=try_float_from_series_or_none(target_data, "Cq SD"),
-            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
-            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
-            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
-            rq=try_float_from_series_or_none(target_data, "RQ"),
-            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
-            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
+            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta EqCq Mean"),
+            delta_ct_se=try_float_from_series_or_none(target_data, "Delta EqCq SE"),
+            delta_ct_sd=try_float_from_series_or_none(target_data, "Delta EqCq SD"),
+            delta_delta_ct=try_float_from_series_or_none(
+                target_data, "Delta Delta EqCq"
+            ),
+            rq=try_float_from_series_or_none(target_data, "Rq"),
+            rq_min=try_float_from_series_or_none(target_data, "Rq Min"),
+            rq_max=try_float_from_series_or_none(target_data, "Rq Max"),
             rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
             rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
             y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
-            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
+            r_squared=try_float_from_series_or_none(target_data, "R2"),
             slope=try_float_from_series_or_none(target_data, "Slope"),
             efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
         )
