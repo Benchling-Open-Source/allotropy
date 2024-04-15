@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add AppBio Quantstudio Design and Analysis adapter
 ### Fixed
+- Re-added encoding inference to Beckman VI Cell Blu adapter
 ### Changed
 ### Deprecated
 ### Removed
