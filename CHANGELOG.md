@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add AppBio Quantstudio Design and Analysis adapter
 - Add software version to Chemometec Nucleoview
+- Biorad Bioplex adapter
+- Utils for parsing xml
 ### Fixed
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
 ### Changed
