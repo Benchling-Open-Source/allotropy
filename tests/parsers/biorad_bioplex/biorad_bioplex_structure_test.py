@@ -27,7 +27,7 @@ def test_create_analyte_sample() -> None:
     analyte_sample = AnalyteSample.create(analyte_xml)
     assert analyte_sample.analyte_name == analyte_name
     assert analyte_sample.analyte_region == 18
-    assert analyte_sample.analyte_error_code == 0
+    assert analyte_sample.analyte_error_code == "0"
 
 
 @pytest.mark.short
@@ -85,7 +85,7 @@ def test_sample_aggregate_doc() -> None:
         if child.tag == "Samples":
             sample_aggregate_doc = SampleDocumentAggregate.create(child)
     assert isinstance(sample_aggregate_doc, SampleDocumentAggregate)
-    assert isinstance(sample_aggregate_doc.samples, list)
+    assert isinstance(sample_aggregate_doc.samples_dict, dict)
     assert isinstance(sample_aggregate_doc.analyte_region_dict, dict)
 
 
@@ -104,21 +104,21 @@ def test_well_sytem_level_metadata() -> None:
         == r"Z:\corge\quux_qux Luminex\Protocols\qux_15PLEX_ASSAY.spbx"
     )
     assert well_system.regions_of_interest == [
-        12,
-        15,
-        18,
-        21,
-        25,
-        28,
-        33,
-        36,
-        42,
-        47,
-        53,
-        57,
-        62,
-        67,
-        75,
+        "12",
+        "15",
+        "18",
+        "21",
+        "25",
+        "28",
+        "33",
+        "36",
+        "42",
+        "47",
+        "53",
+        "57",
+        "62",
+        "67",
+        "75",
     ]
 
 
