@@ -28,10 +28,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.biorad_bioplex.biorad_bioplex_structure import (
+from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
     AnalyteDocumentData,
     DeviceWellSettings,
     get_well_name,
@@ -41,7 +41,8 @@ from allotropy.parsers.biorad_bioplex.biorad_bioplex_structure import (
     WellAnalyteMapping,
     WellSystemLevelMetadata,
 )
-from allotropy.parsers.biorad_bioplex.constants import (
+from allotropy.parsers.biorad_bioplex_manager.constants import (
+    ASM_CONVERTER_NAME,
     BEAD_REGIONS,
     CONTAINER_TYPE,
     DESCRIPTION_TAG,
@@ -60,6 +61,7 @@ from allotropy.parsers.biorad_bioplex.constants import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     get_val_from_xml,
+    remove_none_fields_from_data_class,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -156,11 +158,8 @@ class BioradBioplexParser(VendorParser):
                 assay_bead_count=TQuantityValueNumber(
                     device_well_settings.well_total_events
                 ),
-                sample_document=SampleDocument(
-                    description=sample.description,
-                    sample_identifier=sample.sample_identifier,
-                    location_identifier=well_name,
-                    sample_role_type=sample.sample_type,
+                sample_document=BioradBioplexParser._get_sample_document(
+                    sample, well_name
                 ),
                 device_control_aggregate_document=BioradBioplexParser._get_device_control_aggregate(
                     device_well_settings, sample
@@ -191,13 +190,22 @@ class BioradBioplexParser(VendorParser):
         return multi_analyte_docs
 
     @staticmethod
+    def _get_sample_document(
+        sample: SampleDocumentStructure, well_name: str
+    ) -> SampleDocument:
+        sample_doc = SampleDocument(
+                description=sample.description,
+                sample_identifier=sample.sample_identifier,
+                location_identifier=well_name,
+                sample_role_type=sample.sample_type,
+            )
+        final_sample_doc = remove_none_fields_from_data_class(sample_doc)
+        return final_sample_doc
+    @staticmethod
     def _get_device_control_aggregate(
         device_well_settings: DeviceWellSettings, sample: SampleDocumentStructure
     ) -> DeviceControlAggregateDocument:
-        if sample.sample_dilution is not None:
-            return DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
+        device_control_doc_item = DeviceControlDocumentItem(
                         device_type=DEVICE_TYPE,
                         sample_volume_setting=TQuantityValueMicroliter(
                             device_well_settings.sample_volume_setting
@@ -210,21 +218,11 @@ class BioradBioplexParser(VendorParser):
                             device_well_settings.minimum_assay_bead_count_setting
                         ),
                     )
-                ]
-            )
-        else:
-            return DeviceControlAggregateDocument(
+
+        clean_device_control_doc_item = remove_none_fields_from_data_class(device_control_doc_item)
+        return DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(
-                        device_type=DEVICE_TYPE,
-                        sample_volume_setting=TQuantityValueMicroliter(
-                            device_well_settings.sample_volume_setting
-                        ),
-                        detector_gain_setting=device_well_settings.detector_gain_setting,
-                        minimum_assay_bead_count_setting=TQuantityValueUnitless(
-                            device_well_settings.minimum_assay_bead_count_setting
-                        ),
-                    )
+                    clean_device_control_doc_item
                 ]
             )
 

@@ -6,7 +6,7 @@ from xml.etree import ElementTree
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.biorad_bioplex.constants import (
+from allotropy.parsers.biorad_bioplex_manager.constants import (
     ACQ_TIME,
     ANALYTE_NAME,
     BEAD_COUNT,
@@ -99,7 +99,7 @@ class SampleDocumentAggregate:
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
                 sample_type = map_sample_type(child_sample_type.tag)
-                sample_description = get_val_from_xml(
+                sample_description = get_val_from_xml_or_none(
                     child_sample_type, DESCRIPTION_TAG
                 )
                 sample_identifier = get_val_from_xml(child_sample_type, LABEL)
