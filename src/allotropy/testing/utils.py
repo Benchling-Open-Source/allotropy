@@ -11,7 +11,7 @@ from unittest import mock
 from deepdiff import DeepDiff
 import numpy as np
 
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file
 
@@ -22,7 +22,8 @@ def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictTyp
     new_dict = dict(allotrope_dict)
     for key, value in new_dict.items():
         if key == "data system document":
-            value["ASM converter name"] = ASM_CONVERTER_NAME
+            # TODO: Commenting this out until BNCH-93726 is completed.
+            # value["ASM converter name"] = ASM_CONVERTER_NAME
             value["ASM converter version"] = ASM_CONVERTER_VERSION
         if isinstance(value, dict):
             _replace_asm_converter_name_and_version(value)
@@ -35,8 +36,8 @@ def _assert_allotrope_dicts_equal(
     actual: DictType,
     print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
-    # import pdb;pdb.set_trace()
-    # expected_replaced = _replace_asm_converter_name_and_version(expected)
+
+    _replace_asm_converter_name_and_version(expected)
 
     ddiff = DeepDiff(
         expected,

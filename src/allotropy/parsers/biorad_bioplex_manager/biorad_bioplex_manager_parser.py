@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional
 import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.multi_analyte_profiling_benchling_2024_01_multi_analyte_profiling import (
@@ -190,41 +190,50 @@ class BioradBioplexParser(VendorParser):
         return multi_analyte_docs
 
     @staticmethod
-    def _get_sample_document(
-        sample: SampleDocumentStructure, well_name: str
-    ) -> SampleDocument:
+    def _get_sample_document(sample: SampleDocumentStructure, well_name: str) -> Any:
         sample_doc = SampleDocument(
-                description=sample.description,
-                sample_identifier=sample.sample_identifier,
-                location_identifier=well_name,
-                sample_role_type=sample.sample_type,
-            )
+            description=sample.description,
+            sample_identifier=sample.sample_identifier,
+            location_identifier=well_name,
+            sample_role_type=sample.sample_type,
+        )
         final_sample_doc = remove_none_fields_from_data_class(sample_doc)
         return final_sample_doc
+
     @staticmethod
     def _get_device_control_aggregate(
         device_well_settings: DeviceWellSettings, sample: SampleDocumentStructure
     ) -> DeviceControlAggregateDocument:
-        device_control_doc_item = DeviceControlDocumentItem(
-                        device_type=DEVICE_TYPE,
-                        sample_volume_setting=TQuantityValueMicroliter(
-                            device_well_settings.sample_volume_setting
-                        ),
-                        dilution_factor_setting=TQuantityValueUnitless(
-                            sample.sample_dilution
-                        ),
-                        detector_gain_setting=device_well_settings.detector_gain_setting,
-                        minimum_assay_bead_count_setting=TQuantityValueUnitless(
-                            device_well_settings.minimum_assay_bead_count_setting
-                        ),
-                    )
 
-        clean_device_control_doc_item = remove_none_fields_from_data_class(device_control_doc_item)
-        return DeviceControlAggregateDocument(
-                device_control_document=[
-                    clean_device_control_doc_item
-                ]
+        # Had to add these none checkers to avoid the mypy errors.
+        if device_well_settings.minimum_assay_bead_count_setting is not None:
+            min_assay_bead_count = TQuantityValueUnitless(
+                device_well_settings.minimum_assay_bead_count_setting
             )
+        else:
+            min_assay_bead_count = None
+
+        if sample.sample_dilution is not None:
+            sample_dilution = TQuantityValueUnitless(sample.sample_dilution)
+        else:
+            sample_dilution = None
+
+        device_control_doc_item = DeviceControlDocumentItem(
+                device_type=DEVICE_TYPE,
+                sample_volume_setting=TQuantityValueMicroliter(
+                    device_well_settings.sample_volume_setting
+                ),
+                dilution_factor_setting=sample_dilution,
+                detector_gain_setting=device_well_settings.detector_gain_setting,
+                minimum_assay_bead_count_setting=min_assay_bead_count,
+            )
+
+        clean_device_control_doc_item = remove_none_fields_from_data_class(
+            device_control_doc_item
+        )
+        return DeviceControlAggregateDocument(
+            device_control_document=[clean_device_control_doc_item]
+        )
 
     @staticmethod
     def _get_analyte_aggregate_document(
@@ -283,3 +292,4 @@ class BioradBioplexParser(VendorParser):
         except KeyError as e:
             msg = f"{error_code} is not a valid error code. Valid error codes are:{ERROR_MAPPING.keys()}"
             raise AllotropeConversionError(msg) from e
+

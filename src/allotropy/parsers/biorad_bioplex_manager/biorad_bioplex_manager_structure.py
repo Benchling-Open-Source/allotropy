@@ -80,7 +80,7 @@ class WellAnalyteMapping:
 class SampleDocumentStructure:
     sample_type: SampleRoleType
     sample_identifier: str
-    description: str
+    description: Optional[str]
     well_name: str
     sample_dilution: Optional[float]
     well_analyte_mapping: WellAnalyteMapping
@@ -129,7 +129,7 @@ class SampleDocumentAggregate:
         sample_id: str,
         sample_dilution: Optional[float],
         sample_type: SampleRoleType,
-        sample_description: str,
+        sample_description: Optional[str],
     ) -> SampleDocumentStructure:
         well_name = get_well_name(well_xml.attrib)
         mappings = WellAnalyteMapping(well_name=well_name, analytes=[])
