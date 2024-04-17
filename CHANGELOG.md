@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add AppBio Quantstudio Design and Analysis adapter
 - Biorad Bioplex adapter
 - Utils for parsing xml
+- Rename the Biorad Bioplex to "Biorad Bioplex Manager"
+- Add a utility to remove non-required None values from a dataclass
 ### Fixed
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
 ### Changed
