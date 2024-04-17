@@ -245,9 +245,11 @@ class Well:
 class WellList:
     wells: list[Well]
 
-    def iter_well_items(self) -> Iterator[WellItem]:
+    def get_well_items(self) -> list[WellItem]:
+        wells: list[WellItem] = []
         for well in self.wells:
-            yield from well.items.values()
+            wells += well.items.values()
+        return wells
 
     def __iter__(self) -> Iterator[Well]:
         return iter(self.wells)
