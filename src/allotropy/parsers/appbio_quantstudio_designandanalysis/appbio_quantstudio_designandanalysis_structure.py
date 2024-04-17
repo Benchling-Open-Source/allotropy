@@ -556,6 +556,8 @@ class Data:
     wells: WellList
     experiment_type: ExperimentType
     calculated_documents: list[CalculatedDocument]
+    reference_target: Optional[str]
+    reference_sample: Optional[str]
 
     @staticmethod
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:

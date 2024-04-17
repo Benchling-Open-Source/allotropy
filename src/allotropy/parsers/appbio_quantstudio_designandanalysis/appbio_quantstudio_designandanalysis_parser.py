@@ -4,12 +4,17 @@ import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     BaselineCorrectedReporterDataCube,
+    CalculatedDataDocumentItem,
     ContainerType,
     DataProcessingDocument,
+    DataProcessingDocument1,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    ExperimentType,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,
     MeltingCurveDataCube,
@@ -22,6 +27,7 @@ from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
     QPCRDocumentItem,
     ReporterDyeDataCube,
     SampleDocument,
+    TCalculatedDataAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueUnitless,
@@ -86,7 +92,49 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     )
                     for well in data.wells
                 ],
+                calculated_data_aggregate_document=self.get_calculated_data_aggregate_document(
+                    data
+                ),
             )
+        )
+
+    def get_calculated_data_aggregate_document(
+        self, data: Data
+    ) -> Optional[TCalculatedDataAggregateDocument]:
+        if not data.calculated_documents:
+            return None
+
+        return TCalculatedDataAggregateDocument(
+            calculated_data_document=[
+                CalculatedDataDocumentItem(
+                    calculated_data_identifier=calc_doc.uuid,
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=[
+                            DataSourceDocumentItem(
+                                data_source_identifier=(
+                                    data_source.reference.uuid
+                                    if data_source.reference
+                                    else None
+                                ),
+                                data_source_feature=data_source.feature,
+                            )
+                            for data_source in calc_doc.data_sources
+                        ],
+                    ),
+                    data_processing_document=(
+                        DataProcessingDocument1(
+                            reference_DNA_description=data.reference_target,
+                            reference_sample_description=data.reference_sample,
+                        )
+                        if data.experiment_type
+                        == ExperimentType.relative_standard_curve_qPCR_experiment
+                        else None
+                    ),
+                    calculated_data_name=calc_doc.name,
+                    calculated_datum=TQuantityValueUnitless(value=calc_doc.value),
+                )
+                for calc_doc in data.calculated_documents
+            ],
         )
 
     def get_measurement_aggregate_document(
