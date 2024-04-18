@@ -6,6 +6,7 @@ import pandas as pd
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
     CalculatedDataDocumentItem,
     DataProcessingDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItemModel,
@@ -23,6 +24,7 @@ from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscur
     ProcessedDataDocumentItem,
     SampleDocument,
     TCalculatedDataAggregateDocument,
+    TDataSourceAggregateDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueCountsPerMilliliter,
@@ -33,6 +35,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 # This map is used to coerce the column names coming in the raw data
@@ -130,7 +133,7 @@ class PharmSpecParser(VendorParser):
         return [dd]
 
     def _create_calculated_document_items(
-        self, name: str, df: pd.DataFrame
+        self, name: str, df: pd.DataFrame, feature: str
     ) -> list[CalculatedDataDocumentItem]:
         cols = column_map.values()
         items = []
@@ -145,8 +148,16 @@ class PharmSpecParser(VendorParser):
                         calculated_result=get_property_from_sample(
                             prop, df.at[row, col]
                         ),
+                        data_source_aggregate_document=TDataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier=random_uuid_str(),
+                                    data_source_feature=feature
+                                )
+                            ]
+                        ),
+                        )
                     )
-                )
         return items
 
     def _get_software_version_report_string(self, report_string: str) -> str:
@@ -169,7 +180,7 @@ class PharmSpecParser(VendorParser):
             if g in VALID_CALCS:
                 calc_agg_doc = TCalculatedDataAggregateDocument(
                     calculated_data_document=self._create_calculated_document_items(
-                        name, gdf
+                        name, gdf, g
                     )
                 )
             else:
