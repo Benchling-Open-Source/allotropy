@@ -111,7 +111,7 @@ class PharmSpecParser(VendorParser):
         return a DistributionDocument with more than one item. For the use cases we've seen, there is
         only a single Distribution being returned at this time, containing the average data.
 
-        :param df: The average datafreame
+        :param df: The average dataframe
         :return: The DistributionDocument
         """
         cols = [v for k, v in column_map.items()]
