@@ -5,7 +5,7 @@ import pytest
 from allotropy.constants import CHARDET_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from tests.parsers.test_utils import from_file, validate_contents
+from allotropy.testing.utils import from_file, validate_contents
 
 VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
 SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
