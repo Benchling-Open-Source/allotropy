@@ -13,7 +13,7 @@ from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscur
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import Vendor
-from allotropy.parsers.beckman_pharmspec.pharmspec_parser import PharmSpecParser
+from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.testing.utils import from_file, validate_contents
 from allotropy.to_allotrope import allotrope_from_file
