@@ -267,24 +267,15 @@ def remove_none_fields_from_data_class(
 ) -> Any:
 
     data_class_fields = fields(cls_instance.__class__)
-    # all non-none fields, unless they are required (default is not None)
+
+    # get all non-none fields
     non_none_fields = {
         field.name: getattr(cls_instance, field.name)
         for field in data_class_fields
         if (getattr(cls_instance, field.name) is not None or field.default is not None)
     }
-    final_inputs = {}
-
-    # We also need to account for non values nested within a model like TQuantityValueNumber, etc.
-    for field_name, field_val in non_none_fields.items():
-        try:
-            if field_val.value is not None:
-                final_inputs[field_name] = field_val
-        # Catches attributes that are not in a model like TQuantityValueNumber, etc.
-        except AttributeError:
-            final_inputs[field_name] = field_val
 
     # Create a new instance with non-None fields
-    updated_instance = cls_instance.__class__(**final_inputs)
+    updated_instance = cls_instance.__class__(**non_none_fields)
 
     return updated_instance

@@ -205,27 +205,20 @@ class BioradBioplexParser(VendorParser):
         device_well_settings: DeviceWellSettings, sample: SampleDocumentStructure
     ) -> DeviceControlAggregateDocument:
 
-        # Had to add these none checkers to avoid the mypy errors.
-        if device_well_settings.minimum_assay_bead_count_setting is not None:
-            min_assay_bead_count = TQuantityValueUnitless(
-                device_well_settings.minimum_assay_bead_count_setting
-            )
-        else:
-            min_assay_bead_count = None
-
-        if sample.sample_dilution is not None:
-            sample_dilution = TQuantityValueUnitless(sample.sample_dilution)
-        else:
-            sample_dilution = None
-
         device_control_doc_item = DeviceControlDocumentItem(
             device_type=DEVICE_TYPE,
             sample_volume_setting=TQuantityValueMicroliter(
                 device_well_settings.sample_volume_setting
             ),
-            dilution_factor_setting=sample_dilution,
+            dilution_factor_setting=TQuantityValueUnitless(sample.sample_dilution)
+            if sample.sample_dilution is not None
+            else None,
             detector_gain_setting=device_well_settings.detector_gain_setting,
-            minimum_assay_bead_count_setting=min_assay_bead_count,
+            minimum_assay_bead_count_setting=TQuantityValueUnitless(
+                device_well_settings.minimum_assay_bead_count_setting
+            )
+            if device_well_settings.minimum_assay_bead_count_setting is not None
+            else None,
         )
 
         clean_device_control_doc_item = remove_none_fields_from_data_class(
