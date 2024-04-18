@@ -37,10 +37,10 @@ def _assert_allotrope_dicts_equal(
     print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
 
-    _replace_asm_converter_name_and_version(expected)
+    expected_replaced = _replace_asm_converter_name_and_version(expected)
 
     ddiff = DeepDiff(
-        expected,
+        expected_replaced,
         actual,
         ignore_type_in_groups=[(float, np.float64)],
         ignore_nan_inequality=True,

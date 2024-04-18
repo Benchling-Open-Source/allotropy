@@ -219,14 +219,14 @@ class BioradBioplexParser(VendorParser):
             sample_dilution = None
 
         device_control_doc_item = DeviceControlDocumentItem(
-                device_type=DEVICE_TYPE,
-                sample_volume_setting=TQuantityValueMicroliter(
-                    device_well_settings.sample_volume_setting
-                ),
-                dilution_factor_setting=sample_dilution,
-                detector_gain_setting=device_well_settings.detector_gain_setting,
-                minimum_assay_bead_count_setting=min_assay_bead_count,
-            )
+            device_type=DEVICE_TYPE,
+            sample_volume_setting=TQuantityValueMicroliter(
+                device_well_settings.sample_volume_setting
+            ),
+            dilution_factor_setting=sample_dilution,
+            detector_gain_setting=device_well_settings.detector_gain_setting,
+            minimum_assay_bead_count_setting=min_assay_bead_count,
+        )
 
         clean_device_control_doc_item = remove_none_fields_from_data_class(
             device_control_doc_item
@@ -292,4 +292,3 @@ class BioradBioplexParser(VendorParser):
         except KeyError as e:
             msg = f"{error_code} is not a valid error code. Valid error codes are:{ERROR_MAPPING.keys()}"
             raise AllotropeConversionError(msg) from e
-

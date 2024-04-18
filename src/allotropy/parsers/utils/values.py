@@ -266,11 +266,7 @@ def remove_none_fields_from_data_class(
     cls_instance: Any,
 ) -> Any:
 
-    try:
-        data_class_fields = fields(cls_instance.__class__)
-    except TypeError:
-        import pdb;pdb.set_trace()
-
+    data_class_fields = fields(cls_instance.__class__)
     # all non-none fields, unless they are required (default is not None)
     non_none_fields = {
         field.name: getattr(cls_instance, field.name)
