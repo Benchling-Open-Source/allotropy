@@ -11,7 +11,6 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
-from allotropy.parsers.agilent_gen5.absorbance_data_point import AbsorbanceDataPoint
 from allotropy.parsers.agilent_gen5.constants import (
     EMISSION_KEY,
     EXCITATION_KEY,
@@ -29,8 +28,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.agilent_gen5.data_point import DataPoint
-from allotropy.parsers.agilent_gen5.fluorescence_data_point import FluorescenceDataPoint
-from allotropy.parsers.agilent_gen5.luminescence_data_point import LuminescenceDataPoint
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
@@ -140,8 +137,6 @@ class HeaderData:
 @dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
-    read_type: ReadType
-    read_names: list[str]
     wavelengths: list[float]
     measurement_labels: list[str]
     pathlength_correction: Optional[str]
@@ -168,14 +163,6 @@ class ReadData:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
-
-        # START: read_names parsing
-        read_names = []
-        procedure_chunks = cls._get_procedure_chunks(procedure_details)
-
-        for procedure_chunk in procedure_chunks:
-            read_names.extend(cls._parse_procedure_chunk(procedure_chunk, read_mode))
-        # END: read_names parsing
 
         device_control_data = cls._get_device_control_data(procedure_details, read_mode)
 
@@ -205,9 +192,6 @@ class ReadData:
 
         return ReadData(
             read_mode=read_mode,
-            # TODO: Remove read_type
-            read_type=read_type,
-            read_names=read_names,
             step_label=device_control_data.get("Step Label"),
             measurement_labels=measurement_labels,
             # Absorbance attributes
@@ -272,20 +256,6 @@ class ReadData:
             measurement_labels.extend([test_label, ref_label])
 
         return measurement_labels
-
-    @property
-    def data_point_cls(self) -> type[DataPoint]:
-        if self.read_mode == ReadMode.ABSORBANCE:
-            return AbsorbanceDataPoint
-        elif self.read_mode == ReadMode.FLUORESCENCE:
-            return FluorescenceDataPoint
-        elif self.read_mode == ReadMode.LUMINESCENCE:
-            return LuminescenceDataPoint
-
-        msg = msg_for_error_on_unrecognized_value(
-            "read mode", self.read_mode, ReadMode._member_names_
-        )
-        raise AllotropeConversionError(msg)
 
     @staticmethod
     def get_read_mode(procedure_details: str) -> ReadMode:
@@ -365,55 +335,6 @@ class ReadData:
             return split_line[1]
 
         return None
-
-    @staticmethod
-    def _get_procedure_chunks(procedure_details: str) -> list[list[str]]:
-        procedure_chunks = []
-        current_chunk: list[str] = []
-        procedure_lines = procedure_details.splitlines()
-        for procedure_line in procedure_lines:
-            if procedure_line[0] != "\t":
-                procedure_chunks.append(current_chunk)
-                current_chunk = []
-            current_chunk.append(procedure_line)
-        del procedure_chunks[0]
-        procedure_chunks.append(current_chunk)
-
-        return procedure_chunks
-
-    @staticmethod
-    def _parse_procedure_chunk(
-        procedure_chunk: list[str],
-        read_mode: ReadMode,
-    ) -> list[str]:
-        # TODO: remove when using wavelenghts and bandwiths along with stepLabels
-
-        # if no user-defined name is specified for protocols,
-        # e.g. it just says "Absorbance Endpoint",
-        # Gen5 defaults to using the wavelength as the name
-        read_names = []
-        use_wavelength_names = False
-        read_line_length = 2
-        wavelength_line_length = 2
-
-        for line in procedure_chunk:
-            split_line = line.strip().split("\t")
-            if split_line[0] == "Read":
-                if len(split_line) != read_line_length:
-                    msg = f"Expected the Read data line {split_line} to contain exactly {read_line_length} values."
-                    raise AllotropeConversionError(msg)
-                if split_line[-1] == f"{read_mode.title()} Endpoint":
-                    use_wavelength_names = True
-                else:
-                    read_names.append(split_line[-1])
-            elif split_line[0].startswith("Wavelengths"):
-                if use_wavelength_names:
-                    split_line_colon = split_line[0].split(":  ")
-                    if len(split_line_colon) != wavelength_line_length:
-                        msg = f"Expected the Wavelengths data line {split_line} to contain exactly {wavelength_line_length} values."
-                        raise AllotropeConversionError(msg)
-                    read_names.extend(split_line_colon[-1].split(", "))
-        return read_names
 
 
 @dataclass(frozen=True)
