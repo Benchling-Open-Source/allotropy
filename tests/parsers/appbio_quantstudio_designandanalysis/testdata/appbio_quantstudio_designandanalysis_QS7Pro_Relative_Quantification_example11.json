@@ -36116,11 +36116,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_82",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_92",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_81",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
                                 "data source feature": "rq"
                             }
                         ]
@@ -36136,11 +36136,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_81",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_90",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -36156,15 +36156,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_90",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_76",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -36180,16 +36180,16 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_76",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_72",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_76",
+                                "data source feature": "adjusted equivalent ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_75",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source feature": "adjusted equivalent ct mean"
                             }
                         ]
                     },
@@ -36204,7 +36204,87 @@
                     }
                 },
                 {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_76",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_75",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 25.57198282111793,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
                     "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_75",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_72",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 25.57198282111793,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_78",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.857260243807115,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_78",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_77",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.857260243807115,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_77",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36232,16 +36312,16 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_77",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_84",
+                                "data source feature": "adjusted equivalent ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_78",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
+                                "data source feature": "adjusted equivalent ct mean"
                             }
                         ]
                     },
@@ -36256,7 +36336,47 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_77",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_84",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_83",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 27.50623046068618,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_83",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_82",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 27.50623046068618,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_82",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36320,7 +36440,47 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_78",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_86",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.908151815003908,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_86",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_85",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.908151815003908,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_85",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36348,11 +36508,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_83",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_93",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_81",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
                                 "data source feature": "rq"
                             }
                         ]
@@ -36368,7 +36528,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_84",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_94",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36396,7 +36556,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_85",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_95",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36460,7 +36620,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_86",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_96",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36524,7 +36684,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_97",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36600,11 +36760,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_92",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_107",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_106",
                                 "data source feature": "rq"
                             }
                         ]
@@ -36620,11 +36780,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_106",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_90",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_105",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -36640,15 +36800,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_90",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_105",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_89",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_103",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -36664,16 +36824,16 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_89",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_103",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_85",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_99",
+                                "data source feature": "adjusted equivalent ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_102",
+                                "data source feature": "adjusted equivalent ct mean"
                             }
                         ]
                     },
@@ -36688,7 +36848,87 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_99",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_98",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.491283999431612,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_98",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_95",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.491283999431612,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_102",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_101",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 30.099817740931673,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_101",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_100",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 30.099817740931673,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_100",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36716,11 +36956,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_93",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_108",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_91",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_106",
                                 "data source feature": "rq"
                             }
                         ]
@@ -36736,7 +36976,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_94",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_109",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36764,7 +37004,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_95",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_110",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36828,7 +37068,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_96",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_111",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -36904,11 +37144,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_99",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_114",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_98",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_113",
                                 "data source feature": "rq"
                             }
                         ]
@@ -36924,11 +37164,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_98",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_113",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_97",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_112",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -36944,15 +37184,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_97",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_112",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -36968,11 +37208,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_100",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_115",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_98",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_113",
                                 "data source feature": "rq"
                             }
                         ]
@@ -36988,7 +37228,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_101",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_116",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37016,7 +37256,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_102",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_117",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37080,7 +37320,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_103",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_118",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37144,7 +37384,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_104",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_119",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37220,11 +37460,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_109",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_129",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_108",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_128",
                                 "data source feature": "rq"
                             }
                         ]
@@ -37240,11 +37480,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_108",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_128",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_107",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_127",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -37260,15 +37500,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_107",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_127",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_106",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_125",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -37284,16 +37524,16 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_106",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_125",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_102",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_121",
+                                "data source feature": "adjusted equivalent ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_105",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_124",
+                                "data source feature": "adjusted equivalent ct mean"
                             }
                         ]
                     },
@@ -37308,7 +37548,87 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_105",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_121",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_120",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 28.52740199924429,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_120",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_117",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 28.52740199924429,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_124",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_123",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.908464936684762,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_123",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_122",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.908464936684762,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_122",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37336,11 +37656,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_110",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_130",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_108",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_128",
                                 "data source feature": "rq"
                             }
                         ]
@@ -37356,7 +37676,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_111",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_131",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37384,7 +37704,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_112",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_132",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37448,7 +37768,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_113",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_133",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37512,7 +37832,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_114",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_134",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37588,11 +37908,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_119",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_144",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_118",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_143",
                                 "data source feature": "rq"
                             }
                         ]
@@ -37608,11 +37928,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_118",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_143",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_117",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_142",
                                 "data source feature": "delta delta ct"
                             }
                         ]
@@ -37628,15 +37948,15 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_117",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_142",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_116",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_140",
                                 "data source feature": "delta ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_79",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
                                 "data source feature": "delta ct mean"
                             }
                         ]
@@ -37652,16 +37972,16 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_116",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_140",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_112",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_136",
+                                "data source feature": "adjusted equivalent ct mean"
                             },
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_115",
-                                "data source feature": "ct mean"
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_139",
+                                "data source feature": "adjusted equivalent ct mean"
                             }
                         ]
                     },
@@ -37676,7 +37996,87 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_115",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_136",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_135",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 26.50639403435641,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_135",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_132",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 26.50639403435641,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_139",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_138",
+                                "data source feature": "equivalent ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "adjusted equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.894484305029085,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_138",
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_137",
+                                "data source feature": "ct mean"
+                            }
+                        ]
+                    },
+                    "data processing document": {
+                        "reference DNA description": "IPC",
+                        "reference sample description": "1600"
+                    },
+                    "calculated data name": "equivalent ct mean",
+                    "calculated datum": {
+                        "value": 29.894484305029085,
+                        "unit": "(unitless)"
+                    }
+                },
+                {
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_137",
                     "data source aggregate document": {
                         "data source document": [
                             {
@@ -37704,11 +38104,11 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_120",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_145",
                     "data source aggregate document": {
                         "data source document": [
                             {
-                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_118",
+                                "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_143",
                                 "data source feature": "rq"
                             }
                         ]
@@ -37724,7 +38124,7 @@
                     }
                 },
                 {
-                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_121",
+                    "calculated data identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_146",
                     "data source aggregate document": {
                         "data source document": [
                             {
