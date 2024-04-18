@@ -398,6 +398,8 @@ class Result:
     quantity_mean: Optional[float]
     quantity_sd: Optional[float]
     ct_mean: Optional[float]
+    eq_ct_mean: Optional[float]
+    adj_eq_ct_mean: Optional[float]
     ct_sd: Optional[float]
     delta_ct_mean: Optional[float]
     delta_ct_se: Optional[float]
@@ -438,6 +440,8 @@ class Result:
     @staticmethod
     def _add_relative_data(data: pd.DataFrame, extra_data: pd.DataFrame) -> None:
         columns = [
+            "EqCq Mean",
+            "Adjusted EqCq Mean",
             "Delta EqCq Mean",
             "Delta EqCq SD",
             "Delta EqCq SE",
@@ -531,6 +535,10 @@ class Result:
             quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
             quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
             ct_mean=try_float_from_series_or_none(target_data, "Cq Mean"),
+            eq_ct_mean=try_float_from_series_or_none(target_data, "EqCq Mean"),
+            adj_eq_ct_mean=try_float_from_series_or_none(
+                target_data, "Adjusted EqCq Mean"
+            ),
             ct_sd=try_float_from_series_or_none(target_data, "Cq SD"),
             delta_ct_mean=try_float_from_series_or_none(target_data, "Delta EqCq Mean"),
             delta_ct_se=try_float_from_series_or_none(target_data, "Delta EqCq SE"),

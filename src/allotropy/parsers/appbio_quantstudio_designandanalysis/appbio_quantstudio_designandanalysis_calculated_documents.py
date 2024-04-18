@@ -124,6 +124,48 @@ def build_ct_sd(
 
 
 @cache
+def build_eq_ct_mean(
+    view_data: ViewData[WellItem], sample: str, target: str
+) -> Optional[CalculatedDocument]:
+    well_items = view_data.get_leaf_item(sample, target)
+    if (eq_ct_mean := well_items[0].result.eq_ct_mean) is None:
+        return None
+
+    ct_mean_ref = build_ct_mean(view_data, sample, target)
+    if ct_mean_ref is None:
+        return None
+
+    return CalculatedDocument(
+        uuid=random_uuid_str(),
+        name="equivalent ct mean",
+        value=eq_ct_mean,
+        data_sources=[DataSource(feature="ct mean", reference=ct_mean_ref)],
+    )
+
+
+@cache
+def build_adj_eq_ct_mean(
+    view_data: ViewData[WellItem], sample: str, target: str
+) -> Optional[CalculatedDocument]:
+    well_items = view_data.get_leaf_item(sample, target)
+    if (adj_eq_ct_mean := well_items[0].result.adj_eq_ct_mean) is None:
+        return None
+
+    eq_ct_mean_ref = build_eq_ct_mean(view_data, sample, target)
+    if eq_ct_mean_ref is None:
+        return None
+
+    return CalculatedDocument(
+        uuid=random_uuid_str(),
+        name="adjusted equivalent ct mean",
+        value=adj_eq_ct_mean,
+        data_sources=[
+            DataSource(feature="equivalent ct mean", reference=eq_ct_mean_ref)
+        ],
+    )
+
+
+@cache
 def build_delta_ct_mean(
     view_data: ViewData[WellItem],
     sample: str,
@@ -134,28 +176,47 @@ def build_delta_ct_mean(
     if (delta_ct_mean := well_items[0].result.delta_ct_mean) is None:
         return None
 
-    ct_mean_ref = build_ct_mean(view_data, sample, target)
-    if ct_mean_ref is None:
+    data_sources = []
+
+    if adj_eq_ct_mean_ref := build_adj_eq_ct_mean(view_data, sample, target):
+        data_sources.append(
+            DataSource(
+                feature="adjusted equivalent ct mean",
+                reference=adj_eq_ct_mean_ref,
+            )
+        )
+    elif eq_ct_mean_ref := build_eq_ct_mean(view_data, sample, target):
+        data_sources.append(
+            DataSource(
+                feature="equivalent ct mean",
+                reference=eq_ct_mean_ref,
+            )
+        )
+    else:
         return None
 
-    r_ct_mean_ref = build_ct_mean(view_data, sample, r_target)
-    if r_ct_mean_ref is None:
+    if r_adj_eq_ct_mean_ref := build_adj_eq_ct_mean(view_data, sample, r_target):
+        data_sources.append(
+            DataSource(
+                feature="adjusted equivalent ct mean",
+                reference=r_adj_eq_ct_mean_ref,
+            )
+        )
+    elif r_eq_ct_mean_ref := build_eq_ct_mean(view_data, sample, r_target):
+        data_sources.append(
+            DataSource(
+                feature="equivalent ct mean",
+                reference=r_eq_ct_mean_ref,
+            )
+        )
+    else:
         return None
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="delta ct mean",
         value=delta_ct_mean,
-        data_sources=[
-            DataSource(
-                feature="ct mean",
-                reference=ct_mean_ref,
-            ),
-            DataSource(
-                feature="ct mean",
-                reference=r_ct_mean_ref,
-            ),
-        ],
+        data_sources=data_sources,
     )
 
 
