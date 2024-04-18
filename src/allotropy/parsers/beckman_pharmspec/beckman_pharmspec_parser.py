@@ -152,12 +152,12 @@ class PharmSpecParser(VendorParser):
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier=random_uuid_str(),
-                                    data_source_feature=feature
+                                    data_source_feature=feature,
                                 )
                             ]
                         ),
-                        )
                     )
+                )
         return items
 
     def _get_software_version_report_string(self, report_string: str) -> str:
@@ -180,7 +180,7 @@ class PharmSpecParser(VendorParser):
             if g in VALID_CALCS:
                 calc_agg_doc = TCalculatedDataAggregateDocument(
                     calculated_data_document=self._create_calculated_document_items(
-                        name, gdf, g
+                        name, gdf, name
                     )
                 )
             else:
