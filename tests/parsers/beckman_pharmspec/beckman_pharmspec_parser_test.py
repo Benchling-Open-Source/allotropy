@@ -15,8 +15,8 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_pharmspec.pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import from_file, validate_contents
 from allotropy.to_allotrope import allotrope_from_file
-from tests.parsers.test_utils import from_file, validate_contents
 
 VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
 
