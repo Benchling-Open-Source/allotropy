@@ -20,8 +20,10 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     OPTICS_KEY,
+    PATHLENGTH_CORRECTION_KEY,
     READ_HEIGHT_KEY,
     READ_SPEED_KEY,
+    WAVELENGTHS_KEY,
     ReadMode,
     ReadType,
     UNSUPORTED_READ_TYPE_ERROR,
@@ -141,6 +143,8 @@ class ReadData:
     read_type: ReadType
     read_names: list[str]
     wavelengths: list[float]
+    measurement_labels: list[str]
+    pathlength_correction: Optional[str]
     step_label: Optional[str]
     number_of_averages: Optional[float]
     emissions: Optional[list[str]]
@@ -164,13 +168,18 @@ class ReadData:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
+
+        # START: read_names parsing
         read_names = []
         procedure_chunks = cls._get_procedure_chunks(procedure_details)
 
         for procedure_chunk in procedure_chunks:
             read_names.extend(cls._parse_procedure_chunk(procedure_chunk, read_mode))
+        # END: read_names parsing
 
         device_control_data = cls._get_device_control_data(procedure_details, read_mode)
+
+        measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
 
         wavelengths = [
             try_float(wavelength, "Wavelength")
@@ -200,8 +209,10 @@ class ReadData:
             read_type=read_type,
             read_names=read_names,
             step_label=device_control_data.get("Step Label"),
+            measurement_labels=measurement_labels,
             # Absorbance attributes
             wavelengths=wavelengths,
+            pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
             detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
             number_of_averages=try_float_or_none(number_of_averages),
             # Luminescence attributes
@@ -214,6 +225,53 @@ class ReadData:
             wavelength_filter_cut_offs=wavelength_filter_cut_offs,
             scan_positions=scan_positions,
         )
+
+    @classmethod
+    def _get_measurement_labels(cls, device_control_data: dict, read_mode: str) -> list:
+        step_label = device_control_data.get("Step Label")
+        label_prefix = f"{step_label}:" if step_label else ""
+        measurement_labels = []
+
+        if read_mode == ReadMode.ABSORBANCE:
+            measurement_labels = cls._get_absorbance_measurement_labels(
+                label_prefix, device_control_data
+            )
+
+        if read_mode == ReadMode.FLUORESCENCE:
+            excitations = device_control_data.get(EXCITATION_KEY)
+            emissions = device_control_data.get(EMISSION_KEY)
+            measurement_labels = [
+                f"{label_prefix}{excitation},{emission}"
+                for excitation, emission in zip(excitations, emissions)
+            ]
+
+        if read_mode == ReadMode.LUMINESCENCE:
+            emissions = device_control_data.get(EMISSION_KEY)
+            for emission in emissions:
+                label = "Lum" if emission == "Full light" else emission
+                measurement_labels.append(f"{label_prefix}{label}")
+
+        return measurement_labels
+
+    @classmethod
+    def _get_absorbance_measurement_labels(
+        cls, label_prefix: Optional[str], device_control_data: dict
+    ) -> list:
+        wavelengths = device_control_data.get(WAVELENGTHS_KEY, [])
+        pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
+        measurement_labels = []
+
+        for wavelenght in wavelengths:
+            label = f"{label_prefix}{wavelenght}"
+            measurement_labels.append(label)
+
+        if pathlength_correction:
+            test, ref = pathlength_correction.split(" / ")
+            test_label = f"{label_prefix}{test} [Test]"
+            ref_label = f"{label_prefix}{ref} [Ref]"
+            measurement_labels.extend([test_label, ref_label])
+
+        return measurement_labels
 
     @property
     def data_point_cls(self) -> type[DataPoint]:
@@ -264,7 +322,7 @@ class ReadData:
                 OPTICS_KEY,
                 GAIN_KEY,
                 MIRROR_KEY,
-                "Wavelengths",
+                WAVELENGTHS_KEY,
             }
         )
         read_data_dict: dict = {label: [] for label in list_keys}
@@ -277,14 +335,9 @@ class ReadData:
                 read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
                 continue
 
-            elif strp_line.startswith("Wavelengths"):
+            elif strp_line.startswith(WAVELENGTHS_KEY):
                 wavelengths = strp_line.split(":  ")
-                read_data_dict["Wavelengths"].extend(wavelengths[1].split(", "))
-                continue
-
-            elif strp_line.startswith("Pathlength Correction"):
-                corrections = strp_line.split(": ")
-                read_data_dict["Wavelengths"].extend(corrections[1].split("/"))
+                read_data_dict[WAVELENGTHS_KEY].extend(wavelengths[1].split(", "))
                 continue
 
             line_data: list[str] = strp_line.split(",  ")
@@ -298,6 +351,20 @@ class ReadData:
                     read_data_dict[splitted_datum[0]] = splitted_datum[1]
 
         return read_data_dict
+
+    @classmethod
+    def _get_step_label(cls, read_line: str, read_mode: str) -> Optional[str]:
+        read_data_len = 2
+        split_line = read_line.split("\t")
+        if len(split_line) != read_data_len:
+            msg = (
+                f"Expected the Read data line {split_line} to contain exactly 2 values."
+            )
+            raise AllotropeConversionError(msg)
+        if split_line[1] != f"{read_mode.title()} Endpoint":
+            return split_line[1]
+
+        return None
 
     @staticmethod
     def _get_procedure_chunks(procedure_details: str) -> list[list[str]]:
@@ -313,20 +380,6 @@ class ReadData:
         procedure_chunks.append(current_chunk)
 
         return procedure_chunks
-
-    @classmethod
-    def _get_step_label(cls, read_line: str, read_mode: str) -> Optional[str]:
-        read_data_len = 2
-        split_line = read_line.split("\t")
-        if len(split_line) != read_data_len:
-            msg = (
-                f"Expected the Read data line {split_line} to contain exactly 2 values."
-            )
-            raise AllotropeConversionError(msg)
-        if split_line[1] != f"{read_mode.title()} Endpoint":
-            return split_line[1]
-
-        return None
 
     @staticmethod
     def _parse_procedure_chunk(
@@ -419,17 +472,15 @@ class ActualTemperature:
 @dataclass(frozen=True)
 class Results:
     measurements: defaultdict[str, list]
-    processed_datas: defaultdict[str, list]
+    calculated_data: defaultdict[str, list]
     wells: list
-    measurement_docs: list
 
     @staticmethod
     def create() -> Results:
         return Results(
             measurements=defaultdict(list),
-            processed_datas=defaultdict(list),
+            calculated_data=defaultdict(list),
             wells=[],
-            measurement_docs=[],
         )
 
     def parse_results(
@@ -454,24 +505,11 @@ class Results:
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
                 well_value: float = try_float(values[col_num], "well value")
-                if self._is_calculated_data_label(label, read_data):
-                    self.processed_datas[well_pos].append([label, well_value])
-                else:
+                if label in read_data.measurement_labels:
                     label_only = label.split(":")[-1]
                     self.measurements[well_pos].append([label_only, well_value])
-
-    @staticmethod
-    def _is_calculated_data_label(label: str, read_data: ReadData) -> bool:
-        if read_data.read_mode == ReadMode.LUMINESCENCE:
-            return not any(
-                (label.startswith(read_name) and label.split(":")[-1] == "Lum")
-                for read_name in read_data.read_names
-            )
-        else:
-            return not any(
-                (label.startswith(read_name) and label.split(":")[-1][0].isdigit())
-                for read_name in read_data.read_names
-            )
+                else:
+                    self.calculated_data[well_pos].append([label, well_value])
 
 
 @dataclass(frozen=True)

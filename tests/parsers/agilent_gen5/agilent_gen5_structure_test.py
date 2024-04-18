@@ -93,10 +93,18 @@ def test_create_read_data_absorbance() -> None:
     read_data = ReadData.create(reader)
 
     assert read_data.read_mode == ReadMode.ABSORBANCE
-    assert read_data.wavelengths == [260, 280, 230, 977, 900]
+    assert read_data.wavelengths == [260, 280, 230]
+    assert read_data.pathlength_correction == "977 / 900"
     assert read_data.step_label == "260"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
     assert read_data.number_of_averages == 8  # Measurements/Data Point
+    assert read_data.measurement_labels == [
+        "260:260",
+        "260:280",
+        "260:230",
+        "260:977 [Test]",
+        "260:900 [Ref]",
+    ]
 
 
 @pytest.mark.short
@@ -125,6 +133,7 @@ def test_create_read_data_luminescence_full_light() -> None:
     assert read_data.optics == ["Top"]
     assert read_data.gains == [135]
     assert read_data.detector_distance == 4.5  # Read Height
+    assert read_data.measurement_labels == ["LUM:Lum"]
 
 
 @pytest.mark.short
@@ -152,6 +161,7 @@ def test_create_read_data_luminescence_with_filter() -> None:
     assert read_data.emissions == ["460/40"]
     assert read_data.gains == [136]
     assert read_data.detector_distance == 4.5  # Read Height
+    assert read_data.measurement_labels == ["LUM:460/40"]
 
 
 @pytest.mark.short
@@ -185,6 +195,10 @@ def test_create_read_data_fluorescence() -> None:
     assert read_data.gains == [35, 35]
     assert read_data.detector_distance == 7  # Read Height
     assert read_data.number_of_averages == 10  # Measurements/Data Point
+    assert read_data.measurement_labels == [
+        "DAPI/GFP:360/40,460/40",
+        "DAPI/GFP:485/20,528/20",
+    ]
 
 
 def test_create_layout_data() -> None:
