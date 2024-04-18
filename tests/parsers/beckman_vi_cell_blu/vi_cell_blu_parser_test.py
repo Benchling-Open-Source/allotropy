@@ -4,6 +4,7 @@ import pytest
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     Model,
 )
+from allotropy.constants import CHARDET_ENCODING
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
@@ -17,6 +18,7 @@ from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
 OUTPUT_FILES = (
     "Beckman_Vi-Cell-BLU_example01",
     "Beckman_Vi-Cell-BLU_example02",
+    "Beckman_Vi-Cell-BLU_example01_utf16",
 )
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_BLU
@@ -33,9 +35,10 @@ def _get_expected_file_path(output_file: str) -> str:
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
+    encoding = CHARDET_ENCODING if "utf16" in output_file else None
     test_filepath = _get_test_file_path(output_file)
     expected_filepath = _get_expected_file_path(output_file)
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE, encoding=encoding)
     validate_contents(allotrope_dict, expected_filepath)
 
 
