@@ -277,9 +277,12 @@ class ReadData:
             return ReadType.AREASCAN
         elif ReadType.SPECTRAL.value in procedure_details:
             return ReadType.SPECTRAL
-
         # check for this last, because other modes still contain the word "Endpoint"
-        return ReadType.ENDPOINT
+        elif ReadType.ENDPOINT.value in procedure_details:
+            return ReadType.ENDPOINT
+
+        msg = f"Read type not found; expected to find one of {sorted(ReadType._member_names_)}."
+        raise AllotropeConversionError(msg)
 
     @classmethod
     def _get_device_control_data(
