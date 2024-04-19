@@ -7,6 +7,9 @@ from dataclasses import dataclass
 import re
 from typing import Optional, Union
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ScanPositionSettingPlateReader,
+)
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -22,12 +25,11 @@ from allotropy.parsers.agilent_gen5.constants import (
     PATHLENGTH_CORRECTION_KEY,
     READ_HEIGHT_KEY,
     READ_SPEED_KEY,
-    WAVELENGTHS_KEY,
     ReadMode,
     ReadType,
     UNSUPORTED_READ_TYPE_ERROR,
+    WAVELENGTHS_KEY,
 )
-from allotropy.parsers.agilent_gen5.data_point import DataPoint
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
 
@@ -135,21 +137,73 @@ class HeaderData:
 
 
 @dataclass(frozen=True)
+class FilterSet:
+    emission: str
+    gain: str
+    excitation: Optional[str] = None
+    mirror: Optional[str] = None
+    optics: Optional[str] = None
+
+    @property
+    def detector_wavelength_setting(self) -> Optional[float]:
+        if self.emission == "Full light":
+            return None
+        return try_float(self.emission.split("/")[0], "Detector wavelength")
+
+    @property
+    def detector_bandwidth_setting(self) -> Optional[float]:
+        if not self.emission or self.emission == "Full light":
+            return None
+        try:
+            return try_float(self.emission.split("/")[1], "Detector bandwith")
+        except IndexError:
+            return None
+
+    @property
+    def excitation_wavelength_setting(self) -> Optional[float]:
+        if self.excitation:
+            return try_float(self.excitation.split("/")[0], "Excitation wavelength")
+        return None
+
+    @property
+    def excitation_bandwidth_setting(self) -> Optional[float]:
+        if not self.excitation:
+            return None
+        try:
+            return try_float(self.excitation.split("/")[1], "Excitation bandwith")
+        except IndexError:
+            return None
+
+    @property
+    def wavelength_filter_cutoff_setting(self) -> Optional[float]:
+        if self.mirror:
+            return try_float(self.mirror.split(" ")[1], "Wavelength filter cutoff")
+        return None
+
+    @property
+    def scan_position_setting(self) -> Optional[ScanPositionSettingPlateReader]:
+        position_lookup = {
+            "Top": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
+            "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
+        }
+        position = self.optics
+        if self.mirror:
+            position = self.mirror.split(" ")[0]
+
+        # TODO: Raise if position is not a valid lookup value
+        return position_lookup.get(position) if position is not None else None
+
+
+@dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
-    wavelengths: list[float]
     measurement_labels: list[str]
     pathlength_correction: Optional[str]
-    step_label: Optional[str]
+    step_label: Optional[str]  # TODO: remove (only needed by this class)
     number_of_averages: Optional[float]
-    emissions: Optional[list[str]]
-    optics: Optional[list[str]]
-    gains: Optional[list[float]]
     detector_distance: Optional[float]
     detector_carriage_speed: Optional[str]
-    excitations: Optional[list[str]]
-    wavelength_filter_cut_offs: Optional[list[float]]
-    scan_positions: Optional[list[str]]
+    filter_sets: dict[str, FilterSet]
 
     @classmethod
     def create(cls, reader: LinesReader) -> ReadData:
@@ -163,52 +217,54 @@ class ReadData:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
-
         device_control_data = cls._get_device_control_data(procedure_details, read_mode)
-
         measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
 
-        wavelengths = [
-            try_float(wavelength, "Wavelength")
-            for wavelength in device_control_data.get("Wavelengths", [])
-        ]
-        gains = [
-            try_float(gain, "Gain") for gain in device_control_data.get(GAIN_KEY, [])
-        ]
         number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
         read_height = device_control_data.get(READ_HEIGHT_KEY, "")
-
-        mirrors = device_control_data.get(MIRROR_KEY, [])
-        optics = device_control_data.get(OPTICS_KEY, [])
-        scan_positions = []
-        wavelength_filter_cut_offs = []
-        if mirrors and read_mode == ReadMode.FLUORESCENCE:
-            for mirror in mirrors:
-                position, cutoff, *_ = mirror.split(" ")
-                scan_positions.append(position)
-                wavelength_filter_cut_offs.append(try_float(cutoff, "Cutoff"))
-        elif optics and read_mode == ReadMode.FLUORESCENCE:
-            scan_positions = optics
 
         return ReadData(
             read_mode=read_mode,
             step_label=device_control_data.get("Step Label"),
             measurement_labels=measurement_labels,
-            # Absorbance attributes
-            wavelengths=wavelengths,
-            pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
             detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
+            # Absorbance attributes
+            pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
             number_of_averages=try_float_or_none(number_of_averages),
             # Luminescence attributes
-            emissions=device_control_data.get(EMISSION_KEY),
-            optics=device_control_data.get(OPTICS_KEY),
-            gains=gains,
             detector_distance=(try_float_or_none(read_height.split(" ")[0])),
             # Fluorescence attributes
-            excitations=device_control_data.get(EXCITATION_KEY),
-            wavelength_filter_cut_offs=wavelength_filter_cut_offs,
-            scan_positions=scan_positions,
+            filter_sets=cls._get_filter_sets(
+                measurement_labels, device_control_data, read_mode
+            ),
         )
+
+    @staticmethod
+    def get_read_mode(procedure_details: str) -> ReadMode:
+        if ReadMode.ABSORBANCE.value in procedure_details:
+            return ReadMode.ABSORBANCE
+        elif ReadMode.FLUORESCENCE.value in procedure_details:
+            return ReadMode.FLUORESCENCE
+        elif ReadMode.LUMINESCENCE.value in procedure_details:
+            return ReadMode.LUMINESCENCE
+
+        msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
+        raise AllotropeConversionError(msg)
+
+    @staticmethod
+    def get_read_type(procedure_details: str) -> ReadType:
+        if ReadType.KINETIC.value in procedure_details:
+            return ReadType.KINETIC
+        elif ReadType.AREASCAN.value in procedure_details:
+            return ReadType.AREASCAN
+        elif ReadType.SPECTRAL.value in procedure_details:
+            return ReadType.SPECTRAL
+        # check for this last, because other modes still contain the word "Endpoint"
+        elif ReadType.ENDPOINT.value in procedure_details:
+            return ReadType.ENDPOINT
+
+        msg = f"Read type not found; expected to find one of {sorted(ReadType._member_names_)}."
+        raise AllotropeConversionError(msg)
 
     @classmethod
     def _get_measurement_labels(cls, device_control_data: dict, read_mode: str) -> list:
@@ -222,8 +278,8 @@ class ReadData:
             )
 
         if read_mode == ReadMode.FLUORESCENCE:
-            excitations = device_control_data.get(EXCITATION_KEY)
-            emissions = device_control_data.get(EMISSION_KEY)
+            excitations = device_control_data.get(EXCITATION_KEY, [])
+            emissions = device_control_data.get(EMISSION_KEY, [])
             measurement_labels = [
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions)
@@ -256,33 +312,6 @@ class ReadData:
             measurement_labels.extend([test_label, ref_label])
 
         return measurement_labels
-
-    @staticmethod
-    def get_read_mode(procedure_details: str) -> ReadMode:
-        if ReadMode.ABSORBANCE.value in procedure_details:
-            return ReadMode.ABSORBANCE
-        elif ReadMode.FLUORESCENCE.value in procedure_details:
-            return ReadMode.FLUORESCENCE
-        elif ReadMode.LUMINESCENCE.value in procedure_details:
-            return ReadMode.LUMINESCENCE
-
-        msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
-        raise AllotropeConversionError(msg)
-
-    @staticmethod
-    def get_read_type(procedure_details: str) -> ReadType:
-        if ReadType.KINETIC.value in procedure_details:
-            return ReadType.KINETIC
-        elif ReadType.AREASCAN.value in procedure_details:
-            return ReadType.AREASCAN
-        elif ReadType.SPECTRAL.value in procedure_details:
-            return ReadType.SPECTRAL
-        # check for this last, because other modes still contain the word "Endpoint"
-        elif ReadType.ENDPOINT.value in procedure_details:
-            return ReadType.ENDPOINT
-
-        msg = f"Read type not found; expected to find one of {sorted(ReadType._member_names_)}."
-        raise AllotropeConversionError(msg)
 
     @classmethod
     def _get_device_control_data(
@@ -338,6 +367,37 @@ class ReadData:
             return split_line[1]
 
         return None
+
+    @classmethod
+    def _get_filter_sets(
+        cls,
+        measurement_labels: list[str],
+        device_control_data: dict,
+        read_mode: ReadMode,
+    ) -> dict[str, FilterSet]:
+        filter_data: dict[str, FilterSet] = {}
+        if read_mode == ReadMode.ABSORBANCE:
+            return filter_data
+
+        emissions = device_control_data.get(EMISSION_KEY, [])
+        excitations = device_control_data.get(EXCITATION_KEY, [])
+        mirrors = device_control_data.get(MIRROR_KEY, [])
+        optics = device_control_data.get(OPTICS_KEY, [])
+        gains = device_control_data.get(GAIN_KEY, [])
+
+        for idx, label in enumerate(measurement_labels):
+            mirror = None
+            if mirrors and read_mode == ReadMode.FLUORESCENCE:
+                mirror = mirrors[idx]
+
+            filter_data[label] = FilterSet(
+                emission=emissions[idx],
+                gain=gains[idx],
+                excitation=excitations[idx] if excitations else None,
+                mirror=mirror,
+                optics=optics[idx] if optics else None,
+            )
+        return filter_data
 
 
 @dataclass(frozen=True)
@@ -430,8 +490,7 @@ class Results:
                     self.wells.append(well_pos)
                 well_value: float = try_float(values[col_num], "well value")
                 if label in read_data.measurement_labels:
-                    label_only = label.split(":")[-1]
-                    self.measurements[well_pos].append([label_only, well_value])
+                    self.measurements[well_pos].append([label, well_value])
                 else:
                     self.calculated_data[well_pos].append([label, well_value])
 

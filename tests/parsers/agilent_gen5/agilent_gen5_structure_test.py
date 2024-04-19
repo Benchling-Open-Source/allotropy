@@ -1,6 +1,10 @@
 import pytest
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ScanPositionSettingPlateReader,
+)
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
+    FilterSet,
     HeaderData,
     LayoutData,
     ReadData,
@@ -54,7 +58,7 @@ def test_create_read_data_with_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
         "Read	StepLabel",
-        "\tLuminescence Endpoint",
+        "\tAbsorbance Endpoint",
     ]
     reader = LinesReader(absorbance_procedure_details)
 
@@ -67,7 +71,7 @@ def test_create_read_data_with_step_label() -> None:
 def test_create_read_data_without_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	Luminescence Endpoint",
+        "Read	Absorbance Endpoint",
     ]
     reader = LinesReader(absorbance_procedure_details)
 
@@ -93,7 +97,6 @@ def test_create_read_data_absorbance() -> None:
     read_data = ReadData.create(reader)
 
     assert read_data.read_mode == ReadMode.ABSORBANCE
-    assert read_data.wavelengths == [260, 280, 230]
     assert read_data.pathlength_correction == "977 / 900"
     assert read_data.step_label == "260"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
@@ -129,11 +132,11 @@ def test_create_read_data_luminescence_full_light() -> None:
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.step_label == "LUM"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.emissions == ["Full light"]
-    assert read_data.optics == ["Top"]
-    assert read_data.gains == [135]
     assert read_data.detector_distance == 4.5  # Read Height
     assert read_data.measurement_labels == ["LUM:Lum"]
+    assert read_data.filter_sets == {
+        "LUM:Lum": FilterSet(emission="Full light", gain="135", optics="Top")
+    }
 
 
 @pytest.mark.short
@@ -158,10 +161,11 @@ def test_create_read_data_luminescence_with_filter() -> None:
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.step_label == "LUM"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.emissions == ["460/40"]
-    assert read_data.gains == [136]
     assert read_data.detector_distance == 4.5  # Read Height
     assert read_data.measurement_labels == ["LUM:460/40"]
+    assert read_data.filter_sets == {
+        "LUM:460/40": FilterSet(emission="460/40", gain="136")
+    }
 
 
 @pytest.mark.short
@@ -188,19 +192,84 @@ def test_create_read_data_fluorescence() -> None:
     assert read_data.read_mode == ReadMode.FLUORESCENCE
     assert read_data.step_label == "DAPI/GFP"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.emissions == ["460/40", "528/20"]
-    assert read_data.excitations == ["360/40", "485/20"]
-    assert read_data.wavelength_filter_cut_offs == [400, 510]  # Mirror if present
-    assert read_data.scan_positions == ["Top", "Top"]  # Reported by Miror or Optic
-    assert read_data.gains == [35, 35]
     assert read_data.detector_distance == 7  # Read Height
     assert read_data.number_of_averages == 10  # Measurements/Data Point
     assert read_data.measurement_labels == [
         "DAPI/GFP:360/40,460/40",
         "DAPI/GFP:485/20,528/20",
     ]
+    assert read_data.filter_sets == {
+        "DAPI/GFP:360/40,460/40": FilterSet(
+            excitation="360/40",
+            emission="460/40",
+            mirror="Top 400 nm",
+            gain="35",
+        ),
+        "DAPI/GFP:485/20,528/20": FilterSet(
+            excitation="485/20",
+            emission="528/20",
+            mirror="Top 510 nm",
+            gain="35",
+        ),
+    }
 
 
+@pytest.mark.short
+def test_create_filter_set() -> None:
+    filterset = FilterSet(
+        excitation="485/20",
+        emission="528/20",
+        mirror="Top 510 nm",
+        gain="35",
+    )
+
+    assert filterset.detector_wavelength_setting == 528
+    assert filterset.detector_bandwidth_setting == 20
+    assert filterset.excitation_wavelength_setting == 485
+    assert filterset.excitation_bandwidth_setting == 20
+    assert filterset.wavelength_filter_cutoff_setting == 510
+    assert (
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+    )
+
+
+@pytest.mark.short
+def test_create_filter_set_with_mirror() -> None:
+    filterset = FilterSet(
+        excitation="485",
+        emission="528",
+        optics="Bottom",
+        gain="35",
+    )
+
+    assert filterset.detector_wavelength_setting == 528
+    assert filterset.detector_bandwidth_setting is None
+    assert filterset.excitation_wavelength_setting == 485
+    assert filterset.excitation_bandwidth_setting is None
+    assert filterset.wavelength_filter_cutoff_setting is None
+    assert (
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+    )
+
+
+@pytest.mark.short
+def test_create_filter_set_full_light() -> None:
+    filterset = FilterSet(emission="Full light", gain="135", optics="Top")
+
+    assert filterset.detector_wavelength_setting is None
+    assert filterset.detector_bandwidth_setting is None
+    assert filterset.excitation_wavelength_setting is None
+    assert filterset.excitation_bandwidth_setting is None
+    assert filterset.gain == "135"
+    assert (
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+    )
+
+
+@pytest.mark.short
 def test_create_layout_data() -> None:
     layout_rows = [
         "Layout",
@@ -221,6 +290,7 @@ def test_create_layout_data() -> None:
     }
 
 
+@pytest.mark.short
 def test_create_layout_data_with_name_rows() -> None:
     layout_rows = [
         "Layout",
