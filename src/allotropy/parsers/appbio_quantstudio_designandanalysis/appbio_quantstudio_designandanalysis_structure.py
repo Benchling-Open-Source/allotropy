@@ -401,6 +401,7 @@ class Result:
     eq_ct_mean: Optional[float]
     adj_eq_ct_mean: Optional[float]
     ct_sd: Optional[float]
+    ct_se: Optional[float]
     delta_ct_mean: Optional[float]
     delta_ct_se: Optional[float]
     delta_ct_sd: Optional[float]
@@ -438,18 +439,10 @@ class Result:
         return str(target[0])
 
     @staticmethod
-    def _add_relative_data(data: pd.DataFrame, extra_data: pd.DataFrame) -> None:
-        columns = [
-            "EqCq Mean",
-            "Adjusted EqCq Mean",
-            "Delta EqCq Mean",
-            "Delta EqCq SD",
-            "Delta EqCq SE",
-            "Delta Delta EqCq",
-            "Rq",
-            "Rq Min",
-            "Rq Max",
-        ]
+    def _add_data(
+        data: pd.DataFrame, extra_data: pd.DataFrame, columns: list[str]
+    ) -> None:
+
         data[columns] = None
         for _, row in extra_data.iterrows():
             sample_cond = data["Sample"] == row["Sample"]
@@ -472,8 +465,29 @@ class Result:
         data = contents.get_non_empty_sheet(data_sheet)
 
         if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-            extra_data = contents.get_non_empty_sheet("RQ Replicate Group Result")
-            Result._add_relative_data(data, extra_data)
+            Result._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
+                columns=[
+                    "Cq SE",
+                ],
+            )
+
+            Result._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
+                columns=[
+                    "EqCq Mean",
+                    "Adjusted EqCq Mean",
+                    "Delta EqCq Mean",
+                    "Delta EqCq SD",
+                    "Delta EqCq SE",
+                    "Delta Delta EqCq",
+                    "Rq",
+                    "Rq Min",
+                    "Rq Max",
+                ],
+            )
 
         well_data = assert_not_empty_df(
             data[assert_df_column(data, "Well") == well_item_id],
@@ -540,6 +554,7 @@ class Result:
                 target_data, "Adjusted EqCq Mean"
             ),
             ct_sd=try_float_from_series_or_none(target_data, "Cq SD"),
+            ct_se=try_float_from_series_or_none(target_data, "Cq SE"),
             delta_ct_mean=try_float_from_series_or_none(target_data, "Delta EqCq Mean"),
             delta_ct_se=try_float_from_series_or_none(target_data, "Delta EqCq SE"),
             delta_ct_sd=try_float_from_series_or_none(target_data, "Delta EqCq SD"),
