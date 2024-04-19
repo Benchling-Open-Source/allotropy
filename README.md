@@ -15,7 +15,7 @@ We currently have parser support for the following instruments:
   - Applied Bio AbsoluteQ
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
-  - Biorad Bioplex
+  - Biorad Bioplex Manager
   - ChemoMetec Nucleoview
   - Luminex xPONENT
   - MolDev SoftMax Pro
