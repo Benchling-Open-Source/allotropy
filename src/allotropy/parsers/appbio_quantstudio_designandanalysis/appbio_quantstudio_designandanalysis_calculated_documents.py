@@ -227,20 +227,22 @@ def build_delta_ct_se(
     if (delta_ct_se := well_items[0].result.delta_ct_se) is None:
         return None
 
-    source = [
-        DataSource(feature="ct mean", reference=well_item) for well_item in well_items
-    ]
+    ct_mean_ref = build_ct_mean(view_data, sample, target)
+    if ct_mean_ref is None:
+        return None
 
-    r_target_source = [
-        DataSource(feature="ct mean", reference=well_item)
-        for well_item in view_data.get_leaf_item(sample, r_target)
-    ]
+    r_ct_mean_ref = build_ct_mean(view_data, sample, r_target)
+    if r_ct_mean_ref is None:
+        return None
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="delta equivalent ct se",
         value=delta_ct_se,
-        data_sources=source + r_target_source,
+        data_sources=[
+            DataSource(feature="ct mean", reference=ct_mean_ref),
+            DataSource(feature="ct mean", reference=r_ct_mean_ref),
+        ],
     )
 
 
