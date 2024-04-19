@@ -123,6 +123,24 @@ def build_ct_sd(
     )
 
 
+def build_ct_se(
+    view_data: ViewData[WellItem], sample: str, target: str
+) -> Optional[CalculatedDocument]:
+    well_items = view_data.get_leaf_item(sample, target)
+    if (ct_se := well_items[0].result.ct_se) is None:
+        return None
+
+    return CalculatedDocument(
+        uuid=random_uuid_str(),
+        name="ct se",
+        value=ct_se,
+        data_sources=[
+            DataSource(feature="cycle threshold result", reference=well_item)
+            for well_item in well_items
+        ],
+    )
+
+
 @cache
 def build_eq_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
@@ -253,12 +271,12 @@ def build_delta_ct_se(
     if (delta_ct_se := well_items[0].result.delta_ct_se) is None:
         return None
 
-    ct_mean_ref = build_ct_mean(view_data, sample, target)
-    if ct_mean_ref is None:
+    ct_se_ref = build_ct_se(view_data, sample, target)
+    if ct_se_ref is None:
         return None
 
-    r_ct_mean_ref = build_ct_mean(view_data, sample, r_target)
-    if r_ct_mean_ref is None:
+    r_ct_se_ref = build_ct_se(view_data, sample, r_target)
+    if r_ct_se_ref is None:
         return None
 
     return CalculatedDocument(
@@ -266,8 +284,8 @@ def build_delta_ct_se(
         name="delta equivalent ct se",
         value=delta_ct_se,
         data_sources=[
-            DataSource(feature="ct mean", reference=ct_mean_ref),
-            DataSource(feature="ct mean", reference=r_ct_mean_ref),
+            DataSource(feature="ct se", reference=ct_se_ref),
+            DataSource(feature="ct se", reference=r_ct_se_ref),
         ],
     )
 
