@@ -36109,7 +36109,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct se",
+                    "calculated data name": "delta equivalent ct se",
                     "calculated datum": {
                         "value": 0.12358420359821852,
                         "unit": "(unitless)"
@@ -36141,7 +36141,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_88",
-                                "data source feature": "delta delta ct"
+                                "data source feature": "delta delta equivalent ct"
                             }
                         ]
                     },
@@ -36161,11 +36161,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_80",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             },
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             }
                         ]
                     },
@@ -36173,7 +36173,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta delta ct",
+                    "calculated data name": "delta delta equivalent ct",
                     "calculated datum": {
                         "value": -1.8833560683714552,
                         "unit": "(unitless)"
@@ -36197,7 +36197,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct mean",
+                    "calculated data name": "delta equivalent ct mean",
                     "calculated datum": {
                         "value": -4.285277422689184,
                         "unit": "(unitless)"
@@ -36329,7 +36329,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct mean",
+                    "calculated data name": "delta equivalent ct mean",
                     "calculated datum": {
                         "value": -2.4019213543177287,
                         "unit": "(unitless)"
@@ -36753,7 +36753,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct se",
+                    "calculated data name": "delta equivalent ct se",
                     "calculated datum": {
                         "value": 0.05801199306330663,
                         "unit": "(unitless)"
@@ -36785,7 +36785,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_102",
-                                "data source feature": "delta delta ct"
+                                "data source feature": "delta delta equivalent ct"
                             }
                         ]
                     },
@@ -36805,11 +36805,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_101",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             },
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             }
                         ]
                     },
@@ -36817,7 +36817,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta delta ct",
+                    "calculated data name": "delta delta equivalent ct",
                     "calculated datum": {
                         "value": 1.7933876128176678,
                         "unit": "(unitless)"
@@ -36841,7 +36841,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct mean",
+                    "calculated data name": "delta equivalent ct mean",
                     "calculated datum": {
                         "value": -0.6085337415000609,
                         "unit": "(unitless)"
@@ -37137,7 +37137,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct se",
+                    "calculated data name": "delta equivalent ct se",
                     "calculated datum": {
                         "value": 0.05339305602785011,
                         "unit": "(unitless)"
@@ -37169,7 +37169,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_109",
-                                "data source feature": "delta delta ct"
+                                "data source feature": "delta delta equivalent ct"
                             }
                         ]
                     },
@@ -37189,11 +37189,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             },
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             }
                         ]
                     },
@@ -37201,7 +37201,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta delta ct",
+                    "calculated data name": "delta delta equivalent ct",
                     "calculated datum": {
                         "value": 0.0,
                         "unit": "(unitless)"
@@ -37453,7 +37453,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct se",
+                    "calculated data name": "delta equivalent ct se",
                     "calculated datum": {
                         "value": 0.03481444726359608,
                         "unit": "(unitless)"
@@ -37485,7 +37485,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_123",
-                                "data source feature": "delta delta ct"
+                                "data source feature": "delta delta equivalent ct"
                             }
                         ]
                     },
@@ -37505,11 +37505,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_122",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             },
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             }
                         ]
                     },
@@ -37517,7 +37517,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta delta ct",
+                    "calculated data name": "delta delta equivalent ct",
                     "calculated datum": {
                         "value": 1.0208584168772568,
                         "unit": "(unitless)"
@@ -37541,7 +37541,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct mean",
+                    "calculated data name": "delta equivalent ct mean",
                     "calculated datum": {
                         "value": -1.381062937440472,
                         "unit": "(unitless)"
@@ -37901,7 +37901,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct se",
+                    "calculated data name": "delta equivalent ct se",
                     "calculated datum": {
                         "value": 0.09310394256235284,
                         "unit": "(unitless)"
@@ -37933,7 +37933,7 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_137",
-                                "data source feature": "delta delta ct"
+                                "data source feature": "delta delta equivalent ct"
                             }
                         ]
                     },
@@ -37953,11 +37953,11 @@
                         "data source document": [
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_136",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             },
                             {
                                 "data source identifier": "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS_TEST_ID_87",
-                                "data source feature": "delta ct mean"
+                                "data source feature": "delta equivalent ct mean"
                             }
                         ]
                     },
@@ -37965,7 +37965,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta delta ct",
+                    "calculated data name": "delta delta equivalent ct",
                     "calculated datum": {
                         "value": -0.986168916354945,
                         "unit": "(unitless)"
@@ -37989,7 +37989,7 @@
                         "reference DNA description": "IPC",
                         "reference sample description": "1600"
                     },
-                    "calculated data name": "delta ct mean",
+                    "calculated data name": "delta equivalent ct mean",
                     "calculated datum": {
                         "value": -3.3880902706726737,
                         "unit": "(unitless)"

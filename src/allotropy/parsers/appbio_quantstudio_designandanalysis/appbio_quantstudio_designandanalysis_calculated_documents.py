@@ -214,7 +214,7 @@ def build_delta_ct_mean(
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
-        name="delta ct mean",
+        name="delta equivalent ct mean",
         value=delta_ct_mean,
         data_sources=data_sources,
     )
@@ -238,7 +238,7 @@ def build_delta_ct_se(
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
-        name="delta ct se",
+        name="delta equivalent ct se",
         value=delta_ct_se,
         data_sources=source + r_target_source,
     )
@@ -265,15 +265,15 @@ def build_delta_delta_ct(
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
-        name="delta delta ct",
+        name="delta delta equivalent ct",
         value=delta_delta_ct,
         data_sources=[
             DataSource(
-                feature="delta ct mean",
+                feature="delta equivalent ct mean",
                 reference=delta_ct_mean_ref,
             ),
             DataSource(
-                feature="delta ct mean",
+                feature="delta equivalent ct mean",
                 reference=r_delta_ct_mean_ref,
             ),
         ],
@@ -304,7 +304,7 @@ def build_rq(
         value=rq,
         data_sources=[
             DataSource(
-                feature="delta delta ct",
+                feature="delta delta equivalent ct",
                 reference=delta_delta_ct_ref,
             )
         ],
