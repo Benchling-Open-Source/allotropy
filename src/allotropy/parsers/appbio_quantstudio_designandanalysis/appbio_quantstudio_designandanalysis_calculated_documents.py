@@ -220,6 +220,32 @@ def build_delta_ct_mean(
     )
 
 
+def build_delta_ct_sd(
+    view_data: ViewData[WellItem], sample: str, target: str, r_target: str
+) -> Optional[CalculatedDocument]:
+    well_items = view_data.get_leaf_item(sample, target)
+    if (delta_ct_sd := well_items[0].result.delta_ct_sd) is None:
+        return None
+
+    ct_sd_ref = build_ct_sd(view_data, sample, target)
+    if ct_sd_ref is None:
+        return None
+
+    r_ct_sd_ref = build_ct_sd(view_data, sample, r_target)
+    if r_ct_sd_ref is None:
+        return None
+
+    return CalculatedDocument(
+        uuid=random_uuid_str(),
+        name="delta equivalent ct sd",
+        value=delta_ct_sd,
+        data_sources=[
+            DataSource(feature="ct sd", reference=ct_sd_ref),
+            DataSource(feature="ct sd", reference=r_ct_sd_ref),
+        ],
+    )
+
+
 def build_delta_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str, r_target: str
 ) -> Optional[CalculatedDocument]:
@@ -599,6 +625,9 @@ def iter_relative_standard_curve_calc_docs(
             yield from calc_doc.iter_struct()
 
         if calc_doc := build_ct_sd(view_data, sample, target):
+            yield from calc_doc.iter_struct()
+
+        if calc_doc := build_delta_ct_sd(view_data, sample, target, r_target):
             yield from calc_doc.iter_struct()
 
         if calc_doc := build_delta_ct_se(view_data, sample, target, r_target):
