@@ -5,6 +5,8 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
@@ -22,6 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
@@ -50,6 +53,12 @@ MeasurementDocumentAttributeTypes = Union[
     TQuantityValueNanometer,
     TQuantityValueNumber,
 ]
+
+
+def get_instance_or_none(
+    cls: MeasurementDocumentAttributeTypes, value: Optional[Union[str, float]]
+) -> Any:
+    return cls(value=value) if value is not None else None
 
 
 class AgilentGen5Parser(VendorParser):
@@ -92,7 +101,9 @@ class AgilentGen5Parser(VendorParser):
                 plate_data, well_position
             )
         elif read_mode == ReadMode.FLUORESCENCE:
-            measurement_document = self._get_fluorescence_measurement_document()
+            measurement_document = self._get_fluorescence_measurement_document(
+                plate_data, well_position
+            )
         elif read_mode == ReadMode.LUMINESCENCE:
             measurement_document = self._get_luminescence_measurement_document()
 
@@ -154,7 +165,7 @@ class AgilentGen5Parser(VendorParser):
                     ]
                 ),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(absorbance),
-                compartment_temperature=self._get_instance_or_none(
+                compartment_temperature=get_instance_or_none(
                     TQuantityValueDegreeCelsius, plate_data.compartment_temperature
                 ),
             )
@@ -162,21 +173,70 @@ class AgilentGen5Parser(VendorParser):
         ]
 
     def _get_fluorescence_measurement_document(
-        self,
+        self, plate_data: PlateData, well_position: str
     ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
-        return []
+        read_data = plate_data.read_data
+        measurements = plate_data.results.measurements[well_position]
+        sample_document = self._get_sample_document(plate_data, well_position)
+
+        measurement_document = []
+
+        for label, fluorescence in measurements:
+            filter_data = read_data.filter_sets[label]
+            document = FluorescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=random_uuid_str(),
+                sample_document=sample_document,
+                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=[
+                        FluorescencePointDetectionDeviceControlDocumentItem(
+                            device_type=DEVICE_TYPE,
+                            detection_type=read_data.read_mode.value,
+                            detector_wavelength_setting=get_instance_or_none(
+                                TQuantityValueNanometer,
+                                filter_data.detector_wavelength_setting,
+                            ),
+                            detector_bandwidth_setting=get_instance_or_none(
+                                TQuantityValueNanometer,
+                                filter_data.detector_bandwidth_setting,
+                            ),
+                            excitation_wavelength_setting=get_instance_or_none(
+                                TQuantityValueNanometer,
+                                filter_data.excitation_wavelength_setting,
+                            ),
+                            excitation_bandwidth_setting=get_instance_or_none(
+                                TQuantityValueNanometer,
+                                filter_data.excitation_bandwidth_setting,
+                            ),
+                            wavelength_filter_cutoff_setting=get_instance_or_none(
+                                TQuantityValueNanometer,
+                                filter_data.wavelength_filter_cutoff_setting,
+                            ),
+                            detector_distance_setting__plate_reader_=get_instance_or_none(
+                                TQuantityValueMillimeter, read_data.detector_distance
+                            ),
+                            scan_position_setting__plate_reader_=filter_data.scan_position_setting,
+                            detector_gain_setting=filter_data.gain,
+                            number_of_averages=get_instance_or_none(
+                                TQuantityValueNumber, read_data.number_of_averages
+                            ),
+                            detector_carriage_speed_setting=read_data.detector_carriage_speed,
+                        )
+                    ]
+                ),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(fluorescence),
+                compartment_temperature=get_instance_or_none(
+                    TQuantityValueDegreeCelsius, plate_data.compartment_temperature
+                ),
+            )
+            measurement_document.append(document)
+
+        return measurement_document
 
     def _get_luminescence_measurement_document(
         self,
-    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
-        return []
-
-    def _get_instance_or_none(
-        self,
-        cls: MeasurementDocumentAttributeTypes,
-        value: Optional[Union[str, float]],
-    ) -> Optional[MeasurementDocumentAttributeTypes]:
-        return cls(value=value) if value is not None else None
+    ) -> list[LuminescencePointDetectionMeasurementDocumentItems]:
+        return [
+        ]
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)

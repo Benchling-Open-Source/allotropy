@@ -31,7 +31,12 @@ from allotropy.parsers.agilent_gen5.constants import (
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float,
+    try_float_or_nan,
+    try_float_or_none,
+)
 
 METADATA_PREFIXES = frozenset(
     {
@@ -46,13 +51,6 @@ METADATA_PREFIXES = frozenset(
 GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
 
-def try_float_or_value(value: str) -> Union[str, float]:
-    try:
-        return float(value)
-    except ValueError:
-        return value
-
-
 def read_data_section(reader: LinesReader) -> str:
     data_section = "\n".join(
         [
@@ -62,12 +60,6 @@ def read_data_section(reader: LinesReader) -> str:
     )
     reader.drop_empty()
     return data_section
-
-
-def hhmmss_to_sec(hhmmss: str) -> int:
-    # convert to seconds, as specified by Allotrope
-    hours, minutes, seconds = tuple(int(num) for num in hhmmss.split(":"))
-    return (3600 * hours) + (60 * minutes) + seconds
 
 
 @dataclass(frozen=True)
@@ -488,7 +480,7 @@ class Results:
                 well_pos = f"{current_row}{col_num}"
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
-                well_value: float = try_float(values[col_num], "well value")
+                well_value: float = try_float_or_nan(values[col_num])
                 if label in read_data.measurement_labels:
                     self.measurements[well_pos].append([label, well_value])
                 else:
