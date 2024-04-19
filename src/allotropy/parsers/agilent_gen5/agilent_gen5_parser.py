@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
@@ -19,6 +19,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
 )
@@ -41,6 +42,13 @@ MeasurementDocumentItems = Union[
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
+]
+
+MeasurementDocumentAttributeTypes = Union[
+    TQuantityValueDegreeCelsius,
+    TQuantityValueMillimeter,
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
 ]
 
 
@@ -123,7 +131,6 @@ class AgilentGen5Parser(VendorParser):
 
         measurements = plate_data.results.measurements[well_position]
         sample_document = self._get_sample_document(plate_data, well_position)
-        compartment_temperature = self._get_compartment_temperature(plate_data)
 
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
@@ -147,7 +154,9 @@ class AgilentGen5Parser(VendorParser):
                     ]
                 ),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(absorbance),
-                compartment_temperature=compartment_temperature,
+                compartment_temperature=self._get_instance_or_none(
+                    TQuantityValueDegreeCelsius, plate_data.compartment_temperature
+                ),
             )
             for label, absorbance in measurements
         ]
@@ -162,15 +171,12 @@ class AgilentGen5Parser(VendorParser):
     ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
         return []
 
-    def _get_compartment_temperature(
+    def _get_instance_or_none(
         self,
-        plate_data: PlateData,
-    ) -> TQuantityValueDegreeCelsius:
-        return (
-            TQuantityValueDegreeCelsius(value=plate_data.compartment_temperature)
-            if plate_data.compartment_temperature
-            else None
-        )
+        cls: MeasurementDocumentAttributeTypes,
+        value: Optional[Union[str, float]],
+    ) -> Optional[MeasurementDocumentAttributeTypes]:
+        return cls(value=value) if value is not None else None
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)
