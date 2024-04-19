@@ -1,3 +1,4 @@
+ASM_CONVERTER_NAME = "allotropy_biorad_bioplex_manager"
 WELLS_TAG = "Wells"
 ANALYTE_NAME = "AnalyteName"
 MW_ANALYTES = "MWAnalytes"
@@ -34,7 +35,7 @@ ACQ_TIME = "AcquisitionTime"
 BEAD_REGIONS = "BeadRegions"
 PRODUCT_MANUFACTURER = "Bio-Rad"
 SOFTWARE_NAME = "“Bio-Plex Manager"
-DEVICE_TYPE = "Multi Analyte Profiling Analyzer"
+DEVICE_TYPE = "multi analyte profiling analyzer"
 USER = "User"
 CONTAINER_TYPE = "well plate"
 

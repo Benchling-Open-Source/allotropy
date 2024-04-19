@@ -6,7 +6,7 @@ from xml.etree import ElementTree
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.biorad_bioplex.constants import (
+from allotropy.parsers.biorad_bioplex_manager.constants import (
     ACQ_TIME,
     ANALYTE_NAME,
     BEAD_COUNT,
@@ -80,7 +80,7 @@ class WellAnalyteMapping:
 class SampleDocumentStructure:
     sample_type: SampleRoleType
     sample_identifier: str
-    description: str
+    description: Optional[str]
     well_name: str
     sample_dilution: Optional[float]
     well_analyte_mapping: WellAnalyteMapping
@@ -99,7 +99,7 @@ class SampleDocumentAggregate:
         for sample_types in samples_xml:
             for child_sample_type in sample_types:
                 sample_type = map_sample_type(child_sample_type.tag)
-                sample_description = get_val_from_xml(
+                sample_description = get_val_from_xml_or_none(
                     child_sample_type, DESCRIPTION_TAG
                 )
                 sample_identifier = get_val_from_xml(child_sample_type, LABEL)
@@ -129,7 +129,7 @@ class SampleDocumentAggregate:
         sample_id: str,
         sample_dilution: Optional[float],
         sample_type: SampleRoleType,
-        sample_description: str,
+        sample_description: Optional[str],
     ) -> SampleDocumentStructure:
         well_name = get_well_name(well_xml.attrib)
         mappings = WellAnalyteMapping(well_name=well_name, analytes=[])

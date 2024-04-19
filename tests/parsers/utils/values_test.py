@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import field, make_dataclass
 from typing import Optional
 from xml.etree import ElementTree
 
@@ -12,6 +13,7 @@ from allotropy.parsers.utils.values import (
     get_val_from_xml,
     get_val_from_xml_or_none,
     natural_sort_key,
+    remove_none_fields_from_data_class,
     try_float,
     try_float_or_none,
     try_int,
@@ -241,4 +243,33 @@ def test_get_val_from_xml_or_none() -> None:
             xml_object=test_xml, tag_name="RunSettings", tag_name_2="DilutionFactor"
         )
         is None
+    )
+
+
+def test_remove_none_fields_from_data_class_optional_none() -> None:
+
+    # Test that we remove the None
+    test_data_class = make_dataclass(
+        "test_data_class",
+        [
+            ("sample_id", str),
+            ("volume", int),
+            ("scientist", Optional[str], field(default=None)),  # type: ignore
+        ],
+    )
+    test_class = test_data_class(sample_id="abc", volume=5, scientist=None)
+    assert remove_none_fields_from_data_class(test_class) == test_data_class(
+        sample_id="abc", volume=5
+    )
+
+
+def test_remove_none_fields_from_data_class_with_required_none() -> None:
+    # Test that we do not remove the None when it's required
+    test_data_class = make_dataclass(
+        "test_data_class",
+        [("sample_id", str), ("volume", int), ("scientist", Optional[str])],  # type: ignore
+    )
+    test_class = test_data_class(sample_id="abc", volume=5, scientist=None)
+    assert remove_none_fields_from_data_class(test_class) == test_data_class(
+        sample_id="abc", volume=5, scientist=None
     )
