@@ -5,6 +5,21 @@ MULTIPLATE_FILE_ERROR = "Only a single plate per file can be processed at this t
 NO_PLATE_DATA_ERROR = "No plate data found in file."
 UNSUPORTED_READ_TYPE_ERROR = "Only Endpoint measurements can be processed at this time."
 
+HEADER_PREFIXES = frozenset(
+    {
+        "Software Version",
+        "Experiment File Path:",
+        "Protocol File Path:",
+        "Plate Number",
+        "Date",
+        "Time",
+        "Reader Type:",
+        "Reader Serial Number:",
+        "Reading Type",
+    },
+)
+
+
 EMISSION_KEY = "Emission"
 EXCITATION_KEY = "Excitation"
 GAIN_KEY = "Gain"

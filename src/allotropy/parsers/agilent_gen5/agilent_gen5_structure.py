@@ -19,6 +19,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     EXCITATION_KEY,
     FILENAME_REGEX,
     GAIN_KEY,
+    HEADER_PREFIXES,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     OPTICS_KEY,
@@ -37,21 +38,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_nan,
     try_float_or_none,
 )
-
-HEADER_PREFIXES = frozenset(
-    {
-        "Software Version",
-        "Experiment File Path:",
-        "Protocol File Path:",
-        "Plate Number",
-        "Date",
-        "Time",
-        "Reader Type:",
-        "Reader Serial Number:",
-        "Reading Type",
-    },
-)
-GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
 
 def read_data_section(reader: LinesReader) -> str:
