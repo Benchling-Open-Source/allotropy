@@ -144,7 +144,7 @@ class PharmSpecParser(VendorParser):
                 )  # to be able to set the props on the DistributionItem
                 items.append(
                     CalculatedDataDocumentItem(
-                        calculated_data_name=name,
+                        calculated_data_name=f"{feature}_{prop}".lower(),
                         calculated_result=get_property_from_sample(
                             prop, df.at[row, col]
                         ),
@@ -152,7 +152,7 @@ class PharmSpecParser(VendorParser):
                             data_source_document=[
                                 DataSourceDocumentItem(
                                     data_source_identifier=random_uuid_str(),
-                                    data_source_feature=feature,
+                                    data_source_feature=col,
                                 )
                             ]
                         ),
