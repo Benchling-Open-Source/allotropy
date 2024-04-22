@@ -7,10 +7,11 @@ from allotropy.parsers.agilent_gen5.constants import (
     NO_PLATE_DATA_ERROR,
     UNSUPORTED_READ_TYPE_ERROR,
 )
-from tests.parsers.test_utils import (
+from allotropy.testing.utils import (
     from_file,
     validate_contents,
 )
+from allotropy.to_allotrope import allotrope_model_from_file
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"

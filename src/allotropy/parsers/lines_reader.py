@@ -26,7 +26,7 @@ def read_to_lines(named_file_contents: NamedFileContents) -> list[str]:
     return contents.split("\n")
 
 
-def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
+def determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
     if not encoding:
         return DEFAULT_ENCODING
     if encoding != CHARDET_ENCODING:
@@ -36,11 +36,14 @@ def _determine_encoding(bytes_content: bytes, encoding: Optional[str]) -> str:
     if not detected:
         error = "Unable to detect text encoding for file. The file may be empty."
         raise AllotropeConversionError(error)
+    # Windows-1252 is a subset of UTF-8, and may lead to missing some data.
+    if detected == "Windows-1252":
+        detected = "utf-8"
     return detected
 
 
 def _decode(bytes_content: bytes, encoding: Optional[str]) -> str:
-    encoding_to_use = _determine_encoding(bytes_content, encoding)
+    encoding_to_use = determine_encoding(bytes_content, encoding)
     return bytes_content.decode(encoding_to_use)
 
 
@@ -120,6 +123,18 @@ class LinesReader:
             line = self.pop()
             if line is not None:
                 yield line
+
+
+class InvertedLinesReader(LinesReader):
+    def __init__(self, lines: list[str]) -> None:
+        self.lines = lines
+        self.current_line = len(lines) - 1
+
+    def pop(self) -> Optional[str]:
+        line = self.get()
+        if line is not None:
+            self.current_line -= 1
+        return line
 
 
 class CsvReader(LinesReader):
