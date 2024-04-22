@@ -77,7 +77,7 @@ def test_to_allotrope_absorbance_well_plate_id_in_filename() -> None:
     validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
 
 
-def test_to_allotrope_absorbance_with_NaN_measurements() -> None:
+def test_to_allotrope_absorbance_with_nan_measurements() -> None:
     test_filepath = f"{ABSORBANCE_PATH}/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
