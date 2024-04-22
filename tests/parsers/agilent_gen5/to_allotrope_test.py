@@ -20,6 +20,8 @@ UTF_16_FILEPATH = (
     "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_multiplate.txt"
 )
 
+ABSORBANCE_PATH = "tests/parsers/agilent_gen5/testdata/absorbance"
+
 ABSORBANCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
@@ -46,17 +48,19 @@ LUMINESCENCE_FILENAMES = [
 
 @pytest.mark.parametrize("filename", ABSORBANCE_FILENAMES)
 def test_to_allotrope_absorbance(filename: str) -> None:
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.txt"
-    expected_filepath = (
-        f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
-    )
+    test_filepath = f"{ABSORBANCE_PATH}/{filename}.txt"
+    expected_filepath = f"{ABSORBANCE_PATH}/{filename}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
-    test_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
-    expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate.json"
+    test_filepath = (
+        f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
+    )
+    expected_filepath = (
+        f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate.json"
+    )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
     allotrope_dict["plate reader aggregate document"]["data system document"][
@@ -67,10 +71,10 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
 
 
 def test_to_allotrope_absorbance_well_plate_id_in_filename() -> None:
-    test_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/010307_114129_BNCH654563_stdcurve_singleplate01.txt"
-    expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/010307_114129_BNCH654563_stdcurve_singleplate01.json"
+    filename = "010307_114129_BNCH654563_stdcurve_singleplate01.txt"
+    test_filepath = f"{ABSORBANCE_PATH}/{filename}"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
 
 
 @pytest.mark.parametrize("filename", FLUORESCENCE_FILENAMES)
@@ -92,8 +96,8 @@ def test_to_allotrope_luminescence(filename: str) -> None:
 @pytest.mark.parametrize(
     "filepath",
     [
-        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
-        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_singleplate.txt",
+        f"{ABSORBANCE_PATH}/kinetic_helper_gene_growth_curve.txt",
+        f"{ABSORBANCE_PATH}/kinetic_singleplate.txt",
     ],
 )
 def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
@@ -102,13 +106,13 @@ def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
 
 
 def test_to_allotrope_unsupported_spectral_scan_file() -> None:
-    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_114129_BNCH654563_spectralScan_example01.txt"
+    filepath = f"{ABSORBANCE_PATH}/240307_114129_BNCH654563_spectralScan_example01.txt"
     with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
 
 def test_to_allotrope_unsupported_area_scan_file() -> None:
-    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_125255_BNCH786865_areaScan_example01.txt"
+    filepath = f"{ABSORBANCE_PATH}/240307_125255_BNCH786865_areaScan_example01.txt"
     with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
