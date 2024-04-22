@@ -132,8 +132,8 @@ class PharmSpecParser(VendorParser):
         dd = DistributionDocumentItem(distribution=items)
         return [dd]
 
-    def _create_calculated_document_items(
-        self, name: str, df: pd.DataFrame, feature: str
+    def _create_calculated_document_items(self,
+        df: pd.DataFrame, feature: str
     ) -> list[CalculatedDataDocumentItem]:
         cols = column_map.values()
         items = []
@@ -180,7 +180,7 @@ class PharmSpecParser(VendorParser):
             if g in VALID_CALCS:
                 calc_agg_doc = TCalculatedDataAggregateDocument(
                     calculated_data_document=self._create_calculated_document_items(
-                        name, gdf, name
+                        gdf, name
                     )
                 )
             else:
