@@ -41,7 +41,6 @@ from allotropy.parsers.agilent_gen5.constants import (
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = Union[
@@ -151,7 +150,7 @@ class AgilentGen5Parser(VendorParser):
 
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=random_uuid_str(),
+                measurement_identifier=measurement.id_,
                 sample_document=sample_document,
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -159,7 +158,7 @@ class AgilentGen5Parser(VendorParser):
                             device_type=DEVICE_TYPE,
                             detection_type=read_data.read_mode.value,
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                value=self._get_wavelength_from_label(label)
+                                value=self._get_wavelength_from_label(measurement.label)
                             ),
                             number_of_averages=(
                                 TQuantityValueNumber(read_data.number_of_averages)
@@ -170,12 +169,12 @@ class AgilentGen5Parser(VendorParser):
                         )
                     ]
                 ),
-                absorbance=TQuantityValueMilliAbsorbanceUnit(absorbance),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(measurement.value),
                 compartment_temperature=get_instance_or_none(
                     TQuantityValueDegreeCelsius, plate_data.compartment_temperature
                 ),
             )
-            for label, absorbance in measurements
+            for measurement in measurements
         ]
 
     def _get_fluorescence_measurement_document(
@@ -187,10 +186,10 @@ class AgilentGen5Parser(VendorParser):
 
         measurement_document = []
 
-        for label, fluorescence in measurements:
-            filter_data = read_data.filter_sets[label]
+        for measurement in measurements:
+            filter_data = read_data.filter_sets[measurement.label]
             document = FluorescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=random_uuid_str(),
+                measurement_identifier=measurement.id_,
                 sample_document=sample_document,
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -229,7 +228,7 @@ class AgilentGen5Parser(VendorParser):
                         )
                     ]
                 ),
-                fluorescence=TQuantityValueRelativeFluorescenceUnit(fluorescence),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(measurement.value),
                 compartment_temperature=get_instance_or_none(
                     TQuantityValueDegreeCelsius, plate_data.compartment_temperature
                 ),
@@ -247,11 +246,11 @@ class AgilentGen5Parser(VendorParser):
         sample_document = self._get_sample_document(plate_data, well_position)
 
         measurement_document = []
-        for label, luminescence in measurements:
-            filter_data = read_data.filter_sets[label]
+        for measurement in measurements:
+            filter_data = read_data.filter_sets[measurement.label]
             measurement_document.append(
                 LuminescencePointDetectionMeasurementDocumentItems(
-                    measurement_identifier=random_uuid_str(),
+                    measurement_identifier=measurement.id_,
                     sample_document=sample_document,
                     device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                         device_control_document=[
@@ -276,7 +275,7 @@ class AgilentGen5Parser(VendorParser):
                             )
                         ]
                     ),
-                    luminescence=TQuantityValueRelativeLightUnit(luminescence),
+                    luminescence=TQuantityValueRelativeLightUnit(measurement.value),
                 )
             )
         return measurement_document

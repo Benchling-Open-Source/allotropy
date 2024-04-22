@@ -10,6 +10,7 @@ from typing import Optional
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -32,6 +33,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
@@ -173,7 +175,7 @@ class ReadData:
     read_mode: ReadMode
     measurement_labels: list[str]
     pathlength_correction: Optional[str]
-    step_label: Optional[str]  # TODO: remove (only needed by this class)
+    step_label: Optional[str]
     number_of_averages: Optional[float]
     detector_distance: Optional[float]
     detector_carriage_speed: Optional[str]
@@ -428,8 +430,23 @@ class ActualTemperature:
 
 
 @dataclass(frozen=True)
+class Measurement:
+    id_: str
+    value: JsonFloat
+    label: str
+
+    @staticmethod
+    def create(value: JsonFloat, label: str) -> Measurement:
+        return Measurement(
+            id_=random_uuid_str(),
+            value=value,
+            label=label,
+        )
+
+
+@dataclass(frozen=True)
 class Results:
-    measurements: defaultdict[str, list]
+    measurements: defaultdict[str, list[Measurement]]
     calculated_data: defaultdict[str, list]
     wells: list
 
@@ -464,7 +481,9 @@ class Results:
                     self.wells.append(well_pos)
                 well_value = try_float_or_nan(values[col_num])
                 if label in read_data.measurement_labels:
-                    self.measurements[well_pos].append([label, well_value])
+                    self.measurements[well_pos].append(
+                        Measurement.create(well_value, label)
+                    )
                 else:
                     self.calculated_data[well_pos].append([label, well_value])
 
@@ -486,7 +505,6 @@ class PlateData:
         results = Results.create()
 
         while reader.current_line_exists():
-            # TODO: get lines from reader instead of calling read_data_section
             data_section = read_data_section(reader)
             if data_section.startswith("Layout"):
                 layout_data = LayoutData.create(data_section)
