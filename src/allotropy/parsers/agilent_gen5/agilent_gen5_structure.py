@@ -38,15 +38,18 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
 )
 
-METADATA_PREFIXES = frozenset(
+HEADER_PREFIXES = frozenset(
     {
+        "Software Version",
+        "Experiment File Path:",
+        "Protocol File Path:",
         "Plate Number",
         "Date",
         "Time",
         "Reader Type:",
         "Reader Serial Number:",
         "Reading Type",
-    }
+    },
 )
 GEN5_DATETIME_FORMAT = "%m/%d/%Y %I:%M:%S %p"
 
@@ -63,25 +66,10 @@ def read_data_section(reader: LinesReader) -> str:
 
 
 @dataclass(frozen=True)
-class FilePaths:
+class HeaderData:
+    software_version: str
     experiment_file_path: str
     protocol_file_path: str
-
-    @staticmethod
-    def create(reader: LinesReader) -> FilePaths:
-        assert_not_none(
-            reader.drop_until("^Experiment File Path"),
-            "Experiment File Path",
-        )
-        file_paths = reader.pop_until_empty()
-        return FilePaths(
-            experiment_file_path=f"{next(file_paths)}\t".split("\t")[1],
-            protocol_file_path=f"{next(file_paths)}\t".split("\t")[1],
-        )
-
-
-@dataclass(frozen=True)
-class HeaderData:
     datetime: str
     well_plate_identifier: str
     model_number: str
@@ -89,12 +77,15 @@ class HeaderData:
 
     @classmethod
     def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
-        assert_not_none(reader.drop_until("^Plate Number"), "Plate Number")
+        assert_not_none(reader.drop_until("^Software Version"), "Software Version")
         metadata_dict = cls._parse_metadata(reader)
         datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
         plate_identifier = cls._get_identifier_from_filename_or_none(file_name)
 
         return HeaderData(
+            software_version=metadata_dict["Software Version"],
+            experiment_file_path=metadata_dict["Experiment File Path:"],
+            protocol_file_path=metadata_dict["Protocol File Path:"],
             datetime=datetime_,
             well_plate_identifier=plate_identifier or metadata_dict["Plate Number"],
             model_number=metadata_dict["Reader Type:"],
@@ -104,14 +95,19 @@ class HeaderData:
     @classmethod
     def _parse_metadata(cls, reader: LinesReader) -> dict:
         metadata_dict: dict = {}
-        for metadata_line in reader.pop_until_empty():
+        for metadata_line in reader.pop_until("Procedure Details"):
+            reader.drop_empty()
             line_split = metadata_line.split("\t")
-            if line_split[0] not in METADATA_PREFIXES:
+            if line_split[0] not in HEADER_PREFIXES:
                 msg = msg_for_error_on_unrecognized_value(
-                    "metadata key", line_split[0], METADATA_PREFIXES
+                    "metadata key", line_split[0], HEADER_PREFIXES
                 )
                 raise AllotropeConversionError(msg)
-            metadata_dict[line_split[0]] = line_split[1]
+            try:
+                metadata_dict[line_split[0]] = line_split[1]
+            except IndexError:
+                metadata_dict[line_split[0]] = ""
+
         return metadata_dict
 
     @classmethod
@@ -489,7 +485,6 @@ class Results:
 
 @dataclass(frozen=True)
 class PlateData:
-    file_paths: FilePaths
     header_data: HeaderData
     read_data: ReadData
     layout_data: LayoutData
@@ -498,7 +493,6 @@ class PlateData:
 
     @staticmethod
     def create(reader: LinesReader, file_name: str) -> PlateData:
-        file_paths = FilePaths.create(reader)
         header_data = HeaderData.create(reader, file_name)
         read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
@@ -519,7 +513,6 @@ class PlateData:
                 )
 
         return PlateData(
-            file_paths=file_paths,
             header_data=header_data,
             read_data=read_data,
             layout_data=layout_data,

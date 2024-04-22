@@ -16,6 +16,12 @@ from allotropy.parsers.lines_reader import LinesReader
 @pytest.mark.short
 def test_create_header_data_no_well_plate_id_in_filename() -> None:
     header_rows = [
+        "Software Version	3.12.08",
+        "",
+        "",
+        "Experiment File Path:	Experiments/singlePlate.xpt",
+        "Protocol File Path:	Protocols/defaultExport.prt",
+        "",
         "Plate Number	Plate 1",
         "Date	10/10/2022",
         "Time	9:00:04 PM",
@@ -27,6 +33,9 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
     header_data = HeaderData.create(reader, "dummy_filename.txt")
 
     assert header_data == HeaderData(
+        software_version="3.12.08",
+        experiment_file_path="Experiments/singlePlate.xpt",
+        protocol_file_path="Protocols/defaultExport.prt",
         datetime="10/10/2022 9:00:04 PM",
         well_plate_identifier="Plate 1",
         model_number="Synergy H1",
@@ -37,6 +46,9 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
 @pytest.mark.short
 def test_create_header_data_with_well_plate_id_from_filename() -> None:
     header_rows = [
+        "Software Version	3.12.08",
+        "Experiment File Path:	Experiments/singlePlate.xpt",
+        "Protocol File Path:	Protocols/defaultExport.prt",
         "Plate Number	Plate 1",
         "Date	10/10/2022",
         "Time	9:00:04 PM",

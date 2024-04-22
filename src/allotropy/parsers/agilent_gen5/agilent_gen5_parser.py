@@ -80,6 +80,7 @@ class AgilentGen5Parser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name=DEFAULT_SOFTWARE_NAME,
+                    software_version=plate_data.header_data.software_version,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
@@ -93,7 +94,7 @@ class AgilentGen5Parser(VendorParser):
     def _get_plate_reader_document_item(
         self, plate_data: PlateData, well_position: str
     ) -> PlateReaderDocumentItem:
-        file_paths = plate_data.file_paths
+        header_data = plate_data.header_data
         plate_well_count = len(plate_data.results.wells)
         read_mode = plate_data.read_data.read_mode
 
@@ -114,9 +115,9 @@ class AgilentGen5Parser(VendorParser):
 
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_time=self._get_date_time(plate_data.header_data.datetime),
-                analytical_method_identifier=file_paths.protocol_file_path,
-                experimental_data_identifier=file_paths.experiment_file_path,
+                measurement_time=self._get_date_time(header_data.datetime),
+                analytical_method_identifier=header_data.protocol_file_path,
+                experimental_data_identifier=header_data.experiment_file_path,
                 plate_well_count=TQuantityValueNumber(plate_well_count),
                 container_type=ContainerType.well_plate,
                 measurement_document=list(measurement_document),
@@ -134,7 +135,7 @@ class AgilentGen5Parser(VendorParser):
         return SampleDocument(
             sample_identifier=sample_identifier,
             location_identifier=well_position,
-            well_plate_identifier=plate_data.header_data.well_plate_identifier,
+            well_plate_identifier=well_plate_identifier,
         )
 
     def _get_wavelength_from_label(self, label: str) -> float:
