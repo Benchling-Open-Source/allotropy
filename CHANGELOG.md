@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Re-added encoding inference to Beckman VI Cell Blu adapter
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
 ### Changed
+- Use new plate reader schema in gen5 adapter
 ### Deprecated
 ### Removed
 ### Security
