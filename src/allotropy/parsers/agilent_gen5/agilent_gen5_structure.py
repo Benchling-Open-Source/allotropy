@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 import re
-from typing import Optional, Union
+from typing import Optional
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
@@ -480,7 +480,7 @@ class Results:
                 well_pos = f"{current_row}{col_num}"
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
-                well_value: float = try_float_or_nan(values[col_num])
+                well_value = try_float_or_nan(values[col_num])
                 if label in read_data.measurement_labels:
                     self.measurements[well_pos].append([label, well_value])
                 else:

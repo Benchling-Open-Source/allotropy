@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any, Optional, Union
+from typing import Any, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
@@ -8,6 +8,8 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
@@ -25,6 +27,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
@@ -47,7 +50,7 @@ MeasurementDocumentItems = Union[
     LuminescencePointDetectionMeasurementDocumentItems,
 ]
 
-MeasurementDocumentAttributeTypes = Union[
+MeasurementDocumentAttributeClasses = Union[
     TQuantityValueDegreeCelsius,
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
@@ -56,7 +59,7 @@ MeasurementDocumentAttributeTypes = Union[
 
 
 def get_instance_or_none(
-    cls: MeasurementDocumentAttributeTypes, value: Optional[Union[str, float]]
+    cls: type[MeasurementDocumentAttributeClasses], value: Any
 ) -> Any:
     return cls(value=value) if value is not None else None
 
@@ -105,7 +108,9 @@ class AgilentGen5Parser(VendorParser):
                 plate_data, well_position
             )
         elif read_mode == ReadMode.LUMINESCENCE:
-            measurement_document = self._get_luminescence_measurement_document()
+            measurement_document = self._get_luminescence_measurement_document(
+                plate_data, well_position
+            )
 
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -233,10 +238,47 @@ class AgilentGen5Parser(VendorParser):
         return measurement_document
 
     def _get_luminescence_measurement_document(
-        self,
+        self, plate_data: PlateData, well_position: str
     ) -> list[LuminescencePointDetectionMeasurementDocumentItems]:
-        return [
-        ]
+        _ = (plate_data, well_position)
+        read_data = plate_data.read_data
+        measurements = plate_data.results.measurements[well_position]
+        sample_document = self._get_sample_document(plate_data, well_position)
+
+        measurement_document = []
+        for label, luminescence in measurements:
+            filter_data = read_data.filter_sets[label]
+            measurement_document.append(
+                LuminescencePointDetectionMeasurementDocumentItems(
+                    measurement_identifier=random_uuid_str(),
+                    sample_document=sample_document,
+                    device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                        device_control_document=[
+                            LuminescencePointDetectionDeviceControlDocumentItem(
+                                device_type=DEVICE_TYPE,
+                                detection_type=read_data.read_mode.value,
+                                detector_wavelength_setting=get_instance_or_none(
+                                    TQuantityValueNanometer,
+                                    filter_data.detector_wavelength_setting,
+                                ),
+                                detector_bandwidth_setting=get_instance_or_none(
+                                    TQuantityValueNanometer,
+                                    filter_data.detector_bandwidth_setting,
+                                ),
+                                detector_distance_setting__plate_reader_=get_instance_or_none(
+                                    TQuantityValueMillimeter,
+                                    read_data.detector_distance,
+                                ),
+                                scan_position_setting__plate_reader_=filter_data.scan_position_setting,
+                                detector_gain_setting=filter_data.gain,
+                                detector_carriage_speed_setting=read_data.detector_carriage_speed,
+                            )
+                        ]
+                    ),
+                    luminescence=TQuantityValueRelativeLightUnit(luminescence),
+                )
+            )
+        return measurement_document
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)
