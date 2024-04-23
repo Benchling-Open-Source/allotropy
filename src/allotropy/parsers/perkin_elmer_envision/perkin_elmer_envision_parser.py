@@ -1,37 +1,82 @@
-from io import IOBase
-from typing import Any, Optional, TypeVar
-import uuid
+from collections import defaultdict
+from enum import Enum
+from typing import Any, cast, Optional, TypeVar, Union
 
-from allotropy.allotrope.allotrope import AllotropyError
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
-    DeviceControlAggregateDocument,
-    DeviceControlDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
+    DataSystemDocument,
+    DeviceControlDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
+    LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
-    MeasurementDocumentItem,
     Model,
-)
-from allotropy.allotrope.models.shared.components.plate_reader import (
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
+    OpticalImagingMeasurementDocumentItems,
+    PlateReaderAggregateDocument,
+    PlateReaderDocumentItem,
     SampleDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
+    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
-from allotropy.parsers.lines_reader import CsvReader
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    TDateTimeValue,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure import (
+    CalculatedPlateInfo,
     Data,
     Plate,
+    PlateMap,
+    Result,
+    ResultPlateInfo,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
+
+
+class ReadType(Enum):
+    ABSORBANCE = "Absorbance"
+    FLUORESCENCE = "Fluorescence"
+    LUMINESCENCE = "Luminescence"
+
+
+MeasurementDocumentItems = Union[
+    OpticalImagingMeasurementDocumentItems,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+]
+
+
+DeviceControlAggregateDocument = Union[
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+]
 
 
 def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
@@ -39,134 +84,334 @@ def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
 
 
 class PerkinElmerEnvisionParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, _: str) -> Model:
-        reader = CsvReader(raw_contents)
-        return self._get_model(Data.create(reader))
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        lines = read_to_lines(named_file_contents)
+        reader = CsvReader(lines)
+        filename = named_file_contents.original_file_name
+        try:
+            return self._get_model(Data.create(reader), filename)
+        except Exception as error:
+            msg = "Unhandled error in PerkinElmerEnvisionParser"
+            raise AllotropeConversionError(msg) from error
 
-    def _get_model(self, data: Data) -> Model:
-        if not self._check_fluorescence(data):
-            msg = "Elmer envision currently only accepts fluorescence data"
-            raise NotImplementedError(msg)
-
+    def _get_model(self, data: Data, filename: str) -> Model:
         if data.number_of_wells is None:
-            msg = "Unable to get number of the wells in the plate"
-            raise AllotropyError(msg)
+            msg = "Unable to determine the number of wells in the plate."
+            raise AllotropeConversionError(msg)
+
+        read_type = self._get_read_type(data)
 
         return Model(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
-                measurement_time=self._get_measurement_time(data),
-                analytical_method_identifier=data.basic_assay_info.protocol_id,
-                experimental_data_identifier=data.basic_assay_info.assay_id,
-                container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
+            plate_reader_aggregate_document=PlateReaderAggregateDocument(
+                plate_reader_document=self._get_plate_reader_document(data, read_type),
+                data_system_document=DataSystemDocument(
+                    file_name=filename,
+                    software_name=data.software.software_name,
+                    software_version=data.software.software_version,
+                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
                 device_system_document=DeviceSystemDocument(
-                    model_number=data.instrument.serial_number,
+                    model_number="EnVision",
+                    equipment_serial_number=data.instrument.serial_number,
                     device_identifier=data.instrument.nickname,
                 ),
-                measurement_document=self._get_measurement_document(data),
-            )
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data, read_type
+                ),
+            ),
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
         )
 
-    def _check_fluorescence(self, data: Data) -> bool:
-        absorbance_patterns = ["ABS", "Absorbance"]
-        luminescence_patterns = ["LUM", "Luminescence"]
+    def _get_read_type(self, data: Data) -> ReadType:
+        patterns = {
+            "ABS": ReadType.ABSORBANCE,
+            "Absorbance": ReadType.ABSORBANCE,
+            "LUM": ReadType.LUMINESCENCE,
+            "Luminescence": ReadType.LUMINESCENCE,
+            "Fluorescence": ReadType.FLUORESCENCE,
+        }
 
-        for pattern in absorbance_patterns + luminescence_patterns:
-            if pattern in data.labels.label:
-                return False
+        for key in patterns:
+            if key in data.labels.label:
+                return patterns[key]
 
-        return True
+        return (
+            ReadType.FLUORESCENCE
+        )  # TODO check if this is correct, this is the original behavior
 
     def _get_measurement_time(self, data: Data) -> TDateTimeValue:
         dates = [
             plate.plate_info.measurement_time
-            for plate in data.plates
+            for plate in data.plate_list.plates
             if plate.plate_info.measurement_time
         ]
 
         if dates:
-            return self.get_date_time(min(dates))
+            return self._get_date_time(min(dates))
 
-        msg = "Unable to find valid measurement date"
-        raise AllotropyError(msg)
+        msg = "Unable to determine the measurement time."
+        raise AllotropeConversionError(msg)
 
     def _get_device_control_aggregate_document(
-        self, data: Data, plate: Plate
+        self,
+        data: Data,
+        result_plate_info: ResultPlateInfo,
+        read_type: ReadType,
     ) -> DeviceControlAggregateDocument:
         ex_filter = data.labels.excitation_filter
-        em_filter = data.labels.get_emission_filter(plate.plate_info.emission_filter_id)
-        return DeviceControlAggregateDocument(
-            [
-                DeviceControlDocumentItem(
-                    device_type="fluorescence detector",
-                    detector_distance_setting__plate_reader_=safe_value(
-                        TQuantityValueMillimeter, plate.plate_info.measured_height
-                    ),
-                    number_of_averages=safe_value(
-                        TQuantityValueNumber, data.labels.number_of_flashes
-                    ),
-                    detector_gain_setting=data.labels.detector_gain_setting,
-                    scan_position_setting__plate_reader_=data.labels.scan_position_setting,
-                    detector_wavelength_setting=safe_value(
-                        TQuantityValueNanometer,
-                        em_filter.wavelength if em_filter else None,
-                    ),
-                    detector_bandwidth_setting=safe_value(
-                        TQuantityValueNanometer,
-                        em_filter.bandwidth if em_filter else None,
-                    ),
-                    excitation_wavelength_setting=safe_value(
-                        TQuantityValueNanometer,
-                        ex_filter.wavelength if ex_filter else None,
-                    ),
-                    excitation_bandwidth_setting=safe_value(
-                        TQuantityValueNanometer,
-                        ex_filter.bandwidth if ex_filter else None,
-                    ),
-                )
-            ]
+        em_filter = data.labels.get_emission_filter(
+            result_plate_info.emission_filter_id
         )
 
-    def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
+        if read_type == ReadType.LUMINESCENCE:
+            return LuminescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    LuminescencePointDetectionDeviceControlDocumentItem(
+                        device_type="luminescence detector",
+                        detector_distance_setting__plate_reader_=safe_value(
+                            TQuantityValueMillimeter, result_plate_info.measured_height
+                        ),
+                        number_of_averages=safe_value(
+                            TQuantityValueNumber, data.labels.number_of_flashes
+                        ),
+                        detector_gain_setting=data.labels.detector_gain_setting,
+                        scan_position_setting__plate_reader_=data.labels.scan_position_setting,
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.wavelength if em_filter else None,
+                        ),
+                        detector_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.bandwidth if em_filter else None,
+                        ),
+                    )
+                ]
+            )
+        elif read_type == ReadType.ABSORBANCE:
+            return UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        device_type="absorbance detector",
+                        detector_distance_setting__plate_reader_=safe_value(
+                            TQuantityValueMillimeter, result_plate_info.measured_height
+                        ),
+                        number_of_averages=safe_value(
+                            TQuantityValueNumber, data.labels.number_of_flashes
+                        ),
+                        detector_gain_setting=data.labels.detector_gain_setting,
+                        scan_position_setting__plate_reader_=data.labels.scan_position_setting,
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.wavelength if em_filter else None,
+                        ),
+                        detector_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.bandwidth if em_filter else None,
+                        ),
+                    )
+                ]
+            )
+        else:  # read_type is FLUORESCENCE
+            return FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    FluorescencePointDetectionDeviceControlDocumentItem(
+                        device_type="fluorescence detector",
+                        detector_distance_setting__plate_reader_=safe_value(
+                            TQuantityValueMillimeter, result_plate_info.measured_height
+                        ),
+                        number_of_averages=safe_value(
+                            TQuantityValueNumber, data.labels.number_of_flashes
+                        ),
+                        detector_gain_setting=data.labels.detector_gain_setting,
+                        scan_position_setting__plate_reader_=data.labels.scan_position_setting,
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.wavelength if em_filter else None,
+                        ),
+                        detector_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            em_filter.bandwidth if em_filter else None,
+                        ),
+                        excitation_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            ex_filter.wavelength if ex_filter else None,
+                        ),
+                        excitation_bandwidth_setting=safe_value(
+                            TQuantityValueNanometer,
+                            ex_filter.bandwidth if ex_filter else None,
+                        ),
+                    )
+                ]
+            )
+
+    def _get_measurement_document(
+        self,
+        plate: Plate,
+        result: Result,
+        p_map: PlateMap,
+        device_control_document: list[DeviceControlDocument],
+        read_type: ReadType,
+    ) -> MeasurementDocumentItems:
+        plate_barcode = plate.plate_info.barcode
+        well_location = f"{result.col}{result.row}"
+        sample_document = SampleDocument(
+            sample_identifier=f"{plate_barcode} {well_location}",
+            well_plate_identifier=plate_barcode,
+            location_identifier=well_location,
+            sample_role_type=p_map.get_sample_role_type(result.col, result.row).value,
+        )
+        compartment_temperature = safe_value(
+            TQuantityValueDegreeCelsius,
+            plate.plate_info.chamber_temperature_at_start,
+        )
+        if read_type == ReadType.ABSORBANCE:
+            return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+                measurement_identifier=result.uuid,
+                sample_document=sample_document,
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(
+                        list[
+                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem
+                        ],
+                        device_control_document,
+                    ),
+                ),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(result.value),
+                compartment_temperature=compartment_temperature,
+            )
+        elif read_type == ReadType.LUMINESCENCE:
+            return LuminescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=result.uuid,
+                sample_document=sample_document,
+                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(
+                        list[LuminescencePointDetectionDeviceControlDocumentItem],
+                        device_control_document,
+                    ),
+                ),
+                luminescence=TQuantityValueRelativeLightUnit(result.value),
+                compartment_temperature=compartment_temperature,
+            )
+        else:  # read_type is FLUORESCENCE
+            return FluorescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=result.uuid,
+                sample_document=sample_document,
+                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(
+                        list[FluorescencePointDetectionDeviceControlDocumentItem],
+                        device_control_document,
+                    ),
+                ),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(result.value),
+                compartment_temperature=compartment_temperature,
+            )
+
+    def _get_plate_reader_document(
+        self,
+        data: Data,
+        read_type: ReadType,
+    ) -> list[PlateReaderDocumentItem]:
         items = []
-        for plate in data.plates:
-            if plate.results is None:
+        measurement_time = self._get_measurement_time(data)
+        measurement_docs_dict = defaultdict(list)
+
+        for plate in data.plate_list.plates:
+            if isinstance(plate.plate_info, CalculatedPlateInfo):
                 continue
 
             try:
                 p_map = data.plate_maps[plate.plate_info.number]
             except KeyError as e:
-                msg = f"Unable to find plate map of {plate.plate_info.barcode}"
-                raise AllotropyError(msg) from e
+                msg = f"Unable to find plate map for Plate {plate.plate_info.barcode}."
+                raise AllotropeConversionError(msg) from e
 
             device_control_aggregate_document = (
-                self._get_device_control_aggregate_document(data, plate)
+                self._get_device_control_aggregate_document(
+                    data, plate.plate_info, read_type
+                )
             )
 
-            items += [
-                MeasurementDocumentItem(
-                    sample_document=SampleDocument(
-                        plate_barcode=plate.plate_info.barcode,
-                        well_location_identifier=f"{result.col}{result.row}",
-                        sample_role_type=p_map.get_sample_role_type(
-                            result.col, result.row
+            for result in plate.result_list.results:
+                measurement_docs_dict[
+                    (plate.plate_info.number, result.col, result.row)
+                ].append(
+                    self._get_measurement_document(
+                        plate,
+                        result,
+                        p_map,
+                        cast(
+                            list[DeviceControlDocument],
+                            device_control_aggregate_document.device_control_document,
                         ),
-                    ),
-                    device_control_aggregate_document=device_control_aggregate_document,
-                    processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                        processed_data_document=[
-                            ProcessedDataDocumentItem(
-                                processed_data=result.value,
-                                data_processing_description="processed data",
-                            ),
-                        ]
-                    ),
-                    compartment_temperature=safe_value(
-                        TQuantityValueDegreeCelsius,
-                        plate.plate_info.chamber_temperature_at_start,
-                    ),
+                        read_type,
+                    )
                 )
-                for result in plate.results
-            ]
+
+        for well_location in sorted(measurement_docs_dict.keys()):
+            items.append(
+                PlateReaderDocumentItem(
+                    measurement_aggregate_document=MeasurementAggregateDocument(
+                        measurement_time=measurement_time,
+                        plate_well_count=TQuantityValueNumber(
+                            value=data.number_of_wells
+                        ),
+                        measurement_document=measurement_docs_dict[well_location],
+                        analytical_method_identifier=data.basic_assay_info.protocol_id,
+                        experimental_data_identifier=data.basic_assay_info.assay_id,
+                        container_type=ContainerType.well_plate,
+                    )
+                )
+            )
+
         return items
+
+    def _get_calculated_data_aggregate_document(
+        self,
+        data: Data,
+        read_type: ReadType,
+    ) -> Optional[CalculatedDataAggregateDocument]:
+        calculated_documents = []
+
+        for calculated_plate in data.plate_list.plates:
+            if isinstance(calculated_plate.plate_info, ResultPlateInfo):
+                continue
+
+            source_result_lists = [
+                source_plate.result_list.results
+                for source_plate in calculated_plate.collect_result_plates(
+                    data.plate_list
+                )
+            ]
+
+            for calculated_result, *source_results in zip(
+                calculated_plate.calculated_result_list.calculated_results,
+                *source_result_lists,
+            ):
+                calculated_documents.append(
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier=calculated_result.uuid,
+                        calculated_data_name=calculated_plate.plate_info.name,
+                        calculation_description=calculated_plate.plate_info.formula,
+                        calculated_result=TQuantityValue(
+                            value=calculated_result.value,
+                            unit=UNITLESS,
+                        ),
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier=source_result.uuid,
+                                    data_source_feature=read_type.value,
+                                )
+                                for source_result in source_results
+                            ]
+                        ),
+                    )
+                )
+
+        if not calculated_documents:
+            return None
+
+        return CalculatedDataAggregateDocument(
+            calculated_data_document=calculated_documents,
+        )

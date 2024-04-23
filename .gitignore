@@ -175,6 +175,10 @@ cython_debug/
 # *.iml
 # *.ipr
 
+# Plugin files
+.idea/copilot/chatSessions/**
+.idea/csv-editor.xml
+
 # CMake
 cmake-build-*/
 

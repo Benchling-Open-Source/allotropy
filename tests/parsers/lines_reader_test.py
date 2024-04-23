@@ -1,46 +1,71 @@
 from io import BytesIO
+import re
+from typing import Optional
 
-from allotropy.parsers.lines_reader import LinesReader
+import pytest
+
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+
+INPUT_LINES = [
+    "data section",
+    "col1, col2, col3",
+    ", ,",
+    ", ,",
+    ", ,",
+    "",
+    "header section",
+    "element1",
+    "element2",
+    "element3",
+    "",
+    "",
+    "information",
+    "name",
+    "123",
+    "",
+]
 
 
-def get_input_lines() -> list[str]:
-    return [
-        "data section",
-        "col1, col2, col3",
-        ", ,",
-        ", ,",
-        ", ,",
-        "",
-        "header section",
-        "element1",
-        "element2",
-        "element3",
-        "",
-        "",
-        "information",
-        "name",
-        "123",
-        "",
-    ]
+def _read_to_lines(encoding: Optional[str] = None) -> list[str]:
+    input_text = "\n".join(INPUT_LINES)
+    io_ = BytesIO(input_text.encode("UTF-8"))
+    named_file_contents = NamedFileContents(io_, "test.csv", encoding)
+    return read_to_lines(named_file_contents)
 
 
-def get_input_text() -> str:
-    return "\n".join(get_input_lines())
+def test_read_to_lines() -> None:
+    lines = _read_to_lines()
+    assert lines == INPUT_LINES
 
 
-def get_input_stream() -> BytesIO:
-    return BytesIO(get_input_text().encode("UTF-8"))
+@pytest.mark.parametrize("encoding", [None, "UTF-8"])
+def test_read_to_lines_with_encoding(encoding: Optional[str]) -> None:
+    lines = _read_to_lines(encoding)
+    assert lines == INPUT_LINES
+
+
+def test_read_to_lines_with_encoding_that_is_invalid() -> None:
+    # TODO: should raise AllotropeConversionError
+    with pytest.raises(LookupError, match="unknown encoding: BAD ENCODING"):
+        _read_to_lines("BAD ENCODING")
+
+
+def test_read_to_lines_with_encoding_that_is_valid_but_invalid_for_file() -> None:
+    expected_regex_raw = "'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)"
+    expected_regex = re.escape(expected_regex_raw)
+    # TODO: should raise AllotropeConversionError
+    with pytest.raises(UnicodeDecodeError, match=expected_regex):
+        _read_to_lines("UTF-32")
 
 
 def get_test_reader() -> LinesReader:
-    return LinesReader(get_input_stream())
+    return LinesReader(INPUT_LINES)
 
 
-def test_reader_constructure() -> None:
+def test_reader_init() -> None:
     test_reader = get_test_reader()
-    assert test_reader.contents == get_input_text()
-    assert test_reader.lines == get_input_lines()
-    assert test_reader.n_lines == 16
+    assert test_reader.lines == INPUT_LINES
     assert test_reader.current_line == 0
 
 
@@ -144,12 +169,10 @@ def test_reader_drop_until_empty() -> None:
 
 
 def test_reader_pop_until() -> None:
-    input_lines = get_input_lines()
     test_reader = get_test_reader()
-    assert list(test_reader.pop_until("^header section")) == input_lines[:6]
+    assert list(test_reader.pop_until("^header section")) == INPUT_LINES[:6]
 
 
 def test_reader_pop_until_empty() -> None:
-    input_lines = get_input_lines()
     test_reader = get_test_reader()
-    assert list(test_reader.pop_until_empty()) == input_lines[:5]
+    assert list(test_reader.pop_until_empty()) == INPUT_LINES[:5]

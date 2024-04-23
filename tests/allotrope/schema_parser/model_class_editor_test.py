@@ -20,24 +20,24 @@ import json
 from typing import Union
 
 
-@dataclass
+@dataclass(frozen=True)
 class ClassA:
     key: str
     value: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class ClassB:
     key: str
     value: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class UnusedClass:
     value: int
 
 
-@dataclass
+@dataclass(frozen=True)
 class Model:
     key: str
     value: str
@@ -51,13 +51,13 @@ from typing import Union
 from allotropy.allotrope.models.shared.definitions import Thing1, Thing2
 
 
-@dataclass
+@dataclass(frozen=True)
 class ClassB:
     key: str
     value: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class Model:
     key: str
     value: str
