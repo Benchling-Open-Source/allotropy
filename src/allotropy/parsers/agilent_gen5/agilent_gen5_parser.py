@@ -150,7 +150,7 @@ class AgilentGen5Parser(VendorParser):
 
         return [
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                measurement_identifier=measurement.id_,
+                measurement_identifier=measurement.identifier,
                 sample_document=sample_document,
                 device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -189,7 +189,7 @@ class AgilentGen5Parser(VendorParser):
         for measurement in measurements:
             filter_data = read_data.filter_sets[measurement.label]
             document = FluorescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=measurement.id_,
+                measurement_identifier=measurement.identifier,
                 sample_document=sample_document,
                 device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=[
@@ -250,7 +250,7 @@ class AgilentGen5Parser(VendorParser):
             filter_data = read_data.filter_sets[measurement.label]
             measurement_document.append(
                 LuminescencePointDetectionMeasurementDocumentItems(
-                    measurement_identifier=measurement.id_,
+                    measurement_identifier=measurement.identifier,
                     sample_document=sample_document,
                     device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                         device_control_document=[

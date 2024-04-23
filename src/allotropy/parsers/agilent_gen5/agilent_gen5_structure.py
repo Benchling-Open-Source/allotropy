@@ -431,14 +431,14 @@ class ActualTemperature:
 
 @dataclass(frozen=True)
 class Measurement:
-    id_: str
+    identifier: str
     value: JsonFloat
     label: str
 
     @staticmethod
     def create(value: JsonFloat, label: str) -> Measurement:
         return Measurement(
-            id_=random_uuid_str(),
+            identifier=random_uuid_str(),
             value=value,
             label=label,
         )
