@@ -11,7 +11,7 @@
   "[yaml]": {
     "editor.autoIndent": "keep"
   },
-  // Disable Python unittest tests for now.
+  // Disable Python tests for now.
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   // isort
@@ -24,7 +24,7 @@
   // Use Black for formatting
   "black-formatter.args": [
     "--config",
-    "${workspaceRoot}/pyproject.toml"
+    "pyproject.toml"
   ],
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
