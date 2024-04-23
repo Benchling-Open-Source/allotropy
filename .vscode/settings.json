@@ -11,8 +11,8 @@
   "[yaml]": {
     "editor.autoIndent": "keep"
   },
-  // Disable Python tests for now.
-  "python.testing.pytestEnabled": false,
+  // Disable Python unittest tests for now.
+  "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   // isort
   "isort.path": [
@@ -35,4 +35,8 @@
     }
   },
   "search.useIgnoreFiles": true,
+  "python.linting.enabled": true,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
 }
