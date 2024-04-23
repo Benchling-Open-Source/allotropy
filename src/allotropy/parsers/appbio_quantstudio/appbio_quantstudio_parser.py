@@ -1,4 +1,3 @@
-from io import IOBase
 from typing import Optional
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
@@ -39,23 +38,27 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_builders import (
-    DataBuilder,
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
+    create_data,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Data,
     Well,
     WellItem,
 )
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, file_name: str) -> Model:
-        reader = LinesReader(raw_contents)
-        data = DataBuilder.build(reader)
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        lines = read_to_lines(named_file_contents)
+        reader = LinesReader(lines)
+        data = create_data(reader)
+        file_name = named_file_contents.original_file_name
         return self._get_model(data, file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
@@ -98,7 +101,7 @@ class AppBioQuantStudioParser(VendorParser):
                     )
                     for well in data.wells
                 ],
-                calculated_data_aggregate_document=self.get_outter_calculated_data_aggregate_document(
+                calculated_data_aggregate_document=self.get_outer_calculated_data_aggregate_document(
                     data
                 ),
             )
@@ -107,32 +110,33 @@ class AppBioQuantStudioParser(VendorParser):
     def get_inner_calculated_data_aggregate_document(
         self, well: Well
     ) -> Optional[TCalculatedDataAggregateDocument]:
-        if not well.calculated_document:
+        if not well.calculated_documents:
             return None
 
         return TCalculatedDataAggregateDocument(
             calculated_data_document=[
                 CalculatedDataDocumentItem(
-                    calculated_data_identifier=well.calculated_document.uuid,
+                    calculated_data_identifier=calculated_document.uuid,
                     data_source_aggregate_document=DataSourceAggregateDocument(
                         data_source_document=[
                             DataSourceDocumentItem(
                                 data_source_identifier=data_source.reference.uuid,
                                 data_source_feature=data_source.feature,
                             )
-                            for data_source in well.calculated_document.data_sources
+                            for data_source in calculated_document.data_sources
                         ],
                     ),
-                    calculated_data_name=well.calculated_document.name,
+                    calculated_data_name=calculated_document.name,
                     calculated_data_description=None,
                     calculated_datum=TQuantityValueUnitless(
-                        value=well.calculated_document.value
+                        value=calculated_document.value
                     ),
                 )
+                for calculated_document in well.calculated_documents
             ],
         )
 
-    def get_outter_calculated_data_aggregate_document(
+    def get_outer_calculated_data_aggregate_document(
         self, data: Data
     ) -> TCalculatedDataAggregateDocument:
         if data.header.experiment_type in [
@@ -177,7 +181,7 @@ class AppBioQuantStudioParser(VendorParser):
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
             measurement_identifier=well_item.uuid,
-            measurement_time=self.get_date_time(data.header.measurement_time),
+            measurement_time=self._get_date_time(data.header.measurement_time),
             target_DNA_description=well_item.target_dna_description,
             sample_document=SampleDocument(
                 sample_identifier=well_item.sample_identifier,
@@ -273,7 +277,7 @@ class AppBioQuantStudioParser(VendorParser):
                         TDatacubeComponent(
                             field_componentDatatype=FieldComponentDatatype.double,
                             concept="normalized report result",
-                            unit="(unitless)",
+                            unit=UNITLESS,
                         ),
                     ],
                 ),
@@ -296,7 +300,7 @@ class AppBioQuantStudioParser(VendorParser):
                         TDatacubeComponent(
                             field_componentDatatype=FieldComponentDatatype.double,
                             concept="baseline corrected reporter result",
-                            unit="(unitless)",
+                            unit=UNITLESS,
                         ),
                     ],
                 ),
@@ -394,12 +398,12 @@ class AppBioQuantStudioParser(VendorParser):
                     TDatacubeComponent(
                         field_componentDatatype=FieldComponentDatatype.double,
                         concept="reporter dye fluorescence",
-                        unit="(unitless)",
+                        unit=UNITLESS,
                     ),
                     TDatacubeComponent(
                         field_componentDatatype=FieldComponentDatatype.double,
                         concept="slope",
-                        unit="(unitless)",
+                        unit=UNITLESS,
                     ),
                 ],
             ),

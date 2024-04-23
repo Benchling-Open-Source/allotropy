@@ -1,0 +1,44 @@
+
+
+Software Version	3.12.08
+
+
+
+Experiment File Path:	C:\Users\Public\Documents\Experiments\20240208_lum_withFilter.xpt
+Protocol File Path:	C:\Users\Public\Documents\Protocols\20240208_lum_withFilter.prt
+
+
+
+Plate Number	Plate 1
+Date	2/8/2024
+Time	10:47:01 PM
+Reader Type:	Synergy H1
+Reader Serial Number:	Unknown
+Reading Type	Simulation
+
+Procedure Details
+
+Plate Type	96 WELL PLATE (Use plate lid)
+Eject plate on completion	
+Read	Filter Lum
+	Luminescence Endpoint
+	Full Plate
+	Integration Time: 0:01.00 (MM:SS.ss)
+	Filter Set 1 (Blue)
+	    Emission: 460/40
+	    Mirror: Top 400 nm,  Gain: 135
+	Read Speed: Normal,  Delay: 100 msec
+	Extended Dynamic Range
+	Read Height: 7 mm
+
+Results
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	210530	213380	216200	219000	221780	224520	227230	229910	232560	235160	237730	240250	Filter Lum:460/40
+B	212240	215080	217890	220670	223430	226150	228850	231500	234120	236710	239250	241740	Filter Lum:460/40
+C	213950	216770	219560	222330	225070	227770	230440	233080	235680	238230	240750	243220	Filter Lum:460/40
+D	215640	218450	221230	223980	226690	229380	232030	234640	237220	239750	242240	244680	Filter Lum:460/40
+E	217330	220120	222880	225610	228310	230970	233600	236190	238740	241250	243710	246130	Filter Lum:460/40
+F	219000	221780	224520	227230	229910	232560	235160	237730	240250	242730	245170	247560	Filter Lum:460/40
+G	220670	223430	226150	228850	231500	234120	236710	239250	241740	244200	246610	248970	Filter Lum:460/40
+H	222330	225070	227770	230440	233080	235680	238230	240750	243220	245650	248030	250360	Filter Lum:460/40
+

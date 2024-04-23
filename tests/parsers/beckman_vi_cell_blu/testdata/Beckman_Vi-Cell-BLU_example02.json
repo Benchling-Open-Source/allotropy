@@ -7,7 +7,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2021-09-20T16:28:00+00:00",
-                            "measurement identifier": "a45d5328-8f77-4304-9f00-11b276ef8104",
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -29,10 +29,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.69,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 1204,
-                                            "unit": "cell"
                                         },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
@@ -61,6 +57,10 @@
                                             "value": 16.32,
                                             "unit": "μm"
                                         },
+                                        "total cell count": {
+                                            "value": 1204,
+                                            "unit": "cell"
+                                        },
                                         "viable cell count": {
                                             "value": 1108,
                                             "unit": "cell"
@@ -86,7 +86,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2021-09-20T16:30:00+00:00",
-                            "measurement identifier": "ab3c83ac-2c35-483a-836e-a624f9ff1010",
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_1",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -108,10 +108,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.33,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 501,
-                                            "unit": "cell"
                                         },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
@@ -140,6 +136,10 @@
                                             "value": 15.51,
                                             "unit": "μm"
                                         },
+                                        "total cell count": {
+                                            "value": 501,
+                                            "unit": "cell"
+                                        },
                                         "viable cell count": {
                                             "value": 458,
                                             "unit": "cell"
@@ -165,7 +165,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2021-09-20T16:32:00+00:00",
-                            "measurement identifier": "3db1e527-fe0d-49d2-b118-2ae20ac3114d",
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -187,10 +187,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 1.2,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 1722,
-                                            "unit": "cell"
                                         },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
@@ -219,6 +215,10 @@
                                             "value": 16.03,
                                             "unit": "μm"
                                         },
+                                        "total cell count": {
+                                            "value": 1722,
+                                            "unit": "cell"
+                                        },
                                         "viable cell count": {
                                             "value": 1633,
                                             "unit": "cell"
@@ -244,7 +244,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2021-09-20T16:34:00+00:00",
-                            "measurement identifier": "0585b42f-e499-4c8c-ba78-0de04448b6b5",
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -266,10 +266,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.99,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 1778,
-                                            "unit": "cell"
                                         },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
@@ -298,6 +294,10 @@
                                             "value": 16.26,
                                             "unit": "μm"
                                         },
+                                        "total cell count": {
+                                            "value": 1778,
+                                            "unit": "cell"
+                                        },
                                         "viable cell count": {
                                             "value": 1664,
                                             "unit": "cell"
@@ -323,7 +323,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2021-09-20T16:36:00+00:00",
-                            "measurement identifier": "e7aae2f6-67c5-433a-8831-7dd7110b8f6f",
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -345,10 +345,6 @@
                                         "viable cell density (cell counter)": {
                                             "value": 0.56,
                                             "unit": "10^6 cells/mL"
-                                        },
-                                        "total cell count": {
-                                            "value": 829,
-                                            "unit": "cell"
                                         },
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
@@ -376,6 +372,10 @@
                                         "average live cell diameter (cell counter)": {
                                             "value": 15.93,
                                             "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 829,
+                                            "unit": "cell"
                                         },
                                         "viable cell count": {
                                             "value": 755,
@@ -405,7 +405,7 @@
             "file name": "Beckman_Vi-Cell-BLU_example02.csv",
             "software name": "Vi-Cell BLU",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.9"
+            "ASM converter version": "0.1.17"
         }
     }
 }

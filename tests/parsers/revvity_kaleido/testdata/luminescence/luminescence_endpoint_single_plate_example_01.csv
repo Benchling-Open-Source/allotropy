@@ -1,0 +1,101 @@
+EnSight Results from
+Protocol Name,foo
+Measurement Date,2023-05-17 16:21:30
+
+
+Result for Luminescence 1
+Barcode,Repeat,Loop no,Well scan x,Well scan y,Exc wl / filter,Ems wl,TRF Window,Analysis Parameter,Label-free Parameter,
+V-2023-05-17 16:21:29,1,,,,,,,,,
+
+,1,2,3,4,5,6,7,8,9,10,11,12,
+A,94395,87450,81740,50,10,85,72485,57060,45800,20,50,75,
+B,102790,91465,85565,55,65,50,66550,51120,37175,55,90,40,
+C,95030,86670,81190,40,45,10,57750,41340,28510,65,40,70,
+D,94215,81820,68560,45,55,50,40310,26715,16315,30,50,35,
+E,70685,63700,60960,50,55,55,21010,14400,9810,75,45,45,
+F,40015,36955,32090,70,65,35,13045,5680,3285,45,60,55,
+G,12460,13055,11655,65,30,35,3145,1620,825,65,85,55,
+H,3065,2875,2920,80,95,65,720,375,275,40,35,75,
+
+
+Measurement Information
+Measurement Started,,2023-05-17 16:21:30
+Measurement Finished,,2023-05-17 16:22:38
+Measurement Signature,,2f305f44-3d4d-42b4-bbbf-f0de3de98057
+Barcode,,V-2023-05-17 16:21:29
+
+Instrument Information
+Instrument Serial Number,,1234567
+Software Version,,Kaleido 3.0.3067.117
+
+Protocol Information
+Protocol Name,,foo
+Protocol Signature,,ee5bd9fd-5d6f-491d-8791-d01ba03222bc
+Protocol Owner,,bar
+Sequence Executed By,,Plate
+
+Plate Type Information
+Plate Type Name,,96 General
+Plate Type Owner,,foobar
+Plate Type Date,,9/1/2014 12:00:00 AM
+Plate Type Signature,,f4e0f1ba-a07f-47cd-8e23-62211d9c87b4
+Number of Rows,,12
+Number of Columns,,8
+Plate Height [mm],,14.35
+Bottom Height [mm],,0
+Bottom Thickness [mm],,0
+Well Diameter (Bottom) [mm],,6.5
+Well Shape (Bottom),,Round
+Well Volume [µl],,300
+Optical Index,,1.58
+Plate Type Coordinates [mm]
+,,X,Y
+,Upper Left,14.38,11.24
+,Upper Right,113.38,11.24
+,Lower Left,14.38,74.24
+,Lower Right,113.38,74.24
+
+Platemap
+,1,2,3,4,5,6,7,8,9,10,11,12,
+A,-,-,-,-,-,-,-,-,-,-,-,-,
+B,-,-,-,-,-,-,-,-,-,-,-,-,
+C,-,-,-,-,-,-,-,-,-,-,-,-,
+D,-,-,-,-,-,-,-,-,-,-,-,-,
+E,-,-,-,-,-,-,-,-,-,-,-,-,
+F,-,-,-,-,-,-,-,-,-,-,-,-,
+G,-,-,-,-,-,-,-,-,-,-,-,-,
+H,-,-,-,-,-,-,-,-,-,-,-,-,
+
+
+Measurement Sequence
+Luminescence 1
+Delay 1
+
+Details of Measurement Sequence
+
+Operation,,,Luminescence 1
+Measurement Mode,,,Single
+Distance between Plate and Detector [mm],,,0.1
+Measurement Time [s],,,0.2
+
+Operation,,,Delay 1
+Duration [hh:ss:mm.sss],,,00:00:10.000
+Plate Location,,,INSIDE
+
+Post Processing Sequence
+
+EXPORT
+Export Format,,,CSV_PLATE
+Format Options,,,Standard
+Export Path,,,C:\Users\bar\Documents\Ensight output files\baz
+File Name,,,qux_quux
+
+Comments:
+Time,Author,Analysis Result,Message
+2019 - 10 - 17 09: 50:24,Admin,,HPV ELISA 
+2023 - 05 - 17 16: 21:29,foobar,,Barcode reading failed, a virtual barcode "V-2023-05-17 16:21:29" was assigned to the measurement.
+2023 - 05 - 17 16: 21:30,foobar,,Measurement started.
+
+Exported with Kaleido 3.0.3067.117
+
+

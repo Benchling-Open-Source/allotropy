@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
-from io import IOBase
 from typing import Any
-import uuid
 
 import pandas as pd
 
@@ -34,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_reader import AbsoluteQReader
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
@@ -41,11 +40,14 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataItem,
     CalculatedDataSource,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppbioAbsoluteQParser(VendorParser):
-    def _parse(self, raw_contents: IOBase, filename: str) -> Model:
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        raw_contents = named_file_contents.contents
+        filename = named_file_contents.original_file_name
         reader = AbsoluteQReader(raw_contents)
         return self._get_model(reader.wells, reader.group_rows, filename)
 
@@ -93,7 +95,7 @@ class AppbioAbsoluteQParser(VendorParser):
     ) -> DPCRDocumentItem:
         measurement_documents = []
         for _, well_item in well_data.iterrows():
-            measurement_identifier = str(uuid.uuid4())
+            measurement_identifier = random_uuid_str()
 
             key = str((well_item["Group"], well_item["Target"]))
             group_ids[key].append(measurement_identifier)
@@ -101,7 +103,7 @@ class AppbioAbsoluteQParser(VendorParser):
             measurement_documents.append(
                 MeasurementDocumentItem(
                     measurement_identifier=measurement_identifier,
-                    measurement_time=self.get_date_time(str(well_item["Date"])),
+                    measurement_time=self._get_date_time(str(well_item["Date"])),
                     target_DNA_description=well_item["Target"],
                     total_partition_count=TQuantityValueNumber(
                         value=well_item["Total"]
@@ -173,7 +175,7 @@ class AppbioAbsoluteQParser(VendorParser):
                     continue
 
                 datum_value = float(group[calculated_data_item.column])
-                calculated_data_id = str(uuid.uuid4())
+                calculated_data_id = random_uuid_str()
                 calculated_data_ids[calculated_data_item.name] = calculated_data_id
 
                 data_source_document = [
@@ -200,7 +202,7 @@ class AppbioAbsoluteQParser(VendorParser):
             # TODO: this should be inproved (repeat less code)
             for calculated_data_item in defered_calculated_data_items:
                 datum_value = float(group[calculated_data_item.column])
-                calculated_data_id = str(uuid.uuid4())
+                calculated_data_id = random_uuid_str()
 
                 data_source_document = [
                     DataSourceDocumentItem(
