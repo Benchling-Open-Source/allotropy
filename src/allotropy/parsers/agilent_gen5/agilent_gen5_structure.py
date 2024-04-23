@@ -435,14 +435,6 @@ class Measurement:
     value: JsonFloat
     label: str
 
-    @staticmethod
-    def create(value: JsonFloat, label: str) -> Measurement:
-        return Measurement(
-            identifier=random_uuid_str(),
-            value=value,
-            label=label,
-        )
-
 
 @dataclass(frozen=True)
 class Results:
@@ -482,7 +474,7 @@ class Results:
                 well_value = try_float_or_nan(values[col_num])
                 if label in read_data.measurement_labels:
                     self.measurements[well_pos].append(
-                        Measurement.create(well_value, label)
+                        Measurement(random_uuid_str(), well_value, label)
                     )
                 else:
                     self.calculated_data[well_pos].append([label, well_value])
