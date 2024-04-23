@@ -2,7 +2,11 @@ from collections.abc import Sequence
 from typing import Any, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     ContainerType,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
@@ -28,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
+    TQuantityValueUnitless,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
@@ -68,6 +73,24 @@ class AgilentGen5Parser(VendorParser):
         header_data = plate_data.header_data
         results = plate_data.results
 
+        calculated_data_document = [
+            CalculatedDataDocumentItem(
+                calculated_data_identifier=calculated_datum.identifier,
+                data_source_aggregate_document=DataSourceAggregateDocument(
+                    data_source_document=[
+                        DataSourceDocumentItem(
+                            data_source_identifier=data_source.identifier,
+                            data_source_feature=data_source.feature.value,
+                        )
+                        for data_source in calculated_datum.data_sources
+                    ]
+                ),
+                calculated_data_name=calculated_datum.name,
+                calculated_result=TQuantityValueUnitless(value=calculated_datum.result),
+            )
+            for calculated_datum in results.calculated_data
+        ]
+
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
@@ -87,6 +110,11 @@ class AgilentGen5Parser(VendorParser):
                     self._get_plate_reader_document_item(plate_data, well_position)
                     for well_position in results.wells
                 ],
+                calculated_data_aggregate_document=(
+                    CalculatedDataAggregateDocument(calculated_data_document)
+                    if calculated_data_document
+                    else None
+                ),
             ),
         )
 

@@ -3949,7 +3949,1547 @@
             "software name": "Gen5",
             "software version": "3.12.08",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.26"
+            "ASM converter version": "0.1.27"
+        },
+        "calculated data aggregate document": {
+            "calculated data document": [
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 99.846,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_0",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_96"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 34.111,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_1",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_97"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 38.678,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_2",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_98"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 62.947,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_3",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_99"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 31.918,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_4",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_100"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 11.843,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_5",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_101"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 30.02,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_6",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_102"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 64.973,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_7",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_103"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 92.372,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_8",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_104"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 88.651,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_9",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_105"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 105.684,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_10",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_106"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": -0.02,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_11",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_107"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 100.601,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_12",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_108"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 107.927,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_13",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_109"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 95.79,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_14",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_110"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 40.897,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_15",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_111"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 13.815,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_16",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_112"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 100.317,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_17",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_113"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 50.379,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_18",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_114"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 107.09,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_19",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_115"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 48.485,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_20",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_116"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 71.363,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_21",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_117"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 58.732,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_22",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_118"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 0.015,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_23",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_119"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 100.187,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_24",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_120"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 80.85,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_25",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_121"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 63.605,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_26",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_122"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 69.679,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_27",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_123"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 44.758,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_28",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_124"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 6.758,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_29",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_125"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 84.76,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_30",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_126"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 84.485,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_31",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_127"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 94.694,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_32",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_128"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 76.824,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_33",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_129"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 87.142,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_34",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_130"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": -0.034,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_35",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_131"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 102.043,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_36",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_132"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 33.511,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_37",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_133"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 52.097,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_38",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_134"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 74.66,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_39",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_135"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 65.345,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_40",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_136"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 71.623,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_41",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_137"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 84.45,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_42",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_138"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 72.018,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_43",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_139"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 21.188,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_44",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_140"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 4.991,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_45",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_141"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 69.574,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_46",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_142"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": -0.012,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_47",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_143"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 0.036,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_48",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_144"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 91.005,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_49",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_145"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 31.543,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_50",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_146"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 27.945,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_51",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_147"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 34.78,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_52",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_148"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 80.16,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_53",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_149"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 65.537,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_54",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_150"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 35.296,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_55",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_151"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 38.976,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_56",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_152"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 53.697,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_57",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_153"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 22.296,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_58",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_154"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 101.123,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_59",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_155"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 0.072,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_60",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_156"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 38.134,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_61",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_157"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 72.217,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_62",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_158"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 3.461,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_63",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_159"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 35.626,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_64",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_160"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 36.864,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_65",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_161"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 73.413,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_66",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_162"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 79.492,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_67",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_163"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 81.705,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_68",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_164"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 48.251,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_69",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_165"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 59.862,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_70",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_166"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 99.83,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_71",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_167"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": -0.027,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_72",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_168"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 102.797,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_73",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_169"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 21.567,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_74",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_170"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 47.577,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_75",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_171"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 67.452,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_76",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_172"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 61.007,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_77",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_173"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 79.338,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_78",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_174"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 33.038,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_79",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_175"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 52.321,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_80",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_176"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 91.311,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_81",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_177"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 48.985,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_82",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_178"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 99.202,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_83",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_179"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": -0.03,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_84",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_180"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 78.997,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_85",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_181"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 79.989,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_86",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_182"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 104.788,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_87",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_183"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 10.863,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_88",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_184"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 63.522,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_89",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_185"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 8.31,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_90",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_186"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 68.953,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_91",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_187"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 24.845,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_92",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_188"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 5.901,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_93",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_189"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 80.498,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_94",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_190"
+                },
+                {
+                    "calculated data name": "NormLum",
+                    "calculated result": {
+                        "value": 97.17,
+                        "unit": "(unitless)"
+                    },
+                    "data source aggregate document": {
+                        "data source document": [
+                            {
+                                "data source identifier": "AGILENT_GEN5_TEST_ID_95",
+                                "data source feature": "Absorbance"
+                            }
+                        ]
+                    },
+                    "calculated data identifier": "AGILENT_GEN5_TEST_ID_191"
+                }
+            ]
         }
     }
 }

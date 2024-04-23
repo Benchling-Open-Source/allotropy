@@ -437,16 +437,30 @@ class Measurement:
 
 
 @dataclass(frozen=True)
+class DataSource:
+    identifier: str
+    feature: ReadMode
+
+
+@dataclass(frozen=True)
+class CalculatedDatum:
+    identifier: str
+    data_sources: list[DataSource]
+    name: str
+    result: JsonFloat
+
+
+@dataclass(frozen=True)
 class Results:
     measurements: defaultdict[str, list[Measurement]]
-    calculated_data: defaultdict[str, list]
+    calculated_data: list[CalculatedDatum]
     wells: list
 
     @staticmethod
     def create() -> Results:
         return Results(
             measurements=defaultdict(list),
-            calculated_data=defaultdict(list),
+            calculated_data=[],
             wells=[],
         )
 
@@ -456,6 +470,7 @@ class Results:
         read_data: ReadData,
     ) -> None:
         result_lines = results.splitlines()
+        calculated_data: defaultdict[str, list] = defaultdict(list)
         if result_lines[0].strip() != "Results":
             msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
             raise AllotropeConversionError(msg)
@@ -477,7 +492,49 @@ class Results:
                         Measurement(random_uuid_str(), well_value, label)
                     )
                 else:
-                    self.calculated_data[well_pos].append([label, well_value])
+                    calculated_data[well_pos].append([label, well_value])
+
+        for well in self.wells:
+            measurements = self.measurements[well]
+            for label, value in calculated_data[well]:
+                sources = self._get_sources_for_calculated_data(measurements, label)
+                self.calculated_data.append(
+                    CalculatedDatum(
+                        identifier=random_uuid_str(),
+                        data_sources=[
+                            DataSource(
+                                identifier=measurement.identifier,
+                                feature=ReadMode.ABSORBANCE,
+                            )
+                            for measurement in sources
+                        ],
+                        name=label,
+                        result=value,
+                    )
+                )
+
+    def _get_sources_for_calculated_data(
+        self, measurements: list[Measurement], calculated_data_label: str
+    ) -> list[Measurement]:
+
+        # Pathlength is a special case, its sources are always determined
+        # by the pathlength correction setting
+        if calculated_data_label.split(":")[-1] == "Pathlength":
+            pathlength_suffixes = ["[Test]", "[Ref]"]
+            sources = [
+                measurement
+                for measurement in measurements
+                if measurement.label.split(" ")[-1] in pathlength_suffixes
+            ]
+        else:
+            sources = [
+                measurement
+                for measurement in measurements
+                if measurement.label in calculated_data_label
+            ]
+
+        # if there are no matches in the measurement labels, use all measurements as source
+        return sources or measurements
 
 
 @dataclass(frozen=True)
