@@ -1,38 +1,41 @@
 {
-    "files.exclude": {
-      "**/*.pyc": true,
-    },
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true,
-
-    "editor.rulers": [110],
-
-    "[yaml]": {
-      "editor.autoIndent": "keep"
-    },
-
-    // Use flake8, not pylint
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.mypyEnabled": true,
-    // Disable Python tests for now.
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": false,
-    // isort
-    "isort.path": ["ruff"],
-    "isort.args": ["--quiet"],
-    // Use Black for formatting
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--config", "${workspaceRoot}/pyproject.toml"],
-    "[python]": {
-      "editor.formatOnPaste": false,
-      "editor.formatOnSave": true,
-      "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-      }
-    },
-
-    "search.useIgnoreFiles": true,
-    "python.linting.enabled": true,
-  }
+  "files.exclude": {
+    "**/*.pyc": true,
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "editor.rulers": [
+    110
+  ],
+  "[yaml]": {
+    "editor.autoIndent": "keep"
+  },
+  // Disable Python unittest tests for now.
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  // isort
+  "isort.path": [
+    "ruff"
+  ],
+  "isort.args": [
+    "--quiet"
+  ],
+  // Use Black for formatting
+  "black-formatter.args": [
+    "--config",
+    "${workspaceRoot}/pyproject.toml"
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "search.useIgnoreFiles": true,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+}

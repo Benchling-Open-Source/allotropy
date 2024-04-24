@@ -16,7 +16,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_parser import ViCellXRParser
-from allotropy.parsers.biorad_bioplex.biorad_bioplex_parser import BioradBioplexParser
+from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser import (
+    BioradBioplexParser,
+)
 from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
