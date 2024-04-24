@@ -308,9 +308,9 @@ def test_create_layout_data_with_name_rows() -> None:
         "Layout",
         "\t1\t2\t3",
         "A\tSPL1\tSPL9\tSPL17\tWell ID",
-        "A\tName_A1\tName_A2\tName_A3\tName",
+        "\tName_A1\tName_A2\tName_A3\tName",
         "B\tSPL2\tSPL10\tSPL18\tWell ID",
-        "B\tName_B1\tName_B2\tName_B3\tName",
+        "\tName_B1\tName_B2\tName_B3\tName",
     ]
 
     layout_data = LayoutData.create("\n".join(layout_rows))
