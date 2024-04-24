@@ -502,7 +502,7 @@ class Results:
                         data_sources=[
                             DataSource(
                                 identifier=measurement.identifier,
-                                feature=ReadMode.ABSORBANCE,
+                                feature=read_data.read_mode,
                             )
                             for measurement in sources
                         ],

@@ -80,7 +80,7 @@ class AgilentGen5Parser(VendorParser):
                     data_source_document=[
                         DataSourceDocumentItem(
                             data_source_identifier=data_source.identifier,
-                            data_source_feature=data_source.feature.value,
+                            data_source_feature=data_source.feature.value.lower(),
                         )
                         for data_source in calculated_datum.data_sources
                     ]
