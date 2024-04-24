@@ -19,7 +19,7 @@ Reading Type	Manual
 Procedure Details
 
 Plate Type	96 WELL PLATE (Use plate lid)
-Eject plate on completion
+Eject plate on completion	
 Read	DAPI/GFP
 	Fluorescence Endpoint
 	Full Plate
@@ -94,3 +94,4 @@ H	395	8646	2057	2943	7471	8406	1643	8314	6005	8865	917	9160	DAPI/GFP:360/40,460/
 	0.000	0.521	0.384	0.739	1.054	0.288	0.698	0.247	0.192	0.684	0.430	0.995	normGFP
 	-0.000	0.462	0.147	0.669	0.634	0.504	0.308	0.625	0.313	0.623	0.605	1.001	meanNormDAPI
 	-0.000	0.305	0.420	0.792	0.686	0.301	0.474	0.559	0.522	0.561	0.814	0.980	meanNormGFP
+
