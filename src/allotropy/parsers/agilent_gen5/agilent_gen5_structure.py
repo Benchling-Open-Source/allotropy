@@ -208,7 +208,7 @@ class ReadData:
             pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
             number_of_averages=try_float_or_none(number_of_averages),
             # Luminescence attributes
-            detector_distance=(try_float_or_none(read_height.split(" ")[0])),
+            detector_distance=try_float_or_none(read_height.split(" ")[0]),
             # Fluorescence attributes
             filter_sets=cls._get_filter_sets(
                 measurement_labels, device_control_data, read_mode
@@ -305,7 +305,6 @@ class ReadData:
         )
         read_data_dict: dict = {label: [] for label in list_keys}
         read_lines: list[str] = procedure_details.splitlines()
-        datum_len = 2
 
         for line in read_lines:
             strp_line = str(line.strip())
@@ -321,7 +320,7 @@ class ReadData:
             line_data: list[str] = strp_line.split(",  ")
             for read_datum in line_data:
                 splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) != datum_len:
+                if len(splitted_datum) != 2:  # noqa: PLR2004
                     continue
                 if splitted_datum[0] in list_keys:
                     read_data_dict[splitted_datum[0]].append(splitted_datum[1])
@@ -332,9 +331,8 @@ class ReadData:
 
     @classmethod
     def _get_step_label(cls, read_line: str, read_mode: str) -> Optional[str]:
-        read_data_len = 2
         split_line = read_line.split("\t")
-        if len(split_line) != read_data_len:
+        if len(split_line) != 2:  # noqa: PLR2004
             msg = (
                 f"Expected the Read data line {split_line} to contain exactly 2 values."
             )
