@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Re-added encoding inference to Beckman VI Cell Blu adapter
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
+- Corrected Luminex xPonent adapter to output one multi analyte profiling document per well.
 ### Changed
 ### Deprecated
 ### Removed
