@@ -1,8 +1,68 @@
 import pytest
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ScanPositionSettingPlateReader,
+)
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
+    FilterSet,
+    HeaderData,
+    LayoutData,
+    ReadData,
+)
 from allotropy.parsers.agilent_gen5.constants import ReadMode
-from allotropy.parsers.agilent_gen5.plate_data import ReadData
 from allotropy.parsers.lines_reader import LinesReader
+
+
+@pytest.mark.short
+def test_create_header_data_no_well_plate_id_in_filename() -> None:
+    header_rows = [
+        "Software Version	3.12.08",
+        "",
+        "",
+        "Experiment File Path:	Experiments/singlePlate.xpt",
+        "Protocol File Path:	Protocols/defaultExport.prt",
+        "",
+        "Plate Number	Plate 1",
+        "Date	10/10/2022",
+        "Time	9:00:04 PM",
+        "Reader Type:	Synergy H1",
+        "Reader Serial Number:	Serial01",
+        "Reading Type	Manual",
+    ]
+    reader = LinesReader(header_rows)
+    header_data = HeaderData.create(reader, "dummy_filename.txt")
+
+    assert header_data == HeaderData(
+        software_version="3.12.08",
+        experiment_file_path="Experiments/singlePlate.xpt",
+        protocol_file_path="Protocols/defaultExport.prt",
+        datetime="10/10/2022 9:00:04 PM",
+        well_plate_identifier="Plate 1",
+        model_number="Synergy H1",
+        equipment_serial_number="Serial01",
+    )
+
+
+@pytest.mark.short
+def test_create_header_data_with_well_plate_id_from_filename() -> None:
+    header_rows = [
+        "Software Version	3.12.08",
+        "Experiment File Path:	Experiments/singlePlate.xpt",
+        "Protocol File Path:	Protocols/defaultExport.prt",
+        "Plate Number	Plate 1",
+        "Date	10/10/2022",
+        "Time	9:00:04 PM",
+        "Reader Type:	Synergy H1",
+        "Reader Serial Number:	Serial01",
+        "Reading Type	Manual",
+    ]
+    well_plate_id = "PLATEID123"
+    matching_file_name = f"010307_114129_{well_plate_id}_std_01.txt"
+
+    reader = LinesReader(header_rows)
+    header_data = HeaderData.create(reader, matching_file_name)
+
+    assert header_data.well_plate_identifier == well_plate_id
 
 
 @pytest.mark.short
@@ -10,7 +70,7 @@ def test_create_read_data_with_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
         "Read	StepLabel",
-        "\tLuminescence Endpoint",
+        "\tAbsorbance Endpoint",
     ]
     reader = LinesReader(absorbance_procedure_details)
 
@@ -23,7 +83,7 @@ def test_create_read_data_with_step_label() -> None:
 def test_create_read_data_without_step_label() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
-        "Read	Luminescence Endpoint",
+        "Read	Absorbance Endpoint",
     ]
     reader = LinesReader(absorbance_procedure_details)
 
@@ -49,10 +109,17 @@ def test_create_read_data_absorbance() -> None:
     read_data = ReadData.create(reader)
 
     assert read_data.read_mode == ReadMode.ABSORBANCE
-    assert read_data.wavelengths == [260, 280, 230, 977, 900]
+    assert read_data.pathlength_correction == "977 / 900"
     assert read_data.step_label == "260"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
     assert read_data.number_of_averages == 8  # Measurements/Data Point
+    assert read_data.measurement_labels == [
+        "260:260",
+        "260:280",
+        "260:230",
+        "260:977 [Test]",
+        "260:900 [Ref]",
+    ]
 
 
 @pytest.mark.short
@@ -77,10 +144,11 @@ def test_create_read_data_luminescence_full_light() -> None:
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.step_label == "LUM"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.emissions == ["Full light"]
-    assert read_data.optics == ["Top"]
-    assert read_data.gains == [135]
     assert read_data.detector_distance == 4.5  # Read Height
+    assert read_data.measurement_labels == ["LUM:Lum"]
+    assert read_data.filter_sets == {
+        "LUM:Lum": FilterSet(emission="Full light", gain="135", optics="Top")
+    }
 
 
 @pytest.mark.short
@@ -105,9 +173,11 @@ def test_create_read_data_luminescence_with_filter() -> None:
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.step_label == "LUM"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.emissions == ["460/40"]
-    assert read_data.gains == [136]
     assert read_data.detector_distance == 4.5  # Read Height
+    assert read_data.measurement_labels == ["LUM:460/40"]
+    assert read_data.filter_sets == {
+        "LUM:460/40": FilterSet(emission="460/40", gain="136")
+    }
 
 
 @pytest.mark.short
@@ -134,10 +204,122 @@ def test_create_read_data_fluorescence() -> None:
     assert read_data.read_mode == ReadMode.FLUORESCENCE
     assert read_data.step_label == "DAPI/GFP"
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
-    assert read_data.emissions == ["460/40", "528/20"]
-    assert read_data.excitations == ["360/40", "485/20"]
-    assert read_data.wavelength_filter_cut_offs == [400, 510]  # Mirror if present
-    assert read_data.scan_positions == ["Top", "Top"]  # Reported by Miror or Optic
-    assert read_data.gains == [35, 35]
     assert read_data.detector_distance == 7  # Read Height
     assert read_data.number_of_averages == 10  # Measurements/Data Point
+    assert read_data.measurement_labels == [
+        "DAPI/GFP:360/40,460/40",
+        "DAPI/GFP:485/20,528/20",
+    ]
+    assert read_data.filter_sets == {
+        "DAPI/GFP:360/40,460/40": FilterSet(
+            excitation="360/40",
+            emission="460/40",
+            mirror="Top 400 nm",
+            gain="35",
+        ),
+        "DAPI/GFP:485/20,528/20": FilterSet(
+            excitation="485/20",
+            emission="528/20",
+            mirror="Top 510 nm",
+            gain="35",
+        ),
+    }
+
+
+@pytest.mark.short
+def test_create_filter_set() -> None:
+    filterset = FilterSet(
+        excitation="485/20",
+        emission="528/20",
+        mirror="Top 510 nm",
+        gain="35",
+    )
+
+    assert filterset.detector_wavelength_setting == 528
+    assert filterset.detector_bandwidth_setting == 20
+    assert filterset.excitation_wavelength_setting == 485
+    assert filterset.excitation_bandwidth_setting == 20
+    assert filterset.wavelength_filter_cutoff_setting == 510
+    assert (
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+    )
+
+
+@pytest.mark.short
+def test_create_filter_set_with_mirror() -> None:
+    filterset = FilterSet(
+        excitation="485",
+        emission="528",
+        optics="Bottom",
+        gain="35",
+    )
+
+    assert filterset.detector_wavelength_setting == 528
+    assert filterset.detector_bandwidth_setting is None
+    assert filterset.excitation_wavelength_setting == 485
+    assert filterset.excitation_bandwidth_setting is None
+    assert filterset.wavelength_filter_cutoff_setting is None
+    assert (
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+    )
+
+
+@pytest.mark.short
+def test_create_filter_set_full_light() -> None:
+    filterset = FilterSet(emission="Full light", gain="135", optics="Top")
+
+    assert filterset.detector_wavelength_setting is None
+    assert filterset.detector_bandwidth_setting is None
+    assert filterset.excitation_wavelength_setting is None
+    assert filterset.excitation_bandwidth_setting is None
+    assert filterset.gain == "135"
+    assert (
+        filterset.scan_position_setting
+        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+    )
+
+
+@pytest.mark.short
+def test_create_layout_data() -> None:
+    layout_rows = [
+        "Layout",
+        "\t1\t2\t3",
+        "A\tSPL1\tSPL9\tSPL17\tWell ID",
+        "B\tSPL2\tSPL10\tSPL18\tWell ID",
+    ]
+
+    layout_data = LayoutData.create("\n".join(layout_rows))
+
+    assert layout_data.sample_identifiers == {
+        "A1": "SPL1",
+        "A2": "SPL9",
+        "A3": "SPL17",
+        "B1": "SPL2",
+        "B2": "SPL10",
+        "B3": "SPL18",
+    }
+
+
+@pytest.mark.short
+def test_create_layout_data_with_name_rows() -> None:
+    layout_rows = [
+        "Layout",
+        "\t1\t2\t3",
+        "A\tSPL1\tSPL9\tSPL17\tWell ID",
+        "\tName_A1\tName_A2\tName_A3\tName",
+        "B\tSPL2\tSPL10\tSPL18\tWell ID",
+        "\tName_B1\tName_B2\tName_B3\tName",
+    ]
+
+    layout_data = LayoutData.create("\n".join(layout_rows))
+
+    assert layout_data.sample_identifiers == {
+        "A1": "Name_A1",
+        "A2": "Name_A2",
+        "A3": "Name_A3",
+        "B1": "Name_B1",
+        "B2": "Name_B2",
+        "B3": "Name_B3",
+    }

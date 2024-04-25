@@ -1,25 +1,5 @@
-from more_itertools import one
 import pytest
 
-from allotropy.allotrope.models.shared.components.plate_reader import (
-    ProcessedDataDocumentItem,
-)
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValueNumber,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
-from allotropy.allotrope.models.ultraviolet_absorbance_benchling_2023_09_ultraviolet_absorbance import (
-    ContainerType,
-    DeviceControlDocumentItem,
-    Model,
-)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.agilent_gen5.constants import (
@@ -31,7 +11,6 @@ from allotropy.testing.utils import (
     from_file,
     validate_contents,
 )
-from allotropy.to_allotrope import allotrope_model_from_file
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
 SCHEMA_FILE = "ultraviolet-absorbance/BENCHLING/2023/09/ultraviolet-absorbance.json"
@@ -41,135 +20,90 @@ UTF_16_FILEPATH = (
     "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_stdcurve_multiplate.txt"
 )
 
-ABSORBENCE_FILENAMES = [
+ABSORBANCE_PATH = "tests/parsers/agilent_gen5/testdata/absorbance"
+
+ABSORBANCE_FILENAMES = [
     "endpoint_pathlength_correct_singleplate",
     "endpoint_stdcurve_singleplate",
     "endpoint_stdcurve_singleplate_2",
+    "010307_114129_BNCH654563_stdcurve_singleplate01",
+]
+
+FLUORESCENCE_FILENAMES = [
+    "endpoint_singleplate_filter_withoutStepLabel_withCalculatedValues",
+    "endpoint_singleplate_filter_withoutStepLabel",
+    "endpoint_singleplate_filter_withStepLabel_withCalculatedValues",
+    "endpoint_singleplate_filter_withStepLabel",
+    "endpoint_singleplate_monochromator_withoutStepLabel",
+    "endpoint_singleplate",
+]
+
+LUMINESCENCE_FILENAMES = [
+    "endpoint_singleplate_withFilter_withoutStepLabel",
+    "endpoint_singleplate_withFilter_withStepLabel",
+    "endpoint_singleplate_withoutStepLabel",
+    "endpoint_singleplate",
 ]
 
 
-@pytest.mark.parametrize("filename", ABSORBENCE_FILENAMES)
+@pytest.mark.parametrize("filename", ABSORBANCE_FILENAMES)
 def test_to_allotrope_absorbance(filename: str) -> None:
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.txt"
-    expected_filepath = (
-        f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.json"
-    )
+    test_filepath = f"{ABSORBANCE_PATH}/{filename}.txt"
+    expected_filepath = f"{ABSORBANCE_PATH}/{filename}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
-    test_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
-    expected_filepath = "tests/parsers/agilent_gen5/testdata/absorbance/endpoint_pathlength_correct_singleplate.json"
+    test_filepath = (
+        f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate_no_pm_in_time.txt"
+    )
+    expected_filepath = (
+        f"{ABSORBANCE_PATH}/endpoint_pathlength_correct_singleplate.json"
+    )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+
+    allotrope_dict["plate reader aggregate document"]["data system document"][
+        "file name"
+    ] = "endpoint_pathlength_correct_singleplate.txt"
+
     validate_contents(allotrope_dict, expected_filepath)
 
 
-# Test allotrope_model_from_file().
-def test_model_from_file_absorbance() -> None:
-    filename = ABSORBENCE_FILENAMES[0]
-    test_filepath = f"tests/parsers/agilent_gen5/testdata/absorbance/{filename}.txt"
-    allotrope_model = allotrope_model_from_file(test_filepath, VENDOR_TYPE)
-    assert isinstance(allotrope_model, Model)
-
-    # Test many model fields fully. Don't test everything as that would mean a lot of hardcoding (or not-human-readable
-    # pickle-ing, or something similar). Full end-to-end serialization is tested in test_to_allotrope_absorbance().
-    measurement_aggregate_document = allotrope_model.measurement_aggregate_document
-    assert measurement_aggregate_document
-    assert measurement_aggregate_document.measurement_identifier  # randomly generated
-    assert measurement_aggregate_document.plate_well_count == TQuantityValueNumber(96)
-    assert (
-        measurement_aggregate_document.measurement_time == "2023-09-15T12:30:00+00:00"
-    )
-    assert measurement_aggregate_document.analyst is None
-    assert (
-        measurement_aggregate_document.analytical_method_identifier
-        == "C:\\Users\\user\\Desktop\\Plate123.prt"
-    )
-    assert (
-        measurement_aggregate_document.experimental_data_identifier
-        == "\\\\Mac\\Home\\Downloads\\ExperimentFile.xpt"
-    )
-    assert measurement_aggregate_document.experiment_type is None
-    assert measurement_aggregate_document.container_type == ContainerType.well_plate
-    assert measurement_aggregate_document.well_volume is None
-    assert measurement_aggregate_document.device_system_document is None
-
-    measurement_document_items = measurement_aggregate_document.measurement_document
-    assert measurement_document_items
-    assert len(measurement_document_items) == 96
-    item = measurement_document_items[0]
-    assert item
-
-    device_control_aggregate_document = item.device_control_aggregate_document
-    assert device_control_aggregate_document
-    data_cube = item.data_cube
-    assert data_cube
-    assert item.compartment_temperature == TQuantityValueDegreeCelsius(26.3)
-    processed_data_aggregate_document = item.processed_data_aggregate_document
-    assert processed_data_aggregate_document
-    assert item.mass_concentration is None
-
-    control_docs = device_control_aggregate_document.device_control_document
-    assert control_docs
-    control_doc = one(control_docs)
-    assert control_doc == DeviceControlDocumentItem()
-
-    assert data_cube == TDatacube(
-        label="endpoint data",
-        cube_structure=TDatacubeStructure(
-            dimensions=[
-                TDatacubeComponent(
-                    field_componentDatatype=FieldComponentDatatype.int,
-                    concept="wavelength",
-                    unit="nm",
-                )
-            ],
-            measures=[
-                TDatacubeComponent(
-                    field_componentDatatype=FieldComponentDatatype.double,
-                    concept="absorbance",
-                    unit="mAU",
-                )
-            ],
-        ),
-        data=TDatacubeData(
-            dimensions=[["977 [Test]", "900 [Ref]", "260", "280", "230"]],
-            measures=[[0.056, 0.035, 0.626, 0.345, 0.331]],  # type: ignore[list-item]
-        ),
-    )
-
-    processed_items = processed_data_aggregate_document.processed_data_document
-    assert processed_items
-    assert len(processed_items) == 10
-
-    processed_item = processed_items[0]
-    assert processed_item == ProcessedDataDocumentItem(
-        processed_data=0.114, data_processing_description="260:Pathlength"
-    )
-
-
-def test_to_allotrope_fluorescence() -> None:
-    fluorescence_path = "tests/parsers/agilent_gen5/testdata/fluorescence"
-    test_filepath = f"{fluorescence_path}/endpoint_singleplate.txt"
-
+def test_to_allotrope_absorbance_well_plate_id_in_filename() -> None:
+    filename = "010307_114129_BNCH654563_stdcurve_singleplate01.txt"
+    test_filepath = f"{ABSORBANCE_PATH}/{filename}"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
 
 
-def test_to_allotrope_luminescence() -> None:
-    luminescence_path = "tests/parsers/agilent_gen5/testdata/luminescence"
-    test_filepath = f"{luminescence_path}/endpoint_singleplate.txt"
-
+def test_to_allotrope_absorbance_with_nan_measurements() -> None:
+    test_filepath = f"{ABSORBANCE_PATH}/240411_172731_BNCH2345883_abs450_96well_non_numeric_values.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
+
+
+@pytest.mark.parametrize("filename", FLUORESCENCE_FILENAMES)
+def test_to_allotrope_fluorescence(filename: str) -> None:
+    test_filepath = f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.txt"
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+
+    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
+
+
+@pytest.mark.parametrize("filename", LUMINESCENCE_FILENAMES)
+def test_to_allotrope_luminescence(filename: str) -> None:
+    test_filepath = f"tests/parsers/agilent_gen5/testdata/luminescence/{filename}.txt"
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+
     validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
 
 
 @pytest.mark.parametrize(
     "filepath",
     [
-        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_helper_gene_growth_curve.txt",
-        "tests/parsers/agilent_gen5/testdata/absorbance/kinetic_singleplate.txt",
+        f"{ABSORBANCE_PATH}/kinetic_helper_gene_growth_curve.txt",
+        f"{ABSORBANCE_PATH}/kinetic_singleplate.txt",
     ],
 )
 def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
@@ -178,13 +112,13 @@ def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
 
 
 def test_to_allotrope_unsupported_spectral_scan_file() -> None:
-    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_114129_BNCH654563_spectralScan_example01.txt"
+    filepath = f"{ABSORBANCE_PATH}/240307_114129_BNCH654563_spectralScan_example01.txt"
     with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
 
 def test_to_allotrope_unsupported_area_scan_file() -> None:
-    filepath = "tests/parsers/agilent_gen5/testdata/absorbance/240307_125255_BNCH786865_areaScan_example01.txt"
+    filepath = f"{ABSORBANCE_PATH}/240307_125255_BNCH786865_areaScan_example01.txt"
     with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
