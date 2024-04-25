@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
 - Remove duplicated calculated data documents of delta ct se in AppBio Quantstudio
 ### Changed
+- Use new plate reader schema in gen5 adapter
 ### Deprecated
 ### Removed
 ### Security

@@ -11,11 +11,7 @@
   "[yaml]": {
     "editor.autoIndent": "keep"
   },
-  // Use flake8, not pylint
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true,
-  // Disable Python tests for now.
+  // Disable Python unittest tests for now.
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   // isort
@@ -26,20 +22,19 @@
     "--quiet"
   ],
   // Use Black for formatting
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
+  "black-formatter.args": [
     "--config",
     "${workspaceRoot}/pyproject.toml"
   ],
   "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "search.useIgnoreFiles": true,
-  "python.linting.enabled": true,
   "python.testing.pytestArgs": [
     "tests"
   ],
