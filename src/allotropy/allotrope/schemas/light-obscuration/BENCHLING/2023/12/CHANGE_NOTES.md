@@ -26,8 +26,20 @@ Changes:
     - Distibution Document/Distribution/Distribution Identifier
 
 - Updated
-  - Moved Measurement Document under Measurement Aggregate Document
-  - Moved detector view volume from root to Device Control Document Item
-  - Moved Distribution Document under Distribution Aggregate Document
-  - Removed Differential Particle Density and Differential Count from required properties of Distribution
-  -
+  - Analyst moved to Measurement Aggregate Document properties
+  - Measurement Document moved to Measurement Aggregate Document properties
+  - Measurement Identifier moved to Measurement Document properteis
+  - Distribution Document moved to Distribution Aggregate Document properties
+  - Differential Particle Density and Differential Count removed from required properties of Distribution
+  - Detector View Volume moved to Device Control Document Item properties
+  - Detector View Volume moved to Device Control Document Item properties
+  - Flush Volume Setting moved to Device Control Document Item properties
+  - Repetition Setting moved to Device Control Document Item properties
+  - Sample Volume Setting moved to Device Control Document Item properties
+  - Dilution Factor Setting moved to Data Processing Document properties
+  - Sample Identifier moved to Sample Document properties
+  - Detector Identifier moved to Device Document properties
+  - Detector Model Number moved to Device Document properties
+  - Equipment Serial Number moved to Light Obscuration Aggregate Document properties
+  - Model Number moved to Light Obscuration Aggregate Document properties
+  - Measurement Time moved to Measurement Document properties
