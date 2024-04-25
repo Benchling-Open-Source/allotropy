@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Use new plate reader schema in gen5 adapter
+
 ### Deprecated
 
 ### Removed
