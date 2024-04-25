@@ -70,7 +70,8 @@ class Vendor(Enum):
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
 
     def get_display_name(self) -> str:
-        return _VENDOR_TO_DISPLAY_NAME[self] if self in _VENDOR_TO_DISPLAY_NAME else self.value.title()
+        return _VENDOR_TO_DISPLAY_NAME.get(self, self.value.title())
+
 
 _VENDOR_TO_DISPLAY_NAME = {
     Vendor.AGILENT_GEN5: "Agilent Gen5",
