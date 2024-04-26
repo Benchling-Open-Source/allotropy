@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from typing import Generic, Optional, TypeVar, Union
 
@@ -50,12 +51,13 @@ class ViewData(Generic[T]):
         return item
 
 
-class View(Generic[T]):
+class View(ABC, Generic[T]):
     def __init__(self, sub_view: Optional[View[T]] = None):
         self.sub_view = sub_view
 
+    @abstractmethod
     def sort_elements(self, _: list[T]) -> dict[str, list[T]]:
-        return {}
+        pass
 
     def apply(self, elements: list[T]) -> ViewData[T]:
         return ViewData(
