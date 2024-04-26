@@ -81,6 +81,7 @@ _VENDOR_TO_DISPLAY_NAME = {
     Vendor.BECKMAN_PHARMSPEC: "Beckman PharmSpec",
     Vendor.BECKMAN_VI_CELL_BLU: "Beckman Vi Cell BLU",
     Vendor.BECKMAN_VI_CELL_XR: "Beckman Vi Cell XR",
+    Vendor.BIORAD_BIOPLEX: "BioRad BioPlex Manager",
     Vendor.CHEMOMETEC_NUCLEOVIEW: "Chemometec Nucleoview",
     Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
     Vendor.LUMINEX_XPONENT: "Luminex XPonent",
@@ -89,10 +90,9 @@ _VENDOR_TO_DISPLAY_NAME = {
     Vendor.PERKIN_ELMER_ENVISION: "Perkin Elmer Envision",
     Vendor.QIACUITY_DPCR: "Qiacuity DPCR",
     Vendor.REVVITY_KALEIDO: "Revvity Kaleiedo",
-    Vendor.ROCHE_CEDEX_BIOHT: "Roche Cedex Bioht",
+    Vendor.ROCHE_CEDEX_BIOHT: "Roche Cedex BioHT",
     Vendor.THERMO_FISHER_NANODROP_EIGHT: "Thermo Fisher Nanodrop Eight",
     Vendor.UNCHAINED_LABS_LUNATIC: "Unchained Labs Lunatic",
-    Vendor.BIORAD_BIOPLEX: "Biorad Bioplex",
 }
 
 
@@ -104,6 +104,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_PHARMSPEC: PharmSpecParser,
     Vendor.BECKMAN_VI_CELL_BLU: ViCellBluParser,
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
+    Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
@@ -115,7 +116,6 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
-    Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
 }
 
 
