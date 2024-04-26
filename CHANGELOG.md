@@ -10,10 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add software version to Chemometec Nucleoview
 - Biorad Bioplex adapter
 - Utils for parsing xml
+- Rename the Biorad Bioplex to "Biorad Bioplex Manager"
+- Add a utility to remove non-required None values from a dataclass
 ### Fixed
 - Re-added encoding inference to Beckman VI Cell Blu adapter
 - Corrected concentration unit in Lunatic to conform to unit as reported within the source file
+- Remove duplicated calculated data documents of delta ct se in AppBio Quantstudio
 ### Changed
+- Use new plate reader schema in gen5 adapter
 ### Deprecated
 ### Removed
 ### Security

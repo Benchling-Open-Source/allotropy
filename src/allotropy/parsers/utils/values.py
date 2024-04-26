@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import fields
 import math
 import re
 from typing import Any, Optional, TypeVar, Union
@@ -237,8 +238,11 @@ def get_val_from_xml_or_none(
     xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
 ) -> Optional[str]:
     try:
-        val_from_xml = str(get_element_from_xml(xml_object, tag_name, tag_name_2).text)
-        return val_from_xml
+        val_from_xml = get_element_from_xml(xml_object, tag_name, tag_name_2).text
+        if val_from_xml is not None:
+            return str(val_from_xml)
+        else:
+            return None
     except AllotropeConversionError:
         return None
 
@@ -256,3 +260,22 @@ def get_attrib_from_xml(
     except KeyError as e:
         msg = f"Unable to find '{attrib_name}' in {xml_element.attrib}"
         raise AllotropeConversionError(msg) from e
+
+
+def remove_none_fields_from_data_class(
+    cls_instance: Any,
+) -> Any:
+
+    data_class_fields = fields(cls_instance.__class__)
+
+    # get all non-none fields
+    non_none_fields = {
+        field.name: getattr(cls_instance, field.name)
+        for field in data_class_fields
+        if (getattr(cls_instance, field.name) is not None or field.default is not None)
+    }
+
+    # Create a new instance with non-None fields
+    updated_instance = cls_instance.__class__(**non_none_fields)
+
+    return updated_instance
