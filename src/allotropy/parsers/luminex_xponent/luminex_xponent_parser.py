@@ -94,10 +94,10 @@ class LuminexXponentParser(VendorParser):
                                     header,
                                     data.minimum_bead_count_setting,
                                 )
-                                for measurement in data.measurement_list.measurements
                             ],
                         ),
                     )
+                    for measurement in data.measurement_list.measurements
                 ],
             ),
         )

@@ -17,7 +17,4 @@ def test_parse_luminex_xponent_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.csv"
     expected_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.json"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(
-        allotrope_dict,
-        expected_filepath,
-    )
+    validate_contents(allotrope_dict, expected_filepath)
