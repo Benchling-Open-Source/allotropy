@@ -11,7 +11,8 @@ OUTPUT_FILES = (
     "appbio_quantstudio_designandanalysis_QS6Pro_Standard_Curve_example05",
     "appbio_quantstudio_designandanalysis_QS7_Standard_Curve_example06",
     "appbio_quantstudio_designandanalysis_QS7Pro_Genotyping_example07",
-    "appbio_quantstudio_designandanalysis_QS7Pro_Multiplex_example08",
+    # files without an standard experiment type are not supported
+    # "appbio_quantstudio_designandanalysis_QS7Pro_Multiplex_example08",
     "appbio_quantstudio_designandanalysis_QS7Pro_PCR_with_Melt_example09",
     "appbio_quantstudio_designandanalysis_QS7Pro_Presence_and_Absence_example10",
     "appbio_quantstudio_designandanalysis_QS7Pro_Relative_Quantification_example11",
