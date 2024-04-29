@@ -199,6 +199,26 @@
       }
     ]
   },
+  "tQuantityValueMicroliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Microliter"
+      }
+    ]
+  },
+  "tNullableQuantityValueMicroliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/Microliter"
+      }
+    ]
+  },
   "tQuantityValueMicrometer": {
     "allOf": [
       {

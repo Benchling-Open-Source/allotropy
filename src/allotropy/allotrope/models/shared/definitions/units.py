@@ -60,6 +60,11 @@ class MicrogramPerMilliliter(HasUnit):
 
 
 @dataclass(frozen=True)
+class Microliter(HasUnit):
+    unit: str = "μL"
+
+
+@dataclass(frozen=True)
 class Micrometer(HasUnit):
     unit: str = "µm"
 

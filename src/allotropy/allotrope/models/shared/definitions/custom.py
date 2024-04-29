@@ -16,6 +16,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Hertz,
     MicrogramPerMicroliter,
     MicrogramPerMilliliter,
+    Microliter,
     Micrometer,
     MilliAbsorbanceUnit,
     MilliAbsorbanceUnitTimesMilliliter,
@@ -156,6 +157,16 @@ class TQuantityValueMicrogramPerMilliliter(MicrogramPerMilliliter, TQuantityValu
 class TNullableQuantityValueMicrogramPerMilliliter(
     MicrogramPerMilliliter, TNullableQuantityValue
 ):
+    pass
+
+
+@dataclass(frozen=True)
+class TQuantityValueMicroliter(Microliter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True)
+class TNullableQuantityValueMicroliter(Microliter, TNullableQuantityValue):
     pass
 
 

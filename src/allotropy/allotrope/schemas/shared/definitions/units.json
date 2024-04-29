@@ -115,29 +115,17 @@
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMilliliter"
       }
     },
-    "Milliliter": {
-      "properties": {
-        "unit": {
-          "type": "string",
-          "const": "mL",
-          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
-        }
-      },
-      "required": [
-        "unit"
-      ]
-    },
-    "Microliter": {
-      "properties": {
-        "unit": {
-          "type": "string",
-          "const": "\u03bcL",
-          "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
-        }
-      },
-      "required": [
-        "unit"
-      ]
+    "required": [
+      "unit"
+    ]
+  },
+  "Microliter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "\u03bcL",
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
+      }
     },
     "required": [
       "unit"
