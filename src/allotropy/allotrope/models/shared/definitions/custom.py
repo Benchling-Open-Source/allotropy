@@ -10,14 +10,12 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Centimeter,
     Counts,
     CountsTimesSecond,
-    CountsPerMilliliter,
     CubicMillimeter,
     DegreeCelsius,
     GramPerLiter,
     Hertz,
     MicrogramPerMicroliter,
     MicrogramPerMilliliter,
-    Microliter,
     Micrometer,
     MilliAbsorbanceUnit,
     MilliAbsorbanceUnitTimesMilliliter,
@@ -55,66 +53,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
 )
 
 
-<<<<<<< HEAD
 @dataclass(frozen=True)
-=======
-@dataclass
-class TQuantityValueCentimeter(Centimeter, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueCountsPerMilliliter(CountsPerMilliliter, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueMilliliter(Milliliter, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueMillimeter(Millimeter, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueNanometer(Nanometer, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueMicrometer(Micrometer, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueHertz(Hertz, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueCubicMillimeter(CubicMillimeter, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueUnitless(Unitless, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValueSecondTime(SecondTime, TQuantityValue):
-    pass
-
-
-@dataclass
-class TQuantityValuePercent(Percent, TQuantityValue):
-    pass
-
-
-@dataclass
->>>>>>> main
 class TQuantityValueCell(Cell, TQuantityValue):
     pass
 
@@ -217,16 +156,6 @@ class TQuantityValueMicrogramPerMilliliter(MicrogramPerMilliliter, TQuantityValu
 class TNullableQuantityValueMicrogramPerMilliliter(
     MicrogramPerMilliliter, TNullableQuantityValue
 ):
-    pass
-
-
-@dataclass(frozen=True)
-class TQuantityValueMicroliter(Microliter, TQuantityValue):
-    pass
-
-
-@dataclass(frozen=True)
-class TNullableQuantityValueMicroliter(Microliter, TNullableQuantityValue):
     pass
 
 

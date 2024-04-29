@@ -24,16 +24,6 @@ class Counts(HasUnit):
     unit: str = "Counts"
 
 
-@dataclass
-class Milliliter(HasUnit):
-    unit: str = "mL"
-
-
-@dataclass
-class NumberPerMicroliter(HasUnit):
-    unit: str = "#/μL"
-
-
 @dataclass(frozen=True)
 class CountsTimesSecond(HasUnit):
     unit: str = "Counts.s"
@@ -67,11 +57,6 @@ class MicrogramPerMicroliter(HasUnit):
 @dataclass(frozen=True)
 class MicrogramPerMilliliter(HasUnit):
     unit: str = "ug/mL"
-
-
-@dataclass(frozen=True)
-class Microliter(HasUnit):
-    unit: str = "μL"
 
 
 @dataclass(frozen=True)
@@ -229,7 +214,6 @@ class SquareCentimetersPerGram(HasUnit):
     unit: str = "cm^2/g"
 
 
-<<<<<<< HEAD
 @dataclass(frozen=True)
 class TODO(HasUnit):
     unit: str = "TODO"
@@ -243,8 +227,3 @@ class UnitPerLiter(HasUnit):
 @dataclass(frozen=True)
 class Unitless(HasUnit):
     unit: str = UNITLESS
-=======
-@dataclass
-class CountsPerMilliliter(HasUnit):
-    unit: str = "Counts/mL"
->>>>>>> main

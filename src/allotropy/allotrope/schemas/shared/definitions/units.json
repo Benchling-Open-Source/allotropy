@@ -116,28 +116,28 @@
       }
     },
     "Milliliter": {
-        "properties": {
-            "unit": {
-                "type": "string",
-                "const": "mL",
-                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
-            }
-        },
-        "required": [
-            "unit"
-        ]
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "mL",
+          "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Milliliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
     },
     "Microliter": {
-        "properties": {
-            "unit": {
-                "type": "string",
-                "const": "μL",
-                "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
-            }
-        },
-        "required": [
-            "unit"
-        ]
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "\u03bcL",
+          "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
+        }
+      },
+      "required": [
+        "unit"
+      ]
     },
     "required": [
       "unit"
@@ -163,29 +163,17 @@
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnit"
       }
     },
-    "CountsPerMilliliter": {
-        "properties": {
-            "unit": {
-                "type": "string",
-                "const": "Counts/mL",
-                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMilliliter"
-            }
-        },
-        "required": [
-            "unit"
-        ]
-    },
-    "Cell": {
-        "properties": {
-            "unit": {
-                "type": "string",
-                "const": "cell",
-                "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Cell"
-            }
-        },
-        "required": [
-            "unit"
-        ]
+    "required": [
+      "unit"
+    ]
+  },
+  "MilliAbsorbanceUnitTimesMilliliter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mAU.mL",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliAbsorbanceUnitTimesMilliliter"
+      }
     },
     "required": [
       "unit"
