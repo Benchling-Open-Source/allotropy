@@ -1,5 +1,3 @@
-import uuid
-
 from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
@@ -14,6 +12,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -26,7 +25,7 @@ class RocheCedexBiohtParser(VendorParser):
     def _get_model(self, data: Data) -> Model:
         return Model(
             measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=str(uuid.uuid4()),
+                measurement_identifier=random_uuid_str(),
                 data_processing_time=self._get_date_time(
                     data.title.data_processing_time
                 ),

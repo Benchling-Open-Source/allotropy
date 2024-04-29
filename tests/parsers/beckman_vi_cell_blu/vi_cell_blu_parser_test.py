@@ -4,23 +4,24 @@ import pytest
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     Model,
 )
+from allotropy.constants import CHARDET_ENCODING
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import from_file, validate_contents
 from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_data,
     get_filename,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
 OUTPUT_FILES = (
     "Beckman_Vi-Cell-BLU_example01",
     "Beckman_Vi-Cell-BLU_example02",
+    "Beckman_Vi-Cell-BLU_example01_utf16",
 )
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_BLU
-SCHEMA_FILE = "cell-counting/BENCHLING/2023/11/cell-counting.json"
 TEST_DATA_DIR = "tests/parsers/beckman_vi_cell_blu/testdata/"
 
 
@@ -33,17 +34,11 @@ def _get_expected_file_path(output_file: str) -> str:
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_vi_cell_blu_to_asm_schema_is_valid(output_file: str) -> None:
-    test_filepath = _get_test_file_path(output_file)
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, SCHEMA_FILE)
-
-
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_vi_cell_blu_to_asm_expected_contents(output_file: str) -> None:
+    encoding = CHARDET_ENCODING if "utf16" in output_file else None
     test_filepath = _get_test_file_path(output_file)
     expected_filepath = _get_expected_file_path(output_file)
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
+    allotrope_dict = from_file(test_filepath, VENDOR_TYPE, encoding=encoding)
     validate_contents(allotrope_dict, expected_filepath)
 
 

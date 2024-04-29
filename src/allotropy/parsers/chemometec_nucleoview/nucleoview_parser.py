@@ -1,7 +1,7 @@
 from typing import Any, Optional
-import uuid
 
 import pandas as pd
+from pandas import Timestamp
 
 from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
     CellCountingAggregateDocument,
@@ -36,6 +36,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
@@ -77,7 +78,8 @@ def get_property_from_sample(
 
 class ChemometecNucleoviewParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents, filename = named_file_contents
+        contents = named_file_contents.contents
+        filename = named_file_contents.original_file_name
         return self._get_model(NucleoviewReader.read(contents), filename)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
@@ -94,6 +96,7 @@ class ChemometecNucleoviewParser(VendorParser):
                     software_name=NUCLEOCOUNTER_SOFTWARE_NAME,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
+                    software_version=_get_value(data, 0, "Application SW version"),
                 ),
                 cell_counting_document=self._get_cell_counting_document(data),
             ),
@@ -108,11 +111,11 @@ class ChemometecNucleoviewParser(VendorParser):
             if _get_value(data, i, "Total (cells/ml)")
         ]
 
-    def _get_date_time_or_epoch(self, time_val: Any) -> TDateTimeValue:
+    def _get_date_time_or_epoch(self, time_val: Optional[Timestamp]) -> TDateTimeValue:
         if time_val is None:
             # return epoch time 1970-01-01
             return self._get_date_time("1970-01-01")
-        return self._get_date_time(time_val)
+        return self._get_date_time_from_timestamp(time_val)
 
     def _get_cell_counting_document_item(
         self, data_frame: pd.DataFrame, row: int
@@ -122,7 +125,7 @@ class ChemometecNucleoviewParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
-                        measurement_identifier=str(uuid.uuid4()),
+                        measurement_identifier=random_uuid_str(),
                         measurement_time=self._get_date_time_or_epoch(
                             _get_value(data_frame, row, "datetime")
                         ),

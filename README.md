@@ -1,7 +1,9 @@
-# Introduction
-Welcome to `allotropy` -- a Python library for converting instrument data into Allotrope Simple Model (ASM).
+\*Allotrope® is a registered trademark of the Allotrope Foundation; no affiliation with the Allotrope Foundation is claimed or implied.
 
-The objective of this library is to read text or Excel based instrument software output and return a JSON representation that conforms to the published ASM schema. The code in this library does not convert from proprietary/binary output formats and so has no need to interact with any of the specific vendor softwares.
+# Introduction
+Welcome to `allotropy` -- a Python library by Benchling for converting instrument data into the Allotrope Simple Model (ASM).
+
+The objective of this library is to read text or Excel based instrument software output and return a JSON representation that conforms to the published ASM schema. Note that some schemas do not yet match the published ASM schema, in these cases the CHANGE_NOTES.md file included alongside the schema details the differences and proposed changes to ASM or the library schema. The code in this library does not convert from proprietary/binary output formats and so has no need to interact with any of the specific vendor softwares.
 
 If you aren't familiar with Allotrope, we suggest you start by reading the [Allotrope Product Overview](https://www.allotrope.org/product-overview).
 
@@ -13,10 +15,15 @@ We currently have parser support for the following instruments:
   - Applied Bio AbsoluteQ
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
+  - Biorad Bioplex Manager
+  - ChemoMetec Nucleoview
+  - Luminex xPONENT
   - MolDev SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
+  - Qiacuity dPCR
   - Roche Cedex BioHT
+  - Thermo Fisher NanoDrop Eight
   - Unchained Labs Lunatic
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.

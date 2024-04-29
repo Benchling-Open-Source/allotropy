@@ -7,7 +7,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-11-20T11:03:00-07:00",
-                            "measurement identifier": "b5ec3acc-5138-4214-a1aa-0100a8773b72",
+                            "measurement identifier": "CHEMOMETEC_NUCLEOVIEW_TEST_ID_0",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -46,7 +46,7 @@
                                         },
                                         "average total cell diameter": {
                                             "value": 13.2,
-                                            "unit": "\u03bcm"
+                                            "unit": "μm"
                                         }
                                     }
                                 ]
@@ -64,8 +64,9 @@
         "data system document": {
             "file name": "chemometec_nucleoview_example02.csv",
             "software name": "NucleoView",
+            "software version": "1.4.0.0",
             "ASM converter name": "allotropy",
-            "ASM converter version": "0.1.10"
+            "ASM converter version": "0.1.27"
         }
     }
 }

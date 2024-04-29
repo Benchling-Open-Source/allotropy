@@ -37,8 +37,8 @@ def test_create_measurement(
     well_plate_data = {
         wavelength_column: absorbance_value,
         "Sample name": sample_identifier,
-        "Plate ID": location_identifier,
-        "Plate Position": well_plate_identifier,
+        "Plate ID": well_plate_identifier,
+        "Plate Position": location_identifier,
     }
     measurement = Measurement.create(pd.Series(well_plate_data), wavelength_column)
 
@@ -54,7 +54,7 @@ def test_create_measurement_with_no_wavelength_column() -> None:
     well_plate_data = pd.Series(
         {
             "Sample name": "dummy name",
-            "Plate ID": "dummy ID",
+            "Plate ID": "some plate",
             "Plate Position": "B3",
         }
     )
@@ -76,7 +76,7 @@ def test_create_measurement_with_incorrect_wavelength_column_format() -> None:
 def test_get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
     well_plate_data = {
         "Sample name": "dummy name",
-        "Plate ID": "dummy ID",
+        "Plate ID": "some plate",
         "Plate Position": "B3",
         "A240": 0.5,
         "A260": 0,
@@ -92,7 +92,7 @@ def test_get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
 def test_get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
     well_plate_data = {
         "Sample name": "dummy name",
-        "Plate ID": "dummy ID",
+        "Plate ID": "some plate",
         "Plate Position": "B3",
         "A260": 34.5,
         "A260 Concentration (ng/ul)": 4.5,
@@ -119,7 +119,7 @@ def test_create_well_plate() -> None:
     plate_data = {
         "A250": 23.45,
         "Sample name": "dummy name",
-        "Plate ID": "dummy ID",
+        "Plate Position": "some plate",
         "Application": analytical_method_identifier,
         "Date": date,
         "Time": time,
@@ -136,7 +136,7 @@ def test_create_well_plate_with_two_measurements() -> None:
         "A452": 23.45,
         "A280": 23.45,
         "Sample name": "dummy name",
-        "Plate ID": "dummy ID",
+        "Plate Position": "some plate",
         "Date": "17/10/2016",
         "Time": "7:19:18",
     }
@@ -150,7 +150,7 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
     plate_data = pd.Series(
         {
             "Sample name": "dummy name",
-            "Plate ID": "dummy ID",
+            "Plate Position": "some plate",
             "Time": "7:19:18",
         }
     )
@@ -162,7 +162,7 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
 def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
     plate_data = {
         "Sample name": ["batch_id"],
-        "Plate ID": ["Plate1"],
+        "Plate Position": ["Plate1"],
         "Application": ["dummyApp"],
         "Date": ["2021-05-20"],
         "Time": ["16:55:51"],
@@ -176,7 +176,7 @@ def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
 
     assert calculated_data_item.name == "Concentration"
     assert calculated_data_item.value == 4.5
-    assert calculated_data_item.unit == "ng/mL"
+    assert calculated_data_item.unit == "ng/uL"
     assert calculated_data_item.data_source_document[0].feature == "absorbance"
 
 
@@ -184,7 +184,7 @@ def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
 def test_get_calculated_data_document_from_data_create_right_ammount_of_items() -> None:
     plate_data = {
         "Sample name": ["batch_id"],
-        "Plate ID": ["Plate1"],
+        "Plate Position": ["Plate1"],
         "Application": ["dummyApp"],
         "Date": ["2021-05-20"],
         "Time": ["16:55:51"],
@@ -207,7 +207,7 @@ def test_get_calculated_data_document_from_data_with_no_calculated_data_columns(
 ):
     plate_data = {
         "Sample name": ["batch_id"],
-        "Plate ID": ["Plate1"],
+        "Plate Position": ["Plate1"],
         "Application": ["dummyApp"],
         "Date": ["2021-05-20"],
         "Time": ["16:55:51"],
@@ -224,7 +224,7 @@ def test_get_calculated_data_document_from_data_with_no_calculated_data_columns(
 def test_create_data() -> None:
     plate_data = {
         "Sample name": ["batch_id", "batch_id", ""],
-        "Plate ID": ["Plate1", "Plate1", "Plate1"],
+        "Plate Position": ["Plate1", "Plate1", "Plate1"],
         "Application": ["dummyApp", "dummyApp", "dummyApp"],
         "Date": ["2021-05-20", "2021-05-20", "2023-05-20"],
         "Time": ["16:55:51", "16:56:51", "16:55:51"],

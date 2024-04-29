@@ -6,11 +6,11 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
     PerkinElmerEnvisionParser,
 )
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
+from allotropy.testing.utils import from_file, validate_contents
 from tests.parsers.perkin_elmer_envision.perkin_elmer_envision_data import (
     get_data,
     get_model,
 )
-from tests.parsers.test_utils import from_file, validate_contents, validate_schema
 
 OUTPUT_FILES = (
     "PE_Envision_absorbance_example01",
@@ -22,6 +22,7 @@ OUTPUT_FILES = (
 )
 
 VENDOR_TYPE = Vendor.PERKIN_ELMER_ENVISION
+SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
@@ -31,7 +32,6 @@ def test_parse_perkin_elmer_envision_to_asm(output_file: str) -> None:
         f"tests/parsers/perkin_elmer_envision/testdata/{output_file}.json"
     )
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_schema(allotrope_dict, "plate-reader/BENCHLING/2023/09/plate-reader.json")
     validate_contents(allotrope_dict, expected_filepath)
 
 

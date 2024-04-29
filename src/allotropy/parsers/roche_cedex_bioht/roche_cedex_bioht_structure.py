@@ -20,7 +20,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 
 @dataclass(frozen=True)
 class Title:
-    data_processing_time: Optional[str]
+    data_processing_time: str
     analyst: str
     model_number: Optional[str]
     device_serial_number: Optional[str]

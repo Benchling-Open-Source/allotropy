@@ -1,0 +1,310 @@
+{
+    "dPCR aggregate document": {
+        "device system document": {
+            "device identifier": "Qiacuity dPCR",
+            "brand name": "Qiacuity Digital PCR System",
+            "product manufacturer": "Qiagen"
+        },
+        "dPCR document": [
+            {
+                "measurement aggregate document": {
+                    "plate well count": {
+                        "value": 0,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_0",
+                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "target DNA description": "5p",
+                            "sample document": {
+                                "sample identifier": "1",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "A1",
+                                "well plate identifier": "9234983"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 25485,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 86.32,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 1778,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "flourescence intensity threshold setting": {
+                                                "value": 53.55,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 23707,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_1",
+                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "target DNA description": "5p",
+                            "sample document": {
+                                "sample identifier": "2",
+                                "sample role type": "Control Sample Role",
+                                "well location identifier": "B1",
+                                "well plate identifier": "324"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 25486,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 8.284,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 166,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "flourescence intensity threshold setting": {
+                                                "value": 47.18,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 25320,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_2",
+                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "target DNA description": "5p",
+                            "sample document": {
+                                "sample identifier": "3",
+                                "sample role type": "Control Sample Role",
+                                "well location identifier": "C1",
+                                "well plate identifier": "234"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 25497,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 18.27,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 362,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "flourescence intensity threshold setting": {
+                                                "value": 42.71,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 25135,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_3",
+                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "target DNA description": "5p",
+                            "sample document": {
+                                "sample identifier": "4",
+                                "sample role type": "Blank Role",
+                                "well location identifier": "D1",
+                                "well plate identifier": "32432432"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 25490,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 110.1,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 2095,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "flourescence intensity threshold setting": {
+                                                "value": 35.06,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 23395,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_4",
+                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "target DNA description": "5p",
+                            "sample document": {
+                                "sample identifier": "5",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "E1",
+                                "well plate identifier": "234"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 25470,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 181.0,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 3348,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "flourescence intensity threshold setting": {
+                                                "value": 40.8,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 22122,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "measurement identifier": "QIACUITY_DPCR_TEST_ID_5",
+                            "measurement time": "1970-01-01T00:00:00-00:00",
+                            "target DNA description": "5p",
+                            "sample document": {
+                                "sample identifier": "6",
+                                "sample role type": "Sample Role",
+                                "well location identifier": "F1",
+                                "well plate identifier": "34"
+                            },
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "dPCR",
+                                        "device identifier": "Qiacuity dPCR"
+                                    }
+                                ]
+                            },
+                            "total partition count": {
+                                "value": 25463,
+                                "unit": "#"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "number concentration": {
+                                            "value": 45.62,
+                                            "unit": "#/μL"
+                                        },
+                                        "positive partition count": {
+                                            "value": 878,
+                                            "unit": "#"
+                                        },
+                                        "data processing document": {
+                                            "flourescence intensity threshold setting": {
+                                                "value": 59.93,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "negative partition count": {
+                                            "value": 24585,
+                                            "unit": "#"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "data system document": {
+            "file name": "qiacuity_dpcr_example02.csv",
+            "software name": "Qiacuity Software Suite",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.19"
+        }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
+}

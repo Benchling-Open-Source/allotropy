@@ -1,0 +1,81 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2024-02-13T09:49:24+00:00",
+                            "measurement identifier": "BECKMAN_VI_CELL_XR_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "JK TEST Count 2-13-2024"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 97.3,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 9.64,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Sf21",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 9.91,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 17.9,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4469,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 4349,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.803,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-Cell XR"
+            }
+        ],
+        "device system document": {
+            "model number": "Vi-Cell XR",
+            "equipment serial number": "AL42244"
+        },
+        "data system document": {
+            "file name": "style_fill_error.xlsx",
+            "software name": "Vi-Cell XR",
+            "software version": "2.06",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.17"
+        }
+    }
+}

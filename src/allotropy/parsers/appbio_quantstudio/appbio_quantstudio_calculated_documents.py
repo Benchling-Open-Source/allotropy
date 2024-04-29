@@ -1,6 +1,5 @@
 from collections.abc import Iterator
 from typing import Optional
-from uuid import uuid4
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
@@ -18,6 +17,7 @@ from allotropy.parsers.appbio_quantstudio.calculated_document import (
 )
 from allotropy.parsers.appbio_quantstudio.decorators import cache
 from allotropy.parsers.appbio_quantstudio.views import ViewData
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 @cache
@@ -29,7 +29,7 @@ def build_quantity(well_item: WellItem) -> Optional[CalculatedDocument]:
     # so they are marked as already iterated on creation
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="quantity",
         value=quantity,
         iterated=True,
@@ -60,7 +60,7 @@ def build_quantity_mean(
         )
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="quantity mean",
         value=quantity_mean,
         data_sources=data_sources,
@@ -88,7 +88,7 @@ def build_quantity_sd(
         )
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="quantity sd",
         value=quantity_sd,
         data_sources=data_sources,
@@ -104,7 +104,7 @@ def build_ct_mean(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="ct mean",
         value=ct_mean,
         data_sources=[
@@ -122,7 +122,7 @@ def build_ct_sd(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="ct sd",
         value=ct_sd,
         data_sources=[
@@ -132,6 +132,7 @@ def build_ct_sd(
     )
 
 
+@cache
 def build_delta_ct_mean(
     view_data: ViewData[WellItem],
     sample: str,
@@ -151,7 +152,7 @@ def build_delta_ct_mean(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="delta ct mean",
         value=delta_ct_mean,
         data_sources=[
@@ -174,20 +175,22 @@ def build_delta_ct_se(
     if (delta_ct_se := well_items[0].result.delta_ct_se) is None:
         return None
 
-    source = [
-        DataSource(feature="ct mean", reference=well_item) for well_item in well_items
-    ]
+    ct_mean_ref = build_ct_mean(view_data, sample, target)
+    if ct_mean_ref is None:
+        return None
 
-    r_target_source = [
-        DataSource(feature="ct mean", reference=well_item)
-        for well_item in view_data.get_leaf_item(sample, r_target)
-    ]
+    r_ct_mean_ref = build_ct_mean(view_data, sample, r_target)
+    if r_ct_mean_ref is None:
+        return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="delta ct se",
         value=delta_ct_se,
-        data_sources=source + r_target_source,
+        data_sources=[
+            DataSource(feature="ct mean", reference=ct_mean_ref),
+            DataSource(feature="ct mean", reference=r_ct_mean_ref),
+        ],
     )
 
 
@@ -211,7 +214,7 @@ def build_delta_delta_ct(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="delta delta ct",
         value=delta_delta_ct,
         data_sources=[
@@ -246,7 +249,7 @@ def build_rq(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rq",
         value=rq,
         data_sources=[
@@ -274,7 +277,7 @@ def build_rq_min(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rq min",
         value=rq_min,
         data_sources=[
@@ -302,7 +305,7 @@ def build_rq_max(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rq max",
         value=rq_max,
         data_sources=[
@@ -329,7 +332,7 @@ def build_relative_rq(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rq",
         value=rq,
         data_sources=[
@@ -355,7 +358,7 @@ def build_relative_rq_min(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rq min",
         value=rq_min,
         data_sources=[
@@ -381,7 +384,7 @@ def build_relative_rq_max(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rq max",
         value=rq_max,
         data_sources=[
@@ -401,7 +404,7 @@ def build_rn_mean(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rn mean",
         value=rn_mean,
         data_sources=[
@@ -419,7 +422,7 @@ def build_rn_sd(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="rn sd",
         value=rn_sd,
         data_sources=[
@@ -437,7 +440,7 @@ def build_y_intercept(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="y intercept",
         value=y_intercept,
         data_sources=[
@@ -455,7 +458,7 @@ def build_r_squared(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="r^2",
         value=r_squared,
         data_sources=[
@@ -473,7 +476,7 @@ def build_slope(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="slope",
         value=slope,
         data_sources=[
@@ -491,7 +494,7 @@ def build_efficiency(
         return None
 
     return CalculatedDocument(
-        uuid=str(uuid4()),
+        uuid=random_uuid_str(),
         name="efficiency",
         value=efficiency,
         data_sources=[
@@ -573,6 +576,9 @@ def iter_relative_standard_curve_calc_docs(
             yield from calc_doc.iter_struct()
 
         if calc_doc := build_quantity_sd(view_st_data, sample, target):
+            yield from calc_doc.iter_struct()
+
+        if calc_doc := build_ct_mean(view_st_data, sample, target):
             yield from calc_doc.iter_struct()
 
         if calc_doc := build_ct_sd(view_st_data, sample, target):
