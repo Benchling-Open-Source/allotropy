@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+
+## [0.1.28] - 2024-04-29
+
+### Added
+
 - Add AppBio Quantstudio Design and Analysis adapter
 - Add software version to Chemometec Nucleoview
 - Biorad Bioplex adapter
