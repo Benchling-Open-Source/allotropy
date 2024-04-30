@@ -25,6 +25,11 @@ class Counts(HasUnit):
 
 
 @dataclass(frozen=True)
+class CountsPerMilliliter(HasUnit):
+    unit: str = "Counts/mL"
+
+
+@dataclass(frozen=True)
 class CountsTimesSecond(HasUnit):
     unit: str = "Counts.s"
 

@@ -59,6 +59,26 @@
       }
     ]
   },
+  "tQuantityValueCountsPerMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/CountsPerMilliliter"
+      }
+    ]
+  },
+  "tNullableQuantityValueCountsPerMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/CountsPerMilliliter"
+      }
+    ]
+  },
   "tQuantityValueCountsTimesSecond": {
     "allOf": [
       {

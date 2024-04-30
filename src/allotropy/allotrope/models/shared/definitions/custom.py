@@ -9,6 +9,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Cell,
     Centimeter,
     Counts,
+    CountsPerMilliliter,
     CountsTimesSecond,
     CubicMillimeter,
     DegreeCelsius,
@@ -81,6 +82,16 @@ class TQuantityValueCounts(Counts, TQuantityValue):
 
 @dataclass(frozen=True)
 class TNullableQuantityValueCounts(Counts, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True)
+class TQuantityValueCountsPerMilliliter(CountsPerMilliliter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True)
+class TNullableQuantityValueCountsPerMilliliter(CountsPerMilliliter, TNullableQuantityValue):
     pass
 
 

@@ -35,6 +35,18 @@
       "unit"
     ]
   },
+  "CountsPerMilliliter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "Counts/mL",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#CountsPerMilliliter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "CountsTimesSecond": {
     "properties": {
       "unit": {
