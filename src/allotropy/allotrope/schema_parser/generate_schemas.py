@@ -115,7 +115,6 @@ def generate_schemas(
     :schema_regex: If set, filters schemas to generate using regex.
     :return: A list of model files that were changed.
     """
-    schema_cleaner = SchemaCleaner()
 
     unit_to_iri = {}
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
@@ -133,6 +132,7 @@ def generate_schemas(
             schema_path, model_path = _get_schema_and_model_paths(root_dir, rel_schema_path)
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
+                schema_cleaner = SchemaCleaner()
                 schema_cleaner.clean_file(str(schema_path))
                 unit_to_iri |= schema_cleaner.get_referenced_units()
                 _generate_schema(model_path, schema_path)
