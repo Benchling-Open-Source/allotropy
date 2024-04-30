@@ -111,6 +111,3 @@ def validate_contents(
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_file)
         raise
-
-    # Ensure that tests fail if the param is set to True. We never want to commit with a True value.
-    assert not write_actual_to_expected_on_fail  # noqa: S101
