@@ -19,6 +19,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.29] - 2024-04-30
+
+### Added
+
+- Add Vendor display names
+
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
 
 ## [0.1.28] - 2024-04-29
 
