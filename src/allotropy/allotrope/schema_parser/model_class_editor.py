@@ -5,8 +5,9 @@ import json
 import os
 from pathlib import Path
 import re
-from typing import Optional
+from typing import Any, Optional
 
+from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
@@ -15,6 +16,19 @@ from allotropy.exceptions import AllotropeConversionError
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
+
+
+def _values_equal(value1: Any, value2: Any):
+    if isinstance(value1, dict):
+        return isinstance(value2, dict) and _schemas_equal(value1, value2)
+    elif isinstance(value1, list):
+        return isinstance(value2, list) and all(_values_equal(v1, v2) for v1, v2 in zip(value1, value2))
+    else:
+        return value1 == value2
+
+
+def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]):
+    return {key for key in schema1.keys() if not _should_filter_key(key)} == {key for key in schema2.keys() if not _should_filter_key(key)} and all(_values_equal(schema1[key], schema2[key]) for key in schema1 if not _should_filter_key(key))
 
 
 def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[str]]]:
@@ -38,14 +52,12 @@ def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[st
     for name, component_schema in schema_mapping.items():
         for schema_model in shared_schema_mapping.get(name, []):
             # TODO: log warning visible in script output if schema name is found but no schemas match.
-            if schema_model.schema == component_schema:
+            if _schemas_equal(schema_model.schema, component_schema):
                 classes_to_skip.add(schema_model.import_info[1])
                 imports_to_add[schema_model.import_info[0]].add(
                     schema_model.import_info[1]
                 )
 
-    # print(classes_to_skip)
-    # print(imports_to_add)
     return classes_to_skip, dict(imports_to_add)
 
 

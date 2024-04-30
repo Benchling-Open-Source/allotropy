@@ -73,7 +73,7 @@ def _all_values_equal(values: list[Any]):
 
 
 def _should_filter_key(key: str) -> bool:
-    return key in ("if", "then", "prefixItems", "contains")
+    return key in ("if", "then", "prefixItems", "contains", "$comment", "minItems", "maxItems")
 
 
 def _should_skip_key(key: str) -> bool:
@@ -427,7 +427,7 @@ class SchemaCleaner:
             else:
                 cleaned[key] = self._clean_value(value)
 
-        return {key: value for key, value in cleaned.items() if value is not None}
+        return {key: value for key, value in cleaned.items() if value not in (None, {})}
 
     def _clean_def_schema(self, schema: dict[str, Any]) -> dict[str, Any]:
         cleaned = {}
@@ -443,7 +443,7 @@ class SchemaCleaner:
             else:
                 cleaned[key] = self._clean_value(value, self._clean_def_schema)
 
-        return {key: value for key, value in cleaned.items() if value is not None}
+        return {key: value for key, value in cleaned.items() if value not in (None, {})}
 
     def _clean_defs(self, schema: dict[str, Any]) -> dict[str, Any]:
         for schema_name, defs_schema in schema.items():
