@@ -91,7 +91,9 @@ class TQuantityValueCountsPerMilliliter(CountsPerMilliliter, TQuantityValue):
 
 
 @dataclass(frozen=True)
-class TNullableQuantityValueCountsPerMilliliter(CountsPerMilliliter, TNullableQuantityValue):
+class TNullableQuantityValueCountsPerMilliliter(
+    CountsPerMilliliter, TNullableQuantityValue
+):
     pass
 
 
