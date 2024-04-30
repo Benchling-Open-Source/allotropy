@@ -485,9 +485,6 @@ class SchemaCleaner:
 
         cleaned = {}
         for key, value in schema.items():
-            if key == "device document":
-                print("HERE")
-                assert False
             if _should_filter_key(key):
                 continue
             if _should_skip_key(key):
