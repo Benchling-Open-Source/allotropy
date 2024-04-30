@@ -2,12 +2,15 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-from enum import Enum
 import re
 from typing import Optional
 
 import pandas as pd
 
+from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
+from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
@@ -39,17 +42,6 @@ SAMPLE_ROLE_TYPES_MAP = {
     "POSITIVE_2/2": "homozygous control sample role",
     "POSITIVE_1/2": "heterozygous control sample role",
 }
-
-
-class ExperimentType(Enum):
-    STANDARD_CURVE = "Standard Curve Experiment"
-    RELATIVE_QUANTIFICATION = (
-        "Relative Quantification/Relative Standard Curve Experiment"
-    )
-    MELT_CURVE = "Melt Curve Experiment"
-    GENOTYPING = "Genotyping Experiment"
-    PRESENCE_ABSENCE = "Presence/Absence Experiment"
-    UNKNOWN = "Unknown experiment"
 
 
 @dataclass(frozen=True)
@@ -141,8 +133,7 @@ class Header:
 
 
 @dataclass
-class WellItem:
-    uuid: str
+class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
@@ -150,42 +141,16 @@ class WellItem:
     well_location_identifier: Optional[str]
     quencher_dye_setting: Optional[str]
     sample_role_type: Optional[str]
-    _amplification_data: Optional[AmplificationData] = None
-    _melt_curve_data: Optional[MeltCurveData] = None
-    _result: Optional[Result] = None
-
-    @property
-    def amplification_data(self) -> AmplificationData:
-        return assert_not_none(
-            self._amplification_data,
-            msg=f"Unable to find amplification data for target '{self.target_dna_description}' in well {self.identifier} .",
-        )
-
-    @amplification_data.setter
-    def amplification_data(self, amplification_data: AmplificationData) -> None:
-        self._amplification_data = amplification_data
-
-    @property
-    def melt_curve_data(self) -> Optional[MeltCurveData]:
-        return self._melt_curve_data
-
-    @melt_curve_data.setter
-    def melt_curve_data(self, melt_curve_data: MeltCurveData) -> None:
-        self._melt_curve_data = melt_curve_data
-
-    @property
-    def result(self) -> Result:
-        return assert_not_none(
-            self._result,
-            msg=f"Unable to find result data for well {self.identifier}.",
-        )
-
-    @result.setter
-    def result(self, result: Result) -> None:
-        self._result = result
+    amplification_data: AmplificationData
+    result: Result
+    melt_curve_data: Optional[MeltCurveData] = None
 
     @staticmethod
-    def create(data: pd.Series[str]) -> WellItem:
+    def create(
+        contents: DesignQuantstudioContents,
+        data: pd.Series[str],
+        experiment_type: ExperimentType,
+    ) -> WellItem:
         identifier = try_int_from_series(data, "Well")
 
         target_dna_description = try_str_from_series(
@@ -209,6 +174,9 @@ class WellItem:
             else SAMPLE_ROLE_TYPES_MAP.get(raw_sample_role_type)
         )
 
+        amp_data = contents.get_non_empty_sheet("Amplification Data")
+        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+
         return WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
@@ -218,6 +186,19 @@ class WellItem:
             well_location_identifier=well_position,
             quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
             sample_role_type=sample_role_type,
+            amplification_data=AmplificationData.create(
+                amp_data, identifier, target_dna_description
+            ),
+            melt_curve_data=(
+                None
+                if melt_curve_data is None
+                else MeltCurveData.create(
+                    melt_curve_data, identifier, target_dna_description
+                )
+            ),
+            result=Result.create(
+                contents, identifier, target_dna_description, experiment_type
+            ),
         )
 
 
@@ -225,7 +206,7 @@ class WellItem:
 class Well:
     identifier: int
     items: dict[str, WellItem]
-    _multicomponent_data: Optional[MulticomponentData] = None
+    multicomponent_data: Optional[MulticomponentData] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -234,22 +215,30 @@ class Well:
             msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
         )
 
-    @property
-    def multicomponent_data(self) -> Optional[MulticomponentData]:
-        return self._multicomponent_data
-
-    @multicomponent_data.setter
-    def multicomponent_data(self, multicomponent_data: MulticomponentData) -> None:
-        self._multicomponent_data = multicomponent_data
-
     @staticmethod
-    def create(identifier: int, well_data: pd.DataFrame) -> Well:
+    def create(
+        contents: DesignQuantstudioContents,
+        header: Header,
+        well_data: pd.DataFrame,
+        identifier: int,
+        experiment_type: ExperimentType,
+    ) -> Well:
+        well_items = {
+            try_str_from_series(item_data, "Target"): WellItem.create(
+                contents, item_data, experiment_type
+            )
+            for _, item_data in well_data.iterrows()
+        }
+
+        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
-            items={
-                try_str_from_series(item_data, "Target"): WellItem.create(item_data)
-                for _, item_data in well_data.iterrows()
-            },
+            items=well_items,
+            multicomponent_data=(
+                None
+                if multi_data is None
+                else MulticomponentData.create(header, multi_data, identifier)
+            ),
         )
 
 
@@ -257,21 +246,31 @@ class Well:
 class WellList:
     wells: list[Well]
 
-    def iter_well_items(self) -> Iterator[WellItem]:
+    def get_well_items(self) -> list[WellItem]:
+        wells: list[WellItem] = []
         for well in self.wells:
-            yield from well.items.values()
+            wells += well.items.values()
+        return wells
 
     def __iter__(self) -> Iterator[Well]:
         return iter(self.wells)
 
     @staticmethod
-    def create(results_data: pd.DataFrame) -> WellList:
+    def create(
+        contents: DesignQuantstudioContents,
+        header: Header,
+        experiment_type: ExperimentType,
+    ) -> WellList:
+        results_data = contents.get_non_empty_sheet("Results")
         assert_df_column(results_data, "Well")
         return WellList(
-            [
+            wells=[
                 Well.create(
-                    try_int(str(identifier), "well identifier"),
+                    contents,
+                    header,
                     well_data,
+                    try_int(str(identifier), "well identifier"),
+                    experiment_type,
                 )
                 for identifier, well_data in results_data.groupby("Well")
             ]
@@ -287,21 +286,20 @@ class AmplificationData:
 
     @staticmethod
     def create(
-        amplification_data: pd.DataFrame, well_item: WellItem
+        amplification_data: pd.DataFrame,
+        well_item_id: int,
+        target_dna_description: str,
     ) -> AmplificationData:
         well_data = assert_not_empty_df(
             amplification_data[
-                assert_df_column(amplification_data, "Well") == well_item.identifier
+                assert_df_column(amplification_data, "Well") == well_item_id
             ],
-            msg=f"Unable to find amplification data for well {well_item.identifier}.",
+            msg=f"Unable to find amplification data for well {well_item_id}.",
         )
 
         target_data = assert_not_empty_df(
-            well_data[
-                assert_df_column(well_data, "Target")
-                == well_item.target_dna_description
-            ],
-            msg=f"Unable to find amplification data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
+            well_data[assert_df_column(well_data, "Target") == target_dna_description],
+            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id} .",
         )
 
         cycle_number = assert_df_column(target_data, "Cycle Number")
@@ -325,10 +323,10 @@ class MulticomponentData:
         )
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well, header: Header) -> MulticomponentData:
+    def create(header: Header, data: pd.DataFrame, well_id: int) -> MulticomponentData:
         well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well.identifier],
-            msg=f"Unable to find multi component data for well {well.identifier}.",
+            data[assert_df_column(data, "Well") == well_id],
+            msg=f"Unable to find multi component data for well {well_id}.",
         )
 
         stage_data = assert_not_empty_df(
@@ -363,22 +361,21 @@ class MeltCurveData:
     derivative: list[Optional[float]]
 
     @staticmethod
-    def create(data: pd.DataFrame, well: Well, well_item: WellItem) -> MeltCurveData:
+    def create(
+        data: pd.DataFrame, well_id: int, target_dna_description: str
+    ) -> MeltCurveData:
         well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well.identifier],
-            msg=f"Unable to find melt curve data for well {well.identifier}.",
+            data[assert_df_column(data, "Well") == well_id],
+            msg=f"Unable to find melt curve data for well {well_id}.",
         )
 
         target_data = assert_not_empty_df(
-            well_data[
-                assert_df_column(well_data, "Target")
-                == well_item.target_dna_description
-            ],
-            msg=f"Unable to find melt curve data for target '{well_item.target_dna_description}' in well {well_item.identifier} .",
+            well_data[assert_df_column(well_data, "Target") == target_dna_description],
+            msg=f"Unable to find melt curve data for target '{target_dna_description}' in well {well_id} .",
         )
 
         return MeltCurveData(
-            target=well_item.target_dna_description,
+            target=target_dna_description,
             temperature=assert_df_column(target_data, "Temperature").tolist(),
             fluorescence=assert_df_column(target_data, "Fluorescence").tolist(),
             derivative=assert_df_column(target_data, "Derivative").tolist(),
@@ -401,9 +398,13 @@ class Result:
     quantity_mean: Optional[float]
     quantity_sd: Optional[float]
     ct_mean: Optional[float]
+    eq_ct_mean: Optional[float]
+    adj_eq_ct_mean: Optional[float]
     ct_sd: Optional[float]
+    ct_se: Optional[float]
     delta_ct_mean: Optional[float]
     delta_ct_se: Optional[float]
+    delta_ct_sd: Optional[float]
     delta_delta_ct: Optional[float]
     rq: Optional[float]
     rq_min: Optional[float]
@@ -416,35 +417,106 @@ class Result:
     efficiency: Optional[float]
 
     @staticmethod
+    def get_reference_sample(contents: DesignQuantstudioContents) -> str:
+        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+        return try_str_from_series(
+            df_to_series(
+                data[assert_df_column(data, "Rq") == 1],
+                msg="Unable to find Rq related to reference sample.",
+            ),
+            "Sample",
+            msg="Unable to infer reference sample.",
+        )
+
+    @staticmethod
+    def get_reference_target(contents: DesignQuantstudioContents) -> str:
+        data = contents.get_non_empty_sheet("RQ Replicate Group Result")
+        sub_data = data[assert_df_column(data, "Rq").isnull()]
+        target = assert_df_column(sub_data, "Target").unique()
+        if target.size != 1:
+            error = "Unable to infer reference target."
+            raise AllotropeConversionError(error)
+        return str(target[0])
+
+    @staticmethod
+    def _add_data(
+        data: pd.DataFrame, extra_data: pd.DataFrame, columns: list[str]
+    ) -> None:
+
+        data[columns] = None
+        for _, row in extra_data.iterrows():
+            sample_cond = data["Sample"] == row["Sample"]
+            target_cond = data["Target"] == row["Target"]
+            data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
+
+    @staticmethod
     def create(
-        data: pd.DataFrame, well_item: WellItem, experiment_type: ExperimentType
+        contents: DesignQuantstudioContents,
+        well_item_id: int,
+        target_dna_description: str,
+        experiment_type: ExperimentType,
     ) -> Result:
+        data_sheet = (
+            "Standard Curve Result"
+            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
+            else "Results"
+        )
+
+        data = contents.get_non_empty_sheet(data_sheet)
+
+        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
+            Result._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
+                columns=[
+                    "Cq SE",
+                ],
+            )
+
+            Result._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
+                columns=[
+                    "EqCq Mean",
+                    "Adjusted EqCq Mean",
+                    "Delta EqCq Mean",
+                    "Delta EqCq SD",
+                    "Delta EqCq SE",
+                    "Delta Delta EqCq",
+                    "Rq",
+                    "Rq Min",
+                    "Rq Max",
+                ],
+            )
+
         well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well_item.identifier],
-            msg=f"Unable to find result data for well {well_item.identifier}.",
+            data[assert_df_column(data, "Well") == well_item_id],
+            msg=f"Unable to find result data for well {well_item_id}.",
         )
 
         target_data = df_to_series(
             assert_not_empty_df(
                 well_data[
-                    assert_df_column(well_data, "Target")
-                    == well_item.target_dna_description
+                    assert_df_column(well_data, "Target") == target_dna_description
                 ],
-                msg=f"Unable to find result data for well {well_item.identifier}.",
+                msg=f"Unable to find result data for well {well_item_id}.",
             ),
-            msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
+            msg=f"Expected exactly 1 row of results to be associated with target '{target_dna_description}' in well {well_item_id}.",
         )
 
         genotyping_determination_result = (
             try_str_from_series_or_none(target_data, "Call")
-            if experiment_type == ExperimentType.PRESENCE_ABSENCE
+            if experiment_type == ExperimentType.presence_absence_qPCR_experiment
             else None
         )
 
         genotyping_determination_method_setting = (
             try_float_from_series_or_none(target_data, "Threshold")
             if experiment_type
-            in (ExperimentType.PRESENCE_ABSENCE, ExperimentType.GENOTYPING)
+            in (
+                ExperimentType.presence_absence_qPCR_experiment,
+                ExperimentType.genotyping_qPCR_experiment,
+            )
             else None
         )
 
@@ -452,7 +524,7 @@ class Result:
             cycle_threshold_value_setting=try_float_from_series(
                 target_data,
                 "Threshold",
-                msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
+                msg=f"Unable to find cycle threshold value setting for well {well_item_id}",
             ),
             cycle_threshold_result=try_float_or_none(str(target_data.get("Cq"))),
             automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
@@ -477,17 +549,25 @@ class Result:
             quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
             quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
             ct_mean=try_float_from_series_or_none(target_data, "Cq Mean"),
+            eq_ct_mean=try_float_from_series_or_none(target_data, "EqCq Mean"),
+            adj_eq_ct_mean=try_float_from_series_or_none(
+                target_data, "Adjusted EqCq Mean"
+            ),
             ct_sd=try_float_from_series_or_none(target_data, "Cq SD"),
-            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta Ct Mean"),
-            delta_ct_se=try_float_from_series_or_none(target_data, "Delta Ct SE"),
-            delta_delta_ct=try_float_from_series_or_none(target_data, "Delta Delta Ct"),
-            rq=try_float_from_series_or_none(target_data, "RQ"),
-            rq_min=try_float_from_series_or_none(target_data, "RQ Min"),
-            rq_max=try_float_from_series_or_none(target_data, "RQ Max"),
+            ct_se=try_float_from_series_or_none(target_data, "Cq SE"),
+            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta EqCq Mean"),
+            delta_ct_se=try_float_from_series_or_none(target_data, "Delta EqCq SE"),
+            delta_ct_sd=try_float_from_series_or_none(target_data, "Delta EqCq SD"),
+            delta_delta_ct=try_float_from_series_or_none(
+                target_data, "Delta Delta EqCq"
+            ),
+            rq=try_float_from_series_or_none(target_data, "Rq"),
+            rq_min=try_float_from_series_or_none(target_data, "Rq Min"),
+            rq_max=try_float_from_series_or_none(target_data, "Rq Max"),
             rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
             rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
             y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
-            r_squared=try_float_from_series_or_none(target_data, "R(superscript 2)"),
+            r_squared=try_float_from_series_or_none(target_data, "R2"),
             slope=try_float_from_series_or_none(target_data, "Slope"),
             efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
         )
@@ -498,72 +578,35 @@ class Data:
     header: Header
     wells: WellList
     experiment_type: ExperimentType
+    calculated_documents: list[CalculatedDocument]
+    reference_target: Optional[str]
+    reference_sample: Optional[str]
 
     @staticmethod
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:
         if contents.get_non_empty_sheet_or_none("Standard Curve Result") is not None:
-            return ExperimentType.STANDARD_CURVE
+            return ExperimentType.standard_curve_qPCR_experiment
 
         if (
             contents.get_non_empty_sheet_or_none("RQ Replicate Group Result")
             is not None
         ):
-            return ExperimentType.RELATIVE_QUANTIFICATION
+            return ExperimentType.relative_standard_curve_qPCR_experiment
 
         if contents.get_non_empty_sheet_or_none("Genotyping Result") is not None:
-            return ExperimentType.GENOTYPING
+            return ExperimentType.genotyping_qPCR_experiment
 
         if all(
             contents.get_non_empty_sheet_or_none(sheet) is not None
             for sheet in ["Melt Curve Raw", "Melt Curve Result"]
         ):
-            return ExperimentType.MELT_CURVE
+            return ExperimentType.melt_curve_qPCR_experiment
 
         if all(
             contents.get_non_empty_sheet_or_none(sheet) is not None
             for sheet in ["Sample Call", "Well Call", "Target Call", "Control Status"]
         ):
-            return ExperimentType.PRESENCE_ABSENCE
+            return ExperimentType.presence_absence_qPCR_experiment
 
-        return ExperimentType.UNKNOWN
-
-    @staticmethod
-    def create(contents: DesignQuantstudioContents) -> Data:
-        amp_data = contents.get_non_empty_sheet("Amplification Data")
-        multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
-        results_data = contents.get_non_empty_sheet("Results")
-        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
-
-        experiment_type = Data.get_experiment_type(contents)
-
-        header = Header.create(contents.header)
-        wells = WellList.create(results_data)
-
-        for well in wells:
-            if multi_data is not None:
-                well.multicomponent_data = MulticomponentData.create(
-                    multi_data, well, header
-                )
-
-            for well_item in well.items.values():
-                if melt_curve_data is not None:
-                    well_item.melt_curve_data = MeltCurveData.create(
-                        melt_curve_data, well, well_item
-                    )
-
-                well_item.amplification_data = AmplificationData.create(
-                    amp_data,
-                    well_item,
-                )
-
-                well_item.result = Result.create(
-                    results_data,
-                    well_item,
-                    experiment_type,
-                )
-
-        return Data(
-            header,
-            wells,
-            experiment_type,
-        )
+        error = "Unable to infer expermient type"
+        raise AllotropeConversionError(error)
