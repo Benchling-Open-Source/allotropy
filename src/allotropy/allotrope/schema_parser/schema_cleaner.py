@@ -17,11 +17,15 @@ def _is_array_schema(schema: dict[str, Any]) -> bool:
 
 
 def _is_direct_object_schema(schema: dict[str, Any]) -> bool:
-    return isinstance(schema, dict) and any(key in schema for key in ["properties", "required"])
+    return isinstance(schema, dict) and any(
+        key in schema for key in ["properties", "required"]
+    )
 
 
 def _is_composed_object_schema(schema: dict[str, Any]) -> bool:
-    return isinstance(schema, dict) and any(key in schema for key in ["anyOf", "oneOf", "allOf"])
+    return isinstance(schema, dict) and any(
+        key in schema for key in ["anyOf", "oneOf", "allOf"]
+    )
 
 
 def _is_object_schema(schema: dict[str, Any]) -> bool:
@@ -54,7 +58,10 @@ def _get_def_name(reference: str) -> str:
 def _get_reference_from_url(value: Any) -> tuple[Optional[str], Optional[str]]:
     # Identify URL-like references, and return a sanitized version that can be followed by generation script.
     # Return schema_name and definition name separately for use in other logic.
-    ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*schema)(\#/\$defs/)?(.*)?", str(value))
+    ref_match = re.match(
+        r"http://purl.allotrope.org/json-schemas/(.*schema)(\#/\$defs/)?(.*)?",
+        str(value),
+    )
     if not ref_match:
         return None, None
     schema_name, _, def_name = ref_match.groups()
@@ -73,7 +80,15 @@ def _all_values_equal(values: list[Any]):
 
 
 def _should_filter_key(key: str) -> bool:
-    return key in ("if", "then", "prefixItems", "contains", "$comment", "minItems", "maxItems")
+    return key in (
+        "if",
+        "then",
+        "prefixItems",
+        "contains",
+        "$comment",
+        "minItems",
+        "maxItems",
+    )
 
 
 def _should_skip_key(key: str) -> bool:
@@ -91,14 +106,18 @@ class SchemaCleaner:
         for unit_schema in get_shared_unit_definitions().values():
             self._add_unit(
                 unit=unit_schema["properties"]["unit"]["const"],
-                unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
+                unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"],
             )
 
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
 
     def get_referenced_units(self) -> dict[str, str]:
-        return {unit: iri for unit, iri in self.unit_to_iri.items() if unit in self.referenced_units}
+        return {
+            unit: iri
+            for unit, iri in self.unit_to_iri.items()
+            if unit in self.referenced_units
+        }
 
     def _is_unit_name_ref(self, ref: str) -> Optional[str]:
         return _get_def_name(ref) in self.unit_to_name.values()
@@ -109,7 +128,7 @@ class SchemaCleaner:
 
     def _is_quantity_value(self, values: list[dict[str, Any]]) -> bool:
         # Check if this schema is a special case of allOf: [tQuantityValue, unit] and if so replace.
-        if len(values) != 2:
+        if len(values) != 2:  # noqa: PLR2004
             return False
         quantity_value_found = False
         unit_found = False
@@ -122,7 +141,9 @@ class SchemaCleaner:
                 unit_found = True
         return quantity_value_found and unit_found
 
-    def _fix_quantity_value_reference(self, values: list[dict[str, Any]]) -> dict[str, Any]:
+    def _fix_quantity_value_reference(
+        self, values: list[dict[str, Any]]
+    ) -> dict[str, Any]:
         for value in values:
             def_name = _get_def_name(value["$ref"])
             if def_name == "tQuantityValue":
@@ -132,7 +153,9 @@ class SchemaCleaner:
         msg = f"Failed to find value unit in quantity value reference: {values}"
         raise AssertionError(msg)
 
-    def _try_combine_object_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
+    def _try_combine_object_schemas(
+        self, schemas: list[dict[str, Any]]
+    ) -> dict[str, Any]:
         if any(_is_array_schema(schema) for schema in schemas):
             msg = "Unexpected array schema in _try_combine_object_schemas"
             raise AssertionError(msg)
@@ -152,15 +175,19 @@ class SchemaCleaner:
                 combined_props[key] = values[0]
             elif all(_is_class_schema(value) for value in values):
                 combined_props[key] = self._combine_allof(values)
-            elif any(_is_ref_schema(value) or _is_ref_schema_array(value) for value in values):
-                combined_props[key] = self._combine_allof(self._dereference_values(values))
+            elif any(
+                _is_ref_schema(value) or _is_ref_schema_array(value) for value in values
+            ):
+                combined_props[key] = self._combine_allof(
+                    self._dereference_values(values)
+                )
             else:
                 msg = f"Error combining schemas, conflicting values for key '{key}': {[f'{value}' for value in values]}"
                 raise AssertionError(msg)
 
         return _create_object_schema(
             combined_props,
-            sorted(set.union(*[set(schema.get("required", [])) for schema in schemas]))
+            sorted(set.union(*[set(schema.get("required", [])) for schema in schemas])),
         )
 
     def _try_combine_schemas(self, schemas: list[dict[str, Any]]) -> dict[str, Any]:
@@ -170,14 +197,20 @@ class SchemaCleaner:
         # combing values afterwards.
         if any("anyOf" in schema for schema in schemas):
             schemas = self._invert_allof(schemas, "anyOf")["anyOf"]
-            return {"anyOf": [self._combine_allof(schema["allOf"]) for schema in schemas]}
+            return {
+                "anyOf": [self._combine_allof(schema["allOf"]) for schema in schemas]
+            }
 
         # Combine array schemas by combining their inner values.
         if any(_is_array_schema(schema) for schema in schemas):
             if not all(_is_array_schema(schema) for schema in schemas):
                 msg = f"Could not combine array and object schemas: {schemas}"
                 raise AssertionError(msg)
-            return {"items": self._try_combine_schemas([schema["items"] for schema in schemas])}
+            return {
+                "items": self._try_combine_schemas(
+                    [schema["items"] for schema in schemas]
+                )
+            }
 
         return self._try_combine_object_schemas(schemas)
 
@@ -210,14 +243,21 @@ class SchemaCleaner:
     def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
         result = copy.deepcopy(value)
         if _is_ref_schema(value):
-            if self._is_unit_name_ref(value["$ref"]) or "tQuantityValue" in value["$ref"]:
+            if (
+                self._is_unit_name_ref(value["$ref"])
+                or "tQuantityValue" in value["$ref"]
+            ):
                 return result
             # NOTE: assumes ref is cleaned.
             # NOTE: we do not futher deference values because we don't want to remove all
             # definitions and mess up class inheritance. We will do so if needed in combine_schemas
-            def_1, def_2 = re.match(r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", result.pop("$ref")).groups()
+            def_1, def_2 = re.match(
+                r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", result.pop("$ref")
+            ).groups()
             if def_2:
-                result |= self._dereference_value(self.definitions[def_1]["$defs"][def_2])
+                result |= self._dereference_value(
+                    self.definitions[def_1]["$defs"][def_2]
+                )
             else:
                 result |= self._dereference_value(self.definitions[def_1])
         for group_key in ["anyOf", "allOf", "oneOf"]:
@@ -236,16 +276,23 @@ class SchemaCleaner:
         # Returns True is "required" key is found anywhere in a value recursively.
         # Used to check if there are any reqiured keys in a schema to determine if it should be combined.
         if _is_ref_schema(value):
-            if self._is_unit_name_ref(value["$ref"]) or "QuantityValue" in value["$ref"]:
+            if (
+                self._is_unit_name_ref(value["$ref"])
+                or "QuantityValue" in value["$ref"]
+            ):
                 return False
             return self._required_anywhere(self._dereference_value(value))
         if isinstance(value, dict):
-            return any(k == "required" or self._required_anywhere(v) for k, v in value.items())
+            return any(
+                k == "required" or self._required_anywhere(v) for k, v in value.items()
+            )
         elif isinstance(value, list):
             return any(self._required_anywhere(v) for v in value)
         return False
 
-    def _combine_anyof_schemas(self, schemas: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def _combine_anyof_schemas(
+        self, schemas: list[dict[str, Any]]
+    ) -> list[dict[str, Any]]:
         # For schemas without required values, we want to combine them as much as possible, but sometimes
         # can't due to keys with conflcting values. To do this, we take the power set of combinations and
         # try to combine each. When we succeed, remove other sets that are covered by that powerset.
@@ -258,10 +305,12 @@ class SchemaCleaner:
 
         successful = []
         # total = 2**len(schemas) - 1
-        for i in range(2**len(schemas) - 1, 0, -1):
+        for i in range(2 ** len(schemas) - 1, 0, -1):
             indices = {j for j, digit in enumerate(f"{i:b}"[::-1]) if digit == "1"}
             # If there are not any required keys we can check if the set is covered first.
-            if not any_required_keys and any(indices.issubset(schema_indices) for _, schema_indices in successful):
+            if not any_required_keys and any(
+                indices.issubset(schema_indices) for _, schema_indices in successful
+            ):
                 continue
 
             # If there are required keys, we need to combine the schemas first so we can cross check the required
@@ -272,7 +321,9 @@ class SchemaCleaner:
                 continue
             covered = False
             for schema, schema_indices in successful:
-                if indices.issubset(schema_indices) and _get_required(combined) == _get_required(schema):
+                if indices.issubset(schema_indices) and _get_required(
+                    combined
+                ) == _get_required(schema):
                     covered = True
                     break
             if not covered:
@@ -290,11 +341,15 @@ class SchemaCleaner:
         new_schemas = []
         for schema in schemas:
             schemas_list = schema[key] if key in schema else [schema]
-            new_schemas = [
-                [*new_schema, add_schema]
-                for new_schema in new_schemas
-                for add_schema in schemas_list
-            ] if new_schemas else [[schema] for schema in schemas_list]
+            new_schemas = (
+                [
+                    [*new_schema, add_schema]
+                    for new_schema in new_schemas
+                    for add_schema in schemas_list
+                ]
+                if new_schemas
+                else [[schema] for schema in schemas_list]
+            )
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
     def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
@@ -317,8 +372,13 @@ class SchemaCleaner:
 
         # If we are trying to combine tQuantityValue with tQuantityValue units, we can do so if there are
         # not conflciting units.
-        if all(_is_ref_schema(schema) and "QuantityValue" in schema["$ref"] for schema in values):
-            unique = {_get_def_name(schema["$ref"]) for schema in values} - {"tQuantityValue"}
+        if all(
+            _is_ref_schema(schema) and "QuantityValue" in schema["$ref"]
+            for schema in values
+        ):
+            unique = {_get_def_name(schema["$ref"]) for schema in values} - {
+                "tQuantityValue"
+            }
             if len(unique) == 1:
                 return {"$ref": f"#/$defs/{next(iter(unique))}"}
             msg = f"Unable to combine multiple different tQuantityValue references: {values}"
@@ -378,19 +438,32 @@ class SchemaCleaner:
         # Finally we need to check if this is a path inside another definition schema, and if so use the
         # absolute path.
         def_name = _get_def_name(cleaned_ref)
-        if self.enclosing_schema_name and def_name not in self.definitions and def_name in self.enclosing_schema_keys:
+        if (
+            self.enclosing_schema_name
+            and def_name not in self.definitions
+            and def_name in self.enclosing_schema_keys
+        ):
             return f"#/$defs/{self.enclosing_schema_name}/$defs/{def_name}"
 
         return cleaned_ref
 
-    def _clean_value(self, value: Any, cleaning_function: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None) -> Any:
+    def _clean_value(
+        self,
+        value: Any,
+        cleaning_function: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
+    ) -> Any:
         # Fan out function for handling dict/list values. Calls cleaning_function on dictionaries
         # (assumed to be schemas). Allows passing custom cleaning_fuction to handle cleaning definitions.
         cleaning_function = cleaning_function or self._clean_schema
         if isinstance(value, dict):
             return cleaning_function(value)
         elif isinstance(value, list):
-            return list(filter(lambda v: bool(v), (self._clean_value(v, cleaning_function) for v in value)))
+            return list(
+                filter(
+                    lambda v: bool(v),
+                    (self._clean_value(v, cleaning_function) for v in value),
+                )
+            )
         return value
 
     def _clean_schema(self, schema: dict[str, Any]) -> dict[str, Any]:
@@ -399,8 +472,10 @@ class SchemaCleaner:
         schema = copy.deepcopy(schema)
         if _is_direct_object_schema(schema) and _is_composed_object_schema(schema):
             allof_values = [
-                _create_object_schema(schema.pop("properties", {}), schema.pop("required", [])),
-                *schema.pop("allOf", [])
+                _create_object_schema(
+                    schema.pop("properties", {}), schema.pop("required", [])
+                ),
+                *schema.pop("allOf", []),
             ]
             if "anyOf" in schema:
                 allof_values.append({"anyOf": schema.pop("anyOf")})
@@ -410,6 +485,9 @@ class SchemaCleaner:
 
         cleaned = {}
         for key, value in schema.items():
+            if key == "device document":
+                print("HERE")
+                assert False
             if _should_filter_key(key):
                 continue
             if _should_skip_key(key):
@@ -455,7 +533,7 @@ class SchemaCleaner:
                 for unit, unit_schema in defs_schema["$defs"].items():
                     self._add_unit(
                         unit=unit,
-                        unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"]
+                        unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"],
                     )
             elif "$defs" in defs_schema:
                 # Store defs that are replaced with definitions in common/definitions before cleaning.
@@ -466,7 +544,9 @@ class SchemaCleaner:
                     if self.definitions.get(def_name) == def_schema:
                         self.replaced_definitions[cleaned_schema_name].append(def_name)
                     else:
-                        self.definitions[cleaned_schema_name]["$defs"][def_name] = def_schema
+                        self.definitions[cleaned_schema_name]["$defs"][
+                            def_name
+                        ] = def_schema
             else:
                 self.definitions[cleaned_schema_name] = defs_schema
 

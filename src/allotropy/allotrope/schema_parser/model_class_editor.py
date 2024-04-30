@@ -22,13 +22,19 @@ def _values_equal(value1: Any, value2: Any):
     if isinstance(value1, dict):
         return isinstance(value2, dict) and _schemas_equal(value1, value2)
     elif isinstance(value1, list):
-        return isinstance(value2, list) and all(_values_equal(v1, v2) for v1, v2 in zip(value1, value2))
+        return isinstance(value2, list) and all(
+            _values_equal(v1, v2) for v1, v2 in zip(value1, value2)
+        )
     else:
         return value1 == value2
 
 
 def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]):
-    return {key for key in schema1.keys() if not _should_filter_key(key)} == {key for key in schema2.keys() if not _should_filter_key(key)} and all(_values_equal(schema1[key], schema2[key]) for key in schema1 if not _should_filter_key(key))
+    schema1_keys = {key for key in schema1.keys() if not _should_filter_key(key)}
+    schema2_keys = {key for key in schema2.keys() if not _should_filter_key(key)}
+    return schema1_keys == schema2_keys and all(
+        _values_equal(schema1[key], schema2[key]) for key in schema1_keys
+    )
 
 
 def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[str]]]:

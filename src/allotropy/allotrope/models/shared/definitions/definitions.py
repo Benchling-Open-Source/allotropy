@@ -74,7 +74,7 @@ class InvalidJsonFloat(Enum):
 JsonFloat = Union[float, InvalidJsonFloat]
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValue:
     value: JsonFloat
     unit: TUnit
@@ -82,7 +82,7 @@ class TQuantityValue:
     field_type: Optional[TClass] = None
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValue:
     value: Optional[float]
     unit: TUnit
