@@ -9,7 +9,7 @@ from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscur
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
-    DeviceControlDocumentItemModel,
+    DeviceControlDocumentItem,
     DeviceDocumentItem,
     DeviceSystemDocument,
     DistributionAggregateDocument,
@@ -193,7 +193,7 @@ class PharmSpecParser(VendorParser):
                         + "Z",
                         device_control_aggregate_document=DeviceControlAggregateDocument(
                             device_control_document=[
-                                DeviceControlDocumentItemModel(
+                                DeviceControlDocumentItem(
                                     flush_volume_setting=TQuantityValueMilliliter(0),
                                     detector_view_volume=TQuantityValueMilliliter(
                                         df.at[9, 5]

@@ -54,16 +54,10 @@ def backup(
         yield
     except Exception:
         for path in paths:
-            # if "qpcr" in str(path):
-            #    _remove_backup(path)
-            #    continue
             restore_backup(path)
         raise
 
     if restore:
-        # if "qpcr" in str(path):
-        #    _remove_backup(path)
-        #    continue
         for path in paths:
             restore_backup(path)
     else:

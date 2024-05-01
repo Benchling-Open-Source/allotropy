@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections import defaultdict
 from dataclasses import dataclass
 import io
@@ -74,25 +76,226 @@ def get_manifest_from_schema_path(schema_path: str) -> str:
     )
 
 
+def _parse_types(type_string: str) -> set[str]:
+    if "[" not in type_string:
+        return {type_string}
+
+    loc = type_string.find("[")
+    identifier = type_string[:loc]
+    inner = type_string[loc + 1:-1]
+    if identifier == "Union":
+        types = set()
+        for inner_ in inner.split(","):
+            if not inner_:
+                continue
+            types |= _parse_types(inner_)
+        return types
+    elif identifier.lower() in ("list", "set", "tuple"):
+        if not inner.lower().startswith("union["):
+            inner = f"Union[{inner}]"
+        types = _parse_types(inner)
+    elif identifier in ("dict", "Dict", "Mapping"):
+        key_type, value_types = inner.split(",", 1)
+        value_types = _parse_types(value_types)
+        return {f"{identifier}[{key_type},{','.join(value_types)}]"}
+    else:
+        types = _parse_types(inner)
+
+    return {f"{identifier}[{','.join(sorted(types))}]"}
+
+
+@dataclass
+class Field:
+    name: str
+    is_required: bool
+    default_value: Optional[str]
+    field_types: set[str]
+
+    @staticmethod
+    def create(contents: str) -> Field:
+        name, content = re.sub(r"\s", "", contents).split(":", maxsplit=1)
+        type_string, default_value = content.split("=") if "=" in content else (content, None)
+        is_required = True
+        if type_string.startswith("Optional["):
+            is_required = False
+            type_string = type_string[9:-1]
+        types = _parse_types(type_string)
+
+        return Field(name, is_required, default_value, types)
+
+    @property
+    def contents(self) -> str:
+        if len(self.field_types) > 1:
+            types = f"Union[{','.join(sorted(self.field_types))}]"
+        else:
+            types = next(iter(self.field_types))
+        if not self.is_required:
+            types = f"Optional[{types}]"
+        if self.default_value:
+            types = f"{types}={self.default_value}"
+        return f"{self.name}: {types}"
+
+    def can_merge(self, other: Field) -> bool:
+        return self.name == other.name and self.is_required == other.is_required and self.default_value == other.default_value
+
+    def merge(self, other: Field) -> Field:
+        if not self.can_merge(other):
+            msg = f"Can not merge incompatible fields {self} and {other}"
+            raise AssertionError(msg)
+        return Field(
+            name=self.name,
+            is_required=self.is_required,
+            default_value=self.default_value,
+            field_types=self.field_types | other.field_types,
+        )
+
+
 @dataclass
 class ClassLines:
     """Represents a set of lines defining a class."""
-
     lines: list[str]
+    class_name: str
+    is_dataclass: bool
+    parent_class_names: Optional[list[str]] = None
+    fields: dict[str, Field] = None
+    field_name_order: Optional[list[str]] = None
+
+    @staticmethod
+    def create(lines: list[str]) -> ClassLines:
+        is_dataclass = lines[0].startswith("@dataclass")
+        class_start = 1 if is_dataclass else 0
+        class_end = class_start
+        while class_end < len(lines) and ":" not in lines[class_end]:
+            class_end += 1
+        class_definition = "".join(line.strip("\n") for line in lines[class_start:class_end + 1])
+
+        match = None
+        if is_dataclass:
+            match = re.match("class ([^\\(:]*)", class_definition)
+        elif class_definition.startswith("class"):
+            match = re.match("class ([^\\(:]*)", class_definition)
+        elif " = " in class_definition:
+            match = re.match("(\\S+) =", lines[0])
+        if not match:
+            error = f"Could not determine class name for: {''.join(lines)}."
+            raise AllotropeConversionError(error)
+        class_name = match.groups()[0]
+
+        if not is_dataclass:
+            return ClassLines(lines, class_name, is_dataclass)
+
+        # Handle case where dataclass is just a rename of another dataclass.
+        if "pass" in lines[class_end + 1] and ":" not in lines[class_end + 1]:
+            return ClassLines(lines, class_name, is_dataclass=False)
+
+        is_frozen = "frozen=True" in lines[0]
+
+        parent_class_names = []
+        match = re.match(f"class {class_name}\\((.*)\\):", class_definition)
+        parent_class_names = [name.strip() for name in match.groups()[0].split(",")] if match else []
+
+        fields: dict[str, Field] = {}
+        field_name_order = []
+        field_contents = ""
+        for line in lines[class_end + 1:]:
+            if ":" in line and field_contents:
+                field = Field.create(field_contents)
+                fields[field.name] = field
+                field_name_order.append(field.name)
+                field_contents = line
+            else:
+                field_contents += line
+
+        field = Field.create(field_contents)
+        fields[field.name] = field
+        field_name_order.append(field.name)
+
+        return ClassLines.create_dataclass(class_name, parent_class_names, fields, field_name_order, is_frozen)
+
+    @staticmethod
+    def create_dataclass(name: str, parent_class_names: list[str], fields: dict[str, Field], field_name_order: Optional[list[str]] = None, is_frozen: Optional[bool] = False) -> ClassLines:
+        lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
+
+        class_name_line = f"class {name}"
+        if parent_class_names:
+            class_name_line += f"({','.join(parent_class_names)})"
+        class_name_line += ":"
+        lines.append(class_name_line)
+
+        field_name_order = field_name_order or list(fields.keys())
+        fixed_field_name_order = [field_name for field_name in field_name_order if fields[field_name].is_required] + [field_name for field_name in field_name_order if not fields[field_name].is_required]
+
+        for field_name in fixed_field_name_order:
+            lines.append(f"    {fields[field_name].contents}")
+
+        return ClassLines(
+            [line + "\n" for line in lines],
+            name,
+            is_dataclass=True,
+            parent_class_names=parent_class_names,
+            fields=fields,
+            field_name_order=fixed_field_name_order
+        )
+
+    def merge_parent_class(self, parent_class: ClassLines) -> ClassLines:
+        self.parent_class_names.remove(parent_class.class_name)
+
+        self.fields |= parent_class.fields
+        for field_name in parent_class.field_name_order:
+            if field_name not in self.field_name_order:
+                self.field_name_order.append(field_name)
+
+        return ClassLines.create_dataclass(self.class_name, self.parent_class_names, self.fields, self.field_name_order, self.is_frozen)
 
     @property
-    def class_name(self) -> str:
-        match = None
-        if self.lines[0].startswith("@dataclass"):
-            match = re.match("class ([^\\(:]*)", self.lines[1])
-        elif self.lines[0].startswith("class"):
-            match = re.match("class ([^\\(:]*)", self.lines[0])
-        elif " = " in self.lines[0]:
-            match = re.match("(\\S+) =", self.lines[0])
-        if not match:
-            error = f"Could not determine class name for: {''.join(self.lines)}."
-            raise AllotropeConversionError(error)
-        return match.groups()[0]
+    def is_frozen(self) -> bool:
+        return self.is_dataclass and "frozen=True" in self.lines[0]
+
+    def has_required_fields(self) -> bool:
+        return self.is_dataclass and self.fields and any(field.is_required for field in self.fields.values())
+
+    def has_optional_fields(self) -> bool:
+        return self.is_dataclass and self.fields and any(not field.is_required for field in self.fields.values())
+
+    def has_identical_contents(self, other: ClassLines) -> bool:
+        contents = "".join(self.lines)
+        other_contents = "".join(other.lines)
+        other_contents_subbed = re.sub(f"{other.class_name}([^0-9])", rf"{self.class_name}\g<1>", other_contents)
+        return contents == other_contents_subbed
+
+    def has_similar_contents(self, other: ClassLines) -> bool:
+        # parent classes must match:
+        if not set(self.parent_class_names) == set(other.parent_class_names):
+            return False
+        # There must be some overlapping fields
+        if not self.fields.keys() & other.fields.keys():
+            return False
+        # There must be some overlapping fields with the same value
+        if not any(self.fields[field_name].contents == other.fields[field_name].contents for field_name in self.fields.keys() & other.fields.keys()):
+            return False
+        # Fields unique to one class must be optional.
+        if any(self.fields[field_name].is_required for field_name in self.fields.keys() - other.fields.keys()):
+            return False
+        if any(other.fields[field_name].is_required for field_name in other.fields.keys() - self.fields.keys()):
+            return False
+        # Shared fields must agree on whether they are required
+        if not all(self.fields[field_name].can_merge(other.fields[field_name]) for field_name in self.fields.keys() & other.fields.keys()):
+            return False
+
+        return True
+
+    def merge_similar_class(self, other: ClassLines) -> ClassLines:
+        for field_name in other.fields:
+            if field_name not in self.fields:
+                self.fields[field_name] = other.fields[field_name]
+                self.field_name_order.append(field_name)
+
+        for field_name in self.fields.keys() & other.fields.keys():
+            if self.fields[field_name].contents == other.fields[field_name].contents:
+                continue
+            self.fields[field_name] = self.fields[field_name].merge(other.fields[field_name])
+
+        return ClassLines.create_dataclass(self.class_name, self.parent_class_names, self.fields, self.field_name_order, self.is_frozen)
 
 
 class ModelClassEditor:
@@ -113,10 +316,15 @@ class ModelClassEditor:
         self.classes_to_skip = classes_to_skip
         self.imports_to_add = imports_to_add
 
-    def _handle_class_lines(self, class_lines: ClassLines) -> Optional[list[str]]:
-        # Given a ClassLines object, returns the lines to add to the file.
-        if class_lines.class_name in self.classes_to_skip:
-            return None
+    def _handle_class_lines(self, class_name: str, all_classes: dict[str, ClassLines]) -> Optional[list[str]]:
+        class_lines = all_classes[class_name]
+
+        # A dataclass with required fields can not inherit from a dataclass with an optional field
+        if class_lines.parent_class_names and class_lines.has_required_fields():
+            for parent_class_name in class_lines.parent_class_names:
+                if all_classes[parent_class_name].has_optional_fields():
+                    class_lines = class_lines.merge_parent_class(all_classes[parent_class_name])
+
         # Add manifest to base Model class.
         if class_lines.class_name == "Model" and "manifest" not in "".join(
             class_lines.lines
@@ -135,12 +343,12 @@ class ModelClassEditor:
             # Skip empty lines at the start, return when we hit a newline after the class.
             if line == "\n":
                 if started:
-                    return ClassLines(lines)
+                    return ClassLines.create(lines)
                 else:
                     continue
             # End of file, return the class if we've read one in on this run.
             if not line:
-                return ClassLines(lines) if started else None
+                return ClassLines.create(lines) if started else None
             started = True
             lines.append(line)
 
@@ -178,19 +386,53 @@ class ModelClassEditor:
             new_contents = new_contents[:-2]
 
         # Parse classes
-        all_classes: set[str] = set()
+        classes_in_order = []
+        all_classes: dict[str, ClassLines] = {}
+        class_groups = defaultdict(set)
         while True:
             class_lines = self._get_class_lines(f, existing_lines)
             existing_lines = []
             if not class_lines:
                 break
-            updated_lines = self._handle_class_lines(class_lines)
+            class_name = class_lines.class_name
+            classes_in_order.append(class_name)
+            all_classes[class_name] = class_lines
+            base_class_name = re.match("([A-Za-z]*)[0-9]*", class_name).groups(0)[0]
+            class_groups[base_class_name].add(class_name)
+
+        # If there are identical/similar classes with numerical suffixes, remove them.
+        class_substitutions = defaultdict(list)
+        for class_group in class_groups.values():
+            if len(class_group) == 1:
+                continue
+            sorted_class_names = sorted(class_group)
+            for i in range(len(sorted_class_names) - 1):
+                class1 = all_classes[sorted_class_names[i]]
+                for j in range(i + 1, len(sorted_class_names)):
+                    class2 = all_classes[sorted_class_names[j]]
+                    if class1.has_identical_contents(class2):
+                        class_substitutions[class1.class_name].append(class2.class_name)
+                        self.classes_to_skip.add(class2.class_name)
+                    elif class1.is_dataclass and class1.has_similar_contents(class2):
+                        all_classes[class1.class_name] = class1.merge_similar_class(class2)
+                        class_substitutions[class1.class_name].append(class2.class_name)
+                        self.classes_to_skip.add(class2.class_name)
+
+        # Build the new file contents before we do substitutions and look for unused classes.
+        for class_name in classes_in_order:
+            if class_name in self.classes_to_skip:
+                continue
+            updated_lines = self._handle_class_lines(class_name, all_classes)
             if updated_lines:
                 new_contents.extend(["\n", "\n", *updated_lines])
-                all_classes.add(class_lines.class_name)
 
         # If there are any unused classes, remove them.
         new = "".join(new_contents)
+
+        for class_name, to_substitute in class_substitutions.items():
+            for class_to_sub in to_substitute:
+                new = re.sub(f"{class_to_sub}([^0-9])", rf"{class_name}\g<1>", new)
+
         classes_to_remove: set[str] = set()
         for class_name in all_classes:
             if class_name == "Model":
@@ -198,8 +440,8 @@ class ModelClassEditor:
             if not re.search(rf"(?<!class )(?<!\w){class_name}(?!\w)(?! = )", new):
                 classes_to_remove.add(class_name)
 
-        if classes_to_remove:
-            self.classes_to_skip.update(classes_to_remove)
+        if classes_to_remove or class_substitutions:
+            self.classes_to_skip = classes_to_remove
             self.imports_to_add = {}
             return self.modify_file(new)
 

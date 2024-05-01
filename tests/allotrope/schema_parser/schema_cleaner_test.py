@@ -1424,7 +1424,6 @@ def test_combine_allof_with_nested_anyof_with_required_keys() -> None:
     })
 
 
-# @pytest.mark.skip()
 def test_combine_allof_nested_oneof_and_anyof() -> None:
     schema = {
         "allOf": [
@@ -1666,7 +1665,6 @@ def test_combine_nested_oneof() -> None:
     })
 
 
-# @pytest.mark.skip()
 def test_deeply_nested_anyof_allof() -> None:
     schema = {
         "allOf": [
@@ -1776,31 +1774,6 @@ def test_deeply_nested_anyof_allof() -> None:
     })
 
 
-@pytest.mark.skip()
-def test_missing_values() -> None:
-    import json
-    with open("tests/allotrope/schema_parser/test_schema.json") as f:
-        schema = json.load(f)
-
-    cleaned = SchemaCleaner().clean(schema)
-
-    with open("tests/allotrope/schema_parser/output_schema.json", "w") as f:
-        json.dump(cleaned, f)
-
-    assert "detector offset setting" in json.dumps(cleaned)
-    # assert "anyOf" in json.dumps(cleaned)
-
-
-@pytest.mark.skip()
-def test_load_model() -> None:
-    from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
-        Model,
-    )
-
-    model = Model()
-
-
-# @pytest.mark.skip()
 def test_anyof() -> None:
     import json
     with open("tests/allotrope/schema_parser/anyof_test_schema.json") as f:
@@ -1808,7 +1781,12 @@ def test_anyof() -> None:
 
     cleaned = SchemaCleaner()._combine_anyof(schema)
 
-    with open("tests/allotrope/schema_parser/anyof_output_schema.json", "w") as f:
-        json.dump(cleaned, f)
-
     assert "anyOf" in json.dumps(cleaned)
+
+
+def test_load_model() -> None:
+    from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
+        Model,
+    )
+
+    Model("fake_manifest")
