@@ -21,7 +21,9 @@ def test_parse_types() -> None:
     assert _parse_types("dict[str,Any]") == {"dict[str,Any]"}
     assert _parse_types("dict[str,list[str,str]]") == {"dict[str,list[str]]"}
     assert _parse_types("dict[Union[int,float],str]") == {"dict[Union[int,float],str]"}
-    assert _parse_types("List[Union[Type1,Type2,Type3,]]") == {"List[Type1,Type2,Type3]"}
+    assert _parse_types("List[Union[Type1,Type2,Type3,]]") == {
+        "List[Type1,Type2,Type3]"
+    }
 
 
 def lines_from_multistring(lines: str) -> list[str]:
@@ -92,24 +94,28 @@ class Model:
 
 
 def test_class_lines_dataclass_parent_classes() -> None:
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class ClassA:
     key: str
     value: str
-""")
+"""
+    )
     class_lines = ClassLines.create(lines)
 
     assert class_lines.class_name == "ClassA"
     assert class_lines.is_dataclass
     assert class_lines.parent_class_names == []
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class ClassB(ClassA):
     key: str
     value: str
-""")
+"""
+    )
 
     class_lines = ClassLines.create(lines)
 
@@ -117,12 +123,14 @@ class ClassB(ClassA):
     assert class_lines.is_dataclass
     assert class_lines.parent_class_names == ["ClassA"]
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class ClassB(ClassA, ClassC):
     key: str
     value: str
-""")
+"""
+    )
 
     class_lines = ClassLines.create(lines)
 
@@ -130,7 +138,8 @@ class ClassB(ClassA, ClassC):
     assert class_lines.is_dataclass
     assert class_lines.parent_class_names == ["ClassA", "ClassC"]
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class ClassB(
     ClassA,
@@ -138,7 +147,8 @@ class ClassB(
 ):
     key: str
     value: str
-""")
+"""
+    )
 
     class_lines = ClassLines.create(lines)
 
@@ -148,39 +158,50 @@ class ClassB(
 
 
 def test_class_lines_dataclass_field_parsing() -> None:
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class Test:
     key: str
     value: str
-""")
+"""
+    )
     class_lines = ClassLines.create(lines)
 
     assert class_lines.has_required_fields()
     assert not class_lines.has_optional_fields()
     assert class_lines.fields == {
         "key": Field("key", is_required=True, default_value=None, field_types={"str"}),
-        "value": Field("value", is_required=True, default_value=None, field_types={"str"}),
+        "value": Field(
+            "value", is_required=True, default_value=None, field_types={"str"}
+        ),
     }
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class Test:
     key: Optional[str]
     value: Optional[str]="something"
     int_value:Optional[int]=1
-""")
+"""
+    )
     class_lines = ClassLines.create(lines)
 
     assert not class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
         "key": Field("key", is_required=False, default_value=None, field_types={"str"}),
-        "value": Field("value", is_required=False, default_value='"something"', field_types={"str"}),
-        "int_value": Field("int_value", is_required=False, default_value="1", field_types={"int"}),
+        "value": Field(
+            "value", is_required=False, default_value='"something"', field_types={"str"}
+        ),
+        "int_value": Field(
+            "int_value", is_required=False, default_value="1", field_types={"int"}
+        ),
     }
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class Test:
     key: str
@@ -192,172 +213,241 @@ class Test:
         str
     ]
     other_key: Optional[str]=None
-""")
+"""
+    )
 
     class_lines = ClassLines.create(lines)
     assert class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
         "key": Field("key", is_required=True, default_value=None, field_types={"str"}),
-        "item": Field("item", is_required=True, default_value=None, field_types={"Item1", "str"}),
-        "value": Field("value", is_required=False, default_value=None, field_types={"str"}),
-        "other_key": Field("other_key", is_required=False, default_value="None", field_types={"str"}),
+        "item": Field(
+            "item", is_required=True, default_value=None, field_types={"Item1", "str"}
+        ),
+        "value": Field(
+            "value", is_required=False, default_value=None, field_types={"str"}
+        ),
+        "other_key": Field(
+            "other_key", is_required=False, default_value="None", field_types={"str"}
+        ),
     }
 
 
 def test_class_lines_merge_parent_class() -> None:
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class ClassA:
     a_required: str
     a_optional: Optional[str]
-""")
+"""
+    )
     parent_class = ClassLines.create(lines)
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class ClassB(ClassA):
     b_required: str
     b_optional: Optional[str]
-""")
+"""
+    )
     child_class = ClassLines.create(lines)
 
     result = child_class.merge_parent_class(parent_class)
 
-    assert result.lines == lines_from_multistring("""
+    assert result.lines == lines_from_multistring(
+        """
 @dataclass
 class ClassB:
     b_required: str
     a_required: str
     b_optional: Optional[str]
     a_optional: Optional[str]
-""")
+"""
+    )
 
 
 def test_class_lines_merge_parent_class_multiple() -> None:
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class ClassA:
     a_required: str
     a_optional: Optional[str]
-""")
+"""
+    )
     parent_class = ClassLines.create(lines)
 
-    lines = lines_from_multistring("""
+    lines = lines_from_multistring(
+        """
 @dataclass
 class ClassB(ClassA, ClassC):
     b_required: str
     b_optional: Optional[
         str
     ]
-""")
+"""
+    )
     child_class = ClassLines.create(lines)
 
     result = child_class.merge_parent_class(parent_class)
 
-    assert result.lines == lines_from_multistring("""
+    assert result.lines == lines_from_multistring(
+        """
 @dataclass
 class ClassB(ClassC):
     b_required: str
     a_required: str
     b_optional: Optional[str]
     a_optional: Optional[str]
-""")
+"""
+    )
 
 
 def test_class_lines_dataclass_has_identical_contents() -> None:
-    lines = ClassLines.create(lines_from_multistring("""
+    lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item:
     key: Union[str, int]
-"""))
+"""
+        )
+    )
 
-    other_lines = ClassLines.create(lines_from_multistring("""
+    other_lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     key: Union[
         str,
         int
     ]
-"""))
+"""
+        )
+    )
 
     assert lines.has_identical_contents(other_lines)
 
 
 def test_class_lines_typedef_has_identical_contents() -> None:
-    lines = ClassLines.create(lines_from_multistring("""
+    lines = ClassLines.create(
+        lines_from_multistring(
+            """
 TDateTimeStampValue1 = Union[str, TDateTimeStampValue2]
-"""))
+"""
+        )
+    )
 
-    other_lines = ClassLines.create(lines_from_multistring("""
+    other_lines = ClassLines.create(
+        lines_from_multistring(
+            """
 TDateTimeStampValue = Union[str, TDateTimeStampValue3]
-"""))
+"""
+        )
+    )
 
     assert not lines.has_identical_contents(other_lines)
 
-    lines = ClassLines.create(lines_from_multistring("""
+    lines = ClassLines.create(
+        lines_from_multistring(
+            """
 TDateTimeStampValue1 = Union[str, TDateTimeStampValue2]
-"""))
+"""
+        )
+    )
 
-    other_lines = ClassLines.create(lines_from_multistring("""
+    other_lines = ClassLines.create(
+        lines_from_multistring(
+            """
 TDateTimeStampValue = Union[str, TDateTimeStampValue2]
-"""))
+"""
+        )
+    )
 
     assert lines.has_identical_contents(other_lines)
 
 
 def test_class_lines_dataclass_has_similar_contents() -> None:
-    lines = ClassLines.create(lines_from_multistring("""
+    lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item:
     key: str
     special: Optional[int]
-"""))
+"""
+        )
+    )
 
-    other_lines = ClassLines.create(lines_from_multistring("""
+    other_lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     key: str
     other_special: Optional[int]
-"""))
+"""
+        )
+    )
     assert lines.has_similar_contents(other_lines)
 
     # Extra required key will not match
-    other_lines_extra_required_key = ClassLines.create(lines_from_multistring("""
+    other_lines_extra_required_key = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     key: str
     other_special: int
-"""))
+"""
+        )
+    )
     assert not lines.has_similar_contents(other_lines_extra_required_key)
 
     # Missing required key will not match
-    other_lines_missing_required_key = ClassLines.create(lines_from_multistring("""
+    other_lines_missing_required_key = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     other_special: Optional[int]
-"""))
+"""
+        )
+    )
     assert not lines.has_similar_contents(other_lines_missing_required_key)
 
     # Shared key that does not agree on optional/required will not match
-    other_lines_non_matching_shared_key = ClassLines.create(lines_from_multistring("""
+    other_lines_non_matching_shared_key = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     key: Optional[str]
-"""))
+"""
+        )
+    )
     assert not lines.has_similar_contents(other_lines_non_matching_shared_key)
 
 
 def test_class_lines_merge_similar_class() -> None:
-    lines = ClassLines.create(lines_from_multistring("""
+    lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item:
     key: str
     other_key: str
     special: Optional[int]
-"""))
+"""
+        )
+    )
 
-    other_lines = ClassLines.create(lines_from_multistring("""
+    other_lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     key: str
@@ -366,39 +456,52 @@ class Item1:
         float,
     ]
     other_special: Optional[str]
-"""))
+"""
+        )
+    )
 
     result = lines.merge_similar_class(other_lines)
-    assert result.lines == lines_from_multistring("""
+    assert result.lines == lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item:
     key: str
     other_key: Union[float,int,str]
     special: Optional[int]
     other_special: Optional[str]
-""")
+"""
+    )
 
 
 def test_class_lines_merge_similar_class_with_lists() -> None:
-    lines = ClassLines.create(lines_from_multistring("""
+    lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item:
     key: list[str]
-"""))
+"""
+        )
+    )
 
-    other_lines = ClassLines.create(lines_from_multistring("""
+    other_lines = ClassLines.create(
+        lines_from_multistring(
+            """
 @dataclass(frozen=True)
 class Item1:
     key: list[int]
-"""))
+"""
+        )
+    )
 
     result = lines.merge_similar_class(other_lines)
-    print(result.lines)
-    assert result.lines == lines_from_multistring("""
+    assert result.lines == lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item:
     key: Union[list[int],list[str]]
-""")
+"""
+    )
 
 
 def test_modify_file_handles_merging_parent_classes_and_removing_unused_parents() -> None:

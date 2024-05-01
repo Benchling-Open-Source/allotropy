@@ -82,7 +82,7 @@ def _parse_types(type_string: str) -> set[str]:
 
     loc = type_string.find("[")
     identifier = type_string[:loc]
-    inner = type_string[loc + 1:-1]
+    inner = type_string[loc + 1 : -1]
     if identifier == "Union":
         types = set()
         for inner_ in inner.split(","):
@@ -114,7 +114,9 @@ class Field:
     @staticmethod
     def create(contents: str) -> Field:
         name, content = re.sub(r"\s", "", contents).split(":", maxsplit=1)
-        type_string, default_value = content.split("=") if "=" in content else (content, None)
+        type_string, default_value = (
+            content.split("=") if "=" in content else (content, None)
+        )
         is_required = True
         if type_string.startswith("Optional["):
             is_required = False
@@ -136,7 +138,11 @@ class Field:
         return f"{self.name}: {types}"
 
     def can_merge(self, other: Field) -> bool:
-        return self.name == other.name and self.is_required == other.is_required and self.default_value == other.default_value
+        return (
+            self.name == other.name
+            and self.is_required == other.is_required
+            and self.default_value == other.default_value
+        )
 
     def merge(self, other: Field) -> Field:
         if not self.can_merge(other):
@@ -153,6 +159,7 @@ class Field:
 @dataclass
 class ClassLines:
     """Represents a set of lines defining a class."""
+
     lines: list[str]
     class_name: str
     is_dataclass: bool
@@ -167,7 +174,9 @@ class ClassLines:
         class_end = class_start
         while class_end < len(lines) and ":" not in lines[class_end]:
             class_end += 1
-        class_definition = "".join(line.strip("\n") for line in lines[class_start:class_end + 1])
+        class_definition = "".join(
+            line.strip("\n") for line in lines[class_start : class_end + 1]
+        )
 
         match = None
         if is_dataclass:
@@ -192,12 +201,14 @@ class ClassLines:
 
         parent_class_names = []
         match = re.match(f"class {class_name}\\((.*)\\):", class_definition)
-        parent_class_names = [name.strip() for name in match.groups()[0].split(",")] if match else []
+        parent_class_names = (
+            [name.strip() for name in match.groups()[0].split(",")] if match else []
+        )
 
         fields: dict[str, Field] = {}
         field_name_order = []
         field_contents = ""
-        for line in lines[class_end + 1:]:
+        for line in lines[class_end + 1 :]:
             if ":" in line and field_contents:
                 field = Field.create(field_contents)
                 fields[field.name] = field
@@ -210,10 +221,18 @@ class ClassLines:
         fields[field.name] = field
         field_name_order.append(field.name)
 
-        return ClassLines.create_dataclass(class_name, parent_class_names, fields, field_name_order, is_frozen)
+        return ClassLines.create_dataclass(
+            class_name, parent_class_names, fields, field_name_order, is_frozen
+        )
 
     @staticmethod
-    def create_dataclass(name: str, parent_class_names: list[str], fields: dict[str, Field], field_name_order: Optional[list[str]] = None, is_frozen: Optional[bool] = False) -> ClassLines:
+    def create_dataclass(
+        name: str,
+        parent_class_names: list[str],
+        fields: dict[str, Field],
+        field_name_order: Optional[list[str]] = None,
+        is_frozen: Optional[bool] = False,  # noqa: FBT002
+    ) -> ClassLines:
         lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
 
         class_name_line = f"class {name}"
@@ -223,7 +242,15 @@ class ClassLines:
         lines.append(class_name_line)
 
         field_name_order = field_name_order or list(fields.keys())
-        fixed_field_name_order = [field_name for field_name in field_name_order if fields[field_name].is_required] + [field_name for field_name in field_name_order if not fields[field_name].is_required]
+        fixed_field_name_order = [
+            field_name
+            for field_name in field_name_order
+            if fields[field_name].is_required
+        ] + [
+            field_name
+            for field_name in field_name_order
+            if not fields[field_name].is_required
+        ]
 
         for field_name in fixed_field_name_order:
             lines.append(f"    {fields[field_name].contents}")
@@ -234,7 +261,7 @@ class ClassLines:
             is_dataclass=True,
             parent_class_names=parent_class_names,
             fields=fields,
-            field_name_order=fixed_field_name_order
+            field_name_order=fixed_field_name_order,
         )
 
     def merge_parent_class(self, parent_class: ClassLines) -> ClassLines:
@@ -245,22 +272,38 @@ class ClassLines:
             if field_name not in self.field_name_order:
                 self.field_name_order.append(field_name)
 
-        return ClassLines.create_dataclass(self.class_name, self.parent_class_names, self.fields, self.field_name_order, self.is_frozen)
+        return ClassLines.create_dataclass(
+            self.class_name,
+            self.parent_class_names,
+            self.fields,
+            self.field_name_order,
+            self.is_frozen,
+        )
 
     @property
     def is_frozen(self) -> bool:
         return self.is_dataclass and "frozen=True" in self.lines[0]
 
     def has_required_fields(self) -> bool:
-        return self.is_dataclass and self.fields and any(field.is_required for field in self.fields.values())
+        return (
+            self.is_dataclass
+            and self.fields
+            and any(field.is_required for field in self.fields.values())
+        )
 
     def has_optional_fields(self) -> bool:
-        return self.is_dataclass and self.fields and any(not field.is_required for field in self.fields.values())
+        return (
+            self.is_dataclass
+            and self.fields
+            and any(not field.is_required for field in self.fields.values())
+        )
 
     def has_identical_contents(self, other: ClassLines) -> bool:
         contents = "".join(self.lines)
         other_contents = "".join(other.lines)
-        other_contents_subbed = re.sub(f"{other.class_name}([^0-9])", rf"{self.class_name}\g<1>", other_contents)
+        other_contents_subbed = re.sub(
+            f"{other.class_name}([^0-9])", rf"{self.class_name}\g<1>", other_contents
+        )
         return contents == other_contents_subbed
 
     def has_similar_contents(self, other: ClassLines) -> bool:
@@ -271,15 +314,27 @@ class ClassLines:
         if not self.fields.keys() & other.fields.keys():
             return False
         # There must be some overlapping fields with the same value
-        if not any(self.fields[field_name].contents == other.fields[field_name].contents for field_name in self.fields.keys() & other.fields.keys()):
+        if not any(
+            self.fields[field_name].contents == other.fields[field_name].contents
+            for field_name in self.fields.keys() & other.fields.keys()
+        ):
             return False
         # Fields unique to one class must be optional.
-        if any(self.fields[field_name].is_required for field_name in self.fields.keys() - other.fields.keys()):
+        if any(
+            self.fields[field_name].is_required
+            for field_name in self.fields.keys() - other.fields.keys()
+        ):
             return False
-        if any(other.fields[field_name].is_required for field_name in other.fields.keys() - self.fields.keys()):
+        if any(
+            other.fields[field_name].is_required
+            for field_name in other.fields.keys() - self.fields.keys()
+        ):
             return False
         # Shared fields must agree on whether they are required
-        if not all(self.fields[field_name].can_merge(other.fields[field_name]) for field_name in self.fields.keys() & other.fields.keys()):
+        if not all(
+            self.fields[field_name].can_merge(other.fields[field_name])
+            for field_name in self.fields.keys() & other.fields.keys()
+        ):
             return False
 
         return True
@@ -293,9 +348,17 @@ class ClassLines:
         for field_name in self.fields.keys() & other.fields.keys():
             if self.fields[field_name].contents == other.fields[field_name].contents:
                 continue
-            self.fields[field_name] = self.fields[field_name].merge(other.fields[field_name])
+            self.fields[field_name] = self.fields[field_name].merge(
+                other.fields[field_name]
+            )
 
-        return ClassLines.create_dataclass(self.class_name, self.parent_class_names, self.fields, self.field_name_order, self.is_frozen)
+        return ClassLines.create_dataclass(
+            self.class_name,
+            self.parent_class_names,
+            self.fields,
+            self.field_name_order,
+            self.is_frozen,
+        )
 
 
 class ModelClassEditor:
@@ -316,14 +379,18 @@ class ModelClassEditor:
         self.classes_to_skip = classes_to_skip
         self.imports_to_add = imports_to_add
 
-    def _handle_class_lines(self, class_name: str, all_classes: dict[str, ClassLines]) -> Optional[list[str]]:
+    def _handle_class_lines(
+        self, class_name: str, all_classes: dict[str, ClassLines]
+    ) -> Optional[list[str]]:
         class_lines = all_classes[class_name]
 
         # A dataclass with required fields can not inherit from a dataclass with an optional field
         if class_lines.parent_class_names and class_lines.has_required_fields():
             for parent_class_name in class_lines.parent_class_names:
                 if all_classes[parent_class_name].has_optional_fields():
-                    class_lines = class_lines.merge_parent_class(all_classes[parent_class_name])
+                    class_lines = class_lines.merge_parent_class(
+                        all_classes[parent_class_name]
+                    )
 
         # Add manifest to base Model class.
         if class_lines.class_name == "Model" and "manifest" not in "".join(
@@ -414,7 +481,9 @@ class ModelClassEditor:
                         class_substitutions[class1.class_name].append(class2.class_name)
                         self.classes_to_skip.add(class2.class_name)
                     elif class1.is_dataclass and class1.has_similar_contents(class2):
-                        all_classes[class1.class_name] = class1.merge_similar_class(class2)
+                        all_classes[class1.class_name] = class1.merge_similar_class(
+                            class2
+                        )
                         class_substitutions[class1.class_name].append(class2.class_name)
                         self.classes_to_skip.add(class2.class_name)
 
