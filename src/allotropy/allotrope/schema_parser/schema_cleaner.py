@@ -2,7 +2,7 @@ from collections import defaultdict
 import copy
 import json
 import re
-from typing import Any, Callable, Optional
+from typing import Any, Callable, Optional, Union
 
 from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
 from allotropy.allotrope.schemas import (
@@ -32,7 +32,9 @@ def _is_object_schema(schema: dict[str, Any]) -> bool:
     return _is_direct_object_schema(schema) or _is_composed_object_schema(schema)
 
 
-def _create_object_schema(properties: dict[str, Any], required: list[str]) -> dict[str, Any]:
+def _create_object_schema(
+    properties: dict[str, Any], required: list[str]
+) -> dict[str, Any]:
     schema = {"properties": properties}
     if required:
         schema["required"] = required  # type: ignore[assignment]
@@ -98,6 +100,13 @@ def _should_filter_key(key: str) -> bool:
 
 def _should_skip_key(key: str) -> bool:
     return key in ("$defs", "$custom")
+
+
+def validate_dictionary_type(dict_value: Any) -> dict[str, Any]:
+    if not isinstance(dict_value, dict):
+        msg = f"Invalid result, expected dictionary: {dict_value}"
+        raise AssertionError(msg)
+    return dict_value
 
 
 class SchemaCleaner:
@@ -238,13 +247,9 @@ class SchemaCleaner:
             allof_values.append(value)
 
         if len(allof_values) == 1 and "allOf" not in allof_values[0]:
-            result = allof_values[0]
-        else:
-            result = self._combine_allof_schemas(allof_values)
-        if not isinstance(result, dict):
-            msg = f"Invalid allOf value: {result}"
-            raise AssertionError(msg)
-        return result
+            return validate_dictionary_type(allof_values[0])
+
+        return validate_dictionary_type(self._combine_allof_schemas(allof_values))
 
     def _flatten_schemas(self, values: list[dict[str, Any]]) -> list[dict[str, Any]]:
         return [self._flatten_schema(value) for value in values]
@@ -260,9 +265,12 @@ class SchemaCleaner:
             # NOTE: assumes ref is cleaned.
             # NOTE: we do not futher deference values because we don't want to remove all
             # definitions and mess up class inheritance. We will do so if needed in combine_schemas
-            def_1, def_2 = re.match(
-                r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", result.pop("$ref")
-            ).groups()
+            reference = result.pop("$ref")
+            match = re.match(r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", reference)
+            if not match:
+                msg = f"Invalid reference, it may not have been cleaned: {reference}"
+                raise AssertionError(msg)
+            def_1, def_2 = match.groups()
             if def_2:
                 result |= self._dereference_value(
                     self.definitions[def_1]["$defs"][def_2]
@@ -312,7 +320,7 @@ class SchemaCleaner:
             except AssertionError:
                 pass
 
-        successful = []
+        successful: list[tuple[dict[str, Any], set[int]]] = []
         # total = 2**len(schemas) - 1
         for i in range(2 ** len(schemas) - 1, 0, -1):
             indices = {j for j, digit in enumerate(f"{i:b}"[::-1]) if digit == "1"}
@@ -344,10 +352,12 @@ class SchemaCleaner:
         if all(_is_class_schema(value) for value in values):
             values = self._combine_anyof_schemas(values)
 
-        return {"anyOf": values} if len(values) > 1 else values[0]
+        return validate_dictionary_type(
+            {"anyOf": values} if len(values) > 1 else values[0]
+        )
 
-    def _invert_allof(self, schemas: list[dict[str, Any]], key: str):
-        new_schemas = []
+    def _invert_allof(self, schemas: list[dict[str, Any]], key: str) -> dict[str, Any]:
+        new_schemas: list[list[dict[str, Any]]] = []
         for schema in schemas:
             schemas_list = schema[key] if key in schema else [schema]
             new_schemas = (
@@ -361,7 +371,9 @@ class SchemaCleaner:
             )
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
-    def _combine_allof_schemas(self, schemas: list[dict[str, Any]]) -> Any:
+    def _combine_allof_schemas(
+        self, schemas: list[dict[str, Any]]
+    ) -> Union[dict[str, Any], list[dict[str, Any]]]:
         if not all(_is_class_schema(schema) for schema in schemas):
             if any(_is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
@@ -377,7 +389,7 @@ class SchemaCleaner:
             raise AssertionError(msg)
 
         if len(values) == 1 or _all_values_equal(values):
-            return values[0]
+            return validate_dictionary_type(values[0])
 
         # If we are trying to combine tQuantityValue with tQuantityValue units, we can do so if there are
         # not conflciting units.
@@ -412,12 +424,11 @@ class SchemaCleaner:
         # If any object in the allOf has required fields, we must combine them in order for the generation
         # script to generate valid dataclasses. This is because dataclass inheritance with optional fields
         # is broken in python < 3.10.
-        if self._required_anywhere(derefed_values):
-            return self._combine_allof_schemas(derefed_values)
-
         # If there is an allOf nested with this allOf, combine it.
-        if any("allOf" in schema for schema in derefed_values):
-            return self._combine_allof_schemas(derefed_values)
+        if self._required_anywhere(derefed_values) or any(
+            "allOf" in schema for schema in derefed_values
+        ):
+            return validate_dictionary_type(self._combine_allof_schemas(derefed_values))
 
         # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
         # but we don't save the result.
@@ -428,6 +439,9 @@ class SchemaCleaner:
     def _clean_ref_value(self, value: str) -> str:
         # Get the schema and the definition name from the URL to create the local def path.
         schema_name, def_name = _get_reference_from_url(value)
+        if not schema_name:
+            msg = f"Invalid reference, cannot get schema name: {value}"
+            raise AssertionError(msg)
 
         # If covered by a definition in shared definitions or if a unit, use those.
         if def_name in self.replaced_definitions.get(schema_name, []):
@@ -449,6 +463,7 @@ class SchemaCleaner:
         def_name = _get_def_name(cleaned_ref)
         if (
             self.enclosing_schema_name
+            and self.enclosing_schema_keys
             and def_name not in self.definitions
             and def_name in self.enclosing_schema_keys
         ):
