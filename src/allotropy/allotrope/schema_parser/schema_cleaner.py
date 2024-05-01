@@ -32,10 +32,10 @@ def _is_object_schema(schema: dict[str, Any]) -> bool:
     return _is_direct_object_schema(schema) or _is_composed_object_schema(schema)
 
 
-def _create_object_schema(properties: dict[str, Any], required: list[str]):
+def _create_object_schema(properties: dict[str, Any], required: list[str]) -> dict[str, Any]:
     schema = {"properties": properties}
     if required:
-        schema["required"] = required
+        schema["required"] = required  # type: ignore[assignment]
     return schema
 
 
@@ -71,11 +71,16 @@ def _get_reference_from_url(value: Any) -> tuple[Optional[str], Optional[str]]:
 
 def _get_required(schema: dict[str, Any]) -> list[str]:
     if _is_array_schema(schema):
-        return schema["items"].get("required", [])
-    return schema.get("required", [])
+        required = schema["items"].get("required", [])
+    else:
+        required = schema.get("required", [])
+    if not isinstance(required, list):
+        msg = f"Invalid items in schema: {schema}"
+        raise AssertionError(msg)
+    return required
 
 
-def _all_values_equal(values: list[Any]):
+def _all_values_equal(values: list[Any]) -> bool:
     return all(value == values[0] for value in values[1:])
 
 
@@ -96,11 +101,11 @@ def _should_skip_key(key: str) -> bool:
 
 
 class SchemaCleaner:
-    def __init__(self):
+    def __init__(self) -> None:
         self.unit_to_name: dict[str, str] = {}
         self.unit_to_iri: dict[str, str] = {}
-        self.referenced_units = set()
-        self.replaced_definitions = defaultdict(list)
+        self.referenced_units: set[str] = set()
+        self.replaced_definitions: defaultdict[str, list[str]] = defaultdict(list)
 
         self.definitions = get_shared_definitions()
         for unit_schema in get_shared_unit_definitions().values():
@@ -119,7 +124,7 @@ class SchemaCleaner:
             if unit in self.referenced_units
         }
 
-    def _is_unit_name_ref(self, ref: str) -> Optional[str]:
+    def _is_unit_name_ref(self, ref: str) -> bool:
         return _get_def_name(ref) in self.unit_to_name.values()
 
     def _add_unit(self, unit: str, unit_iri: str) -> None:
@@ -233,9 +238,13 @@ class SchemaCleaner:
             allof_values.append(value)
 
         if len(allof_values) == 1 and "allOf" not in allof_values[0]:
-            return allof_values[0]
-
-        return self._combine_allof_schemas(allof_values)
+            result = allof_values[0]
+        else:
+            result = self._combine_allof_schemas(allof_values)
+        if not isinstance(result, dict):
+            msg = f"Invalid allOf value: {result}"
+            raise AssertionError(msg)
+        return result
 
     def _flatten_schemas(self, values: list[dict[str, Any]]) -> list[dict[str, Any]]:
         return [self._flatten_schema(value) for value in values]

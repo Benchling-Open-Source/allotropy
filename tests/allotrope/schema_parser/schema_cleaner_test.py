@@ -57,7 +57,7 @@ def validate_cleaned_schema(
     return schema_cleaner
 
 
-def test_clean_http_refs():
+def test_clean_http_refs() -> None:
     defs_schema = {
         "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema": {
             "$defs": {
@@ -199,7 +199,7 @@ def test_fix_quantity_value_reference_add_missing_unit() -> None:
     )
 
 
-def test_fix_quantity_value_reference_after_oneof_nested_in_allof():
+def test_fix_quantity_value_reference_after_oneof_nested_in_allof() -> None:
     schema = {
         "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001180",
         "$asm.pattern": "quantity datum",
@@ -384,7 +384,7 @@ def test_fix_nested_def_references() -> None:
     )
 
 
-def test_singular_anyof():
+def test_singular_anyof() -> None:
     schema = {
         "anyOf": [
             {
@@ -404,7 +404,7 @@ def test_singular_anyof():
     )
 
 
-def test_combine_anyof_non_conflicting_optional_keys():
+def test_combine_anyof_non_conflicting_optional_keys() -> None:
     schema = {
         "anyOf": [
             {
@@ -421,7 +421,7 @@ def test_combine_anyof_non_conflicting_optional_keys():
     )
 
 
-def test_combine_anyof_with_conflicting_keys():
+def test_combine_anyof_with_conflicting_keys() -> None:
     schema = {
         "anyOf": [
             {"properties": {"key1": "value", "key2": "value"}},
@@ -452,7 +452,7 @@ def test_combine_anyof_with_conflicting_keys():
     )
 
 
-def test_combine_anyof_with_multiple_conflicting_keys():
+def test_combine_anyof_with_multiple_conflicting_keys() -> None:
     schema = {
         "anyOf": [
             {"properties": {"key1": "value", "key2": "value"}},
@@ -546,7 +546,7 @@ def test_combine_anyof_with_nested_anyof() -> None:
     )
 
 
-def test_combine_anyof_with_required_values():
+def test_combine_anyof_with_required_values() -> None:
     schema = {
         "anyOf": [
             {
@@ -579,7 +579,7 @@ def test_combine_anyof_with_required_values():
     )
 
 
-def test_combine_anyof_with_multiple_required_values():
+def test_combine_anyof_with_multiple_required_values() -> None:
     schema = {
         "anyOf": [
             {
@@ -603,7 +603,7 @@ def test_combine_anyof_with_multiple_required_values():
     )
 
 
-def test_combine_anyof_with_multiple_required_value_sets():
+def test_combine_anyof_with_multiple_required_value_sets() -> None:
     schema = {
         "anyOf": [
             {
@@ -641,7 +641,7 @@ def test_combine_anyof_with_multiple_required_value_sets():
     )
 
 
-def test_combine_anyof_with_parent_object():
+def test_combine_anyof_with_parent_object() -> None:
     schema = {
         "items": {
             "properties": {"parentKey": "value"},
@@ -665,7 +665,7 @@ def test_combine_anyof_with_parent_object():
     )
 
 
-def test_combine_anyof_with_parent_object_with_required_keys():
+def test_combine_anyof_with_parent_object_with_required_keys() -> None:
     schema = {
         "properties": {
             "parentKey": "value",
@@ -686,7 +686,7 @@ def test_combine_anyof_with_parent_object_with_required_keys():
     )
 
 
-def test_combine_anyof_with_parent_object_with_child_required_keys():
+def test_combine_anyof_with_parent_object_with_child_required_keys() -> None:
     schema = {
         "properties": {
             "parentKey": "value",
@@ -726,7 +726,7 @@ def test_combine_anyof_with_parent_object_with_child_required_keys():
     )
 
 
-def test_combine_anyof_with_parent_anyof_required_keys():
+def test_combine_anyof_with_parent_anyof_required_keys() -> None:
     schema = {
         "properties": {
             "key1": "value",
@@ -758,14 +758,14 @@ def test_combine_anyof_with_parent_anyof_required_keys():
     )
 
 
-def test_fixes_singlular_allof():
+def test_fixes_singlular_allof() -> None:
     schema = {
         "allOf": [{"key": "value"}],
     }
     validate_cleaned_schema(schema, {"key": "value"})
 
 
-def test_fixes_oneof_nested_in_allof():
+def test_fixes_oneof_nested_in_allof() -> None:
     schema = {
         "allOf": [
             {"properties": {"key1": "value1"}},
@@ -801,7 +801,7 @@ def test_fixes_oneof_nested_in_allof():
     validate_cleaned_schema(schema, expected)
 
 
-def test_fixes_oneof_nested_in_allof_in_reference():
+def test_fixes_oneof_nested_in_allof_in_reference() -> None:
     schema = {
         "allOf": [{"properties": {"key1": "value1"}}, {"$ref": "#/$defs/oneOfSchema"}],
         "$defs": {
@@ -832,7 +832,7 @@ def test_fixes_oneof_nested_in_allof_in_reference():
     validate_cleaned_schema(schema, expected)
 
 
-def test_combine_allof():
+def test_combine_allof() -> None:
     schema = {
         "allOf": [
             {"properties": {"key1": "value"}, "required": ["key1"]},
@@ -879,7 +879,7 @@ def test_combine_allof_all_same_value() -> None:
     }
 
 
-def test_combine_allof_key_with_matching_value():
+def test_combine_allof_key_with_matching_value() -> None:
     schema = {
         "allOf": [
             {"properties": {"key1": "value"}, "required": ["key1"]},
@@ -898,7 +898,7 @@ def test_combine_allof_key_with_matching_value():
     )
 
 
-def test_combine_allof_fails_on_conflicting_key():
+def test_combine_allof_fails_on_conflicting_key() -> None:
     schema = {
         "allOf": [
             {"properties": {"key1": "value"}, "required": ["key1"]},
@@ -914,7 +914,7 @@ def test_combine_allof_fails_on_conflicting_key():
         SchemaCleaner().clean(schema)
 
 
-def test_combine_allof_fails_on_nested_conflicting_key():
+def test_combine_allof_fails_on_nested_conflicting_key() -> None:
     schema = {
         "allOf": [
             {
@@ -946,7 +946,7 @@ def test_combine_allof_fails_on_nested_conflicting_key():
         SchemaCleaner().clean(schema)
 
 
-def test_combine_allof_with_ref():
+def test_combine_allof_with_ref() -> None:
     schema = {
         "allOf": [
             {

@@ -10,12 +10,12 @@ SHARED_SCHEMAS_DIR = os.path.join(SCHEMAS_DIR, "shared", "definitions")
 
 def get_shared_definitions() -> dict[str, Any]:
     with open(os.path.join(SHARED_SCHEMAS_DIR, "definitions.json")) as f:
-        return json.load(f)
+        return json.load(f)  # type: ignore[no-any-return]
 
 
 def get_shared_unit_definitions() -> dict[str, Any]:
     with open(os.path.join(SHARED_SCHEMAS_DIR, "units.json")) as f:
-        return json.load(f)
+        return json.load(f)  # type: ignore[no-any-return]
 
 
 def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
