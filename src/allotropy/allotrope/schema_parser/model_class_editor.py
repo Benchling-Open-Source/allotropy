@@ -101,7 +101,11 @@ def _parse_types(type_string: str) -> set[str]:
     else:
         types = _parse_types(inner)
 
-    return {f"{identifier}[{','.join(sorted(types))}]"}
+    if len(types) > 1:
+        types_string = f"Union[{','.join(sorted(types))}]"
+    else:
+        types_string = next(iter(types))
+    return {f"{identifier}[{types_string}]"}
 
 
 @dataclass

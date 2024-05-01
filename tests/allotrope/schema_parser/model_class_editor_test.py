@@ -16,13 +16,13 @@ def test_parse_types() -> None:
     assert _parse_types("Union[List[str],int]") == {"int", "List[str]"}
     assert _parse_types("List[Union[str,str,str]]") == {"List[str]"}
     assert _parse_types("list[str,str,str]") == {"list[str]"}
-    assert _parse_types("tuple[str,int]") == {"tuple[int,str]"}
+    assert _parse_types("tuple[str,int]") == {"tuple[Union[int,str]]"}
     assert _parse_types("set[int,int]") == {"set[int]"}
     assert _parse_types("dict[str,Any]") == {"dict[str,Any]"}
     assert _parse_types("dict[str,list[str,str]]") == {"dict[str,list[str]]"}
     assert _parse_types("dict[Union[int,float],str]") == {"dict[Union[int,float],str]"}
     assert _parse_types("List[Union[Type1,Type2,Type3,]]") == {
-        "List[Type1,Type2,Type3]"
+        "List[Union[Type1,Type2,Type3]]"
     }
 
 

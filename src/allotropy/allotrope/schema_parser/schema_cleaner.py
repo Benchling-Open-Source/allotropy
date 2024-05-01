@@ -439,12 +439,9 @@ class SchemaCleaner:
     def _clean_ref_value(self, value: str) -> str:
         # Get the schema and the definition name from the URL to create the local def path.
         schema_name, def_name = _get_reference_from_url(value)
-        if not schema_name:
-            msg = f"Invalid reference, cannot get schema name: {value}"
-            raise AssertionError(msg)
 
         # If covered by a definition in shared definitions or if a unit, use those.
-        if def_name in self.replaced_definitions.get(schema_name, []):
+        if def_name in self.replaced_definitions.get(schema_name or "", []):
             return f"#/$defs/{def_name}"
         elif def_name and def_name in self.unit_to_name:
             self.referenced_units.add(def_name)
