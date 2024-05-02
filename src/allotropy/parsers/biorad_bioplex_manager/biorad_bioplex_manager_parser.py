@@ -214,7 +214,7 @@ class BioradBioplexParser(VendorParser):
             if sample.sample_dilution is not None
             else None,
             detector_gain_setting=device_well_settings.detector_gain_setting,
-            minimum_assay_bead_count_setting=TQuantityValueUnitless(
+            minimum_assay_bead_count_setting=TQuantityValueNumber(
                 device_well_settings.minimum_assay_bead_count_setting
             )
             if device_well_settings.minimum_assay_bead_count_setting is not None
