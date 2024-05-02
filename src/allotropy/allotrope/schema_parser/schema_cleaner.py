@@ -111,22 +111,28 @@ def validate_dictionary_type(dict_value: Any) -> dict[str, Any]:
 
 class SchemaCleaner:
     def __init__(self) -> None:
+        # These are used to track unit references for auto-generating units file.
         self.unit_to_name: dict[str, str] = {}
         self.unit_to_iri: dict[str, str] = {}
         self.referenced_units: set[str] = set()
-        self.replaced_definitions: defaultdict[str, list[str]] = defaultdict(list)
-
-        self.definitions = get_shared_definitions()
         for unit_schema in get_shared_unit_definitions().values():
             self._add_unit(
                 unit=unit_schema["properties"]["unit"]["const"],
                 unit_iri=unit_schema["properties"]["unit"]["$asm.unit-iri"],
             )
+        # These are used to track definitions from shared/..., to properly replace the references.
+        self.replaced_definitions: defaultdict[str, list[str]] = defaultdict(list)
+        self.definitions = get_shared_definitions()
 
+        # These are only used when cleaning definition schemas, and are needed to properly
+        # dereference defintion references. Though this smells, the flag is nested so deep in the
+        # code, that it would be impractical to send this all the way down, and I think this is the
+        # lesser evil.
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
 
     def get_referenced_units(self) -> dict[str, str]:
+        # Returns all units seen in the schema, for auto-generating unit schemas externally.
         return {
             unit: iri
             for unit, iri in self.unit_to_iri.items()
@@ -170,6 +176,7 @@ class SchemaCleaner:
     def _try_combine_object_schemas(
         self, schemas: list[dict[str, Any]]
     ) -> dict[str, Any]:
+        # Try to combine a flattened list of object schemas
         if any(_is_array_schema(schema) for schema in schemas):
             msg = "Unexpected array schema in _try_combine_object_schemas"
             raise AssertionError(msg)
@@ -255,6 +262,7 @@ class SchemaCleaner:
         return [self._flatten_schema(value) for value in values]
 
     def _dereference_value(self, value: dict[str, Any]) -> dict[str, Any]:
+        # From a reference schema ({"$ref": <pointer>}) returns the specified schema
         result = copy.deepcopy(value)
         if _is_ref_schema(value):
             if (
