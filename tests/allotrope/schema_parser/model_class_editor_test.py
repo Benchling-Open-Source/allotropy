@@ -259,7 +259,7 @@ class ClassB:
     a_required: str
     b_optional: Optional[str]
     a_optional: Optional[str]
-"""
+""",
     )
 
 
@@ -291,97 +291,122 @@ class ClassB(ClassC):
     a_required: str
     b_optional: Optional[str]
     a_optional: Optional[str]
-"""
+""",
     )
 
 
 def test_class_lines_dataclass_eq() -> None:
-    class_lines = data_class_lines_from_multistring("""
+    class_lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item:
     key: Union[str, int]
-""")
+"""
+    )
 
-    other_lines = data_class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     key: Union[
         str,
         int
     ]
-""")
+"""
+    )
     assert class_lines == other_lines
 
 
 def test_class_lines_typedef_eq() -> None:
-    lines = class_lines_from_multistring("""
+    lines = class_lines_from_multistring(
+        """
 TDateTimeStampValue1 = Union[str, TDateTimeStampValue2]
-""")
-    other_lines = class_lines_from_multistring("""
+"""
+    )
+    other_lines = class_lines_from_multistring(
+        """
 TDateTimeStampValue = Union[str, TDateTimeStampValue3]
-""")
+"""
+    )
     assert lines != other_lines
 
-    lines = class_lines_from_multistring("""
+    lines = class_lines_from_multistring(
+        """
 TDateTimeStampValue1 = Union[str, TDateTimeStampValue2]
-""")
-    other_lines = class_lines_from_multistring("""
+"""
+    )
+    other_lines = class_lines_from_multistring(
+        """
 TDateTimeStampValue = Union[str, TDateTimeStampValue2]
-""")
+"""
+    )
     assert lines == other_lines
 
 
 def test_class_lines_dataclass_should_merge() -> None:
-    lines = data_class_lines_from_multistring("""
+    lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item:
     key: str
     special: Optional[int]
-""")
-    other_lines = data_class_lines_from_multistring("""
+"""
+    )
+    other_lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     key: str
     other_special: Optional[int]
-""")
+"""
+    )
     assert lines.should_merge(other_lines)
 
     # Extra required key will not match
-    other_lines_extra_required_key = data_class_lines_from_multistring("""
+    other_lines_extra_required_key = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     key: str
     other_special: int
-""")
+"""
+    )
     assert not lines.should_merge(other_lines_extra_required_key)
 
     # Missing required key will not match
-    other_lines_missing_required_key = data_class_lines_from_multistring("""
+    other_lines_missing_required_key = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     other_special: Optional[int]
-""")
+"""
+    )
     assert not lines.should_merge(other_lines_missing_required_key)
 
     # Shared key that does not agree on optional/required will not match
-    other_lines_non_matching_shared_key = data_class_lines_from_multistring("""
+    other_lines_non_matching_shared_key = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     key: Optional[str]
-""")
+"""
+    )
     assert not lines.should_merge(other_lines_non_matching_shared_key)
 
 
 def test_class_lines_merge_similar() -> None:
-    lines = data_class_lines_from_multistring("""
+    lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item:
     key: str
     other_key: str
     special: Optional[int]
-""")
+"""
+    )
 
-    other_lines = data_class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     key: str
@@ -390,7 +415,8 @@ class Item1:
         float,
     ]
     other_special: Optional[str]
-""")
+"""
+    )
 
     validate_lines_against_multistring(
         lines.merge_similar(other_lines),
@@ -401,21 +427,26 @@ class Item:
     other_key: Union[float,int,str]
     special: Optional[int]
     other_special: Optional[str]
-""")
+""",
+    )
 
 
 def test_class_lines_merge_similar_with_lists() -> None:
-    lines = data_class_lines_from_multistring("""
+    lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item:
     key: list[str]
-""")
+"""
+    )
 
-    other_lines = data_class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring(
+        """
 @dataclass(frozen=True)
 class Item1:
     key: list[int]
-""")
+"""
+    )
 
     validate_lines_against_multistring(
         lines.merge_similar(other_lines),
@@ -423,7 +454,7 @@ class Item1:
 @dataclass(frozen=True)
 class Item:
     key: Union[list[int],list[str]]
-"""
+""",
     )
 
 

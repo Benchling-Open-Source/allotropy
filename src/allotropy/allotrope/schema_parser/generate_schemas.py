@@ -117,7 +117,7 @@ def generate_schemas(
     :return: A list of model files that were changed.
     """
 
-    unit_to_iri = {}
+    unit_to_iri: dict[str, str] = {}
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
         os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
         schema_paths = list(Path(".").rglob("*.json"))

@@ -74,7 +74,7 @@ def test_clean_http_refs() -> None:
         schema, {"$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"}
     )
 
-    schema = {
+    allof_schema = {
         "allOf": [
             {
                 "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/orderedItem"
@@ -86,7 +86,7 @@ def test_clean_http_refs() -> None:
         "$defs": defs_schema,
     }
     validate_cleaned_schema(
-        schema,
+        allof_schema,
         {
             "allOf": [
                 {"$ref": "#/$defs/adm_core_REC_2023_09_core_schema/$defs/orderedItem"},

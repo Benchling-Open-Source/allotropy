@@ -14,7 +14,6 @@ from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
 )
-from allotropy.exceptions import AllotropeConversionError
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
@@ -28,7 +27,9 @@ def _values_equal(value1: Any, value2: Any) -> bool:
             _values_equal(v1, v2) for v1, v2 in zip(value1, value2)
         )
     else:
-        return bool(value1 == value2)  # typing does not like using == on any to return bool
+        return bool(
+            value1 == value2
+        )  # typing does not like using == on any to return bool
 
 
 def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
@@ -165,6 +166,7 @@ class Field:
 @dataclass
 class ClassLines:
     """Represents a set of lines defining a class."""
+
     lines: list[str]
     class_name: str
 
@@ -269,15 +271,27 @@ class DataClassLines(ClassLines):
         if not set(self.parent_class_names) == set(other.parent_class_names):
             return False
         # There must be some overlapping fields with the same values
-        if not any(self.fields[name].contents == other.fields[name].contents for name in self.fields.keys() & other.fields.keys()):
+        if not any(
+            self.fields[name].contents == other.fields[name].contents
+            for name in self.fields.keys() & other.fields.keys()
+        ):
             return False
         # Fields unique to one class must be optional.
-        if any(self.fields[name].is_required for name in self.fields.keys() - other.fields.keys()):
+        if any(
+            self.fields[name].is_required
+            for name in self.fields.keys() - other.fields.keys()
+        ):
             return False
-        if any(other.fields[name].is_required for name in other.fields.keys() - self.fields.keys()):
+        if any(
+            other.fields[name].is_required
+            for name in other.fields.keys() - self.fields.keys()
+        ):
             return False
         # Shared fields must agree on whether they are required
-        if not all(self.fields[name].can_merge(other.fields[name]) for name in self.fields.keys() & other.fields.keys()):
+        if not all(
+            self.fields[name].can_merge(other.fields[name])
+            for name in self.fields.keys() & other.fields.keys()
+        ):
             return False
 
         return True
@@ -370,7 +384,7 @@ def create_class_lines(lines: list[str]) -> ClassLines:
         parent_class_names=parent_class_names,
         fields=fields,
         field_name_order=field_name_order,
-        is_frozen=is_frozen
+        is_frozen=is_frozen,
     )
 
 
@@ -385,6 +399,7 @@ class ModelClassEditor:
     - Combining some dataclasses to reduce combinatorial explosions. Note that this reduces accuracy at the
             cost of readability. We let the schema enforce correctness in these cases.
     """
+
     def __init__(
         self,
         manifest: str,
@@ -401,10 +416,16 @@ class ModelClassEditor:
         class_lines = classes[class_name]
 
         # A dataclass with required fields can not inherit from a dataclass with an optional field
-        if isinstance(class_lines, DataClassLines) and class_lines.has_required_fields():
+        if (
+            isinstance(class_lines, DataClassLines)
+            and class_lines.has_required_fields()
+        ):
             for parent_class_name in class_lines.parent_class_names:
                 parent_class = classes[parent_class_name]
-                if isinstance(parent_class, DataClassLines) and parent_class.has_optional_fields():
+                if (
+                    isinstance(parent_class, DataClassLines)
+                    and parent_class.has_optional_fields()
+                ):
                     class_lines = class_lines.merge_parent(parent_class)
 
         # Add manifest to base Model class.
@@ -434,7 +455,9 @@ class ModelClassEditor:
             started = True
             lines.append(line)
 
-    def _find_substituions(self, classes: dict[str, ClassLines], class_groups: dict[str, set[str]]) -> dict[str, str]:
+    def _find_substituions(
+        self, classes: dict[str, ClassLines], class_groups: dict[str, set[str]]
+    ) -> dict[str, str]:
         substitutions: dict[str, str] = {}
 
         for class_group in class_groups.values():
@@ -516,7 +539,11 @@ class ModelClassEditor:
 
         # Do substitutions
         for class_to_remove in sorted(substitutions.keys(), reverse=True):
-            new = re.sub(f"{class_to_remove}([^0-9])", rf"{substitutions[class_to_remove]}\g<1>", new)
+            new = re.sub(
+                f"{class_to_remove}([^0-9])",
+                rf"{substitutions[class_to_remove]}\g<1>",
+                new,
+            )
 
         # Check for classes that are no longer used
         unused_classes: set[str] = set()
