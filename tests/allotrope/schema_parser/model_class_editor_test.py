@@ -226,7 +226,7 @@ class Test:
     }
 
 
-def test_class_lines_merge_parent_class() -> None:
+def test_class_lines_merge_parent() -> None:
     parent_class = class_lines_from_multistring(
         """
 @dataclass
@@ -245,7 +245,7 @@ class ClassB(ClassA):
     )
 
     validate_lines_against_multistring(
-        child_class.merge_parent_class(parent_class),
+        child_class.merge_parent(parent_class),
         """
 @dataclass
 class ClassB:
@@ -257,7 +257,7 @@ class ClassB:
     )
 
 
-def test_class_lines_merge_parent_class_multiple() -> None:
+def test_class_lines_merge_parent_multiple() -> None:
     parent_class = class_lines_from_multistring(
         """
 @dataclass
@@ -277,7 +277,7 @@ class ClassB(ClassA, ClassC):
 """
     )
     validate_lines_against_multistring(
-        child_class.merge_parent_class(parent_class),
+        child_class.merge_parent(parent_class),
         """
 @dataclass
 class ClassB(ClassC):
@@ -366,7 +366,7 @@ class Item1:
     assert not lines.should_merge(other_lines_non_matching_shared_key)
 
 
-def test_class_lines_merge_similar_class() -> None:
+def test_class_lines_merge_similar() -> None:
     lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
@@ -387,7 +387,7 @@ class Item1:
 """)
 
     validate_lines_against_multistring(
-        lines.merge_similar_class(other_lines),
+        lines.merge_similar(other_lines),
         """
 @dataclass(frozen=True)
 class Item:
@@ -398,7 +398,7 @@ class Item:
 """)
 
 
-def test_class_lines_merge_similar_class_with_lists() -> None:
+def test_class_lines_merge_similar_with_lists() -> None:
     lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
@@ -412,7 +412,7 @@ class Item1:
 """)
 
     validate_lines_against_multistring(
-        lines.merge_similar_class(other_lines),
+        lines.merge_similar(other_lines),
         """
 @dataclass(frozen=True)
 class Item:
@@ -469,7 +469,7 @@ class Model:
     assert editor.modify_file(model_file_contents) == expected
 
 
-def test_modify_file_handles_does_not_merge_parent_classes_when_not_required() -> None:
+def test_modify_file_handles_does_not_merge_parentes_when_not_required() -> None:
     classes_to_skip = set()
     imports_to_add = {}
     editor = ModelClassEditor("fake_manifest", classes_to_skip, imports_to_add)
@@ -625,6 +625,7 @@ class Model:
 """
 
     result = editor.modify_file(model_file_contents)
+    print(result)
     # assert editor.modify_file(model_file_contents) == expected
     assert result == expected
 
