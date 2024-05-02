@@ -169,10 +169,17 @@ class ClassLines:
     class_name: str
 
     @property
-    def base_class_name(self):
-        return re.match("([A-Za-z]*)[0-9]*", self.class_name).groups(0)[0]
+    def base_class_name(self) -> str:
+        match = re.match("([A-Za-z]*)[0-9]*", self.class_name)
+        if not match:
+            msg = f"Could not extract base class name from {self.class_name}"
+            raise AssertionError(msg)
+        return str(match.groups(0)[0])
 
-    def __eq__(self, other: ClassLines) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, ClassLines):
+            return False
+
         if self.base_class_name != other.base_class_name:
             return False
 
@@ -183,7 +190,7 @@ class ClassLines:
         )
         return contents == other_contents_subbed
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "".join(self.lines)
 
 
@@ -241,7 +248,7 @@ class DataClassLines(ClassLines):
     def has_optional_fields(self) -> bool:
         return any(not field.is_required for field in self.fields.values())
 
-    def merge_parent(self, parent_class: ClassLines) -> ClassLines:
+    def merge_parent(self, parent_class: DataClassLines) -> DataClassLines:
         self.parent_class_names.remove(parent_class.class_name)
 
         self.fields |= parent_class.fields
@@ -257,7 +264,7 @@ class DataClassLines(ClassLines):
             self.is_frozen,
         )
 
-    def should_merge(self, other: ClassLines) -> bool:
+    def should_merge(self, other: DataClassLines) -> bool:
         # parent classes must match
         if not set(self.parent_class_names) == set(other.parent_class_names):
             return False
@@ -275,7 +282,7 @@ class DataClassLines(ClassLines):
 
         return True
 
-    def merge_similar(self, other: ClassLines) -> ClassLines:
+    def merge_similar(self, other: DataClassLines) -> DataClassLines:
         # Merge another class that has similar fields with this one.
 
         # Add fields from the other class to this one.
@@ -397,7 +404,7 @@ class ModelClassEditor:
         if isinstance(class_lines, DataClassLines) and class_lines.has_required_fields():
             for parent_class_name in class_lines.parent_class_names:
                 parent_class = classes[parent_class_name]
-                if parent_class.has_optional_fields():
+                if isinstance(parent_class, DataClassLines) and parent_class.has_optional_fields():
                     class_lines = class_lines.merge_parent(parent_class)
 
         # Add manifest to base Model class.
@@ -434,15 +441,17 @@ class ModelClassEditor:
             sorted_class_names = sorted(class_group)
             for i in range(len(sorted_class_names) - 1):
                 class1 = classes[sorted_class_names[i]]
+                if not isinstance(class1, DataClassLines):
+                    continue
                 for j in range(i + 1, len(sorted_class_names)):
                     class2 = classes[sorted_class_names[j]]
+                    if not isinstance(class2, DataClassLines):
+                        continue
                     # If classes are equal or similar enough to merge, substitute.
                     if class1 == class2:
                         substitutions[class2.class_name] = class1.class_name
-                    elif isinstance(class1, DataClassLines) and class1.should_merge(class2):
-                        classes[class1.class_name] = class1.merge_similar(
-                            class2
-                        )
+                    elif class1.should_merge(class2):
+                        classes[class1.class_name] = class1.merge_similar(class2)
                         substitutions[class2.class_name] = class1.class_name
 
         return substitutions
@@ -473,9 +482,9 @@ class ModelClassEditor:
         if self.imports_to_add:
             new_contents = new_contents[:-1]
             # Add new imports
-            for module, classes in self.imports_to_add.items():
+            for module, imports in self.imports_to_add.items():
                 new_contents.append(
-                    f"from {SHARED_FOLDER_MODULE}.{module} import {', '.join(sorted(classes))}\n"
+                    f"from {SHARED_FOLDER_MODULE}.{module} import {', '.join(sorted(imports))}\n"
                 )
         else:
             new_contents = new_contents[:-2]
@@ -509,6 +518,7 @@ class ModelClassEditor:
         for class_to_remove in sorted(substitutions.keys(), reverse=True):
             new = re.sub(f"{class_to_remove}([^0-9])", rf"{substitutions[class_to_remove]}\g<1>", new)
 
+        # Check for classes that are no longer used
         unused_classes: set[str] = set()
         for class_name in classes:
             if class_name == "Model":
@@ -516,6 +526,7 @@ class ModelClassEditor:
             if not re.search(rf"(?<!class )(?<!\w){class_name}(?!\w)(?! = )", new):
                 unused_classes.add(class_name)
 
+        # If we changed anything, run through again to look for iterative removals
         if unused_classes or substitutions:
             self.classes_to_skip = unused_classes
             self.imports_to_add = {}

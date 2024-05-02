@@ -36,7 +36,13 @@ def class_lines_from_multistring(lines: str) -> ClassLines:
     return create_class_lines(lines_from_multistring(lines))
 
 
-def validate_lines_against_multistring(class_lines: ClassLines, lines: str):
+def data_class_lines_from_multistring(lines: str) -> DataClassLines:
+    class_lines = create_class_lines(lines_from_multistring(lines))
+    assert isinstance(class_lines, DataClassLines)
+    return class_lines
+
+
+def validate_lines_against_multistring(class_lines: ClassLines, lines: str) -> None:
     assert class_lines == class_lines_from_multistring(lines)
 
 
@@ -157,7 +163,7 @@ class ClassB(
 
 
 def test_class_lines_dataclass_field_parsing() -> None:
-    class_lines = class_lines_from_multistring(
+    class_lines = data_class_lines_from_multistring(
         """
 @dataclass
 class Test:
@@ -174,7 +180,7 @@ class Test:
         ),
     }
 
-    class_lines = class_lines_from_multistring(
+    class_lines = data_class_lines_from_multistring(
         """
 @dataclass
 class Test:
@@ -195,7 +201,7 @@ class Test:
         ),
     }
 
-    class_lines = class_lines_from_multistring(
+    class_lines = data_class_lines_from_multistring(
         """
 @dataclass
 class Test:
@@ -227,7 +233,7 @@ class Test:
 
 
 def test_class_lines_merge_parent() -> None:
-    parent_class = class_lines_from_multistring(
+    parent_class = data_class_lines_from_multistring(
         """
 @dataclass
 class ClassA:
@@ -235,7 +241,7 @@ class ClassA:
     a_optional: Optional[str]
 """
     )
-    child_class = class_lines_from_multistring(
+    child_class = data_class_lines_from_multistring(
         """
 @dataclass
 class ClassB(ClassA):
@@ -258,7 +264,7 @@ class ClassB:
 
 
 def test_class_lines_merge_parent_multiple() -> None:
-    parent_class = class_lines_from_multistring(
+    parent_class = data_class_lines_from_multistring(
         """
 @dataclass
 class ClassA:
@@ -266,7 +272,7 @@ class ClassA:
     a_optional: Optional[str]
 """
     )
-    child_class = class_lines_from_multistring(
+    child_class = data_class_lines_from_multistring(
         """
 @dataclass
 class ClassB(ClassA, ClassC):
@@ -290,13 +296,13 @@ class ClassB(ClassC):
 
 
 def test_class_lines_dataclass_eq() -> None:
-    class_lines = class_lines_from_multistring("""
+    class_lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: Union[str, int]
 """)
 
-    other_lines = class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: Union[
@@ -326,13 +332,13 @@ TDateTimeStampValue = Union[str, TDateTimeStampValue2]
 
 
 def test_class_lines_dataclass_should_merge() -> None:
-    lines = class_lines_from_multistring("""
+    lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: str
     special: Optional[int]
 """)
-    other_lines = class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: str
@@ -341,7 +347,7 @@ class Item1:
     assert lines.should_merge(other_lines)
 
     # Extra required key will not match
-    other_lines_extra_required_key = class_lines_from_multistring("""
+    other_lines_extra_required_key = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: str
@@ -350,7 +356,7 @@ class Item1:
     assert not lines.should_merge(other_lines_extra_required_key)
 
     # Missing required key will not match
-    other_lines_missing_required_key = class_lines_from_multistring("""
+    other_lines_missing_required_key = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     other_special: Optional[int]
@@ -358,7 +364,7 @@ class Item1:
     assert not lines.should_merge(other_lines_missing_required_key)
 
     # Shared key that does not agree on optional/required will not match
-    other_lines_non_matching_shared_key = class_lines_from_multistring("""
+    other_lines_non_matching_shared_key = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: Optional[str]
@@ -367,7 +373,7 @@ class Item1:
 
 
 def test_class_lines_merge_similar() -> None:
-    lines = class_lines_from_multistring("""
+    lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: str
@@ -375,7 +381,7 @@ class Item:
     special: Optional[int]
 """)
 
-    other_lines = class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: str
@@ -399,13 +405,13 @@ class Item:
 
 
 def test_class_lines_merge_similar_with_lists() -> None:
-    lines = class_lines_from_multistring("""
+    lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: list[str]
 """)
 
-    other_lines = class_lines_from_multistring("""
+    other_lines = data_class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: list[int]
@@ -422,9 +428,7 @@ class Item:
 
 
 def test_modify_file_handles_merging_parent_classes_and_removing_unused_parents() -> None:
-    classes_to_skip = set()
-    imports_to_add = {}
-    editor = ModelClassEditor("fake_manifest", classes_to_skip, imports_to_add)
+    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
 
     model_file_contents = """
 import json
@@ -470,9 +474,7 @@ class Model:
 
 
 def test_modify_file_handles_does_not_merge_parentes_when_not_required() -> None:
-    classes_to_skip = set()
-    imports_to_add = {}
-    editor = ModelClassEditor("fake_manifest", classes_to_skip, imports_to_add)
+    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
 
     model_file_contents = """
 import json
@@ -555,9 +557,7 @@ class Model:
 
 
 def test_modify_file_removes_identical_classes() -> None:
-    classes_to_skip = set()
-    imports_to_add = {}
-    editor = ModelClassEditor("fake_manifest", classes_to_skip, imports_to_add)
+    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
 
     model_file_contents = """
 import json
@@ -623,17 +623,11 @@ class Model:
     manifest: str=\"fake_manifest\"
     other_item: Optional[Item12]
 """
-
-    result = editor.modify_file(model_file_contents)
-    print(result)
-    # assert editor.modify_file(model_file_contents) == expected
-    assert result == expected
+    assert editor.modify_file(model_file_contents) == expected
 
 
 def test_modify_file_merges_similar_classes() -> None:
-    classes_to_skip = set()
-    imports_to_add = {}
-    editor = ModelClassEditor("fake_manifest", classes_to_skip, imports_to_add)
+    editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
 
     model_file_contents = """
 import json
