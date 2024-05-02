@@ -24,10 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add Vendor display names
+- Added liquid-chromatograpy 2023/09 schema
 
 ### Fixed
 
 ### Changed
+
+- Improved schema model generation script to handle more complicated schemas
 
 ### Deprecated
 
