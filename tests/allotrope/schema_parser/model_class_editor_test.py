@@ -22,7 +22,9 @@ def test_parse_field_types() -> None:
     assert _parse_field_types("set[int,int]") == {"set[int]"}
     assert _parse_field_types("dict[str,Any]") == {"dict[str,Any]"}
     assert _parse_field_types("dict[str,list[str,str]]") == {"dict[str,list[str]]"}
-    assert _parse_field_types("dict[Union[int,float],str]") == {"dict[Union[int,float],str]"}
+    assert _parse_field_types("dict[Union[int,float],str]") == {
+        "dict[Union[int,float],str]"
+    }
     assert _parse_field_types("List[Union[Type1,Type2,Type3,]]") == {
         "List[Union[Type1,Type2,Type3]]"
     }
@@ -174,7 +176,9 @@ class Test:
     assert class_lines.has_required_fields()
     assert not class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField("key", is_required=True, default_value=None, field_types={"str"}),
+        "key": DataclassField(
+            "key", is_required=True, default_value=None, field_types={"str"}
+        ),
         "value": DataclassField(
             "value", is_required=True, default_value=None, field_types={"str"}
         ),
@@ -192,7 +196,9 @@ class Test:
     assert not class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField("key", is_required=False, default_value=None, field_types={"str"}),
+        "key": DataclassField(
+            "key", is_required=False, default_value=None, field_types={"str"}
+        ),
         "value": DataclassField(
             "value", is_required=False, default_value='"something"', field_types={"str"}
         ),
@@ -219,7 +225,9 @@ class Test:
     assert class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField("key", is_required=True, default_value=None, field_types={"str"}),
+        "key": DataclassField(
+            "key", is_required=True, default_value=None, field_types={"str"}
+        ),
         "item": DataclassField(
             "item", is_required=True, default_value=None, field_types={"Item1", "str"}
         ),

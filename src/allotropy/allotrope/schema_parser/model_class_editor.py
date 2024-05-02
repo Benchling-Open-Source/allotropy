@@ -124,6 +124,7 @@ def _parse_field_types(type_string: str) -> set[str]:
 @dataclass
 class DataclassField:
     """Represents a dataclass field."""
+
     name: str
     is_required: bool
     default_value: Optional[str]
@@ -213,6 +214,7 @@ class ClassLines:
 @dataclass(eq=False)
 class DataClassLines(ClassLines):
     """Represents a set of lines defining a dataclass."""
+
     parent_class_names: list[str]
     fields: dict[str, DataclassField]
     field_name_order: list[str]
