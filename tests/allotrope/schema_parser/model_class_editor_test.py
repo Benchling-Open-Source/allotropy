@@ -3,6 +3,8 @@ from io import StringIO
 from allotropy.allotrope.schema_parser.model_class_editor import (
     _parse_types,
     ClassLines,
+    create_class_lines,
+    DataClassLines,
     Field,
     get_manifest_from_schema_path,
     ModelClassEditor,
@@ -28,6 +30,14 @@ def test_parse_types() -> None:
 
 def lines_from_multistring(lines: str) -> list[str]:
     return list(StringIO(lines.strip("\n") + "\n").readlines())
+
+
+def class_lines_from_multistring(lines: str) -> ClassLines:
+    return create_class_lines(lines_from_multistring(lines))
+
+
+def validate_lines_against_multistring(class_lines: ClassLines, lines: str):
+    assert class_lines == class_lines_from_multistring(lines)
 
 
 def test_get_manifest_from_schema_path() -> None:
@@ -94,7 +104,7 @@ class Model:
 
 
 def test_class_lines_dataclass_parent_classes() -> None:
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass(frozen=True)
 class ClassA:
@@ -102,13 +112,11 @@ class ClassA:
     value: str
 """
     )
-    class_lines = ClassLines.create(lines)
-
     assert class_lines.class_name == "ClassA"
-    assert class_lines.is_dataclass
+    assert isinstance(class_lines, DataClassLines)
     assert class_lines.parent_class_names == []
 
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass(frozen=True)
 class ClassB(ClassA):
@@ -116,14 +124,11 @@ class ClassB(ClassA):
     value: str
 """
     )
-
-    class_lines = ClassLines.create(lines)
-
     assert class_lines.class_name == "ClassB"
-    assert class_lines.is_dataclass
+    assert isinstance(class_lines, DataClassLines)
     assert class_lines.parent_class_names == ["ClassA"]
 
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass(frozen=True)
 class ClassB(ClassA, ClassC):
@@ -131,14 +136,11 @@ class ClassB(ClassA, ClassC):
     value: str
 """
     )
-
-    class_lines = ClassLines.create(lines)
-
     assert class_lines.class_name == "ClassB"
-    assert class_lines.is_dataclass
+    assert isinstance(class_lines, DataClassLines)
     assert class_lines.parent_class_names == ["ClassA", "ClassC"]
 
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass(frozen=True)
 class ClassB(
@@ -149,16 +151,13 @@ class ClassB(
     value: str
 """
     )
-
-    class_lines = ClassLines.create(lines)
-
     assert class_lines.class_name == "ClassB"
-    assert class_lines.is_dataclass
+    assert isinstance(class_lines, DataClassLines)
     assert class_lines.parent_class_names == ["ClassA", "ClassC"]
 
 
 def test_class_lines_dataclass_field_parsing() -> None:
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass
 class Test:
@@ -166,8 +165,6 @@ class Test:
     value: str
 """
     )
-    class_lines = ClassLines.create(lines)
-
     assert class_lines.has_required_fields()
     assert not class_lines.has_optional_fields()
     assert class_lines.fields == {
@@ -177,7 +174,7 @@ class Test:
         ),
     }
 
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass
 class Test:
@@ -186,8 +183,6 @@ class Test:
     int_value:Optional[int]=1
 """
     )
-    class_lines = ClassLines.create(lines)
-
     assert not class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
@@ -200,7 +195,7 @@ class Test:
         ),
     }
 
-    lines = lines_from_multistring(
+    class_lines = class_lines_from_multistring(
         """
 @dataclass
 class Test:
@@ -215,8 +210,6 @@ class Test:
     other_key: Optional[str]=None
 """
     )
-
-    class_lines = ClassLines.create(lines)
     assert class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
@@ -234,7 +227,7 @@ class Test:
 
 
 def test_class_lines_merge_parent_class() -> None:
-    lines = lines_from_multistring(
+    parent_class = class_lines_from_multistring(
         """
 @dataclass
 class ClassA:
@@ -242,9 +235,7 @@ class ClassA:
     a_optional: Optional[str]
 """
     )
-    parent_class = ClassLines.create(lines)
-
-    lines = lines_from_multistring(
+    child_class = class_lines_from_multistring(
         """
 @dataclass
 class ClassB(ClassA):
@@ -252,11 +243,9 @@ class ClassB(ClassA):
     b_optional: Optional[str]
 """
     )
-    child_class = ClassLines.create(lines)
 
-    result = child_class.merge_parent_class(parent_class)
-
-    assert result.lines == lines_from_multistring(
+    validate_lines_against_multistring(
+        child_class.merge_parent_class(parent_class),
         """
 @dataclass
 class ClassB:
@@ -269,7 +258,7 @@ class ClassB:
 
 
 def test_class_lines_merge_parent_class_multiple() -> None:
-    lines = lines_from_multistring(
+    parent_class = class_lines_from_multistring(
         """
 @dataclass
 class ClassA:
@@ -277,9 +266,7 @@ class ClassA:
     a_optional: Optional[str]
 """
     )
-    parent_class = ClassLines.create(lines)
-
-    lines = lines_from_multistring(
+    child_class = class_lines_from_multistring(
         """
 @dataclass
 class ClassB(ClassA, ClassC):
@@ -289,11 +276,8 @@ class ClassB(ClassA, ClassC):
     ]
 """
     )
-    child_class = ClassLines.create(lines)
-
-    result = child_class.merge_parent_class(parent_class)
-
-    assert result.lines == lines_from_multistring(
+    validate_lines_against_multistring(
+        child_class.merge_parent_class(parent_class),
         """
 @dataclass
 class ClassB(ClassC):
@@ -305,149 +289,93 @@ class ClassB(ClassC):
     )
 
 
-def test_class_lines_dataclass_has_identical_contents() -> None:
-    lines = ClassLines.create(
-        lines_from_multistring(
-            """
+def test_class_lines_dataclass_eq() -> None:
+    class_lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: Union[str, int]
-"""
-        )
-    )
+""")
 
-    other_lines = ClassLines.create(
-        lines_from_multistring(
-            """
+    other_lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: Union[
         str,
         int
     ]
-"""
-        )
-    )
-
-    assert lines.has_identical_contents(other_lines)
+""")
+    assert class_lines == other_lines
 
 
-def test_class_lines_typedef_has_identical_contents() -> None:
-    lines = ClassLines.create(
-        lines_from_multistring(
-            """
+def test_class_lines_typedef_eq() -> None:
+    lines = class_lines_from_multistring("""
 TDateTimeStampValue1 = Union[str, TDateTimeStampValue2]
-"""
-        )
-    )
-
-    other_lines = ClassLines.create(
-        lines_from_multistring(
-            """
+""")
+    other_lines = class_lines_from_multistring("""
 TDateTimeStampValue = Union[str, TDateTimeStampValue3]
-"""
-        )
-    )
+""")
+    assert lines != other_lines
 
-    assert not lines.has_identical_contents(other_lines)
-
-    lines = ClassLines.create(
-        lines_from_multistring(
-            """
+    lines = class_lines_from_multistring("""
 TDateTimeStampValue1 = Union[str, TDateTimeStampValue2]
-"""
-        )
-    )
-
-    other_lines = ClassLines.create(
-        lines_from_multistring(
-            """
+""")
+    other_lines = class_lines_from_multistring("""
 TDateTimeStampValue = Union[str, TDateTimeStampValue2]
-"""
-        )
-    )
-
-    assert lines.has_identical_contents(other_lines)
+""")
+    assert lines == other_lines
 
 
-def test_class_lines_dataclass_has_similar_contents() -> None:
-    lines = ClassLines.create(
-        lines_from_multistring(
-            """
+def test_class_lines_dataclass_should_merge() -> None:
+    lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: str
     special: Optional[int]
-"""
-        )
-    )
-
-    other_lines = ClassLines.create(
-        lines_from_multistring(
-            """
+""")
+    other_lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: str
     other_special: Optional[int]
-"""
-        )
-    )
-    assert lines.has_similar_contents(other_lines)
+""")
+    assert lines.should_merge(other_lines)
 
     # Extra required key will not match
-    other_lines_extra_required_key = ClassLines.create(
-        lines_from_multistring(
-            """
+    other_lines_extra_required_key = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: str
     other_special: int
-"""
-        )
-    )
-    assert not lines.has_similar_contents(other_lines_extra_required_key)
+""")
+    assert not lines.should_merge(other_lines_extra_required_key)
 
     # Missing required key will not match
-    other_lines_missing_required_key = ClassLines.create(
-        lines_from_multistring(
-            """
+    other_lines_missing_required_key = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     other_special: Optional[int]
-"""
-        )
-    )
-    assert not lines.has_similar_contents(other_lines_missing_required_key)
+""")
+    assert not lines.should_merge(other_lines_missing_required_key)
 
     # Shared key that does not agree on optional/required will not match
-    other_lines_non_matching_shared_key = ClassLines.create(
-        lines_from_multistring(
-            """
+    other_lines_non_matching_shared_key = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: Optional[str]
-"""
-        )
-    )
-    assert not lines.has_similar_contents(other_lines_non_matching_shared_key)
+""")
+    assert not lines.should_merge(other_lines_non_matching_shared_key)
 
 
 def test_class_lines_merge_similar_class() -> None:
-    lines = ClassLines.create(
-        lines_from_multistring(
-            """
+    lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: str
     other_key: str
     special: Optional[int]
-"""
-        )
-    )
+""")
 
-    other_lines = ClassLines.create(
-        lines_from_multistring(
-            """
+    other_lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: str
@@ -456,12 +384,10 @@ class Item1:
         float,
     ]
     other_special: Optional[str]
-"""
-        )
-    )
+""")
 
-    result = lines.merge_similar_class(other_lines)
-    assert result.lines == lines_from_multistring(
+    validate_lines_against_multistring(
+        lines.merge_similar_class(other_lines),
         """
 @dataclass(frozen=True)
 class Item:
@@ -469,33 +395,24 @@ class Item:
     other_key: Union[float,int,str]
     special: Optional[int]
     other_special: Optional[str]
-"""
-    )
+""")
 
 
 def test_class_lines_merge_similar_class_with_lists() -> None:
-    lines = ClassLines.create(
-        lines_from_multistring(
-            """
+    lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item:
     key: list[str]
-"""
-        )
-    )
+""")
 
-    other_lines = ClassLines.create(
-        lines_from_multistring(
-            """
+    other_lines = class_lines_from_multistring("""
 @dataclass(frozen=True)
 class Item1:
     key: list[int]
-"""
-        )
-    )
+""")
 
-    result = lines.merge_similar_class(other_lines)
-    assert result.lines == lines_from_multistring(
+    validate_lines_against_multistring(
+        lines.merge_similar_class(other_lines),
         """
 @dataclass(frozen=True)
 class Item:
