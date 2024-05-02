@@ -71,7 +71,7 @@ class Microliter(HasUnit):
 
 @dataclass(frozen=True)
 class Micrometer(HasUnit):
-    unit: str = "µm"
+    unit: str = "μm"
 
 
 @dataclass(frozen=True)
