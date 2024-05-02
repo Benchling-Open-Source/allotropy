@@ -135,7 +135,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "\u03bcL",
+        "const": "μL",
         "$asm.unit-iri": "http://qudt.org/vocab/unit#Microliter"
       }
     },
@@ -387,7 +387,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "#/\u03bcL",
+        "const": "#/μL",
         "$asm.unit-iri": "http://qudt.org/vocab/unit#NumberPerMicroliter"
       }
     },

@@ -107,7 +107,7 @@ def update_unit_files(unit_to_iri: dict[str, str]) -> None:
 
     units_schema = dict(sorted(units_schema.items()))
     with open(os.path.join(SHARED_SCHEMAS_DIR, "units.json"), "w") as f:
-        json.dump(units_schema, f, indent=2)
+        json.dump(units_schema, f, indent=2, ensure_ascii=False)
 
     with open(os.path.join(SHARED_SCHEMAS_DIR, "units.json")) as f:
         units_schema = json.load(f)
@@ -122,6 +122,6 @@ def update_unit_files(unit_to_iri: dict[str, str]) -> None:
         ] = _get_quantity_value_schema(unit_name, "Nullable")
 
     with open(os.path.join(SHARED_SCHEMAS_DIR, "custom.json"), "w") as f:
-        json.dump(custom_schema, f, indent=2)
+        json.dump(custom_schema, f, indent=2, ensure_ascii=False)
 
     _update_unit_models(units_schema)
