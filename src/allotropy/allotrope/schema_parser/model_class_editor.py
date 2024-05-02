@@ -395,7 +395,7 @@ class ModelClassEditor:
         class_lines = all_classes[class_name]
 
         # A dataclass with required fields can not inherit from a dataclass with an optional field
-        if class_lines.parent_class_names and class_lines.has_required_fields():
+        if isinstance(class_lines, DataClassLines) and class_lines.has_required_fields():
             for parent_class_name in class_lines.parent_class_names:
                 parent_class = all_classes[parent_class_name]
                 if parent_class.has_optional_fields():
