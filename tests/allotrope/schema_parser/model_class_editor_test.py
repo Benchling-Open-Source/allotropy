@@ -1,29 +1,29 @@
 from io import StringIO
 
 from allotropy.allotrope.schema_parser.model_class_editor import (
-    _parse_types,
+    _parse_field_types,
     ClassLines,
     create_class_lines,
+    DataclassField,
     DataClassLines,
-    Field,
     get_manifest_from_schema_path,
     ModelClassEditor,
 )
 
 
-def test_parse_types() -> None:
-    assert _parse_types("str") == {"str"}
-    assert _parse_types("Union[str,int]") == {"int", "str"}
-    assert _parse_types("Union[str,str,str]") == {"str"}
-    assert _parse_types("Union[List[str],int]") == {"int", "List[str]"}
-    assert _parse_types("List[Union[str,str,str]]") == {"List[str]"}
-    assert _parse_types("list[str,str,str]") == {"list[str]"}
-    assert _parse_types("tuple[str,int]") == {"tuple[Union[int,str]]"}
-    assert _parse_types("set[int,int]") == {"set[int]"}
-    assert _parse_types("dict[str,Any]") == {"dict[str,Any]"}
-    assert _parse_types("dict[str,list[str,str]]") == {"dict[str,list[str]]"}
-    assert _parse_types("dict[Union[int,float],str]") == {"dict[Union[int,float],str]"}
-    assert _parse_types("List[Union[Type1,Type2,Type3,]]") == {
+def test_parse_field_types() -> None:
+    assert _parse_field_types("str") == {"str"}
+    assert _parse_field_types("Union[str,int]") == {"int", "str"}
+    assert _parse_field_types("Union[str,str,str]") == {"str"}
+    assert _parse_field_types("Union[List[str],int]") == {"int", "List[str]"}
+    assert _parse_field_types("List[Union[str,str,str]]") == {"List[str]"}
+    assert _parse_field_types("list[str,str,str]") == {"list[str]"}
+    assert _parse_field_types("tuple[str,int]") == {"tuple[Union[int,str]]"}
+    assert _parse_field_types("set[int,int]") == {"set[int]"}
+    assert _parse_field_types("dict[str,Any]") == {"dict[str,Any]"}
+    assert _parse_field_types("dict[str,list[str,str]]") == {"dict[str,list[str]]"}
+    assert _parse_field_types("dict[Union[int,float],str]") == {"dict[Union[int,float],str]"}
+    assert _parse_field_types("List[Union[Type1,Type2,Type3,]]") == {
         "List[Union[Type1,Type2,Type3]]"
     }
 
@@ -174,8 +174,8 @@ class Test:
     assert class_lines.has_required_fields()
     assert not class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": Field("key", is_required=True, default_value=None, field_types={"str"}),
-        "value": Field(
+        "key": DataclassField("key", is_required=True, default_value=None, field_types={"str"}),
+        "value": DataclassField(
             "value", is_required=True, default_value=None, field_types={"str"}
         ),
     }
@@ -192,11 +192,11 @@ class Test:
     assert not class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": Field("key", is_required=False, default_value=None, field_types={"str"}),
-        "value": Field(
+        "key": DataclassField("key", is_required=False, default_value=None, field_types={"str"}),
+        "value": DataclassField(
             "value", is_required=False, default_value='"something"', field_types={"str"}
         ),
-        "int_value": Field(
+        "int_value": DataclassField(
             "int_value", is_required=False, default_value="1", field_types={"int"}
         ),
     }
@@ -219,14 +219,14 @@ class Test:
     assert class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": Field("key", is_required=True, default_value=None, field_types={"str"}),
-        "item": Field(
+        "key": DataclassField("key", is_required=True, default_value=None, field_types={"str"}),
+        "item": DataclassField(
             "item", is_required=True, default_value=None, field_types={"Item1", "str"}
         ),
-        "value": Field(
+        "value": DataclassField(
             "value", is_required=False, default_value=None, field_types={"str"}
         ),
-        "other_key": Field(
+        "other_key": DataclassField(
             "other_key", is_required=False, default_value="None", field_types={"str"}
         ),
     }

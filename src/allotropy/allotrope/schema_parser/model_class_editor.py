@@ -77,29 +77,42 @@ def get_manifest_from_schema_path(schema_path: str) -> str:
     )
 
 
-def _parse_types(type_string: str) -> set[str]:
+def _parse_field_types(type_string: str) -> set[str]:
+    # Parses a set of types from a dataclass field type specification, e.g.
+    #   key: Union[str, int] -> {int, str}
+    #
+    # Combined duplicated values recursively. These can happen due to class substitutions, e.g.
+    #   item: Union[Type, Type1], where Type1 gets replaced with Type becomes:
+    #   item: Union[Type, Type] -> {Type}
     if "[" not in type_string:
         return {type_string}
 
-    loc = type_string.find("[")
-    identifier = type_string[:loc]
-    inner = type_string[loc + 1 : -1]
+    identifier, inner = type_string.split("[", 1)
+    inner = inner[:-1]
+
+    # Return Unioned values as a set of deduped types
     if identifier == "Union":
         types = set()
         for inner_ in inner.split(","):
             if not inner_:
                 continue
-            types |= _parse_types(inner_)
+            types |= _parse_field_types(inner_)
         return types
-    elif identifier.lower() in ("list", "set", "tuple"):
+
+    if identifier.lower() in ("list", "set", "tuple"):
+        # Special handling for type specifications with lowercase (typedef) identifiers, which
+        # can specify a list of types without a union. e.g.
+        #     List[Union[str, int]] == list[str, int]
+        # Handle this by inserting a Union and reparsing
         if not inner.lower().startswith("union["):
             inner = f"Union[{inner}]"
-        types = _parse_types(inner)
+        types = _parse_field_types(inner)
     elif identifier in ("dict", "Dict", "Mapping"):
+        # NOTE: assumes that key_type is always one value. Generated code hasn't done something else yet.
         key_type, value_types = inner.split(",", 1)
-        return {f"{identifier}[{key_type},{','.join(_parse_types(value_types))}]"}
+        return {f"{identifier}[{key_type},{','.join(_parse_field_types(value_types))}]"}
     else:
-        types = _parse_types(inner)
+        types = _parse_field_types(inner)
 
     if len(types) > 1:
         types_string = f"Union[{','.join(sorted(types))}]"
@@ -109,14 +122,15 @@ def _parse_types(type_string: str) -> set[str]:
 
 
 @dataclass
-class Field:
+class DataclassField:
+    """Represents a dataclass field."""
     name: str
     is_required: bool
     default_value: Optional[str]
     field_types: set[str]
 
     @staticmethod
-    def create(contents: str) -> Field:
+    def create(contents: str) -> DataclassField:
         name, content = re.sub(r"\s", "", contents).split(":", maxsplit=1)
         type_string, default_value = (
             content.split("=") if "=" in content else (content, None)
@@ -128,9 +142,9 @@ class Field:
         if type_string.startswith("Optional["):
             is_required = False
             type_string = type_string[9:-1]
-        types = _parse_types(type_string)
+        types = _parse_field_types(type_string)
 
-        return Field(name, is_required, default_value, types)
+        return DataclassField(name, is_required, default_value, types)
 
     @property
     def contents(self) -> str:
@@ -144,18 +158,18 @@ class Field:
             types = f"{types}={self.default_value}"
         return f"{self.name}: {types}"
 
-    def can_merge(self, other: Field) -> bool:
+    def can_merge(self, other: DataclassField) -> bool:
         return (
             self.name == other.name
             and self.is_required == other.is_required
             and self.default_value == other.default_value
         )
 
-    def merge(self, other: Field) -> Field:
+    def merge(self, other: DataclassField) -> DataclassField:
         if not self.can_merge(other):
             msg = f"Can not merge incompatible fields {self} and {other}"
             raise AssertionError(msg)
-        return Field(
+        return DataclassField(
             name=self.name,
             is_required=self.is_required,
             default_value=self.default_value,
@@ -198,18 +212,20 @@ class ClassLines:
 
 @dataclass(eq=False)
 class DataClassLines(ClassLines):
+    """Represents a set of lines defining a dataclass."""
     parent_class_names: list[str]
-    fields: dict[str, Field]
+    fields: dict[str, DataclassField]
     field_name_order: list[str]
 
     @staticmethod
     def create(
         name: str,
         parent_class_names: list[str],
-        fields: dict[str, Field],
+        fields: dict[str, DataclassField],
         field_name_order: Optional[list[str]] = None,
         is_frozen: Optional[bool] = False,  # noqa: FBT002
     ) -> DataClassLines:
+        # Recreate lines with no whitespace from parsed values
         lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
 
         class_name_line = f"class {name}"
@@ -363,19 +379,19 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     )
 
     # Get fields of the dataclass
-    fields: dict[str, Field] = {}
+    fields: dict[str, DataclassField] = {}
     field_name_order = []
     field_contents = ""
     for line in lines[desc_end + 1 :]:
         if ":" in line and field_contents:
-            field = Field.create(field_contents)
+            field = DataclassField.create(field_contents)
             fields[field.name] = field
             field_name_order.append(field.name)
             field_contents = line
         else:
             field_contents += line
 
-    field = Field.create(field_contents)
+    field = DataclassField.create(field_contents)
     fields[field.name] = field
     field_name_order.append(field.name)
 
