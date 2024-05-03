@@ -105,6 +105,7 @@ def build_ct_mean(
     )
 
 
+@cache
 def build_ct_sd(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
@@ -123,6 +124,7 @@ def build_ct_sd(
     )
 
 
+@cache
 def build_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
