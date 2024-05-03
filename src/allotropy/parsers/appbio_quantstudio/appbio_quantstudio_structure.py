@@ -19,9 +19,11 @@ import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
 from allotropy.allotrope.pandas_util import read_csv
-from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
-from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    Referenceable,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,

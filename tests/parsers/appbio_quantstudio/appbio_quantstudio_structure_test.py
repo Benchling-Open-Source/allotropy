@@ -18,9 +18,11 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     WellItem,
 )
-from allotropy.parsers.appbio_quantstudio.calculated_document import CalculatedDocument
-from allotropy.parsers.appbio_quantstudio.referenceable import Referenceable
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    Referenceable,
+)
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
