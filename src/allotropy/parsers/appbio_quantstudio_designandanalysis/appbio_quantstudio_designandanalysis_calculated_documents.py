@@ -579,6 +579,7 @@ def build_r_squared(
     )
 
 
+@cache
 def build_slope(
     view_data: ViewData[WellItem], target: str
 ) -> Optional[CalculatedDocument]:
@@ -597,6 +598,7 @@ def build_slope(
     )
 
 
+@cache
 def build_efficiency(
     view_data: ViewData[WellItem], target: str
 ) -> Optional[CalculatedDocument]:
