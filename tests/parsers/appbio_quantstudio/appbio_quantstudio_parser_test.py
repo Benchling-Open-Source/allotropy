@@ -29,7 +29,6 @@ OUTPUT_FILES = (
     "appbio_quantstudio_example05",
     "appbio_quantstudio_example06",
     "appbio_quantstudio_example07",
-    "appbio_quantstudio_example08",
     "appbio_quantstudio_multiple_cal_doc_wells",
 )
 
