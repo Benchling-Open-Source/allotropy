@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Fixed
+- Remove duplicated ct sd and ct se calculated data documents in Quantstudio Design and Analysis adapter
 
 ### Changed
 
