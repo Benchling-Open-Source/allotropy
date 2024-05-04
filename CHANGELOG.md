@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove duplicated quantity mean calculated data documents from AppBio Quantstudio adapter
 
 ### Changed
+- Remove inner calculated data documents from AppBio Quantstudio
 
 ### Deprecated
 
