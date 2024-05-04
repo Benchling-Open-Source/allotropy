@@ -36,6 +36,7 @@ OUTPUT_FILES = (
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
+@pytest.mark.quantstudio
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
@@ -45,7 +46,7 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     validate_contents(allotrope_dict, expected_filepath)
 
 
-@pytest.mark.short
+@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "file_name,data,model",
     [

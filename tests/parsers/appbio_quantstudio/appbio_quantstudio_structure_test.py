@@ -59,7 +59,7 @@ def _read_to_lines(io_: IOType, encoding: Optional[str] = None) -> list[str]:
     return read_to_lines(named_file_contents)
 
 
-@pytest.mark.short
+@pytest.mark.quantstudio
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
@@ -67,6 +67,7 @@ def test_header_builder_returns_header_instance() -> None:
     assert isinstance(Header.create(LinesReader(lines)), Header)
 
 
+@pytest.mark.quantstudio
 def test_header_builder() -> None:
     device_identifier = "device1"
     model_number = "123"
@@ -106,6 +107,7 @@ def test_header_builder() -> None:
     )
 
 
+@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -118,7 +120,6 @@ def test_header_builder() -> None:
         ("plate_well_count", "Expected non-null value for Block Type."),
     ],
 )
-@pytest.mark.short
 def test_header_builder_required_parameter_none_then_raise(
     parameter: str, expected_error: str
 ) -> None:
@@ -129,7 +130,7 @@ def test_header_builder_required_parameter_none_then_raise(
         Header.create(lines_reader)
 
 
-@pytest.mark.short
+@pytest.mark.quantstudio
 def test_header_builder_invalid_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
     lines = _read_to_lines(header_contents)
@@ -139,7 +140,7 @@ def test_header_builder_invalid_plate_well_count() -> None:
         Header.create(LinesReader(lines))
 
 
-@pytest.mark.short
+@pytest.mark.quantstudio
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
     lines = _read_to_lines(header_contents, encoding="UTF-8")
@@ -151,7 +152,7 @@ def test_header_builder_no_header_then_raise() -> None:
         Header.create(lines_reader)
 
 
-@pytest.mark.short
+@pytest.mark.quantstudio
 def test_results_builder() -> None:
 
     data = pd.DataFrame(
@@ -182,7 +183,7 @@ def test_results_builder() -> None:
     assert result.automatic_cycle_threshold_enabled_setting is True
 
 
-@pytest.mark.short
+@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "test_filepath,expected_data",
     [
