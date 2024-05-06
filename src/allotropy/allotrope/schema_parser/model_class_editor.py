@@ -23,8 +23,10 @@ def _values_equal(value1: Any, value2: Any) -> bool:
     if isinstance(value1, dict):
         return isinstance(value2, dict) and _schemas_equal(value1, value2)
     elif isinstance(value1, list):
-        return isinstance(value2, list) and all(
-            _values_equal(v1, v2) for v1, v2 in zip(value1, value2)
+        return (
+            isinstance(value2, list)
+            and len(value1) == len(value2)
+            and all(_values_equal(v1, v2) for v1, v2 in zip(value1, value2))
         )
     else:
         return bool(
@@ -295,14 +297,10 @@ class DataClassLines(ClassLines):
         ):
             return False
         # Fields unique to one class must be optional.
+        all_fields = self.fields | other.fields
         if any(
-            self.fields[name].is_required
-            for name in self.fields.keys() - other.fields.keys()
-        ):
-            return False
-        if any(
-            other.fields[name].is_required
-            for name in other.fields.keys() - self.fields.keys()
+            all_fields[name].is_required
+            for name in self.fields.keys() ^ other.fields.keys()
         ):
             return False
         # Shared fields must agree on whether they are required
@@ -346,6 +344,8 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     # Get the lines that are the class description, including the name and parent classes.
     desc_start = 1 if is_dataclass else 0
     desc_end = desc_start
+    # Find the first line that has ":", as the class description may be split over multiple lines if there
+    # are multiple/long parent class names.
     while desc_end < len(lines) and ":" not in lines[desc_end]:
         desc_end += 1
     class_description = "".join(
@@ -357,6 +357,7 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     if class_description.startswith("class"):
         match = re.match("class ([^\\(:]*)", class_description)
     elif " = " in class_description:
+        # Match type aliasing, e.g. TClass = str
         match = re.match("(\\S+) =", lines[0])
     if not match:
         msg = f"Could not determine class name for: {''.join(lines)}."
@@ -473,7 +474,7 @@ class ModelClassEditor:
             started = True
             lines.append(line)
 
-    def _find_substituions(
+    def _find_substitutions(
         self, classes: dict[str, ClassLines], class_groups: dict[str, set[str]]
     ) -> dict[str, str]:
         substitutions: dict[str, str] = {}
@@ -544,7 +545,7 @@ class ModelClassEditor:
             class_groups[class_lines.base_class_name].add(class_lines.class_name)
 
         # If there are identical/similar classes with numerical suffixes, remove them.
-        substitutions = self._find_substituions(classes, class_groups)
+        substitutions = self._find_substitutions(classes, class_groups)
 
         # Build the new file contents before we do substitutions and look for unused classes.
         for class_name in classes_in_order:

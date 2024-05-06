@@ -43,6 +43,10 @@ def _remove_backup(path: PathType) -> None:
     _get_backup_path(path).unlink(missing_ok=True)
 
 
+def is_backup_file(path: PathType) -> bool:
+    return ".bak" in Path(path).suffixes
+
+
 @contextmanager
 def backup(
     paths: Union[Sequence[PathType], PathType], *, restore: Optional[bool] = False

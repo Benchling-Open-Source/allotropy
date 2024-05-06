@@ -4,7 +4,10 @@ from typing import Any, Optional
 from deepdiff import DeepDiff
 import pytest
 
-from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
+from allotropy.allotrope.schema_parser.schema_cleaner import (
+    _powerset_indices_from_index,
+    SchemaCleaner,
+)
 
 
 def validate_cleaned_schema(
@@ -407,11 +410,7 @@ def test_singular_anyof() -> None:
 def test_combine_anyof_non_conflicting_optional_keys() -> None:
     schema = {
         "anyOf": [
-            {
-                "properties": {
-                    "key1": "value",
-                }
-            },
+            {"properties": {"key1": "value"}},
             {"properties": {"key2": "value"}},
             {"properties": {"key3": "value"}},
         ]
@@ -531,6 +530,7 @@ def test_combine_anyof_with_nested_anyof() -> None:
             },
         ]
     }
+    # NOTE: because there are no conflicting required keys, all schemas are combined into a single schema.
     validate_cleaned_schema(
         schema,
         {
@@ -1390,3 +1390,12 @@ def test_load_model() -> None:
     )
 
     Model("fake_manifest")
+
+
+def test_powerset_indices_from_index() -> None:
+    assert _powerset_indices_from_index(0) == set()
+    assert _powerset_indices_from_index(1) == {0}
+    assert _powerset_indices_from_index(2) == {1}
+    assert _powerset_indices_from_index(3) == {0, 1}
+    assert _powerset_indices_from_index(63) == {0, 1, 2, 3, 4, 5}
+    assert _powerset_indices_from_index(64) == {6}

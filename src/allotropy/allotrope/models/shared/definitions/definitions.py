@@ -174,22 +174,6 @@ class TDatacubeData(TDimensionData):
     pass
 """
 
-"""
-@dataclass
-class TDatacubeDataMeasures:
-    dimensions: list[Union[TDimensionArray, TFunction]]
-    measures: list[TMeasureArray]
-
-
-@dataclass
-class TDatacubeDataPoints:
-    dimensions: list[Union[TDimensionArray, TFunction]]
-    points: list[TTupleData]
-
-
-TDatacubeData = Union[TDatacubeDataMeasures, TDatacubeDataPoints]
-"""
-
 
 @dataclass
 class TDatacubeData:

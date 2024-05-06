@@ -14,6 +14,7 @@ from datamodel_code_generator import (
 
 from allotropy.allotrope.schema_parser.backup_manager import (
     backup,
+    is_backup_file,
     is_file_changed,
     restore_backup,
 )
@@ -103,6 +104,19 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
     lint_file(str(model_path))
 
 
+def _should_generate_schema(
+    schema_path: str, schema_regex: Optional[str] = None
+) -> bool:
+    # Skip files in the shared directory
+    if schema_path.startswith("shared"):
+        return False
+    if is_backup_file(schema_path):
+        return False
+    if schema_regex:
+        return bool(re.match(schema_regex, str(schema_path)))
+    return True
+
+
 def generate_schemas(
     root_dir: Path,
     *,
@@ -124,11 +138,7 @@ def generate_schemas(
         os.chdir(os.path.join(root_dir))
         models_changed = []
         for rel_schema_path in schema_paths:
-            if str(rel_schema_path).startswith("shared") or str(
-                rel_schema_path
-            ).endswith(".bak.json"):
-                continue
-            if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
+            if not _should_generate_schema(str(rel_schema_path), schema_regex):
                 continue
 
             print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201

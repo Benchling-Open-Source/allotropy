@@ -83,7 +83,7 @@ def _get_required(schema: dict[str, Any]) -> list[str]:
 
 
 def _all_values_equal(values: list[Any]) -> bool:
-    return all(value == values[0] for value in values[1:])
+    return len(values) <= 1 or all(value == values[0] for value in values[1:])
 
 
 def _should_filter_key(key: str) -> bool:
@@ -102,11 +102,17 @@ def _should_skip_key(key: str) -> bool:
     return key in ("$defs", "$custom")
 
 
-def validate_dictionary_type(dict_value: Any) -> dict[str, Any]:
+def _validate_dictionary_type(dict_value: Any) -> dict[str, Any]:
     if not isinstance(dict_value, dict):
         msg = f"Invalid result, expected dictionary: {dict_value}"
         raise AssertionError(msg)
     return dict_value
+
+
+def _powerset_indices_from_index(index: int) -> set[int]:
+    # Returns the list of indices that appear in the permutation of the powerset at index.
+    # Does this by doing the binary expansion of the index, and then return the digits that are 1.
+    return {j for j, digit in enumerate(f"{index:b}"[::-1]) if digit == "1"}
 
 
 class SchemaCleaner:
@@ -125,19 +131,11 @@ class SchemaCleaner:
         self.definitions = get_shared_definitions()
 
         # These are only used when cleaning definition schemas, and are needed to properly
-        # dereference defintion references. Though this smells, the flag is nested so deep in the
+        # dereference definition references. Though this smells, the flag is nested so deep in the
         # code, that it would be impractical to send this all the way down, and I think this is the
         # lesser evil.
         self.enclosing_schema_name: Optional[str] = None
         self.enclosing_schema_keys: Optional[dict[str, Any]] = None
-
-    def get_referenced_units(self) -> dict[str, str]:
-        # Returns all units seen in the schema, for auto-generating unit schemas externally.
-        return {
-            unit: iri
-            for unit, iri in self.unit_to_iri.items()
-            if unit in self.referenced_units
-        }
 
     def _is_unit_name_ref(self, ref: str) -> bool:
         return _get_def_name(ref) in self.unit_to_name.values()
@@ -192,7 +190,7 @@ class SchemaCleaner:
 
         combined_props = {}
         for key, values in dict(all_values).items():
-            if len(values) == 1 or _all_values_equal(values):
+            if _all_values_equal(values):
                 combined_props[key] = values[0]
             elif all(_is_class_schema(value) for value in values):
                 combined_props[key] = self._combine_allof(values)
@@ -215,7 +213,7 @@ class SchemaCleaner:
         schemas = self._flatten_schemas(schemas)
 
         # When combining schemas, we need to detect anyOf as we do when cleaning allOf, but here we force
-        # combing values afterwards.
+        # combining values afterwards.
         if any("anyOf" in schema for schema in schemas):
             schemas = self._invert_allof(schemas, "anyOf")["anyOf"]
             return {
@@ -254,9 +252,9 @@ class SchemaCleaner:
             allof_values.append(value)
 
         if len(allof_values) == 1 and "allOf" not in allof_values[0]:
-            return validate_dictionary_type(allof_values[0])
+            return _validate_dictionary_type(allof_values[0])
 
-        return validate_dictionary_type(self._combine_allof_schemas(allof_values))
+        return _validate_dictionary_type(self._combine_allof_schemas(allof_values))
 
     def _flatten_schemas(self, values: list[dict[str, Any]]) -> list[dict[str, Any]]:
         return [self._flatten_schema(value) for value in values]
@@ -271,7 +269,7 @@ class SchemaCleaner:
             ):
                 return result
             # NOTE: assumes ref is cleaned.
-            # NOTE: we do not futher deference values because we don't want to remove all
+            # NOTE: we do not further dereferencevalues because we don't want to remove all
             # definitions and mess up class inheritance. We will do so if needed in combine_schemas
             reference = result.pop("$ref")
             match = re.match(r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", reference)
@@ -330,8 +328,8 @@ class SchemaCleaner:
 
         successful: list[tuple[dict[str, Any], set[int]]] = []
         # total = 2**len(schemas) - 1
-        for i in range(2 ** len(schemas) - 1, 0, -1):
-            indices = {j for j, digit in enumerate(f"{i:b}"[::-1]) if digit == "1"}
+        for index in range(2 ** len(schemas) - 1, 0, -1):
+            indices = _powerset_indices_from_index(index)
             # If there are not any required keys we can check if the set is covered first.
             if not any_required_keys and any(
                 indices.issubset(schema_indices) for _, schema_indices in successful
@@ -360,7 +358,7 @@ class SchemaCleaner:
         if all(_is_class_schema(value) for value in values):
             values = self._combine_anyof_schemas(values)
 
-        return validate_dictionary_type(
+        return _validate_dictionary_type(
             {"anyOf": values} if len(values) > 1 else values[0]
         )
 
@@ -396,11 +394,11 @@ class SchemaCleaner:
             msg = "Unhandled case: expected every item in an allOf to be a dictionary"
             raise AssertionError(msg)
 
-        if len(values) == 1 or _all_values_equal(values):
-            return validate_dictionary_type(values[0])
+        if _all_values_equal(values):
+            return _validate_dictionary_type(values[0])
 
         # If we are trying to combine tQuantityValue with tQuantityValue units, we can do so if there are
-        # not conflciting units.
+        # not conflicting units.
         if all(
             _is_ref_schema(schema) and "QuantityValue" in schema["$ref"]
             for schema in values
@@ -436,7 +434,9 @@ class SchemaCleaner:
         if self._required_anywhere(derefed_values) or any(
             "allOf" in schema for schema in derefed_values
         ):
-            return validate_dictionary_type(self._combine_allof_schemas(derefed_values))
+            return _validate_dictionary_type(
+                self._combine_allof_schemas(derefed_values)
+            )
 
         # Otherwise, we try to combine the schemas in order to error if there are any conflicting keys,
         # but we don't save the result.
@@ -604,12 +604,22 @@ class SchemaCleaner:
         self.definitions |= cleaned
         return cleaned
 
+    def get_referenced_units(self) -> dict[str, str]:
+        # Returns all units seen in the schema, for auto-generating unit schemas externally.
+        return {
+            unit: iri
+            for unit, iri in self.unit_to_iri.items()
+            if unit in self.referenced_units
+        }
+
     def clean(self, schema: dict[str, Any]) -> dict[str, Any]:
-        # Call clean defs first, because we store some metadata about overriden definitions that is used in
+        # Call clean defs first, because we store some metadata about overridden definitions that is used in
         # the main body.
         cleaned = copy.deepcopy(schema)
 
-        # Definitions are cleaned differently, because we don't want to change ty
+        # Definitions are cleaned differently, because we don't want to change modify them more than we need
+        # to. That is, we leave combining compound schemas to the main schema cleaning so we can tell if it
+        # is necessary or not. Here, we simply clean up http references and store definitions for later reference.
         cleaned["$defs"] = self._clean_defs(cleaned.get("$defs", {}))
 
         return self._clean_schema(cleaned)

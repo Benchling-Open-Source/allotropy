@@ -11,6 +11,24 @@ from allotropy.allotrope.schema_parser.model_class_editor import (
 )
 
 
+def lines_from_multistring(lines: str) -> list[str]:
+    return list(StringIO(lines.strip("\n") + "\n").readlines())
+
+
+def class_lines_from_multistring(lines: str) -> ClassLines:
+    return create_class_lines(lines_from_multistring(lines))
+
+
+def data_class_lines_from_multistring(lines: str) -> DataClassLines:
+    class_lines = create_class_lines(lines_from_multistring(lines))
+    assert isinstance(class_lines, DataClassLines)
+    return class_lines
+
+
+def validate_lines_against_multistring(class_lines: ClassLines, lines: str) -> None:
+    assert class_lines == class_lines_from_multistring(lines)
+
+
 def test_parse_field_types() -> None:
     assert _parse_field_types("str") == {"str"}
     assert _parse_field_types("Union[str,int]") == {"int", "str"}
@@ -28,24 +46,6 @@ def test_parse_field_types() -> None:
     assert _parse_field_types("List[Union[Type1,Type2,Type3,]]") == {
         "List[Union[Type1,Type2,Type3]]"
     }
-
-
-def lines_from_multistring(lines: str) -> list[str]:
-    return list(StringIO(lines.strip("\n") + "\n").readlines())
-
-
-def class_lines_from_multistring(lines: str) -> ClassLines:
-    return create_class_lines(lines_from_multistring(lines))
-
-
-def data_class_lines_from_multistring(lines: str) -> DataClassLines:
-    class_lines = create_class_lines(lines_from_multistring(lines))
-    assert isinstance(class_lines, DataClassLines)
-    return class_lines
-
-
-def validate_lines_against_multistring(class_lines: ClassLines, lines: str) -> None:
-    assert class_lines == class_lines_from_multistring(lines)
 
 
 def test_get_manifest_from_schema_path() -> None:
@@ -512,7 +512,7 @@ class Model:
     assert editor.modify_file(model_file_contents) == expected
 
 
-def test_modify_file_handles_does_not_merge_parentes_when_not_required() -> None:
+def test_modify_file_handles_does_not_merge_parents_when_not_required() -> None:
     editor = ModelClassEditor("fake_manifest", classes_to_skip=set(), imports_to_add={})
 
     model_file_contents = """
