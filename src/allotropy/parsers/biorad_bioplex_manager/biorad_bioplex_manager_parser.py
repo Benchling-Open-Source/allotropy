@@ -136,7 +136,6 @@ class BioradBioplexParser(VendorParser):
             file_name=file_name,
         )
 
-
     def get_measurement_document_aggregate(
         self,
         samples_xml: Et.Element,
@@ -155,7 +154,9 @@ class BioradBioplexParser(VendorParser):
             device_well_settings = DeviceWellSettings.create(well)
             measurement_doc = MeasurementDocumentItem(
                 measurement_identifier=random_uuid_str(),
-                measurement_time=self._get_date_time(device_well_settings.acquisition_time),
+                measurement_time=self._get_date_time(
+                    device_well_settings.acquisition_time
+                ),
                 assay_bead_count=TQuantityValueNumber(
                     device_well_settings.well_total_events
                 ),
