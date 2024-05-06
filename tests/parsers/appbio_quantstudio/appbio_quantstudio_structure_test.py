@@ -33,9 +33,6 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
 
 def rm_uuid(data: Data) -> Data:
     for well in data.wells:
-        for doc in well.calculated_documents:
-            rm_uuid_calc_doc(doc)
-
         for well_item in well.items.values():
             well_item.uuid = ""
 
