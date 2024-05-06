@@ -134,7 +134,7 @@ class LuminexXponentParser(VendorParser):
                             value=measurement.dilution_factor_setting
                         ),
                         detector_gain_setting=header_data.detector_gain_setting,
-                        minimum_assay_bead_count_setting=TQuantityValueUnitless(
+                        minimum_assay_bead_count_setting=TQuantityValueNumber(
                             value=minimum_bead_count_setting
                         ),
                     )
