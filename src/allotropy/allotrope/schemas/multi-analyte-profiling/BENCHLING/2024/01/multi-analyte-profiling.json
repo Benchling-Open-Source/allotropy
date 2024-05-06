@@ -535,7 +535,7 @@
                                       "minimum assay bead count setting": {
                                         "$asm.property-class": "TODO",
                                         "$asm.pattern": "quantity datum",
-                                        "$ref": "#/$custom/tQuantityValueUnitless"
+                                        "$ref": "#/$custom/tQuantityValueNumber"
                                       }
                                     }
                                   },
