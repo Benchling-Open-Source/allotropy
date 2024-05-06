@@ -45,6 +45,7 @@ def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     validate_contents(allotrope_dict, expected_filepath)
 
 
+@pytest.makr.short
 @pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "file_name,data,model",
