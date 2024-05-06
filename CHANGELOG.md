@@ -9,10 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Global definition of calculated data documents representation
+- Update bioplex to use _get_date_time
 
 ### Fixed
 
 ### Changed
+- Update multianalyte model minimum_assay_bead_count to be of type "number" insetead of "unitless"
+- Update luminex and biorad bioplex to use updated multianalyte model
 
 ### Deprecated
 
