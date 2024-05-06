@@ -93,7 +93,7 @@ class BioradBioplexParser(VendorParser):
                     well_system_metadata
                 )
                 all_wells_xml = child
-        multi_docs = BioradBioplexParser._get_measurement_document_aggregate(
+        multi_docs = self.get_measurement_document_aggregate(
             samples_xml=all_samples_xml,
             wells_xml=all_wells_xml,
             regions_of_interest=well_system_metadata.regions_of_interest,
@@ -136,8 +136,8 @@ class BioradBioplexParser(VendorParser):
             file_name=file_name,
         )
 
-    @staticmethod
-    def _get_measurement_document_aggregate(
+    def get_measurement_document_aggregate(
+        self,
         samples_xml: Et.Element,
         wells_xml: Et.Element,
         regions_of_interest: list[str],
@@ -154,7 +154,9 @@ class BioradBioplexParser(VendorParser):
             device_well_settings = DeviceWellSettings.create(well)
             measurement_doc = MeasurementDocumentItem(
                 measurement_identifier=random_uuid_str(),
-                measurement_time=device_well_settings.acquisition_time,
+                measurement_time=self._get_date_time(
+                    device_well_settings.acquisition_time
+                ),
                 assay_bead_count=TQuantityValueNumber(
                     device_well_settings.well_total_events
                 ),
