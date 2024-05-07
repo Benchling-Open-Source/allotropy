@@ -74,7 +74,7 @@ class InvalidJsonFloat(Enum):
 JsonFloat = Union[float, InvalidJsonFloat]
 
 
-@dataclass
+@dataclass(frozen=True)
 class TQuantityValue:
     value: JsonFloat
     unit: TUnit
@@ -82,7 +82,7 @@ class TQuantityValue:
     field_type: Optional[TClass] = None
 
 
-@dataclass
+@dataclass(frozen=True)
 class TNullableQuantityValue:
     value: Optional[float]
     unit: TUnit
@@ -92,11 +92,11 @@ class TNullableQuantityValue:
 
 class FieldComponentDatatype(Enum):
     double = "double"
-    float = "float"  # noqa: A003
+    float = "float"
     decimal = "decimal"
     integer = "integer"
     byte = "byte"
-    int = "int"  # noqa: A003
+    int = "int"
     short = "short"
     long = "long"
     string = "string"
@@ -109,7 +109,7 @@ class Scale(Enum):
     ordinal = "ordinal"
     cardinal = "cardinal"
     interval = "interval"
-    range = "range"  # noqa: A003
+    range = "range"
 
 
 class Type(Enum):
@@ -119,7 +119,7 @@ class Type(Enum):
 
 @dataclass
 class TFunction:
-    type: Optional[Type] = Type.linear  # noqa: A003
+    type: Optional[Type] = Type.linear
     start: Optional[float] = 1
     length: Optional[float] = None
     incr: Optional[float] = 1
