@@ -240,8 +240,7 @@
                 "items": {
                     "$ref": "#/$defs/tDatacubeComponent"
                 },
-                "unique": true,
-                "minItems": 1
+                "unique": true
             }
         },
         "required": [

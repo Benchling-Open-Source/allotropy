@@ -1,4 +1,4 @@
-from collections.abc import Iterator
+from collections.abc import Iterator, Sequence
 from contextlib import contextmanager
 from itertools import zip_longest
 from pathlib import Path
@@ -43,23 +43,27 @@ def _remove_backup(path: PathType) -> None:
     _get_backup_path(path).unlink(missing_ok=True)
 
 
+def is_backup_file(path: PathType) -> bool:
+    return ".bak" in Path(path).suffixes
+
+
 @contextmanager
 def backup(
-    paths: Union[list[PathType], PathType], *, restore: Optional[bool] = False
+    paths: Union[Sequence[PathType], PathType], *, restore: Optional[bool] = False
 ) -> Iterator[None]:
-    paths = paths if isinstance(paths, list) else [paths]
-    for path in paths:
+    paths_ = paths if isinstance(paths, list) else [paths]
+    for path in paths_:
         _backup_file(path)
     try:
         yield
     except Exception:
-        for path in paths:
+        for path in paths_:
             restore_backup(path)
         raise
 
     if restore:
-        for path in paths:
+        for path in paths_:
             restore_backup(path)
     else:
-        for path in paths:
+        for path in paths_:
             _remove_backup(path)

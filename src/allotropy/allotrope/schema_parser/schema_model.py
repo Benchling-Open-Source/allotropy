@@ -6,6 +6,8 @@ from pathlib import Path
 import re
 from typing import Any
 
+from allotropy.allotrope.schema_parser.backup_manager import is_backup_file
+
 
 # Used to match and locate the model definiton defined in allotropy/allotrope/models/shared
 @dataclass
@@ -71,6 +73,7 @@ def get_schema_definitions_mapping() -> dict[str, list[SchemaModel]]:
         (filename, directory)
         for directory in ["definitions", "components"]
         for filename in os.listdir(os.path.join(SHARED_SCHEMAS_DIR, directory))
+        if not is_backup_file(filename)
     ]
 
     for schema_file, directory in definition_files:

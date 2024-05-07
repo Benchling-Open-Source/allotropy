@@ -11,12 +11,12 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_views import (
     TargetRoleView,
     TargetView,
 )
-from allotropy.parsers.appbio_quantstudio.calculated_document import (
+from allotropy.parsers.appbio_quantstudio.decorators import cache
+from allotropy.parsers.appbio_quantstudio.views import ViewData
+from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
 )
-from allotropy.parsers.appbio_quantstudio.decorators import cache
-from allotropy.parsers.appbio_quantstudio.views import ViewData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
