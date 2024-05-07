@@ -269,7 +269,7 @@ class SchemaCleaner:
             ):
                 return result
             # NOTE: assumes ref is cleaned.
-            # NOTE: we do not further dereferencevalues because we don't want to remove all
+            # NOTE: we do not further dereference values because we don't want to remove all
             # definitions and mess up class inheritance. We will do so if needed in combine_schemas
             reference = result.pop("$ref")
             match = re.match(r"\#/\$defs/(\w*)(?:/\$defs/)?(\w*)?", reference)
