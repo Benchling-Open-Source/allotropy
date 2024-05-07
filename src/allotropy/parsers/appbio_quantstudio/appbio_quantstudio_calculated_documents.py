@@ -39,6 +39,7 @@ def build_quantity(well_item: WellItem) -> Optional[CalculatedDocument]:
     )
 
 
+@cache
 def build_quantity_mean(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
@@ -67,6 +68,7 @@ def build_quantity_mean(
     )
 
 
+@cache
 def build_quantity_sd(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
@@ -114,6 +116,7 @@ def build_ct_mean(
     )
 
 
+@cache
 def build_ct_sd(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
@@ -168,6 +171,7 @@ def build_delta_ct_mean(
     )
 
 
+@cache
 def build_delta_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str, r_target: str
 ) -> Optional[CalculatedDocument]:
@@ -194,6 +198,7 @@ def build_delta_ct_se(
     )
 
 
+@cache
 def build_delta_delta_ct(
     view_data: ViewData[WellItem],
     sample: str,
@@ -261,6 +266,7 @@ def build_rq(
     )
 
 
+@cache
 def build_rq_min(
     view_data: ViewData[WellItem],
     sample: str,
@@ -289,6 +295,7 @@ def build_rq_min(
     )
 
 
+@cache
 def build_rq_max(
     view_data: ViewData[WellItem],
     sample: str,
@@ -344,6 +351,7 @@ def build_relative_rq(
     )
 
 
+@cache
 def build_relative_rq_min(
     view_data: ViewData[WellItem],
     sample: str,
@@ -370,6 +378,7 @@ def build_relative_rq_min(
     )
 
 
+@cache
 def build_relative_rq_max(
     view_data: ViewData[WellItem],
     sample: str,
@@ -396,6 +405,7 @@ def build_relative_rq_max(
     )
 
 
+@cache
 def build_rn_mean(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
@@ -414,6 +424,7 @@ def build_rn_mean(
     )
 
 
+@cache
 def build_rn_sd(
     view_data: ViewData[WellItem], sample: str, target: str
 ) -> Optional[CalculatedDocument]:
@@ -432,6 +443,7 @@ def build_rn_sd(
     )
 
 
+@cache
 def build_y_intercept(
     view_data: ViewData[WellItem], target: str
 ) -> Optional[CalculatedDocument]:
@@ -450,6 +462,7 @@ def build_y_intercept(
     )
 
 
+@cache
 def build_r_squared(
     view_data: ViewData[WellItem], target: str
 ) -> Optional[CalculatedDocument]:
@@ -468,6 +481,7 @@ def build_r_squared(
     )
 
 
+@cache
 def build_slope(
     view_data: ViewData[WellItem], target: str
 ) -> Optional[CalculatedDocument]:
@@ -486,6 +500,7 @@ def build_slope(
     )
 
 
+@cache
 def build_efficiency(
     view_data: ViewData[WellItem], target: str
 ) -> Optional[CalculatedDocument]:
