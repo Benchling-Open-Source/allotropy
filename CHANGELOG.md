@@ -8,8 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Global definition of calculated data documents representation
+- Update bioplex to use _get_date_time
 
 ### Fixed
+- Remove duplicated ct sd and ct se calculated data documents in Quantstudio Design and Analysis adapter
+- Remove duplicated quantity mean calculated data documents from AppBio Quantstudio adapter
 
 ### Changed
 - Update multianalyte model minimum_assay_bead_count to be of type "number" insetead of "unitless"
