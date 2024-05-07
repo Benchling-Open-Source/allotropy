@@ -219,11 +219,6 @@ class CalculatedDataAggregateDocument:
 
 
 @dataclass
-class Asm:
-    field_asm_manifest: Optional[Union[str, Manifest]] = None
-
-
-@dataclass
 class MultiAnalyteProfilingAggregateDocument:
     device_system_document: DeviceSystemDocument
     multi_analyte_profiling_document: list[MultiAnalyteProfilingDocumentItem]
@@ -232,8 +227,8 @@ class MultiAnalyteProfilingAggregateDocument:
 
 
 @dataclass
-class Model(Asm):
-    field_asm_manifest: Union[str, Manifest]
+class Model:
+    field_asm_manifest: Union[Manifest, str]
     multi_analyte_profiling_aggregate_document: Optional[
         MultiAnalyteProfilingAggregateDocument
     ] = None

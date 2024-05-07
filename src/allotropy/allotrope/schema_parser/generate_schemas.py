@@ -1,4 +1,3 @@
-import json
 import os
 from pathlib import Path
 import re
@@ -15,14 +14,28 @@ from datamodel_code_generator import (
 
 from allotropy.allotrope.schema_parser.backup_manager import (
     backup,
+    is_backup_file,
     is_file_changed,
     restore_backup,
 )
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
-from allotropy.allotrope.schemas import get_schema
+from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
+from allotropy.allotrope.schema_parser.update_units import update_unit_files
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
+SHARED_SCHEMAS_PATH = os.path.join(SCHEMA_DIR_PATH, "shared", "definitions")
+UNITS_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "units.json")
+CUSTOM_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "custom.json")
 MODEL_DIR_PATH = "src/allotropy/allotrope/models"
+SHARED_MODELS_PATH = os.path.join(MODEL_DIR_PATH, "shared", "definitions")
+UNITS_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "units.py")
+CUSTOM_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "custom.py")
+GENERATED_SHARED_PATHS = [
+    UNITS_SCHEMAS_PATH,
+    UNITS_MODELS_PATH,
+    CUSTOM_SCHEMAS_PATH,
+    CUSTOM_MODELS_PATH,
+]
 
 
 def lint_file(model_path: str) -> None:
@@ -74,14 +87,7 @@ def _get_schema_and_model_paths(
     return schema_path, model_path
 
 
-def _generate_schema(
-    model_path: Path, schema_path: Path, rel_schema_path: Path
-) -> None:
-    # get_schema adds extra defs from shared definitions to the schema.
-    schema = get_schema(str(rel_schema_path))
-    with open(schema_path, "w") as f:
-        json.dump(schema, f)
-
+def _generate_schema(model_path: Path, schema_path: Path) -> None:
     # Generate models
     generate(
         input_=schema_path,
@@ -98,6 +104,19 @@ def _generate_schema(
     lint_file(str(model_path))
 
 
+def _should_generate_schema(
+    schema_path: str, schema_regex: Optional[str] = None
+) -> bool:
+    # Skip files in the shared directory
+    if schema_path.startswith("shared"):
+        return False
+    if is_backup_file(schema_path):
+        return False
+    if schema_regex:
+        return bool(re.match(schema_regex, str(schema_path)))
+    return True
+
+
 def generate_schemas(
     root_dir: Path,
     *,
@@ -112,25 +131,34 @@ def generate_schemas(
     :return: A list of model files that were changed.
     """
 
-    os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
-    schema_paths = list(Path(".").rglob("*.json"))
-    os.chdir(os.path.join(root_dir))
-    models_changed = []
-    for rel_schema_path in schema_paths:
-        if rel_schema_path.parts[0] == "shared":
-            continue
-        if schema_regex and not re.match(schema_regex, str(rel_schema_path)):
-            continue
+    unit_to_iri: dict[str, str] = {}
+    with backup(GENERATED_SHARED_PATHS, restore=dry_run):
+        os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
+        schema_paths = list(Path(".").rglob("*.json"))
+        os.chdir(os.path.join(root_dir))
+        models_changed = []
+        for rel_schema_path in schema_paths:
+            if not _should_generate_schema(str(rel_schema_path), schema_regex):
+                continue
 
-        print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-        schema_path, model_path = _get_schema_and_model_paths(root_dir, rel_schema_path)
+            print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
+            schema_path, model_path = _get_schema_and_model_paths(
+                root_dir, rel_schema_path
+            )
 
-        with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
-            _generate_schema(model_path, schema_path, rel_schema_path)
+            with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
+                schema_cleaner = SchemaCleaner()
+                schema_cleaner.clean_file(str(schema_path))
+                unit_to_iri |= schema_cleaner.get_referenced_units()
+                _generate_schema(model_path, schema_path)
 
-            if is_file_changed(model_path):
-                models_changed.append(Path(model_path).stem)
-            else:
-                restore_backup(model_path)
+                if is_file_changed(model_path):
+                    models_changed.append(model_path.stem)
+                else:
+                    restore_backup(model_path)
+
+        update_unit_files(unit_to_iri)
+        for path in [UNITS_MODELS_PATH, CUSTOM_MODELS_PATH]:
+            lint_file(path)
 
     return models_changed
