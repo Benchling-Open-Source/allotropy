@@ -3,6 +3,9 @@ from enum import Enum
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
+from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
+    AgilentGen5ImageParser,
+)
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_parser import (
     AppbioAbsoluteQParser,
 )
@@ -49,6 +52,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
+    AGILENT_GEN5_IMAGE = "AGILENT_GEN5_IMAGE"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
@@ -74,6 +78,7 @@ class Vendor(Enum):
 
 _VENDOR_TO_DISPLAY_NAME = {
     Vendor.AGILENT_GEN5: "Agilent Gen5",
+    Vendor.AGILENT_GEN5_IMAGE: "Agilent Gen5 Image",
     Vendor.APPBIO_ABSOLUTE_Q: "AppBio AbsoluteQ",
     Vendor.APPBIO_QUANTSTUDIO: "AppBio QuantStudio RT-PCR",
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: "AppBio QuantStudio Design And Analysis",
@@ -97,6 +102,7 @@ _VENDOR_TO_DISPLAY_NAME = {
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
+    Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
