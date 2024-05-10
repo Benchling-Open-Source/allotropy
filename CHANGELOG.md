@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Tool to create graph visualization of calculated data documents
 - Global definition of calculated data documents representation
 - Update bioplex to use _get_date_time
 
