@@ -2777,8 +2777,8 @@ def get_rel_std_curve_model() -> Model:
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
-                ASM_converter_name="allotropy",
-                ASM_converter_version="0.1.29",
+                ASM_converter_name=ASM_CONVERTER_NAME,
+                ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
