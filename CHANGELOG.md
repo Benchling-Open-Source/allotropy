@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.30] - 2024-05-10
+
+### Added
 - Global definition of calculated data documents representation
 - Update bioplex to use _get_date_time
 
