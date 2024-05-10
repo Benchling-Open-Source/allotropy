@@ -59,6 +59,8 @@ def construct_graph(
     return graph
 
 
-def visualize_graph(calc_docs: dict[str, CalculatedDocument], calc_doc_name: str) -> None:
+def visualize_graph(
+    calc_docs: dict[str, CalculatedDocument], calc_doc_name: str
+) -> None:
     graph = construct_graph(calc_docs, calc_doc_name)
     nx.drawing.nx_agraph.write_dot(graph, "graph.dot")
