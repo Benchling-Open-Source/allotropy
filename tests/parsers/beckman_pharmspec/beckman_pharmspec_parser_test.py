@@ -73,7 +73,11 @@ def test_file_5() -> Path:
 
 @pytest.fixture()
 def test_files(
-    test_file_1: Path, test_file_2: Path, test_file_3: Path, test_file_4:Path, test_file_5: Path
+    test_file_1: Path,
+    test_file_2: Path,
+    test_file_3: Path,
+    test_file_4: Path,
+    test_file_5: Path,
 ) -> dict[str, Path]:
     return {
         "test_file_1": test_file_1,
@@ -86,22 +90,22 @@ def test_files(
 
 @pytest.mark.short
 def test_get_model(test_files: dict[str, Path]) -> None:
-    tests = {
-        "num_measurement_docs": {
-            "test_file_1": 2,
-            "test_file_2": 3,
-            "test_file_3": 1,
-            "test_file_4": 1,
-            "test_file_5": 3,
-        },
-        "has_calculated_doc": {
-            "test_file_1": True,
-            "test_file_2": True,
-            "test_file_3": True,
-            "test_file_4": False,
-            "test_file_5": False,
-        },
+    num_measurement_docs = {
+        "test_file_1": 2,
+        "test_file_2": 3,
+        "test_file_3": 1,
+        "test_file_4": 1,
+        "test_file_5": 3,
     }
+
+    has_calculated_doc = {
+        "test_file_1": True,
+        "test_file_2": True,
+        "test_file_3": True,
+        "test_file_4": False,
+        "test_file_5": False,
+    }
+
     for name, test_file in test_files.items():
         parser = PharmSpecParser(TimestampParser())
 
@@ -153,7 +157,7 @@ def test_get_model(test_files: dict[str, Path]) -> None:
                     0
                 ].measurement_aggregate_document.measurement_document
             )
-            == tests["num_measurement_docs"][name]
+            == num_measurement_docs[name]
         )
         for (
             elem
@@ -210,7 +214,7 @@ def test_get_model(test_files: dict[str, Path]) -> None:
                 )
                 assert test.value == particle_size
 
-        if tests["has_calculated_doc"][name]:
+        if has_calculated_doc[name]:
             assert (
                 model.light_obscuration_aggregate_document.calculated_data_aggregate_document
             )
@@ -228,7 +232,9 @@ def test_asm(test_files: dict[str, Path]) -> None:
 
 
 @pytest.mark.short
-def test_parse_beckman_pharmspec_hiac_to_asm_contents(test_files: dict[str, Path]) -> None:
+def test_parse_beckman_pharmspec_hiac_to_asm_contents(
+    test_files: dict[str, Path]
+) -> None:
     for _, test_file in test_files.items():
         expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
         allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
