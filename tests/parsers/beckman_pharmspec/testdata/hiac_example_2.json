@@ -237,13 +237,129 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "measurement identifier": "Run3",
+                            "measurement time": "2022-08-12T07:51:50.000000Z",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "flush volume setting": {
+                                            "value": 0,
+                                            "unit": "mL"
+                                        },
+                                        "detector view volume": {
+                                            "value": 100,
+                                            "unit": "mL"
+                                        },
+                                        "repetition setting": 2,
+                                        "sample volume setting": {
+                                            "value": 0.2,
+                                            "unit": "mL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "ExampleTimepoint"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "data processing document": {
+                                            "dilution factor setting": {
+                                                "value": 1,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "distribution aggregate document": {
+                                            "distribution document": [
+                                                {
+                                                    "distribution": [
+                                                        {
+                                                            "particle size": {
+                                                                "value": 2.0,
+                                                                "unit": "μm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 24.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 60.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 5.0,
+                                                                "unit": "μm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 9.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 70.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 10.0,
+                                                                "unit": "μm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 4.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 80.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 25.0,
+                                                                "unit": "μm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 90.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        },
+                                                        {
+                                                            "particle size": {
+                                                                "value": 50.0,
+                                                                "unit": "μm"
+                                                            },
+                                                            "cumulative count": {
+                                                                "value": 0.0,
+                                                                "unit": "(unitless)"
+                                                            },
+                                                            "cumulative particle density": {
+                                                                "value": 100.0,
+                                                                "unit": "Counts/mL"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
                         }
                     ]
                 }
             }
         ],
         "data system document": {
-            "file name": "hiac_example_1.xlsx",
+            "file name": "hiac_example_2.xlsx",
             "software name": "PharmSpec",
             "software version": "3.0",
             "ASM converter name": "allotropy",
