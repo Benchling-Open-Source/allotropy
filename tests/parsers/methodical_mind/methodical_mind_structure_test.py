@@ -8,6 +8,7 @@ from allotropy.parsers.methodical_mind.methodical_mind_structure import (
     PlateData,
 )
 
+
 def test_create_combined_data() -> None:
     with open(
         "tests/parsers/methodical_mind/testdata/methodical_test_1.txt"
