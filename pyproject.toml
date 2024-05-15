@@ -123,7 +123,7 @@ extra-dependencies = [
 ]
 
 [tool.hatch.envs.lint.scripts]
-typing = "mypy --install-types --non-interactive {args:src/allotropy scripts tests}"
+typing = "mypy --install-types --non-interactive {args:src/allotropy scripts tests visualization}"
 style = [
   "ruff {args:.}",
   "black --check --diff {args:.}",
@@ -158,6 +158,15 @@ cov = [
   "test-cov",
   "cov-report",
 ]
+
+[tool.hatch.envs.visualization]
+extra-dependencies = [
+    "networkx >= 3.2.1",
+    "pygraphviz >= 1.11",
+]
+
+[tool.hatch.envs.visualization.scripts]
+json = "visualization/main.py {args:}"
 
 [tool.pytest.ini_options]
 pythonpath = "src"
