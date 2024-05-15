@@ -104,10 +104,17 @@ dependencies = [
   "ruff == 0.0.289",
 ]
 
+[tool.hatch.envs.scripts]
+extra-dependencies = [
+    "networkx >= 3.2.1",
+    "pygraphviz >= 1.11",
+]
+
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py {args:}"
 csv-as-json = "scripts/csv_as_json.py {args:}"
+visualization = "scripts/visualization.py {args:}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
