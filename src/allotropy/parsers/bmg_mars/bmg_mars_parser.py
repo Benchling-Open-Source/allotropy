@@ -1,0 +1,278 @@
+from collections import defaultdict
+import re
+from typing import Any, cast, Optional, TypeVar, Union
+
+import pandas as pd
+
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    ContainerType,
+    DataSystemDocument,
+    DeviceControlDocument,
+    DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
+    LuminescencePointDetectionMeasurementDocumentItems,
+    MeasurementAggregateDocument,
+    Model,
+    PlateReaderAggregateDocument,
+    PlateReaderDocumentItem,
+    SampleDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+)
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueNanometer,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
+)
+from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.bmg_mars.bmg_mars_structure import (
+    Header,
+    PlateWellCount,
+    RE_READ_TYPE,
+    ReadType,
+    Result,
+    Wavelength,
+)
+from allotropy.parsers.lines_reader import CsvReader, LinesReader, read_to_lines
+from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.vendor_parser import VendorParser
+
+MeasurementDocumentItems = Union[
+    FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+]
+
+DeviceControlAggregateDocument = Union[
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+]
+
+T = TypeVar("T")
+
+
+def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
+    return None if value is None else cls(value=value)  # type: ignore[call-arg]
+
+
+class BmgMarsParser(VendorParser):
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
+        filename = named_file_contents.original_file_name
+        lines = read_to_lines(named_file_contents)
+        read_type = self._get_read_type(lines)
+
+        reader = LinesReader(lines)
+        raw_header = list(reader.pop_until(r"Raw Data"))
+        header = Header.create(raw_header)
+
+        csv_data = list(reader.pop_until_empty())
+        wavelength = Wavelength.create(csv_data)
+        plate_well_count = PlateWellCount.create(csv_data)
+        csv_reader = CsvReader(csv_data)
+        raw_data = csv_reader.lines_as_df(csv_data, skiprows=2)
+        raw_data.rename(columns={0: "row"}, inplace=True)
+        data = raw_data.melt(id_vars=["row"], var_name="col", value_name="value")
+        data.dropna(inplace=True)  # TODO: check what we should do here
+        data["uuid"] = [random_uuid_str() for _ in range(len(data))]
+
+        return self._get_model(
+            header, data, filename, read_type, wavelength, plate_well_count
+        )
+
+    def _get_model(
+        self,
+        header: Header,
+        data: pd.DataFrame,
+        filename: str,
+        read_type: ReadType,
+        wavelength: Wavelength,
+        plate_well_count: PlateWellCount,
+    ) -> Model:
+
+        return Model(
+            plate_reader_aggregate_document=PlateReaderAggregateDocument(
+                plate_reader_document=self._get_plate_reader_document(
+                    data, read_type, header, wavelength, plate_well_count
+                ),
+                data_system_document=DataSystemDocument(
+                    file_name=filename,
+                    software_name="BMG MARS",
+                    software_version="BMG MARS",
+                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
+                device_system_document=DeviceSystemDocument(
+                    model_number="BMG MARS",
+                    equipment_serial_number="BMG MARS",
+                    device_identifier="BMG MARS",
+                ),
+            ),
+            field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+        )
+
+    def _get_read_type(self, lines: list[str]) -> ReadType:
+        read_type = re.search(RE_READ_TYPE, "\n".join(lines), flags=re.MULTILINE).group(
+            0
+        )
+        patterns = {
+            "Absorbance": ReadType.ABSORBANCE,
+            "Luminescence": ReadType.LUMINESCENCE,
+            "Fluorescence": ReadType.FLUORESCENCE,
+        }
+
+        for key in patterns:
+            if key in read_type:
+                return patterns[key]
+
+    def _get_device_control_aggregate_document(
+        self,
+        wavelength: Wavelength,
+        read_type: ReadType,
+    ) -> DeviceControlAggregateDocument:
+
+        if read_type == ReadType.ABSORBANCE:
+            return UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        device_type="absorbance detector",
+                        detection_type="absorbance",
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            wavelength.wavelength
+                        ),
+                    )
+                ]
+            )
+
+        elif read_type == ReadType.FLUORESCENCE:
+            return FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    FluorescencePointDetectionDeviceControlDocumentItem(
+                        device_type="fluorescence detector",
+                        detection_type="fluorescence",
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            wavelength.wavelength
+                        ),
+                        excitation_wavelength_setting=TQuantityValueNanometer(
+                            wavelength.ex_wavelength
+                        ),
+                    )
+                ]
+            )
+        else:  # read_type is LUMINESCENCE
+            return LuminescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    LuminescencePointDetectionDeviceControlDocumentItem(
+                        device_type="luminescence detector",
+                        detection_type="luminescence",
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            wavelength.wavelength
+                        ),
+                    )
+                ]
+            )
+
+    def _get_measurement_document(
+        self,
+        read_type: ReadType,
+        header: Header,
+        result: Result,
+        device_control_document=list[DeviceControlDocument],
+    ) -> MeasurementDocumentItems:
+        plate_barcode = header.id1
+        well_location = f"{result.row}{result.col}"
+        sample_document = SampleDocument(
+            sample_identifier=f"{plate_barcode} {well_location}",
+            location_identifier=well_location,
+            well_plate_identifier=plate_barcode,
+        )
+        if read_type == ReadType.ABSORBANCE:
+            return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+                measurement_identifier=result.uuid,
+                sample_document=sample_document,
+                device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(
+                        list[
+                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem
+                        ],
+                        device_control_document,
+                    )
+                ),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(result.value),
+            )
+        elif read_type == ReadType.FLUORESCENCE:
+            return FluorescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=result.uuid,
+                sample_document=sample_document,
+                device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(
+                        list[FluorescencePointDetectionDeviceControlDocumentItem],
+                        device_control_document,
+                    )
+                ),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(result.value),
+            )
+        else:  # read_type is LUMINESCENCE
+            return LuminescencePointDetectionMeasurementDocumentItems(
+                measurement_identifier=result.uuid,
+                sample_document=sample_document,
+                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                    device_control_document=cast(
+                        list[LuminescencePointDetectionDeviceControlDocumentItem]
+                    )
+                ),
+                luminescence=TQuantityValueRelativeLightUnit(result.value),
+            )
+
+    def _get_plate_reader_document(
+        self,
+        data: pd.DataFrame,
+        read_type: ReadType,
+        header: Header,
+        wavelength: Wavelength,
+        plate_well_count: PlateWellCount,
+    ) -> list[PlateReaderDocumentItem]:
+        items = []
+        measurement_docs_dict = defaultdict(list)
+        measurement_time = self._get_date_time(f"{header.date} {header.time}")
+        plate_well_count = plate_well_count.plate_well_count
+        device_control_aggregate_document = self._get_device_control_aggregate_document(
+            wavelength, read_type
+        )
+
+        for _, result in data.iterrows():
+            measurement_docs_dict[(result.row, result.col)].append(
+                self._get_measurement_document(
+                    read_type,
+                    header,
+                    result,
+                    cast(
+                        list[DeviceControlDocument],
+                        device_control_aggregate_document.device_control_document,
+                    ),
+                )
+            )
+
+        for well_location in sorted(measurement_docs_dict.keys()):
+            items.append(
+                PlateReaderDocumentItem(
+                    measurement_aggregate_document=MeasurementAggregateDocument(
+                        measurement_time=measurement_time,
+                        plate_well_count=plate_well_count,
+                        measurement_document=measurement_docs_dict[well_location],
+                        analytical_method_identifier=header.test_name,
+                        experimental_data_identifier=header.id2,
+                        container_type=ContainerType.well_plate,
+                    ),
+                    analyst=header.user,
+                )
+            )
+
+        return items
