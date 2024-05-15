@@ -1,10 +1,11 @@
 import pytest
 
-# ReadData,
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
     HeaderData,
     LayoutData,
+    ReadData,
 )
+from allotropy.parsers.agilent_gen5_image.constants import DetectionType
 from allotropy.parsers.lines_reader import LinesReader
 
 
@@ -102,3 +103,58 @@ def test_create_layout_data_with_name_rows() -> None:
         "B2": "Name_B2",
         "B3": "Name_B3",
     }
+
+
+@pytest.mark.short
+def test_create_read_data() -> None:
+    procedure_details = [
+        "Procedure Details",
+        "",
+        "Plate Type	Trevigen 96-Well Comet Chip and Adapter (Use plate lid)",
+        "Eject plate on completion	",
+        "Read\t2.5x Imaging",
+        "\tImage Single Image",
+        "\tFull Plate",
+        "\tObjective: 2.74x",
+        "\tField of View: Standard",
+        "\tChannel 1:  GFP 469,525",
+        "\t    LED intensity: 5, Integration time: 110 msec, Camera gain: 0",
+        "\t    Autofocus with optional scan",
+        "\t    Minimum focus metric ratio: 3",
+        "\t    Scan distance: 600 µm",
+        "\t    Scan increment: 30 µm",
+        "\t    Minimum focus delta: 8",
+        "\t    Percent of capture exposure for focus: 75",
+        "\t    Offset from bottom of well: 0 µm",
+        "\t    Vibration CV threshold: 0.01",
+        "\t    Images to average: 1",
+        "\tHorizontal offset: 0 µm, Vertical offset: 0 µm",
+        "\tDelay after plate movement: 300 msec",
+        "Read\t4x Montage Imaging",
+        "\tImage Montage",
+        "\tFull Plate",
+        "\tObjective: 4x",
+        "\tField of View: Standard",
+        "\tChannel 1:  GFP 469,525",
+        "\t    LED intensity: 9, Integration time: 100 msec, Camera gain: 1",
+        "\t    Autofocus with optional scan",
+        "\t    Minimum focus metric ratio: 3",
+        "\t    Scan distance: 600 µm",
+        "\t    Scan increment: 30 µm",
+        "\t    Minimum focus delta: 8",
+        "\t    Percent of capture exposure for focus: 75",
+        "\t    Offset from bottom of well: 0 µm",
+        "\t    Vibration CV threshold: 0.01",
+        "\t    Images to average: 1",
+        "\tHorizontal offset: 0 µm, Vertical offset: 0 µm",
+        "\tDelay after plate movement: 300 msec",
+        "\tMontage rows: 2, columns: 2",
+        "\tMontage horizontal spacing: 1776 µm, vertical spacing: 1311 µm",
+        "\tMontage autofocus option: Autofocus option based on objective size",
+    ]
+    reader = LinesReader(procedure_details)
+    read_data = ReadData.create(reader=reader)
+
+    assert len(read_data.read_sections) == 2
+    assert read_data.read_sections[0].image_mode == DetectionType.SINGLE_IMAGE
+    assert read_data.read_sections[1].image_mode == DetectionType.MONTAGE

@@ -12,10 +12,11 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
 )
+from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.constants import (
     FILENAME_REGEX,
     HEADER_PREFIXES,
-    ImageMode,
+    DetectionType,
     ReadType,
     UNSUPORTED_READ_TYPE_ERROR,
 )
@@ -94,30 +95,46 @@ class HeaderData:
         return matches_dict["plate_identifier"]
 
 
+class InstrumentSettings:
+    auto_focus_setting: bool
+    detector_gain_setting: Optional[float] = None
+
+
 @dataclass(frozen=True)
 class ReadSection:
-    read_mode: ImageMode
+    image_mode: DetectionType
+    instrment_settings_list: list[InstrumentSettings]
 
     @classmethod
-    def create(cls, read_chunk: str) -> ReadSection:
-
-        read_mode = cls.get_image_mode(read_chunk)
+    def create(cls, reader: LinesReader) -> ReadSection:
+        top_read_chunk = assert_not_none(
+            reader.pop_until(r"^\tChannel|^\tColor Camera"),
+            msg="Expected at least one Channel or Color Camera settings in the Read section.",
+        )
+        detection_type = cls.get_detection_type("\n".join(top_read_chunk))
 
         return ReadSection(
-            read_mode=read_mode,
+            image_mode=detection_type,
+            instrment_settings_list=[],
         )
 
+    @property
+    def auto_focus_setting(self):
+        if not self.instrment_settings_list:
+            return None
+        return self.instrment_settings_list[0].auto_focus_setting
+
     @staticmethod
-    def get_image_mode(read_chunk: str) -> ImageMode:
+    def get_detection_type(read_chunk: str) -> DetectionType:
+        if DetectionType.SINGLE_IMAGE.value in read_chunk:
+            return DetectionType.SINGLE_IMAGE
+        elif DetectionType.MONTAGE.value in read_chunk:
+            return DetectionType.MONTAGE
+        elif DetectionType.Z_STACKING.value in read_chunk:
+            return DetectionType.Z_STACKING
 
-        if ImageMode.SINGLE_IMAGE.value in read_chunk:
-            return ImageMode.SINGLE_IMAGE
-        elif ImageMode.MONTAGE.value in read_chunk:
-            return ImageMode.MONTAGE
-        elif ImageMode.Z_STACKING.value in read_chunk:
-            return ImageMode.Z_STACKING
+        msg = f"Measurement mode not found; expected to find one of {sorted(DetectionType._member_names_)}."
 
-        msg = f"Image mode not found; expected to find one of {sorted(ImageMode._member_names_)}."
         raise AllotropeConversionError(msg)
 
 
@@ -126,7 +143,7 @@ class ReadData:
     read_sections: list[ReadSection]
 
     @classmethod
-    def create(cls, reader: LinesReader) -> list[ReadSection]:
+    def create(cls, reader: LinesReader) -> ReadData:
         assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
         reader.pop()
         reader.drop_empty()
@@ -137,6 +154,12 @@ class ReadData:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
         # TODO: get read chunks and create a ReadSection object for each
+        section_lines_reader = SectionLinesReader(procedure_details.splitlines())
+        read_sections = []
+        for read_section in section_lines_reader.iter_sections("^Read\t"):
+            read_sections.append(ReadSection.create(read_section))
+
+        return ReadData(read_sections=read_sections)
 
     @classmethod
     def _get_read_type(cls, procedure_details: str) -> ReadType:
