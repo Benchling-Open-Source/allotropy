@@ -9,6 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Tool to create graph visualization of calculated data documents
+
+
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.30] - 2024-05-10
+
+### Added
+
 - Global definition of calculated data documents representation
 - Update bioplex to use _get_date_time
 
@@ -20,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update multianalyte model minimum_assay_bead_count to be of type "number" insetead of "unitless"
 - Update luminex and biorad bioplex to use updated multianalyte model
 - Remove inner calculated data documents from AppBio Quantstudio
+- Use global definition of calculated data documents in AppBio Quantstudio and Quantstudio Design and Analysis adapters
 
 ### Deprecated
 
