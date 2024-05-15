@@ -9,7 +9,6 @@ from typing import Optional
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueNanometer,
     TQuantityValueNumber,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_csv
@@ -63,8 +62,8 @@ class Header:
 
 @dataclass(frozen=True)
 class Wavelength:
-    wavelength: TQuantityValueNanometer
-    ex_wavelength: Optional[TQuantityValueNanometer] = None
+    wavelength: float
+    ex_wavelength: Optional[float] = None
 
     @staticmethod
     def create(csv_data: list[str]) -> Wavelength:
@@ -74,17 +73,11 @@ class Wavelength:
         )
         if raw_wavelengths.group("wavelength2"):
             return Wavelength(
-                wavelength=TQuantityValueNanometer(
-                    raw_wavelengths.group("wavelength2")
-                ),
-                ex_wavelength=TQuantityValueNanometer(
-                    raw_wavelengths.group("wavelength1")
-                ),
+                wavelength=float(raw_wavelengths.group("wavelength2")),
+                ex_wavelength=float(raw_wavelengths.group("wavelength1")),
             )
         else:
-            return Wavelength(
-                wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength1"))
-            )
+            return Wavelength(wavelength=float(raw_wavelengths.group("wavelength1")))
 
 
 @dataclass(frozen=True)

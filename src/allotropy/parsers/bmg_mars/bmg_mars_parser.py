@@ -146,8 +146,9 @@ class BmgMarsParser(VendorParser):
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type="absorbance detector",
                         detection_type="absorbance",
-                        detector_wavelength_setting=TQuantityValueNanometer(
-                            wavelength.wavelength
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            wavelength.wavelength if wavelength.wavelength else None,
                         ),
                     )
                 ]
@@ -159,11 +160,15 @@ class BmgMarsParser(VendorParser):
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type="fluorescence detector",
                         detection_type="fluorescence",
-                        detector_wavelength_setting=TQuantityValueNanometer(
-                            wavelength.wavelength
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            wavelength.wavelength if wavelength.wavelength else None,
                         ),
-                        excitation_wavelength_setting=TQuantityValueNanometer(
+                        excitation_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
                             wavelength.ex_wavelength
+                            if wavelength.ex_wavelength
+                            else None,
                         ),
                     )
                 ]
@@ -174,8 +179,9 @@ class BmgMarsParser(VendorParser):
                     LuminescencePointDetectionDeviceControlDocumentItem(
                         device_type="luminescence detector",
                         detection_type="luminescence",
-                        detector_wavelength_setting=TQuantityValueNanometer(
-                            wavelength.wavelength
+                        detector_wavelength_setting=safe_value(
+                            TQuantityValueNanometer,
+                            wavelength.wavelength if wavelength.wavelength else None,
                         ),
                     )
                 ]
