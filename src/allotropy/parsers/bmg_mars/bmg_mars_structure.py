@@ -63,8 +63,8 @@ class Header:
 
 @dataclass(frozen=True)
 class Wavelength:
-    wavelength: float
-    ex_wavelength: Optional[float] = None
+    wavelength: TQuantityValueNanometer
+    ex_wavelength: Optional[TQuantityValueNanometer] = None
 
     @staticmethod
     def create(csv_data: list[str]) -> Wavelength:
@@ -74,11 +74,17 @@ class Wavelength:
         )
         if raw_wavelengths.group("wavelength2"):
             return Wavelength(
-                wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength2")),
-                ex_wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength1")),
+                wavelength=TQuantityValueNanometer(
+                    raw_wavelengths.group("wavelength2")
+                ),
+                ex_wavelength=TQuantityValueNanometer(
+                    raw_wavelengths.group("wavelength1")
+                ),
             )
         else:
-            return Wavelength(wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength1")))
+            return Wavelength(
+                wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength1"))
+            )
 
 
 @dataclass(frozen=True)
