@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 from enum import Enum
 from io import StringIO
@@ -6,7 +8,10 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueNanometer,
+    TQuantityValueNumber,
+)
 from allotropy.parsers.lines_reader import LinesReader, read_csv
 from allotropy.parsers.utils.values import (
     try_str_from_series,
@@ -29,13 +34,13 @@ class Header:
     date: str
     time: str
     id1: str
-    id2: str
-    id3: str
+    id2: Optional[str] = None
+    id3: Optional[str] = None
     path: Optional[str] = None
     test_id: Optional[str] = None
 
     @staticmethod
-    def create(reader: LinesReader):
+    def create(reader: LinesReader) -> Header:
         csv_stream = StringIO("\n".join(reader))
         raw_data = read_csv(csv_stream, header=None)
         df = pd.melt(raw_data, value_vars=raw_data.columns).dropna(axis="index")
@@ -62,18 +67,18 @@ class Wavelength:
     ex_wavelength: Optional[float] = None
 
     @staticmethod
-    def create(csv_data: list[str]):
+    def create(csv_data: list[str]) -> Wavelength:
         raw_wavelengths = re.search(
             r"Raw Data \((?P<wavelength1>\d+)(?:/)?(?P<wavelength2>\d+)?(?:\))",
             "\n".join(csv_data),
         )
         if raw_wavelengths.group("wavelength2"):
             return Wavelength(
-                wavelength=float(raw_wavelengths.group("wavelength2")),
-                ex_wavelength=float(raw_wavelengths.group("wavelength1")),
+                wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength2")),
+                ex_wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength1")),
             )
         else:
-            return Wavelength(wavelength=float(raw_wavelengths.group("wavelength1")))
+            return Wavelength(wavelength=TQuantityValueNanometer(raw_wavelengths.group("wavelength1")))
 
 
 @dataclass(frozen=True)
@@ -81,7 +86,7 @@ class PlateWellCount:
     plate_well_count: TQuantityValueNumber
 
     @staticmethod
-    def create(csv_data: list[str]):
+    def create(csv_data: list[str]) -> PlateWellCount:
         if re.search(r"23,24\nA", "\n".join(csv_data)):
             return PlateWellCount(plate_well_count=TQuantityValueNumber(384))
         if re.search(r"11,12\nA", "\n".join(csv_data)):
