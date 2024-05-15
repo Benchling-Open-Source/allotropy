@@ -39,7 +39,7 @@ class Header:
     test_id: Optional[str] = None
 
     @staticmethod
-    def create(reader: LinesReader) -> Header:
+    def create(reader: list[str]) -> Header:
         csv_stream = StringIO("\n".join(reader))
         raw_data = read_csv(csv_stream, header=None)
         df = pd.melt(raw_data, value_vars=raw_data.columns).dropna(axis="index")
