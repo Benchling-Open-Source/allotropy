@@ -1365,7 +1365,7 @@ def get_rel_std_curve_data() -> Data:
                     identifier=37,
                     items={
                         "RNaseP": WellItem(
-                            uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                            uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                             identifier=37,
                             target_dna_description="RNaseP",
                             sample_identifier="800",
@@ -1411,69 +1411,12 @@ def get_rel_std_curve_data() -> Data:
                     },
                     _multicomponent_data=None,
                     _melt_curve_raw_data=None,
-                    _calculated_documents=[
-                        CalculatedDocument(
-                            uuid="91feb1d5-89e6-442e-a11c-d4b4f2821537",
-                            name="quantity",
-                            value=794.91,
-                            data_sources=[
-                                DataSource(
-                                    feature="cycle threshold result",
-                                    reference=WellItem(
-                                        uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
-                                        identifier=37,
-                                        target_dna_description="RNaseP",
-                                        sample_identifier="800",
-                                        reporter_dye_setting="FAM",
-                                        position="D1",
-                                        well_location_identifier="D1",
-                                        quencher_dye_setting="NFQ-MGB",
-                                        sample_role_type="UNKNOWN",
-                                        _amplification_data=AmplificationData(
-                                            total_cycle_number_setting=1.0,
-                                            cycle=[1],
-                                            rn=[0.627],
-                                            delta_rn=[0.001],
-                                        ),
-                                        _result=Result(
-                                            cycle_threshold_value_setting=0.133,
-                                            cycle_threshold_result=30.155,
-                                            automatic_cycle_threshold_enabled_setting=True,
-                                            automatic_baseline_determination_enabled_setting=True,
-                                            normalized_reporter_result=None,
-                                            baseline_corrected_reporter_result=None,
-                                            genotyping_determination_result=None,
-                                            genotyping_determination_method_setting=None,
-                                            quantity=794.91,
-                                            quantity_mean=818.012,
-                                            quantity_sd=29.535,
-                                            ct_mean=30.115,
-                                            ct_sd=0.051,
-                                            delta_ct_mean=None,
-                                            delta_ct_se=None,
-                                            delta_delta_ct=None,
-                                            rq=0.798,
-                                            rq_min=0.658,
-                                            rq_max=0.967,
-                                            rn_mean=None,
-                                            rn_sd=None,
-                                            y_intercept=39.662,
-                                            r_squared=0.999,
-                                            slope=-3.278,
-                                            efficiency=101.866,
-                                        ),
-                                    ),
-                                )
-                            ],
-                            iterated=True,
-                        )
-                    ],
                 ),
                 Well(
                     identifier=38,
                     items={
                         "RNaseP": WellItem(
-                            uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                            uuid="f112727d-c267-4061-b51e-a0784a112afe",
                             identifier=38,
                             target_dna_description="RNaseP",
                             sample_identifier="800",
@@ -1519,63 +1462,6 @@ def get_rel_std_curve_data() -> Data:
                     },
                     _multicomponent_data=None,
                     _melt_curve_raw_data=None,
-                    _calculated_documents=[
-                        CalculatedDocument(
-                            uuid="8f82e615-af30-474c-9e27-a53bc146013c",
-                            name="quantity",
-                            value=769.776,
-                            data_sources=[
-                                DataSource(
-                                    feature="cycle threshold result",
-                                    reference=WellItem(
-                                        uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
-                                        identifier=38,
-                                        target_dna_description="RNaseP",
-                                        sample_identifier="800",
-                                        reporter_dye_setting="FAM",
-                                        position="D2",
-                                        well_location_identifier="D2",
-                                        quencher_dye_setting="NFQ-MGB",
-                                        sample_role_type="UNKNOWN",
-                                        _amplification_data=AmplificationData(
-                                            total_cycle_number_setting=1.0,
-                                            cycle=[1],
-                                            rn=[0.612],
-                                            delta_rn=[-0.001],
-                                        ),
-                                        _result=Result(
-                                            cycle_threshold_value_setting=0.133,
-                                            cycle_threshold_result=30.2,
-                                            automatic_cycle_threshold_enabled_setting=True,
-                                            automatic_baseline_determination_enabled_setting=True,
-                                            normalized_reporter_result=None,
-                                            baseline_corrected_reporter_result=None,
-                                            genotyping_determination_result=None,
-                                            genotyping_determination_method_setting=None,
-                                            quantity=769.776,
-                                            quantity_mean=818.012,
-                                            quantity_sd=29.535,
-                                            ct_mean=30.115,
-                                            ct_sd=0.051,
-                                            delta_ct_mean=None,
-                                            delta_ct_se=None,
-                                            delta_delta_ct=None,
-                                            rq=0.798,
-                                            rq_min=0.658,
-                                            rq_max=0.967,
-                                            rn_mean=None,
-                                            rn_sd=None,
-                                            y_intercept=39.662,
-                                            r_squared=0.999,
-                                            slope=-3.278,
-                                            efficiency=101.866,
-                                        ),
-                                    ),
-                                )
-                            ],
-                            iterated=True,
-                        )
-                    ],
                 ),
             ]
         ),
@@ -1584,21 +1470,21 @@ def get_rel_std_curve_data() -> Data:
         reference_sample="800",
         calculated_documents=[
             CalculatedDocument(
-                uuid="70047607-9164-4e29-a1ea-296e36df4f20",
+                uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
                 name="quantity mean",
                 value=818.012,
                 data_sources=[
                     DataSource(
                         feature="quantity",
                         reference=CalculatedDocument(
-                            uuid="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                            uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
                             name="quantity",
                             value=794.91,
                             data_sources=[
                                 DataSource(
                                     feature="cycle threshold result",
                                     reference=WellItem(
-                                        uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                        uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                         identifier=37,
                                         target_dna_description="RNaseP",
                                         sample_identifier="800",
@@ -1649,14 +1535,14 @@ def get_rel_std_curve_data() -> Data:
                     DataSource(
                         feature="quantity",
                         reference=CalculatedDocument(
-                            uuid="8f82e615-af30-474c-9e27-a53bc146013c",
+                            uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                             name="quantity",
                             value=769.776,
                             data_sources=[
                                 DataSource(
                                     feature="cycle threshold result",
                                     reference=WellItem(
-                                        uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                        uuid="f112727d-c267-4061-b51e-a0784a112afe",
                                         identifier=38,
                                         target_dna_description="RNaseP",
                                         sample_identifier="800",
@@ -1708,21 +1594,131 @@ def get_rel_std_curve_data() -> Data:
                 iterated=True,
             ),
             CalculatedDocument(
-                uuid="6df2e5ab-b601-4d4a-81a0-a439fd923e6d",
+                uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
+                name="quantity",
+                value=794.91,
+                data_sources=[
+                    DataSource(
+                        feature="cycle threshold result",
+                        reference=WellItem(
+                            uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                            identifier=37,
+                            target_dna_description="RNaseP",
+                            sample_identifier="800",
+                            reporter_dye_setting="FAM",
+                            position="D1",
+                            well_location_identifier="D1",
+                            quencher_dye_setting="NFQ-MGB",
+                            sample_role_type="UNKNOWN",
+                            _amplification_data=AmplificationData(
+                                total_cycle_number_setting=1.0,
+                                cycle=[1],
+                                rn=[0.627],
+                                delta_rn=[0.001],
+                            ),
+                            _result=Result(
+                                cycle_threshold_value_setting=0.133,
+                                cycle_threshold_result=30.155,
+                                automatic_cycle_threshold_enabled_setting=True,
+                                automatic_baseline_determination_enabled_setting=True,
+                                normalized_reporter_result=None,
+                                baseline_corrected_reporter_result=None,
+                                genotyping_determination_result=None,
+                                genotyping_determination_method_setting=None,
+                                quantity=794.91,
+                                quantity_mean=818.012,
+                                quantity_sd=29.535,
+                                ct_mean=30.115,
+                                ct_sd=0.051,
+                                delta_ct_mean=None,
+                                delta_ct_se=None,
+                                delta_delta_ct=None,
+                                rq=0.798,
+                                rq_min=0.658,
+                                rq_max=0.967,
+                                rn_mean=None,
+                                rn_sd=None,
+                                y_intercept=39.662,
+                                r_squared=0.999,
+                                slope=-3.278,
+                                efficiency=101.866,
+                            ),
+                        ),
+                    )
+                ],
+                iterated=True,
+            ),
+            CalculatedDocument(
+                uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                name="quantity",
+                value=769.776,
+                data_sources=[
+                    DataSource(
+                        feature="cycle threshold result",
+                        reference=WellItem(
+                            uuid="f112727d-c267-4061-b51e-a0784a112afe",
+                            identifier=38,
+                            target_dna_description="RNaseP",
+                            sample_identifier="800",
+                            reporter_dye_setting="FAM",
+                            position="D2",
+                            well_location_identifier="D2",
+                            quencher_dye_setting="NFQ-MGB",
+                            sample_role_type="UNKNOWN",
+                            _amplification_data=AmplificationData(
+                                total_cycle_number_setting=1.0,
+                                cycle=[1],
+                                rn=[0.612],
+                                delta_rn=[-0.001],
+                            ),
+                            _result=Result(
+                                cycle_threshold_value_setting=0.133,
+                                cycle_threshold_result=30.2,
+                                automatic_cycle_threshold_enabled_setting=True,
+                                automatic_baseline_determination_enabled_setting=True,
+                                normalized_reporter_result=None,
+                                baseline_corrected_reporter_result=None,
+                                genotyping_determination_result=None,
+                                genotyping_determination_method_setting=None,
+                                quantity=769.776,
+                                quantity_mean=818.012,
+                                quantity_sd=29.535,
+                                ct_mean=30.115,
+                                ct_sd=0.051,
+                                delta_ct_mean=None,
+                                delta_ct_se=None,
+                                delta_delta_ct=None,
+                                rq=0.798,
+                                rq_min=0.658,
+                                rq_max=0.967,
+                                rn_mean=None,
+                                rn_sd=None,
+                                y_intercept=39.662,
+                                r_squared=0.999,
+                                slope=-3.278,
+                                efficiency=101.866,
+                            ),
+                        ),
+                    )
+                ],
+                iterated=True,
+            ),
+            CalculatedDocument(
+                uuid="4da4ba6b-cb9d-471b-b810-fdc46f57528e",
                 name="quantity sd",
                 value=29.535,
                 data_sources=[
                     DataSource(
                         feature="quantity",
                         reference=CalculatedDocument(
-                            uuid="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                            uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
                             name="quantity",
                             value=794.91,
                             data_sources=[
                                 DataSource(
                                     feature="cycle threshold result",
                                     reference=WellItem(
-                                        uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                        uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                         identifier=37,
                                         target_dna_description="RNaseP",
                                         sample_identifier="800",
@@ -1773,14 +1769,14 @@ def get_rel_std_curve_data() -> Data:
                     DataSource(
                         feature="quantity",
                         reference=CalculatedDocument(
-                            uuid="8f82e615-af30-474c-9e27-a53bc146013c",
+                            uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                             name="quantity",
                             value=769.776,
                             data_sources=[
                                 DataSource(
                                     feature="cycle threshold result",
                                     reference=WellItem(
-                                        uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                        uuid="f112727d-c267-4061-b51e-a0784a112afe",
                                         identifier=38,
                                         target_dna_description="RNaseP",
                                         sample_identifier="800",
@@ -1832,14 +1828,14 @@ def get_rel_std_curve_data() -> Data:
                 iterated=True,
             ),
             CalculatedDocument(
-                uuid="4ab1f957-95f5-45c5-a5a2-fd6f44a37136",
+                uuid="a59289c2-e71a-4d72-972d-258e3ac2e78e",
                 name="ct mean",
                 value=30.115,
                 data_sources=[
                     DataSource(
                         feature="cycle threshold result",
                         reference=WellItem(
-                            uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                            uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                             identifier=37,
                             target_dna_description="RNaseP",
                             sample_identifier="800",
@@ -1886,7 +1882,7 @@ def get_rel_std_curve_data() -> Data:
                     DataSource(
                         feature="cycle threshold result",
                         reference=WellItem(
-                            uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                            uuid="f112727d-c267-4061-b51e-a0784a112afe",
                             identifier=38,
                             target_dna_description="RNaseP",
                             sample_identifier="800",
@@ -1934,14 +1930,14 @@ def get_rel_std_curve_data() -> Data:
                 iterated=True,
             ),
             CalculatedDocument(
-                uuid="11bacdaa-3ee7-49d1-8882-ce67ea01a3aa",
+                uuid="99f04b2e-4463-4666-b20d-d8f1de2f62e5",
                 name="ct sd",
                 value=0.051,
                 data_sources=[
                     DataSource(
                         feature="cycle threshold result",
                         reference=WellItem(
-                            uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                            uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                             identifier=37,
                             target_dna_description="RNaseP",
                             sample_identifier="800",
@@ -1988,7 +1984,7 @@ def get_rel_std_curve_data() -> Data:
                     DataSource(
                         feature="cycle threshold result",
                         reference=WellItem(
-                            uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                            uuid="f112727d-c267-4061-b51e-a0784a112afe",
                             identifier=38,
                             target_dna_description="RNaseP",
                             sample_identifier="800",
@@ -2036,35 +2032,35 @@ def get_rel_std_curve_data() -> Data:
                 iterated=True,
             ),
             CalculatedDocument(
-                uuid="ceeae020-7f7a-43ee-975b-08044ef67826",
+                uuid="095631c4-1c21-412d-acc1-3a67984dbbf2",
                 name="rq min",
                 value=0.658,
                 data_sources=[
                     DataSource(
                         feature="rq",
                         reference=CalculatedDocument(
-                            uuid="bfe26da2-72cb-411b-8abb-44e5d2f19d8c",
+                            uuid="d0dc238e-13a6-4057-b1ae-c8d30145805b",
                             name="rq",
                             value=0.798,
                             data_sources=[
                                 DataSource(
                                     feature="quantity mean",
                                     reference=CalculatedDocument(
-                                        uuid="70047607-9164-4e29-a1ea-296e36df4f20",
+                                        uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
                                         name="quantity mean",
                                         value=818.012,
                                         data_sources=[
                                             DataSource(
                                                 feature="quantity",
                                                 reference=CalculatedDocument(
-                                                    uuid="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                                                    uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
                                                     name="quantity",
                                                     value=794.91,
                                                     data_sources=[
                                                         DataSource(
                                                             feature="cycle threshold result",
                                                             reference=WellItem(
-                                                                uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                                                uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                                                 identifier=37,
                                                                 target_dna_description="RNaseP",
                                                                 sample_identifier="800",
@@ -2115,14 +2111,14 @@ def get_rel_std_curve_data() -> Data:
                                             DataSource(
                                                 feature="quantity",
                                                 reference=CalculatedDocument(
-                                                    uuid="8f82e615-af30-474c-9e27-a53bc146013c",
+                                                    uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                                                     name="quantity",
                                                     value=769.776,
                                                     data_sources=[
                                                         DataSource(
                                                             feature="cycle threshold result",
                                                             reference=WellItem(
-                                                                uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                                                uuid="f112727d-c267-4061-b51e-a0784a112afe",
                                                                 identifier=38,
                                                                 target_dna_description="RNaseP",
                                                                 sample_identifier="800",
@@ -2182,28 +2178,28 @@ def get_rel_std_curve_data() -> Data:
                 iterated=True,
             ),
             CalculatedDocument(
-                uuid="bfe26da2-72cb-411b-8abb-44e5d2f19d8c",
+                uuid="d0dc238e-13a6-4057-b1ae-c8d30145805b",
                 name="rq",
                 value=0.798,
                 data_sources=[
                     DataSource(
                         feature="quantity mean",
                         reference=CalculatedDocument(
-                            uuid="70047607-9164-4e29-a1ea-296e36df4f20",
+                            uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
                             name="quantity mean",
                             value=818.012,
                             data_sources=[
                                 DataSource(
                                     feature="quantity",
                                     reference=CalculatedDocument(
-                                        uuid="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                                        uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
                                         name="quantity",
                                         value=794.91,
                                         data_sources=[
                                             DataSource(
                                                 feature="cycle threshold result",
                                                 reference=WellItem(
-                                                    uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                                    uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                                     identifier=37,
                                                     target_dna_description="RNaseP",
                                                     sample_identifier="800",
@@ -2254,14 +2250,14 @@ def get_rel_std_curve_data() -> Data:
                                 DataSource(
                                     feature="quantity",
                                     reference=CalculatedDocument(
-                                        uuid="8f82e615-af30-474c-9e27-a53bc146013c",
+                                        uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                                         name="quantity",
                                         value=769.776,
                                         data_sources=[
                                             DataSource(
                                                 feature="cycle threshold result",
                                                 reference=WellItem(
-                                                    uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                                    uuid="f112727d-c267-4061-b51e-a0784a112afe",
                                                     identifier=38,
                                                     target_dna_description="RNaseP",
                                                     sample_identifier="800",
@@ -2317,35 +2313,35 @@ def get_rel_std_curve_data() -> Data:
                 iterated=True,
             ),
             CalculatedDocument(
-                uuid="84342a87-b7b4-4966-8066-663ab490adbb",
+                uuid="4db4a552-e3c5-49fc-ab02-759245c01a48",
                 name="rq max",
                 value=0.967,
                 data_sources=[
                     DataSource(
                         feature="rq",
                         reference=CalculatedDocument(
-                            uuid="bfe26da2-72cb-411b-8abb-44e5d2f19d8c",
+                            uuid="d0dc238e-13a6-4057-b1ae-c8d30145805b",
                             name="rq",
                             value=0.798,
                             data_sources=[
                                 DataSource(
                                     feature="quantity mean",
                                     reference=CalculatedDocument(
-                                        uuid="70047607-9164-4e29-a1ea-296e36df4f20",
+                                        uuid="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
                                         name="quantity mean",
                                         value=818.012,
                                         data_sources=[
                                             DataSource(
                                                 feature="quantity",
                                                 reference=CalculatedDocument(
-                                                    uuid="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                                                    uuid="61d96780-4aa9-4d24-8ff5-491ccd325502",
                                                     name="quantity",
                                                     value=794.91,
                                                     data_sources=[
                                                         DataSource(
                                                             feature="cycle threshold result",
                                                             reference=WellItem(
-                                                                uuid="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                                                uuid="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                                                 identifier=37,
                                                                 target_dna_description="RNaseP",
                                                                 sample_identifier="800",
@@ -2396,14 +2392,14 @@ def get_rel_std_curve_data() -> Data:
                                             DataSource(
                                                 feature="quantity",
                                                 reference=CalculatedDocument(
-                                                    uuid="8f82e615-af30-474c-9e27-a53bc146013c",
+                                                    uuid="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                                                     name="quantity",
                                                     value=769.776,
                                                     data_sources=[
                                                         DataSource(
                                                             feature="cycle threshold result",
                                                             reference=WellItem(
-                                                                uuid="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                                                uuid="f112727d-c267-4061-b51e-a0784a112afe",
                                                                 identifier=38,
                                                                 target_dna_description="RNaseP",
                                                                 sample_identifier="800",
@@ -2490,7 +2486,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                measurement_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                 measurement_time="2010-10-20T02:23:34-04:00",
                                 target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
@@ -2625,30 +2621,7 @@ def get_rel_std_curve_model() -> Model:
                     ),
                     analyst=None,
                     submitter=None,
-                    calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
-                        calculated_data_document=[
-                            CalculatedDataDocumentItem(
-                                calculated_data_identifier="91feb1d5-89e6-442e-a11c-d4b4f2821537",
-                                data_source_aggregate_document=DataSourceAggregateDocument(
-                                    data_source_document=[
-                                        DataSourceDocumentItem(
-                                            data_source_identifier="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
-                                            data_source_feature="cycle threshold result",
-                                        )
-                                    ]
-                                ),
-                                data_processing_document=None,
-                                calculated_data_name="quantity",
-                                calculated_data_description=None,
-                                calculated_datum=TQuantityValueUnitless(
-                                    value=794.91,
-                                    unit="(unitless)",
-                                    has_statistic_datum_role=None,
-                                    field_type=None,
-                                ),
-                            )
-                        ]
-                    ),
+                    calculated_data_aggregate_document=None,
                 ),
                 QPCRDocumentItem(
                     measurement_aggregate_document=MeasurementAggregateDocument(
@@ -2660,7 +2633,7 @@ def get_rel_std_curve_model() -> Model:
                         ),
                         measurement_document=[
                             MeasurementDocumentItem(
-                                measurement_identifier="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                measurement_identifier="f112727d-c267-4061-b51e-a0784a112afe",
                                 measurement_time="2010-10-20T02:23:34-04:00",
                                 target_DNA_description="RNaseP",
                                 sample_document=SampleDocument(
@@ -2795,30 +2768,7 @@ def get_rel_std_curve_model() -> Model:
                     ),
                     analyst=None,
                     submitter=None,
-                    calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
-                        calculated_data_document=[
-                            CalculatedDataDocumentItem(
-                                calculated_data_identifier="8f82e615-af30-474c-9e27-a53bc146013c",
-                                data_source_aggregate_document=DataSourceAggregateDocument(
-                                    data_source_document=[
-                                        DataSourceDocumentItem(
-                                            data_source_identifier="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
-                                            data_source_feature="cycle threshold result",
-                                        )
-                                    ]
-                                ),
-                                data_processing_document=None,
-                                calculated_data_name="quantity",
-                                calculated_data_description=None,
-                                calculated_datum=TQuantityValueUnitless(
-                                    value=769.776,
-                                    unit="(unitless)",
-                                    has_statistic_datum_role=None,
-                                    field_type=None,
-                                ),
-                            )
-                        ]
-                    ),
+                    calculated_data_aggregate_document=None,
                 ),
             ],
             data_system_document=DataSystemDocument(
@@ -2827,21 +2777,21 @@ def get_rel_std_curve_model() -> Model:
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
-                ASM_converter_name="allotropy",
-                ASM_converter_version="0.1.29",
+                ASM_converter_name=ASM_CONVERTER_NAME,
+                ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
                 calculated_data_document=[
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="70047607-9164-4e29-a1ea-296e36df4f20",
+                        calculated_data_identifier="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                                    data_source_identifier="61d96780-4aa9-4d24-8ff5-491ccd325502",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="8f82e615-af30-474c-9e27-a53bc146013c",
+                                    data_source_identifier="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                                     data_source_feature="quantity",
                                 ),
                             ]
@@ -2860,15 +2810,61 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="6df2e5ab-b601-4d4a-81a0-a439fd923e6d",
+                        calculated_data_identifier="61d96780-4aa9-4d24-8ff5-491ccd325502",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="91feb1d5-89e6-442e-a11c-d4b4f2821537",
+                                    data_source_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
+                                    data_source_feature="cycle threshold result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument1(
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="quantity",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=794.91,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="c9f7ba93-faff-465c-b1b6-baa049cab34f",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="f112727d-c267-4061-b51e-a0784a112afe",
+                                    data_source_feature="cycle threshold result",
+                                )
+                            ]
+                        ),
+                        data_processing_document=DataProcessingDocument1(
+                            reference_DNA_description="RNaseP",
+                            reference_sample_description="800",
+                        ),
+                        calculated_data_name="quantity",
+                        calculated_data_description=None,
+                        calculated_datum=TQuantityValueUnitless(
+                            value=769.776,
+                            unit="(unitless)",
+                            has_statistic_datum_role=None,
+                            field_type=None,
+                        ),
+                    ),
+                    CalculatedDataDocumentItem(
+                        calculated_data_identifier="4da4ba6b-cb9d-471b-b810-fdc46f57528e",
+                        data_source_aggregate_document=DataSourceAggregateDocument(
+                            data_source_document=[
+                                DataSourceDocumentItem(
+                                    data_source_identifier="61d96780-4aa9-4d24-8ff5-491ccd325502",
                                     data_source_feature="quantity",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="8f82e615-af30-474c-9e27-a53bc146013c",
+                                    data_source_identifier="c9f7ba93-faff-465c-b1b6-baa049cab34f",
                                     data_source_feature="quantity",
                                 ),
                             ]
@@ -2887,15 +2883,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="4ab1f957-95f5-45c5-a5a2-fd6f44a37136",
+                        calculated_data_identifier="a59289c2-e71a-4d72-972d-258e3ac2e78e",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                    data_source_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                    data_source_identifier="f112727d-c267-4061-b51e-a0784a112afe",
                                     data_source_feature="cycle threshold result",
                                 ),
                             ]
@@ -2914,15 +2910,15 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="11bacdaa-3ee7-49d1-8882-ce67ea01a3aa",
+                        calculated_data_identifier="99f04b2e-4463-4666-b20d-d8f1de2f62e5",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="3821bf42-6ec4-4b65-b422-4e491a28f7ed",
+                                    data_source_identifier="3387cf01-0e74-4636-8c1c-cfe840d7aff8",
                                     data_source_feature="cycle threshold result",
                                 ),
                                 DataSourceDocumentItem(
-                                    data_source_identifier="a73095aa-c4be-4fa4-a533-56e7f7bd6826",
+                                    data_source_identifier="f112727d-c267-4061-b51e-a0784a112afe",
                                     data_source_feature="cycle threshold result",
                                 ),
                             ]
@@ -2941,11 +2937,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="ceeae020-7f7a-43ee-975b-08044ef67826",
+                        calculated_data_identifier="095631c4-1c21-412d-acc1-3a67984dbbf2",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="bfe26da2-72cb-411b-8abb-44e5d2f19d8c",
+                                    data_source_identifier="d0dc238e-13a6-4057-b1ae-c8d30145805b",
                                     data_source_feature="rq",
                                 )
                             ]
@@ -2964,11 +2960,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="bfe26da2-72cb-411b-8abb-44e5d2f19d8c",
+                        calculated_data_identifier="d0dc238e-13a6-4057-b1ae-c8d30145805b",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="70047607-9164-4e29-a1ea-296e36df4f20",
+                                    data_source_identifier="5c16ac3d-02de-4d5b-b42e-707fb2043d95",
                                     data_source_feature="quantity mean",
                                 )
                             ]
@@ -2987,11 +2983,11 @@ def get_rel_std_curve_model() -> Model:
                         ),
                     ),
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier="84342a87-b7b4-4966-8066-663ab490adbb",
+                        calculated_data_identifier="4db4a552-e3c5-49fc-ab02-759245c01a48",
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier="bfe26da2-72cb-411b-8abb-44e5d2f19d8c",
+                                    data_source_identifier="d0dc238e-13a6-4057-b1ae-c8d30145805b",
                                     data_source_feature="rq",
                                 )
                             ]

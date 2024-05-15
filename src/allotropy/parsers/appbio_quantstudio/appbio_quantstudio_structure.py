@@ -255,7 +255,6 @@ class Well:
     items: dict[str, WellItem]
     _multicomponent_data: Optional[MulticomponentData] = None
     _melt_curve_raw_data: Optional[MeltCurveRawData] = None
-    _calculated_documents: Optional[list[CalculatedDocument]] = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -279,15 +278,6 @@ class Well:
     @melt_curve_raw_data.setter
     def melt_curve_raw_data(self, melt_curve_raw_data: MeltCurveRawData) -> None:
         self._melt_curve_raw_data = melt_curve_raw_data
-
-    @property
-    def calculated_documents(self) -> list[CalculatedDocument]:
-        return self._calculated_documents if self._calculated_documents else []
-
-    def add_calculated_document(self, calculated_document: CalculatedDocument) -> None:
-        if not self._calculated_documents:
-            self._calculated_documents = []
-        self._calculated_documents.append(calculated_document)
 
     @staticmethod
     def create_genotyping(identifier: int, well_data: pd.Series[str]) -> Well:
