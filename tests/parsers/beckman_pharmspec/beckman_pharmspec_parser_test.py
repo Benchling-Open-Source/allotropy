@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pytest
 
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
@@ -20,225 +18,168 @@ from allotropy.to_allotrope import allotrope_from_file
 
 VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
 
+OUTPUT_FILES = (
+    "hiac_example_1",
+    "hiac_example_2",
+    "hiac_example_3",
+    "hiac_example_4",
+    "hiac_example_5",
+)
 
-@pytest.fixture()
-def test_file_1() -> Path:
-    """Test file 1 has two runs and an average distribution.
-
-    :return: Path to test file 1
-    """
-    f = Path(__file__).parent / "testdata/hiac_example_1.xlsx"
-    return f.absolute()
-
-
-@pytest.fixture()
-def test_file_2() -> Path:
-    """Test file 2 has 3 runs and an average distribution.
-
-    :return: Path to test file 2
-    """
-    f = Path(__file__).parent / "testdata/hiac_example_2.xlsx"
-    return f.absolute()
+TEST_DATA_DIR = "tests/parsers/beckman_pharmspec/testdata/"
 
 
-@pytest.fixture()
-def test_file_3() -> Path:
-    """Test file 3 has 1 run and an average distribution.
-
-    :return: Path to test file 3
-    """
-    f = Path(__file__).parent / "testdata/hiac_example_3.xlsx"
-    return f.absolute()
+def _get_test_file_path(output_file: str) -> str:
+    return f"{TEST_DATA_DIR}/{output_file}.xlsx"
 
 
-@pytest.fixture()
-def test_file_4() -> Path:
-    """Test file 4 has 1 run and no calculated distribution.
-
-    :return: Path to test file 4
-    """
-    f = Path(__file__).parent / "testdata/hiac_example_4.xlsx"
-    return f.absolute()
-
-
-@pytest.fixture()
-def test_file_5() -> Path:
-    """Test file 5 has 3 runs and no calculated distribution.
-
-    :return: Path to test file 5
-    """
-    f = Path(__file__).parent / "testdata/hiac_example_5.xlsx"
-    return f.absolute()
-
-
-@pytest.fixture()
-def test_files(
-    test_file_1: Path,
-    test_file_2: Path,
-    test_file_3: Path,
-    test_file_4: Path,
-    test_file_5: Path,
-) -> dict[str, Path]:
-    return {
-        "test_file_1": test_file_1,
-        "test_file_2": test_file_2,
-        "test_file_3": test_file_3,
-        "test_file_4": test_file_4,
-        "test_file_5": test_file_5,
-    }
+def _get_expected_file_path(output_file: str) -> str:
+    return f"{TEST_DATA_DIR}/{output_file}.json"
 
 
 @pytest.mark.short
-def test_get_model(test_files: dict[str, Path]) -> None:
-    num_measurement_docs = {
-        "test_file_1": 2,
-        "test_file_2": 3,
-        "test_file_3": 1,
-        "test_file_4": 1,
-        "test_file_5": 3,
-    }
+@pytest.mark.parametrize(
+    "file_name,num_measurement_docs,has_calculated_doc",
+    [
+        (OUTPUT_FILES[0], 2, True),
+        (OUTPUT_FILES[1], 3, True),
+        (OUTPUT_FILES[2], 1, True),
+        (OUTPUT_FILES[3], 1, False),
+        (OUTPUT_FILES[4], 3, False),
+    ],
+)
+def test_get_model(
+    file_name: str, num_measurement_docs: int, *, has_calculated_doc: bool
+) -> None:
+    test_file = _get_test_file_path(file_name)
+    parser = PharmSpecParser(TimestampParser())
 
-    has_calculated_doc = {
-        "test_file_1": True,
-        "test_file_2": True,
-        "test_file_3": True,
-        "test_file_4": False,
-        "test_file_5": False,
-    }
+    model = parser.to_allotrope(NamedFileContents(open(test_file, "rb"), ""))
+    assert isinstance(
+        model.light_obscuration_aggregate_document,
+        LightObscurationAggregateDocument,
+    )
+    assert isinstance(
+        model.light_obscuration_aggregate_document.device_system_document,
+        DeviceSystemDocument,
+    )
+    assert (
+        model.light_obscuration_aggregate_document.device_system_document.equipment_serial_number
+        == "1808303021"
+    )
 
-    for name, test_file in test_files.items():
-        parser = PharmSpecParser(TimestampParser())
+    assert (
+        model.light_obscuration_aggregate_document.light_obscuration_document[
+            0
+        ].measurement_aggregate_document.measurement_document
+        is not None
+    )
 
-        model = parser.to_allotrope(NamedFileContents(open(test_file, "rb"), ""))
-        assert isinstance(
-            model.light_obscuration_aggregate_document,
-            LightObscurationAggregateDocument,
-        )
-        assert isinstance(
-            model.light_obscuration_aggregate_document.device_system_document,
-            DeviceSystemDocument,
-        )
-        assert (
-            model.light_obscuration_aggregate_document.device_system_document.equipment_serial_number
-            == "1808303021"
-        )
+    assert isinstance(
+        model.light_obscuration_aggregate_document.light_obscuration_document[
+            0
+        ].measurement_aggregate_document.measurement_document[0],
+        MeasurementDocumentItem,
+    )
 
-        assert (
+    assert isinstance(
+        model.light_obscuration_aggregate_document.light_obscuration_document[0]
+        .measurement_aggregate_document.measurement_document[0]
+        .sample_document,
+        SampleDocument,
+    )
+
+    assert (
+        model.light_obscuration_aggregate_document.light_obscuration_document[0]
+        .measurement_aggregate_document.measurement_document[0]
+        .sample_document.sample_identifier
+        == "ExampleTimepoint"
+    )
+
+    assert (
+        len(
             model.light_obscuration_aggregate_document.light_obscuration_document[
                 0
             ].measurement_aggregate_document.measurement_document
-            is not None
         )
-
+        == num_measurement_docs
+    )
+    for elem in model.light_obscuration_aggregate_document.light_obscuration_document[
+        0
+    ].measurement_aggregate_document.measurement_document:
+        assert isinstance(elem, MeasurementDocumentItem)
+        assert isinstance(elem.measurement_identifier, str)
         assert isinstance(
-            model.light_obscuration_aggregate_document.light_obscuration_document[
+            elem.processed_data_aggregate_document, ProcessedDataAggregateDocument
+        )
+        assert len(elem.processed_data_aggregate_document.processed_data_document) == 1
+        assert isinstance(
+            elem.processed_data_aggregate_document.processed_data_document[
                 0
-            ].measurement_aggregate_document.measurement_document[0],
-            MeasurementDocumentItem,
+            ].distribution_aggregate_document,
+            DistributionAggregateDocument,
         )
-
-        assert isinstance(
-            model.light_obscuration_aggregate_document.light_obscuration_document[0]
-            .measurement_aggregate_document.measurement_document[0]
-            .sample_document,
-            SampleDocument,
-        )
-
-        assert (
-            model.light_obscuration_aggregate_document.light_obscuration_document[0]
-            .measurement_aggregate_document.measurement_document[0]
-            .sample_document.sample_identifier
-            == "ExampleTimepoint"
-        )
-
         assert (
             len(
-                model.light_obscuration_aggregate_document.light_obscuration_document[
-                    0
-                ].measurement_aggregate_document.measurement_document
-            )
-            == num_measurement_docs[name]
-        )
-        for (
-            elem
-        ) in model.light_obscuration_aggregate_document.light_obscuration_document[
-            0
-        ].measurement_aggregate_document.measurement_document:
-            assert isinstance(elem, MeasurementDocumentItem)
-            assert isinstance(elem.measurement_identifier, str)
-            assert isinstance(
-                elem.processed_data_aggregate_document, ProcessedDataAggregateDocument
-            )
-            assert (
-                len(elem.processed_data_aggregate_document.processed_data_document) == 1
-            )
-            assert isinstance(
                 elem.processed_data_aggregate_document.processed_data_document[
                     0
-                ].distribution_aggregate_document,
-                DistributionAggregateDocument,
+                ].distribution_aggregate_document.distribution_document,
             )
-            assert (
-                len(
-                    elem.processed_data_aggregate_document.processed_data_document[
-                        0
-                    ].distribution_aggregate_document.distribution_document,
-                )
-                == 1
-            )
+            == 1
+        )
 
-            assert isinstance(
+        assert isinstance(
+            elem.processed_data_aggregate_document.processed_data_document[0]
+            .distribution_aggregate_document.distribution_document[0]
+            .distribution[0],
+            DistributionItem,
+        )
+
+        # 5 rows in the distribution document
+        assert (
+            len(
                 elem.processed_data_aggregate_document.processed_data_document[0]
                 .distribution_aggregate_document.distribution_document[0]
-                .distribution[0],
-                DistributionItem,
+                .distribution
             )
+            == 5
+        )
 
-            # 5 rows in the distribution document
-            assert (
-                len(
-                    elem.processed_data_aggregate_document.processed_data_document[0]
-                    .distribution_aggregate_document.distribution_document[0]
-                    .distribution
-                )
-                == 5
+        # Ensure correct order and particle sizes
+        for i, particle_size in enumerate([2, 5, 10, 25, 50]):
+            test = (
+                elem.processed_data_aggregate_document.processed_data_document[0]
+                .distribution_aggregate_document.distribution_document[0]
+                .distribution[i]
+                .particle_size
             )
+            assert test.value == particle_size
 
-            # Ensure correct order and particle sizes
-            for i, particle_size in enumerate([2, 5, 10, 25, 50]):
-                test = (
-                    elem.processed_data_aggregate_document.processed_data_document[0]
-                    .distribution_aggregate_document.distribution_document[0]
-                    .distribution[i]
-                    .particle_size
-                )
-                assert test.value == particle_size
-
-        if has_calculated_doc[name]:
-            assert (
-                model.light_obscuration_aggregate_document.calculated_data_aggregate_document
-            )
-        else:
-            assert (
-                not model.light_obscuration_aggregate_document.calculated_data_aggregate_document
-            )
+    if has_calculated_doc:
+        assert (
+            model.light_obscuration_aggregate_document.calculated_data_aggregate_document
+        )
+    else:
+        assert (
+            not model.light_obscuration_aggregate_document.calculated_data_aggregate_document
+        )
 
 
 @pytest.mark.short
-def test_asm(test_files: dict[str, Path]) -> None:
-    for _, test_file in test_files.items():
-        asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
-        assert isinstance(asm, dict)
+@pytest.mark.parametrize("file_name", OUTPUT_FILES)
+def test_asm(file_name: str) -> None:
+    test_file = _get_test_file_path(file_name)
+    asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
+    assert isinstance(asm, dict)
 
 
 @pytest.mark.short
-def test_parse_beckman_pharmspec_hiac_to_asm_contents(
-    test_files: dict[str, Path]
-) -> None:
-    for _, test_file in test_files.items():
-        expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
-        allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
-        validate_contents(allotrope_dict, expected_filepath)
+@pytest.mark.parametrize("file_name", OUTPUT_FILES)
+def test_parse_beckman_pharmspec_hiac_to_asm_contents(file_name: str) -> None:
+    test_file = _get_test_file_path(file_name)
+    expected_filepath = _get_expected_file_path(file_name)
+    allotrope_dict = from_file(test_file, VENDOR_TYPE)
+    validate_contents(allotrope_dict, expected_filepath)
 
 
 @pytest.mark.short
