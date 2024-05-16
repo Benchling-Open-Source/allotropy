@@ -11,17 +11,20 @@ We have chosen to have this library output ASM since JSON is easy to read and co
 
 We currently have parser support for the following instruments:
   - Agilent Gen5
-  - Applied Bio QuantStudio
   - Applied Bio AbsoluteQ
+  - Applied Bio QuantStudio RT-PCR
+  - Applied Bio QuantStudio Design & Analysis
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
-  - Biorad Bioplex Manager
+  - Beckman PharmSpec
+  - Bio-Rad Bio-Plex Manager
   - ChemoMetec Nucleoview
   - Luminex xPONENT
-  - MolDev SoftMax Pro
+  - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
   - Qiacuity dPCR
+  - Revvity Kaleido
   - Roche Cedex BioHT
   - Thermo Fisher NanoDrop Eight
   - Unchained Labs Lunatic
