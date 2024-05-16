@@ -141,7 +141,7 @@ def test_create_read_data() -> None:
     assert read_data.read_sections[1].image_mode == DetectionType.MONTAGE
 
 
-def test_create_read_section_single_image_channel_settings() -> None:
+def test_create_read_section_channel_settings() -> None:
     read_section_lines = [
         "Read\tImage Single Image",
         "\tFull Plate",
@@ -174,16 +174,39 @@ def test_create_read_section_single_image_channel_settings() -> None:
     assert read_section == ReadSection(
         image_mode=DetectionType.SINGLE_IMAGE,
         instrment_settings_list=[
-            InstrumentSettings(),
             InstrumentSettings(
-                fluorescent_tag_setting="YFP",
-                excitation_wavelength_setting=500,
-                detector_wavelength_setting=542,
+                auto_focus=True,
+                detector_distance=None,
             ),
             InstrumentSettings(
-                fluorescent_tag_setting="Texas Red",
-                excitation_wavelength_setting=586,
-                detector_wavelength_setting=647,
+                auto_focus=False,
+                detector_distance=None,
+                fluorescent_tag="YFP",
+                excitation_wavelength=500,
+                detector_wavelength=542,
+            ),
+            InstrumentSettings(
+                auto_focus=False,
+                detector_distance=None,
+                fluorescent_tag="Texas Red",
+                excitation_wavelength=586,
+                detector_wavelength=647,
             ),
         ],
     )
+
+
+@pytest.mark.parametrize("detector_distance", (-450, 0, 1200, -445.7))
+def test_create_instrument_settings_with_fixed_focal_height(detector_distance) -> None:
+    settings_lines = [
+        "\tColor Camera",
+        "\t    Transmitted light",
+        "\t    LED intensity: 1, Integration time: 5 msec, Camera gain: 5",
+        f"\t    Fixed focal height at bottom elevation plus {detector_distance} mm",
+        "\t    Vibration CV threshold: 0.01",
+        "\t    Images to average: 1",
+    ]
+    instrument_settings = InstrumentSettings.create(settings_lines)
+
+    assert instrument_settings.auto_focus == False
+    assert instrument_settings.detector_distance == detector_distance

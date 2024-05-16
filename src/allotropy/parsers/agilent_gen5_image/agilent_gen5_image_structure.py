@@ -15,6 +15,8 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.constants import (
+    AUTOFOCUS_STRINGS,
+    DETECTOR_DISTANCE_REGEX,
     CHANNEL_HEADER_REGEX,
     FILENAME_REGEX,
     HEADER_PREFIXES,
@@ -105,23 +107,29 @@ class HeaderData:
 
 @dataclass(frozen=True)
 class InstrumentSettings:
-    fluorescent_tag_setting: Optional[str] = None
-    excitation_wavelength_setting: Optional[float] = None
-    detector_wavelength_setting: Optional[float] = None
-    auto_focus_setting: bool = False
-    detector_gain_setting: Optional[float] = None
+    auto_focus: bool
+    detector_distance: Optional[float]
+    fluorescent_tag: Optional[str] = None
+    excitation_wavelength: Optional[float] = None
+    detector_wavelength: Optional[float] = None
+    detector_gain: Optional[float] = None
 
     @classmethod
-    def create(cls, settings_section: list[str]) -> InstrumentSettings:
-        channel_line_settings = cls._get_channel_line_settings(settings_section[0])
+    def create(cls, settings_lines: list[str]) -> InstrumentSettings:
+        channel_settings = cls._get_channel_line_settings(settings_lines[0])
+
+        settings_dict = cls._parse_instrument_settins(settings_lines[1:])
+        non_kv_lines = settings_dict["non_kv_lines"]
 
         return InstrumentSettings(
-            fluorescent_tag_setting=channel_line_settings.get("fluorescent_tag"),
-            excitation_wavelength_setting=try_float_or_none(
-                channel_line_settings.get("excitation_wavelength")
+            auto_focus=cls._get_auto_focus(non_kv_lines),
+            detector_distance=cls._get_detector_distance(non_kv_lines),
+            fluorescent_tag=channel_settings.get("fluorescent_tag"),
+            excitation_wavelength=try_float_or_none(
+                channel_settings.get("excitation_wavelength")
             ),
-            detector_wavelength_setting=try_float_or_none(
-                channel_line_settings.get("detector_wavelength")
+            detector_wavelength=try_float_or_none(
+                channel_settings.get("detector_wavelength")
             ),
         )
 
@@ -130,6 +138,32 @@ class InstrumentSettings:
         if matches := re.match(CHANNEL_HEADER_REGEX, settings_header):
             return matches.groupdict()
         return {}
+
+    @classmethod
+    def _parse_instrument_settins(cls, settings: list[str]) -> dict:
+        settings_dict = {"non_kv_lines": []}
+        for line in settings:
+            strp_line = str(line.strip())
+
+            line_data: list[str] = strp_line.split(", ")
+            for read_datum in line_data:
+                splitted_datum = read_datum.split(": ")
+                if len(splitted_datum) == 1:  # noqa: PLR2004
+                    settings_dict["non_kv_lines"].append(splitted_datum[0])
+                elif len(splitted_datum) == 2:  # noqa: PLR2004
+                    settings_dict[splitted_datum[0]] = splitted_datum[1]
+
+        return settings_dict
+
+    @classmethod
+    def _get_auto_focus(cls, settings: list[str]) -> bool:
+        return any([str_ in settings for str_ in AUTOFOCUS_STRINGS])
+
+    @classmethod
+    def _get_detector_distance(cls, settings: list[str]) -> Optional[float]:
+        if match := re.search(DETECTOR_DISTANCE_REGEX, "\n".join(settings)):
+            return try_float(match.groups()[0], "Detector Distance")
+        return None
 
 
 @dataclass(frozen=True)
@@ -159,7 +193,7 @@ class ReadSection:
     def auto_focus_setting(self):
         if not self.instrment_settings_list:
             return None
-        return self.instrment_settings_list[0].auto_focus_setting
+        return self.instrment_settings_list[0].auto_focus
 
     @staticmethod
     def get_detection_type(read_chunk: str) -> DetectionType:
