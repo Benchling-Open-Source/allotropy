@@ -1,6 +1,10 @@
+import re
+
 import numpy as np
 import pandas as pd
+import pytest
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.methodical_mind.methodical_mind_structure import (
@@ -29,6 +33,30 @@ def test_create_combined_data() -> None:
     assert combined_data.serial_number == "1201140625150"
     assert combined_data.plate_doc_info[0].plate_well_count == 96
     assert len(combined_data.plate_doc_info) == 2
+
+
+def test_create_get_parameter() -> None:
+    lines = [
+        "FileName :\tZ:\\DC\\Export\\test_file.txt",
+        "Version  :\tMMPR 1.0.38",
+        "",
+        "User     :\tJeffy P",
+    ]
+    reader = CsvReader(lines)
+    assert CombinedData._get_parameter_required(reader, "User") == "Jeffy P"
+
+
+def test_create_get_parameter_when_missing() -> None:
+    lines = [
+        "FileName :\tZ:\\DC\\Export\\test_file.txt",
+        "Version  :\tMMPR 1.0.38",
+        "",
+        "User     :",
+    ]
+    reader = CsvReader(lines)
+    msg = "Missing value for field User"
+    with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
+        CombinedData._get_parameter_required(reader, "User")
 
 
 def test_create_plate_well_data() -> None:

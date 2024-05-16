@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Optional
 
 import pandas as pd
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -28,13 +30,13 @@ class CombinedData:
 
     @staticmethod
     def create(reader: CsvReader) -> CombinedData:
-        file_name = CombinedData._get_parameter(reader, FILENAME)
-        barcode_1 = CombinedData._get_parameter(reader, BARCODE_1)
-        read_time = CombinedData._get_parameter(reader, READ_TIME)
-        version = CombinedData._get_parameter(reader, VERSION)
-        user = CombinedData._get_parameter(reader, USER)
-        serial_no = CombinedData._get_parameter(reader, SERIAL_NO)
-        model = CombinedData._get_parameter(reader, MODEL)
+        file_name = CombinedData._get_parameter_required(reader, FILENAME)
+        barcode_1 = CombinedData._get_parameter_required(reader, BARCODE_1)
+        read_time = CombinedData._get_parameter_required(reader, READ_TIME)
+        version = CombinedData._get_parameter_required(reader, VERSION)
+        user = CombinedData._get_parameter_optional(reader, USER)
+        serial_no = CombinedData._get_parameter_required(reader, SERIAL_NO)
+        model = CombinedData._get_parameter_required(reader, MODEL)
 
         plate_data = []
         while reader.current_line < len(reader.lines):
@@ -95,15 +97,33 @@ class CombinedData:
         )
 
     @staticmethod
-    def _get_parameter(reader: CsvReader, name: str) -> str:
-        return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[1]
+    def _get_parameter_required(
+        reader: CsvReader,
+        name: str,
+    ) -> str:
+        try:
+            return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[
+                1
+            ]
+        except IndexError as err:
+            msg = f"Missing value for field {name}"
+            raise AllotropeConversionError(msg) from err
+
+    @staticmethod
+    def _get_parameter_optional(reader: CsvReader, name: str) -> Optional[str]:
+        try:
+            return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[
+                1
+            ]
+        except IndexError:
+            return None
 
 
 @dataclass(frozen=True)
 class PlateData:
     measurement_time: str
     plate_well_count: int
-    analyst: str
+    analyst: Optional[str]
     well_plate_id: str
     well_data: list[WellData]
 
@@ -111,7 +131,7 @@ class PlateData:
     def create(
         plate_df: pd.DataFrame,
         measurement_time: str,
-        analyst: str,
+        analyst: Optional[str],
         well_plate_id: str,
         plate_well_count: int,
     ) -> PlateData:
