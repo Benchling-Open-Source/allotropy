@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Tool to create graph visualization of calculated data documents
+- Details of parser requirements to docs
 
 
 ### Fixed
