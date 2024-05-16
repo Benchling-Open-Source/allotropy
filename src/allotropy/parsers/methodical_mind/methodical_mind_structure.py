@@ -28,25 +28,13 @@ class CombinedData:
 
     @staticmethod
     def create(reader: CsvReader) -> CombinedData:
-        file_name = assert_not_none(reader.pop_if_match(FILENAME), FILENAME).split(
-            "\t"
-        )[1]
-        barcode_1 = assert_not_none(
-            reader.drop_until_inclusive(BARCODE_1), BARCODE_1
-        ).split("\t")[1]
-        read_time = assert_not_none(
-            reader.drop_until_inclusive(READ_TIME), READ_TIME
-        ).split("\t")[1]
-        version = assert_not_none(reader.drop_until_inclusive(VERSION), VERSION).split(
-            "\t"
-        )[1]
-        user = assert_not_none(reader.drop_until_inclusive(USER), USER).split("\t")[1]
-        serial_no = assert_not_none(
-            reader.drop_until_inclusive(SERIAL_NO), SERIAL_NO
-        ).split("\t")[1]
-        model = assert_not_none(reader.drop_until_inclusive(MODEL), MODEL).split("\t")[
-            1
-        ]
+        file_name = CombinedData._get_parameter(reader, FILENAME)
+        barcode_1 = CombinedData._get_parameter(reader, BARCODE_1)
+        read_time = CombinedData._get_parameter(reader, READ_TIME)
+        version = CombinedData._get_parameter(reader, VERSION)
+        user = CombinedData._get_parameter(reader, USER)
+        serial_no = CombinedData._get_parameter(reader, SERIAL_NO)
+        model = CombinedData._get_parameter(reader, MODEL)
 
         plate_data = []
         while reader.current_line < len(reader.lines):
@@ -105,6 +93,10 @@ class CombinedData:
             serial_number=serial_no,
             plate_doc_info=plate_data,
         )
+
+    @staticmethod
+    def _get_parameter(reader: CsvReader, name: str) -> str:
+        return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[1]
 
 
 @dataclass(frozen=True)
