@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Iterator
 from dataclasses import dataclass
 import re
 from typing import Optional
@@ -14,15 +15,22 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.constants import (
+    CHANNEL_HEADER_REGEX,
     FILENAME_REGEX,
     HEADER_PREFIXES,
     DetectionType,
     ReadType,
+    SETTINGS_SECTION_REGEX,
     UNSUPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none, try_float, try_float_or_nan
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float,
+    try_float_or_nan,
+    try_float_or_none,
+)
 
 
 def read_data_section(reader: LinesReader) -> str:
@@ -95,9 +103,33 @@ class HeaderData:
         return matches_dict["plate_identifier"]
 
 
+@dataclass(frozen=True)
 class InstrumentSettings:
-    auto_focus_setting: bool
+    fluorescent_tag_setting: Optional[str] = None
+    excitation_wavelength_setting: Optional[float] = None
+    detector_wavelength_setting: Optional[float] = None
+    auto_focus_setting: bool = False
     detector_gain_setting: Optional[float] = None
+
+    @classmethod
+    def create(cls, settings_section: list[str]) -> InstrumentSettings:
+        channel_line_settings = cls._get_channel_line_settings(settings_section[0])
+
+        return InstrumentSettings(
+            fluorescent_tag_setting=channel_line_settings.get("fluorescent_tag"),
+            excitation_wavelength_setting=try_float_or_none(
+                channel_line_settings.get("excitation_wavelength")
+            ),
+            detector_wavelength_setting=try_float_or_none(
+                channel_line_settings.get("detector_wavelength")
+            ),
+        )
+
+    @classmethod
+    def _get_channel_line_settings(cls, settings_header: str) -> dict:
+        if matches := re.match(CHANNEL_HEADER_REGEX, settings_header):
+            return matches.groupdict()
+        return {}
 
 
 @dataclass(frozen=True)
@@ -108,14 +140,19 @@ class ReadSection:
     @classmethod
     def create(cls, reader: LinesReader) -> ReadSection:
         top_read_chunk = assert_not_none(
-            reader.pop_until(r"^\tChannel|^\tColor Camera"),
+            reader.pop_until(SETTINGS_SECTION_REGEX),
             msg="Expected at least one Channel or Color Camera settings in the Read section.",
         )
         detection_type = cls.get_detection_type("\n".join(top_read_chunk))
 
+        instrment_settings_list = [
+            InstrumentSettings.create(settings_section)
+            for settings_section in cls._get_settings_sections(reader)
+        ]
+
         return ReadSection(
             image_mode=detection_type,
-            instrment_settings_list=[],
+            instrment_settings_list=instrment_settings_list,
         )
 
     @property
@@ -136,6 +173,14 @@ class ReadSection:
         msg = f"Measurement mode not found; expected to find one of {sorted(DetectionType._member_names_)}."
 
         raise AllotropeConversionError(msg)
+
+    def _get_settings_sections(reader: LinesReader) -> Iterator[list[str]]:
+        while True:
+            initial_line = reader.get()
+            if not re.search(SETTINGS_SECTION_REGEX, initial_line):
+                break
+            lines = [reader.pop(), *reader.pop_until(r"^\t\w")]
+            yield lines
 
 
 @dataclass(frozen=True)

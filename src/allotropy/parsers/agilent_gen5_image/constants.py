@@ -22,6 +22,8 @@ DEFAULT_SOFTWARE_NAME = "Gen5 Image"
 DEVICE_TYPE = "Imager"
 
 FILENAME_REGEX = r"^\d{6}_\d{6}_(?P<plate_identifier>.[^_]*)_.*\.txt$"
+SETTINGS_SECTION_REGEX = r"^\tChannel|^\tColor Camera"
+CHANNEL_HEADER_REGEX = r"\tChannel \d+:  (?P<fluorescent_tag>.+) (?P<excitation_wavelength>\d{3}),(?P<detector_wavelength>\d{3})"
 
 
 class DetectionType(str, Enum):
