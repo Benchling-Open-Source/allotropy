@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Global definition of calculated data documents representation
 - Update bioplex to use _get_date_time
+- Add structure for Methodical Mind
 
 ### Fixed
 - Remove duplicated ct sd and ct se calculated data documents in Quantstudio Design and Analysis adapter
