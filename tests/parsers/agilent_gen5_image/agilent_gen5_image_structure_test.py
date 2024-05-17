@@ -1,5 +1,8 @@
 import pytest
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    TransmittedLightSetting,
+)
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
     HeaderData,
     InstrumentSettings,
@@ -173,24 +176,27 @@ def test_create_read_section_channel_settings() -> None:
 
     assert read_section == ReadSection(
         image_mode=DetectionType.SINGLE_IMAGE,
-        instrment_settings_list=[
+        instrument_settings_list=[
             InstrumentSettings(
                 auto_focus=True,
                 detector_distance=None,
+                detector_gain=15.6,
             ),
             InstrumentSettings(
-                auto_focus=False,
+                auto_focus=True,
                 detector_distance=None,
                 fluorescent_tag="YFP",
                 excitation_wavelength=500,
                 detector_wavelength=542,
+                detector_gain=20,
             ),
             InstrumentSettings(
-                auto_focus=False,
+                auto_focus=True,
                 detector_distance=None,
                 fluorescent_tag="Texas Red",
                 excitation_wavelength=586,
                 detector_wavelength=647,
+                detector_gain=20,
             ),
         ],
     )
@@ -208,5 +214,33 @@ def test_create_instrument_settings_with_fixed_focal_height(detector_distance) -
     ]
     instrument_settings = InstrumentSettings.create(settings_lines)
 
-    assert instrument_settings.auto_focus == False
+    assert instrument_settings.auto_focus is False
     assert instrument_settings.detector_distance == detector_distance
+
+
+@pytest.mark.parametrize(
+    ("transmitted_light", "expected"),
+    (
+        (
+            ("Brightfield", TransmittedLightSetting.brightfield),
+            ("Phase Contrast", TransmittedLightSetting.phase_contrast),
+            ("Transmitted Light", TransmittedLightSetting.brightfield),
+            ("Reflected Light", TransmittedLightSetting.brightfield),
+            ("Color Bright Field", TransmittedLightSetting.brightfield),
+        )
+    ),
+)
+def test_create_instrument_settings_transmitted_light_correct_mapping(
+    transmitted_light, expected
+) -> None:
+    settings_lines = [
+        "\tColor Camera",
+        f"\t    {transmitted_light}",
+        "\t    LED intensity: 1, Integration time: 5 msec, Camera gain: 5",
+        "\t    Fixed focal height at bottom elevation plus 40 mm",
+        "\t    Vibration CV threshold: 0.01",
+        "\t    Images to average: 1",
+    ]
+    instrument_settings = InstrumentSettings.create(settings_lines)
+
+    assert instrument_settings.transmitted_light == expected

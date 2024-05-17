@@ -8,6 +8,9 @@ from dataclasses import dataclass
 import re
 from typing import Optional
 
+from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+    TransmittedLightSetting,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import (
     AllotropeConversionError,
@@ -16,13 +19,14 @@ from allotropy.exceptions import (
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.constants import (
     AUTOFOCUS_STRINGS,
-    DETECTOR_DISTANCE_REGEX,
     CHANNEL_HEADER_REGEX,
+    DetectionType,
+    DETECTOR_DISTANCE_REGEX,
     FILENAME_REGEX,
     HEADER_PREFIXES,
-    DetectionType,
     ReadType,
     SETTINGS_SECTION_REGEX,
+    TRANSMITTED_LIGHT_MAP,
     UNSUPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.lines_reader import LinesReader
@@ -105,7 +109,7 @@ class HeaderData:
         return matches_dict["plate_identifier"]
 
 
-@dataclass(frozen=True)
+@dataclass
 class InstrumentSettings:
     auto_focus: bool
     detector_distance: Optional[float]
@@ -113,6 +117,7 @@ class InstrumentSettings:
     excitation_wavelength: Optional[float] = None
     detector_wavelength: Optional[float] = None
     detector_gain: Optional[float] = None
+    transmitted_light: Optional[TransmittedLightSetting] = None
 
     @classmethod
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
@@ -131,6 +136,8 @@ class InstrumentSettings:
             detector_wavelength=try_float_or_none(
                 channel_settings.get("detector_wavelength")
             ),
+            detector_gain=try_float_or_none(settings_dict.get("Camera gain")),
+            transmitted_light=cls._get_transmitted_light(non_kv_lines),
         )
 
     @classmethod
@@ -148,7 +155,7 @@ class InstrumentSettings:
             line_data: list[str] = strp_line.split(", ")
             for read_datum in line_data:
                 splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) == 1:  # noqa: PLR2004
+                if len(splitted_datum) == 1:
                     settings_dict["non_kv_lines"].append(splitted_datum[0])
                 elif len(splitted_datum) == 2:  # noqa: PLR2004
                     settings_dict[splitted_datum[0]] = splitted_datum[1]
@@ -157,7 +164,7 @@ class InstrumentSettings:
 
     @classmethod
     def _get_auto_focus(cls, settings: list[str]) -> bool:
-        return any([str_ in settings for str_ in AUTOFOCUS_STRINGS])
+        return any(str_ in settings for str_ in AUTOFOCUS_STRINGS)
 
     @classmethod
     def _get_detector_distance(cls, settings: list[str]) -> Optional[float]:
@@ -165,11 +172,20 @@ class InstrumentSettings:
             return try_float(match.groups()[0], "Detector Distance")
         return None
 
+    @classmethod
+    def _get_transmitted_light(
+        cls, settings: list[str]
+    ) -> Optional[TransmittedLightSetting]:
+        for line in settings:
+            if line in TRANSMITTED_LIGHT_MAP:
+                return TRANSMITTED_LIGHT_MAP[line]
+        return None
+
 
 @dataclass(frozen=True)
 class ReadSection:
     image_mode: DetectionType
-    instrment_settings_list: list[InstrumentSettings]
+    instrument_settings_list: list[InstrumentSettings]
 
     @classmethod
     def create(cls, reader: LinesReader) -> ReadSection:
@@ -177,26 +193,16 @@ class ReadSection:
             reader.pop_until(SETTINGS_SECTION_REGEX),
             msg="Expected at least one Channel or Color Camera settings in the Read section.",
         )
-        detection_type = cls.get_detection_type("\n".join(top_read_chunk))
-
-        instrment_settings_list = [
-            InstrumentSettings.create(settings_section)
-            for settings_section in cls._get_settings_sections(reader)
-        ]
+        detection_type = cls._get_detection_type("\n".join(top_read_chunk))
+        instrument_settings_list = cls._get_instrument_settings_list(reader)
 
         return ReadSection(
             image_mode=detection_type,
-            instrment_settings_list=instrment_settings_list,
+            instrument_settings_list=instrument_settings_list,
         )
 
-    @property
-    def auto_focus_setting(self):
-        if not self.instrment_settings_list:
-            return None
-        return self.instrment_settings_list[0].auto_focus
-
-    @staticmethod
-    def get_detection_type(read_chunk: str) -> DetectionType:
+    @classmethod
+    def _get_detection_type(cls, read_chunk: str) -> DetectionType:
         if DetectionType.SINGLE_IMAGE.value in read_chunk:
             return DetectionType.SINGLE_IMAGE
         elif DetectionType.MONTAGE.value in read_chunk:
@@ -208,13 +214,30 @@ class ReadSection:
 
         raise AllotropeConversionError(msg)
 
-    def _get_settings_sections(reader: LinesReader) -> Iterator[list[str]]:
+    @classmethod
+    def _get_settings_sections(cls, reader: LinesReader) -> Iterator[list[str]]:
         while True:
             initial_line = reader.get()
             if not re.search(SETTINGS_SECTION_REGEX, initial_line):
                 break
             lines = [reader.pop(), *reader.pop_until(r"^\t\w")]
             yield lines
+
+    @classmethod
+    def _get_instrument_settings_list(
+        cls, reader: LinesReader
+    ) -> list[InstrumentSettings]:
+        settings_list = []
+        auto_focus = False
+        for idx, settings_section in enumerate(cls._get_settings_sections(reader)):
+            instrument_settings = InstrumentSettings.create(settings_section)
+            # The autofocus setting is only reported in the first section but applies to all others
+            if idx == 0:
+                auto_focus = instrument_settings.auto_focus
+            else:
+                instrument_settings.auto_focus = auto_focus
+            settings_list.append(instrument_settings)
+        return settings_list
 
 
 @dataclass(frozen=True)
