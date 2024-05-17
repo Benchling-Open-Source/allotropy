@@ -11,10 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tool to create graph visualization of calculated data documents
 - Details of parser requirements to docs
 
-
 ### Fixed
 
 ### Changed
+- Implement default value for sample role names in AppBio Quantstudio
 
 ### Deprecated
 
