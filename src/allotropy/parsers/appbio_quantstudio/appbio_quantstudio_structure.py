@@ -40,7 +40,7 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
-UNDEFINED_SAMPLE_NAME = "UNDEFINED_SAMPLE_NAME"
+UNDEFINED_SAMPLE_NAME = "N/A"
 
 
 @dataclass(frozen=True)
