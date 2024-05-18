@@ -63,7 +63,10 @@ def test__union_to_or() -> None:
     assert _union_to_or("Union[Union[int,float],str]") == "str|float|int"
     assert _union_to_or("Union[list[int,float],str]") == "list[int,float]|str"
     assert _union_to_or("list[Union[int,float]]") == "list[float|int]"
-    assert _union_to_or("Union[dict[str,int],dict[int,float]]") == "dict[int,float]|dict[str,int]"
+    assert (
+        _union_to_or("Union[dict[str,int],dict[int,float]]")
+        == "dict[int,float]|dict[str,int]"
+    )
 
 
 def test__parse_field_types() -> None:
@@ -76,15 +79,23 @@ def test__parse_field_types() -> None:
     assert _parse_field_types("tuple[str,int]") == {"tuple[int|str]"}
     assert _parse_field_types("set[int,int]") == {"set[int]"}
     assert _parse_field_types("dict[str,Any]") == {"dict[str,Any]"}
-    assert _parse_field_types("dict[Union[int,str],Optional[float]]") == {"dict[int|str,float|None]"}
-    assert _parse_field_types("dict[int|str,float|None]") == {"dict[int|str,float|None]"}
+    assert _parse_field_types("dict[Union[int,str],Optional[float]]") == {
+        "dict[int|str,float|None]"
+    }
+    assert _parse_field_types("dict[int|str,float|None]") == {
+        "dict[int|str,float|None]"
+    }
     assert _parse_field_types("dict[str,list[str,str]]") == {"dict[str,list[str]]"}
     assert _parse_field_types("dict[Union[int,float],str]") == {"dict[float|int,str]"}
-    assert _parse_field_types("List[Union[Type1,Type2,Type3,]]") == {"List[Type1|Type2|Type3]"}
+    assert _parse_field_types("List[Union[Type1,Type2,Type3,]]") == {
+        "List[Type1|Type2|Type3]"
+    }
     assert _parse_field_types("str|int") == {"int", "str"}
     assert _parse_field_types("str|None") == {"str", "None"}
     assert _parse_field_types("list[str|int]") == {"list[int|str]"}
-    assert _parse_field_types("list[str,dict[str,int],float,None]") == {"list[dict[str,int]|float|str|None]"}
+    assert _parse_field_types("list[str,dict[str,int],float,None]") == {
+        "list[dict[str,int]|float|str|None]"
+    }
 
 
 def test__get_manifest_from_schema_path() -> None:
@@ -215,12 +226,8 @@ class Test:
     assert class_lines.has_required_fields()
     assert not class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField(
-            "key", default_value=None, field_types={"str"}
-        ),
-        "value": DataclassField(
-            "value", default_value=None, field_types={"str"}
-        ),
+        "key": DataclassField("key", default_value=None, field_types={"str"}),
+        "value": DataclassField("value", default_value=None, field_types={"str"}),
     }
 
     class_lines = data_class_lines_from_multistring(
@@ -235,9 +242,7 @@ class Test:
     assert not class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField(
-            "key", default_value=None, field_types={"str", "None"}
-        ),
+        "key": DataclassField("key", default_value=None, field_types={"str", "None"}),
         "value": DataclassField(
             "value", default_value='"something"', field_types={"str", "None"}
         ),
@@ -264,9 +269,7 @@ class Test:
     assert class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField(
-            "key", default_value=None, field_types={"str"}
-        ),
+        "key": DataclassField("key", default_value=None, field_types={"str"}),
         "item": DataclassField(
             "item", default_value=None, field_types={"Item1", "str"}
         ),
@@ -291,9 +294,7 @@ class Test:
     assert class_lines.has_required_fields()
     assert class_lines.has_optional_fields()
     assert class_lines.fields == {
-        "key": DataclassField(
-            "key", default_value=None, field_types={"str", "int"}
-        ),
+        "key": DataclassField("key", default_value=None, field_types={"str", "int"}),
         "value": DataclassField(
             "value", default_value=None, field_types={"str", "None"}
         ),

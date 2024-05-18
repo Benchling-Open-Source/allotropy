@@ -80,7 +80,10 @@ def get_manifest_from_schema_path(schema_path: str) -> str:
 
 
 def _to_or_union(types: set[str]) -> str:
-    return "|".join(sorted(t for t in types if t not in ("", "None")) + (["None"] if "None" in types else []))
+    return "|".join(
+        sorted(t for t in types if t not in ("", "None"))
+        + (["None"] if "None" in types else [])
+    )
 
 
 def _is_or_union(type_string: str, sep: str = "|"):
@@ -120,7 +123,7 @@ def _union_to_or(type_string: str) -> str:
     while "union" in type_string:
         before, after = type_string.split("union[", 1)
         inner_types, end_index = _split_types(after, ",")
-        type_string = before + _to_or_union(inner_types) + after[end_index + 1:]
+        type_string = before + _to_or_union(inner_types) + after[end_index + 1 :]
         # type_string = before + "|".join(sorted(it for it in inner_types if it)) + after[end_index + 1:]
     return type_string
 
@@ -138,7 +141,9 @@ def _parse_field_types(type_string: str) -> set[str]:
 
     # In a union, parse each type recursively to clean up inner types and combine duplicates
     if _is_or_union(type_string):
-        return set.union(*[_parse_field_types(ts) for ts in _split_types(type_string, "|")[0]])
+        return set.union(
+            *[_parse_field_types(ts) for ts in _split_types(type_string, "|")[0]]
+        )
 
     # If it is not a union and it doesn't end with a bracket, nothing left to do
     if not type_string.endswith("]"):
@@ -157,7 +162,9 @@ def _parse_field_types(type_string: str) -> set[str]:
         types = _parse_field_types(inner)
     elif identifier.lower() in ("dict", "mapping"):
         key_type, value_types = inner.split(",", 1)
-        return {f"{identifier}[{key_type},{_to_or_union(_parse_field_types(value_types))}]"}
+        return {
+            f"{identifier}[{key_type},{_to_or_union(_parse_field_types(value_types))}]"
+        }
     elif identifier.lower() == "optional":
         return _parse_field_types(inner) | {"None"}
     else:
