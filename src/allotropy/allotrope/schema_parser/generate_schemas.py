@@ -96,7 +96,7 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
         input_file_type=InputFileType.JsonSchema,
         # Specify base_class as empty when using dataclass
         base_class="",
-        target_python_version=PythonVersion.PY_39,
+        target_python_version=PythonVersion.PY_310,
         use_union_operator=False,
     )
     # Import classes from shared files, remove unused classes, format.
