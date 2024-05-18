@@ -11,7 +11,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
-from allotropy.parsers.lines_reader import LinesReader, read_csv
+from allotropy.parsers.lines_reader import read_csv
 from allotropy.parsers.utils.values import (
     try_str_from_series,
     try_str_from_series_or_none,
