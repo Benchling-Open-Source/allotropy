@@ -86,7 +86,7 @@ def _to_or_union(types: set[str]) -> str:
     )
 
 
-def _is_or_union(type_string: str, sep: str = "|"):
+def _is_or_union(type_string: str, sep: str = "|") -> bool:
     # A type string is an | union if there is a | not nested in brackets.
     nested = 0
     for char in type_string:
