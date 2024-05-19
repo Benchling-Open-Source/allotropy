@@ -19,6 +19,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
+    OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
     SampleDocument,
@@ -29,27 +30,29 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanometer,
+    TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.bmg_mars.bmg_mars_structure import (
+    get_plate_well_count,
     Header,
-    PlateWellCount,
     RE_READ_TYPE,
     ReadType,
-    Result,
     Wavelength,
 )
 from allotropy.parsers.lines_reader import CsvReader, LinesReader, read_to_lines
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = Union[
     FluorescencePointDetectionMeasurementDocumentItems,
     LuminescencePointDetectionMeasurementDocumentItems,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    OpticalImagingMeasurementDocumentItems,
 ]
 
 DeviceControlAggregateDocument = Union[
@@ -77,9 +80,12 @@ class BmgMarsParser(VendorParser):
 
         csv_data = list(reader.pop_until_empty())
         wavelength = Wavelength.create(csv_data)
-        plate_well_count = PlateWellCount.create(csv_data)
+        plate_well_count = get_plate_well_count(csv_data)
         csv_reader = CsvReader(csv_data)
-        raw_data = csv_reader.lines_as_df(csv_data, skiprows=2)
+        raw_data = assert_not_none(
+            csv_reader.lines_as_df(csv_data, skiprows=2),
+            msg="Dataframe not found.",
+        )
         raw_data.rename(columns={0: "row"}, inplace=True)
         data = raw_data.melt(id_vars=["row"], var_name="col", value_name="value")
         data.dropna(inplace=True)  # TODO: check what we should do here
@@ -96,7 +102,7 @@ class BmgMarsParser(VendorParser):
         filename: str,
         read_type: ReadType,
         wavelength: Wavelength,
-        plate_well_count: PlateWellCount,
+        plate_well_count: TQuantityValueNumber,
     ) -> Model:
 
         return Model(
@@ -121,9 +127,10 @@ class BmgMarsParser(VendorParser):
         )
 
     def _get_read_type(self, lines: list[str]) -> ReadType:
-        read_type = re.search(RE_READ_TYPE, "\n".join(lines), flags=re.MULTILINE).group(
-            0
-        )
+        read_type = assert_not_none(
+            re.search(RE_READ_TYPE, "\n".join(lines), flags=re.MULTILINE),
+            msg="Read type not found.",
+        ).group(0)
         patterns = {
             "Absorbance": ReadType.ABSORBANCE,
             "Luminescence": ReadType.LUMINESCENCE,
@@ -132,7 +139,8 @@ class BmgMarsParser(VendorParser):
 
         for key in patterns:
             if key in read_type:
-                return patterns[key]
+                read_type_key = patterns[key]
+        return read_type_key
 
     def _get_device_control_aggregate_document(
         self,
@@ -191,8 +199,8 @@ class BmgMarsParser(VendorParser):
         self,
         read_type: ReadType,
         header: Header,
-        result: Result,
-        device_control_document=list[DeviceControlDocument],
+        result: pd.Series[Any],
+        device_control_document: list[DeviceControlDocument],
     ) -> MeasurementDocumentItems:
         plate_barcode = header.id1
         well_location = f"{result.row}{result.col}"
@@ -233,7 +241,8 @@ class BmgMarsParser(VendorParser):
                 sample_document=sample_document,
                 device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
                     device_control_document=cast(
-                        list[LuminescencePointDetectionDeviceControlDocumentItem]
+                        list[LuminescencePointDetectionDeviceControlDocumentItem],
+                        device_control_document,
                     )
                 ),
                 luminescence=TQuantityValueRelativeLightUnit(result.value),
@@ -245,12 +254,11 @@ class BmgMarsParser(VendorParser):
         read_type: ReadType,
         header: Header,
         wavelength: Wavelength,
-        plate_well_count: PlateWellCount,
+        plate_well_count: TQuantityValueNumber,
     ) -> list[PlateReaderDocumentItem]:
         items = []
         measurement_docs_dict = defaultdict(list)
         measurement_time = self._get_date_time(f"{header.date} {header.time}")
-        plate_well_count = plate_well_count.plate_well_count
         device_control_aggregate_document = self._get_device_control_aggregate_document(
             wavelength, read_type
         )
