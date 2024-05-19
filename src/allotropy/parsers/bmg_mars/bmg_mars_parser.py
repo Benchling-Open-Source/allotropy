@@ -10,7 +10,6 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     ContainerType,
     DataSystemDocument,
     DeviceControlDocument,
-    DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
@@ -113,14 +112,8 @@ class BmgMarsParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name="BMG MARS",
-                    software_version="BMG MARS",
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
-                ),
-                device_system_document=DeviceSystemDocument(
-                    model_number="BMG MARS",
-                    equipment_serial_number="BMG MARS",
-                    device_identifier="BMG MARS",
                 ),
             ),
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
