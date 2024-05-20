@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
-from typing import Optional
 
 from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
@@ -104,9 +103,7 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
     lint_file(str(model_path))
 
 
-def _should_generate_schema(
-    schema_path: str, schema_regex: Optional[str] = None
-) -> bool:
+def _should_generate_schema(schema_path: str, schema_regex: str | None = None) -> bool:
     # Skip files in the shared directory
     if schema_path.startswith("shared"):
         return False
@@ -120,8 +117,8 @@ def _should_generate_schema(
 def generate_schemas(
     root_dir: Path,
     *,
-    dry_run: Optional[bool] = False,
-    schema_regex: Optional[str] = None,
+    dry_run: bool | None = False,
+    schema_regex: str | None = None,
 ) -> list[str]:
     """Generate schemas from JSON schema files.
 

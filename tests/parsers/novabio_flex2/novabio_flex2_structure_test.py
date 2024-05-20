@@ -1,5 +1,4 @@
 import re
-from typing import Optional
 
 import pandas as pd
 import pytest
@@ -37,7 +36,7 @@ from tests.parsers.novabio_flex2.novabio_flex2_data import (
 )
 @pytest.mark.short
 def test_create_title(
-    filename: str, processing_time: str, device_identifier: Optional[str]
+    filename: str, processing_time: str, device_identifier: str | None
 ) -> None:
     title = Title.create(filename)
     assert title.processing_time == processing_time

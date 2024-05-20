@@ -1,7 +1,6 @@
 from collections.abc import Sequence
 from itertools import chain
 import math
-from typing import Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -67,12 +66,12 @@ from allotropy.parsers.utils.values import (
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
-MeasurementDocumentItems = Union[
-    OpticalImagingMeasurementDocumentItems,
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-    FluorescencePointDetectionMeasurementDocumentItems,
-    LuminescencePointDetectionMeasurementDocumentItems,
-]
+MeasurementDocumentItems = (
+    OpticalImagingMeasurementDocumentItems
+    | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+)
 
 
 def to_json_float(value: float) -> JsonFloat:
@@ -278,7 +277,7 @@ class SoftmaxproParser(VendorParser):
             for data_element in plate_block.iter_data_elements(position)
         ]
 
-    def _get_calc_docs(self, data: Data) -> Optional[CalculatedDataAggregateDocument]:
+    def _get_calc_docs(self, data: Data) -> CalculatedDataAggregateDocument | None:
         calc_docs = self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
         return CalculatedDataAggregateDocument(calc_docs) if calc_docs else None
 
@@ -298,7 +297,7 @@ class SoftmaxproParser(VendorParser):
         name: str,
         value: float,
         data_sources: list[DataSourceDocumentItem],
-        description: Optional[str] = None,
+        description: str | None = None,
     ) -> CalculatedDataDocumentItem:
         return CalculatedDataDocumentItem(
             calculated_data_identifier=random_uuid_str(),

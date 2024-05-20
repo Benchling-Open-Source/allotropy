@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from enum import Enum
 import logging
 import re
-from typing import Optional
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
@@ -94,7 +93,7 @@ class AnalysisResult:
     results: dict[str, str]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[AnalysisResult]:
+    def create(reader: CsvReader) -> AnalysisResult | None:
         barcode_line = assert_not_none(
             reader.drop_until_inclusive("^Barcode:(.+),"),
             msg="Unable to find background information.",
@@ -214,7 +213,7 @@ class Platemap:
             )
         )
 
-    def get_sample_role_type(self, well_position: str) -> Optional[str]:
+    def get_sample_role_type(self, well_position: str) -> str | None:
         raw_value = self.get_well_value(well_position)
         if raw_value == "-":
             return None
@@ -239,8 +238,8 @@ class MeasurementElement:
 @dataclass(frozen=True)
 class Channel:
     name: str
-    fluorescent_tag: Optional[str]
-    transmitted_light: Optional[TransmittedLightSetting]
+    fluorescent_tag: str | None
+    transmitted_light: TransmittedLightSetting | None
     excitation_wavelength: float
     illumination: float
     exposure_duration: float
@@ -286,12 +285,12 @@ class Channel:
 @dataclass(frozen=True)
 class Measurements:
     channels: list[Channel]
-    number_of_averages: Optional[float]
-    detector_distance: Optional[float]
-    scan_position: Optional[ScanPositionSettingPlateReader]
-    emission_wavelength: Optional[float]
-    excitation_wavelength: Optional[float]
-    focus_height: Optional[float]
+    number_of_averages: float | None
+    detector_distance: float | None
+    scan_position: ScanPositionSettingPlateReader | None
+    emission_wavelength: float | None
+    excitation_wavelength: float | None
+    focus_height: float | None
 
     @staticmethod
     def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
@@ -314,7 +313,7 @@ class Measurements:
     @staticmethod
     def try_element_or_none(
         elements: list[MeasurementElement], title: str
-    ) -> Optional[MeasurementElement]:
+    ) -> MeasurementElement | None:
         for element in elements:
             if element.title == title:
                 return element
@@ -323,7 +322,7 @@ class Measurements:
     @staticmethod
     def get_element_float_value_or_none(
         elements: list[MeasurementElement], title: str
-    ) -> Optional[float]:
+    ) -> float | None:
         element = Measurements.try_element_or_none(elements, title)
         if element is None:
             return None
@@ -352,5 +351,5 @@ class Data:
     def get_platemap_well_value(self, well_position: str) -> str:
         return self.platemap.get_well_value(well_position)
 
-    def get_sample_role_type(self, well_position: str) -> Optional[str]:
+    def get_sample_role_type(self, well_position: str) -> str | None:
         return self.platemap.get_sample_role_type(well_position)

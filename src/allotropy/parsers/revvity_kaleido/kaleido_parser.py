@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import Optional, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
@@ -56,12 +55,12 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
-MeasurementItem = Union[
-    OpticalImagingMeasurementDocumentItems,
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-    FluorescencePointDetectionMeasurementDocumentItems,
-    LuminescencePointDetectionMeasurementDocumentItems,
-]
+MeasurementItem = (
+    OpticalImagingMeasurementDocumentItems
+    | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+)
 
 
 class MeasurementParser(ABC):
@@ -349,7 +348,7 @@ class KaleidoParser(VendorParser):
         data: Data,
         well_position: str,
         measurement_parser: MeasurementParser,
-    ) -> Optional[OpticalImagingAggregateDocument]:
+    ) -> OpticalImagingAggregateDocument | None:
         if measurement_parser.get_experiment_type() != ExperimentType.OPTICAL_IMAGING:
             return None
 
@@ -366,7 +365,7 @@ class KaleidoParser(VendorParser):
         data: Data,
         well_position: str,
         measurement_parser: MeasurementParser,
-    ) -> Optional[ProcessedDataAggregateDocument]:
+    ) -> ProcessedDataAggregateDocument | None:
         if (
             measurement_parser.get_experiment_type() != ExperimentType.OPTICAL_IMAGING
             or not data.analysis_results
