@@ -79,45 +79,106 @@ def get_manifest_from_schema_path(schema_path: str) -> str:
     )
 
 
+def _to_or_union(types: set[str]) -> str:
+    return "|".join(
+        sorted(t for t in types if t not in ("", "None"))
+        + (["None"] if "None" in types else [])
+    )
+
+
+def _is_or_union(type_string: str, sep: str = "|") -> bool:
+    # A type string is an | union if there is a | not nested in brackets.
+    nested = 0
+    for char in type_string:
+        if char == "]":
+            nested -= 1
+        if char == "[":
+            nested += 1
+        if char == sep and not nested:
+            return True
+    return False
+
+
+def _split_types(type_string: str, sep: str) -> tuple[set[str], int]:
+    # Given a string representing some or all of a type specification, returns the types up to the first
+    # closing bracket, or all types if no bracket if found. If a closing bracket is found, returns the
+    # index of that bracket in the string.
+    #
+    #    "str|int" -> {"str, "int"}, 6 (6 == length of string)
+    #
+    #    "str|int]|float" -> {"str, "int"}, 7 (7 == index of ])
+    #
+    inner_types = [""]
+    nested = 0
+    for index, char in enumerate(type_string):  # noqa: B007
+        if char == "]":
+            if nested == 0:
+                break
+            nested -= 1
+        if char == "[":
+            nested += 1
+        # Build up inner_type, breaking on outermost commas
+        if char == sep and not nested:
+            inner_types.append("")
+        else:
+            inner_types[-1] += char
+    return set(inner_types), index
+
+
+def _union_to_or(type_string: str) -> str:
+    type_string = type_string.replace("Union", "union")
+    while "union" in type_string:
+        before, after = type_string.split("union[", 1)
+        inner_types, end_index = _split_types(after, ",")
+        type_string = before + _to_or_union(inner_types) + after[end_index + 1 :]
+        # type_string = before + "|".join(sorted(it for it in inner_types if it)) + after[end_index + 1:]
+    return type_string
+
+
 def _parse_field_types(type_string: str) -> set[str]:
     # Parses a set of types from a dataclass field type specification, e.g.
-    #   key: Union[str, int] -> {int, str}
+    #   key: Union[str, int] / int|str -> {int, str}
     #
     # Combined duplicated values recursively. These can happen due to class substitutions, e.g.
     #   item: Union[Type, Type1], where Type1 gets replaced with Type becomes:
-    #   item: Union[Type, Type] -> {Type}
-    if "[" not in type_string:
+    #   item: Union[Type, Type] / Type|Type -> {Type}
+
+    # Convert all unions to | operators, as this makes the rest of the logic easier
+    type_string = _union_to_or(type_string)
+
+    # In a union, parse each type recursively to clean up inner types and combine duplicates
+    if _is_or_union(type_string):
+        return set.union(
+            *[_parse_field_types(ts) for ts in _split_types(type_string, "|")[0]]
+        )
+
+    # If it is not a union and it doesn't end with a bracket, nothing left to do
+    if not type_string.endswith("]"):
         return {type_string}
 
     identifier, inner = type_string.split("[", 1)
     inner = inner[:-1]
 
-    # Return Unioned values as a set of deduped types
-    if identifier == "Union":
-        types = set()
-        for inner_ in inner.split(","):
-            if not inner_:
-                continue
-            types |= _parse_field_types(inner_)
-        return types
-
     if identifier.lower() in ("list", "set", "tuple"):
         # Special handling for type specifications with lowercase (typedef) identifiers, which
         # can specify a list of types without a union. e.g.
-        #     List[Union[str, int]] == list[str, int]
-        # Handle this by inserting a Union and reparsing
-        if not inner.lower().startswith("union["):
-            inner = f"Union[{inner}]"
+        #     list[str,int] == list[str|int]
+        # Handle this by replacing with an or union
+        if _is_or_union(inner, ","):
+            inner = _to_or_union(_split_types(inner, ",")[0])
         types = _parse_field_types(inner)
-    elif identifier in ("dict", "Dict", "Mapping"):
-        # NOTE: assumes that key_type is always one value. Generated code hasn't done something else yet.
+    elif identifier.lower() in ("dict", "mapping"):
         key_type, value_types = inner.split(",", 1)
-        return {f"{identifier}[{key_type},{','.join(_parse_field_types(value_types))}]"}
+        return {
+            f"{identifier}[{key_type},{_to_or_union(_parse_field_types(value_types))}]"
+        }
+    elif identifier.lower() == "optional":
+        return _parse_field_types(inner) | {"None"}
     else:
         types = _parse_field_types(inner)
 
     if len(types) > 1:
-        types_string = f"Union[{','.join(sorted(types))}]"
+        types_string = _to_or_union(types)
     else:
         types_string = next(iter(types))
     return {f"{identifier}[{types_string}]"}
@@ -128,7 +189,6 @@ class DataclassField:
     """Represents a dataclass field."""
 
     name: str
-    is_required: bool
     default_value: Optional[str]
     field_types: set[str]
 
@@ -141,22 +201,20 @@ class DataclassField:
         if not type_string:
             msg = "This is impossible but type checker is dumb"
             raise AssertionError(msg)
-        is_required = True
-        if type_string.startswith("Optional["):
-            is_required = False
-            type_string = type_string[9:-1]
         types = _parse_field_types(type_string)
 
-        return DataclassField(name, is_required, default_value, types)
+        return DataclassField(name, default_value, types)
+
+    @property
+    def is_required(self) -> bool:
+        return "None" not in self.field_types
 
     @property
     def contents(self) -> str:
         if len(self.field_types) > 1:
-            types = f"Union[{','.join(sorted(self.field_types))}]"
+            types = _to_or_union(self.field_types)
         else:
             types = next(iter(self.field_types))
-        if not self.is_required:
-            types = f"Optional[{types}]"
         if self.default_value:
             types = f"{types}={self.default_value}"
         return f"{self.name}: {types}"
@@ -174,7 +232,6 @@ class DataclassField:
             raise AssertionError(msg)
         return DataclassField(
             name=self.name,
-            is_required=self.is_required,
             default_value=self.default_value,
             field_types=self.field_types | other.field_types,
         )

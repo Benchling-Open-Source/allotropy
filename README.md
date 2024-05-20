@@ -69,7 +69,7 @@ asm_schema = allotrope_from_io(bytes_io, Vendor.MOLDEV_SOFTMAX_PRO)
 
 Install Hatch: https://hatch.pypa.io/latest/
 Install Python: https://www.python.org/downloads/
-This library supports Python 3.9 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
+This library supports Python 3.10 or higher. Hatch will install a matching version of Python (defined in `pyproject.toml`) when it sets up your environment.
 
 Add pre-push checks to your repo:
 ```sh
