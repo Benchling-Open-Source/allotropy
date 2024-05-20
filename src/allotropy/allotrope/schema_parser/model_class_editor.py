@@ -100,6 +100,14 @@ def _is_or_union(type_string: str, sep: str = "|") -> bool:
 
 
 def _split_types(type_string: str, sep: str) -> tuple[set[str], int]:
+    # Given a string representing some or all of a type specification, returns the types up to the first
+    # closing bracket, or all types if no bracket if found. If a closing bracket is found, returns the
+    # index of that bracket in the string.
+    #
+    #    "str|int" -> {"str, "int"}, 6 (6 == length of string)
+    #
+    #    "str|int]|float" -> {"str, "int"}, 7 (7 == index of ])
+    #
     # Find end of the bracket, and get inner types
     inner_types = [""]
     nested = 0

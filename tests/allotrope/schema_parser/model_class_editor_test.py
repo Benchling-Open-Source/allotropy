@@ -54,7 +54,9 @@ def test__split_types() -> None:
     assert _split_types("int|str", "|")[0] == {"int", "str"}
     assert _split_types("list[int,float]|str", "|")[0] == {"list[int,float]", "str"}
     assert _split_types("list[int|float],str", ",")[0] == {"list[int|float]", "str"}
+    # When an unmatched closing bracket is found, returns types up to the bracket, and index of the bracket.
     assert _split_types("int,float]|str", ",") == ({"int", "float"}, 9)
+    assert _split_types("int,list[float]]|str", ",") == ({"int", "list[float]"}, 15)
 
 
 def test__union_to_or() -> None:
