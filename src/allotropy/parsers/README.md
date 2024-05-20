@@ -122,7 +122,7 @@ class CalculatedDocument(Referenceable):
 @dataclass
 class DataSource:
     feature: str
-    reference: Union[CalculatedDocument, Referenceable]
+    reference: CalculatedDocument | Referenceable
 ```
 
 The idea of the implementation is to allow the construction of a graph in which each node is a **Referenceable** object.

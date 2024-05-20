@@ -3,9 +3,8 @@ from contextlib import contextmanager
 from itertools import zip_longest
 from pathlib import Path
 import shutil
-from typing import Optional, Union
 
-PathType = Union[Path, str]
+PathType = Path | str
 
 
 def _files_equal(path1: PathType, path2: PathType) -> bool:
@@ -49,7 +48,7 @@ def is_backup_file(path: PathType) -> bool:
 
 @contextmanager
 def backup(
-    paths: Union[Sequence[PathType], PathType], *, restore: Optional[bool] = False
+    paths: Sequence[PathType] | PathType, *, restore: bool | None = False
 ) -> Iterator[None]:
     paths_ = paths if isinstance(paths, list) else [paths]
     for path in paths_:

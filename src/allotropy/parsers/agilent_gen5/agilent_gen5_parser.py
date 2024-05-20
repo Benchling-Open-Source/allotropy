@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any, Union
+from typing import Any
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -48,18 +48,18 @@ from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.vendor_parser import VendorParser
 
-MeasurementDocumentItems = Union[
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-    FluorescencePointDetectionMeasurementDocumentItems,
-    LuminescencePointDetectionMeasurementDocumentItems,
-]
+MeasurementDocumentItems = (
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+)
 
-MeasurementDocumentAttributeClasses = Union[
-    TQuantityValueDegreeCelsius,
-    TQuantityValueMillimeter,
-    TQuantityValueNanometer,
-    TQuantityValueNumber,
-]
+MeasurementDocumentAttributeClasses = (
+    TQuantityValueDegreeCelsius
+    | TQuantityValueMillimeter
+    | TQuantityValueNanometer
+    | TQuantityValueNumber
+)
 
 
 def get_instance_or_none(

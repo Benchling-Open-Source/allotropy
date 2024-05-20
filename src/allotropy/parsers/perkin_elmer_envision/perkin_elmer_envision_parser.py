@@ -1,6 +1,6 @@
 from collections import defaultdict
 from enum import Enum
-from typing import Any, cast, Optional, TypeVar, Union
+from typing import Any, cast, TypeVar
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     CalculatedDataAggregateDocument,
@@ -64,22 +64,22 @@ class ReadType(Enum):
     LUMINESCENCE = "Luminescence"
 
 
-MeasurementDocumentItems = Union[
-    OpticalImagingMeasurementDocumentItems,
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-    FluorescencePointDetectionMeasurementDocumentItems,
-    LuminescencePointDetectionMeasurementDocumentItems,
-]
+MeasurementDocumentItems = (
+    OpticalImagingMeasurementDocumentItems
+    | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+)
 
 
-DeviceControlAggregateDocument = Union[
-    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
-    FluorescencePointDetectionDeviceControlAggregateDocument,
-    LuminescencePointDetectionDeviceControlAggregateDocument,
-]
+DeviceControlAggregateDocument = (
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
+    | FluorescencePointDetectionDeviceControlAggregateDocument
+    | LuminescencePointDetectionDeviceControlAggregateDocument
+)
 
 
-def safe_value(cls: type[T], value: Optional[Any]) -> Optional[T]:
+def safe_value(cls: type[T], value: Any | None) -> T | None:
     return None if value is None else cls(value=value)  # type: ignore[call-arg]
 
 
@@ -370,7 +370,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         self,
         data: Data,
         read_type: ReadType,
-    ) -> Optional[CalculatedDataAggregateDocument]:
+    ) -> CalculatedDataAggregateDocument | None:
         calculated_documents = []
 
         for calculated_plate in data.plate_list.plates:

@@ -1,5 +1,3 @@
-from typing import Optional
-
 import pandas as pd
 
 from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
@@ -100,7 +98,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
 
     def get_calculated_data_aggregate_document(
         self, data: Data
-    ) -> Optional[TCalculatedDataAggregateDocument]:
+    ) -> TCalculatedDataAggregateDocument | None:
         if not data.calculated_documents:
             return None
 
@@ -313,7 +311,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
 
     def get_reporter_dye_data_cube(
         self, well: Well, well_item: WellItem
-    ) -> Optional[ReporterDyeDataCube]:
+    ) -> ReporterDyeDataCube | None:
         if well.multicomponent_data is None or well_item.reporter_dye_setting is None:
             return None
 
@@ -345,7 +343,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
 
     def get_passive_reference_dye_data_cube(
         self, data: Data, well: Well
-    ) -> Optional[PassiveReferenceDyeDataCube]:
+    ) -> PassiveReferenceDyeDataCube | None:
         if (
             well.multicomponent_data is None
             or data.header.passive_reference_dye_setting is None
@@ -382,7 +380,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
 
     def get_melting_curve_data_cube(
         self, well_item: WellItem
-    ) -> Optional[MeltingCurveDataCube]:
+    ) -> MeltingCurveDataCube | None:
         if well_item.melt_curve_data is None:
             return None
 

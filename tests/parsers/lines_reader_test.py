@@ -1,6 +1,5 @@
 from io import BytesIO
 import re
-from typing import Optional
 
 import pytest
 
@@ -27,7 +26,7 @@ INPUT_LINES = [
 ]
 
 
-def _read_to_lines(encoding: Optional[str] = None) -> list[str]:
+def _read_to_lines(encoding: str | None = None) -> list[str]:
     input_text = "\n".join(INPUT_LINES)
     io_ = BytesIO(input_text.encode("UTF-8"))
     named_file_contents = NamedFileContents(io_, "test.csv", encoding)
@@ -40,7 +39,7 @@ def test_read_to_lines() -> None:
 
 
 @pytest.mark.parametrize("encoding", [None, "UTF-8"])
-def test_read_to_lines_with_encoding(encoding: Optional[str]) -> None:
+def test_read_to_lines_with_encoding(encoding: str | None) -> None:
     lines = _read_to_lines(encoding)
     assert lines == INPUT_LINES
 

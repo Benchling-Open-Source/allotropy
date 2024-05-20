@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from io import BytesIO
-from typing import Optional
 
 import pandas as pd
 import pytest
@@ -53,7 +52,7 @@ def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
             source.reference.uuid = ""
 
 
-def _read_to_lines(io_: IOType, encoding: Optional[str] = None) -> list[str]:
+def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
     named_file_contents = NamedFileContents(io_, "test.csv", encoding=encoding)
     return read_to_lines(named_file_contents)
 
@@ -222,21 +221,20 @@ def test_data_builder(test_filepath: str, expected_data: Data) -> None:
 
 
 def get_raw_header_contents(
-    raw_text: Optional[str] = None,
-    measurement_time: Optional[str] = "2010-10-01 01:44:54 AM EDT",
-    plate_well_count: Optional[str] = "96-Well Block (0.2mL)",
-    experiment_type: Optional[str] = "Presence/Absence",
-    device_identifier: Optional[str] = "278880034",
-    model_number: Optional[str] = "QuantStudio(TM) 6 Flex System",
-    device_serial_number: Optional[str] = "278880034",
-    measurement_method_identifier: Optional[str] = "Ct",
-    pcr_detection_chemistry: Optional[str] = "TAQMAN",
-    passive_reference_dye_setting: Optional[str] = "ROX",
-    barcode: Optional[str] = "NA",
-    analyst: Optional[str] = "NA",
-    experimental_data_identifier: Optional[
-        str
-    ] = "QuantStudio 96-Well Presence-Absence Example",
+    raw_text: str | None = None,
+    measurement_time: str | None = "2010-10-01 01:44:54 AM EDT",
+    plate_well_count: str | None = "96-Well Block (0.2mL)",
+    experiment_type: str | None = "Presence/Absence",
+    device_identifier: str | None = "278880034",
+    model_number: str | None = "QuantStudio(TM) 6 Flex System",
+    device_serial_number: str | None = "278880034",
+    measurement_method_identifier: str | None = "Ct",
+    pcr_detection_chemistry: str | None = "TAQMAN",
+    passive_reference_dye_setting: str | None = "ROX",
+    barcode: str | None = "NA",
+    analyst: str | None = "NA",
+    experimental_data_identifier: None
+    | (str) = "QuantStudio 96-Well Presence-Absence Example",
 ) -> BytesIO:
     if raw_text is not None:
         return BytesIO(raw_text.encode("utf-8"))

@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Optional
-
 import pandas as pd
 import pytest
 
@@ -242,23 +240,22 @@ def get_results_sheet() -> pd.DataFrame:
 
 
 def get_raw_header_contents(
-    measurement_time: Optional[str] = "2010-10-01 01:44:54 AM EDT",
-    plate_well_count: Optional[str] = "96-Well 0.2-mL Block",
-    device_identifier: Optional[str] = "QS1-Eng2",
-    model_number: Optional[str] = "QuantStudio(TM) 6 Flex System",
-    device_serial_number: Optional[str] = "278880034",
-    measurement_method_identifier: Optional[str] = "Ct",
-    pcr_detection_chemistry: Optional[str] = "TAQMAN",
-    passive_reference_dye_setting: Optional[str] = "ROX",
-    barcode: Optional[str] = None,
-    analyst: Optional[str] = None,
-    experimental_data_identifier: Optional[
-        str
-    ] = "QuantStudio 96-Well Presence-Absence Example",
-    pcr_stage_number: Optional[str] = "Stage 2 Step 2",
-    software_name_and_version: Optional[str] = "Design & Analysis Software v2.7.0",
-    block_serial_number: Optional[str] = "1",
-    heated_cover_serial_number: Optional[str] = "2",
+    measurement_time: str | None = "2010-10-01 01:44:54 AM EDT",
+    plate_well_count: str | None = "96-Well 0.2-mL Block",
+    device_identifier: str | None = "QS1-Eng2",
+    model_number: str | None = "QuantStudio(TM) 6 Flex System",
+    device_serial_number: str | None = "278880034",
+    measurement_method_identifier: str | None = "Ct",
+    pcr_detection_chemistry: str | None = "TAQMAN",
+    passive_reference_dye_setting: str | None = "ROX",
+    barcode: str | None = None,
+    analyst: str | None = None,
+    experimental_data_identifier: None
+    | (str) = "QuantStudio 96-Well Presence-Absence Example",
+    pcr_stage_number: str | None = "Stage 2 Step 2",
+    software_name_and_version: str | None = "Design & Analysis Software v2.7.0",
+    block_serial_number: str | None = "1",
+    heated_cover_serial_number: str | None = "2",
 ) -> pd.Series[str]:
     return pd.Series(
         {
