@@ -1,7 +1,7 @@
 import json
 import os
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 SCHEMAS_DIR = os.path.join(Path(__file__).parent.parent, "schemas")
 SHARED_SCHEMAS_DIR = os.path.join(SCHEMAS_DIR, "shared", "definitions")
@@ -88,7 +88,7 @@ def _get_unit_schema(unit: str, unit_iri: str) -> dict[str, Any]:
 
 
 def _get_quantity_value_schema(
-    unit_name: str, prefix: Optional[str] = ""
+    unit_name: str, prefix: str | None = ""
 ) -> dict[str, Any]:
     return {
         "allOf": [

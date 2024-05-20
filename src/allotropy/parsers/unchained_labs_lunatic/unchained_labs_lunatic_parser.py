@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Optional
-
 import numpy as np
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
@@ -112,7 +110,7 @@ class UnchainedLabsLunaticParser(VendorParser):
 
     def _get_calculated_data_aggregate_document(
         self, data: Data
-    ) -> Optional[CalculatedDataAggregateDocument]:
+    ) -> CalculatedDataAggregateDocument | None:
         if not (calculated_data_document := data.get_calculated_data_document()):
             return None
 

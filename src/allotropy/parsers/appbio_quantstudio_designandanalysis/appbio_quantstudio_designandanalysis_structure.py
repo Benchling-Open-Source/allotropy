@@ -3,7 +3,6 @@ from __future__ import annotations
 from collections.abc import Iterator
 from dataclasses import dataclass
 import re
-from typing import Optional
 
 import pandas as pd
 
@@ -55,15 +54,15 @@ class Header:
     device_serial_number: str
     measurement_method_identifier: str
     pcr_detection_chemistry: str
-    passive_reference_dye_setting: Optional[str]
-    barcode: Optional[str]
-    analyst: Optional[str]
-    experimental_data_identifier: Optional[str]
+    passive_reference_dye_setting: str | None
+    barcode: str | None
+    analyst: str | None
+    experimental_data_identifier: str | None
     pcr_stage_number: int
-    software_name: Optional[str]
-    software_version: Optional[str]
-    block_serial_number: Optional[str]
-    heated_cover_serial_number: Optional[str]
+    software_name: str | None
+    software_version: str | None
+    block_serial_number: str | None
+    heated_cover_serial_number: str | None
 
     @staticmethod
     def create(header: pd.Series[str]) -> Header:
@@ -139,13 +138,13 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
-    reporter_dye_setting: Optional[str]
-    well_location_identifier: Optional[str]
-    quencher_dye_setting: Optional[str]
-    sample_role_type: Optional[str]
+    reporter_dye_setting: str | None
+    well_location_identifier: str | None
+    quencher_dye_setting: str | None
+    sample_role_type: str | None
     amplification_data: AmplificationData
     result: Result
-    melt_curve_data: Optional[MeltCurveData] = None
+    melt_curve_data: MeltCurveData | None = None
 
     @staticmethod
     def create(
@@ -208,7 +207,7 @@ class WellItem(Referenceable):
 class Well:
     identifier: int
     items: dict[str, WellItem]
-    multicomponent_data: Optional[MulticomponentData] = None
+    multicomponent_data: MulticomponentData | None = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -283,8 +282,8 @@ class WellList:
 class AmplificationData:
     total_cycle_number_setting: float
     cycle: list[float]
-    rn: list[Optional[float]]
-    delta_rn: list[Optional[float]]
+    rn: list[float | None]
+    delta_rn: list[float | None]
 
     @staticmethod
     def create(
@@ -316,9 +315,9 @@ class AmplificationData:
 @dataclass(frozen=True)
 class MulticomponentData:
     cycle: list[float]
-    columns: dict[str, list[Optional[float]]]
+    columns: dict[str, list[float | None]]
 
-    def get_column(self, name: str) -> list[Optional[float]]:
+    def get_column(self, name: str) -> list[float | None]:
         return assert_not_none(
             self.columns.get(name),
             msg=f"Unable to obtain '{name}' from multicomponent data.",
@@ -359,8 +358,8 @@ class MulticomponentData:
 class MeltCurveData:
     target: str
     temperature: list[float]
-    fluorescence: list[Optional[float]]
-    derivative: list[Optional[float]]
+    fluorescence: list[float | None]
+    derivative: list[float | None]
 
     @staticmethod
     def create(
@@ -387,36 +386,36 @@ class MeltCurveData:
 @dataclass(frozen=True)
 class Result:
     cycle_threshold_value_setting: float
-    cycle_threshold_result: Optional[float]
-    automatic_cycle_threshold_enabled_setting: Optional[bool]
-    automatic_baseline_determination_enabled_setting: Optional[bool]
-    normalized_reporter_result: Optional[float]
-    baseline_corrected_reporter_result: Optional[float]
-    baseline_determination_start_cycle_setting: Optional[float]
-    baseline_determination_end_cycle_setting: Optional[float]
-    genotyping_determination_result: Optional[str]
-    genotyping_determination_method_setting: Optional[float]
-    quantity: Optional[float]
-    quantity_mean: Optional[float]
-    quantity_sd: Optional[float]
-    ct_mean: Optional[float]
-    eq_ct_mean: Optional[float]
-    adj_eq_ct_mean: Optional[float]
-    ct_sd: Optional[float]
-    ct_se: Optional[float]
-    delta_ct_mean: Optional[float]
-    delta_ct_se: Optional[float]
-    delta_ct_sd: Optional[float]
-    delta_delta_ct: Optional[float]
-    rq: Optional[float]
-    rq_min: Optional[float]
-    rq_max: Optional[float]
-    rn_mean: Optional[float]
-    rn_sd: Optional[float]
-    y_intercept: Optional[float]
-    r_squared: Optional[float]
-    slope: Optional[float]
-    efficiency: Optional[float]
+    cycle_threshold_result: float | None
+    automatic_cycle_threshold_enabled_setting: bool | None
+    automatic_baseline_determination_enabled_setting: bool | None
+    normalized_reporter_result: float | None
+    baseline_corrected_reporter_result: float | None
+    baseline_determination_start_cycle_setting: float | None
+    baseline_determination_end_cycle_setting: float | None
+    genotyping_determination_result: str | None
+    genotyping_determination_method_setting: float | None
+    quantity: float | None
+    quantity_mean: float | None
+    quantity_sd: float | None
+    ct_mean: float | None
+    eq_ct_mean: float | None
+    adj_eq_ct_mean: float | None
+    ct_sd: float | None
+    ct_se: float | None
+    delta_ct_mean: float | None
+    delta_ct_se: float | None
+    delta_ct_sd: float | None
+    delta_delta_ct: float | None
+    rq: float | None
+    rq_min: float | None
+    rq_max: float | None
+    rn_mean: float | None
+    rn_sd: float | None
+    y_intercept: float | None
+    r_squared: float | None
+    slope: float | None
+    efficiency: float | None
 
     @staticmethod
     def get_reference_sample(contents: DesignQuantstudioContents) -> str:
@@ -581,8 +580,8 @@ class Data:
     wells: WellList
     experiment_type: ExperimentType
     calculated_documents: list[CalculatedDocument]
-    reference_target: Optional[str]
-    reference_sample: Optional[str]
+    reference_target: str | None
+    reference_sample: str | None
 
     @staticmethod
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:

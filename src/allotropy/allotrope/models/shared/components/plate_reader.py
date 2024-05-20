@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Union
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacube,
@@ -29,20 +28,20 @@ class SampleRoleType(Enum):
 @dataclass
 class SampleDocument:
     well_location_identifier: TStringValue
-    sample_identifier: Optional[TStringValue] = None
-    batch_identifier: Optional[TStringValue] = None
-    sample_role_type: Optional[SampleRoleType] = None
+    sample_identifier: TStringValue | None = None
+    batch_identifier: TStringValue | None = None
+    sample_role_type: SampleRoleType | None = None
     # TODO: plate_barcode isn't actually in the schema yet, needs to be modified to add it.
-    plate_barcode: Optional[str] = None
+    plate_barcode: str | None = None
 
 
 @dataclass
 class ProcessedDataDocumentItem:
-    processed_data: Union[float, str, TDatacube]
-    data_format_specification_type: Optional[TStringValue] = None
-    data_processing_description: Optional[TStringValue] = None
+    processed_data: float | str | TDatacube
+    data_format_specification_type: TStringValue | None = None
+    data_processing_description: TStringValue | None = None
 
 
 @dataclass
 class ProcessedDataAggregateDocument:
-    processed_data_document: Optional[list[ProcessedDataDocumentItem]] = None
+    processed_data_document: list[ProcessedDataDocumentItem] | None = None

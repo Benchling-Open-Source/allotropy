@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import fields
 import math
 import re
-from typing import Any, Optional, TypeVar, Union
+from typing import Any, TypeVar
 from xml.etree import ElementTree
 
 import pandas as pd
@@ -14,14 +14,14 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.exceptions import AllotropeConversionError
 
-PrimitiveValue = Union[str, int, float]
+PrimitiveValue = str | int | float
 
 
 def str_to_bool(value: str) -> bool:
     return value.lower() in ("yes", "true", "t", "1")
 
 
-def try_int(value: Optional[str], value_name: str) -> int:
+def try_int(value: str | None, value_name: str) -> int:
     try:
         return int(assert_not_none(value, value_name))
     except ValueError as e:
@@ -29,7 +29,7 @@ def try_int(value: Optional[str], value_name: str) -> int:
         raise AllotropeConversionError(msg) from e
 
 
-def try_int_or_none(value: Optional[str]) -> Optional[int]:
+def try_int_or_none(value: str | None) -> int | None:
     try:
         return int(value or "")
     except ValueError:
@@ -53,19 +53,19 @@ def try_non_nan_float(value: str) -> float:
     return float_value
 
 
-def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
+def try_non_nan_float_or_none(value: str | None) -> float | None:
     float_value = try_float_or_none(value)
     return None if float_value is None or math.isnan(float_value) else float_value
 
 
-def try_float_or_none(value: Optional[str]) -> Optional[float]:
+def try_float_or_none(value: str | None) -> float | None:
     try:
         return float("" if value is None else value)
     except ValueError:
         return None
 
 
-def try_float_or_nan(value: Optional[str]) -> JsonFloat:
+def try_float_or_nan(value: str | None) -> JsonFloat:
     float_value = try_non_nan_float_or_none(value)
     return InvalidJsonFloat.NaN if float_value is None else float_value
 
@@ -82,7 +82,7 @@ T = TypeVar("T")
 
 
 def assert_not_none(
-    value: Optional[T], name: Optional[str] = None, msg: Optional[str] = None
+    value: T | None, name: str | None = None, msg: str | None = None
 ) -> T:
     if value is None:
         error = msg or f"Expected non-null value{f' for {name}' if name else ''}."
@@ -126,7 +126,7 @@ def try_str_from_series_or_default(
 def try_str_from_series_or_none(
     data: pd.Series[Any],
     key: str,
-) -> Optional[str]:
+) -> str | None:
     value = data.get(key)
     return None if value is None else str(value)
 
@@ -134,7 +134,7 @@ def try_str_from_series_or_none(
 def try_str_from_series(
     series: pd.Series[Any],
     key: str,
-    msg: Optional[str] = None,
+    msg: str | None = None,
 ) -> str:
     return assert_not_none(try_str_from_series_or_none(series, key), key, msg)
 
@@ -142,7 +142,7 @@ def try_str_from_series(
 def try_int_from_series_or_none(
     data: pd.Series[Any],
     key: str,
-) -> Optional[int]:
+) -> int | None:
     try:
         value = data.get(key)
         return try_int(str(value), key)
@@ -154,7 +154,7 @@ def try_int_from_series_or_none(
 def try_int_from_series(
     data: pd.Series[Any],
     key: str,
-    msg: Optional[str] = None,
+    msg: str | None = None,
 ) -> int:
     return assert_not_none(try_int_from_series_or_none(data, key), key, msg)
 
@@ -174,7 +174,7 @@ def try_float_from_series_or_nan(
 def try_float_from_series_or_none(
     data: pd.Series[Any],
     key: str,
-) -> Optional[float]:
+) -> float | None:
     try:
         value = data.get(key)
         return try_float_or_none(str(value))
@@ -186,7 +186,7 @@ def try_float_from_series_or_none(
 def try_float_from_series(
     data: pd.Series[Any],
     key: str,
-    msg: Optional[str] = None,
+    msg: str | None = None,
 ) -> float:
     return assert_not_none(try_float_from_series_or_none(data, key), key, msg)
 
@@ -194,7 +194,7 @@ def try_float_from_series(
 def try_bool_from_series_or_none(
     data: pd.Series[Any],
     key: str,
-) -> Optional[bool]:
+) -> bool | None:
     try:
         value = data.get(key)
         return None if value is None else str_to_bool(str(value))
@@ -208,12 +208,12 @@ def num_to_chars(n: int) -> str:
     return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
 
 
-def str_or_none(value: Any) -> Optional[str]:
+def str_or_none(value: Any) -> str | None:
     return None if value is None else str(value)
 
 
 def get_element_from_xml(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
 ) -> ElementTree.Element:
     if tag_name_2 is not None:
         tag_finder = tag_name + "/" + tag_name_2
@@ -229,14 +229,14 @@ def get_element_from_xml(
 
 
 def get_val_from_xml(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
 ) -> str:
     return str(get_element_from_xml(xml_object, tag_name, tag_name_2).text)
 
 
 def get_val_from_xml_or_none(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: Optional[str] = None
-) -> Optional[str]:
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
+) -> str | None:
     try:
         val_from_xml = get_element_from_xml(xml_object, tag_name, tag_name_2).text
         if val_from_xml is not None:
@@ -251,7 +251,7 @@ def get_attrib_from_xml(
     xml_object: ElementTree.Element,
     tag_name: str,
     attrib_name: str,
-    tag_name_2: Optional[str] = None,
+    tag_name_2: str | None = None,
 ) -> str:
     xml_element = get_element_from_xml(xml_object, tag_name, tag_name_2)
     try:

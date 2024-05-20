@@ -5,7 +5,7 @@ from contextlib import contextmanager
 import json
 import shutil
 import tempfile
-from typing import Any, Optional
+from typing import Any
 from unittest import mock
 
 from deepdiff import DeepDiff
@@ -52,9 +52,9 @@ def _assert_allotrope_dicts_equal(
 
 class TestIdGenerator:
     next_id: int
-    prefix: Optional[str]
+    prefix: str | None
 
-    def __init__(self, prefix: Optional[str]) -> None:
+    def __init__(self, prefix: str | None) -> None:
         self.prefix = f"{prefix}_" if prefix else ""
         self.next_id = 0
 
@@ -65,7 +65,7 @@ class TestIdGenerator:
 
 
 @contextmanager
-def mock_uuid_generation(prefix: Optional[str]) -> Iterator[None]:
+def mock_uuid_generation(prefix: str | None) -> Iterator[None]:
     with mock.patch(
         "allotropy.parsers.utils.uuids._IdGeneratorFactory.get_id_generator",
         return_value=TestIdGenerator(prefix),
@@ -73,9 +73,7 @@ def mock_uuid_generation(prefix: Optional[str]) -> Iterator[None]:
         yield
 
 
-def from_file(
-    test_file: str, vendor: Vendor, encoding: Optional[str] = None
-) -> DictType:
+def from_file(test_file: str, vendor: Vendor, encoding: str | None = None) -> DictType:
     with mock_uuid_generation(vendor.name):
         return allotrope_from_file(test_file, vendor, encoding=encoding)
 

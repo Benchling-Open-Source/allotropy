@@ -5,7 +5,6 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 import re
-from typing import Optional
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ScanPositionSettingPlateReader,
@@ -103,7 +102,7 @@ class HeaderData:
         return f"{date_} {time_}"
 
     @classmethod
-    def _get_identifier_from_filename_or_none(cls, file_name: str) -> Optional[str]:
+    def _get_identifier_from_filename_or_none(cls, file_name: str) -> str | None:
         matches = re.match(FILENAME_REGEX, file_name)
         if not matches:
             return None
@@ -116,18 +115,18 @@ class HeaderData:
 class FilterSet:
     emission: str
     gain: str
-    excitation: Optional[str] = None
-    mirror: Optional[str] = None
-    optics: Optional[str] = None
+    excitation: str | None = None
+    mirror: str | None = None
+    optics: str | None = None
 
     @property
-    def detector_wavelength_setting(self) -> Optional[float]:
+    def detector_wavelength_setting(self) -> float | None:
         if self.emission == "Full light":
             return None
         return try_float(self.emission.split("/")[0], "Detector wavelength")
 
     @property
-    def detector_bandwidth_setting(self) -> Optional[float]:
+    def detector_bandwidth_setting(self) -> float | None:
         if not self.emission or self.emission == "Full light":
             return None
         try:
@@ -136,13 +135,13 @@ class FilterSet:
             return None
 
     @property
-    def excitation_wavelength_setting(self) -> Optional[float]:
+    def excitation_wavelength_setting(self) -> float | None:
         if self.excitation:
             return try_float(self.excitation.split("/")[0], "Excitation wavelength")
         return None
 
     @property
-    def excitation_bandwidth_setting(self) -> Optional[float]:
+    def excitation_bandwidth_setting(self) -> float | None:
         if not self.excitation:
             return None
         try:
@@ -151,13 +150,13 @@ class FilterSet:
             return None
 
     @property
-    def wavelength_filter_cutoff_setting(self) -> Optional[float]:
+    def wavelength_filter_cutoff_setting(self) -> float | None:
         if self.mirror:
             return try_float(self.mirror.split(" ")[1], "Wavelength filter cutoff")
         return None
 
     @property
-    def scan_position_setting(self) -> Optional[ScanPositionSettingPlateReader]:
+    def scan_position_setting(self) -> ScanPositionSettingPlateReader | None:
         position_lookup = {
             "Top": ScanPositionSettingPlateReader.top_scan_position__plate_reader_,
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
@@ -174,11 +173,11 @@ class FilterSet:
 class ReadData:
     read_mode: ReadMode
     measurement_labels: list[str]
-    pathlength_correction: Optional[str]
-    step_label: Optional[str]
-    number_of_averages: Optional[float]
-    detector_distance: Optional[float]
-    detector_carriage_speed: Optional[str]
+    pathlength_correction: str | None
+    step_label: str | None
+    number_of_averages: float | None
+    detector_distance: float | None
+    detector_carriage_speed: str | None
     filter_sets: dict[str, FilterSet]
 
     @classmethod
@@ -271,7 +270,7 @@ class ReadData:
 
     @classmethod
     def _get_absorbance_measurement_labels(
-        cls, label_prefix: Optional[str], device_control_data: dict
+        cls, label_prefix: str | None, device_control_data: dict
     ) -> list:
         wavelengths = device_control_data.get(WAVELENGTHS_KEY, [])
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
@@ -330,7 +329,7 @@ class ReadData:
         return read_data_dict
 
     @classmethod
-    def _get_step_label(cls, read_line: str, read_mode: str) -> Optional[str]:
+    def _get_step_label(cls, read_line: str, read_mode: str) -> str | None:
         split_line = read_line.split("\t")
         if len(split_line) != 2:  # noqa: PLR2004
             msg = (
@@ -408,7 +407,7 @@ class LayoutData:
 
 @dataclass(frozen=True)
 class ActualTemperature:
-    value: Optional[float] = None
+    value: float | None = None
 
     @staticmethod
     def create_default() -> ActualTemperature:
@@ -541,7 +540,7 @@ class PlateData:
     read_data: ReadData
     layout_data: LayoutData
     results: Results
-    compartment_temperature: Optional[float]
+    compartment_temperature: float | None
 
     @staticmethod
     def create(reader: LinesReader, file_name: str) -> PlateData:

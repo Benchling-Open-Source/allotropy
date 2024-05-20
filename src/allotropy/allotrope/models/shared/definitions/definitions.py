@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Optional, Union
 
 from allotropy.exceptions import AllotropeConversionError
 
@@ -19,7 +18,7 @@ class TIntValueItem:
     field_type: str
 
 
-TIntValue = Union[int, TIntValueItem]
+TIntValue = int | TIntValueItem
 
 
 @dataclass
@@ -35,18 +34,18 @@ class TStringValueItem:
 
 
 TBooleanArray = list[bool]
-TBooleanOrNullArray = list[Optional[bool]]
-TBooleanValue = Union[bool, TBooleanValueItem]
+TBooleanOrNullArray = list[bool | None]
+TBooleanValue = bool | TBooleanValueItem
 TClass = str
-TDateTimeValue = Union[str, TDateTimeValueItem]
+TDateTimeValue = str | TDateTimeValueItem
 # TODO(brian): inline this
 TDateTimeStampValue = TDateTimeValue
 TNumberArray = list[float]
-TNumberOrNullArray = list[Optional[float]]
+TNumberOrNullArray = list[float | None]
 TStringArray = list[str]
-TStringOrNullArray = list[Optional[str]]
-TStringValue = Union[str, TStringValueItem]
-TTupleData = list[Optional[Union[float, bool, str]]]
+TStringOrNullArray = list[str | None]
+TStringValue = str | TStringValueItem
+TTupleData = list[float | bool | str | None]
 TUnit = str
 
 
@@ -71,23 +70,23 @@ class InvalidJsonFloat(Enum):
     field_Infinity_1 = "-Infinity"
 
 
-JsonFloat = Union[float, InvalidJsonFloat]
+JsonFloat = float | InvalidJsonFloat
 
 
 @dataclass(frozen=True)
 class TQuantityValue:
     value: JsonFloat
     unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+    has_statistic_datum_role: TStatisticDatumRole | None = None
+    field_type: TClass | None = None
 
 
 @dataclass(frozen=True)
 class TNullableQuantityValue:
-    value: Optional[float]
+    value: float | None
     unit: TUnit
-    has_statistic_datum_role: Optional[TStatisticDatumRole] = None
-    field_type: Optional[TClass] = None
+    has_statistic_datum_role: TStatisticDatumRole | None = None
+    field_type: TClass | None = None
 
 
 class FieldComponentDatatype(Enum):
@@ -119,25 +118,25 @@ class Type(Enum):
 
 @dataclass
 class TFunction:
-    type: Optional[Type] = Type.linear
-    start: Optional[float] = 1
-    length: Optional[float] = None
-    incr: Optional[float] = 1
+    type: Type | None = Type.linear
+    start: float | None = 1
+    length: float | None = None
+    incr: float | None = 1
 
 
 @dataclass
 class TDatacubeComponent:
     field_componentDatatype: FieldComponentDatatype
     concept: TClass
-    unit: Optional[TUnit] = None
-    scale: Optional[Scale] = None
-    field_asm_fill_value: Optional[Union[str, float, int, bool]] = None
+    unit: TUnit | None = None
+    scale: Scale | None = None
+    field_asm_fill_value: str | float | int | bool | None = None
 
 
-TDimensionArray = Union[TNumberArray, TBooleanArray, TStringArray]
+TDimensionArray = TNumberArray | TBooleanArray | TStringArray
 
 
-TMeasureArray = Union[TNumberOrNullArray, TBooleanOrNullArray, TStringOrNullArray]
+TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
 
 
 @dataclass
@@ -153,20 +152,20 @@ We need to either figure this out and file a bug with datamodel-codegen or fix t
 
 @dataclass
 class TDimensionData:
-    dimensions: List[Union[TDimensionArray, TFunction]]
+    dimensions: list[TDimensionArray | TFunction]
 
 
 @dataclass
 class TMeasureDatum:
-    measures: List[TMeasureArray]
+    measures: list[TMeasureArray]
 
 
 @dataclass
 class TMeasureDatum1:
-    points: List[TTupleData]
+    points: list[TTupleData]
 
 
-TMeasureData = Union[TMeasureDatum, TMeasureDatum1]
+TMeasureData = TMeasureDatum | TMeasureDatum1
 
 
 @dataclass
@@ -177,9 +176,9 @@ class TDatacubeData(TDimensionData):
 
 @dataclass
 class TDatacubeData:
-    dimensions: list[Union[TDimensionArray, TFunction]]
-    measures: Optional[list[TMeasureArray]] = None
-    points: Optional[list[TTupleData]] = None
+    dimensions: list[TDimensionArray | TFunction]
+    measures: list[TMeasureArray] | None = None
+    points: list[TTupleData] | None = None
 
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
@@ -190,6 +189,6 @@ class TDatacubeData:
 
 @dataclass
 class TDatacube:
-    label: Optional[str] = None
-    cube_structure: Optional[TDatacubeStructure] = None
-    data: Optional[TDatacubeData] = None
+    label: str | None = None
+    cube_structure: TDatacubeStructure | None = None
+    data: TDatacubeData | None = None

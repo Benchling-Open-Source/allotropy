@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -69,7 +69,7 @@ class _Sample:
     data_frame: pd.DataFrame
     row: int
 
-    def get_value(self, column: str) -> Optional[Any]:
+    def get_value(self, column: str) -> Any | None:
         if column not in self.data_frame.columns:
             return None
         value = self.data_frame[column][self.row]

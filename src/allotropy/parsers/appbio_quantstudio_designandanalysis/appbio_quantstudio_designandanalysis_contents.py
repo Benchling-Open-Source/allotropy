@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Optional
-
 import numpy as np
 import pandas as pd
 
@@ -49,10 +47,10 @@ class DesignQuantstudioContents:
             data_structure[name] = data.drop(0)
         return data_structure
 
-    def get_sheet_or_none(self, sheet_name: str) -> Optional[pd.DataFrame]:
+    def get_sheet_or_none(self, sheet_name: str) -> pd.DataFrame | None:
         return self.data.get(sheet_name)
 
-    def get_non_empty_sheet_or_none(self, sheet_name: str) -> Optional[pd.DataFrame]:
+    def get_non_empty_sheet_or_none(self, sheet_name: str) -> pd.DataFrame | None:
         sheet = self.get_sheet_or_none(sheet_name)
         return None if sheet is None or sheet.empty else sheet
 
