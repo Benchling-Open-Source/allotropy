@@ -8,10 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Tool to create graph visualization of calculated data documents
+- Details of parser requirements to docs
+
 
 ### Fixed
 
 ### Changed
+- Upgraded allotropy python requirement to python 10
+- Updated ASM model class typing to use or union
 
 ### Deprecated
 
@@ -22,8 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.30] - 2024-05-10
 
 ### Added
+
 - Global definition of calculated data documents representation
 - Update bioplex to use _get_date_time
+- Add structure for Methodical Mind
 
 ### Fixed
 - Remove duplicated ct sd and ct se calculated data documents in Quantstudio Design and Analysis adapter

@@ -7,7 +7,7 @@ name = "allotropy"
 dynamic = ["version"]
 description = 'Converts to ASM (Allotrope Simple Model) from various file formats.'
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "MIT"
 keywords = ["allotropy", "allotrope", "asm", "benchling", "converters"]
 authors = [
@@ -31,7 +31,6 @@ authors = [
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
 ]
@@ -118,6 +117,8 @@ extra-dependencies = [
   "pandas-stubs == 2.1.4.231227",
   # For pytest types
   "pytest >= 7.4.0",
+  # For check graph generation
+  "networkx-stubs",
 ]
 
 [tool.hatch.envs.lint.scripts]
