@@ -3,9 +3,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 import ntpath
 import re
+from typing import Optional
 
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
 @dataclass
@@ -108,13 +109,65 @@ class AssayInfo:
 
 
 @dataclass
+class Well:
+    col: str
+    row: str
+    value: Optional[float]
+
+    @property
+    def pos(self) -> str:
+        return self.row + self.col
+
+
+@dataclass
+class Plate:
+    name: str
+    wells: dict[str, Well]
+
+    @staticmethod
+    def create(reader: LinesReader) -> Plate:
+        name = assert_not_none(
+            reader.pop(),
+            msg="Unable to read name of assay data.",
+        )
+
+        raw_columns = assert_not_none(
+            reader.pop(),
+            msg=f"Unable to read data from {name}",
+        )
+        columns = re.sub(r"\s+", " ", raw_columns.strip())
+
+        reader.drop_empty()
+
+        wells = {}
+        for raw_line in reader.pop_until_empty():
+            line = re.sub(r"\s+", " ", raw_line)
+            if match := re.match(r"^([A-Z])\s+(.+)", line):
+                raw_values = match.group(2).strip()
+                for column, value in zip(columns.split(), raw_values.split()):
+                    well = Well(
+                        col=column,
+                        row=match.group(1),
+                        value=try_float_or_none(value),
+                    )
+                    wells[well.pos] = well
+
+        return Plate(name, wells)
+
+
+@dataclass
 class AssayData:
-    lines: list[str]
+    plates: list[Plate]
 
     @staticmethod
     def create(reader: LinesReader) -> AssayData:
-        lines = reader.lines[reader.current_line :]
-        return AssayData(lines)
+        reader.drop_until_inclusive("Unprocessed Data$")
+        plates = []
+        while reader.current_line_exists():
+            reader.drop_empty()
+            plates.append(Plate.create(reader))
+            reader.drop_empty()
+        return AssayData(plates)
 
 
 @dataclass
