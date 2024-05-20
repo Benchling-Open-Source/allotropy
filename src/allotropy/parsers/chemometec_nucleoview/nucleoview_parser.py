@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any
 
 import pandas as pd
 from pandas import Timestamp
@@ -49,7 +49,7 @@ _PROPERTY_LOOKUP = {
 }
 
 
-def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]:
+def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Any | None:
     if column not in data_frame.columns:
         return None
     return data_frame[column][row]
@@ -57,7 +57,7 @@ def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Optional[Any]
 
 def get_property_from_sample(
     data_frame: pd.DataFrame, row: int, property_name: str
-) -> Optional[Any]:
+) -> Any | None:
     value = _get_value(data_frame, row, property_name)
     if value is None:
         return None
@@ -111,7 +111,7 @@ class ChemometecNucleoviewParser(VendorParser):
             if _get_value(data, i, "Total (cells/ml)")
         ]
 
-    def _get_date_time_or_epoch(self, time_val: Optional[Timestamp]) -> TDateTimeValue:
+    def _get_date_time_or_epoch(self, time_val: Timestamp | None) -> TDateTimeValue:
         if time_val is None:
             # return epoch time 1970-01-01
             return self._get_date_time("1970-01-01")

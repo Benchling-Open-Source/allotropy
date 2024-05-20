@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from re import search
-from typing import Any, Optional, Union
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -53,9 +53,9 @@ def num_to_chars(n: int) -> str:
 class PlateInfo:
     number: str
     barcode: str
-    measurement_time: Optional[str]
-    measured_height: Optional[float]
-    chamber_temperature_at_start: Optional[float]
+    measurement_time: str | None
+    measured_height: float | None
+    chamber_temperature_at_start: float | None
 
     @staticmethod
     def get_series(reader: CsvReader) -> pd.Series[str]:
@@ -126,7 +126,7 @@ class ResultPlateInfo(PlateInfo):
     emission_filter_id: str
 
     @staticmethod
-    def create(series: pd.Series[str]) -> Optional[ResultPlateInfo]:
+    def create(series: pd.Series[str]) -> ResultPlateInfo | None:
         label = try_str_from_series_or_none(series, "Label")
         if label is None:
             return None
@@ -174,7 +174,7 @@ class BackgroundInfoList:
     background_info: list[BackgroundInfo]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[BackgroundInfoList]:
+    def create(reader: CsvReader) -> BackgroundInfoList | None:
         title = reader.pop_if_match("^Background information")
         if title is None:
             return None
@@ -289,8 +289,8 @@ class ResultList:
 
 @dataclass
 class Plate:
-    plate_info: Union[CalculatedPlateInfo, ResultPlateInfo]
-    background_info_list: Optional[BackgroundInfoList]
+    plate_info: CalculatedPlateInfo | ResultPlateInfo
+    background_info_list: BackgroundInfoList | None
     calculated_result_list: CalculatedResultList
     result_list: ResultList
 
@@ -339,7 +339,7 @@ class PlateList:
             plates.append(Plate.create(reader))
         return PlateList(plates)
 
-    def get_result_plate(self, background_info: BackgroundInfo) -> Optional[Plate]:
+    def get_result_plate(self, background_info: BackgroundInfo) -> Plate | None:
         for plate in self.plates:
             if isinstance(plate.plate_info, CalculatedPlateInfo):
                 continue
@@ -351,8 +351,8 @@ class PlateList:
 
 @dataclass(frozen=True)
 class BasicAssayInfo:
-    protocol_id: Optional[str]
-    assay_id: Optional[str]
+    protocol_id: str | None
+    assay_id: str | None
 
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
@@ -429,7 +429,7 @@ class PlateMap:
     sample_role_type_mapping: dict[str, dict[str, SampleRoleType]]
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[PlateMap]:
+    def create(reader: CsvReader) -> PlateMap | None:
         if not reader.current_line_exists() or reader.match("^Calculations"):
             return None
 
@@ -491,10 +491,10 @@ def create_plate_maps(reader: CsvReader) -> dict[str, PlateMap]:
 class Filter:
     name: str
     wavelength: float
-    bandwidth: Optional[float] = None
+    bandwidth: float | None = None
 
     @staticmethod
-    def create(reader: CsvReader) -> Optional[Filter]:
+    def create(reader: CsvReader) -> Filter | None:
         if not reader.current_line_exists() or reader.match(
             "(^Mirror modules)|(^Instrument:)|(^Aperture:)"
         ):
@@ -544,11 +544,11 @@ def create_filters(reader: CsvReader) -> dict[str, Filter]:
 @dataclass(frozen=True)
 class Labels:
     label: str
-    excitation_filter: Optional[Filter]
-    emission_filters: dict[str, Optional[Filter]]
-    scan_position_setting: Optional[ScanPositionSettingPlateReader] = None
-    number_of_flashes: Optional[float] = None
-    detector_gain_setting: Optional[str] = None
+    excitation_filter: Filter | None
+    emission_filters: dict[str, Filter | None]
+    scan_position_setting: ScanPositionSettingPlateReader | None = None
+    number_of_flashes: float | None = None
+    detector_gain_setting: str | None = None
 
     @staticmethod
     def create(reader: CsvReader) -> Labels:
@@ -588,7 +588,7 @@ class Labels:
             ),
         )
 
-    def get_emission_filter(self, id_val: str) -> Optional[Filter]:
+    def get_emission_filter(self, id_val: str) -> Filter | None:
         return self.emission_filters.get(id_val)
 
 

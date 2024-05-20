@@ -7,7 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
-from typing import Any, Optional
+from typing import Any
 
 from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
 from allotropy.allotrope.schema_parser.schema_model import (
@@ -189,7 +189,7 @@ class DataclassField:
     """Represents a dataclass field."""
 
     name: str
-    default_value: Optional[str]
+    default_value: str | None
     field_types: set[str]
 
     @staticmethod
@@ -283,8 +283,8 @@ class DataClassLines(ClassLines):
         name: str,
         parent_class_names: list[str],
         fields: dict[str, DataclassField],
-        field_name_order: Optional[list[str]] = None,
-        is_frozen: Optional[bool] = False,  # noqa: FBT002
+        field_name_order: list[str] | None = None,
+        is_frozen: bool | None = False,  # noqa: FBT002
     ) -> DataClassLines:
         # Recreate lines with no whitespace from parsed values
         lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
@@ -488,7 +488,7 @@ class ModelClassEditor:
 
     def _handle_class_lines(
         self, class_name: str, classes: dict[str, ClassLines]
-    ) -> Optional[list[str]]:
+    ) -> list[str] | None:
         class_lines = classes[class_name]
 
         # A dataclass with required fields can not inherit from a dataclass with an optional field
@@ -512,8 +512,8 @@ class ModelClassEditor:
         return class_lines.lines
 
     def _get_class_lines(
-        self, file: io.TextIOBase, existing_lines: Optional[list[str]] = None
-    ) -> Optional[ClassLines]:
+        self, file: io.TextIOBase, existing_lines: list[str] | None = None
+    ) -> ClassLines | None:
         # Reads lines for the next class and returns as a ClassLines object.
         lines: list[str] = existing_lines or []
         started = False

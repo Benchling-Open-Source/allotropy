@@ -1,5 +1,4 @@
 from collections.abc import Iterator
-from typing import Optional
 
 from allotropy.parsers.appbio_quantstudio.decorators import cache
 from allotropy.parsers.appbio_quantstudio.views import ViewData
@@ -14,7 +13,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 @cache
-def build_quantity(well_item: WellItem) -> Optional[CalculatedDocument]:
+def build_quantity(well_item: WellItem) -> CalculatedDocument | None:
     if (quantity := well_item.result.quantity) is None:
         return None
 
@@ -33,7 +32,7 @@ def build_quantity(well_item: WellItem) -> Optional[CalculatedDocument]:
 @cache
 def build_quantity_mean(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (quantity_mean := well_items[0].result.quantity_mean) is None:
         return None
@@ -62,7 +61,7 @@ def build_quantity_mean(
 @cache
 def build_quantity_sd(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (quantity_sd := well_items[0].result.quantity_sd) is None:
         return None
@@ -91,7 +90,7 @@ def build_quantity_sd(
 @cache
 def build_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (ct_mean := well_items[0].result.ct_mean) is None:
         return None
@@ -110,7 +109,7 @@ def build_ct_mean(
 @cache
 def build_ct_sd(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (ct_sd := well_items[0].result.ct_sd) is None:
         return None
@@ -129,7 +128,7 @@ def build_ct_sd(
 @cache
 def build_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (ct_se := well_items[0].result.ct_se) is None:
         return None
@@ -148,7 +147,7 @@ def build_ct_se(
 @cache
 def build_eq_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (eq_ct_mean := well_items[0].result.eq_ct_mean) is None:
         return None
@@ -168,7 +167,7 @@ def build_eq_ct_mean(
 @cache
 def build_adj_eq_ct_mean(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (adj_eq_ct_mean := well_items[0].result.adj_eq_ct_mean) is None:
         return None
@@ -193,7 +192,7 @@ def build_delta_ct_mean(
     sample: str,
     target: str,
     r_target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_mean := well_items[0].result.delta_ct_mean) is None:
         return None
@@ -245,7 +244,7 @@ def build_delta_ct_mean(
 @cache
 def build_delta_ct_sd(
     view_data: ViewData[WellItem], sample: str, target: str, r_target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_sd := well_items[0].result.delta_ct_sd) is None:
         return None
@@ -272,7 +271,7 @@ def build_delta_ct_sd(
 @cache
 def build_delta_ct_se(
     view_data: ViewData[WellItem], sample: str, target: str, r_target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_se := well_items[0].result.delta_ct_se) is None:
         return None
@@ -303,7 +302,7 @@ def build_delta_delta_ct(
     target: str,
     r_sample: str,
     r_target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_delta_ct := well_items[0].result.delta_delta_ct) is None:
         return None
@@ -340,7 +339,7 @@ def build_rq(
     target: str,
     r_sample: str,
     r_target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq := well_items[0].result.rq) is None:
         return None
@@ -371,7 +370,7 @@ def build_rq_min(
     target: str,
     r_sample: str,
     r_target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq_min := well_items[0].result.rq_min) is None:
         return None
@@ -400,7 +399,7 @@ def build_rq_max(
     target: str,
     r_sample: str,
     r_target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq_max := well_items[0].result.rq_max) is None:
         return None
@@ -427,7 +426,7 @@ def build_relative_rq(
     view_data: ViewData[WellItem],
     sample: str,
     target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq := well_items[0].result.rq) is None:
         return None
@@ -454,7 +453,7 @@ def build_relative_rq_min(
     view_data: ViewData[WellItem],
     sample: str,
     target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq_min := well_items[0].result.rq_min) is None:
         return None
@@ -481,7 +480,7 @@ def build_relative_rq_max(
     view_data: ViewData[WellItem],
     sample: str,
     target: str,
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq_max := well_items[0].result.rq_max) is None:
         return None
@@ -506,7 +505,7 @@ def build_relative_rq_max(
 @cache
 def build_rn_mean(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rn_mean := well_items[0].result.rn_mean) is None:
         return None
@@ -525,7 +524,7 @@ def build_rn_mean(
 @cache
 def build_rn_sd(
     view_data: ViewData[WellItem], sample: str, target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rn_sd := well_items[0].result.rn_sd) is None:
         return None
@@ -544,7 +543,7 @@ def build_rn_sd(
 @cache
 def build_y_intercept(
     view_data: ViewData[WellItem], target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (y_intercept := well_items[0].result.y_intercept) is None:
         return None
@@ -563,7 +562,7 @@ def build_y_intercept(
 @cache
 def build_r_squared(
     view_data: ViewData[WellItem], target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (r_squared := well_items[0].result.r_squared) is None:
         return None
@@ -582,7 +581,7 @@ def build_r_squared(
 @cache
 def build_slope(
     view_data: ViewData[WellItem], target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (slope := well_items[0].result.slope) is None:
         return None
@@ -601,7 +600,7 @@ def build_slope(
 @cache
 def build_efficiency(
     view_data: ViewData[WellItem], target: str
-) -> Optional[CalculatedDocument]:
+) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(target)
     if (efficiency := well_items[0].result.efficiency) is None:
         return None

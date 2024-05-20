@@ -1,5 +1,3 @@
-from typing import Union
-
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueCell,
     TNullableQuantityValueGramPerLiter,
@@ -16,11 +14,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 
 MOLAR_CONCENTRATION_CLASSES: list[
-    Union[
-        type[TNullableQuantityValueMillimolePerLiter],
-        type[TNullableQuantityValueGramPerLiter],
-        type[TNullableQuantityValueUnitPerLiter],
-    ]
+    (
+        type[TNullableQuantityValueMillimolePerLiter]
+        | type[TNullableQuantityValueGramPerLiter]
+        | type[TNullableQuantityValueUnitPerLiter]
+    )
 ] = [
     TNullableQuantityValueMillimolePerLiter,
     TNullableQuantityValueGramPerLiter,

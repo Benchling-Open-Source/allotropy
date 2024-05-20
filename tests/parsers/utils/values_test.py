@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import field, make_dataclass
-from typing import Optional
 from xml.etree import ElementTree
 
 import pytest
@@ -91,11 +90,11 @@ def test_try_float_fails(value: str, expected_regex: str) -> None:
         ("1.1", 1.1),
     ],
 )
-def test_try_float_or_none(value: Optional[str], expected: Optional[int]) -> None:
+def test_try_float_or_none(value: str | None, expected: int | None) -> None:
     assert try_float_or_none(value) == expected
 
 
-def _try_int(value: Optional[str]) -> int:
+def _try_int(value: str | None) -> int:
     return try_int(value, "param")
 
 
@@ -111,7 +110,7 @@ def test_try_int() -> None:
         ("a", "Invalid integer string: 'a'."),
     ],
 )
-def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
+def test_try_int_fails(value: str | None, expected_regex: str) -> None:
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         _try_int(value)
 
@@ -126,7 +125,7 @@ def test_try_int_fails(value: Optional[str], expected_regex: str) -> None:
         ("1.1", None),
     ],
 )
-def test_try_int_or_none(value: Optional[str], expected: Optional[float]) -> None:
+def test_try_int_or_none(value: str | None, expected: float | None) -> None:
     assert try_int_or_none(value) == expected
 
 
@@ -254,7 +253,7 @@ def test_remove_none_fields_from_data_class_optional_none() -> None:
         [
             ("sample_id", str),
             ("volume", int),
-            ("scientist", Optional[str], field(default=None)),  # type: ignore
+            ("scientist", str | None, field(default=None)),  # type: ignore
         ],
     )
     test_class = test_data_class(sample_id="abc", volume=5, scientist=None)
@@ -267,7 +266,7 @@ def test_remove_none_fields_from_data_class_with_required_none() -> None:
     # Test that we do not remove the None when it's required
     test_data_class = make_dataclass(
         "test_data_class",
-        [("sample_id", str), ("volume", int), ("scientist", Optional[str])],  # type: ignore
+        [("sample_id", str), ("volume", int), ("scientist", str | None)],  # type: ignore
     )
     test_class = test_data_class(sample_id="abc", volume=5, scientist=None)
     assert remove_none_fields_from_data_class(test_class) == test_data_class(

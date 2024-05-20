@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Union
+from typing import Any
 
 import pandas as pd
 from pandas._typing import FilePath, ReadCsvBuffer
@@ -29,7 +29,7 @@ def read_csv(
 
 def read_excel(
     # io is untyped in pd.read_excel(), but this seems reasonable.
-    io: Union[str, IOType],
+    io: str | IOType,
     **kwargs: Any,
 ) -> pd.DataFrame:
     """Wrap pd.read_excel() and raise AllotropeConversionError for failures.

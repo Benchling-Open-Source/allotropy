@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from enum import Enum
 import math
 import re
-from typing import Any, Optional, Union
+from typing import Any
 
 import pandas as pd
 
@@ -34,7 +34,7 @@ END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
 
 
-def try_non_nan_float_or_none(value: Optional[str]) -> Optional[float]:
+def try_non_nan_float_or_none(value: str | None) -> float | None:
     number = try_float_or_none(value)
     return None if number is None or math.isnan(number) else number
 
@@ -56,7 +56,7 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
 def try_str_from_series_multikey_or_none(
     data: pd.Series[Any],
     possible_keys: set[str],
-) -> Optional[str]:
+) -> str | None:
     for key in possible_keys:
         value = try_str_from_series_or_none(data, key)
         if value is not None:
@@ -67,7 +67,7 @@ def try_str_from_series_multikey_or_none(
 def try_str_from_series_multikey(
     data: pd.Series[Any],
     possible_keys: set[str],
-    msg: Optional[str] = None,
+    msg: str | None = None,
 ) -> str:
     return assert_not_none(
         try_str_from_series_multikey_or_none(data, possible_keys),
@@ -304,21 +304,21 @@ class PlateHeader:
     unit: str
     scan_position: ScanPosition
     reads_per_well: float
-    pmt_gain: Optional[str]
+    pmt_gain: str | None
     num_rows: int
-    excitation_wavelengths: Optional[list[int]]
-    cutoff_filters: Optional[list[int]]
+    excitation_wavelengths: list[int] | None
+    cutoff_filters: list[int] | None
 
 
 @dataclass
 class DataElement:
     uuid: str
     plate: str
-    temperature: Optional[float]
+    temperature: float | None
     wavelength: float
     position: str
     value: JsonFloat
-    sample_id: Optional[str] = None
+    sample_id: str | None = None
 
     @property
     def sample_identifier(self) -> str:
@@ -339,7 +339,7 @@ class PlateWavelengthData:
     @staticmethod
     def create(
         plate_name: str,
-        temperature: Optional[float],
+        temperature: float | None,
         wavelength: float,
         df_data: pd.DataFrame,
     ) -> PlateWavelengthData:
@@ -366,7 +366,7 @@ class PlateWavelengthData:
 
 @dataclass(frozen=True)
 class PlateKineticData:
-    temperature: Optional[float]
+    temperature: float | None
     wavelength_data: list[PlateWavelengthData]
 
     @staticmethod
@@ -413,7 +413,7 @@ class PlateKineticData:
     @staticmethod
     def _get_wavelength_data(
         plate_name: str,
-        temperature: Optional[float],
+        temperature: float | None,
         header: PlateHeader,
         w_data: pd.DataFrame,
     ) -> list[PlateWavelengthData]:
@@ -483,7 +483,7 @@ class PlateReducedData:
 @dataclass(frozen=True)
 class PlateData:
     raw_data: PlateRawData
-    reduced_data: Optional[PlateReducedData]
+    reduced_data: PlateReducedData | None
 
     @staticmethod
     def create(
@@ -507,7 +507,7 @@ class PlateData:
 
 @dataclass(frozen=True)
 class TimeKineticData:
-    temperature: Optional[float]
+    temperature: float | None
     data_elements: dict[str, DataElement]
 
     @staticmethod
@@ -616,7 +616,7 @@ class TimeReducedData:
 @dataclass(frozen=True)
 class TimeData:
     raw_data: TimeRawData
-    reduced_data: Optional[TimeReducedData]
+    reduced_data: TimeReducedData | None
 
     @staticmethod
     def create(
@@ -641,7 +641,7 @@ class TimeData:
 @dataclass(frozen=True)
 class PlateBlock(ABC, Block):
     header: PlateHeader
-    block_data: Union[PlateData, TimeData]
+    block_data: PlateData | TimeData
 
     @staticmethod
     def read_header(reader: CsvReader) -> pd.Series[str]:
@@ -703,11 +703,11 @@ class PlateBlock(ABC, Block):
             raise AllotropeConversionError(error)
 
     @classmethod
-    def get_num_wavelengths(cls, num_wavelengths_raw: Optional[str]) -> int:
+    def get_num_wavelengths(cls, num_wavelengths_raw: str | None) -> int:
         return try_int_or_none(num_wavelengths_raw) or 1
 
     @classmethod
-    def get_wavelengths(cls, wavelengths_str: Optional[str]) -> list[float]:
+    def get_wavelengths(cls, wavelengths_str: str | None) -> list[float]:
         return [
             try_float(wavelength, "wavelength")
             for wavelength in assert_not_none(
@@ -1007,7 +1007,7 @@ class BlockList:
                 cls = PlateBlock.get_plate_block_cls(header_series)
                 header = cls.parse_header(header_series)
 
-                block_data: Union[TimeData, PlateData]
+                block_data: TimeData | PlateData
                 if header.export_format == ExportFormat.TIME_FORMAT.value:
                     block_data = TimeData.create(sub_reader, header)
                 elif header.export_format == ExportFormat.PLATE_FORMAT.value:

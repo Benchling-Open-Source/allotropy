@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import fields, is_dataclass
-from typing import Any, Callable, cast
+from typing import Any, cast
 
 import cattrs
 from cattrs.gen import make_dict_unstructure_fn, override
