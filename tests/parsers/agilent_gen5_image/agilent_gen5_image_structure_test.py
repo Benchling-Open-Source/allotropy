@@ -142,8 +142,11 @@ def test_create_read_data() -> None:
     assert len(read_data.read_sections) == 2
     assert read_data.read_sections[0].image_mode == DetectionType.SINGLE_IMAGE
     assert read_data.read_sections[1].image_mode == DetectionType.MONTAGE
+    assert read_data.read_sections[0].magnification_setting == 2.74
+    assert read_data.read_sections[1].magnification_setting == 4
 
 
+@pytest.mark.short
 def test_create_read_section_channel_settings() -> None:
     read_section_lines = [
         "Read\tImage Single Image",
@@ -159,12 +162,12 @@ def test_create_read_section_channel_settings() -> None:
         "\t    Vibration CV threshold: 0.01",
         "\t    Images to average: 1",
         "\tChannel 2:  YFP 500,542",
-        "\t    LED intensity: 10, Integration time: 303 msec, Camera gain: 20",
+        "\t    LED intensity: 11, Integration time: 303 msec, Camera gain: 20",
         "\t    Use focal height from first channel with offset of -5 µm",
         "\t    Vibration CV threshold: 0.01",
         "\t    Images to average: 1",
         "\tChannel 3:  Texas Red 586,647",
-        "\t    LED intensity: 10, Integration time: 405 msec, Camera gain: 20",
+        "\t    LED intensity: 9, Integration time: 405 msec, Camera gain: 20",
         "\t    Use focal height from first channel with offset of 0 µm",
         "\t    Vibration CV threshold: 0.01",
         "\t    Images to average: 1",
@@ -176,11 +179,15 @@ def test_create_read_section_channel_settings() -> None:
 
     assert read_section == ReadSection(
         image_mode=DetectionType.SINGLE_IMAGE,
+        magnification_setting=20,
+        image_count_setting=None,
         instrument_settings_list=[
             InstrumentSettings(
                 auto_focus=True,
                 detector_distance=None,
                 detector_gain=15.6,
+                exposure_duration=144,
+                illumination=10,
             ),
             InstrumentSettings(
                 auto_focus=True,
@@ -189,6 +196,8 @@ def test_create_read_section_channel_settings() -> None:
                 excitation_wavelength=500,
                 detector_wavelength=542,
                 detector_gain=20,
+                exposure_duration=303,
+                illumination=11,
             ),
             InstrumentSettings(
                 auto_focus=True,
@@ -197,13 +206,48 @@ def test_create_read_section_channel_settings() -> None:
                 excitation_wavelength=586,
                 detector_wavelength=647,
                 detector_gain=20,
+                exposure_duration=405,
+                illumination=9,
             ),
         ],
     )
 
 
+@pytest.mark.short
+@pytest.mark.parametrize(
+    ("rows", "columns", "count"),
+    ((2, 4, 8), (3, 5, 15), (5, 6, 30)),
+)
+def test_create_read_section_image_montage_count(
+    rows: int, columns: int, count: int
+) -> None:
+    read_section_lines = [
+        "Read	4x Montage Imaging",
+        "\tImage Montage",
+        "\tFull Plate",
+        "\tObjective: 4x",
+        "\tField of View: Standard",
+        "\tChannel 1:  GFP 469,525",
+        "\t    LED intensity: 9, Integration time: 100 msec, Camera gain: 1",
+        "\t    Autofocus with optional scan",
+        "\t    Offset from bottom of well: 0 µm",
+        "\t    Vibration CV threshold: 0.01",
+        "\t    Images to average: 1",
+        "\tHorizontal offset: 0 µm, Vertical offset: 0 µm",
+        f"\tMontage rows: {rows}, columns: {columns}",
+        "\tMontage horizontal spacing: 1776 µm, vertical spacing: 1311 µm",
+        "\tMontage autofocus option: Autofocus option based on objective size",
+    ]
+    reader = LinesReader(read_section_lines)
+    read_section = ReadSection.create(reader)
+
+    assert read_section.image_mode == DetectionType.MONTAGE
+    assert read_section.image_count_setting == count
+
+
+@pytest.mark.short
 @pytest.mark.parametrize("detector_distance", (-450, 0, 1200, -445.7))
-def test_create_instrument_settings_with_fixed_focal_height(detector_distance) -> None:
+def test_create_instrument_settings_detector_distance(detector_distance: float) -> None:
     settings_lines = [
         "\tColor Camera",
         "\t    Transmitted light",
@@ -218,6 +262,7 @@ def test_create_instrument_settings_with_fixed_focal_height(detector_distance) -
     assert instrument_settings.detector_distance == detector_distance
 
 
+@pytest.mark.short
 @pytest.mark.parametrize(
     ("transmitted_light", "expected"),
     (
@@ -231,7 +276,7 @@ def test_create_instrument_settings_with_fixed_focal_height(detector_distance) -
     ),
 )
 def test_create_instrument_settings_transmitted_light_correct_mapping(
-    transmitted_light, expected
+    transmitted_light: str, expected: TransmittedLightSetting
 ) -> None:
     settings_lines = [
         "\tColor Camera",

@@ -50,6 +50,32 @@ def read_data_section(reader: LinesReader) -> str:
     return data_section
 
 
+def parse_settings(settings: list[str]) -> dict:
+    """Returns a dictionary containing all key values identified in a list of settings.
+
+    If there are additional (non key value) settings, they are also returned under the
+    'non_kv_settings' key.
+
+    Supported settings lines format:
+        - key: value -> returned as {'key': 'value}
+        - key1: value1, key2: value2, ... -> returned as {'key1': 'value1', key2', 'value2', ...}
+        - Non keyvalue setting -> returned as {'non_kv_settings': ['Non keyvalue setting', ...]}
+    """
+    settings_dict: dict = {"non_kv_settings": []}
+    for line in settings:
+        strp_line = str(line.strip())
+
+        line_data: list[str] = strp_line.split(", ")
+        for read_datum in line_data:
+            splitted_datum = read_datum.split(": ")
+            if len(splitted_datum) == 1:
+                settings_dict["non_kv_settings"].append(splitted_datum[0])
+            elif len(splitted_datum) == 2:  # noqa: PLR2004
+                settings_dict[splitted_datum[0]] = splitted_datum[1]
+
+    return settings_dict
+
+
 @dataclass(frozen=True)
 class HeaderData:
     software_version: str
@@ -116,19 +142,24 @@ class InstrumentSettings:
     fluorescent_tag: Optional[str] = None
     excitation_wavelength: Optional[float] = None
     detector_wavelength: Optional[float] = None
-    detector_gain: Optional[float] = None
     transmitted_light: Optional[TransmittedLightSetting] = None
+    illumination: Optional[float] = None
+    exposure_duration: Optional[float] = None
+    detector_gain: Optional[float] = None
 
     @classmethod
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
         channel_settings = cls._get_channel_line_settings(settings_lines[0])
 
-        settings_dict = cls._parse_instrument_settins(settings_lines[1:])
-        non_kv_lines = settings_dict["non_kv_lines"]
+        settings_dict = parse_settings(settings_lines[1:])
+        non_kv_settings = settings_dict["non_kv_settings"]
+
+        if exposure_duration := settings_dict.get("Integration time"):
+            exposure_duration = str(exposure_duration).split()[0]
 
         return InstrumentSettings(
-            auto_focus=cls._get_auto_focus(non_kv_lines),
-            detector_distance=cls._get_detector_distance(non_kv_lines),
+            auto_focus=cls._get_auto_focus(non_kv_settings),
+            detector_distance=cls._get_detector_distance(non_kv_settings),
             fluorescent_tag=channel_settings.get("fluorescent_tag"),
             excitation_wavelength=try_float_or_none(
                 channel_settings.get("excitation_wavelength")
@@ -136,8 +167,10 @@ class InstrumentSettings:
             detector_wavelength=try_float_or_none(
                 channel_settings.get("detector_wavelength")
             ),
+            transmitted_light=cls._get_transmitted_light(non_kv_settings),
+            illumination=try_float_or_none(settings_dict.get("LED intensity")),
+            exposure_duration=try_float_or_none(exposure_duration),
             detector_gain=try_float_or_none(settings_dict.get("Camera gain")),
-            transmitted_light=cls._get_transmitted_light(non_kv_lines),
         )
 
     @classmethod
@@ -145,22 +178,6 @@ class InstrumentSettings:
         if matches := re.match(CHANNEL_HEADER_REGEX, settings_header):
             return matches.groupdict()
         return {}
-
-    @classmethod
-    def _parse_instrument_settins(cls, settings: list[str]) -> dict:
-        settings_dict = {"non_kv_lines": []}
-        for line in settings:
-            strp_line = str(line.strip())
-
-            line_data: list[str] = strp_line.split(", ")
-            for read_datum in line_data:
-                splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) == 1:
-                    settings_dict["non_kv_lines"].append(splitted_datum[0])
-                elif len(splitted_datum) == 2:  # noqa: PLR2004
-                    settings_dict[splitted_datum[0]] = splitted_datum[1]
-
-        return settings_dict
 
     @classmethod
     def _get_auto_focus(cls, settings: list[str]) -> bool:
@@ -185,24 +202,34 @@ class InstrumentSettings:
 @dataclass(frozen=True)
 class ReadSection:
     image_mode: DetectionType
+    magnification_setting: Optional[float]
+    image_count_setting: Optional[float]
     instrument_settings_list: list[InstrumentSettings]
 
     @classmethod
     def create(cls, reader: LinesReader) -> ReadSection:
-        top_read_chunk = assert_not_none(
-            reader.pop_until(SETTINGS_SECTION_REGEX),
-            msg="Expected at least one Channel or Color Camera settings in the Read section.",
-        )
-        detection_type = cls._get_detection_type("\n".join(top_read_chunk))
+        top_read_lines = list(reader.pop_until(SETTINGS_SECTION_REGEX))
+
+        detection_type = cls._get_detection_type("\n".join(top_read_lines))
         instrument_settings_list = cls._get_instrument_settings_list(reader)
+
+        bottom_read_lines = list(reader.pop_until_empty())
+        read_settings = parse_settings(top_read_lines + bottom_read_lines)
+
+        if objective := read_settings.get("Objective"):
+            objective = str(objective).replace("x", "")
 
         return ReadSection(
             image_mode=detection_type,
+            magnification_setting=try_float_or_none(objective),
+            image_count_setting=cls._get_image_count_setting(read_settings),
             instrument_settings_list=instrument_settings_list,
         )
 
     @classmethod
     def _get_detection_type(cls, read_chunk: str) -> DetectionType:
+        # TODO: better read each line and look for it in the DetectionType._value2member_map_
+        # This would be easier if we were using python 3.12 :(
         if DetectionType.SINGLE_IMAGE.value in read_chunk:
             return DetectionType.SINGLE_IMAGE
         elif DetectionType.MONTAGE.value in read_chunk:
@@ -217,10 +244,11 @@ class ReadSection:
     @classmethod
     def _get_settings_sections(cls, reader: LinesReader) -> Iterator[list[str]]:
         while True:
-            initial_line = reader.get()
+            initial_line = reader.get() or ""
             if not re.search(SETTINGS_SECTION_REGEX, initial_line):
                 break
-            lines = [reader.pop(), *reader.pop_until(r"^\t\w")]
+            reader.pop()
+            lines = [initial_line, *reader.pop_until(r"^\t\w")]
             yield lines
 
     @classmethod
@@ -239,6 +267,16 @@ class ReadSection:
             settings_list.append(instrument_settings)
         return settings_list
 
+    @classmethod
+    def _get_image_count_setting(cls, read_settings: dict) -> Optional[float]:
+        montage_rows = read_settings.get("Montage rows")
+        montage_columns = read_settings.get("columns")
+        if montage_rows and montage_columns:
+            return try_float(montage_rows, "Montage rows") * try_float(
+                montage_columns, "Montage columns"
+            )
+        return None
+
 
 @dataclass(frozen=True)
 class ReadData:
@@ -255,13 +293,14 @@ class ReadData:
         if read_type != ReadType.IMAGE:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
-        # TODO: get read chunks and create a ReadSection object for each
         section_lines_reader = SectionLinesReader(procedure_details.splitlines())
-        read_sections = []
-        for read_section in section_lines_reader.iter_sections("^Read\t"):
-            read_sections.append(ReadSection.create(read_section))
 
-        return ReadData(read_sections=read_sections)
+        return ReadData(
+            read_sections=[
+                ReadSection.create(read_section)
+                for read_section in section_lines_reader.iter_sections("^Read\t")
+            ]
+        )
 
     @classmethod
     def _get_read_type(cls, procedure_details: str) -> ReadType:
@@ -349,7 +388,6 @@ class Results:
     def create() -> Results:
         return Results(
             measurements=defaultdict(list),
-            calculated_data=[],
             wells=[],
         )
 
@@ -384,7 +422,7 @@ class Results:
 @dataclass(frozen=True)
 class PlateData:
     header_data: HeaderData
-    read_data: list[ReadSection]
+    read_data: ReadData
     layout_data: LayoutData
     results: Results
 
@@ -403,7 +441,6 @@ class PlateData:
             elif data_section.startswith("Results"):
                 results.parse_results(
                     data_section,
-                    read_data,
                 )
 
         return PlateData(
