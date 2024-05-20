@@ -1,3 +1,3 @@
 from typing import IO
 
-IOType = IO[bytes] | IO[str]
+IOType = IO[bytes | str]
