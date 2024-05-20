@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -26,7 +26,7 @@ from allotropy.parsers.novabio_flex2.constants import (
 @dataclass(frozen=True)
 class Title:
     processing_time: str
-    device_identifier: Optional[str]
+    device_identifier: str | None
 
     @staticmethod
     def create(filename: str) -> Title:
@@ -73,7 +73,7 @@ class Sample:
     identifier: str
     role_type: str
     measurement_time: str
-    batch_identifier: Optional[str]
+    batch_identifier: str | None
     analytes: list[Analyte]
     properties: dict[str, Any]
 

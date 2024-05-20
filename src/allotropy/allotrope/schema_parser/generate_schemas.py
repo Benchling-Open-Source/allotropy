@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
-from typing import Optional
 
 from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
@@ -96,17 +95,15 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
         input_file_type=InputFileType.JsonSchema,
         # Specify base_class as empty when using dataclass
         base_class="",
-        target_python_version=PythonVersion.PY_39,
-        use_union_operator=False,
+        target_python_version=PythonVersion.PY_310,
+        use_union_operator=True,
     )
     # Import classes from shared files, remove unused classes, format.
     modify_file(str(model_path), str(schema_path))
     lint_file(str(model_path))
 
 
-def _should_generate_schema(
-    schema_path: str, schema_regex: Optional[str] = None
-) -> bool:
+def _should_generate_schema(schema_path: str, schema_regex: str | None = None) -> bool:
     # Skip files in the shared directory
     if schema_path.startswith("shared"):
         return False
@@ -120,8 +117,8 @@ def _should_generate_schema(
 def generate_schemas(
     root_dir: Path,
     *,
-    dry_run: Optional[bool] = False,
-    schema_regex: Optional[str] = None,
+    dry_run: bool | None = False,
+    schema_regex: str | None = None,
 ) -> list[str]:
     """Generate schemas from JSON schema files.
 

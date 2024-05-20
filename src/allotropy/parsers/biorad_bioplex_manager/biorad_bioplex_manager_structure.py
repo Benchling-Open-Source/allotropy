@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
 from xml.etree import ElementTree
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
@@ -80,9 +79,9 @@ class WellAnalyteMapping:
 class SampleDocumentStructure:
     sample_type: SampleRoleType
     sample_identifier: str
-    description: Optional[str]
+    description: str | None
     well_name: str
-    sample_dilution: Optional[float]
+    sample_dilution: float | None
     well_analyte_mapping: WellAnalyteMapping
 
 
@@ -127,9 +126,9 @@ class SampleDocumentAggregate:
         sample_documents: SampleDocumentAggregate,
         well_xml: ElementTree.Element,
         sample_id: str,
-        sample_dilution: Optional[float],
+        sample_dilution: float | None,
         sample_type: SampleRoleType,
-        sample_description: Optional[str],
+        sample_description: str | None,
     ) -> SampleDocumentStructure:
         well_name = get_well_name(well_xml.attrib)
         mappings = WellAnalyteMapping(well_name=well_name, analytes=[])
@@ -200,7 +199,7 @@ class AnalyteDocumentData:
         bead_region_xml: ElementTree.Element,
         analyte_region_dict: dict[str, str],
         regions_of_interest: list[str],
-    ) -> Optional[AnalyteDocumentData]:
+    ) -> AnalyteDocumentData | None:
         # Look up analyte name from sample
         assay_bead_identifier = bead_region_xml.attrib[REGION_NUMBER]
 

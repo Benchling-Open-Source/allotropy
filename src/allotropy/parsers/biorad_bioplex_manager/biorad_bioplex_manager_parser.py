@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.multi_analyte_profiling_benchling_2024_01_multi_analyte_profiling import (
@@ -141,8 +141,8 @@ class BioradBioplexParser(VendorParser):
         samples_xml: Et.Element,
         wells_xml: Et.Element,
         regions_of_interest: list[str],
-        experimental_data_id: Optional[str],
-        experiment_type: Optional[str],
+        experimental_data_id: str | None,
+        experiment_type: str | None,
         plate_well_count: int,
         analytical_method_identifier: str,
     ) -> list[MultiAnalyteProfilingDocumentItem]:

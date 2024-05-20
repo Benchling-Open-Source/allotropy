@@ -1,5 +1,4 @@
 from datetime import timedelta, timezone, tzinfo
-from typing import Optional
 from zoneinfo import ZoneInfo
 
 from dateutil import parser
@@ -24,7 +23,7 @@ TIMEZONE_CODES_MAP = {
 class TimestampParser:
     default_timezone: tzinfo
 
-    def __init__(self, default_timezone: Optional[tzinfo] = None):
+    def __init__(self, default_timezone: tzinfo | None = None):
         if default_timezone and not isinstance(default_timezone, tzinfo):
             msg = f"Invalid default timezone '{default_timezone}'."
             raise AllotropeConversionError(msg)

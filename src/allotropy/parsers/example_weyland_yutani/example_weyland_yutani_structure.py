@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
 import pandas as pd
 
@@ -17,10 +16,10 @@ ASSAY_ID = "Example Assay"
 class BasicAssayInfo:
     protocol_id: str
     assay_id: str
-    checksum: Optional[str]
+    checksum: str | None
 
     @staticmethod
-    def create(bottom: Optional[pd.DataFrame]) -> BasicAssayInfo:
+    def create(bottom: pd.DataFrame | None) -> BasicAssayInfo:
         checksum = (
             None
             if (bottom is None) or (bottom.iloc[0, 0] != "Checksum")
@@ -57,7 +56,7 @@ class Plate:
     results: list[Result]
 
     @staticmethod
-    def create(df: Optional[pd.DataFrame]) -> list[Plate]:
+    def create(df: pd.DataFrame | None) -> list[Plate]:
         if df is None:
             return []
         pivoted = df.T
@@ -82,7 +81,7 @@ class Plate:
 @dataclass(frozen=True)
 class Data:
     plates: list[Plate]
-    number_of_wells: Optional[float]
+    number_of_wells: float | None
     basic_assay_info: BasicAssayInfo
     instrument: Instrument
 

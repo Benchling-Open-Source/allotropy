@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from io import StringIO
 import re
-from typing import Any, Optional
+from typing import Any
 
 import pandas as pd
 
@@ -38,7 +38,7 @@ class Header:
     measurement_time: str
     detector_gain_setting: str
     data_system_instance_identifier: str
-    analyst: Optional[str] = None
+    analyst: str | None = None
 
     @classmethod
     def create(cls, header_data: pd.DataFrame) -> Header:
@@ -149,7 +149,7 @@ class Measurement:
     dilution_factor_setting: float
     assay_bead_count: float
     analytes: list[Analyte]
-    errors: Optional[list[str]] = None
+    errors: list[str] | None = None
 
     @classmethod
     def create(
@@ -201,7 +201,7 @@ class Measurement:
     @classmethod
     def _get_errors(
         cls, errors_data: pd.DataFrame, well_location: str
-    ) -> Optional[list[str]]:
+    ) -> list[str] | None:
         try:
             measurement_errors = errors_data.loc[well_location]
         except KeyError:
