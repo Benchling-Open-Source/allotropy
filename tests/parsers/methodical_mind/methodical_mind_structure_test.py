@@ -1,10 +1,6 @@
-import re
-
 import numpy as np
 import pandas as pd
-import pytest
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.methodical_mind.methodical_mind_structure import (
@@ -43,7 +39,7 @@ def test_create_get_parameter() -> None:
         "User     :\tJeffy P",
     ]
     reader = CsvReader(lines)
-    assert CombinedData._get_parameter_required(reader, "User") == "Jeffy P"
+    assert CombinedData.get_parameter(reader, "User") == "Jeffy P"
 
 
 def test_create_get_parameter_when_missing() -> None:
@@ -54,9 +50,7 @@ def test_create_get_parameter_when_missing() -> None:
         "User     :",
     ]
     reader = CsvReader(lines)
-    msg = "Missing value for field User"
-    with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
-        CombinedData._get_parameter_required(reader, "User")
+    assert CombinedData.get_parameter(reader, "User") is None
 
 
 def test_create_plate_well_data() -> None:

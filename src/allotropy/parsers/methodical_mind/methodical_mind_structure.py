@@ -5,7 +5,6 @@ from typing import Optional
 
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -30,13 +29,13 @@ class CombinedData:
 
     @staticmethod
     def create(reader: CsvReader) -> CombinedData:
-        file_name = CombinedData._get_parameter_required(reader, FILENAME)
-        barcode_1 = CombinedData._get_parameter_required(reader, BARCODE_1)
-        read_time = CombinedData._get_parameter_required(reader, READ_TIME)
-        version = CombinedData._get_parameter_required(reader, VERSION)
-        user = CombinedData._get_parameter_optional(reader, USER)
-        serial_no = CombinedData._get_parameter_required(reader, SERIAL_NO)
-        model = CombinedData._get_parameter_required(reader, MODEL)
+        file_name = assert_not_none(CombinedData.get_parameter(reader, FILENAME))
+        barcode_1 = assert_not_none(CombinedData.get_parameter(reader, BARCODE_1))
+        read_time = assert_not_none(CombinedData.get_parameter(reader, READ_TIME))
+        version = assert_not_none(CombinedData.get_parameter(reader, VERSION))
+        user = CombinedData.get_parameter(reader, USER)
+        serial_no = assert_not_none(CombinedData.get_parameter(reader, SERIAL_NO))
+        model = assert_not_none(CombinedData.get_parameter(reader, MODEL))
 
         plate_data = []
         while reader.current_line < len(reader.lines):
@@ -97,25 +96,17 @@ class CombinedData:
         )
 
     @staticmethod
-    def _get_parameter_required(
+    def get_parameter(
         reader: CsvReader,
         name: str,
-    ) -> str:
-        try:
-            return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[
-                1
-            ]
-        except IndexError as err:
-            msg = f"Missing value for field {name}"
-            raise AllotropeConversionError(msg) from err
-
-    @staticmethod
-    def _get_parameter_optional(reader: CsvReader, name: str) -> Optional[str]:
-        try:
-            return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[
-                1
-            ]
-        except IndexError:
+    ) -> Optional[str]:
+        val_line = reader.drop_until_inclusive(name)
+        if val_line is not None:
+            try:
+                return val_line.split("\t")[1]
+            except IndexError:
+                return None
+        else:
             return None
 
 
