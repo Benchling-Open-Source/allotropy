@@ -108,7 +108,6 @@ def _split_types(type_string: str, sep: str) -> tuple[set[str], int]:
     #
     #    "str|int]|float" -> {"str, "int"}, 7 (7 == index of ])
     #
-    # Find end of the bracket, and get inner types
     inner_types = [""]
     nested = 0
     for index, char in enumerate(type_string):  # noqa: B007
