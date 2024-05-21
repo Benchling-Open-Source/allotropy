@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Optional
 
 import pandas as pd
 
@@ -28,13 +29,13 @@ class CombinedData:
 
     @staticmethod
     def create(reader: CsvReader) -> CombinedData:
-        file_name = CombinedData._get_parameter(reader, FILENAME)
-        barcode_1 = CombinedData._get_parameter(reader, BARCODE_1)
-        read_time = CombinedData._get_parameter(reader, READ_TIME)
-        version = CombinedData._get_parameter(reader, VERSION)
-        user = CombinedData._get_parameter(reader, USER)
-        serial_no = CombinedData._get_parameter(reader, SERIAL_NO)
-        model = CombinedData._get_parameter(reader, MODEL)
+        file_name = assert_not_none(CombinedData.get_parameter(reader, FILENAME))
+        barcode_1 = assert_not_none(CombinedData.get_parameter(reader, BARCODE_1))
+        read_time = assert_not_none(CombinedData.get_parameter(reader, READ_TIME))
+        version = assert_not_none(CombinedData.get_parameter(reader, VERSION))
+        user = CombinedData.get_parameter(reader, USER)
+        serial_no = assert_not_none(CombinedData.get_parameter(reader, SERIAL_NO))
+        model = assert_not_none(CombinedData.get_parameter(reader, MODEL))
 
         plate_data = []
         while reader.current_line < len(reader.lines):
@@ -95,15 +96,25 @@ class CombinedData:
         )
 
     @staticmethod
-    def _get_parameter(reader: CsvReader, name: str) -> str:
-        return assert_not_none(reader.drop_until_inclusive(name), name).split("\t")[1]
+    def get_parameter(
+        reader: CsvReader,
+        name: str,
+    ) -> Optional[str]:
+        val_line = reader.drop_until_inclusive(name)
+        if val_line is not None:
+            try:
+                return val_line.split("\t")[1]
+            except IndexError:
+                return None
+        else:
+            return None
 
 
 @dataclass(frozen=True)
 class PlateData:
     measurement_time: str
     plate_well_count: int
-    analyst: str
+    analyst: Optional[str]
     well_plate_id: str
     well_data: list[WellData]
 
@@ -111,7 +122,7 @@ class PlateData:
     def create(
         plate_df: pd.DataFrame,
         measurement_time: str,
-        analyst: str,
+        analyst: Optional[str],
         well_plate_id: str,
         plate_well_count: int,
     ) -> PlateData:
