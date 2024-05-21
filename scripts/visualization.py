@@ -99,7 +99,7 @@ def main() -> None:
     args = parse_args()
     data = read_json_file(args.input_file)
     calc_docs = Parser(data).parse()
-    visualize_graph(calc_docs, args.calculated_document_type)
+    visualize_graph(calc_docs, args.calculated_document_name)
 
 
 if __name__ == "__main__":
