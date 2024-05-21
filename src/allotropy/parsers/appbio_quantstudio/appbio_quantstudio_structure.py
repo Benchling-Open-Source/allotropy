@@ -39,6 +39,8 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
+UNDEFINED_SAMPLE_NAME = "N/A"
+
 
 @dataclass(frozen=True)
 class Header:
@@ -162,10 +164,10 @@ class WellItem(Referenceable):
             msg=f"Unable to find snp name for well {identifier}",
         )
 
-        sample_identifier = try_str_from_series(
+        sample_identifier = try_str_from_series_or_default(
             data,
             "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
+            default=UNDEFINED_SAMPLE_NAME,
         )
 
         allele1 = try_str_from_series(
@@ -227,10 +229,10 @@ class WellItem(Referenceable):
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
-        sample_identifier = try_str_from_series(
+        sample_identifier = try_str_from_series_or_default(
             data,
             "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
+            default=UNDEFINED_SAMPLE_NAME,
         )
 
         return WellItem(
@@ -320,8 +322,7 @@ class WellList:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
-        data = raw_data[raw_data["Sample Name"].notnull()]
+        data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             return WellList(
@@ -339,7 +340,9 @@ class WellList:
                     try_int(str(identifier), "well identifier"),
                     well_data,
                 )
-                for identifier, well_data in data.groupby("Well")
+                for identifier, well_data in data[
+                    data["Target Name"].notnull()
+                ].groupby("Well")
             ]
         )
 

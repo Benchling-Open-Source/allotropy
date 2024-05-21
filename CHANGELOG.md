@@ -8,15 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Tool to create graph visualization of calculated data documents
-- Details of parser requirements to docs
 
+- Script to create graph visualization of calculated data documents from asm json files
+- Details of parser requirements to docs
 
 ### Fixed
 
 ### Changed
 - Upgraded allotropy python requirement to python 10
 - Updated ASM model class typing to use or union
+- Implement default value for sample role names in AppBio Quantstudio
 
 ### Deprecated
 
