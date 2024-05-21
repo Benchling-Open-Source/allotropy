@@ -1,5 +1,5 @@
 import re
-from typing import Any
+from typing import Any, Optional
 
 import pandas as pd
 
@@ -134,19 +134,19 @@ class PharmSpecParser(VendorParser):
         return [dd]
 
     def _create_calculated_document_items(
-        self, df: pd.DataFrame, feature: str
+        self, df: pd.DataFrame, feature: str, run_names: list[str]
     ) -> list[CalculatedDataDocumentItem]:
         cols = column_map.values()
         items = []
         for row in df.index:
-            data_identifier = random_uuid_str()
+            particle_size = df.at[row, "particle size"]  # to track the calcuated data tuple
             for col in [x for x in cols if x in df.columns]:
                 prop = col.replace(
                     " ", "_"
                 )  # to be able to set the props on the DistributionItem
                 items.append(
                     CalculatedDataDocumentItem(
-                        calculated_data_identifier=data_identifier,
+                        calculated_data_identifier=random_uuid_str(),
                         calculated_data_name=f"{feature}_{prop}".lower(),
                         calculated_result=get_property_from_sample(
                             prop, df.at[row, col]
@@ -154,9 +154,10 @@ class PharmSpecParser(VendorParser):
                         data_source_aggregate_document=TDataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier=feature,
+                                    data_source_identifier=f"{run_name}|{particle_size}",  # will be replaced by distribution id
                                     data_source_feature=col,
                                 )
+                                for run_name in run_names if run_name not in VALID_CALCS
                             ]
                         ),
                     )
@@ -169,26 +170,15 @@ class PharmSpecParser(VendorParser):
             return match.group(1)
         return "Unknown"
 
-    def _setup_model(self, df: pd.DataFrame, file_name: str) -> Model:
-        """Build the Model
-
-        :param df: the raw dataframe
-        :return: the model
-        """
-        data = self._extract_data(df)
-        measurement_doc_items = []
-        calc_agg_doc = None
-        for g, gdf in data.groupby("Run No."):
-            name = str(g)
-            if g in VALID_CALCS:
-                calc_agg_doc = TCalculatedDataAggregateDocument(
+    def _create_calculated_data_aggregate_document(self, df: pd.DataFrame, name: str, run_names: list[str]) -> TCalculatedDataAggregateDocument:
+        return TCalculatedDataAggregateDocument(
                     calculated_data_document=self._create_calculated_document_items(
-                        gdf, name
+                        df, name, run_names
                     )
                 )
-            else:
-                measurement_doc_items.append(
-                    MeasurementDocumentItem(
+
+    def _create_measurement_document_item(self, df: pd.DataFrame, gdf: pd.DataFrame, name: str) -> MeasurementDocumentItem:
+        return MeasurementDocumentItem(
                         measurement_identifier=name,
                         measurement_time=pd.to_datetime(
                             str(df.at[8, 5]).replace(".", "-")
@@ -228,8 +218,9 @@ class PharmSpecParser(VendorParser):
                             ]
                         ),
                     )
-                )
-        model = Model(
+
+    def _create_model(self, df: pd.DataFrame, calc_agg_doc: TCalculatedDataAggregateDocument, measurement_doc_items: list[MeasurementDocumentItem], file_name: str) -> Model:
+         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/light-obscuration/BENCHLING/2023/12/light-obscuration.manifest",
             light_obscuration_aggregate_document=LightObscurationAggregateDocument(
                 light_obscuration_document=[
@@ -262,4 +253,41 @@ class PharmSpecParser(VendorParser):
                 calculated_data_aggregate_document=calc_agg_doc,
             ),
         )
-        return model
+
+    def _get_distribution_id_for_run_and_particle_size(self, run_name: str, particle_size: float, measurement_doc_items: list[MeasurementDocumentItem]) -> Optional[str]:
+        item = next(x for x in measurement_doc_items if x.measurement_identifier == run_name)
+        for pdd in item.processed_data_aggregate_document.processed_data_document:
+            for dd in pdd.distribution_aggregate_document.distribution_document:
+                for d in dd.distribution:
+                    if d.particle_size.value == particle_size:
+                        return d.distribution_identifier
+        return None
+
+
+    def _add_data_source_to_calculated_data(self, calc_agg_doc: TCalculatedDataAggregateDocument, measurement_doc_items: list[MeasurementDocumentItem]) -> None:
+        for cdd in calc_agg_doc.calculated_data_document:
+            for dsd in cdd.data_source_aggregate_document.data_source_document:
+                run_name, particle_size = dsd.data_source_identifier.split("|")
+                distribution_id = self._get_distribution_id_for_run_and_particle_size(run_name, float(particle_size), measurement_doc_items)
+                dsd.data_source_identifier = distribution_id
+
+    def _setup_model(self, df: pd.DataFrame, file_name: str) -> Model:
+        """Build the Model
+
+        :param df: the raw dataframe
+        :return: the model
+        """
+        data = self._extract_data(df)
+        measurement_doc_items = []
+        calc_agg_doc = None
+        run_names = data["Run No."].unique()
+        for g, gdf in data.groupby("Run No."):
+            name = str(g)
+            if g in VALID_CALCS:
+                calc_agg_doc = self._create_calculated_data_aggregate_document(gdf, name, run_names)
+            else:
+                measurement_doc_items.append(
+                    self._create_measurement_document_item(df, gdf, name)
+                )
+        self._add_data_source_to_calculated_data(calc_agg_doc, measurement_doc_items)
+        return self._create_model(df, calc_agg_doc, measurement_doc_items, file_name)
