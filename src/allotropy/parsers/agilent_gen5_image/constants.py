@@ -50,7 +50,7 @@ TRANSMITTED_LIGHT_MAP = {
 class DetectionType(str, Enum):
     SINGLE_IMAGE = "Image Single Image"
     MONTAGE = "Image Montage"
-    Z_STACKING = "Image Z-stacking"
+    Z_STACK = "Image Z-Stack"
 
 
 class ReadType(str, Enum):

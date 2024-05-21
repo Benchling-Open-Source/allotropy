@@ -232,8 +232,8 @@ class ReadSection:
             return DetectionType.SINGLE_IMAGE
         elif DetectionType.MONTAGE.value in read_chunk:
             return DetectionType.MONTAGE
-        elif DetectionType.Z_STACKING.value in read_chunk:
-            return DetectionType.Z_STACKING
+        elif DetectionType.Z_STACK.value in read_chunk:
+            return DetectionType.Z_STACK
 
         msg = f"Measurement mode not found; expected to find one of {sorted(DetectionType._member_names_)}."
 
@@ -430,6 +430,7 @@ class PlateData:
         header_data = HeaderData.create(reader, file_name)
         read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
+        ActualTemperature.create_default()
         results = Results.create()
 
         while reader.current_line_exists():
