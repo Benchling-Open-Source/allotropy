@@ -127,6 +127,7 @@ class PharmSpecParser(VendorParser):
                 )  # to be able to set the props on the DistributionItem
                 if c in elem:
                     item[prop] = get_property_from_sample(prop, float(elem[c]))
+            item["distribution_identifier"] = random_uuid_str()
             items.append(DistributionItem(**item))
         # TODO get test example for data_processing_omission_setting
         dd = DistributionDocumentItem(distribution=items)
@@ -138,12 +139,14 @@ class PharmSpecParser(VendorParser):
         cols = column_map.values()
         items = []
         for row in df.index:
+            data_identifier = random_uuid_str()
             for col in [x for x in cols if x in df.columns]:
                 prop = col.replace(
                     " ", "_"
                 )  # to be able to set the props on the DistributionItem
                 items.append(
                     CalculatedDataDocumentItem(
+                        calculated_data_identifier=data_identifier,
                         calculated_data_name=f"{feature}_{prop}".lower(),
                         calculated_result=get_property_from_sample(
                             prop, df.at[row, col]
@@ -151,7 +154,7 @@ class PharmSpecParser(VendorParser):
                         data_source_aggregate_document=TDataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(
-                                    data_source_identifier=random_uuid_str(),
+                                    data_source_identifier=feature,
                                     data_source_feature=col,
                                 )
                             ]
