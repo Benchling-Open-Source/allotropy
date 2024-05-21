@@ -145,7 +145,7 @@ class InstrumentSettings:
     transmitted_light: Optional[TransmittedLightSetting] = None
     illumination: Optional[float] = None
     exposure_duration: Optional[float] = None
-    detector_gain: Optional[float] = None
+    detector_gain: Optional[str] = None
 
     @classmethod
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
@@ -170,7 +170,7 @@ class InstrumentSettings:
             transmitted_light=cls._get_transmitted_light(non_kv_settings),
             illumination=try_float_or_none(settings_dict.get("LED intensity")),
             exposure_duration=try_float_or_none(exposure_duration),
-            detector_gain=try_float_or_none(settings_dict.get("Camera gain")),
+            detector_gain=settings_dict.get("Camera gain"),
         )
 
     @classmethod
@@ -373,28 +373,25 @@ class ActualTemperature:
 
 
 @dataclass(frozen=True)
-class Measurement:
+class ImageFeature:
     identifier: str
-    value: JsonFloat
-    label: str
+    name: str
+    result: JsonFloat
 
 
 @dataclass(frozen=True)
 class Results:
-    measurements: defaultdict[str, list[Measurement]]
+    image_features: dict[str, list[ImageFeature]]
     wells: list
 
     @staticmethod
     def create() -> Results:
         return Results(
-            measurements=defaultdict(list),
+            image_features=defaultdict(list),
             wells=[],
         )
 
-    def parse_results(
-        self,
-        results: str,
-    ) -> None:
+    def parse_results(self, results: str) -> None:
         result_lines = results.splitlines()
 
         if result_lines[0].strip() != "Results":
@@ -407,15 +404,19 @@ class Results:
             values = result_lines[row_num].split("\t")
             if values[0]:
                 current_row = values[0]
-            label = values[-1]  # last column gives information about the type of read
+            feature_name = values[-1]
             for col_num in range(1, len(values) - 1):
                 well_pos = f"{current_row}{col_num}"
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
                 well_value = try_float_or_nan(values[col_num])
 
-                self.measurements[well_pos].append(
-                    Measurement(random_uuid_str(), well_value, label)
+                self.image_features[well_pos].append(
+                    ImageFeature(
+                        identifier=random_uuid_str(),
+                        name=feature_name,
+                        result=well_value,
+                    )
                 )
 
 
@@ -431,7 +432,6 @@ class PlateData:
         header_data = HeaderData.create(reader, file_name)
         read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
-        ActualTemperature.create_default()
         results = Results.create()
 
         while reader.current_line_exists():

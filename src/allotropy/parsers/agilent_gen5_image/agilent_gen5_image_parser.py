@@ -1,13 +1,12 @@
+from collections.abc import Sequence
 from typing import Any, Union
 
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
-    CalculatedDataAggregateDocument,
-    CalculatedDataDocumentItem,
     ContainerType,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
+    ImageFeatureAggregateDocument,
+    ImageFeatureDocumentItem,
     MeasurementAggregateDocument,
     Model,
     OpticalImagingDeviceControlAggregateDocument,
@@ -15,12 +14,13 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     OpticalImagingMeasurementDocumentItems,
     PlateReaderAggregateDocument,
     PlateReaderDocumentItem,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueDegreeCelsius,
-    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimeter,
+    TQuantityValueMilliSecond,
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueUnitless,
@@ -29,7 +29,11 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
-from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import PlateData
+from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
+    ImageFeature,
+    PlateData,
+    ReadData,
+)
 from allotropy.parsers.agilent_gen5_image.constants import (
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
@@ -37,13 +41,14 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     NO_PLATE_DATA_ERROR,
 )
 from allotropy.parsers.lines_reader import read_to_lines
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentAttributeClasses = Union[
-    TQuantityValueDegreeCelsius,
     TQuantityValueMillimeter,
+    TQuantityValueMilliSecond,
     TQuantityValueNanometer,
-    TQuantityValueNumber,
+    TQuantityValueUnitless,
 ]
 
 
@@ -56,25 +61,6 @@ def get_instance_or_none(
 class AgilentGen5ImageParser(VendorParser):
     def _create_model(self, plate_data: PlateData, file_name: str) -> Model:
         header_data = plate_data.header_data
-        results = plate_data.results
-
-        calculated_data_document = [
-            CalculatedDataDocumentItem(
-                calculated_data_identifier=calculated_datum.identifier,
-                data_source_aggregate_document=DataSourceAggregateDocument(
-                    data_source_document=[
-                        DataSourceDocumentItem(
-                            data_source_identifier=data_source.identifier,
-                            data_source_feature=data_source.feature.value.lower(),
-                        )
-                        for data_source in calculated_datum.data_sources
-                    ]
-                ),
-                calculated_data_name=calculated_datum.name,
-                calculated_result=TQuantityValueUnitless(value=calculated_datum.result),
-            )
-            for calculated_datum in results.calculated_data
-        ]
 
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
@@ -93,13 +79,8 @@ class AgilentGen5ImageParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate_data, well_position)
-                    for well_position in results.wells
+                    for well_position in plate_data.results.wells
                 ],
-                calculated_data_aggregate_document=(
-                    CalculatedDataAggregateDocument(calculated_data_document)
-                    if calculated_data_document
-                    else None
-                ),
             ),
         )
 
@@ -109,7 +90,24 @@ class AgilentGen5ImageParser(VendorParser):
         header_data = plate_data.header_data
         plate_well_count = len(plate_data.results.wells)
 
-        measurement_document = self._get_measurement_document(plate_data, well_position)
+        image_features = plate_data.results.image_features[well_position]
+        processed_data_aggregate_document = ProcessedDataAggregateDocument(
+            processed_data_document=self._get_processed_data_document(image_features)
+        )
+
+        sample_document = self._get_sample_document(plate_data, well_position)
+        measurement_document = list(
+            self._get_measurement_document(plate_data.read_data, sample_document)
+        )
+
+        # Image features (included in the processed data document) are included at the measuremetn
+        # level only when there are only one device control document (and thus one measurement document)
+        # otherwhise they are included at the measurement aggregate document level.
+        if len(measurement_document) == 1:
+            first_doc = measurement_document[0]
+            first_doc.processed_data_aggregate_document = (
+                processed_data_aggregate_document
+            )
 
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -118,9 +116,36 @@ class AgilentGen5ImageParser(VendorParser):
                 experimental_data_identifier=header_data.experiment_file_path,
                 plate_well_count=TQuantityValueNumber(plate_well_count),
                 container_type=ContainerType.well_plate,
-                measurement_document=measurement_document,
+                measurement_document=list(measurement_document),
+                processed_data_aggregate_document=(
+                    processed_data_aggregate_document
+                    if len(measurement_document) > 1
+                    else None
+                ),
             )
         )
+
+    def _get_processed_data_document(
+        self,
+        image_features: list[ImageFeature],
+    ) -> list[ProcessedDataDocumentItem]:
+        return [
+            ProcessedDataDocumentItem(
+                processed_data_identifier=random_uuid_str(),
+                image_feature_aggregate_document=ImageFeatureAggregateDocument(
+                    image_feature_document=[
+                        ImageFeatureDocumentItem(
+                            image_feature_identifier=image_feature.identifier,
+                            image_feature_name=image_feature.name,
+                            image_feature_result=TQuantityValueUnitless(
+                                image_feature.result
+                            ),
+                        )
+                        for image_feature in image_features
+                    ]
+                ),
+            )
+        ]
 
     def _get_sample_document(
         self, plate_data: PlateData, well_position: str
@@ -137,38 +162,61 @@ class AgilentGen5ImageParser(VendorParser):
         )
 
     def _get_measurement_document(
-        self, plate_data: PlateData, well_position: str
-    ) -> list[OpticalImagingMeasurementDocumentItems]:
-        read_data = plate_data.read_data
-
-        measurements = plate_data.results.measurements[well_position]
-        sample_document = self._get_sample_document(plate_data, well_position)
-
-        return [
-            OpticalImagingMeasurementDocumentItems(
-                measurement_identifier=measurement.identifier,
-                sample_document=sample_document,
-                device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
-                    device_control_document=[
-                        OpticalImagingDeviceControlDocumentItem(
-                            device_type=DEVICE_TYPE,
-                            detection_type=read_data.read_mode.value,
-                            number_of_averages=(
-                                TQuantityValueNumber(read_data.number_of_averages)
-                                if read_data.number_of_averages
-                                else None
-                            ),
-                            detector_carriage_speed_setting=read_data.detector_carriage_speed,
-                        )
-                    ]
-                ),
-                absorbance=TQuantityValueMilliAbsorbanceUnit(measurement.value),
-                compartment_temperature=get_instance_or_none(
-                    TQuantityValueDegreeCelsius, plate_data.compartment_temperature
-                ),
+        self, read_data: ReadData, sample_document: SampleDocument
+    ) -> Sequence[OpticalImagingMeasurementDocumentItems]:
+        measurement_document = []
+        for read_section in read_data.read_sections:
+            measurement_document.extend(
+                [
+                    OpticalImagingMeasurementDocumentItems(
+                        measurement_identifier=random_uuid_str(),
+                        sample_document=sample_document,
+                        device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
+                            device_control_document=[
+                                OpticalImagingDeviceControlDocumentItem(
+                                    device_type=DEVICE_TYPE,
+                                    detection_type=read_section.image_mode.value,
+                                    detector_distance_setting__plate_reader_=get_instance_or_none(
+                                        TQuantityValueMillimeter,
+                                        instrument_settings.detector_distance,
+                                    ),
+                                    detector_gain_setting=instrument_settings.detector_gain,
+                                    magnification_setting=get_instance_or_none(
+                                        TQuantityValueUnitless,
+                                        read_section.magnification_setting,
+                                    ),
+                                    illumination_setting=get_instance_or_none(
+                                        TQuantityValueUnitless,
+                                        instrument_settings.illumination,
+                                    ),
+                                    transmitted_light_setting=instrument_settings.transmitted_light,
+                                    auto_focus_setting=instrument_settings.auto_focus,
+                                    image_count_setting=get_instance_or_none(
+                                        TQuantityValueUnitless,
+                                        read_section.image_count_setting,
+                                    ),
+                                    fluorescent_tag_setting=instrument_settings.fluorescent_tag,
+                                    exposure_duration_setting=get_instance_or_none(
+                                        TQuantityValueMilliSecond,
+                                        instrument_settings.exposure_duration,
+                                    ),
+                                    excitation_wavelength_setting=get_instance_or_none(
+                                        TQuantityValueNanometer,
+                                        instrument_settings.excitation_wavelength,
+                                    ),
+                                    detector_wavelength_setting=get_instance_or_none(
+                                        TQuantityValueNanometer,
+                                        instrument_settings.detector_wavelength,
+                                    ),
+                                )
+                            ]
+                        ),
+                    )
+                    for instrument_settings in read_section.instrument_settings_list
+                ]
             )
-            for measurement in measurements
-        ]
+
+        return measurement_document
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         lines = read_to_lines(named_file_contents)
