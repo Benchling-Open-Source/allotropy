@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
 import ntpath
 import re
@@ -126,10 +127,16 @@ class Plate:
 
     @staticmethod
     def create(reader: LinesReader) -> Plate:
-        name = assert_not_none(
+        raw_name = assert_not_none(
             reader.pop(),
             msg="Unable to read name of assay data.",
         )
+
+        name_match = assert_not_none(
+            re.search("\t\t\t(.+)", raw_name),
+            msg="Unable to parse name of assay data.",
+        )
+        name = re.sub(r"\s+", " ", name_match.group(1))
 
         raw_columns = assert_not_none(
             reader.pop(),
@@ -154,6 +161,18 @@ class Plate:
 
         return Plate(name, wells)
 
+    def get_well_count(self) -> int:
+        return len(self.wells)
+
+    def iter_wells(self) -> Iterator[Well]:
+        yield from self.wells.values()
+
+    def get_well(self, pos: str) -> Well:
+        return assert_not_none(
+            self.wells.get(pos),
+            msg=f"Unable to find well '{pos}' in plate '{self.name}'",
+        )
+
 
 @dataclass
 class AssayData:
@@ -169,6 +188,34 @@ class AssayData:
             reader.drop_empty()
         return AssayData(plates)
 
+    def get_plate_or_none(self, name: str) -> Optional[Plate]:
+        for plate in self.plates:
+            if name in plate.name:
+                return plate
+        return None
+
+    def get_plate(self, name: str) -> Plate:
+        return assert_not_none(
+            self.get_plate_or_none(name),
+            msg=f"Unable to find plate {name}",
+        )
+
+    def get_plate_well_count(self) -> int:
+        return self.get_plate("ImmunoSpot Plate Code").get_well_count()
+
+    def get_plate_identifier(self) -> Optional[str]:
+        plate = self.get_plate("ImmunoSpot Plate Code")
+        if match := re.search(r"ImmunoSpot Plate Code = ([\w ]+)", plate.name):
+            return match.group(1)
+        return None
+
+    def iter_wells(self) -> Iterator[Well]:
+        yield from self.get_plate("ImmunoSpot Plate Code").iter_wells()
+
+    def iter_plates_well(self, pos: str) -> Iterator[Well]:
+        for plate in self.plates:
+            yield plate.get_well(pos)
+
 
 @dataclass
 class Data:
@@ -183,3 +230,8 @@ class Data:
             assay_info=AssayInfo.create(reader),
             assay_data=AssayData.create(reader),
         )
+
+    def get_plate_identifier(self) -> str:
+        if plate_id := self.assay_data.get_plate_identifier():
+            return plate_id
+        return self.device_info.file_name
