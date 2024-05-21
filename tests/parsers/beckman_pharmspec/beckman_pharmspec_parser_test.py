@@ -144,11 +144,6 @@ def test_asm(test_file: Path) -> None:
 def test_parse_beckman_pharmspec_hiac_to_asm_contents(test_file: Path) -> None:
     expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
     allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
-    import json
-
-    with open(expected_filepath, "w") as o:
-        json.dump(allotrope_dict, o, indent=4)
-
     validate_contents(allotrope_dict, expected_filepath)
 
 
