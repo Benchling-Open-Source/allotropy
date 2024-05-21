@@ -228,8 +228,6 @@ class ReadSection:
 
     @classmethod
     def _get_detection_type(cls, read_chunk: str) -> DetectionType:
-        # TODO: better read each line and look for it in the DetectionType._value2member_map_
-        # This would be easier if we were using python 3.12 :(
         if DetectionType.SINGLE_IMAGE.value in read_chunk:
             return DetectionType.SINGLE_IMAGE
         elif DetectionType.MONTAGE.value in read_chunk:
