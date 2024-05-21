@@ -82,9 +82,9 @@ def parse_args() -> argparse.Namespace:
         help="asm json file to visualize",
     )
     parser.add_argument(
-        "calculated_document_type",
+        "calculated_document_name",
         type=str,
-        help="type of calculated data document to visualize",
+        help="name of calculated data document to visualize",
     )
     return parser.parse_args()
 
