@@ -36,14 +36,14 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.bmg_mars.bmg_mars_structure import (
+    get_plate_data,
     get_plate_well_count,
     Header,
     RE_READ_TYPE,
     ReadType,
     Wavelength,
 )
-from allotropy.parsers.lines_reader import CsvReader, LinesReader, read_to_lines
-from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -80,15 +80,7 @@ class BmgMarsParser(VendorParser):
         csv_data = list(reader.pop_until_empty())
         wavelength = Wavelength.create(csv_data)
         plate_well_count = get_plate_well_count(csv_data)
-        csv_reader = CsvReader(csv_data)
-        raw_data = assert_not_none(
-            csv_reader.lines_as_df(csv_data, skiprows=2),
-            msg="Dataframe not found.",
-        )
-        raw_data.rename(columns={0: "row"}, inplace=True)
-        data = raw_data.melt(id_vars=["row"], var_name="col", value_name="value")
-        data.dropna(inplace=True)  # TODO: check what we should do here
-        data["uuid"] = [random_uuid_str() for _ in range(len(data))]
+        data = get_plate_data(csv_data)
 
         return self._get_model(
             header, data, filename, read_type, wavelength, plate_well_count

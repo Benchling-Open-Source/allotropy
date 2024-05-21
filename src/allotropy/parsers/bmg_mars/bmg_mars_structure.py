@@ -12,6 +12,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.pandas_util import read_csv
+from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_str_from_series,
@@ -82,6 +84,19 @@ class Wavelength:
             )
         else:  # wavelength 1 only
             return Wavelength(wavelength=float(raw_wavelengths.group("wavelength1")))
+
+
+def get_plate_data(csv_data: list[str]) -> pd.DataFrame:
+    csv_reader = CsvReader(csv_data)
+    raw_data = assert_not_none(
+        csv_reader.lines_as_df(csv_data, skiprows=2),
+        msg="Dataframe not found.",
+    )
+    raw_data.rename(columns={0: "row"}, inplace=True)
+    data = raw_data.melt(id_vars=["row"], var_name="col", value_name="value")
+    data.dropna(inplace=True)  # TODO: check what we should do here
+    data["uuid"] = [random_uuid_str() for _ in range(len(data))]
+    return data
 
 
 def get_plate_well_count(csv_data: list[str]) -> TQuantityValueNumber:
