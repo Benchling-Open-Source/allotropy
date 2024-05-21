@@ -19,7 +19,6 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     SampleDocument,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMillimeter,
     TQuantityValueMilliSecond,
     TQuantityValueNanometer,
     TQuantityValueNumber,
@@ -45,7 +44,6 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentAttributeClasses = Union[
-    TQuantityValueMillimeter,
     TQuantityValueMilliSecond,
     TQuantityValueNanometer,
     TQuantityValueUnitless,
@@ -176,10 +174,12 @@ class AgilentGen5ImageParser(VendorParser):
                                 OpticalImagingDeviceControlDocumentItem(
                                     device_type=DEVICE_TYPE,
                                     detection_type=read_section.image_mode.value,
-                                    detector_distance_setting__plate_reader_=get_instance_or_none(
-                                        TQuantityValueMillimeter,
-                                        instrument_settings.detector_distance,
-                                    ),
+                                    # This setting won't get reported at the moment since Gen5 only reports it
+                                    # in microliters and we don't do conversions on the adapters at the moment
+                                    # detector_distance_setting__plate_reader_=get_instance_or_none(
+                                    #     TQuantityValueMillimeter,
+                                    #     instrument_settings.detector_distance,
+                                    # ),
                                     detector_gain_setting=instrument_settings.detector_gain,
                                     magnification_setting=get_instance_or_none(
                                         TQuantityValueUnitless,
