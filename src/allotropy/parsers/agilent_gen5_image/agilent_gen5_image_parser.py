@@ -66,7 +66,7 @@ class AgilentGen5ImageParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier="NA",
+                    device_identifier="N/A",
                     model_number=header_data.model_number,
                     equipment_serial_number=header_data.equipment_serial_number,
                 ),

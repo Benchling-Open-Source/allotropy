@@ -275,6 +275,7 @@ def test_create_instrument_settings_detector_distance(detector_distance: float) 
         )
     ),
 )
+@pytest.mark.short
 def test_create_instrument_settings_transmitted_light_correct_mapping(
     transmitted_light: str, expected: TransmittedLightSetting
 ) -> None:
