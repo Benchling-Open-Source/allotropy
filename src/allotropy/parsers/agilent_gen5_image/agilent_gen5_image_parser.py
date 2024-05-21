@@ -98,7 +98,7 @@ class AgilentGen5ImageParser(VendorParser):
             self._get_measurement_document(plate_data.read_data, sample_document)
         )
 
-        # Image features (included in the processed data document) are included at the measuremetn
+        # Image features (included in the processed data document) are included at the measurement
         # level only when there are only one device control document (and thus one measurement document)
         # otherwhise they are included at the measurement aggregate document level.
         if len(measurement_document) == 1:
@@ -175,7 +175,7 @@ class AgilentGen5ImageParser(VendorParser):
                                     device_type=DEVICE_TYPE,
                                     detection_type=read_section.image_mode.value,
                                     # This setting won't get reported at the moment since Gen5 only reports it
-                                    # in microliters and we don't do conversions on the adapters at the moment
+                                    # in micrometers and we don't do conversions on the adapters at the moment
                                     # detector_distance_setting__plate_reader_=get_instance_or_none(
                                     #     TQuantityValueMillimeter,
                                     #     instrument_settings.detector_distance,
