@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 import pandas as pd
 
@@ -32,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TStringValueItem
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
@@ -225,7 +226,7 @@ class PharmSpecParser(VendorParser):
     def _create_model(
         self,
         df: pd.DataFrame,
-        calc_agg_doc: TCalculatedDataAggregateDocument,
+        calc_agg_doc: Optional[TCalculatedDataAggregateDocument],
         measurement_doc_items: list[MeasurementDocumentItem],
         file_name: str,
     ) -> Model:
@@ -268,15 +269,25 @@ class PharmSpecParser(VendorParser):
         run_name: str,
         particle_size: float,
         measurement_doc_items: list[MeasurementDocumentItem],
-    ) -> Optional[str]:
+    ) -> Optional[Union[str, TStringValueItem]]:
         item = next(
             x for x in measurement_doc_items if x.measurement_identifier == run_name
         )
-        for pdd in item.processed_data_aggregate_document.processed_data_document:
-            for dd in pdd.distribution_aggregate_document.distribution_document:
-                for d in dd.distribution:
-                    if d.particle_size.value == particle_size:
-                        return d.distribution_identifier
+        if (
+            item.processed_data_aggregate_document is not None
+            and item.processed_data_aggregate_document.processed_data_document
+            is not None
+        ):
+            for pdd in item.processed_data_aggregate_document.processed_data_document:
+                if (
+                    pdd.distribution_aggregate_document is not None
+                    and pdd.distribution_aggregate_document.distribution_document
+                    is not None
+                ):
+                    for dd in pdd.distribution_aggregate_document.distribution_document:
+                        for d in dd.distribution:
+                            if d.particle_size.value == particle_size:
+                                return d.distribution_identifier
         return None
 
     def _add_data_source_to_calculated_data(
@@ -284,13 +295,24 @@ class PharmSpecParser(VendorParser):
         calc_agg_doc: TCalculatedDataAggregateDocument,
         measurement_doc_items: list[MeasurementDocumentItem],
     ) -> None:
-        for cdd in calc_agg_doc.calculated_data_document:
-            for dsd in cdd.data_source_aggregate_document.data_source_document:
-                run_name, particle_size = dsd.data_source_identifier.split("|")
-                distribution_id = self._get_distribution_id_for_run_and_particle_size(
-                    run_name, float(particle_size), measurement_doc_items
-                )
-                dsd.data_source_identifier = distribution_id
+        if calc_agg_doc.calculated_data_document is not None:
+            for cdd in calc_agg_doc.calculated_data_document:
+                if (
+                    cdd.data_source_aggregate_document is not None
+                    and cdd.data_source_aggregate_document.data_source_document
+                    is not None
+                ):
+                    for dsd in cdd.data_source_aggregate_document.data_source_document:
+                        run_name, particle_size = str(dsd.data_source_identifier).split(
+                            "|"
+                        )
+                        distribution_id = (
+                            self._get_distribution_id_for_run_and_particle_size(
+                                run_name, float(particle_size), measurement_doc_items
+                            )
+                        )
+                        if distribution_id is not None:
+                            dsd.data_source_identifier = distribution_id
 
     def _setup_model(self, df: pd.DataFrame, file_name: str) -> Model:
         """Build the Model
@@ -301,7 +323,7 @@ class PharmSpecParser(VendorParser):
         data = self._extract_data(df)
         measurement_doc_items = []
         calc_agg_doc = None
-        run_names = data["Run No."].unique()
+        run_names = list(data["Run No."].unique())
         for g, gdf in data.groupby("Run No."):
             name = str(g)
             if g in VALID_CALCS:
@@ -312,5 +334,8 @@ class PharmSpecParser(VendorParser):
                 measurement_doc_items.append(
                     self._create_measurement_document_item(df, gdf, name)
                 )
-        self._add_data_source_to_calculated_data(calc_agg_doc, measurement_doc_items)
+        if calc_agg_doc is not None:
+            self._add_data_source_to_calculated_data(
+                calc_agg_doc, measurement_doc_items
+            )
         return self._create_model(df, calc_agg_doc, measurement_doc_items, file_name)
