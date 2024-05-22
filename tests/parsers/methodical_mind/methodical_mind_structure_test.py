@@ -31,6 +31,28 @@ def test_create_combined_data() -> None:
     assert len(combined_data.plate_doc_info) == 2
 
 
+def test_create_get_parameter() -> None:
+    lines = [
+        "FileName :\tZ:\\DC\\Export\\test_file.txt",
+        "Version  :\tMMPR 1.0.38",
+        "",
+        "User     :\tJeffy P",
+    ]
+    reader = CsvReader(lines)
+    assert CombinedData.get_parameter(reader, "User") == "Jeffy P"
+
+
+def test_create_get_parameter_when_missing() -> None:
+    lines = [
+        "FileName :\tZ:\\DC\\Export\\test_file.txt",
+        "Version  :\tMMPR 1.0.38",
+        "",
+        "User     :",
+    ]
+    reader = CsvReader(lines)
+    assert CombinedData.get_parameter(reader, "User") is None
+
+
 def test_create_plate_well_data() -> None:
     data = {
         "Unnamed: 0": ["A", np.nan, np.nan, np.nan, np.nan],
