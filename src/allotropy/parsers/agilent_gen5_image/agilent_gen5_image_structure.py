@@ -380,16 +380,20 @@ class ImageFeature:
 @dataclass(frozen=True)
 class Results:
     image_features: dict[str, list[ImageFeature]]
-    wells: list
+    wells: list[str]
 
     @staticmethod
-    def create() -> Results:
+    def create_default() -> Results:
         return Results(
             image_features=defaultdict(list),
             wells=[],
         )
 
-    def parse_results(self, results: str) -> None:
+    @staticmethod
+    def create(results: str) -> None:
+        wells = []
+        image_features = defaultdict(list)
+
         result_lines = results.splitlines()
 
         if result_lines[0].strip() != "Results":
@@ -405,17 +409,19 @@ class Results:
             feature_name = values[-1]
             for col_num in range(1, len(values) - 1):
                 well_pos = f"{current_row}{col_num}"
-                if well_pos not in self.wells:
-                    self.wells.append(well_pos)
+                if well_pos not in wells:
+                    wells.append(well_pos)
                 well_value = try_float_or_nan(values[col_num])
 
-                self.image_features[well_pos].append(
+                image_features[well_pos].append(
                     ImageFeature(
                         identifier=random_uuid_str(),
                         name=feature_name,
                         result=well_value,
                     )
                 )
+
+        return Results(image_features, wells)
 
 
 @dataclass(frozen=True)
@@ -430,17 +436,14 @@ class PlateData:
         header_data = HeaderData.create(reader, file_name)
         read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
-        ActualTemperature.create_default()
-        results = Results.create()
+        results = Results.create_default()
 
         while reader.current_line_exists():
             data_section = read_data_section(reader)
             if data_section.startswith("Layout"):
                 layout_data = LayoutData.create(data_section)
             elif data_section.startswith("Results"):
-                results.parse_results(
-                    data_section,
-                )
+                results = results.create(data_section)
 
         return PlateData(
             header_data=header_data,
