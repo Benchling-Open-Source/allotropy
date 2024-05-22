@@ -77,7 +77,7 @@ class AgilentGen5ImageParser(VendorParser):
                 ),
                 plate_reader_document=[
                     self._get_plate_reader_document_item(plate_data, well_position)
-                    for well_position in plate_data.results.wells
+                    for well_position in plate_data.results.image_features.keys()
                 ],
             ),
         )
@@ -86,7 +86,7 @@ class AgilentGen5ImageParser(VendorParser):
         self, plate_data: PlateData, well_position: str
     ) -> PlateReaderDocumentItem:
         header_data = plate_data.header_data
-        plate_well_count = len(plate_data.results.wells)
+        plate_well_count = len(plate_data.results.image_features)
 
         image_features = plate_data.results.image_features[well_position]
         processed_data_aggregate_document = ProcessedDataAggregateDocument(

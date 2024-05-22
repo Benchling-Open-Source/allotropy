@@ -380,7 +380,6 @@ class ImageFeature:
 @dataclass(frozen=True)
 class Results:
     image_features: dict[str, list[ImageFeature]]
-    wells: list[str]
 
     @staticmethod
     def create_default() -> Results:
@@ -390,8 +389,7 @@ class Results:
         )
 
     @staticmethod
-    def create(results: str) -> None:
-        wells = []
+    def create(results: str) -> Results:
         image_features = defaultdict(list)
 
         result_lines = results.splitlines()
@@ -408,12 +406,10 @@ class Results:
                 current_row = values[0]
             feature_name = values[-1]
             for col_num in range(1, len(values) - 1):
-                well_pos = f"{current_row}{col_num}"
-                if well_pos not in wells:
-                    wells.append(well_pos)
+                well_position = f"{current_row}{col_num}"
                 well_value = try_float_or_nan(values[col_num])
 
-                image_features[well_pos].append(
+                image_features[well_position].append(
                     ImageFeature(
                         identifier=random_uuid_str(),
                         name=feature_name,
@@ -421,7 +417,7 @@ class Results:
                     )
                 )
 
-        return Results(image_features, wells)
+        return Results(image_features)
 
 
 @dataclass(frozen=True)
