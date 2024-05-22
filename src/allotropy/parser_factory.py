@@ -29,6 +29,9 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_parser import SoftmaxproParser
+from allotropy.parsers.nexcelom_matrix.nexcelom_matrix_parser import (
+    NexcelomMatrixParser,
+)
 from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     PerkinElmerEnvisionParser,
@@ -61,6 +64,7 @@ class Vendor(Enum):
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
+    NEXCELOM_MATRIX = "NEXCELOM_MATRIX"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
     PERKIN_ELMER_ENVISION = "PERKIN_ELMER_ENVISION"
     QIACUITY_DPCR = "QIACUITY_DPCR"
@@ -86,6 +90,7 @@ _VENDOR_TO_DISPLAY_NAME = {
     Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
     Vendor.LUMINEX_XPONENT: "Luminex xPONENT",
     Vendor.MOLDEV_SOFTMAX_PRO: "MolDev SoftMax Pro",
+    Vendor.NEXCELOM_MATRIX: "Nexcelom Matrix",
     Vendor.NOVABIO_FLEX2: "NovaBio Flex2",
     Vendor.PERKIN_ELMER_ENVISION: "Perkin Elmer Envision",
     Vendor.QIACUITY_DPCR: "Qiacuity dPCR",
@@ -109,6 +114,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
+    Vendor.NEXCELOM_MATRIX: NexcelomMatrixParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,
     Vendor.PERKIN_ELMER_ENVISION: PerkinElmerEnvisionParser,
     Vendor.QIACUITY_DPCR: QiacuitydPCRParser,

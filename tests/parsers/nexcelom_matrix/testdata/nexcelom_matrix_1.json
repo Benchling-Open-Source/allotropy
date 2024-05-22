@@ -1,0 +1,1147 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.87,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2280000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2620000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 343000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 8.88,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 9.53,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 4.5,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1342,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1165,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 177,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-2"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.87,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2230000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2560000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 326000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.25,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.94,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 5.66,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1310,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1142,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 168,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-3"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.85,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2170000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2550000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 379000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.86,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.59,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 6.69,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1304,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1109,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 195,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-4"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.84,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2170000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2580000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 405000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.24,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.04,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 6.08,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1318,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1109,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 209,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-5"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.84,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2350000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2790000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 439000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.06,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.93,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 5.44,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1426,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1200,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 226,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-6"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.85,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2110000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2490000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 377000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.4,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.25,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 5.7,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1271,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1077,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 194,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-7"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.85,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2300000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2720000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 422000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.02,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.85,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 5.42,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1391,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1174,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 217,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-8"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.85,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2020000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2370000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 350000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.21,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.99,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 5.72,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1210,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1030,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 180,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_8",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P2-9"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.85,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2140000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2530000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 394000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.23,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.95,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 6.24,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1298,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1095,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 203,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-1"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.96,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 678000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 709000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 31100,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 15.15,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 15.54,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 6.51,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 360,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 344,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 16,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_10",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-2"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.83,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1980000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2390000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 406000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 9.96,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.95,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 5.24,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1219,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1010,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 209,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_11",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-3"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 0.84,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1950000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2330000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 378000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.18,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.22,
+                                            "unit": "μm"
+                                        },
+                                        "average dead cell diameter (cell counter)": {
+                                            "value": 4.88,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1190,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 995,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 195,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_12",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-4"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1830000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 1830000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 12.96,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.96,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 930,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 930,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_13",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-5"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 2080000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 2080000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 12.62,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.62,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 1062,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 1062,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_14",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-6"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1810000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 1810000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.02,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.02,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 920,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 920,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_15",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-7"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1800000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 1800000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 13.17,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.17,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 915,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 915,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_16",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-8"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1730000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 1730000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 11.83,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 11.83,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 882,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 882,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "1970-01-01T00:00:00+00:00",
+                            "measurement identifier": "NEXCELOM_MATRIX_TEST_ID_17",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "P3-9"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 1.0,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 1610000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {},
+                                        "total cell density (cell counter)": {
+                                            "value": 1610000,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 10.74,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 10.74,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 824,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 824,
+                                            "unit": "cell"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ],
+        "device system document": {},
+        "data system document": {
+            "file name": "nexcelom_matrix_1.xlsx",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.30"
+        }
+    }
+}
