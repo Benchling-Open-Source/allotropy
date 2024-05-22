@@ -14,7 +14,6 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.testing.utils import from_file, validate_contents
-from allotropy.to_allotrope import allotrope_from_file
 
 VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
 
@@ -163,14 +162,6 @@ def test_get_model(
         assert (
             not model.light_obscuration_aggregate_document.calculated_data_aggregate_document
         )
-
-
-@pytest.mark.short
-@pytest.mark.parametrize("file_name", OUTPUT_FILES)
-def test_asm(file_name: str) -> None:
-    test_file = _get_test_file_path(file_name)
-    asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
-    assert isinstance(asm, dict)
 
 
 @pytest.mark.short
