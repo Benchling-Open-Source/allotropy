@@ -20,6 +20,7 @@ from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.constants import (
     AUTOFOCUS_STRINGS,
     CHANNEL_HEADER_REGEX,
+    DEFAULT_EXPORT_FORMAT_ERROR,
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
     FILENAME_REGEX,
@@ -383,10 +384,7 @@ class Results:
 
     @staticmethod
     def create_default() -> Results:
-        return Results(
-            image_features=defaultdict(list),
-            wells=[],
-        )
+        return Results(image_features=defaultdict(list))
 
     @staticmethod
     def create(results: str) -> Results:
@@ -432,14 +430,19 @@ class PlateData:
         header_data = HeaderData.create(reader, file_name)
         read_data = ReadData.create(reader)
         layout_data = LayoutData.create_default()
-        results = Results.create_default()
+        results = None
 
         while reader.current_line_exists():
             data_section = read_data_section(reader)
             if data_section.startswith("Layout"):
                 layout_data = LayoutData.create(data_section)
             elif data_section.startswith("Results"):
-                results = results.create(data_section)
+                results = Results.create(data_section)
+
+        # If there is no results table, it might mean that the export format includes results in
+        # separate tables, or that there are no results at all (also bad format)
+        if results is None:
+            raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
 
         return PlateData(
             header_data=header_data,
