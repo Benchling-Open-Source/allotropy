@@ -383,10 +383,6 @@ class Results:
     image_features: dict[str, list[ImageFeature]]
 
     @staticmethod
-    def create_default() -> Results:
-        return Results(image_features=defaultdict(list))
-
-    @staticmethod
     def create(results: str) -> Results:
         image_features = defaultdict(list)
 
