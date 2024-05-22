@@ -99,8 +99,8 @@ class AgilentGen5ImageParser(VendorParser):
         )
 
         # Image features (included in the processed data document) are included at the measurement
-        # level only when there are only one device control document (and thus one measurement document)
-        # otherwhise they are included at the measurement aggregate document level.
+        # level only when there is only one device control document (and thus one measurement document)
+        # otherwise they are included at the measurement aggregate document level.
         if len(measurement_document) == 1:
             first_doc = measurement_document[0]
             first_doc.processed_data_aggregate_document = (
@@ -224,8 +224,7 @@ class AgilentGen5ImageParser(VendorParser):
         plates = list(section_lines_reader.iter_sections("^Software Version"))
 
         if not plates:
-            msg = NO_PLATE_DATA_ERROR
-            raise AllotropeConversionError(msg)
+            raise AllotropeConversionError(NO_PLATE_DATA_ERROR)
 
         if len(plates) > 1:
             raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
