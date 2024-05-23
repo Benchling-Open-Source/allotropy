@@ -6,6 +6,7 @@ import ntpath
 import re
 from typing import Optional
 
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
@@ -138,6 +139,9 @@ class Plate:
         )
         name = re.sub(r"\s+", " ", name_match.group(1))
 
+        if "ImmunoSpot Plate Code" in name:
+            name = "Spot Count"
+
         raw_columns = assert_not_none(
             reader.pop(),
             msg=f"Unable to read data from {name}",
@@ -177,40 +181,40 @@ class Plate:
 @dataclass
 class AssayData:
     plates: list[Plate]
+    identifier: Optional[str]
+    well_count: int
 
     @staticmethod
     def create(reader: LinesReader) -> AssayData:
         reader.drop_until_inclusive("Unprocessed Data$")
+
+        reader.drop_empty()
+        plate_code_line = reader.get() or ""
+        assert_not_none(
+            re.search("Plate Code =", plate_code_line),
+            msg="Unable to find ImmunoSpot Plate Code line",
+        )
+
+        identifier = (
+            match.group(1)
+            if (match := re.search(r"Plate Code = ([\w ]+)", plate_code_line))
+            else None
+        )
+
         plates = []
         while reader.current_line_exists():
             reader.drop_empty()
             plates.append(Plate.create(reader))
             reader.drop_empty()
-        return AssayData(plates)
 
-    def get_plate_or_none(self, name: str) -> Optional[Plate]:
-        for plate in self.plates:
-            if name in plate.name:
-                return plate
-        return None
+        if not plates:
+            error = "Unable to find plate information."
+            raise AllotropeConversionError(error)
 
-    def get_plate(self, name: str) -> Plate:
-        return assert_not_none(
-            self.get_plate_or_none(name),
-            msg=f"Unable to find plate {name}",
-        )
-
-    def get_plate_well_count(self) -> int:
-        return self.get_plate("ImmunoSpot Plate Code").get_well_count()
-
-    def get_plate_identifier(self) -> Optional[str]:
-        plate = self.get_plate("ImmunoSpot Plate Code")
-        if match := re.search(r"ImmunoSpot Plate Code = ([\w ]+)", plate.name):
-            return match.group(1)
-        return None
+        return AssayData(plates, identifier, well_count=plates[0].get_well_count())
 
     def iter_wells(self) -> Iterator[Well]:
-        yield from self.get_plate("ImmunoSpot Plate Code").iter_wells()
+        yield from self.plates[0].iter_wells()
 
     def iter_plates_well(self, pos: str) -> Iterator[Well]:
         for plate in self.plates:
@@ -232,6 +236,8 @@ class Data:
         )
 
     def get_plate_identifier(self) -> str:
-        if plate_id := self.assay_data.get_plate_identifier():
-            return plate_id
-        return self.device_info.file_name
+        return (
+            self.device_info.file_name
+            if self.assay_data.identifier is None
+            else self.assay_data.identifier
+        )

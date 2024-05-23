@@ -84,9 +84,7 @@ class CtlImmunospotParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self._get_date_time(data.device_info.measurement_time),
                 container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(
-                    value=data.assay_data.get_plate_well_count()
-                ),
+                plate_well_count=TQuantityValueNumber(value=data.assay_data.well_count),
                 measurement_document=[self._get_measurement_document(data, well)],
             ),
         )
