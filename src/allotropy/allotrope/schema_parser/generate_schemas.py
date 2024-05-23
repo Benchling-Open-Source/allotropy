@@ -75,8 +75,10 @@ def lint_file(model_path: str) -> None:
     )
 
 
-def _model_file_from_rel_schema_path(rel_schema_path: Path):
-    return re.sub("/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py").lower()
+def _model_file_from_rel_schema_path(rel_schema_path: Path) -> str:
+    return re.sub(
+        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
+    ).lower()
 
 
 def _get_schema_and_model_paths(

@@ -91,7 +91,6 @@ def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> N
 def validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
-    expected_model_class: Any | None = None,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
     print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:

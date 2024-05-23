@@ -38,7 +38,6 @@ TBooleanOrNullArray = list[bool | None]
 TBooleanValue = bool | TBooleanValueItem
 TClass = str
 TDateTimeValue = str | TDateTimeValueItem
-# TODO(brian): inline this
 TDateTimeStampValue = TDateTimeValue
 TNumberArray = list[float]
 TNumberOrNullArray = list[float | None]

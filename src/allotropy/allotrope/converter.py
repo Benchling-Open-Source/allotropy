@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import fields, is_dataclass, make_dataclass
 import importlib
 from pathlib import Path
 from types import UnionType
-from typing import Any, Callable, cast, get_args, get_origin, Optional, Union
+from typing import Any, Callable, cast, get_args, get_origin, Union
 
 from cattrs import Converter
 from cattrs.errors import ClassValidationError
@@ -30,8 +31,7 @@ from allotropy.allotrope.schema_parser.generate_schemas import (
 )
 from allotropy.allotrope.schemas import get_schema_path_from_manifest
 
-# TODO: gather exceptions when parsing models from schema and publish them in model
-SPECIAL_KEYS = {  # TODO sync with allotropy
+SPECIAL_KEYS = {
     "manifest": "$asm.manifest",
     "field_asm_manifest": "$asm.manifest",
     "cube_structure": "cube-structure",
@@ -83,7 +83,16 @@ SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
 )
 
 
-PRIMITIVE_TYPES = (bool, int, float, str, type(None), InvalidJsonFloat, np.float64, np.int64)
+PRIMITIVE_TYPES = (
+    bool,
+    int,
+    float,
+    str,
+    type(None),
+    InvalidJsonFloat,
+    np.float64,
+    np.int64,
+)
 
 
 def _convert_model_key_to_dict_key(key: str) -> str:
@@ -121,9 +130,13 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
 
 
 def register_data_cube_hooks(converter: Converter) -> None:
+    def structure_dimension_array(val: Any, _: Any) -> TDimensionArray | TFunction:
+        if isinstance(val, list):
+            return val
+        return converter.structure(val, TFunction)
+
     converter.register_structure_hook(
-        Union[TDimensionArray, TFunction],
-        lambda val, _: val if isinstance(val, list) else converter.structure(val, TFunction),
+        TDimensionArray | TFunction, structure_dimension_array
     )
     converter.register_structure_hook(TMeasureArray, lambda val, _: val)
 
@@ -140,8 +153,8 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
 
     def dataclass_union_structure_fn(
         cls: Any,
-    ) -> Callable[[Optional[Union[dict[str, Any], str]], Any], Optional[Any]]:
-        def structure_item(val: Optional[Union[dict[str, Any], str]], _: Any) -> Optional[Any]:
+    ) -> Callable[[dict[str, Any] | str | None, Any], Any | None]:
+        def structure_item(val: dict[str, Any] | str | None, _: Any) -> Any | None:
             if type(val) in PRIMITIVE_TYPES:
                 return val
             valid_models = []
@@ -168,37 +181,50 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
 
         return structure_item
 
-    converter.register_structure_hook_factory(is_dataclass_union, dataclass_union_structure_fn)
+    converter.register_structure_hook_factory(
+        is_dataclass_union, dataclass_union_structure_fn
+    )
 
 
 def structure_custom_information_document(val: dict[str, Any], name: str) -> Any:
     structured_dict = {}
     for key, value in val.items():
+        structured_value = value
         if isinstance(value, list):
-            value = [structure_custom_information_document(v, key) for v in value]
+            structured_value = [
+                structure_custom_information_document(v, key) for v in value
+            ]
         elif isinstance(value, dict):
-            value = structure_custom_information_document(value, key)
-        structured_dict[_convert_dict_to_model_key(key)] = value
+            structured_value = structure_custom_information_document(value, key)
+        structured_dict[_convert_dict_to_model_key(key)] = structured_value
 
     name = name.title().replace(" ", "")
-    return make_dataclass(name, ((k, type(v)) for k, v in structured_dict.items()))(**structured_dict)
+    return make_dataclass(name, ((k, type(v)) for k, v in structured_dict.items()))(
+        **structured_dict
+    )
 
 
 def register_dataclass_hooks(converter: Converter) -> None:
-    def dataclass_structure_fn(cls: Any) -> Callable[[Any, Any], Optional[Any]]:
+    def dataclass_structure_fn(cls: Any) -> Callable[[Any, Any], Any | None]:
         structure_fn = make_dict_structure_fn(
             cls,
             converter,
-            **{a.name: override(rename=_convert_model_key_to_dict_key(a.name)) for a in fields(cls)},
+            **{
+                a.name: override(rename=_convert_model_key_to_dict_key(a.name))
+                for a in fields(cls)
+            },
         )
 
-        def structure_item(val: Any, _: Any) -> Optional[Any]:
+        def structure_item(val: Any, _: Any) -> Any | None:
             if val is None:
                 return None
             structured = structure_fn(val, _)
             if isinstance(val, dict) and "custom information document" in val:
-                structured.custom_information_document = structure_custom_information_document(
-                    val["custom information document"], "custom information document"
+                structured.custom_information_document = (
+                    structure_custom_information_document(
+                        val["custom information document"],
+                        "custom information document",
+                    )
                 )
             return structured
 
@@ -289,6 +315,7 @@ def register_unstructure_hooks(converter: Converter) -> None:
             return unstructure_fn_cache[(cls, subcls)]
 
         return unstructure
+
     converter.register_unstructure_hook_factory(is_dataclass, unstructure_dataclass_fn)
 
 
@@ -308,7 +335,7 @@ def unstructure(model: Any) -> dict[str, Any]:
     return cast(dict[str, Any], CONVERTER.unstructure(model))
 
 
-def get_model_class_from_schema(asm: dict[str, Any]) -> Any:
+def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
     model_file = _model_file_from_rel_schema_path(Path(schema_path))
     import_path = f"allotropy.allotrope.models.{model_file[:-3]}"
@@ -316,6 +343,6 @@ def get_model_class_from_schema(asm: dict[str, Any]) -> Any:
     return importlib.import_module(import_path).Model
 
 
-def structure(asm: dict[str, Any], model_class: Any | None = None) -> Any:
+def structure(asm: Mapping[str, Any], model_class: Any | None = None) -> Any:
     model_class = model_class or get_model_class_from_schema(asm)
     return CONVERTER.structure(asm, model_class)

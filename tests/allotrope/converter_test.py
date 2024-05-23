@@ -71,7 +71,8 @@ def test_data_cube() -> None:
 
 def test_omits_null_values_except_for_specified_classes() -> None:
     item = AnalyteDocumentItem(
-        "test", TNullableQuantityValueMillimolePerLiter(value=None)
+        analyte_name="test",
+        molar_concentration=TNullableQuantityValueMillimolePerLiter(value=None),
     )
     asm_dict = unstructure(item)
     assert asm_dict == {
