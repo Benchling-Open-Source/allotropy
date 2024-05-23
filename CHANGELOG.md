@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed missing required field in cell-counting 2023/11 schema
+- Fixed missing required field in 2023/09 lum/fluor/abs plate reader schemas
 
 ### Changed
 - Upgraded allotropy python requirement to python 10
