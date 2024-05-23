@@ -116,24 +116,24 @@ import json
 from typing import Union
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassA:
     key: str
     value: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassB:
     key: str
     value: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class UnusedClass:
     value: int
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     key: str
     value: str
@@ -147,13 +147,13 @@ from typing import Union
 from allotropy.allotrope.models.shared.definitions import Thing1, Thing2
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassB:
     key: str
     value: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     key: str
     value: str
@@ -166,7 +166,7 @@ class Model:
 def test__class_lines_dataclass_parent_classes() -> None:
     class_lines = class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassA:
     key: str
     value: str
@@ -178,7 +178,7 @@ class ClassA:
 
     class_lines = class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassB(ClassA):
     key: str
     value: str
@@ -190,7 +190,7 @@ class ClassB(ClassA):
 
     class_lines = class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassB(ClassA, ClassC):
     key: str
     value: str
@@ -202,7 +202,7 @@ class ClassB(ClassA, ClassC):
 
     class_lines = class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ClassB(
     ClassA,
     ClassC
@@ -369,7 +369,7 @@ class ClassB(ClassC):
 def test__class_lines_dataclass_eq() -> None:
     class_lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: Union[str, int]
 """
@@ -377,7 +377,7 @@ class Item:
 
     other_lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: Union[
         str,
@@ -417,7 +417,7 @@ TDateTimeStampValue = Union[str, TDateTimeStampValue2]
 def test__class_lines_dataclass_should_merge() -> None:
     lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
     special: Optional[int]
@@ -425,7 +425,7 @@ class Item:
     )
     other_lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: str
     other_special: Optional[int]
@@ -436,7 +436,7 @@ class Item1:
     # Extra required key will not match
     other_lines_extra_required_key = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: str
     other_special: int
@@ -447,7 +447,7 @@ class Item1:
     # Missing required key will not match
     other_lines_missing_required_key = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     other_special: Optional[int]
 """
@@ -457,7 +457,7 @@ class Item1:
     # Shared key that does not agree on optional/required will not match
     other_lines_non_matching_shared_key = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: str|None
 """
@@ -468,7 +468,7 @@ class Item1:
 def test__class_lines_merge_similar() -> None:
     lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
     other_key: str
@@ -478,7 +478,7 @@ class Item:
 
     other_lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: str
     other_key: Union[
@@ -492,7 +492,7 @@ class Item1:
     validate_lines_against_multistring(
         lines.merge_similar(other_lines),
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
     other_key: Union[float,int,str]
@@ -505,7 +505,7 @@ class Item:
 def test__class_lines_merge_similar_with_lists() -> None:
     lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: list[str]
 """
@@ -513,7 +513,7 @@ class Item:
 
     other_lines = data_class_lines_from_multistring(
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: list[int]
 """
@@ -522,7 +522,7 @@ class Item1:
     validate_lines_against_multistring(
         lines.merge_similar(other_lines),
         """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: Union[list[int],list[str]]
 """,
@@ -537,17 +537,17 @@ import json
 from typing import Union
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OptionalFieldParentClass:
     optional_parent: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldChildClass(OptionalFieldParentClass):
     required_child: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     key: str
     value: str
@@ -559,13 +559,13 @@ import json
 from typing import Union
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldChildClass:
     required_child: str
     optional_parent: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     key: str
     value: str
@@ -583,32 +583,32 @@ import json
 from typing import Union
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldParentClass:
     required_parent: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OptionalFieldParentClass:
     optional_parent: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldChildClassUsingRequiredParent(RequiredFieldParentClass):
     required_child: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldChildUsingOptionalParent(OptionalFieldParentClass):
     required_child: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OptionalFieldChildClass(OptionalFieldParentClass):
     optional_child: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     key: str
     thing1: RequiredFieldChildClassUsingRequiredParent
@@ -621,33 +621,33 @@ import json
 from typing import Union
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldParentClass:
     required_parent: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OptionalFieldParentClass:
     optional_parent: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldChildClassUsingRequiredParent(RequiredFieldParentClass):
     required_child: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RequiredFieldChildUsingOptionalParent:
     required_child: str
     optional_parent: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OptionalFieldChildClass(OptionalFieldParentClass):
     optional_child: str|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     key: str
     thing1: RequiredFieldChildClassUsingRequiredParent
@@ -665,33 +665,33 @@ def test__modify_file_removes_identical_classes() -> None:
 import json
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item2:
     key: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item12:
     value: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ParentItem:
     item: Item1
     other_item: Item2|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     item: Item
     thing: ParentItem
@@ -702,23 +702,23 @@ class Model:
 import json
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item12:
     value: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class ParentItem:
     item: Item
     other_item: Item|None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     item: Item
     thing: ParentItem
@@ -735,27 +735,27 @@ def test__modify_file_merges_similar_classes() -> None:
 import json
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
     disagree: int
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item1:
     key: str
     disagree: str
     extra_key: str|None="test"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item2:
     key: str
     disagree: str
     extra_key: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     item: Item
     item1: Item1
@@ -766,21 +766,21 @@ class Model:
 import json
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item:
     key: str
     disagree: int|str
     extra_key: str|None="test"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Item2:
     key: str
     disagree: str
     extra_key: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Model:
     item: Item
     item1: Item

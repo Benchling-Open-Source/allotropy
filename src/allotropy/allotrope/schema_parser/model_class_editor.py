@@ -284,10 +284,9 @@ class DataClassLines(ClassLines):
         parent_class_names: list[str],
         fields: dict[str, DataclassField],
         field_name_order: list[str] | None = None,
-        is_frozen: bool | None = False,  # noqa: FBT002
     ) -> DataClassLines:
         # Recreate lines with no whitespace from parsed values
-        lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
+        lines = [f"@dataclass(frozen=True, kw_only=True)"]
 
         class_name_line = f"class {name}"
         if parent_class_names:
@@ -317,10 +316,6 @@ class DataClassLines(ClassLines):
             field_name_order=fixed_field_name_order,
         )
 
-    @property
-    def is_frozen(self) -> bool:
-        return "frozen=True" in self.lines[0]
-
     def has_required_fields(self) -> bool:
         return any(field.is_required for field in self.fields.values())
 
@@ -340,7 +335,6 @@ class DataClassLines(ClassLines):
             self.parent_class_names,
             self.fields,
             self.field_name_order,
-            self.is_frozen,
         )
 
     def should_merge(self, other: DataClassLines) -> bool:
@@ -391,7 +385,6 @@ class DataClassLines(ClassLines):
             self.parent_class_names,
             self.fields,
             self.field_name_order,
-            self.is_frozen,
         )
 
 
@@ -429,8 +422,6 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     if "pass" in lines[desc_end + 1] and ":" not in lines[desc_end + 1]:
         return ClassLines(lines, class_name)
 
-    is_frozen = "frozen=True" in lines[0]
-
     # Get parent class names
     parent_class_names = []
     match = re.match(f"class {class_name}\\((.*)\\):", class_description)
@@ -460,7 +451,6 @@ def create_class_lines(lines: list[str]) -> ClassLines:
         parent_class_names=parent_class_names,
         fields=fields,
         field_name_order=field_name_order,
-        is_frozen=is_frozen,
     )
 
 
