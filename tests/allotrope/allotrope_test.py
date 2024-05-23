@@ -32,8 +32,8 @@ def test_serialize_and_validate_allotrope() -> None:
         plate_well_count=TQuantityValueNumber(1.0),
         measurement_document=[
             MeasurementDocumentItem(
-                DeviceControlAggregateDocument(),
-                SampleDocument(
+                device_control_aggregate_document=DeviceControlAggregateDocument(),
+                sample_document=SampleDocument(
                     well_location_identifier="well1", sample_identifier="sample1"
                 ),
             )
@@ -65,13 +65,21 @@ def test_data_cube() -> None:
         cube_structure=TDatacubeStructure(
             [
                 TDatacubeComponent(
-                    FieldComponentDatatype("double"), "elapsed time", "s"
+                    field_componentDatatype=FieldComponentDatatype("double"),
+                    concept="elapsed time",
+                    unit="s"
                 ),
-                TDatacubeComponent(FieldComponentDatatype("int"), "wavelength", None),
+                TDatacubeComponent(
+                    field_componentDatatype=FieldComponentDatatype("int"),
+                    concept="wavelength",
+                    unit=None
+                ),
             ],
             [
                 TDatacubeComponent(
-                    FieldComponentDatatype("double"), "fluorescence", "RFU"
+                    field_componentDatatype=FieldComponentDatatype("double"),
+                    concept="fluorescence",
+                    unit="RFU"
                 )
             ],
         ),
@@ -107,7 +115,8 @@ def test_data_cube() -> None:
 
 def test_omits_null_values_except_for_specified_classes() -> None:
     item = AnalyteDocumentItem(
-        "test", TNullableQuantityValueMillimolePerLiter(value=None)
+        analyte_name="test",
+        molar_concentration=TNullableQuantityValueMillimolePerLiter(value=None)
     )
 
     assert serialize_allotrope(item) == {
