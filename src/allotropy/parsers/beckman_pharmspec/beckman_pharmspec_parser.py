@@ -194,7 +194,9 @@ class PharmSpecParser(VendorParser):
                         device_control_aggregate_document=DeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItem(
-                                    flush_volume_setting=TQuantityValueMilliliter(value=0),
+                                    flush_volume_setting=TQuantityValueMilliliter(
+                                        value=0
+                                    ),
                                     detector_view_volume=TQuantityValueMilliliter(
                                         value=df.at[9, 5]
                                     ),

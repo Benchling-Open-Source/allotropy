@@ -137,7 +137,9 @@ class SoftmaxproParser(VendorParser):
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=EPOCH,
-                plate_well_count=TQuantityValueNumber(value=plate_block.header.num_wells),
+                plate_well_count=TQuantityValueNumber(
+                    value=plate_block.header.num_wells
+                ),
                 container_type=ContainerType.well_plate,
                 measurement_document=list(measurement_document),
             )
@@ -234,7 +236,9 @@ class SoftmaxproParser(VendorParser):
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 value=data_element.wavelength
                             ),
-                            number_of_averages=TQuantityValueNumber(value=reads_per_well),
+                            number_of_averages=TQuantityValueNumber(
+                                value=reads_per_well
+                            ),
                             detector_gain_setting=plate_block.header.pmt_gain,
                         )
                     ]

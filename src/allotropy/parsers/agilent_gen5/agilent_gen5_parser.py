@@ -258,7 +258,9 @@ class AgilentGen5Parser(VendorParser):
                         )
                     ]
                 ),
-                fluorescence=TQuantityValueRelativeFluorescenceUnit(value=measurement.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                    value=measurement.value
+                ),
                 compartment_temperature=get_instance_or_none(
                     TQuantityValueDegreeCelsius, plate_data.compartment_temperature
                 ),
@@ -305,7 +307,9 @@ class AgilentGen5Parser(VendorParser):
                             )
                         ]
                     ),
-                    luminescence=TQuantityValueRelativeLightUnit(value=measurement.value),
+                    luminescence=TQuantityValueRelativeLightUnit(
+                        value=measurement.value
+                    ),
                 )
             )
         return measurement_document
