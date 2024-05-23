@@ -11,9 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Script to create graph visualization of calculated data documents from asm json files
 - Details of parser requirements to docs
+- Add Agilent Gen5 Image Adapter
 - Add CTL Immunospot adapter
 
 ### Fixed
+
+- Fixed missing required field in cell-counting 2023/11 schema
 
 ### Changed
 - Upgraded allotropy python requirement to python 10
