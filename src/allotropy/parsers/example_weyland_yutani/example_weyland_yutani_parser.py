@@ -81,7 +81,7 @@ class ExampleWeylandYutaniParser(VendorParser):
 
     def _get_device_control_aggregate_document(self) -> DeviceControlAggregateDocument:
         return DeviceControlAggregateDocument(
-            [
+            device_control_document=[
                 DeviceControlDocumentItem(
                     device_type="fluorescence detector",
                 )

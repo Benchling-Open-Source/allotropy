@@ -104,7 +104,7 @@ def test_create_analyte_list() -> None:
         Analyte("osmolality", 3.7448, "mosm/kg"),
     ]
     assert analyte_list.non_aggregrable_dict == {
-        "osmolality": [TNullableQuantityValueMilliOsmolesPerKilogram(3.7448)]
+        "osmolality": [TNullableQuantityValueMilliOsmolesPerKilogram(value=3.7448)]
     }
     assert analyte_list.num_measurement_docs == 1
 
