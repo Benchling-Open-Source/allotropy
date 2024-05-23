@@ -63,7 +63,7 @@ def test_serialize_and_validate_allotrope() -> None:
 def test_data_cube() -> None:
     data_cube = TDatacube(
         cube_structure=TDatacubeStructure(
-            [
+            dimensions=[
                 TDatacubeComponent(
                     field_componentDatatype=FieldComponentDatatype("double"),
                     concept="elapsed time",
@@ -75,7 +75,7 @@ def test_data_cube() -> None:
                     unit=None,
                 ),
             ],
-            [
+            measures=[
                 TDatacubeComponent(
                     field_componentDatatype=FieldComponentDatatype("double"),
                     concept="fluorescence",
@@ -84,8 +84,8 @@ def test_data_cube() -> None:
             ],
         ),
         data=TDatacubeData(
-            [[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]],
-            [[4.0, 5.0, None]],
+            dimensions=[[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]],
+            measures=[[4.0, 5.0, None]],
         ),
     )
     assert serialize_allotrope(data_cube) == {
