@@ -97,7 +97,7 @@ hatch run lint:all
 
 Auto-fix all possible lint issues:
 ```sh
-hatch run lint:fmt
+hatch run fix
 ```
 
 Run all tests:
