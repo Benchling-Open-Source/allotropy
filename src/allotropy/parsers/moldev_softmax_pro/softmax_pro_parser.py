@@ -137,7 +137,9 @@ class SoftmaxproParser(VendorParser):
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=EPOCH,
-                plate_well_count=TQuantityValueNumber(plate_block.header.num_wells),
+                plate_well_count=TQuantityValueNumber(
+                    value=plate_block.header.num_wells
+                ),
                 container_type=ContainerType.well_plate,
                 measurement_document=list(measurement_document),
             )
@@ -156,7 +158,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        to_json_float(data_element.temperature)
+                        value=to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -175,24 +177,24 @@ class SoftmaxproParser(VendorParser):
                                 else ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
                             ),
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                data_element.wavelength
+                                value=data_element.wavelength
                             ),
                             excitation_wavelength_setting=(
                                 None
                                 if plate_block.header.excitation_wavelengths is None
                                 else TQuantityValueNanometer(
-                                    plate_block.header.excitation_wavelengths[idx]
+                                    value=plate_block.header.excitation_wavelengths[idx]
                                 )
                             ),
                             wavelength_filter_cutoff_setting=(
                                 None
                                 if plate_block.header.cutoff_filters is None
                                 else TQuantityValueNanometer(
-                                    plate_block.header.cutoff_filters[idx]
+                                    value=plate_block.header.cutoff_filters[idx]
                                 )
                             ),
                             number_of_averages=TQuantityValueNumber(
-                                plate_block.header.reads_per_well,
+                                value=plate_block.header.reads_per_well,
                             ),
                             detector_gain_setting=plate_block.header.pmt_gain,
                         )
@@ -218,7 +220,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        to_json_float(data_element.temperature)
+                        value=to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -232,9 +234,11 @@ class SoftmaxproParser(VendorParser):
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                data_element.wavelength
+                                value=data_element.wavelength
                             ),
-                            number_of_averages=TQuantityValueNumber(reads_per_well),
+                            number_of_averages=TQuantityValueNumber(
+                                value=reads_per_well
+                            ),
                             detector_gain_setting=plate_block.header.pmt_gain,
                         )
                     ]
@@ -254,7 +258,7 @@ class SoftmaxproParser(VendorParser):
                     None
                     if data_element.temperature is None
                     else TQuantityValueDegreeCelsius(
-                        to_json_float(data_element.temperature)
+                        value=to_json_float(data_element.temperature)
                     )
                 ),
                 sample_document=SampleDocument(
@@ -268,7 +272,7 @@ class SoftmaxproParser(VendorParser):
                             device_type=DEVICE_TYPE,
                             detection_type=plate_block.header.read_mode,
                             detector_wavelength_setting=TQuantityValueNanometer(
-                                data_element.wavelength
+                                value=data_element.wavelength
                             ),
                         )
                     ]
@@ -279,7 +283,11 @@ class SoftmaxproParser(VendorParser):
 
     def _get_calc_docs(self, data: Data) -> CalculatedDataAggregateDocument | None:
         calc_docs = self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
-        return CalculatedDataAggregateDocument(calc_docs) if calc_docs else None
+        return (
+            CalculatedDataAggregateDocument(calculated_data_document=calc_docs)
+            if calc_docs
+            else None
+        )
 
     def _get_calc_docs_data_sources(
         self, plate_block: PlateBlock, position: str

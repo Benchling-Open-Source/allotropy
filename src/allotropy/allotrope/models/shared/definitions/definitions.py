@@ -6,13 +6,13 @@ from enum import Enum
 from allotropy.exceptions import AllotropeConversionError
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TBooleanValueItem:
     field_type: TClass
     value: bool
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TIntValueItem:
     value: int
     field_type: str
@@ -21,13 +21,13 @@ class TIntValueItem:
 TIntValue = int | TIntValueItem
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDateTimeValueItem:
     field_type: TClass
     value: str
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TStringValueItem:
     value: str
     field_type: str
@@ -73,7 +73,7 @@ class InvalidJsonFloat(Enum):
 JsonFloat = float | InvalidJsonFloat
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValue:
     value: JsonFloat
     unit: TUnit
@@ -81,7 +81,7 @@ class TQuantityValue:
     field_type: TClass | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValue:
     value: float | None
     unit: TUnit
@@ -116,7 +116,7 @@ class Type(Enum):
     logarithmic = "logarithmic"
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TFunction:
     type: Type | None = Type.linear
     start: float | None = 1
@@ -124,7 +124,7 @@ class TFunction:
     incr: float | None = 1
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeComponent:
     field_componentDatatype: FieldComponentDatatype
     concept: TClass
@@ -139,7 +139,7 @@ TDimensionArray = TNumberArray | TBooleanArray | TStringArray
 TMeasureArray = TNumberOrNullArray | TBooleanOrNullArray | TStringOrNullArray
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeStructure:
     dimensions: list[TDatacubeComponent]
     measures: list[TDatacubeComponent]
@@ -150,17 +150,17 @@ TODO: datamodel-codegen cannot properly generate the models for TDatacubeData wi
 oneOf{measures, points} constraint. I can't figure out how to do it correctly right now either.
 We need to either figure this out and file a bug with datamodel-codegen or fix the schema.
 
-@dataclass
+@dataclass(kw_only=True)
 class TDimensionData:
     dimensions: list[TDimensionArray | TFunction]
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TMeasureDatum:
     measures: list[TMeasureArray]
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TMeasureDatum1:
     points: list[TTupleData]
 
@@ -168,13 +168,13 @@ class TMeasureDatum1:
 TMeasureData = TMeasureDatum | TMeasureDatum1
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeData(TDimensionData):
     pass
 """
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacubeData:
     dimensions: list[TDimensionArray | TFunction]
     measures: list[TMeasureArray] | None = None
@@ -187,7 +187,7 @@ class TDatacubeData:
             raise AllotropeConversionError(error)
 
 
-@dataclass
+@dataclass(kw_only=True)
 class TDatacube:
     label: str | None = None
     cube_structure: TDatacubeStructure | None = None
