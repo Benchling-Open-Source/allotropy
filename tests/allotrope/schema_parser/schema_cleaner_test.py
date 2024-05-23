@@ -1389,7 +1389,7 @@ def test_load_model() -> None:
         Model,
     )
 
-    Model("fake_manifest")
+    Model(field_asm_manifest="fake_manifest")
 
 
 def test_powerset_indices_from_index() -> None:

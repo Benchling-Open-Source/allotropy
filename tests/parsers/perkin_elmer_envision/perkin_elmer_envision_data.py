@@ -255,7 +255,7 @@ def get_model() -> Model:
                                     value=23.17,
                                 ),
                                 fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                                    31441
+                                    value=31441
                                 ),
                             ),
                             FluorescencePointDetectionMeasurementDocumentItems(
@@ -303,7 +303,7 @@ def get_model() -> Model:
                                     value=23.17,
                                 ),
                                 fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                                    80368
+                                    value=80368
                                 ),
                             ),
                         ],

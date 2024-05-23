@@ -287,7 +287,9 @@ class DataClassLines(ClassLines):
         is_frozen: bool | None = False,  # noqa: FBT002
     ) -> DataClassLines:
         # Recreate lines with no whitespace from parsed values
-        lines = [f"@dataclass{'(frozen=True)' if is_frozen else ''}"]
+        kwargs = ({"frozen": True} if is_frozen else {}) | {"kw_only": True}
+        kwargs_string = ",".join(f"{key}={value}" for key, value in kwargs.items())
+        lines = [f"@dataclass({kwargs_string})"]
 
         class_name_line = f"class {name}"
         if parent_class_names:
