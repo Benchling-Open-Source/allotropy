@@ -11,9 +11,6 @@ Changes:
   * Reasoning: Extension adopted in order to capture metadata about the originating computer system, software, file, and ASM conversion
   * Proposal: add "data system document" to ASM technique documents
 
-* Removed "device control document" from required in "device control aggregate document"
-  * Reasoning: TODO this is a bug that should be fixed in a follow up PR
-
 * Removed "total cell count" from required in "processed data document"
   * Reasoning: Not all cell counters provide total cell count
   * Proposal: remove "total cell count" from required in "processed data document", see https://gitlab.com/allotrope/adm/-/issues/610
