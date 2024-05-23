@@ -67,19 +67,19 @@ def test_data_cube() -> None:
                 TDatacubeComponent(
                     field_componentDatatype=FieldComponentDatatype("double"),
                     concept="elapsed time",
-                    unit="s"
+                    unit="s",
                 ),
                 TDatacubeComponent(
                     field_componentDatatype=FieldComponentDatatype("int"),
                     concept="wavelength",
-                    unit=None
+                    unit=None,
                 ),
             ],
             [
                 TDatacubeComponent(
                     field_componentDatatype=FieldComponentDatatype("double"),
                     concept="fluorescence",
-                    unit="RFU"
+                    unit="RFU",
                 )
             ],
         ),
@@ -116,7 +116,7 @@ def test_data_cube() -> None:
 def test_omits_null_values_except_for_specified_classes() -> None:
     item = AnalyteDocumentItem(
         analyte_name="test",
-        molar_concentration=TNullableQuantityValueMillimolePerLiter(value=None)
+        molar_concentration=TNullableQuantityValueMillimolePerLiter(value=None),
     )
 
     assert serialize_allotrope(item) == {

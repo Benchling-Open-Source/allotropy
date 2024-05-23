@@ -279,7 +279,11 @@ class SoftmaxproParser(VendorParser):
 
     def _get_calc_docs(self, data: Data) -> CalculatedDataAggregateDocument | None:
         calc_docs = self._get_reduced_calc_docs(data) + self._get_group_calc_docs(data)
-        return CalculatedDataAggregateDocument(calc_docs) if calc_docs else None
+        return (
+            CalculatedDataAggregateDocument(calculated_data_document=calc_docs)
+            if calc_docs
+            else None
+        )
 
     def _get_calc_docs_data_sources(
         self, plate_block: PlateBlock, position: str

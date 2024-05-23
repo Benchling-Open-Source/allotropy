@@ -111,7 +111,9 @@ class AgilentGen5Parser(VendorParser):
                     for well_position in results.wells
                 ],
                 calculated_data_aggregate_document=(
-                    CalculatedDataAggregateDocument(calculated_data_document)
+                    CalculatedDataAggregateDocument(
+                        calculated_data_document=calculated_data_document
+                    )
                     if calculated_data_document
                     else None
                 ),
