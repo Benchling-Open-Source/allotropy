@@ -141,7 +141,7 @@ class QiacuitydPCRParser(VendorParser):
         measurement_time = EPOCH
         target_dna_description = try_str_from_series(well_item, TARGET_COLUMN_NAME)
         total_partition_count = TQuantityValueNumber(
-            try_int_from_series(well_item, PARTITIONS_COLUMN_NAME)
+            value=try_int_from_series(well_item, PARTITIONS_COLUMN_NAME)
         )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
@@ -216,7 +216,7 @@ class QiacuitydPCRParser(VendorParser):
         if fluor_intensity_threshold is not None:
             data_processing_document = DataProcessingDocument(
                 flourescence_intensity_threshold_setting=TQuantityValueUnitless(
-                    fluor_intensity_threshold
+                    value=fluor_intensity_threshold
                 )
             )
             processed_data_document.data_processing_document = data_processing_document
@@ -228,6 +228,6 @@ class QiacuitydPCRParser(VendorParser):
 
         if negative_partition_count is not None:
             processed_data_document.negative_partition_count = TQuantityValueNumber(
-                negative_partition_count
+                value=negative_partition_count
             )
         return processed_data_document

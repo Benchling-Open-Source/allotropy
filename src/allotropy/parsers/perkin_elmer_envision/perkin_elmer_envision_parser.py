@@ -277,7 +277,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                absorbance=TQuantityValueMilliAbsorbanceUnit(result.value),
+                absorbance=TQuantityValueMilliAbsorbanceUnit(value=result.value),
                 compartment_temperature=compartment_temperature,
             )
         elif read_type == ReadType.LUMINESCENCE:
@@ -290,7 +290,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                luminescence=TQuantityValueRelativeLightUnit(result.value),
+                luminescence=TQuantityValueRelativeLightUnit(value=result.value),
                 compartment_temperature=compartment_temperature,
             )
         else:  # read_type is FLUORESCENCE
@@ -303,7 +303,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                         device_control_document,
                     ),
                 ),
-                fluorescence=TQuantityValueRelativeFluorescenceUnit(result.value),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(value=result.value),
                 compartment_temperature=compartment_temperature,
             )
 

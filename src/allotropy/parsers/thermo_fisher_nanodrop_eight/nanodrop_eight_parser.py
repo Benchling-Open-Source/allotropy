@@ -287,7 +287,7 @@ class NanodropEightParser(VendorParser):
                         ]
                     ),
                     absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        _get_float(data, row, "a260")
+                        value=_get_float(data, row, "a260")
                     ),
                 )
             )
@@ -336,7 +336,7 @@ class NanodropEightParser(VendorParser):
                         ]
                     ),
                     absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        _get_float(data, row, a280_col)
+                        value=_get_float(data, row, a280_col)
                     ),
                 )
             )

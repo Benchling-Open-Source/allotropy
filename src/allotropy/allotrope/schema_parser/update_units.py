@@ -29,7 +29,7 @@ from dataclasses import dataclass
 
         f.write(
             """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class HasUnit:
     unit: str
 """
@@ -41,7 +41,7 @@ class HasUnit:
                 f"""
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class {unit_name}(HasUnit):
     unit: str = {UNIT_STRING_OVERRIDES.get(unit, unit_str)}"""
             )
@@ -66,12 +66,12 @@ from allotropy.allotrope.models.shared.definitions.units import (
             f.write(
                 f"""
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValue{unit_name}({unit_name}, TQuantityValue):
     pass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValue{unit_name}({unit_name}, TNullableQuantityValue):
     pass
 """
