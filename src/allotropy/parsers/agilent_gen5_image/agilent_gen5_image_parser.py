@@ -112,7 +112,7 @@ class AgilentGen5ImageParser(VendorParser):
                 measurement_time=self._get_date_time(header_data.datetime),
                 analytical_method_identifier=header_data.protocol_file_path,
                 experimental_data_identifier=header_data.experiment_file_path,
-                plate_well_count=TQuantityValueNumber(plate_well_count),
+                plate_well_count=TQuantityValueNumber(value=plate_well_count),
                 container_type=ContainerType.well_plate,
                 measurement_document=list(measurement_document),
                 processed_data_aggregate_document=(
@@ -136,7 +136,7 @@ class AgilentGen5ImageParser(VendorParser):
                             image_feature_identifier=image_feature.identifier,
                             image_feature_name=image_feature.name,
                             image_feature_result=TQuantityValueUnitless(
-                                image_feature.result
+                                value=image_feature.result
                             ),
                         )
                         for image_feature in image_features

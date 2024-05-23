@@ -73,7 +73,7 @@ class InvalidJsonFloat(Enum):
 JsonFloat = float | InvalidJsonFloat
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValue:
     value: JsonFloat
     unit: TUnit
@@ -81,7 +81,7 @@ class TQuantityValue:
     field_type: TClass | None = None
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValue:
     value: float | None
     unit: TUnit
