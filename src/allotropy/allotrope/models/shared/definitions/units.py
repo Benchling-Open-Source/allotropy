@@ -4,236 +4,236 @@ from dataclasses import dataclass
 UNITLESS = "(unitless)"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class HasUnit:
     unit: str
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Cell(HasUnit):
     unit: str = "cell"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Centimeter(HasUnit):
     unit: str = "cm"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Counts(HasUnit):
     unit: str = "Counts"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class CountsPerMilliliter(HasUnit):
     unit: str = "Counts/mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class CountsTimesSecond(HasUnit):
     unit: str = "Counts.s"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class CubicMillimeter(HasUnit):
     unit: str = "mm^3"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class DegreeCelsius(HasUnit):
     unit: str = "degC"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class GramPerLiter(HasUnit):
     unit: str = "g/L"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Hertz(HasUnit):
     unit: str = "Hz"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMicroliter(HasUnit):
     unit: str = "ug/uL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMilliliter(HasUnit):
     unit: str = "ug/mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Microliter(HasUnit):
     unit: str = "μL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Micrometer(HasUnit):
     unit: str = "μm"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MilliAbsorbanceUnit(HasUnit):
     unit: str = "mAU"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MilliAbsorbanceUnitTimesMilliliter(HasUnit):
     unit: str = "mAU.mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MilliAbsorbanceUnitTimesSecond(HasUnit):
     unit: str = "mAU.s"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MilliOsmolesPerKilogram(HasUnit):
     unit: str = "mosm/kg"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MilliSecond(HasUnit):
     unit: str = "ms"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MilligramPerMilliliter(HasUnit):
     unit: str = "mg/mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Milliliter(HasUnit):
     unit: str = "mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Millimeter(HasUnit):
     unit: str = "mm"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MillimeterOfMercury(HasUnit):
     unit: str = "mmHg"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MillimolePerLiter(HasUnit):
     unit: str = "mmol/L"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MillionCellsPerMilliliter(HasUnit):
     unit: str = "10^6 cells/mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Millivolt(HasUnit):
     unit: str = "mV"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class MillivoltTimesSecond(HasUnit):
     unit: str = "mV.s"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class NanoCoulomb(HasUnit):
     unit: str = "nC"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class NanoCoulombTimesSecond(HasUnit):
     unit: str = "nC.s"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class NanogramPerMicroliter(HasUnit):
     unit: str = "ng/uL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class NanogramPerMilliliter(HasUnit):
     unit: str = "ng/mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Nanometer(HasUnit):
     unit: str = "nm"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Number(HasUnit):
     unit: str = "#"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class NumberPerMicroliter(HasUnit):
     unit: str = "#/μL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class OpticalDensity(HasUnit):
     unit: str = "OD"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class PH(HasUnit):
     unit: str = "pH"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Percent(HasUnit):
     unit: str = "%"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class PicoAmpere(HasUnit):
     unit: str = "pA"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class PicoAmpereTimesSecond(HasUnit):
     unit: str = "pA.s"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class PicogramPerMilliliter(HasUnit):
     unit: str = "pg/mL"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RelativeFluorescenceUnit(HasUnit):
     unit: str = "RFU"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class RelativeLightUnit(HasUnit):
     unit: str = "RLU"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class SecondTime(HasUnit):
     unit: str = "s"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class SquareCentimetersPerGram(HasUnit):
     unit: str = "cm^2/g"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TODO(HasUnit):
     unit: str = "TODO"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class UnitPerLiter(HasUnit):
     unit: str = "U/L"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class Unitless(HasUnit):
     unit: str = UNITLESS
