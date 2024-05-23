@@ -97,17 +97,17 @@ hatch run lint:all
 
 Auto-fix all possible lint issues:
 ```sh
-hatch run lint:fmt
+hatch run fix
 ```
 
 Run all tests:
 ```sh
-hatch run test:test
+hatch run test
 ```
 
 Run a specific test file (replace the filepath with your own):
 ```sh
-hatch run test:test tests/allotrope/allotrope_test.py
+hatch run test tests/allotrope/allotrope_test.py
 ```
 
 Run all tests with coverage:

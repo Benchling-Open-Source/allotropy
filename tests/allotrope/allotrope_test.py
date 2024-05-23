@@ -13,11 +13,11 @@ def test_serialize_and_validate_allotrope() -> None:
     model = Model()
     model.measurement_aggregate_document = MeasurementAggregateDocument(
         measurement_identifier="blah",
-        plate_well_count=TQuantityValueNumber(1.0),
+        plate_well_count=TQuantityValueNumber(value=1.0),
         measurement_document=[
             MeasurementDocumentItem(
-                DeviceControlAggregateDocument(),
-                SampleDocument(
+                device_control_aggregate_document=DeviceControlAggregateDocument(),
+                sample_document=SampleDocument(
                     well_location_identifier="well1", sample_identifier="sample1"
                 ),
             )

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from dataclasses import fields, is_dataclass, make_dataclass
+import importlib
+from pathlib import Path
+from types import UnionType
 from typing import Any, Callable, cast, get_args, get_origin, Optional, Union
 
 from cattrs import Converter
@@ -21,6 +24,11 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TFunction,
     TMeasureArray,
 )
+from allotropy.allotrope.models.shared.definitions.units import HasUnit
+from allotropy.allotrope.schema_parser.generate_schemas import (
+    _model_file_from_rel_schema_path,
+)
+from allotropy.allotrope.schemas import get_schema_path_from_manifest
 
 # TODO: gather exceptions when parsing models from schema and publish them in model
 SPECIAL_KEYS = {  # TODO sync with allotropy
@@ -90,6 +98,11 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
     """Validate that all keys in val are stored in model."""
     for key, value in val.items():
         model_key = _convert_dict_to_model_key(key)
+        # If the key is unit, and this is a unit model, ensure the unit is correct.
+        if key == "unit" and isinstance(model, HasUnit):
+            unit_field = next(field for field in fields(model) if field.name == "unit")
+            if not value == unit_field.default:
+                raise AssertionError()
         # If the value itself is None, just assert that the key is in the model.
         if value is None:
             if not hasattr(model, model_key):
@@ -120,7 +133,7 @@ def register_dataclass_union_hooks(converter: Converter) -> None:
     # primitive value or None, and if so returns that. Then tries structuring with each specified dataclass,
     # if any.
     def is_dataclass_union(val: Any) -> bool:
-        if get_origin(val) != Union:
+        if get_origin(val) not in (Union, UnionType):
             return False
         args = set(get_args(val))
         return all(is_dataclass(arg) or arg in PRIMITIVE_TYPES for arg in args)
@@ -295,5 +308,14 @@ def unstructure(model: Any) -> dict[str, Any]:
     return cast(dict[str, Any], CONVERTER.unstructure(model))
 
 
-def structure(asm: dict[str, Any], model_class: Any) -> Any:
+def get_model_class_from_schema(asm: dict[str, Any]) -> Any:
+    schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
+    model_file = _model_file_from_rel_schema_path(Path(schema_path))
+    import_path = f"allotropy.allotrope.models.{model_file[:-3]}"
+    # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
+    return importlib.import_module(import_path).Model
+
+
+def structure(asm: dict[str, Any], model_class: Any | None = None) -> Any:
+    model_class = model_class or get_model_class_from_schema(asm)
     return CONVERTER.structure(asm, model_class)

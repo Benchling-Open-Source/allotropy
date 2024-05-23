@@ -11,6 +11,7 @@ from unittest import mock
 from deepdiff import DeepDiff
 import numpy as np
 
+from allotropy.allotrope.converter import structure
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file
@@ -90,6 +91,7 @@ def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> N
 def validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
+    expected_model_class: Any | None = None,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
     print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
@@ -100,6 +102,9 @@ def validate_contents(
     # Ensure that allotrope_dict can be written via json.dump()
     with tempfile.TemporaryFile(mode="w+") as tmp:
         json.dump(allotrope_dict, tmp)
+
+    # Ensure that allotrope_dict can be structured back into a python model.
+    structure(allotrope_dict)
 
     try:
         _assert_allotrope_dicts_equal(

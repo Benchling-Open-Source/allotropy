@@ -17,21 +17,29 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 def test_data_cube() -> None:
     data_cube = TDatacube(
         cube_structure=TDatacubeStructure(
-            [
+            dimensions=[
                 TDatacubeComponent(
-                    FieldComponentDatatype("double"), "elapsed time", "s"
+                    field_componentDatatype=FieldComponentDatatype("double"),
+                    concept="elapsed time",
+                    unit="s",
                 ),
-                TDatacubeComponent(FieldComponentDatatype("int"), "wavelength", None),
-            ],
-            [
                 TDatacubeComponent(
-                    FieldComponentDatatype("double"), "fluorescence", "RFU"
+                    field_componentDatatype=FieldComponentDatatype("int"),
+                    concept="wavelength",
+                    unit=None,
+                ),
+            ],
+            measures=[
+                TDatacubeComponent(
+                    field_componentDatatype=FieldComponentDatatype("double"),
+                    concept="fluorescence",
+                    unit="RFU",
                 )
             ],
         ),
         data=TDatacubeData(
-            [[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]],
-            [[4.0, 5.0, None]],
+            dimensions=[[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]],
+            measures=[[4.0, 5.0, None]],
         ),
     )
     asm_dict = unstructure(data_cube)

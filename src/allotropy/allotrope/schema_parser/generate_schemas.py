@@ -75,13 +75,15 @@ def lint_file(model_path: str) -> None:
     )
 
 
+def _model_file_from_rel_schema_path(rel_schema_path: Path):
+    return re.sub("/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py").lower()
+
+
 def _get_schema_and_model_paths(
     root_dir: Path, rel_schema_path: Path
 ) -> tuple[Path, Path]:
     schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-    model_file = re.sub(
-        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
-    ).lower()
+    model_file = _model_file_from_rel_schema_path(rel_schema_path)
     model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
     return schema_path, model_path
 
