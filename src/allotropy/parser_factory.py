@@ -89,7 +89,7 @@ _VENDOR_TO_DISPLAY_NAME = {
     Vendor.BECKMAN_VI_CELL_XR: "Beckman Vi Cell XR",
     Vendor.BIORAD_BIOPLEX: "BioRad BioPlex Manager",
     Vendor.CHEMOMETEC_NUCLEOVIEW: "Chemometec Nucleoview",
-    Vendor.CTL_IMMUNOSPOT: "Ctl ImmunoSpot",
+    Vendor.CTL_IMMUNOSPOT: "CTL ImmunoSpot",
     Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
     Vendor.LUMINEX_XPONENT: "Luminex xPONENT",
     Vendor.MOLDEV_SOFTMAX_PRO: "MolDev SoftMax Pro",
