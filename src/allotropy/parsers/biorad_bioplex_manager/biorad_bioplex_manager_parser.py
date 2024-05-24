@@ -158,7 +158,7 @@ class BioradBioplexParser(VendorParser):
                     device_well_settings.acquisition_time
                 ),
                 assay_bead_count=TQuantityValueNumber(
-                    device_well_settings.well_total_events
+                    value=device_well_settings.well_total_events
                 ),
                 sample_document=BioradBioplexParser._get_sample_document(
                     sample, well_name
@@ -180,7 +180,7 @@ class BioradBioplexParser(VendorParser):
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         measurement_document=[measurement_doc],
                         experiment_type=experiment_type,
-                        plate_well_count=TQuantityValueNumber(plate_well_count),
+                        plate_well_count=TQuantityValueNumber(value=plate_well_count),
                         analytical_method_identifier=analytical_method_identifier,
                         container_type=CONTAINER_TYPE,
                         experimental_data_identifier=experimental_data_id,
@@ -210,14 +210,14 @@ class BioradBioplexParser(VendorParser):
         device_control_doc_item = DeviceControlDocumentItem(
             device_type=DEVICE_TYPE,
             sample_volume_setting=TQuantityValueMicroliter(
-                device_well_settings.sample_volume_setting
+                value=device_well_settings.sample_volume_setting
             ),
-            dilution_factor_setting=TQuantityValueUnitless(sample.sample_dilution)
+            dilution_factor_setting=TQuantityValueUnitless(value=sample.sample_dilution)
             if sample.sample_dilution is not None
             else None,
             detector_gain_setting=device_well_settings.detector_gain_setting,
             minimum_assay_bead_count_setting=TQuantityValueNumber(
-                device_well_settings.minimum_assay_bead_count_setting
+                value=device_well_settings.minimum_assay_bead_count_setting
             )
             if device_well_settings.minimum_assay_bead_count_setting is not None
             else None,
@@ -252,7 +252,7 @@ class BioradBioplexParser(VendorParser):
                                 analyte_name=analyte_structure_doc.analyte_name,
                                 assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
                                 assay_bead_count=TQuantityValueNumber(
-                                    analyte_structure_doc.assay_bead_count
+                                    value=analyte_structure_doc.assay_bead_count
                                 ),
                                 fluorescence=TQuantityValueRelativeFluorescenceUnit(
                                     value=analyte_structure_doc.fluorescence,

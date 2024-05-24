@@ -35,6 +35,7 @@ from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
 )
 from allotropy.parsers.agilent_gen5_image.constants import (
     DEFAULT_SOFTWARE_NAME,
+    DETECTION_TYPE,
     DEVICE_TYPE,
     MULTIPLATE_FILE_ERROR,
     NO_PLATE_DATA_ERROR,
@@ -112,7 +113,7 @@ class AgilentGen5ImageParser(VendorParser):
                 measurement_time=self._get_date_time(header_data.datetime),
                 analytical_method_identifier=header_data.protocol_file_path,
                 experimental_data_identifier=header_data.experiment_file_path,
-                plate_well_count=TQuantityValueNumber(plate_well_count),
+                plate_well_count=TQuantityValueNumber(value=plate_well_count),
                 container_type=ContainerType.well_plate,
                 measurement_document=list(measurement_document),
                 processed_data_aggregate_document=(
@@ -136,7 +137,7 @@ class AgilentGen5ImageParser(VendorParser):
                             image_feature_identifier=image_feature.identifier,
                             image_feature_name=image_feature.name,
                             image_feature_result=TQuantityValueUnitless(
-                                image_feature.result
+                                value=image_feature.result
                             ),
                         )
                         for image_feature in image_features
@@ -173,7 +174,7 @@ class AgilentGen5ImageParser(VendorParser):
                             device_control_document=[
                                 OpticalImagingDeviceControlDocumentItem(
                                     device_type=DEVICE_TYPE,
-                                    detection_type=read_section.image_mode.value,
+                                    detection_type=DETECTION_TYPE,
                                     # This setting won't get reported at the moment since Gen5 only reports it
                                     # in micrometers and we don't do conversions on the adapters at the moment
                                     # detector_distance_setting__plate_reader_=get_instance_or_none(
