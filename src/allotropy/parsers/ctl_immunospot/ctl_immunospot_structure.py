@@ -100,17 +100,6 @@ class DeviceInfo:
 
 
 @dataclass
-class AssayInfo:
-    lines: list[str]
-
-    @staticmethod
-    def create(reader: LinesReader) -> AssayInfo:
-        lines = list(reader.pop_until_empty())
-        reader.drop_empty()
-        return AssayInfo(lines)
-
-
-@dataclass
 class Well:
     col: str
     row: str
@@ -224,16 +213,18 @@ class AssayData:
 @dataclass
 class Data:
     device_info: DeviceInfo
-    assay_info: AssayInfo
     assay_data: AssayData
 
     @staticmethod
     def create(reader: LinesReader) -> Data:
-        return Data(
-            device_info=DeviceInfo.create(reader),
-            assay_info=AssayInfo.create(reader),
-            assay_data=AssayData.create(reader),
-        )
+        device_info = DeviceInfo.create(reader)
+
+        reader.drop_empty()
+        reader.drop_until_empty()  # ignore assay info
+        reader.drop_empty()
+
+        assay_data = AssayData.create(reader)
+        return Data(device_info, assay_data)
 
     def get_plate_identifier(self) -> str:
         return (
