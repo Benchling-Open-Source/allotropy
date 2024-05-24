@@ -11,7 +11,7 @@ from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
 
-@dataclass
+@dataclass(frozen=True)
 class DeviceInfo:
     device_identifier: str
     model_number: str
@@ -99,7 +99,7 @@ class DeviceInfo:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class Well:
     col: str
     row: str
@@ -110,7 +110,7 @@ class Well:
         return self.row + self.col
 
 
-@dataclass
+@dataclass(frozen=True)
 class Plate:
     name: str
     wells: dict[str, Well]
@@ -167,7 +167,7 @@ class Plate:
         )
 
 
-@dataclass
+@dataclass(frozen=True)
 class AssayData:
     plates: list[Plate]
     identifier: Optional[str]
@@ -210,7 +210,7 @@ class AssayData:
             yield plate.get_well(pos)
 
 
-@dataclass
+@dataclass(frozen=True)
 class Data:
     device_info: DeviceInfo
     assay_data: AssayData
