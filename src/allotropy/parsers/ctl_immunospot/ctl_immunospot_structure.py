@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-import ntpath
+from pathlib import PureWindowsPath
 import re
 from typing import Optional
 
@@ -38,13 +38,12 @@ class DeviceInfo:
                 if len(parts) > 1:
                     data[parts[0].strip()] = parts[1].strip()
 
-        path = assert_not_none(
+        raw_path = assert_not_none(
             reader.pop(),
             msg="Unable to read file path",
         )
 
-        basename = ntpath.basename(path)
-        file_name, *_ = basename.split(".", maxsplit=1)
+        path = PureWindowsPath(raw_path)
 
         reader.drop_until_empty()
         reader.drop_empty()
@@ -89,9 +88,9 @@ class DeviceInfo:
             model_number=analyzer_serial_match.group(2),
             equipment_serial_number=analyzer_serial_number,
             data_system_instance_id=computer_name,
-            basename=basename,
-            file_name=file_name,
-            unc_path=path,
+            basename=path.name,
+            file_name=path.stem,
+            unc_path=raw_path,
             software_name="ImmunoSpot",
             software_version=software_info_match.group(1),
             measurement_time=counted,
