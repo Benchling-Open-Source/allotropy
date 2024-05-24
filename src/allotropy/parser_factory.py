@@ -24,6 +24,7 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser impo
 from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
+from allotropy.parsers.ctl_immunospot.ctl_immunospot_parser import CtlImmunospotParser
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
@@ -61,6 +62,7 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
+    CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
@@ -87,6 +89,7 @@ _VENDOR_TO_DISPLAY_NAME = {
     Vendor.BECKMAN_VI_CELL_XR: "Beckman Vi Cell XR",
     Vendor.BIORAD_BIOPLEX: "BioRad BioPlex Manager",
     Vendor.CHEMOMETEC_NUCLEOVIEW: "Chemometec Nucleoview",
+    Vendor.CTL_IMMUNOSPOT: "CTL ImmunoSpot",
     Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
     Vendor.LUMINEX_XPONENT: "Luminex xPONENT",
     Vendor.MOLDEV_SOFTMAX_PRO: "MolDev SoftMax Pro",
@@ -111,6 +114,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
+    Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
