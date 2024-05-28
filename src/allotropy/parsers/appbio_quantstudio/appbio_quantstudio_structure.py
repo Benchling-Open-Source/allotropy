@@ -12,7 +12,6 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from io import StringIO
 import re
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -40,6 +39,8 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
+UNDEFINED_SAMPLE_NAME = "N/A"
+
 
 @dataclass(frozen=True)
 class Header:
@@ -51,10 +52,10 @@ class Header:
     device_serial_number: str
     measurement_method_identifier: str
     pcr_detection_chemistry: str
-    passive_reference_dye_setting: Optional[str]
-    barcode: Optional[str]
-    analyst: Optional[str]
-    experimental_data_identifier: Optional[str]
+    passive_reference_dye_setting: str | None
+    barcode: str | None
+    analyst: str | None
+    experimental_data_identifier: str | None
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
@@ -123,13 +124,13 @@ class WellItem(Referenceable):
     identifier: int
     target_dna_description: str
     sample_identifier: str
-    reporter_dye_setting: Optional[str]
-    position: Optional[str]
-    well_location_identifier: Optional[str]
-    quencher_dye_setting: Optional[str]
-    sample_role_type: Optional[str]
-    _amplification_data: Optional[AmplificationData] = None
-    _result: Optional[Result] = None
+    reporter_dye_setting: str | None
+    position: str | None
+    well_location_identifier: str | None
+    quencher_dye_setting: str | None
+    sample_role_type: str | None
+    _amplification_data: AmplificationData | None = None
+    _result: Result | None = None
 
     @property
     def amplification_data(self) -> AmplificationData:
@@ -163,10 +164,10 @@ class WellItem(Referenceable):
             msg=f"Unable to find snp name for well {identifier}",
         )
 
-        sample_identifier = try_str_from_series(
+        sample_identifier = try_str_from_series_or_default(
             data,
             "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
+            default=UNDEFINED_SAMPLE_NAME,
         )
 
         allele1 = try_str_from_series(
@@ -228,10 +229,10 @@ class WellItem(Referenceable):
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
-        sample_identifier = try_str_from_series(
+        sample_identifier = try_str_from_series_or_default(
             data,
             "Sample Name",
-            msg=f"Unable to find sample identifier for well {identifier}",
+            default=UNDEFINED_SAMPLE_NAME,
         )
 
         return WellItem(
@@ -253,8 +254,8 @@ class WellItem(Referenceable):
 class Well:
     identifier: int
     items: dict[str, WellItem]
-    _multicomponent_data: Optional[MulticomponentData] = None
-    _melt_curve_raw_data: Optional[MeltCurveRawData] = None
+    _multicomponent_data: MulticomponentData | None = None
+    _melt_curve_raw_data: MeltCurveRawData | None = None
 
     def get_well_item(self, target: str) -> WellItem:
         well_item = self.items.get(target)
@@ -264,7 +265,7 @@ class Well:
         )
 
     @property
-    def multicomponent_data(self) -> Optional[MulticomponentData]:
+    def multicomponent_data(self) -> MulticomponentData | None:
         return self._multicomponent_data
 
     @multicomponent_data.setter
@@ -272,7 +273,7 @@ class Well:
         self._multicomponent_data = multicomponent_data
 
     @property
-    def melt_curve_raw_data(self) -> Optional[MeltCurveRawData]:
+    def melt_curve_raw_data(self) -> MeltCurveRawData | None:
         return self._melt_curve_raw_data
 
     @melt_curve_raw_data.setter
@@ -321,8 +322,7 @@ class WellList:
         reader.pop()  # remove title
         lines = list(reader.pop_until(r"^\[.+\]"))
         csv_stream = StringIO("\n".join(lines))
-        raw_data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
-        data = raw_data[raw_data["Sample Name"].notnull()]
+        data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
             return WellList(
@@ -340,7 +340,9 @@ class WellList:
                     try_int(str(identifier), "well identifier"),
                     well_data,
                 )
-                for identifier, well_data in data.groupby("Well")
+                for identifier, well_data in data[
+                    data["Target Name"].notnull()
+                ].groupby("Well")
             ]
         )
 
@@ -350,7 +352,7 @@ class RawData:
     lines: list[str]
 
     @staticmethod
-    def create(reader: LinesReader) -> Optional[RawData]:
+    def create(reader: LinesReader) -> RawData | None:
         if reader.match(r"^\[Raw Data\]"):
             reader.pop()  # remove title
             return RawData(lines=list(reader.pop_until(r"^\[.+\]")))
@@ -361,8 +363,8 @@ class RawData:
 class AmplificationData:
     total_cycle_number_setting: float
     cycle: list[float]
-    rn: list[Optional[float]]
-    delta_rn: list[Optional[float]]
+    rn: list[float | None]
+    delta_rn: list[float | None]
 
     @staticmethod
     def get_data(reader: LinesReader) -> pd.DataFrame:
@@ -401,16 +403,16 @@ class AmplificationData:
 @dataclass(frozen=True)
 class MulticomponentData:
     cycle: list[float]
-    columns: dict[str, list[Optional[float]]]
+    columns: dict[str, list[float | None]]
 
-    def get_column(self, name: str) -> list[Optional[float]]:
+    def get_column(self, name: str) -> list[float | None]:
         return assert_not_none(
             self.columns.get(name),
             msg=f"Unable to obtain '{name}' from multicomponent data.",
         )
 
     @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
+    def get_data(reader: LinesReader) -> pd.DataFrame | None:
         if not reader.match(r"^\[Multicomponent Data\]"):
             return None
         reader.pop()  # remove title
@@ -438,30 +440,30 @@ class MulticomponentData:
 @dataclass(frozen=True)
 class Result:
     cycle_threshold_value_setting: float
-    cycle_threshold_result: Optional[float]
-    automatic_cycle_threshold_enabled_setting: Optional[bool]
-    automatic_baseline_determination_enabled_setting: Optional[bool]
-    normalized_reporter_result: Optional[float]
-    baseline_corrected_reporter_result: Optional[float]
-    genotyping_determination_result: Optional[str]
-    genotyping_determination_method_setting: Optional[float]
-    quantity: Optional[float]
-    quantity_mean: Optional[float]
-    quantity_sd: Optional[float]
-    ct_mean: Optional[float]
-    ct_sd: Optional[float]
-    delta_ct_mean: Optional[float]
-    delta_ct_se: Optional[float]
-    delta_delta_ct: Optional[float]
-    rq: Optional[float]
-    rq_min: Optional[float]
-    rq_max: Optional[float]
-    rn_mean: Optional[float]
-    rn_sd: Optional[float]
-    y_intercept: Optional[float]
-    r_squared: Optional[float]
-    slope: Optional[float]
-    efficiency: Optional[float]
+    cycle_threshold_result: float | None
+    automatic_cycle_threshold_enabled_setting: bool | None
+    automatic_baseline_determination_enabled_setting: bool | None
+    normalized_reporter_result: float | None
+    baseline_corrected_reporter_result: float | None
+    genotyping_determination_result: str | None
+    genotyping_determination_method_setting: float | None
+    quantity: float | None
+    quantity_mean: float | None
+    quantity_sd: float | None
+    ct_mean: float | None
+    ct_sd: float | None
+    delta_ct_mean: float | None
+    delta_ct_se: float | None
+    delta_delta_ct: float | None
+    rq: float | None
+    rq_min: float | None
+    rq_max: float | None
+    rn_mean: float | None
+    rn_sd: float | None
+    y_intercept: float | None
+    r_squared: float | None
+    slope: float | None
+    efficiency: float | None
 
     @staticmethod
     def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series[str]]:
@@ -631,8 +633,8 @@ class Result:
 @dataclass(frozen=True)
 class MeltCurveRawData:
     reading: list[float]
-    fluorescence: list[Optional[float]]
-    derivative: list[Optional[float]]
+    fluorescence: list[float | None]
+    derivative: list[float | None]
 
     @staticmethod
     def create(data: pd.DataFrame, well: Well) -> MeltCurveRawData:
@@ -647,7 +649,7 @@ class MeltCurveRawData:
         )
 
     @staticmethod
-    def get_data(reader: LinesReader) -> Optional[pd.DataFrame]:
+    def get_data(reader: LinesReader) -> pd.DataFrame | None:
         if not reader.match(r"^\[Melt Curve Raw Data\]"):
             return None
         reader.pop()  # remove title
@@ -660,7 +662,7 @@ class MeltCurveRawData:
 class Data:
     header: Header
     wells: WellList
-    raw_data: Optional[RawData]
+    raw_data: RawData | None
     endogenous_control: str
     reference_sample: str
     calculated_documents: list[CalculatedDocument]

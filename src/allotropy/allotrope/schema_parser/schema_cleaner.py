@@ -1,8 +1,9 @@
 from collections import defaultdict
+from collections.abc import Callable
 import copy
 import json
 import re
-from typing import Any, Callable, Optional, Union
+from typing import Any
 
 from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
 from allotropy.allotrope.schemas import (
@@ -57,7 +58,7 @@ def _get_def_name(reference: str) -> str:
     return reference.split("/")[-1]
 
 
-def _get_reference_from_url(value: Any) -> tuple[Optional[str], Optional[str]]:
+def _get_reference_from_url(value: Any) -> tuple[str | None, str | None]:
     # Identify URL-like references, and return a sanitized version that can be followed by generation script.
     # Return schema_name and definition name separately for use in other logic.
     ref_match = re.match(
@@ -134,8 +135,8 @@ class SchemaCleaner:
         # dereference definition references. Though this smells, the flag is nested so deep in the
         # code, that it would be impractical to send this all the way down, and I think this is the
         # lesser evil.
-        self.enclosing_schema_name: Optional[str] = None
-        self.enclosing_schema_keys: Optional[dict[str, Any]] = None
+        self.enclosing_schema_name: str | None = None
+        self.enclosing_schema_keys: dict[str, Any] | None = None
 
     def _is_unit_name_ref(self, ref: str) -> bool:
         return _get_def_name(ref) in self.unit_to_name.values()
@@ -379,7 +380,7 @@ class SchemaCleaner:
 
     def _combine_allof_schemas(
         self, schemas: list[dict[str, Any]]
-    ) -> Union[dict[str, Any], list[dict[str, Any]]]:
+    ) -> dict[str, Any] | list[dict[str, Any]]:
         if not all(_is_class_schema(schema) for schema in schemas):
             if any(_is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
@@ -479,7 +480,7 @@ class SchemaCleaner:
     def _clean_value(
         self,
         value: Any,
-        cleaning_function: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
+        cleaning_function: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
     ) -> Any:
         # Fan out function for handling dict/list values. Calls cleaning_function on dictionaries
         # (assumed to be schemas). Allows passing custom cleaning_fuction to handle cleaning definitions.

@@ -122,7 +122,6 @@ the class that represent basic assay information is defined as:
 
 ```python
 from dataclasses import dataclass
-from typing import Optional
 
 PROTOCOL_ID = "Weyland Yutani Example"
 ASSAY_ID = "Example Assay"
@@ -131,10 +130,10 @@ ASSAY_ID = "Example Assay"
 class BasicAssayInfo:
     protocol_id: str
     assay_id: str
-    checksum: Optional[str]
+    checksum: str | None
 
     @staticmethod
-    def create(bottom: Optional[pd.DataFrame]) -> BasicAssayInfo:
+    def create(bottom: pd.DataFrame | None) -> BasicAssayInfo:
         checksum = (
             None
             if (bottom is None) or (bottom.iloc[0, 0] != "Checksum")
@@ -162,7 +161,7 @@ From top to bottom, this class defines:
     and that produces an instance of `BasicAssayInfo`.
     The dataframe argument may have the value `None`
     if a checksum footer isn't present in the input data,
-    so the parameter `bottom` is defined as `Optional[pd.DataFrame]`.
+    so the parameter `bottom` is defined as `pd.DataFrame | None`.
     The `create` method does a conditional check
     and defines `checksum` to be `None` or a value taken from the data if it's available,
     then constructs the `BasicAssayInfo` instance and returns it.

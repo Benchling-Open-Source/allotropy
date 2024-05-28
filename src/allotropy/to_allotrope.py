@@ -1,6 +1,6 @@
 from datetime import tzinfo
 from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Any
 
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.exceptions import AllotropeConversionError
@@ -8,15 +8,15 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parser_factory import get_parser, Vendor
 from allotropy.types import IOType
 
-VendorType = Union[Vendor, str]
+VendorType = Vendor | str
 
 
 def allotrope_from_io(
     contents: IOType,
     filename: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_io(
         contents, filename, vendor_type, default_timezone, encoding
@@ -28,8 +28,8 @@ def allotrope_model_from_io(
     contents: IOType,
     filename: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> Any:
     try:
         vendor = Vendor(vendor_type)
@@ -44,8 +44,8 @@ def allotrope_model_from_io(
 def allotrope_from_file(
     filepath: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> dict[str, Any]:
     model = allotrope_model_from_file(filepath, vendor_type, default_timezone, encoding)
     return serialize_and_validate_allotrope(model)
@@ -54,8 +54,8 @@ def allotrope_from_file(
 def allotrope_model_from_file(
     filepath: str,
     vendor_type: VendorType,
-    default_timezone: Optional[tzinfo] = None,
-    encoding: Optional[str] = None,
+    default_timezone: tzinfo | None = None,
+    encoding: str | None = None,
 ) -> Any:
     try:
         with open(filepath, "rb") as f:

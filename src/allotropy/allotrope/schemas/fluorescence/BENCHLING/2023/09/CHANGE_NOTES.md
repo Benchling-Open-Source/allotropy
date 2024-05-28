@@ -4,10 +4,6 @@ Base schema: http://purl.allotrope.org/json-schemas/adm/fluorescence/REC/2023/03
 
 Changes:
 
-* Removed "device type" from required in "device control document"
-  * Reasoning: this is a bug
-  * Proposal: we should add back requirement
-
 * Replaced "fluorescence" in "measurement document" with "data cube"
   * Reasoning: this was a mistake in our initial implementation when we were first learning ASM
   * Proposal: no action needed, we should deprecate the use of this schema

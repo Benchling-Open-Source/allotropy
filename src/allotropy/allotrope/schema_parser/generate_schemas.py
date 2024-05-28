@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
-from typing import Optional
 
 from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
@@ -76,13 +75,17 @@ def lint_file(model_path: str) -> None:
     )
 
 
+def _model_file_from_rel_schema_path(rel_schema_path: Path) -> str:
+    return re.sub(
+        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
+    ).lower()
+
+
 def _get_schema_and_model_paths(
     root_dir: Path, rel_schema_path: Path
 ) -> tuple[Path, Path]:
     schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-    model_file = re.sub(
-        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
-    ).lower()
+    model_file = _model_file_from_rel_schema_path(rel_schema_path)
     model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
     return schema_path, model_path
 
@@ -104,9 +107,7 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
     lint_file(str(model_path))
 
 
-def _should_generate_schema(
-    schema_path: str, schema_regex: Optional[str] = None
-) -> bool:
+def _should_generate_schema(schema_path: str, schema_regex: str | None = None) -> bool:
     # Skip files in the shared directory
     if schema_path.startswith("shared"):
         return False
@@ -120,8 +121,8 @@ def _should_generate_schema(
 def generate_schemas(
     root_dir: Path,
     *,
-    dry_run: Optional[bool] = False,
-    schema_regex: Optional[str] = None,
+    dry_run: bool | None = False,
+    schema_regex: str | None = None,
 ) -> list[str]:
     """Generate schemas from JSON schema files.
 

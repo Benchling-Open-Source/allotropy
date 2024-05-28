@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional
+from typing import Any
 
 from deepdiff import DeepDiff
 import pytest
@@ -14,7 +14,7 @@ def validate_cleaned_schema(
     schema: dict[str, Any],
     expected: dict[str, Any],
     *,
-    test_defs: Optional[bool] = False,
+    test_defs: bool | None = False,
 ) -> SchemaCleaner:
     # Add $defs/<core schema>/$defs/tQuantityValue as it is used for many tests.
     if "$defs" not in schema:
@@ -1389,7 +1389,7 @@ def test_load_model() -> None:
         Model,
     )
 
-    Model("fake_manifest")
+    Model(field_asm_manifest="fake_manifest")
 
 
 def test_powerset_indices_from_index() -> None:

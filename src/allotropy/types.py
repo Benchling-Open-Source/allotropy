@@ -1,3 +1,3 @@
-from typing import IO, Union
+from typing import IO
 
-IOType = Union[IO[bytes], IO[str]]
+IOType = IO[bytes] | IO[str]

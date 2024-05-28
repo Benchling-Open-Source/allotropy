@@ -1,9 +1,11 @@
 from datetime import tzinfo
 from enum import Enum
-from typing import Optional
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
+from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
+    AgilentGen5ImageParser,
+)
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_parser import (
     AppbioAbsoluteQParser,
 )
@@ -22,6 +24,7 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_parser impo
 from allotropy.parsers.chemometec_nucleoview.nucleoview_parser import (
     ChemometecNucleoviewParser,
 )
+from allotropy.parsers.ctl_immunospot.ctl_immunospot_parser import CtlImmunospotParser
 from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser import (
     ExampleWeylandYutaniParser,
 )
@@ -50,6 +53,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 class Vendor(Enum):
     AGILENT_GEN5 = "AGILENT_GEN5"
+    AGILENT_GEN5_IMAGE = "AGILENT_GEN5_IMAGE"
     APPBIO_ABSOLUTE_Q = "APPBIO_ABSOLUTE_Q"
     APPBIO_QUANTSTUDIO = "APPBIO_QUANTSTUDIO"
     APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS = "APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS"
@@ -58,6 +62,7 @@ class Vendor(Enum):
     BECKMAN_VI_CELL_XR = "BECKMAN_VI_CELL_XR"
     BIORAD_BIOPLEX = "BIORAD_BIOPLEX"
     CHEMOMETEC_NUCLEOVIEW = "CHEMOMETEC_NUCLEOVIEW"
+    CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
@@ -75,6 +80,7 @@ class Vendor(Enum):
 
 _VENDOR_TO_DISPLAY_NAME = {
     Vendor.AGILENT_GEN5: "Agilent Gen5",
+    Vendor.AGILENT_GEN5_IMAGE: "Agilent Gen5 Image",
     Vendor.APPBIO_ABSOLUTE_Q: "AppBio AbsoluteQ",
     Vendor.APPBIO_QUANTSTUDIO: "AppBio QuantStudio RT-PCR",
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: "AppBio QuantStudio Design And Analysis",
@@ -83,6 +89,7 @@ _VENDOR_TO_DISPLAY_NAME = {
     Vendor.BECKMAN_VI_CELL_XR: "Beckman Vi Cell XR",
     Vendor.BIORAD_BIOPLEX: "BioRad BioPlex Manager",
     Vendor.CHEMOMETEC_NUCLEOVIEW: "Chemometec Nucleoview",
+    Vendor.CTL_IMMUNOSPOT: "CTL ImmunoSpot",
     Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
     Vendor.LUMINEX_XPONENT: "Luminex xPONENT",
     Vendor.MOLDEV_SOFTMAX_PRO: "MolDev SoftMax Pro",
@@ -98,6 +105,7 @@ _VENDOR_TO_DISPLAY_NAME = {
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.AGILENT_GEN5: AgilentGen5Parser,
+    Vendor.AGILENT_GEN5_IMAGE: AgilentGen5ImageParser,
     Vendor.APPBIO_ABSOLUTE_Q: AppbioAbsoluteQParser,
     Vendor.APPBIO_QUANTSTUDIO: AppBioQuantStudioParser,
     Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: AppBioQuantStudioDesignandanalysisParser,
@@ -106,6 +114,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.BECKMAN_VI_CELL_XR: ViCellXRParser,
     Vendor.BIORAD_BIOPLEX: BioradBioplexParser,
     Vendor.CHEMOMETEC_NUCLEOVIEW: ChemometecNucleoviewParser,
+    Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
@@ -119,9 +128,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 }
 
 
-def get_parser(
-    vendor: Vendor, default_timezone: Optional[tzinfo] = None
-) -> VendorParser:
+def get_parser(vendor: Vendor, default_timezone: tzinfo | None = None) -> VendorParser:
     timestamp_parser = TimestampParser(default_timezone)
     try:
         return _VENDOR_TO_PARSER[vendor](timestamp_parser)

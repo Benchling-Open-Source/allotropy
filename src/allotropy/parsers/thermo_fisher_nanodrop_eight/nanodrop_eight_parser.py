@@ -1,5 +1,4 @@
 from collections.abc import Mapping
-from typing import Optional, Union
 
 import pandas as pd
 
@@ -46,22 +45,22 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
-ConcentrationType = Union[
-    TQuantityValueMicrogramPerMicroliter,
-    TQuantityValueMicrogramPerMilliliter,
-    TQuantityValueMilligramPerMilliliter,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanogramPerMilliliter,
-    TQuantityValuePicogramPerMilliliter,
-]
-ConcentrationClassType = Union[
-    type[TQuantityValueMicrogramPerMicroliter],
-    type[TQuantityValueMicrogramPerMilliliter],
-    type[TQuantityValueMilligramPerMilliliter],
-    type[TQuantityValueNanogramPerMicroliter],
-    type[TQuantityValueNanogramPerMilliliter],
-    type[TQuantityValuePicogramPerMilliliter],
-]
+ConcentrationType = (
+    TQuantityValueMicrogramPerMicroliter
+    | TQuantityValueMicrogramPerMilliliter
+    | TQuantityValueMilligramPerMilliliter
+    | TQuantityValueNanogramPerMicroliter
+    | TQuantityValueNanogramPerMilliliter
+    | TQuantityValuePicogramPerMilliliter
+)
+ConcentrationClassType = (
+    type[TQuantityValueMicrogramPerMicroliter]
+    | type[TQuantityValueMicrogramPerMilliliter]
+    | type[TQuantityValueMilligramPerMilliliter]
+    | type[TQuantityValueNanogramPerMicroliter]
+    | type[TQuantityValueNanogramPerMilliliter]
+    | type[TQuantityValuePicogramPerMilliliter]
+)
 
 CONCENTRATION_UNIT_TO_TQUANTITY: Mapping[str, ConcentrationClassType] = {
     "ug/ul": TQuantityValueMicrogramPerMicroliter,
@@ -73,7 +72,7 @@ CONCENTRATION_UNIT_TO_TQUANTITY: Mapping[str, ConcentrationClassType] = {
 }
 
 
-def _get_str_or_none(data_frame: pd.DataFrame, row: int, column: str) -> Optional[str]:
+def _get_str_or_none(data_frame: pd.DataFrame, row: int, column: str) -> str | None:
     if column not in data_frame.columns:
         return None
 
@@ -99,9 +98,7 @@ def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
         return InvalidJsonFloat.NaN
 
 
-def _get_concentration(
-    conc: JsonFloat, unit: Optional[str]
-) -> Optional[ConcentrationType]:
+def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType | None:
     if unit and unit in CONCENTRATION_UNIT_TO_TQUANTITY and isinstance(conc, float):
         cls = CONCENTRATION_UNIT_TO_TQUANTITY[unit]
         return cls(value=conc)
@@ -290,7 +287,7 @@ class NanodropEightParser(VendorParser):
                         ]
                     ),
                     absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        _get_float(data, row, "a260")
+                        value=_get_float(data, row, "a260")
                     ),
                 )
             )
@@ -339,14 +336,14 @@ class NanodropEightParser(VendorParser):
                         ]
                     ),
                     absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        _get_float(data, row, a280_col)
+                        value=_get_float(data, row, a280_col)
                     ),
                 )
             )
 
         return measurement_docs
 
-    def _get_concentration_col(self, data: pd.DataFrame) -> Optional[str]:
+    def _get_concentration_col(self, data: pd.DataFrame) -> str | None:
         for col in data.columns:
             if col.lower() in ["conc.", "conc", "concentration"]:
                 return col

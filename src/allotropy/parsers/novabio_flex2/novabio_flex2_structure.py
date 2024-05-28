@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import re
-from typing import Any, Optional
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -26,7 +26,7 @@ from allotropy.parsers.novabio_flex2.constants import (
 @dataclass(frozen=True)
 class Title:
     processing_time: str
-    device_identifier: Optional[str]
+    device_identifier: str | None
 
     @staticmethod
     def create(filename: str) -> Title:
@@ -73,14 +73,14 @@ class Sample:
     identifier: str
     role_type: str
     measurement_time: str
-    batch_identifier: Optional[str]
+    batch_identifier: str | None
     analytes: list[Analyte]
     properties: dict[str, Any]
 
     @staticmethod
     def create(data: pd.Series[Any]) -> Sample:
         properties: dict[str, Any] = {
-            property_name: property_dict["cls"](data[property_dict["col_name"]])
+            property_name: property_dict["cls"](value=data[property_dict["col_name"]])
             for property_name, property_dict in PROPERTY_MAPPINGS.items()
             if property_dict["col_name"] in data
             and data[property_dict["col_name"]] is not None

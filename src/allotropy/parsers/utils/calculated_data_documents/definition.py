@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import Optional, Union
 
 
 @dataclass
@@ -13,8 +12,8 @@ class Referenceable:
 @dataclass(frozen=True)
 class DataSource:
     feature: str
-    reference: Union[CalculatedDocument, Referenceable]
-    value: Optional[float] = None
+    reference: CalculatedDocument | Referenceable
+    value: float | None = None
 
 
 @dataclass

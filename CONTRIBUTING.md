@@ -4,7 +4,7 @@ We welcome community contributions to this library and we hope that together we 
 
 In order to contribute you will need to have an Individual or Corporate Contributor License Agreement (CLA) on file with Benchling depending on if you are contributing on your own time or as part of another company. When you make your first pull request we will check if you have a CLA and if not take care of that with you first. The process is quick and painless and helps us to make sure that you and everyone who uses your code in the future is protected.
 
-Allotropy follows a [fork and pull model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#fork-and-pull-model). To start, fork a copy of the Allotropy repository in GitHub onto your own account and then create your local repository of the fork.  
+Allotropy follows a [fork and pull model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#fork-and-pull-model). To start, fork a copy of the Allotropy repository in GitHub onto your own account and then create your local repository of the fork.
 
 ## GPG keys and signed commits
 All commits to this repository must be signed. To set up commit signatures, please do the following:
@@ -41,6 +41,8 @@ In this case we already have some code in the library to handle instruments of t
 2. Either:
   - A `Structure` file that the `Parser` uses to build an in memory representation of the instrument data that can be serialized to ASM.
   - A `Reader` file that the `Parser` uses to read directly from the file, if accessing the file data does not require much logic.
+
+See our [tutorial](docs/tutorial.md) for a deeper dive on contributing to the `allotropy` library!
 
 ## If the ASM schema you need is not available
 

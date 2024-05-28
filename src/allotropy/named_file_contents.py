@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Optional
 
 from allotropy.types import IOType
 
@@ -21,4 +20,4 @@ class NamedFileContents:
 
     contents: IOType
     original_file_name: str
-    encoding: Optional[str] = None
+    encoding: str | None = None

@@ -305,6 +305,9 @@
   ],
   "$defs": {
     "cellCountingDetectorDeviceControlAggregateDocument":{
+      "required": [
+        "device control document"
+      ],
       "properties": {
         "device control document": {
           "items": {

@@ -1,7 +1,7 @@
 import json
 import os
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 SCHEMAS_DIR = os.path.join(Path(__file__).parent.parent, "schemas")
 SHARED_SCHEMAS_DIR = os.path.join(SCHEMAS_DIR, "shared", "definitions")
@@ -29,7 +29,7 @@ from dataclasses import dataclass
 
         f.write(
             """
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class HasUnit:
     unit: str
 """
@@ -41,7 +41,7 @@ class HasUnit:
                 f"""
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class {unit_name}(HasUnit):
     unit: str = {UNIT_STRING_OVERRIDES.get(unit, unit_str)}"""
             )
@@ -66,12 +66,12 @@ from allotropy.allotrope.models.shared.definitions.units import (
             f.write(
                 f"""
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValue{unit_name}({unit_name}, TQuantityValue):
     pass
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValue{unit_name}({unit_name}, TNullableQuantityValue):
     pass
 """
@@ -88,7 +88,7 @@ def _get_unit_schema(unit: str, unit_iri: str) -> dict[str, Any]:
 
 
 def _get_quantity_value_schema(
-    unit_name: str, prefix: Optional[str] = ""
+    unit_name: str, prefix: str | None = ""
 ) -> dict[str, Any]:
     return {
         "allOf": [
