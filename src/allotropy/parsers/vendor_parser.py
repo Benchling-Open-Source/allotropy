@@ -17,18 +17,20 @@ class VendorParser(ABC):
     def __init__(self, timestamp_parser: TimestampParser):
         self.timestamp_parser = assert_not_none(timestamp_parser, "timestamp_parser")
 
+    @property
+    @abstractmethod
+    def display_name(self) -> str:
+        """ The display name of the parser. Displayed in the README. """
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def is_ready_to_use(self) -> bool:
+        """ Signifies if the parser is ready to be used. Can be set to False while being developed. """
+        raise NotImplementedError
+
     @abstractmethod
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def display_name(self):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def is_ready_to_use(self):
         raise NotImplementedError
 
     def _get_date_time(self, time: str) -> TDateTimeValue:
