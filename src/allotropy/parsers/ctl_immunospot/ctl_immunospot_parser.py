@@ -31,6 +31,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class CtlImmunospotParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "CTL ImmunoSpot"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = LinesReader(lines)

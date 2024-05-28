@@ -55,6 +55,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "AppBio QuantStudio Design And Analysis"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = pd.read_excel(
             named_file_contents.contents, header=None, sheet_name=None

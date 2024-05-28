@@ -21,6 +21,16 @@ class VendorParser(ABC):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
 
+    @property
+    @abstractmethod
+    def display_name(self):
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def is_ready_to_use(self):
+        raise NotImplementedError
+
     def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")
 

@@ -84,6 +84,14 @@ def safe_value(cls: type[T], value: Any | None) -> T | None:
 
 
 class PerkinElmerEnvisionParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Perkin Elmer Envision"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)

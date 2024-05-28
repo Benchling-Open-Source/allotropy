@@ -69,6 +69,14 @@ def get_instance_or_none(
 
 
 class AgilentGen5Parser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Agilent Gen5"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def _create_model(self, plate_data: PlateData, file_name: str) -> Model:
         header_data = plate_data.header_data
         results = plate_data.results

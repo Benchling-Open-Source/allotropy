@@ -37,6 +37,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class UnchainedLabsLunaticParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Unchained Labs Lunatic"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = named_file_contents.contents
         data = read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)

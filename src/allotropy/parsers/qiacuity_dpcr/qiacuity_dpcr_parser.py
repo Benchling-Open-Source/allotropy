@@ -63,6 +63,14 @@ SAMPLE_ROLE_TYPE_MAPPING = {
 
 
 class QiacuitydPCRParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Qiacuity dPCR"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         reader = QiacuitydPCRReader(contents)

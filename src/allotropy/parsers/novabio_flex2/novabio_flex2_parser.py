@@ -14,6 +14,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class NovaBioFlexParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "NovaBio Flex2"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         return self._get_model(Data.create(named_file_contents))
 

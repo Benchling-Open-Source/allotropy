@@ -67,6 +67,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class BioradBioplexParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "BioRad BioPlex Manager"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents.read()
         xml_tree = Et.ElementTree(Et.fromstring(contents))  # noqa: S314

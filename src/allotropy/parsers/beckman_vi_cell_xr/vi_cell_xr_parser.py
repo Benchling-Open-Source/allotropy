@@ -90,6 +90,14 @@ def remove_style_xml_file(contents: IOType) -> IOType:
 
 
 class ViCellXRParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Beckman Vi Cell XR"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         filename = named_file_contents.original_file_name

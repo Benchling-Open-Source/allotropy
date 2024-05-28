@@ -107,6 +107,14 @@ def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType |
 
 
 class NanodropEightParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Thermo Fisher Nanodrop Eight"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = NanoDropEightReader.read(named_file_contents)
         data = self._add_measurement_uuids(data)

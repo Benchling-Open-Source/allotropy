@@ -96,6 +96,14 @@ class _Sample:
 
 
 class ViCellBluParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Beckman Vi Cell BLU"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         return self._get_model(
             data=ViCellBluReader.read(named_file_contents),

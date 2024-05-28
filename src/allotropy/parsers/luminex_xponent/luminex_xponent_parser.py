@@ -42,6 +42,14 @@ DEFAULT_DEVICE_TYPE = "multi analyte profiling analyzer"
 
 
 class LuminexXponentParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Luminex xPONENT"
+
+    @property
+    def is_ready_to_use(self) -> bool:
+        return True
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
