@@ -1,8 +1,6 @@
 from __future__ import annotations
-
 import numpy as np
 import pandas as pd
-
 from allotropy.parsers.utils.values import (
     assert_not_empty_df
 )
@@ -21,7 +19,7 @@ class MabTechApexContents:
         sheet = assert_not_empty_df(
             contents.get("Plate Information"),
             msg="Unable to find 'Plate Information' sheet.",
-        ).dropna(axis=1, how='all')
+        ).dropna(axis=1, how="all")
 
         data = {}
         for _, *(title, value, *_) in sheet.itertuples():
@@ -38,4 +36,4 @@ class MabTechApexContents:
             msg="Unable to find 'Plate Database' sheet."
         )
 
-        return sheet.dropna(axis=1, how='all')
+        return sheet.dropna(axis=1, how="all")
