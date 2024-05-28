@@ -1,5 +1,4 @@
 import pandas as pd
-
 from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
     ContainerType,
     DataSystemDocument,
@@ -8,7 +7,6 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     ImageFeatureDocumentItem,
     MeasurementAggregateDocument,
     Model,
-    OpticalImagingAggregateDocument,
     OpticalImagingDeviceControlAggregateDocument,
     OpticalImagingDeviceControlDocumentItem,
     OpticalImagingMeasurementDocumentItems,
