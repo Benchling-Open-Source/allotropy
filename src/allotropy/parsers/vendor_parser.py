@@ -20,13 +20,13 @@ class VendorParser(ABC):
     @property
     @abstractmethod
     def display_name(self) -> str:
-        """ The display name of the parser. Displayed in the README. """
+        """The display name of the parser. Displayed in the README."""
         raise NotImplementedError
 
     @property
     @abstractmethod
     def is_ready_to_use(self) -> bool:
-        """ Signifies if the parser is ready to be used. Can be set to False while being developed. """
+        """Signifies if the parser is ready to be used. Can be set to False while being developed."""
         raise NotImplementedError
 
     @abstractmethod

@@ -6,7 +6,7 @@ NON_READY_PARSERS = {
     # NOTE: example parser will never be marked as ready to use, as it shouldn't be used.
     Vendor.EXAMPLE_WEYLAND_YUTANI,
     # We want to collect more test cases for this parser before marking as ready.
-    Vendor.QIACUITY_DPCR
+    Vendor.QIACUITY_DPCR,
 }
 
 
