@@ -9,9 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.31] - 2024-05-24
+
+### Added
+
 - Script to create graph visualization of calculated data documents from asm json files
 - Details of parser requirements to docs
 - Add Agilent Gen5 Image Adapter
+- Add CTL Immunospot adapter
 
 ### Fixed
 
