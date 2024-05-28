@@ -1,11 +1,8 @@
 from __future__ import annotations
-
 from collections.abc import Iterator
 from dataclasses import dataclass
 import re
-
 import pandas as pd
-
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import (
     MabTechApexContents
 )
@@ -16,7 +13,7 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
-IMAGE_FEATURES = ['Spot Forming Units (SFU)', 'Average Relative Spot Volume (RSV)', 'Sum of Spot Volume (RSV)']
+IMAGE_FEATURES = ["Spot Forming Units (SFU)", "Average Relative Spot Volume (RSV)", "Sum of Spot Volume (RSV)"]
 
 
 @dataclass(frozen=True)
