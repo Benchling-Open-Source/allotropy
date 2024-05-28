@@ -109,7 +109,7 @@ def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType |
 class NanodropEightParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "Thermo Fisher Nanodrop Eight"
+        return "Thermo Fisher NanoDrop Eight"
 
     @property
     def is_ready_to_use(self) -> bool:

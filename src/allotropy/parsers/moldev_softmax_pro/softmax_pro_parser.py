@@ -81,7 +81,7 @@ def to_json_float(value: float) -> JsonFloat:
 class SoftmaxproParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "MolDev SoftMax Pro"
+        return "Molecular Devices SoftMax Pro"
 
     @property
     def is_ready_to_use(self) -> bool:

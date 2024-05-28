@@ -79,7 +79,7 @@ def get_property_from_sample(
 class ChemometecNucleoviewParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "Chemometec Nucleoview"
+        return "ChemoMetec Nucleoview"
 
     @property
     def is_ready_to_use(self) -> bool:

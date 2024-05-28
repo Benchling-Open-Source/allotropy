@@ -86,7 +86,7 @@ def safe_value(cls: type[T], value: Any | None) -> T | None:
 class PerkinElmerEnvisionParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "Perkin Elmer Envision"
+        return "PerkinElmer Envision"
 
     @property
     def is_ready_to_use(self) -> bool:

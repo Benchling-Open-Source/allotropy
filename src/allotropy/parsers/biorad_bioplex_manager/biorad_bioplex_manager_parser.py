@@ -69,7 +69,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class BioradBioplexParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "BioRad BioPlex Manager"
+        return "Bio-Rad Bio-Plex Manager"
 
     @property
     def is_ready_to_use(self) -> bool:

@@ -69,7 +69,7 @@ class QiacuitydPCRParser(VendorParser):
 
     @property
     def is_ready_to_use(self) -> bool:
-        return True
+        return False
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents

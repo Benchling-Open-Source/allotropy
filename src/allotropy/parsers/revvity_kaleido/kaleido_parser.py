@@ -269,7 +269,7 @@ class ImagingMeasurementParser(MeasurementParser):
 class KaleidoParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "Revvity Kaleiedo"
+        return "Revvity Kaleido"
 
     @property
     def is_ready_to_use(self) -> bool:

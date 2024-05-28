@@ -54,7 +54,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AppBioQuantStudioParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "AppBio QuantStudio RT-PCR"
+        return "Applied Bio QuantStudio RT-PCR"
 
     @property
     def is_ready_to_use(self) -> bool:
