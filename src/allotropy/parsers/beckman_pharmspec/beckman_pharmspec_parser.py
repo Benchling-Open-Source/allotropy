@@ -195,10 +195,14 @@ class PharmSpecParser(VendorParser):
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItem(
-                        flush_volume_setting=TQuantityValueMilliliter(0),
-                        detector_view_volume=TQuantityValueMilliliter(df.at[9, 5]),
+                        flush_volume_setting=TQuantityValueMilliliter(value=0),
+                        detector_view_volume=TQuantityValueMilliliter(
+                            value=df.at[9, 5]
+                        ),
                         repetition_setting=int(df.at[11, 5]),
-                        sample_volume_setting=TQuantityValueMilliliter(df.at[11, 2]),
+                        sample_volume_setting=TQuantityValueMilliliter(
+                            value=df.at[11, 2]
+                        ),
                     )
                 ]
             ),
@@ -210,7 +214,7 @@ class PharmSpecParser(VendorParser):
                     ProcessedDataDocumentItem(
                         data_processing_document=DataProcessingDocument(
                             dilution_factor_setting=TQuantityValueUnitless(
-                                df.at[13, 2]
+                                value=df.at[13, 2]
                             ),
                         ),
                         distribution_aggregate_document=DistributionAggregateDocument(
