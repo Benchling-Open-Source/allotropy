@@ -20,6 +20,7 @@ We currently have parser support for the following instruments:
   - Bio-Rad Bio-Plex Manager
   - ChemoMetec Nucleoview
   - Luminex xPONENT
+  - Methodical Mind
   - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
