@@ -19,6 +19,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.32]
+
+### Added
+
+- Add schema_parser/path_util.py to remove dependency: converter.py -> generate_schemas.py, which pulled script dependencies into allotropy
+
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
 ## [0.1.31] - 2024-05-24
 
 ### Added
