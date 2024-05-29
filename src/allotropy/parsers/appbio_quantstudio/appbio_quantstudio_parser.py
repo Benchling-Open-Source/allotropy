@@ -48,6 +48,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -57,8 +58,8 @@ class AppBioQuantStudioParser(VendorParser):
         return "AppBio QuantStudio RT-PCR"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)

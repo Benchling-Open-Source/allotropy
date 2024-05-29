@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from allotropy.parser_factory import Vendor
+from allotropy.parsers.release_state import ReleaseState
 
 NON_READY_PARSERS = {
     # NOTE: example parser will never be marked as ready to use, as it shouldn't be used.
@@ -19,9 +20,12 @@ def test_vendor_display_name() -> None:
     assert len(Vendor) == len({vendor.display_name for vendor in Vendor})
 
 
-def test_vendor_is_ready_to_use() -> None:
+def test_vendor_release_state() -> None:
     for vendor in Vendor:
-        assert vendor.is_ready_to_use or vendor in NON_READY_PARSERS
+        assert (
+            vendor.release_state == ReleaseState.RECOMMENDED
+            or vendor in NON_READY_PARSERS
+        )
 
 
 def test_get_parser() -> None:
@@ -35,7 +39,9 @@ def test_vendors_in_readme() -> None:
         readme_contents = f.read()
 
     for vendor in Vendor:
-        if vendor.is_ready_to_use:
-            assert vendor.display_name in readme_contents
+        if vendor.release_state == ReleaseState.RECOMMENDED:
+            assert f"- {vendor.display_name}" in readme_contents
+        elif vendor.release_state == ReleaseState.CANDIDATE_RELEASE:
+            assert f"- *{vendor.display_name}" in readme_contents
         else:
             assert vendor.display_name not in readme_contents

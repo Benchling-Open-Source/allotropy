@@ -35,6 +35,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -69,8 +70,8 @@ class PharmSpecParser(VendorParser):
         return "Beckman PharmSpec"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")

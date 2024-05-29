@@ -36,6 +36,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -82,8 +83,8 @@ class ChemometecNucleoviewParser(VendorParser):
         return "ChemoMetec Nucleoview"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents

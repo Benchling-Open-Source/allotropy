@@ -51,6 +51,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     Well,
     WellItem,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -60,8 +61,8 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
         return "AppBio QuantStudio Design & Analysis"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = pd.read_excel(

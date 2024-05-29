@@ -5,6 +5,7 @@ from pandas import Timestamp
 
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -25,7 +26,7 @@ class VendorParser(ABC):
 
     @property
     @abstractmethod
-    def is_ready_to_use(self) -> bool:
+    def release_state(self) -> ReleaseState:
         """Signifies if the parser is ready to be used. Can be set to False while being developed."""
         raise NotImplementedError
 

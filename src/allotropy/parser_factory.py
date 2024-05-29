@@ -36,6 +36,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
     PerkinElmerEnvisionParser,
 )
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_parser import KaleidoParser
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
@@ -78,8 +79,8 @@ class Vendor(Enum):
         return self.get_parser().display_name
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return self.get_parser().is_ready_to_use
+    def release_state(self) -> ReleaseState:
+        return self.get_parser().release_state
 
     def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
         timestamp_parser = TimestampParser(default_timezone)

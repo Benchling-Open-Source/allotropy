@@ -8,6 +8,7 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
     SampleDocument,
 )
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
@@ -22,8 +23,8 @@ class RocheCedexBiohtParser(VendorParser):
         return "Roche Cedex BioHT"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents

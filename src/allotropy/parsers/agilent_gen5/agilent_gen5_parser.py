@@ -46,6 +46,7 @@ from allotropy.parsers.agilent_gen5.constants import (
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = (
@@ -74,8 +75,8 @@ class AgilentGen5Parser(VendorParser):
         return "Agilent Gen5"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def _create_model(self, plate_data: PlateData, file_name: str) -> Model:
         header_data = plate_data.header_data

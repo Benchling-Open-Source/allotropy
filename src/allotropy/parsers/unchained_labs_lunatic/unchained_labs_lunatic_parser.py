@@ -28,6 +28,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import TQuantityV
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
     Data,
     Measurement,
@@ -42,8 +43,8 @@ class UnchainedLabsLunaticParser(VendorParser):
         return "Unchained Labs Lunatic"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = named_file_contents.contents

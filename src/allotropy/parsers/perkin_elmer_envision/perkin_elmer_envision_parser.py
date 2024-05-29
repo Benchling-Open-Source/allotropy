@@ -53,6 +53,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     Result,
     ResultPlateInfo,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 T = TypeVar("T")
@@ -89,8 +90,8 @@ class PerkinElmerEnvisionParser(VendorParser):
         return "PerkinElmer Envision"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)

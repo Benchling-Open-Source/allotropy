@@ -33,6 +33,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Header,
     Measurement,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -47,8 +48,8 @@ class LuminexXponentParser(VendorParser):
         return "Luminex xPONENT"
 
     @property
-    def is_ready_to_use(self) -> bool:
-        return True
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
