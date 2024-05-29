@@ -24,6 +24,7 @@ from allotropy.parsers.methodical_mind.methodical_mind_structure import (
     CombinedData,
     PlateData,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -33,6 +34,14 @@ NA = "N/A"
 
 
 class MethodicalMindParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Methodical Mind"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         file_lines = read_to_lines(named_file_contents)
         reader = CsvReader(file_lines)
