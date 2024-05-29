@@ -5,11 +5,12 @@ from pathlib import Path
 import re
 from typing import Any
 
-SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
+ALLOTROPE_DIR = os.path.join(Path(__file__).parent.parent)
+SCHEMA_DIR_PATH = os.path.join(ALLOTROPE_DIR, "schemas")
 SHARED_SCHEMAS_PATH = os.path.join(SCHEMA_DIR_PATH, "shared", "definitions")
 UNITS_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "units.json")
 CUSTOM_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "custom.json")
-MODEL_DIR_PATH = "src/allotropy/allotrope/models"
+MODEL_DIR_PATH = os.path.join(ALLOTROPE_DIR, "models")
 SHARED_MODELS_PATH = os.path.join(MODEL_DIR_PATH, "shared", "definitions")
 UNITS_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "units.py")
 CUSTOM_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "custom.py")
