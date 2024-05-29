@@ -24,7 +24,7 @@ class DesignQuantstudioContents:
     def _get_header_size(self, sheet: pd.DataFrame) -> int:
         for idx, * (title, *_) in sheet.itertuples():
             if title is None:
-                return idx
+                return int(idx)
         error = "Unable to parse data header"
         raise AllotropeConversionError(error)
 
@@ -44,12 +44,11 @@ class DesignQuantstudioContents:
         header.index = header.index.str.strip()
         return header
 
-    def _get_data(
-        self, contents: dict[str, pd.DataFrame]
-    ) -> dict[str, pd.DataFrame]:
+    def _get_data(self, contents: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
         data_structure = {}
         for name, sheet in contents.items():
-            header_size = self._get_header_size(sheet) + 1  # plus 1 for empty line between header and data
+            # header_size + 1 for empty line between header and data
+            header_size = self._get_header_size(sheet) + 1
             data = sheet.iloc[header_size:].reset_index(drop=True)
             data.columns = pd.Index(data.iloc[0])
             data_structure[name] = data.drop(0)

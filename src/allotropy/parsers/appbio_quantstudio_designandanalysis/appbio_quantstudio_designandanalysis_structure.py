@@ -538,7 +538,8 @@ class Result:
 
         genotyping_determination_result = (
             try_str_from_series_or_none(target_data, "Call")
-            if experiment_type in (
+            if experiment_type
+            in (
                 ExperimentType.presence_absence_qPCR_experiment,
                 ExperimentType.genotyping_qPCR_experiment,
             )
