@@ -21,9 +21,9 @@ from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schema_parser.path_util import (
     CUSTOM_MODELS_PATH,
     GENERATED_SHARED_PATHS,
-    UNITS_MODELS_PATH,
     get_schema_and_model_paths,
     SCHEMA_DIR_PATH,
+    UNITS_MODELS_PATH,
 )
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schema_parser.update_units import update_unit_files
@@ -120,7 +120,9 @@ def generate_schemas(
                 continue
 
             print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-            schema_path, model_path = get_schema_and_model_paths(root_dir, rel_schema_path)
+            schema_path, model_path = get_schema_and_model_paths(
+                root_dir, rel_schema_path
+            )
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
                 schema_cleaner = SchemaCleaner()
