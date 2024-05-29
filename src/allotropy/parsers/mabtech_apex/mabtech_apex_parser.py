@@ -30,11 +30,20 @@ from allotropy.parsers.mabtech_apex.mabtech_apex_structure import (
     Well,
     WellList,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class MabTechApexParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Mabtech Apex"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
         contents = MabTechApexContents(raw_contents)
