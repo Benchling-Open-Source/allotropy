@@ -27,7 +27,7 @@ class VendorParser(ABC):
     @property
     @abstractmethod
     def release_state(self) -> ReleaseState:
-        """Signifies if the parser is ready to be used. Can be set to False while being developed."""
+        """Signifies if the parser is ready to be used. Can be set to ReleaseState.WORKING_DRAFT while being developed."""
         raise NotImplementedError
 
     @abstractmethod
