@@ -60,6 +60,7 @@ from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
     PlateBlock,
     ScanPosition,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -79,6 +80,14 @@ def to_json_float(value: float) -> JsonFloat:
 
 
 class SoftmaxproParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Molecular Devices SoftMax Pro"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
