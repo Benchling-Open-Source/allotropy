@@ -63,7 +63,7 @@ class DeviceSystemDocument:
 
 @dataclass(kw_only=True)
 class DeviceControlDocumentItem:
-    device_type: TStringValue | None = None
+    device_type: TStringValue
     shaking_configuration_description: TStringValue | None = None
     detector_distance_setting__plate_reader_: TQuantityValueMillimeter | None = None
     integration_time: TQuantityValueSecondTime | None = None

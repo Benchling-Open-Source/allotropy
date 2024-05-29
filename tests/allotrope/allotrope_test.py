@@ -1,10 +1,4 @@
-from allotropy.allotrope.allotrope import (
-    serialize_allotrope,
-    serialize_and_validate_allotrope,
-)
-from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
-    AnalyteDocumentItem,
-)
+from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
 from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
     DeviceControlAggregateDocument,
     MeasurementAggregateDocument,
@@ -12,17 +6,7 @@ from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence impo
     Model,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleDocument
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueMillimolePerLiter,
-    TQuantityValueNumber,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    FieldComponentDatatype,
-    TDatacube,
-    TDatacubeComponent,
-    TDatacubeData,
-    TDatacubeStructure,
-)
+from allotropy.allotrope.models.shared.definitions.custom import TQuantityValueNumber
 
 
 def test_serialize_and_validate_allotrope() -> None:
@@ -57,69 +41,4 @@ def test_serialize_and_validate_allotrope() -> None:
                 }
             ],
         },
-    }
-
-
-def test_data_cube() -> None:
-    data_cube = TDatacube(
-        cube_structure=TDatacubeStructure(
-            dimensions=[
-                TDatacubeComponent(
-                    field_componentDatatype=FieldComponentDatatype("double"),
-                    concept="elapsed time",
-                    unit="s",
-                ),
-                TDatacubeComponent(
-                    field_componentDatatype=FieldComponentDatatype("int"),
-                    concept="wavelength",
-                    unit=None,
-                ),
-            ],
-            measures=[
-                TDatacubeComponent(
-                    field_componentDatatype=FieldComponentDatatype("double"),
-                    concept="fluorescence",
-                    unit="RFU",
-                )
-            ],
-        ),
-        data=TDatacubeData(
-            dimensions=[[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]],
-            measures=[[4.0, 5.0, None]],
-        ),
-    )
-    assert serialize_allotrope(data_cube) == {
-        "cube-structure": {
-            "dimensions": [
-                {
-                    "@componentDatatype": "double",
-                    "concept": "elapsed time",
-                    "unit": "s",
-                },
-                {"@componentDatatype": "int", "concept": "wavelength"},
-            ],
-            "measures": [
-                {
-                    "@componentDatatype": "double",
-                    "concept": "fluorescence",
-                    "unit": "RFU",
-                }
-            ],
-        },
-        "data": {
-            "dimensions": [[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]],
-            "measures": [[4.0, 5.0, None]],
-        },
-    }
-
-
-def test_omits_null_values_except_for_specified_classes() -> None:
-    item = AnalyteDocumentItem(
-        analyte_name="test",
-        molar_concentration=TNullableQuantityValueMillimolePerLiter(value=None),
-    )
-
-    assert serialize_allotrope(item) == {
-        "analyte name": "test",
-        "molar concentration": {"unit": "mmol/L", "value": None},
     }

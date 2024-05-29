@@ -18,23 +18,15 @@ from allotropy.allotrope.schema_parser.backup_manager import (
     restore_backup,
 )
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
+from allotropy.allotrope.schema_parser.path_util import (
+    CUSTOM_MODELS_PATH,
+    GENERATED_SHARED_PATHS,
+    get_schema_and_model_paths,
+    SCHEMA_DIR_PATH,
+    UNITS_MODELS_PATH,
+)
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schema_parser.update_units import update_unit_files
-
-SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
-SHARED_SCHEMAS_PATH = os.path.join(SCHEMA_DIR_PATH, "shared", "definitions")
-UNITS_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "units.json")
-CUSTOM_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "custom.json")
-MODEL_DIR_PATH = "src/allotropy/allotrope/models"
-SHARED_MODELS_PATH = os.path.join(MODEL_DIR_PATH, "shared", "definitions")
-UNITS_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "units.py")
-CUSTOM_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "custom.py")
-GENERATED_SHARED_PATHS = [
-    UNITS_SCHEMAS_PATH,
-    UNITS_MODELS_PATH,
-    CUSTOM_SCHEMAS_PATH,
-    CUSTOM_MODELS_PATH,
-]
 
 
 def lint_file(model_path: str) -> None:
@@ -73,17 +65,6 @@ def lint_file(model_path: str) -> None:
     subprocess.check_call(
         f"black {model_path}", shell=True, stderr=subprocess.DEVNULL  # noqa: S602
     )
-
-
-def _get_schema_and_model_paths(
-    root_dir: Path, rel_schema_path: Path
-) -> tuple[Path, Path]:
-    schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-    model_file = re.sub(
-        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
-    ).lower()
-    model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
-    return schema_path, model_path
 
 
 def _generate_schema(model_path: Path, schema_path: Path) -> None:
@@ -139,7 +120,7 @@ def generate_schemas(
                 continue
 
             print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-            schema_path, model_path = _get_schema_and_model_paths(
+            schema_path, model_path = get_schema_and_model_paths(
                 root_dir, rel_schema_path
             )
 

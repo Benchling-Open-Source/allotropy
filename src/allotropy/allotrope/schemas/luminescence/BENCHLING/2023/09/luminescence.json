@@ -199,7 +199,10 @@
                                 "$asm.pattern": "quantity datum",
                                 "$ref": "#/$custom/tQuantityValueNanometer"
                               }
-                            }
+                            },
+                            "required": [
+                              "device type"
+                            ]
                           },
                           {
                             "properties": {
