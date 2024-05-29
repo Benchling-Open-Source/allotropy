@@ -443,7 +443,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial commit, includes support for:
   - Agilent Gen5
-  - Applied Bio QuantStudio
+  - AppBio QuantStudio
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - MolDev SoftMax Pro

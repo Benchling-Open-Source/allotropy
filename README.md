@@ -12,9 +12,9 @@ We have chosen to have this library output ASM since JSON is easy to read and co
 We currently have parser support for the following instruments:
   - Agilent Gen5
   - Agilent Gen5 Image
-  - Applied Bio AbsoluteQ
-  - Applied Bio QuantStudio RT-PCR
-  - Applied Bio QuantStudio Design & Analysis
+  - AppBio AbsoluteQ
+  - AppBio QuantStudio RT-PCR
+  - AppBio QuantStudio Design & Analysis
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - Beckman PharmSpec

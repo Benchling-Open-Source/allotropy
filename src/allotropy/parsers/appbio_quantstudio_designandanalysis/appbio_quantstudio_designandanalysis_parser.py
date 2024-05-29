@@ -57,7 +57,7 @@ from allotropy.parsers.vendor_parser import VendorParser
 class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "Applied Bio QuantStudio Design & Analysis"
+        return "AppBio QuantStudio Design & Analysis"
 
     @property
     def is_ready_to_use(self) -> bool:
