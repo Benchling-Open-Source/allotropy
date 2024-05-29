@@ -36,6 +36,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import TStringVal
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -65,6 +66,14 @@ def get_property_from_sample(property_name: str, value: Any) -> Any:
 
 
 class PharmSpecParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Beckman PharmSpec"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
         return self._setup_model(df, named_file_contents.original_file_name)

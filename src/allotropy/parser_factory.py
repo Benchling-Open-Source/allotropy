@@ -1,7 +1,6 @@
 from datetime import tzinfo
 from enum import Enum
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
@@ -37,6 +36,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import
     PerkinElmerEnvisionParser,
 )
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_parser import QiacuitydPCRParser
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_parser import KaleidoParser
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
     RocheCedexBiohtParser,
@@ -74,33 +74,17 @@ class Vendor(Enum):
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
 
-    def get_display_name(self) -> str:
-        return _VENDOR_TO_DISPLAY_NAME.get(self, self.value.title())
+    @property
+    def display_name(self) -> str:
+        return self.get_parser().display_name
 
+    @property
+    def release_state(self) -> ReleaseState:
+        return self.get_parser().release_state
 
-_VENDOR_TO_DISPLAY_NAME = {
-    Vendor.AGILENT_GEN5: "Agilent Gen5",
-    Vendor.AGILENT_GEN5_IMAGE: "Agilent Gen5 Image",
-    Vendor.APPBIO_ABSOLUTE_Q: "AppBio AbsoluteQ",
-    Vendor.APPBIO_QUANTSTUDIO: "AppBio QuantStudio RT-PCR",
-    Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS: "AppBio QuantStudio Design And Analysis",
-    Vendor.BECKMAN_PHARMSPEC: "Beckman PharmSpec",
-    Vendor.BECKMAN_VI_CELL_BLU: "Beckman Vi Cell BLU",
-    Vendor.BECKMAN_VI_CELL_XR: "Beckman Vi Cell XR",
-    Vendor.BIORAD_BIOPLEX: "BioRad BioPlex Manager",
-    Vendor.CHEMOMETEC_NUCLEOVIEW: "Chemometec Nucleoview",
-    Vendor.CTL_IMMUNOSPOT: "CTL ImmunoSpot",
-    Vendor.EXAMPLE_WEYLAND_YUTANI: "Example Weyland Yutani",
-    Vendor.LUMINEX_XPONENT: "Luminex xPONENT",
-    Vendor.MOLDEV_SOFTMAX_PRO: "MolDev SoftMax Pro",
-    Vendor.NOVABIO_FLEX2: "NovaBio Flex2",
-    Vendor.PERKIN_ELMER_ENVISION: "Perkin Elmer Envision",
-    Vendor.QIACUITY_DPCR: "Qiacuity dPCR",
-    Vendor.REVVITY_KALEIDO: "Revvity Kaleiedo",
-    Vendor.ROCHE_CEDEX_BIOHT: "Roche Cedex BioHT",
-    Vendor.THERMO_FISHER_NANODROP_EIGHT: "Thermo Fisher Nanodrop Eight",
-    Vendor.UNCHAINED_LABS_LUNATIC: "Unchained Labs Lunatic",
-}
+    def get_parser(self, default_timezone: tzinfo | None = None) -> VendorParser:
+        timestamp_parser = TimestampParser(default_timezone)
+        return _VENDOR_TO_PARSER[self](timestamp_parser)
 
 
 _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
@@ -126,12 +110,3 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
 }
-
-
-def get_parser(vendor: Vendor, default_timezone: tzinfo | None = None) -> VendorParser:
-    timestamp_parser = TimestampParser(default_timezone)
-    try:
-        return _VENDOR_TO_PARSER[vendor](timestamp_parser)
-    except KeyError as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor}."
-        raise AllotropeConversionError(error) from e

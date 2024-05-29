@@ -41,6 +41,7 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     NO_PLATE_DATA_ERROR,
 )
 from allotropy.parsers.lines_reader import read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -58,6 +59,14 @@ def get_instance_or_none(
 
 
 class AgilentGen5ImageParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Agilent Gen5 Image"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def _create_model(self, plate_data: PlateData, file_name: str) -> Model:
         header_data = plate_data.header_data
 
