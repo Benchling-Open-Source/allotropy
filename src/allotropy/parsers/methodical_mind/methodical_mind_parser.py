@@ -57,7 +57,7 @@ class MethodicalMindParser(VendorParser):
         return DeviceSystemDocument(
             device_identifier=NA,
             model_number=combined_data.model,
-            asset_management_identifier=combined_data.serial_number,
+            equipment_serial_number=combined_data.serial_number,
         )
 
     def _get_data_system_document(
