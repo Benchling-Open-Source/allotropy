@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pytest
 
 from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
@@ -16,24 +14,49 @@ from allotropy.parser_factory import Vendor
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.testing.utils import from_file, validate_contents
-from allotropy.to_allotrope import allotrope_from_file
 
 VENDOR_TYPE = Vendor.BECKMAN_PHARMSPEC
 
+OUTPUT_FILES = (
+    "hiac_example_1",
+    "hiac_example_2",
+    "hiac_example_3",
+    "hiac_example_4",
+    "hiac_example_5",
+)
 
-@pytest.fixture()
-def test_file() -> Path:
-    f = Path(__file__).parent / "testdata/hiac_example_1.xlsx"
-    return f.absolute()
+TEST_DATA_DIR = "tests/parsers/beckman_pharmspec/testdata/"
+
+
+def _get_test_file_path(output_file: str) -> str:
+    return f"{TEST_DATA_DIR}/{output_file}.xlsx"
+
+
+def _get_expected_file_path(output_file: str) -> str:
+    return f"{TEST_DATA_DIR}/{output_file}.json"
 
 
 @pytest.mark.short
-def test_get_model(test_file: Path) -> None:
+@pytest.mark.parametrize(
+    "file_name,num_measurement_docs,has_calculated_doc",
+    [
+        (OUTPUT_FILES[0], 2, True),
+        (OUTPUT_FILES[1], 3, True),
+        (OUTPUT_FILES[2], 1, True),
+        (OUTPUT_FILES[3], 1, False),
+        (OUTPUT_FILES[4], 3, False),
+    ],
+)
+def test_get_model(
+    file_name: str, num_measurement_docs: int, *, has_calculated_doc: bool
+) -> None:
+    test_file = _get_test_file_path(file_name)
     parser = PharmSpecParser(TimestampParser())
 
     model = parser.to_allotrope(NamedFileContents(open(test_file, "rb"), ""))
     assert isinstance(
-        model.light_obscuration_aggregate_document, LightObscurationAggregateDocument
+        model.light_obscuration_aggregate_document,
+        LightObscurationAggregateDocument,
     )
     assert isinstance(
         model.light_obscuration_aggregate_document.device_system_document,
@@ -72,15 +95,13 @@ def test_get_model(test_file: Path) -> None:
         == "ExampleTimepoint"
     )
 
-    # # Single distribution document
-
     assert (
         len(
             model.light_obscuration_aggregate_document.light_obscuration_document[
                 0
             ].measurement_aggregate_document.measurement_document
         )
-        == 2
+        == num_measurement_docs
     )
     for elem in model.light_obscuration_aggregate_document.light_obscuration_document[
         0
@@ -133,17 +154,22 @@ def test_get_model(test_file: Path) -> None:
             )
             assert test.value == particle_size
 
+    if has_calculated_doc:
+        assert (
+            model.light_obscuration_aggregate_document.calculated_data_aggregate_document
+        )
+    else:
+        assert (
+            not model.light_obscuration_aggregate_document.calculated_data_aggregate_document
+        )
+
 
 @pytest.mark.short
-def test_asm(test_file: Path) -> None:
-    asm = allotrope_from_file(str(test_file), VENDOR_TYPE)
-    assert isinstance(asm, dict)
-
-
-@pytest.mark.short
-def test_parse_beckman_pharmspec_hiac_to_asm_contents(test_file: Path) -> None:
-    expected_filepath = str(test_file.absolute()).replace(".xlsx", ".json")
-    allotrope_dict = from_file(str(test_file.absolute()), VENDOR_TYPE)
+@pytest.mark.parametrize("file_name", OUTPUT_FILES)
+def test_parse_beckman_pharmspec_hiac_to_asm_contents(file_name: str) -> None:
+    test_file = _get_test_file_path(file_name)
+    expected_filepath = _get_expected_file_path(file_name)
+    allotrope_dict = from_file(test_file, VENDOR_TYPE)
     validate_contents(allotrope_dict, expected_filepath)
 
 
