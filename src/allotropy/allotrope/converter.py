@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from dataclasses import fields, is_dataclass, make_dataclass
-import importlib
-from pathlib import Path
 from types import UnionType
 from typing import Any, Callable, cast, get_args, get_origin, Union
 
@@ -26,10 +24,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TMeasureArray,
 )
 from allotropy.allotrope.models.shared.definitions.units import HasUnit
-from allotropy.allotrope.schema_parser.generate_schemas import (
-    _model_file_from_rel_schema_path,
-)
-from allotropy.allotrope.schemas import get_schema_path_from_manifest
+from allotropy.allotrope.schema_parser.path_util import get_model_class_from_schema
 
 SPECIAL_KEYS = {
     "manifest": "$asm.manifest",
@@ -333,14 +328,6 @@ CONVERTER = setup_converter()
 
 def unstructure(model: Any) -> dict[str, Any]:
     return cast(dict[str, Any], CONVERTER.unstructure(model))
-
-
-def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
-    schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = _model_file_from_rel_schema_path(Path(schema_path))
-    import_path = f"allotropy.allotrope.models.{model_file[:-3]}"
-    # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
-    return importlib.import_module(import_path).Model
 
 
 def structure(asm: Mapping[str, Any], model_class: Any | None = None) -> Any:
