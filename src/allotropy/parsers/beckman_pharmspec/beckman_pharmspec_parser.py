@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 import pandas as pd
 
@@ -32,7 +32,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TStringValueItem
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
@@ -264,32 +263,6 @@ class PharmSpecParser(VendorParser):
                 calculated_data_aggregate_document=calc_agg_doc,
             ),
         )
-
-    def _get_distribution_id_for_run_and_particle_size(
-        self,
-        run_name: str,
-        particle_size: float,
-        measurement_doc_items: list[MeasurementDocumentItem],
-    ) -> Optional[Union[str, TStringValueItem]]:
-        item = next(
-            x for x in measurement_doc_items if x.measurement_identifier == run_name
-        )
-        if (
-            item.processed_data_aggregate_document is not None
-            and item.processed_data_aggregate_document.processed_data_document
-            is not None
-        ):
-            for pdd in item.processed_data_aggregate_document.processed_data_document:
-                if (
-                    pdd.distribution_aggregate_document is not None
-                    and pdd.distribution_aggregate_document.distribution_document
-                    is not None
-                ):
-                    for dd in pdd.distribution_aggregate_document.distribution_document:
-                        for d in dd.distribution:
-                            if d.particle_size.value == particle_size:
-                                return d.distribution_identifier
-        return None
 
     def _setup_model(self, data: PharmSpecData, file_name: str) -> Model:
         """Build the Model
