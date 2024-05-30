@@ -53,8 +53,6 @@ PROPERTY_LOOKUP = {
     "differential_count": TQuantityValueUnitless,
 }
 
-VALID_CALCS = ["Average"]
-
 
 def get_property_from_sample(property_name: str, value: Any) -> Any:
     return PROPERTY_LOOKUP[property_name](value=value)
