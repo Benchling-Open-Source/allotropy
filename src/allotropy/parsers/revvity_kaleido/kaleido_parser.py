@@ -45,6 +45,7 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.revvity_kaleido.kaleido_builder import create_data
 from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     Channel,
@@ -267,6 +268,14 @@ class ImagingMeasurementParser(MeasurementParser):
 
 
 class KaleidoParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Revvity Kaleido"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)

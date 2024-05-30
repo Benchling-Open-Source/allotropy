@@ -40,6 +40,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 from allotropy.types import IOType
@@ -90,6 +91,14 @@ def remove_style_xml_file(contents: IOType) -> IOType:
 
 
 class ViCellXRParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Beckman Vi-Cell XR"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         filename = named_file_contents.original_file_name

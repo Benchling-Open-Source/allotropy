@@ -26,6 +26,7 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_reader import QiacuitydPCRReader
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series,
@@ -63,6 +64,15 @@ SAMPLE_ROLE_TYPE_MAPPING = {
 
 
 class QiacuitydPCRParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Qiacuity dPCR"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        # Waiting on more test data to validate before releasing
+        return ReleaseState.CANDIDATE_RELEASE
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         reader = QiacuitydPCRReader(contents)
