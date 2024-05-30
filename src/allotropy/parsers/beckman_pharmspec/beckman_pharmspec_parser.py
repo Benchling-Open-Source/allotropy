@@ -43,15 +43,9 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 # This map is used to coerce the column names coming in the raw data
 # into names of the allotrope properties.
-column_map = {
-    "Cumulative Counts/mL": "cumulative particle density",
-    "Cumulative Count": "cumulative count",
-    "Particle Size(µm)": "particle size",
-    "Differential Counts/mL": "differential particle density",
-    "Differential Count": "differential count",
-}
 
-property_lookup = {
+
+PROPERTY_LOOKUP = {
     "particle_size": TQuantityValueMicrometer,
     "cumulative_count": TQuantityValueUnitless,
     "cumulative_particle_density": TQuantityValueCountsPerMilliliter,
@@ -63,7 +57,7 @@ VALID_CALCS = ["Average"]
 
 
 def get_property_from_sample(property_name: str, value: Any) -> Any:
-    return property_lookup[property_name](value=value)
+    return PROPERTY_LOOKUP[property_name](value=value)
 
 
 class PharmSpecParser(VendorParser):
@@ -71,41 +65,6 @@ class PharmSpecParser(VendorParser):
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
         data = PharmSpecData.create(df)
         return self._setup_model(data, named_file_contents.original_file_name)
-
-    def _get_data_using_key_bounds(
-        self, df: pd.DataFrame, start_key: str, end_key: str
-    ) -> pd.DataFrame:
-        """Find the data in the raw dataframe. We identify the boundary of the data
-        by finding the index first row which contains the word 'Particle' and ending right before
-        the index of the first row containing 'Approver'.
-
-        :param df: the raw dataframe
-        :param start_key: the key to start the slice
-        :parm end_key: the key to end the slice
-        :return: the dataframe slice between the stard and end bounds
-        """
-        start = df[df[1].str.contains(start_key, na=False)].index.values[0]
-        end = df[df[0].str.contains(end_key, na=False)].index.values[0] - 1
-        return df.loc[start:end, :]
-
-    def _extract_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Extract the Average data frame from the raw data. Initial use cases have focused on
-        only extracting the Average data, not the individual runs. The ASM does support multiple
-        Distribution objects, but they don't have names, so it's not possible to pick these out
-        after the fact. As such, this extraction only includes the Average data.
-
-        :param df: the raw dataframe
-        :return: the average data frame
-        """
-        data = self._get_data_using_key_bounds(
-            df, start_key="Particle", end_key="Approver_"
-        )
-        data = data.dropna(how="all").dropna(how="all", axis=1)
-        data[0] = data[0].ffill()
-        data = data.dropna(subset=1).reset_index(drop=True)
-        data.columns = pd.Index([x.strip() for x in data.loc[0]])
-        data = data.loc[1:, :]
-        return data.rename(columns={x: column_map[x] for x in column_map})
 
     def _create_distribution_document_items(
         self, distribution: Distribution
@@ -120,7 +79,7 @@ class PharmSpecParser(VendorParser):
         items = []
         for row in distribution.data:
             item = {}
-            for key in property_lookup:
+            for key in PROPERTY_LOOKUP:
                 value = getattr(row, key)
                 if value is not None:
                     item[key] = get_property_from_sample(key, value)
@@ -136,7 +95,7 @@ class PharmSpecParser(VendorParser):
         items = []
         for calc in calcs:
             for row in calc.data:
-                for prop in property_lookup:
+                for prop in PROPERTY_LOOKUP:
                     value = getattr(row, prop)
                     if value:
                         source_rows = [
