@@ -35,8 +35,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import TStringValueItem
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
+    Distribution,
+    PharmSpecData,
+)
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
-from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 # This map is used to coerce the column names coming in the raw data
@@ -67,7 +70,8 @@ def get_property_from_sample(property_name: str, value: Any) -> Any:
 class PharmSpecParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
-        return self._setup_model(df, named_file_contents.original_file_name)
+        data = PharmSpecData.create(df)
+        return self._setup_model(data, named_file_contents.original_file_name)
 
     def _get_data_using_key_bounds(
         self, df: pd.DataFrame, start_key: str, end_key: str
@@ -105,67 +109,59 @@ class PharmSpecParser(VendorParser):
         return data.rename(columns={x: column_map[x] for x in column_map})
 
     def _create_distribution_document_items(
-        self, df: pd.DataFrame
+        self, distribution: Distribution
     ) -> list[DistributionDocumentItem]:
-        """Create the distribution document. First, we create the actual distrituion, which itself
-        contains a list of DistributionDocumentItem objects. The DistributionDocumentItem objects represent the values
-        from the rows of the incoming dataframe.
+        """Create the distribution document. First, we create the actual distribution, which itself
+        contains a list of DistributionDocumentItem objects. The DistributionDocumentItem objects represent
+        the values from the rows of the incoming dataframe.
 
-        If we were able to support more than one data frame instead of just the average data, we could
-        return a DistributionDocument with more than one item. For the use cases we've seen, there is
-        only a single Distribution being returned at this time, containing the average data.
-
-        :param df: The average dataframe
+        :param distribution: the Distribution object
         :return: The DistributionDocument
         """
-        cols = [v for k, v in column_map.items()]
         items = []
-        for elem in df.to_dict("records"):
+        for row in distribution.data:
             item = {}
-            for c in cols:
-                prop = c.replace(
-                    " ", "_"
-                )  # to be able to set the props on the DistributionItem
-                if c in elem:
-                    item[prop] = get_property_from_sample(prop, float(elem[c]))
-            item["distribution_identifier"] = random_uuid_str()
+            for key in property_lookup:
+                value = getattr(row, key)
+                if value is not None:
+                    item[key] = get_property_from_sample(key, value)
+            item["distribution_identifier"] = row.distribution_row_id
             items.append(DistributionItem(**item))
-        # TODO get test example for data_processing_omission_setting
-        dd = DistributionDocumentItem(distribution=items)
-        return [dd]
+        return [DistributionDocumentItem(distribution=items)]
 
     def _create_calculated_document_items(
-        self, df: pd.DataFrame, feature: str, run_names: list[str]
+        self, data: PharmSpecData
     ) -> list[CalculatedDataDocumentItem]:
-        cols = column_map.values()
+        calcs = [x for x in data.distributions if x.is_calculated]
+        sources = [x for x in data.distributions if not x.is_calculated]
         items = []
-        for row in df.index:
-            particle_size = df.at[
-                row, "particle size"
-            ]  # to track the calcuated data tuple
-            for col in [x for x in cols if x in df.columns]:
-                prop = col.replace(
-                    " ", "_"
-                )  # to be able to set the props on the DistributionItem
-                items.append(
-                    CalculatedDataDocumentItem(
-                        calculated_data_identifier=random_uuid_str(),
-                        calculated_data_name=f"{feature}_{prop}".lower(),
-                        calculated_result=get_property_from_sample(
-                            prop, df.at[row, col]
-                        ),
-                        data_source_aggregate_document=TDataSourceAggregateDocument(
-                            data_source_document=[
-                                DataSourceDocumentItem(
-                                    data_source_identifier=f"{run_name}|{particle_size}",  # will be replaced by distribution id
-                                    data_source_feature=col,
-                                )
-                                for run_name in run_names
-                                if run_name not in VALID_CALCS
-                            ]
-                        ),
-                    )
-                )
+        for calc in calcs:
+            for row in calc.data:
+                for prop in property_lookup:
+                    value = getattr(row, prop)
+                    if value:
+                        source_rows = [
+                            x
+                            for source in sources
+                            for x in source.data
+                            if row.particle_size == x.particle_size
+                        ]
+                        items.append(
+                            CalculatedDataDocumentItem(
+                                calculated_data_identifier=row.distribution_row_id,
+                                calculated_data_name=f"{calc.name}_{prop}".lower(),
+                                calculated_result=get_property_from_sample(prop, value),
+                                data_source_aggregate_document=TDataSourceAggregateDocument(
+                                    data_source_document=[
+                                        DataSourceDocumentItem(
+                                            data_source_identifier=f"{x.distribution_row_id}",  # will be replaced by distribution id
+                                            data_source_feature=prop.replace("_", " "),
+                                        )
+                                        for x in source_rows
+                                    ]
+                                ),
+                            )
+                        )
         return items
 
     def _get_software_version_report_string(self, report_string: str) -> str:
@@ -175,61 +171,64 @@ class PharmSpecParser(VendorParser):
         return "Unknown"
 
     def _create_calculated_data_aggregate_document(
-        self, df: pd.DataFrame, name: str, run_names: list[str]
+        self, data: PharmSpecData
     ) -> TCalculatedDataAggregateDocument:
         return TCalculatedDataAggregateDocument(
-            calculated_data_document=self._create_calculated_document_items(
-                df, name, run_names
-            )
+            calculated_data_document=self._create_calculated_document_items(data)
         )
 
-    def _create_measurement_document_item(
-        self, df: pd.DataFrame, gdf: pd.DataFrame, name: str
-    ) -> MeasurementDocumentItem:
-        return MeasurementDocumentItem(
-            measurement_identifier=name,
-            measurement_time=pd.to_datetime(
-                str(df.at[8, 5]).replace(".", "-")
-            ).isoformat(timespec="microseconds")
-            + "Z",
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(
-                        flush_volume_setting=TQuantityValueMilliliter(value=0),
-                        detector_view_volume=TQuantityValueMilliliter(
-                            value=df.at[9, 5]
-                        ),
-                        repetition_setting=int(df.at[11, 5]),
-                        sample_volume_setting=TQuantityValueMilliliter(
-                            value=df.at[11, 2]
-                        ),
-                    )
-                ]
-            ),
-            sample_document=SampleDocument(
-                sample_identifier=str(df.at[2, 2]),
-            ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        data_processing_document=DataProcessingDocument(
-                            dilution_factor_setting=TQuantityValueUnitless(
-                                value=df.at[13, 2]
-                            ),
-                        ),
-                        distribution_aggregate_document=DistributionAggregateDocument(
-                            distribution_document=self._create_distribution_document_items(
-                                gdf
+    def _create_measurement_document_items(
+        self, data: PharmSpecData
+    ) -> list[MeasurementDocumentItem]:
+        items = []
+        for d in [x for x in data.distributions if not x.is_calculated]:
+            items.append(
+                MeasurementDocumentItem(
+                    measurement_identifier=d.name,
+                    measurement_time=data.metadata.measurement_time,
+                    device_control_aggregate_document=DeviceControlAggregateDocument(
+                        device_control_document=[
+                            DeviceControlDocumentItem(
+                                flush_volume_setting=TQuantityValueMilliliter(
+                                    value=data.metadata.flush_volume_setting
+                                ),
+                                detector_view_volume=TQuantityValueMilliliter(
+                                    value=data.metadata.detector_view_volume
+                                ),
+                                repetition_setting=data.metadata.repetition_setting,
+                                sample_volume_setting=TQuantityValueMilliliter(
+                                    value=data.metadata.sample_volume_setting,
+                                ),
                             )
-                        ),
-                    )
-                ]
-            ),
-        )
+                        ]
+                    ),
+                    sample_document=SampleDocument(
+                        sample_identifier=data.metadata.sample_identifier,
+                    ),
+                    processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                        processed_data_document=[
+                            ProcessedDataDocumentItem(
+                                data_processing_document=DataProcessingDocument(
+                                    dilution_factor_setting=TQuantityValueUnitless(
+                                        value=data.metadata.dilution_factor_setting,
+                                    )
+                                ),
+                                distribution_aggregate_document=DistributionAggregateDocument(
+                                    distribution_document=self._create_distribution_document_items(
+                                        d
+                                    )
+                                ),
+                            )
+                        ]
+                    ),
+                )
+            )
+
+        return items
 
     def _create_model(
         self,
-        df: pd.DataFrame,
+        data: PharmSpecData,
         calc_agg_doc: Optional[TCalculatedDataAggregateDocument],
         measurement_doc_items: list[MeasurementDocumentItem],
         file_name: str,
@@ -240,8 +239,8 @@ class PharmSpecParser(VendorParser):
                 light_obscuration_document=[
                     LightObscurationDocumentItem(
                         measurement_aggregate_document=MeasurementAggregateDocument(
-                            analyst=str(df.at[6, 5]),
-                            submitter=None,
+                            analyst=data.metadata.analyst,
+                            submitter=data.metadata.submitter,
                             measurement_document=measurement_doc_items,
                         )
                     )
@@ -249,18 +248,16 @@ class PharmSpecParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name=PHARMSPEC_SOFTWARE_NAME,
-                    software_version=self._get_software_version_report_string(
-                        df.at[0, 2]
-                    ),
+                    software_version=data.metadata.software_version,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
-                    equipment_serial_number=str(df.at[4, 5]),
+                    equipment_serial_number=data.metadata.equipment_serial_number,
                     device_document=[
                         DeviceDocumentItem(
-                            detector_identifier="",
-                            detector_model_number=str(df.at[2, 5]),
+                            detector_identifier=data.metadata.detector_identifier,
+                            detector_model_number=data.metadata.detector_model_number,
                         )
                     ],
                 ),
@@ -294,52 +291,12 @@ class PharmSpecParser(VendorParser):
                                 return d.distribution_identifier
         return None
 
-    def _add_data_source_to_calculated_data(
-        self,
-        calc_agg_doc: TCalculatedDataAggregateDocument,
-        measurement_doc_items: list[MeasurementDocumentItem],
-    ) -> None:
-        if calc_agg_doc.calculated_data_document is not None:
-            for cdd in calc_agg_doc.calculated_data_document:
-                if (
-                    cdd.data_source_aggregate_document is not None
-                    and cdd.data_source_aggregate_document.data_source_document
-                    is not None
-                ):
-                    for dsd in cdd.data_source_aggregate_document.data_source_document:
-                        run_name, particle_size = str(dsd.data_source_identifier).split(
-                            "|"
-                        )
-                        distribution_id = (
-                            self._get_distribution_id_for_run_and_particle_size(
-                                run_name, float(particle_size), measurement_doc_items
-                            )
-                        )
-                        if distribution_id is not None:
-                            dsd.data_source_identifier = distribution_id
-
-    def _setup_model(self, df: pd.DataFrame, file_name: str) -> Model:
+    def _setup_model(self, data: PharmSpecData, file_name: str) -> Model:
         """Build the Model
 
         :param df: the raw dataframe
         :return: the model
         """
-        data = self._extract_data(df)
-        measurement_doc_items = []
-        calc_agg_doc = None
-        run_names = list(data["Run No."].unique())
-        for g, gdf in data.groupby("Run No."):
-            name = str(g)
-            if g in VALID_CALCS:
-                calc_agg_doc = self._create_calculated_data_aggregate_document(
-                    gdf, name, run_names
-                )
-            else:
-                measurement_doc_items.append(
-                    self._create_measurement_document_item(df, gdf, name)
-                )
-        if calc_agg_doc is not None:
-            self._add_data_source_to_calculated_data(
-                calc_agg_doc, measurement_doc_items
-            )
-        return self._create_model(df, calc_agg_doc, measurement_doc_items, file_name)
+        measurement_doc_items = self._create_measurement_document_items(data)
+        calc_agg_doc = self._create_calculated_data_aggregate_document(data)
+        return self._create_model(data, calc_agg_doc, measurement_doc_items, file_name)
