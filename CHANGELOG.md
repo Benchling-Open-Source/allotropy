@@ -21,6 +21,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.33] - 2024-05-29
+
+### Fixed
+
+- Fixed path_util to work outside of allotropy corectly
+
+## [0.1.32] - 2024-05-29
+
+### Added
+
+- Add schema_parser/path_util.py to remove dependency: converter.py -> generate_schemas.py, which pulled script dependencies into allotropy
+
 ## [0.1.31] - 2024-05-24
 
 ### Added
@@ -41,12 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implement default value for sample role names in AppBio Quantstudio
 - Added kw_only=True for generated schema models
 
-### Deprecated
-
-### Removed
-
-### Security
-
 ## [0.1.30] - 2024-05-10
 
 ### Added
@@ -56,20 +62,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add structure for Methodical Mind
 
 ### Fixed
+
 - Remove duplicated ct sd and ct se calculated data documents in Quantstudio Design and Analysis adapter
 - Remove duplicated quantity mean calculated data documents from AppBio Quantstudio adapter
 
 ### Changed
+
 - Update multianalyte model minimum_assay_bead_count to be of type "number" insetead of "unitless"
 - Update luminex and biorad bioplex to use updated multianalyte model
 - Remove inner calculated data documents from AppBio Quantstudio
 - Use global definition of calculated data documents in AppBio Quantstudio and Quantstudio Design and Analysis adapters
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.29] - 2024-04-30
 
@@ -78,19 +80,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Vendor display names
 - Added liquid-chromatograpy 2023/09 schema
 
-### Fixed
-
 ### Changed
 
 - Improved schema model generation script to handle more complicated schemas
-
-### Deprecated
 
 ### Removed
 
 - Remove assert in validate_contents
 
-### Security
 
 
 ## [0.1.28] - 2024-04-29
@@ -115,12 +112,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Use new plate reader schema in gen5 adapter
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.27] - 2024-04-10
 
@@ -445,7 +436,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial commit, includes support for:
   - Agilent Gen5
-  - Applied Bio QuantStudio
+  - AppBio QuantStudio
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - MolDev SoftMax Pro

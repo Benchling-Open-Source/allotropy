@@ -38,6 +38,7 @@ from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophoto
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
     NanoDropEightReader,
 )
@@ -107,6 +108,14 @@ def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType |
 
 
 class NanodropEightParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Thermo Fisher NanoDrop Eight"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = NanoDropEightReader.read(named_file_contents)
         data = self._add_measurement_uuids(data)

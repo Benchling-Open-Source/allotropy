@@ -22,11 +22,21 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_structure i
     Data,
 )
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class ExampleWeylandYutaniParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Example Weyland Yutani"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        # Example parser should not be used.
+        return ReleaseState.WORKING_DRAFT
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)

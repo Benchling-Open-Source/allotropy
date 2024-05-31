@@ -58,6 +58,7 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
     VERSION_ATTRIB,
     WELLS_TAG,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     get_val_from_xml,
@@ -67,6 +68,14 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 
 class BioradBioplexParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Bio-Rad Bio-Plex Manager"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents.read()
         xml_tree = Et.ElementTree(Et.fromstring(contents))  # noqa: S314
