@@ -426,14 +426,14 @@ class Result:
     @staticmethod
     def get_reference_sample(contents: DesignQuantstudioContents) -> str:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
-        return try_str_from_series(
-            df_to_series(
-                data[assert_df_column(data, "Rq") == 1],
-                msg="Unable to find Rq related to reference sample.",
-            ),
-            "Sample",
-            msg="Unable to infer reference sample.",
-        )
+        reference_data = data[assert_df_column(data, "Rq") == 1]
+        reference_sample_array = assert_df_column(reference_data, "Sample").unique()
+
+        if reference_sample_array.size != 1:
+            error = "Unable to infer reference sample"
+            raise AllotropeConversionError(error)
+
+        return str(reference_sample_array[0])
 
     @staticmethod
     def get_reference_target(contents: DesignQuantstudioContents) -> str:
