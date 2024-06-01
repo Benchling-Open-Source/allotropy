@@ -27,19 +27,21 @@ def get_schema_path_from_manifest(manifest: str) -> str:
     if not match:
         msg = f"No matching schema in repo for manifest: {manifest}"
         raise ValueError(msg)
-    return f"{match.groups()[0]}.json"
+    return f"adm/{match.groups()[0]}.schema.json"
 
 
 def get_model_file_from_rel_schema_path(rel_schema_path: Path) -> str:
-    return re.sub(
-        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
-    ).lower()
+    schema_file = rel_schema_path.name
+    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
+    schema_path = str(rel_schema_path.parent)
+    model_path = re.sub("/([0-9]+)", r"/_\1", schema_path.replace("-", "_").lower())
+    return os.path.join(model_path, model_file)
 
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
     model_file = get_model_file_from_rel_schema_path(Path(schema_path))
-    import_path = f"allotropy.allotrope.models.{model_file[:-3]}"
+    import_path = f"allotropy.allotrope.models.{model_file.replace('/', '.')[:-3]}"
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model
 
