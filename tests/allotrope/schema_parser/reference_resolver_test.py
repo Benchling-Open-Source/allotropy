@@ -25,9 +25,9 @@ def test_get_schema_from_reference() -> None:
     )
     assert (
         _get_schema_from_reference(
-            "core/BENCHLING/2023/09/hierarchy.schema#/$defs/techniqueAggregateDocument"
+            "adm/core/BENCHLING/2023/09/hierarchy.schema#/$defs/techniqueAggregateDocument"
         )
-        == "core/BENCHLING/2023/09/hierarchy.schema"
+        == "adm/core/BENCHLING/2023/09/hierarchy.schema"
     )
 
 
