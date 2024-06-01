@@ -3,11 +3,10 @@ from unittest import mock
 
 from allotropy.allotrope.schema_parser.path_util import SCHEMA_DIR_PATH
 from allotropy.allotrope.schema_parser.reference_resolver import (
+    _download_references,
     _download_schema,
+    _get_references,
     _get_schema_from_reference,
-    get_references,
-    resolve_references,
-    schema_path_from_reference,
 )
 
 
@@ -49,7 +48,7 @@ def test_get_references() -> None:
             },
         }
     }
-    references = get_references(schema)
+    references = _get_references(schema)
 
     assert references == {
         "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"
@@ -81,7 +80,7 @@ def test_get_references_allof() -> None:
             },
         ]
     }
-    references = get_references(schema)
+    references = _get_references(schema)
 
     assert references == {
         "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
@@ -107,27 +106,12 @@ def test_get_references_oneof_allof() -> None:
             },
         ]
     }
-    references = get_references(schema)
+    references = _get_references(schema)
 
     assert references == {
         "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
         "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema",
     }
-
-
-def test_schema_path_from_reference() -> None:
-    assert (
-        schema_path_from_reference(
-            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"
-        )
-        == "adm/core/REC/2023/09/core.schema"
-    )
-    assert (
-        schema_path_from_reference(
-            "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema"
-        )
-        == "qudt/REC/2023/09/units.schema"
-    )
 
 
 def test_resolve_references() -> None:
@@ -137,11 +121,11 @@ def test_resolve_references() -> None:
     with mock.patch(
         "allotropy.allotrope.schema_parser.reference_resolver._download_schema"
     ) as mock_download:
-        schema_paths = resolve_references(references)
-        assert schema_paths == {"adm/core/REC/2023/09/fake.schema"}
+        schema_paths = _download_references(references)
+        assert schema_paths == {"adm/core/REC/2023/09/fake.schema.json"}
         mock_download.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/fake.schema",
-            "adm/core/REC/2023/09/fake.schema",
+            "adm/core/REC/2023/09/fake.schema.json",
         )
 
 
@@ -151,7 +135,7 @@ def test_download_schema() -> None:
     ) as mock_urlretrieve:
         _download_schema(
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
-            "adm/core/REC/2023/09/core.schema",
+            "adm/core/REC/2023/09/core.schema.json",
         )
         mock_urlretrieve.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",

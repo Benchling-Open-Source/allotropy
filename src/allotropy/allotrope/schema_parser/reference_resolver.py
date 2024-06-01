@@ -1,39 +1,34 @@
 import os
 from pathlib import Path
-import re
 from typing import Any
 import urllib.request
 
-from allotropy.allotrope.schema_parser.path_util import SCHEMA_DIR_PATH
+from allotropy.allotrope.schema_parser.path_util import (
+    get_schema_path_from_reference,
+    SCHEMA_DIR_PATH,
+)
 
 
 def _get_schema_from_reference(reference: str) -> str:
     return reference.split("#/$defs")[0]
 
 
-def get_references(schema: dict[str, Any]) -> set[str]:
+def _get_references(schema: dict[str, Any]) -> set[str]:
+    """Get all references ($ref:) from the given schema."""
     references = set()
     for key, value in schema.items():
         if key == "$ref":
             references.add(_get_schema_from_reference(value))
         elif isinstance(value, dict):
-            references |= get_references(value)
+            references |= _get_references(value)
         elif isinstance(value, list):
             for v in value:
-                references |= get_references(v)
+                references |= _get_references(v)
     return references
 
 
-def schema_path_from_reference(reference: str) -> str:
-    ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*)", reference)
-    if not ref_match:
-        msg = f"Could not parse reference: {reference}"
-        raise AssertionError(msg)
-    return ref_match.groups()[0]
-
-
 def _download_schema(reference: str, schema_path: str) -> None:
-    full_path = os.path.join(SCHEMA_DIR_PATH, f"{schema_path}.json")
+    full_path = os.path.join(SCHEMA_DIR_PATH, schema_path)
     if not Path(full_path).parent.exists():
         os.makedirs(Path(full_path).parent, exist_ok=True)
     if not reference.startswith(("http:", "https:")):
@@ -45,11 +40,12 @@ def _download_schema(reference: str, schema_path: str) -> None:
     urllib.request.urlretrieve(reference, full_path)  # noqa: S310
 
 
-def resolve_references(references: set[str]) -> set[str]:
+def _download_references(references: set[str]) -> set[str]:
+    """Downloads all references to the schemas directory, returning the corresponding paths."""
     schema_paths = set()
     for reference in references:
         if reference.startswith("http"):
-            schema_path = schema_path_from_reference(reference)
+            schema_path = get_schema_path_from_reference(reference)
             if not Path(schema_path).exists():
                 _download_schema(reference, schema_path)
             schema_paths.add(schema_path)
@@ -58,4 +54,10 @@ def resolve_references(references: set[str]) -> set[str]:
                 msg = f"Custom schema at path: '{reference}' does not exist, did you forget to add it?"
                 raise AssertionError(msg)
             schema_paths.add(reference)
+    return schema_paths
+
+
+def download_all_references_schemas_for_schema(schema: dict[str, Any]) -> set[str]:
+    references = _get_references(schema)
+    schema_paths = _download_references(references)
     return schema_paths
