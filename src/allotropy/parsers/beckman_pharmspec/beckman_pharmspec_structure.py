@@ -8,11 +8,11 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 # This map is used to coerce the column names coming in the raw data
 # into names of the allotrope properties.
 COLUMN_MAP = {
-    "Cumulative Counts/mL": "cumulative particle density",
-    "Cumulative Count": "cumulative count",
-    "Particle Size(µm)": "particle size",
-    "Differential Counts/mL": "differential particle density",
-    "Differential Count": "differential count",
+    "Cumulative Counts/mL": "cumulative_particle_density",
+    "Cumulative Count": "cumulative_count",
+    "Particle Size(µm)": "particle_size",
+    "Differential Counts/mL": "differential_particle_density",
+    "Differential Count": "differential_count",
 }
 
 
@@ -43,8 +43,7 @@ class Distribution:
         for row in df.index:
             row_data = {}
             for col in [x for x in cols if x in df.columns]:
-                prop = col.replace(" ", "_")  #
-                row_data[prop] = df.loc[row, col]
+                row_data[col] = df.loc[row, col]
             data.append(
                 DistributionRow(**row_data, distribution_row_id=random_uuid_str())
             )
