@@ -23,7 +23,7 @@ We currently have parser support for the following instruments (* asterisk indic
   - ChemoMetec Nucleoview
   - CTL ImmunoSpot
   - Luminex xPONENT
-  - Mabtech Apex
+  - *Mabtech Apex
   - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision

@@ -42,7 +42,7 @@ class MabTechApexParser(VendorParser):
 
     @property
     def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+        return ReleaseState.CANDIDATE_RELEASE
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
