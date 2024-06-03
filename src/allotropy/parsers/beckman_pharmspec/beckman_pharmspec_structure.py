@@ -6,7 +6,7 @@ import pandas as pd
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 # This map is used to coerce the column names coming in the raw data
-# into names of the allotrope properties.
+# into names of the distribution properties.
 COLUMN_MAP = {
     "Cumulative Counts/mL": "cumulative_particle_density",
     "Cumulative Count": "cumulative_count",
