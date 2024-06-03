@@ -438,12 +438,23 @@ class Result:
     @staticmethod
     def get_reference_target(contents: DesignQuantstudioContents) -> str:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
-        sub_data = data[assert_df_column(data, "Rq").isnull()]
-        target = assert_df_column(sub_data, "Target").unique()
-        if target.size != 1:
+
+        possible_ref_targets = set.intersection(
+            *[
+                set(
+                    assert_df_column(
+                        sample_data[assert_df_column(sample_data, "Rq").isnull()],
+                        "Target",
+                    ).tolist()
+                )
+                for _, sample_data in data.groupby("Sample")
+            ]
+        )
+
+        if len(possible_ref_targets) != 1:
             error = "Unable to infer reference target."
             raise AllotropeConversionError(error)
-        return str(target[0])
+        return str(possible_ref_targets.pop())
 
     @staticmethod
     def _add_data(
