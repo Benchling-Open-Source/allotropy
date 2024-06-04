@@ -1,6 +1,5 @@
 from collections.abc import Mapping
 import importlib
-import os
 from pathlib import Path
 import re
 from typing import Any
@@ -25,16 +24,17 @@ GENERATED_SHARED_PATHS: Path = [
 
 
 def get_rel_schema_path(schema_path: Path) -> Path:
-    if str(SCHEMA_DIR_PATH) in str(schema_path):
-        return Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
-    elif not Path(SCHEMA_DIR_PATH, schema_path).exists():
-        msg = f"Invalid schema path: {schema_path}"
-        raise AssertionError(msg)
-    return schema_path
+    try:
+        return schema_path.relative_to(SCHEMA_DIR_PATH)
+    except ValueError as err:
+        if not Path(SCHEMA_DIR_PATH, schema_path).exists():
+            msg = f"Invalid schema path: {schema_path}"
+            raise ValueError(msg) from err
+        return schema_path
 
 
 def get_full_schema_path(schema_path: Path) -> Path:
-    if str(SCHEMA_DIR_PATH) in str(schema_path):
+    if str(schema_path).startswith(str(SCHEMA_DIR_PATH)):
         return schema_path
     elif not Path(SCHEMA_DIR_PATH, schema_path).exists():
         msg = f"Invalid schema path: {schema_path}"
@@ -48,7 +48,7 @@ def get_manifest_from_schema_path(schema_path: Path) -> str:
         ".schema.json"
     ):
         msg = f"Invalid schema path: {rel_schema_path}"
-        raise AssertionError(msg)
+        raise ValueError(msg)
     return f"http://purl.allotrope.org/manifests/{str(rel_schema_path)[4:-12]}.manifest"
 
 
@@ -64,7 +64,7 @@ def get_schema_path_from_reference(reference: str) -> Path:
     ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*)", reference)
     if not ref_match:
         msg = f"Could not parse reference: {reference}"
-        raise AssertionError(msg)
+        raise ValueError(msg)
     return Path(f"{ref_match.groups()[0]}.json")
 
 

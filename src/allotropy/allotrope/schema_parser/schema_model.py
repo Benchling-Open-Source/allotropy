@@ -1,7 +1,6 @@
 from collections import defaultdict
 from dataclasses import dataclass
 import json
-import os
 from pathlib import Path
 import re
 from typing import Any
@@ -68,10 +67,10 @@ def get_schema_definitions_mapping() -> dict[str, list[SchemaModel]]:
     schema_mapping = defaultdict(list)
 
     definition_files = [
-        (filename, directory)
+        (path.name, directory)
         for directory in ["definitions", "components"]
-        for filename in os.listdir(Path(SHARED_SCHEMAS_PATH, directory))
-        if not is_backup_file(filename)
+        for path in Path(SHARED_SCHEMAS_PATH, directory).iterdir()
+        if not is_backup_file(path)
     ]
 
     for schema_file, directory in definition_files:

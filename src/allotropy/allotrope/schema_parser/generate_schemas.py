@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
@@ -105,7 +104,7 @@ def make_model_directories(model_path: Path) -> None:
     make_model_directories(model_path.parent)
     if model_path.exists():
         return
-    os.makedirs(model_path)
+    model_path.mkdir()
     init_path = Path(model_path, "__init__.py")
     if not init_path.exists():
         init_path.touch()

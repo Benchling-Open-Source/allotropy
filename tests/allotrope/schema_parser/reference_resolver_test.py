@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from unittest import mock
 
@@ -140,5 +139,8 @@ def test_download_schema() -> None:
         )
         mock_urlretrieve.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema",
-            Path(SCHEMA_DIR_PATH, "adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json"),
+            Path(
+                SCHEMA_DIR_PATH,
+                "adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json",
+            ),
         )

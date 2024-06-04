@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from typing import Any
 import urllib.request
@@ -6,7 +5,6 @@ import urllib.request
 from allotropy.allotrope.schema_parser.path_util import (
     get_full_schema_path,
     get_schema_path_from_reference,
-    SCHEMA_DIR_PATH,
 )
 
 
@@ -31,7 +29,7 @@ def _get_references(schema: dict[str, Any]) -> set[str]:
 def _download_schema(reference: str, schema_path: Path) -> None:
     schema_path = get_full_schema_path(schema_path)
     if not schema_path.parent.exists():
-        os.makedirs(schema_path.parent, exist_ok=True)
+        schema_path.parent.mkdir(parents=True, exist_ok=True)
     if not reference.startswith(("http:", "https:")):
         msg = f"Invald URL {reference}"
         raise ValueError(msg)
