@@ -57,7 +57,7 @@ def get_schema_path_from_reference(reference: str) -> str:
     return f"{ref_match.groups()[0]}.json"
 
 
-def get_model_file_from_rel_schema_path(schema_path: Path) -> str:
+def get_model_file_from_schema_path(schema_path: Path) -> str:
     rel_schema_path = get_rel_schema_path(schema_path)
     schema_file = rel_schema_path.name
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
@@ -68,7 +68,7 @@ def get_model_file_from_rel_schema_path(schema_path: Path) -> str:
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = get_model_file_from_rel_schema_path(Path(schema_path))
+    model_file = get_model_file_from_schema_path(Path(schema_path))
     import_path = f"allotropy.allotrope.models.{model_file.replace('/', '.')[:-3]}"
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model

@@ -4,7 +4,7 @@ from unittest import mock
 from allotropy.allotrope.schema_parser.path_util import (
     get_manifest_from_schema_path,
     get_model_class_from_schema,
-    get_model_file_from_rel_schema_path,
+    get_model_file_from_schema_path,
     get_rel_schema_path,
     get_schema_path_from_manifest,
     get_schema_path_from_reference,
@@ -50,9 +50,9 @@ def test_get_schema_path_from_reference() -> None:
     )
 
 
-def test_get_model_file_from_rel_schema_path() -> None:
+def test_get_model_file_from_schema_path() -> None:
     assert (
-        get_model_file_from_rel_schema_path(
+        get_model_file_from_schema_path(
             Path("adm/cell-counting/BENCHLING/2023/09/cell-counting.schema.json")
         )
         == "adm/cell_counting/benchling/_2023/_09/cell_counting.py"
