@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add Methodical Mind adapter
+
 ### Fixed
 
 - Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
@@ -57,7 +59,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Details of parser requirements to docs
 - Add Agilent Gen5 Image Adapter
 - Add CTL Immunospot adapter
-- Add Methodical Mind adapter
 
 ### Fixed
 
