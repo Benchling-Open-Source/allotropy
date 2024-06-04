@@ -4,7 +4,6 @@ from collections import defaultdict
 from dataclasses import dataclass
 import io
 import json
-import os
 from pathlib import Path
 import re
 from typing import Any
@@ -636,7 +635,7 @@ class ModelClassEditor:
 
 def modify_file(model_path: str, schema_path: str) -> None:
     classes_to_skip, imports_to_add = get_shared_schema_info(schema_path)
-    manifest = get_manifest_from_schema_path(schema_path)
+    manifest = get_manifest_from_schema_path(Path(schema_path))
 
     editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add)
 

@@ -129,8 +129,12 @@ def generate_schemas(
             if not _should_generate_schema(schema_path, schema_regex):
                 continue
 
-            print(f"Generating models for schema: {get_rel_schema_path(schema_path)}...")  # noqa: T201
-            model_path = Path(MODEL_DIR_PATH, get_model_file_from_schema_path(schema_path))
+            print(  # noqa: T201
+                f"Generating models for schema: {get_rel_schema_path(schema_path)}..."
+            )
+            model_path = Path(
+                MODEL_DIR_PATH, get_model_file_from_schema_path(schema_path)
+            )
             make_model_directories(model_path.parent)
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):

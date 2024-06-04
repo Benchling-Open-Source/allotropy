@@ -13,7 +13,9 @@ from allotropy.allotrope.schema_parser.path_util import (
 
 def test_get_rel_schem_path() -> None:
     assert get_rel_schema_path(
-        Path("/Users/nathan.stender/allotropy/src/allotropy/allotrope/schemas/adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json"),
+        Path(
+            "/Users/nathan.stender/allotropy/src/allotropy/allotrope/schemas/adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json"
+        ),
     ) == Path("adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json")
 
 

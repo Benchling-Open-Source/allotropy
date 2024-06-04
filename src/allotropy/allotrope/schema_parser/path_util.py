@@ -33,12 +33,12 @@ def get_rel_schema_path(schema_path: Path) -> Path:
 
 def get_manifest_from_schema_path(schema_path: Path) -> str:
     rel_schema_path = get_rel_schema_path(schema_path)
-    if not str(rel_schema_path).startswith("adm/") or not str(rel_schema_path).endswith(".schema.json"):
+    if not str(rel_schema_path).startswith("adm/") or not str(rel_schema_path).endswith(
+        ".schema.json"
+    ):
         msg = f"Invalid schema path: {rel_schema_path}"
         raise AssertionError(msg)
-    return (
-        f"http://purl.allotrope.org/manifests/{str(rel_schema_path)[4:-12]}.manifest"
-    )
+    return f"http://purl.allotrope.org/manifests/{str(rel_schema_path)[4:-12]}.manifest"
 
 
 def get_schema_path_from_manifest(manifest: str) -> str:
@@ -61,8 +61,8 @@ def get_model_file_from_schema_path(schema_path: Path) -> str:
     rel_schema_path = get_rel_schema_path(schema_path)
     schema_file = rel_schema_path.name
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
-    schema_path = str(rel_schema_path.parent)
-    model_path = re.sub("/([0-9]+)", r"/_\1", schema_path.replace("-", "_").lower())
+    schema_dir = str(rel_schema_path.parent)
+    model_path = re.sub("/([0-9]+)", r"/_\1", schema_dir.replace("-", "_").lower())
     return os.path.join(model_path, model_file)
 
 
