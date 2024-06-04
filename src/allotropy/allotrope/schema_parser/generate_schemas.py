@@ -30,7 +30,7 @@ from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schema_parser.update_units import update_unit_files
 
 
-def lint_file(model_path: str) -> None:
+def lint_file(model_path: Path) -> None:
     # The first run of ruff changes typing annotations and causes unused imports. We catch failure
     # due to unused imports.
     try:
@@ -43,7 +43,7 @@ def lint_file(model_path: str) -> None:
         pass
     # The call to autoflake.fix_file removes unused imports.
     fix_file(
-        model_path,
+        str(model_path),
         {
             "in_place": True,
             "remove_unused_variables": True,
@@ -81,8 +81,8 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
         use_union_operator=True,
     )
     # Import classes from shared files, remove unused classes, format.
-    modify_file(str(model_path), str(schema_path))
-    lint_file(str(model_path))
+    modify_file(model_path, schema_path)
+    lint_file(model_path)
 
 
 def _should_generate_schema(schema_path: Path, schema_regex: str | None = None) -> bool:

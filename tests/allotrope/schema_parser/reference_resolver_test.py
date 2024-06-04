@@ -135,7 +135,7 @@ def test_download_schema() -> None:
     ) as mock_urlretrieve:
         _download_schema(
             "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema",
-            "adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json",
+            Path("adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json"),
         )
         mock_urlretrieve.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema",

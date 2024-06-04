@@ -52,7 +52,7 @@ def _download_references(references: set[str]) -> set[Path]:
             if not Path(reference).exists():
                 msg = f"Custom schema at path: '{reference}' does not exist, did you forget to add it?"
                 raise AssertionError(msg)
-            schema_paths.add(reference)
+            schema_paths.add(Path(reference))
     return schema_paths
 
 

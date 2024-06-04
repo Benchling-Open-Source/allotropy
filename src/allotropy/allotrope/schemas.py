@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.schema_parser.path_util import (
+    get_full_schema_path,
     get_schema_path_from_manifest,
     SCHEMA_DIR_PATH,
     SHARED_SCHEMAS_DEFINITIONS_PATH,
@@ -33,8 +34,8 @@ def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
     return schema
 
 
-def get_schema(schema_relative_path: str) -> dict[str, Any]:
-    with open(Path(SCHEMA_DIR_PATH, schema_relative_path)) as f:
+def get_schema(schema_path: Path) -> dict[str, Any]:
+    with open(get_full_schema_path(schema_path)) as f:
         return add_definitions(json.load(f))
 
 

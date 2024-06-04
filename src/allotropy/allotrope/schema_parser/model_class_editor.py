@@ -42,7 +42,7 @@ def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
     )
 
 
-def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[str]]]:
+def get_shared_schema_info(schema_path: Path) -> tuple[set[str], dict[str, set[str]]]:
     with open(schema_path) as f:
         schema = json.load(f)
 
@@ -633,9 +633,9 @@ class ModelClassEditor:
         return new
 
 
-def modify_file(model_path: str, schema_path: str) -> None:
+def modify_file(model_path: Path, schema_path: Path) -> None:
     classes_to_skip, imports_to_add = get_shared_schema_info(schema_path)
-    manifest = get_manifest_from_schema_path(Path(schema_path))
+    manifest = get_manifest_from_schema_path(schema_path)
 
     editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add)
 
