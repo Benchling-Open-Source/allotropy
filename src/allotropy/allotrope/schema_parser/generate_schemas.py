@@ -112,6 +112,7 @@ def make_model_directories(model_path: Path) -> None:
 
 
 def generate_schemas(
+    *,
     dry_run: bool | None = False,
     schema_regex: str | None = None,
 ) -> list[str]:
@@ -120,7 +121,6 @@ def generate_schemas(
     :schema_regex: If set, filters schemas to generate using regex.
     :return: A list of model files that were changed.
     """
-
     unit_to_iri: dict[str, str] = {}
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
         schema_paths = list(Path(SCHEMA_DIR_PATH).rglob("*.json"))
