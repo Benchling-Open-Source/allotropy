@@ -105,6 +105,7 @@ dependencies = [
 
 [tool.hatch.envs.default.scripts]
 fix = "hatch run lint:fmt {args:}"
+lint = "hatch run lint:all {args:}"
 test = "hatch run test:test {args:}"
 
 [tool.hatch.envs.viz]

@@ -5,7 +5,6 @@ from typing import Any
 from allotropy.allotrope.schema_parser.path_util import (
     get_full_schema_path,
     get_schema_path_from_manifest,
-    SCHEMA_DIR_PATH,
     SHARED_SCHEMAS_DEFINITIONS_PATH,
 )
 
