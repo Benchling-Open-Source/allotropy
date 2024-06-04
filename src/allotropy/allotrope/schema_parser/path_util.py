@@ -1,20 +1,21 @@
 from collections.abc import Mapping
 import importlib
-import os
 from pathlib import Path
 import re
 from typing import Any
 
-ALLOTROPE_DIR = os.path.join(Path(__file__).parent.parent)
-SCHEMA_DIR_PATH = os.path.join(ALLOTROPE_DIR, "schemas")
-SHARED_SCHEMAS_PATH = os.path.join(SCHEMA_DIR_PATH, "shared", "definitions")
-UNITS_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "units.json")
-CUSTOM_SCHEMAS_PATH = os.path.join(SHARED_SCHEMAS_PATH, "custom.json")
-MODEL_DIR_PATH = os.path.join(ALLOTROPE_DIR, "models")
-SHARED_MODELS_PATH = os.path.join(MODEL_DIR_PATH, "shared", "definitions")
-UNITS_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "units.py")
-CUSTOM_MODELS_PATH = os.path.join(SHARED_MODELS_PATH, "custom.py")
-GENERATED_SHARED_PATHS = [
+ALLOTROPE_DIR: Path = Path(__file__).parent.parent
+SCHEMA_DIR_PATH: Path = Path(ALLOTROPE_DIR, "schemas")
+SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
+SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
+UNITS_SCHEMAS_PATH: Path = Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json")
+CUSTOM_SCHEMAS_PATH: Path = Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "custom.json")
+MODEL_DIR_PATH: Path = Path(ALLOTROPE_DIR, "models")
+SHARED_MODELS_PATH: Path = Path(MODEL_DIR_PATH, "shared")
+SHARED_MODELS_DEFINITIONS_PATH: Path = Path(SHARED_MODELS_PATH, "definitions")
+UNITS_MODELS_PATH: Path = Path(SHARED_MODELS_DEFINITIONS_PATH, "units.py")
+CUSTOM_MODELS_PATH: Path = Path(SHARED_MODELS_DEFINITIONS_PATH, "custom.py")
+GENERATED_SHARED_PATHS: list[Path] = [
     UNITS_SCHEMAS_PATH,
     UNITS_MODELS_PATH,
     CUSTOM_SCHEMAS_PATH,
@@ -22,32 +23,63 @@ GENERATED_SHARED_PATHS = [
 ]
 
 
-def get_schema_path_from_manifest(manifest: str) -> str:
+def get_rel_schema_path(schema_path: Path) -> Path:
+    try:
+        return schema_path.relative_to(SCHEMA_DIR_PATH)
+    except ValueError as err:
+        if not Path(SCHEMA_DIR_PATH, schema_path).exists():
+            msg = f"Invalid schema path: {schema_path}"
+            raise ValueError(msg) from err
+        return schema_path
+
+
+def get_full_schema_path(schema_path: Path) -> Path:
+    if str(schema_path).startswith(str(SCHEMA_DIR_PATH)):
+        return schema_path
+    elif not Path(SCHEMA_DIR_PATH, schema_path).exists():
+        msg = f"Invalid schema path: {schema_path}"
+        raise AssertionError(msg)
+    return Path(SCHEMA_DIR_PATH, schema_path)
+
+
+def get_manifest_from_schema_path(schema_path: Path) -> str:
+    rel_schema_path = get_rel_schema_path(schema_path)
+    if not str(rel_schema_path).startswith("adm/") or not str(rel_schema_path).endswith(
+        ".schema.json"
+    ):
+        msg = f"Invalid schema path: {rel_schema_path}"
+        raise ValueError(msg)
+    return f"http://purl.allotrope.org/manifests/{str(rel_schema_path)[4:-12]}.manifest"
+
+
+def get_schema_path_from_manifest(manifest: str) -> Path:
     match = re.match(r"http://purl.allotrope.org/manifests/(.*)\.manifest", manifest)
     if not match:
         msg = f"No matching schema in repo for manifest: {manifest}"
         raise ValueError(msg)
-    return f"{match.groups()[0]}.json"
+    return Path(f"adm/{match.groups()[0]}.schema.json")
 
 
-def get_model_file_from_rel_schema_path(rel_schema_path: Path) -> str:
-    return re.sub(
-        "/|-", "_", f"{rel_schema_path.parent}_{rel_schema_path.stem}.py"
-    ).lower()
+def get_schema_path_from_reference(reference: str) -> Path:
+    ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*)", reference)
+    if not ref_match:
+        msg = f"Could not parse reference: {reference}"
+        raise ValueError(msg)
+    return Path(f"{ref_match.groups()[0]}.json")
+
+
+def get_model_file_from_schema_path(schema_path: Path) -> Path:
+    rel_schema_path = get_rel_schema_path(schema_path)
+    schema_file = rel_schema_path.name
+    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
+    schema_dir = str(rel_schema_path.parent)
+    model_path = re.sub("/([0-9]+)", r"/_\1", schema_dir.replace("-", "_").lower())
+    return Path(model_path, model_file)
 
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = get_model_file_from_rel_schema_path(Path(schema_path))
-    import_path = f"allotropy.allotrope.models.{model_file[:-3]}"
+    model_file = get_model_file_from_schema_path(Path(schema_path))
+    import_path = f"allotropy.allotrope.models.{str(model_file).replace('/', '.')[:-3]}"
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model
-
-
-def get_schema_and_model_paths(
-    root_dir: Path, rel_schema_path: Path
-) -> tuple[Path, Path]:
-    schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-    model_file = get_model_file_from_rel_schema_path(rel_schema_path)
-    model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
-    return schema_path, model_path

@@ -1385,7 +1385,7 @@ def test_anyof() -> None:
 
 
 def test_load_model() -> None:
-    from allotropy.allotrope.models.liquid_chromatography_rec_2023_09_liquid_chromatography import (
+    from allotropy.allotrope.models.adm.liquid_chromatography.rec._2023._09.liquid_chromatography import (
         Model,
     )
 

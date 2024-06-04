@@ -4,11 +4,11 @@ from collections import defaultdict
 from dataclasses import dataclass
 import io
 import json
-import os
 from pathlib import Path
 import re
 from typing import Any
 
+from allotropy.allotrope.schema_parser.path_util import get_manifest_from_schema_path
 from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
@@ -42,7 +42,7 @@ def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
     )
 
 
-def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[str]]]:
+def get_shared_schema_info(schema_path: Path) -> tuple[set[str], dict[str, set[str]]]:
     with open(schema_path) as f:
         schema = json.load(f)
 
@@ -70,13 +70,6 @@ def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[st
                 )
 
     return classes_to_skip, dict(imports_to_add)
-
-
-def get_manifest_from_schema_path(schema_path: str) -> str:
-    relpath = Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
-    return (
-        f"http://purl.allotrope.org/manifests/{relpath.parent}/{relpath.stem}.manifest"
-    )
 
 
 def _to_or_union(types: set[str]) -> str:
@@ -640,7 +633,7 @@ class ModelClassEditor:
         return new
 
 
-def modify_file(model_path: str, schema_path: str) -> None:
+def modify_file(model_path: Path, schema_path: Path) -> None:
     classes_to_skip, imports_to_add = get_shared_schema_info(schema_path)
     manifest = get_manifest_from_schema_path(schema_path)
 

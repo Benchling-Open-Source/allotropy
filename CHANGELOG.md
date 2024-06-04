@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Use modular paths for schema models
+
 ### Deprecated
 
 ### Removed
@@ -41,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Details of parser requirements to docs
 - Add Agilent Gen5 Image Adapter
 - Add CTL Immunospot adapter
+- Add Methodical Mind adapter
 
 ### Fixed
 

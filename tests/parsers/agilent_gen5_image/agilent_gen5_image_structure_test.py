@@ -1,6 +1,6 @@
 import pytest
 
-from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     TransmittedLightSetting,
 )
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
