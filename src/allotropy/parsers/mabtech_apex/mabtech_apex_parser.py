@@ -1,6 +1,6 @@
 import pandas as pd
 
-from allotropy.allotrope.models.plate_reader.benchling._2023._09.plater_reader import (
+from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plater_reader import (
     ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
