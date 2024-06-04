@@ -30,8 +30,12 @@ class CombinedData:
     @staticmethod
     def create(reader: CsvReader) -> CombinedData:
         file_name = assert_not_none(CombinedData.get_parameter(reader, FILENAME))
-        barcode_1 = assert_not_none(CombinedData.get_parameter(reader, BARCODE_1))
-        read_time = assert_not_none(CombinedData.get_parameter(reader, READ_TIME))
+        barcode_1 = assert_not_none(
+            CombinedData.get_parameter(reader, BARCODE_1)
+        ).strip("<>")
+        read_time = assert_not_none(
+            CombinedData.get_parameter(reader, READ_TIME, all_vals_after_tab=True)
+        )
         version = assert_not_none(CombinedData.get_parameter(reader, VERSION))
         user = CombinedData.get_parameter(reader, USER)
         serial_no = assert_not_none(CombinedData.get_parameter(reader, SERIAL_NO))
@@ -81,8 +85,8 @@ class CombinedData:
             if all(
                 var is not None for var in [next_barcode, next_read_time, next_user]
             ):
-                barcode_1 = assert_not_none(next_barcode).split("\t")[1]
-                read_time = assert_not_none(next_read_time).split("\t")[1]
+                barcode_1 = assert_not_none(next_barcode).split("\t")[1].strip("<>")
+                read_time = " ".join(assert_not_none(next_read_time).split("\t")[1:])
                 user = assert_not_none(next_user).split("\t")[1]
             # Exception if the next plate isn't found, stop looking for more plates
             else:
@@ -97,13 +101,15 @@ class CombinedData:
 
     @staticmethod
     def get_parameter(
-        reader: CsvReader,
-        name: str,
+        reader: CsvReader, name: str, *, all_vals_after_tab: bool = False
     ) -> Optional[str]:
         val_line = reader.drop_until_inclusive(name)
         if val_line is not None:
             try:
-                return val_line.split("\t")[1]
+                if all_vals_after_tab:
+                    return " ".join(val_line.split("\t")[1:])
+                else:
+                    return val_line.split("\t")[1]
             except IndexError:
                 return None
         else:

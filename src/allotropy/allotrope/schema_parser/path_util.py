@@ -30,6 +30,14 @@ def get_schema_path_from_manifest(manifest: str) -> str:
     return f"adm/{match.groups()[0]}.schema.json"
 
 
+def get_schema_path_from_reference(reference: str) -> str:
+    ref_match = re.match(r"http://purl.allotrope.org/json-schemas/(.*)", reference)
+    if not ref_match:
+        msg = f"Could not parse reference: {reference}"
+        raise AssertionError(msg)
+    return f"{ref_match.groups()[0]}.json"
+
+
 def get_model_file_from_rel_schema_path(rel_schema_path: Path) -> str:
     schema_file = rel_schema_path.name
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
