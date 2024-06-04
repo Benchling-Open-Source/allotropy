@@ -21,7 +21,8 @@ from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schema_parser.path_util import (
     CUSTOM_MODELS_PATH,
     GENERATED_SHARED_PATHS,
-    get_schema_and_model_paths,
+    get_model_file_from_rel_schema_path,
+    MODEL_DIR_PATH,
     SCHEMA_DIR_PATH,
     UNITS_MODELS_PATH,
 )
@@ -95,6 +96,19 @@ def _should_generate_schema(schema_path: str, schema_regex: str | None = None) -
     return True
 
 
+def make_model_directories(model_path: Path) -> None:
+    if str(model_path) == MODEL_DIR_PATH:
+        return
+
+    make_model_directories(model_path.parent)
+    if model_path.exists():
+        return
+    os.makedirs(model_path)
+    init_path = Path(model_path, "__init__.py")
+    if not init_path.exists():
+        init_path.touch()
+
+
 def generate_schemas(
     root_dir: Path,
     *,
@@ -111,18 +125,17 @@ def generate_schemas(
 
     unit_to_iri: dict[str, str] = {}
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
-        os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
-        schema_paths = list(Path(".").rglob("*.json"))
+        schema_paths = list(Path(SCHEMA_DIR_PATH).rglob("*.json"))
         os.chdir(os.path.join(root_dir))
         models_changed = []
-        for rel_schema_path in schema_paths:
+        for schema_path in schema_paths:
+            rel_schema_path = Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
             if not _should_generate_schema(str(rel_schema_path), schema_regex):
                 continue
 
             print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-            schema_path, model_path = get_schema_and_model_paths(
-                root_dir, rel_schema_path
-            )
+            model_path = Path(MODEL_DIR_PATH, get_model_file_from_rel_schema_path(rel_schema_path))
+            make_model_directories(model_path.parent)
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
                 schema_cleaner = SchemaCleaner()

@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 from typing import Any
 
+from allotropy.allotrope.schema_parser.path_util import get_manifest_from_schema_path
 from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
@@ -70,13 +71,6 @@ def get_shared_schema_info(schema_path: str) -> tuple[set[str], dict[str, set[st
                 )
 
     return classes_to_skip, dict(imports_to_add)
-
-
-def get_manifest_from_schema_path(schema_path: str) -> str:
-    relpath = Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
-    return (
-        f"http://purl.allotrope.org/manifests/{relpath.parent}/{relpath.stem}.manifest"
-    )
 
 
 def _to_or_union(types: set[str]) -> str:

@@ -2,23 +2,7 @@ from collections.abc import Mapping
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMicrogramPerMicroliter,
-    TQuantityValueMicrogramPerMilliliter,
-    TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueMilligramPerMilliliter,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanogramPerMilliliter,
-    TQuantityValueNanometer,
-    TQuantityValuePicogramPerMilliliter,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-    TQuantityValue,
-)
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophotometry import (
+from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     DataSourceAggregateDocument,
@@ -36,6 +20,22 @@ from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophoto
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMicrogramPerMicroliter,
+    TQuantityValueMicrogramPerMilliliter,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilligramPerMilliliter,
+    TQuantityValueNanogramPerMicroliter,
+    TQuantityValueNanogramPerMilliliter,
+    TQuantityValueNanometer,
+    TQuantityValuePicogramPerMilliliter,
+)
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+    TQuantityValue,
+)
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState

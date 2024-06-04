@@ -1,6 +1,6 @@
 import pytest
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import Model
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Model
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
     AppBioQuantStudioParser,

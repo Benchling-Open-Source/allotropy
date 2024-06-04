@@ -2,11 +2,28 @@ from pathlib import Path
 from unittest import mock
 
 from allotropy.allotrope.schema_parser.path_util import (
+    get_manifest_from_schema_path,
     get_model_class_from_schema,
     get_model_file_from_rel_schema_path,
+    get_rel_schema_path,
     get_schema_path_from_manifest,
     get_schema_path_from_reference,
 )
+
+
+def test_get_rel_schem_path() -> None:
+    assert get_rel_schema_path(
+        Path("/Users/nathan.stender/allotropy/src/allotropy/allotrope/schemas/adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json"),
+    ) == Path("adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json")
+
+
+def test_get_manifest_from_schema_path() -> None:
+    assert (
+        get_manifest_from_schema_path(
+            Path("adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json")
+        )
+        == "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
+    )
 
 
 def test_get_schema_path_from_manifest() -> None:
@@ -15,6 +32,21 @@ def test_get_schema_path_from_manifest() -> None:
             "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
         )
         == "adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json"
+    )
+
+
+def test_get_schema_path_from_reference() -> None:
+    assert (
+        get_schema_path_from_reference(
+            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"
+        )
+        == "adm/core/REC/2023/09/core.schema.json"
+    )
+    assert (
+        get_schema_path_from_reference(
+            "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema"
+        )
+        == "qudt/REC/2023/09/units.schema.json"
     )
 
 
@@ -41,18 +73,3 @@ def test_get_model_class_from_schema() -> None:
         mock_import.assert_called_once_with(
             "allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence"
         )
-
-
-def test_get_schema_path_from_reference() -> None:
-    assert (
-        get_schema_path_from_reference(
-            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"
-        )
-        == "adm/core/REC/2023/09/core.schema.json"
-    )
-    assert (
-        get_schema_path_from_reference(
-            "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema"
-        )
-        == "qudt/REC/2023/09/units.schema.json"
-    )

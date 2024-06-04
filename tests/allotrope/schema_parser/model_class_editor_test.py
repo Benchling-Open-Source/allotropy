@@ -10,7 +10,6 @@ from allotropy.allotrope.schema_parser.model_class_editor import (
     create_class_lines,
     DataclassField,
     DataClassLines,
-    get_manifest_from_schema_path,
     ModelClassEditor,
 )
 
@@ -98,12 +97,6 @@ def test__parse_field_types() -> None:
     assert _parse_field_types("list[str,dict[str,int],float,None]") == {
         "list[dict[str,int]|float|str|None]"
     }
-
-
-def test__get_manifest_from_schema_path() -> None:
-    schema_path = "src/allotropy/allotrope/schemas/cell_counting/BENCHLING/2023/09/cell-counting.json"
-    expected = "http://purl.allotrope.org/manifests/cell_counting/BENCHLING/2023/09/cell-counting.manifest"
-    assert get_manifest_from_schema_path(schema_path) == expected
 
 
 def test__modify_file_removes_skipped_and_unused_classes() -> None:

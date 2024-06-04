@@ -22,6 +22,25 @@ GENERATED_SHARED_PATHS = [
 ]
 
 
+def get_rel_schema_path(schema_path: Path) -> Path:
+    if str(SCHEMA_DIR_PATH) in str(schema_path):
+        return Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
+    elif not Path(SCHEMA_DIR_PATH, schema_path).exists():
+        msg = f"Invalid schema path: {schema_path}"
+        raise AssertionError(msg)
+    return schema_path
+
+
+def get_manifest_from_schema_path(schema_path: Path) -> str:
+    rel_schema_path = get_rel_schema_path(schema_path)
+    if not str(rel_schema_path).startswith("adm/") or not str(rel_schema_path).endswith(".schema.json"):
+        msg = f"Invalid schema path: {rel_schema_path}"
+        raise AssertionError(msg)
+    return (
+        f"http://purl.allotrope.org/manifests/{str(rel_schema_path)[4:-12]}.manifest"
+    )
+
+
 def get_schema_path_from_manifest(manifest: str) -> str:
     match = re.match(r"http://purl.allotrope.org/manifests/(.*)\.manifest", manifest)
     if not match:
@@ -38,7 +57,8 @@ def get_schema_path_from_reference(reference: str) -> str:
     return f"{ref_match.groups()[0]}.json"
 
 
-def get_model_file_from_rel_schema_path(rel_schema_path: Path) -> str:
+def get_model_file_from_rel_schema_path(schema_path: Path) -> str:
+    rel_schema_path = get_rel_schema_path(schema_path)
     schema_file = rel_schema_path.name
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
     schema_path = str(rel_schema_path.parent)
@@ -52,12 +72,3 @@ def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     import_path = f"allotropy.allotrope.models.{model_file.replace('/', '.')[:-3]}"
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model
-
-
-def get_schema_and_model_paths(
-    root_dir: Path, rel_schema_path: Path
-) -> tuple[Path, Path]:
-    schema_path = Path(root_dir, SCHEMA_DIR_PATH, rel_schema_path)
-    model_file = get_model_file_from_rel_schema_path(rel_schema_path)
-    model_path = Path(root_dir, MODEL_DIR_PATH, model_file)
-    return schema_path, model_path

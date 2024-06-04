@@ -10,11 +10,11 @@ from cattrs.errors import ClassValidationError
 from cattrs.gen import make_dict_structure_fn, make_dict_unstructure_fn, override
 import numpy as np
 
-from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
     AnalyteDocumentItem,
     MeasurementDocumentItem,
 )
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     ProcessedDataDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
