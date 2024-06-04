@@ -99,7 +99,7 @@ def _should_generate_schema(schema_path: Path, schema_regex: str | None = None) 
 
 
 def make_model_directories(model_path: Path) -> None:
-    if str(model_path) == MODEL_DIR_PATH:
+    if model_path == MODEL_DIR_PATH:
         return
 
     make_model_directories(model_path.parent)

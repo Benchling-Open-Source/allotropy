@@ -33,7 +33,7 @@ def test_get_schema_path_from_manifest() -> None:
         get_schema_path_from_manifest(
             "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
         )
-        == "adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json"
+        == Path("adm/fluorescence/BENCHLING/2023/09/fluorescence.schema.json")
     )
 
 
@@ -42,13 +42,13 @@ def test_get_schema_path_from_reference() -> None:
         get_schema_path_from_reference(
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema"
         )
-        == "adm/core/REC/2023/09/core.schema.json"
+        == Path("adm/core/REC/2023/09/core.schema.json")
     )
     assert (
         get_schema_path_from_reference(
             "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema"
         )
-        == "qudt/REC/2023/09/units.schema.json"
+        == Path("qudt/REC/2023/09/units.schema.json")
     )
 
 
@@ -57,7 +57,7 @@ def test_get_model_file_from_schema_path() -> None:
         get_model_file_from_schema_path(
             Path("adm/cell-counting/BENCHLING/2023/09/cell-counting.schema.json")
         )
-        == "adm/cell_counting/benchling/_2023/_09/cell_counting.py"
+        == Path("adm/cell_counting/benchling/_2023/_09/cell_counting.py")
     )
 
 
