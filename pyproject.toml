@@ -117,6 +117,7 @@ extra-dependencies = [
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py {args:}"
+download-schema = "scripts/download_schema.py {args:}"
 csv-as-json = "scripts/csv_as_json.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
