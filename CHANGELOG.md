@@ -11,7 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Mabtech Apex adapter
 ### Fixed
 
+- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+
 ### Changed
+
+- Use modular paths for schema models
 
 ### Deprecated
 
@@ -39,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Details of parser requirements to docs
 - Add Agilent Gen5 Image Adapter
 - Add CTL Immunospot adapter
+- Add Methodical Mind adapter
 
 ### Fixed
 

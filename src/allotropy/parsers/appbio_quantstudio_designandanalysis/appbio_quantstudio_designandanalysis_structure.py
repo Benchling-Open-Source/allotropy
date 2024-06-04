@@ -6,7 +6,7 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
@@ -489,6 +489,37 @@ class Result:
                     "Rq Max",
                 ],
             )
+        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
+            Result._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("Target Call"),
+                columns=[
+                    "Call",
+                ],
+            )
+        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
+
+            # The genotyping result data does not contain a target column
+            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
+            rows = []
+            for idx, row in genotyping_result.iterrows():
+                snp_assay = assert_not_none(
+                    row.get("SNP Assay"),
+                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
+                )
+                for allele in ["Allele 1", "Allele 2"]:
+                    new_row = row.copy()
+                    new_row["Target"] = f"{snp_assay}-{allele}"
+                    rows.append(new_row)
+
+            Result._add_data(
+                data,
+                extra_data=pd.DataFrame(rows).reset_index(drop=True),
+                columns=[
+                    "Call",
+                ],
+            )
 
         well_data = assert_not_empty_df(
             data[assert_df_column(data, "Well") == well_item_id],
@@ -507,7 +538,11 @@ class Result:
 
         genotyping_determination_result = (
             try_str_from_series_or_none(target_data, "Call")
-            if experiment_type == ExperimentType.presence_absence_qPCR_experiment
+            if experiment_type
+            in (
+                ExperimentType.presence_absence_qPCR_experiment,
+                ExperimentType.genotyping_qPCR_experiment,
+            )
             else None
         )
 

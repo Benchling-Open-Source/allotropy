@@ -1,6 +1,6 @@
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     CalculatedDataDocumentItem,
     ContainerType,

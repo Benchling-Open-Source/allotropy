@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 import re
 import subprocess  # noqa: S404, RUF100
@@ -21,7 +20,9 @@ from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schema_parser.path_util import (
     CUSTOM_MODELS_PATH,
     GENERATED_SHARED_PATHS,
-    get_schema_and_model_paths,
+    get_model_file_from_schema_path,
+    get_rel_schema_path,
+    MODEL_DIR_PATH,
     SCHEMA_DIR_PATH,
     UNITS_MODELS_PATH,
 )
@@ -29,7 +30,7 @@ from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schema_parser.update_units import update_unit_files
 
 
-def lint_file(model_path: str) -> None:
+def lint_file(model_path: Path) -> None:
     # The first run of ruff changes typing annotations and causes unused imports. We catch failure
     # due to unused imports.
     try:
@@ -42,7 +43,7 @@ def lint_file(model_path: str) -> None:
         pass
     # The call to autoflake.fix_file removes unused imports.
     fix_file(
-        model_path,
+        str(model_path),
         {
             "in_place": True,
             "remove_unused_variables": True,
@@ -80,49 +81,62 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
         use_union_operator=True,
     )
     # Import classes from shared files, remove unused classes, format.
-    modify_file(str(model_path), str(schema_path))
-    lint_file(str(model_path))
+    modify_file(model_path, schema_path)
+    lint_file(model_path)
 
 
-def _should_generate_schema(schema_path: str, schema_regex: str | None = None) -> bool:
+def _should_generate_schema(schema_path: Path, schema_regex: str | None = None) -> bool:
     # Skip files in the shared directory
-    if schema_path.startswith("shared"):
+    rel_schema_path = str(get_rel_schema_path(schema_path))
+    if rel_schema_path.startswith("shared"):
         return False
-    if is_backup_file(schema_path):
+    if is_backup_file(rel_schema_path):
         return False
     if schema_regex:
-        return bool(re.match(schema_regex, str(schema_path)))
+        return bool(re.match(schema_regex, str(rel_schema_path)))
     return True
 
 
+def make_model_directories(model_path: Path) -> None:
+    if model_path == MODEL_DIR_PATH:
+        return
+
+    # Call recursively on parents first. We can't just create all directories
+    # with a single call, because we want to create __init__ files too.
+    make_model_directories(model_path.parent)
+    if model_path.exists():
+        return
+    model_path.mkdir()
+    init_path = Path(model_path, "__init__.py")
+    if not init_path.exists():
+        init_path.touch()
+
+
 def generate_schemas(
-    root_dir: Path,
     *,
     dry_run: bool | None = False,
     schema_regex: str | None = None,
 ) -> list[str]:
     """Generate schemas from JSON schema files.
-
-    :root_dir: The root directory of the project.
     :dry_run: If true, does not save changes to any models, but still returns the list of models that would change.
     :schema_regex: If set, filters schemas to generate using regex.
     :return: A list of model files that were changed.
     """
-
     unit_to_iri: dict[str, str] = {}
     with backup(GENERATED_SHARED_PATHS, restore=dry_run):
-        os.chdir(os.path.join(root_dir, SCHEMA_DIR_PATH))
-        schema_paths = list(Path(".").rglob("*.json"))
-        os.chdir(os.path.join(root_dir))
+        schema_paths = list(Path(SCHEMA_DIR_PATH).rglob("*.json"))
         models_changed = []
-        for rel_schema_path in schema_paths:
-            if not _should_generate_schema(str(rel_schema_path), schema_regex):
+        for schema_path in schema_paths:
+            if not _should_generate_schema(schema_path, schema_regex):
                 continue
 
-            print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-            schema_path, model_path = get_schema_and_model_paths(
-                root_dir, rel_schema_path
+            print(  # noqa: T201
+                f"Generating models for schema: {get_rel_schema_path(schema_path)}..."
             )
+            model_path = Path(
+                MODEL_DIR_PATH, get_model_file_from_schema_path(schema_path)
+            )
+            make_model_directories(model_path.parent)
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
                 schema_cleaner = SchemaCleaner()

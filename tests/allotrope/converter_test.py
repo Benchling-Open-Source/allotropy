@@ -1,5 +1,5 @@
 from allotropy.allotrope.converter import structure, unstructure
-from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
     AnalyteDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
