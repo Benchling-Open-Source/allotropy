@@ -1,21 +1,21 @@
 import json
-import os
+from pathlib import Path
 from typing import Any
 
 from allotropy.allotrope.schema_parser.path_util import (
+    get_full_schema_path,
     get_schema_path_from_manifest,
-    SCHEMA_DIR_PATH,
-    SHARED_SCHEMAS_PATH,
+    SHARED_SCHEMAS_DEFINITIONS_PATH,
 )
 
 
 def get_shared_definitions() -> dict[str, Any]:
-    with open(os.path.join(SHARED_SCHEMAS_PATH, "definitions.json")) as f:
+    with open(Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "definitions.json")) as f:
         return json.load(f)  # type: ignore[no-any-return]
 
 
 def get_shared_unit_definitions() -> dict[str, Any]:
-    with open(os.path.join(SHARED_SCHEMAS_PATH, "units.json")) as f:
+    with open(Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json")) as f:
         return json.load(f)  # type: ignore[no-any-return]
 
 
@@ -26,15 +26,15 @@ def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
         ("custom", "custom"),
     ]:
         existing = schema.get(f"${section}", {})
-        with open(os.path.join(SHARED_SCHEMAS_PATH, f"{file}.json")) as f:
+        with open(Path(SHARED_SCHEMAS_DEFINITIONS_PATH, f"{file}.json")) as f:
             additional = json.load(f)
         additional.update(existing)
         schema[f"${section}"] = additional
     return schema
 
 
-def get_schema(schema_relative_path: str) -> dict[str, Any]:
-    with open(os.path.join(SCHEMA_DIR_PATH, schema_relative_path)) as f:
+def get_schema(schema_path: Path) -> dict[str, Any]:
+    with open(get_full_schema_path(schema_path)) as f:
         return add_definitions(json.load(f))
 
 

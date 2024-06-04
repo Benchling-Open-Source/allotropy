@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_obscuration import (
     DeviceSystemDocument,
     DistributionAggregateDocument,
     DistributionItem,

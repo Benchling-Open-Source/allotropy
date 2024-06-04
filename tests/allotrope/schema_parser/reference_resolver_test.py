@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from unittest import mock
 
 from allotropy.allotrope.schema_parser.path_util import SCHEMA_DIR_PATH
@@ -122,10 +122,10 @@ def test_resolve_references() -> None:
         "allotropy.allotrope.schema_parser.reference_resolver._download_schema"
     ) as mock_download:
         schema_paths = _download_references(references)
-        assert schema_paths == {"adm/core/REC/2023/09/fake.schema.json"}
+        assert schema_paths == {Path("adm/core/REC/2023/09/fake.schema.json")}
         mock_download.assert_called_once_with(
             "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/fake.schema",
-            "adm/core/REC/2023/09/fake.schema.json",
+            Path("adm/core/REC/2023/09/fake.schema.json"),
         )
 
 
@@ -134,10 +134,15 @@ def test_download_schema() -> None:
         "allotropy.allotrope.schema_parser.reference_resolver.urllib.request.urlretrieve"
     ) as mock_urlretrieve:
         _download_schema(
-            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
-            "adm/core/REC/2023/09/core.schema.json",
+            "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema",
+            Path(
+                "adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json"
+            ),
         )
         mock_urlretrieve.assert_called_once_with(
-            "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema",
-            os.path.join(SCHEMA_DIR_PATH, "adm/core/REC/2023/09/core.schema.json"),
+            "http://purl.allotrope.org/json-schemas/adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema",
+            Path(
+                SCHEMA_DIR_PATH,
+                "adm/liquid-chromatography/REC/2023/09/liquid-chromatography.schema.json",
+            ),
         )
