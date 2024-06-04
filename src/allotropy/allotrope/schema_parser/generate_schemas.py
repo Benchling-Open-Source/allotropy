@@ -22,6 +22,7 @@ from allotropy.allotrope.schema_parser.path_util import (
     CUSTOM_MODELS_PATH,
     GENERATED_SHARED_PATHS,
     get_model_file_from_schema_path,
+    get_rel_schema_path,
     MODEL_DIR_PATH,
     SCHEMA_DIR_PATH,
     UNITS_MODELS_PATH,
@@ -85,14 +86,15 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
     lint_file(str(model_path))
 
 
-def _should_generate_schema(schema_path: str, schema_regex: str | None = None) -> bool:
+def _should_generate_schema(schema_path: Path, schema_regex: str | None = None) -> bool:
     # Skip files in the shared directory
-    if schema_path.startswith("shared"):
+    rel_schema_path = str(get_rel_schema_path(schema_path))
+    if rel_schema_path.startswith("shared"):
         return False
-    if is_backup_file(schema_path):
+    if is_backup_file(rel_schema_path):
         return False
     if schema_regex:
-        return bool(re.match(schema_regex, str(schema_path)))
+        return bool(re.match(schema_regex, str(rel_schema_path)))
     return True
 
 
@@ -129,12 +131,11 @@ def generate_schemas(
         os.chdir(os.path.join(root_dir))
         models_changed = []
         for schema_path in schema_paths:
-            rel_schema_path = Path(os.path.relpath(schema_path, SCHEMA_DIR_PATH))
-            if not _should_generate_schema(str(rel_schema_path), schema_regex):
+            if not _should_generate_schema(schema_path, schema_regex):
                 continue
 
-            print(f"Generating models for schema: {rel_schema_path}...")  # noqa: T201
-            model_path = Path(MODEL_DIR_PATH, get_model_file_from_schema_path(rel_schema_path))
+            print(f"Generating models for schema: {get_rel_schema_path(schema_path)}...")  # noqa: T201
+            model_path = Path(MODEL_DIR_PATH, get_model_file_from_schema_path(schema_path))
             make_model_directories(model_path.parent)
 
             with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
