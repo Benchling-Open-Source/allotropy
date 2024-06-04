@@ -101,6 +101,8 @@ def make_model_directories(model_path: Path) -> None:
     if model_path == MODEL_DIR_PATH:
         return
 
+    # Call recursively on parents first. We can't just create all directories
+    # with a single call, because we want to create __init__ files too.
     make_model_directories(model_path.parent)
     if model_path.exists():
         return
