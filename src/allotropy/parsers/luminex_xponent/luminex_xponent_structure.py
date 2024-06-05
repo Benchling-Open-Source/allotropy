@@ -334,7 +334,7 @@ class Data:
     @classmethod
     def _get_minimum_bead_count_setting(cls, reader: CsvReader) -> float:
         reader.drop_until(match_pat='"Samples",')
-        samples_info = assert_not_none(reader.pop(), "Unable to find Samples info.")
+        samples_info = assert_not_none(reader.pop(), msg="Unable to find Samples info.")
         try:
             min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
         except IndexError as e:
