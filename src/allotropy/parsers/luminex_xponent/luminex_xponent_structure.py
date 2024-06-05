@@ -20,7 +20,7 @@ from allotropy.parsers.utils.values import (
 
 LUMINEX_EMPTY_PATTERN = r"^[,\"\s]*$"
 CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
-TABLE_HEADER_PATTERN = '"DataType:","{}"'
+TABLE_HEADER_PATTERN = '^"?DataType:"?,"?{}"?'
 MINIMUM_CALIBRATION_LINE_COLS = 2
 EXPECTED_CALIBRATION_RESULT_LEN = 2
 EXPECTED_HEADER_COLUMNS = 7
@@ -334,7 +334,7 @@ class Data:
 
     @classmethod
     def _get_minimum_bead_count_setting(cls, reader: CsvReader) -> float:
-        reader.drop_until(match_pat='"Samples",')
+        reader.drop_until(match_pat='^"?Samples"?,')
         samples_info = assert_not_none(reader.pop(), msg="Unable to find Samples info.")
         try:
             min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
