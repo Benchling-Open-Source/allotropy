@@ -19,6 +19,7 @@ VENDOR_TYPE = Vendor.ROCHE_CEDEX_BIOHT
 SCHEMA_FILE = "cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.json"
 
 
+@pytest.mark.cedex
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/roche_cedex_bioht/testdata/{output_file}.txt"
@@ -27,6 +28,7 @@ def test_parse_cedex_bioht_to_asm(output_file: str) -> None:
     validate_contents(allotrope_dict, expected_filepath)
 
 
+@pytest.mark.cedex
 @pytest.mark.short
 def test_get_model() -> None:
     parser = RocheCedexBiohtParser(TimestampParser())

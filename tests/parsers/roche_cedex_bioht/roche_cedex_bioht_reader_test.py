@@ -7,6 +7,7 @@ from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
 )
 
 
+@pytest.mark.cedex
 @pytest.mark.short
 def test_data_reader() -> None:
     reader = get_reader()
