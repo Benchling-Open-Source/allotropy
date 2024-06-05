@@ -23,6 +23,7 @@ CALIBRATION_BLOCK_HEADER = "Most Recent Calibration and Verification Results"
 TABLE_HEADER_PATTERN = '"DataType:","{}"'
 MINIMUM_CALIBRATION_LINE_COLS = 2
 EXPECTED_CALIBRATION_RESULT_LEN = 2
+EXPECTED_HEADER_COLUMNS = 7
 
 
 @dataclass(frozen=True)
@@ -293,15 +294,23 @@ class Data:
 
     @classmethod
     def _get_header_data(cls, reader: CsvReader) -> pd.DataFrame:
-        header_lines = assert_not_none(
-            reader.pop_until(CALIBRATION_BLOCK_HEADER), "Unable to find Header block."
-        )
+        header_lines = list(reader.pop_until(CALIBRATION_BLOCK_HEADER))
+
+        n_columns = 0
+        for line in header_lines:
+            n_row_columns = len(line.split(","))
+            if n_row_columns > n_columns:
+                n_columns = n_row_columns
+
+        if n_columns < EXPECTED_HEADER_COLUMNS:
+            error = "Unable to parse header. Not enough data."
+            raise AllotropeConversionError(error)
 
         header_data = read_csv(
             StringIO("\n".join(header_lines)),
             header=None,
             index_col=0,
-            names=range(7),
+            names=range(n_columns),
         ).dropna(how="all")
 
         return header_data.T
