@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
 
 ### Changed
 
