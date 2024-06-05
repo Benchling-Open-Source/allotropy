@@ -154,11 +154,7 @@ class Sample:
     batch: str | None = None
 
     @staticmethod
-    def create(name: str, batch: str | None, samples_data: pd.DataFrame) -> Sample:
-        condition = samples_data["sample identifier"] == name
-        condition &= samples_data["batch identifier"] == batch
-        sample_data = samples_data[condition].sort_values(by="analyte name")
-
+    def create(name: str, batch: str | None, sample_data: pd.DataFrame) -> Sample:
         role_type = sample_data.iloc[0]["sample role type"]
         measurement_time = str(sample_data.iloc[0]["measurement time"])
 
@@ -178,12 +174,13 @@ class Data:
 
     @staticmethod
     def create(reader: RocheCedexBiohtReader) -> Data:
-        # A sample group is defined by both the sample and the batch identifier
-        sample_groups = reader.samples_data.groupby(
-            ["sample identifier", "batch identifier"]
-        ).groups.keys()
-
         return Data(
             title=Title.create(reader.title_data),
-            samples=[Sample.create(name, batch, reader.samples_data) for name, batch in sample_groups],  # type: ignore[has-type, misc]
+            samples=[
+                Sample.create(name, batch, samples_data.sort_values(by="analyte name"))
+                for (name, batch), samples_data in reader.samples_data.groupby(
+                    # A sample group is defined by both the sample and the batch identifier
+                    ["sample identifier", "batch identifier"]
+                )
+            ],
         )
