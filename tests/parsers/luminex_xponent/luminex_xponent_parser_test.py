@@ -12,7 +12,6 @@ OUTPUT_FILES = (
 VENDOR_TYPE = Vendor.LUMINEX_XPONENT
 
 
-@pytest.mark.luminex
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_luminex_xponent_to_asm(output_file: str) -> None:
     test_filepath = f"tests/parsers/luminex_xponent/testdata/{output_file}.csv"

@@ -53,7 +53,6 @@ def get_result_lines(remove: str = "") -> list[str]:
     return lines
 
 
-@pytest.mark.luminex
 @pytest.mark.short
 def test_create_header() -> None:
     data = pd.DataFrame.from_dict(
@@ -90,7 +89,6 @@ def test_create_header() -> None:
     )
 
 
-@pytest.mark.luminex
 @pytest.mark.parametrize(
     "required_col",
     [
@@ -134,7 +132,6 @@ def test_create_heder_without_required_col(required_col: str) -> None:
         Header.create(data.drop(columns=[required_col]))
 
 
-@pytest.mark.luminex
 @pytest.mark.short
 def test_create_calibration_item() -> None:
     name = "Device Calibration"
@@ -147,7 +144,6 @@ def test_create_calibration_item() -> None:
     assert calibration_item == CalibrationItem(name, report, "05/17/2023 09:25:11")
 
 
-@pytest.mark.luminex
 @pytest.mark.short
 def test_create_calibration_item_invalid_line_format() -> None:
     bad_line = "Bad line."
@@ -156,7 +152,6 @@ def test_create_calibration_item_invalid_line_format() -> None:
         CalibrationItem.create(bad_line)
 
 
-@pytest.mark.luminex
 @pytest.mark.short
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
@@ -166,7 +161,6 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
         CalibrationItem.create(bad_line)
 
 
-@pytest.mark.luminex
 @pytest.mark.short
 def test_create_measurement_list() -> None:
     reader = CsvReader(get_result_lines())
@@ -201,7 +195,6 @@ def test_create_measurement_list() -> None:
     )
 
 
-@pytest.mark.luminex
 @pytest.mark.parametrize(
     "table_name",
     ["Median", "Count", "Units", "Dilution Factor"],
@@ -218,7 +211,6 @@ def test_create_measurement_list_without_required_table_then_raise(
         MeasurementList.create(reader)
 
 
-@pytest.mark.luminex
 def test_create_data() -> None:
     data = Data.create(get_reader())
 
