@@ -42,10 +42,11 @@ def create_results(reader: CsvReader) -> Results:
         msg="Unable to find barcode indicator.",
     )
 
-    barcode, *_ = assert_not_none(
+    raw_barcode, *_ = assert_not_none(
         reader.pop_if_match("^.+,"),
         msg="Unable to find barcode value.",
     ).split(",", maxsplit=1)
+    barcode = raw_barcode.strip()
 
     results = assert_not_none(
         reader.pop_csv_block_as_df(header=0, index_col=0),
