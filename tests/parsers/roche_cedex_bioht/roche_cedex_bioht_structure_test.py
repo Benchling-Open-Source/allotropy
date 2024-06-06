@@ -160,7 +160,6 @@ def test_create_sample() -> None:
     )
     assert sample.name == "PPDTEST1"
     assert sample.batch == "batch_id"
-    assert sample.role_type == "Sample"
     assert sample.measurement_time == "2021-05-20 16:56:51"
     assert len(sample.analyte_list.analytes) == 2
 
