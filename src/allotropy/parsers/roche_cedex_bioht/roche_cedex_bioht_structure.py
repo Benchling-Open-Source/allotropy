@@ -148,19 +148,16 @@ class AnalyteList:
 @dataclass(frozen=True)
 class Sample:
     name: str
-    role_type: str
     measurement_time: str
     analyte_list: AnalyteList
     batch: str | None = None
 
     @staticmethod
     def create(name: str, batch: str | None, sample_data: pd.DataFrame) -> Sample:
-        role_type = sample_data.iloc[0]["sample role type"]
         measurement_time = str(sample_data.iloc[0]["measurement time"])
 
         return Sample(
             name,
-            role_type,
             measurement_time,
             AnalyteList.create(sample_data),
             batch=batch or None,
