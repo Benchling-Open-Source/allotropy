@@ -15,7 +15,6 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get_reader
 
 
-@pytest.mark.cedex
 @pytest.mark.parametrize(
     "processing_time,model_number,device_serial,analyst",
     [
@@ -42,7 +41,6 @@ def test_create_title(
     assert title.device_serial_number == str(device_serial)
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
     title_data = pd.Series({"device serial number": 1234})
@@ -50,7 +48,6 @@ def test_create_title_with_no_analyst() -> None:
         Title.create(title_data)
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_title_with_no_serial_number() -> None:
     title_data = pd.Series({"analyst": "dummy"})
@@ -61,7 +58,6 @@ def test_create_title_with_no_serial_number() -> None:
         Title.create(title_data)
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_analyte() -> None:
     data = pd.Series(
@@ -77,7 +73,6 @@ def test_create_analyte() -> None:
     assert analyte.unit == "mmol/L"
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_analyte_with_no_unit() -> None:
     data = pd.Series(
@@ -92,7 +87,6 @@ def test_create_analyte_with_no_unit() -> None:
     assert analyte.unit is None
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_analyte_list() -> None:
     data = pd.DataFrame(
@@ -115,7 +109,6 @@ def test_create_analyte_list() -> None:
     assert analyte_list.num_measurement_docs == 1
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_analyte_list_more_than_one_mesurement_docs() -> None:
     data = pd.DataFrame(
@@ -136,7 +129,6 @@ def test_create_analyte_list_more_than_one_mesurement_docs() -> None:
     assert analyte_list.non_aggregrable_dict == {}
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_sample() -> None:
     sample_data = pd.DataFrame(
@@ -164,7 +156,6 @@ def test_create_sample() -> None:
     assert len(sample.analyte_list.analytes) == 2
 
 
-@pytest.mark.cedex
 @pytest.mark.short
 def test_create_data() -> None:
     assert Data.create(get_reader()) == get_data()
