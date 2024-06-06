@@ -5,6 +5,7 @@ from allotropy.testing.utils import from_file, validate_contents
 
 OUTPUT_FILES = (
     "luminex_xPONENT_example02",
+    "luminex_xPONENT_example02_saved",
     "luminex_xPONENT_example03",
 )
 
