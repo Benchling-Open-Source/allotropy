@@ -179,6 +179,26 @@
       }
     ]
   },
+  "tQuantityValueKiloDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloDalton"
+      }
+    ]
+  },
+  "tNullableQuantityValueKiloDalton": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/KiloDalton"
+      }
+    ]
+  },
   "tQuantityValueMicrogramPerMicroliter": {
     "allOf": [
       {

@@ -333,7 +333,7 @@
                                                                         "const": "molecular mass"
                                                                       },
                                                                       "unit": {
-                                                                        "const": "g/mol"
+                                                                        "const": "kDa"
                                                                       },
                                                                       "@componentDatatype": {
                                                                         "const": "double"
@@ -346,7 +346,7 @@
                                                                         "const": "polymer length"
                                                                       },
                                                                       "unit": {
-                                                                        "const": "TODO"
+                                                                        "const": "#"
                                                                       },
                                                                       "@componentDatatype": {
                                                                         "const": "double"
@@ -415,13 +415,7 @@
                                                           "$asm.pattern": "aggregate datum",
                                                           "properties": {
                                                             "peak identifier": {
-                                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000917",
-                                                              "$asm.pattern": "value datum",
-                                                              "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
-                                                              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
-                                                            },
-                                                            "peak assignment identifier": {
-                                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002879",
+                                                              "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001164",
                                                               "$asm.pattern": "value datum",
                                                               "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
                                                               "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2023/09/core.schema#/$defs/tStringValue"
@@ -471,6 +465,9 @@
                                                                     },
                                                                     {
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/#"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                     }
                                                                   ]
                                                                 }
@@ -490,6 +487,9 @@
                                                                     },
                                                                     {
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/#"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                     }
                                                                   ]
                                                                 }
@@ -509,6 +509,9 @@
                                                                     },
                                                                     {
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/#"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                     }
                                                                   ]
                                                                 }
@@ -528,6 +531,9 @@
                                                                     },
                                                                     {
                                                                       "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/#"
+                                                                    },
+                                                                    {
+                                                                      "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                     }
                                                                   ]
                                                                 }
@@ -639,6 +645,9 @@
                                                                 },
                                                                 {
                                                                   "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/#"
+                                                                },
+                                                                {
+                                                                  "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                 }
                                                               ]
                                                             }
@@ -658,6 +667,9 @@
                                                                 },
                                                                 {
                                                                   "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/#"
+                                                                },
+                                                                {
+                                                                  "$ref": "#/$custom/tQuantityValueKiloDalton"
                                                                 }
                                                               ]
                                                             }
