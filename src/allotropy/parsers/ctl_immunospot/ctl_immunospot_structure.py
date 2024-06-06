@@ -84,8 +84,8 @@ class DeviceInfo:
         )
 
         return DeviceInfo(
-            device_identifier=analyzer_serial_match.group(1),
-            model_number=analyzer_serial_match.group(2),
+            device_identifier="N/A",
+            model_number=analyzer_serial_match.group(1),
             equipment_serial_number=analyzer_serial_number,
             data_system_instance_id=computer_name,
             basename=path.name,
