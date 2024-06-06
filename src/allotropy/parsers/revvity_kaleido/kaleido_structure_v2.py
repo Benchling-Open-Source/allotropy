@@ -36,7 +36,7 @@ def create_results(reader: CsvReader) -> Results:
     )
 
     raw_barcode, *_ = barcode_line.split(",")
-    barcode = raw_barcode.removeprefix("Barcode:")
+    barcode = raw_barcode.removeprefix("Barcode:").strip()
 
     results = assert_not_none(
         reader.pop_csv_block_as_df(header=0, index_col=0),
