@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Luminex Xponent parser able to process output as pure csv file.
 
 ### Fixed
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
 
 ### Changed
 
