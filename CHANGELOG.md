@@ -15,8 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 
-- Sample role type removed from Roche Cedex Bioht
-
 ### Removed
 
 ### Security
@@ -28,7 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
+- Fix model number and device id in ctl immunospot
 
+### Deprecated
+- Sample role type removed from Roche Cedex Bioht
 
 ## [0.1.34] - 2024-06-04
 
