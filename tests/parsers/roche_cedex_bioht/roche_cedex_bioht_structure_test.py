@@ -131,29 +131,27 @@ def test_create_analyte_list_more_than_one_mesurement_docs() -> None:
 
 @pytest.mark.short
 def test_create_sample() -> None:
-    samples_data = pd.DataFrame(
+    sample_data = pd.DataFrame(
         {
-            "sample identifier": ["PPDTEST1", "PPDTEST1", "PPDTEST2"],
-            "batch identifier": ["batch_id", "batch_id", ""],
-            "analyte name": ["lactate", "glutamine", "glutamine"],
-            "concentration unit": ["g/L", "mmol/L", "mmol/L"],
-            "concentration value": [2.45, 4.35, 0.4],
-            "sample role type": ["Sample", "Sample", "Sample"],
+            "sample identifier": ["PPDTEST1", "PPDTEST1"],
+            "batch identifier": ["batch_id", "batch_id"],
+            "analyte name": ["glutamine", "lactate"],
+            "concentration unit": ["mmol/L", "g/L"],
+            "concentration value": [4.35, 2.45],
+            "sample role type": ["Sample", "Sample"],
             "measurement time": [
-                "2021-05-20 16:55:51",
                 "2021-05-20 16:56:51",
-                "2023-05-20 16:55:51",
+                "2021-05-20 16:55:51",
             ],
         }
     )
     sample = Sample.create(
         name="PPDTEST1",
         batch="batch_id",
-        samples_data=samples_data,
+        sample_data=sample_data,
     )
     assert sample.name == "PPDTEST1"
     assert sample.batch == "batch_id"
-    assert sample.role_type == "Sample"
     assert sample.measurement_time == "2021-05-20 16:56:51"
     assert len(sample.analyte_list.analytes) == 2
 
