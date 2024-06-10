@@ -41,6 +41,7 @@ jobs:
       run: hatch run lint
 
   changelog:
+    if: ${{ !startsWith(github.event.pull_request.title, "internal:") }}
     runs-on: ubuntu-20.04
     name: Check CHANGELOG
 
