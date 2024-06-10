@@ -47,4 +47,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Check CHANGELOG
+      if: ${{ !startsWith(github.event.pull_request.title, 'internal:') }}
       run: ./scripts/check_changelog
