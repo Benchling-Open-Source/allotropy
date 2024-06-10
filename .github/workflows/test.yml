@@ -28,3 +28,5 @@ jobs:
       run: hatch run lint:all
     - name: Run Tests
       run: hatch run test:test
+    - name: Check CHANGELOG
+      run: hatch run scripts:check-changelog
