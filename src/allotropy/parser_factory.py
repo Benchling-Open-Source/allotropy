@@ -82,6 +82,8 @@ class Vendor(Enum):
     def display_name(self) -> str:
         return self.get_parser().display_name
 
+
+
     @property
     def release_state(self) -> ReleaseState:
         return self.get_parser().release_state
