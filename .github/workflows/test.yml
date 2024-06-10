@@ -46,7 +46,4 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install hatch
-      run: pip install hatch
-    - name: Check CHANGELOG
-      run: hatch run scripts:check-changelog
+      run: ./scripts/check_changelog
