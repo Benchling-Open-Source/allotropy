@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added github enforcment that CHANGELOG.md is updated
+- Added github enforcement that CHANGELOG.md is updated
 
 ### Fixed
 
