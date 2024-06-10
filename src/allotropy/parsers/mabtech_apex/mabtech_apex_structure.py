@@ -7,7 +7,7 @@ import re
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
-from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabTechApexContents
+from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float_from_series_or_nan,
@@ -32,7 +32,7 @@ class PlateInformation:
     equipment_serial_number: str | None
 
     @staticmethod
-    def create(contents: MabTechApexContents) -> PlateInformation:
+    def create(contents: MabtechApexContents) -> PlateInformation:
         plateinformation = contents.plate_info
         machine_id = assert_not_none(
             re.match(
@@ -103,7 +103,7 @@ class WellList:
         return iter(self.wells)
 
     @staticmethod
-    def create(contents: MabTechApexContents) -> WellList:
+    def create(contents: MabtechApexContents) -> WellList:
         plate_data = contents.data
         well_list = []
         for _, well_data in plate_data.iterrows():

@@ -24,7 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabTechApexContents
+from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
 from allotropy.parsers.mabtech_apex.mabtech_apex_structure import (
     PlateInformation,
     Well,
@@ -35,7 +35,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
-class MabTechApexParser(VendorParser):
+class MabtechApexParser(VendorParser):
     @property
     def display_name(self) -> str:
         return "Mabtech Apex"
@@ -46,7 +46,7 @@ class MabTechApexParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
-        contents = MabTechApexContents(raw_contents)
+        contents = MabtechApexContents(raw_contents)
         data = PlateInformation.create(contents)
         wells = WellList.create(contents)
         return self._get_model(data, wells, named_file_contents.original_file_name)

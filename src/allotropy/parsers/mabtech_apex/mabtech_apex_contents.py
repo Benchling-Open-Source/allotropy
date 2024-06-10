@@ -6,7 +6,7 @@ import pandas as pd
 from allotropy.parsers.utils.values import assert_not_none
 
 
-class MabTechApexContents:
+class MabtechApexContents:
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
