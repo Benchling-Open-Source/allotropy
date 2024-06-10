@@ -1,0 +1,8 @@
+#!/bin/sh
+git fetch origin --quiet
+if [ $(git diff-tree -r --name-only --no-commit-id origin/main HEAD | grep -c CHANGELOG.md) -eq 0 ]
+then
+    echo "Must update CHANGELOG.md"
+    exit 1
+fi
+exit 0
