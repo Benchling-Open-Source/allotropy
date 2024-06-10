@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ $(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD | grep -c CHANGELOG.md) -eq 0 ]
+if [ $(git diff-tree -r --name-only --no-commit-id origin/main HEAD | grep -c CHANGELOG.md) -eq 0 ]
 then
     echo "Must update CHANGELOG.md"
     exit 1
