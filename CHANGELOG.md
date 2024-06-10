@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Luminex Xponent parser able to process output as pure csv file.
 
 ### Fixed
 
@@ -19,6 +18,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.35] - 2024-06-07
+
+### Added
+- Luminex Xponent parser able to process output as pure csv file.
+
+### Fixed
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
+- Fix model number and device id in ctl immunospot
+
+### Deprecated
+- Sample role type removed from Roche Cedex Bioht
 
 ## [0.1.34] - 2024-06-04
 
@@ -35,11 +46,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Use modular paths for schema models
 
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.33] - 2024-05-29
 

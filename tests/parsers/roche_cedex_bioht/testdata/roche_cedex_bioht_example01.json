@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     "measurement aggregate document": {
         "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_0",
         "analyst": "ADMIN",
@@ -9,8 +10,7 @@
         "measurement document": [
             {
                 "sample document": {
-                    "sample identifier": "SMPL1",
-                    "sample role type": "Sample"
+                    "sample identifier": "SMPL1"
                 },
                 "measurement time": "2023-09-15T16:56:26+00:00",
                 "analyte aggregate document": {
@@ -62,8 +62,7 @@
             },
             {
                 "sample document": {
-                    "sample identifier": "SMPL2",
-                    "sample role type": "Sample"
+                    "sample identifier": "SMPL2"
                 },
                 "measurement time": "2023-09-15T16:57:30+00:00",
                 "analyte aggregate document": {
@@ -115,8 +114,7 @@
             },
             {
                 "sample document": {
-                    "sample identifier": "SMPL3",
-                    "sample role type": "Sample"
+                    "sample identifier": "SMPL3"
                 },
                 "measurement time": "2023-09-15T16:59:06+00:00",
                 "analyte aggregate document": {
@@ -168,8 +166,7 @@
             },
             {
                 "sample document": {
-                    "sample identifier": "SMPL4",
-                    "sample role type": "Sample"
+                    "sample identifier": "SMPL4"
                 },
                 "measurement time": "2023-09-16T10:13:37+00:00",
                 "analyte aggregate document": {
@@ -214,6 +211,5 @@
             }
         ],
         "data processing time": "2023-09-17T13:04:06+00:00"
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest"
+    }
 }
