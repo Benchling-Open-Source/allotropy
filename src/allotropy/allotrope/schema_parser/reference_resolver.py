@@ -26,17 +26,20 @@ def _get_references(schema: dict[str, Any]) -> set[str]:
     return references
 
 
-def _download_schema(reference: str, schema_path: Path) -> None:
-    schema_path = get_full_schema_path(schema_path)
+def download_schema(schema_url: str) -> Path:
+    schema_path = get_full_schema_path(get_schema_path_from_reference(schema_url))
+    if schema_path.exists():
+        return schema_path
     if not schema_path.parent.exists():
         schema_path.parent.mkdir(parents=True, exist_ok=True)
-    if not reference.startswith(("http:", "https:")):
-        msg = f"Invald URL {reference}"
+    if not schema_url.startswith(("http:", "https:")):
+        msg = f"Invald URL {schema_url}"
         raise ValueError(msg)
     # NOTE: S310 checks that you do not access a URL without checking it is a valid http url.
     # the code above does this, exactly as the documentation recommends, but it is still being
     # flagged, so ignore it.
-    urllib.request.urlretrieve(reference, schema_path)  # noqa: S310
+    urllib.request.urlretrieve(schema_url, schema_path)  # noqa: S310
+    return schema_path
 
 
 def _download_references(references: set[str]) -> set[Path]:
@@ -44,10 +47,7 @@ def _download_references(references: set[str]) -> set[Path]:
     schema_paths: set[Path] = set()
     for reference in references:
         if reference.startswith("http"):
-            schema_path = get_schema_path_from_reference(reference)
-            if not schema_path.exists():
-                _download_schema(reference, schema_path)
-            schema_paths.add(schema_path)
+            schema_paths.add(download_schema(reference))
         else:
             if not Path(reference).exists():
                 msg = f"Custom schema at path: '{reference}' does not exist, did you forget to add it?"

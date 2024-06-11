@@ -36,9 +36,6 @@ def get_rel_schema_path(schema_path: Path) -> Path:
 def get_full_schema_path(schema_path: Path) -> Path:
     if str(schema_path).startswith(str(SCHEMA_DIR_PATH)):
         return schema_path
-    elif not Path(SCHEMA_DIR_PATH, schema_path).exists():
-        msg = f"Invalid schema path: {schema_path}"
-        raise AssertionError(msg)
     return Path(SCHEMA_DIR_PATH, schema_path)
 
 
