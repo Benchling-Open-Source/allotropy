@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Luminex Xponent parser able to process output as pure csv file.
 - Add Electrophoresis BENCHLING/2024/06 schema.
 - Added github enforcement that CHANGELOG.md is updated
 
