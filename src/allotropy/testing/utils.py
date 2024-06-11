@@ -35,7 +35,7 @@ def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictTyp
 
 # List of keys in ASM with "identifier" that do not need to be unique.
 # Currently, only "measurement identifier" and "calculated data document" identifier should be unique.
-# However, is is better to positive exceptions, so we don't accidentially miss a newly added unique identifier.
+# However, it is better to have positive exceptions, so we don't accidentally miss a newly added unique identifier.
 NON_UNIQUE_IDENTIFIERS = {
     "analytical method identifier",
     "assay bead identifier",
