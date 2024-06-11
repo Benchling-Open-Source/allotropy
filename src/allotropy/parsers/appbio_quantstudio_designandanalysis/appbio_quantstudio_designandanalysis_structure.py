@@ -661,5 +661,5 @@ class Data:
         ):
             return ExperimentType.presence_absence_qPCR_experiment
 
-        error = "Unable to infer expermient type"
+        error = "Unable to infer experiment type"
         raise AllotropeConversionError(error)
