@@ -163,7 +163,6 @@ def get_data() -> Data:
         samples=[
             Sample(
                 name="PPDTEST1",
-                role_type="Sample",
                 measurement_time="2021-05-20 16:55:51",
                 analyte_list=AnalyteList(
                     analytes=[
@@ -207,7 +206,6 @@ def get_model() -> Model:
                     sample_document=SampleDocument(
                         sample_identifier="PPDTEST1",
                         batch_identifier=None,
-                        sample_role_type="Sample",
                     ),
                     measurement_time="2021-05-20T16:55:51+00:00",
                     analyte_aggregate_document=AnalyteAggregateDocument(
