@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
 import json
@@ -32,12 +33,57 @@ def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictTyp
     return new_dict
 
 
+# List of keys in ASM with "identifier" that do not need to be unique.
+# Currently, only "measurement identifier" and "calculated data document" identifier should be unique.
+# However, it is better to have positive exceptions, so we don't accidentally miss a newly added unique identifier.
+NON_UNIQUE_IDENTIFIERS = {
+    "analytical method identifier",
+    "assay bead identifier",
+    "batch identifier",
+    "data source identifier",
+    "device identifier",
+    "experimental data identifier",
+    "location identifier",
+    "measurement method identifier",
+    "sample identifier",
+    "well location identifier",
+    "well plate identifier",
+}
+
+
+def _is_unique_identifier(key: str) -> bool:
+    return "identifier" in key and key not in NON_UNIQUE_IDENTIFIERS
+
+
+def _get_all_identifiers(asm: DictType) -> dict[str, list[str]]:
+    all_identifiers = defaultdict(list)
+    for key, value in asm.items():
+        if isinstance(value, dict):
+            for subkey, subvalue in _get_all_identifiers(value).items():
+                all_identifiers[subkey].extend(subvalue)
+        elif isinstance(value, list):
+            for v in value:
+                if isinstance(v, dict):
+                    for subkey, subvalue in _get_all_identifiers(v).items():
+                        all_identifiers[subkey].extend(subvalue)
+        elif _is_unique_identifier(key):
+            all_identifiers[key].append(value)
+    return {key: list(value) for key, value in all_identifiers.items()}
+
+
+def _validate_identifiers(asm: DictType) -> None:
+    for key, value in _get_all_identifiers(asm).items():
+        if len(value) != len(set(value)):
+            non_unique = [id_ for id_ in set(value) if value.count(id_) > 1]
+            msg = f"Detected non-unique identifiers for key '{key}'. If this key should allow repeat values, add to NON_UNIQUE_IDENTIFIERS. Identifiers: {non_unique}"
+            raise AssertionError(msg)
+
+
 def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
     print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
-
     expected_replaced = _replace_asm_converter_name_and_version(expected)
 
     ddiff = DeepDiff(
@@ -104,6 +150,9 @@ def validate_contents(
 
     # Ensure that allotrope_dict can be structured back into a python model.
     structure(allotrope_dict)
+
+    # Ensure that all IDs are unique
+    _validate_identifiers(allotrope_dict)
 
     try:
         _assert_allotrope_dicts_equal(
