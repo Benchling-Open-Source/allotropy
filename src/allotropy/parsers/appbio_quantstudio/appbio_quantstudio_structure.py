@@ -80,7 +80,7 @@ class Header:
             plate_well_count=assert_not_none(
                 try_int(
                     assert_not_none(
-                        re.match(
+                        re.search(
                             "(96)|(384)",
                             try_str_from_series(data, "Block Type"),
                         ),
