@@ -9,19 +9,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add Mabtech Apex adapter
+- Added github enforcement that CHANGELOG.md is updated
+
 ### Fixed
 
-- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
-
 ### Changed
-
-- Use modular paths for schema models
 
 ### Deprecated
 
 ### Removed
 
 ### Security
+
+## [0.1.35] - 2024-06-07
+
+### Added
+- Luminex Xponent parser able to process output as pure csv file.
+
+### Fixed
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
+- Fix model number and device id in ctl immunospot
+
+### Deprecated
+- Sample role type removed from Roche Cedex Bioht
+
+## [0.1.34] - 2024-06-04
+
+### Added
+
+- Add Methodical Mind adapter
+
+### Fixed
+
+- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+- Fixed empty space at beginin of sample identifier in Revvity Kaleido
+
+### Changed
+
+- Use modular paths for schema models
+
 
 ## [0.1.33] - 2024-05-29
 
@@ -43,7 +69,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Details of parser requirements to docs
 - Add Agilent Gen5 Image Adapter
 - Add CTL Immunospot adapter
-- Add Methodical Mind adapter
 
 ### Fixed
 
