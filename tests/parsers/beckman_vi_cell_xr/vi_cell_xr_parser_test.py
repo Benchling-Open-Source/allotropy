@@ -1,3 +1,4 @@
+from pathlib import Path
 import re
 
 import pytest
@@ -25,11 +26,7 @@ VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_XR
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_vi_cell_xr_to_asm_expected_contents(output_file: str) -> None:
     test_filepath = f"tests/parsers/beckman_vi_cell_xr/testdata/{output_file}"
-    target_filename = (
-        output_file.replace(".xlsx", ".json")
-        .replace(".xls", ".json")
-        .replace(".txt", ".json")
-    )
+    target_filename = Path(output_file).with_suffix(".json")
     expected_filepath = f"tests/parsers/beckman_vi_cell_xr/testdata/{target_filename}"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 

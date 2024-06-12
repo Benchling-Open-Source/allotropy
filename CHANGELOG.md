@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- Support for parsing Vi-Cell XR txt files
 ### Fixed
 
 - Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
