@@ -36,6 +36,7 @@ FLUORESCENCE_FILENAMES = [
     "endpoint_singleplate_filter_withStepLabel",
     "endpoint_singleplate_monochromator_withoutStepLabel",
     "endpoint_singleplate",
+    "alphalisa_endpoint_singleplate",
 ]
 
 LUMINESCENCE_FILENAMES = [

@@ -121,7 +121,7 @@ class FilterSet:
 
     @property
     def detector_wavelength_setting(self) -> float | None:
-        if self.emission == "Full light":
+        if self.emission == "Full light" or not self.emission:
             return None
         return try_float(self.emission.split("/")[0], "Detector wavelength")
 
@@ -218,7 +218,9 @@ class ReadData:
     def get_read_mode(procedure_details: str) -> ReadMode:
         if ReadMode.ABSORBANCE.value in procedure_details:
             return ReadMode.ABSORBANCE
-        elif ReadMode.FLUORESCENCE.value in procedure_details:
+        elif (
+            ReadMode.FLUORESCENCE.value or ReadMode.ALPHALISA.value in procedure_details
+        ):
             return ReadMode.FLUORESCENCE
         elif ReadMode.LUMINESCENCE.value in procedure_details:
             return ReadMode.LUMINESCENCE
@@ -259,6 +261,8 @@ class ReadData:
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions)
             ]
+            if not measurement_labels:
+                measurement_labels = ["Alpha"]
 
         if read_mode == ReadMode.LUMINESCENCE:
             emissions = device_control_data.get(EMISSION_KEY)
@@ -362,9 +366,8 @@ class ReadData:
             mirror = None
             if mirrors and read_mode == ReadMode.FLUORESCENCE:
                 mirror = mirrors[idx]
-
             filter_data[label] = FilterSet(
-                emission=emissions[idx],
+                emission=emissions[idx] if emissions else None,
                 gain=gains[idx],
                 excitation=excitations[idx] if excitations else None,
                 mirror=mirror,
@@ -484,6 +487,7 @@ class Results:
                 if well_pos not in self.wells:
                     self.wells.append(well_pos)
                 well_value = try_float_or_nan(values[col_num])
+
                 if label in read_data.measurement_labels:
                     self.measurements[well_pos].append(
                         Measurement(random_uuid_str(), well_value, label)
