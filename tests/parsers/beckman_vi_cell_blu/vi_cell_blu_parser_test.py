@@ -1,7 +1,7 @@
 from more_itertools import one
 import pytest
 
-from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
     Model,
 )
 from allotropy.constants import CHARDET_ENCODING

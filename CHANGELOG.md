@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Support for parsing Vi-Cell XR txt files
-### Fixed
+- Added support for parsing Vi-Cell XR txt files
+- Add Electrophoresis BENCHLING/2024/06 schema.
+- Added github enforcement that CHANGELOG.md is updated
+- Added test files Agilent TapeStation Analysis
 
-- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+### Fixed
 
 ### Changed
 
@@ -20,6 +22,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.35] - 2024-06-07
+
+### Added
+- Luminex Xponent parser able to process output as pure csv file.
+
+### Fixed
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
+- Fix model number and device id in ctl immunospot
+
+### Deprecated
+- Sample role type removed from Roche Cedex Bioht
+
+## [0.1.34] - 2024-06-04
+
+### Added
+
+- Add Methodical Mind adapter
+
+### Fixed
+
+- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+- Fixed empty space at beginin of sample identifier in Revvity Kaleido
+
+### Changed
+
+- Use modular paths for schema models
+
 
 ## [0.1.33] - 2024-05-29
 

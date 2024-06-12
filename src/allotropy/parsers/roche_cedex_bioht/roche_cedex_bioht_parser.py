@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
     DeviceSystemDocument,
@@ -85,7 +85,6 @@ class RocheCedexBiohtParser(VendorParser):
         return MeasurementDocumentItem(
             sample_document=SampleDocument(
                 sample_identifier=sample.name,
-                sample_role_type=sample.role_type,
                 batch_identifier=sample.batch,
             ),
             measurement_time=self._get_date_time(sample.measurement_time),

@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.multi_analyte_profiling_benchling_2024_01_multi_analyte_profiling import (
+from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
     CalibrationAggregateDocument,

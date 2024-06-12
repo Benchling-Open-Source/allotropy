@@ -16,7 +16,7 @@ import re
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import (

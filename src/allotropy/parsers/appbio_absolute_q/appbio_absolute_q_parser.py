@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_dpcr import (
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
     DataSourceAggregateDocument,

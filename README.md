@@ -23,6 +23,7 @@ We currently have parser support for the following instruments (* asterisk indic
   - ChemoMetec Nucleoview
   - CTL ImmunoSpot
   - Luminex xPONENT
+  - Methodical Mind
   - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
