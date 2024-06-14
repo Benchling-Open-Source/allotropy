@@ -93,11 +93,11 @@ class AppBioQuantStudioParser(VendorParser):
                             experimental_data_identifier=data.header.experimental_data_identifier,
                             experiment_type=data.header.experiment_type,
                             container_type=ContainerType.qPCR_reaction_block,
-                            plate_well_count=(
-                                InvalidJsonFloat.NaN
-                                if data.header.plate_well_count is None
-                                else TQuantityValueNumber(
-                                    value=data.header.plate_well_count
+                            plate_well_count=TQuantityValueNumber(
+                                value=(
+                                    InvalidJsonFloat.NaN
+                                    if data.header.plate_well_count is None
+                                    else data.header.plate_well_count
                                 )
                             ),
                             measurement_document=[
