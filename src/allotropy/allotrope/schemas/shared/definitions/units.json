@@ -76,7 +76,7 @@
       "unit": {
         "type": "string",
         "const": "degC",
-        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#DegreeCelsius"
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#DegreeCelsius"
       }
     },
     "required": [
@@ -101,6 +101,18 @@
         "type": "string",
         "const": "Hz",
         "$asm.unit-iri": "http://qudt.org/vocab/unit#Hertz"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "KiloDalton": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "kDa",
+        "$asm.unit-iri": "TODO"
       }
     },
     "required": [
@@ -376,7 +388,7 @@
       "unit": {
         "type": "string",
         "const": "#",
-        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#Number"
+        "$asm.unit-iri": "http://qudt.org/vocab/unit#Number"
       }
     },
     "required": [
