@@ -32,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    InvalidJsonFloat,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
@@ -92,8 +93,12 @@ class AppBioQuantStudioParser(VendorParser):
                             experimental_data_identifier=data.header.experimental_data_identifier,
                             experiment_type=data.header.experiment_type,
                             container_type=ContainerType.qPCR_reaction_block,
-                            plate_well_count=TQuantityValueNumber(
-                                value=data.header.plate_well_count
+                            plate_well_count=(
+                                InvalidJsonFloat.NaN
+                                if data.header.plate_well_count is None
+                                else TQuantityValueNumber(
+                                    value=data.header.plate_well_count
+                                )
                             ),
                             measurement_document=[
                                 self.get_measurement_document_item(
