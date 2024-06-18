@@ -8,6 +8,8 @@ NON_READY_PARSERS = {
     Vendor.EXAMPLE_WEYLAND_YUTANI,
     # We want to collect more test cases for this parser before marking as ready.
     Vendor.QIACUITY_DPCR,
+    # We want to collect more test cases for this parser before marking as ready.
+    Vendor.MABTECH_APEX,
 }
 
 

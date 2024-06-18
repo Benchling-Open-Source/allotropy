@@ -55,6 +55,11 @@ class Hertz(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class KiloDalton(HasUnit):
+    unit: str = "kDa"
+
+
+@dataclass(frozen=True, kw_only=True)
 class MicrogramPerMicroliter(HasUnit):
     unit: str = "ug/uL"
 
