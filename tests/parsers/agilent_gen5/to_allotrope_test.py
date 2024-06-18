@@ -93,7 +93,6 @@ def test_to_allotrope_fluorescence(filename: str) -> None:
     validate_contents(
         allotrope_dict,
         test_filepath.replace(".txt", ".json"),
-        write_actual_to_expected_on_fail=True,
     )
 
 
