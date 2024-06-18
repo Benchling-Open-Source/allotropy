@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added github enforcement that CHANGELOG.md is updated
+- Add Alphalisa assay support to Gen5 adapter
 
 ### Fixed
 
