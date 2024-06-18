@@ -219,7 +219,8 @@ class ReadData:
         if ReadMode.ABSORBANCE.value in procedure_details:
             return ReadMode.ABSORBANCE
         elif (
-            ReadMode.FLUORESCENCE.value or ReadMode.ALPHALISA.value in procedure_details
+            ReadMode.FLUORESCENCE.value in procedure_details
+            or ReadMode.ALPHALISA.value in procedure_details
         ):
             return ReadMode.FLUORESCENCE
         elif ReadMode.LUMINESCENCE.value in procedure_details:
