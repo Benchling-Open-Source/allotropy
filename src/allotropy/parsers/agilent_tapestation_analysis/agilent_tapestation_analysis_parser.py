@@ -11,7 +11,9 @@ from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._06.electrop
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import Data
+from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
+    Data,
+)
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -35,7 +37,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
         return self._get_model(filename, data)
 
     def _get_model(self, data: Data, filename: str) -> Model:
-        _= data
+        _ = data
         return Model(
             electrophoresis_aggregate_document=ElectrophoresisAggregateDocument(
                 data_system_document=DataSystemDocument(
@@ -43,7 +45,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
                     file_name=filename,
                     software_name=SOFTWARE_NAME,
                     software_version="<AnalysisVersion>",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=f'{ASM_CONVERTER_NAME}_{self.display_name.replace(" ", "_")}'.lower(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
