@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Electrophoresis BENCHLING/2024/06 schema.
 - Added github enforcement that CHANGELOG.md is updated
 - Added test files Agilent TapeStation Analysis
+- Add Alphalisa assay support to Gen5 adapter
 
 ### Fixed
 

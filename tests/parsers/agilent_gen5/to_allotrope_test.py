@@ -36,6 +36,8 @@ FLUORESCENCE_FILENAMES = [
     "endpoint_singleplate_filter_withStepLabel",
     "endpoint_singleplate_monochromator_withoutStepLabel",
     "endpoint_singleplate",
+    "alphalisa_endpoint_singleplate",
+    "alphalisa_test_2",
 ]
 
 LUMINESCENCE_FILENAMES = [
@@ -88,7 +90,10 @@ def test_to_allotrope_fluorescence(filename: str) -> None:
     test_filepath = f"tests/parsers/agilent_gen5/testdata/fluorescence/{filename}.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
 
-    validate_contents(allotrope_dict, test_filepath.replace(".txt", ".json"))
+    validate_contents(
+        allotrope_dict,
+        test_filepath.replace(".txt", ".json"),
+    )
 
 
 @pytest.mark.parametrize("filename", LUMINESCENCE_FILENAMES)
