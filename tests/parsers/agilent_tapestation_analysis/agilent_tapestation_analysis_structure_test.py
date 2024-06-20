@@ -3,9 +3,11 @@ import pytest
 
 import xml.etree.ElementTree as ET
 
+from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
     MetaData,
+    Peak,
     Sample,
     SamplesList,
 )
@@ -51,6 +53,7 @@ def test_create_samples_list_without_matching_screen_tape() -> None:
     <File>
         <ScreenTapes>
             <ScreenTape><ScreenTapeID>01-S025-200617-01-899752</ScreenTapeID></ScreenTape>
+            <Empty/>
         </ScreenTapes>
         <Samples>
             <Sample><ScreenTapeID>01-S025-180717-01-899752</ScreenTapeID></Sample>
@@ -84,15 +87,39 @@ def test_create_samples_list() -> None:
     ):
         samples_list = SamplesList.create(get_samples_xml())
 
-    assert samples_list == SamplesList(
-        samples=[
-            Sample(
-                measurement_id="dummy_id",
-                measurement_time="2020-09-20T03:52:58-05:00",
-                compartment_temperature=26.4,
-                location_identifier="A1",
-                sample_identifier="ScreenTape01_A1",
-                description="Ladder Ladder",
-            )
-        ]
-    )
+    assert samples_list.samples == [
+        Sample(
+            measurement_id="dummy_id",
+            measurement_time="2020-09-20T03:52:58-05:00",
+            compartment_temperature=26.4,
+            location_identifier="A1",
+            sample_identifier="ScreenTape01_A1",
+            description="Ladder Ladder",
+            peak_list=[
+                Peak(
+                    peak_identifier="dummy_id",
+                    peak_name="-",
+                    peak_height=261.379,
+                    peak_start=68,
+                    peak_end=158,
+                    peak_position=100,
+                    peak_area=1.0,
+                    relative_peak_area=InvalidJsonFloat.NaN,
+                    relative_corrected_peak_area=InvalidJsonFloat.NaN,
+                    comment="Lower Marker",
+                ),
+                Peak(
+                    peak_identifier="dummy_id",
+                    peak_name="1",
+                    peak_height=284.723,
+                    peak_start=3812,
+                    peak_end=InvalidJsonFloat.NaN,
+                    peak_position=8525,
+                    peak_area=1.33,
+                    relative_peak_area=44.38,
+                    relative_corrected_peak_area=92.30,
+                    comment=None,
+                ),
+            ],
+        )
+    ]

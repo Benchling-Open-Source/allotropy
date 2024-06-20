@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from xml.etree import ElementTree as ET  # noqa: N817
 
-# from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NO_SCREEN_TAPE_ID_MATCH,
@@ -13,6 +13,7 @@ from allotropy.parsers.utils.values import (
     get_element_from_xml,
     get_val_from_xml,
     get_val_from_xml_or_none,
+    try_float_or_nan,
     try_float_or_none,
 )
 from allotropy.types import IOType
@@ -59,6 +60,46 @@ class MetaData:
 
 
 @dataclass(frozen=True)
+class Peak:
+    peak_identifier: str
+    peak_height: JsonFloat
+    peak_start: JsonFloat
+    peak_end: JsonFloat
+    peak_position: JsonFloat
+    peak_area: JsonFloat
+    relative_peak_area: JsonFloat
+    relative_corrected_peak_area: JsonFloat
+    peak_name: str | None
+    comment: str | None
+
+    @staticmethod
+    def create(peak_element: ET.Element) -> Peak:
+        peak_height = get_val_from_xml_or_none(peak_element, "Height")
+        peak_start = get_val_from_xml_or_none(peak_element, "FromMW")
+        peak_end = get_val_from_xml_or_none(peak_element, "ToMW")
+        peak_position = get_val_from_xml_or_none(peak_element, "Size")
+        peak_area = get_val_from_xml_or_none(peak_element, "Area")
+        relative_peak_area = get_val_from_xml_or_none(peak_element, "PercentOfTotal")
+        relative_corrected_peak_area = get_val_from_xml_or_none(
+            peak_element, "PercentIntegratedArea"
+        )
+        comment = get_val_from_xml_or_none(peak_element, "Comment")
+        observations = get_val_from_xml_or_none(peak_element, "Observations")
+        return Peak(
+            peak_identifier=random_uuid_str(),
+            peak_name=get_val_from_xml_or_none(peak_element, "Number"),
+            peak_height=try_float_or_nan(peak_height),
+            peak_start=try_float_or_nan(peak_start),
+            peak_end=try_float_or_nan(peak_end),
+            peak_position=try_float_or_nan(peak_position),
+            peak_area=try_float_or_nan(peak_area),
+            relative_peak_area=try_float_or_nan(relative_peak_area),
+            relative_corrected_peak_area=try_float_or_nan(relative_corrected_peak_area),
+            comment=f"{comment or ''} {observations or ''}".strip() or None,
+        )
+
+
+@dataclass(frozen=True)
 class Sample:
     measurement_id: str
     measurement_time: str
@@ -66,6 +107,7 @@ class Sample:
     location_identifier: str
     sample_identifier: str
     description: str | None
+    peak_list: list[Peak]
 
     @staticmethod
     def create(sample_element: ET.Element, screen_tape: ET.Element) -> Sample:
@@ -74,6 +116,7 @@ class Sample:
         comment = get_val_from_xml_or_none(sample_element, "Comment")
         observations = get_val_from_xml_or_none(sample_element, "Observations")
         description = f"{comment or ''} {observations or ''}".strip()
+        peaks = get_element_from_xml(sample_element, "Peaks")
 
         return Sample(
             measurement_id=random_uuid_str(),
@@ -84,6 +127,7 @@ class Sample:
             location_identifier=well_number,
             sample_identifier=f"{screen_tape_id}_{well_number}",
             description=description or None,
+            peak_list=[Peak.create(peak) for peak in peaks.iter("Peak")],
         )
 
 

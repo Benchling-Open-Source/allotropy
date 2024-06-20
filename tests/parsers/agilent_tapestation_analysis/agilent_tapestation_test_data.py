@@ -76,6 +76,26 @@ def get_samples_xml() -> ET.Element:
                     <ToMW>158</ToMW>
                     <ToPercent>85.4</ToPercent>
                 </Peak>
+                <Peak>
+                    <Area>1.33</Area>
+                    <AssignedQuantity>-</AssignedQuantity>
+                    <CalibratedQuantity>11.3</CalibratedQuantity>
+                    <Comment>
+                    </Comment>
+                    <FromMW>3812</FromMW>
+                    <FromPercent>41.1</FromPercent>
+                    <Height>284.723</Height>
+                    <Molarity>2.05</Molarity>
+                    <Size>8525</Size>
+                    <Number>1</Number>
+                    <Observations>
+                    </Observations>
+                    <PercentIntegratedArea>92.30</PercentIntegratedArea>
+                    <PercentOfTotal>44.38</PercentOfTotal>
+                    <RunDistance>46.5</RunDistance>
+                    <ToMW>&gt;60000</ToMW>
+                    <ToPercent>50.9</ToPercent>
+                </Peak>
             </Peaks>
         </Sample>
     </Samples>
