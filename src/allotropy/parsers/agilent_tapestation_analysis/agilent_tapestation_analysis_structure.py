@@ -1,12 +1,19 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from xml.etree import ElementTree as ET
+from xml.etree import ElementTree as ET  # noqa: N817
 
+# from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.agilent_tapestation_analysis.constants import (
+    NO_SCREEN_TAPE_ID_MATCH,
+)
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     get_element_from_xml,
-    # get_val_from_xml,
+    get_val_from_xml,
     get_val_from_xml_or_none,
+    try_float_or_none,
 )
 from allotropy.types import IOType
 
@@ -52,11 +59,71 @@ class MetaData:
 
 
 @dataclass(frozen=True)
+class Sample:
+    measurement_id: str
+    measurement_time: str
+    compartment_temperature: float | None
+    location_identifier: str
+    sample_identifier: str
+    description: str | None
+
+    @staticmethod
+    def create(sample_element: ET.Element, screen_tape: ET.Element) -> Sample:
+        well_number = get_val_from_xml(sample_element, "WellNumber")
+        screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
+        comment = get_val_from_xml_or_none(sample_element, "Comment")
+        observations = get_val_from_xml_or_none(sample_element, "Observations")
+        description = f"{comment or ''} {observations or ''}".strip()
+
+        return Sample(
+            measurement_id=random_uuid_str(),
+            measurement_time=get_val_from_xml(screen_tape, "TapeRunDate"),
+            compartment_temperature=try_float_or_none(
+                get_val_from_xml_or_none(screen_tape, "ElectrophoresisTemp")
+            ),
+            location_identifier=well_number,
+            sample_identifier=f"{screen_tape_id}_{well_number}",
+            description=description or None,
+        )
+
+
+@dataclass(frozen=True)
+class SamplesList:
+    samples: list[Sample]
+
+    @staticmethod
+    def create(root_element: ET.Element) -> SamplesList:
+        screen_tapes_element = get_element_from_xml(root_element, "ScreenTapes")
+        screen_tapes = {
+            get_val_from_xml(screen_tape, "ScreenTapeID"): screen_tape
+            for screen_tape in screen_tapes_element.iter("ScreenTape")
+        }
+
+        samples_element = get_element_from_xml(root_element, "Samples")
+        samples = []
+        for sample_element in samples_element.iter("Sample"):
+            screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
+            if screen_tape_id not in screen_tapes:
+                msg = NO_SCREEN_TAPE_ID_MATCH.format(screen_tape_id)
+                raise AllotropeConversionError(msg)
+            samples.append(Sample.create(sample_element, screen_tapes[screen_tape_id]))
+
+        return SamplesList(samples=samples)
+
+
+@dataclass(frozen=True)
 class Data:
     root: ET.ElementTree
     metadata: MetaData
+    samples_list: SamplesList
 
     @staticmethod
     def create(contents: IOType) -> Data:
         root = ET.parse(contents)  # noqa: S314
-        return Data(root=root, metadata=MetaData.create(root.getroot()))
+        root_element = root.getroot()
+
+        return Data(
+            root=root,
+            metadata=MetaData.create(root_element),
+            samples_list=SamplesList.create(root_element),
+        )
