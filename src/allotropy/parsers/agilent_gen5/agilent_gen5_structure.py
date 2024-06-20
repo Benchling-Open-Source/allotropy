@@ -113,8 +113,8 @@ class HeaderData:
 
 @dataclass(frozen=True)
 class FilterSet:
-    emission: str
     gain: str
+    emission: str | None = None
     excitation: str | None = None
     mirror: str | None = None
     optics: str | None = None
