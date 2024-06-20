@@ -117,7 +117,6 @@ def test_header_builder() -> None:
             "Expected non-null value for Quantification Cycle Method.",
         ),
         ("pcr_detection_chemistry", "Expected non-null value for Chemistry."),
-        ("plate_well_count", "Expected non-null value for Block Type."),
     ],
 )
 def test_header_builder_required_parameter_none_then_raise(
@@ -132,13 +131,36 @@ def test_header_builder_required_parameter_none_then_raise(
 
 @pytest.mark.short
 @pytest.mark.quantstudio
-def test_header_builder_invalid_plate_well_count() -> None:
+def test_header_builder_plate_well_count() -> None:
+    header_contents = get_raw_header_contents(plate_well_count="96 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 96
+
+    header_contents = get_raw_header_contents(plate_well_count="Fast 96 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 96
+
+    header_contents = get_raw_header_contents(plate_well_count="384 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 384
+
+    header_contents = get_raw_header_contents(plate_well_count="Fast 384 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count == 384
+
+    header_contents = get_raw_header_contents(plate_well_count="200 plates")
+    lines = _read_to_lines(header_contents)
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count is None
+
     header_contents = get_raw_header_contents(plate_well_count="0 plates")
     lines = _read_to_lines(header_contents)
-    with pytest.raises(
-        AllotropeConversionError, match="Unable to find plate well count"
-    ):
-        Header.create(LinesReader(lines))
+    header = Header.create(LinesReader(lines))
+    assert header.plate_well_count is None
 
 
 @pytest.mark.short
@@ -149,7 +171,7 @@ def test_header_builder_no_header_then_raise() -> None:
     lines_reader = LinesReader(lines)
     with pytest.raises(
         AllotropeConversionError,
-        match="Expected non-null value for Experiment Run End Time.",
+        match="Expected non-null value for Block Type.",
     ):
         Header.create(lines_reader)
 
