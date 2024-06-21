@@ -9,6 +9,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     ProcessedDataAggregateDocument,
@@ -242,7 +243,14 @@ class NanodropEightParser(VendorParser):
 
     def _get_measurement_document(
         self, data: pd.DataFrame, row: int
-    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
+    ) -> list[
+        FluorescencePointDetectionMeasurementDocumentItems
+        | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    ]:
+        measurement_docs: list[
+            FluorescencePointDetectionMeasurementDocumentItems
+            | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+        ]
         measurement_docs = []
         na_type = _get_str_or_none(data, row, "na type")
         concentration_col = self._get_concentration_col(data)
