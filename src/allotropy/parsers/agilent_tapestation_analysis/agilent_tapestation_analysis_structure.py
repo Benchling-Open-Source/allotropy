@@ -223,8 +223,11 @@ class Data:
 
     @staticmethod
     def create(contents: IOType) -> Data:
-        root = ET.parse(contents)  # noqa: S314
-        root_element = root.getroot()
+        try:
+            root_element = ET.parse(contents).getroot()  # noqa: S314
+        except ET.ParseError as e:
+            msg = f"There was an error when trying to read the xml file: {e}"
+            raise AllotropeConversionError(message=msg) from e
 
         return Data(
             metadata=MetaData.create(root_element),
