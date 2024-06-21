@@ -2,7 +2,9 @@ import xml.etree.ElementTree as ET  # noqa: N817
 
 
 def get_metadata_xml(
-    rine_version: str | None = None, din_version: str | None = None
+    rine_version: str | None = None,
+    din_version: str | None = None,
+    molecular_weight_unit: str = "nt",
 ) -> ET.Element:
     method_version = ""
     if rine_version:
@@ -28,12 +30,19 @@ def get_metadata_xml(
                 </Environment>
             </ScreenTape>
         </ScreenTapes>
+        <Assay>
+            <Units>
+                <MolecularWeightUnit>{molecular_weight_unit}</MolecularWeightUnit>
+            </Units>
+        </Assay>
     </File>
     """
     return ET.fromstring(xml_str)  # noqa: S314
 
 
-def get_samples_xml(include_regions=False) -> ET.Element:
+def get_samples_xml(
+    include_regions: bool = False,  # noqa: FBT001, FBT002
+) -> ET.Element:
     regions = "<Regions />"
     if include_regions:
         regions = """

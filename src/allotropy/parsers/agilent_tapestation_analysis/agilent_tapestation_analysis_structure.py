@@ -7,6 +7,8 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NO_SCREEN_TAPE_ID_MATCH,
+    PEAK_UNIT_CLASS_LOOKUP,
+    PEAK_UNIT_CLASSES,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -21,6 +23,7 @@ from allotropy.types import IOType
 
 @dataclass(frozen=True)
 class MetaData:
+    peak_unit_cls: PEAK_UNIT_CLASSES
     analyst: str | None
     analytical_method_identifier: str | None
     data_system_instance_identifier: str | None
@@ -38,6 +41,7 @@ class MetaData:
         )
 
         return MetaData(
+            peak_unit_cls=MetaData._get_peak_unit_class(root_element),
             analyst=get_val_from_xml_or_none(environment, "Experimenter"),
             analytical_method_identifier=get_val_from_xml_or_none(
                 file_information, "Assay"
@@ -57,6 +61,20 @@ class MetaData:
             or get_val_from_xml_or_none(file_information, "DINVersion"),
             software_version=get_val_from_xml_or_none(environment, "AnalysisVersion"),
         )
+
+    @staticmethod
+    def _get_peak_unit_class(
+        root_element: ET.Element,
+    ) -> PEAK_UNIT_CLASSES:
+        peak_unit = get_element_from_xml(
+            root_element, "Assay/Units/MolecularWeightUnit"
+        ).text
+        try:
+            peak_unit = peak_unit or ""
+            return PEAK_UNIT_CLASS_LOOKUP[peak_unit]
+        except KeyError as e:
+            msg = f"Unrecognized Molecular Weight Unit: {peak_unit}"
+            raise AllotropeConversionError(msg) from e
 
 
 @dataclass(frozen=True)
@@ -200,7 +218,6 @@ class SamplesList:
 
 @dataclass(frozen=True)
 class Data:
-    root: ET.ElementTree
     metadata: MetaData
     samples_list: SamplesList
 
@@ -210,7 +227,6 @@ class Data:
         root_element = root.getroot()
 
         return Data(
-            root=root,
             metadata=MetaData.create(root_element),
             samples_list=SamplesList.create(root_element),
         )

@@ -3,6 +3,10 @@ import xml.etree.ElementTree as ET  # noqa: N817
 
 import pytest
 
+from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueKiloDalton,
+    TQuantityValueNumber,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
@@ -14,6 +18,7 @@ from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis
 )
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NO_SCREEN_TAPE_ID_MATCH,
+    PEAK_UNIT_CLASSES,
 )
 from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data import (
     get_metadata_xml,
@@ -25,6 +30,7 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 def test_create_metadata() -> None:
     metadata = MetaData.create(get_metadata_xml())
     assert metadata == MetaData(
+        peak_unit_cls=TQuantityValueNumber,
         analyst="TapeStation User",
         analytical_method_identifier="cfDNA",
         data_system_instance_identifier="TAPESTATIONPC",
@@ -34,6 +40,28 @@ def test_create_metadata() -> None:
         method_version=None,
         software_version="3.2.0.22472",
     )
+
+
+@pytest.mark.parametrize(
+    "unit, unit_class",
+    (
+        ("nt", TQuantityValueNumber),
+        ("bp", TQuantityValueNumber),
+        ("kD", TQuantityValueKiloDalton),
+    ),
+)
+@pytest.mark.short
+def test_create_metadata_with_unit(unit: str, unit_class: PEAK_UNIT_CLASSES) -> None:
+    metadata = MetaData.create(get_metadata_xml(molecular_weight_unit=unit))
+    assert metadata.peak_unit_cls == unit_class
+
+
+@pytest.mark.short
+def test_create_metadata_with_unknown_unit() -> None:
+    unit = "not-a-unit"
+    msg = f"Unrecognized Molecular Weight Unit: {unit}"
+    with pytest.raises(AllotropeConversionError, match=msg):
+        MetaData.create(get_metadata_xml(molecular_weight_unit=unit))
 
 
 @pytest.mark.short
