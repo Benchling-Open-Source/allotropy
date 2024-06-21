@@ -1,4 +1,4 @@
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # noqa: N817
 
 
 def get_metadata_xml(
@@ -33,7 +33,36 @@ def get_metadata_xml(
     return ET.fromstring(xml_str)  # noqa: S314
 
 
-def get_samples_xml() -> ET.Element:
+def get_samples_xml(include_regions=False) -> ET.Element:
+    regions = "<Regions />"
+    if include_regions:
+        regions = """
+        <Regions>
+            <Region>
+                <From>504</From>
+                <To>1000</To>
+                <AverageSize>395</AverageSize>
+                <Concentration>1.11</Concentration>
+                <Molarity>65.8</Molarity>
+                <PercentOfTotal>4.09</PercentOfTotal>
+                <Area>0.13</Area>
+                <Comment>Degraded</Comment>
+                <IsAutoAddedRegion>True</IsAutoAddedRegion>
+            </Region>
+            <Region>
+                <From>42</From>
+                <To>3000</To>
+                <AverageSize>1944</AverageSize>
+                <Concentration>0.862</Concentration>
+                <Molarity>0.765</Molarity>
+                <PercentOfTotal>3.17</PercentOfTotal>
+                <Area>0.10</Area>
+                <Comment>Partially Degraded</Comment>
+                <IsAutoAddedRegion>True</IsAutoAddedRegion>
+            </Region>
+        </Regions>
+        """
+
     xml_str = f"""
     <File>
     <ScreenTapes>
@@ -97,6 +126,7 @@ def get_samples_xml() -> ET.Element:
                     <ToPercent>50.9</ToPercent>
                 </Peak>
             </Peaks>
+            {regions}
         </Sample>
     </Samples>
     </File>

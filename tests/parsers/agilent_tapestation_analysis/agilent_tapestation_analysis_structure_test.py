@@ -1,11 +1,12 @@
 from unittest import mock
-import pytest
+import xml.etree.ElementTree as ET  # noqa: N817
 
-import xml.etree.ElementTree as ET
+import pytest
 
 from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
+    DataRegion,
     MetaData,
     Peak,
     Sample,
@@ -121,5 +122,35 @@ def test_create_samples_list() -> None:
                     comment=None,
                 ),
             ],
+            data_regions=[],
         )
+    ]
+
+
+@pytest.mark.short
+def test_create_samples_list_with_regions() -> None:
+    with mock.patch(
+        "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
+        return_value="dummy_id",
+    ):
+        samples_list = SamplesList.create(get_samples_xml(include_regions=True))
+    assert samples_list.samples[0].data_regions == [
+        DataRegion(
+            region_identifier="dummy_id",
+            region_start=42,
+            region_end=3000,
+            region_area=0.10,
+            relative_region_area=3.17,
+            region_name="1",
+            comment="Partially Degraded",
+        ),
+        DataRegion(
+            region_identifier="dummy_id",
+            region_start=504,
+            region_end=1000,
+            region_area=0.13,
+            relative_region_area=4.09,
+            region_name="2",
+            comment="Degraded",
+        ),
     ]

@@ -87,7 +87,6 @@ class Peak:
         observations = get_val_from_xml_or_none(peak_element, "Observations")
         return Peak(
             peak_identifier=random_uuid_str(),
-            peak_name=get_val_from_xml_or_none(peak_element, "Number"),
             peak_height=try_float_or_nan(peak_height),
             peak_start=try_float_or_nan(peak_start),
             peak_end=try_float_or_nan(peak_end),
@@ -95,7 +94,37 @@ class Peak:
             peak_area=try_float_or_nan(peak_area),
             relative_peak_area=try_float_or_nan(relative_peak_area),
             relative_corrected_peak_area=try_float_or_nan(relative_corrected_peak_area),
+            peak_name=get_val_from_xml_or_none(peak_element, "Number"),
             comment=f"{comment or ''} {observations or ''}".strip() or None,
+        )
+
+
+@dataclass(frozen=True)
+class DataRegion:
+    region_identifier: str
+    region_start: JsonFloat
+    region_end: JsonFloat
+    region_area: JsonFloat
+    relative_region_area: JsonFloat
+    region_name: str | None
+    comment: str | None
+
+    @staticmethod
+    def create(region_element: ET.Element, region_name: str) -> DataRegion:
+        region_start = get_val_from_xml_or_none(region_element, "From")
+        region_end = get_val_from_xml_or_none(region_element, "To")
+        region_area = get_val_from_xml_or_none(region_element, "Area")
+        relative_region_area = get_val_from_xml_or_none(
+            region_element, "PercentOfTotal"
+        )
+        return DataRegion(
+            region_identifier=random_uuid_str(),
+            region_start=try_float_or_nan(region_start),
+            region_end=try_float_or_nan(region_end),
+            region_area=try_float_or_nan(region_area),
+            relative_region_area=try_float_or_nan(relative_region_area),
+            region_name=region_name,
+            comment=get_val_from_xml_or_none(region_element, "Comment"),
         )
 
 
@@ -108,6 +137,7 @@ class Sample:
     sample_identifier: str
     description: str | None
     peak_list: list[Peak]
+    data_regions: list[DataRegion]
 
     @staticmethod
     def create(sample_element: ET.Element, screen_tape: ET.Element) -> Sample:
@@ -116,7 +146,16 @@ class Sample:
         comment = get_val_from_xml_or_none(sample_element, "Comment")
         observations = get_val_from_xml_or_none(sample_element, "Observations")
         description = f"{comment or ''} {observations or ''}".strip()
+
         peaks = get_element_from_xml(sample_element, "Peaks")
+        regions: list[ET.Element] = []
+
+        regions_element = sample_element.find("Regions")
+        if regions_element is not None:
+            regions = sorted(
+                regions_element.iter("Region"),
+                key=lambda region: get_val_from_xml(region, "From"),
+            )
 
         return Sample(
             measurement_id=random_uuid_str(),
@@ -128,6 +167,10 @@ class Sample:
             sample_identifier=f"{screen_tape_id}_{well_number}",
             description=description or None,
             peak_list=[Peak.create(peak) for peak in peaks.iter("Peak")],
+            data_regions=[
+                DataRegion.create(region, str(idx))
+                for idx, region in enumerate(regions, start=1)
+            ],
         )
 
 
