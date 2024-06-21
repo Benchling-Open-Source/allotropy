@@ -6,6 +6,26 @@ In order to contribute you will need to have an Individual or Corporate Contribu
 
 Allotropy follows a [fork and pull model](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-collaborative-development-models#fork-and-pull-model). To start, fork a copy of the Allotropy repository in GitHub onto your own account and then create your local repository of the fork.
 
+## Contribution conventions
+
+### PR title
+The PR title must have a prefix (`<prefix>: <description>`) and must have one of the following prefixes:
+
+* `feat`: A new feature
+* `fix`: A bug fix
+* `docs`: Documentation only changes
+* `style`: Stylistic only changes (e.g. whitespace, formatting)
+* `refactor`: Refactor only changes (e.g. moving code, reorganizing classes)
+* `perf`: Performance only changes
+* `test`: A change that only introduces new tests or test data
+* `chore`: A change to internal systems (e.g. build, ci, dependencies) that does not affect tests
+
+## CHANGELOG
+Every PR that starts with `feat` or `fix` must have a changelog entry. This ensures that all changes that affect
+the library output are documented in the changelog.
+
+If your change affects existing test cases or adds new tests with new features, it should almost certainly have a `feat` or `fix` prefix.
+
 ## GPG keys and signed commits
 All commits to this repository must be signed. To set up commit signatures, please do the following:
 - Check for [existing GPG keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/checking-for-existing-gpg-keys).

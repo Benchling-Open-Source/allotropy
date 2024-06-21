@@ -47,5 +47,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Check CHANGELOG
-      if: ${{ !startsWith(github.event.pull_request.title, 'internal:') && !startsWith(github.event.pull_request.title, 'chore:') }}
       run: ./scripts/check_changelog
+      env:
+        PR_TITLE: {{ github.event.pull_request.title }}
+
+  pr-title-check:
+    runs-on: ubuntu-20.04
+    name: Check CHANGELOG
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Check PR title
+      run: ./scripts/check_title
+      env:
+        PR_TITLE: {{ github.event.pull_request.title }}
