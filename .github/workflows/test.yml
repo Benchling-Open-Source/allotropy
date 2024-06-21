@@ -53,7 +53,7 @@ jobs:
 
   pr-title-check:
     runs-on: ubuntu-20.04
-    name: Check CHANGELOG
+    name: Check PR Title
 
     steps:
     - uses: actions/checkout@v3
