@@ -6,7 +6,7 @@
       "properties": {
         "spectrophotometry aggregate document": {
           "type": "object",
-          "$asm.property-class": "TO DO",
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002937",
           "$asm.pattern": "aggregate datum",
           "properties": {
             "device system document": {
@@ -316,9 +316,12 @@
                         "$asm.array-mixed": false,
                         "$asm.pattern": "indexed datum",
                         "items": {
-                          "anyOf": [
+                          "oneOf": [
                             {
                               "$ref": "#/$defs/ultravioletAbsorbancePointDetectionMeasurementDocumentItems"
+                            },
+                            {
+                              "$ref": "#/$defs/fluorescencePointDetectionMeasurementDocumentItems"
                             }
                           ]
                         },
@@ -1127,6 +1130,135 @@
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001157",
           "$asm.pattern": "quantity datum",
           "$ref": "#/$custom/tQuantityValueMilliAbsorbanceUnit"
+        }
+      }
+    },
+    "fluorescencePointDetectionDeviceControlDocument": {
+      "type": "array",
+      "$asm.array-ordered": true,
+      "$asm.array-mixed": false,
+      "$asm.pattern": "indexed datum",
+      "items": {
+        "allOf": [
+          {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "detector wavelength setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "detector bandwidth setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "wavelength filter cutoff setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002478",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "excitation bandwidth setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "excitation wavelength setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              }
+            }
+          },
+          {
+            "$ref": "#/$defs/deviceControlDocument"
+          },
+          {
+            "properties": {
+              "@index": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "fluorescencePointDetectionDeviceControlAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "device control document"
+      ],
+      "properties": {
+        "device control document": {
+          "$ref": "#/$defs/fluorescencePointDetectionDeviceControlDocument"
+        }
+      }
+    },
+    "fluorescencePointDetectionMeasurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "fluorescence",
+        "sample document",
+        "device control aggregate document",
+        "measurement identifier"
+      ],
+      "properties": {
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "device control aggregate document": {
+          "$ref": "#/$defs/fluorescencePointDetectionDeviceControlAggregateDocument"
+        },
+        "sample document": {
+          "$ref": "#/$defs/sampleDocument"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "processed data aggregate document": {
+          "$ref": "#/$defs/processedDataAggregateDocument"
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "compartment temperature": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+        },
+        "fluorescence": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002408",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueRelativeFluorescenceUnit"
+        },
+        "mass concentration": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
         }
       }
     },

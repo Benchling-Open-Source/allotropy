@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added github enforcement that CHANGELOG.md is updated
 - Added test files Agilent TapeStation Analysis
 - Add Alphalisa assay support to Gen5 adapter
+- Add fluorescence point detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
 
 ### Fixed
 
