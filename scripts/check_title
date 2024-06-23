@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|perf|test|chore):.* ]]; then
     exit 0
 fi
