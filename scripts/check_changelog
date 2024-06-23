@@ -1,5 +1,6 @@
 #!/bin/sh
-if [[ "$PR_TITLE" =~ ^(docs|style|refactor|perf|test|chore):.* ]]; then
+regex="^(docs|style|refactor|perf|test|chore):.*"
+if [[ "$PR_TITLE" =~ $regex ]]; then
     exit 0
 fi
 git fetch origin --quiet
