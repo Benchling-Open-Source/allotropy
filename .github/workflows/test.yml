@@ -49,7 +49,7 @@ jobs:
     - name: Check CHANGELOG
       run: ./scripts/check_changelog
       env:
-        PR_TITLE: {{ github.event.pull_request.title }}
+        PR_TITLE: ${{ github.event.pull_request.title }}
 
   pr-title-check:
     runs-on: ubuntu-20.04
@@ -60,4 +60,4 @@ jobs:
     - name: Check PR title
       run: ./scripts/check_title
       env:
-        PR_TITLE: {{ github.event.pull_request.title }}
+        PR_TITLE: ${{ github.event.pull_request.title }}
