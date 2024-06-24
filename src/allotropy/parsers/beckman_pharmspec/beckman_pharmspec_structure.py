@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
 import re
 
@@ -37,7 +39,7 @@ class Distribution:
     distribution_id: str
 
     @staticmethod
-    def create(df: pd.DataFrame, name: str, *, is_calculated: bool) -> "Distribution":
+    def create(df: pd.DataFrame, name: str, *, is_calculated: bool) -> Distribution:
         data = []
         cols = COLUMN_MAP.values()
         for row in df.index:
@@ -79,7 +81,7 @@ class Metadata:
         return "Unknown"
 
     @staticmethod
-    def create(df: pd.DataFrame) -> "Metadata":
+    def create(df: pd.DataFrame) -> Metadata:
         return Metadata(
             measurement_time=pd.to_datetime(
                 str(df.at[8, 5]).replace(".", "-")
@@ -157,7 +159,7 @@ class PharmSpecData:
         return distributions
 
     @staticmethod
-    def create(df: pd.DataFrame) -> "PharmSpecData":
+    def create(df: pd.DataFrame) -> PharmSpecData:
         data = PharmSpecData._extract_data(df)
         return PharmSpecData(
             metadata=Metadata.create(df),
