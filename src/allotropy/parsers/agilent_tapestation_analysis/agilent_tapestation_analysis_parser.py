@@ -96,7 +96,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
                 measurement_aggregate_document=MeasurementAggregateDocument(
                     measurement_document=[
                         MeasurementDocumentItem(
-                            measurement_identifier=sample.measurement_id,
+                            measurement_identifier=sample.measurement_identifier,
                             measurement_time=sample.measurement_time,
                             compartment_temperature=(
                                 TQuantityValueDegreeCelsius(

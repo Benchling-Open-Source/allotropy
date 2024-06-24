@@ -7,8 +7,16 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NO_SCREEN_TAPE_ID_MATCH,
+    NON_CALCULATED_DATA_TAGS_PEAK,
+    NON_CALCULATED_DATA_TAGS_REGION,
+    NON_CALCULATED_DATA_TAGS_SAMPLE,
     PEAK_UNIT_CLASS_LOOKUP,
     PEAK_UNIT_CLASSES,
+)
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -19,6 +27,29 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
 )
 from allotropy.types import IOType
+
+
+def _get_calculated_data(
+    element: ET.Element, excluded_tags: list[str], source_id: str, feature: str
+) -> list[CalculatedDocument]:
+    calculated_data = []
+    for node in element:
+        if (name := node.tag) in excluded_tags:
+            continue
+        if (value := try_float_or_none(node.text)) is None:
+            continue
+        calculated_data.append(
+            CalculatedDocument(
+                uuid=random_uuid_str(),
+                name=name,
+                value=value,
+                data_sources=[
+                    DataSource(feature=feature, reference=Referenceable(uuid=source_id))
+                ],
+            )
+        )
+
+    return calculated_data
 
 
 @dataclass(frozen=True)
@@ -89,6 +120,7 @@ class Peak:
     relative_corrected_peak_area: JsonFloat
     peak_name: str | None
     comment: str | None
+    calculated_data: list[CalculatedDocument]
 
     @staticmethod
     def create(peak_element: ET.Element) -> Peak:
@@ -103,8 +135,10 @@ class Peak:
         )
         comment = get_val_from_xml_or_none(peak_element, "Comment")
         observations = get_val_from_xml_or_none(peak_element, "Observations")
+        peak_identifier = random_uuid_str()
+
         return Peak(
-            peak_identifier=random_uuid_str(),
+            peak_identifier=peak_identifier,
             peak_height=try_float_or_nan(peak_height),
             peak_start=try_float_or_nan(peak_start),
             peak_end=try_float_or_nan(peak_end),
@@ -114,6 +148,12 @@ class Peak:
             relative_corrected_peak_area=try_float_or_nan(relative_corrected_peak_area),
             peak_name=get_val_from_xml_or_none(peak_element, "Number"),
             comment=f"{comment or ''} {observations or ''}".strip() or None,
+            calculated_data=_get_calculated_data(
+                element=peak_element,
+                excluded_tags=NON_CALCULATED_DATA_TAGS_PEAK,
+                source_id=peak_identifier,
+                feature="peak",
+            ),
         )
 
 
@@ -126,6 +166,7 @@ class DataRegion:
     relative_region_area: JsonFloat
     region_name: str | None
     comment: str | None
+    calculated_data: list[CalculatedDocument]
 
     @staticmethod
     def create(region_element: ET.Element, region_name: str) -> DataRegion:
@@ -135,20 +176,28 @@ class DataRegion:
         relative_region_area = get_val_from_xml_or_none(
             region_element, "PercentOfTotal"
         )
+        region_identifier = random_uuid_str()
+
         return DataRegion(
-            region_identifier=random_uuid_str(),
+            region_identifier=region_identifier,
             region_start=try_float_or_nan(region_start),
             region_end=try_float_or_nan(region_end),
             region_area=try_float_or_nan(region_area),
             relative_region_area=try_float_or_nan(relative_region_area),
             region_name=region_name,
             comment=get_val_from_xml_or_none(region_element, "Comment"),
+            calculated_data=_get_calculated_data(
+                element=region_element,
+                excluded_tags=NON_CALCULATED_DATA_TAGS_REGION,
+                source_id=region_identifier,
+                feature="data region",
+            ),
         )
 
 
 @dataclass(frozen=True)
 class Sample:
-    measurement_id: str
+    measurement_identifier: str
     measurement_time: str
     compartment_temperature: float | None
     location_identifier: str
@@ -156,6 +205,8 @@ class Sample:
     description: str | None
     peak_list: list[Peak]
     data_regions: list[DataRegion]
+    calculated_data: list[CalculatedDocument]
+    error: str | None
 
     @staticmethod
     def create(sample_element: ET.Element, screen_tape: ET.Element) -> Sample:
@@ -174,9 +225,10 @@ class Sample:
                 regions_element.iter("Region"),
                 key=lambda region: get_val_from_xml(region, "From"),
             )
+        measurement_id = random_uuid_str()
 
         return Sample(
-            measurement_id=random_uuid_str(),
+            measurement_identifier=random_uuid_str(),
             measurement_time=get_val_from_xml(screen_tape, "TapeRunDate"),
             compartment_temperature=try_float_or_none(
                 get_val_from_xml_or_none(screen_tape, "ElectrophoresisTemp")
@@ -189,6 +241,13 @@ class Sample:
                 DataRegion.create(region, str(idx))
                 for idx, region in enumerate(regions, start=1)
             ],
+            calculated_data=_get_calculated_data(
+                element=sample_element,
+                excluded_tags=NON_CALCULATED_DATA_TAGS_SAMPLE,
+                source_id=measurement_id,
+                feature="sample",
+            ),
+            error=get_val_from_xml_or_none(sample_element, "Alert"),
         )
 
 

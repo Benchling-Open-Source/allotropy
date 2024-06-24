@@ -15,3 +15,33 @@ PEAK_UNIT_CLASS_LOOKUP: dict[str, PEAK_UNIT_CLASSES] = {
     "bp": TQuantityValueNumber,
     "kD": TQuantityValueKiloDalton,
 }
+
+NON_CALCULATED_DATA_TAGS_SAMPLE = [
+    "Comment",
+    "Observations",
+    "Peaks",
+    "Regions",
+    "ScreenTapeID",
+    "WellNumber",
+]
+
+NON_CALCULATED_DATA_TAGS_PEAK = [
+    "Area",
+    "Comment",
+    "FromMW",
+    "Height",
+    "Number",
+    "Observations",
+    "PercentIntegratedArea",
+    "PercentOfTotal",
+    "Size",
+    "ToMW",
+]
+
+NON_CALCULATED_DATA_TAGS_REGION = [
+    "From",
+    "To",
+    "Area",
+    "PercentOfTotal",
+    "Comment",
+]

@@ -41,10 +41,12 @@ def get_metadata_xml(
 
 
 def get_samples_xml(
-    include_regions: bool = False,  # noqa: FBT001, FBT002
+    with_regions: bool = False,  # noqa: FBT001, FBT002
+    with_calculated_data: bool = False,  # noqa: FBT001, FBT002
+    sample_error: str = "",
 ) -> ET.Element:
     regions = "<Regions />"
-    if include_regions:
+    if with_regions:
         regions = """
         <Regions>
             <Region>
@@ -52,7 +54,6 @@ def get_samples_xml(
                 <To>1000</To>
                 <AverageSize>395</AverageSize>
                 <Concentration>1.11</Concentration>
-                <Molarity>65.8</Molarity>
                 <PercentOfTotal>4.09</PercentOfTotal>
                 <Area>0.13</Area>
                 <Comment>Degraded</Comment>
@@ -62,7 +63,6 @@ def get_samples_xml(
                 <From>42</From>
                 <To>3000</To>
                 <AverageSize>1944</AverageSize>
-                <Concentration>0.862</Concentration>
                 <Molarity>0.765</Molarity>
                 <PercentOfTotal>3.17</PercentOfTotal>
                 <Area>0.10</Area>
@@ -89,50 +89,44 @@ def get_samples_xml(
         <Sample>
             <WellNumber>A1</WellNumber>
             <Comment>Ladder</Comment>
-            <Concentration>58.2</Concentration>
+            <Concentration>{58.2 if with_calculated_data else ""}</Concentration>
             <Observations>Ladder</Observations>
-            <Alert>
-            </Alert>
+            <Alert>{sample_error}</Alert>
             <ScreenTapeID>ScreenTape01</ScreenTapeID>
             <Peaks>
                 <Peak>
                     <Area>1.00</Area>
-                    <AssignedQuantity>8.50</AssignedQuantity>
-                    <CalibratedQuantity>8.50</CalibratedQuantity>
+                    <AssignedQuantity>{8.50 if with_calculated_data else ""}</AssignedQuantity>
                     <Comment>
                     </Comment>
                     <FromMW>68</FromMW>
-                    <FromPercent>80.6</FromPercent>
+                    <FromPercent>{80.6 if with_calculated_data else ""}</FromPercent>
                     <Height>261.379</Height>
-                    <Molarity>131</Molarity>
+                    <Molarity>{131 if with_calculated_data else ""}</Molarity>
                     <Size>100</Size>
                     <Number>-</Number>
                     <Observations>Lower Marker</Observations>
                     <PercentIntegratedArea>-</PercentIntegratedArea>
                     <PercentOfTotal>-</PercentOfTotal>
-                    <RunDistance>83.2</RunDistance>
                     <ToMW>158</ToMW>
-                    <ToPercent>85.4</ToPercent>
+                    <ToPercent>{85.4 if with_calculated_data else ""}</ToPercent>
                 </Peak>
                 <Peak>
                     <Area>1.33</Area>
-                    <AssignedQuantity>-</AssignedQuantity>
-                    <CalibratedQuantity>11.3</CalibratedQuantity>
+                    <CalibratedQuantity>{11.3 if with_calculated_data else ""}</CalibratedQuantity>
                     <Comment>
                     </Comment>
                     <FromMW>3812</FromMW>
-                    <FromPercent>41.1</FromPercent>
+                    <FromPercent>{41.1 if with_calculated_data else ""}</FromPercent>
                     <Height>284.723</Height>
-                    <Molarity>2.05</Molarity>
                     <Size>8525</Size>
                     <Number>1</Number>
                     <Observations>
                     </Observations>
                     <PercentIntegratedArea>92.30</PercentIntegratedArea>
                     <PercentOfTotal>44.38</PercentOfTotal>
-                    <RunDistance>46.5</RunDistance>
+                    <RunDistance>{46.5 if with_calculated_data else ""}</RunDistance>
                     <ToMW>&gt;60000</ToMW>
-                    <ToPercent>50.9</ToPercent>
                 </Peak>
             </Peaks>
             {regions}

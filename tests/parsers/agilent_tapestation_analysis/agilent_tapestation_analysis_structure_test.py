@@ -20,6 +20,11 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NO_SCREEN_TAPE_ID_MATCH,
     PEAK_UNIT_CLASSES,
 )
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+    DataSource,
+    Referenceable,
+)
 from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data import (
     get_metadata_xml,
     get_samples_xml,
@@ -118,7 +123,7 @@ def test_create_samples_list() -> None:
 
     assert samples_list.samples == [
         Sample(
-            measurement_id="dummy_id",
+            measurement_identifier="dummy_id",
             measurement_time="2020-09-20T03:52:58-05:00",
             compartment_temperature=26.4,
             location_identifier="A1",
@@ -129,30 +134,113 @@ def test_create_samples_list() -> None:
                     peak_identifier="dummy_id",
                     peak_name="-",
                     peak_height=261.379,
-                    peak_start=68,
-                    peak_end=158,
-                    peak_position=100,
+                    peak_start=68.0,
+                    peak_end=158.0,
+                    peak_position=100.0,
                     peak_area=1.0,
                     relative_peak_area=InvalidJsonFloat.NaN,
                     relative_corrected_peak_area=InvalidJsonFloat.NaN,
                     comment="Lower Marker",
+                    calculated_data=[],
                 ),
                 Peak(
                     peak_identifier="dummy_id",
                     peak_name="1",
                     peak_height=284.723,
-                    peak_start=3812,
+                    peak_start=3812.0,
                     peak_end=InvalidJsonFloat.NaN,
-                    peak_position=8525,
+                    peak_position=8525.0,
                     peak_area=1.33,
                     relative_peak_area=44.38,
                     relative_corrected_peak_area=92.30,
                     comment=None,
+                    calculated_data=[],
                 ),
             ],
             data_regions=[],
+            calculated_data=[],
+            error=None,
         )
     ]
+
+
+@pytest.mark.short
+def test_create_samples_list_with_calculated_data() -> None:
+    with mock.patch(
+        "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
+        return_value="dummy_id",
+    ):
+        samples_list = SamplesList.create(get_samples_xml(with_calculated_data=True))
+
+    peak_data_source = DataSource(
+        feature="peak", reference=Referenceable(uuid="dummy_id")
+    )
+    sample_data_source = DataSource(
+        feature="sample", reference=Referenceable(uuid="dummy_id")
+    )
+
+    sample = samples_list.samples[0]
+
+    assert sample.calculated_data == [
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="Concentration",
+            value=58.2,
+            data_sources=[sample_data_source],
+        )
+    ]
+    assert sample.peak_list[0].calculated_data == [
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="AssignedQuantity",
+            value=8.50,
+            data_sources=[peak_data_source],
+        ),
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="FromPercent",
+            value=80.6,
+            data_sources=[peak_data_source],
+        ),
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="Molarity",
+            value=131.0,
+            data_sources=[peak_data_source],
+        ),
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="ToPercent",
+            value=85.4,
+            data_sources=[peak_data_source],
+        ),
+    ]
+    assert sample.peak_list[1].calculated_data == [
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="CalibratedQuantity",
+            value=11.3,
+            data_sources=[peak_data_source],
+        ),
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="FromPercent",
+            value=41.1,
+            data_sources=[peak_data_source],
+        ),
+        CalculatedDocument(
+            uuid="dummy_id",
+            name="RunDistance",
+            value=46.5,
+            data_sources=[peak_data_source],
+        ),
+    ]
+
+
+@pytest.mark.short
+def test_create_samples_list_with_error() -> None:
+    samples_list = SamplesList.create(get_samples_xml(sample_error="Sample Error."))
+    assert samples_list.samples[0].error == "Sample Error."
 
 
 @pytest.mark.short
@@ -161,24 +249,57 @@ def test_create_samples_list_with_regions() -> None:
         "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
         return_value="dummy_id",
     ):
-        samples_list = SamplesList.create(get_samples_xml(include_regions=True))
+        samples_list = SamplesList.create(get_samples_xml(with_regions=True))
+    region_data_source = DataSource(
+        feature="data region", reference=Referenceable(uuid="dummy_id")
+    )
+
+    # Note: Data regions are ordered by <From> (region_start) ascending
     assert samples_list.samples[0].data_regions == [
         DataRegion(
             region_identifier="dummy_id",
-            region_start=42,
-            region_end=3000,
+            region_start=42.0,
+            region_end=3000.0,
             region_area=0.10,
             relative_region_area=3.17,
             region_name="1",
             comment="Partially Degraded",
+            calculated_data=[
+                CalculatedDocument(
+                    uuid="dummy_id",
+                    name="AverageSize",
+                    value=1944.0,
+                    data_sources=[region_data_source],
+                ),
+                CalculatedDocument(
+                    uuid="dummy_id",
+                    name="Molarity",
+                    value=0.765,
+                    data_sources=[region_data_source],
+                ),
+            ],
         ),
         DataRegion(
             region_identifier="dummy_id",
-            region_start=504,
-            region_end=1000,
+            region_start=504.0,
+            region_end=1000.0,
             region_area=0.13,
             relative_region_area=4.09,
             region_name="2",
             comment="Degraded",
+            calculated_data=[
+                CalculatedDocument(
+                    uuid="dummy_id",
+                    name="AverageSize",
+                    value=395.0,
+                    data_sources=[region_data_source],
+                ),
+                CalculatedDocument(
+                    uuid="dummy_id",
+                    name="Concentration",
+                    value=1.11,
+                    data_sources=[region_data_source],
+                ),
+            ],
         ),
     ]
