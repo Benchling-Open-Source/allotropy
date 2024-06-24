@@ -26,7 +26,7 @@ def test_create_combined_data() -> None:
     )
     assert combined_data.version == "MMPR 1.0.38"
     assert combined_data.model == "HTS"
-    assert combined_data.serial_number == "1201140625150"
+    assert combined_data.serial_number == "1298873245"
     assert combined_data.plate_doc_info[0].plate_well_count == 96
     assert len(combined_data.plate_doc_info) == 2
 

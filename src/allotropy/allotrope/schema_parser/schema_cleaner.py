@@ -2,6 +2,7 @@ from collections import defaultdict
 from collections.abc import Callable
 import copy
 import json
+from pathlib import Path
 import re
 from typing import Any
 
@@ -626,7 +627,7 @@ class SchemaCleaner:
         return self._clean_schema(cleaned)
 
     def clean_file(self, schema_path: str) -> None:
-        schema = self.clean(get_schema(schema_path))
+        schema = self.clean(get_schema(Path(schema_path)))
 
         with open(schema_path, "w") as f:
             json.dump(schema, f, indent=2)

@@ -3,7 +3,7 @@ from typing import Any, Optional
 
 import pandas as pd
 
-from allotropy.allotrope.models.light_obscuration_benchling_2023_12_light_obscuration import (
+from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_obscuration import (
     CalculatedDataDocumentItem,
     DataProcessingDocument,
     DataSourceDocumentItem,
@@ -39,6 +39,7 @@ from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
     PharmSpecData,
 )
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 # This map is used to coerce the column names coming in the raw data
@@ -59,6 +60,14 @@ def get_property_from_sample(property_name: str, value: Any) -> Any:
 
 
 class PharmSpecParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Beckman PharmSpec"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
         data = PharmSpecData.create(df)

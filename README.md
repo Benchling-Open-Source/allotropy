@@ -10,11 +10,13 @@ If you aren't familiar with Allotrope, we suggest you start by reading the [Allo
 We have chosen to have this library output ASM since JSON is easy to read and consume in most modern systems and can be checked by humans without any special tools needed. All of the published open source ASMs can be found in the [ASM Gitlab repository](https://gitlab.com/allotrope-public/asm).
 
 We currently have parser support for the following instruments:
+
+### Recommended
   - Agilent Gen5
   - Agilent Gen5 Image
-  - Applied Bio AbsoluteQ
-  - Applied Bio QuantStudio RT-PCR
-  - Applied Bio QuantStudio Design & Analysis
+  - AppBio AbsoluteQ
+  - AppBio QuantStudio RT-PCR
+  - AppBio QuantStudio Design & Analysis
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - Beckman PharmSpec
@@ -22,14 +24,20 @@ We currently have parser support for the following instruments:
   - ChemoMetec Nucleoview
   - CTL ImmunoSpot
   - Luminex xPONENT
+  - Methodical Mind
   - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
-  - Qiacuity dPCR
   - Revvity Kaleido
   - Roche Cedex BioHT
   - Thermo Fisher NanoDrop Eight
   - Unchained Labs Lunatic
+
+### Candidate Release
+  - Qiacuity dPCR
+  - Mabtech Apex
+
+The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details. 
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 

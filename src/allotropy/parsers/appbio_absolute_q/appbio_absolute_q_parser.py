@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_dpcr import (
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
     DataSourceAggregateDocument,
@@ -40,11 +40,20 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CalculatedDataItem,
     CalculatedDataSource,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppbioAbsoluteQParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "AppBio AbsoluteQ"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = named_file_contents.contents
         filename = named_file_contents.original_file_name

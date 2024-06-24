@@ -16,7 +16,7 @@ import re
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -45,7 +45,7 @@ UNDEFINED_SAMPLE_NAME = "N/A"
 @dataclass(frozen=True)
 class Header:
     measurement_time: str
-    plate_well_count: int
+    plate_well_count: int | None
     experiment_type: ExperimentType
     device_identifier: str
     model_number: str
@@ -75,20 +75,17 @@ class Header:
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }
 
+        plate_well_count_search = re.search(
+            "(96)|(384)",
+            try_str_from_series(data, "Block Type"),
+        )
+
         return Header(
             measurement_time=try_str_from_series(data, "Experiment Run End Time"),
-            plate_well_count=assert_not_none(
-                try_int(
-                    assert_not_none(
-                        re.match(
-                            "(96)|(384)",
-                            try_str_from_series(data, "Block Type"),
-                        ),
-                        msg="Unable to find plate well count",
-                    ).group(),
-                    "plate well count",
-                ),
-                msg="Unable to interpret plate well count",
+            plate_well_count=(
+                None
+                if plate_well_count_search is None
+                else int(plate_well_count_search.group())
             ),
             experiment_type=assert_not_none(
                 experiments_type_options.get(

@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.multi_analyte_profiling_benchling_2024_01_multi_analyte_profiling import (
+from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
     CalibrationAggregateDocument,
@@ -33,6 +33,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
     Header,
     Measurement,
 )
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -42,6 +43,14 @@ DEFAULT_DEVICE_TYPE = "multi analyte profiling analyzer"
 
 
 class LuminexXponentParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Luminex xPONENT"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)

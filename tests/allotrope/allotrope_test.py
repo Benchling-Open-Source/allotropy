@@ -1,5 +1,5 @@
 from allotropy.allotrope.allotrope import serialize_and_validate_allotrope
-from allotropy.allotrope.models.fluorescence_benchling_2023_09_fluorescence import (
+from allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence import (
     DeviceControlAggregateDocument,
     MeasurementAggregateDocument,
     MeasurementDocumentItem,

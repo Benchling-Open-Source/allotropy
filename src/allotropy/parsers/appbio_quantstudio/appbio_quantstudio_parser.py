@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import (
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     CalculatedDataDocumentItem,
     ContainerType,
@@ -32,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
+    InvalidJsonFloat,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
@@ -48,10 +49,19 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class AppBioQuantStudioParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "AppBio QuantStudio RT-PCR"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
         reader = LinesReader(lines)
@@ -84,7 +94,11 @@ class AppBioQuantStudioParser(VendorParser):
                             experiment_type=data.header.experiment_type,
                             container_type=ContainerType.qPCR_reaction_block,
                             plate_well_count=TQuantityValueNumber(
-                                value=data.header.plate_well_count
+                                value=(
+                                    InvalidJsonFloat.NaN
+                                    if data.header.plate_well_count is None
+                                    else data.header.plate_well_count
+                                )
                             ),
                             measurement_document=[
                                 self.get_measurement_document_item(

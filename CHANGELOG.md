@@ -19,6 +19,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.35] - 2024-06-24
+
+### Added
+- Add Mabtech Apex adapter
+- Added support for parsing Vi-Cell XR txt files
+- Add Electrophoresis BENCHLING/2024/06 schema.
+- Added github enforcement that CHANGELOG.md is updated
+- Added test files Agilent TapeStation Analysis
+- Added requirements for remaining parsers to /docs
+- Add Alphalisa assay support to Gen5 adapter
+- Add fluorescence point detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
+
+### Fixed
+
+### Changed
+
+- Redefine plate well count as optional in AppBio Quantstudio
+- Updated README.md to organize parsers according to maturity level
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.35] - 2024-06-07
+
+### Added
+- Luminex Xponent parser able to process output as pure csv file.
+
+### Fixed
+- Improved way of infer reference sample and DNA target in AppBio Quantstudio Design and Analysis
+- Fix model number and device id in ctl immunospot
+
+### Deprecated
+- Sample role type removed from Roche Cedex Bioht
+
+## [0.1.34] - 2024-06-04
+
+### Added
+
+- Add Methodical Mind adapter
+
+### Fixed
+
+- Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
+- Fixed empty space at beginin of sample identifier in Revvity Kaleido
+
+### Changed
+
+- Use modular paths for schema models
+
+
 ## [0.1.33] - 2024-05-29
 
 ### Fixed
@@ -434,7 +487,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial commit, includes support for:
   - Agilent Gen5
-  - Applied Bio QuantStudio
+  - AppBio QuantStudio
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
   - MolDev SoftMax Pro

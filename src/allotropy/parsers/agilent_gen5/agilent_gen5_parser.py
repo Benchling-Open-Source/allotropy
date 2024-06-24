@@ -1,7 +1,7 @@
 from collections.abc import Sequence
 from typing import Any
 
-from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader import (
+from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
     ContainerType,
@@ -46,6 +46,7 @@ from allotropy.parsers.agilent_gen5.constants import (
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.lines_reader import read_to_lines
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = (
@@ -69,6 +70,14 @@ def get_instance_or_none(
 
 
 class AgilentGen5Parser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Agilent Gen5"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def _create_model(self, plate_data: PlateData, file_name: str) -> Model:
         header_data = plate_data.header_data
         results = plate_data.results

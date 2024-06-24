@@ -2,6 +2,25 @@ from collections.abc import Mapping
 
 import pandas as pd
 
+from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
+    DataSystemDocument,
+    DeviceSystemDocument,
+    FluorescencePointDetectionMeasurementDocumentItems,
+    MeasurementAggregateDocument,
+    Model,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
+    SampleDocument,
+    SpectrophotometryAggregateDocument,
+    SpectrophotometryDocumentItem,
+    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
+    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+)
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicrogramPerMicroliter,
     TQuantityValueMicrogramPerMilliliter,
@@ -18,26 +37,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.allotrope.models.spectrophotometry_benchling_2023_12_spectrophotometry import (
-    CalculatedDataAggregateDocument,
-    CalculatedDataDocumentItem,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
-    DataSystemDocument,
-    DeviceSystemDocument,
-    MeasurementAggregateDocument,
-    Model,
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
-    SampleDocument,
-    SpectrophotometryAggregateDocument,
-    SpectrophotometryDocumentItem,
-    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
-    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
-)
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
     NanoDropEightReader,
 )
@@ -107,6 +109,14 @@ def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType |
 
 
 class NanodropEightParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Thermo Fisher NanoDrop Eight"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = NanoDropEightReader.read(named_file_contents)
         data = self._add_measurement_uuids(data)
@@ -233,7 +243,14 @@ class NanodropEightParser(VendorParser):
 
     def _get_measurement_document(
         self, data: pd.DataFrame, row: int
-    ) -> list[UltravioletAbsorbancePointDetectionMeasurementDocumentItems]:
+    ) -> list[
+        FluorescencePointDetectionMeasurementDocumentItems
+        | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    ]:
+        measurement_docs: list[
+            FluorescencePointDetectionMeasurementDocumentItems
+            | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+        ]
         measurement_docs = []
         na_type = _get_str_or_none(data, row, "na type")
         concentration_col = self._get_concentration_col(data)

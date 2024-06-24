@@ -2,12 +2,12 @@ from __future__ import annotations
 
 from enum import Enum
 import tempfile
-from typing import Any
+from typing import Any, Union
 import zipfile
 
 import pandas as pd
 
-from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDetectorDeviceControlAggregateDocument,
     CellCountingDetectorMeasurementDocumentItem,
@@ -40,6 +40,8 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
+from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_txt_reader import ViCellXRTXTReader
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 from allotropy.types import IOType
@@ -90,13 +92,26 @@ def remove_style_xml_file(contents: IOType) -> IOType:
 
 
 class ViCellXRParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "Beckman Vi-Cell XR"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         filename = named_file_contents.original_file_name
 
         if filename.endswith("xlsx"):
             contents = remove_style_xml_file(contents)
-        reader = ViCellXRReader(contents)
+
+        reader: Union[ViCellXRTXTReader, ViCellXRReader]
+        if filename.endswith("txt"):
+            reader = ViCellXRTXTReader(named_file_contents)
+        else:
+            reader = ViCellXRReader(contents)
 
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",

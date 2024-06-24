@@ -6,7 +6,7 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.pcr_benchling_2023_09_qpcr import ExperimentType
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
@@ -73,8 +73,14 @@ class Header:
             )
         )
 
+        run_end_data = try_str_from_series_or_none(header, "Run End Data/Time")
+        run_end_date = try_str_from_series_or_none(header, "Run End Date/Time")
+
         return Header(
-            measurement_time=try_str_from_series(header, "Run End Data/Time"),
+            measurement_time=assert_not_none(
+                run_end_data or run_end_date,
+                msg="Unable to find measurement time.",
+            ),
             plate_well_count=assert_not_none(
                 try_int(
                     assert_not_none(
@@ -420,24 +426,35 @@ class Result:
     @staticmethod
     def get_reference_sample(contents: DesignQuantstudioContents) -> str:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
-        return try_str_from_series(
-            df_to_series(
-                data[assert_df_column(data, "Rq") == 1],
-                msg="Unable to find Rq related to reference sample.",
-            ),
-            "Sample",
-            msg="Unable to infer reference sample.",
-        )
+        reference_data = data[assert_df_column(data, "Rq") == 1]
+        reference_sample_array = assert_df_column(reference_data, "Sample").unique()
+
+        if reference_sample_array.size != 1:
+            error = "Unable to infer reference sample"
+            raise AllotropeConversionError(error)
+
+        return str(reference_sample_array[0])
 
     @staticmethod
     def get_reference_target(contents: DesignQuantstudioContents) -> str:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
-        sub_data = data[assert_df_column(data, "Rq").isnull()]
-        target = assert_df_column(sub_data, "Target").unique()
-        if target.size != 1:
+
+        possible_ref_targets = set.intersection(
+            *[
+                set(
+                    assert_df_column(
+                        sample_data[assert_df_column(sample_data, "Rq").isnull()],
+                        "Target",
+                    ).tolist()
+                )
+                for _, sample_data in data.groupby("Sample")
+            ]
+        )
+
+        if len(possible_ref_targets) != 1:
             error = "Unable to infer reference target."
             raise AllotropeConversionError(error)
-        return str(target[0])
+        return str(possible_ref_targets.pop())
 
     @staticmethod
     def _add_data(
@@ -489,6 +506,37 @@ class Result:
                     "Rq Max",
                 ],
             )
+        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
+            Result._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("Target Call"),
+                columns=[
+                    "Call",
+                ],
+            )
+        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
+
+            # The genotyping result data does not contain a target column
+            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
+            rows = []
+            for idx, row in genotyping_result.iterrows():
+                snp_assay = assert_not_none(
+                    row.get("SNP Assay"),
+                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
+                )
+                for allele in ["Allele 1", "Allele 2"]:
+                    new_row = row.copy()
+                    new_row["Target"] = f"{snp_assay}-{allele}"
+                    rows.append(new_row)
+
+            Result._add_data(
+                data,
+                extra_data=pd.DataFrame(rows).reset_index(drop=True),
+                columns=[
+                    "Call",
+                ],
+            )
 
         well_data = assert_not_empty_df(
             data[assert_df_column(data, "Well") == well_item_id],
@@ -507,7 +555,11 @@ class Result:
 
         genotyping_determination_result = (
             try_str_from_series_or_none(target_data, "Call")
-            if experiment_type == ExperimentType.presence_absence_qPCR_experiment
+            if experiment_type
+            in (
+                ExperimentType.presence_absence_qPCR_experiment,
+                ExperimentType.genotyping_qPCR_experiment,
+            )
             else None
         )
 
@@ -609,5 +661,5 @@ class Data:
         ):
             return ExperimentType.presence_absence_qPCR_experiment
 
-        error = "Unable to infer expermient type"
+        error = "Unable to infer experiment type"
         raise AllotropeConversionError(error)

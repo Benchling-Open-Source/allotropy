@@ -1,4 +1,4 @@
-from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocumentItem,
     DeviceSystemDocument,
@@ -9,11 +9,20 @@ from allotropy.allotrope.models.cell_culture_analyzer_benchling_2023_09_cell_cul
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
 class NovaBioFlexParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "NovaBio Flex2"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         return self._get_model(Data.create(named_file_contents))
 

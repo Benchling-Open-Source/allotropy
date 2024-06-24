@@ -1,12 +1,12 @@
 from collections import defaultdict
 from dataclasses import dataclass
 import json
-import os
 from pathlib import Path
 import re
 from typing import Any
 
 from allotropy.allotrope.schema_parser.backup_manager import is_backup_file
+from allotropy.allotrope.schema_parser.path_util import SHARED_SCHEMAS_PATH
 
 
 # Used to match and locate the model definiton defined in allotropy/allotrope/models/shared
@@ -63,23 +63,20 @@ def get_all_schema_components(schema: dict[str, Any]) -> dict[str, dict[str, Any
     return mapping
 
 
-SHARED_SCHEMAS_DIR = os.path.join(Path(__file__).parent.parent, "schemas", "shared")
-
-
 def get_schema_definitions_mapping() -> dict[str, list[SchemaModel]]:
     schema_mapping = defaultdict(list)
 
     definition_files = [
-        (filename, directory)
+        (path.name, directory)
         for directory in ["definitions", "components"]
-        for filename in os.listdir(os.path.join(SHARED_SCHEMAS_DIR, directory))
-        if not is_backup_file(filename)
+        for path in Path(SHARED_SCHEMAS_PATH, directory).iterdir()
+        if not is_backup_file(path)
     ]
 
     for schema_file, directory in definition_files:
         schema_module = f"{directory}.{schema_file[:-5]}"
 
-        with open(os.path.join(SHARED_SCHEMAS_DIR, directory, schema_file)) as f:
+        with open(Path(SHARED_SCHEMAS_PATH, directory, schema_file)) as f:
             schemas = json.load(f)
 
         for schema_name, schema in schemas.items():

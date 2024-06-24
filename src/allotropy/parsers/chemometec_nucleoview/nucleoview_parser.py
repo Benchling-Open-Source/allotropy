@@ -3,7 +3,7 @@ from typing import Any
 import pandas as pd
 from pandas import Timestamp
 
-from allotropy.allotrope.models.cell_counting_benchling_2023_11_cell_counting import (
+from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_counting import (
     CellCountingAggregateDocument,
     CellCountingDetectorDeviceControlAggregateDocument,
     CellCountingDetectorMeasurementDocumentItem,
@@ -36,6 +36,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -77,6 +78,14 @@ def get_property_from_sample(
 
 
 class ChemometecNucleoviewParser(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return "ChemoMetec Nucleoview"
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.RECOMMENDED
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         filename = named_file_contents.original_file_name
