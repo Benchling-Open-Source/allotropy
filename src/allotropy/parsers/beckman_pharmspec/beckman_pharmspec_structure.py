@@ -22,13 +22,32 @@ VALID_CALCS = ["Average"]
 
 
 @dataclass(frozen=True, kw_only=True)
+class DistributionProperty:
+    name: str
+    value: float
+    distribution_property_id: str
+
+
+@dataclass(frozen=True, kw_only=True)
 class DistributionRow:
-    particle_size: float
-    cumulative_count: float
-    cumulative_particle_density: float
-    differential_particle_density: float | None = None
-    differential_count: float | None = None
     distribution_row_id: str
+    properties: list[DistributionProperty]
+
+    def get_property(self, name: str) -> DistributionProperty | None:
+        for prop in self.properties:
+            if prop.name == name:
+                return prop
+        return None
+
+    def matches_property_value(
+        self, prop_name: str, distribution_row: DistributionRow
+    ) -> bool:
+        prop = self.get_property(prop_name)
+        other_prop = distribution_row.get_property(prop_name)
+        if prop and other_prop:
+            if prop.value == other_prop.value:
+                return True
+        return False
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -43,11 +62,19 @@ class Distribution:
         data = []
         cols = COLUMN_MAP.values()
         for row in df.index:
-            row_data = {}
+            row_data = []
             for col in [x for x in cols if x in df.columns]:
-                row_data[col] = df.loc[row, col]
+                row_data.append(
+                    DistributionProperty(
+                        name=col,
+                        value=df.loc[row, col],
+                        distribution_property_id=random_uuid_str(),
+                    )
+                )
             data.append(
-                DistributionRow(**row_data, distribution_row_id=random_uuid_str())
+                DistributionRow(
+                    properties=row_data, distribution_row_id=random_uuid_str()
+                )
             )
         return Distribution(
             name=name,

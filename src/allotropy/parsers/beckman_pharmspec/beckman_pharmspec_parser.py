@@ -87,9 +87,9 @@ class PharmSpecParser(VendorParser):
         for row in distribution.data:
             item = {}
             for key in PROPERTY_LOOKUP:
-                value = getattr(row, key)
-                if value is not None:
-                    item[key] = get_property_from_sample(key, value)
+                prop = row.get_property(key)
+                if prop is not None:
+                    item[key] = get_property_from_sample(key, prop.value)
             item["distribution_identifier"] = row.distribution_row_id
             items.append(DistributionItem(**item))
         return [DistributionDocumentItem(distribution=items)]
@@ -103,19 +103,21 @@ class PharmSpecParser(VendorParser):
         for calc in calcs:
             for row in calc.data:
                 for prop in PROPERTY_LOOKUP:
-                    value = getattr(row, prop)
-                    if value:
+                    distribution_property = row.get_property(prop)
+                    if distribution_property:
                         source_rows = [
                             x
                             for source in sources
                             for x in source.data
-                            if row.particle_size == x.particle_size
+                            if row.matches_property_value("particle_size", x)
                         ]
                         items.append(
                             CalculatedDataDocumentItem(
-                                calculated_data_identifier=row.distribution_row_id,
+                                calculated_data_identifier=distribution_property.distribution_property_id,
                                 calculated_data_name=f"{calc.name}_{prop}".lower(),
-                                calculated_result=get_property_from_sample(prop, value),
+                                calculated_result=get_property_from_sample(
+                                    prop, distribution_property.value
+                                ),
                                 data_source_aggregate_document=TDataSourceAggregateDocument(
                                     data_source_document=[
                                         DataSourceDocumentItem(
