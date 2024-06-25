@@ -228,7 +228,7 @@ class Sample:
         measurement_id = random_uuid_str()
 
         return Sample(
-            measurement_identifier=random_uuid_str(),
+            measurement_identifier=measurement_id,
             measurement_time=get_val_from_xml(screen_tape, "TapeRunDate"),
             compartment_temperature=try_float_or_none(
                 get_val_from_xml_or_none(screen_tape, "ElectrophoresisTemp")

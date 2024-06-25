@@ -3,8 +3,12 @@
 from __future__ import annotations
 
 from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+    CalculatedDataAggregateDocument,
+    CalculatedDataDocumentItem,
     DataRegionAggregateDocument,
     DataRegionDocumentItem,
+    DataSourceAggregateDocument,
+    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -21,6 +25,7 @@ from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._06.electrop
     ProcessedDataAggregateDocument1,
     ProcessedDataDocumentItem,
     SampleDocument,
+    TQuantityValueModel,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueDegreeCelsius,
@@ -28,6 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
@@ -39,6 +45,9 @@ from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis
 )
 from allotropy.parsers.agilent_tapestation_analysis.constants import PEAK_UNIT_CLASSES
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.calculated_data_documents.definition import (
+    CalculatedDocument,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 SOFTWARE_NAME = "TapeStation Analysis Software"
@@ -84,6 +93,9 @@ class AgilentTapestationAnalysisParser(VendorParser):
                 ),
                 electrophoresis_document=self._get_electrophoresis_document(
                     metadata, data.samples_list.samples
+                ),
+                calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                    data.samples_list.samples
                 ),
             ),
         )
@@ -191,4 +203,52 @@ class AgilentTapestationAnalysisParser(VendorParser):
                 comment=data_region.comment,
             )
             for data_region in data_regions
+        ]
+
+    def _get_calculated_data_aggregate_document(
+        self, samples: list[Sample]
+    ) -> CalculatedDataAggregateDocument | None:
+        calculated_data_document: list[CalculatedDataDocumentItem] = []
+        for sample in samples:
+            calculated_data_document.extend(
+                self._get_calculated_data_document_items(sample.calculated_data)
+            )
+            for peak in sample.peak_list:
+                calculated_data_document.extend(
+                    self._get_calculated_data_document_items(peak.calculated_data)
+                )
+            for region in sample.data_regions:
+                calculated_data_document.extend(
+                    self._get_calculated_data_document_items(region.calculated_data)
+                )
+
+        return (
+            CalculatedDataAggregateDocument(
+                calculated_data_document=calculated_data_document
+            )
+            if calculated_data_document
+            else None
+        )
+
+    def _get_calculated_data_document_items(
+        self, calculated_data: list[CalculatedDocument]
+    ) -> list[CalculatedDataDocumentItem]:
+        return [
+            CalculatedDataDocumentItem(
+                calculated_data_identifier=calculated_document.uuid,
+                calculated_data_name=calculated_document.name,
+                calculated_result=TQuantityValueModel(
+                    value=calculated_document.value, unit=UNITLESS
+                ),
+                data_source_aggregate_document=DataSourceAggregateDocument(
+                    data_source_document=[
+                        DataSourceDocumentItem(
+                            data_source_identifier=source.reference.uuid,
+                            data_source_feature=source.feature,
+                        )
+                        for source in calculated_document.data_sources
+                    ]
+                ),
+            )
+            for calculated_document in calculated_data
         ]
