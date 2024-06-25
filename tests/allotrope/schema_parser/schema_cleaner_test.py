@@ -856,20 +856,22 @@ def test_combine_allof_empty_object_schema() -> None:
             {
                 "type": "object",
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
-                "$asm.pattern": "aggregate datum"
+                "$asm.pattern": "aggregate datum",
             },
             {
                 "type": "object",
                 "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
                 "$asm.pattern": "aggregate datum",
-                "properties": {"key1": "value"}, "required": ["key1"],
-            }
+                "properties": {"key1": "value"},
+                "required": ["key1"],
+            },
         ]
     }
     validate_cleaned_schema(
         schema,
         {
-            "properties": {"key1": "value"}, "required": ["key1"],
+            "properties": {"key1": "value"},
+            "required": ["key1"],
         },
     )
 
