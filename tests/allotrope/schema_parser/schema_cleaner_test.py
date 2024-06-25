@@ -125,18 +125,18 @@ def test_fix_quantity_value_reference() -> None:
 def test_add_missing_unit() -> None:
     schema = {
         "properties": {
-            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/fake-unit"
+            "$ref": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema#/$defs/10%5E7%20fakes~1mL"
         },
         "$defs": {
             "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema": {
                 "$id": "http://purl.allotrope.org/json-schemas/qudt/REC/2023/09/units.schema",
                 "$comment": "Auto-generated from QUDT 1.1 and Allotrope Extensions for QUDT",
                 "$defs": {
-                    "fake-unit": {
+                    "10^7 fakes/mL": {
                         "properties": {
                             "unit": {
                                 "type": "string",
-                                "const": "fake-unit",
+                                "const": "10^7 fakes/mL",
                                 "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit",
                             }
                         },
@@ -153,7 +153,7 @@ def test_add_missing_unit() -> None:
         },
     )
     assert schema_cleaner.get_referenced_units() == {
-        "fake-unit": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"
+        "10^7 fakes/mL": "http://purl.allotrope.org/ontology/qudt-ext/unit#FakeUnit"
     }
 
 
@@ -845,6 +845,31 @@ def test_combine_allof() -> None:
         {
             "properties": {"key1": "value", "key2": "value", "key3": "otherValue"},
             "required": ["key1"],
+        },
+    )
+
+
+def test_combine_allof_empty_object_schema() -> None:
+    # Sometimes ASM only specifies the $asm properties, in this case we should successfully combine.
+    schema = {
+        "allOf": [
+            {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
+                "$asm.pattern": "aggregate datum"
+            },
+            {
+                "type": "object",
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002655",
+                "$asm.pattern": "aggregate datum",
+                "properties": {"key1": "value"}, "required": ["key1"],
+            }
+        ]
+    }
+    validate_cleaned_schema(
+        schema,
+        {
+            "properties": {"key1": "value"}, "required": ["key1"],
         },
     )
 
