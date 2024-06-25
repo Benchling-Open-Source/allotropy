@@ -65,7 +65,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
 
     @property
     def release_state(self) -> ReleaseState:
-        return ReleaseState.WORKING_DRAFT
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = Data.create(named_file_contents.contents)
