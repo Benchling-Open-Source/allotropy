@@ -196,7 +196,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
 
     def _get_data_region_document(
         self, data_regions: list[DataRegion], unit_cls: PEAK_UNIT_CLASSES
-    ):
+    ) -> list[DataRegionDocumentItem]:
         return [
             DataRegionDocumentItem(
                 region_identifier=data_region.region_identifier,
