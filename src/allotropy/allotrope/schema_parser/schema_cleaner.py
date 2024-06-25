@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 from typing import Any
+import urllib.parse
 
 from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
 from allotropy.allotrope.schemas import (
@@ -19,7 +20,7 @@ def _is_array_schema(schema: dict[str, Any]) -> bool:
 
 
 def _is_direct_object_schema(schema: dict[str, Any]) -> bool:
-    return isinstance(schema, dict) and any(
+    return isinstance(schema, dict) and "type" in schema and schema["type"] == "object" or any(
         key in schema for key in ["properties", "required"]
     )
 
@@ -55,8 +56,12 @@ def _is_ref_schema_array(schema: dict[str, Any]) -> bool:
     return _is_array_schema(schema) and _is_ref_schema(schema["items"])
 
 
+def _escape_def_name(def_name: str) -> str:
+    return urllib.parse.unquote(def_name).replace("~1", "/")
+
+
 def _get_def_name(reference: str) -> str:
-    return reference.split("/")[-1]
+    return _escape_def_name(reference.split("/")[-1])
 
 
 def _get_reference_from_url(value: Any) -> tuple[str | None, str | None]:
@@ -70,7 +75,7 @@ def _get_reference_from_url(value: Any) -> tuple[str | None, str | None]:
         return None, None
     schema_name, _, def_name = ref_match.groups()
     schema_name = re.subn(r"[\/\-\.]", "_", schema_name)[0]
-    return schema_name, def_name
+    return schema_name, _escape_def_name(def_name)
 
 
 def _get_required(schema: dict[str, Any]) -> list[str]:
