@@ -33,6 +33,7 @@ from allotropy.parsers.example_weyland_yutani.example_weyland_yutani_parser impo
 from allotropy.parsers.luminex_xponent.luminex_xponent_parser import (
     LuminexXponentParser,
 )
+from allotropy.parsers.mabtech_apex.mabtech_apex_parser import MabtechApexParser
 from allotropy.parsers.methodical_mind.methodical_mind_parser import (
     MethodicalMindParser,
 )
@@ -72,6 +73,7 @@ class Vendor(Enum):
     CTL_IMMUNOSPOT = "CTL_IMMUNOSPOT"
     EXAMPLE_WEYLAND_YUTANI = "EXAMPLE_WEYLAND_YUTANI"
     LUMINEX_XPONENT = "LUMINEX_XPONENT"
+    MABTECH_APEX = "MABTECH_APEX"
     METHODICAL_MIND = "METHODICAL_MIND"
     MOLDEV_SOFTMAX_PRO = "MOLDEV_SOFTMAX_PRO"
     NOVABIO_FLEX2 = "NOVABIO_FLEX2"
@@ -110,6 +112,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.CTL_IMMUNOSPOT: CtlImmunospotParser,
     Vendor.EXAMPLE_WEYLAND_YUTANI: ExampleWeylandYutaniParser,
     Vendor.LUMINEX_XPONENT: LuminexXponentParser,
+    Vendor.MABTECH_APEX: MabtechApexParser,
     Vendor.METHODICAL_MIND: MethodicalMindParser,
     Vendor.MOLDEV_SOFTMAX_PRO: SoftmaxproParser,
     Vendor.NOVABIO_FLEX2: NovaBioFlexParser,

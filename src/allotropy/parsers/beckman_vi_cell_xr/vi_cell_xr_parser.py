@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from enum import Enum
 import tempfile
-from typing import Any
+from typing import Any, Union
 import zipfile
 
 import pandas as pd
@@ -40,6 +40,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
+from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_txt_reader import ViCellXRTXTReader
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
@@ -105,7 +106,12 @@ class ViCellXRParser(VendorParser):
 
         if filename.endswith("xlsx"):
             contents = remove_style_xml_file(contents)
-        reader = ViCellXRReader(contents)
+
+        reader: Union[ViCellXRTXTReader, ViCellXRReader]
+        if filename.endswith("txt"):
+            reader = ViCellXRTXTReader(named_file_contents)
+        else:
+            reader = ViCellXRReader(contents)
 
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",

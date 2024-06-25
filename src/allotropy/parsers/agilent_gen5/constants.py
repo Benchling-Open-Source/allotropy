@@ -40,6 +40,7 @@ class ReadMode(str, Enum):
     ABSORBANCE = "Absorbance"
     FLUORESCENCE = "Fluorescence"
     LUMINESCENCE = "Luminescence"
+    ALPHALISA = "Alpha"
 
 
 class ReadType(str, Enum):

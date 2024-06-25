@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|perf|test|chore):.* ]]; then
+    exit 0
+fi
+echo "PR title must start with one of feat|fix|docs|style|refactor|perf|test|chore see CONTRIBUTING for details."
+exit 1

@@ -8,13 +8,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Add Electrophoresis BENCHLING/2024/06 schema.
-- Added github enforcement that CHANGELOG.md is updated
-- Added test files Agilent TapeStation Analysis
 
 ### Fixed
 
 ### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.35] - 2024-06-24
+
+### Added
+- Add Mabtech Apex adapter
+- Added support for parsing Vi-Cell XR txt files
+- Add Electrophoresis BENCHLING/2024/06 schema.
+- Added github enforcement that CHANGELOG.md is updated
+- Added test files Agilent TapeStation Analysis
+- Added requirements for remaining parsers to /docs
+- Add Alphalisa assay support to Gen5 adapter
+- Add fluorescence point detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
+
+### Fixed
+
+### Changed
+
+- Redefine plate well count as optional in AppBio Quantstudio
+- Updated README.md to organize parsers according to maturity level
 
 ### Deprecated
 
