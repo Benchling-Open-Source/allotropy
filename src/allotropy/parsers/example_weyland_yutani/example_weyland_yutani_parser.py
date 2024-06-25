@@ -1,3 +1,4 @@
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -47,19 +48,26 @@ class ExampleWeylandYutaniParser(VendorParser):
             msg = "Unable to determine the number of wells in the plate."
             raise AllotropeConversionError(msg)
 
+        custom_info = {
+            "peak amount": {"value": 10, "unit": "mL"},
+            "peak calibration coefficient 0": 1.0,
+        }
         return Model(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=random_uuid_str(),
-                measurement_time=self._get_measurement_time(data),
-                analytical_method_identifier=data.basic_assay_info.protocol_id,
-                experimental_data_identifier=data.basic_assay_info.assay_id,
-                container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.instrument.serial_number,
-                    device_identifier=data.instrument.nickname,
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    measurement_identifier=random_uuid_str(),
+                    measurement_time=self._get_measurement_time(data),
+                    analytical_method_identifier=data.basic_assay_info.protocol_id,
+                    experimental_data_identifier=data.basic_assay_info.assay_id,
+                    container_type=ContainerType.well_plate,
+                    plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
+                    device_system_document=DeviceSystemDocument(
+                        model_number=data.instrument.serial_number,
+                        device_identifier=data.instrument.nickname,
+                    ),
+                    measurement_document=self._get_measurement_document(data),
                 ),
-                measurement_document=self._get_measurement_document(data),
+                custom_info,
             )
         )
 

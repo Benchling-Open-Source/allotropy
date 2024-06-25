@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest",
     "measurement aggregate document": {
         "measurement identifier": "EXAMPLE_WEYLAND_YUTANI_TEST_ID_0",
         "plate well count": {
@@ -334,7 +335,13 @@
         "device system document": {
             "device identifier": "",
             "model number": ""
+        },
+        "custom information document": {
+            "peak_amount": {
+                "value": 10,
+                "unit": "mL"
+            },
+            "peak_calibration_coefficient_0": 1.0
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/fluorescence/BENCHLING/2023/09/fluorescence.manifest"
+    }
 }
