@@ -49,8 +49,8 @@ class ExampleWeylandYutaniParser(VendorParser):
             raise AllotropeConversionError(msg)
 
         custom_info = {
-            "peak amount": {"value": 10, "unit": "mL"},
-            "peak calibration coefficient 0": 1.0,
+            "custom value": {"value": 10, "unit": "mL"},
+            "custom metadata": "Some extra piece of info",
         }
         return Model(
             measurement_aggregate_document=add_custom_information_document(

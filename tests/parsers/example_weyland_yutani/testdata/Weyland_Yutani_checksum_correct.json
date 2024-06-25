@@ -337,11 +337,11 @@
             "model number": ""
         },
         "custom information document": {
-            "peak_amount": {
+            "custom_value": {
                 "value": 10,
                 "unit": "mL"
             },
-            "peak_calibration_coefficient_0": 1.0
+            "custom_metadata": "Some extra piece of info"
         }
     }
 }
