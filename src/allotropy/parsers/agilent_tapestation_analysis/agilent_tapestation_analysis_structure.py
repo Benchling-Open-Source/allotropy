@@ -210,6 +210,7 @@ class Sample:
 
     @staticmethod
     def create(sample_element: ET.Element, screen_tape: ET.Element) -> Sample:
+        measurement_id = random_uuid_str()
         well_number = get_val_from_xml(sample_element, "WellNumber")
         screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
         comment = get_val_from_xml_or_none(sample_element, "Comment")
@@ -225,7 +226,9 @@ class Sample:
                 regions_element.iter("Region"),
                 key=lambda region: get_val_from_xml(region, "From"),
             )
-        measurement_id = random_uuid_str()
+        error = get_val_from_xml_or_none(sample_element, "Alert")
+        if error is not None:
+            error = error.strip()
 
         return Sample(
             measurement_identifier=measurement_id,
@@ -247,7 +250,7 @@ class Sample:
                 source_id=measurement_id,
                 feature="sample",
             ),
-            error=get_val_from_xml_or_none(sample_element, "Alert"),
+            error=error,
         )
 
 

@@ -43,18 +43,19 @@ from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis
     Peak,
     Sample,
 )
-from allotropy.parsers.agilent_tapestation_analysis.constants import PEAK_UNIT_CLASSES
+from allotropy.parsers.agilent_tapestation_analysis.constants import (
+    BRAND_NAME,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
+    PEAK_UNIT_CLASSES,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
+)
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
 from allotropy.parsers.vendor_parser import VendorParser
-
-SOFTWARE_NAME = "TapeStation Analysis Software"
-BRAND_NAME = "TapeStation"
-PRODUCT_MANUFACTURER = "Agilent"
-DEVICE_TYPE = "electrophoresis device"
-DETECTION_TYPE = "fluorescence"
 
 
 class AgilentTapestationAnalysisParser(VendorParser):
@@ -146,8 +147,14 @@ class AgilentTapestationAnalysisParser(VendorParser):
                                     )
                                 ]
                             ),
-                            error_aggregate_document=ErrorAggregateDocument(
-                                error_document=[ErrorDocumentItem(error="<Alert>")]
+                            error_aggregate_document=(
+                                ErrorAggregateDocument(
+                                    error_document=(
+                                        [ErrorDocumentItem(error=sample.error)]
+                                    )
+                                )
+                                if sample.error
+                                else None
                             ),
                         )
                     ]
