@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Updated schema cleaner to handle utf-8 characters in unit schema urls
+- Updated schema cleaner to handle object schemas with no properties
+
 ### Changed
 
 ### Deprecated

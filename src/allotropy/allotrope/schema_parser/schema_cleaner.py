@@ -20,8 +20,11 @@ def _is_array_schema(schema: dict[str, Any]) -> bool:
 
 
 def _is_direct_object_schema(schema: dict[str, Any]) -> bool:
-    return isinstance(schema, dict) and "type" in schema and schema["type"] == "object" or any(
-        key in schema for key in ["properties", "required"]
+    return (
+        isinstance(schema, dict)
+        and "type" in schema
+        and schema["type"] == "object"
+        or any(key in schema for key in ["properties", "required"])
     )
 
 
