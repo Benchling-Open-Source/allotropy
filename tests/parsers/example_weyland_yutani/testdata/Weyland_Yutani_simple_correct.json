@@ -334,14 +334,21 @@
         "container type": "well plate",
         "device system document": {
             "device identifier": "",
-            "model number": ""
+            "model number": "",
+            "custom information document": {
+                "extra information": "My extra information",
+                "extra value": {
+                    "value": 100,
+                    "unit": "#"
+                }
+            }
         },
         "custom information document": {
-            "custom_value": {
+            "custom value": {
                 "value": 10,
                 "unit": "mL"
             },
-            "custom_metadata": "Some extra piece of info"
+            "custom metadata": "Some extra piece of info"
         }
     }
 }

@@ -1,4 +1,8 @@
-from allotropy.allotrope.converter import structure, unstructure
+from allotropy.allotrope.converter import (
+    add_custom_information_document,
+    structure,
+    unstructure,
+)
 from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
     AnalyteDocumentItem,
 )
@@ -78,5 +82,26 @@ def test_omits_null_values_except_for_specified_classes() -> None:
     assert asm_dict == {
         "analyte name": "test",
         "molar concentration": {"unit": "mmol/L", "value": None},
+    }
+    assert structure(asm_dict, AnalyteDocumentItem) == item
+
+
+def test_custom_information_document() -> None:
+    item = add_custom_information_document(
+        AnalyteDocumentItem(
+            analyte_name="test",
+        ),
+        {"extra key": "Value", "weird-key/(value)°": "Other value"},
+    )
+
+    assert item.custom_information_document.extra_key == "Value"  # type: ignore
+    assert item.custom_information_document.weird_DASH_key_SLASH__OPAREN_value_CPAREN__DEG_ == "Other value"  # type: ignore
+    asm_dict = unstructure(item)
+    assert asm_dict == {
+        "analyte name": "test",
+        "custom information document": {
+            "extra key": "Value",
+            "weird-key/(value)°": "Other value",
+        },
     }
     assert structure(asm_dict, AnalyteDocumentItem) == item

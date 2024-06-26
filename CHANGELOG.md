@@ -9,13 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added utility to add a custom information document to an ASM model
+- Added utility to add both dict and dataclass custom information document to an ASM model
 
 ### Fixed
 
 - Updated schema cleaner to handle utf-8 characters in unit schema urls
 - Updated schema cleaner to handle object schemas with no properties
 - Updated Vi-Cell XR requirements doc to reflect support for .txt files
+- Handle dashes and slashes in custom information document key names
 
 ### Changed
 
