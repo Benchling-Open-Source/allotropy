@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated schema cleaner to handle utf-8 characters in unit schema urls
 - Updated schema cleaner to handle object schemas with no properties
+- Updated Vi-Cell XR requirements doc to reflect support for .txt files
 
 ### Changed
 
