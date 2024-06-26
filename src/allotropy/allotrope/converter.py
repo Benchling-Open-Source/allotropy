@@ -93,9 +93,15 @@ ModelClass = TypeVar("ModelClass")
 
 
 def add_custom_information_document(
-    model: ModelClass, custom_info_doc: dict[str, Any]
+    model: ModelClass, custom_info_doc: Any
 ) -> ModelClass:
-    model.custom_information_document = structure_custom_information_document(custom_info_doc, "custom information document")  # type: ignore
+    if isinstance(custom_info_doc, dict):
+        model.custom_information_document = structure_custom_information_document(custom_info_doc, "custom information document")  # type: ignore
+    elif is_dataclass(custom_info_doc):
+        model.custom_information_document = custom_info_doc
+    else:
+        msg = "Invalid custom_info_doc"
+        raise ValueError(msg)
     return model
 
 

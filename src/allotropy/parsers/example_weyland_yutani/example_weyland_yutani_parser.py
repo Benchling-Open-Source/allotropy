@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence import (
     ContainerType,
@@ -26,6 +28,12 @@ from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
+
+
+@dataclass(kw_only=True)
+class MyCustomInfoDoc:
+    extra_information: str
+    extra_value: TQuantityValueNumber
 
 
 class ExampleWeylandYutaniParser(VendorParser):
@@ -61,9 +69,15 @@ class ExampleWeylandYutaniParser(VendorParser):
                     experimental_data_identifier=data.basic_assay_info.assay_id,
                     container_type=ContainerType.well_plate,
                     plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
-                    device_system_document=DeviceSystemDocument(
-                        model_number=data.instrument.serial_number,
-                        device_identifier=data.instrument.nickname,
+                    device_system_document=add_custom_information_document(
+                        DeviceSystemDocument(
+                            model_number=data.instrument.serial_number,
+                            device_identifier=data.instrument.nickname,
+                        ),
+                        MyCustomInfoDoc(
+                            extra_information="My extra information",
+                            extra_value=TQuantityValueNumber(value=100),
+                        ),
                     ),
                     measurement_document=self._get_measurement_document(data),
                 ),
