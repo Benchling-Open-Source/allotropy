@@ -94,8 +94,8 @@ def test_custom_information_document() -> None:
         {"extra key": "Value", "weird-key/value": "Other value"},
     )
 
-    assert item.custom_information_document.extra_key == "Value"
-    assert item.custom_information_document.weird_DASH_key_SLASH_value == "Other value"
+    assert item.custom_information_document.extra_key == "Value"  # type: ignore
+    assert item.custom_information_document.weird_DASH_key_SLASH_value == "Other value"  # type: ignore
     asm_dict = unstructure(item)
     assert asm_dict == {
         "analyte name": "test",
