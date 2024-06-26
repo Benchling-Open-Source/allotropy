@@ -78,6 +78,18 @@ SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
 )
 
 
+DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
+    "-": "_DASH_",
+    "°": "_DEG_",
+    "/": "_SLASH_",
+    "\\": "_BSLASH_",
+    "(": "_OPAREN_",
+    ")": "_CPAREN_",
+    # NOTE: this MUST be at the end, or it will break other key replacements.
+    " ": "_",
+}
+
+
 PRIMITIVE_TYPES = (
     bool,
     int,
@@ -108,11 +120,17 @@ def add_custom_information_document(
 
 
 def _convert_model_key_to_dict_key(key: str) -> str:
-    return SPECIAL_KEYS.get(key, key.replace("_", " "))
+    key = SPECIAL_KEYS.get(key, key)
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(model_val, dict_val)
+    return key
 
 
 def _convert_dict_to_model_key(key: str) -> str:
-    return SPECIAL_KEYS_INVERSE.get(key, key.replace(" ", "_"))
+    key = SPECIAL_KEYS_INVERSE.get(key, key)
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(dict_val, model_val)
+    return key
 
 
 def _validate_structuring(val: dict[str, Any], model: Any) -> None:
