@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Agilent TapeStation Analysis adapter
 - Added utility to add both dict and dataclass custom information document to an ASM model
 
+- Added Solution Analyzer BENCHLING/2024/03 schema.
 ### Fixed
 
 - Updated schema cleaner to handle utf-8 characters in unit schema urls
