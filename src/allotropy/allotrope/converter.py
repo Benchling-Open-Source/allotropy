@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from collections.abc import Mapping
-from dataclasses import fields, is_dataclass, make_dataclass
+from collections.abc import Mapping, Sequence
+from dataclasses import asdict, fields, is_dataclass, make_dataclass
 from types import UnionType
-from typing import Any, Callable, cast, get_args, get_origin, Union
+from typing import Any, Callable, cast, get_args, get_origin, TypeVar, Union
 
 from cattrs import Converter
 from cattrs.errors import ClassValidationError
@@ -78,6 +78,18 @@ SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
 )
 
 
+DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
+    "-": "_DASH_",
+    "°": "_DEG_",
+    "/": "_SLASH_",
+    "\\": "_BSLASH_",
+    "(": "_OPAREN_",
+    ")": "_CPAREN_",
+    # NOTE: this MUST be at the end, or it will break other key replacements.
+    " ": "_",
+}
+
+
 PRIMITIVE_TYPES = (
     bool,
     int,
@@ -89,13 +101,36 @@ PRIMITIVE_TYPES = (
     np.int64,
 )
 
+ModelClass = TypeVar("ModelClass")
+
+
+def add_custom_information_document(
+    model: ModelClass, custom_info_doc: Any
+) -> ModelClass:
+
+    if isinstance(custom_info_doc, dict):
+        custom_info_doc = structure_custom_information_document(
+            custom_info_doc, "custom information document"
+        )
+    if not is_dataclass(custom_info_doc):
+        msg = "Invalid custom_info_doc"
+        raise ValueError(msg)
+    model.custom_information_document = custom_info_doc  # type: ignore
+    return model
+
 
 def _convert_model_key_to_dict_key(key: str) -> str:
-    return SPECIAL_KEYS.get(key, key.replace("_", " "))
+    key = SPECIAL_KEYS.get(key, key)
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(model_val, dict_val)
+    return key
 
 
 def _convert_dict_to_model_key(key: str) -> str:
-    return SPECIAL_KEYS_INVERSE.get(key, key.replace(" ", "_"))
+    key = SPECIAL_KEYS_INVERSE.get(key, key)
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(dict_val, model_val)
+    return key
 
 
 def _validate_structuring(val: dict[str, Any], model: Any) -> None:
@@ -199,6 +234,22 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
     )
 
 
+# Special should_omit check for allowing an empty value for 'value' keys, controlled by should_allow_empty_value_field
+def should_omit_allow_empty_value_field(k: str, v: Any) -> bool:
+    return v is None and k != "value"
+
+
+def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
+    def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
+        return {
+            _convert_model_key_to_dict_key(key): value
+            for key, value in kv_pairs
+            if not should_omit_allow_empty_value_field(key, value)
+        }
+
+    return asdict(model, dict_factory=dict_factory)
+
+
 def register_dataclass_hooks(converter: Converter) -> None:
     def dataclass_structure_fn(cls: Any) -> Callable[[Any, Any], Any | None]:
         structure_fn = make_dict_structure_fn(
@@ -268,10 +319,6 @@ def register_unstructure_hooks(converter: Converter) -> None:
     def should_omit(_: str, v: Any) -> bool:
         return v is None
 
-    # Special should_omit check for allowing an empty value for 'value' keys, controlled by should_allow_empty_value_field
-    def should_omit_allow_empty_value_field(k: str, v: Any) -> bool:
-        return v is None and k != "value"
-
     unstructure_fn_cache = {}
 
     def unstructure_dataclass_fn(
@@ -282,11 +329,18 @@ def register_unstructure_hooks(converter: Converter) -> None:
             if not is_dataclass(obj):
                 return converter.unstructure(obj)
 
-            return {
+            dataclass_dict = {
                 _convert_model_key_to_dict_key(k): v
                 for k, v in make_unstructure_fn(type(obj))(obj).items()
                 if not should_omit(k, v)
             }
+            if hasattr(obj, "custom_information_document"):
+                dataclass_dict[
+                    "custom information document"
+                ] = unstructure_custom_information_document(
+                    obj.custom_information_document
+                )
+            return dataclass_dict
 
         # This custom unstructure function overrides the unstruct_hook when we should should_allow_empty_value_field.
         # We need to do this at this level because we need to know both the parent class and the field name at the
