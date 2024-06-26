@@ -108,11 +108,15 @@ def add_custom_information_document(
 
 
 def _convert_model_key_to_dict_key(key: str) -> str:
-    return SPECIAL_KEYS.get(key, key.replace("_SLASH_", "/").replace("_DASH_", "-").replace("_", " "))
+    return SPECIAL_KEYS.get(
+        key, key.replace("_SLASH_", "/").replace("_DASH_", "-").replace("_", " ")
+    )
 
 
 def _convert_dict_to_model_key(key: str) -> str:
-    return SPECIAL_KEYS_INVERSE.get(key, key.replace(" ", "_").replace("-", "_DASH_").replace("/", "_SLASH_"))
+    return SPECIAL_KEYS_INVERSE.get(
+        key, key.replace(" ", "_").replace("-", "_DASH_").replace("/", "_SLASH_")
+    )
 
 
 def _validate_structuring(val: dict[str, Any], model: Any) -> None:

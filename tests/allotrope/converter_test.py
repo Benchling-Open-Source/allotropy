@@ -91,10 +91,7 @@ def test_custom_information_document() -> None:
         AnalyteDocumentItem(
             analyte_name="test",
         ),
-        {
-            "extra key": "Value",
-            "weird-key/value": "Other value"
-        }
+        {"extra key": "Value", "weird-key/value": "Other value"},
     )
 
     assert item.custom_information_document.extra_key == "Value"
@@ -104,7 +101,7 @@ def test_custom_information_document() -> None:
         "analyte name": "test",
         "custom information document": {
             "extra key": "Value",
-            "weird-key/value": "Other value"
-        }
+            "weird-key/value": "Other value",
+        },
     }
     assert structure(asm_dict, AnalyteDocumentItem) == item
