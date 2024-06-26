@@ -10,8 +10,8 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NON_CALCULATED_DATA_TAGS_PEAK,
     NON_CALCULATED_DATA_TAGS_REGION,
     NON_CALCULATED_DATA_TAGS_SAMPLE,
-    PEAK_UNIT_CLASS_LOOKUP,
-    PEAK_UNIT_CLASSES,
+    UNIT_CLASS_LOOKUP,
+    UNIT_CLASSES,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
@@ -53,8 +53,8 @@ def _get_calculated_data(
 
 
 @dataclass(frozen=True)
-class MetaData:
-    peak_unit_cls: PEAK_UNIT_CLASSES
+class Metadata:
+    unit_cls: UNIT_CLASSES
     analyst: str | None
     analytical_method_identifier: str | None
     data_system_instance_identifier: str | None
@@ -65,14 +65,14 @@ class MetaData:
     software_version: str | None
 
     @staticmethod
-    def create(root_element: ET.Element) -> MetaData:
+    def create(root_element: ET.Element) -> Metadata:
         file_information = get_element_from_xml(root_element, "FileInformation")
         environment = get_element_from_xml(
             root_element, "ScreenTapes/ScreenTape/Environment"
         )
 
-        return MetaData(
-            peak_unit_cls=MetaData._get_peak_unit_class(root_element),
+        return Metadata(
+            unit_cls=Metadata._get_unit_class(root_element),
             analyst=get_val_from_xml_or_none(environment, "Experimenter"),
             analytical_method_identifier=get_val_from_xml_or_none(
                 file_information, "Assay"
@@ -94,15 +94,15 @@ class MetaData:
         )
 
     @staticmethod
-    def _get_peak_unit_class(
+    def _get_unit_class(
         root_element: ET.Element,
-    ) -> PEAK_UNIT_CLASSES:
+    ) -> UNIT_CLASSES:
         peak_unit = get_element_from_xml(
             root_element, "Assay/Units/MolecularWeightUnit"
         ).text
         try:
             peak_unit = peak_unit or ""
-            return PEAK_UNIT_CLASS_LOOKUP[peak_unit]
+            return UNIT_CLASS_LOOKUP[peak_unit]
         except KeyError as e:
             msg = f"Unrecognized Molecular Weight Unit: {peak_unit}"
             raise AllotropeConversionError(msg) from e
@@ -280,7 +280,7 @@ class SamplesList:
 
 @dataclass(frozen=True)
 class Data:
-    metadata: MetaData
+    metadata: Metadata
     samples_list: SamplesList
 
     @staticmethod
@@ -292,6 +292,6 @@ class Data:
             raise AllotropeConversionError(message=msg) from e
 
         return Data(
-            metadata=MetaData.create(root_element),
+            metadata=Metadata.create(root_element),
             samples_list=SamplesList.create(root_element),
         )

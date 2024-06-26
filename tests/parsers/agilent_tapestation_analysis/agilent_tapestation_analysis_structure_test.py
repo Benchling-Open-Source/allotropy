@@ -11,14 +11,14 @@ from allotropy.allotrope.models.shared.definitions.definitions import InvalidJso
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
     DataRegion,
-    MetaData,
+    Metadata,
     Peak,
     Sample,
     SamplesList,
 )
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
     NO_SCREEN_TAPE_ID_MATCH,
-    PEAK_UNIT_CLASSES,
+    UNIT_CLASSES,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
@@ -33,9 +33,9 @@ from tests.parsers.agilent_tapestation_analysis.agilent_tapestation_test_data im
 
 @pytest.mark.short
 def test_create_metadata() -> None:
-    metadata = MetaData.create(get_metadata_xml())
-    assert metadata == MetaData(
-        peak_unit_cls=TQuantityValueNumber,
+    metadata = Metadata.create(get_metadata_xml())
+    assert metadata == Metadata(
+        unit_cls=TQuantityValueNumber,
         analyst="TapeStation User",
         analytical_method_identifier="cfDNA",
         data_system_instance_identifier="TAPESTATIONPC",
@@ -56,9 +56,9 @@ def test_create_metadata() -> None:
     ),
 )
 @pytest.mark.short
-def test_create_metadata_with_unit(unit: str, unit_class: PEAK_UNIT_CLASSES) -> None:
-    metadata = MetaData.create(get_metadata_xml(molecular_weight_unit=unit))
-    assert metadata.peak_unit_cls == unit_class
+def test_create_metadata_with_unit(unit: str, unit_class: UNIT_CLASSES) -> None:
+    metadata = Metadata.create(get_metadata_xml(molecular_weight_unit=unit))
+    assert metadata.unit_cls == unit_class
 
 
 @pytest.mark.short
@@ -66,18 +66,18 @@ def test_create_metadata_with_unknown_unit() -> None:
     unit = "not-a-unit"
     msg = f"Unrecognized Molecular Weight Unit: {unit}"
     with pytest.raises(AllotropeConversionError, match=msg):
-        MetaData.create(get_metadata_xml(molecular_weight_unit=unit))
+        Metadata.create(get_metadata_xml(molecular_weight_unit=unit))
 
 
 @pytest.mark.short
 def test_create_metadata_with_rine_version() -> None:
-    metadata = MetaData.create(get_metadata_xml(rine_version="2.3.4"))
+    metadata = Metadata.create(get_metadata_xml(rine_version="2.3.4"))
     assert metadata.method_version == "2.3.4"
 
 
 @pytest.mark.short
 def test_create_metadata_with_din_version() -> None:
-    metadata = MetaData.create(get_metadata_xml(din_version="1.2.3"))
+    metadata = Metadata.create(get_metadata_xml(din_version="1.2.3"))
     assert metadata.method_version == "1.2.3"
 
 

@@ -39,7 +39,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
     Data,
     DataRegion,
-    MetaData,
+    Metadata,
     Peak,
     Sample,
 )
@@ -47,9 +47,9 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     BRAND_NAME,
     DETECTION_TYPE,
     DEVICE_TYPE,
-    PEAK_UNIT_CLASSES,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
+    UNIT_CLASSES,
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.calculated_data_documents.definition import (
@@ -102,7 +102,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
         )
 
     def _get_electrophoresis_document(
-        self, metadata: MetaData, samples: list[Sample]
+        self, metadata: Metadata, samples: list[Sample]
     ) -> list[ElectrophoresisDocumentItem]:
         return [
             ElectrophoresisDocumentItem(
@@ -110,7 +110,9 @@ class AgilentTapestationAnalysisParser(VendorParser):
                     measurement_document=[
                         MeasurementDocumentItem(
                             measurement_identifier=sample.measurement_identifier,
-                            measurement_time=self._get_date_time(sample.measurement_time),
+                            measurement_time=self._get_date_time(
+                                sample.measurement_time
+                            ),
                             compartment_temperature=(
                                 TQuantityValueDegreeCelsius(
                                     value=sample.compartment_temperature
@@ -136,12 +138,12 @@ class AgilentTapestationAnalysisParser(VendorParser):
                                 processed_data_document=[
                                     ProcessedDataDocumentItem(
                                         peak_list=self._get_peak_list(
-                                            sample.peak_list, metadata.peak_unit_cls
+                                            sample.peak_list, metadata.unit_cls
                                         ),
                                         data_region_aggregate_document=DataRegionAggregateDocument(
                                             data_region_document=self._get_data_region_document(
                                                 sample.data_regions,
-                                                unit_cls=metadata.peak_unit_cls,
+                                                unit_cls=metadata.unit_cls,
                                             )
                                         ),
                                     )
@@ -167,9 +169,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
             for sample in samples
         ]
 
-    def _get_peak_list(
-        self, peaks: list[Peak], peak_unit_cls: PEAK_UNIT_CLASSES
-    ) -> PeakList:
+    def _get_peak_list(self, peaks: list[Peak], unit_cls: UNIT_CLASSES) -> PeakList:
         return PeakList(
             peak=[
                 PeakItem(
@@ -178,9 +178,9 @@ class AgilentTapestationAnalysisParser(VendorParser):
                     peak_height=TQuantityValueRelativeFluorescenceUnit(
                         value=peak.peak_height
                     ),
-                    peak_start=peak_unit_cls(value=peak.peak_start),
-                    peak_end=peak_unit_cls(value=peak.peak_end),
-                    peak_position=peak_unit_cls(value=peak.peak_position),
+                    peak_start=unit_cls(value=peak.peak_start),
+                    peak_end=unit_cls(value=peak.peak_end),
+                    peak_position=unit_cls(value=peak.peak_position),
                     peak_area=TQuantityValueUnitless(value=peak.peak_area),
                     relative_peak_area=TQuantityValuePercent(
                         value=peak.relative_peak_area
@@ -195,7 +195,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
         )
 
     def _get_data_region_document(
-        self, data_regions: list[DataRegion], unit_cls: PEAK_UNIT_CLASSES
+        self, data_regions: list[DataRegion], unit_cls: UNIT_CLASSES
     ) -> list[DataRegionDocumentItem]:
         return [
             DataRegionDocumentItem(
