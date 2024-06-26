@@ -110,7 +110,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
                     measurement_document=[
                         MeasurementDocumentItem(
                             measurement_identifier=sample.measurement_identifier,
-                            measurement_time=sample.measurement_time,
+                            measurement_time=self._get_date_time(sample.measurement_time),
                             compartment_temperature=(
                                 TQuantityValueDegreeCelsius(
                                     value=sample.compartment_temperature
