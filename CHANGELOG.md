@@ -8,8 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Add Agilent TapeStation Analysis adapter
 
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.37] - 2024-06-26
+
+### Added
+- Add Agilent TapeStation Analysis adapter
 - Added utility to add both dict and dataclass custom information document to an ASM model
 
 ### Fixed
@@ -27,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-## [0.1.35] - 2024-06-24
+## [0.1.36] - 2024-06-24
 
 ### Added
 - Add Mabtech Apex adapter
@@ -39,18 +52,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Alphalisa assay support to Gen5 adapter
 - Add fluorescence point detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
 
-### Fixed
-
 ### Changed
 
 - Redefine plate well count as optional in AppBio Quantstudio
 - Updated README.md to organize parsers according to maturity level
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.35] - 2024-06-07
 
