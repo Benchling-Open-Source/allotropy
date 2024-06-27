@@ -58,7 +58,6 @@ class Header:
     barcode: str | None
     analyst: str | None
     experimental_data_identifier: str | None
-    pcr_stage_number: int
     software_name: str | None
     software_version: str | None
     block_serial_number: str | None
@@ -120,19 +119,6 @@ class Header:
             ),
             heated_cover_serial_number=try_str_from_series_or_none(
                 header, "Heated Cover Serial Number"
-            ),
-            pcr_stage_number=assert_not_none(
-                try_int(
-                    assert_not_none(
-                        re.match(
-                            r"Stage (\d+)",
-                            try_str_from_series(header, r"PCR Stage/Step Number"),
-                        ),
-                        msg="Unable to find PCR Stage Number",
-                    ).group(1),
-                    "PCR Stage Number",
-                ),
-                msg=r"Unable to interpret PCR Stage/Step Number",
             ),
             software_name=software_info.group(1),
             software_version=software_info.group(2),
@@ -225,7 +211,6 @@ class Well:
     @staticmethod
     def create(
         contents: DesignQuantstudioContents,
-        header: Header,
         well_data: pd.DataFrame,
         identifier: int,
         experiment_type: ExperimentType,
@@ -244,7 +229,7 @@ class Well:
             multicomponent_data=(
                 None
                 if multi_data is None
-                else MulticomponentData.create(header, multi_data, identifier)
+                else MulticomponentData.create(multi_data, identifier)
             ),
         )
 
@@ -265,7 +250,6 @@ class WellList:
     @staticmethod
     def create(
         contents: DesignQuantstudioContents,
-        header: Header,
         experiment_type: ExperimentType,
     ) -> WellList:
         results_data = contents.get_non_empty_sheet("Results")
@@ -274,7 +258,6 @@ class WellList:
             wells=[
                 Well.create(
                     contents,
-                    header,
                     well_data,
                     try_int(str(identifier), "well identifier"),
                     experiment_type,
@@ -330,17 +313,10 @@ class MulticomponentData:
         )
 
     @staticmethod
-    def create(header: Header, data: pd.DataFrame, well_id: int) -> MulticomponentData:
-        well_data = assert_not_empty_df(
+    def create(data: pd.DataFrame, well_id: int) -> MulticomponentData:
+        stage_data = assert_not_empty_df(
             data[assert_df_column(data, "Well") == well_id],
             msg=f"Unable to find multi component data for well {well_id}.",
-        )
-
-        stage_data = assert_not_empty_df(
-            well_data[
-                assert_df_column(well_data, "Stage Number") == header.pcr_stage_number
-            ],
-            msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
         )
 
         return MulticomponentData(
