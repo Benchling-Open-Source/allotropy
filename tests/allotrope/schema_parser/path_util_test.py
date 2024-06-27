@@ -79,7 +79,7 @@ def test_get_model_class_from_schema_windows_path() -> None:
         "allotropy.allotrope.schema_parser.path_util.get_model_file_from_schema_path"
     ) as mock_get_model_file:
         mock_import.return_value = fake_module
-        mock_get_model_file.return_value = (
+        mock_get_model_file.return_value = Path(
             "adm\\fluorescence\\benchling\\_2023\\_09\\fluorescence"
         )
         assert get_model_class_from_schema(schema) == "fake_model"
