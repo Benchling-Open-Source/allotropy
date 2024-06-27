@@ -64,6 +64,23 @@ def test_get_model_class_from_schema() -> None:
     ) as mock_import:
         mock_import.return_value = fake_module
         assert get_model_class_from_schema(schema) == "fake_model"
-        mock_import.assert_called_once_with(
+        mock_import.assert_called_with(
+            "allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence"
+        )
+
+
+def test_get_model_class_from_schema_windows_path() -> None:
+    schema = {"$asm.manifest": MANIFEST}
+    fake_module = mock.MagicMock()
+    fake_module.Model = "fake_model"
+    with mock.patch(
+        "allotropy.allotrope.schema_parser.path_util.importlib.import_module"
+    ) as mock_import, mock.patch(
+        "allotropy.allotrope.schema_parser.path_util.get_model_file_from_schema_path"
+    ) as mock_get_model_file:
+        mock_import.return_value = fake_module
+        mock_get_model_file.return_value = "adm\\fluorescence\\benchling\\_2023\\_09\\fluorescence"
+        assert get_model_class_from_schema(schema) == "fake_model"
+        mock_import.assert_called_with(
             "allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence"
         )
