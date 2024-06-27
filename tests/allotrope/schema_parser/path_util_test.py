@@ -80,7 +80,7 @@ def test_get_model_class_from_schema_windows_path() -> None:
     ) as mock_get_model_file:
         mock_import.return_value = fake_module
         mock_get_model_file.return_value = Path(
-            "adm\\fluorescence\\benchling\\_2023\\_09\\fluorescence"
+            "adm\\fluorescence\\benchling\\_2023\\_09\\fluorescence.py"
         )
         assert get_model_class_from_schema(schema) == "fake_model"
         mock_import.assert_called_with(
