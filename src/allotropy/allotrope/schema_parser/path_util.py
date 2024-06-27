@@ -78,6 +78,5 @@ def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
     model_file = get_model_file_from_schema_path(Path(schema_path))
     import_path = f"allotropy.allotrope.models.{'.'.join(model_file.parts)[:-3]}"
-    print(import_path)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model

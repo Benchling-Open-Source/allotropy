@@ -8,9 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Added electrophoresis and spectrophotometry parser requirement templates to /docs
 
 ### Fixed
+
+- Make get_model_class_from_schema work with Windows style path
 
 ### Changed
 
@@ -23,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.37] - 2024-06-26
 
 ### Added
+
 - Add Agilent TapeStation Analysis adapter
 - Added utility to add both dict and dataclass custom information document to an ASM model
 
