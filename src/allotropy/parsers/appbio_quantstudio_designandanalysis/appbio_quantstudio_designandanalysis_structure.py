@@ -44,6 +44,7 @@ SAMPLE_ROLE_TYPES_MAP = {
     "POSITIVE_1/2": "heterozygous control sample role",
 }
 
+NOT_APPLICABLE = "N/A"
 
 @dataclass(frozen=True)
 class Header:
@@ -95,17 +96,17 @@ class Header:
                 msg="Unable to interpret plate well count",
             ),
             device_identifier=(
-                try_str_from_series_or_none(header, "Instrument Name") or "NA"
+                try_str_from_series_or_none(header, "Instrument Name") or NOT_APPLICABLE
             ),
-            model_number=try_str_from_series_or_none(header, "Instrument Type") or "NA",
+            model_number=try_str_from_series_or_none(header, "Instrument Type") or NOT_APPLICABLE,
             device_serial_number=(
-                try_str_from_series_or_none(header, "Instrument Serial Number") or "NA"
+                try_str_from_series_or_none(header, "Instrument Serial Number") or NOT_APPLICABLE
             ),
             measurement_method_identifier=try_str_from_series(
                 header, "Quantification Cycle Method"
             ),
             pcr_detection_chemistry=(
-                try_str_from_series_or_none(header, "Chemistry") or "NA"
+                try_str_from_series_or_none(header, "Chemistry") or NOT_APPLICABLE
             ),
             passive_reference_dye_setting=try_str_from_series_or_none(
                 header, "Passive Reference"

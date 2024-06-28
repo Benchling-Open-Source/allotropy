@@ -183,8 +183,8 @@ def get_data() -> Data:
                 "",
             ]
         ),
-        endogenous_control="",
-        reference_sample="",
+        endogenous_control="N/A",
+        reference_sample="N/A",
         calculated_documents=[
             CalculatedDocument(
                 uuid="d006e7e7-fbe4-47cf-821b-904e85202803",
@@ -325,8 +325,8 @@ def get_data2() -> Data:
                 "",
             ]
         ),
-        endogenous_control="",
-        reference_sample="",
+        endogenous_control="N/A",
+        reference_sample="N/A",
         calculated_documents=[],
     )
 
@@ -1115,8 +1115,8 @@ def get_genotyping_data() -> Data:
         ),
         wells=WellList([well]),
         raw_data=None,
-        endogenous_control="",
-        reference_sample="",
+        endogenous_control="N/A",
+        reference_sample="N/A",
         calculated_documents=[],
     )
 
