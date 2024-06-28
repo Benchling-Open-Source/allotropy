@@ -115,6 +115,11 @@ class Milliliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class MilliliterPerLiter(HasUnit):
+    unit: str = "mL/L"
+
+
+@dataclass(frozen=True, kw_only=True)
 class Millimeter(HasUnit):
     unit: str = "mm"
 
