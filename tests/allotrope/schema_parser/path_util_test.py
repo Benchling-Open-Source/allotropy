@@ -55,6 +55,17 @@ def test_get_model_file_from_schema_path() -> None:
     )
 
 
+def test_get_model_file_from_schema_path_windows_path() -> None:
+    # Replace linux / sep with \\ and test.
+    rel_windows_path = Path(str(REL_SCHEMA_PATH).replace("/", "\\"))
+    # Have to mock get_rel_schema_path in a linux environment since it will fail combining with windows path.
+    with mock.patch("allotropy.allotrope.schema_parser.path_util.get_rel_schema_path") as mock_get_rel:
+        mock_get_rel.return_value = rel_windows_path
+        assert get_model_file_from_schema_path(rel_windows_path) == Path(
+            "adm/fluorescence/benchling/_2023/_09/fluorescence.py"
+        )
+
+
 def test_get_model_class_from_schema() -> None:
     schema = {"$asm.manifest": MANIFEST}
     fake_module = mock.MagicMock()
