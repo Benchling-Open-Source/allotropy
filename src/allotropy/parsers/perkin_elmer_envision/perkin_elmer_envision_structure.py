@@ -40,6 +40,7 @@ from allotropy.parsers.utils.values import (
 
 NOT_APPLICABLE = "N/A"
 
+
 def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
     df.columns = df.iloc[0]  # type: ignore[assignment]
     return pd.Series(df.iloc[-1], index=df.columns)
@@ -572,14 +573,17 @@ class Labels:
             ),
             emission_filters={
                 "1st": filters.get(
-                    try_str_from_series_or_none(series, "Ems. filter") or NOT_APPLICABLE,
+                    try_str_from_series_or_none(series, "Ems. filter")
+                    or NOT_APPLICABLE,
                 ),
                 "2nd": filters.get(
-                    try_str_from_series_or_none(series, "2nd ems. filter") or NOT_APPLICABLE
+                    try_str_from_series_or_none(series, "2nd ems. filter")
+                    or NOT_APPLICABLE
                 ),
             },
             scan_position_setting=filter_position_map.get(
-                try_str_from_series_or_none(series, "Using of emission filter") or NOT_APPLICABLE
+                try_str_from_series_or_none(series, "Using of emission filter")
+                or NOT_APPLICABLE
             ),
             number_of_flashes=try_float_from_series_or_none(
                 series, "Number of flashes"

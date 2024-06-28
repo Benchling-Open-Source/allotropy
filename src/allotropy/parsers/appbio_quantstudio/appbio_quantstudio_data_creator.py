@@ -52,10 +52,12 @@ def create_data(reader: LinesReader) -> Data:
             )
 
     endogenous_control = (
-        try_str_from_series_or_none(results_metadata, "Endogenous Control") or NOT_APPLICABLE
+        try_str_from_series_or_none(results_metadata, "Endogenous Control")
+        or NOT_APPLICABLE
     )
     reference_sample = (
-        try_str_from_series_or_none(results_metadata, "Reference Sample") or NOT_APPLICABLE
+        try_str_from_series_or_none(results_metadata, "Reference Sample")
+        or NOT_APPLICABLE
     )
 
     return Data(
