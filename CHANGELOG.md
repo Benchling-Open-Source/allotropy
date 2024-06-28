@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Make get_model_class_from_schema work with Windows style path
 
 ### Changed
+- Allow no target DNA reference in AppBio Quantstudio design and anlysis
 
 ### Deprecated
 
