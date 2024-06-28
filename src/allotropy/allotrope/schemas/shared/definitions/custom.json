@@ -419,6 +419,26 @@
       }
     ]
   },
+  "tQuantityValueMilliliterPerLiter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerLiter"
+      }
+    ]
+  },
+  "tNullableQuantityValueMilliliterPerLiter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/MilliliterPerLiter"
+      }
+    ]
+  },
   "tQuantityValueMillimeter": {
     "allOf": [
       {
