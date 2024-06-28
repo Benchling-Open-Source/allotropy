@@ -288,7 +288,7 @@ class NanodropEightParser(VendorParser):
                     sample_document=SampleDocument(
                         sample_identifier=_get_str(data, row, "sample id")
                         if _get_str_or_none(data, row, "sample id")
-                        else "NA",
+                        else "N/A",
                         well_plate_identifier=_get_str_or_none(data, row, "plate ID"),
                         location_identifier=_get_str_or_none(data, row, "well"),
                     ),
@@ -337,7 +337,7 @@ class NanodropEightParser(VendorParser):
                     sample_document=SampleDocument(
                         sample_identifier=_get_str(data, row, "sample id")
                         if _get_str_or_none(data, row, "sample id")
-                        else "NA",
+                        else "N/A",
                         well_plate_identifier=_get_str_or_none(data, row, "plate id"),
                         location_identifier=_get_str_or_none(data, row, "well"),
                     ),

@@ -39,7 +39,7 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_none,
 )
 
-UNDEFINED_SAMPLE_NAME = "N/A"
+NOT_APPLICABLE = "N/A"
 
 
 @dataclass(frozen=True)
@@ -94,13 +94,13 @@ class Header:
                 msg="Unable to find valid experiment type",
             ),
             device_identifier=(
-                try_str_from_series_or_none(data, "Instrument Name") or "NA"
+                try_str_from_series_or_none(data, "Instrument Name") or NOT_APPLICABLE
             ),
             model_number=try_str_from_series(data, "Instrument Type"),
             device_serial_number=try_str_from_series_or_none(
                 data, "Instrument Serial Number"
             )
-            or "NA",
+            or NOT_APPLICABLE,
             measurement_method_identifier=try_str_from_series(
                 data, "Quantification Cycle Method"
             ),
@@ -164,7 +164,7 @@ class WellItem(Referenceable):
         sample_identifier = try_str_from_series_or_default(
             data,
             "Sample Name",
-            default=UNDEFINED_SAMPLE_NAME,
+            default=NOT_APPLICABLE,
         )
 
         allele1 = try_str_from_series(
@@ -189,7 +189,7 @@ class WellItem(Referenceable):
                     data, "Allele1 Reporter"
                 ),
                 position=try_str_from_series_or_default(
-                    data, "Well Position", default="UNDEFINED"
+                    data, "Well Position", default=NOT_APPLICABLE
                 ),
                 well_location_identifier=try_str_from_series_or_none(
                     data, "Well Position"
@@ -206,7 +206,7 @@ class WellItem(Referenceable):
                     data, "Allele2 Reporter"
                 ),
                 position=try_str_from_series_or_default(
-                    data, "Well Position", default="UNDEFINED"
+                    data, "Well Position", default=NOT_APPLICABLE
                 ),
                 well_location_identifier=try_str_from_series_or_none(
                     data, "Well Position"
@@ -229,7 +229,7 @@ class WellItem(Referenceable):
         sample_identifier = try_str_from_series_or_default(
             data,
             "Sample Name",
-            default=UNDEFINED_SAMPLE_NAME,
+            default=NOT_APPLICABLE,
         )
 
         return WellItem(
@@ -239,7 +239,7 @@ class WellItem(Referenceable):
             sample_identifier=sample_identifier,
             reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
             position=try_str_from_series_or_default(
-                data, "Well Position", default="UNDEFINED"
+                data, "Well Position", default=NOT_APPLICABLE
             ),
             well_location_identifier=try_str_from_series_or_none(data, "Well Position"),
             quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),

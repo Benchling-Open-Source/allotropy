@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Changed
-
+- Standardize use of "N/A" for strings where a non-applicable value is necessary
 ### Deprecated
 
 ### Removed
