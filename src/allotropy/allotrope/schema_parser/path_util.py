@@ -69,10 +69,12 @@ def get_model_file_from_schema_path(schema_path: Path) -> Path:
     rel_schema_path = PureWindowsPath(get_rel_schema_path(schema_path))
     schema_file = rel_schema_path.name
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
-    model_path = Path(*[
-        re.sub("^([0-9]+)$", r"_\1", part.lower().replace("-", "_"))
-        for part in rel_schema_path.parent.parts
-    ])
+    model_path = Path(
+        *[
+            re.sub("^([0-9]+)$", r"_\1", part.lower().replace("-", "_"))
+            for part in rel_schema_path.parent.parts
+        ]
+    )
     return Path(model_path, model_file)
 
 
