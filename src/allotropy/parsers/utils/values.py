@@ -114,6 +114,14 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     return df
 
 
+def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
+    try:
+        return df[key]
+    except KeyError as e:
+        msg = f"Unable to find key '{key}' in dataframe headers: {df.columns.tolist()}"
+        raise AllotropeConversionError(msg) from e
+
+
 def try_str_from_series_or_default(
     data: pd.Series[Any],
     key: str,

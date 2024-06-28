@@ -33,10 +33,17 @@ def test_parse_vi_cell_xr_to_asm_expected_contents(output_file: str) -> None:
     validate_contents(allotrope_dict, expected_filepath)
 
 
-def test_perse_vi_cell_xr_file_without_required_fields_then_raise() -> None:
+def test_parse_vi_cell_xr_file_without_required_fields_then_raise() -> None:
     test_filepath = "tests/parsers/beckman_vi_cell_xr/testdata/v2.04/Beckman_Vi-Cell-XR_example02_instrumentOutput.xls"
     expected_regex = re.escape(
         "Expected to find lines with all of these headers: ['Viability (%)', 'Viable cells/ml (x10^6)']."
     )
+    with pytest.raises(AllotropeConversionError, match=expected_regex):
+        from_file(test_filepath, VENDOR_TYPE)
+
+
+def test_parse_vi_cell_xr_file_invalid_datetime_header_then_raise() -> None:
+    test_filepath = "tests/parsers/beckman_vi_cell_xr/testdata/v2.06/Beckman_Vi-Cell-XR_example01_instrumentOutput_invalid_date_header.xlsx"
+    expected_regex = r"Unable to find key 'Sample date/time' in dataframe headers: .*"
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         from_file(test_filepath, VENDOR_TYPE)

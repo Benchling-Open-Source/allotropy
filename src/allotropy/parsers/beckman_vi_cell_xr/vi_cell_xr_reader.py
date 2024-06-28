@@ -12,6 +12,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     MODEL_RE,
     XrVersion,
 )
+from allotropy.parsers.utils.values import assert_value_from_df
 from allotropy.types import IOType
 
 
@@ -39,7 +40,9 @@ class ViCellXRReader:
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
         file_data[date_header] = pd.to_datetime(
-            file_data[date_header], format="%d %b %Y  %I:%M:%S %p", errors="coerce"
+            assert_value_from_df(file_data, date_header),
+            format="%d %b %Y  %I:%M:%S %p",
+            errors="coerce",
         )
         file_data = file_data.dropna(subset=date_header)
 
