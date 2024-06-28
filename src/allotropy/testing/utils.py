@@ -141,9 +141,6 @@ def validate_contents(
     print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
-    with open(expected_file) as f:
-        expected_dict = json.load(f)
-
     # Ensure that allotrope_dict can be written via json.dump()
     with tempfile.TemporaryFile(mode="w+") as tmp:
         json.dump(allotrope_dict, tmp)
@@ -155,6 +152,8 @@ def validate_contents(
     _validate_identifiers(allotrope_dict)
 
     try:
+        with open(expected_file) as f:
+            expected_dict = json.load(f)
         _assert_allotrope_dicts_equal(
             expected_dict, allotrope_dict, print_verbose_deep_diff
         )
