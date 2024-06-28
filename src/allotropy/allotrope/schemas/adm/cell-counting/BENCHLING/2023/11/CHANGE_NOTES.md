@@ -10,6 +10,7 @@ Changes:
 * Added "data system document" to "cell counting aggregate document"
   * Reasoning: Extension adopted in order to capture metadata about the originating computer system, software, file, and ASM conversion
   * Proposal: add "data system document" to ASM technique documents
+  * Note: this is implemented in the 2024/06 release of the core schema
 
 * Removed "total cell count" from required in "processed data document"
   * Reasoning: Not all cell counters provide total cell count

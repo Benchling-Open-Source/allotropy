@@ -1,10 +1,14 @@
 Base schema: http://purl.allotrope.org/json-schemas/adm/pcr/REC/2023/09/qpcr.schema
 
+TODO: update to "http://purl.allotrope.org/json-schemas/adm/pcr/REC/2024/06/qpcr.schema"
+TODO: update to "http://purl.allotrope.org/json-schemas/adm/pcr/REC/2024/06/dpcr.schema"
+
 Changes:
 
 * Added "data system document" to "qPCR aggregate document"
   * Reasoning: Extension adopted in order to capture metadata about the originating computer system, software, file, and ASM conversion
   * Proposal: add "data system document" to ASM technique documents
+  * Note: This has been implemented in the 2024/06 release of the core schema
 
 * Removed "device document" from "device system document"
   * Reasoning: contents of "device document" are covered in other documents

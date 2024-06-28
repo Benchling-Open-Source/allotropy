@@ -1,6 +1,8 @@
 Base schema: http://purl.allotrope.org/json-schemas/adm/light-obscuration/REC/2021/12/light-obscuration.schema
 
 Changes:
+- Reasoning: Revised format of the schema to follow the hierachical pattern introduced in ASM core schema
+- Proposal: Request revision of Allotrope schema to this format AND/OR incorporate light-obscuration into solution analyzer schema
 
 - Added `light obscuration aggregate document`
 

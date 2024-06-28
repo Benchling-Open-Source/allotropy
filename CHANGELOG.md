@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
+- Updates to schema CHANGE_NOTES.md to reflect differences with current Allotrope schema
 
 ### Deprecated
 
