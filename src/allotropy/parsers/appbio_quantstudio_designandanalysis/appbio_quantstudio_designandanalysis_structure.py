@@ -46,6 +46,7 @@ SAMPLE_ROLE_TYPES_MAP = {
 
 NOT_APPLICABLE = "N/A"
 
+
 @dataclass(frozen=True)
 class Header:
     measurement_time: str
@@ -98,9 +99,11 @@ class Header:
             device_identifier=(
                 try_str_from_series_or_none(header, "Instrument Name") or NOT_APPLICABLE
             ),
-            model_number=try_str_from_series_or_none(header, "Instrument Type") or NOT_APPLICABLE,
+            model_number=try_str_from_series_or_none(header, "Instrument Type")
+            or NOT_APPLICABLE,
             device_serial_number=(
-                try_str_from_series_or_none(header, "Instrument Serial Number") or NOT_APPLICABLE
+                try_str_from_series_or_none(header, "Instrument Serial Number")
+                or NOT_APPLICABLE
             ),
             measurement_method_identifier=try_str_from_series(
                 header, "Quantification Cycle Method"
