@@ -1,6 +1,6 @@
 from collections.abc import Mapping
 import importlib
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import re
 from typing import Any
 
@@ -66,17 +66,22 @@ def get_schema_path_from_reference(reference: str) -> Path:
 
 
 def get_model_file_from_schema_path(schema_path: Path) -> Path:
-    rel_schema_path = get_rel_schema_path(schema_path)
+    rel_schema_path = PureWindowsPath(get_rel_schema_path(schema_path))
     schema_file = rel_schema_path.name
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
-    schema_dir = str(rel_schema_path.parent)
-    model_path = re.sub("/([0-9]+)", r"/_\1", schema_dir.replace("-", "_").lower())
+    model_path = Path(
+        *[
+            re.sub("^([0-9]+)$", r"_\1", part.lower().replace("-", "_"))
+            for part in rel_schema_path.parent.parts
+        ]
+    )
     return Path(model_path, model_file)
 
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = get_model_file_from_schema_path(Path(schema_path))
-    import_path = f"allotropy.allotrope.models.{str(model_file).replace('/', '.')[:-3]}"
+    # NOTE: PureWindowsPath handles both Windows and linux paths.
+    model_file = PureWindowsPath(get_model_file_from_schema_path(Path(schema_path)))
+    import_path = f"allotropy.allotrope.models.{'.'.join(model_file.parts)[:-3]}"
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model

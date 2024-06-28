@@ -251,6 +251,18 @@
       "unit"
     ]
   },
+  "MilliliterPerLiter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "mL/L",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MilliliterPerLiter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "Millimeter": {
     "properties": {
       "unit": {
@@ -292,7 +304,7 @@
       "unit": {
         "type": "string",
         "const": "10^6 cells/mL",
-        "$asm.unit-iri": "http://qudt.org/vocab/unit#MillionCellsPerMilliliter"
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MillionCellsPerMilliliter"
       }
     },
     "required": [

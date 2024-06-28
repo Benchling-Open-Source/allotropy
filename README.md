@@ -14,6 +14,7 @@ We currently have parser support for the following instruments:
 ### Recommended
   - Agilent Gen5
   - Agilent Gen5 Image
+  - Agilent TapeStation Analysis
   - AppBio AbsoluteQ
   - AppBio QuantStudio RT-PCR
   - AppBio QuantStudio Design & Analysis
@@ -37,7 +38,7 @@ We currently have parser support for the following instruments:
   - Qiacuity dPCR
   - Mabtech Apex
 
-The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details. 
+The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 
 This code is published under the permissive MIT license because we believe that standardized instrument data is a benefit for everyone in science.
 

@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.fluorescence.benchling._2023._09.fluorescence import (
     ContainerType,
     DeviceControlAggregateDocument,
@@ -27,6 +30,12 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
+@dataclass(kw_only=True)
+class MyCustomInfoDoc:
+    extra_information: str
+    extra_value: TQuantityValueNumber
+
+
 class ExampleWeylandYutaniParser(VendorParser):
     @property
     def display_name(self) -> str:
@@ -47,19 +56,32 @@ class ExampleWeylandYutaniParser(VendorParser):
             msg = "Unable to determine the number of wells in the plate."
             raise AllotropeConversionError(msg)
 
+        custom_info = {
+            "custom value": {"value": 10, "unit": "mL"},
+            "custom metadata": "Some extra piece of info",
+        }
         return Model(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=random_uuid_str(),
-                measurement_time=self._get_measurement_time(data),
-                analytical_method_identifier=data.basic_assay_info.protocol_id,
-                experimental_data_identifier=data.basic_assay_info.assay_id,
-                container_type=ContainerType.well_plate,
-                plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
-                device_system_document=DeviceSystemDocument(
-                    model_number=data.instrument.serial_number,
-                    device_identifier=data.instrument.nickname,
+            measurement_aggregate_document=add_custom_information_document(
+                MeasurementAggregateDocument(
+                    measurement_identifier=random_uuid_str(),
+                    measurement_time=self._get_measurement_time(data),
+                    analytical_method_identifier=data.basic_assay_info.protocol_id,
+                    experimental_data_identifier=data.basic_assay_info.assay_id,
+                    container_type=ContainerType.well_plate,
+                    plate_well_count=TQuantityValueNumber(value=data.number_of_wells),
+                    device_system_document=add_custom_information_document(
+                        DeviceSystemDocument(
+                            model_number=data.instrument.serial_number,
+                            device_identifier=data.instrument.nickname,
+                        ),
+                        MyCustomInfoDoc(
+                            extra_information="My extra information",
+                            extra_value=TQuantityValueNumber(value=100),
+                        ),
+                    ),
+                    measurement_document=self._get_measurement_document(data),
                 ),
-                measurement_document=self._get_measurement_document(data),
+                custom_info,
             )
         )
 
