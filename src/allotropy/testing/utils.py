@@ -4,6 +4,7 @@ from collections import defaultdict
 from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
 import json
+from pathlib import Path
 import shutil
 import tempfile
 from typing import Any
@@ -125,12 +126,16 @@ def from_file(test_file: str, vendor: Vendor, encoding: str | None = None) -> Di
 
 
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
-    with tempfile.NamedTemporaryFile(mode="w+") as tmp:
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
-        json.load(tmp)  # Ensure this file can be opened as JSON before we copy it
-        shutil.copy(tmp.name, expected_file)
+        # Get path to temp file using Pathlib to ensure Windows symbolic link compatibility.
+        tmp_path = Path(tmp.name)
+        # Ensure this file can be opened as JSON before we copy it
+        with tmp_path.open() as tmp_file:
+            json.load(tmp_file)
+        shutil.copy(tmp_path, expected_file)
 
 
 def validate_contents(
