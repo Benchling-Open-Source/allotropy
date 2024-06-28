@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 
 ### Removed
+- Remove stage number from AppBio Quantstudio design and analysis
 
 ### Security
 

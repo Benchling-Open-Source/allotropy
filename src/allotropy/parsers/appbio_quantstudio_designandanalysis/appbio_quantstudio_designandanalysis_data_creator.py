@@ -23,7 +23,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 def create_data(contents: DesignQuantstudioContents) -> Data:
     experiment_type = Data.get_experiment_type(contents)
     header = Header.create(contents.header)
-    wells = WellList.create(contents, header, experiment_type)
+    wells = WellList.create(contents, experiment_type)
     well_items = wells.get_well_items()
 
     view_st_data = SampleView(sub_view=TargetView()).apply(well_items)
