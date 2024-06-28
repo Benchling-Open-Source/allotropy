@@ -152,16 +152,16 @@ def validate_contents(
     try:
         with open(expected_file) as f:
             expected_dict = json.load(f)
-        _assert_allotrope_dicts_equal(
-            expected_dict, allotrope_dict
-        )
+        _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
     except Exception as e:
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_file)
             if isinstance(e, FileNotFoundError):
                 msg = f"Missing expected output file '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'"
                 raise AssertionError(msg) from e
-            if isinstance(e, AssertionError) and "allotropy output != expected:" in str(e):
+            if isinstance(e, AssertionError) and "allotropy output != expected:" in str(
+                e
+            ):
                 msg = f"Mismatch between actual and expected for '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'\n\n{e}"
                 raise AssertionError(msg) from e
         raise
