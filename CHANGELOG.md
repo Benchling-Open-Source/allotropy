@@ -8,13 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Added electrophoresis and spectrophotometry parser requirement templates to /docs
 
 ### Fixed
 
 - Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
+- Make get_model_class_from_schema work with Windows style path
 
 ### Changed
+- Allow no target DNA reference in AppBio Quantstudio design and anlysis
 
 ### Deprecated
 
@@ -25,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.37] - 2024-06-26
 
 ### Added
+
 - Add Agilent TapeStation Analysis adapter
 - Added utility to add both dict and dataclass custom information document to an ASM model
 
