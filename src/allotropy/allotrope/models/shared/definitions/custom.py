@@ -25,6 +25,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     MilliAbsorbanceUnitTimesSecond,
     MilligramPerMilliliter,
     Milliliter,
+    MilliliterPerLiter,
     Millimeter,
     MillimeterOfMercury,
     MillimolePerLiter,
@@ -285,6 +286,18 @@ class TQuantityValueMilliliter(Milliliter, TQuantityValue):
 
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueMilliliter(Milliliter, TNullableQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueMilliliterPerLiter(MilliliterPerLiter, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueMilliliterPerLiter(
+    MilliliterPerLiter, TNullableQuantityValue
+):
     pass
 
 

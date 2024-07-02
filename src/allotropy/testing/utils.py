@@ -4,6 +4,7 @@ from collections import defaultdict
 from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
 import json
+from pathlib import Path
 import shutil
 import tempfile
 from typing import Any
@@ -82,7 +83,6 @@ def _validate_identifiers(asm: DictType) -> None:
 def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
-    print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     expected_replaced = _replace_asm_converter_name_and_version(expected)
 
@@ -92,9 +92,9 @@ def _assert_allotrope_dicts_equal(
         ignore_type_in_groups=[(float, np.float64)],
         ignore_nan_inequality=True,
     )
-    if print_verbose_deep_diff:
-        print(ddiff)  # noqa: T201
-    assert not ddiff  # noqa: S101
+    if ddiff:
+        msg = f"allotropy output != expected: \n{ddiff.pretty()}"
+        raise AssertionError(msg)
 
 
 class TestIdGenerator:
@@ -126,24 +126,24 @@ def from_file(test_file: str, vendor: Vendor, encoding: str | None = None) -> Di
 
 
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
-    with tempfile.NamedTemporaryFile(mode="w+") as tmp:
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
-        json.load(tmp)  # Ensure this file can be opened as JSON before we copy it
-        shutil.copy(tmp.name, expected_file)
+        # Get path to temp file using Pathlib to ensure Windows symbolic link compatibility.
+        tmp_path = Path(tmp.name)
+        # Ensure this file can be opened as JSON before we copy it
+        with tmp_path.open() as tmp_file:
+            json.load(tmp_file)
+        shutil.copy(tmp_path, expected_file)
 
 
 def validate_contents(
     allotrope_dict: DictType,
     expected_file: str,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
-    print_verbose_deep_diff: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
-    with open(expected_file) as f:
-        expected_dict = json.load(f)
-
     # Ensure that allotrope_dict can be written via json.dump()
     with tempfile.TemporaryFile(mode="w+") as tmp:
         json.dump(allotrope_dict, tmp)
@@ -155,10 +155,18 @@ def validate_contents(
     _validate_identifiers(allotrope_dict)
 
     try:
-        _assert_allotrope_dicts_equal(
-            expected_dict, allotrope_dict, print_verbose_deep_diff
-        )
-    except Exception:
+        with open(expected_file) as f:
+            expected_dict = json.load(f)
+        _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
+    except Exception as e:
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_file)
+            if isinstance(e, FileNotFoundError):
+                msg = f"Missing expected output file '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'"
+                raise AssertionError(msg) from e
+            if isinstance(e, AssertionError) and "allotropy output != expected:" in str(
+                e
+            ):
+                msg = f"Mismatch between actual and expected for '{expected_file}', writing expected output because 'write_actual_to_expected_on_fail=True'\n\n{e}"
+                raise AssertionError(msg) from e
         raise
