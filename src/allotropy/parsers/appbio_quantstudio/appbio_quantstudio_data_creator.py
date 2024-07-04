@@ -11,10 +11,9 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     WellList,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import try_str_from_series_or_none
-
-NOT_APPLICABLE = "N/A"
 
 
 def create_data(reader: LinesReader) -> Data:

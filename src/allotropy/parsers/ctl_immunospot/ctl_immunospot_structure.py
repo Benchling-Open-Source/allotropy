@@ -7,6 +7,7 @@ import re
 from typing import Optional
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import assert_not_none, try_float_or_none
 
@@ -84,7 +85,7 @@ class DeviceInfo:
         )
 
         return DeviceInfo(
-            device_identifier="N/A",
+            device_identifier=NOT_APPLICABLE,
             model_number=analyzer_serial_match.group(1),
             equipment_serial_number=analyzer_serial_number,
             data_system_instance_id=computer_name,

@@ -11,6 +11,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     Referenceable,
@@ -43,8 +44,6 @@ SAMPLE_ROLE_TYPES_MAP = {
     "POSITIVE_2/2": "homozygous control sample role",
     "POSITIVE_1/2": "heterozygous control sample role",
 }
-
-NOT_APPLICABLE = "N/A"
 
 
 @dataclass(frozen=True)

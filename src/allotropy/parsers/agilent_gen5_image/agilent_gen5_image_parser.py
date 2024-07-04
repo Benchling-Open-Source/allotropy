@@ -40,6 +40,7 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     MULTIPLATE_FILE_ERROR,
     NO_PLATE_DATA_ERROR,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -74,7 +75,7 @@ class AgilentGen5ImageParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier="N/A",
+                    device_identifier=NOT_APPLICABLE,
                     model_number=header_data.model_number,
                     equipment_serial_number=header_data.equipment_serial_number,
                 ),

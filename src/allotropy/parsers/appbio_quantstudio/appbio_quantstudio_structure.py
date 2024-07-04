@@ -18,6 +18,7 @@ import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.allotrope.pandas_util import read_csv
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
@@ -38,8 +39,6 @@ from allotropy.parsers.utils.values import (
     try_str_from_series_or_default,
     try_str_from_series_or_none,
 )
-
-NOT_APPLICABLE = "N/A"
 
 
 @dataclass(frozen=True)

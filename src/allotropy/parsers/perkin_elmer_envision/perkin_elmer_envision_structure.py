@@ -28,6 +28,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -37,8 +38,6 @@ from allotropy.parsers.utils.values import (
     try_str_from_series,
     try_str_from_series_or_none,
 )
-
-NOT_APPLICABLE = "N/A"
 
 
 def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:

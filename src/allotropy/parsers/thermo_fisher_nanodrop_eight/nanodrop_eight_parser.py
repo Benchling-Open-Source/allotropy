@@ -39,6 +39,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
     NanoDropEightReader,
@@ -288,7 +289,7 @@ class NanodropEightParser(VendorParser):
                     sample_document=SampleDocument(
                         sample_identifier=_get_str(data, row, "sample id")
                         if _get_str_or_none(data, row, "sample id")
-                        else "N/A",
+                        else NOT_APPLICABLE,
                         well_plate_identifier=_get_str_or_none(data, row, "plate ID"),
                         location_identifier=_get_str_or_none(data, row, "well"),
                     ),
@@ -337,7 +338,7 @@ class NanodropEightParser(VendorParser):
                     sample_document=SampleDocument(
                         sample_identifier=_get_str(data, row, "sample id")
                         if _get_str_or_none(data, row, "sample id")
-                        else "N/A",
+                        else NOT_APPLICABLE,
                         well_plate_identifier=_get_str_or_none(data, row, "plate id"),
                         location_identifier=_get_str_or_none(data, row, "well"),
                     ),

@@ -49,6 +49,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
     WellList,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
@@ -183,8 +184,8 @@ def get_data() -> Data:
                 "",
             ]
         ),
-        endogenous_control="N/A",
-        reference_sample="N/A",
+        endogenous_control=NOT_APPLICABLE,
+        reference_sample=NOT_APPLICABLE,
         calculated_documents=[
             CalculatedDocument(
                 uuid="d006e7e7-fbe4-47cf-821b-904e85202803",
@@ -325,8 +326,8 @@ def get_data2() -> Data:
                 "",
             ]
         ),
-        endogenous_control="N/A",
-        reference_sample="N/A",
+        endogenous_control=NOT_APPLICABLE,
+        reference_sample=NOT_APPLICABLE,
         calculated_documents=[],
     )
 
@@ -1115,8 +1116,8 @@ def get_genotyping_data() -> Data:
         ),
         wells=WellList([well]),
         raw_data=None,
-        endogenous_control="N/A",
-        reference_sample="N/A",
+        endogenous_control=NOT_APPLICABLE,
+        reference_sample=NOT_APPLICABLE,
         calculated_documents=[],
     )
 
