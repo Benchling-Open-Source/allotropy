@@ -14,7 +14,7 @@ from deepdiff import DeepDiff
 import numpy as np
 
 from allotropy.allotrope.converter import structure
-from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION, DEFAULT_ENCODING
 from allotropy.parser_factory import Vendor
 from allotropy.to_allotrope import allotrope_from_file
 
@@ -44,6 +44,7 @@ NON_UNIQUE_IDENTIFIERS = {
     "data source identifier",
     "device identifier",
     "experimental data identifier",
+    "group identifier",
     "location identifier",
     "measurement method identifier",
     "sample identifier",
@@ -145,8 +146,8 @@ def validate_contents(
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     # Ensure that allotrope_dict can be written via json.dump()
-    with tempfile.TemporaryFile(mode="w+") as tmp:
-        json.dump(allotrope_dict, tmp)
+    with tempfile.TemporaryFile(mode="w+", encoding=DEFAULT_ENCODING) as tmp:
+        json.dump(allotrope_dict, tmp, ensure_ascii=False)
 
     # Ensure that allotrope_dict can be structured back into a python model.
     structure(allotrope_dict)
@@ -155,7 +156,7 @@ def validate_contents(
     _validate_identifiers(allotrope_dict)
 
     try:
-        with open(expected_file) as f:
+        with open(expected_file, encoding=DEFAULT_ENCODING) as f:
             expected_dict = json.load(f)
         _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
     except Exception as e:

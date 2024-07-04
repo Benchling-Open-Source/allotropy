@@ -10,13 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added electrophoresis and spectrophotometry parser requirement templates to /docs
+- Added Roche Cedex HiRes adapter
+- Added requirement doc for Roche Cedex HiRes adapter
 
 ### Fixed
 
 - Make get_model_class_from_schema work with Windows style path
+- Fixed encoding issues while reading units.json file in schemas.py script
+- Fixed encoding issues while reading test json files in testing/utils.py script
+
 
 ### Changed
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
+- Updated NON_UNIQUE_IDENTIFIERS to have "group identifier" field
 
 ### Deprecated
 
