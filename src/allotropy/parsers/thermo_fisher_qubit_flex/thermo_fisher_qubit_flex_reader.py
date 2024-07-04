@@ -7,7 +7,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers import lines_reader
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.thermo_fisher_qubit_flex_parser import constants
+from allotropy.parsers.thermo_fisher_qubit_flex import constants
 
 
 class QubitFlexReader:
