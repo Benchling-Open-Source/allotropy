@@ -8,77 +8,48 @@ import pandas as pd
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    CalculatedDataAggregateDocument,
-    CalculatedDataDocumentItem,
-    DataSourceAggregateDocument,
-    DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
-    ProcessedDataAggregateDocument,
-    ProcessedDataDocumentItem,
     SampleDocument,
     SpectrophotometryAggregateDocument,
     SpectrophotometryDocumentItem,
-    UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
-    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
     FluorescencePointDetectionDeviceControlAggregateDocument, FluorescencePointDetectionDeviceControlDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicrogramPerMicroliter,
     TQuantityValueMicrogramPerMilliliter,
-    TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMilligramPerMilliliter,
     TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanogramPerMilliliter,
-    TQuantityValueNanometer,
     TQuantityValuePicogramPerMilliliter, TQuantityValueRelativeFluorescenceUnit, TQuantityValueMicroliter,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
-    TQuantityValue,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.thermo_fisher_qubit_flex.qubit_flex_reader import (
-    QubitFlexReader, constants
+from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader import (
+    ThermoFisherQubitFlexReader, constants
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
-ConcentrationType = (
-        TQuantityValueMicrogramPerMicroliter
-        | TQuantityValueMicrogramPerMilliliter
-        | TQuantityValueMilligramPerMilliliter
-        | TQuantityValueNanogramPerMicroliter
-        | TQuantityValueNanogramPerMilliliter
-        | TQuantityValuePicogramPerMilliliter
-)
-ConcentrationClassType = (
-        type[TQuantityValueMicrogramPerMicroliter]
-        | type[TQuantityValueMicrogramPerMilliliter]
-        | type[TQuantityValueMilligramPerMilliliter]
-        | type[TQuantityValueNanogramPerMicroliter]
-        | type[TQuantityValueNanogramPerMilliliter]
-        | type[TQuantityValuePicogramPerMilliliter]
-)
-
-CONCENTRATION_UNIT_TO_TQUANTITY: Mapping[str, ConcentrationClassType] = {
-    "ug/ul": TQuantityValueMicrogramPerMicroliter,
-    "ug/ml": TQuantityValueMicrogramPerMilliliter,
-    "mg/ml": TQuantityValueMilligramPerMilliliter,
-    "ng/ul": TQuantityValueNanogramPerMicroliter,
-    "ng/ml": TQuantityValueNanogramPerMilliliter,
-    "pg/ul": TQuantityValuePicogramPerMilliliter,
+CONCENTRATION_UNIT_TO_TQUANTITY = {
+    "ug/uL": TQuantityValueMicrogramPerMicroliter,
+    "ug/mL": TQuantityValueMicrogramPerMilliliter,
+    "mg/mL": TQuantityValueMilligramPerMilliliter,
+    "ng/uL": TQuantityValueNanogramPerMicroliter,
+    "ng/mL": TQuantityValueNanogramPerMilliliter,
+    "pg/uL": TQuantityValuePicogramPerMilliliter,
 }
 
 
@@ -179,10 +150,10 @@ def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
         return InvalidJsonFloat.NaN
 
 
-class QubitFlexParser(VendorParser):
+class ThermoFisherQubitFlexParser(VendorParser):
     @property
     def display_name(self) -> str:
-        return "Thermo Fisher NanoDrop Eight"
+        return "Thermo Fisher Scientific Qubit Flex"
 
     @property
     def release_state(self) -> ReleaseState:
@@ -190,7 +161,7 @@ class QubitFlexParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         return self._get_model(
-            data=QubitFlexReader.read(named_file_contents),
+            data=ThermoFisherQubitFlexReader.read(named_file_contents),
             filename=named_file_contents.original_file_name,
         )
 
@@ -219,26 +190,25 @@ class QubitFlexParser(VendorParser):
     ) -> list[SpectrophotometryDocumentItem]:
         return [
             SpectrophotometryDocumentItem(
-                measurement_aggregate_document=self._get_measurement_aggregate_doctment(data, i))
+                measurement_aggregate_document=self._get_measurement_aggregate_document(data, i))
             for i in range(len(data.index))
         ]
 
     def _get_measurement_aggregate_document(self, data, i) -> MeasurementAggregateDocument:
-        measurement_custom_document = {"reagent lot number": _get_value(data, "Reagent Lot#", i),
-                                       "calibrated tubes": _get_value(data, "Calibrated Tubes", i)}
-        return add_custom_information_document(
-            MeasurementAggregateDocument(measurement_time=self._get_date_time(str(_get_value(data, "Test Date", i))),
-                                         experiment_type=_get_value(data, "Assay Name", i),
-                                         container_type=constants.CONTAINER_TYPE,
-                                         measurement_document=self._get_measurement_document(data, i)),
-            measurement_custom_document)
+        return MeasurementAggregateDocument(measurement_time=self._get_date_time(str(_get_value(data, "Test Date", i))),
+                                            experiment_type=_get_value(data, "Assay Name", i),
+                                            container_type=constants.CONTAINER_TYPE,
+                                            measurement_document=self._get_measurement_document(data, i))
 
     def _get_measurement_document(self, data, i) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
-        return [FluorescencePointDetectionMeasurementDocumentItems(fluorescence=self._get_fluorescence_value(data, i),
-                                                                   measurement_identifier=random_uuid_str(),
-                                                                   sample_document=self._get_sample_document(data, i),
-                                                                   device_control_aggregate_document=self._get_device_control_document(
-                                                                       data, i))]
+        measurement_custom_document = {"reagent lot number": _get_value(data, "Reagent Lot#", i),
+                                       "calibrated tubes": _get_value(data, "Calibrated Tubes", i)}
+        return [add_custom_information_document(
+            FluorescencePointDetectionMeasurementDocumentItems(fluorescence=self._get_fluorescence_value(data, i),
+                                                               measurement_identifier=random_uuid_str(),
+                                                               sample_document=self._get_sample_document(data, i),
+                                                               device_control_aggregate_document=self._get_device_control_document(
+                                                                   data, i)), measurement_custom_document)]
 
     def _get_fluorescence_value(self, data, i) -> TQuantityValueRelativeFluorescenceUnit:
         value = _get_property_value(data, "Sample RFU", i, TQuantityValueRelativeFluorescenceUnit)
@@ -249,7 +219,7 @@ class QubitFlexParser(VendorParser):
         location_id = _get_value(data, "well", i)
         well_plate_id = _get_value(data, "plate barcode", i)
         if sample_id is None:
-            sample_id = _get_property_value(data, "Sample Name", i)
+            sample_id = _get_value(data, "Sample Name", i)
         sample_custom_document = {"original sample concentration": _get_property_value(data, "Original Sample Conc.", i,
                                                                                        CONCENTRATION_UNIT_TO_TQUANTITY[
                                                                                            _get_value(data,
@@ -265,7 +235,9 @@ class QubitFlexParser(VendorParser):
                                   "standard 2 concentration": _get_property_value(data, "Std 2 RFU", i,
                                                                                   TQuantityValueRelativeFluorescenceUnit),
                                   "standard 3 concentration": _get_property_value(data, "Std 3 RFU", i,
-                                                                                  TQuantityValueRelativeFluorescenceUnit)}
+                                                                                  TQuantityValueRelativeFluorescenceUnit),
+                                  "last read standards": self._get_date_time(str(_get_value(data, "Test Date", i))),
+                                  "selected samples": _get_value(data, "Selected Samples", i)}
         return add_custom_information_document(
             SampleDocument(sample_identifier=sample_id,
                            batch_identifier=str(_get_value(data, "Run ID", i)),
@@ -282,7 +254,7 @@ class QubitFlexParser(VendorParser):
                                                      TQuantityValueNanogramPerMicroliter),
             "excitation setting": _get_value(data, "Excitation", i),
             "dilution factor": _get_property_value(data, "Dilution Factor", i, TQuantityValueUnitless)}
-        return add_custom_information_document(FluorescencePointDetectionDeviceControlAggregateDocument(
-            device_control_document=[
-                FluorescencePointDetectionDeviceControlDocumentItem(device_type=constants.DEVICE_TYPE)]),
-            custom_device_document)
+        return FluorescencePointDetectionDeviceControlAggregateDocument(
+            device_control_document=[add_custom_information_document
+                (FluorescencePointDetectionDeviceControlDocumentItem(
+                device_type=constants.DEVICE_TYPE),custom_device_document)])

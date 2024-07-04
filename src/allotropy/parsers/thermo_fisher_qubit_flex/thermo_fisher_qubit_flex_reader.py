@@ -10,7 +10,7 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
 
 
-class QubitFlexReader:
+class ThermoFisherQubitFlexReader:
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         """
