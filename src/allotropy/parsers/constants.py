@@ -1,2 +1,1 @@
 NOT_APPLICABLE = "N/A"
-NOT_A_NUMBER = "NaN"
