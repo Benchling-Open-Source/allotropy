@@ -1,10 +1,10 @@
 """ Parser file for ThermoFisher Qubit 4 Instrument """
 
+import re
 from typing import Any
 
 import numpy as np
 import pandas as pd
-import re
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (

@@ -24,7 +24,7 @@ def _get_expected_file_path(output_file: str) -> str:
 
 
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_cedex_hires_to_asm(output_file: str) -> None:
+def test_parse_qubit4_to_asm(output_file: str) -> None:
     test_filepath = _get_test_file_path(output_file)
     expected_filepath = _get_expected_file_path(output_file)
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE, encoding=DEFAULT_ENCODING)
