@@ -388,6 +388,7 @@ class PerkinElmerEnvisionParser(VendorParser):
             for calculated_result, *source_results in zip(
                 calculated_plate.calculated_result_list.calculated_results,
                 *source_result_lists,
+                strict=True,
             ):
                 calculated_documents.append(
                     CalculatedDataDocumentItem(
