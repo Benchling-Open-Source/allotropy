@@ -18,8 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
-
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
+- Update `None` filtering to preserve required keys when converting model to dictionary
+
 ### Deprecated
 
 ### Removed
