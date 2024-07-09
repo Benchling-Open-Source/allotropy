@@ -15,11 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
 - Make get_model_class_from_schema work with Windows style path
+- Support non-numeric emission values for gen5 luminescence
 
 ### Changed
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
-
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
+- Update non-numeric emission related values to NaN instead of removing them from ASM for gen5 luminescence
+
 ### Deprecated
 
 ### Removed
