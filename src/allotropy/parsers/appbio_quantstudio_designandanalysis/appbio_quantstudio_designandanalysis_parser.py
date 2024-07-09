@@ -70,7 +70,11 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
         with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=UserWarning, module=re.escape("openpyxl.styles.stylesheet"))
+            warnings.filterwarnings(
+                "ignore",
+                category=UserWarning,
+                module=re.escape("openpyxl.styles.stylesheet"),
+            )
             raw_contents = pd.read_excel(
                 named_file_contents.contents, header=None, sheet_name=None
             )
