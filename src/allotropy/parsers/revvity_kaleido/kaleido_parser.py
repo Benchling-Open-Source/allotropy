@@ -211,7 +211,7 @@ class ImagingMeasurementParser(MeasurementParser):
                 TQuantityValueMillimeter, data.measurements.focus_height
             ),
             excitation_wavelength_setting=quantity_or_none(
-                TQuantityValueNanometer, data.measurements.excitation_wavelength
+                TQuantityValueNanometer, channel.excitation_wavelength
             ),
             magnification_setting=TQuantityValueUnitless(value=4),
             exposure_duration_setting=quantity_or_none(
