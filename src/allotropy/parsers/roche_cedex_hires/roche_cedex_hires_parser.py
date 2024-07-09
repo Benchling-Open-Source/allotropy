@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from typing import Any
+from typing import Any, TypeVar
 
 import numpy as np
 import pandas as pd
@@ -42,8 +42,8 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_reader import (
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
-
 DataType = TypeVar("DataType")
+
 
 def get_property_value(
     data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
@@ -56,10 +56,10 @@ def get_property_value(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-    datatype (Any): The type to which the retrieved value should be converted.
+    datatype (Datatype): The type to which the retrieved value should be converted.
 
     Returns:
-    Any: The value from the specified cell converted to the specified datatype.
+    Datatype: The value from the specified cell converted to the specified datatype.
          Returns None if the value is not found.
     """
     return (
