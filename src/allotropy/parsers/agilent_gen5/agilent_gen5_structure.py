@@ -9,7 +9,10 @@ import re
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    JsonFloat,
+)
 from allotropy.exceptions import (
     AllotropeConversionError,
     msg_for_error_on_unrecognized_value,
@@ -22,6 +25,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     HEADER_PREFIXES,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
+    NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_HEIGHT_KEY,
@@ -120,28 +124,28 @@ class FilterSet:
     optics: str | None = None
 
     @property
-    def detector_wavelength_setting(self) -> float | None:
-        if self.emission == "Full light" or not self.emission:
+    def detector_wavelength_setting(self) -> float | None | InvalidJsonFloat:
+        if not self.emission:
             return None
-        return try_float(self.emission.split("/")[0], "Detector wavelength")
+        return try_float_or_nan(self.emission.split("/")[0])
 
     @property
-    def detector_bandwidth_setting(self) -> float | None:
-        if not self.emission or self.emission == "Full light":
+    def detector_bandwidth_setting(self) -> float | InvalidJsonFloat | None:
+        if not self.emission:
             return None
         try:
-            return try_float(self.emission.split("/")[1], "Detector bandwith")
+            return try_float_or_nan(self.emission.split("/")[1])
         except IndexError:
             return None
 
     @property
-    def excitation_wavelength_setting(self) -> float | None:
+    def excitation_wavelength_setting(self) -> float | InvalidJsonFloat | None:
         if self.excitation:
-            return try_float(self.excitation.split("/")[0], "Excitation wavelength")
+            return try_float_or_nan(self.excitation.split("/")[0])
         return None
 
     @property
-    def excitation_bandwidth_setting(self) -> float | None:
+    def excitation_bandwidth_setting(self) -> float | InvalidJsonFloat | None:
         if not self.excitation:
             return None
         try:
@@ -268,7 +272,7 @@ class ReadData:
         if read_mode == ReadMode.LUMINESCENCE:
             emissions = device_control_data.get(EMISSION_KEY)
             for emission in emissions:
-                label = "Lum" if emission == "Full light" else emission
+                label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
                 measurement_labels.append(f"{label_prefix}{label}")
 
         return measurement_labels
@@ -281,8 +285,8 @@ class ReadData:
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
         measurement_labels = []
 
-        for wavelenght in wavelengths:
-            label = f"{label_prefix}{wavelenght}"
+        for wavelength in wavelengths:
+            label = f"{label_prefix}{wavelength}"
             measurement_labels.append(label)
 
         if pathlength_correction:

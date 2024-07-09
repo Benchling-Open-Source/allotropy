@@ -45,6 +45,7 @@ LUMINESCENCE_FILENAMES = [
     "endpoint_singleplate_withFilter_withStepLabel",
     "endpoint_singleplate_withoutStepLabel",
     "endpoint_singleplate",
+    "luminescence_emission_text_val",
 ]
 
 
