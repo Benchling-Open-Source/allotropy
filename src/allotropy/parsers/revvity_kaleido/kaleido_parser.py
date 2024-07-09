@@ -147,7 +147,7 @@ class AbsorbanceMeasurementParser(MeasurementParser):
             detector_distance_setting__plate_reader_=quantity_or_none(
                 TQuantityValueMillimeter, data.measurements.detector_distance
             ),
-            detector_wavelength_setting=quantity_or_none(
+            excitation_wavelength_setting=quantity_or_none(
                 TQuantityValueNanometer, data.measurements.excitation_wavelength
             ),
         )
