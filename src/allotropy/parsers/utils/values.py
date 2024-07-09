@@ -11,6 +11,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
+    TQuantityValue,
 )
 from allotropy.exceptions import AllotropeConversionError
 
@@ -65,6 +66,13 @@ def try_float_or_none(value: str | None) -> float | None:
         return None
 
 
+def try_int_or_nan(value: str | int | None) -> int | InvalidJsonFloat:
+    if isinstance(value, int):
+        return value
+    float_value = try_non_nan_float_or_none(value)
+    return InvalidJsonFloat.NaN if float_value is None else int(float_value)
+
+
 def try_float_or_nan(value: str | None) -> JsonFloat:
     float_value = try_non_nan_float_or_none(value)
     return InvalidJsonFloat.NaN if float_value is None else float_value
@@ -76,6 +84,15 @@ def natural_sort_key(key: str) -> list[str]:
     return [
         f"{int(token):>10}" if token.isdecimal() else token.lower() for token in tokens
     ]
+
+
+QuantityType = TypeVar("QuantityType", bound=TQuantityValue)
+
+
+def quantity_or_none(
+    value_cls: type[QuantityType], value: JsonFloat | None
+) -> QuantityType | None:
+    return None if value is None else value_cls(value=value)  # type: ignore[call-arg]
 
 
 T = TypeVar("T")
