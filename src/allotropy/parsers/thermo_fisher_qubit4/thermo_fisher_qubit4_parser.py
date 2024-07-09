@@ -1,7 +1,7 @@
-""" Parser file for ThermoFisher Qubit 4 Instrument """
+""" Parser file for ThermoFisher Qubit 4 Adapter """
 
 import re
-from typing import Any
+from typing import Any, TypeVar
 
 import numpy as np
 import pandas as pd
@@ -49,10 +49,12 @@ CONCENTRATION_UNIT_TO_TQUANTITY = {
     "ng/mL": TQuantityValueNanogramPerMilliliter,
 }
 
+DataType = TypeVar("DataType")
+
 
 def get_property_value(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: Any
-) -> Any:
+    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
+) -> DataType:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype.
@@ -61,10 +63,10 @@ def get_property_value(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-    datatype (Any): The type to which the retrieved value should be converted.
+    datatype (DataType): The type to which the retrieved value should be converted.
 
     Returns:
-    Any: The value from the specified cell converted to the specified datatype.
+    DataType: The value from the specified cell converted to the specified datatype.
          Returns None if the value is not found.
     """
     return (
@@ -190,7 +192,7 @@ class ThermoFisherQubit4Parser(VendorParser):
         )
 
     def _get_spectrophotometry_document(
-        self, data
+        self, data: pd.DataFrame
     ) -> list[SpectrophotometryDocumentItem]:
         """
         Generates a list of spectrophotometry document items from the given data.
@@ -208,7 +210,7 @@ class ThermoFisherQubit4Parser(VendorParser):
         ]
 
     def _get_measurement_aggregate_document(
-        self, data, i
+        self, data: pd.DataFrame, i: int
     ) -> MeasurementAggregateDocument:
         """
         Generates a measurement aggregate document from the given data and index.
@@ -227,7 +229,7 @@ class ThermoFisherQubit4Parser(VendorParser):
         )
 
     def _get_measurement_document(
-        self, data, i
+        self, data: pd.DataFrame, i: int
     ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
         """
         Generates a list of measurement document items from the given data and index.
@@ -248,7 +250,7 @@ class ThermoFisherQubit4Parser(VendorParser):
         ]
 
     def _get_fluorescence_value(
-        self, data, i
+        self, data: pd.DataFrame, i: int
     ) -> TQuantityValueRelativeFluorescenceUnit:
         """
         Retrieves the fluorescence value from the given data and index based on the emission wavelength.
@@ -273,7 +275,7 @@ class ThermoFisherQubit4Parser(VendorParser):
             message = f"{constants.UNSUPPORTED_WAVELENGTH_ERROR} {emission_wavelength}"
             raise AllotropeConversionError(message)
 
-    def _get_sample_document(self, data, i) -> SampleDocument:
+    def _get_sample_document(self, data: pd.DataFrame, i: int) -> SampleDocument:
         """
         Generates a sample document from the given data and index.
 
@@ -324,7 +326,7 @@ class ThermoFisherQubit4Parser(VendorParser):
             )
 
     def _get_device_control_document(
-        self, data, i
+        self, data: pd.DataFrame, i: int
     ) -> FluorescencePointDetectionDeviceControlAggregateDocument:
         """
         Generates a device control aggregate document from the given data and index.

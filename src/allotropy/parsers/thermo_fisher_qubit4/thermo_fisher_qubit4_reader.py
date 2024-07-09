@@ -1,4 +1,4 @@
-"""Reader file for ThermoFisher Qubit 4 Instrument"""
+"""Reader file for ThermoFisher Qubit 4 Adapter"""
 
 import pandas as pd
 
