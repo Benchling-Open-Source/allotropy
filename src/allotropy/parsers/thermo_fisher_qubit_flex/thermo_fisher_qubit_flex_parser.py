@@ -34,8 +34,8 @@ from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.thermo_fisher_qubit_flex import constants
 from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader import (
-    constants,
     ThermoFisherQubitFlexReader,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -53,7 +53,7 @@ CONCENTRATION_UNIT_TO_TQUANTITY = {
 }
 
 
-def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
+def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any:
     """
     Retrieves the value from a specified column and row in a DataFrame, handling NaNs
     and converting certain numpy types to native Python types.
@@ -81,7 +81,7 @@ def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
 
 
 def _get_property_value(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: Any
+    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
 ) -> DataType:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
@@ -91,10 +91,10 @@ def _get_property_value(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-    datatype (Any): The type to which the retrieved value should be converted.
+    datatype (Datatype): The type to which the retrieved value should be converted.
 
     Returns:
-    Any: The value from the specified cell converted to the specified datatype.
+    Datatype: The value from the specified cell converted to the specified datatype.
          Returns None if the value is not found.
     """
     return (
@@ -105,7 +105,7 @@ def _get_property_value(
 
 
 def _get_property_value_not_none(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: Any
+    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
 ) -> DataType:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
@@ -115,10 +115,10 @@ def _get_property_value_not_none(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-    datatype (Any): The type to which the retrieved value should be converted.
+    datatype (Datatype): The type to which the retrieved value should be converted.
 
     Returns:
-    Any: The value from the specified cell converted to the specified datatype.
+    Datatype: The value from the specified cell converted to the specified datatype.
          Returns None if the value is not found.
     """
     return (
