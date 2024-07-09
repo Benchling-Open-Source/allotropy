@@ -26,7 +26,9 @@ def _values_equal(value1: Any, value2: Any) -> bool:
         return (
             isinstance(value2, list)
             and len(value1) == len(value2)
-            and all(_values_equal(v1, v2) for v1, v2 in zip(value1, value2))
+            and all(
+                _values_equal(v1, v2) for v1, v2 in zip(value1, value2, strict=True)
+            )
         )
     else:
         return bool(

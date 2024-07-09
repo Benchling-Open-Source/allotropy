@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, fields, is_dataclass, make_dataclass
 from types import UnionType
-from typing import Any, Callable, cast, get_args, get_origin, TypeVar, Union
+from typing import Any, cast, get_args, get_origin, TypeVar, Union
 
 from cattrs import Converter
 from cattrs.errors import ClassValidationError
@@ -155,7 +155,7 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
         if isinstance(value, dict):
             _validate_structuring(value, model_val)
         elif isinstance(value, list):
-            for list_value, model_list_value in zip(value, model_val):
+            for list_value, model_list_value in zip(value, model_val, strict=True):
                 _validate_structuring(list_value, model_list_value)
 
 

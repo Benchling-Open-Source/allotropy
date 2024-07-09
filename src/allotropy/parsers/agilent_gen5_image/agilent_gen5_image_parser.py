@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from typing import Any, Union
+from typing import Any
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ContainerType,
@@ -46,11 +46,9 @@ from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
-MeasurementDocumentAttributeClasses = Union[
-    TQuantityValueMilliSecond,
-    TQuantityValueNanometer,
-    TQuantityValueUnitless,
-]
+MeasurementDocumentAttributeClasses = (
+    TQuantityValueMilliSecond | TQuantityValueNanometer | TQuantityValueUnitless
+)
 
 
 def get_instance_or_none(
