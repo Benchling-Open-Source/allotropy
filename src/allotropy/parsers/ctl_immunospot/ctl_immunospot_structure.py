@@ -4,7 +4,6 @@ from collections.abc import Iterator
 from dataclasses import dataclass
 from pathlib import PureWindowsPath
 import re
-from typing import Optional
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -103,7 +102,7 @@ class DeviceInfo:
 class Well:
     col: str
     row: str
-    value: Optional[float]
+    value: float | None
 
     @property
     def pos(self) -> str:
@@ -144,7 +143,9 @@ class Plate:
             line = re.sub(r"\s+", " ", raw_line)
             if match := re.match(r"^([A-Z])\s+(.+)", line):
                 raw_values = match.group(2).strip()
-                for column, value in zip(columns.split(), raw_values.split()):
+                for column, value in zip(
+                    columns.split(), raw_values.split(), strict=True
+                ):
                     well = Well(
                         col=column,
                         row=match.group(1),
@@ -170,7 +171,7 @@ class Plate:
 @dataclass(frozen=True)
 class AssayData:
     plates: list[Plate]
-    identifier: Optional[str]
+    identifier: str | None
     well_count: int
 
     @staticmethod
