@@ -45,6 +45,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     ReadMode,
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
@@ -104,7 +105,7 @@ class AgilentGen5Parser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier="NA",
+                    device_identifier=NOT_APPLICABLE,
                     model_number=header_data.model_number,
                     equipment_serial_number=header_data.equipment_serial_number,
                 ),
