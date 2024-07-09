@@ -1,6 +1,6 @@
 """ Parser file for Thermo Fisher Scientific Qubit Flex Adapter"""
 
-from typing import Any
+from typing import Any, TypeVar
 
 import numpy as np
 import pandas as pd
@@ -41,6 +41,8 @@ from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader 
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
+DataType = TypeVar("DataType")
+
 CONCENTRATION_UNIT_TO_TQUANTITY = {
     "ug/uL": TQuantityValueMicrogramPerMicroliter,
     "ug/mL": TQuantityValueMicrogramPerMilliliter,
@@ -80,7 +82,7 @@ def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
 
 def _get_property_value(
     data_frame: pd.DataFrame, column: str, row: int, datatype: Any
-) -> Any:
+) -> DataType:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype.
@@ -104,7 +106,7 @@ def _get_property_value(
 
 def _get_property_value_not_none(
     data_frame: pd.DataFrame, column: str, row: int, datatype: Any
-) -> Any:
+) -> DataType:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype. If the value is not in the respective column it throws the Allotrope Exception.

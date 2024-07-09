@@ -12,6 +12,7 @@ class ThermoFisherQubitFlexReader:
     """
     Reads the content of the provided named files of Qubit Flex instrument
     """
+
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         """
