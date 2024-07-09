@@ -6,7 +6,6 @@ from allotropy.testing.utils import from_file, validate_contents
 VENDOR_TYPE = Vendor.MABTECH_APEX
 
 
-@pytest.mark.mabtech
 @pytest.mark.parametrize(
     "output_file",
     ["mabtech_apex_example_single_plate"],

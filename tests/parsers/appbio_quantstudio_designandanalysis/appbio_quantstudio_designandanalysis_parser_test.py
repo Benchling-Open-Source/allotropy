@@ -28,7 +28,6 @@ OUTPUT_FILES = (
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO_DESIGNANDANALYSIS
 
 
-@pytest.mark.design_quantstudio
 @pytest.mark.parametrize("output_file", OUTPUT_FILES)
 def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
     test_filepath = f"tests/parsers/appbio_quantstudio_designandanalysis/testdata/{output_file}.xlsx"
