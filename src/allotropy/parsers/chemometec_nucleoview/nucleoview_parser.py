@@ -65,7 +65,7 @@ def get_property_from_sample(
 
     value = try_float_or_nan(value)
 
-    # If the porperty type is measured in million cells per ml convert cells per ml
+    # If the property type is measured in million cells per ml convert cells per ml
     if (
         isinstance(value, float)
         and property_type == TQuantityValueMillionCellsPerMilliliter
