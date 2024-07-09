@@ -43,7 +43,11 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
 
 
+DataType = TypeVar("DataType")
+
 def get_property_value(
+    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
+) -> DataType:
     data_frame: pd.DataFrame, column: str, row: int, datatype: Any
 ) -> Any:
     """
