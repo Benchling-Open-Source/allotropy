@@ -60,11 +60,7 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    get_val_from_xml,
-    quantity_or_none,
-    remove_none_fields_from_data_class,
-)
+from allotropy.parsers.utils.values import get_val_from_xml, quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -203,14 +199,12 @@ class BioradBioplexParser(VendorParser):
 
     @staticmethod
     def _get_sample_document(sample: SampleDocumentStructure, well_name: str) -> Any:
-        sample_doc = SampleDocument(
+        return SampleDocument(
             description=sample.description,
             sample_identifier=sample.sample_identifier,
             location_identifier=well_name,
             sample_role_type=sample.sample_type,
         )
-        final_sample_doc = remove_none_fields_from_data_class(sample_doc)
-        return final_sample_doc
 
     @staticmethod
     def _get_device_control_aggregate(
@@ -231,12 +225,8 @@ class BioradBioplexParser(VendorParser):
                 device_well_settings.minimum_assay_bead_count_setting,
             ),
         )
-
-        clean_device_control_doc_item = remove_none_fields_from_data_class(
-            device_control_doc_item
-        )
         return DeviceControlAggregateDocument(
-            device_control_document=[clean_device_control_doc_item]
+            device_control_document=[device_control_doc_item]
         )
 
     @staticmethod

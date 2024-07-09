@@ -24,10 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    TDateTimeValue,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
@@ -38,6 +35,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
@@ -65,16 +63,16 @@ def get_property_from_sample(
 
     property_type = _PROPERTY_LOOKUP[property_name]
 
-    try:
-        value = float(value)
-    except ValueError:
-        return property_type(value=InvalidJsonFloat.NaN)
+    value = try_float_or_nan(value)
 
-    # if the porperty type is measured in million cells per ml convert cells per ml
-    if property_type == TQuantityValueMillionCellsPerMilliliter:
-        return property_type(value=float(value) / 1e6)
+    # If the porperty type is measured in million cells per ml convert cells per ml
+    if (
+        isinstance(value, float)
+        and property_type == TQuantityValueMillionCellsPerMilliliter
+    ):
+        value = value / 1e6
 
-    return property_type(value=float(value))
+    return property_type(value=value)
 
 
 class ChemometecNucleoviewParser(VendorParser):
