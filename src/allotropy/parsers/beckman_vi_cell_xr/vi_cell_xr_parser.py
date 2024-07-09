@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from enum import Enum
 import tempfile
-from typing import Any, Union
+from typing import Any
 import zipfile
 
 import pandas as pd
@@ -107,7 +107,7 @@ class ViCellXRParser(VendorParser):
         if filename.endswith("xlsx"):
             contents = remove_style_xml_file(contents)
 
-        reader: Union[ViCellXRTXTReader, ViCellXRReader]
+        reader: ViCellXRTXTReader | ViCellXRReader
         if filename.endswith("txt"):
             reader = ViCellXRTXTReader(named_file_contents)
         else:
