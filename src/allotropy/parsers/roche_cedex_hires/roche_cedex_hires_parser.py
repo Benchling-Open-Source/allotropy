@@ -48,8 +48,6 @@ DataType = TypeVar("DataType")
 def get_property_value(
     data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
 ) -> DataType:
-    data_frame: pd.DataFrame, column: str, row: int, datatype: Any
-) -> Any:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype.
