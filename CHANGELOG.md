@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
 - Make get_model_class_from_schema work with Windows style path
 - Fixed encoding issues while reading units.json file in schemas.py script
 - Fixed encoding issues while reading test json files in testing/utils.py script
