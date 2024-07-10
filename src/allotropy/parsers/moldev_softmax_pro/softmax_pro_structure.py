@@ -250,7 +250,7 @@ class GroupColumns:
             raise AllotropeConversionError(error)
 
         return GroupColumns(
-            data=dict(zip(data["Formula Name"], data["Formula"])),
+            data=dict(zip(data["Formula Name"], data["Formula"], strict=True)),
         )
 
 
@@ -346,7 +346,7 @@ class PlateWavelengthData:
         data = {
             f"{num_to_chars(row_idx)}{col}": value
             for row_idx, *row_data in df_data.itertuples()
-            for col, value in zip(df_data.columns, row_data)
+            for col, value in zip(df_data.columns, row_data, strict=True)
         }
         return PlateWavelengthData(
             wavelength,
@@ -468,7 +468,7 @@ class PlateReducedData:
 
         reduced_data_elements = []
         for row, *data in df_data.itertuples():
-            for col, str_value in zip(df_data.columns, data):
+            for col, str_value in zip(df_data.columns, data, strict=True):
                 value = try_non_nan_float_or_none(str_value)
                 if value is not None:
                     reduced_data_elements.append(
