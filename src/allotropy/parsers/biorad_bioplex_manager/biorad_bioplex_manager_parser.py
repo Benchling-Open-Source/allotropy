@@ -60,7 +60,7 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import get_val_from_xml
+from allotropy.parsers.utils.values import get_val_from_xml, quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -216,15 +216,14 @@ class BioradBioplexParser(VendorParser):
             sample_volume_setting=TQuantityValueMicroliter(
                 value=device_well_settings.sample_volume_setting
             ),
-            dilution_factor_setting=TQuantityValueUnitless(value=sample.sample_dilution)
-            if sample.sample_dilution is not None
-            else None,
+            dilution_factor_setting=quantity_or_none(
+                TQuantityValueUnitless, sample.sample_dilution
+            ),
             detector_gain_setting=device_well_settings.detector_gain_setting,
-            minimum_assay_bead_count_setting=TQuantityValueNumber(
-                value=device_well_settings.minimum_assay_bead_count_setting
-            )
-            if device_well_settings.minimum_assay_bead_count_setting is not None
-            else None,
+            minimum_assay_bead_count_setting=quantity_or_none(
+                TQuantityValueNumber,
+                device_well_settings.minimum_assay_bead_count_setting,
+            ),
         )
         return DeviceControlAggregateDocument(
             device_control_document=[device_control_doc_item]
@@ -245,21 +244,22 @@ class BioradBioplexParser(VendorParser):
                         analyte_region_dict=analyte_region_dict,
                         regions_of_interest=regions_of_interest,
                     )
-                    if analyte_structure_doc is not None:
-                        analyte_docs.append(
-                            AnalyteDocumentItem(
-                                analyte_identifier=random_uuid_str(),
-                                analyte_name=analyte_structure_doc.analyte_name,
-                                assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
-                                assay_bead_count=TQuantityValueNumber(
-                                    value=analyte_structure_doc.assay_bead_count
-                                ),
-                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                                    value=analyte_structure_doc.fluorescence,
-                                    has_statistic_datum_role=TStatisticDatumRole.median_role,
-                                ),
-                            )
+                    if analyte_structure_doc is None:
+                        continue
+                    analyte_docs.append(
+                        AnalyteDocumentItem(
+                            analyte_identifier=random_uuid_str(),
+                            analyte_name=analyte_structure_doc.analyte_name,
+                            assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
+                            assay_bead_count=TQuantityValueNumber(
+                                value=analyte_structure_doc.assay_bead_count
+                            ),
+                            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                value=analyte_structure_doc.fluorescence,
+                                has_statistic_datum_role=TStatisticDatumRole.median_role,
+                            ),
                         )
+                    )
         return AnalyteAggregateDocument(analyte_document=analyte_docs)
 
     @staticmethod
