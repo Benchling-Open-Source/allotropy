@@ -120,9 +120,11 @@ def mock_uuid_generation(prefix: str | None) -> Iterator[None]:
         yield
 
 
-def from_file(test_file: str, vendor: Vendor, encoding: str | None = None) -> DictType:
+def from_file(
+    test_file: str | Path, vendor: Vendor, encoding: str | None = None
+) -> DictType:
     with mock_uuid_generation(vendor.name):
-        return allotrope_from_file(test_file, vendor, encoding=encoding)
+        return allotrope_from_file(str(test_file), vendor, encoding=encoding)
 
 
 def _write_actual_to_expected(
