@@ -44,17 +44,8 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
-
-MeasurementDocumentAttributeClasses = (
-    TQuantityValueMilliSecond | TQuantityValueNanometer | TQuantityValueUnitless
-)
-
-
-def get_instance_or_none(
-    cls: type[MeasurementDocumentAttributeClasses], value: Any
-) -> Any:
-    return cls(value=value) if value is not None else None
 
 
 class AgilentGen5ImageParser(VendorParser):
@@ -185,35 +176,35 @@ class AgilentGen5ImageParser(VendorParser):
                                     detection_type=DETECTION_TYPE,
                                     # This setting won't get reported at the moment since Gen5 only reports it
                                     # in micrometers and we don't do conversions on the adapters at the moment
-                                    # detector_distance_setting__plate_reader_=get_instance_or_none(
+                                    # detector_distance_setting__plate_reader_=quantity_or_none(
                                     #     TQuantityValueMillimeter,
                                     #     instrument_settings.detector_distance,
                                     # ),
                                     detector_gain_setting=instrument_settings.detector_gain,
-                                    magnification_setting=get_instance_or_none(
+                                    magnification_setting=quantity_or_none(
                                         TQuantityValueUnitless,
                                         read_section.magnification_setting,
                                     ),
-                                    illumination_setting=get_instance_or_none(
+                                    illumination_setting=quantity_or_none(
                                         TQuantityValueUnitless,
                                         instrument_settings.illumination,
                                     ),
                                     transmitted_light_setting=instrument_settings.transmitted_light,
                                     auto_focus_setting=instrument_settings.auto_focus,
-                                    image_count_setting=get_instance_or_none(
+                                    image_count_setting=quantity_or_none(
                                         TQuantityValueUnitless,
                                         read_section.image_count_setting,
                                     ),
                                     fluorescent_tag_setting=instrument_settings.fluorescent_tag,
-                                    exposure_duration_setting=get_instance_or_none(
+                                    exposure_duration_setting=quantity_or_none(
                                         TQuantityValueMilliSecond,
                                         instrument_settings.exposure_duration,
                                     ),
-                                    excitation_wavelength_setting=get_instance_or_none(
+                                    excitation_wavelength_setting=quantity_or_none(
                                         TQuantityValueNanometer,
                                         instrument_settings.excitation_wavelength,
                                     ),
-                                    detector_wavelength_setting=get_instance_or_none(
+                                    detector_wavelength_setting=quantity_or_none(
                                         TQuantityValueNanometer,
                                         instrument_settings.detector_wavelength,
                                     ),
