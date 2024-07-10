@@ -51,7 +51,7 @@ _PROPERTY_LOOKUP = {
 def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Any | None:
     if column not in data_frame.columns:
         return None
-    return data_frame[column][row]
+    return data_frame[column].iloc[row]
 
 
 def get_property_from_sample(
