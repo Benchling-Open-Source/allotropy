@@ -40,6 +40,7 @@ from allotropy.parsers.roche_cedex_hires.roche_cedex_hires_reader import (
     RocheCedexHiResReader,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 DataType = TypeVar("DataType")
@@ -378,19 +379,14 @@ class RocheCedexHiResParser(VendorParser):
                                                 data, "Viability", row
                                             )
                                         ),
-                                        viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
-                                            value=float(
-                                                Decimal(
-                                                    str(
-                                                        get_value_not_none(
-                                                            data,
-                                                            "Viable Cell Conc.",
-                                                            row,
-                                                        )
-                                                    )
-                                                )
-                                                / Decimal("1000000")
-                                            )
+                                        viable_cell_density__cell_counter_=assert_not_none(
+                                            get_calculated_data(
+                                                data,
+                                                "Viable Cell Conc.",
+                                                row,
+                                                TQuantityValueMillionCellsPerMilliliter,
+                                            ),
+                                            name="Viable Cell Conc.",
                                         ),
                                         total_cell_density__cell_counter_=get_calculated_data(
                                             data,
