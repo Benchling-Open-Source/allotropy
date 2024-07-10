@@ -2,7 +2,7 @@ from allotropy.parser_factory import Vendor
 from tests.to_allotrope_test import ParserTest
 
 """
-NOTES ON EXCLUDED FILES
+NOTES ON INVALID FILES
 
 - Files without a standard experiment type are not supported
     appbio_quantstudio_designandanalysis_QS7Pro_Multiplex_example08
