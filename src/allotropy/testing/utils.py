@@ -125,7 +125,9 @@ def from_file(test_file: str, vendor: Vendor, encoding: str | None = None) -> Di
         return allotrope_from_file(test_file, vendor, encoding=encoding)
 
 
-def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
+def _write_actual_to_expected(
+    allotrope_dict: DictType, expected_file: str | Path
+) -> None:
     with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
@@ -140,7 +142,7 @@ def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> N
 
 def validate_contents(
     allotrope_dict: DictType,
-    expected_file: str,
+    expected_file: str | Path,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
