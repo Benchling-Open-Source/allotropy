@@ -363,7 +363,7 @@ class BasicAssayInfo:
             "Basic assay information",
         )
         data = data.T
-        data.iloc[0].replace(":.*", "", regex=True, inplace=True)
+        data.iloc[0] = data.iloc[0].replace(":.*", "", regex=True)
         series = df_to_series(data)
         return BasicAssayInfo(
             try_str_from_series_or_none(series, "Protocol ID"),

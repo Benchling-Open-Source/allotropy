@@ -5,7 +5,6 @@ from allotropy.parser_factory import Vendor
 from allotropy.testing.utils import from_file, validate_contents
 
 
-@pytest.mark.immunospot
 @pytest.mark.parametrize(
     "file_name",
     [

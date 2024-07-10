@@ -174,7 +174,7 @@ class AgilentGen5ImageParser(VendorParser):
                                 OpticalImagingDeviceControlDocumentItem(
                                     device_type=DEVICE_TYPE,
                                     detection_type=DETECTION_TYPE,
-                                    # This setting won't get reported at the moment since Gen5 only reports it
+                                    # TODO: this setting won't get reported at the moment since Gen5 only reports it
                                     # in micrometers and we don't do conversions on the adapters at the moment
                                     # detector_distance_setting__plate_reader_=quantity_or_none(
                                     #     TQuantityValueMillimeter,
