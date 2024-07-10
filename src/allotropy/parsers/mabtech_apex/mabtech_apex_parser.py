@@ -24,6 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
 from allotropy.parsers.mabtech_apex.mabtech_apex_structure import (
     PlateInformation,
@@ -57,7 +58,7 @@ class MabtechApexParser(VendorParser):
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier="N/A",
+                    device_identifier=NOT_APPLICABLE,
                     model_number=data.model_number,
                     equipment_serial_number=data.equipment_serial_number,
                 ),

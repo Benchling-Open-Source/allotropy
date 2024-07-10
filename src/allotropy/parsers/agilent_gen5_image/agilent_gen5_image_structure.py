@@ -6,7 +6,6 @@ from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass
 import re
-from typing import Optional
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     TransmittedLightSetting,
@@ -127,7 +126,7 @@ class HeaderData:
         return f"{date_} {time_}"
 
     @classmethod
-    def _get_identifier_from_filename_or_none(cls, file_name: str) -> Optional[str]:
+    def _get_identifier_from_filename_or_none(cls, file_name: str) -> str | None:
         matches = re.match(FILENAME_REGEX, file_name)
         if not matches:
             return None
@@ -139,14 +138,14 @@ class HeaderData:
 @dataclass
 class InstrumentSettings:
     auto_focus: bool
-    detector_distance: Optional[float]
-    fluorescent_tag: Optional[str] = None
-    excitation_wavelength: Optional[float] = None
-    detector_wavelength: Optional[float] = None
-    transmitted_light: Optional[TransmittedLightSetting] = None
-    illumination: Optional[float] = None
-    exposure_duration: Optional[float] = None
-    detector_gain: Optional[str] = None
+    detector_distance: float | None
+    fluorescent_tag: str | None = None
+    excitation_wavelength: float | None = None
+    detector_wavelength: float | None = None
+    transmitted_light: TransmittedLightSetting | None = None
+    illumination: float | None = None
+    exposure_duration: float | None = None
+    detector_gain: str | None = None
 
     @classmethod
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
@@ -185,7 +184,7 @@ class InstrumentSettings:
         return any(str_ in settings for str_ in AUTOFOCUS_STRINGS)
 
     @classmethod
-    def _get_detector_distance(cls, settings: list[str]) -> Optional[float]:
+    def _get_detector_distance(cls, settings: list[str]) -> float | None:
         if match := re.search(DETECTOR_DISTANCE_REGEX, "\n".join(settings)):
             return try_float(match.groups()[0], "Detector Distance")
         return None
@@ -193,7 +192,7 @@ class InstrumentSettings:
     @classmethod
     def _get_transmitted_light(
         cls, settings: list[str]
-    ) -> Optional[TransmittedLightSetting]:
+    ) -> TransmittedLightSetting | None:
         for line in settings:
             if line in TRANSMITTED_LIGHT_MAP:
                 return TRANSMITTED_LIGHT_MAP[line]
@@ -203,8 +202,8 @@ class InstrumentSettings:
 @dataclass(frozen=True)
 class ReadSection:
     image_mode: DetectionType
-    magnification_setting: Optional[float]
-    image_count_setting: Optional[float]
+    magnification_setting: float | None
+    image_count_setting: float | None
     instrument_settings_list: list[InstrumentSettings]
 
     @classmethod
@@ -267,7 +266,7 @@ class ReadSection:
         return settings_list
 
     @classmethod
-    def _get_image_count_setting(cls, read_settings: dict) -> Optional[float]:
+    def _get_image_count_setting(cls, read_settings: dict) -> float | None:
         montage_rows = read_settings.get("Montage rows")
         montage_columns = read_settings.get("columns")
         if montage_rows and montage_columns:
@@ -352,7 +351,7 @@ class LayoutData:
 
 @dataclass(frozen=True)
 class ActualTemperature:
-    value: Optional[float] = None
+    value: float | None = None
 
     @staticmethod
     def create_default() -> ActualTemperature:

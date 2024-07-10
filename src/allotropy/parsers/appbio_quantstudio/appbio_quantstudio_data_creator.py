@@ -11,6 +11,7 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Result,
     WellList,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.values import try_str_from_series_or_none
 
@@ -50,10 +51,12 @@ def create_data(reader: LinesReader) -> Data:
             )
 
     endogenous_control = (
-        try_str_from_series_or_none(results_metadata, "Endogenous Control") or ""
+        try_str_from_series_or_none(results_metadata, "Endogenous Control")
+        or NOT_APPLICABLE
     )
     reference_sample = (
-        try_str_from_series_or_none(results_metadata, "Reference Sample") or ""
+        try_str_from_series_or_none(results_metadata, "Reference Sample")
+        or NOT_APPLICABLE
     )
 
     return Data(

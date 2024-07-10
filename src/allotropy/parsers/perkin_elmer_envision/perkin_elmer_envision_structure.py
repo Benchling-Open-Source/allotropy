@@ -28,6 +28,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -567,18 +568,21 @@ class Labels:
         return Labels(
             label=series.index[0],
             excitation_filter=filters.get(
-                try_str_from_series_or_none(series, "Exc. filter") or ""
+                try_str_from_series_or_none(series, "Exc. filter") or NOT_APPLICABLE
             ),
             emission_filters={
                 "1st": filters.get(
-                    try_str_from_series_or_none(series, "Ems. filter") or "",
+                    try_str_from_series_or_none(series, "Ems. filter")
+                    or NOT_APPLICABLE,
                 ),
                 "2nd": filters.get(
-                    try_str_from_series_or_none(series, "2nd ems. filter") or ""
+                    try_str_from_series_or_none(series, "2nd ems. filter")
+                    or NOT_APPLICABLE
                 ),
             },
             scan_position_setting=filter_position_map.get(
-                try_str_from_series_or_none(series, "Using of emission filter") or ""
+                try_str_from_series_or_none(series, "Using of emission filter")
+                or NOT_APPLICABLE
             ),
             number_of_flashes=try_float_from_series_or_none(
                 series, "Number of flashes"

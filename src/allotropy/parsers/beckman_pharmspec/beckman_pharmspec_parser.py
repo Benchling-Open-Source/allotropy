@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional, Union
+from typing import Any
 
 import pandas as pd
 
@@ -239,7 +239,7 @@ class PharmSpecParser(VendorParser):
     def _create_model(
         self,
         df: pd.DataFrame,
-        calc_agg_doc: Optional[TCalculatedDataAggregateDocument],
+        calc_agg_doc: TCalculatedDataAggregateDocument | None,
         measurement_doc_items: list[MeasurementDocumentItem],
         file_name: str,
     ) -> Model:
@@ -282,7 +282,7 @@ class PharmSpecParser(VendorParser):
         run_name: str,
         particle_size: float,
         measurement_doc_items: list[MeasurementDocumentItem],
-    ) -> Optional[Union[str, TStringValueItem]]:
+    ) -> str | TStringValueItem | None:
         item = next(
             x for x in measurement_doc_items if x.measurement_identifier == run_name
         )

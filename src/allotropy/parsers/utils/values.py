@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from dataclasses import fields
 import math
 import re
 from typing import Any, TypeVar
@@ -112,6 +111,14 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     if df.empty:
         raise AllotropeConversionError(msg)
     return df
+
+
+def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
+    try:
+        return df[key]
+    except KeyError as e:
+        msg = f"Unable to find key '{key}' in dataframe headers: {df.columns.tolist()}"
+        raise AllotropeConversionError(msg) from e
 
 
 def try_str_from_series_or_default(
@@ -260,22 +267,3 @@ def get_attrib_from_xml(
     except KeyError as e:
         msg = f"Unable to find '{attrib_name}' in {xml_element.attrib}"
         raise AllotropeConversionError(msg) from e
-
-
-def remove_none_fields_from_data_class(
-    cls_instance: Any,
-) -> Any:
-
-    data_class_fields = fields(cls_instance.__class__)
-
-    # get all non-none fields
-    non_none_fields = {
-        field.name: getattr(cls_instance, field.name)
-        for field in data_class_fields
-        if (getattr(cls_instance, field.name) is not None or field.default is not None)
-    }
-
-    # Create a new instance with non-None fields
-    updated_instance = cls_instance.__class__(**non_none_fields)
-
-    return updated_instance
