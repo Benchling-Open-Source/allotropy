@@ -81,7 +81,9 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
         warnings.filterwarnings(
             "ignore",
             category=UserWarning,
-            message=re.escape("format of 'iri' not understood for 'string' - using default"),
+            message=re.escape(
+                "format of 'iri' not understood for 'string' - using default"
+            ),
         )
         # Generate models
         generate(
