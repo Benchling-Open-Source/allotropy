@@ -1,0 +1,151 @@
+
+
+Software Version	3.12.08
+
+
+
+Experiment File Path:	Y:\Downloads\HeLa 96well Colony 11pt Doxorubicin UprBF.xpt
+Protocol File Path:	D:\Cytation 7\ColonyCount 96well Cyt7UprCBF.prt
+
+
+
+Plate Number	Plate 1
+Date	4/5/2020
+Time	10:43:31 AM
+Reader Type:	Cytation7
+Reader Serial Number:	172-EM-04
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Costar 96 clear bottom black side 3904
+Skip load plate dialog	
+Read	Image Single Image
+	Full Plate
+	Objective: 2x
+	Field of View: Full WFOV
+	Autofocus binning
+	Capture binning
+	Color Camera
+	    Transmitted light
+	    LED intensity: 1, Integration time: 5 msec, Camera gain: 5
+	    Fixed focal height at bottom elevation plus -760 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Delay after plate movement: 0 msec
+
+Layout
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+B	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+C	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+D	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+E	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+F	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+G	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+H	DMSO	DOX1:1	DOX1:2	DOX1:3	DOX1:4	DOX1:5	DOX1:6	DOX1:7	DOX1:8	DOX1:9	DOX1:10	DOX1:11	Well ID
+		0.01	0.1	0.32	1	1.8	3.2	5.6	10	32	100	1000	Conc/Dil
+
+Results
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	63	54	55	69	42	43	54	34	8	0	1	0	Cell Count
+	3.56E+04	5.32E+04	5.07E+04	3.22E+04	4.09E+04	1.76E+04	1.36E+04	9.07E+03	9.88E+03	0	3.86E+03	0	Object Area
+	0.558	0.58	0.501	0.478	0.577	0.526	0.421	0.296	0.544	0	0.538	0	Object Circularity
+	8	*11*	*12*	8	6	*2*	*0*	0	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.84E+05	1.88E+05	2.08E+05	1.97E+05	1.89E+05	1.25E+05	0	0	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.619	0.636	0.488	0.541	0.78	0.661	0	0	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	?????	?????	0.583	1.453	?????	?????	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	87.671	?????	?????	87.671	65.753	?????	?????	0.000	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	?????	?????	0.668	1.562	?????	?????	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+B	54	46	54	60	44	89	97	38	6	2	3	0	Cell Count
+	5.1E+04	5.26E+04	4.37E+04	3.62E+04	4.91E+04	2.65E+04	2.43E+04	1.13E+04	3.68E+03	1.78E+04	4.46E+03	0	Object Area
+	0.534	0.58	0.503	0.511	0.578	0.453	0.495	0.531	0.32	0.57	0.604	0	Object Circularity
+	14	10	8	8	9	4	*6*	1	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.56E+05	1.67E+05	2.02E+05	1.87E+05	1.87E+05	1.61E+05	1.66E+05	9.79E+04	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.555	0.65	0.714	0.651	0.65	0.709	0.728	0.677	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	<0.000	0.583	0.583	<0.000	2.031	?????	3.774	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	153.425	109.589	87.671	87.671	98.630	43.836	?????	10.959	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	<0.000	0.668	0.668	<0.000	2.195	?????	4.115	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+C	53	43	68	56	62	62	101	46	8	2	4	0	Cell Count
+	4.67E+04	5.52E+04	3.38E+04	2.87E+04	3.59E+04	2.7E+04	1.71E+04	9.4E+03	5.43E+03	6.85E+03	6.13E+03	0	Object Area
+	0.531	0.538	0.548	0.512	0.503	0.367	0.392	0.559	0.611	0.909	0.711	0	Object Circularity
+	11	7	8	*4*	10	4	4	0	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.81E+05	2.23E+05	1.47E+05	2.33E+05	1.7E+05	1.33E+05	1.36E+05	0	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.537	0.666	0.736	0.599	0.663	0.57	0.437	0	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	1.137	0.583	?????	<0.000	2.031	2.031	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	120.548	76.712	87.671	?????	109.589	43.836	43.836	0.000	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	1.224	0.668	?????	<0.000	2.195	2.195	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+D	84	96	46	38	35	69	75	36	9	2	7	0	Cell Count
+	3.27E+04	2.54E+04	3.8E+04	6.25E+04	3.35E+04	2.13E+04	1.08E+04	1.35E+04	5.73E+03	3.02E+04	6.74E+03	0	Object Area
+	0.502	0.509	0.572	0.54	0.55	0.513	0.56	0.549	0.738	0.753	0.834	0	Object Circularity
+	11	6	7	*14*	5	5	2	0	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.66E+05	1.78E+05	1.76E+05	1.45E+05	1.51E+05	1.69E+05	1.17E+05	0	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.559	0.566	0.564	0.579	0.612	0.605	0.417	0	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	1.453	1.137	?????	1.735	1.735	2.870	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	120.548	65.753	76.712	?????	*54.795*	54.795	21.918	0.000	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	1.562	1.224	?????	?????	1.870	3.121	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+E	49	77	59	60	50	54	36	50	3	1	6	1	Cell Count
+	4.22E+04	3.04E+04	3.99E+04	3.18E+04	5.27E+04	3.6E+04	2.75E+04	1.17E+04	1.38E+04	1.92E+04	8.05E+03	2.57E+03	Object Area
+	0.532	0.511	0.547	0.508	0.547	0.527	0.552	0.64	0.644	0.721	0.724	0.442	Object Circularity
+	7	8	10	8	13	*7*	3	0	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.67E+05	1.66E+05	1.64E+05	1.38E+05	1.61E+05	2.11E+05	1.89E+05	0	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.576	0.565	0.574	0.61	0.507	0.685	0.67	0	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	0.583	<0.000	0.583	<0.000	?????	2.383	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	76.712	87.671	109.589	87.671	142.466	?????	32.877	0.000	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	0.668	<0.000	0.668	<0.000	?????	2.583	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+F	50	62	54	54	57	48	57	29	8	1	4	0	Cell Count
+	2.89E+04	4.84E+04	3.59E+04	3.5E+04	3.79E+04	4.94E+04	1.41E+04	1.04E+04	4.58E+03	1.49E+04	3.21E+03	0	Object Area
+	0.562	0.57	0.529	0.604	0.581	0.499	0.542	0.58	0.563	0.649	0.844	0	Object Circularity
+	3	*12*	*6*	7	7	*9*	1	1	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	2.03E+05	1.94E+05	1.8E+05	1.82E+05	2.05E+05	1.9E+05	2.41E+05	9.09E+04	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.504	0.635	0.711	0.682	0.629	0.578	0.473	0.467	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	?????	?????	1.137	1.137	?????	3.774	3.774	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	32.877	?????	?????	76.712	76.712	?????	10.959	10.959	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	?????	?????	1.224	1.224	?????	4.115	4.115	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+G	47	53	42	32	80	47	77	19	6	2	5	1	Cell Count
+	5.52E+04	3.77E+04	6.58E+04	3.41E+04	2.34E+04	3.67E+04	1.71E+04	2.28E+04	6.7E+03	5.45E+03	5.51E+03	47.6	Object Area
+	0.53	0.567	0.557	0.526	0.608	0.524	0.538	0.518	0.651	0.783	0.541	1	Object Circularity
+	11	8	*11*	*4*	8	5	2	1	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.93E+05	2.03E+05	2.18E+05	1.12E+05	1.31E+05	1.79E+05	1.32E+05	1.3E+05	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.644	0.708	0.543	0.535	0.649	0.595	0.815	0.733	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	0.583	?????	?????	0.583	1.735	2.870	3.774	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	120.548	87.671	?????	?????	87.671	54.795	21.918	10.959	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	0.668	?????	?????	0.668	1.870	3.121	4.115	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+H	57	52	39	59	85	39	27	24	14	10	10	13	Cell Count
+	3.25E+04	3.03E+04	5.25E+04	3.3E+04	2.17E+04	1.99E+04	1.06E+04	5.47E+03	6.41E+03	8.16E+03	9.87E+03	6.73E+03	Object Area
+	0.471	0.569	0.554	0.483	0.525	0.543	0.487	0.472	0.369	0.423	0.406	0.358	Object Circularity
+	8	*5*	8	9	7	3	0	0	0	0	0	0	ColonyCount150mm2[Colony150mm2+]
+	1.7E+05	1.95E+05	1.87E+05	1.53E+05	1.24E+05	1.54E+05	0	0	0	0	0	0	ColonyArea150mm2[Colony150mm2+]
+	0.664	0.723	0.622	0.615	0.626	0.623	0	0	0	0	0	0	ColonyCirc150mm2[Colony150mm2+]
+	?????	?????	0.583	<0.000	1.137	2.383	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	Doxorubicin
+	87.671	?????	87.671	98.630	76.712	*32.877*	*0.000*	0.000	0.000	0.000	0.000	0.000	NormColonyCount
+	?????	?????	0.668	<0.000	1.224	?????	?????	>1050.000	>1050.000	>1050.000	>1050.000	>1050.000	HeLaNormColony
+
+DoxoIC50 Fitting Results
+
+Curve Name	Curve Formula	A	B	C	D	R2	Fit F Prob
+DoxoIC50_DOX1	Y = (A-D)/(1+(X/C)^B) + D	8.16	3.18	2	0.0494	0.991	?????
+
+DoxoIC50 Interpolations
+
+Curve Name	Y Formula	Y	X
+DoxoIC50_DOX1	EC50	4	1.999
+
+HeLaNormColony% Fitting Results
+
+Curve Name	Curve Formula	A	B	C	D	R2	Fit F Prob
+HeLaNormColony%_DOX1	Y = (A-D)/(1+(X/C)^B) + D	90	3.09	2.15	0.264	0.986	?????
+
+HeLaNormColony% Interpolations
+
+Curve Name	Y Formula	Y	X
+HeLaNormColony%_DOX1	EC50	45.137	2.154
+

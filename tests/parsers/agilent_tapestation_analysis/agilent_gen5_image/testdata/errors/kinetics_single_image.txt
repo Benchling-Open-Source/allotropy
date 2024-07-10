@@ -1,0 +1,1151 @@
+
+
+Software Version	3.12.08
+
+
+
+Experiment File Path:	Y:\Documents\Gen5\Plates1-1_12-welltest-full_1\Plates1-1_12-welltest-full_1.xpt
+Protocol File Path:	C:\Users\Public\Documents\Protocols\12-welltest-full.prt
+
+
+
+Plate Number	Plate 1
+Date	12/31/1969
+Time	4:00:00 PM
+Reader Type:	Cytation5
+Reader Serial Number:	EM-06
+Reading Type	???
+
+Procedure Details
+
+Plate Type	Costar 12 well- UM (Use plate lid)
+Discontinuous Kinetics	Runtime 1:00:00 (D:HH:MM), Interval 0:00:30, 49 Reads
+	Pause after each run
+Set Temperature	Setpoint 37°C, Gradient 2 °C
+	Preheat before moving to next step
+Read	Image Single Image
+	Full Plate
+	Objective: 20x
+	Field of View: Standard
+	Channel 1:  Phase Contrast
+	    LED intensity: 10, Integration time: 144 msec, Camera gain: 15.6
+	    Laser autofocus
+	    Scan distance: 600 µm
+	    Scan increment: 7 µm
+	    Offset from bottom of well: 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 2:  YFP 500,542
+	    LED intensity: 10, Integration time: 303 msec, Camera gain: 20
+	    Use focal height from first channel with offset of -5 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Channel 3:  Texas Red 586,647
+	    LED intensity: 10, Integration time: 405 msec, Camera gain: 20
+	    Use focal height from first channel with offset of 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: -3000 µm, Vertical offset: -142 µm
+	Delay after plate movement: 300 msec
+
+Mean [Phase Contrast] - Time  1 (0:00:00)
+Time 1 (0:00:00)
+	1	2	3	4
+A	12049	12655	12825	10652	Mean [Phase Contrast] Read#1
+B	11268	14426	15048	14073	Mean [Phase Contrast] Read#1
+C	12695	10890	10966	10254	Mean [Phase Contrast] Read#1
+
+Mean [Phase Contrast] - Time  2 (0:29:48)
+Time 2 (0:29:48)
+	1	2	3	4
+A	11779	12531	12830	11133	Mean [Phase Contrast] Read#2
+B	11604	14554	15135	14585	Mean [Phase Contrast] Read#2
+C	12680	10930	10845	10292	Mean [Phase Contrast] Read#2
+
+Mean [Phase Contrast] - Time  3 (0:59:48)
+Time 3 (0:59:48)
+	1	2	3	4
+A	11801	12652	12646	10521	Mean [Phase Contrast] Read#3
+B	11523	14632	14859	14068	Mean [Phase Contrast] Read#3
+C	12687	11177	11045	10245	Mean [Phase Contrast] Read#3
+
+Mean [Phase Contrast] - Time  4 (1:29:48)
+Time 4 (1:29:48)
+	1	2	3	4
+A	12172	12812	12266	10449	Mean [Phase Contrast] Read#4
+B	11580	14452	14826	14254	Mean [Phase Contrast] Read#4
+C	12751	11111	10772	10198	Mean [Phase Contrast] Read#4
+
+Mean [Phase Contrast] - Time  5 (1:59:48)
+Time 5 (1:59:48)
+	1	2	3	4
+A	11876	12500	12223	10361	Mean [Phase Contrast] Read#5
+B	11723	14749	14837	14372	Mean [Phase Contrast] Read#5
+C	12613	11275	10936	10256	Mean [Phase Contrast] Read#5
+
+Mean [Phase Contrast] - Time  6 (2:29:48)
+Time 6 (2:29:48)
+	1	2	3	4
+A	12099	12659	12414	10379	Mean [Phase Contrast] Read#6
+B	11696	14398	14615	14523	Mean [Phase Contrast] Read#6
+C	13083	11226	10736	10220	Mean [Phase Contrast] Read#6
+
+Mean [Phase Contrast] - Time  7 (2:59:48)
+Time 7 (2:59:48)
+	1	2	3	4
+A	11842	12572	12404	10287	Mean [Phase Contrast] Read#7
+B	12019	14637	14808	14382	Mean [Phase Contrast] Read#7
+C	12893	11308	10653	10211	Mean [Phase Contrast] Read#7
+
+Mean [Phase Contrast] - Time  8 (3:29:48)
+Time 8 (3:29:48)
+	1	2	3	4
+A	12051	12576	12374	10228	Mean [Phase Contrast] Read#8
+B	11790	14580	14855	14257	Mean [Phase Contrast] Read#8
+C	12798	11302	10643	10191	Mean [Phase Contrast] Read#8
+
+Mean [Phase Contrast] - Time  9 (3:59:48)
+Time 9 (3:59:48)
+	1	2	3	4
+A	12120	12436	13017	10693	Mean [Phase Contrast] Read#9
+B	12159	14895	14980	14485	Mean [Phase Contrast] Read#9
+C	12629	11360	10735	10245	Mean [Phase Contrast] Read#9
+
+Mean [Phase Contrast] - Time  10 (4:29:49)
+Time 10 (4:29:49)
+	1	2	3	4
+A	12256	12582	13151	10390	Mean [Phase Contrast] Read#10
+B	11685	14873	14945	14244	Mean [Phase Contrast] Read#10
+C	12617	11497	10789	10521	Mean [Phase Contrast] Read#10
+
+Mean [Phase Contrast] - Time  11 (4:59:48)
+Time 11 (4:59:48)
+	1	2	3	4
+A	12349	12525	13217	10537	Mean [Phase Contrast] Read#11
+B	11531	14734	14977	14392	Mean [Phase Contrast] Read#11
+C	12548	11234	10986	10207	Mean [Phase Contrast] Read#11
+
+Mean [Phase Contrast] - Time  12 (5:29:48)
+Time 12 (5:29:48)
+	1	2	3	4
+A	12085	12546	13137	10421	Mean [Phase Contrast] Read#12
+B	11519	14742	14721	14594	Mean [Phase Contrast] Read#12
+C	12594	10930	10938	10174	Mean [Phase Contrast] Read#12
+
+Mean [Phase Contrast] - Time  13 (5:59:49)
+Time 13 (5:59:49)
+	1	2	3	4
+A	12147	12624	13015	10393	Mean [Phase Contrast] Read#13
+B	11535	14677	14934	14886	Mean [Phase Contrast] Read#13
+C	12410	10955	10633	10290	Mean [Phase Contrast] Read#13
+
+Mean [Phase Contrast] - Time  14 (6:29:49)
+Time 14 (6:29:49)
+	1	2	3	4
+A	12152	12659	12778	33540	Mean [Phase Contrast] Read#14
+B	11265	14639	15134	14962	Mean [Phase Contrast] Read#14
+C	12528	10724	10842	10275	Mean [Phase Contrast] Read#14
+
+Mean [Phase Contrast] - Time  15 (6:59:49)
+Time 15 (6:59:49)
+	1	2	3	4
+A	11975	12664	12823	10514	Mean [Phase Contrast] Read#15
+B	11305	14884	14938	14833	Mean [Phase Contrast] Read#15
+C	12328	10743	10990	10456	Mean [Phase Contrast] Read#15
+
+Mean [Phase Contrast] - Time  16 (7:29:48)
+Time 16 (7:29:48)
+	1	2	3	4
+A	12149	12539	12841	10547	Mean [Phase Contrast] Read#16
+B	11372	14632	14890	14882	Mean [Phase Contrast] Read#16
+C	12344	10728	11191	10369	Mean [Phase Contrast] Read#16
+
+Mean [Phase Contrast] - Time  17 (7:59:48)
+Time 17 (7:59:48)
+	1	2	3	4
+A	12277	12648	12903	10675	Mean [Phase Contrast] Read#17
+B	11181	14558	15147	14612	Mean [Phase Contrast] Read#17
+C	12436	10844	11069	10433	Mean [Phase Contrast] Read#17
+
+Mean [Phase Contrast] - Time  18 (8:29:48)
+Time 18 (8:29:48)
+	1	2	3	4
+A	12163	12220	12581	10460	Mean [Phase Contrast] Read#18
+B	11289	14726	14962	14524	Mean [Phase Contrast] Read#18
+C	12416	10792	10792	10411	Mean [Phase Contrast] Read#18
+
+Mean [Phase Contrast] - Time  19 (8:59:49)
+Time 19 (8:59:49)
+	1	2	3	4
+A	12329	12452	12580	10504	Mean [Phase Contrast] Read#19
+B	11219	14535	14878	14741	Mean [Phase Contrast] Read#19
+C	12367	10809	10693	10545	Mean [Phase Contrast] Read#19
+
+Mean [Phase Contrast] - Time  20 (9:29:49)
+Time 20 (9:29:49)
+	1	2	3	4
+A	11856	12538	12850	10524	Mean [Phase Contrast] Read#20
+B	11080	14534	14778	14441	Mean [Phase Contrast] Read#20
+C	12409	10872	10957	10408	Mean [Phase Contrast] Read#20
+
+Mean [Phase Contrast] - Time  21 (9:59:48)
+Time 21 (9:59:48)
+	1	2	3	4
+A	12090	12619	12730	10761	Mean [Phase Contrast] Read#21
+B	11547	14321	14886	14577	Mean [Phase Contrast] Read#21
+C	12212	10828	10812	10355	Mean [Phase Contrast] Read#21
+
+Mean [Phase Contrast] - Time  22 (10:29:49)
+Time 22 (10:29:49)
+	1	2	3	4
+A	12352	12759	12954	10757	Mean [Phase Contrast] Read#22
+B	11738	14281	14769	14642	Mean [Phase Contrast] Read#22
+C	12353	10838	10637	10353	Mean [Phase Contrast] Read#22
+
+Mean [Phase Contrast] - Time  23 (10:59:48)
+Time 23 (10:59:48)
+	1	2	3	4
+A	11882	12719	12693	10807	Mean [Phase Contrast] Read#23
+B	11279	14350	14673	14450	Mean [Phase Contrast] Read#23
+C	12038	10685	10617	10313	Mean [Phase Contrast] Read#23
+
+Mean [Phase Contrast] - Time  24 (11:29:49)
+Time 24 (11:29:49)
+	1	2	3	4
+A	12044	12625	12682	10516	Mean [Phase Contrast] Read#24
+B	11687	14140	14665	14394	Mean [Phase Contrast] Read#24
+C	11935	10622	10671	10384	Mean [Phase Contrast] Read#24
+
+Mean [Phase Contrast] - Time  25 (11:59:48)
+Time 25 (11:59:48)
+	1	2	3	4
+A	11749	12849	12846	10546	Mean [Phase Contrast] Read#25
+B	11797	14350	14885	14699	Mean [Phase Contrast] Read#25
+C	11932	10434	10632	10258	Mean [Phase Contrast] Read#25
+
+Mean [Phase Contrast] - Time  26 (12:29:49)
+Time 26 (12:29:49)
+	1	2	3	4
+A	11952	12658	12584	10649	Mean [Phase Contrast] Read#26
+B	11677	14273	14652	14086	Mean [Phase Contrast] Read#26
+C	11710	10639	10847	10260	Mean [Phase Contrast] Read#26
+
+Mean [Phase Contrast] - Time  27 (12:59:49)
+Time 27 (12:59:49)
+	1	2	3	4
+A	11802	12884	12655	10510	Mean [Phase Contrast] Read#27
+B	11669	14484	14794	14422	Mean [Phase Contrast] Read#27
+C	11662	10672	10792	10365	Mean [Phase Contrast] Read#27
+
+Mean [Phase Contrast] - Time  28 (13:29:48)
+Time 28 (13:29:48)
+	1	2	3	4
+A	12443	12949	12750	10777	Mean [Phase Contrast] Read#28
+B	11385	14194	14690	14395	Mean [Phase Contrast] Read#28
+C	11632	10689	10811	10353	Mean [Phase Contrast] Read#28
+
+Mean [Phase Contrast] - Time  29 (13:59:48)
+Time 29 (13:59:48)
+	1	2	3	4
+A	11986	13123	12932	10968	Mean [Phase Contrast] Read#29
+B	11705	14258	14700	14400	Mean [Phase Contrast] Read#29
+C	11609	10635	11101	10476	Mean [Phase Contrast] Read#29
+
+Mean [Phase Contrast] - Time  30 (14:29:49)
+Time 30 (14:29:49)
+	1	2	3	4
+A	11856	13289	12835	10901	Mean [Phase Contrast] Read#30
+B	11699	14207	14851	14608	Mean [Phase Contrast] Read#30
+C	11900	10547	10861	10762	Mean [Phase Contrast] Read#30
+
+Mean [Phase Contrast] - Time  31 (14:59:49)
+Time 31 (14:59:49)
+	1	2	3	4
+A	11920	13151	12565	11175	Mean [Phase Contrast] Read#31
+B	11695	14413	14820	14719	Mean [Phase Contrast] Read#31
+C	11524	10484	10823	10481	Mean [Phase Contrast] Read#31
+
+Mean [Phase Contrast] - Time  32 (15:29:48)
+Time 32 (15:29:48)
+	1	2	3	4
+A	12173	13456	12444	10830	Mean [Phase Contrast] Read#32
+B	11404	14535	14711	14646	Mean [Phase Contrast] Read#32
+C	11391	10534	10990	10715	Mean [Phase Contrast] Read#32
+
+Mean [Phase Contrast] - Time  33 (15:59:48)
+Time 33 (15:59:48)
+	1	2	3	4
+A	12065	13053	12727	10943	Mean [Phase Contrast] Read#33
+B	11438	14577	14715	14747	Mean [Phase Contrast] Read#33
+C	11360	10658	10748	10311	Mean [Phase Contrast] Read#33
+
+Mean [Phase Contrast] - Time  34 (16:29:48)
+Time 34 (16:29:48)
+	1	2	3	4
+A	11842	12896	12776	10763	Mean [Phase Contrast] Read#34
+B	11459	14547	14841	14382	Mean [Phase Contrast] Read#34
+C	11485	10515	11284	10363	Mean [Phase Contrast] Read#34
+
+Mean [Phase Contrast] - Time  35 (16:59:49)
+Time 35 (16:59:49)
+	1	2	3	4
+A	11934	12951	12709	11201	Mean [Phase Contrast] Read#35
+B	11448	14366	14594	14523	Mean [Phase Contrast] Read#35
+C	11564	10537	10763	10598	Mean [Phase Contrast] Read#35
+
+Mean [Phase Contrast] - Time  36 (17:29:49)
+Time 36 (17:29:49)
+	1	2	3	4
+A	11868	12810	12664	11058	Mean [Phase Contrast] Read#36
+B	11788	14707	14502	14172	Mean [Phase Contrast] Read#36
+C	11549	10462	11103	10592	Mean [Phase Contrast] Read#36
+
+Mean [Phase Contrast] - Time  37 (17:59:48)
+Time 37 (17:59:48)
+	1	2	3	4
+A	11942	13009	12357	10833	Mean [Phase Contrast] Read#37
+B	11890	14296	14467	14205	Mean [Phase Contrast] Read#37
+C	11403	10960	11221	10689	Mean [Phase Contrast] Read#37
+
+Mean [Phase Contrast] - Time  38 (0:00:00)
+Time 38 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#38
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#38
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#38
+
+Mean [Phase Contrast] - Time  39 (0:00:00)
+Time 39 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#39
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#39
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#39
+
+Mean [Phase Contrast] - Time  40 (0:00:00)
+Time 40 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#40
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#40
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#40
+
+Mean [Phase Contrast] - Time  41 (0:00:00)
+Time 41 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#41
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#41
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#41
+
+Mean [Phase Contrast] - Time  42 (0:00:00)
+Time 42 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#42
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#42
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#42
+
+Mean [Phase Contrast] - Time  43 (0:00:00)
+Time 43 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#43
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#43
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#43
+
+Mean [Phase Contrast] - Time  44 (0:00:00)
+Time 44 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#44
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#44
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#44
+
+Mean [Phase Contrast] - Time  45 (0:00:00)
+Time 45 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#45
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#45
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#45
+
+Mean [Phase Contrast] - Time  46 (0:00:00)
+Time 46 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#46
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#46
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#46
+
+Mean [Phase Contrast] - Time  47 (0:00:00)
+Time 47 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#47
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#47
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#47
+
+Mean [Phase Contrast] - Time  48 (0:00:00)
+Time 48 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#48
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#48
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#48
+
+Mean [Phase Contrast] - Time  49 (0:00:00)
+Time 49 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Phase Contrast] Read#49
+B	?????	?????	?????	?????	Mean [Phase Contrast] Read#49
+C	?????	?????	?????	?????	Mean [Phase Contrast] Read#49
+
+Mean [YFP 500,542] - Time  1 (0:00:00)
+Time 1 (0:00:00)
+	1	2	3	4
+A	13605	14330	14634	13715	Mean [YFP 500,542] Read#1
+B	14095	14301	13519	14324	Mean [YFP 500,542] Read#1
+C	11772	11578	11653	11014	Mean [YFP 500,542] Read#1
+
+Mean [YFP 500,542] - Time  2 (0:29:48)
+Time 2 (0:29:48)
+	1	2	3	4
+A	13644	14370	14673	13795	Mean [YFP 500,542] Read#2
+B	14095	14319	13581	14344	Mean [YFP 500,542] Read#2
+C	11763	11551	11656	11020	Mean [YFP 500,542] Read#2
+
+Mean [YFP 500,542] - Time  3 (0:59:48)
+Time 3 (0:59:48)
+	1	2	3	4
+A	13699	14453	14714	13914	Mean [YFP 500,542] Read#3
+B	14139	14388	13624	14396	Mean [YFP 500,542] Read#3
+C	11776	11553	11667	11022	Mean [YFP 500,542] Read#3
+
+Mean [YFP 500,542] - Time  4 (1:29:48)
+Time 4 (1:29:48)
+	1	2	3	4
+A	13781	14558	14744	13915	Mean [YFP 500,542] Read#4
+B	14164	14306	13682	14462	Mean [YFP 500,542] Read#4
+C	11801	11549	11662	11021	Mean [YFP 500,542] Read#4
+
+Mean [YFP 500,542] - Time  5 (1:59:48)
+Time 5 (1:59:48)
+	1	2	3	4
+A	13815	14473	14787	14097	Mean [YFP 500,542] Read#5
+B	14203	14469	13776	14534	Mean [YFP 500,542] Read#5
+C	11778	11600	11693	11035	Mean [YFP 500,542] Read#5
+
+Mean [YFP 500,542] - Time  6 (2:29:48)
+Time 6 (2:29:48)
+	1	2	3	4
+A	13876	14597	14838	13996	Mean [YFP 500,542] Read#6
+B	14227	14380	13893	14562	Mean [YFP 500,542] Read#6
+C	11809	11573	11658	11022	Mean [YFP 500,542] Read#6
+
+Mean [YFP 500,542] - Time  7 (2:59:48)
+Time 7 (2:59:48)
+	1	2	3	4
+A	13914	14644	14890	14191	Mean [YFP 500,542] Read#7
+B	14255	14347	13912	14575	Mean [YFP 500,542] Read#7
+C	11755	11566	11651	11018	Mean [YFP 500,542] Read#7
+
+Mean [YFP 500,542] - Time  8 (3:29:48)
+Time 8 (3:29:48)
+	1	2	3	4
+A	13944	14663	14929	14226	Mean [YFP 500,542] Read#8
+B	14310	14312	13929	14598	Mean [YFP 500,542] Read#8
+C	11696	11550	11644	11014	Mean [YFP 500,542] Read#8
+
+Mean [YFP 500,542] - Time  9 (3:59:48)
+Time 9 (3:59:48)
+	1	2	3	4
+A	13944	14512	14955	14181	Mean [YFP 500,542] Read#9
+B	14346	14327	13948	14629	Mean [YFP 500,542] Read#9
+C	11700	11539	11652	11000	Mean [YFP 500,542] Read#9
+
+Mean [YFP 500,542] - Time  10 (4:29:49)
+Time 10 (4:29:49)
+	1	2	3	4
+A	13951	14518	14986	14141	Mean [YFP 500,542] Read#10
+B	14377	14384	13977	14664	Mean [YFP 500,542] Read#10
+C	11717	11545	11649	11006	Mean [YFP 500,542] Read#10
+
+Mean [YFP 500,542] - Time  11 (4:59:48)
+Time 11 (4:59:48)
+	1	2	3	4
+A	13992	14511	15002	14211	Mean [YFP 500,542] Read#11
+B	14393	14413	13971	14650	Mean [YFP 500,542] Read#11
+C	11708	11541	11652	10988	Mean [YFP 500,542] Read#11
+
+Mean [YFP 500,542] - Time  12 (5:29:48)
+Time 12 (5:29:48)
+	1	2	3	4
+A	14009	14521	15010	14202	Mean [YFP 500,542] Read#12
+B	14431	14412	13984	14711	Mean [YFP 500,542] Read#12
+C	11713	11521	11689	10989	Mean [YFP 500,542] Read#12
+
+Mean [YFP 500,542] - Time  13 (5:59:49)
+Time 13 (5:59:49)
+	1	2	3	4
+A	14029	14522	15036	14106	Mean [YFP 500,542] Read#13
+B	14466	14437	14015	14794	Mean [YFP 500,542] Read#13
+C	11710	11532	11677	10974	Mean [YFP 500,542] Read#13
+
+Mean [YFP 500,542] - Time  14 (6:29:49)
+Time 14 (6:29:49)
+	1	2	3	4
+A	14022	14550	15066	17344	Mean [YFP 500,542] Read#14
+B	14498	14462	13992	14843	Mean [YFP 500,542] Read#14
+C	11670	11512	11674	10965	Mean [YFP 500,542] Read#14
+
+Mean [YFP 500,542] - Time  15 (6:59:49)
+Time 15 (6:59:49)
+	1	2	3	4
+A	14051	14561	15112	14163	Mean [YFP 500,542] Read#15
+B	14530	14654	13971	14907	Mean [YFP 500,542] Read#15
+C	11682	11512	11684	10976	Mean [YFP 500,542] Read#15
+
+Mean [YFP 500,542] - Time  16 (7:29:48)
+Time 16 (7:29:48)
+	1	2	3	4
+A	14142	14599	15153	14183	Mean [YFP 500,542] Read#16
+B	14574	14548	13921	14981	Mean [YFP 500,542] Read#16
+C	11680	11502	11697	10980	Mean [YFP 500,542] Read#16
+
+Mean [YFP 500,542] - Time  17 (7:59:48)
+Time 17 (7:59:48)
+	1	2	3	4
+A	14256	14607	15187	14202	Mean [YFP 500,542] Read#17
+B	14602	14642	13887	14999	Mean [YFP 500,542] Read#17
+C	11716	11506	11710	10984	Mean [YFP 500,542] Read#17
+
+Mean [YFP 500,542] - Time  18 (8:29:48)
+Time 18 (8:29:48)
+	1	2	3	4
+A	14260	14646	15231	14243	Mean [YFP 500,542] Read#18
+B	14629	14721	13861	15052	Mean [YFP 500,542] Read#18
+C	11710	11501	11725	10997	Mean [YFP 500,542] Read#18
+
+Mean [YFP 500,542] - Time  19 (8:59:49)
+Time 19 (8:59:49)
+	1	2	3	4
+A	14308	14705	15286	14294	Mean [YFP 500,542] Read#19
+B	14645	14723	13854	15088	Mean [YFP 500,542] Read#19
+C	11699	11507	11719	11007	Mean [YFP 500,542] Read#19
+
+Mean [YFP 500,542] - Time  20 (9:29:49)
+Time 20 (9:29:49)
+	1	2	3	4
+A	14325	14742	15308	14250	Mean [YFP 500,542] Read#20
+B	14662	14895	13926	15159	Mean [YFP 500,542] Read#20
+C	11705	11505	11709	11013	Mean [YFP 500,542] Read#20
+
+Mean [YFP 500,542] - Time  21 (9:59:48)
+Time 21 (9:59:48)
+	1	2	3	4
+A	14339	14781	15342	14292	Mean [YFP 500,542] Read#21
+B	14699	14800	13939	15140	Mean [YFP 500,542] Read#21
+C	11707	11501	11716	11023	Mean [YFP 500,542] Read#21
+
+Mean [YFP 500,542] - Time  22 (10:29:49)
+Time 22 (10:29:49)
+	1	2	3	4
+A	14417	14811	15341	14275	Mean [YFP 500,542] Read#22
+B	14719	14771	13987	15206	Mean [YFP 500,542] Read#22
+C	11713	11509	11716	11021	Mean [YFP 500,542] Read#22
+
+Mean [YFP 500,542] - Time  23 (10:59:48)
+Time 23 (10:59:48)
+	1	2	3	4
+A	14404	14845	15308	14284	Mean [YFP 500,542] Read#23
+B	14726	14810	14034	15242	Mean [YFP 500,542] Read#23
+C	11701	11517	11716	11025	Mean [YFP 500,542] Read#23
+
+Mean [YFP 500,542] - Time  24 (11:29:49)
+Time 24 (11:29:49)
+	1	2	3	4
+A	14402	14864	15260	14278	Mean [YFP 500,542] Read#24
+B	14884	14815	14106	15325	Mean [YFP 500,542] Read#24
+C	11693	11558	11712	11046	Mean [YFP 500,542] Read#24
+
+Mean [YFP 500,542] - Time  25 (11:59:48)
+Time 25 (11:59:48)
+	1	2	3	4
+A	14363	14881	15214	14265	Mean [YFP 500,542] Read#25
+B	14708	14738	14140	15364	Mean [YFP 500,542] Read#25
+C	11673	11564	11704	11004	Mean [YFP 500,542] Read#25
+
+Mean [YFP 500,542] - Time  26 (12:29:49)
+Time 26 (12:29:49)
+	1	2	3	4
+A	14334	14887	15195	14283	Mean [YFP 500,542] Read#26
+B	14711	14773	14168	15359	Mean [YFP 500,542] Read#26
+C	11707	11582	11703	10999	Mean [YFP 500,542] Read#26
+
+Mean [YFP 500,542] - Time  27 (12:59:49)
+Time 27 (12:59:49)
+	1	2	3	4
+A	14351	14882	15184	14314	Mean [YFP 500,542] Read#27
+B	14706	14828	14195	15475	Mean [YFP 500,542] Read#27
+C	11674	11582	11731	11029	Mean [YFP 500,542] Read#27
+
+Mean [YFP 500,542] - Time  28 (13:29:48)
+Time 28 (13:29:48)
+	1	2	3	4
+A	14586	14931	15192	14350	Mean [YFP 500,542] Read#28
+B	14716	14850	14217	15485	Mean [YFP 500,542] Read#28
+C	11695	11589	11717	11024	Mean [YFP 500,542] Read#28
+
+Mean [YFP 500,542] - Time  29 (13:59:48)
+Time 29 (13:59:48)
+	1	2	3	4
+A	14368	14976	15196	14399	Mean [YFP 500,542] Read#29
+B	14726	14851	14253	15492	Mean [YFP 500,542] Read#29
+C	11720	11592	11788	11029	Mean [YFP 500,542] Read#29
+
+Mean [YFP 500,542] - Time  30 (14:29:49)
+Time 30 (14:29:49)
+	1	2	3	4
+A	14400	14991	15215	14421	Mean [YFP 500,542] Read#30
+B	14727	14893	14297	15592	Mean [YFP 500,542] Read#30
+C	11743	11587	11711	11123	Mean [YFP 500,542] Read#30
+
+Mean [YFP 500,542] - Time  31 (14:59:49)
+Time 31 (14:59:49)
+	1	2	3	4
+A	14395	15028	15228	14614	Mean [YFP 500,542] Read#31
+B	14726	14909	14319	15798	Mean [YFP 500,542] Read#31
+C	11755	11566	11723	11035	Mean [YFP 500,542] Read#31
+
+Mean [YFP 500,542] - Time  32 (15:29:48)
+Time 32 (15:29:48)
+	1	2	3	4
+A	14414	15077	15269	14527	Mean [YFP 500,542] Read#32
+B	14726	14931	14373	15980	Mean [YFP 500,542] Read#32
+C	11767	11569	11748	11068	Mean [YFP 500,542] Read#32
+
+Mean [YFP 500,542] - Time  33 (15:59:48)
+Time 33 (15:59:48)
+	1	2	3	4
+A	14409	15032	15312	14546	Mean [YFP 500,542] Read#33
+B	14742	14989	14408	15995	Mean [YFP 500,542] Read#33
+C	11748	11586	11762	11039	Mean [YFP 500,542] Read#33
+
+Mean [YFP 500,542] - Time  34 (16:29:48)
+Time 34 (16:29:48)
+	1	2	3	4
+A	14396	15004	15370	14575	Mean [YFP 500,542] Read#34
+B	14715	15052	14411	15978	Mean [YFP 500,542] Read#34
+C	11757	11560	11931	11039	Mean [YFP 500,542] Read#34
+
+Mean [YFP 500,542] - Time  35 (16:59:49)
+Time 35 (16:59:49)
+	1	2	3	4
+A	14425	15025	15395	14610	Mean [YFP 500,542] Read#35
+B	14753	15050	14338	15887	Mean [YFP 500,542] Read#35
+C	11796	11554	11788	11061	Mean [YFP 500,542] Read#35
+
+Mean [YFP 500,542] - Time  36 (17:29:49)
+Time 36 (17:29:49)
+	1	2	3	4
+A	14375	15157	15512	14647	Mean [YFP 500,542] Read#36
+B	14832	15174	14279	15792	Mean [YFP 500,542] Read#36
+C	11784	11564	11825	11041	Mean [YFP 500,542] Read#36
+
+Mean [YFP 500,542] - Time  37 (17:59:48)
+Time 37 (17:59:48)
+	1	2	3	4
+A	14349	15231	15368	14634	Mean [YFP 500,542] Read#37
+B	14743	14989	14246	15757	Mean [YFP 500,542] Read#37
+C	11768	11655	11849	11049	Mean [YFP 500,542] Read#37
+
+Mean [YFP 500,542] - Time  38 (0:00:00)
+Time 38 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#38
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#38
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#38
+
+Mean [YFP 500,542] - Time  39 (0:00:00)
+Time 39 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#39
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#39
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#39
+
+Mean [YFP 500,542] - Time  40 (0:00:00)
+Time 40 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#40
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#40
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#40
+
+Mean [YFP 500,542] - Time  41 (0:00:00)
+Time 41 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#41
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#41
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#41
+
+Mean [YFP 500,542] - Time  42 (0:00:00)
+Time 42 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#42
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#42
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#42
+
+Mean [YFP 500,542] - Time  43 (0:00:00)
+Time 43 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#43
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#43
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#43
+
+Mean [YFP 500,542] - Time  44 (0:00:00)
+Time 44 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#44
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#44
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#44
+
+Mean [YFP 500,542] - Time  45 (0:00:00)
+Time 45 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#45
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#45
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#45
+
+Mean [YFP 500,542] - Time  46 (0:00:00)
+Time 46 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#46
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#46
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#46
+
+Mean [YFP 500,542] - Time  47 (0:00:00)
+Time 47 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#47
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#47
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#47
+
+Mean [YFP 500,542] - Time  48 (0:00:00)
+Time 48 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#48
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#48
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#48
+
+Mean [YFP 500,542] - Time  49 (0:00:00)
+Time 49 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [YFP 500,542] Read#49
+B	?????	?????	?????	?????	Mean [YFP 500,542] Read#49
+C	?????	?????	?????	?????	Mean [YFP 500,542] Read#49
+
+Mean [Texas Red 586,647] - Time  1 (0:00:00)
+Time 1 (0:00:00)
+	1	2	3	4
+A	4447	4875	4838	4533	Mean [Texas Red 586,647] Read#1
+B	4607	4791	4700	4764	Mean [Texas Red 586,647] Read#1
+C	1949	1744	1663	1742	Mean [Texas Red 586,647] Read#1
+
+Mean [Texas Red 586,647] - Time  2 (0:29:48)
+Time 2 (0:29:48)
+	1	2	3	4
+A	4454	4871	4832	4566	Mean [Texas Red 586,647] Read#2
+B	4607	4793	4716	4751	Mean [Texas Red 586,647] Read#2
+C	1930	1724	1662	1734	Mean [Texas Red 586,647] Read#2
+
+Mean [Texas Red 586,647] - Time  3 (0:59:48)
+Time 3 (0:59:48)
+	1	2	3	4
+A	4489	4918	4877	4627	Mean [Texas Red 586,647] Read#3
+B	4631	4838	4730	4757	Mean [Texas Red 586,647] Read#3
+C	1929	1737	1669	1739	Mean [Texas Red 586,647] Read#3
+
+Mean [Texas Red 586,647] - Time  4 (1:29:48)
+Time 4 (1:29:48)
+	1	2	3	4
+A	4563	5022	4889	4623	Mean [Texas Red 586,647] Read#4
+B	4653	4785	4747	4771	Mean [Texas Red 586,647] Read#4
+C	1947	1727	1683	1737	Mean [Texas Red 586,647] Read#4
+
+Mean [Texas Red 586,647] - Time  5 (1:59:48)
+Time 5 (1:59:48)
+	1	2	3	4
+A	4585	4920	4914	4734	Mean [Texas Red 586,647] Read#5
+B	4673	4917	4795	4812	Mean [Texas Red 586,647] Read#5
+C	1893	1757	1717	1736	Mean [Texas Red 586,647] Read#5
+
+Mean [Texas Red 586,647] - Time  6 (2:29:48)
+Time 6 (2:29:48)
+	1	2	3	4
+A	4657	5060	4989	4676	Mean [Texas Red 586,647] Read#6
+B	4693	4863	4848	4814	Mean [Texas Red 586,647] Read#6
+C	1899	1730	1708	1713	Mean [Texas Red 586,647] Read#6
+
+Mean [Texas Red 586,647] - Time  7 (2:59:48)
+Time 7 (2:59:48)
+	1	2	3	4
+A	4699	5090	5024	4803	Mean [Texas Red 586,647] Read#7
+B	4710	4874	4851	4825	Mean [Texas Red 586,647] Read#7
+C	1833	1719	1709	1700	Mean [Texas Red 586,647] Read#7
+
+Mean [Texas Red 586,647] - Time  8 (3:29:48)
+Time 8 (3:29:48)
+	1	2	3	4
+A	4760	5185	5066	4847	Mean [Texas Red 586,647] Read#8
+B	4745	4863	4859	4858	Mean [Texas Red 586,647] Read#8
+C	1782	1722	1717	1691	Mean [Texas Red 586,647] Read#8
+
+Mean [Texas Red 586,647] - Time  9 (3:59:48)
+Time 9 (3:59:48)
+	1	2	3	4
+A	4804	5064	5116	4841	Mean [Texas Red 586,647] Read#9
+B	4768	4905	4883	4886	Mean [Texas Red 586,647] Read#9
+C	1766	1697	1721	1689	Mean [Texas Red 586,647] Read#9
+
+Mean [Texas Red 586,647] - Time  10 (4:29:49)
+Time 10 (4:29:49)
+	1	2	3	4
+A	4855	5045	5125	4869	Mean [Texas Red 586,647] Read#10
+B	4784	4969	4931	4931	Mean [Texas Red 586,647] Read#10
+C	1795	1704	1713	1697	Mean [Texas Red 586,647] Read#10
+
+Mean [Texas Red 586,647] - Time  11 (4:59:48)
+Time 11 (4:59:48)
+	1	2	3	4
+A	4925	5018	5158	4888	Mean [Texas Red 586,647] Read#11
+B	4812	5020	4960	4950	Mean [Texas Red 586,647] Read#11
+C	1808	1713	1711	1690	Mean [Texas Red 586,647] Read#11
+
+Mean [Texas Red 586,647] - Time  12 (5:29:48)
+Time 12 (5:29:48)
+	1	2	3	4
+A	4918	5030	5200	4894	Mean [Texas Red 586,647] Read#12
+B	4842	5000	4992	5019	Mean [Texas Red 586,647] Read#12
+C	1850	1704	1734	1707	Mean [Texas Red 586,647] Read#12
+
+Mean [Texas Red 586,647] - Time  13 (5:59:49)
+Time 13 (5:59:49)
+	1	2	3	4
+A	4950	5028	5227	4833	Mean [Texas Red 586,647] Read#13
+B	4866	5007	5049	5041	Mean [Texas Red 586,647] Read#13
+C	1892	1706	1730	1707	Mean [Texas Red 586,647] Read#13
+
+Mean [Texas Red 586,647] - Time  14 (6:29:49)
+Time 14 (6:29:49)
+	1	2	3	4
+A	4953	5055	5238	8618	Mean [Texas Red 586,647] Read#14
+B	4884	5000	5061	5051	Mean [Texas Red 586,647] Read#14
+C	1878	1696	1729	1707	Mean [Texas Red 586,647] Read#14
+
+Mean [Texas Red 586,647] - Time  15 (6:59:49)
+Time 15 (6:59:49)
+	1	2	3	4
+A	4966	5067	5246	4875	Mean [Texas Red 586,647] Read#15
+B	4915	5224	5072	5080	Mean [Texas Red 586,647] Read#15
+C	1910	1697	1742	1710	Mean [Texas Red 586,647] Read#15
+
+Mean [Texas Red 586,647] - Time  16 (7:29:48)
+Time 16 (7:29:48)
+	1	2	3	4
+A	5002	5077	5298	4903	Mean [Texas Red 586,647] Read#16
+B	4904	5002	5070	5119	Mean [Texas Red 586,647] Read#16
+C	1899	1685	1757	1714	Mean [Texas Red 586,647] Read#16
+
+Mean [Texas Red 586,647] - Time  17 (7:59:48)
+Time 17 (7:59:48)
+	1	2	3	4
+A	5084	5082	5352	4974	Mean [Texas Red 586,647] Read#17
+B	4934	5018	5093	5102	Mean [Texas Red 586,647] Read#17
+C	1910	1687	1770	1706	Mean [Texas Red 586,647] Read#17
+
+Mean [Texas Red 586,647] - Time  18 (8:29:48)
+Time 18 (8:29:48)
+	1	2	3	4
+A	5037	5033	5382	4990	Mean [Texas Red 586,647] Read#18
+B	4940	5035	5084	5117	Mean [Texas Red 586,647] Read#18
+C	1874	1684	1799	1713	Mean [Texas Red 586,647] Read#18
+
+Mean [Texas Red 586,647] - Time  19 (8:59:49)
+Time 19 (8:59:49)
+	1	2	3	4
+A	4987	5099	5422	5062	Mean [Texas Red 586,647] Read#19
+B	4980	5007	5054	5114	Mean [Texas Red 586,647] Read#19
+C	1837	1690	1803	1723	Mean [Texas Red 586,647] Read#19
+
+Mean [Texas Red 586,647] - Time  20 (9:29:49)
+Time 20 (9:29:49)
+	1	2	3	4
+A	4968	5107	5431	5065	Mean [Texas Red 586,647] Read#20
+B	4982	5115	5064	5159	Mean [Texas Red 586,647] Read#20
+C	1840	1695	1801	1715	Mean [Texas Red 586,647] Read#20
+
+Mean [Texas Red 586,647] - Time  21 (9:59:48)
+Time 21 (9:59:48)
+	1	2	3	4
+A	4993	5109	5489	5097	Mean [Texas Red 586,647] Read#21
+B	4983	5065	5015	5137	Mean [Texas Red 586,647] Read#21
+C	1881	1695	1812	1716	Mean [Texas Red 586,647] Read#21
+
+Mean [Texas Red 586,647] - Time  22 (10:29:49)
+Time 22 (10:29:49)
+	1	2	3	4
+A	5044	5114	5487	5035	Mean [Texas Red 586,647] Read#22
+B	4997	5038	5001	5163	Mean [Texas Red 586,647] Read#22
+C	1887	1696	1803	1721	Mean [Texas Red 586,647] Read#22
+
+Mean [Texas Red 586,647] - Time  23 (10:59:48)
+Time 23 (10:59:48)
+	1	2	3	4
+A	5100	5141	5462	5014	Mean [Texas Red 586,647] Read#23
+B	4995	5091	4991	5188	Mean [Texas Red 586,647] Read#23
+C	1859	1706	1805	1734	Mean [Texas Red 586,647] Read#23
+
+Mean [Texas Red 586,647] - Time  24 (11:29:49)
+Time 24 (11:29:49)
+	1	2	3	4
+A	5096	5128	5467	4962	Mean [Texas Red 586,647] Read#24
+B	5129	5124	5013	5206	Mean [Texas Red 586,647] Read#24
+C	1880	1736	1818	1765	Mean [Texas Red 586,647] Read#24
+
+Mean [Texas Red 586,647] - Time  25 (11:59:48)
+Time 25 (11:59:48)
+	1	2	3	4
+A	5061	5130	5459	4964	Mean [Texas Red 586,647] Read#25
+B	5011	5080	4993	5224	Mean [Texas Red 586,647] Read#25
+C	1849	1737	1821	1747	Mean [Texas Red 586,647] Read#25
+
+Mean [Texas Red 586,647] - Time  26 (12:29:49)
+Time 26 (12:29:49)
+	1	2	3	4
+A	5075	5167	5453	4938	Mean [Texas Red 586,647] Read#26
+B	5029	5092	4992	5217	Mean [Texas Red 586,647] Read#26
+C	1881	1757	1823	1752	Mean [Texas Red 586,647] Read#26
+
+Mean [Texas Red 586,647] - Time  27 (12:59:49)
+Time 27 (12:59:49)
+	1	2	3	4
+A	5071	5173	5433	4923	Mean [Texas Red 586,647] Read#27
+B	5046	5100	5035	5394	Mean [Texas Red 586,647] Read#27
+C	1868	1761	1828	1779	Mean [Texas Red 586,647] Read#27
+
+Mean [Texas Red 586,647] - Time  28 (13:29:48)
+Time 28 (13:29:48)
+	1	2	3	4
+A	5258	5171	5342	4939	Mean [Texas Red 586,647] Read#28
+B	5048	5077	5041	5399	Mean [Texas Red 586,647] Read#28
+C	1887	1759	1803	1779	Mean [Texas Red 586,647] Read#28
+
+Mean [Texas Red 586,647] - Time  29 (13:59:48)
+Time 29 (13:59:48)
+	1	2	3	4
+A	5024	5154	5294	4931	Mean [Texas Red 586,647] Read#29
+B	5062	5080	5072	5407	Mean [Texas Red 586,647] Read#29
+C	1898	1770	1863	1777	Mean [Texas Red 586,647] Read#29
+
+Mean [Texas Red 586,647] - Time  30 (14:29:49)
+Time 30 (14:29:49)
+	1	2	3	4
+A	5088	5151	5262	4932	Mean [Texas Red 586,647] Read#30
+B	5046	5109	5064	5508	Mean [Texas Red 586,647] Read#30
+C	1913	1762	1798	1828	Mean [Texas Red 586,647] Read#30
+
+Mean [Texas Red 586,647] - Time  31 (14:59:49)
+Time 31 (14:59:49)
+	1	2	3	4
+A	5081	5204	5194	5030	Mean [Texas Red 586,647] Read#31
+B	5035	5103	5072	5736	Mean [Texas Red 586,647] Read#31
+C	1915	1745	1800	1772	Mean [Texas Red 586,647] Read#31
+
+Mean [Texas Red 586,647] - Time  32 (15:29:48)
+Time 32 (15:29:48)
+	1	2	3	4
+A	5074	5326	5161	4950	Mean [Texas Red 586,647] Read#32
+B	5031	5108	5076	5924	Mean [Texas Red 586,647] Read#32
+C	1923	1768	1832	1780	Mean [Texas Red 586,647] Read#32
+
+Mean [Texas Red 586,647] - Time  33 (15:59:48)
+Time 33 (15:59:48)
+	1	2	3	4
+A	5066	5241	5147	4933	Mean [Texas Red 586,647] Read#33
+B	5018	5126	5072	5947	Mean [Texas Red 586,647] Read#33
+C	1918	1777	1833	1765	Mean [Texas Red 586,647] Read#33
+
+Mean [Texas Red 586,647] - Time  34 (16:29:48)
+Time 34 (16:29:48)
+	1	2	3	4
+A	5053	5199	5145	4919	Mean [Texas Red 586,647] Read#34
+B	4983	5165	5062	5894	Mean [Texas Red 586,647] Read#34
+C	1938	1750	1976	1770	Mean [Texas Red 586,647] Read#34
+
+Mean [Texas Red 586,647] - Time  35 (16:59:49)
+Time 35 (16:59:49)
+	1	2	3	4
+A	5030	5215	5137	4930	Mean [Texas Red 586,647] Read#35
+B	5024	5162	5039	5780	Mean [Texas Red 586,647] Read#35
+C	1946	1750	1865	1782	Mean [Texas Red 586,647] Read#35
+
+Mean [Texas Red 586,647] - Time  36 (17:29:49)
+Time 36 (17:29:49)
+	1	2	3	4
+A	4946	5321	5231	4942	Mean [Texas Red 586,647] Read#36
+B	5094	5199	4993	5715	Mean [Texas Red 586,647] Read#36
+C	1956	1764	1891	1774	Mean [Texas Red 586,647] Read#36
+
+Mean [Texas Red 586,647] - Time  37 (17:59:48)
+Time 37 (17:59:48)
+	1	2	3	4
+A	4921	5365	5086	4947	Mean [Texas Red 586,647] Read#37
+B	5000	5108	4981	5740	Mean [Texas Red 586,647] Read#37
+C	1958	1821	1917	1801	Mean [Texas Red 586,647] Read#37
+
+Mean [Texas Red 586,647] - Time  38 (0:00:00)
+Time 38 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#38
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#38
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#38
+
+Mean [Texas Red 586,647] - Time  39 (0:00:00)
+Time 39 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#39
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#39
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#39
+
+Mean [Texas Red 586,647] - Time  40 (0:00:00)
+Time 40 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#40
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#40
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#40
+
+Mean [Texas Red 586,647] - Time  41 (0:00:00)
+Time 41 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#41
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#41
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#41
+
+Mean [Texas Red 586,647] - Time  42 (0:00:00)
+Time 42 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#42
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#42
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#42
+
+Mean [Texas Red 586,647] - Time  43 (0:00:00)
+Time 43 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#43
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#43
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#43
+
+Mean [Texas Red 586,647] - Time  44 (0:00:00)
+Time 44 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#44
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#44
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#44
+
+Mean [Texas Red 586,647] - Time  45 (0:00:00)
+Time 45 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#45
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#45
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#45
+
+Mean [Texas Red 586,647] - Time  46 (0:00:00)
+Time 46 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#46
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#46
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#46
+
+Mean [Texas Red 586,647] - Time  47 (0:00:00)
+Time 47 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#47
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#47
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#47
+
+Mean [Texas Red 586,647] - Time  48 (0:00:00)
+Time 48 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#48
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#48
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#48
+
+Mean [Texas Red 586,647] - Time  49 (0:00:00)
+Time 49 (0:00:00)
+	1	2	3	4
+A	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#49
+B	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#49
+C	?????	?????	?????	?????	Mean [Texas Red 586,647] Read#49
+
+Max V [Mean [Phase Contrast]]
+	1	2	3	4
+A	21367.489	-14274.596	21456.090	771564.344	Max V [Mean [Phase Contrast]]
+B	-15789.685	-13708.314	-9199.679	-20391.631	Max V [Mean [Phase Contrast]]
+C	15656.144	16607.299	17853.204	-13467.291	Max V [Mean [Phase Contrast]]
+
+R-Squared [Mean [Phase Contrast]]
+	1	2	3	4
+A	1.000	1.000	1.000	1.000	R-Squared [Mean [Phase Contrast]]
+B	1.000	1.000	1.000	1.000	R-Squared [Mean [Phase Contrast]]
+C	1.000	1.000	1.000	1.000	R-Squared [Mean [Phase Contrast]]
+
+t at Max V [Mean [Phase Contrast]]
+	1	2	3	4
+A	13:14:49	8:14:48	3:44:48	6:14:49	t at Max V [Mean [Phase Contrast]]
+B	4:14:49	17:44:49	0:44:48	12:14:49	t at Max V [Mean [Phase Contrast]]
+C	2:14:48	17:44:49	16:14:48	15:44:48	t at Max V [Mean [Phase Contrast]]
+
+Lagtime [Mean [Phase Contrast]]
+	1	2	3	4
+A	13:11:21	7:59:21	3:50:49	6:00:09	Lagtime [Mean [Phase Contrast]]
+B	4:56:15	17:50:18	0:39:15	12:30:28	Lagtime [Mean [Phase Contrast]]
+C	2:05:00	17:55:36	16:12:01	16:04:00	Lagtime [Mean [Phase Contrast]]
+
+Max V [Mean [YFP 500,542]]
+	1	2	3	4
+A	7840.609	-5034.151	-4814.630	107937.016	Max V [Mean [YFP 500,542]]
+B	-5846.757	6383.922	3894.811	6865.237	Max V [Mean [YFP 500,542]]
+C	-1956.749	3042.676	5653.229	3124.012	Max V [Mean [YFP 500,542]]
+
+R-Squared [Mean [YFP 500,542]]
+	1	2	3	4
+A	1.000	1.000	1.000	1.000	R-Squared [Mean [YFP 500,542]]
+B	1.000	1.000	1.000	1.000	R-Squared [Mean [YFP 500,542]]
+C	1.000	1.000	1.000	1.000	R-Squared [Mean [YFP 500,542]]
+
+t at Max V [Mean [YFP 500,542]]
+	1	2	3	4
+A	13:14:49	3:44:48	17:44:49	6:14:49	t at Max V [Mean [YFP 500,542]]
+B	11:44:49	6:44:49	2:14:48	14:44:49	t at Max V [Mean [YFP 500,542]]
+C	3:14:48	17:44:49	16:14:48	14:14:49	t at Max V [Mean [YFP 500,542]]
+
+Lagtime [Mean [YFP 500,542]]
+	1	2	3	4
+A	11:24:41	4:35:55	?????	5:56:12	Lagtime [Mean [YFP 500,542]]
+B	13:44:45	6:04:29	0:53:55	11:25:08	Lagtime [Mean [YFP 500,542]]
+C	2:51:02	17:34:28	15:40:32	13:54:58	Lagtime [Mean [YFP 500,542]]
+
+Max V [Mean [Texas Red 586,647]]
+	1	2	3	4
+A	-7816.485	4639.244	-4846.303	126151.465	Max V [Mean [Texas Red 586,647]]
+B	4477.252	7483.853	1891.388	7599.050	Max V [Mean [Texas Red 586,647]]
+C	-2202.351	1898.505	4787.529	-1880.150	Max V [Mean [Texas Red 586,647]]
+
+R-Squared [Mean [Texas Red 586,647]]
+	1	2	3	4
+A	1.000	1.000	1.000	1.000	R-Squared [Mean [Texas Red 586,647]]
+B	1.000	1.000	1.000	1.000	R-Squared [Mean [Texas Red 586,647]]
+C	1.000	1.000	1.000	1.000	R-Squared [Mean [Texas Red 586,647]]
+
+t at Max V [Mean [Texas Red 586,647]]
+	1	2	3	4
+A	13:44:48	2:14:48	17:44:49	6:14:49	t at Max V [Mean [Texas Red 586,647]]
+B	11:14:49	6:44:49	5:44:49	14:44:49	t at Max V [Mean [Texas Red 586,647]]
+C	2:44:48	17:44:49	16:14:48	14:44:49	t at Max V [Mean [Texas Red 586,647]]
+
+Lagtime [Mean [Texas Red 586,647]]
+	1	2	3	4
+A	15:13:35	1:50:01	?????	5:57:26	Lagtime [Mean [Texas Red 586,647]]
+B	9:33:19	6:01:52	2:55:21	12:51:50	Lagtime [Mean [Texas Red 586,647]]
+C	2:07:18	17:19:08	15:24:21	15:15:32	Lagtime [Mean [Texas Red 586,647]]
+
