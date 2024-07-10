@@ -3,16 +3,18 @@ from pathlib import Path
 
 import pytest
 
+# ParserTest will ignore any files with "error",  "exclude", or "invalid" in their path.
+EXCLUDE_KEYWORDS = {"error", "exclude", "invalid"}
 
-# ParserTest will ignore any files with "error" or "exclude" in their paths.
+
 def _is_valid_testcase(path: Path) -> bool:
     if not path.is_file():
         return False
     if str(path.stem).startswith("."):
         return False
-    if "error" in str(path) or "exclude" in str(path):
+    if path.suffix.lower() == ".json":
         return False
-    return path.suffix.lower() != ".json"
+    return all(keyword not in str(path).lower() for keyword in EXCLUDE_KEYWORDS)
 
 
 def get_test_cases(testdata_dir: Path) -> list[Path]:
