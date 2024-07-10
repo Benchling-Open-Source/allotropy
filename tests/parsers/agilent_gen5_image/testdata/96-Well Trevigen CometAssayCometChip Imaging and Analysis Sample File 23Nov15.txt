@@ -1,0 +1,204 @@
+
+
+Software Version	3.12.08
+
+
+
+Experiment File Path:	\\Mac\Home\Documents\Gen5\96-Well Trevigen CometAssayCometChip Imaging and Analysis Sample File 23Nov15.xpt
+Protocol File Path:	E:\Trevigen\Customer Demo 96-Well Wet Gel Comet Chip and Adapter Imaging\Trevigen 96-Well Comet Slide Imaging and Analysis Customer Demo Protocol.prt
+
+
+
+Plate Number	Plate 1
+Date	9/30/2015
+Time	6:26:57 AM
+Reader Type:	Cytation5
+Reader Serial Number:	EM-18
+Reading Type	Reader
+
+Procedure Details
+
+Plate Type	Trevigen 96-Well Comet Chip and Adapter (Use plate lid)
+Eject plate on completion	
+Read	2.5x Imaging
+	Image Single Image
+	Full Plate
+	Objective: 2.74x
+	Field of View: Standard
+	Channel 1:  GFP 469,525
+	    LED intensity: 5, Integration time: 110 msec, Camera gain: 0
+	    Autofocus with optional scan
+	    Minimum focus metric ratio: 3
+	    Scan distance: 600 µm
+	    Scan increment: 30 µm
+	    Minimum focus delta: 8
+	    Percent of capture exposure for focus: 75
+	    Offset from bottom of well: 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Delay after plate movement: 300 msec
+Read	4x Montage Imaging
+	Image Montage
+	Full Plate
+	Objective: 4x
+	Field of View: Standard
+	Channel 1:  GFP 469,525
+	    LED intensity: 9, Integration time: 100 msec, Camera gain: 1
+	    Autofocus with optional scan
+	    Minimum focus metric ratio: 3
+	    Scan distance: 600 µm
+	    Scan increment: 30 µm
+	    Minimum focus delta: 8
+	    Percent of capture exposure for focus: 75
+	    Offset from bottom of well: 0 µm
+	    Vibration CV threshold: 0.01
+	    Images to average: 1
+	Horizontal offset: 0 µm, Vertical offset: 0 µm
+	Delay after plate movement: 300 msec
+	Montage rows: 2, columns: 2
+	Montage horizontal spacing: 1776 µm, vertical spacing: 1311 µm
+	Montage autofocus option: Autofocus option based on objective size
+
+Layout
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	SPL1	Well ID
+B	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	SPL2	Well ID
+C	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	SPL3	Well ID
+D	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	SPL4	Well ID
+E	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	SPL5	Well ID
+F	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	SPL6	Well ID
+G	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	SPL7	Well ID
+H	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	SPL8	Well ID
+
+Results
+	1	2	3	4	5	6	7	8	9	10	11	12
+A	127	127	128	125	115	115	119	120	121	127	123	121	2.5x Total Comet Cell Count
+	55.1	52.2	53.1	50.3	48.2	50.4	49.0	47.7	52.9	50.9	51.3	51.5	2.5x Total Comet Object Size
+	0.718	0.746	0.732	0.811	0.797	0.79	0.8	0.81	0.726	0.771	0.729	0.761	2.5x Total Comet Circularity
+	127	125	127	125	115	114	119	120	120	127	122	119	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	55.1	52.4	53.2	50.3	48.2	50.7	49.0	47.7	52.8	50.9	51.5	51.9	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.718	0.752	0.736	0.811	0.797	0.794	0.8	0.81	0.731	0.771	0.734	0.763	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	128	127	128	125	116	115	119	120	122	126	123	116	Comet Head Count 2.5x
+	33.7	33.8	34.6	32.0	31.2	32.3	30.9	30.1	32.0	32.9	31.1	33.8	Comet Head Size 2.5x
+	0.768	0.768	0.741	0.82	0.802	0.788	0.799	0.782	0.753	0.756	0.717	0.758	Comet Head Circularity 2.5x
+	128	127	128	125	116	115	119	120	122	126	123	116	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	33.7	33.8	34.6	32.0	31.2	32.3	30.9	30.1	32.0	32.9	31.1	33.8	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.768	0.768	0.741	0.82	0.802	0.788	0.799	0.782	0.753	0.756	0.717	0.758	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	6.484	2.074	0.663	1.107	0.700	-0.795	-0.182	-3.571	2.892	-2.074	-2.374	-0.557	% DNA in Comet Tail 2.5x Images
+	1.787	0.544	0.177	0.278	0.169	-0.201	-0.045	-0.852	0.764	-0.528	-0.611	-0.145	Comet Tail Moment 2.5x Images
+	0.364												Average % DNA in Comet Tail 2.5x
+	0.111												Average Comet Tail Moment 2.5x Images
+B	122	126	132	118	124	120	115	127	116	126	124	115	2.5x Total Comet Cell Count
+	65.5	73.1	71.7	63.7	68.3	64.6	62.7	57.3	64.2	65.0	67.5	67.9	2.5x Total Comet Object Size
+	0.307	0.194	0.281	0.278	0.26	0.284	0.307	0.36	0.287	0.288	0.281	0.274	2.5x Total Comet Circularity
+	122	125	130	115	124	120	115	125	115	125	123	115	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	65.5	73.4	71.4	64.5	68.3	64.6	62.7	57.3	64.5	65.1	67.5	67.9	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.307	0.192	0.282	0.278	0.26	0.284	0.307	0.363	0.286	0.288	0.283	0.274	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	133	128	125	118	126	120	128	123	120	123	122	120	Comet Head Count 2.5x
+	32.0	34.4	35.7	31.4	32.5	31.0	30.7	27.6	31.0	30.5	30.3	32.9	Comet Head Size 2.5x
+	0.631	0.624	0.617	0.617	0.648	0.629	0.636	0.635	0.654	0.613	0.615	0.633	Comet Head Circularity 2.5x
+	133	128	125	118	126	120	128	123	120	123	122	120	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	32.0	34.4	35.7	31.4	32.5	31.0	30.7	27.6	31.0	30.5	30.3	32.9	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.631	0.624	0.617	0.617	0.648	0.629	0.636	0.635	0.654	0.613	0.615	0.633	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	51.368	69.159	54.290	54.980	59.820	54.800	51.693	42.788	56.187	53.013	53.994	56.679	% DNA in Comet Tail 2.5x Images
+	16.824	25.395	19.373	17.722	20.426	17.700	16.206	12.268	18.117	17.262	18.224	19.238	Comet Tail Moment 2.5x Images
+	54.898												Average % DNA in Comet Tail 2.5x
+	18.230												Average Comet Tail Moment 2.5x Images
+C	129	128	129	128	121	126	123	116	126	117	127	115	2.5x Total Comet Cell Count
+	74.7	80.3	78.9	71.3	72.6	77.3	76.9	78.4	74.4	78.9	80.4	82.3	2.5x Total Comet Object Size
+	0.17	0.147	0.159	0.191	0.198	0.17	0.148	0.185	0.181	0.186	0.174	0.147	2.5x Total Comet Circularity
+	128	126	128	125	120	125	121	116	123	117	125	115	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	75.0	81.1	79.3	72.2	73.0	77.6	77.5	78.4	75.1	78.9	81.0	82.3	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.17	0.142	0.155	0.185	0.197	0.17	0.146	0.185	0.177	0.186	0.168	0.147	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	128	129	126	118	124	123	118	124	117	120	111	129	Comet Head Count 2.5x
+	29.0	30.0	30.7	28.8	30.0	32.4	30.8	31.0	28.4	29.2	28.9	28.0	Comet Head Size 2.5x
+	0.574	0.541	0.572	0.583	0.583	0.551	0.564	0.583	0.567	0.532	0.518	0.534	Comet Head Circularity 2.5x
+	127	129	126	118	124	123	118	124	117	118	110	129	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	29.1	30.0	30.7	28.8	30.0	32.4	30.8	31.0	28.4	29.5	29.1	28.0	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.576	0.541	0.572	0.583	0.583	0.551	0.564	0.583	0.567	0.537	0.52	0.534	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	70.470	73.669	72.839	68.206	66.198	69.260	74.068	68.300	68.766	65.449	67.681	72.464	% DNA in Comet Tail 2.5x Images
+	26.441	29.871	28.874	24.612	24.173	26.882	28.690	26.787	25.810	25.811	27.409	29.831	Comet Tail Moment 2.5x Images
+	69.781												Average % DNA in Comet Tail 2.5x
+	27.099												Average Comet Tail Moment 2.5x Images
+D	124	122	128	117	123	120	123	126	126	120	133	126	2.5x Total Comet Cell Count
+	66.1	88.2	82.6	83.0	86.8	84.6	88.5	84.6	86.9	84.9	86.1	85.2	2.5x Total Comet Object Size
+	0.189	0.114	0.145	0.133	0.132	0.136	0.131	0.143	0.13	0.142	0.133	0.135	2.5x Total Comet Circularity
+	121	118	123	109	121	113	123	121	124	114	130	118	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	66.8	89.0	84.2	85.6	87.7	87.2	88.5	86.4	87.7	87.6	87.4	87.6	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.185	0.113	0.141	0.128	0.125	0.128	0.131	0.136	0.129	0.132	0.129	0.133	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	110	102	101	106	107	104	115	115	112	96	108	85	Comet Head Count 2.5x
+	20.0	21.3	24.6	23.6	27.2	22.7	26.5	25.2	23.7	23.9	22.7	20.1	Comet Head Size 2.5x
+	0.495	0.474	0.512	0.539	0.516	0.546	0.509	0.531	0.472	0.496	0.467	0.428	Comet Head Circularity 2.5x
+	110	100	99	106	107	103	115	115	110	96	108	84	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	20.0	21.6	25.0	23.6	27.2	22.9	26.5	25.2	24.1	23.9	22.7	20.2	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.495	0.479	0.516	0.539	0.516	0.548	0.509	0.531	0.475	0.496	0.467	0.429	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	62.557	76.435	72.721	76.335	75.727	76.613	74.197	74.293	72.876	73.309	72.352	69.054	% DNA in Comet Tail 2.5x Images
+	20.899	34.000	30.633	32.682	33.190	33.408	32.821	32.101	31.950	32.102	31.619	30.262	Comet Tail Moment 2.5x Images
+	73.039												Average % DNA in Comet Tail 2.5x
+	31.306												Average Comet Tail Moment 2.5x Images
+E	126	130	125	120	120	122	125	121	125	132	123	126	2.5x Total Comet Cell Count
+	54.6	55.2	54.7	50.7	50.4	50.1	52.5	53.0	50.2	51.5	51.9	53.4	2.5x Total Comet Object Size
+	0.776	0.779	0.71	0.805	0.817	0.751	0.778	0.807	0.776	0.798	0.778	0.771	2.5x Total Comet Circularity
+	124	127	124	118	119	118	124	119	125	131	122	126	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	55.0	54.4	54.1	51.1	50.4	50.1	52.6	53.2	50.2	51.6	52.0	53.4	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.781	0.787	0.715	0.813	0.822	0.767	0.781	0.815	0.776	0.8	0.782	0.771	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	125	133	133	117	120	122	126	126	125	134	125	127	Comet Head Count 2.5x
+	35.9	36.3	35.4	34.5	34.4	33.9	35.6	36.6	33.6	35.2	35.0	35.1	Comet Head Size 2.5x
+	0.797	0.794	0.688	0.809	0.839	0.778	0.81	0.839	0.801	0.788	0.772	0.752	Comet Head Circularity 2.5x
+	125	133	133	117	120	122	126	125	125	134	125	127	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	35.9	36.3	35.4	34.5	34.4	33.9	35.6	36.4	33.6	35.2	35.0	35.1	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.797	0.794	0.688	0.809	0.839	0.778	0.81	0.845	0.801	0.788	0.772	0.752	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	2.059	0.857	-3.989	-0.445	2.002	1.399	3.651	3.547	3.072	-1.589	-1.300	-2.549	% DNA in Comet Tail 2.5x Images
+	0.566	0.233	-1.079	-0.114	0.504	0.350	0.960	0.944	0.771	-0.410	-0.338	-0.680	Comet Tail Moment 2.5x Images
+	0.560												Average % DNA in Comet Tail 2.5x
+	0.142												Average Comet Tail Moment 2.5x Images
+F	118	125	126	120	130	118	119	127	125	136	134	128	2.5x Total Comet Cell Count
+	68.7	71.3	70.1	64.5	66.9	70.2	66.3	64.7	67.4	64.8	64.0	60.8	2.5x Total Comet Object Size
+	0.24	0.235	0.239	0.275	0.252	0.241	0.285	0.284	0.237	0.289	0.293	0.345	2.5x Total Comet Circularity
+	115	123	125	117	128	118	118	125	124	134	132	128	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	69.6	71.9	70.4	64.8	67.2	70.2	66.4	64.9	67.6	65.2	64.4	60.8	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.238	0.228	0.239	0.272	0.25	0.241	0.284	0.285	0.234	0.287	0.29	0.345	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	123	125	126	123	126	126	120	131	128	135	131	124	Comet Head Count 2.5x
+	33.9	35.4	34.3	33.5	33.2	35.4	33.5	32.3	31.0	31.2	30.2	25.4	Comet Head Size 2.5x
+	0.656	0.619	0.623	0.669	0.649	0.643	0.653	0.646	0.612	0.64	0.629	0.614	Comet Head Circularity 2.5x
+	123	125	126	123	126	126	120	130	128	135	131	122	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	33.9	35.4	34.3	33.5	33.2	35.4	33.5	32.5	31.0	31.2	30.2	25.7	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.656	0.619	0.623	0.669	0.649	0.643	0.653	0.648	0.612	0.64	0.629	0.619	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	63.727	63.174	61.724	59.288	61.480	62.476	56.514	56.105	61.751	55.096	53.907	44.222	% DNA in Comet Tail 2.5x Images
+	22.169	22.717	21.715	19.204	20.672	21.939	18.749	18.198	20.877	17.966	17.345	13.445	Comet Tail Moment 2.5x Images
+	58.289												Average % DNA in Comet Tail 2.5x
+	19.583												Average Comet Tail Moment 2.5x Images
+G	123	117	123	125	123	116	128	123	126	125	125	121	2.5x Total Comet Cell Count
+	80.1	81.7	79.8	75.4	78.9	76.8	78.0	75.6	72.4	73.1	77.1	69.1	2.5x Total Comet Object Size
+	0.158	0.15	0.175	0.158	0.164	0.152	0.178	0.191	0.193	0.192	0.168	0.196	2.5x Total Comet Circularity
+	123	116	122	124	122	116	126	121	124	124	124	119	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	80.1	82.1	80.2	75.5	79.2	76.8	78.4	76.3	72.2	73.4	77.5	69.6	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.158	0.146	0.173	0.159	0.163	0.152	0.173	0.187	0.192	0.191	0.168	0.196	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	132	125	124	119	120	123	122	131	123	131	117	115	Comet Head Count 2.5x
+	29.3	30.4	31.0	30.2	31.1	29.4	32.0	30.8	28.4	30.2	27.3	22.2	Comet Head Size 2.5x
+	0.598	0.607	0.637	0.616	0.611	0.596	0.574	0.575	0.587	0.577	0.609	0.54	Comet Head Circularity 2.5x
+	132	125	124	119	120	123	122	131	123	131	117	114	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	29.3	30.4	31.0	30.2	31.1	29.4	32.0	30.8	28.4	30.2	27.3	22.4	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.598	0.607	0.637	0.616	0.611	0.596	0.574	0.575	0.587	0.577	0.609	0.542	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	73.562	75.909	72.794	74.211	73.378	74.465	69.897	67.460	67.344	66.902	72.381	63.935	% DNA in Comet Tail 2.5x Images
+	29.476	31.175	29.185	28.027	29.063	28.582	27.397	25.744	24.328	24.550	28.053	22.253	Comet Tail Moment 2.5x Images
+	71.020												Average % DNA in Comet Tail 2.5x
+	27.319												Average Comet Tail Moment 2.5x Images
+H	123	129	129	123	124	129	120	128	122	121	134	123	2.5x Total Comet Cell Count
+	79.8	85.4	81.5	83.4	83.3	88.4	83.3	81.6	83.0	83.9	77.3	75.6	2.5x Total Comet Object Size
+	0.141	0.13	0.137	0.136	0.126	0.134	0.141	0.134	0.142	0.148	0.163	0.144	2.5x Total Comet Circularity
+	118	123	120	120	119	128	118	127	121	119	130	115	Best Total Comet Count 2.5x[Best Total Comets 2.5x]
+	81.5	86.9	84.1	84.6	85.1	88.8	83.8	82.0	83.1	84.4	78.0	77.3	Best Total Comet Size 2.5x[Best Total Comets 2.5x]
+	0.132	0.128	0.134	0.135	0.124	0.132	0.14	0.133	0.142	0.148	0.165	0.146	Best Total Comet Circularity 2.5x[Best Total Comets 2.5x]
+	95	89	91	95	112	123	120	110	127	108	100	40	Comet Head Count 2.5x
+	21.7	20.1	21.2	22.1	20.7	24.5	22.1	21.4	20.9	21.3	19.3	13.9	Comet Head Size 2.5x
+	0.57	0.541	0.589	0.561	0.634	0.464	0.621	0.638	0.617	0.567	0.513	0.406	Comet Head Circularity 2.5x
+	94	89	89	95	111	121	120	110	127	107	97	40	Best Comet Head Count 2.5x[Best Comet Heads 2.5x]
+	21.9	20.1	21.5	22.1	20.9	24.4	22.1	21.4	20.9	21.5	19.8	13.9	Best Comet Head Size 2.5x[Best Comet Heads 2.5x]
+	0.572	0.541	0.595	0.561	0.637	0.469	0.621	0.638	0.617	0.573	0.519	0.406	Best Comet Head Circularity 2.5x[Best Comet Heads 2.5x]
+	76.945	76.403	77.433	75.871	80.540	71.839	77.494	79.234	76.957	74.114	68.230	64.067	% DNA in Comet Tail 2.5x Images
+	31.358	33.207	32.573	32.081	34.269	31.913	32.483	32.497	31.974	31.274	26.594	24.764	Comet Tail Moment 2.5x Images
+	74.927												Average % DNA in Comet Tail 2.5x
+	31.249												Average Comet Tail Moment 2.5x Images
+
