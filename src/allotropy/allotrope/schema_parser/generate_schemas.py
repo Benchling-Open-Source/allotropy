@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
-import subprocess  # noqa: S404, RUF100
+import subprocess
+import warnings  # noqa: S404, RUF100
 
 from autoflake import fix_file  # type: ignore[import-untyped]
 from datamodel_code_generator import (
@@ -69,20 +70,33 @@ def lint_file(model_path: Path) -> None:
 
 
 def _generate_schema(model_path: Path, schema_path: Path) -> None:
-    # Generate models
-    generate(
-        input_=schema_path,
-        output=model_path,
-        output_model_type=DataModelType.DataclassesDataclass,
-        input_file_type=InputFileType.JsonSchema,
-        # Specify base_class as empty when using dataclass
-        base_class="",
-        target_python_version=PythonVersion.PY_310,
-        use_union_operator=True,
-    )
-    # Import classes from shared files, remove unused classes, format.
-    modify_file(model_path, schema_path)
-    lint_file(model_path)
+    with warnings.catch_warnings():
+        # We expect duplicated field names for variations with an anyOf schema.
+        warnings.filterwarnings(
+            "ignore",
+            category=UserWarning,
+            message="Field name `.*` is duplicated on .*",
+        )
+        # Known issue - it is OK to treat iri as a string for our purposes.
+        warnings.filterwarnings(
+            "ignore",
+            category=UserWarning,
+            message=re.escape("format of 'iri' not understood for 'string' - using default"),
+        )
+        # Generate models
+        generate(
+            input_=schema_path,
+            output=model_path,
+            output_model_type=DataModelType.DataclassesDataclass,
+            input_file_type=InputFileType.JsonSchema,
+            # Specify base_class as empty when using dataclass
+            base_class="",
+            target_python_version=PythonVersion.PY_310,
+            use_union_operator=True,
+        )
+        # Import classes from shared files, remove unused classes, format.
+        modify_file(model_path, schema_path)
+        lint_file(model_path)
 
 
 def _should_generate_schema(schema_path: Path, schema_regex: str | None = None) -> bool:
