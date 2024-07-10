@@ -61,7 +61,6 @@ def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 def test_header_builder_returns_header_instance() -> None:
     header_contents = get_raw_header_contents()
 
@@ -69,7 +68,6 @@ def test_header_builder_returns_header_instance() -> None:
     assert isinstance(Header.create(LinesReader(lines)), Header)
 
 
-@pytest.mark.quantstudio
 def test_header_builder() -> None:
     device_identifier = "device1"
     model_number = "123"
@@ -110,7 +108,6 @@ def test_header_builder() -> None:
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "parameter,expected_error",
     [
@@ -133,7 +130,6 @@ def test_header_builder_required_parameter_none_then_raise(
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 def test_header_builder_plate_well_count() -> None:
     header_contents = get_raw_header_contents(plate_well_count="96 plates")
     lines = _read_to_lines(header_contents)
@@ -167,7 +163,6 @@ def test_header_builder_plate_well_count() -> None:
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 def test_header_builder_no_header_then_raise() -> None:
     header_contents = get_raw_header_contents(raw_text="")
     lines = _read_to_lines(header_contents, encoding="UTF-8")
@@ -180,7 +175,6 @@ def test_header_builder_no_header_then_raise() -> None:
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 def test_results_builder() -> None:
 
     data = pd.DataFrame(
@@ -212,7 +206,6 @@ def test_results_builder() -> None:
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "test_filepath,expected_data",
     [

@@ -206,10 +206,11 @@ class GroupData:
             msg="Unable to find group block name.",
         ).removeprefix("Group: ")
 
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(sep="\t", header=0),
-            msg="Unable to find group block data.",
-        ).replace(r"^\s+$", None, regex=True)
+        with pd.option_context("future.no_silent_downcasting", True):  # noqa: FBT003
+            data = assert_not_none(
+                reader.pop_csv_block_as_df(sep="\t", header=0),
+                msg="Unable to find group block data.",
+            ).replace(r"^\s+$", None, regex=True)
 
         assert_not_none(
             data.get("Sample"),

@@ -24,7 +24,6 @@ VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
 
 
 @pytest.mark.short
-@pytest.mark.quantstudio
 @pytest.mark.parametrize(
     "file_name,data,model",
     [

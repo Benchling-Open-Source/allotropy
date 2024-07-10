@@ -138,9 +138,9 @@ class PlateData:
             spot_index_counter += 1
             # Skip the first column since it's the well names (no luminescence values)
             for col in plate_df.columns[1:]:
-                if pd.notna(row[0]):
+                if pd.notna(row.iloc[0]):
                     # This is the row well name-- A, B, C, etc.
-                    well_row = row[0].strip()
+                    well_row = row.iloc[0].strip()
                     # If we've detected a new well row, reset the spot index counter
                     spot_index_counter = 1
                 location_name = well_row + col.strip() + "_" + str(spot_index_counter)
