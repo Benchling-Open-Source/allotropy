@@ -24,7 +24,7 @@ class TestParser(ParserTest):
 def test_to_allotrope_unsupported_kinetic_file() -> None:
     with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
         from_file(
-            f"{TESTDATA_PATH}/exclude/kinetics_single_image.txt",
+            f"{TESTDATA_PATH}/errors/kinetics_single_image.txt",
             VENDOR_TYPE,
             encoding=CHARDET_ENCODING,
         )
@@ -33,7 +33,7 @@ def test_to_allotrope_unsupported_kinetic_file() -> None:
 def test_to_allotrope_results_in_separate_matrices() -> None:
     with pytest.raises(AllotropeConversionError, match=DEFAULT_EXPORT_FORMAT_ERROR):
         from_file(
-            f"{TESTDATA_PATH}/exclude/image_montage_no_results_table.txt",
+            f"{TESTDATA_PATH}/errors/image_montage_no_results_table.txt",
             VENDOR_TYPE,
             encoding=CHARDET_ENCODING,
         )
@@ -42,7 +42,7 @@ def test_to_allotrope_results_in_separate_matrices() -> None:
 def test_to_allotrope_invalid_plate_data() -> None:
     with pytest.raises(AllotropeConversionError, match=NO_PLATE_DATA_ERROR):
         from_file(
-            f"{TESTDATA_PATH}/exclude/garbage.txt",
+            f"{TESTDATA_PATH}/errors/garbage.txt",
             VENDOR_TYPE,
             encoding=CHARDET_ENCODING,
         )
