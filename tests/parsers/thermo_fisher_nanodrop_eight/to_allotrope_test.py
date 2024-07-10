@@ -8,14 +8,14 @@ from tests.conftest import get_test_cases
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.THERMO_FISHER_NANODROP_EIGHT
-TESTDATA_PATH = Path(Path(__file__).parent, "testdata")
+TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
 class TestParser(ParserTest):
     VENDOR = Vendor.THERMO_FISHER_NANODROP_EIGHT
 
 
-@pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA_PATH))
+@pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
 def test_parse_thermo_fisher_nanodrop_eight_data_source_ids(
     test_filepath: Path,
 ) -> None:

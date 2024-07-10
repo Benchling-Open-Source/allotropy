@@ -15,7 +15,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
-TESTDATA_PATH = f"{Path(__file__).parent}/testdata"
+TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
 @pytest.mark.short
@@ -23,7 +23,7 @@ def test_get_model() -> None:
     parser = PharmSpecParser(TimestampParser())
 
     model = parser.to_allotrope(
-        NamedFileContents(open(Path(TESTDATA_PATH, "hiac_example_1.xlsx"), "rb"), "")
+        NamedFileContents(open(Path(TESTDATA, "hiac_example_1.xlsx"), "rb"), "")
     )
     assert isinstance(
         model.light_obscuration_aggregate_document, LightObscurationAggregateDocument

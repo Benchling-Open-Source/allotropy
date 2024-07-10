@@ -9,7 +9,7 @@ from allotropy.testing.utils import from_file
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.BECKMAN_VI_CELL_XR
-TESTDATA_PATH = f"{Path(__file__).parent}/testdata"
+TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
 class TestParser(ParserTest):
@@ -18,7 +18,7 @@ class TestParser(ParserTest):
 
 def test_parse_vi_cell_xr_file_without_required_fields_then_raise() -> None:
     test_filepath = (
-        f"{TESTDATA_PATH}/v2.04/Beckman_Vi-Cell-XR_example02_instrumentOutput_error.xls"
+        f"{TESTDATA}/v2.04/Beckman_Vi-Cell-XR_example02_instrumentOutput_error.xls"
     )
     expected_regex = re.escape(
         "Expected to find lines with all of these headers: ['Viability (%)', 'Viable cells/ml (x10^6)']."
@@ -28,7 +28,7 @@ def test_parse_vi_cell_xr_file_without_required_fields_then_raise() -> None:
 
 
 def test_parse_vi_cell_xr_file_invalid_datetime_header_then_raise() -> None:
-    test_filepath = f"{TESTDATA_PATH}/v2.06/Beckman_Vi-Cell-XR_example01_instrumentOutput_invalid_date_header_error.xlsx"
+    test_filepath = f"{TESTDATA}/v2.06/Beckman_Vi-Cell-XR_example01_instrumentOutput_invalid_date_header_error.xlsx"
     expected_regex = r"Unable to find key 'Sample date/time' in dataframe headers: .*"
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         from_file(test_filepath, VENDOR_TYPE)

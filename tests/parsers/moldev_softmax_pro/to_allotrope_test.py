@@ -11,7 +11,7 @@ from tests.conftest import get_test_cases
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
-TESTDATA_PATH = Path(Path(__file__).parent, "testdata")
+TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
 class TestParser(ParserTest):
@@ -26,7 +26,7 @@ def test_handles_unrecognized_read_mode() -> None:
         ),
     ):
         from_file(
-            f"{TESTDATA_PATH}/errors/trf_well_scan_plates.txt",
+            f"{TESTDATA}/errors/trf_well_scan_plates.txt",
             VENDOR_TYPE,
         )
 
@@ -34,8 +34,8 @@ def test_handles_unrecognized_read_mode() -> None:
 @pytest.mark.parametrize(
     "test_file",
     [
-        f"{TESTDATA_PATH}/errors/fl_kinetic_plates.txt",
-        f"{TESTDATA_PATH}/errors/lum_spectrum_columns.txt",
+        f"{TESTDATA}/errors/fl_kinetic_plates.txt",
+        f"{TESTDATA}/errors/lum_spectrum_columns.txt",
     ],
 )
 def test_unrecognized_read_type(test_file: str) -> None:
@@ -46,7 +46,7 @@ def test_unrecognized_read_type(test_file: str) -> None:
         from_file(test_file, VENDOR_TYPE)
 
 
-@pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA_PATH))
+@pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
 def test_data_source_id_references(
     test_filepath: Path,
 ) -> None:

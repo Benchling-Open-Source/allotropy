@@ -12,7 +12,7 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.BIORAD_BIOPLEX
-TESTDATA_PATH = f"{Path(__file__).parent}/testdata"
+TESTDATA = f"{Path(__file__).parent}/testdata"
 
 
 class TestParser(ParserTest):
@@ -22,7 +22,7 @@ class TestParser(ParserTest):
 @pytest.mark.short
 def test_validate_xml_structure_missing_tags() -> None:
     test_filepath = (
-        f"{TESTDATA_PATH}/exclude/bio-rad_bio-plex_manager_missing_children_error.xml"
+        f"{TESTDATA}/exclude/bio-rad_bio-plex_manager_missing_children_error.xml"
     )
     tree = ElementTree.parse(test_filepath)  # noqa: S314
     root = tree.getroot()

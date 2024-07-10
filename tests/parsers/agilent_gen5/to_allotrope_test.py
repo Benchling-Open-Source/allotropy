@@ -14,8 +14,8 @@ from allotropy.testing.utils import from_file, validate_contents
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.AGILENT_GEN5
-TESTDATA_PATH = f"{Path(__file__).parent}/testdata"
-ABSORBANCE_PATH = f"{TESTDATA_PATH}/absorbance"
+TESTDATA = f"{Path(__file__).parent}/testdata"
+ABSORBANCE_PATH = f"{TESTDATA}/absorbance"
 
 
 class TestParser(ParserTest):
@@ -70,8 +70,8 @@ def test_to_allotrope_unsupported_area_scan_file() -> None:
         # NOTE: endpoint_stdcurve_multiplate.txt is a UTF-16 encoded.
         f"{ABSORBANCE_PATH}/exclude/endpoint_stdcurve_multiplate.txt",
         f"{ABSORBANCE_PATH}/exclude/kinetic_multiplate.txt",
-        f"{TESTDATA_PATH}/fluorescence/exclude/endpoint_multiplate.txt",
-        f"{TESTDATA_PATH}/luminescence/exclude/endpoint_multiplate.txt",
+        f"{TESTDATA}/fluorescence/exclude/endpoint_multiplate.txt",
+        f"{TESTDATA}/luminescence/exclude/endpoint_multiplate.txt",
     ],
 )
 def test_to_allotrope_invalid_multiplate_file(filepath: str) -> None:
@@ -81,4 +81,4 @@ def test_to_allotrope_invalid_multiplate_file(filepath: str) -> None:
 
 def test_to_allotrope_invalid_plate_data() -> None:
     with pytest.raises(AllotropeConversionError, match=NO_PLATE_DATA_ERROR):
-        from_file(f"{TESTDATA_PATH}/garbage_error.txt", VENDOR_TYPE)
+        from_file(f"{TESTDATA}/garbage_error.txt", VENDOR_TYPE)
