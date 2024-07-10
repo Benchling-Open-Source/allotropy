@@ -4,4 +4,3 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.AGILENT_TAPESTATION_ANALYSIS
-    OVERWRITE_ON_FAILURE = False

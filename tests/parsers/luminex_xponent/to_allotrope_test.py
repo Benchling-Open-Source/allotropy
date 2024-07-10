@@ -4,4 +4,3 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.LUMINEX_XPONENT
-    OVERWRITE_ON_FAILURE = False

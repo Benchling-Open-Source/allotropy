@@ -4,4 +4,3 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.BECKMAN_VI_CELL_BLU
-    OVERWRITE_ON_FAILURE = False

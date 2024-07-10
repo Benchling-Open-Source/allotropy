@@ -4,4 +4,3 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.UNCHAINED_LABS_LUNATIC
-    OVERWRITE_ON_FAILURE = False

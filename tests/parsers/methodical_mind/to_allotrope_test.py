@@ -4,4 +4,3 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.METHODICAL_MIND
-    OVERWRITE_ON_FAILURE = False
