@@ -29,6 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
@@ -60,9 +61,9 @@ class SampleProperty(Enum):
         TQuantityValueMillionCellsPerMilliliter,
     )
 
-    def __init__(self, column_name: str, data_type: Any) -> None:
+    def __init__(self, column_name: str, data_type: type[TQuantityValue]) -> None:
         self.column_name: str = column_name
-        self.data_type: Any = data_type
+        self.data_type: type[TQuantityValue] = data_type
 
 
 @dataclass(frozen=True)
@@ -89,11 +90,7 @@ class _Sample:
         return value
 
     def get_property_value(self, sample_property: SampleProperty) -> Any:
-        return (
-            sample_property.data_type(value=value)
-            if (value := self.get_value(sample_property.column_name))
-            else None
-        )
+        return sample_property.data_type(value=self.get_value_not_none(sample_property.column_name))  # type: ignore[call-arg]
 
 
 class ViCellBluParser(VendorParser):
