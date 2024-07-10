@@ -26,6 +26,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+    TDateTimeValue,
+)
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
@@ -101,7 +106,7 @@ class ChemometecNucleoviewParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=NUCLEOCOUNTER_SOFTWARE_NAME,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     software_version=_get_value(data, 0, "Application SW version"),
                 ),

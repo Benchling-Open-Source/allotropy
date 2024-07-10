@@ -22,7 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumberPerMicroliter,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_reader import QiacuitydPCRReader
@@ -133,7 +133,7 @@ class QiacuitydPCRParser(VendorParser):
         data_system_document = DataSystemDocument(
             file_name=file_name,
             software_name=SOFTWARE_NAME,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
         return data_system_document

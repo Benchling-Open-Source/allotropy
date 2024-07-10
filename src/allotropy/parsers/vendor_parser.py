@@ -4,6 +4,7 @@ from typing import Any
 from pandas import Timestamp
 
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.constants import ASM_CONVERTER_NAME
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
@@ -33,6 +34,10 @@ class VendorParser(ABC):
     @abstractmethod
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
+
+    def get_asm_converter_name(self) -> str:
+        """Returns the ASM converter name for this parser."""
+        return f'{ASM_CONVERTER_NAME}_{self.display_name.replace(" ", "_")}'.lower()
 
     def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")
