@@ -1,6 +1,27 @@
+from pathlib import Path
+
+import pytest
+
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
+from allotropy.parsers.agilent_tapestation_analysis.constants import (
+    NO_SCREEN_TAPE_ID_MATCH,
+)
+from allotropy.testing.utils import from_file
 from tests.to_allotrope_test import ParserTest
+
+VENDOR_TYPE = Vendor.AGILENT_TAPESTATION_ANALYSIS
+TESTDATA_PATH = f"{Path(__file__).parent}/testdata"
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.AGILENT_TAPESTATION_ANALYSIS
+    VENDOR = VENDOR_TYPE
+
+
+def test_parse_agilent_tapestation_analysis_no_screen_tape_match_for_sample() -> None:
+    test_filepath = f"{TESTDATA_PATH}/agilent_tapestation_analysis_example_02_error.xml"
+    with pytest.raises(
+        AllotropeConversionError,
+        match=NO_SCREEN_TAPE_ID_MATCH.format("01-S025-180717-01-899752"),
+    ):
+        from_file(test_filepath, VENDOR_TYPE)
