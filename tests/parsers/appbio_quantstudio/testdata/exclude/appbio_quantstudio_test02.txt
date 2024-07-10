@@ -1,0 +1,63 @@
+* Block Type = 384-Well Block
+* Calibration Background is expired  = Yes
+* Calibration Background performed on  = 2016-08-25 02:19:21 AM EDT
+* Calibration FAM is expired  = Yes
+* Calibration FAM performed on  = 2016-08-25 02:42:38 AM EDT
+* Calibration NED is expired  = Yes
+* Calibration NED performed on  = 2016-08-25 02:50:03 AM EDT
+* Calibration ROI is expired  = Yes
+* Calibration ROI performed on  = 2016-08-25 02:12:12 AM EDT
+* Calibration ROX is expired  = Yes
+* Calibration ROX performed on  = 2016-08-25 02:57:52 AM EDT
+* Calibration SYBR is expired  = Yes
+* Calibration SYBR performed on  = 2016-08-25 03:13:07 AM EDT
+* Calibration TAMRA is expired  = Yes
+* Calibration TAMRA performed on  = 2016-08-25 03:20:26 AM EDT
+* Calibration Uniformity is expired  = Yes
+* Calibration Uniformity performed on  = 2016-08-25 02:35:07 AM EDT
+* Calibration VIC is expired  = Yes
+* Calibration VIC performed on  = 2016-08-25 03:05:29 AM EDT
+* Chemistry = SYBR_GREEN
+* Experiment Barcode = NA
+* Experiment Comments = NA
+* Experiment File Name = C:\Users\JoeNegri\Downloads\200224 U251p14 200217_14v9_SEMA3F_trial 1.eds
+* Experiment Name = 200224 U251p14 200217_14v9_SEMA3F_trial 1
+* Experiment Run End Time = 2001-12-31 09:09:19 PM EST
+* Experiment Type = Comparative Cт (ΔΔCт)
+* Experiment User Name = NA
+* Instrument Name = 278880086
+* Instrument Serial Number = 278880086
+* Instrument Type = ViiA 7
+* Passive Reference = ROX
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage/ Cycle where Analysis is performed = Stage 2, Step 2
+
+[Sample Setup]
+Well	Well Position	Sample Name	Sample Color	Biogroup Name	Biogroup Color	Target Name	Target Color	Task	Reporter	Quencher	Quantity	Comments
+1	A1	1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1	"RGB(176,23,31)"			B2M-Qiagen	"RGB(176,23,31)"	UNKNOWN	SYBR	None
+
+
+[Raw Data]
+Well	Well Position	Cycle	x1-m1	x2-m2	x3-m3	x4-m4	x5-m5
+1	      A1	1	36,431.130	4,790.476	4,560.821	56,089.960	-387.130
+
+
+[Amplification Data]
+Well	Cycle	Target Name	Rn	Delta Rn
+1	1	B2M-Qiagen	0.612	-0.007
+
+
+[Multicomponent Data]
+Well	Well Position	Cycle	ROX	SYBR
+1	      A1	1	55,573.940	34,014.320
+
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	Quantity	Quantity Mean	Quantity SD	RQ	RQ Min	RQ Max	CT	Ct Mean	Ct SD	Delta Ct	Delta Ct Mean	Delta Ct SE	Delta Delta Ct	Automatic Ct Threshold	Tm1	Ct Threshold	Tm2	Automatic Baseline	Tm3	Baseline Start	Baseline End	Comments	Amp Score	Custom1	Cq Conf	Custom2	Custom3	Custom4	Custom5	Custom6
+1	A1	false	1. 200217 U251p14_-ab_-SEMA3F_8h_pA_1	B2M-Qiagen	UNKNOWN	SYBR	None							18.717	18.717						true	78.122	0.277		true		1	40
+
+
+[Melt Curve Raw Data]
+Well	Well Position	Reading	Temperature	Fluorescence	Derivative
+1	A1	1	60.403	3.478	0.093

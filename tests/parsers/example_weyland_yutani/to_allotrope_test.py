@@ -1,0 +1,7 @@
+from allotropy.parser_factory import Vendor
+from tests.to_allotrope_test import ParserTest
+
+
+class TestParser(ParserTest):
+    VENDOR = Vendor.EXAMPLE_WEYLAND_YUTANI
+    OVERWRITE_ON_FAILURE = False
