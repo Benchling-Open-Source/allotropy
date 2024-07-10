@@ -3,5 +3,5 @@ from tests.to_allotrope_test import ParserTest
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.METHODICAL_MIND
+    VENDOR = Vendor.QIACUITY_DPCR
     OVERWRITE_ON_FAILURE = False

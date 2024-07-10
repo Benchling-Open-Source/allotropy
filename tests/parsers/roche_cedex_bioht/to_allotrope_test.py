@@ -3,5 +3,5 @@ from tests.to_allotrope_test import ParserTest
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.METHODICAL_MIND
+    VENDOR = Vendor.ROCHE_CEDEX_BIOHT
     OVERWRITE_ON_FAILURE = False

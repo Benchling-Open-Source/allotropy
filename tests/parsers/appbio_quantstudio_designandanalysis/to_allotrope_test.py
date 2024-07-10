@@ -11,6 +11,9 @@ NOTES ON EXCLUDED FILES
     appbio_quantstudio_designandanalysis_QS7Pro_Standard_Curve_TAC_example15
     appbio_quantstudio_designandanalysis_OpenArray_GeneExp_example16
     appbio_quantstudio_designandanalysis_OpenArray_Genotyping_example17
+
+- example.xlsx
+    TODO(nstender): figure out where this came from, and why it errors.
 """
 
 

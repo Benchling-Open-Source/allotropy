@@ -3,5 +3,5 @@ from tests.to_allotrope_test import ParserTest
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.CHEMOMETEC_NUCLEOVIEW
+    VENDOR = Vendor.MABTECH_APEX
     OVERWRITE_ON_FAILURE = False

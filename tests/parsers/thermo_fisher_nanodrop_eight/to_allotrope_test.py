@@ -3,5 +3,5 @@ from tests.to_allotrope_test import ParserTest
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.METHODICAL_MIND
+    VENDOR = Vendor.THERMO_FISHER_NANODROP_EIGHT
     OVERWRITE_ON_FAILURE = False

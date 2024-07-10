@@ -8,6 +8,8 @@ import pytest
 def _is_valid_testcase(path: Path) -> bool:
     if not path.is_file():
         return False
+    if str(path.stem).startswith("."):
+        return False
     if "error" in str(path) or "exclude" in str(path):
         return False
     return path.suffix.lower() != ".json"

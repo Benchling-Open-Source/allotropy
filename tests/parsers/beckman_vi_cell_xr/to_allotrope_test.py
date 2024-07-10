@@ -3,5 +3,5 @@ from tests.to_allotrope_test import ParserTest
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.METHODICAL_MIND
+    VENDOR = Vendor.BECKMAN_VI_CELL_XR
     OVERWRITE_ON_FAILURE = False

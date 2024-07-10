@@ -1,5 +1,3 @@
-import re
-
 import pytest
 
 from allotropy.constants import CHARDET_ENCODING

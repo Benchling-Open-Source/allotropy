@@ -22,7 +22,9 @@ TESTDATA_PATH = f"{Path(__file__).parent}/testdata"
 def test_get_model() -> None:
     parser = PharmSpecParser(TimestampParser())
 
-    model = parser.to_allotrope(NamedFileContents(open(Path(TESTDATA_PATH, "hiac_example_1.xlsx"), "rb"), ""))
+    model = parser.to_allotrope(
+        NamedFileContents(open(Path(TESTDATA_PATH, "hiac_example_1.xlsx"), "rb"), "")
+    )
     assert isinstance(
         model.light_obscuration_aggregate_document, LightObscurationAggregateDocument
     )
@@ -126,14 +128,17 @@ def test_get_model() -> None:
 
 
 @pytest.mark.short
-@pytest.parametrize("title,version", [
-    ["HIAC PharmSpec v3.0 Summary Report", "3.0"],
-    ["HIAC PharmSpec v3.0.1 Summary Report", "3.0.1"],
-    ["HIAC PharmSpec v3 Summary Report", "3"],
-    ["HIAC PharmSpec v Summary Report", "Unknown"],
-    ["HIAC PharmSpec v3.0.10 Summary Report", "3.0.10"],
-    ["HIAC PharmSpec v3.0.10.40 Summary Report", "3.0.10"],
-])
+@pytest.mark.parametrize(
+    "title,version",
+    [
+        ["HIAC PharmSpec v3.0 Summary Report", "3.0"],
+        ["HIAC PharmSpec v3.0.1 Summary Report", "3.0.1"],
+        ["HIAC PharmSpec v3 Summary Report", "3"],
+        ["HIAC PharmSpec v Summary Report", "Unknown"],
+        ["HIAC PharmSpec v3.0.10 Summary Report", "3.0.10"],
+        ["HIAC PharmSpec v3.0.10.40 Summary Report", "3.0.10"],
+    ],
+)
 def test_get_software_version_report_string(title: str, version: str) -> None:
     parser = PharmSpecParser(TimestampParser())
     assert parser._get_software_version_report_string(title) == version

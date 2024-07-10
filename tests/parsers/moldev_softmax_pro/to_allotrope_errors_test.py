@@ -17,7 +17,7 @@ def test_handles_unrecognized_read_mode() -> None:
         ),
     ):
         from_file(
-            "tests/parsers/moldev_softmax_pro/testdata/trf_well_scan_plates.txt",
+            "tests/parsers/moldev_softmax_pro/testdata/errors/trf_well_scan_plates.txt",
             VENDOR_TYPE,
         )
 
@@ -25,8 +25,8 @@ def test_handles_unrecognized_read_mode() -> None:
 @pytest.mark.parametrize(
     "test_file",
     [
-        "tests/parsers/moldev_softmax_pro/testdata/fl_kinetic_plates.txt",
-        "tests/parsers/moldev_softmax_pro/testdata/lum_spectrum_columns.txt",
+        "tests/parsers/moldev_softmax_pro/testdata/errors/fl_kinetic_plates.txt",
+        "tests/parsers/moldev_softmax_pro/testdata/errors/lum_spectrum_columns.txt",
     ],
 )
 def test_unrecognized_read_type(test_file: str) -> None:
