@@ -45,12 +45,9 @@ class ThermoFisherQubit4Reader:
             message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"
             raise AllotropeConversionError(message)
         columns = dataframe.columns.tolist()
-        new_columns = []
-        for i, col in enumerate(columns):
-            if "Units" in col:
-                new_columns.append(f"Units_{columns[i - 1]}")
-            else:
-                new_columns.append(col)
-
+        new_columns = [
+            f"Units_{columns[i - 1]}" if "Units" in col else col
+            for i, col in enumerate(columns)
+        ]
         dataframe.columns = new_columns
         return dataframe
