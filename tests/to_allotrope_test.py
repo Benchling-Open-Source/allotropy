@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pytest
 
+from allotropy.constants import CHARDET_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.testing.utils import from_file, validate_contents
@@ -29,7 +30,9 @@ class ParserTest:
     # test_file_path is automatically populated with all files in testdata folder next to the test file.
     def test_positive_cases(self, test_file_path: Path) -> None:
         expected_filepath = test_file_path.with_suffix(".json")
-        allotrope_dict = from_file(str(test_file_path), self.VENDOR)
+        allotrope_dict = from_file(
+            str(test_file_path), self.VENDOR, encoding=CHARDET_ENCODING
+        )
         # If expected output does not exist, assume this is a new file and write it.
         overwrite = self.OVERWRITE_ON_FAILURE or not expected_filepath.exists()
         validate_contents(
