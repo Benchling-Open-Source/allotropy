@@ -25,6 +25,7 @@ from allotropy.parsers.utils.values import (
     try_float_or_none,
     try_int,
     try_int_or_none,
+    try_non_nan_float_or_none,
     try_str_from_series,
     try_str_from_series_or_none,
 )
@@ -32,11 +33,6 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
-
-
-def try_non_nan_float_or_none(value: str | None) -> float | None:
-    number = try_float_or_none(value)
-    return None if number is None or math.isnan(number) else number
 
 
 def can_parse_as_float_non_nan(value: Any) -> bool:
