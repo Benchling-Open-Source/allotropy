@@ -52,6 +52,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     WellItem,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -208,29 +209,18 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def get_processed_data_document(
         self, well_item: WellItem
     ) -> ProcessedDataDocumentItem:
-        normalized_reporter_result = (
-            None
-            if well_item.result.normalized_reporter_result is None
-            else TQuantityValueUnitless(
-                value=well_item.result.normalized_reporter_result
-            )
-        )
-
-        baseline_corrected_reporter_result = (
-            None
-            if well_item.result.baseline_corrected_reporter_result is None
-            else TQuantityValueUnitless(
-                value=well_item.result.baseline_corrected_reporter_result
-            )
-        )
-
         return ProcessedDataDocumentItem(
             data_processing_document=self.get_data_processing_document(well_item),
             cycle_threshold_result=TNullableQuantityValueUnitless(
                 value=well_item.result.cycle_threshold_result,
             ),
-            normalized_reporter_result=normalized_reporter_result,
-            baseline_corrected_reporter_result=baseline_corrected_reporter_result,
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, well_item.result.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                well_item.result.baseline_corrected_reporter_result,
+            ),
             genotyping_determination_result=well_item.result.genotyping_determination_result,
             normalized_reporter_data_cube=NormalizedReporterDataCube(
                 label="normalized reporter",
@@ -283,39 +273,24 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def get_data_processing_document(
         self, well_item: WellItem
     ) -> DataProcessingDocument:
-        baseline_determination_start_cycle_setting = (
-            None
-            if well_item.result.baseline_determination_start_cycle_setting is None
-            else TQuantityValueNumber(
-                value=well_item.result.baseline_determination_start_cycle_setting
-            )
-        )
-
-        baseline_determination_end_cycle_setting = (
-            None
-            if well_item.result.baseline_determination_end_cycle_setting is None
-            else TQuantityValueNumber(
-                value=well_item.result.baseline_determination_end_cycle_setting
-            )
-        )
-
-        genotyping_determination_method_setting = (
-            None
-            if well_item.result.genotyping_determination_method_setting is None
-            else TQuantityValueUnitless(
-                value=well_item.result.genotyping_determination_method_setting
-            )
-        )
-
         return DataProcessingDocument(
             automatic_cycle_threshold_enabled_setting=well_item.result.automatic_cycle_threshold_enabled_setting,
             cycle_threshold_value_setting=TQuantityValueUnitless(
-                value=well_item.result.cycle_threshold_value_setting,
+                value=well_item.result.cycle_threshold_value_setting
             ),
             automatic_baseline_determination_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-            baseline_determination_start_cycle_setting=baseline_determination_start_cycle_setting,
-            baseline_determination_end_cycle_setting=baseline_determination_end_cycle_setting,
-            genotyping_determination_method_setting=genotyping_determination_method_setting,
+            baseline_determination_start_cycle_setting=quantity_or_none(
+                TQuantityValueNumber,
+                well_item.result.baseline_determination_start_cycle_setting,
+            ),
+            baseline_determination_end_cycle_setting=quantity_or_none(
+                TQuantityValueNumber,
+                well_item.result.baseline_determination_end_cycle_setting,
+            ),
+            genotyping_determination_method_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                well_item.result.genotyping_determination_method_setting,
+            ),
         )
 
     def get_reporter_dye_data_cube(
