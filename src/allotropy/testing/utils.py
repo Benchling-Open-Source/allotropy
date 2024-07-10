@@ -121,14 +121,14 @@ def mock_uuid_generation(prefix: str | None) -> Iterator[None]:
 
 
 def from_file(
-    test_file: str | Path, vendor: Vendor, encoding: str | None = None
+    test_file: Path | str, vendor: Vendor, encoding: str | None = None
 ) -> DictType:
     with mock_uuid_generation(vendor.name):
         return allotrope_from_file(str(test_file), vendor, encoding=encoding)
 
 
 def _write_actual_to_expected(
-    allotrope_dict: DictType, expected_file: str | Path
+    allotrope_dict: DictType, expected_file: Path | str
 ) -> None:
     with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
@@ -144,7 +144,7 @@ def _write_actual_to_expected(
 
 def validate_contents(
     allotrope_dict: DictType,
-    expected_file: str | Path,
+    expected_file: Path | str,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
