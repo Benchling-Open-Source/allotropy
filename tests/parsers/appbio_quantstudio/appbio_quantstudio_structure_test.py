@@ -217,19 +217,24 @@ def test_results_builder() -> None:
     "test_filepath,expected_data",
     [
         (
-            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test01.txt", get_data(),
+            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test01.txt",
+            get_data(),
         ),
         (
-            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test02.txt", get_data2(),
+            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test02.txt",
+            get_data2(),
         ),
         (
-            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test03.txt", get_genotyping_data(),
+            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test03.txt",
+            get_genotyping_data(),
         ),
         (
-            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test04.txt", get_rel_std_curve_data(),
+            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test04.txt",
+            get_rel_std_curve_data(),
         ),
         (
-            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test05.txt", get_broken_calc_doc_data(),
+            f"{TESTDATA_PATH}/exclude/appbio_quantstudio_test05.txt",
+            get_broken_calc_doc_data(),
         ),
     ],
 )
