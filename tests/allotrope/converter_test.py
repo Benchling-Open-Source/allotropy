@@ -1,3 +1,5 @@
+from dataclasses import field, make_dataclass
+
 from allotropy.allotrope.converter import (
     add_custom_information_document,
     structure,
@@ -84,6 +86,39 @@ def test_omits_null_values_except_for_specified_classes() -> None:
         "molar concentration": {"unit": "mmol/L", "value": None},
     }
     assert structure(asm_dict, AnalyteDocumentItem) == item
+
+
+def test_remove_none_fields_from_data_class_optional_none() -> None:
+    test_data_class = make_dataclass(
+        "test_data_class",
+        [
+            ("sample_id", str),
+            ("volume", int),
+            ("scientist", str | None, field(default=None)),  # type: ignore
+        ],
+    )
+    test_class = test_data_class(sample_id="abc", volume=5, scientist=None)
+    asm_dict = unstructure(test_class)
+    assert asm_dict == {
+        "sample id": "abc",
+        "volume": 5,
+    }
+    assert structure(asm_dict, test_data_class) == test_class
+
+
+def test_remove_none_fields_from_data_class_with_required_none() -> None:
+    test_data_class = make_dataclass(
+        "test_data_class",
+        [("sample_id", str), ("volume", int), ("scientist", str | None)],  # type: ignore
+    )
+    test_class = test_data_class(sample_id="abc", volume=5, scientist=None)
+    asm_dict = unstructure(test_class)
+    assert asm_dict == {
+        "sample id": "abc",
+        "volume": 5,
+        "scientist": None,
+    }
+    assert structure(asm_dict, test_data_class) == test_class
 
 
 def test_custom_information_document() -> None:

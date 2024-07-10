@@ -46,11 +46,11 @@ from allotropy.exceptions import (
     AllotropeConversionError,
 )
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.moldev_softmax_pro.constants import (
     DEVICE_TYPE,
     EPOCH,
-    NULL,
     REDUCED,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
@@ -99,8 +99,8 @@ class SoftmaxproParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier=NULL,
-                    model_number=NULL,
+                    device_identifier=NOT_APPLICABLE,
+                    model_number=NOT_APPLICABLE,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
