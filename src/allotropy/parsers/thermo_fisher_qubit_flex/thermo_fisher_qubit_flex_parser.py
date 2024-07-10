@@ -33,6 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
 from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader import (
@@ -162,7 +163,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
         Returns: the Adapter display name as string
         """
-        return "Thermo Fisher Scientific Qubit Flex"
+        return constants.DISPLAY_NAME
 
     @property
     def release_state(self) -> ReleaseState:
@@ -209,7 +210,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                 ),
                 device_system_document=DeviceSystemDocument(
                     model_number=constants.MODEL_NUMBER,
-                    device_identifier="N/A",
+                    device_identifier=NOT_APPLICABLE,
                     brand_name=constants.BRAND_NAME,
                     product_manufacturer=constants.PRODUCT_MANUFACTURER,
                 ),

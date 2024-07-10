@@ -6,8 +6,7 @@ MODEL_NUMBER = "Qubit Flex"
 PRODUCT_MANUFACTURER = "Thermo Fisher Scientific"
 BRAND_NAME = "Qubit"
 DEVICE_TYPE = "fluorescence detector"
-DISPLAY_NAME = "Thermo Fisher Qubit Flex"
-CONTAINER_TYPE = "tube"
+DISPLAY_NAME = "Thermo Fisher Scientific Qubit Flex"
 
 # Error constants
 # Value to use for unsupported file format for the given file for the Adapter
