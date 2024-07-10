@@ -3,4 +3,4 @@ from tests.to_allotrope_test import ParserTest
 
 
 class TestParser(ParserTest):
-    VENDOR = Vendor.CTL_IMMUNOSPOT
+    VENDOR = Vendor.QIACUITY_DPCR

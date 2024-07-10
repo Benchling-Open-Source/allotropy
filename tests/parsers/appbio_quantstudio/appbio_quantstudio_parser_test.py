@@ -7,7 +7,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import Data
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
-from allotropy.testing.utils import from_file, validate_contents
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
     get_broken_calc_doc_model,
@@ -21,27 +20,7 @@ from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_rel_std_curve_model,
 )
 
-OUTPUT_FILES = (
-    "appbio_quantstudio_example01",
-    "appbio_quantstudio_example02",
-    "appbio_quantstudio_example03",
-    "appbio_quantstudio_example04",
-    "appbio_quantstudio_example05",
-    "appbio_quantstudio_example06",
-    "appbio_quantstudio_example07",
-    "appbio_quantstudio_multiple_cal_doc_wells",
-)
-
 VENDOR_TYPE = Vendor.APPBIO_QUANTSTUDIO
-
-
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_appbio_quantstudio_to_asm_contents(output_file: str) -> None:
-    test_filepath = f"tests/parsers/appbio_quantstudio/testdata/{output_file}.txt"
-    expected_filepath = test_filepath.replace(".txt", ".json")
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-
-    validate_contents(allotrope_dict, expected_filepath)
 
 
 @pytest.mark.short
