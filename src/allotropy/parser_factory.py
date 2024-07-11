@@ -1,6 +1,8 @@
 from datetime import tzinfo
 from enum import Enum
+from pathlib import Path
 
+from allotropy.allotrope.schema_parser.path_util import ROOT_DIR
 from allotropy.parsers.agilent_gen5.agilent_gen5_parser import AgilentGen5Parser
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_parser import (
     AgilentGen5ImageParser,
@@ -123,3 +125,45 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
 }
+
+
+def update_readme() -> None:
+    release_state_to_parser: dict[ReleaseState, set[str]] = {
+        release_state: set() for release_state in ReleaseState
+    }
+    for vendor in Vendor:
+        if "example" in str(vendor).lower():
+            continue
+        release_state_to_parser[vendor.release_state].add(vendor.display_name)
+
+    readme_file = Path(ROOT_DIR, "README.md")
+    with open(readme_file) as f:
+        contents = f.readlines()
+
+    with open(readme_file, "w") as f:
+        in_block = False
+        newline_count = 0
+        for line in contents:
+            if line.startswith("### Recommended"):
+                in_block = True
+                continue
+            if in_block:
+                if line == "\n":
+                    newline_count += 1
+                if newline_count == 3:  # noqa: PLR2004
+                    for release_state in [
+                        ReleaseState.RECOMMENDED,
+                        ReleaseState.CANDIDATE_RELEASE,
+                        ReleaseState.WORKING_DRAFT,
+                    ]:
+                        f.write(
+                            f'### {release_state.value.replace("_", " ").title()}\n'
+                        )
+                        for display_name in sorted(
+                            release_state_to_parser.get(release_state, [])
+                        ):
+                            f.write(f"  - {display_name}\n")
+                        f.write("\n")
+                    in_block = False
+                continue
+            f.write(line)

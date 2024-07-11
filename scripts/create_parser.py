@@ -10,7 +10,7 @@ from allotropy.allotrope.schema_parser.path_util import (
     SCHEMA_DIR_PATH,
 )
 from allotropy.allotrope.schema_parser.schema_model import snake_to_upper_camel
-from scripts.update_readme import update_readme
+from allotropy.parser_factory import update_readme
 
 ALLOTROPY_DIR = Path(Path(__file__).parent.parent, "src/allotropy")
 TEMPLATE_DIR = Path(Path(__file__).parent, "templates")
