@@ -19,15 +19,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-)
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.ctl_immunospot.ctl_immunospot_structure import Data, Well
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -81,7 +79,7 @@ class CtlImmunospotParser(VendorParser):
             UNC_path=data.device_info.unc_path,
             software_name=data.device_info.software_name,
             software_version=data.device_info.software_version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 
@@ -138,8 +136,9 @@ class CtlImmunospotParser(VendorParser):
                                 image_feature_identifier=random_uuid_str(),
                                 image_feature_name=plate.name,
                                 image_feature_result=TQuantityValueUnitless(
-                                    value=plate.get_well(well.pos).value
-                                    or InvalidJsonFloat.NaN
+                                    value=try_float_or_nan(
+                                        plate.get_well(well.pos).value
+                                    )
                                 ),
                             )
                             for plate in data.assay_data.plates

@@ -1,6 +1,5 @@
 from collections.abc import Sequence
 from itertools import chain
-import math
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
@@ -35,22 +34,18 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-    TQuantityValue,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.moldev_softmax_pro.constants import (
     DEVICE_TYPE,
     EPOCH,
-    NULL,
     REDUCED,
 )
 from allotropy.parsers.moldev_softmax_pro.softmax_pro_structure import (
@@ -64,6 +59,8 @@ from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    quantity_or_none,
+    try_nan_float_or_none,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -73,10 +70,6 @@ MeasurementDocumentItems = (
     | FluorescencePointDetectionMeasurementDocumentItems
     | LuminescencePointDetectionMeasurementDocumentItems
 )
-
-
-def to_json_float(value: float) -> JsonFloat:
-    return InvalidJsonFloat.NaN if math.isnan(value) else value
 
 
 class SoftmaxproParser(VendorParser):
@@ -99,13 +92,13 @@ class SoftmaxproParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier=NULL,
-                    model_number=NULL,
+                    device_identifier=NOT_APPLICABLE,
+                    model_number=NOT_APPLICABLE,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name="SoftMax Pro",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
@@ -163,12 +156,9 @@ class SoftmaxproParser(VendorParser):
                 fluorescence=TQuantityValueRelativeFluorescenceUnit(
                     value=data_element.value
                 ),
-                compartment_temperature=(
-                    None
-                    if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(
-                        value=to_json_float(data_element.temperature)
-                    )
+                compartment_temperature=quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    try_nan_float_or_none(data_element.temperature),
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
@@ -188,22 +178,18 @@ class SoftmaxproParser(VendorParser):
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 value=data_element.wavelength
                             ),
-                            excitation_wavelength_setting=(
-                                None
-                                if plate_block.header.excitation_wavelengths is None
-                                else TQuantityValueNanometer(
-                                    value=plate_block.header.excitation_wavelengths[idx]
-                                )
+                            excitation_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                plate_block.header.excitation_wavelengths,
+                                index=idx,
                             ),
-                            wavelength_filter_cutoff_setting=(
-                                None
-                                if plate_block.header.cutoff_filters is None
-                                else TQuantityValueNanometer(
-                                    value=plate_block.header.cutoff_filters[idx]
-                                )
+                            wavelength_filter_cutoff_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                plate_block.header.cutoff_filters,
+                                index=idx,
                             ),
                             number_of_averages=TQuantityValueNumber(
-                                value=plate_block.header.reads_per_well,
+                                value=plate_block.header.reads_per_well
                             ),
                             detector_gain_setting=plate_block.header.pmt_gain,
                         )
@@ -225,12 +211,9 @@ class SoftmaxproParser(VendorParser):
             LuminescencePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
                 luminescence=TQuantityValueRelativeLightUnit(value=data_element.value),
-                compartment_temperature=(
-                    None
-                    if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(
-                        value=to_json_float(data_element.temperature)
-                    )
+                compartment_temperature=quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    try_nan_float_or_none(data_element.temperature),
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
@@ -263,12 +246,9 @@ class SoftmaxproParser(VendorParser):
             UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
                 measurement_identifier=data_element.uuid,
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=data_element.value),
-                compartment_temperature=(
-                    None
-                    if data_element.temperature is None
-                    else TQuantityValueDegreeCelsius(
-                        value=to_json_float(data_element.temperature)
-                    )
+                compartment_temperature=quantity_or_none(
+                    TQuantityValueDegreeCelsius,
+                    try_nan_float_or_none(data_element.temperature),
                 ),
                 sample_document=SampleDocument(
                     location_identifier=data_element.position,
@@ -320,12 +300,9 @@ class SoftmaxproParser(VendorParser):
             calculated_data_identifier=random_uuid_str(),
             calculated_data_name=name,
             calculation_description=description,
-            calculated_result=TQuantityValue(
-                unit=UNITLESS,
-                value=value,
-            ),
+            calculated_result=TQuantityValue(unit=UNITLESS, value=value),
             data_source_aggregate_document=DataSourceAggregateDocument(
-                data_source_document=data_sources,
+                data_source_document=data_sources
             ),
         )
 

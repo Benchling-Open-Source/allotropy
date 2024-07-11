@@ -23,10 +23,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     ReadType,
 )
@@ -198,7 +197,7 @@ def get_model() -> Model:
                 file_name="file.txt",
                 software_name="EnVision Workstation",
                 software_version="1.0",
-                ASM_converter_name=ASM_CONVERTER_NAME,
+                ASM_converter_name="allotropy_perkinelmer_envision",
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             plate_reader_document=[
@@ -316,10 +315,7 @@ def get_model() -> Model:
                         calculated_data_name="Calc 1: General",
                         calculation_description="Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
                         calculated_data_identifier="",
-                        calculated_result=TQuantityValue(
-                            value=3,
-                            unit=UNITLESS,
-                        ),
+                        calculated_result=TQuantityValueUnitless(value=3),
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[
                                 DataSourceDocumentItem(

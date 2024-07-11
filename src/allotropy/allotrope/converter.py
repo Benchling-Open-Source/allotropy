@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from collections.abc import Mapping
-from dataclasses import fields, is_dataclass, make_dataclass
+from collections.abc import Callable, Mapping, Sequence
+from dataclasses import asdict, fields, is_dataclass, make_dataclass, MISSING
 from types import UnionType
-from typing import Any, Callable, cast, get_args, get_origin, Union
+from typing import Any, cast, get_args, get_origin, TypeVar, Union
 
 from cattrs import Converter
 from cattrs.errors import ClassValidationError
@@ -78,6 +78,18 @@ SPECIAL_KEYS_INVERSE: dict[str, str] = dict(
 )
 
 
+DICT_KEY_TO_MODEL_KEY_REPLACEMENTS = {
+    "-": "_DASH_",
+    "°": "_DEG_",
+    "/": "_SLASH_",
+    "\\": "_BSLASH_",
+    "(": "_OPAREN_",
+    ")": "_CPAREN_",
+    # NOTE: this MUST be at the end, or it will break other key replacements.
+    " ": "_",
+}
+
+
 PRIMITIVE_TYPES = (
     bool,
     int,
@@ -89,13 +101,36 @@ PRIMITIVE_TYPES = (
     np.int64,
 )
 
+ModelClass = TypeVar("ModelClass")
+
+
+def add_custom_information_document(
+    model: ModelClass, custom_info_doc: Any
+) -> ModelClass:
+
+    if isinstance(custom_info_doc, dict):
+        custom_info_doc = structure_custom_information_document(
+            custom_info_doc, "custom information document"
+        )
+    if not is_dataclass(custom_info_doc):
+        msg = "Invalid custom_info_doc"
+        raise ValueError(msg)
+    model.custom_information_document = custom_info_doc  # type: ignore
+    return model
+
 
 def _convert_model_key_to_dict_key(key: str) -> str:
-    return SPECIAL_KEYS.get(key, key.replace("_", " "))
+    key = SPECIAL_KEYS.get(key, key)
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(model_val, dict_val)
+    return key
 
 
 def _convert_dict_to_model_key(key: str) -> str:
-    return SPECIAL_KEYS_INVERSE.get(key, key.replace(" ", "_"))
+    key = SPECIAL_KEYS_INVERSE.get(key, key)
+    for dict_val, model_val in DICT_KEY_TO_MODEL_KEY_REPLACEMENTS.items():
+        key = key.replace(dict_val, model_val)
+    return key
 
 
 def _validate_structuring(val: dict[str, Any], model: Any) -> None:
@@ -120,7 +155,7 @@ def _validate_structuring(val: dict[str, Any], model: Any) -> None:
         if isinstance(value, dict):
             _validate_structuring(value, model_val)
         elif isinstance(value, list):
-            for list_value, model_list_value in zip(value, model_val):
+            for list_value, model_list_value in zip(value, model_val, strict=True):
                 _validate_structuring(list_value, model_list_value)
 
 
@@ -199,6 +234,34 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
     )
 
 
+def _create_should_omit_function(
+    cls: Any, parent_cls: Any | None = None, field_name: str | None = None
+) -> Callable[[str, Any], bool]:
+    required_keys = {a.name for a in fields(cls) if a.default == MISSING}
+
+    def should_omit(k: str, v: Any) -> bool:
+        if k in required_keys:
+            return False
+        if field_name in EMPTY_VALUE_CLASS_AND_FIELD.get(parent_cls, set()):
+            return v is None and k != "value"
+        return v is None
+
+    return should_omit
+
+
+def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
+    should_omit = _create_should_omit_function(model)
+
+    def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
+        return {
+            _convert_model_key_to_dict_key(key): value
+            for key, value in kv_pairs
+            if not should_omit(key, value)
+        }
+
+    return asdict(model, dict_factory=dict_factory)
+
+
 def register_dataclass_hooks(converter: Converter) -> None:
     def dataclass_structure_fn(cls: Any) -> Callable[[Any, Any], Any | None]:
         structure_fn = make_dict_structure_fn(
@@ -259,38 +322,35 @@ EMPTY_VALUE_CLASS_AND_FIELD = {
 }
 
 
-def should_allow_empty_value_field(cls: Any, key: str) -> bool:
-    return key in EMPTY_VALUE_CLASS_AND_FIELD.get(cls, set())
-
-
 def register_unstructure_hooks(converter: Converter) -> None:
-    # Default check for omitting values skips if value is None
-    def should_omit(_: str, v: Any) -> bool:
-        return v is None
-
-    # Special should_omit check for allowing an empty value for 'value' keys, controlled by should_allow_empty_value_field
-    def should_omit_allow_empty_value_field(k: str, v: Any) -> bool:
-        return v is None and k != "value"
-
     unstructure_fn_cache = {}
 
     def unstructure_dataclass_fn(
-        cls: Any, should_omit: Callable[[str, Any], bool] = should_omit
+        cls: Any, parent_cls: Any | None = None, field_name: str | None = None
     ) -> Callable[[Any], dict[str, Any]]:
+        should_omit = _create_should_omit_function(cls, parent_cls, field_name)
+
         def unstructure(obj: Any) -> Any:
             # Break out of dataclass recursion by calling back to converter.unstructure
             if not is_dataclass(obj):
                 return converter.unstructure(obj)
 
-            return {
+            dataclass_dict = {
                 _convert_model_key_to_dict_key(k): v
                 for k, v in make_unstructure_fn(type(obj))(obj).items()
                 if not should_omit(k, v)
             }
+            if hasattr(obj, "custom_information_document"):
+                dataclass_dict[
+                    "custom information document"
+                ] = unstructure_custom_information_document(
+                    obj.custom_information_document
+                )
+            return dataclass_dict
 
-        # This custom unstructure function overrides the unstruct_hook when we should should_allow_empty_value_field.
-        # We need to do this at this level because we need to know both the parent class and the field name at the
-        # same time.
+        # This custom unstructure function overrides the unstruct_hook. We need to do this at this level
+        # because we need to know both the parent class and the field name at the same time to create the
+        # should_omit function.
         def make_unstructure_fn(subcls: Any) -> Callable[[Any], dict[str, Any]]:
             if (cls, subcls) not in unstructure_fn_cache:
                 unstructure_fn_cache[(cls, subcls)] = make_dict_unstructure_fn(
@@ -298,11 +358,7 @@ def register_unstructure_hooks(converter: Converter) -> None:
                     converter,
                     **{
                         a.name: override(
-                            unstruct_hook=unstructure_dataclass_fn(
-                                subcls, should_omit_allow_empty_value_field
-                            )
-                            if should_allow_empty_value_field(cls, a.name)
-                            else None
+                            unstruct_hook=unstructure_dataclass_fn(subcls, cls, a.name)
                         )
                         for a in fields(cls)
                     },

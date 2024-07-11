@@ -17,8 +17,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueRelativeLightUnit,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.methodical_mind.methodical_mind_structure import (
     CombinedData,
@@ -30,7 +31,6 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 LUMINESCENCE = "luminescence"
 LUMINESCENCE_DETECTOR = "luminescence detector"
-NA = "N/A"
 
 
 class MethodicalMindParser(VendorParser):
@@ -64,7 +64,7 @@ class MethodicalMindParser(VendorParser):
         self, combined_data: CombinedData
     ) -> DeviceSystemDocument:
         return DeviceSystemDocument(
-            device_identifier=NA,
+            device_identifier=NOT_APPLICABLE,
             model_number=combined_data.model,
             equipment_serial_number=combined_data.serial_number,
         )
@@ -77,7 +77,7 @@ class MethodicalMindParser(VendorParser):
             UNC_path=combined_data.file_name,
             software_name=combined_data.version,
             software_version=combined_data.version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 

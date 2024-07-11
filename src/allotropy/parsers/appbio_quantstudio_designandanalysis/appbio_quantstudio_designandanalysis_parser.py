@@ -1,3 +1,6 @@
+import re
+import warnings
+
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
@@ -38,7 +41,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
@@ -52,6 +55,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     WellItem,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -65,9 +69,16 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents = pd.read_excel(
-            named_file_contents.contents, header=None, sheet_name=None
-        )
+        # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                category=UserWarning,
+                module=re.escape("openpyxl.styles.stylesheet"),
+            )
+            raw_contents = pd.read_excel(
+                named_file_contents.contents, header=None, sheet_name=None
+            )
         contents = DesignQuantstudioContents(raw_contents)
         data = create_data(contents)
         return self._get_model(data, named_file_contents.original_file_name)
@@ -87,7 +98,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                     UNC_path="",  # unknown
                     software_name=data.header.software_name,
                     software_version=data.header.software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 qPCR_document=[
@@ -208,29 +219,18 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def get_processed_data_document(
         self, well_item: WellItem
     ) -> ProcessedDataDocumentItem:
-        normalized_reporter_result = (
-            None
-            if well_item.result.normalized_reporter_result is None
-            else TQuantityValueUnitless(
-                value=well_item.result.normalized_reporter_result
-            )
-        )
-
-        baseline_corrected_reporter_result = (
-            None
-            if well_item.result.baseline_corrected_reporter_result is None
-            else TQuantityValueUnitless(
-                value=well_item.result.baseline_corrected_reporter_result
-            )
-        )
-
         return ProcessedDataDocumentItem(
             data_processing_document=self.get_data_processing_document(well_item),
             cycle_threshold_result=TNullableQuantityValueUnitless(
                 value=well_item.result.cycle_threshold_result,
             ),
-            normalized_reporter_result=normalized_reporter_result,
-            baseline_corrected_reporter_result=baseline_corrected_reporter_result,
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, well_item.result.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                well_item.result.baseline_corrected_reporter_result,
+            ),
             genotyping_determination_result=well_item.result.genotyping_determination_result,
             normalized_reporter_data_cube=NormalizedReporterDataCube(
                 label="normalized reporter",
@@ -283,39 +283,24 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
     def get_data_processing_document(
         self, well_item: WellItem
     ) -> DataProcessingDocument:
-        baseline_determination_start_cycle_setting = (
-            None
-            if well_item.result.baseline_determination_start_cycle_setting is None
-            else TQuantityValueNumber(
-                value=well_item.result.baseline_determination_start_cycle_setting
-            )
-        )
-
-        baseline_determination_end_cycle_setting = (
-            None
-            if well_item.result.baseline_determination_end_cycle_setting is None
-            else TQuantityValueNumber(
-                value=well_item.result.baseline_determination_end_cycle_setting
-            )
-        )
-
-        genotyping_determination_method_setting = (
-            None
-            if well_item.result.genotyping_determination_method_setting is None
-            else TQuantityValueUnitless(
-                value=well_item.result.genotyping_determination_method_setting
-            )
-        )
-
         return DataProcessingDocument(
             automatic_cycle_threshold_enabled_setting=well_item.result.automatic_cycle_threshold_enabled_setting,
             cycle_threshold_value_setting=TQuantityValueUnitless(
-                value=well_item.result.cycle_threshold_value_setting,
+                value=well_item.result.cycle_threshold_value_setting
             ),
             automatic_baseline_determination_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-            baseline_determination_start_cycle_setting=baseline_determination_start_cycle_setting,
-            baseline_determination_end_cycle_setting=baseline_determination_end_cycle_setting,
-            genotyping_determination_method_setting=genotyping_determination_method_setting,
+            baseline_determination_start_cycle_setting=quantity_or_none(
+                TQuantityValueNumber,
+                well_item.result.baseline_determination_start_cycle_setting,
+            ),
+            baseline_determination_end_cycle_setting=quantity_or_none(
+                TQuantityValueNumber,
+                well_item.result.baseline_determination_end_cycle_setting,
+            ),
+            genotyping_determination_method_setting=quantity_or_none(
+                TQuantityValueUnitless,
+                well_item.result.genotyping_determination_method_setting,
+            ),
         )
 
     def get_reporter_dye_data_cube(

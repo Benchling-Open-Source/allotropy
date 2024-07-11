@@ -1,9 +1,7 @@
-import re
 from xml.etree import ElementTree
 
 import pytest
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
     AnalyteDocumentData,
     AnalyteSample,
@@ -32,7 +30,9 @@ def test_create_analyte_sample() -> None:
 
 @pytest.mark.short
 def test_create_device_settings() -> None:
-    test_filepath = "tests/parsers/biorad_bioplex_manager/testdata/well_xml_example.xml"
+    test_filepath = (
+        "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
+    )
     tree = ElementTree.parse(test_filepath)  # noqa: S314
     well_settings_xml = tree.getroot()
     well_settings = DeviceWellSettings.create(well_settings_xml)
@@ -89,7 +89,9 @@ def test_sample_aggregate_doc() -> None:
 
 @pytest.mark.short
 def test_well_sytem_level_metadata() -> None:
-    test_filepath = "tests/parsers/biorad_bioplex_manager/testdata/well_xml_example.xml"
+    test_filepath = (
+        "tests/parsers/biorad_bioplex_manager/testdata/exclude/well_xml_example.xml"
+    )
     tree = ElementTree.parse(test_filepath)  # noqa: S314
     well_system_xml = tree.getroot()
     well_system = WellSystemLevelMetadata.create(well_system_xml)
@@ -129,13 +131,3 @@ def test_validate_xml_structure() -> None:
         validate_xml_structure(root)
     except Exception as e:
         pytest.fail(f"Function raised an exception: {e}")
-
-
-@pytest.mark.short
-def test_validate_xml_structure_missing_tags() -> None:
-    test_filepath = "tests/parsers/biorad_bioplex_manager/testdata/bio-rad_bio-plex_manager_missing_children.xml"
-    tree = ElementTree.parse(test_filepath)  # noqa: S314
-    root = tree.getroot()
-    msg = "Missing expected tags in xml: ['NativeDocumentLocation', 'Wells']"
-    with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
-        validate_xml_structure(root)

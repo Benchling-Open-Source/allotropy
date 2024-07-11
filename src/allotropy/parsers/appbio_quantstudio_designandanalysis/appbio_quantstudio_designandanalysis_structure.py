@@ -11,6 +11,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     Referenceable,
@@ -95,17 +96,19 @@ class Header:
                 msg="Unable to interpret plate well count",
             ),
             device_identifier=(
-                try_str_from_series_or_none(header, "Instrument Name") or "NA"
+                try_str_from_series_or_none(header, "Instrument Name") or NOT_APPLICABLE
             ),
-            model_number=try_str_from_series_or_none(header, "Instrument Type") or "NA",
+            model_number=try_str_from_series_or_none(header, "Instrument Type")
+            or NOT_APPLICABLE,
             device_serial_number=(
-                try_str_from_series_or_none(header, "Instrument Serial Number") or "NA"
+                try_str_from_series_or_none(header, "Instrument Serial Number")
+                or NOT_APPLICABLE
             ),
             measurement_method_identifier=try_str_from_series(
                 header, "Quantification Cycle Method"
             ),
             pcr_detection_chemistry=(
-                try_str_from_series_or_none(header, "Chemistry") or "NA"
+                try_str_from_series_or_none(header, "Chemistry") or NOT_APPLICABLE
             ),
             passive_reference_dye_setting=try_str_from_series_or_none(
                 header, "Passive Reference"
@@ -436,7 +439,7 @@ class Result:
         return str(reference_sample_array[0])
 
     @staticmethod
-    def get_reference_target(contents: DesignQuantstudioContents) -> str:
+    def get_reference_target(contents: DesignQuantstudioContents) -> str | None:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
 
         possible_ref_targets = set.intersection(
@@ -451,10 +454,14 @@ class Result:
             ]
         )
 
-        if len(possible_ref_targets) != 1:
-            error = "Unable to infer reference target."
-            raise AllotropeConversionError(error)
-        return str(possible_ref_targets.pop())
+        if len(possible_ref_targets) == 0:
+            return None
+
+        if len(possible_ref_targets) == 1:
+            return str(possible_ref_targets.pop())
+
+        error = "Unable to infer reference target."
+        raise AllotropeConversionError(error)
 
     @staticmethod
     def _add_data(

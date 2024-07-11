@@ -42,7 +42,6 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
     WellSystemLevelMetadata,
 )
 from allotropy.parsers.biorad_bioplex_manager.constants import (
-    ASM_CONVERTER_NAME,
     BEAD_REGIONS,
     CONTAINER_TYPE,
     DESCRIPTION_TAG,
@@ -60,10 +59,7 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    get_val_from_xml,
-    remove_none_fields_from_data_class,
-)
+from allotropy.parsers.utils.values import get_val_from_xml, quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -116,8 +112,12 @@ class BioradBioplexParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/multi-analyte-profiling/BENCHLING/2024/01/multi-analyte-profiling.manifest",
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
                 device_system_document=device_document,
-                data_system_document=self._get_data_system_document(
-                    software_version=software_version_value, file_name=filename
+                data_system_document=DataSystemDocument(
+                    software_name=SOFTWARE_NAME,
+                    software_version=software_version_value,
+                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    file_name=filename,
                 ),
                 multi_analyte_profiling_document=multi_docs,
             ),
@@ -131,18 +131,6 @@ class BioradBioplexParser(VendorParser):
             equipment_serial_number=well_system_metadata.serial_number,
             firmware_version=well_system_metadata.controller_version,
             product_manufacturer=PRODUCT_MANUFACTURER,
-        )
-
-    @staticmethod
-    def _get_data_system_document(
-        software_version: str, file_name: str
-    ) -> DataSystemDocument:
-        return DataSystemDocument(
-            software_name=SOFTWARE_NAME,
-            software_version=software_version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
-            ASM_converter_version=ASM_CONVERTER_VERSION,
-            file_name=file_name,
         )
 
     def get_measurement_document_aggregate(
@@ -202,14 +190,12 @@ class BioradBioplexParser(VendorParser):
 
     @staticmethod
     def _get_sample_document(sample: SampleDocumentStructure, well_name: str) -> Any:
-        sample_doc = SampleDocument(
+        return SampleDocument(
             description=sample.description,
             sample_identifier=sample.sample_identifier,
             location_identifier=well_name,
             sample_role_type=sample.sample_type,
         )
-        final_sample_doc = remove_none_fields_from_data_class(sample_doc)
-        return final_sample_doc
 
     @staticmethod
     def _get_device_control_aggregate(
@@ -221,22 +207,17 @@ class BioradBioplexParser(VendorParser):
             sample_volume_setting=TQuantityValueMicroliter(
                 value=device_well_settings.sample_volume_setting
             ),
-            dilution_factor_setting=TQuantityValueUnitless(value=sample.sample_dilution)
-            if sample.sample_dilution is not None
-            else None,
+            dilution_factor_setting=quantity_or_none(
+                TQuantityValueUnitless, sample.sample_dilution
+            ),
             detector_gain_setting=device_well_settings.detector_gain_setting,
-            minimum_assay_bead_count_setting=TQuantityValueNumber(
-                value=device_well_settings.minimum_assay_bead_count_setting
-            )
-            if device_well_settings.minimum_assay_bead_count_setting is not None
-            else None,
-        )
-
-        clean_device_control_doc_item = remove_none_fields_from_data_class(
-            device_control_doc_item
+            minimum_assay_bead_count_setting=quantity_or_none(
+                TQuantityValueNumber,
+                device_well_settings.minimum_assay_bead_count_setting,
+            ),
         )
         return DeviceControlAggregateDocument(
-            device_control_document=[clean_device_control_doc_item]
+            device_control_document=[device_control_doc_item]
         )
 
     @staticmethod
@@ -254,21 +235,22 @@ class BioradBioplexParser(VendorParser):
                         analyte_region_dict=analyte_region_dict,
                         regions_of_interest=regions_of_interest,
                     )
-                    if analyte_structure_doc is not None:
-                        analyte_docs.append(
-                            AnalyteDocumentItem(
-                                analyte_identifier=random_uuid_str(),
-                                analyte_name=analyte_structure_doc.analyte_name,
-                                assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
-                                assay_bead_count=TQuantityValueNumber(
-                                    value=analyte_structure_doc.assay_bead_count
-                                ),
-                                fluorescence=TQuantityValueRelativeFluorescenceUnit(
-                                    value=analyte_structure_doc.fluorescence,
-                                    has_statistic_datum_role=TStatisticDatumRole.median_role,
-                                ),
-                            )
+                    if analyte_structure_doc is None:
+                        continue
+                    analyte_docs.append(
+                        AnalyteDocumentItem(
+                            analyte_identifier=random_uuid_str(),
+                            analyte_name=analyte_structure_doc.analyte_name,
+                            assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
+                            assay_bead_count=TQuantityValueNumber(
+                                value=analyte_structure_doc.assay_bead_count
+                            ),
+                            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                                value=analyte_structure_doc.fluorescence,
+                                has_statistic_datum_role=TStatisticDatumRole.median_role,
+                            ),
                         )
+                    )
         return AnalyteAggregateDocument(analyte_document=analyte_docs)
 
     @staticmethod

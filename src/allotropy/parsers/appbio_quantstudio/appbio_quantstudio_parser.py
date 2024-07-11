@@ -32,13 +32,12 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     FieldComponentDatatype,
-    InvalidJsonFloat,
     TDatacubeComponent,
     TDatacubeData,
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     create_data,
@@ -50,6 +49,10 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.values import (
+    quantity_or_none,
+    try_int_or_nan,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -83,7 +86,7 @@ class AppBioQuantStudioParser(VendorParser):
                     UNC_path="",  # unknown
                     software_name="Thermo QuantStudio",
                     software_version="1.0",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 qPCR_document=[
@@ -94,11 +97,7 @@ class AppBioQuantStudioParser(VendorParser):
                             experiment_type=data.header.experiment_type,
                             container_type=ContainerType.qPCR_reaction_block,
                             plate_well_count=TQuantityValueNumber(
-                                value=(
-                                    InvalidJsonFloat.NaN
-                                    if data.header.plate_well_count is None
-                                    else data.header.plate_well_count
-                                )
+                                value=try_int_or_nan(data.header.plate_well_count)
                             ),
                             measurement_document=[
                                 self.get_measurement_document_item(
@@ -204,30 +203,6 @@ class AppBioQuantStudioParser(VendorParser):
     def get_processed_data_document(
         self, well_item: WellItem
     ) -> ProcessedDataDocumentItem:
-        normalized_reporter_result = (
-            None
-            if well_item.result.normalized_reporter_result is None
-            else TQuantityValueUnitless(
-                value=well_item.result.normalized_reporter_result
-            )
-        )
-
-        baseline_corrected_reporter_result = (
-            None
-            if well_item.result.baseline_corrected_reporter_result is None
-            else TQuantityValueUnitless(
-                value=well_item.result.baseline_corrected_reporter_result
-            )
-        )
-
-        genotyping_determination_method_setting = (
-            None
-            if well_item.result.genotyping_determination_method_setting is None
-            else TQuantityValueUnitless(
-                value=well_item.result.genotyping_determination_method_setting
-            )
-        )
-
         return ProcessedDataDocumentItem(
             data_processing_document=DataProcessingDocument(
                 automatic_cycle_threshold_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
@@ -235,13 +210,21 @@ class AppBioQuantStudioParser(VendorParser):
                     value=well_item.result.cycle_threshold_value_setting,
                 ),
                 automatic_baseline_determination_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-                genotyping_determination_method_setting=genotyping_determination_method_setting,
+                genotyping_determination_method_setting=quantity_or_none(
+                    TQuantityValueUnitless,
+                    well_item.result.genotyping_determination_method_setting,
+                ),
             ),
             cycle_threshold_result=TNullableQuantityValueUnitless(
                 value=well_item.result.cycle_threshold_result,
             ),
-            normalized_reporter_result=normalized_reporter_result,
-            baseline_corrected_reporter_result=baseline_corrected_reporter_result,
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, well_item.result.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                well_item.result.baseline_corrected_reporter_result,
+            ),
             genotyping_determination_result=well_item.result.genotyping_determination_result,
             normalized_reporter_data_cube=NormalizedReporterDataCube(
                 label="normalized reporter",

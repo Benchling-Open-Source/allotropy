@@ -9,7 +9,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added electrophoresis and spectrophotometry parser requirement templates to /docs
+
 ### Fixed
+
+- Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
+- Make get_model_class_from_schema work with Windows style path
+
+### Changed
+- Allow no target DNA reference in AppBio Quantstudio design and anlysis
+- Standardize use of "N/A" for strings where a non-applicable value is necessary
+- Update `None` filtering to preserve required keys when converting model to dictionary
+- Update ASM converter name field to specify the parser name instead of just "allotropy", this is intended to give better granularity on the adapter that did the conversion and not just the library version
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.37] - 2024-06-26
+
+### Added
+
+- Add Agilent TapeStation Analysis adapter
+- Added utility to add both dict and dataclass custom information document to an ASM model
+
+- Added Solution Analyzer BENCHLING/2024/03 schema with the extension of the Data System Document.
+### Fixed
+
+- Updated schema cleaner to handle utf-8 characters in unit schema urls
+- Updated schema cleaner to handle object schemas with no properties
+- Updated Vi-Cell XR requirements doc to reflect support for .txt files
+- Handle dashes and slashes in custom information document key names
 
 ### Changed
 
@@ -19,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-## [0.1.35] - 2024-06-24
+## [0.1.36] - 2024-06-24
 
 ### Added
 - Add Mabtech Apex adapter
@@ -31,18 +62,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add Alphalisa assay support to Gen5 adapter
 - Add fluorescence point detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
 
-### Fixed
-
 ### Changed
 
 - Redefine plate well count as optional in AppBio Quantstudio
 - Updated README.md to organize parsers according to maturity level
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.35] - 2024-06-07
 

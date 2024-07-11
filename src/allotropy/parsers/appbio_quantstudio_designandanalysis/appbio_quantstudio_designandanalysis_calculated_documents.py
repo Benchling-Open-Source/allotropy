@@ -191,7 +191,7 @@ def build_delta_ct_mean(
     view_data: ViewData[WellItem],
     sample: str,
     target: str,
-    r_target: str,
+    r_target: str | None,
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_mean := well_items[0].result.delta_ct_mean) is None:
@@ -216,22 +216,23 @@ def build_delta_ct_mean(
     else:
         return None
 
-    if r_adj_eq_ct_mean_ref := build_adj_eq_ct_mean(view_data, sample, r_target):
-        data_sources.append(
-            DataSource(
-                feature="adjusted equivalent ct mean",
-                reference=r_adj_eq_ct_mean_ref,
+    if r_target is not None:
+        if r_adj_eq_ct_mean_ref := build_adj_eq_ct_mean(view_data, sample, r_target):
+            data_sources.append(
+                DataSource(
+                    feature="adjusted equivalent ct mean",
+                    reference=r_adj_eq_ct_mean_ref,
+                )
             )
-        )
-    elif r_eq_ct_mean_ref := build_eq_ct_mean(view_data, sample, r_target):
-        data_sources.append(
-            DataSource(
-                feature="equivalent ct mean",
-                reference=r_eq_ct_mean_ref,
+        elif r_eq_ct_mean_ref := build_eq_ct_mean(view_data, sample, r_target):
+            data_sources.append(
+                DataSource(
+                    feature="equivalent ct mean",
+                    reference=r_eq_ct_mean_ref,
+                )
             )
-        )
-    else:
-        return None
+        else:
+            return None
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
@@ -243,55 +244,58 @@ def build_delta_ct_mean(
 
 @cache
 def build_delta_ct_sd(
-    view_data: ViewData[WellItem], sample: str, target: str, r_target: str
+    view_data: ViewData[WellItem], sample: str, target: str, r_target: str | None
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_sd := well_items[0].result.delta_ct_sd) is None:
         return None
 
-    ct_sd_ref = build_ct_sd(view_data, sample, target)
-    if ct_sd_ref is None:
+    data_sources = []
+
+    if ct_sd_ref := build_ct_sd(view_data, sample, target):
+        data_sources.append(DataSource(feature="ct sd", reference=ct_sd_ref))
+    else:
         return None
 
-    r_ct_sd_ref = build_ct_sd(view_data, sample, r_target)
-    if r_ct_sd_ref is None:
-        return None
+    if r_target is not None:
+        if r_ct_sd_ref := build_ct_sd(view_data, sample, r_target):
+            data_sources.append(DataSource(feature="ct sd", reference=r_ct_sd_ref))
+        else:
+            return None
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="delta equivalent ct sd",
         value=delta_ct_sd,
-        data_sources=[
-            DataSource(feature="ct sd", reference=ct_sd_ref),
-            DataSource(feature="ct sd", reference=r_ct_sd_ref),
-        ],
+        data_sources=data_sources,
     )
 
 
 @cache
 def build_delta_ct_se(
-    view_data: ViewData[WellItem], sample: str, target: str, r_target: str
+    view_data: ViewData[WellItem], sample: str, target: str, r_target: str | None
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_ct_se := well_items[0].result.delta_ct_se) is None:
         return None
 
-    ct_se_ref = build_ct_se(view_data, sample, target)
-    if ct_se_ref is None:
+    data_sources = []
+    if ct_se_ref := build_ct_se(view_data, sample, target):
+        data_sources.append(DataSource(feature="ct se", reference=ct_se_ref))
+    else:
         return None
 
-    r_ct_se_ref = build_ct_se(view_data, sample, r_target)
-    if r_ct_se_ref is None:
-        return None
+    if r_target is not None:
+        if r_ct_se_ref := build_ct_se(view_data, sample, r_target):
+            data_sources.append(DataSource(feature="ct se", reference=r_ct_se_ref))
+        else:
+            return None
 
     return CalculatedDocument(
         uuid=random_uuid_str(),
         name="delta equivalent ct se",
         value=delta_ct_se,
-        data_sources=[
-            DataSource(feature="ct se", reference=ct_se_ref),
-            DataSource(feature="ct se", reference=r_ct_se_ref),
-        ],
+        data_sources=data_sources,
     )
 
 
@@ -301,7 +305,7 @@ def build_delta_delta_ct(
     sample: str,
     target: str,
     r_sample: str,
-    r_target: str,
+    r_target: str | None,
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (delta_delta_ct := well_items[0].result.delta_delta_ct) is None:
@@ -338,7 +342,7 @@ def build_rq(
     sample: str,
     target: str,
     r_sample: str,
-    r_target: str,
+    r_target: str | None,
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq := well_items[0].result.rq) is None:
@@ -369,7 +373,7 @@ def build_rq_min(
     sample: str,
     target: str,
     r_sample: str,
-    r_target: str,
+    r_target: str | None,
 ) -> CalculatedDocument | None:
     well_items = view_data.get_leaf_item(sample, target)
     if (rq_min := well_items[0].result.rq_min) is None:
@@ -652,7 +656,7 @@ def iter_standard_curve_calc_docs(
 def iter_relative_standard_curve_calc_docs(
     view_data: ViewData[WellItem],
     r_sample: str,
-    r_target: str,
+    r_target: str | None,
 ) -> Iterator[CalculatedDocument]:
     for sample, target in view_data.iter_keys():
         if calc_doc := build_ct_mean(view_data, sample, target):

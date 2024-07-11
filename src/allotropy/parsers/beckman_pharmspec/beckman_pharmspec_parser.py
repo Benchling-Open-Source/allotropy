@@ -1,5 +1,5 @@
 import re
-from typing import Any, Optional
+from typing import Any
 
 import pandas as pd
 
@@ -32,7 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
     Distribution,
@@ -195,8 +195,8 @@ class PharmSpecParser(VendorParser):
 
     def _create_model(
         self,
-        data: PharmSpecData,
-        calc_agg_doc: Optional[TCalculatedDataAggregateDocument],
+        df: pd.DataFrame,
+        calc_agg_doc: TCalculatedDataAggregateDocument | None,
         measurement_doc_items: list[MeasurementDocumentItem],
         file_name: str,
     ) -> Model:
@@ -216,7 +216,7 @@ class PharmSpecParser(VendorParser):
                     file_name=file_name,
                     software_name=PHARMSPEC_SOFTWARE_NAME,
                     software_version=data.metadata.software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(

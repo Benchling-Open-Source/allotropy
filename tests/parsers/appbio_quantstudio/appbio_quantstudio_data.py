@@ -36,7 +36,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeData,
     TDatacubeStructure,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     AmplificationData,
     Data,
@@ -49,10 +49,13 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     WellItem,
     WellList,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
 )
+
+ASM_CONVERTER_NAME = "allotropy_appbio_quantstudio_rt_pcr"
 
 
 def get_data() -> Data:
@@ -183,8 +186,8 @@ def get_data() -> Data:
                 "",
             ]
         ),
-        endogenous_control="",
-        reference_sample="",
+        endogenous_control=NOT_APPLICABLE,
+        reference_sample=NOT_APPLICABLE,
         calculated_documents=[
             CalculatedDocument(
                 uuid="d006e7e7-fbe4-47cf-821b-904e85202803",
@@ -325,8 +328,8 @@ def get_data2() -> Data:
                 "",
             ]
         ),
-        endogenous_control="",
-        reference_sample="",
+        endogenous_control=NOT_APPLICABLE,
+        reference_sample=NOT_APPLICABLE,
         calculated_documents=[],
     )
 
@@ -1115,8 +1118,8 @@ def get_genotyping_data() -> Data:
         ),
         wells=WellList([well]),
         raw_data=None,
-        endogenous_control="",
-        reference_sample="",
+        endogenous_control=NOT_APPLICABLE,
+        reference_sample=NOT_APPLICABLE,
         calculated_documents=[],
     )
 
@@ -3349,7 +3352,7 @@ def get_broken_calc_doc_model() -> Model:
                 UNC_path="",
                 software_name="Thermo QuantStudio",
                 software_version="1.0",
-                ASM_converter_name="allotropy",
+                ASM_converter_name=ASM_CONVERTER_NAME,
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             calculated_data_aggregate_document=TCalculatedDataAggregateDocument(
