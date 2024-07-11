@@ -1,38 +1,24 @@
+from pathlib import Path
+
 import pytest
 
 from allotropy.parser_factory import Vendor
-from allotropy.testing.utils import from_file, validate_contents
-
-OUTPUT_FILES = (
-    "Thermo_NanoDrop_Eight_example01.txt",
-    "Thermo_NanoDrop_Eight_example02.txt",
-    "Thermo_NanoDrop_Eight_example03.txt",
-    "Thermo_NanoDrop_Eight_example04.txt",
-)
+from allotropy.testing.utils import from_file
+from tests.conftest import get_test_cases
+from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.THERMO_FISHER_NANODROP_EIGHT
+TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
-def test_parse_thermo_fisher_nanodrop_eight_to_asm_expected_contents(
-    output_file: str,
-) -> None:
-    test_filepath = f"tests/parsers/thermo_fisher_nanodrop_eight/testdata/{output_file}"
-    expected_filepath = (
-        f"tests/parsers/thermo_fisher_nanodrop_eight/testdata/{output_file}".removesuffix(
-            "txt"
-        )
-        + "json"
-    )
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
+class TestParser(ParserTest):
+    VENDOR = Vendor.THERMO_FISHER_NANODROP_EIGHT
 
 
-@pytest.mark.parametrize("output_file", OUTPUT_FILES)
+@pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
 def test_parse_thermo_fisher_nanodrop_eight_data_source_ids(
-    output_file: str,
+    test_filepath: Path,
 ) -> None:
-    test_filepath = f"tests/parsers/thermo_fisher_nanodrop_eight/testdata/{output_file}"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     data_source_ids = [
         dsd["data source identifier"]

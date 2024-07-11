@@ -1,3 +1,4 @@
+from pathlib import Path
 import re
 
 import pytest
@@ -5,43 +6,16 @@ import pytest
 from allotropy.constants import CHARDET_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
-from allotropy.testing.utils import from_file, validate_contents
+from allotropy.testing.utils import from_file
+from tests.conftest import get_test_cases
+from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.MOLDEV_SOFTMAX_PRO
-SCHEMA_FILE = "plate-reader/BENCHLING/2023/09/plate-reader.json"
+TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
-@pytest.mark.parametrize(
-    "file_name",
-    [
-        "abs_endpoint_plates",
-        "MD_SMP_absorbance_endpoint_example01",
-        "MD_SMP_absorbance_endpoint_example02",
-        "MD_SMP_absorbance_endpoint_example04",
-        "MD_SMP_absorbance_endpoint_example05",
-        "MD_SMP_fluorescence_endpoint_example07",
-        "MD_SMP_fluorescence_endpoint_example06",
-        "MD_SMP_luminescence_endpoint_example03",
-        "MD_SMP_luminescence_endpoint_example08",
-        "MD_SMP_luminescence_endpoint_example09",
-        "MD_SMP_absorbance_endpoint_partial_plate_example01",
-        "MD_SMP_absorbance_endpoint_partial_plate_example02",
-        "MD_SMP_absorbance_endpoint_partial_plate_example03",
-        "MD_SMP_absorbance_endpoint_partial_plate_example04",
-        "MD_SMP_absorbance_endpoint_partial_plate_example05",
-        "MD_SMP_fluorescence_endpoint_partial_plate_example01",
-        "MD_SMP_fluorescence_endpoint_partial_plate_example02",
-        "MD_SMP_luminescence_endpoint_partial_plate_example01",
-        "MD_SMP_luminescence_endpoint_partial_plate_example02",
-        "group_cols_with_int_sample_names",
-        "softmaxpro_no_calc_docs",
-    ],
-)
-def test_to_allotrope(file_name: str) -> None:
-    test_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
-    expected_file = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.json"
-    allotrope_dict = from_file(test_file, VENDOR_TYPE, CHARDET_ENCODING)
-    validate_contents(allotrope_dict, expected_file)
+class TestParser(ParserTest):
+    VENDOR = VENDOR_TYPE
 
 
 def test_handles_unrecognized_read_mode() -> None:
@@ -52,7 +26,7 @@ def test_handles_unrecognized_read_mode() -> None:
         ),
     ):
         from_file(
-            "tests/parsers/moldev_softmax_pro/testdata/trf_well_scan_plates.txt",
+            f"{TESTDATA}/errors/trf_well_scan_plates.txt",
             VENDOR_TYPE,
         )
 
@@ -60,8 +34,8 @@ def test_handles_unrecognized_read_mode() -> None:
 @pytest.mark.parametrize(
     "test_file",
     [
-        "tests/parsers/moldev_softmax_pro/testdata/fl_kinetic_plates.txt",
-        "tests/parsers/moldev_softmax_pro/testdata/lum_spectrum_columns.txt",
+        f"{TESTDATA}/errors/fl_kinetic_plates.txt",
+        f"{TESTDATA}/errors/lum_spectrum_columns.txt",
     ],
 )
 def test_unrecognized_read_type(test_file: str) -> None:
@@ -72,36 +46,10 @@ def test_unrecognized_read_type(test_file: str) -> None:
         from_file(test_file, VENDOR_TYPE)
 
 
-@pytest.mark.parametrize(
-    "file_name",
-    [
-        "abs_endpoint_plates",
-        "MD_SMP_absorbance_endpoint_example01",
-        "MD_SMP_absorbance_endpoint_example02",
-        "MD_SMP_absorbance_endpoint_example04",
-        "MD_SMP_absorbance_endpoint_example05",
-        "MD_SMP_fluorescence_endpoint_example07",
-        "MD_SMP_fluorescence_endpoint_example06",
-        "MD_SMP_luminescence_endpoint_example03",
-        "MD_SMP_luminescence_endpoint_example08",
-        "MD_SMP_luminescence_endpoint_example09",
-        "MD_SMP_absorbance_endpoint_partial_plate_example01",
-        "MD_SMP_absorbance_endpoint_partial_plate_example02",
-        "MD_SMP_absorbance_endpoint_partial_plate_example03",
-        "MD_SMP_absorbance_endpoint_partial_plate_example04",
-        "MD_SMP_absorbance_endpoint_partial_plate_example05",
-        "MD_SMP_fluorescence_endpoint_partial_plate_example01",
-        "MD_SMP_fluorescence_endpoint_partial_plate_example02",
-        "MD_SMP_luminescence_endpoint_partial_plate_example01",
-        "MD_SMP_luminescence_endpoint_partial_plate_example02",
-        "group_cols_with_int_sample_names",
-        "softmaxpro_no_calc_docs",
-    ],
-)
+@pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
 def test_data_source_id_references(
-    file_name: str,
+    test_filepath: Path,
 ) -> None:
-    test_filepath = f"tests/parsers/moldev_softmax_pro/testdata/{file_name}.txt"
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE, CHARDET_ENCODING)
     data_source_ids = []
     if (
