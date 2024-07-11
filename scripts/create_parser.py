@@ -10,7 +10,6 @@ from allotropy.allotrope.schema_parser.path_util import (
     SCHEMA_DIR_PATH,
 )
 from allotropy.allotrope.schema_parser.schema_model import snake_to_upper_camel
-from allotropy.parser_factory import update_readme
 
 ALLOTROPY_DIR = Path(Path(__file__).parent.parent, "src/allotropy")
 TEMPLATE_DIR = Path(Path(__file__).parent, "templates")
@@ -132,7 +131,11 @@ def _create_parser(
 
     create_parser(name, schema_paths[0], display_name)
 
+    # Import update_readme now to get updated files.
+    from allotropy.parser_factory import update_readme
+
+    update_readme()
+
 
 if __name__ == "__main__":
     _create_parser()
-    update_readme()
