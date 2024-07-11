@@ -142,6 +142,91 @@ class Header:
         )
 
 
+@dataclass()
+class WellResultData:
+    data: pd.DataFrame
+
+    @staticmethod
+    def create(
+        contents: DesignQuantstudioContents,
+        experiment_type: ExperimentType,
+    ) -> WellResultData:
+        data_sheet = (
+            "Standard Curve Result"
+            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
+            else "Results"
+        )
+
+        data = contents.get_non_empty_sheet(data_sheet)
+        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
+            WellResultData._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
+                columns=[
+                    "Cq SE",
+                ],
+            )
+
+            WellResultData._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
+                columns=[
+                    "EqCq Mean",
+                    "Adjusted EqCq Mean",
+                    "Delta EqCq Mean",
+                    "Delta EqCq SD",
+                    "Delta EqCq SE",
+                    "Delta Delta EqCq",
+                    "Rq",
+                    "Rq Min",
+                    "Rq Max",
+                ],
+            )
+        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
+            WellResultData._add_data(
+                data,
+                extra_data=contents.get_non_empty_sheet("Target Call"),
+                columns=[
+                    "Call",
+                ],
+            )
+        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
+
+            # The genotyping result data does not contain a target column
+            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
+            rows = []
+            for idx, row in genotyping_result.iterrows():
+                snp_assay = assert_not_none(
+                    row.get("SNP Assay"),
+                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
+                )
+                for allele in ["Allele 1", "Allele 2"]:
+                    new_row = row.copy()
+                    new_row["Target"] = f"{snp_assay}-{allele}"
+                    rows.append(new_row)
+
+            WellResultData._add_data(
+                data,
+                extra_data=pd.DataFrame(rows).reset_index(drop=True),
+                columns=[
+                    "Call",
+                ],
+            )
+
+        return WellResultData(data)
+
+    @staticmethod
+    def _add_data(
+        data: pd.DataFrame, extra_data: pd.DataFrame, columns: list[str]
+    ) -> None:
+        data[columns] = None
+        for _, row in extra_data.iterrows():
+            sample_cond = data["Sample"] == row["Sample"]
+            target_cond = data["Target"] == row["Target"]
+            data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
+
+
 @dataclass
 class WellItem(Referenceable):
     identifier: int
@@ -160,7 +245,9 @@ class WellItem(Referenceable):
         contents: DesignQuantstudioContents,
         data: pd.Series[str],
         experiment_type: ExperimentType,
+        well_result_data: WellResultData
     ) -> WellItem:
+        # TODO: replace data with WellResultData?
         identifier = try_int_from_series(data, "Well")
 
         target_dna_description = try_str_from_series(
@@ -207,7 +294,7 @@ class WellItem(Referenceable):
                 )
             ),
             result=Result.create(
-                contents, identifier, target_dna_description, experiment_type
+                well_result_data, identifier, target_dna_description, experiment_type
             ),
         )
 
@@ -232,23 +319,19 @@ class Well:
         well_data: pd.DataFrame,
         identifier: int,
         experiment_type: ExperimentType,
+        well_result_data: WellResultData,
     ) -> Well:
         well_items = {
             try_str_from_series(item_data, "Target"): WellItem.create(
-                contents, item_data, experiment_type
+                contents, item_data, experiment_type, well_result_data
             )
             for _, item_data in well_data.iterrows()
         }
-
         multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
             items=well_items,
-            multicomponent_data=(
-                None
-                if multi_data is None
-                else MulticomponentData.create(header, multi_data, identifier)
-            ),
+            multicomponent_data=None if multi_data is None else MulticomponentData.create(header, multi_data, identifier),
         )
 
 
@@ -272,7 +355,11 @@ class WellList:
         experiment_type: ExperimentType,
     ) -> WellList:
         results_data = contents.get_non_empty_sheet("Results")
+
         assert_df_column(results_data, "Well")
+
+        well_result_data = WellResultData.create(contents, experiment_type)
+
         return WellList(
             wells=[
                 Well.create(
@@ -281,8 +368,9 @@ class WellList:
                     well_data,
                     try_int(str(identifier), "well identifier"),
                     experiment_type,
+                    well_result_data,
                 )
-                for identifier, well_data in results_data.groupby("Well")
+                for identifier, well_data in well_result_data.data.groupby("Well")
             ]
         )
 
@@ -464,89 +552,14 @@ class Result:
         raise AllotropeConversionError(error)
 
     @staticmethod
-    def _add_data(
-        data: pd.DataFrame, extra_data: pd.DataFrame, columns: list[str]
-    ) -> None:
-
-        data[columns] = None
-        for _, row in extra_data.iterrows():
-            sample_cond = data["Sample"] == row["Sample"]
-            target_cond = data["Target"] == row["Target"]
-            data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
-
-    @staticmethod
     def create(
-        contents: DesignQuantstudioContents,
+        well_result_data: WellResultData,
         well_item_id: int,
         target_dna_description: str,
         experiment_type: ExperimentType,
     ) -> Result:
-        data_sheet = (
-            "Standard Curve Result"
-            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
-            else "Results"
-        )
-
-        data = contents.get_non_empty_sheet(data_sheet)
-
-        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-            Result._add_data(
-                data,
-                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
-                columns=[
-                    "Cq SE",
-                ],
-            )
-
-            Result._add_data(
-                data,
-                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
-                columns=[
-                    "EqCq Mean",
-                    "Adjusted EqCq Mean",
-                    "Delta EqCq Mean",
-                    "Delta EqCq SD",
-                    "Delta EqCq SE",
-                    "Delta Delta EqCq",
-                    "Rq",
-                    "Rq Min",
-                    "Rq Max",
-                ],
-            )
-        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
-            Result._add_data(
-                data,
-                extra_data=contents.get_non_empty_sheet("Target Call"),
-                columns=[
-                    "Call",
-                ],
-            )
-        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
-
-            # The genotyping result data does not contain a target column
-            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
-            rows = []
-            for idx, row in genotyping_result.iterrows():
-                snp_assay = assert_not_none(
-                    row.get("SNP Assay"),
-                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
-                )
-                for allele in ["Allele 1", "Allele 2"]:
-                    new_row = row.copy()
-                    new_row["Target"] = f"{snp_assay}-{allele}"
-                    rows.append(new_row)
-
-            Result._add_data(
-                data,
-                extra_data=pd.DataFrame(rows).reset_index(drop=True),
-                columns=[
-                    "Call",
-                ],
-            )
-
         well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well_item_id],
+            well_result_data.data[assert_df_column(well_result_data.data, "Well") == well_item_id],
             msg=f"Unable to find result data for well {well_item_id}.",
         )
 

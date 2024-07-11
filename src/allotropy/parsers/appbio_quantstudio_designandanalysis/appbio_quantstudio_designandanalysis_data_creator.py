@@ -21,11 +21,15 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 
 
 def create_data(contents: DesignQuantstudioContents) -> Data:
+    import time
+    start = time.time()
     experiment_type = Data.get_experiment_type(contents)
     header = Header.create(contents.header)
+    start = time.time()
     wells = WellList.create(contents, header, experiment_type)
+    print(f"\tTOOK {time.time() - start} to create wells")
+    start = time.time()
     well_items = wells.get_well_items()
-
     view_st_data = SampleView(sub_view=TargetView()).apply(well_items)
     r_sample = None
     r_target = None
@@ -56,6 +60,8 @@ def create_data(contents: DesignQuantstudioContents) -> Data:
     else:
         calculated_documents = []
 
+    print(f"\tTOOK {time.time() - start} to calculated documents")
+    start = time.time()
     return Data(
         header,
         wells,
