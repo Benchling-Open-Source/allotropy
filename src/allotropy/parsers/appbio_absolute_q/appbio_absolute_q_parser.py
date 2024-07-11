@@ -31,7 +31,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumberPerMicroliter,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_reader import AbsoluteQReader
 from allotropy.parsers.appbio_absolute_q.constants import (
@@ -91,7 +91,7 @@ class AppbioAbsoluteQParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name="QuantStudio Absolute Q Digital PCR Software",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 dPCR_document=dpcr_document,
