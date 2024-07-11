@@ -55,6 +55,7 @@ from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -113,12 +114,9 @@ class AgilentTapestationAnalysisParser(VendorParser):
                             measurement_time=self._get_date_time(
                                 sample.measurement_time
                             ),
-                            compartment_temperature=(
-                                TQuantityValueDegreeCelsius(
-                                    value=sample.compartment_temperature
-                                )
-                                if sample.compartment_temperature is not None
-                                else None
+                            compartment_temperature=quantity_or_none(
+                                TQuantityValueDegreeCelsius,
+                                sample.compartment_temperature,
                             ),
                             device_control_aggregate_document=DeviceControlAggregateDocument(
                                 device_control_document=[
