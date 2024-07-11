@@ -17,6 +17,7 @@ authors = [
   { name = "Chris Friedline", email = "chris.friedline@benchling.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
   { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
+  { name = "Joshua Hernandez", email = "jherna@benchling.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
   { name = "James Leinas", email = "james.leinas@benchling.com" },
   { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
@@ -101,7 +102,7 @@ dependencies = [
   "datamodel-code-generator == 0.25.2",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
-  "pydantic == 1.10.9",
+  "pydantic == 1.10.17",
   "ruff == 0.0.289",
 ]
 
