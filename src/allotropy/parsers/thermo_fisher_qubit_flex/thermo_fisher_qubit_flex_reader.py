@@ -1,18 +1,30 @@
+<<<<<<< HEAD
 """" Reader file for Thermo Fisher Scientific Qubit Flex Adapter"""
+=======
+from io import StringIO
+>>>>>>> upstream/main
 
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv, read_excel
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+<<<<<<< HEAD
+=======
+from allotropy.parsers import lines_reader
+from allotropy.parsers.lines_reader import CsvReader
+>>>>>>> upstream/main
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
 
 
 class ThermoFisherQubitFlexReader:
+<<<<<<< HEAD
     """
     Reads the content of the provided named files of Qubit Flex instrument
     """
 
+=======
+>>>>>>> upstream/main
     @classmethod
     def read(cls, named_file_contents: NamedFileContents) -> pd.DataFrame:
         """
@@ -38,4 +50,8 @@ class ThermoFisherQubitFlexReader:
             return read_excel(named_file_contents.contents.name)
         else:
             message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"
+<<<<<<< HEAD
             raise AllotropeConversionError(message)
+=======
+            raise AllotropeConversionError(message)
+>>>>>>> upstream/main

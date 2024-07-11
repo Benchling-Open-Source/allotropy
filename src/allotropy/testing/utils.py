@@ -126,7 +126,7 @@ def from_file(test_file: str, vendor: Vendor, encoding: str | None = None) -> Di
 
 
 def _write_actual_to_expected(allotrope_dict: DictType, expected_file: str) -> None:
-    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8") as tmp:
+    with tempfile.NamedTemporaryFile(mode="w+", encoding="UTF-8", delete=False) as tmp:
         json.dump(allotrope_dict, tmp, indent=4, ensure_ascii=False)
         tmp.write("\n")
         tmp.seek(0)
@@ -145,8 +145,8 @@ def validate_contents(
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
     # Ensure that allotrope_dict can be written via json.dump()
-    with tempfile.TemporaryFile(mode="w+") as tmp:
-        json.dump(allotrope_dict, tmp)
+    with tempfile.TemporaryFile(mode="w+", encoding="utf-8") as tmp:
+        json.dump(allotrope_dict, tmp, ensure_ascii= False)
 
     # Ensure that allotrope_dict can be structured back into a python model.
     structure(allotrope_dict)
@@ -155,7 +155,7 @@ def validate_contents(
     _validate_identifiers(allotrope_dict)
 
     try:
-        with open(expected_file) as f:
+        with open(expected_file, encoding="utf-8") as f:
             expected_dict = json.load(f)
         _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
     except Exception as e:
