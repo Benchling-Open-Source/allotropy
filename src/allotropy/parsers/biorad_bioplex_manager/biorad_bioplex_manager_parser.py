@@ -42,7 +42,6 @@ from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure i
     WellSystemLevelMetadata,
 )
 from allotropy.parsers.biorad_bioplex_manager.constants import (
-    ASM_CONVERTER_NAME,
     BEAD_REGIONS,
     CONTAINER_TYPE,
     DESCRIPTION_TAG,
@@ -113,8 +112,12 @@ class BioradBioplexParser(VendorParser):
             field_asm_manifest="http://purl.allotrope.org/manifests/multi-analyte-profiling/BENCHLING/2024/01/multi-analyte-profiling.manifest",
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
                 device_system_document=device_document,
-                data_system_document=self._get_data_system_document(
-                    software_version=software_version_value, file_name=filename
+                data_system_document=DataSystemDocument(
+                    software_name=SOFTWARE_NAME,
+                    software_version=software_version_value,
+                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                    file_name=filename,
                 ),
                 multi_analyte_profiling_document=multi_docs,
             ),
@@ -128,18 +131,6 @@ class BioradBioplexParser(VendorParser):
             equipment_serial_number=well_system_metadata.serial_number,
             firmware_version=well_system_metadata.controller_version,
             product_manufacturer=PRODUCT_MANUFACTURER,
-        )
-
-    @staticmethod
-    def _get_data_system_document(
-        software_version: str, file_name: str
-    ) -> DataSystemDocument:
-        return DataSystemDocument(
-            software_name=SOFTWARE_NAME,
-            software_version=software_version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
-            ASM_converter_version=ASM_CONVERTER_VERSION,
-            file_name=file_name,
         )
 
     def get_measurement_document_aggregate(

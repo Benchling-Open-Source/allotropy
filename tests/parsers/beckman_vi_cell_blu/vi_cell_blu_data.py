@@ -22,7 +22,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
+
+ASM_CONVERTER_NAME = "allotropy_beckman_vi_cell_blu"
 
 
 def get_filename() -> str:

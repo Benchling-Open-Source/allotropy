@@ -17,7 +17,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueRelativeLightUnit,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
@@ -77,7 +77,7 @@ class MethodicalMindParser(VendorParser):
             UNC_path=combined_data.file_name,
             software_name=combined_data.version,
             software_version=combined_data.version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 
