@@ -162,10 +162,11 @@ extra-dependencies = [
   "deepdiff >= 6.5.0",
   "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
+  "pytest-xdist >= 3.6.1",
 ]
 
 [tool.hatch.envs.test.scripts]
-test = "pytest {args:tests}"
+test = "pytest -n auto {args:tests}"
 short = "pytest -m short {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
