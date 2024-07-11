@@ -20,15 +20,6 @@ ABSORBANCE_PATH = f"{TESTDATA}/absorbance"
 
 class TestParser(ParserTest):
     VENDOR = VENDOR_TYPE
-    
-@pytest.mark.parametrize("filename", ABSORBANCE_FILENAMES)
-def test_to_allotrope_absorbance(filename: str) -> None:
-    test_filepath = f"{ABSORBANCE_PATH}/{filename}.txt"
-    expected_filepath = f"{ABSORBANCE_PATH}/{filename}.json"
-    allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(allotrope_dict, expected_filepath)
-
-
 
 
 def test_to_allotrope_absorbance_no_pm_in_time() -> None:
