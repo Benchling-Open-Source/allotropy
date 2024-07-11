@@ -19,7 +19,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.ctl_immunospot.ctl_immunospot_structure import Data, Well
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
@@ -79,7 +79,7 @@ class CtlImmunospotParser(VendorParser):
             UNC_path=data.device_info.unc_path,
             software_name=data.device_info.software_name,
             software_version=data.device_info.software_version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 

@@ -41,7 +41,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
@@ -281,7 +281,7 @@ class KaleidoParser(VendorParser):
             file_name=file_name,
             software_name="Kaleido",
             software_version=version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 

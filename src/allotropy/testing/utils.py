@@ -21,15 +21,17 @@ from allotropy.to_allotrope import allotrope_from_file
 DictType = Mapping[str, Any]
 
 
-def _replace_asm_converter_name_and_version(allotrope_dict: DictType) -> DictType:
+def _replace_asm_converter_name_and_version(
+    allotrope_dict: DictType, vendor_type: Vendor
+) -> DictType:
     new_dict = dict(allotrope_dict)
+    vendor = Vendor(vendor_type).get_parser()
     for key, value in new_dict.items():
         if key == "data system document":
-            # TODO: Commenting this out until BNCH-93726 is completed.
-            # value["ASM converter name"] = ASM_CONVERTER_NAME
+            value["ASM converter name"] = vendor.get_asm_converter_name()
             value["ASM converter version"] = ASM_CONVERTER_VERSION
         if isinstance(value, dict):
-            _replace_asm_converter_name_and_version(value)
+            _replace_asm_converter_name_and_version(value, vendor_type)
 
     return new_dict
 
@@ -83,8 +85,9 @@ def _validate_identifiers(asm: DictType) -> None:
 def _assert_allotrope_dicts_equal(
     expected: DictType,
     actual: DictType,
+    vendor_type: Vendor,
 ) -> None:
-    expected_replaced = _replace_asm_converter_name_and_version(expected)
+    expected_replaced = _replace_asm_converter_name_and_version(expected, vendor_type)
 
     ddiff = DeepDiff(
         expected_replaced,
@@ -145,6 +148,7 @@ def _write_actual_to_expected(
 def validate_contents(
     allotrope_dict: DictType,
     expected_file: Path | str,
+    vendor_type: Vendor,
     write_actual_to_expected_on_fail: bool = False,  # noqa: FBT001, FBT002
 ) -> None:
     """Use the newly created allotrope_dict to validate the contents inside expected_file."""
@@ -161,7 +165,7 @@ def validate_contents(
     try:
         with open(expected_file) as f:
             expected_dict = json.load(f)
-        _assert_allotrope_dicts_equal(expected_dict, allotrope_dict)
+        _assert_allotrope_dicts_equal(expected_dict, allotrope_dict, vendor_type)
     except Exception as e:
         if write_actual_to_expected_on_fail:
             _write_actual_to_expected(allotrope_dict, expected_file)

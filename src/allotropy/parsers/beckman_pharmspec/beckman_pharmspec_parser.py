@@ -33,7 +33,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TStringValueItem
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
 from allotropy.parsers.release_state import ReleaseState
@@ -261,7 +261,7 @@ class PharmSpecParser(VendorParser):
                     software_version=self._get_software_version_report_string(
                         df.at[0, 2]
                     ),
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
