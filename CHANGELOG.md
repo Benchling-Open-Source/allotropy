@@ -17,9 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Make get_model_class_from_schema work with Windows style path
 
 ### Changed
+
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
 - Update `None` filtering to preserve required keys when converting model to dictionary
+- Upgrade pydantic to pull in fix for ForwardRef._evaluate() issue (https://github.com/pydantic/pydantic/issues/9637)
 
 ### Deprecated
 
