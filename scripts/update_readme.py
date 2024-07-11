@@ -39,7 +39,7 @@ def update_readme() -> None:
                         ReleaseState.CANDIDATE_RELEASE,
                         ReleaseState.WORKING_DRAFT,
                     ]:
-                        f.write(f"### {release_state.value.title()}\n")
+                        f.write(f'### {release_state.value.replace("_", " ").title()}\n')
                         for display_name in sorted(
                             release_state_to_parser.get(release_state, [])
                         ):
