@@ -23,7 +23,7 @@ jobs:
         python-version: "3.10.13"
     - name: Install hatch
       run: pip install hatch
-    - name: Lint
+    - name: Run Tests
       run: hatch run test
 
   lint:
