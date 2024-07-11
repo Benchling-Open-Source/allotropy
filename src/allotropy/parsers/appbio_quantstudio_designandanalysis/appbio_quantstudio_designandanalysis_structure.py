@@ -160,7 +160,6 @@ class WellItem(Referenceable):
         data: pd.Series[str],
         experiment_type: ExperimentType,
     ) -> WellItem:
-        # TODO: replace data with WellResultData?
         identifier = try_int_from_series(data, "Well")
 
         target_dna_description = try_str_from_series(
@@ -241,9 +240,11 @@ class Well:
         return Well(
             identifier=identifier,
             items=well_items,
-            multicomponent_data=None
-            if multi_data is None
-            else MulticomponentData.create(header, multi_data, identifier),
+            multicomponent_data=(
+                None
+                if multi_data is None
+                else MulticomponentData.create(header, multi_data, identifier)
+            ),
         )
 
 

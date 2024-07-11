@@ -25,6 +25,7 @@ def create_data(contents: DesignQuantstudioContents) -> Data:
     header = Header.create(contents.header)
     wells = WellList.create(contents, header, experiment_type)
     well_items = wells.get_well_items()
+
     view_st_data = SampleView(sub_view=TargetView()).apply(well_items)
     r_sample = None
     r_target = None

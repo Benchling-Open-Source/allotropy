@@ -81,8 +81,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             )
         contents = DesignQuantstudioContents(raw_contents)
         data = create_data(contents)
-        model = self._get_model(data, named_file_contents.original_file_name)
-        return model
+        return self._get_model(data, named_file_contents.original_file_name)
 
     def _get_model(self, data: Data, file_name: str) -> Model:
         return Model(
