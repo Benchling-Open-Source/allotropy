@@ -195,7 +195,7 @@ class PharmSpecParser(VendorParser):
 
     def _create_model(
         self,
-        df: pd.DataFrame,
+        data: PharmSpecData,
         calc_agg_doc: TCalculatedDataAggregateDocument | None,
         measurement_doc_items: list[MeasurementDocumentItem],
         file_name: str,
