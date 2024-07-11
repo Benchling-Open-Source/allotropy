@@ -49,5 +49,5 @@ class ThermoFisherQubit4Reader:
             f"Units_{columns[i - 1]}" if "Units" in col else col
             for i, col in enumerate(columns)
         ]
-        dataframe.columns = new_columns
+        dataframe.columns = pd.Index(new_columns)
         return dataframe

@@ -19,6 +19,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     SampleDocument,
     SpectrophotometryAggregateDocument,
     SpectrophotometryDocumentItem,
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicrogramPerMicroliter,
@@ -53,9 +54,19 @@ CONCENTRATION_UNIT_TO_TQUANTITY = {
 DataType = TypeVar("DataType")
 
 
+def get_concentration_value(
+    data_frame: pd.DataFrame, column: str, units_column: str, row: int
+) -> DataType | None:
+    units = get_value(data_frame, units_column, row)
+    if units is None:
+        units = ""
+    datatype = CONCENTRATION_UNIT_TO_TQUANTITY.get(units, TQuantityValueUnitless)
+    return get_property_value(data_frame, column, row, datatype)
+
+
 def get_property_value(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
-) -> DataType:
+    data_frame: pd.DataFrame, column: str, row: int, datatype: type
+) -> DataType | None:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype.
@@ -64,7 +75,7 @@ def get_property_value(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-    datatype (DataType): The type to which the retrieved value should be converted.
+    datatype (type): The type to which the retrieved value should be converted.
 
     Returns:
     DataType: The value from the specified cell converted to the specified datatype.
@@ -231,7 +242,10 @@ class ThermoFisherQubit4Parser(VendorParser):
 
     def _get_measurement_document(
         self, data: pd.DataFrame, i: int
-    ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
+    ) -> list[
+        FluorescencePointDetectionMeasurementDocumentItems
+        | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    ]:
         """
         Generates a list of measurement document items from the given data and index.
 
@@ -262,12 +276,14 @@ class ThermoFisherQubit4Parser(VendorParser):
         :raises AllotropeConversionError: If the emission wavelength is unsupported.
         """
         emission_wavelength = get_value(data, "Emission", i)
-        if emission_wavelength.lower() == "green":
+        if emission_wavelength is not None and emission_wavelength.lower() == "green":
             value = TQuantityValueRelativeFluorescenceUnit(
                 value=get_value_not_none(data, "Green RFU", i)
             )
             return value
-        elif emission_wavelength.lower() in "far red":
+        elif (
+            emission_wavelength is not None and emission_wavelength.lower() in "far red"
+        ):
             value = TQuantityValueRelativeFluorescenceUnit(
                 value=get_value_not_none(data, "Far Red RFU", i)
             )
@@ -285,21 +301,11 @@ class ThermoFisherQubit4Parser(VendorParser):
         :return: The `SampleDocument`.
         """
         sample_custom_document = {
-            "original sample concentration": get_property_value(
-                data,
-                "Original sample conc.",
-                i,
-                CONCENTRATION_UNIT_TO_TQUANTITY[
-                    get_value(data, "Units_Original sample conc.", i)
-                ],
+            "original sample concentration": get_concentration_value(
+                data, "Original sample conc.", "Units_Original sample conc.", i
             ),
-            "qubit tube concentration": get_property_value(
-                data,
-                "Qubit® tube conc.",
-                i,
-                CONCENTRATION_UNIT_TO_TQUANTITY[
-                    get_value(data, "Units_Qubit® tube conc.", i)
-                ],
+            "qubit tube concentration": get_concentration_value(
+                data, "Qubit® tube conc.", "Units_Qubit® tube conc.", i
             ),
             "standard 1 concentration": get_property_value(
                 data, "Std 1 RFU", i, TQuantityValueRelativeFluorescenceUnit
