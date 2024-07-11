@@ -25,7 +25,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
@@ -83,7 +83,7 @@ class LuminexXponentParser(VendorParser):
                     file_name=file_name,
                     software_name=DEFAULT_SOFTWARE_NAME,
                     software_version=header.software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 multi_analyte_profiling_document=[
