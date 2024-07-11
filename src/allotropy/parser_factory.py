@@ -57,7 +57,6 @@ from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_parser 
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_parser import (
     UnchainedLabsLunaticParser,
 )
-
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.vendor_parser import VendorParser
 

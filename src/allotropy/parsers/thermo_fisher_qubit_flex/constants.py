@@ -1,4 +1,4 @@
-""" Constants file for Thermo Fisher Scientific Qubit Flex Adapter"""
+""" Constants file for Thermo Fisher Scientific Qubit Flex Parser"""
 
 # Instrument constants
 SOFTWARE_NAME = "Qubit Flex software"
@@ -6,7 +6,7 @@ MODEL_NUMBER = "Qubit Flex"
 PRODUCT_MANUFACTURER = "Thermo Fisher Scientific"
 BRAND_NAME = "Qubit"
 DEVICE_TYPE = "fluorescence detector"
-DISPLAY_NAME = "Thermo Fisher Scientific Qubit Flex"
+DISPLAY_NAME = "Thermo Fisher Qubit Flex"
 
 # Error constants
 # Value to use for unsupported file format for the given file for the Adapter

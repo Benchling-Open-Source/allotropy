@@ -31,8 +31,4 @@ def test_parse_qubit_flex_to_asm(output_file: str) -> None:
         allotrope_dict,
         expected_filepath,
         write_actual_to_expected_on_fail=True,
-<<<<<<< HEAD
     )
-=======
-    )
->>>>>>> upstream/main

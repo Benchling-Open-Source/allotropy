@@ -1,44 +1,29 @@
-<<<<<<< HEAD
 """ Parser file for Thermo Fisher Scientific Qubit Flex Adapter"""
+from __future__ import annotations
 
 from typing import Any, TypeVar
-=======
-""" Parser file for Thermo Fisher Scientific Qubit FLex Parser"""
-
-from collections.abc import Mapping
-from typing import Any
->>>>>>> upstream/main
 
 import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-<<<<<<< HEAD
     ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
-=======
-    DataSystemDocument,
-    DeviceSystemDocument,
->>>>>>> upstream/main
     FluorescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     SampleDocument,
     SpectrophotometryAggregateDocument,
     SpectrophotometryDocumentItem,
-<<<<<<< HEAD
-=======
-    FluorescencePointDetectionDeviceControlAggregateDocument, FluorescencePointDetectionDeviceControlDocumentItem,
->>>>>>> upstream/main
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicrogramPerMicroliter,
     TQuantityValueMicrogramPerMilliliter,
-<<<<<<< HEAD
     TQuantityValueMicroliter,
     TQuantityValueMilligramPerMilliliter,
     TQuantityValueNanogramPerMicroliter,
@@ -61,30 +46,6 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 DataType = TypeVar("DataType")
 
-=======
-    TQuantityValueMilligramPerMilliliter,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanogramPerMilliliter,
-    TQuantityValuePicogramPerMilliliter, TQuantityValueRelativeFluorescenceUnit, TQuantityValueMicroliter,
-    TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
-)
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_reader import (
-    ThermoFisherQubitFlexReader, constants
-)
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
-from allotropy.parsers.vendor_parser import VendorParser
-
->>>>>>> upstream/main
 CONCENTRATION_UNIT_TO_TQUANTITY = {
     "ug/uL": TQuantityValueMicrogramPerMicroliter,
     "ug/mL": TQuantityValueMicrogramPerMilliliter,
@@ -95,30 +56,29 @@ CONCENTRATION_UNIT_TO_TQUANTITY = {
 }
 
 
-<<<<<<< HEAD
-def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any:
-=======
-def _get_str_or_none(data_frame: pd.DataFrame, row: int, column: str) -> str | None:
-    if column not in data_frame.columns:
-        return None
+def _get_concentration_value(
+    data_frame: pd.DataFrame, column: str, units_column: str, row: int
+) -> DataType | None:
+    """
+    Retrieves the value and its unit from the specified columns and row in the DataFrame. If units are not there, replace it with unitless" unit.
 
-    val = data_frame.iloc[row][column]
-    if pd.isna(val):
-        return None
+    parameters:
+    data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
+    column (str): The column name from which to retrieve the value.
+    units_column (str): The column name from which to retrieve the unit.
+    row (int): The row index from which to retrieve the value.
 
-    return str(val)
-
-
-def _get_str(data_frame: pd.DataFrame, row: int, column: str) -> str:
-    val = _get_str_or_none(data_frame=data_frame, row=row, column=column)
-
-    assert_not_none(val)
-
-    return str(val)
+    Returns:
+    Optional[DataType|None]: The concentration value converted to the appropriate data type, or None if the units are not available or invalid.
+    """
+    units = _get_value(data_frame, units_column, row)
+    if units is None:
+        units = ""
+    datatype = CONCENTRATION_UNIT_TO_TQUANTITY.get(units, TQuantityValueUnitless)
+    return _get_property_value(data_frame, column, row, datatype)
 
 
 def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
->>>>>>> upstream/main
     """
     Retrieves the value from a specified column and row in a DataFrame, handling NaNs
     and converting certain numpy types to native Python types.
@@ -129,7 +89,7 @@ def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
     row (int): The row index from which to retrieve the value.
 
     Returns:
-    Optional[Any]: The value from the specified cell converted to the appropriate Python type.
+    Optional[Any|None]: The value from the specified cell converted to the appropriate Python type.
                    Returns None if the column does not exist or the value is NaN.
     """
     if column not in data_frame.columns:
@@ -146,13 +106,8 @@ def _get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
 
 
 def _get_property_value(
-<<<<<<< HEAD
-    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
-) -> DataType:
-=======
-        data_frame: pd.DataFrame, column: str, row: int, datatype: Any
-) -> Any:
->>>>>>> upstream/main
+    data_frame: pd.DataFrame, column: str, row: int, datatype: type
+) -> DataType | None:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype.
@@ -161,51 +116,16 @@ def _get_property_value(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-<<<<<<< HEAD
-    datatype (Datatype): The type to which the retrieved value should be converted.
+    datatype (type): The type to which the retrieved value should be converted.
 
     Returns:
-    Datatype: The value from the specified cell converted to the specified datatype.
+    Datatype (Any|None): The value from the specified cell converted to the specified datatype.
          Returns None if the value is not found.
     """
     return (
         datatype(value=value)
         if (value := _get_value(data_frame, column, row))
         else None
-    )
-
-
-def _get_property_value_not_none(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
-) -> DataType:
-    """
-    Retrieves the value from a specified column and row in a DataFrame and converts it
-    to the specified datatype. If the value is not in the respective column it throws the Allotrope Exception.
-
-    Parameters:
-    data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
-    column (str): The column name from which to retrieve the value.
-    row (int): The row index from which to retrieve the value.
-    datatype (Datatype): The type to which the retrieved value should be converted.
-
-    Returns:
-    Datatype: The value from the specified cell converted to the specified datatype.
-         Returns None if the value is not found.
-    """
-    return (
-        datatype(value=value)
-        if (value := _get_value_not_none(data_frame, column, row))
-        else None
-=======
-    datatype (Any): The type to which the retrieved value should be converted.
-
-    Returns:
-    Any: The value from the specified cell converted to the specified datatype.
-         Returns None if the value is not found.
-    """
-    return (
-        datatype(value=value) if (value := _get_value(data_frame, column, row)) else None
->>>>>>> upstream/main
     )
 
 
@@ -231,7 +151,32 @@ def _get_value_not_none(dataframe: pd.DataFrame, column: str, row: int) -> Any:
     return value
 
 
-<<<<<<< HEAD
+def _get_property_value_not_none(
+    data_frame: pd.DataFrame, column: str, row: int, datatype: type
+) -> DataType | None:
+    """
+    Retrieves the value from a specified column and row in a DataFrame and converts it
+    to the specified datatype. If the value is not in the respective column it throws the Allotrope Exception.
+
+    Parameters:
+    data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
+    column (str): The column name from which to retrieve the value.
+    row (int): The row index from which to retrieve the value.
+    datatype (type): The type to which the retrieved value should be converted.
+
+    Returns:
+    Datatype(Any): The value from the specified cell converted to the specified datatype.
+
+    Raises:
+    AllotropeConversionError: If the value is None.
+    """
+    return (
+        datatype(value=value)
+        if (value := _get_value_not_none(data_frame, column, row))
+        else None
+    )
+
+
 class ThermoFisherQubitFlexParser(VendorParser):
     """
     A class provides the allotrope model of the Thermo Fisher Scientific Qubit Flex files
@@ -262,32 +207,12 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
         Returns: the Model of the provided named file
         """
-=======
-def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
-    try:
-        return float(data_frame.iloc[row][column])
-    except (ValueError, TypeError):
-        return InvalidJsonFloat.NaN
-
-
-class ThermoFisherQubitFlexParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Thermo Fisher Scientific Qubit Flex"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
-
-    def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
->>>>>>> upstream/main
         return self._get_model(
             data=ThermoFisherQubitFlexReader.read(named_file_contents),
             filename=named_file_contents.original_file_name,
         )
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
-<<<<<<< HEAD
         """
         Reads the content of the provided named file and returns it as Model
 
@@ -298,8 +223,6 @@ class ThermoFisherQubitFlexParser(VendorParser):
         Returns: the Model of the provided named file
         """
         software_version = _get_value(data, "Software Version", (len(data.index) - 1))
-=======
->>>>>>> upstream/main
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
             spectrophotometry_aggregate_document=SpectrophotometryAggregateDocument(
@@ -307,7 +230,6 @@ class ThermoFisherQubitFlexParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=constants.SOFTWARE_NAME,
-<<<<<<< HEAD
                     software_version=software_version,
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
@@ -317,22 +239,11 @@ class ThermoFisherQubitFlexParser(VendorParser):
                     device_identifier=NOT_APPLICABLE,
                     brand_name=constants.BRAND_NAME,
                     product_manufacturer=constants.PRODUCT_MANUFACTURER,
-=======
-                    ASM_converter_name=ASM_CONVERTER_NAME,
-                    ASM_converter_version=ASM_CONVERTER_VERSION
-                ),
-                device_system_document=DeviceSystemDocument(
-                    model_number=constants.MODEL_NUMBER,
-                    device_identifier="N/A",
-                    brand_name=constants.BRAND_NAME,
-                    product_manufacturer=constants.PRODUCT_MANUFACTURER
->>>>>>> upstream/main
                 ),
             ),
         )
 
     def _get_spectrophotometry_document(
-<<<<<<< HEAD
         self, data: pd.DataFrame
     ) -> list[SpectrophotometryDocumentItem]:
         """
@@ -376,7 +287,10 @@ class ThermoFisherQubitFlexParser(VendorParser):
 
     def _get_measurement_document(
         self, data: pd.DataFrame, i: int
-    ) -> list[FluorescencePointDetectionMeasurementDocumentItems]:
+    ) -> list[
+        FluorescencePointDetectionMeasurementDocumentItems
+        | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    ]:
         """
         Reads the content of the provided named file and returns it as a dictionary.
 
@@ -449,21 +363,11 @@ class ThermoFisherQubitFlexParser(VendorParser):
         if sample_id is None:
             sample_id = _get_value_not_none(data, "Sample Name", i)
         sample_custom_document = {
-            "original sample concentration": _get_property_value(
-                data,
-                "Original Sample Conc.",
-                i,
-                CONCENTRATION_UNIT_TO_TQUANTITY[
-                    _get_value(data, "Original sample conc. units", i)
-                ],
+            "original sample concentration": _get_concentration_value(
+                data, "Original Sample Conc.", "Original sample conc. units", i
             ),
-            "qubit tube concentration": _get_property_value(
-                data,
-                "Qubit Tube Conc.",
-                i,
-                CONCENTRATION_UNIT_TO_TQUANTITY[
-                    _get_value(data, "Qubit tube conc. units", i)
-                ],
+            "qubit tube concentration": _get_concentration_value(
+                data, "Qubit Tube Conc.", "Qubit tube conc. units", i
             ),
             "standard 1 concentration": _get_property_value(
                 data, "Std 1 RFU", i, TQuantityValueRelativeFluorescenceUnit
