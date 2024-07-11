@@ -166,7 +166,7 @@ extra-dependencies = [
 ]
 
 [tool.hatch.envs.test.scripts]
-test = "pytest -n auto {args:tests}"
+test = "pytest {args:tests}"
 short = "pytest -m short {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [

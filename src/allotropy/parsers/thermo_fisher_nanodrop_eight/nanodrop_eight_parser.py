@@ -44,7 +44,13 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import
     NanoDropEightReader,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import (
+    assert_not_none,
+    try_float_from_series,
+    try_float_from_series_or_nan,
+    try_str_from_series,
+    try_str_from_series_or_none,
+)
 from allotropy.parsers.vendor_parser import VendorParser
 
 ConcentrationType = (
@@ -74,32 +80,6 @@ CONCENTRATION_UNIT_TO_TQUANTITY: Mapping[str, ConcentrationClassType] = {
 }
 
 
-def _get_str_or_none(data_frame: pd.DataFrame, row: int, column: str) -> str | None:
-    if column not in data_frame.columns:
-        return None
-
-    val = data_frame.iloc[row][column]
-    if pd.isna(val):
-        return None
-
-    return str(val)
-
-
-def _get_str(data_frame: pd.DataFrame, row: int, column: str) -> str:
-    val = _get_str_or_none(data_frame=data_frame, row=row, column=column)
-
-    assert_not_none(val)
-
-    return str(val)
-
-
-def _get_float(data_frame: pd.DataFrame, row: int, column: str) -> JsonFloat:
-    try:
-        return float(data_frame.iloc[row][column])
-    except (ValueError, TypeError):
-        return InvalidJsonFloat.NaN
-
-
 def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType | None:
     if unit and unit in CONCENTRATION_UNIT_TO_TQUANTITY and isinstance(conc, float):
         cls = CONCENTRATION_UNIT_TO_TQUANTITY[unit]
@@ -120,6 +100,7 @@ class NanodropEightParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = NanoDropEightReader.read(named_file_contents)
         data = self._add_measurement_uuids(data)
+        data.columns = data.columns.str.lower()
         return self._get_model(data, named_file_contents.original_file_name)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
@@ -150,41 +131,38 @@ class NanodropEightParser(VendorParser):
     def _get_spectrophotometry_document(
         self, data: pd.DataFrame
     ) -> list[SpectrophotometryDocumentItem]:
-        return [
-            self._get_spectrophotometry_document_item(data, i)
-            for i in range(len(data.index))
-        ]
+        return list(data.apply(self._get_spectrophotometry_document_item, axis=1))
 
     def _get_calculated_data_document(
         self, data: pd.DataFrame
     ) -> list[CalculatedDataDocumentItem]:
-        calculated_data_documents = []
-        for i in range(len(data.index)):
-            if _get_str_or_none(data, i, "260/280"):
-                calculated_data_documents.append(self._get_260_280(data, i))
+        cal_docs = []
 
-            if _get_str_or_none(data, i, "260/230"):
-                calculated_data_documents.append(self._get_260_230(data, i))
+        def get_cal_docs(row_data):
+            if try_str_from_series_or_none(row_data, "260/280"):
+                cal_docs.append(self._get_260_280(row_data))
 
-        return calculated_data_documents
+            if try_str_from_series_or_none(row_data, "260/230"):
+                cal_docs.append(self._get_260_230(row_data))
 
-    def _get_260_280(self, data: pd.DataFrame, row: int) -> CalculatedDataDocumentItem:
+        data.apply(get_cal_docs, axis=1)
+        return cal_docs
+
+    def _get_260_280(self, row_data: pd.Series) -> CalculatedDataDocumentItem:
         data_source_doc_items = []
-        if _get_str_or_none(data, row, "a260"):
+        if try_str_from_series_or_none(row_data, "a260"):
             data_source_doc_items.append(
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=_get_str(data, row, "a260 uuid"),
+                    data_source_identifier=try_str_from_series(row_data, "a260 uuid"),
                 )
             )
 
-        if _get_str_or_none(data, row, "a280") or _get_str_or_none(
-            data, row, "a280 10mm"
-        ):
+        if try_str_from_series_or_none(row_data, "a280") or try_str_from_series_or_none(row_data, "a280 10mm"):
             data_source_doc_items.append(
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=_get_str(data, row, "a280 uuid"),
+                    data_source_identifier=try_str_from_series(row_data, "a280 uuid"),
                 )
             )
 
@@ -197,19 +175,19 @@ class NanodropEightParser(VendorParser):
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/280",
             calculated_result=TQuantityValueUnitless(
-                value=_get_float(data, row, "260/280")
+                value=try_float_from_series(row_data, "260/280")
             ),
             calculated_data_identifier=random_uuid_str(),
             data_source_aggregate_document=data_source_aggregate_document,
         )
 
-    def _get_260_230(self, data: pd.DataFrame, row: int) -> CalculatedDataDocumentItem:
+    def _get_260_230(self, row_data: pd.Series) -> CalculatedDataDocumentItem:
         data_source_doc_items = []
-        if _get_str_or_none(data, row, "a260"):
+        if try_str_from_series_or_none(row_data, "a260"):
             data_source_doc_items.append(
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=_get_str(data, row, "a260 uuid"),
+                    data_source_identifier=try_str_from_series(row_data, "a260 uuid"),
                 )
             )
 
@@ -221,28 +199,76 @@ class NanodropEightParser(VendorParser):
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/230",
             calculated_result=TQuantityValueUnitless(
-                value=_get_float(data, row, "260/230")
+                value=try_float_from_series(row_data, "260/230")
             ),
             calculated_data_identifier=random_uuid_str(),
             data_source_aggregate_document=data_source_aggregate_document,
         )
 
     def _get_spectrophotometry_document_item(
-        self, data: pd.DataFrame, row: int
+        self, row_data: pd.Series
     ) -> SpectrophotometryDocumentItem:
         return SpectrophotometryDocumentItem(
-            analyst=_get_str_or_none(data, row, "user id"),
+            analyst=try_str_from_series_or_none(row_data, "user id"),
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self._get_date_time(
-                    _get_str(data, row, "date") + " " + _get_str(data, row, "time")
+                    try_str_from_series_or_none(row_data, "date") + " " + try_str_from_series_or_none(row_data, "time")
                 ),
-                experiment_type=_get_str_or_none(data, row, "na type"),
-                measurement_document=self._get_measurement_document(data=data, row=row),
+                experiment_type=try_str_from_series_or_none(row_data, "na type"),
+                measurement_document=self._get_measurement_documents(row_data),
             ),
         )
 
     def _get_measurement_document(
-        self, data: pd.DataFrame, row: int
+        self,
+        row_data: pd.Series,
+        concentration_col: str | None,
+        absorbance_col: str,
+        wavelength: int,
+        uuid_col: str,
+    ):
+        mass_concentration = None
+        if concentration_col:
+            mass_concentration = _get_concentration(
+                try_float_from_series(row_data, concentration_col),
+                try_str_from_series_or_none(row_data, "units"),
+            )
+
+        processed_data_aggregate_document = None
+        if mass_concentration is not None:
+            processed_data_aggregate_document = ProcessedDataAggregateDocument(
+                processed_data_document=[
+                    ProcessedDataDocumentItem(mass_concentration=mass_concentration)
+                ]
+            )
+
+        return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
+            measurement_identifier=try_str_from_series_or_none(row_data, uuid_col),
+            sample_document=SampleDocument(
+                sample_identifier=try_str_from_series(row_data, "sample id")
+                if try_str_from_series_or_none(row_data, "sample id")
+                else NOT_APPLICABLE,
+                well_plate_identifier=try_str_from_series_or_none(row_data, "plate id"),
+                location_identifier=try_str_from_series_or_none(row_data, "well"),
+            ),
+            processed_data_aggregate_document=processed_data_aggregate_document,
+            device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                        device_type="absorbance detector",
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            value=wavelength
+                        ),
+                    )
+                ]
+            ),
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=try_float_from_series(row_data, absorbance_col)
+            ),
+        )
+
+    def _get_measurement_documents(
+        self, row_data: pd.Series
     ) -> list[
         FluorescencePointDetectionMeasurementDocumentItems
         | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
@@ -252,116 +278,46 @@ class NanodropEightParser(VendorParser):
             | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
         ]
         measurement_docs = []
-        na_type = _get_str_or_none(data, row, "na type")
-        concentration_col = self._get_concentration_col(data)
+        experiment_type = try_str_from_series_or_none(row_data, "na type")
+        is_na_experiment = experiment_type and "NA" in experiment_type
+        concentration_col = self._get_concentration_col(row_data)
         a280_col = "a280"
-        if a280_col not in data.columns and "a280 10mm" in data.columns:
+        if a280_col not in row_data.index and "a280 10mm" in row_data.index:
             a280_col = "a280 10mm"
 
-        if _get_str_or_none(data, row, "a260"):
+        if try_str_from_series_or_none(row_data, "a260"):
             # capture concentration on the A260 measurement document if the experiment type is
             # DNA or RNA, protein and other concentration is captured on A280 measurment
             # if there is no experiment type and no 280 column add the concentration here
-
-            mass_concentration = None
-            processed_data_aggregate_document = None
-
-            if concentration_col and (
-                (na_type is not None and "NA" in na_type)
-                or (na_type is None and a280_col not in data.columns)
-            ):
-                mass_concentration = _get_concentration(
-                    _get_float(data, row, concentration_col),
-                    _get_str_or_none(data, row, "units"),
-                )
-
-            if mass_concentration is not None:
-                processed_data_aggregate_document = ProcessedDataAggregateDocument(
-                    processed_data_document=[
-                        ProcessedDataDocumentItem(mass_concentration=mass_concentration)
-                    ]
-                )
-
-            measurement_docs.append(
-                UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                    measurement_identifier=_get_str(data, row, "a260 uuid"),
-                    sample_document=SampleDocument(
-                        sample_identifier=_get_str(data, row, "sample id")
-                        if _get_str_or_none(data, row, "sample id")
-                        else NOT_APPLICABLE,
-                        well_plate_identifier=_get_str_or_none(data, row, "plate ID"),
-                        location_identifier=_get_str_or_none(data, row, "well"),
-                    ),
-                    processed_data_aggregate_document=processed_data_aggregate_document,
-                    device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                        device_control_document=[
-                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                                device_type="absorbance detector",
-                                detector_wavelength_setting=TQuantityValueNanometer(
-                                    value=260
-                                ),
-                            )
-                        ]
-                    ),
-                    absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        value=_get_float(data, row, "a260")
-                    ),
-                )
+            capture_concentration = (
+                is_na_experiment
+                or not (experiment_type or a280_col in row_data.index)
             )
+            measurement_docs.append(self._get_measurement_document(
+                row_data,
+                concentration_col if capture_concentration else None,
+                "a260",
+                260,
+                "a260 uuid",
+            ))
 
-        if _get_str_or_none(data, row, a280_col):
+        if try_str_from_series_or_none(row_data, a280_col):
             # capture concentration on the A280 measurement document if the experiment type is
             # something other than DNA or RNA or if the experiment type is not specified
-            mass_concentration = None
-            if (na_type is not None and "NA" not in na_type and concentration_col) or (
-                na_type is None and concentration_col
-            ):
-                mass_concentration = _get_concentration(
-                    _get_float(data, row, str(concentration_col)),
-                    _get_str_or_none(data, row, "units"),
-                )
-            processed_data_aggregate_document = None
-            if mass_concentration:
-                processed_data_aggregate_document = ProcessedDataAggregateDocument(
-                    processed_data_document=[
-                        ProcessedDataDocumentItem(
-                            # capture concentration on the A280 measurement document if the experiment type is
-                            # something other than DNA or RNA or n ot specified
-                            mass_concentration=mass_concentration
-                        )
-                    ]
-                )
-            measurement_docs.append(
-                UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-                    measurement_identifier=_get_str(data, row, "a280 uuid"),
-                    sample_document=SampleDocument(
-                        sample_identifier=_get_str(data, row, "sample id")
-                        if _get_str_or_none(data, row, "sample id")
-                        else NOT_APPLICABLE,
-                        well_plate_identifier=_get_str_or_none(data, row, "plate id"),
-                        location_identifier=_get_str_or_none(data, row, "well"),
-                    ),
-                    processed_data_aggregate_document=processed_data_aggregate_document,
-                    device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
-                        device_control_document=[
-                            UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                                device_type="absorbance detector",
-                                detector_wavelength_setting=TQuantityValueNanometer(
-                                    value=280
-                                ),
-                            )
-                        ]
-                    ),
-                    absorbance=TQuantityValueMilliAbsorbanceUnit(
-                        value=_get_float(data, row, a280_col)
-                    ),
-                )
-            )
+            capture_concentration = not (experiment_type and is_na_experiment)
+            measurement_docs.append(self._get_measurement_document(
+                row_data,
+                concentration_col if capture_concentration else None,
+                a280_col,
+                280,
+                "a280 uuid",
+            ))
 
         return measurement_docs
 
-    def _get_concentration_col(self, data: pd.DataFrame) -> str | None:
-        for col in data.columns:
+    def _get_concentration_col(self, row_data: pd.Series) -> str | None:
+        # TODO: reverse this
+        for col in row_data.index:
             if col.lower() in ["conc.", "conc", "concentration"]:
                 return col
         return None
