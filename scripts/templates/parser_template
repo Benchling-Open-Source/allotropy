@@ -1,6 +1,6 @@
 from typing import Any
 
-from allotropy.allotrope.models.adm.$SCHEMA_PATH$ import Model
+from $IMPORT_PATH$ import Model
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents

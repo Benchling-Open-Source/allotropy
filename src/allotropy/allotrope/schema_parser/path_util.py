@@ -78,10 +78,16 @@ def get_model_file_from_schema_path(schema_path: Path) -> Path:
     return Path(model_path, model_file)
 
 
+def get_import_path_from_path(model_path: Path) -> str:
+    # NOTE: PureWindowsPath handles both Windows and linux paths.
+    return (
+        f"allotropy.allotrope.models.{'.'.join(PureWindowsPath(model_path).parts)[:-3]}"
+    )
+
+
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    # NOTE: PureWindowsPath handles both Windows and linux paths.
-    model_file = PureWindowsPath(get_model_file_from_schema_path(Path(schema_path)))
-    import_path = f"allotropy.allotrope.models.{'.'.join(model_file.parts)[:-3]}"
+    model_file = get_model_file_from_schema_path(Path(schema_path))
+    import_path = get_import_path_from_path(model_file)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model
