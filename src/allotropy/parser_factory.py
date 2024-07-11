@@ -1,3 +1,4 @@
+from collections import defaultdict
 from datetime import tzinfo
 from enum import Enum
 from pathlib import Path
@@ -128,9 +129,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
 
 
 def update_readme() -> None:
-    release_state_to_parser: dict[ReleaseState, set[str]] = {
-        release_state: set() for release_state in ReleaseState
-    }
+    release_state_to_parser = defaultdict(set)
     for vendor in Vendor:
         if "example" in str(vendor).lower():
             continue
