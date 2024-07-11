@@ -37,7 +37,7 @@ class VendorParser(ABC):
 
     def get_asm_converter_name(self) -> str:
         """Returns the ASM converter name for this parser."""
-        return f'{ASM_CONVERTER_NAME}_{self.display_name.replace(" ", "_")}'.lower()
+        return f'{ASM_CONVERTER_NAME}_{self.display_name.replace(" ", "_").replace("-", "_")}'.lower()
 
     def _get_date_time(self, time: str) -> TDateTimeValue:
         assert_not_none(time, "time")

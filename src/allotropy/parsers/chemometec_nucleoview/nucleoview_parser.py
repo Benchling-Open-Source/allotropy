@@ -24,10 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
     TDateTimeValue,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION

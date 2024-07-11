@@ -24,7 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
 
-ASM_CONVERTER_NAME = "allotropy_beckman_vi-cell_blu"
+ASM_CONVERTER_NAME = "allotropy_beckman_vi_cell_blu"
 
 
 def get_filename() -> str:

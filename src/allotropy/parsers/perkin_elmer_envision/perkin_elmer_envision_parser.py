@@ -37,13 +37,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TDateTimeValue,
-    TQuantityValue,
 )
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents

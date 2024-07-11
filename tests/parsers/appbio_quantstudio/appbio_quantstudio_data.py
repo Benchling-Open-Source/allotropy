@@ -55,7 +55,7 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     DataSource,
 )
 
-ASM_CONVERTER_NAME = "allotropy_appbio_quantstudio_rt-pcr"
+ASM_CONVERTER_NAME = "allotropy_appbio_quantstudio_rt_pcr"
 
 
 def get_data() -> Data:
