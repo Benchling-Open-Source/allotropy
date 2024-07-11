@@ -11,7 +11,7 @@ from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
 
 
 def get_reader() -> CsvReader:
-    filename = "tests/parsers/luminex_xponent/testdata/test_data.csv"
+    filename = "tests/parsers/luminex_xponent/testdata/test_data_exclude.csv"
     with open(filename, "rb") as fp:
         named_file_contents = NamedFileContents(fp, filename)
         lines = read_to_lines(named_file_contents)

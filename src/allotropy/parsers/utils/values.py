@@ -10,6 +10,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
+    TQuantityValue,
 )
 from allotropy.exceptions import AllotropeConversionError
 
@@ -44,6 +45,26 @@ def try_float(value: str, value_name: str) -> float:
         raise AllotropeConversionError(msg) from e
 
 
+def try_float_or_none(value: str | float | None) -> float | None:
+    try:
+        return float("" if value is None else value)
+    except ValueError:
+        return None
+
+
+def try_nan_float_or_none(value: str | float | None) -> JsonFloat | None:
+    float_value = try_float_or_none(value) if isinstance(value, str) else value
+    if float_value is None:
+        return None
+    return InvalidJsonFloat.NaN if math.isnan(float_value) else float_value
+
+
+def try_non_nan_float_or_none(value: str | float | None) -> float | None:
+    # float_value = try_float_or_none(value) if isinstance(value, str) else value
+    float_value = try_float_or_none(value)
+    return None if float_value is None or math.isnan(float_value) else float_value
+
+
 def try_non_nan_float(value: str) -> float:
     float_value = try_non_nan_float_or_none(value)
     if float_value is None:
@@ -52,19 +73,14 @@ def try_non_nan_float(value: str) -> float:
     return float_value
 
 
-def try_non_nan_float_or_none(value: str | None) -> float | None:
-    float_value = try_float_or_none(value)
-    return None if float_value is None or math.isnan(float_value) else float_value
+def try_int_or_nan(value: str | int | None) -> int | InvalidJsonFloat:
+    if isinstance(value, int):
+        return value
+    float_value = try_non_nan_float_or_none(value)
+    return InvalidJsonFloat.NaN if float_value is None else int(float_value)
 
 
-def try_float_or_none(value: str | None) -> float | None:
-    try:
-        return float("" if value is None else value)
-    except ValueError:
-        return None
-
-
-def try_float_or_nan(value: str | None) -> JsonFloat:
+def try_float_or_nan(value: str | float | None) -> JsonFloat:
     float_value = try_non_nan_float_or_none(value)
     return InvalidJsonFloat.NaN if float_value is None else float_value
 
@@ -75,6 +91,21 @@ def natural_sort_key(key: str) -> list[str]:
     return [
         f"{int(token):>10}" if token.isdecimal() else token.lower() for token in tokens
     ]
+
+
+QuantityType = TypeVar("QuantityType", bound=TQuantityValue)
+
+
+def quantity_or_none(
+    value_cls: type[QuantityType],
+    value: JsonFloat | list[JsonFloat] | list[int] | None,
+    index: int | None = None,
+) -> QuantityType | None:
+    if value is None:
+        return None
+    if isinstance(value, list):
+        return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
+    return value_cls(value=value)  # type: ignore[call-arg]
 
 
 T = TypeVar("T")
