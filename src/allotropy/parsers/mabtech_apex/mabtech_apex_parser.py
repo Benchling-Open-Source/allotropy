@@ -22,7 +22,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
@@ -33,6 +33,7 @@ from allotropy.parsers.mabtech_apex.mabtech_apex_structure import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -67,7 +68,7 @@ class MabtechApexParser(VendorParser):
                     UNC_path=data.unc_path,
                     software_name="Apex",
                     software_version=data.software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
@@ -124,15 +125,11 @@ class MabtechApexParser(VendorParser):
         return OpticalImagingDeviceControlDocumentItem(
             device_type="imager",
             detection_type="optical-imaging",
-            exposure_duration_setting=(
-                None
-                if well.exposure_duration_setting is None
-                else TQuantityValueMilliSecond(value=well.exposure_duration_setting)
+            exposure_duration_setting=quantity_or_none(
+                TQuantityValueMilliSecond, well.exposure_duration_setting
             ),
-            illumination_setting=(
-                None
-                if well.illumination_setting is None
-                else TQuantityValueUnitless(value=well.illumination_setting)
+            illumination_setting=quantity_or_none(
+                TQuantityValueUnitless, well.illumination_setting
             ),
         )
 

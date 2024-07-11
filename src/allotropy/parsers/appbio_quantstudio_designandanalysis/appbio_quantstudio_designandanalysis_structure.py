@@ -21,7 +21,6 @@ from allotropy.parsers.utils.values import (
     assert_df_column,
     assert_not_empty_df,
     assert_not_none,
-    df_to_series,
     try_bool_from_series_or_none,
     try_float,
     try_float_from_series,
@@ -206,9 +205,7 @@ class WellItem(Referenceable):
                     melt_curve_data, identifier, target_dna_description
                 )
             ),
-            result=Result.create(
-                contents, identifier, target_dna_description, experiment_type
-            ),
+            result=Result.create(data, identifier, experiment_type),
         )
 
 
@@ -239,7 +236,6 @@ class Well:
             )
             for _, item_data in well_data.iterrows()
         }
-
         multi_data = contents.get_non_empty_sheet_or_none("Multicomponent")
         return Well(
             identifier=identifier,
@@ -266,13 +262,87 @@ class WellList:
         return iter(self.wells)
 
     @staticmethod
+    def get_well_result_data(
+        contents: DesignQuantstudioContents, experiment_type: ExperimentType
+    ) -> pd.DataFrame:
+        data_sheet = (
+            "Standard Curve Result"
+            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
+            else "Results"
+        )
+
+        data = contents.get_non_empty_sheet(data_sheet)
+
+        def add_data(extra_data: pd.DataFrame, columns: list[str]) -> None:
+            data[columns] = None
+            for _, row in extra_data.iterrows():
+                sample_cond = data["Sample"] == row["Sample"]
+                target_cond = data["Target"] == row["Target"]
+                data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
+
+        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
+            add_data(
+                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
+                columns=[
+                    "Cq SE",
+                ],
+            )
+
+            add_data(
+                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
+                columns=[
+                    "EqCq Mean",
+                    "Adjusted EqCq Mean",
+                    "Delta EqCq Mean",
+                    "Delta EqCq SD",
+                    "Delta EqCq SE",
+                    "Delta Delta EqCq",
+                    "Rq",
+                    "Rq Min",
+                    "Rq Max",
+                ],
+            )
+        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
+            add_data(
+                extra_data=contents.get_non_empty_sheet("Target Call"),
+                columns=[
+                    "Call",
+                ],
+            )
+        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
+            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
+
+            # The genotyping result data does not contain a target column
+            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
+            rows = []
+            for idx, row in genotyping_result.iterrows():
+                snp_assay = assert_not_none(
+                    row.get("SNP Assay"),
+                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
+                )
+                for allele in ["Allele 1", "Allele 2"]:
+                    new_row = row.copy()
+                    new_row["Target"] = f"{snp_assay}-{allele}"
+                    rows.append(new_row)
+
+            add_data(
+                extra_data=pd.DataFrame(rows).reset_index(drop=True),
+                columns=[
+                    "Call",
+                ],
+            )
+
+        return data
+
+    @staticmethod
     def create(
         contents: DesignQuantstudioContents,
         header: Header,
         experiment_type: ExperimentType,
     ) -> WellList:
-        results_data = contents.get_non_empty_sheet("Results")
+        results_data = WellList.get_well_result_data(contents, experiment_type)
         assert_df_column(results_data, "Well")
+
         return WellList(
             wells=[
                 Well.create(
@@ -464,102 +534,11 @@ class Result:
         raise AllotropeConversionError(error)
 
     @staticmethod
-    def _add_data(
-        data: pd.DataFrame, extra_data: pd.DataFrame, columns: list[str]
-    ) -> None:
-
-        data[columns] = None
-        for _, row in extra_data.iterrows():
-            sample_cond = data["Sample"] == row["Sample"]
-            target_cond = data["Target"] == row["Target"]
-            data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
-
-    @staticmethod
     def create(
-        contents: DesignQuantstudioContents,
+        target_data: pd.Series[str],
         well_item_id: int,
-        target_dna_description: str,
         experiment_type: ExperimentType,
     ) -> Result:
-        data_sheet = (
-            "Standard Curve Result"
-            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
-            else "Results"
-        )
-
-        data = contents.get_non_empty_sheet(data_sheet)
-
-        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-            Result._add_data(
-                data,
-                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
-                columns=[
-                    "Cq SE",
-                ],
-            )
-
-            Result._add_data(
-                data,
-                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
-                columns=[
-                    "EqCq Mean",
-                    "Adjusted EqCq Mean",
-                    "Delta EqCq Mean",
-                    "Delta EqCq SD",
-                    "Delta EqCq SE",
-                    "Delta Delta EqCq",
-                    "Rq",
-                    "Rq Min",
-                    "Rq Max",
-                ],
-            )
-        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
-            Result._add_data(
-                data,
-                extra_data=contents.get_non_empty_sheet("Target Call"),
-                columns=[
-                    "Call",
-                ],
-            )
-        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
-
-            # The genotyping result data does not contain a target column
-            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
-            rows = []
-            for idx, row in genotyping_result.iterrows():
-                snp_assay = assert_not_none(
-                    row.get("SNP Assay"),
-                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
-                )
-                for allele in ["Allele 1", "Allele 2"]:
-                    new_row = row.copy()
-                    new_row["Target"] = f"{snp_assay}-{allele}"
-                    rows.append(new_row)
-
-            Result._add_data(
-                data,
-                extra_data=pd.DataFrame(rows).reset_index(drop=True),
-                columns=[
-                    "Call",
-                ],
-            )
-
-        well_data = assert_not_empty_df(
-            data[assert_df_column(data, "Well") == well_item_id],
-            msg=f"Unable to find result data for well {well_item_id}.",
-        )
-
-        target_data = df_to_series(
-            assert_not_empty_df(
-                well_data[
-                    assert_df_column(well_data, "Target") == target_dna_description
-                ],
-                msg=f"Unable to find result data for well {well_item_id}.",
-            ),
-            msg=f"Expected exactly 1 row of results to be associated with target '{target_dna_description}' in well {well_item_id}.",
-        )
-
         genotyping_determination_result = (
             try_str_from_series_or_none(target_data, "Call")
             if experiment_type

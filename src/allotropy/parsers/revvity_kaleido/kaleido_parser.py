@@ -41,7 +41,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
@@ -53,7 +53,7 @@ from allotropy.parsers.revvity_kaleido.kaleido_structure import (
     ExperimentType,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
+from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementItem = (
@@ -98,30 +98,18 @@ class FluorescenceMeasurementParser(MeasurementParser):
         return FluorescencePointDetectionDeviceControlDocumentItem(
             device_type="fluorescence detector",
             detection_type="fluorescence",
-            number_of_averages=(
-                None
-                if data.measurements.number_of_averages is None
-                else TQuantityValueNumber(value=data.measurements.number_of_averages)
+            number_of_averages=quantity_or_none(
+                TQuantityValueNumber, data.measurements.number_of_averages
             ),
-            detector_distance_setting__plate_reader_=(
-                None
-                if data.measurements.detector_distance is None
-                else TQuantityValueMillimeter(value=data.measurements.detector_distance)
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter, data.measurements.detector_distance
             ),
             scan_position_setting__plate_reader_=data.measurements.scan_position,
-            detector_wavelength_setting=(
-                None
-                if data.measurements.emission_wavelength is None
-                else TQuantityValueNanometer(
-                    value=data.measurements.emission_wavelength
-                )
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer, data.measurements.emission_wavelength
             ),
-            excitation_wavelength_setting=(
-                None
-                if data.measurements.excitation_wavelength is None
-                else TQuantityValueNanometer(
-                    value=data.measurements.excitation_wavelength
-                )
+            excitation_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer, data.measurements.excitation_wavelength
             ),
         )
 
@@ -156,17 +144,11 @@ class AbsorbanceMeasurementParser(MeasurementParser):
                     msg="Unable to find number of averages",
                 ),
             ),
-            detector_distance_setting__plate_reader_=(
-                None
-                if data.measurements.detector_distance is None
-                else TQuantityValueMillimeter(value=data.measurements.detector_distance)
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter, data.measurements.detector_distance
             ),
-            detector_wavelength_setting=(
-                None
-                if data.measurements.excitation_wavelength is None
-                else TQuantityValueNanometer(
-                    value=data.measurements.excitation_wavelength
-                )
+            detector_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer, data.measurements.excitation_wavelength
             ),
         )
 
@@ -195,10 +177,8 @@ class LuminescenceMeasurementParser(MeasurementParser):
         return LuminescencePointDetectionDeviceControlDocumentItem(
             device_type="luminescence detector",
             detection_type=data.background_info.experiment_type,
-            detector_distance_setting__plate_reader_=(
-                None
-                if data.measurements.detector_distance is None
-                else TQuantityValueMillimeter(value=data.measurements.detector_distance)
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter, data.measurements.detector_distance
             ),
         )
 
@@ -227,26 +207,18 @@ class ImagingMeasurementParser(MeasurementParser):
         return OpticalImagingDeviceControlDocumentItem(
             device_type="imaging detector",
             detection_type="optical-imaging",
-            detector_distance_setting__plate_reader_=(
-                None
-                if data.measurements.focus_height is None
-                else TQuantityValueMillimeter(value=data.measurements.focus_height)
+            detector_distance_setting__plate_reader_=quantity_or_none(
+                TQuantityValueMillimeter, data.measurements.focus_height
             ),
-            excitation_wavelength_setting=(
-                None
-                if channel.excitation_wavelength is None
-                else TQuantityValueNanometer(value=channel.excitation_wavelength)
+            excitation_wavelength_setting=quantity_or_none(
+                TQuantityValueNanometer, channel.excitation_wavelength
             ),
             magnification_setting=TQuantityValueUnitless(value=4),
-            exposure_duration_setting=(
-                None
-                if channel.exposure_duration is None
-                else TQuantityValueMilliSecond(value=channel.exposure_duration)
+            exposure_duration_setting=quantity_or_none(
+                TQuantityValueMilliSecond, channel.exposure_duration
             ),
-            illumination_setting=(
-                None
-                if channel.illumination is None
-                else TQuantityValuePercent(value=channel.illumination)
+            illumination_setting=quantity_or_none(
+                TQuantityValuePercent, channel.illumination
             ),
             transmitted_light_setting=channel.transmitted_light,
             fluorescent_tag_setting=channel.fluorescent_tag,
@@ -309,7 +281,7 @@ class KaleidoParser(VendorParser):
             file_name=file_name,
             software_name="Kaleido",
             software_version=version,
-            ASM_converter_name=ASM_CONVERTER_NAME,
+            ASM_converter_name=self.get_asm_converter_name(),
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 

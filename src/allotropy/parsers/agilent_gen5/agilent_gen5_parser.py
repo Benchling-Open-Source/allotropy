@@ -34,7 +34,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import PlateData
@@ -48,6 +48,7 @@ from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = (
@@ -55,19 +56,6 @@ MeasurementDocumentItems = (
     | FluorescencePointDetectionMeasurementDocumentItems
     | LuminescencePointDetectionMeasurementDocumentItems
 )
-
-MeasurementDocumentAttributeClasses = (
-    TQuantityValueDegreeCelsius
-    | TQuantityValueMillimeter
-    | TQuantityValueNanometer
-    | TQuantityValueNumber
-)
-
-
-def get_instance_or_none(
-    cls: type[MeasurementDocumentAttributeClasses], value: Any
-) -> Any:
-    return cls(value=value) if value is not None else None
 
 
 class AgilentGen5Parser(VendorParser):
@@ -113,7 +101,7 @@ class AgilentGen5Parser(VendorParser):
                     file_name=file_name,
                     software_name=DEFAULT_SOFTWARE_NAME,
                     software_version=plate_data.header_data.software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
@@ -139,18 +127,19 @@ class AgilentGen5Parser(VendorParser):
 
         measurement_document: Sequence[MeasurementDocumentItems]
 
-        if read_mode == ReadMode.ABSORBANCE:
-            measurement_document = self._get_absorbance_measurement_document(
-                plate_data, well_position
-            )
-        elif read_mode == ReadMode.FLUORESCENCE:
-            measurement_document = self._get_fluorescence_measurement_document(
-                plate_data, well_position
-            )
-        elif read_mode == ReadMode.LUMINESCENCE:
-            measurement_document = self._get_luminescence_measurement_document(
-                plate_data, well_position
-            )
+        match read_mode:
+            case ReadMode.ABSORBANCE:
+                measurement_document = self._get_absorbance_measurement_document(
+                    plate_data, well_position
+                )
+            case ReadMode.FLUORESCENCE:
+                measurement_document = self._get_fluorescence_measurement_document(
+                    plate_data, well_position
+                )
+            case ReadMode.LUMINESCENCE:
+                measurement_document = self._get_luminescence_measurement_document(
+                    plate_data, well_position
+                )
 
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
@@ -200,17 +189,15 @@ class AgilentGen5Parser(VendorParser):
                             detector_wavelength_setting=TQuantityValueNanometer(
                                 value=self._get_wavelength_from_label(measurement.label)
                             ),
-                            number_of_averages=(
-                                TQuantityValueNumber(value=read_data.number_of_averages)
-                                if read_data.number_of_averages
-                                else None
+                            number_of_averages=quantity_or_none(
+                                TQuantityValueNumber, read_data.number_of_averages
                             ),
                             detector_carriage_speed_setting=read_data.detector_carriage_speed,
                         )
                     ]
                 ),
                 absorbance=TQuantityValueMilliAbsorbanceUnit(value=measurement.value),
-                compartment_temperature=get_instance_or_none(
+                compartment_temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius, plate_data.compartment_temperature
                 ),
             )
@@ -236,32 +223,32 @@ class AgilentGen5Parser(VendorParser):
                         FluorescencePointDetectionDeviceControlDocumentItem(
                             device_type=DEVICE_TYPE,
                             detection_type=read_data.read_mode.value,
-                            detector_wavelength_setting=get_instance_or_none(
+                            detector_wavelength_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 filter_data.detector_wavelength_setting,
                             ),
-                            detector_bandwidth_setting=get_instance_or_none(
+                            detector_bandwidth_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 filter_data.detector_bandwidth_setting,
                             ),
-                            excitation_wavelength_setting=get_instance_or_none(
+                            excitation_wavelength_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 filter_data.excitation_wavelength_setting,
                             ),
-                            excitation_bandwidth_setting=get_instance_or_none(
+                            excitation_bandwidth_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 filter_data.excitation_bandwidth_setting,
                             ),
-                            wavelength_filter_cutoff_setting=get_instance_or_none(
+                            wavelength_filter_cutoff_setting=quantity_or_none(
                                 TQuantityValueNanometer,
                                 filter_data.wavelength_filter_cutoff_setting,
                             ),
-                            detector_distance_setting__plate_reader_=get_instance_or_none(
+                            detector_distance_setting__plate_reader_=quantity_or_none(
                                 TQuantityValueMillimeter, read_data.detector_distance
                             ),
                             scan_position_setting__plate_reader_=filter_data.scan_position_setting,
                             detector_gain_setting=filter_data.gain,
-                            number_of_averages=get_instance_or_none(
+                            number_of_averages=quantity_or_none(
                                 TQuantityValueNumber, read_data.number_of_averages
                             ),
                             detector_carriage_speed_setting=read_data.detector_carriage_speed,
@@ -271,7 +258,7 @@ class AgilentGen5Parser(VendorParser):
                 fluorescence=TQuantityValueRelativeFluorescenceUnit(
                     value=measurement.value
                 ),
-                compartment_temperature=get_instance_or_none(
+                compartment_temperature=quantity_or_none(
                     TQuantityValueDegreeCelsius, plate_data.compartment_temperature
                 ),
             )
@@ -299,15 +286,15 @@ class AgilentGen5Parser(VendorParser):
                             LuminescencePointDetectionDeviceControlDocumentItem(
                                 device_type=DEVICE_TYPE,
                                 detection_type=read_data.read_mode.value,
-                                detector_wavelength_setting=get_instance_or_none(
+                                detector_wavelength_setting=quantity_or_none(
                                     TQuantityValueNanometer,
                                     filter_data.detector_wavelength_setting,
                                 ),
-                                detector_bandwidth_setting=get_instance_or_none(
+                                detector_bandwidth_setting=quantity_or_none(
                                     TQuantityValueNanometer,
                                     filter_data.detector_bandwidth_setting,
                                 ),
-                                detector_distance_setting__plate_reader_=get_instance_or_none(
+                                detector_distance_setting__plate_reader_=quantity_or_none(
                                     TQuantityValueMillimeter,
                                     read_data.detector_distance,
                                 ),

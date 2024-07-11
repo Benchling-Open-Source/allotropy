@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
 import pandas as pd
 
@@ -102,7 +101,7 @@ class CombinedData:
     @staticmethod
     def get_parameter(
         reader: CsvReader, name: str, *, all_vals_after_tab: bool = False
-    ) -> Optional[str]:
+    ) -> str | None:
         val_line = reader.drop_until_inclusive(name)
         if val_line is not None:
             try:
@@ -120,7 +119,7 @@ class CombinedData:
 class PlateData:
     measurement_time: str
     plate_well_count: int
-    analyst: Optional[str]
+    analyst: str | None
     well_plate_id: str
     well_data: list[WellData]
 
@@ -128,7 +127,7 @@ class PlateData:
     def create(
         plate_df: pd.DataFrame,
         measurement_time: str,
-        analyst: Optional[str],
+        analyst: str | None,
         well_plate_id: str,
         plate_well_count: int,
     ) -> PlateData:
@@ -139,9 +138,9 @@ class PlateData:
             spot_index_counter += 1
             # Skip the first column since it's the well names (no luminescence values)
             for col in plate_df.columns[1:]:
-                if pd.notna(row[0]):
+                if pd.notna(row.iloc[0]):
                     # This is the row well name-- A, B, C, etc.
-                    well_row = row[0].strip()
+                    well_row = row.iloc[0].strip()
                     # If we've detected a new well row, reset the spot index counter
                     spot_index_counter = 1
                 location_name = well_row + col.strip() + "_" + str(spot_index_counter)

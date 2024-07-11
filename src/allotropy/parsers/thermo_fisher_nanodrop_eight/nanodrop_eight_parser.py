@@ -30,14 +30,13 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanogramPerMilliliter,
     TQuantityValueNanometer,
     TQuantityValuePicogramPerMilliliter,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
-    TQuantityValue,
 )
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
@@ -133,7 +132,7 @@ class NanodropEightParser(VendorParser):
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
@@ -197,8 +196,8 @@ class NanodropEightParser(VendorParser):
 
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/280",
-            calculated_result=TQuantityValue(
-                value=_get_float(data, row, "260/280"), unit=UNITLESS
+            calculated_result=TQuantityValueUnitless(
+                value=_get_float(data, row, "260/280")
             ),
             calculated_data_identifier=random_uuid_str(),
             data_source_aggregate_document=data_source_aggregate_document,
@@ -221,8 +220,8 @@ class NanodropEightParser(VendorParser):
             )
         return CalculatedDataDocumentItem(
             calculated_data_name="A260/230",
-            calculated_result=TQuantityValue(
-                value=_get_float(data, row, "260/230"), unit=UNITLESS
+            calculated_result=TQuantityValueUnitless(
+                value=_get_float(data, row, "260/230")
             ),
             calculated_data_identifier=random_uuid_str(),
             data_source_aggregate_document=data_source_aggregate_document,

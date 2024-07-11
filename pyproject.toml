@@ -17,6 +17,7 @@ authors = [
   { name = "Chris Friedline", email = "chris.friedline@benchling.com" },
   { name = "Kathy Garcia", email = "kathy@benchling.com" },
   { name = "Trevor Halum", email = "trevor.halum@deepgenomics.com" },
+  { name = "Joshua Hernandez", email = "jherna@benchling.com" },
   { name = "Sebastian Lopez", email = "sebastian.cardona@benchling.com" },
   { name = "James Leinas", email = "james.leinas@benchling.com" },
   { name = "Mindren Lu", email = "mindren.lu@benchling.com" },
@@ -54,7 +55,7 @@ Issues = "https://github.com/Benchling-Open-Source/allotropy/issues"
 Source = "https://github.com/Benchling-Open-Source/allotropy"
 
 [tool.black]
-target-version = ["py39"]
+target-version = ["py310"]
 skip-string-normalization = true
 
 [tool.coverage.run]
@@ -101,7 +102,7 @@ dependencies = [
   "datamodel-code-generator == 0.25.2",
   # Without jsonschema-spec and pydantic, pydantic spews a bunch of errors when parsing schemas
   "jsonschema-specifications == 2023.7.1",
-  "pydantic == 1.10.9",
+  "pydantic == 1.10.17",
   "ruff == 0.0.289",
 ]
 
@@ -161,10 +162,11 @@ extra-dependencies = [
   "deepdiff >= 6.5.0",
   "more-itertools >= 10.1.0",
   "pytest >= 7.4.0",
+  "pytest-xdist >= 3.6.1",
 ]
 
 [tool.hatch.envs.test.scripts]
-test = "pytest {args:tests}"
+test = "pytest -n auto {args:tests}"
 short = "pytest -m short {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
@@ -183,7 +185,7 @@ markers = [
 ]
 
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 select = [
   "A",
   "ARG",

@@ -264,7 +264,7 @@ class ReadData:
             emissions = device_control_data.get(EMISSION_KEY, [])
             measurement_labels = [
                 f"{label_prefix}{excitation},{emission}"
-                for excitation, emission in zip(excitations, emissions)
+                for excitation, emission in zip(excitations, emissions, strict=True)
             ]
             if not measurement_labels:
                 measurement_labels = ["Alpha"]

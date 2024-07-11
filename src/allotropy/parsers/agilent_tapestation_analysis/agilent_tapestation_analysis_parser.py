@@ -34,7 +34,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
     Data,
@@ -55,6 +55,7 @@ from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
 )
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -83,7 +84,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
                     file_name=filename,
                     software_name=SOFTWARE_NAME,
                     software_version=metadata.software_version,
-                    ASM_converter_name=f'{ASM_CONVERTER_NAME}_{self.display_name.replace(" ", "_")}'.lower(),
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
@@ -113,12 +114,9 @@ class AgilentTapestationAnalysisParser(VendorParser):
                             measurement_time=self._get_date_time(
                                 sample.measurement_time
                             ),
-                            compartment_temperature=(
-                                TQuantityValueDegreeCelsius(
-                                    value=sample.compartment_temperature
-                                )
-                                if sample.compartment_temperature is not None
-                                else None
+                            compartment_temperature=quantity_or_none(
+                                TQuantityValueDegreeCelsius,
+                                sample.compartment_temperature,
                             ),
                             device_control_aggregate_document=DeviceControlAggregateDocument(
                                 device_control_document=[

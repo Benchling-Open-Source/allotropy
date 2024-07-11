@@ -1,6 +1,6 @@
 from collections import defaultdict
 from enum import Enum
-from typing import Any, cast, TypeVar
+from typing import cast
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataAggregateDocument,
@@ -35,13 +35,12 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     TDateTimeValue,
-    TQuantityValue,
 )
-from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
@@ -54,9 +53,8 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     ResultPlateInfo,
 )
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
-
-T = TypeVar("T")
 
 
 class ReadType(Enum):
@@ -78,10 +76,6 @@ DeviceControlAggregateDocument = (
     | FluorescencePointDetectionDeviceControlAggregateDocument
     | LuminescencePointDetectionDeviceControlAggregateDocument
 )
-
-
-def safe_value(cls: type[T], value: Any | None) -> T | None:
-    return None if value is None else cls(value=value)  # type: ignore[call-arg]
 
 
 class PerkinElmerEnvisionParser(VendorParser):
@@ -117,7 +111,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     file_name=filename,
                     software_name=data.software.software_name,
                     software_version=data.software.software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
@@ -178,19 +172,19 @@ class PerkinElmerEnvisionParser(VendorParser):
                 device_control_document=[
                     LuminescencePointDetectionDeviceControlDocumentItem(
                         device_type="luminescence detector",
-                        detector_distance_setting__plate_reader_=safe_value(
+                        detector_distance_setting__plate_reader_=quantity_or_none(
                             TQuantityValueMillimeter, result_plate_info.measured_height
                         ),
-                        number_of_averages=safe_value(
+                        number_of_averages=quantity_or_none(
                             TQuantityValueNumber, data.labels.number_of_flashes
                         ),
                         detector_gain_setting=data.labels.detector_gain_setting,
                         scan_position_setting__plate_reader_=data.labels.scan_position_setting,
-                        detector_wavelength_setting=safe_value(
+                        detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             em_filter.wavelength if em_filter else None,
                         ),
-                        detector_bandwidth_setting=safe_value(
+                        detector_bandwidth_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             em_filter.bandwidth if em_filter else None,
                         ),
@@ -202,19 +196,19 @@ class PerkinElmerEnvisionParser(VendorParser):
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type="absorbance detector",
-                        detector_distance_setting__plate_reader_=safe_value(
+                        detector_distance_setting__plate_reader_=quantity_or_none(
                             TQuantityValueMillimeter, result_plate_info.measured_height
                         ),
-                        number_of_averages=safe_value(
+                        number_of_averages=quantity_or_none(
                             TQuantityValueNumber, data.labels.number_of_flashes
                         ),
                         detector_gain_setting=data.labels.detector_gain_setting,
                         scan_position_setting__plate_reader_=data.labels.scan_position_setting,
-                        detector_wavelength_setting=safe_value(
+                        detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             em_filter.wavelength if em_filter else None,
                         ),
-                        detector_bandwidth_setting=safe_value(
+                        detector_bandwidth_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             em_filter.bandwidth if em_filter else None,
                         ),
@@ -226,27 +220,27 @@ class PerkinElmerEnvisionParser(VendorParser):
                 device_control_document=[
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type="fluorescence detector",
-                        detector_distance_setting__plate_reader_=safe_value(
+                        detector_distance_setting__plate_reader_=quantity_or_none(
                             TQuantityValueMillimeter, result_plate_info.measured_height
                         ),
-                        number_of_averages=safe_value(
+                        number_of_averages=quantity_or_none(
                             TQuantityValueNumber, data.labels.number_of_flashes
                         ),
                         detector_gain_setting=data.labels.detector_gain_setting,
                         scan_position_setting__plate_reader_=data.labels.scan_position_setting,
-                        detector_wavelength_setting=safe_value(
+                        detector_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             em_filter.wavelength if em_filter else None,
                         ),
-                        detector_bandwidth_setting=safe_value(
+                        detector_bandwidth_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             em_filter.bandwidth if em_filter else None,
                         ),
-                        excitation_wavelength_setting=safe_value(
+                        excitation_wavelength_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             ex_filter.wavelength if ex_filter else None,
                         ),
-                        excitation_bandwidth_setting=safe_value(
+                        excitation_bandwidth_setting=quantity_or_none(
                             TQuantityValueNanometer,
                             ex_filter.bandwidth if ex_filter else None,
                         ),
@@ -270,7 +264,7 @@ class PerkinElmerEnvisionParser(VendorParser):
             location_identifier=well_location,
             sample_role_type=p_map.get_sample_role_type(result.col, result.row).value,
         )
-        compartment_temperature = safe_value(
+        compartment_temperature = quantity_or_none(
             TQuantityValueDegreeCelsius,
             plate.plate_info.chamber_temperature_at_start,
         )
@@ -396,15 +390,15 @@ class PerkinElmerEnvisionParser(VendorParser):
             for calculated_result, *source_results in zip(
                 calculated_plate.calculated_result_list.calculated_results,
                 *source_result_lists,
+                strict=True,
             ):
                 calculated_documents.append(
                     CalculatedDataDocumentItem(
                         calculated_data_identifier=calculated_result.uuid,
                         calculated_data_name=calculated_plate.plate_info.name,
                         calculation_description=calculated_plate.plate_info.formula,
-                        calculated_result=TQuantityValue(
-                            value=calculated_result.value,
-                            unit=UNITLESS,
+                        calculated_result=TQuantityValueUnitless(
+                            value=calculated_result.value
                         ),
                         data_source_aggregate_document=DataSourceAggregateDocument(
                             data_source_document=[

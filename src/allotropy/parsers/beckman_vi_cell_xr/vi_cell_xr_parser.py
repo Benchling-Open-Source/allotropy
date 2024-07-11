@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from enum import Enum
 import tempfile
-from typing import Any, Union
+from typing import Any
 import zipfile
 
 import pandas as pd
@@ -29,7 +29,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
@@ -107,7 +107,7 @@ class ViCellXRParser(VendorParser):
         if filename.endswith("xlsx"):
             contents = remove_style_xml_file(contents)
 
-        reader: Union[ViCellXRTXTReader, ViCellXRReader]
+        reader: ViCellXRTXTReader | ViCellXRReader
         if filename.endswith("txt"):
             reader = ViCellXRTXTReader(named_file_contents)
         else:
@@ -126,7 +126,7 @@ class ViCellXRParser(VendorParser):
                     file_name=filename,
                     software_name=SOFTWARE_NAME,
                     software_version=reader.file_version.value,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 cell_counting_document=[

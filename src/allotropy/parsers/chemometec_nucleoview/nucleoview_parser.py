@@ -25,10 +25,9 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
     TDateTimeValue,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
@@ -38,6 +37,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_nan
 from allotropy.parsers.vendor_parser import VendorParser
 
 _PROPERTY_LOOKUP = {
@@ -53,7 +53,7 @@ _PROPERTY_LOOKUP = {
 def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Any | None:
     if column not in data_frame.columns:
         return None
-    return data_frame[column][row]
+    return data_frame[column].iloc[row]
 
 
 def get_property_from_sample(
@@ -65,16 +65,16 @@ def get_property_from_sample(
 
     property_type = _PROPERTY_LOOKUP[property_name]
 
-    try:
-        value = float(value)
-    except ValueError:
-        return property_type(value=InvalidJsonFloat.NaN)
+    value = try_float_or_nan(value)
 
-    # if the porperty type is measured in million cells per ml convert cells per ml
-    if property_type == TQuantityValueMillionCellsPerMilliliter:
-        return property_type(value=float(value) / 1e6)
+    # If the property type is measured in million cells per ml convert cells per ml
+    if (
+        isinstance(value, float)
+        and property_type == TQuantityValueMillionCellsPerMilliliter
+    ):
+        value = value / 1e6
 
-    return property_type(value=float(value))
+    return property_type(value=value)
 
 
 class ChemometecNucleoviewParser(VendorParser):
@@ -103,7 +103,7 @@ class ChemometecNucleoviewParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=NUCLEOCOUNTER_SOFTWARE_NAME,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     software_version=_get_value(data, 0, "Application SW version"),
                 ),
