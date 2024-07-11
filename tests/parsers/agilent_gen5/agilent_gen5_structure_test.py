@@ -152,6 +152,33 @@ def test_create_read_data_luminescence_full_light() -> None:
 
 
 @pytest.mark.short
+def test_create_read_data_luminescence_text_settings() -> None:
+    absorbance_procedure_details = [
+        "Procedure Details",
+        "Read	Luminescence Endpoint",
+        "\tFull Plate",
+        "\tIntegration Time: 0:01.00 (MM:SS.ss)",
+        "\tFilter Set 1",
+        "\t    Excitation: Plug,  Emission: Hole",
+        "\t    Optics: Top,  Gain: 135",
+        "\tRead Speed: Normal,  Delay: 100 msec",
+        "\tExtended Dynamic Range",
+        "\tRead Height: 4.5 mm",
+    ]
+    reader = LinesReader(absorbance_procedure_details)
+
+    read_data = ReadData.create(reader)
+
+    assert read_data.read_mode == ReadMode.LUMINESCENCE
+    assert read_data.detector_carriage_speed == "Normal"  # Read Speed
+    assert read_data.detector_distance == 4.5  # Read Height
+    assert read_data.measurement_labels == ["Lum"]
+    assert read_data.filter_sets == {
+        "Lum": FilterSet(emission="Hole", gain="135", optics="Top", excitation="Plug")
+    }
+
+
+@pytest.mark.short
 def test_create_read_data_luminescence_with_filter() -> None:
     absorbance_procedure_details = [
         "Procedure Details",
