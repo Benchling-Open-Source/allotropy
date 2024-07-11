@@ -25,7 +25,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_parser import (
     ReadType,
 )
@@ -197,7 +197,7 @@ def get_model() -> Model:
                 file_name="file.txt",
                 software_name="EnVision Workstation",
                 software_version="1.0",
-                ASM_converter_name=ASM_CONVERTER_NAME,
+                ASM_converter_name="allotropy_perkinelmer_envision",
                 ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
             plate_reader_document=[

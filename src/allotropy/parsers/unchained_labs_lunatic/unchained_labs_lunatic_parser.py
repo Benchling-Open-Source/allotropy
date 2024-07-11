@@ -26,7 +26,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.pandas_util import read_csv
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
@@ -65,7 +65,7 @@ class UnchainedLabsLunaticParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name="Lunatic and Stunner Analysis",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
