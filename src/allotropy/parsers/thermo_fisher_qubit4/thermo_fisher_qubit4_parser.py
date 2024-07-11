@@ -57,6 +57,18 @@ DataType = TypeVar("DataType")
 def get_concentration_value(
     data_frame: pd.DataFrame, column: str, units_column: str, row: int
 ) -> DataType | None:
+    """
+    Retrieves the value and its unit from the specified columns and row in the DataFrame. If units are not there, replace it with unitless unit.
+
+    parameters:
+    data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
+    column (str): The column name from which to retrieve the value.
+    units_column (str): The column name from which to retrieve the unit.
+    row (int): The row index from which to retrieve the value.
+
+    Returns:
+    DataType | None: The concentration value converted to the appropriate data type, or None if the units are not available or invalid.
+    """
     units = get_value(data_frame, units_column, row)
     if units is None:
         units = ""
@@ -78,7 +90,7 @@ def get_property_value(
     datatype (type): The type to which the retrieved value should be converted.
 
     Returns:
-    DataType: The value from the specified cell converted to the specified datatype.
+    DataType | None: The value from the specified cell converted to the specified datatype.
          Returns None if the value is not found.
     """
     return (
