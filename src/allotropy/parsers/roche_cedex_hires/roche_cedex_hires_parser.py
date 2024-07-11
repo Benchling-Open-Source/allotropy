@@ -47,8 +47,8 @@ DataType = TypeVar("DataType")
 
 
 def get_property_value(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: DataType
-) -> DataType:
+    data_frame: pd.DataFrame, column: str, row: int, datatype: type
+) -> DataType | None:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
     to the specified datatype.
@@ -57,7 +57,7 @@ def get_property_value(
     data_frame (pd.DataFrame): The DataFrame from which to retrieve the value.
     column (str): The column name from which to retrieve the value.
     row (int): The row index from which to retrieve the value.
-    datatype (Datatype): The type to which the retrieved value should be converted.
+    datatype (type): The type to which the retrieved value should be converted.
 
     Returns:
     Datatype: The value from the specified cell converted to the specified datatype.
@@ -159,7 +159,7 @@ def get_system_value(data: pd.DataFrame, column_name: str) -> str:
     if len(unique_values) != 1:
         message = f"{constants.MULTIPLE_SYSTEM_ERROR} '{column_name}'"
         raise AllotropeConversionError(message)
-    return next(iter(unique_values))
+    return str(next(iter(unique_values)))
 
 
 class RocheCedexHiResParser(VendorParser):
