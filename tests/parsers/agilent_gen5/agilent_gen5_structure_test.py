@@ -3,6 +3,7 @@ import pytest
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     FilterSet,
     HeaderData,
@@ -297,7 +298,7 @@ def test_create_filter_set_with_mirror() -> None:
 def test_create_filter_set_full_light() -> None:
     filterset = FilterSet(emission="Full light", gain="135", optics="Top")
 
-    assert filterset.detector_wavelength_setting is None
+    assert filterset.detector_wavelength_setting == InvalidJsonFloat.NaN
     assert filterset.detector_bandwidth_setting is None
     assert filterset.excitation_wavelength_setting is None
     assert filterset.excitation_bandwidth_setting is None
