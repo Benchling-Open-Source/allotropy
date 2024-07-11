@@ -60,10 +60,10 @@ def test_vendors_in_readme() -> None:
 
     # Assert all vendors are in README
     for vendor in Vendor:
-        assert vendor.display_name in parsers[vendor.release_state]
+        assert vendor.display_name in parsers[vendor.release_state], f"Missing vendor in README: '{vendor.display_name}'. Hint: run 'hatch run scripts:update-readme'"
 
     # Assert not extra parsers in README
     assert (
         set.union(*parsers.values()) - {vendor.display_name for vendor in Vendor}
         == set()
-    )
+    ), f"Extra vendor in README: '{vendor.display_name}'. Hint: run 'hatch run scripts:update-readme'"
