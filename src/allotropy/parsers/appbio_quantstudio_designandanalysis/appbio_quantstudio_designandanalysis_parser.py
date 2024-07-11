@@ -70,8 +70,6 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
-        import time
-        start = time.time()
         with warnings.catch_warnings():
             warnings.filterwarnings(
                 "ignore",
@@ -81,17 +79,9 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
             raw_contents = pd.read_excel(
                 named_file_contents.contents, header=None, sheet_name=None
             )
-        print(f"TOOK {time.time() - start} to read excel")
-        start = time.time()
         contents = DesignQuantstudioContents(raw_contents)
-        print(f"TOOK {time.time() - start} to make contents")
-        start = time.time()
         data = create_data(contents)
-        print(f"TOOK {time.time() - start} to create data")
-        start = time.time()
         model = self._get_model(data, named_file_contents.original_file_name)
-        print(f"TOOK {time.time() - start} to make model")
-        start = time.time()
         return model
 
     def _get_model(self, data: Data, file_name: str) -> Model:
