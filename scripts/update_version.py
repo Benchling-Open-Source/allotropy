@@ -76,12 +76,12 @@ def _write_version_file(version: str) -> None:
 
 
 def _make_pr(version: str, body: str):
-    subprocess.run(["git", "commit", "-am", f"Update allotropy version to {version}"])
-    subprocess.run(["git", "push"])
+    subprocess.run(["git", "commit", "-am", f"Update allotropy version to {version}"])  # noqa: S603
+    subprocess.run(["git", "push"])  # noqa: S603
     with tempfile.TemporaryFile(delete_on_close=False) as fp:
         fp.write(body)
         fp.close()
-        subprocess.run(["gh", "pr", "create", "--title", f'"chore: Update allotropy version to {version}"', "--body-file", fp.name])
+        subprocess.run(["gh", "pr", "create", "--title", f'"chore: Update allotropy version to {version}"', "--body-file", fp.name])  # noqa: S607
 
 
 @click.command()
