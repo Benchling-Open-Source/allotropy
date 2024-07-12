@@ -131,7 +131,9 @@ def _make_pr(version: str, body: str) -> None:
 @click.option(
     "--skip_pr", is_flag=True, default=False, help="Whether to make PR in script"
 )
-def _update_version(version: str | None = None, skip_pr: bool = False) -> None:  # noqa: FBT001, FBT002
+def _update_version(
+    version: str | None = None, skip_pr: bool = False  # noqa: FBT001, FBT002
+) -> None:
     """Update allotropy version."""
     if version:
         semver = semantic_version.Version(version)
