@@ -19,7 +19,7 @@ classDiagram
 	    Optional[str]: barcode
 	    Optional[str]: analyst
 	    Optional[str]: experimental_data_identifier
-	    int: pcr_stage_number
+	    Optional[int]: pcr_stage_number
 	    Optional[str]: software_name
 	    Optional[str]: software_version
 	    Optional[str]: block_serial_number
