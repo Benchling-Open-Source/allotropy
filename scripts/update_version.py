@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from datetime import datetime
 from pathlib import Path
+import subprocess
+import tempfile
 
 import click
 from pytz import timezone
@@ -73,8 +75,13 @@ def _write_version_file(version: str) -> None:
         f.write(f'__version__ = "{version}"')
 
 
-def _make_pr(body: str):
-    sh
+def _make_pr(version: str, body: str):
+    subprocess.run(["git", "commit", "-am", f"Update allotropy version to {version}"])
+    subprocess.run(["git", "push"])
+    with tempfile.TemporaryFile(delete_on_close=False) as fp:
+        fp.write(body)
+        fp.close()
+        subprocess.run(["gh", "pr", "create", "--title", f'"chore: Update allotropy version to {version}"', "--body-file", fp.name])
 
 
 @click.command()
