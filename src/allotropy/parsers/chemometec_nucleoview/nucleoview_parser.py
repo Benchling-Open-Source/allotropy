@@ -32,49 +32,16 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
+    NUCLEOCOUNTER_DETECTION_TYPE,
+    NUCLEOCOUNTER_DEVICE_TYPE,
     NUCLEOCOUNTER_SOFTWARE_NAME,
 )
 from allotropy.parsers.chemometec_nucleoview.nucleoview_reader import NucleoviewReader
+from allotropy.parsers.chemometec_nucleoview.nucleoview_structure import Data, Row
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_nan
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
-
-_PROPERTY_LOOKUP = {
-    "Dead (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
-    "Estimated cell diameter (um)": TQuantityValueMicrometer,
-    "Live (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
-    "Multiplication factor": TQuantityValueUnitless,
-    "Total (cells/ml)": TQuantityValueMillionCellsPerMilliliter,
-    "Viability (%)": TQuantityValuePercent,
-}
-
-
-def _get_value(data_frame: pd.DataFrame, row: int, column: str) -> Any | None:
-    if column not in data_frame.columns:
-        return None
-    return data_frame[column].iloc[row]
-
-
-def get_property_from_sample(
-    data_frame: pd.DataFrame, row: int, property_name: str
-) -> Any | None:
-    value = _get_value(data_frame, row, property_name)
-    if value is None:
-        return None
-
-    property_type = _PROPERTY_LOOKUP[property_name]
-
-    value = try_float_or_nan(value)
-
-    # If the property type is measured in million cells per ml convert cells per ml
-    if (
-        isinstance(value, float)
-        and property_type == TQuantityValueMillionCellsPerMilliliter
-    ):
-        value = value / 1e6
-
-    return property_type(value=value)
 
 
 class ChemometecNucleoviewParser(VendorParser):
@@ -89,91 +56,56 @@ class ChemometecNucleoviewParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         filename = named_file_contents.original_file_name
-        return self._get_model(NucleoviewReader.read(contents), filename)
+        data = Data.create(NucleoviewReader.read(contents))
+        return self._get_model(data, filename)
 
-    def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
+    def _get_model(self, data: Data, filename: str) -> Model:
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
             cell_counting_aggregate_document=CellCountingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    model_number=_get_value(data, 0, "Instrument type")
-                    or DEFAULT_MODEL_NUMBER,
-                    equipment_serial_number=_get_value(data, 0, "Instrument s/n"),
+                    model_number=data.model_number,
+                    equipment_serial_number=data.equipment_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=NUCLEOCOUNTER_SOFTWARE_NAME,
                     ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
-                    software_version=_get_value(data, 0, "Application SW version"),
+                    software_version=data.software_version,
                 ),
-                cell_counting_document=self._get_cell_counting_document(data),
+                cell_counting_document=[self._get_cell_counting_document_item(row) for row in data.rows]
             ),
         )
 
-    def _get_cell_counting_document(
-        self, data: pd.DataFrame
-    ) -> list[CellCountingDocumentItem]:
-        return [
-            self._get_cell_counting_document_item(data, i)
-            for i in range(len(data.index))
-            if _get_value(data, i, "Total (cells/ml)")
-        ]
-
-    def _get_date_time_or_epoch(self, time_val: Timestamp | None) -> TDateTimeValue:
-        if time_val is None:
-            # return epoch time 1970-01-01
-            return self._get_date_time("1970-01-01")
-        return self._get_date_time_from_timestamp(time_val)
-
-    def _get_cell_counting_document_item(
-        self, data_frame: pd.DataFrame, row: int
-    ) -> CellCountingDocumentItem:
+    def _get_cell_counting_document_item(self, row: Row) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
-            analyst=_get_value(data_frame, row, "Operator") or DEFAULT_ANALYST,
+            analyst=row.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=random_uuid_str(),
-                        measurement_time=self._get_date_time_or_epoch(
-                            _get_value(data_frame, row, "datetime")
-                        ),
+                        measurement_time=self._get_date_time(row.timestamp),
                         sample_document=SampleDocument(
-                            sample_identifier=str(
-                                _get_value(data_frame, row, "Sample ID")
-                            )
+                            sample_identifier=row.sample_identifier,
                         ),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItemModel(
-                                    device_type="dark field imager (cell counter)",
-                                    detection_type="dark field",
+                                    device_type=NUCLEOCOUNTER_DEVICE_TYPE,
+                                    detection_type=NUCLEOCOUNTER_DETECTION_TYPE,
                                 )
                             ]
                         ),
                         processed_data_aggregate_document=ProcessedDataAggregateDocument1(
                             processed_data_document=[
                                 ProcessedDataDocumentItem(
-                                    data_processing_document=DataProcessingDocument(
-                                        cell_density_dilution_factor=get_property_from_sample(
-                                            data_frame, row, "Multiplication factor"
-                                        ),
-                                    ),
-                                    viability__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
-                                        data_frame, row, "Viability (%)"
-                                    ),
-                                    viable_cell_density__cell_counter_=get_property_from_sample(  # type: ignore[arg-type]
-                                        data_frame, row, "Live (cells/ml)"
-                                    ),
-                                    dead_cell_density__cell_counter_=get_property_from_sample(
-                                        data_frame, row, "Dead (cells/ml)"
-                                    ),
-                                    total_cell_density__cell_counter_=get_property_from_sample(
-                                        data_frame, row, "Total (cells/ml)"
-                                    ),
-                                    average_total_cell_diameter=get_property_from_sample(
-                                        data_frame, row, "Estimated cell diameter (um)"
-                                    ),
+                                    data_processing_document=DataProcessingDocument(cell_density_dilution_factor=quantity_or_none(TQuantityValueUnitless, row.multiplication_factor)),
+                                    viability__cell_counter_=quantity_or_none(TQuantityValuePercent, row.viability_percent),
+                                    viable_cell_density__cell_counter_=quantity_or_none(TQuantityValueMillionCellsPerMilliliter, row.live_cell_count),
+                                    dead_cell_density__cell_counter_=quantity_or_none(TQuantityValueMillionCellsPerMilliliter, row.dead_cell_count),
+                                    total_cell_density__cell_counter_=quantity_or_none(TQuantityValueMillionCellsPerMilliliter, row.total_cell_count),
+                                    average_total_cell_diameter=quantity_or_none(TQuantityValueMicrometer, row.estimated_cell_diameter)
                                 )
                             ]
                         ),
