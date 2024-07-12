@@ -3,11 +3,13 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.values import assert_not_none
 
 
 class MabtechApexContents:
-    def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
+        raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }

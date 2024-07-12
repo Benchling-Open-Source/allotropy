@@ -1,5 +1,3 @@
-import pandas as pd
-
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ContainerType,
     DataSystemDocument,
@@ -47,8 +45,7 @@ class MabtechApexParser(VendorParser):
         return ReleaseState.CANDIDATE_RELEASE
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
-        contents = MabtechApexContents(raw_contents)
+        contents = MabtechApexContents(named_file_contents)
         data = PlateInformation.create(contents)
         wells = WellList.create(contents)
         return self._get_model(data, wells, named_file_contents.original_file_name)
