@@ -30,7 +30,7 @@ from allotropy.allotrope.pandas_util import read_csv
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.appbio_absolute_q_structure import (
-    GroupRow,
+    Group,
     Well,
     WellItem,
 )
@@ -60,11 +60,11 @@ class AppbioAbsoluteQParser(VendorParser):
             filepath_or_buffer=named_file_contents.contents, parse_dates=["Date"]
         )
         wells = Well.create_wells(data)
-        groups = GroupRow.create_rows(data)
+        groups = Group.create_rows(data)
         return self._get_model(wells, groups, filename)
 
     def _get_model(
-        self, wells: list[Well], groups: list[GroupRow], filename: str
+        self, wells: list[Well], groups: list[Group], filename: str
     ) -> Model:
         # Map measurement ids to group keys
         group_to_ids = defaultdict(list)
@@ -153,7 +153,7 @@ class AppbioAbsoluteQParser(VendorParser):
 
     @staticmethod
     def get_calculated_data_documents(
-        group: GroupRow, source_ids: list[str]
+        group: Group, source_ids: list[str]
     ) -> list[CalculatedDataDocumentItem]:
         # TODO: if aggregation type is Replicate(Average), check for required columns
         # Raise if column(s) do not exist
