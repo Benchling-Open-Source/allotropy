@@ -135,9 +135,16 @@ hatch shell
 
 ### Publish
 
-To publish a new version, update the version in `src/allotropy/__about__.py` and run:
+NOTE: only package admins can publish allotropy.
+
+To publish a new version:
 
 ```sh
+hatch run scripts:update-version
+```
+
+Merge the resulting PR, and then run on `main`:
+```
 hatch build
 hatch publish
 ```
