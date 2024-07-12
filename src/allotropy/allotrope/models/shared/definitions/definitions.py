@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any
 
 from allotropy.exceptions import AllotropeConversionError
 
@@ -68,7 +69,7 @@ class InvalidJsonFloat(Enum):
     field_Infinity = "+Infinity"
     field_Infinity_1 = "-Infinity"
 
-    def __truediv__(self, other):
+    def __truediv__(self, other: Any) -> InvalidJsonFloat:
         # The logic here is that: NaN/Any = NaN, +Infinity/Any = +Infinity, -Infinity/Any = -Infinity
         return self
 
