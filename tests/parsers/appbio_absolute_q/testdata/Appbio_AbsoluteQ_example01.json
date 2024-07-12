@@ -1,4 +1,5 @@
 {
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest",
     "dPCR aggregate document": {
         "device system document": {
             "device identifier": "Absolute Q 0140",
@@ -42,7 +43,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 0,
+                                            "value": 0.0,
                                             "unit": "#"
                                         }
                                     }
@@ -90,7 +91,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 0,
+                                            "value": 0.0,
                                             "unit": "#"
                                         }
                                     }
@@ -138,7 +139,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 343,
+                                            "value": 343.0,
                                             "unit": "#"
                                         }
                                     }
@@ -186,7 +187,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 340,
+                                            "value": 340.0,
                                             "unit": "#"
                                         }
                                     }
@@ -234,7 +235,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 34,
+                                            "value": 34.0,
                                             "unit": "#"
                                         }
                                     }
@@ -282,7 +283,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 36,
+                                            "value": 36.0,
                                             "unit": "#"
                                         }
                                     }
@@ -330,7 +331,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 1511,
+                                            "value": 1511.0,
                                             "unit": "#"
                                         }
                                     }
@@ -378,7 +379,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 1416,
+                                            "value": 1416.0,
                                             "unit": "#"
                                         }
                                     }
@@ -426,7 +427,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 80,
+                                            "value": 80.0,
                                             "unit": "#"
                                         }
                                     }
@@ -474,7 +475,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 96,
+                                            "value": 96.0,
                                             "unit": "#"
                                         }
                                     }
@@ -522,7 +523,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 4775,
+                                            "value": 4775.0,
                                             "unit": "#"
                                         }
                                     }
@@ -570,7 +571,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 4899,
+                                            "value": 4899.0,
                                             "unit": "#"
                                         }
                                     }
@@ -618,7 +619,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 165,
+                                            "value": 165.0,
                                             "unit": "#"
                                         }
                                     }
@@ -666,7 +667,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 149,
+                                            "value": 149.0,
                                             "unit": "#"
                                         }
                                     }
@@ -714,7 +715,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 13963,
+                                            "value": 13963.0,
                                             "unit": "#"
                                         }
                                     }
@@ -762,7 +763,7 @@
                                             "unit": "#/μL"
                                         },
                                         "positive partition count": {
-                                            "value": 10196,
+                                            "value": 10196.0,
                                             "unit": "#"
                                         }
                                     }
@@ -779,7 +780,7 @@
             "file name": "Appbio_AbsoluteQ_example01.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.38"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1177,6 +1178,5 @@
                 }
             ]
         }
-    },
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
+    }
 }
