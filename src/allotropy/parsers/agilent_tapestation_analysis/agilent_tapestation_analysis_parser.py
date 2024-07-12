@@ -34,7 +34,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
     Data,
@@ -84,7 +84,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
                     file_name=filename,
                     software_name=SOFTWARE_NAME,
                     software_version=metadata.software_version,
-                    ASM_converter_name=f'{ASM_CONVERTER_NAME}_{self.display_name.replace(" ", "_")}'.lower(),
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
