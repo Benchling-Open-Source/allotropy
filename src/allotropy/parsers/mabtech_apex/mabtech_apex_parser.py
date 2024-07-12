@@ -1,5 +1,3 @@
-import pandas as pd
-
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ContainerType,
     DataSystemDocument,
