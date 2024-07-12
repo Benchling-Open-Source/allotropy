@@ -19,6 +19,5 @@ def test_parse_biorad_bioplex_to_asm_contents(output_file: str) -> None:
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
     validate_contents(
         allotrope_dict=allotrope_dict,
-        expected_file=expected_filepath,
-        vendor_type=VENDOR_TYPE,
+        expected_file=expected_filepath
     )
