@@ -15,6 +15,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series_or_nan,
     try_float_from_series_or_none,
@@ -112,7 +113,7 @@ class SpectroscopyRow:
         a260_absorbance = try_float_from_series_or_none(data, "a260")
         if a260_absorbance:
             measurements[260] = SpectroscopyMeasurement(
-                try_str_from_series_or_none(data, "a260 uuid"),
+                random_uuid_str(),
                 concentration if capture_concentration else None,
                 260,
                 a260_absorbance,
@@ -127,7 +128,7 @@ class SpectroscopyRow:
         a280_absorbance = try_float_from_series_or_none(data, a280_col)
         if a280_absorbance:
             measurements[280] = SpectroscopyMeasurement(
-                try_str_from_series_or_none(data, "a280 uuid"),
+                random_uuid_str(),
                 concentration if capture_concentration else None,
                 280,
                 a280_absorbance,
