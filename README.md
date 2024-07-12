@@ -16,14 +16,14 @@ We currently have parser support for the following instruments:
   - Agilent Gen5 Image
   - Agilent TapeStation Analysis
   - AppBio AbsoluteQ
-  - AppBio QuantStudio RT-PCR
   - AppBio QuantStudio Design & Analysis
+  - AppBio QuantStudio RT-PCR
+  - Beckman PharmSpec
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
-  - Beckman PharmSpec
   - Bio-Rad Bio-Plex Manager
-  - ChemoMetec Nucleoview
   - CTL ImmunoSpot
+  - ChemoMetec Nucleoview
   - Luminex xPONENT
   - Methodical Mind
   - Molecular Devices SoftMax Pro
@@ -35,8 +35,11 @@ We currently have parser support for the following instruments:
   - Unchained Labs Lunatic
 
 ### Candidate Release
-  - Qiacuity dPCR
   - Mabtech Apex
+  - Qiacuity dPCR
+
+### Working Draft
+  - Thermo Fisher Qubit 4
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 

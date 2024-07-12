@@ -100,13 +100,13 @@ the documentation available to us does not specify how this checksum is calculat
 
 After forking the [`allotropy` repository][allotropy_repo]
 and creating a new branch for our work,
-we make a new directory `./src/allotropy/parsers/example_weyland_yutani/` for our work
-and create three files in that directory:
+we make a new parser by running `hatch run scripts:create-parser "example wayland yutani" "09/fluorescence"`
 
--   `example_weyland_yutani_structure.py` defines the classes
-    that represent the data we pull from our CSV files.
--   `example_weyland_yutani_parser.py` contains code to read CSV files
-    and produce objects of those classes.
+This will create 4 files in that directory:
+
+-   `example_weyland_yutani_structure.py` defines the classes that represent the data we pull from our CSV files.
+-   `example_weyland_yutani_parser.py` contains code to read CSV file and produce objects of those classes.
+-   `constants.py` contains constants specific to these classes.
 -   an empty `__init__.py` file identifies this directory as a sub-package to Python.
 
 ## Representing Data

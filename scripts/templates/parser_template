@@ -1,0 +1,36 @@
+from typing import Any
+
+from $IMPORT_PATH$ import Model
+from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.$PARSER_NAME$.$PARSER_NAME$_structure import Data
+from allotropy.parsers.$PARSER_NAME$.constants import DISPLAY_NAME
+from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.vendor_parser import VendorParser
+
+
+class $CLASS_NAME$(VendorParser):
+    @property
+    def display_name(self) -> str:
+        return DISPLAY_NAME
+
+    @property
+    def release_state(self) -> ReleaseState:
+        return ReleaseState.WORKING_DRAFT
+
+    def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
+        # Example implementation for a text file implementation
+        lines = read_to_lines(named_file_contents)
+        reader = LinesReader(lines)
+        data = Data.create(reader)
+        return self._get_model(data)
+
+    def _get_model(self, data: Data) -> Model:
+        return Model(
+            field_asm_manifest="$MANIFEST$",
+            # Fill out aggregate document here!
+            # schema_aggregate_document=AggregateDocument(...
+        )
