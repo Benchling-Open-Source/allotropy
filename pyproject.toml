@@ -104,6 +104,7 @@ dependencies = [
   "jsonschema-specifications == 2023.7.1",
   "pydantic == 1.10.17",
   "ruff == 0.0.289",
+  "semantic-version",
 ]
 
 [tool.hatch.envs.default.scripts]
@@ -125,6 +126,7 @@ csv-as-json = "scripts/csv_as_json.py {args:}"
 check-changelog = "scripts/check_changelog"
 create-parser = "scripts/create_parser.py {args:}"
 update-readme = "scripts/update_readme.py {args:}"
+update-version = "scripts/update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
 run = "scripts/visualization.py {args:}"
