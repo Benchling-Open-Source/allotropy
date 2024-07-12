@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
 
 ### Changed
+- Redefine stage number as optional in AppBio Quantstudio Design and Analysis
 
 ### Deprecated
 
