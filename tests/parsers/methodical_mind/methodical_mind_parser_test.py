@@ -17,8 +17,4 @@ def test_parse_biorad_bioplex_to_asm_contents(output_file: str) -> None:
     test_filepath = f"tests/parsers/methodical_mind/testdata/{output_file}"
     expected_filepath = test_filepath.replace(".txt", ".json")
     allotrope_dict = from_file(test_filepath, VENDOR_TYPE)
-    validate_contents(
-        allotrope_dict=allotrope_dict,
-        expected_file=expected_filepath,
-        vendor_type=VENDOR_TYPE,
-    )
+    validate_contents(allotrope_dict=allotrope_dict, expected_file=expected_filepath)
