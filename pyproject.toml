@@ -117,6 +117,11 @@ extra-dependencies = [
     "pygraphviz >= 1.11",
 ]
 
+[tool.hatch.envs.scripts]
+extra-dependencies = [
+  "semantic-version == 2.10.0",
+]
+
 [tool.hatch.envs.scripts.scripts]
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py {args:}"
@@ -125,6 +130,7 @@ csv-as-json = "scripts/csv_as_json.py {args:}"
 check-changelog = "scripts/check_changelog"
 create-parser = "scripts/create_parser.py {args:}"
 update-readme = "scripts/update_readme.py {args:}"
+update-version = "scripts/update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
 run = "scripts/visualization.py {args:}"

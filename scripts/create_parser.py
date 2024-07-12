@@ -4,6 +4,7 @@ from pathlib import Path
 import click
 
 from allotropy.allotrope.schema_parser.path_util import (
+    ALLOTROPY_DIR,
     get_import_path_from_path,
     get_manifest_from_schema_path,
     get_model_file_from_schema_path,
@@ -11,7 +12,6 @@ from allotropy.allotrope.schema_parser.path_util import (
 )
 from allotropy.allotrope.schema_parser.schema_model import snake_to_upper_camel
 
-ALLOTROPY_DIR = Path(Path(__file__).parent.parent, "src/allotropy")
 TEMPLATE_DIR = Path(Path(__file__).parent, "templates")
 
 

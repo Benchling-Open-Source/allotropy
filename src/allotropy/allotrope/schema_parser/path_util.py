@@ -5,7 +5,8 @@ import re
 from typing import Any
 
 ALLOTROPE_DIR: Path = Path(__file__).parent.parent
-ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
+ALLOTROPY_DIR: Path = ALLOTROPE_DIR.parent
+ROOT_DIR: Path = ALLOTROPY_DIR.parent.parent
 SCHEMA_DIR_PATH: Path = Path(ALLOTROPE_DIR, "schemas")
 SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
 SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
