@@ -20,7 +20,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.pandas_util import read_excel
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -46,8 +45,7 @@ class MabtechApexParser(VendorParser):
         return ReleaseState.CANDIDATE_RELEASE
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        raw_contents = read_excel(named_file_contents.contents, sheet_name=None)
-        contents = MabtechApexContents(raw_contents)
+        contents = MabtechApexContents.create(named_file_contents)
         data = PlateInformation.create(contents)
         wells = WellList.create(contents)
         return self._get_model(data, wells, named_file_contents.original_file_name)
