@@ -39,7 +39,7 @@ class Row:
         live_cell_count = live_cell_count / 1e6 if isinstance(live_cell_count, float) else live_cell_count
         dead_cell_count = try_float_from_series_or_nan(data, "Dead (cells/ml)")
         dead_cell_count = dead_cell_count / 1e6 if isinstance(dead_cell_count, float) else dead_cell_count
-        total_cell_count = try_float_from_series_or_nan(data, "Total (cells/ml)")
+        total_cell_count = try_float_from_series_or_nan(data, "Total (cells/ml)") / 1e6
         total_cell_count = total_cell_count / 1e6 if isinstance(total_cell_count, float) else total_cell_count
 
         return Row(

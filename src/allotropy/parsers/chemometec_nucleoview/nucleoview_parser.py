@@ -86,9 +86,7 @@ class ChemometecNucleoviewParser(VendorParser):
                     CellCountingDetectorMeasurementDocumentItem(
                         measurement_identifier=random_uuid_str(),
                         measurement_time=self._get_date_time(row.timestamp),
-                        sample_document=SampleDocument(
-                            sample_identifier=row.sample_identifier,
-                        ),
+                        sample_document=SampleDocument(sample_identifier=row.sample_identifier),
                         device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                             device_control_document=[
                                 DeviceControlDocumentItemModel(
