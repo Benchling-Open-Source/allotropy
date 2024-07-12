@@ -73,10 +73,8 @@ class Header:
             )
         )
 
-        stage_number = re.match(
-            r"Stage (\d+)",
-            header.get("PCR Stage/Step Number", "")
-        )
+        stage_number = re.match(r"Stage (\d+)", header.get("PCR Stage/Step Number", ""))
+        pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
 
         run_end_data = try_str_from_series_or_none(header, "Run End Data/Time")
         run_end_date = try_str_from_series_or_none(header, "Run End Date/Time")
@@ -128,7 +126,7 @@ class Header:
             heated_cover_serial_number=try_str_from_series_or_none(
                 header, "Heated Cover Serial Number"
             ),
-            pcr_stage_number=None if stage_number is None else int(stage_number.group(1)),
+            pcr_stage_number=pcr_stage_number,
             software_name=software_info.group(1),
             software_version=software_info.group(2),
         )
