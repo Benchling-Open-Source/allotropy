@@ -1,5 +1,3 @@
-from collections.abc import Mapping
-
 import pandas as pd
 
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -9,7 +7,6 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
-    FluorescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     ProcessedDataAggregateDocument,
@@ -22,23 +19,12 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMicrogramPerMicroliter,
-    TQuantityValueMicrogramPerMilliliter,
     TQuantityValueMilliAbsorbanceUnit,
-    TQuantityValueMilligramPerMilliliter,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanogramPerMilliliter,
     TQuantityValueNanometer,
-    TQuantityValuePicogramPerMilliliter,
     TQuantityValueUnitless,
-)
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
     NanoDropEightReader,
@@ -71,7 +57,9 @@ class NanodropEightParser(VendorParser):
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
             spectrophotometry_aggregate_document=SpectrophotometryAggregateDocument(
-                spectrophotometry_document=[self._get_spectrophotometry_document_item(row) for row in rows.rows],
+                spectrophotometry_document=[
+                    self._get_spectrophotometry_document_item(row) for row in rows.rows
+                ],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
                     calculated_data_document=self._get_calculated_data_document(rows),
                 ),
@@ -171,7 +159,10 @@ class NanodropEightParser(VendorParser):
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_time=self._get_date_time(row.timestamp),
                 experiment_type=row.experiment_type,
-                measurement_document=[self._get_measurement_document(measurement) for measurement in row.measurements.values()],
+                measurement_document=[
+                    self._get_measurement_document(measurement)
+                    for measurement in row.measurements.values()
+                ],
             ),
         )
 
@@ -185,9 +176,13 @@ class NanodropEightParser(VendorParser):
             ),
             processed_data_aggregate_document=ProcessedDataAggregateDocument(
                 processed_data_document=[
-                    ProcessedDataDocumentItem(mass_concentration=measurement.mass_concentration)
+                    ProcessedDataDocumentItem(
+                        mass_concentration=measurement.mass_concentration
+                    )
                 ]
-            ) if measurement.mass_concentration else None,
+            )
+            if measurement.mass_concentration
+            else None,
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
@@ -198,7 +193,5 @@ class NanodropEightParser(VendorParser):
                     )
                 ]
             ),
-            absorbance=TQuantityValueMilliAbsorbanceUnit(
-                value=measurement.absorbance
-            ),
+            absorbance=TQuantityValueMilliAbsorbanceUnit(value=measurement.absorbance),
         )
