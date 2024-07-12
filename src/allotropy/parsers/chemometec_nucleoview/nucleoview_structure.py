@@ -34,23 +34,16 @@ class Row:
 
     @staticmethod
     def create(data: pd.Series):
-        # Cell counts are measured in cells/mL, but reported in millions of cells/mL
-        live_cell_count = try_float_from_series_or_nan(data, "Live (cells/ml)")
-        live_cell_count = live_cell_count / 1e6 if isinstance(live_cell_count, float) else live_cell_count
-        dead_cell_count = try_float_from_series_or_nan(data, "Dead (cells/ml)")
-        dead_cell_count = dead_cell_count / 1e6 if isinstance(dead_cell_count, float) else dead_cell_count
-        total_cell_count = try_float_from_series_or_nan(data, "Total (cells/ml)") / 1e6
-        total_cell_count = total_cell_count / 1e6 if isinstance(total_cell_count, float) else total_cell_count
-
         return Row(
             analyst=try_str_from_series_or_none(data, "Operator") or DEFAULT_ANALYST,
             timestamp=try_str_from_series_or_none(data, "datetime") or DEFAULT_EPOCH_TIMESTAMP,
             sample_identifier=try_str_from_series(data, "Sample ID"),
             multiplication_factor=try_float_from_series_or_none(data, "Multiplication factor"),
             viability_percent=try_float_from_series_or_none(data, "Viability (%)"),
-            live_cell_count=live_cell_count,
-            dead_cell_count=dead_cell_count,
-            total_cell_count=total_cell_count,
+            # Cell counts are measured in cells/mL, but reported in millions of cells/mL
+            live_cell_count=try_float_from_series_or_nan(data, "Live (cells/ml)") / 1e6,
+            dead_cell_count=try_float_from_series_or_nan(data, "Dead (cells/ml)") / 1e6,
+            total_cell_count=try_float_from_series_or_nan(data, "Total (cells/ml)") / 1e6,
             estimated_cell_diameter=try_float_from_series_or_nan(data, "Estimated cell diameter (um)"),
             data=data,
         )

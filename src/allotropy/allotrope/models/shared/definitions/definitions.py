@@ -68,6 +68,10 @@ class InvalidJsonFloat(Enum):
     field_Infinity = "+Infinity"
     field_Infinity_1 = "-Infinity"
 
+    def __truediv__(self, other):
+        # The logic here is that: NaN/Any = NaN, +Infinity/Any = +Infinity, -Infinity/Any = -Infinity
+        return self
+
 
 JsonFloat = float | InvalidJsonFloat
 
