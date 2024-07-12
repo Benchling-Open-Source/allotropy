@@ -59,7 +59,7 @@ def _get_concentration(conc: JsonFloat, unit: str | None) -> ConcentrationType |
 
 @dataclass
 class SpectroscopyMeasurement:
-    uuid: str
+    measurement_id: str
     mass_concentration: ConcentrationType | None
     wavelength: int
     absorbance: float
@@ -137,11 +137,10 @@ class SpectroscopyRow:
                 location_id,
             )
 
+        timestamp = f'{try_str_from_series_or_none(data, "date")} {try_str_from_series_or_none(data, "time")}'
         return SpectroscopyRow(
             try_str_from_series_or_none(data, "user id"),
-            try_str_from_series_or_none(data, "date")
-            + " "
-            + try_str_from_series_or_none(data, "time"),
+            timestamp,
             experiment_type,
             measurements,
             try_float_from_series_or_none(data, "260/230"),

@@ -49,7 +49,6 @@ class NanodropEightParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = NanoDropEightReader.read(named_file_contents)
-        data = self._add_measurement_uuids(data)
         return self._get_model(data, named_file_contents.original_file_name)
 
     def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
@@ -75,11 +74,6 @@ class NanodropEightParser(VendorParser):
             ),
         )
 
-    def _add_measurement_uuids(self, data: pd.DataFrame) -> pd.DataFrame:
-        data["a260 uuid"] = [random_uuid_str() for _ in range(len(data.index))]
-        data["a280 uuid"] = [random_uuid_str() for _ in range(len(data.index))]
-        return data
-
     def _get_calculated_data_document(
         self, rows: SpectroscopyRows
     ) -> list[CalculatedDataDocumentItem]:
@@ -102,7 +96,7 @@ class NanodropEightParser(VendorParser):
             data_source_doc_items.append(
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=measurement.uuid,
+                    data_source_identifier=measurement.measurement_id,
                 )
             )
 
@@ -111,7 +105,7 @@ class NanodropEightParser(VendorParser):
             data_source_doc_items.append(
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=measurement.uuid,
+                    data_source_identifier=measurement.measurement_id,
                 )
             )
 
@@ -135,7 +129,7 @@ class NanodropEightParser(VendorParser):
             data_source_doc_items.append(
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=measurement.uuid,
+                    data_source_identifier=measurement.measurement_id,
                 )
             )
 
@@ -168,7 +162,7 @@ class NanodropEightParser(VendorParser):
 
     def _get_measurement_document(self, measurement: SpectroscopyMeasurement):
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-            measurement_identifier=measurement.uuid,
+            measurement_identifier=measurement.measurement_id,
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
