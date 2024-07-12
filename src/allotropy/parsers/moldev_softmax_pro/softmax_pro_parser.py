@@ -36,7 +36,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
@@ -98,7 +98,7 @@ class SoftmaxproParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name="SoftMax Pro",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[

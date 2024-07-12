@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.38] - 2024-07-11
+
+### Added
+
 - Added electrophoresis and spectrophotometry parser requirement templates to /docs
 - Added ThermoFisher Qubit4 adapter 
 - Added requirement doc for ThermoFisher Qubit4 adapter
@@ -20,9 +34,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
 
 ### Changed
+
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
 - Update `None` filtering to preserve required keys when converting model to dictionary
+- Update ASM converter name field to specify the parser name instead of just "allotropy", this is intended to give better granularity on the adapter that did the conversion and not just the library version
+- Upgrade pydantic to pull in fix for ForwardRef._evaluate() issue (https://github.com/pydantic/pydantic/issues/9637)
 
 ### Deprecated
 

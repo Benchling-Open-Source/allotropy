@@ -33,7 +33,7 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
         "file name"
     ] = "endpoint_pathlength_correct_singleplate.txt"
 
-    validate_contents(allotrope_dict, expected_filepath)
+    validate_contents(allotrope_dict, expected_filepath, VENDOR_TYPE)
 
 
 @pytest.mark.parametrize(

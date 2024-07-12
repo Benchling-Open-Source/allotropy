@@ -37,7 +37,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     create_data,
@@ -86,7 +86,7 @@ class AppBioQuantStudioParser(VendorParser):
                     UNC_path="",  # unknown
                     software_name="Thermo QuantStudio",
                     software_version="1.0",
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 qPCR_document=[

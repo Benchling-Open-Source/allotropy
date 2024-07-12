@@ -62,6 +62,8 @@ In this case we already have some code in the library to handle instruments of t
   - A `Structure` file that the `Parser` uses to build an in memory representation of the instrument data that can be serialized to ASM.
   - A `Reader` file that the `Parser` uses to read directly from the file, if accessing the file data does not require much logic.
 
+Run `hatch run scripts:create-parser NAME SCHEMA_REGEX` to create a set of starter files. Where `SCHEMA_REGEX` is a search pattern over schema paths to specify a schema to use.
+
 See our [tutorial](docs/tutorial.md) for a deeper dive on contributing to the `allotropy` library!
 
 ## If the ASM schema you need is not available
