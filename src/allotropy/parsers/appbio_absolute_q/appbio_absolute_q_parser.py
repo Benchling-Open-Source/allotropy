@@ -118,8 +118,8 @@ class AppbioAbsoluteQParser(VendorParser):
         )
 
     def _get_measurement_document(
-        self, well_item: list[WellItem], group_ids: dict[Any, list]
-    ) -> DPCRDocumentItem:
+        self, well_item: WellItem, group_ids: dict[Any, list]
+    ) -> MeasurementDocumentItem:
         measurement_identifier = random_uuid_str()
 
         key = str((well_item.group_identifier, well_item.target_identifier))
@@ -174,7 +174,7 @@ class AppbioAbsoluteQParser(VendorParser):
             key = str((group.name, group.target_identifier))
 
             ids = group_ids[key]
-            calculated_data_ids = {}
+            calculated_data_ids: dict[str, str] = {}
 
             for calculated_data_item in sorted(
                 CALCULATED_DATA_REFERENCE[group.aggregation_type],
