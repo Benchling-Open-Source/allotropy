@@ -1,8 +1,9 @@
-"""" Reader file for Thermo Fisher Scientific Qubit Flex Parser"""
+"""" Reader file for Thermo Fisher Qubit Flex Parser"""
 
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv, read_excel
+from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
@@ -28,7 +29,7 @@ class ThermoFisherQubitFlexReader:
             return read_csv(
                 named_file_contents.contents,
                 index_col=False,
-                encoding=named_file_contents.encoding,
+                encoding=DEFAULT_ENCODING,
             )
         elif named_file_contents.original_file_name.endswith(".xlsx"):
             return read_excel(named_file_contents.contents.name)

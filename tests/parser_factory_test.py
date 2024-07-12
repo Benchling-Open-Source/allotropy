@@ -10,6 +10,8 @@ NON_READY_PARSERS = {
     Vendor.QIACUITY_DPCR,
     # We want to collect more test cases for this parser before marking as ready.
     Vendor.MABTECH_APEX,
+    # parser is under working draft
+    Vendor.THERMO_FISHER_QUBIT_FLEX,
 }
 
 

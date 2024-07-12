@@ -1,4 +1,4 @@
-""" Parser file for Thermo Fisher Scientific Qubit Flex Adapter"""
+""" Parser file for Thermo Fisher Qubit Flex Adapter"""
 from __future__ import annotations
 
 from typing import Any, TypeVar
@@ -32,7 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -179,7 +179,7 @@ def _get_property_value_not_none(
 
 class ThermoFisherQubitFlexParser(VendorParser):
     """
-    A class provides the allotrope model of the Thermo Fisher Scientific Qubit Flex files
+    A class provides the allotrope model of the Thermo Fisher Qubit Flex files
     """
 
     @property
@@ -231,7 +231,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                     file_name=filename,
                     software_name=constants.SOFTWARE_NAME,
                     software_version=software_version,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(
