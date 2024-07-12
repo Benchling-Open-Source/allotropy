@@ -1,5 +1,4 @@
 {
-    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest",
     "dPCR aggregate document": {
         "device system document": {
             "device identifier": "Absolute Q 0140",
@@ -780,7 +779,7 @@
             "file name": "Appbio_AbsoluteQ_example03.csv",
             "software name": "QuantStudio Absolute Q Digital PCR Software",
             "ASM converter name": "allotropy_appbio_absoluteq",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.17"
         },
         "calculated data aggregate document": {
             "calculated data document": [
@@ -1050,5 +1049,6 @@
                 }
             ]
         }
-    }
+    },
+    "$asm.manifest": "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
 }
