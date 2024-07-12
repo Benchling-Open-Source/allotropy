@@ -128,7 +128,10 @@ def _make_pr(version: str, body: str) -> None:
 @click.option(
     "--version", "-v", help="Version to update to, defaults to next patch version"
 )
-def _update_version(version: str | None = None) -> None:
+@click.option(
+    "--skip_pr", is_flag=True, default=False, help="Whether to make PR in script"
+)
+def _update_version(version: str | None = None, skip_pr: bool = False) -> None:  # noqa: FBT001, FBT002
     """Update allotropy version."""
     if version:
         semver = semantic_version.Version(version)
@@ -141,7 +144,8 @@ def _update_version(version: str | None = None) -> None:
     print("Updating version file and CHANGELOG...")
     _write_version_file(version)
     body = _update_changelog(version)
-    _make_pr(version, body)
+    if not skip_pr:
+        _make_pr(version, body)
 
 
 if __name__ == "__main__":
