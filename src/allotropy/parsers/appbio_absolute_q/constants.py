@@ -2,6 +2,12 @@ from enum import Enum
 
 from attr import dataclass
 
+PLATE_WELL_COUNT = 16
+DEVICE_TYPE = "dPCR"
+PRODUCT_MANUFACTURER = "ThermoFisher Scientific"
+BRAND_NAME = "QuantStudio Absolute Q Digital PCR System"
+SOFTWARE_NAME = "QuantStudio Absolute Q Digital PCR Software"
+
 
 class AggregationType(str, Enum):
     INDIVIDUAL = "INDIVIDUAL"
@@ -28,6 +34,10 @@ class CalculatedDataItem:
     source: CalculatedDataSource
     source_feature: str
     unit: str
+
+    @property
+    def source_features(self) -> list[str]:
+        return self.source_feature.split(",")
 
 
 CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataItem]] = {

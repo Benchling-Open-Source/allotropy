@@ -4,3 +4,4 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.APPBIO_ABSOLUTE_Q
+    OVERWRITE_ON_FAILURE = True
