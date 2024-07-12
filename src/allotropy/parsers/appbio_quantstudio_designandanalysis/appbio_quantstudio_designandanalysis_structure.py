@@ -58,7 +58,7 @@ class Header:
     barcode: str | None
     analyst: str | None
     experimental_data_identifier: str | None
-    pcr_stage_number: int
+    pcr_stage_number: int | None
     software_name: str | None
     software_version: str | None
     block_serial_number: str | None
@@ -71,6 +71,11 @@ class Header:
                 "(.*) v(.+)",
                 try_str_from_series(header, "Software Name and Version"),
             )
+        )
+
+        stage_number = re.match(
+            r"Stage (\d+)",
+            header.get("PCR Stage/Step Number", "")
         )
 
         run_end_data = try_str_from_series_or_none(header, "Run End Data/Time")
@@ -123,19 +128,7 @@ class Header:
             heated_cover_serial_number=try_str_from_series_or_none(
                 header, "Heated Cover Serial Number"
             ),
-            pcr_stage_number=assert_not_none(
-                try_int(
-                    assert_not_none(
-                        re.match(
-                            r"Stage (\d+)",
-                            try_str_from_series(header, r"PCR Stage/Step Number"),
-                        ),
-                        msg="Unable to find PCR Stage Number",
-                    ).group(1),
-                    "PCR Stage Number",
-                ),
-                msg=r"Unable to interpret PCR Stage/Step Number",
-            ),
+            pcr_stage_number=None if stage_number is None else int(stage_number.group(1)),
             software_name=software_info.group(1),
             software_version=software_info.group(2),
         )
@@ -409,11 +402,14 @@ class MulticomponentData:
             msg=f"Unable to find multi component data for well {well_id}.",
         )
 
-        stage_data = assert_not_empty_df(
-            well_data[
-                assert_df_column(well_data, "Stage Number") == header.pcr_stage_number
-            ],
-            msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
+        stage_number = well_data.get("Stage Number")
+        stage_data = (
+            well_data
+            if header.pcr_stage_number is None or stage_number is None
+            else assert_not_empty_df(
+                well_data[stage_number == header.pcr_stage_number],
+                msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
+            )
         )
 
         return MulticomponentData(
