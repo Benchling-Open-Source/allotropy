@@ -3,6 +3,7 @@
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv, read_excel
+from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.thermo_fisher_qubit4 import constants
@@ -39,7 +40,7 @@ class ThermoFisherQubit4Reader:
             dataframe = read_csv(
                 named_file_contents.contents,
                 index_col=False,
-                encoding=named_file_contents.encoding,
+                encoding=DEFAULT_ENCODING,
             )
         else:
             message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"

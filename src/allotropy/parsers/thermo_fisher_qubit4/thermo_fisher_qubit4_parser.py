@@ -31,7 +31,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -202,7 +202,7 @@ class ThermoFisherQubit4Parser(VendorParser):
                 spectrophotometry_document=self._get_spectrophotometry_document(data),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                     software_name=constants.QUBIT_SOFTWARE,
                 ),
