@@ -1,5 +1,3 @@
-import pandas as pd
-
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
@@ -32,7 +30,6 @@ from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_structure import (
     SpectroscopyMeasurement,
     SpectroscopyRow,
-    SpectroscopyRows,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
@@ -49,15 +46,15 @@ class NanodropEightParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         data = NanoDropEightReader.read(named_file_contents)
-        return self._get_model(data, named_file_contents.original_file_name)
+        rows = SpectroscopyRow.create_rows(data)
+        return self._get_model(rows, named_file_contents.original_file_name)
 
-    def _get_model(self, data: pd.DataFrame, filename: str) -> Model:
-        rows = SpectroscopyRows.create(data)
+    def _get_model(self, rows: list[SpectroscopyRow], filename: str) -> Model:
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
             spectrophotometry_aggregate_document=SpectrophotometryAggregateDocument(
                 spectrophotometry_document=[
-                    self._get_spectrophotometry_document_item(row) for row in rows.rows
+                    self._get_spectrophotometry_document_item(row) for row in rows
                 ],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
                     calculated_data_document=self._get_calculated_data_document(rows),
@@ -75,20 +72,19 @@ class NanodropEightParser(VendorParser):
         )
 
     def _get_calculated_data_document(
-        self, rows: SpectroscopyRows
+        self, rows: list[SpectroscopyRow]
     ) -> list[CalculatedDataDocumentItem]:
         cal_docs = []
 
-        for row in rows.rows:
-            if row.a260_280:
-                cal_docs.append(self._get_260_280(row))
+        for row in rows:
+            cal_docs.append(self._get_260_280(row))
+            cal_docs.append(self._get_260_230(row))
 
-            if row.a260_230:
-                cal_docs.append(self._get_260_230(row))
+        return [doc for doc in cal_docs if doc]
 
-        return cal_docs
-
-    def _get_260_280(self, row: SpectroscopyRow) -> CalculatedDataDocumentItem:
+    def _get_260_280(self, row: SpectroscopyRow) -> CalculatedDataDocumentItem | None:
+        if not row.a260_280:
+            return None
         data_source_doc_items = []
 
         measurement = row.measurements.get(260)
@@ -122,7 +118,10 @@ class NanodropEightParser(VendorParser):
             data_source_aggregate_document=data_source_aggregate_document,
         )
 
-    def _get_260_230(self, row: SpectroscopyRow) -> CalculatedDataDocumentItem:
+    def _get_260_230(self, row: SpectroscopyRow) -> CalculatedDataDocumentItem | None:
+        if not row.a260_230:
+            return None
+
         measurement = row.measurements.get(260)
         data_source_doc_items = []
         if measurement:
@@ -160,7 +159,9 @@ class NanodropEightParser(VendorParser):
             ),
         )
 
-    def _get_measurement_document(self, measurement: SpectroscopyMeasurement):
+    def _get_measurement_document(
+        self, measurement: SpectroscopyMeasurement
+    ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.measurement_id,
             sample_document=SampleDocument(

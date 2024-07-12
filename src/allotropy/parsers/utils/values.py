@@ -166,7 +166,7 @@ def try_str_from_series_or_none(
     key: str,
 ) -> str | None:
     value = data.get(key)
-    return None if (value is None or pd.isna(value)) else str(value)
+    return None if (value is None or pd.isna(value)) else str(value)  # type: ignore[arg-type]
 
 
 def try_str_from_series(

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from collections.abc import Mapping
 from dataclasses import dataclass
 
@@ -64,21 +66,21 @@ class SpectroscopyMeasurement:
     wavelength: int
     absorbance: float
     sample_identifier: str
-    well_plate_identifier: str
-    location_identifier: str
+    well_plate_identifier: str | None
+    location_identifier: str | None
 
 
 @dataclass
 class SpectroscopyRow:
-    analyst: str
+    analyst: str | None
     timestamp: str
-    experiment_type: str
+    experiment_type: str | None
     measurements: dict[float, SpectroscopyMeasurement]
     a260_230: float | None
     a260_280: float | None
 
     @staticmethod
-    def create(data: pd.Series):
+    def create(data: pd.Series[str]) -> SpectroscopyRow:
         experiment_type = try_str_from_series_or_none(data, "na type")
         is_na_experiment = experiment_type and "NA" in experiment_type
 
@@ -147,13 +149,7 @@ class SpectroscopyRow:
             try_float_from_series_or_none(data, "260/280"),
         )
 
-
-@dataclass
-class SpectroscopyRows:
-    rows: list[SpectroscopyRow]
-
     @staticmethod
-    def create(data: pd.DataFrame):
+    def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
         data.columns = data.columns.str.lower()
-        rows = list(data.apply(SpectroscopyRow.create, axis=1))
-        return SpectroscopyRows(rows)
+        return list(data.apply(SpectroscopyRow.create, axis="columns"))  # type: ignore[call-overload]
