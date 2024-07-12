@@ -73,7 +73,8 @@ class Header:
             )
         )
 
-        stage_number = re.match(r"Stage (\d+)", header.get("PCR Stage/Step Number", ""))
+        stage_number_raw = str(header.get("PCR Stage/Step Number", ""))
+        stage_number = re.match(r"Stage (\d+)", stage_number_raw)
         pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
 
         run_end_data = try_str_from_series_or_none(header, "Run End Data/Time")
@@ -405,7 +406,7 @@ class MulticomponentData:
             well_data
             if header.pcr_stage_number is None or stage_number is None
             else assert_not_empty_df(
-                well_data[stage_number == header.pcr_stage_number],
+                well_data[stage_number == header.pcr_stage_number],  # type: ignore[arg-type]
                 msg=f"Unable to find multi component data for stage {header.pcr_stage_number}.",
             )
         )
