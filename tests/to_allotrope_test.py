@@ -38,6 +38,5 @@ class ParserTest:
         validate_contents(
             allotrope_dict,
             expected_filepath,
-            self.VENDOR,
             write_actual_to_expected_on_fail=overwrite,
         )

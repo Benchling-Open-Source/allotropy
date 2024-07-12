@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Mapping, Sequence
-from dataclasses import asdict, fields, is_dataclass, make_dataclass, MISSING
+from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
 from types import UnionType
 from typing import Any, cast, get_args, get_origin, TypeVar, Union
 
@@ -229,9 +229,9 @@ def structure_custom_information_document(val: dict[str, Any], name: str) -> Any
         structured_dict[_convert_dict_to_model_key(key)] = structured_value
 
     name = name.title().replace(" ", "")
-    return make_dataclass(name, ((k, type(v)) for k, v in structured_dict.items()))(
-        **structured_dict
-    )
+    return make_dataclass(
+        name, ((k, type(v), field(default=None)) for k, v in structured_dict.items())
+    )(**structured_dict)
 
 
 def _create_should_omit_function(
