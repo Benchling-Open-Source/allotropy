@@ -10,7 +10,7 @@ from allotropy.__about__ import __version__
 from allotropy.allotrope.schema_parser.path_util import ALLOTROPY_DIR, ROOT_DIR
 
 
-def _update_changelog(version: str) -> None:
+def _update_changelog(version: str) -> str:
     changelog_file = Path(ROOT_DIR, "CHANGELOG.md")
     with open(changelog_file) as f:
         contents = f.readlines()
@@ -65,12 +65,16 @@ def _update_changelog(version: str) -> None:
 
             f.write(line)
 
-    print(body)
+    return body
 
 
 def _write_version_file(version: str) -> None:
     with open(Path(ALLOTROPY_DIR, "__about__.py"), "w") as f:
         f.write(f'__version__ = "{version}"')
+
+
+def _make_pr(body: str):
+    sh
 
 
 @click.command()
@@ -88,7 +92,8 @@ def _update_version(version: str | None = None) -> None:
     version = str(semver)
 
     _write_version_file(version)
-    _update_changelog(version)
+    body = _update_changelog(version)
+    _make_pr(body)
 
 
 if __name__ == "__main__":
