@@ -71,7 +71,7 @@ class NanodropEightParser(VendorParser):
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/spectrophotometry/BENCHLING/2023/12/spectrophotometry.manifest",
             spectrophotometry_aggregate_document=SpectrophotometryAggregateDocument(
-                spectrophotometry_document=self._get_spectrophotometry_document(rows),
+                spectrophotometry_document=[self._get_spectrophotometry_document_item(row) for row in rows.rows],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
                     calculated_data_document=self._get_calculated_data_document(rows),
                 ),
@@ -91,11 +91,6 @@ class NanodropEightParser(VendorParser):
         data["a260 uuid"] = [random_uuid_str() for _ in range(len(data.index))]
         data["a280 uuid"] = [random_uuid_str() for _ in range(len(data.index))]
         return data
-
-    def _get_spectrophotometry_document(
-        self, rows: SpectroscopyRows
-    ) -> list[SpectrophotometryDocumentItem]:
-        return [self._get_spectrophotometry_document_item(row) for row in rows.rows]
 
     def _get_calculated_data_document(
         self, rows: SpectroscopyRows
