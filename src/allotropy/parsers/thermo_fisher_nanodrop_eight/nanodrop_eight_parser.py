@@ -57,7 +57,11 @@ class NanodropEightParser(VendorParser):
                     self._get_spectrophotometry_document_item(row) for row in rows
                 ],
                 calculated_data_aggregate_document=CalculatedDataAggregateDocument(
-                    calculated_data_document=self._get_calculated_data_document(rows),
+                    calculated_data_document=[
+                        doc
+                        for row in rows
+                        for doc in self._get_calculated_data_documents(row)
+                    ],
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
@@ -71,78 +75,35 @@ class NanodropEightParser(VendorParser):
             ),
         )
 
-    def _get_calculated_data_document(
-        self, rows: list[SpectroscopyRow]
+    def _get_calculated_data_documents(
+        self, row: SpectroscopyRow
     ) -> list[CalculatedDataDocumentItem]:
-        cal_docs = []
+        calc_docs = []
+        for (numerator, denominator), ratio in row.absorbance_ratios.items():
+            data_source_doc_items = []
 
-        for row in rows:
-            cal_docs.append(self._get_260_280(row))
-            cal_docs.append(self._get_260_230(row))
-
-        return [doc for doc in cal_docs if doc]
-
-    def _get_260_280(self, row: SpectroscopyRow) -> CalculatedDataDocumentItem | None:
-        if not row.a260_280:
-            return None
-        data_source_doc_items = []
-
-        measurement = row.measurements.get(260)
-        if measurement:
-            data_source_doc_items.append(
+            data_source_doc_items = [
                 DataSourceDocumentItem(
                     data_source_feature="absorbance",
-                    data_source_identifier=measurement.measurement_id,
+                    data_source_identifier=measurement.id_,
+                )
+                for measurement in row.measurements
+                if measurement.wavelength in (numerator, denominator)
+            ]
+
+            calc_docs.append(
+                CalculatedDataDocumentItem(
+                    calculated_data_name=f"A{numerator}/{denominator}",
+                    calculated_result=TQuantityValueUnitless(value=ratio),
+                    calculated_data_identifier=random_uuid_str(),
+                    data_source_aggregate_document=DataSourceAggregateDocument(
+                        data_source_document=data_source_doc_items
+                    )
+                    if data_source_doc_items
+                    else None,
                 )
             )
-
-        measurement = row.measurements.get(280)
-        if measurement:
-            data_source_doc_items.append(
-                DataSourceDocumentItem(
-                    data_source_feature="absorbance",
-                    data_source_identifier=measurement.measurement_id,
-                )
-            )
-
-        data_source_aggregate_document = None
-        if data_source_doc_items:
-            data_source_aggregate_document = DataSourceAggregateDocument(
-                data_source_document=data_source_doc_items
-            )
-
-        return CalculatedDataDocumentItem(
-            calculated_data_name="A260/280",
-            calculated_result=TQuantityValueUnitless(value=row.a260_280),
-            calculated_data_identifier=random_uuid_str(),
-            data_source_aggregate_document=data_source_aggregate_document,
-        )
-
-    def _get_260_230(self, row: SpectroscopyRow) -> CalculatedDataDocumentItem | None:
-        if not row.a260_230:
-            return None
-
-        measurement = row.measurements.get(260)
-        data_source_doc_items = []
-        if measurement:
-            data_source_doc_items.append(
-                DataSourceDocumentItem(
-                    data_source_feature="absorbance",
-                    data_source_identifier=measurement.measurement_id,
-                )
-            )
-
-        data_source_aggregate_document = None
-        if data_source_doc_items:
-            data_source_aggregate_document = DataSourceAggregateDocument(
-                data_source_document=data_source_doc_items
-            )
-        return CalculatedDataDocumentItem(
-            calculated_data_name="A260/230",
-            calculated_result=TQuantityValueUnitless(value=row.a260_230),
-            calculated_data_identifier=random_uuid_str(),
-            data_source_aggregate_document=data_source_aggregate_document,
-        )
+        return calc_docs
 
     def _get_spectrophotometry_document_item(
         self, row: SpectroscopyRow
@@ -154,7 +115,7 @@ class NanodropEightParser(VendorParser):
                 experiment_type=row.experiment_type,
                 measurement_document=[
                     self._get_measurement_document(measurement)
-                    for measurement in row.measurements.values()
+                    for measurement in row.measurements
                 ],
             ),
         )
@@ -163,7 +124,7 @@ class NanodropEightParser(VendorParser):
         self, measurement: SpectroscopyMeasurement
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
-            measurement_identifier=measurement.measurement_id,
+            measurement_identifier=measurement.id_,
             sample_document=SampleDocument(
                 sample_identifier=measurement.sample_identifier,
                 well_plate_identifier=measurement.well_plate_identifier,
