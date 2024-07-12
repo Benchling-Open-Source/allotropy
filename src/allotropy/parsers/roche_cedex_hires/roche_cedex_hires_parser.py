@@ -31,7 +31,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.constants import ASM_CONVERTER_NAME, ASM_CONVERTER_VERSION
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
@@ -240,7 +240,7 @@ class RocheCedexHiResParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=constants.CEDEX_SOFTWARE,
-                    ASM_converter_name=ASM_CONVERTER_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 cell_counting_document=self._get_cell_counting_document(data),

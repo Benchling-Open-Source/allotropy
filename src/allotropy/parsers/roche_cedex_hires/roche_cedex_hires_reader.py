@@ -3,6 +3,7 @@
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv, read_excel
+from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.roche_cedex_hires import constants
@@ -36,7 +37,7 @@ class RocheCedexHiResReader:
             return read_csv(
                 named_file_contents.contents,
                 index_col=False,
-                encoding=named_file_contents.encoding,
+                encoding=DEFAULT_ENCODING,
             )
         elif named_file_contents.original_file_name.endswith(".xlsx"):
             return read_excel(named_file_contents.contents.name)
