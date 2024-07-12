@@ -40,7 +40,9 @@ from allotropy.parsers.thermo_fisher_qubit4 import constants
 from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_reader import (
     ThermoFisherQubit4Reader,
 )
+from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_structure import Row
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 CONCENTRATION_UNIT_TO_TQUANTITY = {
@@ -55,7 +57,7 @@ DataType = TypeVar("DataType")
 
 
 def get_concentration_value(
-    data_frame: pd.DataFrame, column: str, units_column: str, row: int
+    data: pd.Series, column: str, units_column: str
 ) -> DataType | None:
     """
     Retrieves the value and its unit from the specified columns and row in the DataFrame. If units are not there, replace it with unitless unit.
@@ -69,15 +71,15 @@ def get_concentration_value(
     Returns:
     DataType | None: The concentration value converted to the appropriate data type, or None if the units are not available or invalid.
     """
-    units = get_value(data_frame, units_column, row)
+    units = get_series_value(data, units_column)
     if units is None:
         units = ""
     datatype = CONCENTRATION_UNIT_TO_TQUANTITY.get(units, TQuantityValueUnitless)
-    return get_property_value(data_frame, column, row, datatype)
+    return get_series_property_value(data, column, datatype)
 
 
-def get_property_value(
-    data_frame: pd.DataFrame, column: str, row: int, datatype: type
+def get_series_property_value(
+    data: pd.Series, column: str, datatype: type
 ) -> DataType | None:
     """
     Retrieves the value from a specified column and row in a DataFrame and converts it
@@ -94,11 +96,11 @@ def get_property_value(
          Returns None if the value is not found.
     """
     return (
-        datatype(value=value) if (value := get_value(data_frame, column, row)) else None
+        datatype(value=value) if (value := get_series_value(data, column)) else None
     )
 
 
-def get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
+def get_series_value(data: pd.Series, column: str) -> Any | None:
     """
     Retrieves the value from a specified column and row in a DataFrame, handling NaNs
     and converting certain numpy types to native Python types.
@@ -112,9 +114,9 @@ def get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
     Optional[Any]: The value from the specified cell converted to the appropriate Python type.
                    Returns None if the column does not exist or the value is NaN.
     """
-    if column not in data_frame.columns:
+    if column not in data.index:
         return None
-    value = data_frame[column][row]
+    value = data[column]
 
     if pd.isna(value):
         return None
@@ -124,28 +126,6 @@ def get_value(data_frame: pd.DataFrame, column: str, row: int) -> Any | None:
         return float(value)
     if isinstance(value, str) and re.match(r"^[-+]?[0-9]*\.?[0-9]+$", value):
         return float(value)
-    return value
-
-
-def get_value_not_none(dataframe: pd.DataFrame, column: str, row: int) -> Any:
-    """
-    Retrieves the value from a specified column and row in a DataFrame, ensuring the value is not None.
-
-    Parameters:
-    dataframe (pd.DataFrame): The DataFrame from which to retrieve the value.
-    column (str): The column name from which to retrieve the value.
-    row (int): The row index from which to retrieve the value.
-
-    Returns:
-    Any: The value from the specified cell.
-
-    Raises:
-    AllotropeConversionError: If the value is None.
-    """
-    value = get_value(dataframe, column, row)
-    if value is None:
-        msg = f"{constants.VALUE_ERROR} '{column}'."
-        raise AllotropeConversionError(msg)
     return value
 
 
@@ -224,17 +204,16 @@ class ThermoFisherQubit4Parser(VendorParser):
         :param data: The data as a pandas DataFrame.
         :return: A list of `SpectrophotometryDocumentItem`.
         """
+        rows = Row.create_rows(data)
         return [
             SpectrophotometryDocumentItem(
-                measurement_aggregate_document=self._get_measurement_aggregate_document(
-                    data, i
-                )
+                measurement_aggregate_document=self._get_measurement_aggregate_document(row)
             )
-            for i in range(len(data.index))
+            for row in rows
         ]
 
     def _get_measurement_aggregate_document(
-        self, data: pd.DataFrame, i: int
+        self, row: Row
     ) -> MeasurementAggregateDocument:
         """
         Generates a measurement aggregate document from the given data and index.
@@ -244,16 +223,14 @@ class ThermoFisherQubit4Parser(VendorParser):
         :return: The `MeasurementAggregateDocument`.
         """
         return MeasurementAggregateDocument(
-            measurement_time=self._get_date_time(
-                str(get_value_not_none(data, "Test Date", i))
-            ),
-            experiment_type=get_value(data, "Assay Name", i),
+            measurement_time=self._get_date_time(row.timestamp),
+            experiment_type=row.assay_name,
             container_type=ContainerType.tube,
-            measurement_document=self._get_measurement_document(data, i),
+            measurement_document=self._get_measurement_document(row),
         )
 
     def _get_measurement_document(
-        self, data: pd.DataFrame, i: int
+        self, row: Row
     ) -> list[
         FluorescencePointDetectionMeasurementDocumentItems
         | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
@@ -267,85 +244,44 @@ class ThermoFisherQubit4Parser(VendorParser):
         """
         return [
             FluorescencePointDetectionMeasurementDocumentItems(
-                fluorescence=self._get_fluorescence_value(data, i),
+                fluorescence=TQuantityValueRelativeFluorescenceUnit(value=row.fluorescence),
                 measurement_identifier=random_uuid_str(),
-                sample_document=self._get_sample_document(data, i),
+                sample_document=self._get_sample_document(row),
                 device_control_aggregate_document=self._get_device_control_document(
-                    data, i
+                    row
                 ),
             )
         ]
 
-    def _get_fluorescence_value(
-        self, data: pd.DataFrame, i: int
-    ) -> TQuantityValueRelativeFluorescenceUnit:
-        """
-        Retrieves the fluorescence value from the given data and index based on the emission wavelength.
-
-        :param data: The data as a pandas DataFrame.
-        :param i: The index of the row in the DataFrame.
-        :return: The `TQuantityValueRelativeFluorescenceUnit`.
-        :raises AllotropeConversionError: If the emission wavelength is unsupported.
-        """
-        emission_wavelength = get_value(data, "Emission", i)
-        if emission_wavelength is not None and emission_wavelength.lower() == "green":
-            value = TQuantityValueRelativeFluorescenceUnit(
-                value=get_value_not_none(data, "Green RFU", i)
-            )
-            return value
-        elif (
-            emission_wavelength is not None and emission_wavelength.lower() in "far red"
-        ):
-            value = TQuantityValueRelativeFluorescenceUnit(
-                value=get_value_not_none(data, "Far Red RFU", i)
-            )
-            return value
-        else:
-            message = f"{constants.UNSUPPORTED_WAVELENGTH_ERROR} {emission_wavelength}"
-            raise AllotropeConversionError(message)
-
-    def _get_sample_document(self, data: pd.DataFrame, i: int) -> SampleDocument:
+    def _get_sample_document(self, row: Row) -> SampleDocument:
         """
         Generates a sample document from the given data and index.
 
         :param data: The data as a pandas DataFrame.
-        :param i: The index of the row in the DataFrame.
         :return: The `SampleDocument`.
         """
         sample_custom_document = {
             "original sample concentration": get_concentration_value(
-                data, "Original sample conc.", "Units_Original sample conc.", i
+                row.data, "Original sample conc.", "Units_Original sample conc."
             ),
             "qubit tube concentration": get_concentration_value(
-                data, "Qubit® tube conc.", "Units_Qubit® tube conc.", i
+                row.data, "Qubit® tube conc.", "Units_Qubit® tube conc."
             ),
-            "standard 1 concentration": get_property_value(
-                data, "Std 1 RFU", i, TQuantityValueRelativeFluorescenceUnit
-            ),
-            "standard 2 concentration": get_property_value(
-                data, "Std 2 RFU", i, TQuantityValueRelativeFluorescenceUnit
-            ),
-            "standard 3 concentration": get_property_value(
-                data, "Std 3 RFU", i, TQuantityValueRelativeFluorescenceUnit
-            ),
+            "standard 1 concentration": quantity_or_none(TQuantityValueRelativeFluorescenceUnit, row.std_1_rfu),
+            "standard 2 concentration": quantity_or_none(TQuantityValueRelativeFluorescenceUnit, row.std_2_rfu),
+            "standard 3 concentration": quantity_or_none(TQuantityValueRelativeFluorescenceUnit, row.std_3_rfu),
         }
 
-        if all(value is None for value in sample_custom_document.values()):
-            return SampleDocument(
-                sample_identifier=get_value_not_none(data, "Test Name", i),
-                batch_identifier=str(get_value(data, "Run ID", i)),
-            )
-        else:
-            return add_custom_information_document(
-                SampleDocument(
-                    sample_identifier=get_value_not_none(data, "Test Name", i),
-                    batch_identifier=str(get_value(data, "Run ID", i)),
-                ),
-                sample_custom_document,
-            )
+        return add_custom_information_document(
+            SampleDocument(
+                sample_identifier=row.sample_identifier,
+                batch_identifier=row.batch_identifier,
+            ),
+            sample_custom_document,
+        )
 
     def _get_device_control_document(
-        self, data: pd.DataFrame, i: int
+        self, row: Row
     ) -> FluorescencePointDetectionDeviceControlAggregateDocument:
         """
         Generates a device control aggregate document from the given data and index.
@@ -355,13 +291,11 @@ class ThermoFisherQubit4Parser(VendorParser):
         :return: The `FluorescencePointDetectionDeviceControlAggregateDocument`.
         """
         custom_device_document = {
-            "sample volume setting": get_property_value(
-                data, "Sample Volume (µL)", i, TQuantityValueMicroliter
-            ),
-            "excitation setting": get_value(data, "Excitation", i),
-            "emission setting": get_value(data, "Emission", i),
-            "dilution factor": get_property_value(
-                data, "Dilution Factor", i, TQuantityValueUnitless
+            "sample volume setting": quantity_or_none(TQuantityValueMicroliter, row.sample_volume),
+            "excitation setting": row.excitation,
+            "emission setting": row.emission,
+            "dilution factor": get_series_property_value(
+                row.data, "Dilution Factor", TQuantityValueUnitless
             ),
         }
         if all(value is None for value in custom_device_document.values()):

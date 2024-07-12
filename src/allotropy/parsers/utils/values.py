@@ -221,6 +221,18 @@ def try_float_from_series_or_none(
         raise AllotropeConversionError(msg) from e
 
 
+def try_non_nan_float_from_series_or_none(
+    data: pd.Series[Any],
+    key: str,
+) -> float | None:
+    try:
+        value = data.get(key)
+        return try_non_nan_float_or_none(str(value))
+    except Exception as e:
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
+        raise AllotropeConversionError(msg) from e
+
+
 def try_float_from_series(
     data: pd.Series[Any],
     key: str,
