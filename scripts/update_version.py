@@ -75,13 +75,32 @@ def _write_version_file(version: str) -> None:
         f.write(f'__version__ = "{version}"')
 
 
-def _make_pr(version: str, body: str):
-    subprocess.run(["git", "commit", "-am", f"Update allotropy version to {version}"])  # noqa: S603
-    subprocess.run(["git", "push"])  # noqa: S603
-    with tempfile.TemporaryFile(delete_on_close=False) as fp:
+def _make_pr(version: str, body: str) -> None:
+    subprocess.run(
+        [  # noqa: S603, S607
+            "git",
+            "commit",
+            "-am",
+            f"Update allotropy version to {version}",
+        ],
+        check=True,
+    )
+    subprocess.run(["git", "push"], check=True)  # noqa: S603, S607
+    with tempfile.TemporaryFile(delete_on_close=False) as fp:  # type: ignore
         fp.write(body)
         fp.close()
-        subprocess.run(["gh", "pr", "create", "--title", f'"chore: Update allotropy version to {version}"', "--body-file", fp.name])  # noqa: S607
+        subprocess.run(
+            [  # noqa: S603, S607
+                "gh",
+                "pr",
+                "create",
+                "--title",
+                f'"chore: Update allotropy version to {version}"',
+                "--body-file",
+                fp.name,
+            ],
+            check=True,
+        )
 
 
 @click.command()
@@ -100,7 +119,7 @@ def _update_version(version: str | None = None) -> None:
 
     _write_version_file(version)
     body = _update_changelog(version)
-    _make_pr(body)
+    _make_pr(version, body)
 
 
 if __name__ == "__main__":
