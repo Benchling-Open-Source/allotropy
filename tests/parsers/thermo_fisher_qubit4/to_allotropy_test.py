@@ -4,4 +4,4 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.THERMO_FISHER_QUBIT4
-    OVERWRITE_ON_FAILURE = True
+    # OVERWRITE_ON_FAILURE = True
