@@ -113,7 +113,7 @@ class ViCellXRParser(VendorParser):
         self, row: Row, metadata: Metadata
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
-            analyst=metadata.analyst,
+            analyst=row.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
                 measurement_document=[
                     CellCountingDetectorMeasurementDocumentItem(

@@ -4,6 +4,7 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     Model,
 )
 from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_parser import ViCellBluParser
+from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_structure import Data
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from tests.parsers.beckman_vi_cell_blu.vi_cell_blu_data import (
     get_data,
@@ -27,6 +28,7 @@ def _clear_measurement_identifier(model: Model) -> None:
 
 def test_get_model() -> None:
     parser = ViCellBluParser(TimestampParser())
-    result = parser._get_model(get_data(), get_filename())
+    data = Data.create(get_data())
+    result = parser._get_model(data, get_filename())
     _clear_measurement_identifier(result)
     assert result == get_model()
