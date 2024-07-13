@@ -64,6 +64,9 @@ def _try_float(value: str) -> float:
 def test_try_float() -> None:
     assert _try_float("1.0") == 1.0
 
+    x: float = try_float("1")
+    assert x == 1
+
 
 @pytest.mark.short
 @pytest.mark.parametrize(

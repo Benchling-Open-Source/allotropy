@@ -205,7 +205,7 @@ class ReadData:
             detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
             # Absorbance attributes
             pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
-            number_of_averages=try_float_or_none(number_of_averages),
+            number_of_averages=try_float(number_of_averages, default=None),
             # Luminescence attributes
             detector_distance=try_float_or_none(read_height.split(" ")[0]),
             # Fluorescence attributes

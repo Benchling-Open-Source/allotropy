@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from enum import Enum
 import math
 import re
-from typing import Any, TypeVar
+from typing import Any, Literal, overload, TypeVar
 from xml.etree import ElementTree
 
 import pandas as pd
@@ -15,6 +16,13 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.exceptions import AllotropeConversionError
 
 PrimitiveValue = str | int | float
+
+
+class Unset(Enum):
+    UNSET = 0
+
+
+UNSET = Unset.UNSET
 
 
 def str_to_bool(value: str) -> bool:
@@ -36,13 +44,39 @@ def try_int_or_none(value: str | None) -> int | None:
         return None
 
 
-def try_float(value: str, value_name: str) -> float:
-    assert_not_none(value, value_name)
+T = TypeVar("T")
+
+
+def try_value(ret: type[T], value: str, value_name: str | None, default: T | None | Unset = UNSET) -> T | None:
     try:
-        return float(value)
-    except ValueError as e:
-        msg = f"Invalid float string: '{value}'."
-        raise AllotropeConversionError(msg) from e
+        assert_not_none(value, value_name)
+        try:
+            return ret(value)  # type: ignore [call-arg]
+        except ValueError as e:
+            msg = f"Invalid {ret.__name__} string: '{value}'."
+            raise AllotropeConversionError(msg) from e
+    except (ValueError, AllotropeConversionError):
+        if default is UNSET:
+            raise
+        return default
+
+
+@overload
+def try_float(value: str, value_name: str | None = None) -> float:
+    pass
+
+
+@overload
+def try_float(
+    value: str, value_name: str | None = None, default: Literal[None] = None
+) -> float | None:
+    pass
+
+
+def try_float(
+    value: str, value_name: str | None = None, default: float | None | Unset = UNSET
+) -> float | None:
+    return try_value(float, value, value_name, default)
 
 
 def try_float_or_none(value: str | float | None) -> float | None:
@@ -106,9 +140,6 @@ def quantity_or_none(
     if isinstance(value, list):
         return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
     return value_cls(value=value)  # type: ignore[call-arg]
-
-
-T = TypeVar("T")
 
 
 def assert_not_none(
