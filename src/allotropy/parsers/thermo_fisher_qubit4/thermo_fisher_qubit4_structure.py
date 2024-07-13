@@ -82,4 +82,4 @@ class Row:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Row]:
-        return [Row.create(data.iloc[i]) for i in range(len(data.index))]
+        return list(data.apply(Row.create, axis="columns"))
