@@ -14,7 +14,6 @@ TESTDATA = f"{Path(__file__).parent}/testdata"
 
 class TestParser(ParserTest):
     VENDOR = VENDOR_TYPE
-    # OVERWRITE_ON_FAILURE = True
 
 
 def test_parse_vi_cell_xr_file_without_required_fields_then_raise() -> None:
