@@ -82,4 +82,4 @@ class Row:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Row]:
-        return list(data.apply(Row.create, axis="columns"))
+        return list(data.apply(Row.create, axis="columns"))  # type: ignore[call-overload]
