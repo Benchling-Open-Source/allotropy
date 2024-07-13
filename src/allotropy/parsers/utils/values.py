@@ -47,7 +47,9 @@ def try_int_or_none(value: str | None) -> int | None:
 T = TypeVar("T")
 
 
-def try_value(ret: type[T], value: str, value_name: str | None, default: T | None | Unset = UNSET) -> T | None:
+def try_value(
+    ret: type[T], value: str, value_name: str | None, default: T | None | Unset = UNSET
+) -> T | None:
     try:
         assert_not_none(value, value_name)
         try:
