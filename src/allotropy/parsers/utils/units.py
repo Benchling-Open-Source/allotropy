@@ -1,5 +1,6 @@
 from dataclasses import fields
 
+# We must import this to get all subclasses of TQuantityValue in scope
 import allotropy.allotrope.models.shared.definitions.custom  # noqa: F401
 from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
 
@@ -11,8 +12,7 @@ UNIT_TO_PROPERTY = {
 }
 
 
-def get_property_for_unit(unit: str) -> TQuantityValue | None:
-    print(allotropy.allotrope.models.shared.definitions.custom.TQuantityValueNanogramPerMicroliter(value=0).unit)
-    print(f"UNIT: {unit}")
-    print(UNIT_TO_PROPERTY.get(unit))
-    return UNIT_TO_PROPERTY.get(unit)
+def get_quantity_class(
+    unit: str | None, default: type[TQuantityValue] | None = None
+) -> type[TQuantityValue] | None:
+    return UNIT_TO_PROPERTY.get(unit, default)

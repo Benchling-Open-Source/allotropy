@@ -20,7 +20,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -33,10 +33,10 @@
                                 "custom information document": {
                                     "original sample concentration": {
                                         "value": 21.2,
-                                        "unit": "ng/uL"
+                                        "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
-                                        "value": 106,
+                                        "value": 106.0,
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
@@ -77,7 +77,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -90,7 +90,7 @@
                                 "custom information document": {
                                     "original sample concentration": {
                                         "value": 9.86,
-                                        "unit": "ng/uL"
+                                        "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
                                         "value": 49.3,
@@ -134,7 +134,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -146,11 +146,11 @@
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 20,
-                                        "unit": "ng/uL"
+                                        "value": 20.0,
+                                        "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
-                                        "value": 100,
+                                        "value": 100.0,
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
@@ -191,7 +191,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -204,7 +204,7 @@
                                 "custom information document": {
                                     "original sample concentration": {
                                         "value": 14.5,
-                                        "unit": "ng/uL"
+                                        "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
                                         "value": 72.7,
@@ -248,7 +248,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -261,7 +261,7 @@
                                 "custom information document": {
                                     "original sample concentration": {
                                         "value": 19.5,
-                                        "unit": "ng/uL"
+                                        "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
                                         "value": 97.4,
@@ -305,7 +305,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -316,14 +316,6 @@
                                 "sample identifier": "Sample_#231104-004155",
                                 "batch identifier": "2023-11-04 00:00:00",
                                 "custom information document": {
-                                    "original sample concentration": {
-                                        "value": "Out of range",
-                                        "unit": "ng/uL"
-                                    },
-                                    "qubit tube concentration": {
-                                        "value": "Out of range",
-                                        "unit": "ng/mL"
-                                    },
                                     "standard 1 concentration": {
                                         "value": 56.12,
                                         "unit": "RFU"
@@ -362,7 +354,7 @@
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -375,10 +367,10 @@
                                 "custom information document": {
                                     "original sample concentration": {
                                         "value": 68.8,
-                                        "unit": "ng/uL"
+                                        "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
-                                        "value": 344,
+                                        "value": 344.0,
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {

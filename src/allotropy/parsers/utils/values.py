@@ -105,6 +105,7 @@ def quantity_or_none(
         return None
     if isinstance(value, list):
         return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
+    # Typing does not know that all subclasses of TQuantityValue have default value for unit set.r
     return value_cls(value=value)  # type: ignore[call-arg]
 
 

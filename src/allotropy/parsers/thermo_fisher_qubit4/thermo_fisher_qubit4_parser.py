@@ -16,12 +16,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     SpectrophotometryDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueMicrogramPerMicroliter,
-    TQuantityValueMicrogramPerMilliliter,
     TQuantityValueMicroliter,
-    TQuantityValueMilligramPerMilliliter,
-    TQuantityValueNanogramPerMicroliter,
-    TQuantityValueNanogramPerMilliliter,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
 )
@@ -34,18 +29,10 @@ from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_reader import (
     ThermoFisherQubit4Reader,
 )
 from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_structure import Row
-from allotropy.parsers.utils.units import get_property_for_unit
+from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
-
-CONCENTRATION_UNIT_TO_TQUANTITY = {
-    "μg/μL": TQuantityValueMicrogramPerMicroliter,
-    "μg/mL": TQuantityValueMicrogramPerMilliliter,
-    "mg/mL": TQuantityValueMilligramPerMilliliter,
-    "ng/µL": TQuantityValueNanogramPerMicroliter,
-    "ng/mL": TQuantityValueNanogramPerMilliliter,
-}
 
 
 class ThermoFisherQubit4Parser(VendorParser):
@@ -144,11 +131,11 @@ class ThermoFisherQubit4Parser(VendorParser):
         """
         sample_custom_document = {
             "original sample concentration": quantity_or_none(
-                get_property_for_unit(row.original_sample_unit) or TQuantityValueUnitless,
+                get_quantity_class(row.original_sample_unit) or TQuantityValueUnitless,
                 row.original_sample_concentration,
             ),
             "qubit tube concentration": quantity_or_none(
-                get_property_for_unit(row.qubit_tube_unit) or TQuantityValueUnitless,
+                get_quantity_class(row.qubit_tube_unit) or TQuantityValueUnitless,
                 row.qubit_tube_concentration,
             ),
             "standard 1 concentration": quantity_or_none(
