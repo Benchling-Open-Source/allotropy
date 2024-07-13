@@ -111,43 +111,77 @@ def get_model() -> Model:
                                     processed_data_document=[
                                         ProcessedDataDocumentItem(
                                             data_processing_document=DataProcessingDocument(
-                                                cell_type_processing_method=str(sample.get("Cell type")),
+                                                cell_type_processing_method=str(
+                                                    sample.get("Cell type")
+                                                ),
                                                 minimum_cell_diameter_setting=TQuantityValueMicrometer(
-                                                    value=float(sample.get("Minimum Diameter (μm)")),
+                                                    value=float(
+                                                        sample.get(  # type: ignore[arg-type]
+                                                            "Minimum Diameter (μm)"
+                                                        )
+                                                    ),
                                                 ),
                                                 maximum_cell_diameter_setting=TQuantityValueMicrometer(
-                                                    value=float(sample.get("Maximum Diameter (μm)")),
+                                                    value=float(
+                                                        sample.get(  # type: ignore[arg-type]
+                                                            "Maximum Diameter (μm)"
+                                                        )
+                                                    ),
                                                 ),
                                                 cell_density_dilution_factor=TQuantityValueUnitless(
-                                                    value=float(sample.get("Dilution")),
+                                                    value=float(sample.get("Dilution")),  # type: ignore[arg-type]
                                                 ),
                                             ),
                                             viability__cell_counter_=TQuantityValuePercent(
-                                                value=float(sample.get("Viability (%)")),
+                                                value=float(
+                                                    sample.get("Viability (%)")  # type: ignore[arg-type]
+                                                ),
                                             ),
                                             viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
-                                                value=float(sample.get("Viable (x10^6) cells/mL")),
+                                                value=float(
+                                                    sample.get(  # type: ignore[arg-type]
+                                                        "Viable (x10^6) cells/mL"
+                                                    )
+                                                ),
                                             ),
                                             total_cell_count=TQuantityValueCell(
-                                                value=round(float(sample.get("Cell count"))),
+                                                value=round(
+                                                    float(sample.get("Cell count"))  # type: ignore[arg-type]
+                                                ),
                                             ),
                                             total_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
-                                                value=float(sample.get("Total (x10^6) cells/mL")),
+                                                value=float(
+                                                    sample.get("Total (x10^6) cells/mL")  # type: ignore[arg-type]
+                                                ),
                                             ),
                                             average_total_cell_diameter=TQuantityValueMicrometer(
-                                                value=float(sample.get("Average diameter (μm)")),
+                                                value=float(
+                                                    sample.get("Average diameter (μm)")  # type: ignore[arg-type]
+                                                ),
                                             ),
                                             average_live_cell_diameter__cell_counter_=TQuantityValueMicrometer(
-                                                value=float(sample.get("Average viable diameter (μm)")),
+                                                value=float(
+                                                    sample.get(  # type: ignore[arg-type]
+                                                        "Average viable diameter (μm)"
+                                                    )
+                                                ),
                                             ),
                                             viable_cell_count=TQuantityValueCell(
-                                                value=round(float(sample.get("Viable cells"))),
+                                                value=round(
+                                                    float(sample.get("Viable cells"))  # type: ignore[arg-type]
+                                                ),
                                             ),
                                             average_total_cell_circularity=TQuantityValueUnitless(
-                                                value=float(sample.get("Average circularity")),
+                                                value=float(
+                                                    sample.get("Average circularity")  # type: ignore[arg-type]
+                                                ),
                                             ),
                                             average_viable_cell_circularity=TQuantityValueUnitless(
-                                                value=float(sample.get("Average viable circularity")),
+                                                value=float(
+                                                    sample.get(  # type: ignore[arg-type]
+                                                        "Average viable circularity"
+                                                    )
+                                                ),
                                             ),
                                         )
                                     ],
