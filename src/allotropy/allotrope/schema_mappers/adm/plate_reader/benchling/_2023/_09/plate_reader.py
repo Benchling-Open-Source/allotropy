@@ -10,8 +10,14 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
+    FluorescencePointDetectionMeasurementDocumentItems,
     ImageFeatureAggregateDocument,
     ImageFeatureDocumentItem,
+    LuminescencePointDetectionDeviceControlAggregateDocument,
+    LuminescencePointDetectionDeviceControlDocumentItem,
+    LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     OpticalImagingDeviceControlAggregateDocument,
@@ -22,15 +28,20 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
+    ScanPositionSettingPlateReader,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueDegreeCelsius,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimeter,
     TQuantityValueMilliSecond,
     TQuantityValueNanometer,
     TQuantityValueNumber,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueRelativeLightUnit,
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
@@ -58,7 +69,7 @@ class ProcessedData:
 
 
 @dataclass(frozen=True)
-class DataSourceItem:
+class DataSource:
     identifier: str
     feature: str
 
@@ -69,12 +80,14 @@ class CalculatedDataItem:
     name: str
     value: float
     unit: str
-    data_source_document: list[DataSourceItem]
+    data_sources: list[DataSource]
 
 
 class MeasurementType(Enum):
     OPTICAL_IMAGING = "OPTICAL_IMAGING"
     ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
+    FLUORESCENCE = "FLUORESCENCE"
+    LUMINESCENCE = "LUMINESCENCE"
 
 
 @dataclass(frozen=True)
@@ -88,10 +101,33 @@ class Measurement:
     well_plate_identifier: str | None = None
     exposure_duration_setting: float | None = None
     illumination_setting: float | None = None
-    processed_data: ProcessedData | None = None
-    wavelength: float | None = None
+
+    detector_wavelength_setting: float | None = None
+    detector_bandwidth_setting: float | None = None
+    excitation_wavelength_setting: float | None = None
+    excitation_bandwidth_setting: float | None = None
+    wavelength_filter_cutoff_setting: float | None = None
+    detector_distance_setting: float | None = None
+    scan_position_setting: ScanPositionSettingPlateReader | None = None
+    detector_gain_setting: str | None = None
+    detector_carriage_speed: str | None = None
+    compartment_temperature: float | None = None
+    number_of_averages: float | None = None
+
     absorbance: JsonFloat | None = None
+    fluorescence: JsonFloat | None = None
+    luminescence: JsonFloat | None = None
+
     calculated_data: list[CalculatedDataItem] | None = None
+    processed_data: ProcessedData | None = None
+
+
+MeasurementDocumentItems = (
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+    | OpticalImagingMeasurementDocumentItems
+)
 
 
 @dataclass(frozen=True)
@@ -99,6 +135,7 @@ class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: float
     analytical_method_identifier: str | None = None
+    experimental_data_identifier: str | None = None
     _measurement_time: str | None = None
     _analyst: str | None = None
 
@@ -141,9 +178,10 @@ class Metadata:
 class Data:
     metadata: Metadata
     measurement_groups: list[MeasurementGroup]
+    calculated_data: list[CalculatedDataItem] | None = None
 
     def get_calculated_data_items(self) -> list[CalculatedDataItem]:
-        return [
+        return (self.calculated_data or []) + [
             calculated_data_item
             for measurement_group in self.measurement_groups
             for measurement in measurement_group.measurements
@@ -182,6 +220,7 @@ class Mapper:
                         analyst=measurement_group.analyst,
                         measurement_aggregate_document=MeasurementAggregateDocument(
                             analytical_method_identifier=measurement_group.analytical_method_identifier,
+                            experimental_data_identifier=measurement_group.experimental_data_identifier,
                             container_type=ContainerType.well_plate,
                             plate_well_count=TQuantityValueNumber(
                                 value=measurement_group.plate_well_count
@@ -208,26 +247,34 @@ class Mapper:
 
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
-    ) -> OpticalImagingMeasurementDocumentItems | UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
-        if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            return self._get_optical_imaging_measurement_document(measurement, metadata)
-        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
-                measurement, metadata
-            )
-        msg = f"Invalid measurement type: {measurement.type}"
-        raise AllotropeConversionError(msg)
+    ) -> MeasurementDocumentItems:
+        match measurement.type_:
+            case MeasurementType.OPTICAL_IMAGING:
+                return self._get_optical_imaging_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
+                return self._get_ultraviolet_absorbance_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.LUMINESCENCE:
+                return self._get_luminescence_measurement_document(
+                    measurement, metadata
+                )
+            case MeasurementType.FLUORESCENCE:
+                return self._get_fluorescence_measurement_document(
+                    measurement, metadata
+                )
+            case _:
+                msg = f"Invalid measurement type: {measurement.type}"
+                raise AllotropeConversionError(msg)
 
     def _get_optical_imaging_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> OpticalImagingMeasurementDocumentItems:
         return OpticalImagingMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
-            sample_document=SampleDocument(
-                sample_identifier=measurement.sample_identifier,
-                location_identifier=measurement.location_identifier,
-                well_plate_identifier=measurement.well_plate_identifier,
-            ),
+            sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=OpticalImagingDeviceControlAggregateDocument(
                 device_control_document=[
                     OpticalImagingDeviceControlDocumentItem(
@@ -271,30 +318,133 @@ class Mapper:
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        detector_wavelength_setting=assert_not_none(
-                            quantity_or_none(
-                                TQuantityValueNanometer, measurement.wavelength
-                            ),
-                            msg="Missing wavelength setting value in ultraviolet absorbance measurement",
+                        detection_type=metadata.detection_type,
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            value=assert_not_none(
+                                measurement.detector_wavelength_setting,
+                                msg="Missing wavelength setting value in ultraviolet absorbance measurement",
+                            )
                         ),
+                        number_of_averages=quantity_or_none(
+                            TQuantityValueNumber, measurement.number_of_averages
+                        ),
+                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
                     )
                 ]
             ),
-            absorbance=assert_not_none(
-                quantity_or_none(
-                    TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
-                ),
-                msg="Missing absorbance value in ultraviolet absorbance measurement",
+            absorbance=TQuantityValueMilliAbsorbanceUnit(
+                value=assert_not_none(  # type: ignore[arg-type]
+                    value=measurement.absorbance,
+                    msg="Missing absorbance value in ultraviolet absorbance measurement",
+                )
             ),
-            sample_document=SampleDocument(
-                sample_identifier=measurement.sample_identifier,
-                location_identifier=measurement.location_identifier,
-                well_plate_identifier=measurement.well_plate_identifier,
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
             ),
+        )
+
+    def _get_luminescence_measurement_document(
+        self, measurement: Measurement, metadata: Metadata
+    ) -> LuminescencePointDetectionMeasurementDocumentItems:
+        return LuminescencePointDetectionMeasurementDocumentItems(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    LuminescencePointDetectionDeviceControlDocumentItem(
+                        device_type=metadata.device_type,
+                        detection_type=metadata.detection_type,
+                        detector_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_wavelength_setting,
+                        ),
+                        detector_bandwidth_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_bandwidth_setting,
+                        ),
+                        detector_distance_setting__plate_reader_=quantity_or_none(
+                            TQuantityValueMillimeter,
+                            measurement.detector_distance_setting,
+                        ),
+                        scan_position_setting__plate_reader_=measurement.scan_position_setting,
+                        detector_gain_setting=measurement.detector_gain_setting,
+                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                    )
+                ]
+            ),
+            luminescence=TQuantityValueRelativeLightUnit(
+                value=assert_not_none(  # type: ignore[arg-type]
+                    measurement.luminescence,
+                    msg="Missing luminescence value in luminescence measurement",
+                )
+            ),
+        )
+
+    def _get_fluorescence_measurement_document(
+        self, measurement: Measurement, metadata: Metadata
+    ) -> FluorescencePointDetectionMeasurementDocumentItems:
+        return FluorescencePointDetectionMeasurementDocumentItems(
+            measurement_identifier=measurement.identifier,
+            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    FluorescencePointDetectionDeviceControlDocumentItem(
+                        device_type=metadata.device_type,
+                        detection_type=metadata.detection_type,
+                        detector_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_wavelength_setting,
+                        ),
+                        detector_bandwidth_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_bandwidth_setting,
+                        ),
+                        excitation_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.excitation_wavelength_setting,
+                        ),
+                        excitation_bandwidth_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.excitation_bandwidth_setting,
+                        ),
+                        wavelength_filter_cutoff_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.wavelength_filter_cutoff_setting,
+                        ),
+                        detector_distance_setting__plate_reader_=quantity_or_none(
+                            TQuantityValueMillimeter,
+                            measurement.detector_distance_setting,
+                        ),
+                        scan_position_setting__plate_reader_=measurement.scan_position_setting,
+                        detector_gain_setting=measurement.detector_gain_setting,
+                        number_of_averages=quantity_or_none(
+                            TQuantityValueNumber, measurement.number_of_averages
+                        ),
+                        detector_carriage_speed_setting=measurement.detector_carriage_speed,
+                    )
+                ]
+            ),
+            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                value=assert_not_none(  # type: ignore[arg-type]
+                    measurement.fluorescence,
+                    msg="Missing fluorescence value in fluorescence measurement",
+                )
+            ),
+            compartment_temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.compartment_temperature
+            ),
+            sample_document=self._get_sample_document(measurement),
+        )
+
+    def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
+        return SampleDocument(
+            sample_identifier=measurement.sample_identifier,
+            location_identifier=measurement.location_identifier,
+            well_plate_identifier=measurement.well_plate_identifier,
         )
 
     def _get_calculated_data_aggregate_document(
@@ -318,7 +468,7 @@ class Mapper:
                                 data_source_identifier=item.identifier,
                                 data_source_feature=item.feature,
                             )
-                            for item in calculated_data_item.data_source_document
+                            for item in calculated_data_item.data_sources
                         ]
                     ),
                 )

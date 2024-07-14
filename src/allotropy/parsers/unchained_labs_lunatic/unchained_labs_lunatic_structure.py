@@ -7,7 +7,7 @@ import pandas as pd
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataItem,
     Data,
-    DataSourceItem,
+    DataSource,
     Measurement,
     MeasurementGroup,
     MeasurementType,
@@ -45,7 +45,7 @@ def _create_measurement(
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         identifier=measurement_identifier,
-        wavelength=float(wavelength_column[1:]),
+        detector_wavelength_setting=float(wavelength_column[1:]),
         absorbance=try_float_from_series_or_nan(well_plate_data, wavelength_column),
         sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
         location_identifier=try_str_from_series(well_plate_data, "Plate Position"),
@@ -73,8 +73,8 @@ def _get_calculated_data(
                 name=item["name"],
                 value=value,
                 unit=item["unit"],
-                data_source_document=[
-                    DataSourceItem(
+                data_sources=[
+                    DataSource(
                         identifier=measurement_identifier,
                         feature=item["feature"],
                     )

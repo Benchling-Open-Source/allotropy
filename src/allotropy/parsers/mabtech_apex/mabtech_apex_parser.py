@@ -2,7 +2,6 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -24,8 +23,5 @@ class MabtechApexParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = MabtechApexContents.create(named_file_contents)
         data = create_data(contents)
-        return self._get_model(data, named_file_contents.original_file_name)
-
-    def _get_model(self, data: Data, filename: str) -> Model:
         mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
-        return mapper.map_model(data, filename)
+        return mapper.map_model(data, named_file_contents.original_file_name)

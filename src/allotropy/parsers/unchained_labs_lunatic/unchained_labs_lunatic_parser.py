@@ -7,7 +7,6 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
 )
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -29,11 +28,8 @@ class UnchainedLabsLunaticParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         raw_contents = named_file_contents.contents
-        data = read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
-
-        filename = named_file_contents.original_file_name
-        return self._get_model(create_data(data), filename)
-
-    def _get_model(self, data: Data, filename: str) -> Model:
+        contents = read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
         mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
-        return mapper.map_model(data, filename)
+        return mapper.map_model(
+            create_data(contents), named_file_contents.original_file_name
+        )

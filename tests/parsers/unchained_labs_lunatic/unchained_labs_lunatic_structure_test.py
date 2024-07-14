@@ -42,7 +42,7 @@ def test__create_measurement(
     }
     measurement = _create_measurement(pd.Series(well_plate_data), wavelength_column)
 
-    assert measurement.wavelength == wavelength
+    assert measurement.detector_wavelength_setting == wavelength
     assert measurement.absorbance == absorbance_value
     assert measurement.sample_identifier == sample_identifier
     assert measurement.location_identifier == location_identifier
@@ -179,7 +179,7 @@ def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
     assert calculated_data_item.name == "Concentration"
     assert calculated_data_item.value == 4.5
     assert calculated_data_item.unit == "ng/uL"
-    assert calculated_data_item.data_source_document[0].feature == "absorbance"
+    assert calculated_data_item.data_sources[0].feature == "absorbance"
 
 
 @pytest.mark.short
