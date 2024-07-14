@@ -61,12 +61,8 @@ def _get_calculated_data(
     wavelength_column: str,
     measurement_identifier: str,
 ) -> list[CalculatedDataItem]:
-    calculated_data_dict = CALCULATED_DATA_LOOKUP.get(wavelength_column)
-    if not calculated_data_dict:
-        return []
-
     calculated_data = []
-    for item in calculated_data_dict:
+    for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
         value = try_float_from_series_or_none(well_plate_data, item["column"])
         if value is None:
             continue
