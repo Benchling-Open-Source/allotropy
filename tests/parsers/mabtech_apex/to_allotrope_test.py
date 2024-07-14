@@ -4,3 +4,4 @@ from tests.to_allotrope_test import ParserTest
 
 class TestParser(ParserTest):
     VENDOR = Vendor.MABTECH_APEX
+    # OVERWRITE_ON_FAILURE = True
