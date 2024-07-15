@@ -1,8 +1,3 @@
-import re
-import warnings
-
-import pandas as pd
-
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     CalculatedDataDocumentItem,
@@ -69,17 +64,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
-        with warnings.catch_warnings():
-            warnings.filterwarnings(
-                "ignore",
-                category=UserWarning,
-                module=re.escape("openpyxl.styles.stylesheet"),
-            )
-            raw_contents = pd.read_excel(
-                named_file_contents.contents, header=None, sheet_name=None
-            )
-        contents = DesignQuantstudioContents(raw_contents)
+        contents = DesignQuantstudioContents.create(named_file_contents)
         data = create_data(contents)
         return self._get_model(data, named_file_contents.original_file_name)
 

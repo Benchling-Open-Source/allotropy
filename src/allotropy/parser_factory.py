@@ -54,6 +54,9 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_parser import (
 from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_parser import (
     NanodropEightParser,
 )
+from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_parser import (
+    ThermoFisherQubit4Parser,
+)
 from allotropy.parsers.thermo_fisher_qubit_flex.thermo_fisher_qubit_flex_parser import (
     ThermoFisherQubitFlexParser,
 )
@@ -88,6 +91,7 @@ class Vendor(Enum):
     REVVITY_KALEIDO = "REVVITY_KALEIDO"
     ROCHE_CEDEX_BIOHT = "ROCHE_CEDEX_BIOHT"
     THERMO_FISHER_NANODROP_EIGHT = "THERMO_FISHER_NANODROP_EIGHT"
+    THERMO_FISHER_QUBIT4 = "THERMO_FISHER_QUBIT4"
     THERMO_FISHER_QUBIT_FLEX = "THERMO_FISHER_QUBIT_FLEX"
     UNCHAINED_LABS_LUNATIC = "UNCHAINED_LABS_LUNATIC"
 
@@ -128,6 +132,7 @@ _VENDOR_TO_PARSER: dict[Vendor, type[VendorParser]] = {
     Vendor.REVVITY_KALEIDO: KaleidoParser,
     Vendor.ROCHE_CEDEX_BIOHT: RocheCedexBiohtParser,
     Vendor.THERMO_FISHER_NANODROP_EIGHT: NanodropEightParser,
+    Vendor.THERMO_FISHER_QUBIT4: ThermoFisherQubit4Parser,
     Vendor.THERMO_FISHER_QUBIT_FLEX: ThermoFisherQubitFlexParser,
     Vendor.UNCHAINED_LABS_LUNATIC: UnchainedLabsLunaticParser,
 }

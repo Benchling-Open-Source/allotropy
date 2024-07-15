@@ -8,10 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added Thermo Fisher Qubit Flex adapter 
+- Added ThermoFisher Qubit4 adapter
+- Added requirement doc for ThermoFisher Qubit4 adapter
+- Added Thermo Fisher Qubit Flex adapter
 - Added requirement document for Thermo Fisher Qubit Flex adapter
 
 ### Fixed
+- Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
 
 ### Changed
 
