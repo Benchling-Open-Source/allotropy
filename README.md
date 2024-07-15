@@ -39,6 +39,7 @@ We currently have parser support for the following instruments:
   - Qiacuity dPCR
 
 ### Working Draft
+  - Roche Cedex HiRes
   - Thermo Fisher Qubit 4
   - Thermo Fisher Qubit Flex
 

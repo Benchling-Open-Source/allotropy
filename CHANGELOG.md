@@ -13,10 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Thermo Fisher Qubit Flex adapter
 - Added requirement document for Thermo Fisher Qubit Flex adapter
 
+- Added Roche Cedex HiRes adapter
+- Added requirement doc for Roche Cedex HiRes adapter
+
 ### Fixed
 - Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
 
+- Fixed encoding issues while reading units.json file in schemas.py script
+- Fixed encoding issues while reading test json files in testing/utils.py script
+
 ### Changed
+- Updated NON_UNIQUE_IDENTIFIERS to have "group identifier" field
 
 ### Deprecated
 
