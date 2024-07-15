@@ -32,7 +32,7 @@
                                     {
                                         "mass concentration": {
                                             "value": 9.267,
-                                            "unit": "ng/uL"
+                                            "unit": "ng/µL"
                                         }
                                     }
                                 ]
@@ -95,7 +95,7 @@
                                     {
                                         "mass concentration": {
                                             "value": 7.726,
-                                            "unit": "ng/uL"
+                                            "unit": "ng/µL"
                                         }
                                     }
                                 ]
@@ -158,7 +158,7 @@
                                     {
                                         "mass concentration": {
                                             "value": 5.024,
-                                            "unit": "ng/uL"
+                                            "unit": "ng/µL"
                                         }
                                     }
                                 ]
@@ -221,7 +221,7 @@
                                     {
                                         "mass concentration": {
                                             "value": 10.33,
-                                            "unit": "ng/uL"
+                                            "unit": "ng/µL"
                                         }
                                     }
                                 ]
@@ -284,7 +284,7 @@
                                     {
                                         "mass concentration": {
                                             "value": 8.643,
-                                            "unit": "ng/uL"
+                                            "unit": "ng/µL"
                                         }
                                     }
                                 ]
@@ -347,7 +347,7 @@
                                     {
                                         "mass concentration": {
                                             "value": 6.882,
-                                            "unit": "ng/uL"
+                                            "unit": "ng/µL"
                                         }
                                     }
                                 ]
@@ -387,7 +387,7 @@
         },
         "data system document": {
             "file name": "Thermo_NanoDrop_Eight_example03.txt",
-            "ASM converter name": "allotropy",
+            "ASM converter name": "allotropy_thermo_fisher_nanodrop_eight",
             "ASM converter version": "0.1.17"
         },
         "calculated data aggregate document": {
