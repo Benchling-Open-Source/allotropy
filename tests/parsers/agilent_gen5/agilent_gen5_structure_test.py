@@ -5,8 +5,8 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
 )
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     FilterSet,
+    get_identifiers,
     HeaderData,
-    LayoutData,
     ReadData,
 )
 from allotropy.parsers.agilent_gen5.constants import ReadMode
@@ -290,9 +290,9 @@ def test_create_layout_data() -> None:
         "B\tSPL2\tSPL10\tSPL18\tWell ID",
     ]
 
-    layout_data = LayoutData.create("\n".join(layout_rows))
+    sample_identifiers = get_identifiers(layout_rows)
 
-    assert layout_data.sample_identifiers == {
+    assert sample_identifiers == {
         "A1": "SPL1",
         "A2": "SPL9",
         "A3": "SPL17",
@@ -308,14 +308,37 @@ def test_create_layout_data_with_name_rows() -> None:
         "Layout",
         "\t1\t2\t3",
         "A\tSPL1\tSPL9\tSPL17\tWell ID",
-        "\tName_A1\tName_A2\tName_A3\tName",
+        "\tName_A1\t\tName_A3\tName",
         "B\tSPL2\tSPL10\tSPL18\tWell ID",
         "\tName_B1\tName_B2\tName_B3\tName",
     ]
 
-    layout_data = LayoutData.create("\n".join(layout_rows))
+    sample_identifiers = get_identifiers(layout_rows)
 
-    assert layout_data.sample_identifiers == {
+    assert sample_identifiers == {
+        "A1": "Name_A1",
+        "A2": "SPL9",
+        "A3": "Name_A3",
+        "B1": "Name_B1",
+        "B2": "Name_B2",
+        "B3": "Name_B3",
+    }
+
+
+@pytest.mark.short
+def test_create_layout_data_with_name_rows_name_row_first() -> None:
+    layout_rows = [
+        "Layout",
+        "\t1\t2\t3",
+        "A\tName_A1\tName_A2\tName_A3\tName",
+        "\tSPL1\tSPL9\tSPL17\tWell ID",
+        "B\tName_B1\tName_B2\tName_B3\tName",
+        "\tSPL2\tSPL10\tSPL18\tWell ID",
+    ]
+
+    sample_identifiers = get_identifiers(layout_rows)
+
+    assert sample_identifiers == {
         "A1": "Name_A1",
         "A2": "Name_A2",
         "A3": "Name_A3",
