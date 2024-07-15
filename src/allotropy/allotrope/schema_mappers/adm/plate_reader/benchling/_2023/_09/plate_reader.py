@@ -56,6 +56,21 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
 
+class MeasurementType(Enum):
+    OPTICAL_IMAGING = "OPTICAL_IMAGING"
+    ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
+    FLUORESCENCE = "FLUORESCENCE"
+    LUMINESCENCE = "LUMINESCENCE"
+
+
+MeasurementDocumentItems = (
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
+    | OpticalImagingMeasurementDocumentItems
+)
+
+
 @dataclass(frozen=True)
 class ImageFeature:
     identifier: str
@@ -82,13 +97,6 @@ class CalculatedDataItem:
     value: float
     unit: str
     data_sources: list[DataSource]
-
-
-class MeasurementType(Enum):
-    OPTICAL_IMAGING = "OPTICAL_IMAGING"
-    ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
-    FLUORESCENCE = "FLUORESCENCE"
-    LUMINESCENCE = "LUMINESCENCE"
 
 
 @dataclass(frozen=True)
@@ -132,14 +140,6 @@ class Measurement:
     auto_focus_setting: bool | None = None
     image_count_setting: float | None = None
     fluorescent_tag_setting: str | None = None
-
-
-MeasurementDocumentItems = (
-    UltravioletAbsorbancePointDetectionMeasurementDocumentItems
-    | FluorescencePointDetectionMeasurementDocumentItems
-    | LuminescencePointDetectionMeasurementDocumentItems
-    | OpticalImagingMeasurementDocumentItems
-)
 
 
 @dataclass(frozen=True)
