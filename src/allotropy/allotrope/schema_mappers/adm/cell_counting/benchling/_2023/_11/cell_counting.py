@@ -55,7 +55,7 @@ class MeasurementGroup:
     _analyst: str | None = None
 
     @property
-    def analyst(self):
+    def analyst(self) -> str | None:
         if self._analyst is not None:
             return self._analyst
         if (
