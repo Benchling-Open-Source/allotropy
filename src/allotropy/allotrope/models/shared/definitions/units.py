@@ -61,7 +61,7 @@ class KiloDalton(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class MicrogramPerMicroliter(HasUnit):
-    unit: str = "ug/uL"
+    unit: str = "ug/µL"
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -161,7 +161,7 @@ class NanoCoulombTimesSecond(HasUnit):
 
 @dataclass(frozen=True, kw_only=True)
 class NanogramPerMicroliter(HasUnit):
-    unit: str = "ng/uL"
+    unit: str = "ng/µL"
 
 
 @dataclass(frozen=True, kw_only=True)

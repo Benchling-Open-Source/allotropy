@@ -39,9 +39,9 @@ def handle(filename: str, reader: IOType) -> None:
         model = allotrope_model_from_io(reader, filename, Vendor.EXAMPLE_WEYLAND_YUTANI)
         well_data = extract_well_data(model)
         df = pd.DataFrame(well_data, columns=["col", "row", "reading"])
-        print(df)  # noqa: T201
+        print(df)
     except Exception as exc:
-        print(f"Unable to read {filename}: {exc}", file=sys.stderr)  # noqa: T201
+        print(f"Unable to read {filename}: {exc}", file=sys.stderr)
 
 
 def parse_args() -> argparse.Namespace:

@@ -18,7 +18,7 @@ def main() -> None:
     if args.outfile:
         with open(args.outfile, "w") as out:
             json.dump(asm_schema, out, indent=4)
-    print(json.dumps(asm_schema, indent=4))  # noqa: T201
+    print(json.dumps(asm_schema, indent=4))
 
 
 def parse_args() -> argparse.Namespace:
