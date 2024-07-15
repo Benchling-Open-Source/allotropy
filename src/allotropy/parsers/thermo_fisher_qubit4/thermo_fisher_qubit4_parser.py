@@ -97,7 +97,7 @@ class ThermoFisherQubit4Parser(VendorParser):
         self, row: Row
     ) -> SpectrophotometryDocumentItem:
         """
-        Generates a list of spectrophotometry document items from the given data.
+        Generates a spectrophotometry document item for the given Row.
 
         :param row: The Row to create the document from.
         :return: A list of `SpectrophotometryDocumentItem`.
@@ -172,7 +172,7 @@ class ThermoFisherQubit4Parser(VendorParser):
             "excitation setting": row.excitation,
             "emission setting": row.emission,
             "dilution factor": quantity_or_none(
-                TQuantityValueUnitless, row.diluation_factor
+                TQuantityValueUnitless, row.dilution_factor
             ),
         }
         return FluorescencePointDetectionDeviceControlAggregateDocument(

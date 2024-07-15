@@ -29,7 +29,7 @@ class Row:
     sample_volume: float | None
     excitation: str | None
     emission: str | None
-    diluation_factor: float | None
+    dilution_factor: float | None
     original_sample_concentration: JsonFloat | None
     original_sample_unit: str | None
     qubit_tube_concentration: JsonFloat | None
@@ -62,7 +62,7 @@ class Row:
             ),
             excitation=try_str_from_series_or_none(data, "Excitation"),
             emission=try_str_from_series(data, "Emission"),
-            diluation_factor=try_non_nan_float_from_series_or_none(
+            dilution_factor=try_non_nan_float_from_series_or_none(
                 data, "Dilution Factor"
             ),
             original_sample_concentration=try_float_from_series_or_nan(
