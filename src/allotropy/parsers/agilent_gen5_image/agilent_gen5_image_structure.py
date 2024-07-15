@@ -40,6 +40,8 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
     DEVICE_TYPE,
+    MULTIPLATE_FILE_ERROR,
+    NO_PLATE_DATA_ERROR,
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
@@ -375,13 +377,21 @@ def _create_measurement(
     )
 
 
-def create_data(reader: LinesReader, file_name: str) -> Data:
-    header_data = HeaderData.create(reader, file_name)
-    read_data = ReadData.create(reader)
+def create_data(reader: SectionLinesReader, file_name: str) -> Data:
+    plates = list(reader.iter_sections("^Software Version"))
+
+    if not plates:
+        raise AllotropeConversionError(NO_PLATE_DATA_ERROR)
+
+    if len(plates) > 1:
+        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
+
+    header_data = HeaderData.create(plates[0], file_name)
+    read_data = ReadData.create(plates[0])
 
     section_lines = {}
-    while reader.current_line_exists():
-        data_section = read_data_section(reader)
+    while plates[0].current_line_exists():
+        data_section = read_data_section(plates[0])
         section_lines[data_section[0].strip().split(":")[0]] = data_section
 
     # If there is no results table, it might mean that the export format includes results in

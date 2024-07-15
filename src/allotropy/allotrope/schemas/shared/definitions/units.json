@@ -123,7 +123,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "ug/uL",
+        "const": "ug/µL",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#MicrogramPerMicroliter"
       }
     },
@@ -363,7 +363,7 @@
     "properties": {
       "unit": {
         "type": "string",
-        "const": "ng/uL",
+        "const": "ng/µL",
         "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#NanogramPerMicroliter"
       }
     },

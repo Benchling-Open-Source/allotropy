@@ -22,7 +22,6 @@ class CtlImmunospotParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
-        reader = LinesReader(lines)
-        data = create_data(reader)
+        data = create_data(LinesReader(lines))
         mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
         return mapper.map_model(data)

@@ -4,15 +4,10 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     Mapper,
 )
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.agilent_gen5_image_structure import (
     create_data,
-)
-from allotropy.parsers.agilent_gen5_image.constants import (
-    MULTIPLATE_FILE_ERROR,
-    NO_PLATE_DATA_ERROR,
 )
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.release_state import ReleaseState
@@ -30,15 +25,8 @@ class AgilentGen5ImageParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
-        section_lines_reader = SectionLinesReader(lines)
-        plates = list(section_lines_reader.iter_sections("^Software Version"))
-
-        if not plates:
-            raise AllotropeConversionError(NO_PLATE_DATA_ERROR)
-
-        if len(plates) > 1:
-            raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
-
-        data = create_data(plates[0], named_file_contents.original_file_name)
+        data = create_data(
+            SectionLinesReader(lines), named_file_contents.original_file_name
+        )
         mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
         return mapper.map_model(data)

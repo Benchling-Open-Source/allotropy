@@ -35,6 +35,8 @@ from allotropy.parsers.agilent_gen5.constants import (
     GAIN_KEY,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
+    MULTIPLATE_FILE_ERROR,
+    NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_HEIGHT_KEY,
@@ -44,6 +46,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
+from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -120,28 +123,28 @@ class FilterSet:
     optics: str | None = None
 
     @property
-    def detector_wavelength_setting(self) -> float | None:
-        if self.emission == "Full light" or not self.emission:
+    def detector_wavelength_setting(self) -> JsonFloat | None:
+        if not self.emission:
             return None
-        return try_float(self.emission.split("/")[0], "Detector wavelength")
+        return try_float_or_nan(self.emission.split("/")[0])
 
     @property
-    def detector_bandwidth_setting(self) -> float | None:
-        if not self.emission or self.emission == "Full light":
+    def detector_bandwidth_setting(self) -> JsonFloat | None:
+        if not self.emission:
             return None
         try:
-            return try_float(self.emission.split("/")[1], "Detector bandwith")
+            return try_float_or_nan(self.emission.split("/")[1])
         except IndexError:
             return None
 
     @property
-    def excitation_wavelength_setting(self) -> float | None:
+    def excitation_wavelength_setting(self) -> JsonFloat | None:
         if self.excitation:
-            return try_float(self.excitation.split("/")[0], "Excitation wavelength")
+            return try_float_or_nan(self.excitation.split("/")[0])
         return None
 
     @property
-    def excitation_bandwidth_setting(self) -> float | None:
+    def excitation_bandwidth_setting(self) -> JsonFloat | None:
         if not self.excitation:
             return None
         try:
@@ -268,7 +271,7 @@ class ReadData:
         if read_mode == ReadMode.LUMINESCENCE:
             emissions = device_control_data.get(EMISSION_KEY)
             for emission in emissions:
-                label = "Lum" if emission == "Full light" else emission
+                label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
                 measurement_labels.append(f"{label_prefix}{label}")
 
         return measurement_labels
@@ -281,8 +284,8 @@ class ReadData:
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
         measurement_labels = []
 
-        for wavelenght in wavelengths:
-            label = f"{label_prefix}{wavelenght}"
+        for wavelength in wavelengths:
+            label = f"{label_prefix}{wavelength}"
             measurement_labels.append(label)
 
         if pathlength_correction:
@@ -542,7 +545,7 @@ def _create_measurement(
         case ReadMode.LUMINESCENCE:
             measurement_type = MeasurementType.LUMINESCENCE
 
-    detector_wavelength_setting: float | None = None
+    detector_wavelength_setting: JsonFloat | None = None
     if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
         filter_data = None
         detector_wavelength_setting = float(
@@ -592,13 +595,22 @@ def _create_measurement(
     )
 
 
-def create_data(reader: LinesReader, file_name: str) -> Data:
-    header_data = HeaderData.create(reader, file_name)
-    read_data = ReadData.create(reader)
+def create_data(reader: SectionLinesReader, file_name: str) -> Data:
+    plates = list(reader.iter_sections("^Software Version"))
+
+    if not plates:
+        msg = "No plate data found in file."
+        raise AllotropeConversionError(msg)
+
+    if len(plates) > 1:
+        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
+
+    header_data = HeaderData.create(plates[0], file_name)
+    read_data = ReadData.create(plates[0])
 
     section_lines = {}
-    while reader.current_line_exists():
-        data_section = read_data_section(reader)
+    while plates[0].current_line_exists():
+        data_section = read_data_section(plates[0])
         section_lines[data_section[0].strip().split(":")[0]] = data_section
 
     sample_identifiers = get_identifiers(section_lines.get("Layout"))

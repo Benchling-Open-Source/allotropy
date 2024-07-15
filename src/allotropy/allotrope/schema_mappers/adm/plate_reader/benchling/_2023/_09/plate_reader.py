@@ -120,10 +120,10 @@ class Measurement:
     processed_data: ProcessedData | None = None
 
     # Settings
-    detector_wavelength_setting: float | None = None
-    detector_bandwidth_setting: float | None = None
-    excitation_wavelength_setting: float | None = None
-    excitation_bandwidth_setting: float | None = None
+    detector_wavelength_setting: JsonFloat | None = None
+    detector_bandwidth_setting: JsonFloat | None = None
+    excitation_wavelength_setting: JsonFloat | None = None
+    excitation_bandwidth_setting: JsonFloat | None = None
     wavelength_filter_cutoff_setting: float | None = None
     detector_distance_setting: float | None = None
     scan_position_setting: ScanPositionSettingPlateReader | None = None
@@ -344,7 +344,7 @@ class Mapper:
                         device_type=metadata.device_type,
                         detection_type=metadata.detection_type,
                         detector_wavelength_setting=TQuantityValueNanometer(
-                            value=assert_not_none(
+                            value=assert_not_none(  # type: ignore[arg-type]
                                 measurement.detector_wavelength_setting,
                                 msg="Missing wavelength setting value in ultraviolet absorbance measurement",
                             )
