@@ -13,6 +13,7 @@ TESTDATA = Path(Path(__file__).parent, "testdata")
 
 class TestParser(ParserTest):
     VENDOR = Vendor.THERMO_FISHER_NANODROP_EIGHT
+    OVERWRITE_ON_FAILURE = True
 
 
 @pytest.mark.parametrize("test_filepath", get_test_cases(TESTDATA))
