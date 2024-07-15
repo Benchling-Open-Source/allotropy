@@ -5,30 +5,47 @@ from __future__ import annotations
 from collections import defaultdict
 from collections.abc import Iterator
 from dataclasses import dataclass
+from io import StringIO
 import re
+
+import pandas as pd
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     TransmittedLightSetting,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    Data,
+    ImageFeature,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+    ProcessedData,
+)
 from allotropy.exceptions import (
     AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
+)
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
+    get_identifiers,
+    HeaderData,
+    read_data_section,
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.agilent_gen5_image.constants import (
     AUTOFOCUS_STRINGS,
     CHANNEL_HEADER_REGEX,
     DEFAULT_EXPORT_FORMAT_ERROR,
+    DEFAULT_SOFTWARE_NAME,
+    DETECTION_TYPE,
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
-    FILENAME_REGEX,
-    HEADER_PREFIXES,
+    DEVICE_TYPE,
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
     UNSUPORTED_READ_TYPE_ERROR,
 )
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -37,17 +54,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_nan,
     try_float_or_none,
 )
-
-
-def read_data_section(reader: LinesReader) -> str:
-    data_section = "\n".join(
-        [
-            reader.pop() or "",
-            *reader.pop_until_empty(),
-        ]
-    )
-    reader.drop_empty()
-    return data_section
 
 
 def parse_settings(settings: list[str]) -> dict:
@@ -74,65 +80,6 @@ def parse_settings(settings: list[str]) -> dict:
                 settings_dict[splitted_datum[0]] = splitted_datum[1]
 
     return settings_dict
-
-
-@dataclass(frozen=True)
-class HeaderData:
-    software_version: str
-    experiment_file_path: str
-    protocol_file_path: str
-    datetime: str
-    well_plate_identifier: str
-    model_number: str
-    equipment_serial_number: str
-
-    @classmethod
-    def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
-        assert_not_none(reader.drop_until("^Software Version"), "Software Version")
-        metadata_dict = cls._parse_metadata(reader)
-        datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
-        plate_identifier = cls._get_identifier_from_filename_or_none(file_name)
-
-        return HeaderData(
-            software_version=metadata_dict["Software Version"],
-            experiment_file_path=metadata_dict["Experiment File Path:"],
-            protocol_file_path=metadata_dict["Protocol File Path:"],
-            datetime=datetime_,
-            well_plate_identifier=plate_identifier or metadata_dict["Plate Number"],
-            model_number=metadata_dict["Reader Type:"],
-            equipment_serial_number=metadata_dict["Reader Serial Number:"],
-        )
-
-    @classmethod
-    def _parse_metadata(cls, reader: LinesReader) -> dict:
-        metadata_dict: dict = {}
-        for metadata_line in reader.pop_until("Procedure Details"):
-            reader.drop_empty()
-            line_split = metadata_line.split("\t")
-            if line_split[0] not in HEADER_PREFIXES:
-                msg = msg_for_error_on_unrecognized_value(
-                    "metadata key", line_split[0], HEADER_PREFIXES
-                )
-                raise AllotropeConversionError(msg)
-            try:
-                metadata_dict[line_split[0]] = line_split[1]
-            except IndexError:
-                metadata_dict[line_split[0]] = ""
-
-        return metadata_dict
-
-    @classmethod
-    def _parse_datetime(cls, date_: str, time_: str) -> str:
-        return f"{date_} {time_}"
-
-    @classmethod
-    def _get_identifier_from_filename_or_none(cls, file_name: str) -> str | None:
-        matches = re.match(FILENAME_REGEX, file_name)
-        if not matches:
-            return None
-
-        matches_dict = matches.groupdict()
-        return matches_dict["plate_identifier"]
 
 
 @dataclass
@@ -287,11 +234,11 @@ class ReadData:
         reader.drop_empty()
         procedure_details = read_data_section(reader)
 
-        read_type = cls._get_read_type(procedure_details)
+        read_type = cls._get_read_type("\n".join(procedure_details))
         if read_type != ReadType.IMAGE:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
 
-        section_lines_reader = SectionLinesReader(procedure_details.splitlines())
+        section_lines_reader = SectionLinesReader(procedure_details)
 
         return ReadData(
             read_sections=[
@@ -317,131 +264,136 @@ class ReadData:
         raise AllotropeConversionError(msg)
 
 
-@dataclass(frozen=True)
-class LayoutData:
-    sample_identifiers: dict
+def create_results(
+    result_lines: list[str],
+    header_data: HeaderData,
+    read_data: ReadData,
+    sample_identifiers: dict[str, str],
+) -> list[MeasurementGroup]:
+    if result_lines[0].strip() != "Results":
+        msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
+        raise AllotropeConversionError(msg)
 
-    @staticmethod
-    def create_default() -> LayoutData:
-        return LayoutData(sample_identifiers={})
+    # Create dataframe from tabular data and forward fill empty values in index
+    data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+    data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
-    @staticmethod
-    def create(layout_str: str) -> LayoutData:
-        identifiers = {}
+    image_features = defaultdict(list)
 
-        layout_lines: list[str] = layout_str.splitlines()
-        # first line is "Layout", second line is column numbers
-        current_row = "A"
-        for i in range(2, len(layout_lines)):
-            split_line = layout_lines[i].split("\t")
-            if split_line[0]:
-                current_row = split_line[0]
-            label = split_line[-1]
-            for j in range(1, len(split_line) - 1):
-                well_loc = f"{current_row}{j}"
-                if label == "Name":
-                    identifiers[well_loc] = split_line[j]
-                elif label == "Well ID":
-                    # give prevalence to the "Name" field if present
-                    sample_id = identifiers.get(well_loc)
-                    identifiers[well_loc] = sample_id if sample_id else split_line[j]
+    for row_name, row in data.iterrows():
+        feature_name = row.iloc[-1]
+        for col_index, value in enumerate(row.iloc[:-1]):
+            well_pos = f"{row_name}{col_index + 1}"
+            well_value = try_float_or_nan(value)
 
-        return LayoutData(sample_identifiers=identifiers)
-
-
-@dataclass(frozen=True)
-class ActualTemperature:
-    value: float | None = None
-
-    @staticmethod
-    def create_default() -> ActualTemperature:
-        return ActualTemperature()
-
-    @staticmethod
-    def create(actual_temperature: str) -> ActualTemperature:
-        if len(actual_temperature.split("\n")) != 1:
-            msg = f"Expected the Temperature section '{actual_temperature}' to contain exactly 1 line."
-            raise AllotropeConversionError(msg)
-
-        return ActualTemperature(
-            value=try_float(
-                actual_temperature.strip().split("\t")[-1], "Actual Temperature"
-            ),
-        )
-
-
-@dataclass(frozen=True)
-class ImageFeature:
-    identifier: str
-    name: str
-    result: JsonFloat
-
-
-@dataclass(frozen=True)
-class Results:
-    image_features: dict[str, list[ImageFeature]]
-
-    @staticmethod
-    def create(results: str) -> Results:
-        image_features = defaultdict(list)
-
-        result_lines = results.splitlines()
-
-        if result_lines[0].strip() != "Results":
-            msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
-            raise AllotropeConversionError(msg)
-
-        # result_lines[1] contains column numbers
-        current_row = "A"
-        for row_num in range(2, len(result_lines)):
-            values = result_lines[row_num].split("\t")
-            if values[0]:
-                current_row = values[0]
-            feature_name = values[-1]
-            for col_num in range(1, len(values) - 1):
-                well_position = f"{current_row}{col_num}"
-                well_value = try_float_or_nan(values[col_num])
-
-                image_features[well_position].append(
-                    ImageFeature(
-                        identifier=random_uuid_str(),
-                        name=feature_name,
-                        result=well_value,
-                    )
+            image_features[well_pos].append(
+                ImageFeature(
+                    identifier=random_uuid_str(),
+                    feature=feature_name,
+                    result=well_value,
                 )
+            )
 
-        return Results(image_features)
-
-
-@dataclass(frozen=True)
-class PlateData:
-    header_data: HeaderData
-    read_data: ReadData
-    layout_data: LayoutData
-    results: Results
-
-    @staticmethod
-    def create(reader: LinesReader, file_name: str) -> PlateData:
-        header_data = HeaderData.create(reader, file_name)
-        read_data = ReadData.create(reader)
-        layout_data = LayoutData.create_default()
-        results = None
-
-        while reader.current_line_exists():
-            data_section = read_data_section(reader)
-            if data_section.startswith("Layout"):
-                layout_data = LayoutData.create(data_section)
-            elif data_section.startswith("Results"):
-                results = Results.create(data_section)
-
-        # If there is no results table, it might mean that the export format includes results in
-        # separate tables, or that there are no results at all (also bad format)
-        if results is None:
-            raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
-
-        return PlateData(
-            header_data=header_data,
-            read_data=read_data,
-            layout_data=layout_data,
-            results=results,
+    groups = []
+    num_measurements = sum(
+        len(read_section.instrument_settings_list)
+        for read_section in read_data.read_sections
+    )
+    for well_position in image_features:
+        processed_data = ProcessedData(
+            identifier=random_uuid_str(), features=image_features[well_position]
         )
+        measurements = [
+            _create_measurement(
+                well_position,
+                header_data,
+                read_section,
+                instrument_settings,
+                sample_identifiers.get(well_position),
+                processed_data if num_measurements == 1 else None,
+            )
+            for read_section in read_data.read_sections
+            for instrument_settings in read_section.instrument_settings_list
+        ]
+
+        groups.append(
+            MeasurementGroup(
+                _measurement_time=header_data.datetime,
+                plate_well_count=len(image_features),
+                analytical_method_identifier=header_data.protocol_file_path,
+                experimental_data_identifier=header_data.experiment_file_path,
+                measurements=measurements,
+                processed_data=processed_data if num_measurements > 1 else None,
+            )
+        )
+
+    return groups
+
+
+def _create_metadata(header_data: HeaderData) -> Metadata:
+    return Metadata(
+        device_type=DEVICE_TYPE,
+        detection_type=DETECTION_TYPE,
+        device_identifier=NOT_APPLICABLE,
+        model_number=header_data.model_number or NOT_APPLICABLE,
+        equipment_serial_number=header_data.equipment_serial_number,
+        software_name=DEFAULT_SOFTWARE_NAME,
+        software_version=header_data.software_version,
+    )
+
+
+def _create_measurement(
+    well_position: str,
+    header_data: HeaderData,
+    read_section: ReadSection,
+    instrument_settings: InstrumentSettings,
+    sample_identifier: str | None,
+    processed_data: ProcessedData | None,
+) -> Measurement:
+    return Measurement(
+        type_=MeasurementType.OPTICAL_IMAGING,
+        identifier=random_uuid_str(),
+        sample_identifier=sample_identifier
+        or f"{header_data.well_plate_identifier} {well_position}",
+        location_identifier=well_position,
+        well_plate_identifier=header_data.well_plate_identifier,
+        detector_wavelength_setting=instrument_settings.detector_wavelength,
+        excitation_wavelength_setting=instrument_settings.excitation_wavelength,
+        # TODO: this setting won't get reported at the moment since Gen5 only reports it
+        # in micrometers and we don't do conversions on the adapters at the moment
+        # detector_distance_setting=instrument_settings.detector_distance,
+        detector_gain_setting=instrument_settings.detector_gain,
+        magnification_setting=read_section.magnification_setting,
+        illumination_setting=instrument_settings.illumination,
+        transmitted_light_setting=instrument_settings.transmitted_light,
+        auto_focus_setting=instrument_settings.auto_focus,
+        image_count_setting=read_section.image_count_setting,
+        fluorescent_tag_setting=instrument_settings.fluorescent_tag,
+        exposure_duration_setting=instrument_settings.exposure_duration,
+        processed_data=processed_data,
+    )
+
+
+def create_data(reader: LinesReader, file_name: str) -> Data:
+    header_data = HeaderData.create(reader, file_name)
+    read_data = ReadData.create(reader)
+
+    section_lines = {}
+    while reader.current_line_exists():
+        data_section = read_data_section(reader)
+        section_lines[data_section[0].strip().split(":")[0]] = data_section
+
+    # If there is no results table, it might mean that the export format includes results in
+    # separate tables, or that there are no results at all (also bad format)
+    if "Results" not in section_lines:
+        raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
+
+    return Data(
+        metadata=_create_metadata(header_data),
+        measurement_groups=create_results(
+            section_lines["Results"],
+            header_data,
+            read_data,
+            get_identifiers(section_lines.get("Layout")),
+        ),
+    )

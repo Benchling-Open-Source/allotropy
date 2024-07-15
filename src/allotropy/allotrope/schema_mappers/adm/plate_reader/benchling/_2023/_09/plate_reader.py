@@ -29,6 +29,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     ProcessedDataDocumentItem,
     SampleDocument,
     ScanPositionSettingPlateReader,
+    TransmittedLightSetting,
     UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument,
     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
@@ -92,6 +93,7 @@ class MeasurementType(Enum):
 
 @dataclass(frozen=True)
 class Measurement:
+    # Measurement metadata
     type_: MeasurementType
     identifier: str
     sample_identifier: str
@@ -99,9 +101,17 @@ class Measurement:
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
-    exposure_duration_setting: float | None = None
-    illumination_setting: float | None = None
 
+    # Measurements
+    absorbance: JsonFloat | None = None
+    fluorescence: JsonFloat | None = None
+    luminescence: JsonFloat | None = None
+
+    # Processed data
+    calculated_data: list[CalculatedDataItem] | None = None
+    processed_data: ProcessedData | None = None
+
+    # Settings
     detector_wavelength_setting: float | None = None
     detector_bandwidth_setting: float | None = None
     excitation_wavelength_setting: float | None = None
@@ -114,12 +124,14 @@ class Measurement:
     compartment_temperature: float | None = None
     number_of_averages: float | None = None
 
-    absorbance: JsonFloat | None = None
-    fluorescence: JsonFloat | None = None
-    luminescence: JsonFloat | None = None
-
-    calculated_data: list[CalculatedDataItem] | None = None
-    processed_data: ProcessedData | None = None
+    # Optical imaging
+    exposure_duration_setting: float | None = None
+    illumination_setting: float | None = None
+    magnification_setting: float | None = None
+    transmitted_light_setting: TransmittedLightSetting | None = None
+    auto_focus_setting: bool | None = None
+    image_count_setting: float | None = None
+    fluorescent_tag_setting: str | None = None
 
 
 MeasurementDocumentItems = (
@@ -138,6 +150,7 @@ class MeasurementGroup:
     experimental_data_identifier: str | None = None
     _measurement_time: str | None = None
     _analyst: str | None = None
+    processed_data: ProcessedData | None = None
 
     @property
     def measurement_time(self) -> str:
@@ -234,6 +247,9 @@ class Mapper:
                                 )
                                 for measurement in measurement_group.measurements
                             ],
+                            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                                measurement_group.processed_data
+                            ),
                         ),
                     )
                     for measurement_group in data.measurement_groups
@@ -280,6 +296,10 @@ class Mapper:
                     OpticalImagingDeviceControlDocumentItem(
                         device_type=metadata.device_type,
                         detection_type=metadata.detection_type,
+                        detector_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.detector_wavelength_setting,
+                        ),
                         exposure_duration_setting=quantity_or_none(
                             TQuantityValueMilliSecond,
                             measurement.exposure_duration_setting,
@@ -287,30 +307,28 @@ class Mapper:
                         illumination_setting=quantity_or_none(
                             TQuantityValueUnitless, measurement.illumination_setting
                         ),
-                    )
-                ]
-            ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    ProcessedDataDocumentItem(
-                        processed_data_identifier=measurement.processed_data.identifier,
-                        image_feature_aggregate_document=ImageFeatureAggregateDocument(
-                            image_feature_document=[
-                                ImageFeatureDocumentItem(
-                                    image_feature_identifier=image_feature.identifier,
-                                    image_feature_name=image_feature.feature,
-                                    image_feature_result=TQuantityValueUnitless(
-                                        value=image_feature.result
-                                    ),
-                                )
-                                for image_feature in measurement.processed_data.features
-                            ]
+                        detector_gain_setting=measurement.detector_gain_setting,
+                        magnification_setting=quantity_or_none(
+                            TQuantityValueUnitless,
+                            measurement.magnification_setting,
+                        ),
+                        transmitted_light_setting=measurement.transmitted_light_setting,
+                        auto_focus_setting=measurement.auto_focus_setting,
+                        fluorescent_tag_setting=measurement.fluorescent_tag_setting,
+                        image_count_setting=quantity_or_none(
+                            TQuantityValueUnitless,
+                            measurement.image_count_setting,
+                        ),
+                        excitation_wavelength_setting=quantity_or_none(
+                            TQuantityValueNanometer,
+                            measurement.excitation_wavelength_setting,
                         ),
                     )
                 ]
-            )
-            if measurement.processed_data
-            else None,
+            ),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement.processed_data
+            ),
         )
 
     def _get_ultraviolet_absorbance_measurement_document(
@@ -445,6 +463,34 @@ class Mapper:
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
             well_plate_identifier=measurement.well_plate_identifier,
+        )
+
+    def _get_processed_data_aggregate_document(
+        self, data: ProcessedData | None
+    ) -> ProcessedDataAggregateDocument | None:
+        if not data:
+            return None
+
+        # NOTE: this / ProcessedData operating only on "image features" is almost certainly not comprehensive,
+        # and should be expanded as needed.
+        return ProcessedDataAggregateDocument(
+            processed_data_document=[
+                ProcessedDataDocumentItem(
+                    processed_data_identifier=data.identifier,
+                    image_feature_aggregate_document=ImageFeatureAggregateDocument(
+                        image_feature_document=[
+                            ImageFeatureDocumentItem(
+                                image_feature_identifier=image_feature.identifier,
+                                image_feature_name=image_feature.feature,
+                                image_feature_result=TQuantityValueUnitless(
+                                    value=image_feature.result
+                                ),
+                            )
+                            for image_feature in data.features
+                        ]
+                    ),
+                )
+            ]
         )
 
     def _get_calculated_data_aggregate_document(
