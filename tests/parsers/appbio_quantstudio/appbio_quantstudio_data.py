@@ -176,6 +176,7 @@ def get_data() -> Data:
             measurement_method_identifier="Ct",
             pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
+            pcr_stage_number=3,
         ),
         wells=WellList([well]),
         raw_data=RawData(
@@ -318,6 +319,7 @@ def get_data2() -> Data:
             measurement_method_identifier="Ct",
             pcr_detection_chemistry="SYBR_GREEN",
             passive_reference_dye_setting="ROX",
+            pcr_stage_number=2,
         ),
         wells=WellList([well]),
         raw_data=RawData(
@@ -1115,6 +1117,7 @@ def get_genotyping_data() -> Data:
             measurement_method_identifier="Ct",
             pcr_detection_chemistry="TAQMAN",
             passive_reference_dye_setting="ROX",
+            pcr_stage_number=3,
         ),
         wells=WellList([well]),
         raw_data=None,
@@ -1361,6 +1364,7 @@ def get_rel_std_curve_data() -> Data:
             barcode="",
             analyst=None,
             experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
+            pcr_stage_number=2,
         ),
         wells=WellList(
             wells=[
@@ -3030,6 +3034,7 @@ def get_broken_calc_doc_data() -> Data:
             barcode="",
             analyst=None,
             experimental_data_identifier="QuantStudio96-Well Relative Standard Curve Example",
+            pcr_stage_number=2,
         ),
         wells=WellList(
             wells=[

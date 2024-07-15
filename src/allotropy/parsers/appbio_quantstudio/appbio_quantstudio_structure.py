@@ -55,6 +55,7 @@ class Header:
     barcode: str | None
     analyst: str | None
     experimental_data_identifier: str | None
+    pcr_stage_number: int | None
 
     @staticmethod
     def create(reader: LinesReader) -> Header:
@@ -78,6 +79,10 @@ class Header:
             "(96)|(384)",
             try_str_from_series(data, "Block Type"),
         )
+
+        stage_number_raw = str(data.get("Stage/ Cycle where Analysis is performed", ""))
+        stage_number = re.match(r"Stage (\d+)", stage_number_raw)
+        pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
 
         return Header(
             measurement_time=try_str_from_series(data, "Experiment Run End Time"),
@@ -112,6 +117,7 @@ class Header:
             experimental_data_identifier=try_str_from_series_or_none(
                 data, "Experiment Name"
             ),
+            pcr_stage_number=pcr_stage_number,
         )
 
 

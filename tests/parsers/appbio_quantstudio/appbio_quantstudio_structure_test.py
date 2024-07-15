@@ -76,6 +76,7 @@ def test_header_builder() -> None:
     pcr_detection_chemistry = "detection1"
     passive_reference_dye_setting = "blue"
     experimental_data_identifier = "data Identifier"
+    pcr_stage_number = 2
 
     header_contents = get_raw_header_contents(
         measurement_time="2010-10-01 01:44:54 AM EDT",
@@ -88,6 +89,7 @@ def test_header_builder() -> None:
         pcr_detection_chemistry=pcr_detection_chemistry,
         passive_reference_dye_setting=passive_reference_dye_setting,
         experimental_data_identifier=experimental_data_identifier,
+        pcr_stage_number="Stage 2, Step 2",
     )
 
     lines = _read_to_lines(header_contents)
@@ -104,6 +106,7 @@ def test_header_builder() -> None:
         barcode=None,
         analyst=None,
         experimental_data_identifier=experimental_data_identifier,
+        pcr_stage_number=pcr_stage_number,
     )
 
 
@@ -253,6 +256,7 @@ def get_raw_header_contents(
     analyst: str | None = "NA",
     experimental_data_identifier: None
     | (str) = "QuantStudio 96-Well Presence-Absence Example",
+    pcr_stage_number: str | None = None,
 ) -> BytesIO:
     if raw_text is not None:
         return BytesIO(raw_text.encode("utf-8"))
@@ -270,6 +274,7 @@ def get_raw_header_contents(
         "Experiment Barcode": barcode,
         "Experiment User Name": analyst,
         "Experiment Name": experimental_data_identifier,
+        "Stage/ Cycle where Analysis is performed": pcr_stage_number,
     }
 
     raw_text = "\n".join(
