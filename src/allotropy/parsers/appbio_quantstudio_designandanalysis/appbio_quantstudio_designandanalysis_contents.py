@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import re
+import warnings
+
 import numpy as np
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -11,6 +15,20 @@ from allotropy.parsers.utils.values import (
 
 
 class DesignQuantstudioContents:
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
+        # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                category=UserWarning,
+                module=re.escape("openpyxl.styles.stylesheet"),
+            )
+            raw_contents = pd.read_excel(
+                named_file_contents.contents, header=None, sheet_name=None
+            )
+        return DesignQuantstudioContents(raw_contents)
+
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()

@@ -39,6 +39,7 @@ We currently have parser support for the following instruments:
   - Qiacuity dPCR
 
 ### Working Draft
+  - Roche Cedex HiRes
   - Thermo Fisher Qubit 4
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
@@ -136,9 +137,16 @@ hatch shell
 
 ### Publish
 
-To publish a new version, update the version in `src/allotropy/__about__.py` and run:
+NOTE: only package admins can publish allotropy.
+
+To publish a new version:
 
 ```sh
+hatch run scripts:update-version
+```
+
+Merge the resulting PR, and then run on `main`:
+```
 hatch build
 hatch publish
 ```

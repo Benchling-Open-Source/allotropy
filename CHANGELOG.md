@@ -11,11 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added ThermoFisher Qubit4 adapter 
 - Added requirement doc for ThermoFisher Qubit4 adapter
 
+- Added Roche Cedex HiRes adapter
+- Added requirement doc for Roche Cedex HiRes adapter
+
 ### Fixed
 - Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
 
+- Fixed encoding issues while reading units.json file in schemas.py script
+- Fixed encoding issues while reading test json files in testing/utils.py script
+
 ### Changed
 - Redefine stage number as optional in AppBio Quantstudio Design and Analysis
+- Updated NON_UNIQUE_IDENTIFIERS to have "group identifier" field
 
 ### Deprecated
 
@@ -33,14 +40,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
 - Make get_model_class_from_schema work with Windows style path
+- Support non-numeric emission values for gen5 luminescence
 
 ### Changed
-
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
 - Update `None` filtering to preserve required keys when converting model to dictionary
 - Update ASM converter name field to specify the parser name instead of just "allotropy", this is intended to give better granularity on the adapter that did the conversion and not just the library version
 - Upgrade pydantic to pull in fix for ForwardRef._evaluate() issue (https://github.com/pydantic/pydantic/issues/9637)
+- Update non-numeric emission related values to NaN instead of removing them from ASM for gen5 luminescence
+
 
 ### Deprecated
 
