@@ -45,7 +45,7 @@ class MabtechApexParser(VendorParser):
         return ReleaseState.CANDIDATE_RELEASE
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents = MabtechApexContents(named_file_contents)
+        contents = MabtechApexContents.create(named_file_contents)
         data = PlateInformation.create(contents)
         wells = WellList.create(contents)
         return self._get_model(data, wells, named_file_contents.original_file_name)

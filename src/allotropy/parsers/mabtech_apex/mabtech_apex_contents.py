@@ -8,8 +8,12 @@ from allotropy.parsers.utils.values import assert_not_none
 
 
 class MabtechApexContents:
-    def __init__(self, named_file_contents: NamedFileContents) -> None:
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> MabtechApexContents:
         raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
+        return MabtechApexContents(raw_contents)
+
+    def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }
