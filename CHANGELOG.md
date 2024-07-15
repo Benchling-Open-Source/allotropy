@@ -21,18 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.40] - 2024-07-15
 
-### Added
-
-### Fixed
-
 ### Changed
 - Redefine stage number as optional in AppBio Quantstudio Design and Analysis
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.39] - 2024-07-15
 
