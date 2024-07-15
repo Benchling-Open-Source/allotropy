@@ -39,14 +39,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Catch and raise AllotropeConversionError when Beckman XR parser has missing date header
 - Make get_model_class_from_schema work with Windows style path
+- Support non-numeric emission values for gen5 luminescence
 
 ### Changed
-
 - Allow no target DNA reference in AppBio Quantstudio design and anlysis
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
 - Update `None` filtering to preserve required keys when converting model to dictionary
 - Update ASM converter name field to specify the parser name instead of just "allotropy", this is intended to give better granularity on the adapter that did the conversion and not just the library version
 - Upgrade pydantic to pull in fix for ForwardRef._evaluate() issue (https://github.com/pydantic/pydantic/issues/9637)
+- Update non-numeric emission related values to NaN instead of removing them from ASM for gen5 luminescence
+
 
 ### Deprecated
 
