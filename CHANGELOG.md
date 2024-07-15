@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Changed
+- Redefine stage number as optional in AppBio Quantstudio Design and Analysis
 
 ### Deprecated
 
@@ -35,7 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed encoding issues while reading test json files in testing/utils.py script
 
 ### Changed
-
 - Updated NON_UNIQUE_IDENTIFIERS to have "group identifier" field
 
 ## [0.1.38] - 2024-07-11
