@@ -2,6 +2,12 @@ from enum import Enum
 
 from attr import dataclass
 
+PLATE_WELL_COUNT = 16
+DEVICE_TYPE = "dPCR"
+PRODUCT_MANUFACTURER = "ThermoFisher Scientific"
+BRAND_NAME = "QuantStudio Absolute Q Digital PCR System"
+SOFTWARE_NAME = "QuantStudio Absolute Q Digital PCR Software"
+
 
 class AggregationType(str, Enum):
     INDIVIDUAL = "INDIVIDUAL"
@@ -22,68 +28,72 @@ AGGREGATION_LOOKUP = {
 
 
 @dataclass(frozen=True)
-class CalculatedDataItem:
+class CalculatedDataReference:
     column: str
     name: str
     source: CalculatedDataSource
     source_feature: str
     unit: str
 
+    @property
+    def source_features(self) -> list[str]:
+        return self.source_feature.split(",")
 
-CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataItem]] = {
+
+CALCULATED_DATA_REFERENCE: dict[AggregationType, list[CalculatedDataReference]] = {
     AggregationType.AVERAGE: [
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="Total",
             name="Average Total",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="total partition count",
             unit="#",
         ),
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="Conc. cp/uL",
             name="Average Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
             unit="#/μL",
         ),
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="SD",
             name="SD Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
             unit="#/μL",
         ),
-        CalculatedDataItem(
-            column="CV%",
-            name="CV",
-            source=CalculatedDataSource.CALCULATED_DATA,
-            source_feature="Average Concentration,SD Concentration",
-            unit="%",
-        ),
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="Positives",
             name="Average Positives",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="positive partition count",
             unit="#",
         ),
+        CalculatedDataReference(
+            column="CV%",
+            name="CV",
+            source=CalculatedDataSource.CALCULATED_DATA,
+            source_feature="Average Concentration,SD Concentration",
+            unit="%",
+        ),
     ],
     AggregationType.POOLED: [
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="Total",
             name="Pooled Total",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="total partition count",
             unit="#",
         ),
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="Conc. cp/uL",
             name="Pooled Concentration",
             source=CalculatedDataSource.MEASUREMENT,
             source_feature="number concentration",
             unit="#/μL",
         ),
-        CalculatedDataItem(
+        CalculatedDataReference(
             column="Positives",
             name="Pooled Positives",
             source=CalculatedDataSource.MEASUREMENT,
