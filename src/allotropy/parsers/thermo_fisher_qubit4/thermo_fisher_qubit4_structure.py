@@ -4,12 +4,14 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.thermo_fisher_qubit4.constants import (
     UNSUPPORTED_WAVELENGTH_ERROR,
 )
 from allotropy.parsers.utils.values import (
     try_float_from_series,
+    try_float_from_series_or_nan,
     try_non_nan_float_from_series_or_none,
     try_str_from_series,
     try_str_from_series_or_default,
@@ -28,9 +30,9 @@ class Row:
     excitation: str | None
     emission: str | None
     diluation_factor: float | None
-    original_sample_concentration: float | None
+    original_sample_concentration: JsonFloat | None
     original_sample_unit: str | None
-    qubit_tube_concentration: float | None
+    qubit_tube_concentration: JsonFloat | None
     qubit_tube_unit: str | None
     std_1_rfu: float | None
     std_2_rfu: float | None
@@ -63,13 +65,13 @@ class Row:
             diluation_factor=try_non_nan_float_from_series_or_none(
                 data, "Dilution Factor"
             ),
-            original_sample_concentration=try_non_nan_float_from_series_or_none(
+            original_sample_concentration=try_float_from_series_or_nan(
                 data, "Original sample conc."
             ),
             original_sample_unit=try_str_from_series_or_none(
                 data, "Units_Original sample conc."
             ),
-            qubit_tube_concentration=try_non_nan_float_from_series_or_none(
+            qubit_tube_concentration=try_float_from_series_or_nan(
                 data, "Qubit® tube conc."
             ),
             qubit_tube_unit=try_str_from_series_or_none(
