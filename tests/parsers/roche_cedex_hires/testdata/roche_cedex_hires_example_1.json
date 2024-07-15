@@ -1,0 +1,869 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T07:46:47+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F01",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 95.29307556,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.5295425,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.753276,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.2237332344,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.46355247,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4504,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 4292,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 212,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.270699382,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 113.3732758,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 52.36649704,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 475.6500549,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 4529,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 118113.8516,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 8.836589813,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T07:51:27+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_1",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F02",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 95.52274323,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 4.2329905,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.4313955,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.1984049375,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.38542843,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4199,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 4011,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 188,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.325070262,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 108.0105515,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 52.06482315,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 471.4387817,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 4201,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 243764.2344,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 9.692784309,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T07:56:14+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F03",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 95.76529694,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 5.6323785,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 5.88144,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.2490615313,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.02670956,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 5573,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 5337,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 236,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.235189319,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 108.4419479,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 50.64849091,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 448.8540344,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 4765,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 291642.1875,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 30.82720184,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T08:01:06+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F04",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 95.6820755,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.314132,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.599075,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.2849432813,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.00195885,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 6253,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 5983,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 270,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.235963702,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 108.1891937,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 50.55105972,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 447.7957458,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 5278,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 298250.4063,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 32.83224106,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T08:05:45+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_4",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F05",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 94.00199127,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.98603975,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.240378,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.25433825,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.37015438,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 4018,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 3777,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 241,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.261754513,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 112.1095505,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 51.99099731,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 469.8835144,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 4045,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 237037.2656,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 10.27874565,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T08:10:24+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F06",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 94.46669769,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 3.98181825,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 4.2150495,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.2332313438,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 13.27664661,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 3994,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 3773,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 221,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.266411543,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 110.7801285,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 51.6265564,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 464.9411621,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 3928,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 273303.9063,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 10.76614952,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T08:15:15+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F07",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 95.83587646,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.6307355,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.9188445,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.2881093125,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.85493851,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 6556,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 6283,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 273,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.211935163,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 107.5048447,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 49.97198868,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 438.7392883,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 5507,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 242550.4375,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 32.0012207,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2019-06-18T08:20:05+00:00",
+                            "measurement identifier": "ROCHE_CEDEX_HIRES_TEST_ID_7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "cell counter",
+                                        "detection type": "brightfield",
+                                        "sample volume setting": {
+                                            "value": 300,
+                                            "unit": "μL"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "0618_F08",
+                                "batch identifier": "TechDev_CD_N-1",
+                                "custom information document": {
+                                    "group identifier": "Original",
+                                    "sample draw time": "2019-06-17T08:34:01+00:00"
+                                }
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 95.60102844,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 6.2613645,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Std. Size",
+                                            "cell density dilution factor": {
+                                                "value": 0.5,
+                                                "unit": "(unitless)"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 6.549474,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "dead cell density (cell counter)": {
+                                            "value": 0.2881093125,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 12.74926472,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 6206,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 5933,
+                                            "unit": "cell"
+                                        },
+                                        "dead cell count": {
+                                            "value": 273,
+                                            "unit": "cell"
+                                        },
+                                        "custom information document": {
+                                            "average compactness": {
+                                                "value": 1.210420251,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average area": {
+                                                "value": 105.5984573,
+                                                "unit": "(unitless)"
+                                            },
+                                            "average perimeter": {
+                                                "value": 49.55705261,
+                                                "unit": "μm"
+                                            },
+                                            "average segment area": {
+                                                "value": 432.0295105,
+                                                "unit": "(unitless)"
+                                            },
+                                            "total object count": {
+                                                "value": 5220,
+                                                "unit": "cell"
+                                            },
+                                            "standard deviation": {
+                                                "value": 257867.3438,
+                                                "unit": "cell"
+                                            },
+                                            "aggregate rate": {
+                                                "value": 32.16242218,
+                                                "unit": "%"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "SuperUser"
+            }
+        ],
+        "device system document": {
+            "asset management identifier": "G037DE019",
+            "description": "my system",
+            "brand name": "Cedex",
+            "product manufacturer": "Roche",
+            "device identifier": "3714019",
+            "model number": "Cedex HiRes"
+        },
+        "data system document": {
+            "file name": "roche_cedex_hires_example_1.csv",
+            "software name": "Cedex software",
+            "ASM converter name": "allotropy_roche_cedex_hires",
+            "ASM converter version": "0.1.38"
+        }
+    }
+}
