@@ -40,6 +40,7 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
         well_plate_identifier="Plate 1",
         model_number="Synergy H1",
         equipment_serial_number="Serial01",
+        file_name="dummy_filename.txt",
     )
 
 

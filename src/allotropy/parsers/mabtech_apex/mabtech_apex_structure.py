@@ -31,7 +31,7 @@ IMAGE_FEATURES = [
 ]
 
 
-def _create_metadata(contents: MabtechApexContents) -> Metadata:
+def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]+) ([0-9]+)",
@@ -51,6 +51,8 @@ def _create_metadata(contents: MabtechApexContents) -> Metadata:
         ),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
+        file_name=file_name,
+        analyst=try_str_from_series_or_none(contents.plate_info, key="Saved By:"),
     )
 
 
@@ -86,19 +88,17 @@ def _create_measurement(plate_data: pd.Series[str]) -> Measurement:
 def _create_groups(contents: MabtechApexContents) -> list[MeasurementGroup]:
     # if Read Date is not present in file, return None, no measurement for given Well
     plate_data = contents.data.dropna(subset="Read Date")
-    analyst = try_str_from_series_or_none(contents.plate_info, key="Saved By:")
 
     return list(
         plate_data.apply(  # type: ignore[call-overload]
             lambda data: MeasurementGroup(
                 measurements=[_create_measurement(data)],
                 plate_well_count=96,
-                _analyst=analyst,
             ),
             axis="columns",
         )
     )
 
 
-def create_data(contents: MabtechApexContents) -> Data:
-    return Data(_create_metadata(contents), _create_groups(contents))
+def create_data(contents: MabtechApexContents, file_name: str) -> Data:
+    return Data(_create_metadata(contents, file_name), _create_groups(contents))

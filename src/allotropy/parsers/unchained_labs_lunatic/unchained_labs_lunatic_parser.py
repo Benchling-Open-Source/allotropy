@@ -31,5 +31,5 @@ class UnchainedLabsLunaticParser(VendorParser):
         contents = read_csv(filepath_or_buffer=raw_contents).replace(np.nan, None)
         mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
         return mapper.map_model(
-            create_data(contents), named_file_contents.original_file_name
+            create_data(contents, named_file_contents.original_file_name)
         )

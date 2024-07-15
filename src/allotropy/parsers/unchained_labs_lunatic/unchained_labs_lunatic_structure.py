@@ -106,23 +106,24 @@ def _create_measurement_group(
     )
 
 
-def _create_metadata(data: pd.DataFrame) -> Metadata:
+def _create_metadata(data: pd.DataFrame, file_name: str) -> Metadata:
     return Metadata(
         device_type="plate reader",
         model_number="Lunatic",
         product_manufacturer="Unchained Labs",
         device_identifier=try_str_from_series(data.iloc[0], "Instrument ID"),
         software_name="Lunatic and Stunner Analysis",
+        file_name=file_name,
     )
 
 
-def create_data(data: pd.DataFrame) -> Data:
+def create_data(data: pd.DataFrame, file_name: str) -> Data:
     wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
     return Data(
-        metadata=_create_metadata(data),
+        metadata=_create_metadata(data, file_name),
         measurement_groups=list(
             data.apply(  # type: ignore[call-overload]
                 lambda plate_data: _create_measurement_group(

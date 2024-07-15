@@ -172,7 +172,7 @@ def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
         "A260": [23.4],
         "A260 Concentration (ng/ul)": [4.5],
     }
-    data = create_data(pd.DataFrame(plate_data))
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
     calculated_data_document = data.get_calculated_data_items()
     calculated_data_item = calculated_data_document[0]
 
@@ -197,7 +197,7 @@ def test_get_calculated_data_items_from_data_create_right_ammount_of_items() -> 
         "A260/A230": [2.5],
         "A260/A280": [24.9],
     }
-    data = create_data(pd.DataFrame(plate_data))
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
     calculated_data_document = data.get_calculated_data_items()
 
     assert len(calculated_data_document) == 4
@@ -216,7 +216,7 @@ def test_get_calculated_data_items_from_data_with_no_calculated_data_columns() -
         "Instrument ID": [14],
         "A260": [23.4],
     }
-    data = create_data(pd.DataFrame(plate_data))
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
     calculated_data_document = data.get_calculated_data_items()
 
     assert not calculated_data_document
@@ -233,7 +233,7 @@ def test_create_data() -> None:
         "Instrument ID": [14, 14, 14],
         "A250": [23.4, 32.6, 439],
     }
-    data = create_data(pd.DataFrame(plate_data))
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
 
     assert data.metadata.device_identifier == "14"
     assert len(data.measurement_groups) == 3

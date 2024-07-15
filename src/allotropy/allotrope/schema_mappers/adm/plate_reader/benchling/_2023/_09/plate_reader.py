@@ -149,11 +149,10 @@ class MeasurementGroup:
     analytical_method_identifier: str | None = None
     experimental_data_identifier: str | None = None
     _measurement_time: str | None = None
-    _analyst: str | None = None
     processed_data: ProcessedData | None = None
 
     @property
-    def measurement_time(self) -> str:
+    def measurement_time(self) -> str | None:
         if self._measurement_time is not None:
             return self._measurement_time
         if (
@@ -162,15 +161,6 @@ class MeasurementGroup:
             and self.measurements[0].measurement_time
         ):
             return self.measurements[0].measurement_time
-        msg = "Missing valid measurement group time"
-        raise AllotropeConversionError(msg)
-
-    @property
-    def analyst(self) -> str | None:
-        if self._analyst is not None:
-            return self._analyst
-        if self.measurements and len({m.analyst for m in self.measurements}) == 1:
-            return self.measurements[0].analyst
         return None
 
 
@@ -185,6 +175,12 @@ class Metadata:
     software_version: str | None = None
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
+
+    file_name: str | None = None
+    data_system_instance_id: str | None = None
+
+    analyst: str | None = None
+    measurement_time: str | None = None
 
 
 @dataclass(frozen=True)
@@ -211,7 +207,7 @@ class Mapper:
         self.converter_name = asm_converter_name
         self.get_date_time = get_date_time
 
-    def map_model(self, data: Data, file_name: str) -> Model:
+    def map_model(self, data: Data) -> Model:
         return Model(
             plate_reader_aggregate_document=PlateReaderAggregateDocument(
                 device_system_document=DeviceSystemDocument(
@@ -221,7 +217,8 @@ class Mapper:
                     product_manufacturer=data.metadata.product_manufacturer,
                 ),
                 data_system_document=DataSystemDocument(
-                    file_name=file_name,
+                    data_system_instance_identifier=data.metadata.data_system_instance_id,
+                    file_name=data.metadata.file_name,
                     UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
@@ -230,7 +227,7 @@ class Mapper:
                 ),
                 plate_reader_document=[
                     PlateReaderDocumentItem(
-                        analyst=measurement_group.analyst,
+                        analyst=data.metadata.analyst,
                         measurement_aggregate_document=MeasurementAggregateDocument(
                             analytical_method_identifier=measurement_group.analytical_method_identifier,
                             experimental_data_identifier=measurement_group.experimental_data_identifier,
@@ -239,7 +236,11 @@ class Mapper:
                                 value=measurement_group.plate_well_count
                             ),
                             measurement_time=self.get_date_time(
-                                measurement_group.measurement_time
+                                assert_not_none(
+                                    measurement_group.measurement_time
+                                    or data.metadata.measurement_time,
+                                    msg="Failed to parse valid timestamp",
+                                )
                             ),
                             measurement_document=[
                                 self._get_measurement_document_item(

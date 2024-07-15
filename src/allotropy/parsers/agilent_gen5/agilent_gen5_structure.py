@@ -76,6 +76,7 @@ class HeaderData:
     well_plate_identifier: str | None
     model_number: str | None
     equipment_serial_number: str | None
+    file_name: str
 
     @classmethod
     def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
@@ -98,6 +99,7 @@ class HeaderData:
             experiment_file_path=try_str_from_series_or_none(
                 data, "Experiment File Path:"
             ),
+            file_name=file_name,
             protocol_file_path=try_str_from_series_or_none(data, "Protocol File Path:"),
             datetime=f"{date} {time}" if date and time else None,
             well_plate_identifier=plate_identifier
@@ -446,7 +448,6 @@ def create_results(
 
     groups = [
         MeasurementGroup(
-            _measurement_time=header_data.datetime,
             plate_well_count=len(well_to_measurements),
             analytical_method_identifier=header_data.protocol_file_path,
             experimental_data_identifier=header_data.experiment_file_path,
@@ -520,6 +521,8 @@ def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
         equipment_serial_number=header_data.equipment_serial_number,
         software_name=DEFAULT_SOFTWARE_NAME,
         software_version=header_data.software_version,
+        file_name=header_data.file_name,
+        measurement_time=header_data.datetime,
     )
 
 
