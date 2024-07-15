@@ -17,7 +17,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.utils.iterables import get_first
+from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series_or_none,
@@ -99,11 +99,11 @@ class SpectroscopyRow:
         is_na_experiment = experiment_type and "NA" in experiment_type
 
         a260_absorbance = try_float_from_series_or_none(data, "a260")
-        a280_absorbance = get_first(
+        a280_absorbance = get_first_not_none(
             lambda key: try_float_from_series_or_none(data, key), ["a280", "a280 10mm"]
         )
         concentration = _get_concentration(
-            get_first(
+            get_first_not_none(
                 lambda key: try_float_from_series_or_none(data, key),
                 ["conc.", "conc", "concentration"],
             ),
