@@ -1,8 +1,6 @@
 import re
 from typing import Any
 
-import pandas as pd
-
 from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_obscuration import (
     CalculatedDataDocumentItem,
     DataProcessingDocument,
@@ -32,6 +30,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
+from allotropy.allotrope.pandas_util import read_excel
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
@@ -69,7 +68,7 @@ class PharmSpecParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        df = pd.read_excel(named_file_contents.contents, header=None, engine="openpyxl")
+        df = read_excel(named_file_contents.contents, header=None, engine="openpyxl")
         data = PharmSpecData.create(df)
         return self._setup_model(data, named_file_contents.original_file_name)
 

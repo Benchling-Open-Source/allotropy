@@ -11,6 +11,8 @@ NON_READY_PARSERS = {
     # We want to collect more test cases for this parser before marking as ready.
     Vendor.MABTECH_APEX,
     # We want to collect more test cases for this parser before marking as ready.
+    Vendor.THERMO_FISHER_QUBIT4,
+    # We want to collect more test cases for this parser before marking as ready.
     Vendor.ROCHE_CEDEX_HIRES,
 }
 
