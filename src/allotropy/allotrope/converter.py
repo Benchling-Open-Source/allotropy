@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import asdict, field, fields, is_dataclass, make_dataclass, MISSING
+from enum import Enum
 from types import UnionType
 from typing import Any, cast, get_args, get_origin, TypeVar, Union
 
@@ -249,12 +250,16 @@ def _create_should_omit_function(
     return should_omit
 
 
+def _unstructure_value(value: Any) -> Any:
+    return value.value if isinstance(value, Enum) else value
+
+
 def unstructure_custom_information_document(model: Any) -> dict[str, Any]:
     should_omit = _create_should_omit_function(model)
 
     def dict_factory(kv_pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
         return {
-            _convert_model_key_to_dict_key(key): value
+            _convert_model_key_to_dict_key(key): _unstructure_value(value)
             for key, value in kv_pairs
             if not should_omit(key, value)
         }
