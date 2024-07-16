@@ -267,21 +267,15 @@ class Mapper:
     ) -> MeasurementDocumentItems:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
-            return self._get_optical_imaging_measurement_document(
-                measurement, metadata
-            )
+            return self._get_optical_imaging_measurement_document(measurement, metadata)
         elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
             return self._get_ultraviolet_absorbance_measurement_document(
                 measurement, metadata
             )
         elif measurement.type_ == MeasurementType.LUMINESCENCE:
-            return self._get_luminescence_measurement_document(
-                measurement, metadata
-            )
+            return self._get_luminescence_measurement_document(measurement, metadata)
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(
-                measurement, metadata
-            )
+            return self._get_fluorescence_measurement_document(measurement, metadata)
         else:
             msg = f"Invalid measurement type: {measurement.type}"
             raise AllotropeConversionError(msg)
