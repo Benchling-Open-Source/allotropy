@@ -127,19 +127,18 @@ class AgilentGen5Parser(VendorParser):
 
         measurement_document: Sequence[MeasurementDocumentItems]
 
-        match read_mode:
-            case ReadMode.ABSORBANCE:
-                measurement_document = self._get_absorbance_measurement_document(
-                    plate_data, well_position
-                )
-            case ReadMode.FLUORESCENCE:
-                measurement_document = self._get_fluorescence_measurement_document(
-                    plate_data, well_position
-                )
-            case ReadMode.LUMINESCENCE:
-                measurement_document = self._get_luminescence_measurement_document(
-                    plate_data, well_position
-                )
+        if read_mode == ReadMode.ABSORBANCE:
+            measurement_document = self._get_absorbance_measurement_document(
+                plate_data, well_position
+            )
+        elif read_mode == ReadMode.FLUORESCENCE:
+            measurement_document = self._get_fluorescence_measurement_document(
+                plate_data, well_position
+            )
+        elif read_mode == ReadMode.LUMINESCENCE:
+            measurement_document = self._get_luminescence_measurement_document(
+                plate_data, well_position
+            )
 
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(
