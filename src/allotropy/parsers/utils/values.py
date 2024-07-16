@@ -105,6 +105,7 @@ def quantity_or_none(
         return None
     if isinstance(value, list):
         return value_cls(value=value[assert_not_none(index, msg="Cannot provide list to quantity_or_none without index")])  # type: ignore[call-arg]
+    # Typing does not know that all subclasses of TQuantityValue have default value for unit set.
     return value_cls(value=value)  # type: ignore[call-arg]
 
 
@@ -166,6 +167,14 @@ def try_str_from_series_or_none(
     key: str,
 ) -> str | None:
     value = data.get(key)
+    return None if value is None else str(value)
+
+
+def try_non_nan_str_from_series_or_none(
+    data: pd.Series[Any],
+    key: str,
+) -> str | None:
+    value = data.get(key)
     return None if (value is None or pd.isna(value)) else str(value)  # type: ignore[arg-type]
 
 
@@ -216,6 +225,18 @@ def try_float_from_series_or_none(
     try:
         value = data.get(key)
         return try_float_or_none(str(value))
+    except Exception as e:
+        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
+        raise AllotropeConversionError(msg) from e
+
+
+def try_non_nan_float_from_series_or_none(
+    data: pd.Series[Any],
+    key: str,
+) -> float | None:
+    try:
+        value = data.get(key)
+        return try_non_nan_float_or_none(str(value))
     except Exception as e:
         msg = f"Unable to convert '{value}' (with key '{key}') to float value."
         raise AllotropeConversionError(msg) from e

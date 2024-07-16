@@ -14,13 +14,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -71,13 +71,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -128,13 +128,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -185,13 +185,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -242,13 +242,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -299,13 +299,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
@@ -317,11 +317,11 @@
                                 "batch identifier": "2023-11-04",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": "Out of range",
+                                        "value": "NaN",
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
-                                        "value": "Out of range",
+                                        "value": "NaN",
                                         "unit": "ng/mL"
                                     },
                                     "standard 1 concentration": {
@@ -356,13 +356,13 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
                                             },
                                             "excitation setting": "Blue",
                                             "emission setting": "Green",
                                             "dilution factor": {
-                                                "value": 200,
+                                                "value": 200.0,
                                                 "unit": "(unitless)"
                                             }
                                         }
