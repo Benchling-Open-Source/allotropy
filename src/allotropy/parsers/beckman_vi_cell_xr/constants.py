@@ -6,9 +6,18 @@ class XrVersion(str, Enum):
     _2_04 = "2.04"
 
 
-DATE_HEADER = {
-    XrVersion._2_06: "Sample date/time",
-    XrVersion._2_04: "Sample date",
+DATE_HEADER = "Sample date"
+
+HEADINGS_TO_PARSER_HEADINGS = {
+    "RunDate": DATE_HEADER,
+    "Sample date/time": DATE_HEADER,
+    # NOTE: data here is a typo in the Beckman software.
+    "Sample data/time": DATE_HEADER,
+    "Dilution": "Dilution factor",
+    "Total cells / ml (x 10^6)": "Total cells/ml (x10^6)",
+    "Average diameter (microns)": "Avg. diam. (microns)",
+    "Average circularity": "Avg. circ.",
+    "Total viable cells / ml (x 10^6)": "Viable cells/ml (x10^6)",
 }
 
 MODEL_RE = r"Vi-CELL XR (?P<version>\d{1,}\.\d{2,}(.\d{1,})?)"
