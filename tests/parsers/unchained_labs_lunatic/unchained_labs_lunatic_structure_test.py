@@ -11,9 +11,9 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
 )
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
-    Data,
-    Measurement,
-    WellPlate,
+    _create_measurement,
+    _create_measurement_group,
+    create_data,
 )
 
 
@@ -26,7 +26,7 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
     ],
 )
 @pytest.mark.short
-def test_create_measurement(
+def test__create_measurement(
     wavelength: int,
     absorbance_value: float,
     sample_identifier: str,
@@ -40,9 +40,9 @@ def test_create_measurement(
         "Plate ID": well_plate_identifier,
         "Plate Position": location_identifier,
     }
-    measurement = Measurement.create(pd.Series(well_plate_data), wavelength_column)
+    measurement = _create_measurement(pd.Series(well_plate_data), wavelength_column)
 
-    assert measurement.wavelength == wavelength
+    assert measurement.detector_wavelength_setting == wavelength
     assert measurement.absorbance == absorbance_value
     assert measurement.sample_identifier == sample_identifier
     assert measurement.location_identifier == location_identifier
@@ -50,7 +50,7 @@ def test_create_measurement(
 
 
 @pytest.mark.short
-def test_create_measurement_with_no_wavelength_column() -> None:
+def test__create_measurement_with_no_wavelength_column() -> None:
     well_plate_data = pd.Series(
         {
             "Sample name": "dummy name",
@@ -61,19 +61,19 @@ def test_create_measurement_with_no_wavelength_column() -> None:
     wavelength_column = "A250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
-        Measurement.create(well_plate_data, wavelength_column)
+        _create_measurement(well_plate_data, wavelength_column)
 
 
 @pytest.mark.short
-def test_create_measurement_with_incorrect_wavelength_column_format() -> None:
+def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
     msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
     well_plate_data = pd.Series({"Sample name": "dummy name"})
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
-        Measurement.create(well_plate_data, "Sample name")
+        _create_measurement(well_plate_data, "Sample name")
 
 
 @pytest.mark.short
-def test_get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
+def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
     well_plate_data = {
         "Sample name": "dummy name",
         "Plate ID": "some plate",
@@ -83,13 +83,13 @@ def test_get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
         "A260 Concentration (ng/ul)": 4.5,
         "Background (A260)": 0.523,
     }
-    measurement = Measurement.create(pd.Series(well_plate_data), "A240")
+    measurement = _create_measurement(pd.Series(well_plate_data), "A240")
 
     assert not measurement.calculated_data
 
 
 @pytest.mark.short
-def test_get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
+def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
     well_plate_data = {
         "Sample name": "dummy name",
         "Plate ID": "some plate",
@@ -101,9 +101,11 @@ def test_get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
         "A260/A280": 24.9,
     }
     wavelength = "A260"
-    measurement = Measurement.create(pd.Series(well_plate_data), wavelength)
+    measurement = _create_measurement(pd.Series(well_plate_data), wavelength)
 
-    calculated_data_dict = {data.name: data for data in measurement.calculated_data}
+    calculated_data_dict = {
+        data.name: data for data in (measurement.calculated_data or [])
+    }
 
     for item in CALCULATED_DATA_LOOKUP[wavelength]:
         if item["column"] in well_plate_data:
@@ -124,7 +126,7 @@ def test_create_well_plate() -> None:
         "Date": date,
         "Time": time,
     }
-    well_plate = WellPlate.create(pd.Series(plate_data), ["A250"])
+    well_plate = _create_measurement_group(pd.Series(plate_data), ["A250"])
     assert well_plate.analytical_method_identifier == analytical_method_identifier
     assert well_plate.measurement_time == f"{date} {time}"
     assert well_plate.measurements[0].absorbance == 23.45
@@ -140,7 +142,7 @@ def test_create_well_plate_with_two_measurements() -> None:
         "Date": "17/10/2016",
         "Time": "7:19:18",
     }
-    well_plate = WellPlate.create(pd.Series(plate_data), ["A452", "A280"])
+    well_plate = _create_measurement_group(pd.Series(plate_data), ["A452", "A280"])
 
     assert len(well_plate.measurements) == 2
 
@@ -155,11 +157,11 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
         }
     )
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
-        WellPlate.create(plate_data, [])
+        _create_measurement_group(plate_data, [])
 
 
 @pytest.mark.short
-def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
+def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
     plate_data = {
         "Sample name": ["batch_id"],
         "Plate Position": ["Plate1"],
@@ -170,18 +172,18 @@ def test_get_calculated_data_document_from_data_with_the_right_values() -> None:
         "A260": [23.4],
         "A260 Concentration (ng/ul)": [4.5],
     }
-    data = Data.create(pd.DataFrame(plate_data))
-    calculated_data_document = data.get_calculated_data_document()
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    calculated_data_document = data.get_calculated_data_items()
     calculated_data_item = calculated_data_document[0]
 
     assert calculated_data_item.name == "Concentration"
     assert calculated_data_item.value == 4.5
     assert calculated_data_item.unit == "ng/µL"
-    assert calculated_data_item.data_source_document[0].feature == "absorbance"
+    assert calculated_data_item.data_sources[0].feature == "absorbance"
 
 
 @pytest.mark.short
-def test_get_calculated_data_document_from_data_create_right_ammount_of_items() -> None:
+def test_get_calculated_data_items_from_data_create_right_ammount_of_items() -> None:
     plate_data = {
         "Sample name": ["batch_id"],
         "Plate Position": ["Plate1"],
@@ -195,14 +197,14 @@ def test_get_calculated_data_document_from_data_create_right_ammount_of_items() 
         "A260/A230": [2.5],
         "A260/A280": [24.9],
     }
-    data = Data.create(pd.DataFrame(plate_data))
-    calculated_data_document = data.get_calculated_data_document()
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    calculated_data_document = data.get_calculated_data_items()
 
     assert len(calculated_data_document) == 4
 
 
 @pytest.mark.short
-def test_get_calculated_data_document_from_data_with_no_calculated_data_columns() -> (
+def test_get_calculated_data_items_from_data_with_no_calculated_data_columns() -> (
     None
 ):
     plate_data = {
@@ -214,8 +216,8 @@ def test_get_calculated_data_document_from_data_with_no_calculated_data_columns(
         "Instrument ID": [14],
         "A260": [23.4],
     }
-    data = Data.create(pd.DataFrame(plate_data))
-    calculated_data_document = data.get_calculated_data_document()
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    calculated_data_document = data.get_calculated_data_items()
 
     assert not calculated_data_document
 
@@ -231,7 +233,7 @@ def test_create_data() -> None:
         "Instrument ID": [14, 14, 14],
         "A250": [23.4, 32.6, 439],
     }
-    data = Data.create(pd.DataFrame(plate_data))
+    data = create_data(pd.DataFrame(plate_data), "filename.txt")
 
-    assert data.device_identifier == "14"
-    assert len(data.well_plate_list) == 3
+    assert data.metadata.device_identifier == "14"
+    assert len(data.measurement_groups) == 3

@@ -33,6 +33,7 @@ from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    num_to_chars,
     try_float_from_series,
     try_float_from_series_or_none,
     try_str_from_series,
@@ -43,11 +44,6 @@ from allotropy.parsers.utils.values import (
 def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
     df.columns = df.iloc[0]  # type: ignore[assignment]
     return pd.Series(df.iloc[-1], index=df.columns)
-
-
-def num_to_chars(n: int) -> str:
-    d, m = divmod(n, 26)  # 26 is the number of ASCII letters
-    return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
 
 
 @dataclass(frozen=True)

@@ -4,27 +4,38 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from io import StringIO
 import re
+
+import pandas as pd
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     ScanPositionSettingPlateReader,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    InvalidJsonFloat,
-    JsonFloat,
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
+    CalculatedDataItem,
+    Data,
+    DataSource,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
 )
 from allotropy.exceptions import (
     AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.agilent_gen5.constants import (
+    DEFAULT_SOFTWARE_NAME,
+    DEVICE_TYPE,
     EMISSION_KEY,
     EXCITATION_KEY,
     FILENAME_REGEX,
     GAIN_KEY,
-    HEADER_PREFIXES,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
+    MULTIPLATE_FILE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
@@ -35,23 +46,26 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
+from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    df_to_series,
     try_float,
     try_float_or_nan,
     try_float_or_none,
+    try_str_from_series,
+    try_str_from_series_or_none,
 )
 
 
-def read_data_section(reader: LinesReader) -> str:
-    data_section = "\n".join(
-        [
-            reader.pop() or "",
-            *reader.pop_until_empty(),
-        ]
-    )
+def read_data_section(reader: LinesReader) -> list[str]:
+    data_section = [
+        reader.pop() or "",
+        *reader.pop_until_empty(),
+    ]
     reader.drop_empty()
     return data_section
 
@@ -59,60 +73,45 @@ def read_data_section(reader: LinesReader) -> str:
 @dataclass(frozen=True)
 class HeaderData:
     software_version: str
-    experiment_file_path: str
-    protocol_file_path: str
-    datetime: str
-    well_plate_identifier: str
-    model_number: str
-    equipment_serial_number: str
+    experiment_file_path: str | None
+    protocol_file_path: str | None
+    datetime: str | None
+    well_plate_identifier: str | None
+    model_number: str | None
+    equipment_serial_number: str | None
+    file_name: str
 
     @classmethod
     def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
         assert_not_none(reader.drop_until("^Software Version"), "Software Version")
-        metadata_dict = cls._parse_metadata(reader)
-        datetime_ = cls._parse_datetime(metadata_dict["Date"], metadata_dict["Time"])
-        plate_identifier = cls._get_identifier_from_filename_or_none(file_name)
-
-        return HeaderData(
-            software_version=metadata_dict["Software Version"],
-            experiment_file_path=metadata_dict["Experiment File Path:"],
-            protocol_file_path=metadata_dict["Protocol File Path:"],
-            datetime=datetime_,
-            well_plate_identifier=plate_identifier or metadata_dict["Plate Number"],
-            model_number=metadata_dict["Reader Type:"],
-            equipment_serial_number=metadata_dict["Reader Serial Number:"],
-        )
-
-    @classmethod
-    def _parse_metadata(cls, reader: LinesReader) -> dict:
-        metadata_dict: dict = {}
-        for metadata_line in reader.pop_until("Procedure Details"):
-            reader.drop_empty()
-            line_split = metadata_line.split("\t")
-            if line_split[0] not in HEADER_PREFIXES:
-                msg = msg_for_error_on_unrecognized_value(
-                    "metadata key", line_split[0], HEADER_PREFIXES
-                )
-                raise AllotropeConversionError(msg)
-            try:
-                metadata_dict[line_split[0]] = line_split[1]
-            except IndexError:
-                metadata_dict[line_split[0]] = ""
-
-        return metadata_dict
-
-    @classmethod
-    def _parse_datetime(cls, date_: str, time_: str) -> str:
-        return f"{date_} {time_}"
-
-    @classmethod
-    def _get_identifier_from_filename_or_none(cls, file_name: str) -> str | None:
+        lines = [line for line in reader.pop_until("Procedure Details") if line]
+        df = pd.read_csv(
+            StringIO("\n".join(lines)),
+            header=None,
+            index_col=0,
+            keep_default_na=False,
+            sep="\t",
+        ).T
+        data = df_to_series(df, "Failed to parser header data")
         matches = re.match(FILENAME_REGEX, file_name)
-        if not matches:
-            return None
-
-        matches_dict = matches.groupdict()
-        return matches_dict["plate_identifier"]
+        plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
+        date = try_str_from_series_or_none(data, "Date")
+        time = try_str_from_series_or_none(data, "Time")
+        return HeaderData(
+            software_version=try_str_from_series(data, "Software Version"),
+            experiment_file_path=try_str_from_series_or_none(
+                data, "Experiment File Path:"
+            ),
+            file_name=file_name,
+            protocol_file_path=try_str_from_series_or_none(data, "Protocol File Path:"),
+            datetime=f"{date} {time}" if date and time else None,
+            well_plate_identifier=plate_identifier
+            or try_str_from_series_or_none(data, "Plate Number"),
+            model_number=try_str_from_series_or_none(data, "Reader Type:"),
+            equipment_serial_number=try_str_from_series_or_none(
+                data, "Reader Serial Number:"
+            ),
+        )
 
 
 @dataclass(frozen=True)
@@ -124,13 +123,13 @@ class FilterSet:
     optics: str | None = None
 
     @property
-    def detector_wavelength_setting(self) -> float | None | InvalidJsonFloat:
+    def detector_wavelength_setting(self) -> JsonFloat | None:
         if not self.emission:
             return None
         return try_float_or_nan(self.emission.split("/")[0])
 
     @property
-    def detector_bandwidth_setting(self) -> float | InvalidJsonFloat | None:
+    def detector_bandwidth_setting(self) -> JsonFloat | None:
         if not self.emission:
             return None
         try:
@@ -139,13 +138,13 @@ class FilterSet:
             return None
 
     @property
-    def excitation_wavelength_setting(self) -> float | InvalidJsonFloat | None:
+    def excitation_wavelength_setting(self) -> JsonFloat | None:
         if self.excitation:
             return try_float_or_nan(self.excitation.split("/")[0])
         return None
 
     @property
-    def excitation_bandwidth_setting(self) -> float | InvalidJsonFloat | None:
+    def excitation_bandwidth_setting(self) -> JsonFloat | None:
         if not self.excitation:
             return None
         try:
@@ -189,8 +188,8 @@ class ReadData:
         assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
         reader.pop()
         reader.drop_empty()
-        procedure_details = read_data_section(reader)
-
+        procedure_lines = read_data_section(reader)
+        procedure_details = "\n".join(procedure_lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
@@ -381,200 +380,251 @@ class ReadData:
         return filter_data
 
 
-@dataclass(frozen=True)
-class LayoutData:
-    sample_identifiers: dict
+def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
+    if not layout_lines:
+        return {}
+    # Create dataframe from tabular data and forward fill empty values in index
+    data = pd.read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
+    data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
-    @staticmethod
-    def create_default() -> LayoutData:
-        return LayoutData(sample_identifiers={})
-
-    @staticmethod
-    def create(layout_str: str) -> LayoutData:
-        identifiers = {}
-
-        layout_lines: list[str] = layout_str.splitlines()
-        # first line is "Layout", second line is column numbers
-        current_row = "A"
-        for i in range(2, len(layout_lines)):
-            split_line = layout_lines[i].split("\t")
-            if split_line[0]:
-                current_row = split_line[0]
-            label = split_line[-1]
-            for j in range(1, len(split_line) - 1):
-                well_loc = f"{current_row}{j}"
-                if label == "Name":
-                    identifiers[well_loc] = split_line[j]
-                elif label == "Well ID":
-                    # give prevalence to the "Name" field if present
-                    sample_id = identifiers.get(well_loc)
-                    identifiers[well_loc] = sample_id if sample_id else split_line[j]
-
-        return LayoutData(sample_identifiers=identifiers)
+    identifiers = {}
+    for row_name, row in data.iterrows():
+        label = row.iloc[-1]
+        for col_index, col in enumerate(row.iloc[:-1]):
+            well_pos = f"{row_name}{col_index + 1}"
+            # Prefer Name to Well ID
+            if not pd.isna(col) and (
+                label == "Name" or label == "Well ID" and well_pos not in identifiers
+            ):
+                identifiers[well_pos] = col
+    return identifiers
 
 
-@dataclass(frozen=True)
-class ActualTemperature:
-    value: float | None = None
+def get_temperature(actual_temperature_lines: list[str] | None) -> float | None:
+    if not actual_temperature_lines:
+        return None
+    if len(actual_temperature_lines) != 1:
+        msg = f"Expected the Temperature section '{actual_temperature_lines}' to contain exactly 1 line."
+        raise AllotropeConversionError(msg)
 
-    @staticmethod
-    def create_default() -> ActualTemperature:
-        return ActualTemperature()
-
-    @staticmethod
-    def create(actual_temperature: str) -> ActualTemperature:
-        if len(actual_temperature.split("\n")) != 1:
-            msg = f"Expected the Temperature section '{actual_temperature}' to contain exactly 1 line."
-            raise AllotropeConversionError(msg)
-
-        return ActualTemperature(
-            value=try_float(
-                actual_temperature.strip().split("\t")[-1], "Actual Temperature"
-            ),
-        )
+    return try_float(
+        actual_temperature_lines[0].strip().split("\t")[-1], "Actual Temperature"
+    )
 
 
 @dataclass(frozen=True)
-class Measurement:
+class MeasurementData:
     identifier: str
     value: JsonFloat
     label: str
 
 
-@dataclass(frozen=True)
-class DataSource:
-    identifier: str
-    feature: ReadMode
+def create_results(
+    result_lines: list[str],
+    header_data: HeaderData,
+    read_data: ReadData,
+    sample_identifiers: dict[str, str],
+    actual_temperature: float | None,
+) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
+    if result_lines[0].strip() != "Results":
+        msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
+        raise AllotropeConversionError(msg)
 
+    # Create dataframe from tabular data and forward fill empty values in index
+    data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+    data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
-@dataclass(frozen=True)
-class CalculatedDatum:
-    identifier: str
-    data_sources: list[DataSource]
-    name: str
-    result: JsonFloat
+    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(list)
+    calculated_data: defaultdict[str, list] = defaultdict(list)
+    for row_name, row in data.iterrows():
+        label = row.iloc[-1]
+        for col_index, value in enumerate(row.iloc[:-1]):
+            well_pos = f"{row_name}{col_index + 1}"
+            well_value = try_float_or_nan(value)
 
-
-@dataclass(frozen=True)
-class Results:
-    measurements: defaultdict[str, list[Measurement]]
-    calculated_data: list[CalculatedDatum]
-    wells: list
-
-    @staticmethod
-    def create() -> Results:
-        return Results(
-            measurements=defaultdict(list),
-            calculated_data=[],
-            wells=[],
-        )
-
-    def parse_results(
-        self,
-        results: str,
-        read_data: ReadData,
-    ) -> None:
-        result_lines = results.splitlines()
-        calculated_data: defaultdict[str, list] = defaultdict(list)
-        if result_lines[0].strip() != "Results":
-            msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
-            raise AllotropeConversionError(msg)
-
-        # result_lines[1] contains column numbers
-        current_row = "A"
-        for row_num in range(2, len(result_lines)):
-            values = result_lines[row_num].split("\t")
-            if values[0]:
-                current_row = values[0]
-            label = values[-1]  # last column gives information about the type of read
-            for col_num in range(1, len(values) - 1):
-                well_pos = f"{current_row}{col_num}"
-                if well_pos not in self.wells:
-                    self.wells.append(well_pos)
-                well_value = try_float_or_nan(values[col_num])
-
-                if label in read_data.measurement_labels:
-                    self.measurements[well_pos].append(
-                        Measurement(random_uuid_str(), well_value, label)
-                    )
-                else:
-                    calculated_data[well_pos].append([label, well_value])
-
-        for well in self.wells:
-            measurements = self.measurements[well]
-            for label, value in calculated_data[well]:
-                sources = self._get_sources_for_calculated_data(measurements, label)
-                self.calculated_data.append(
-                    CalculatedDatum(
-                        identifier=random_uuid_str(),
-                        data_sources=[
-                            DataSource(
-                                identifier=measurement.identifier,
-                                feature=read_data.read_mode,
-                            )
-                            for measurement in sources
-                        ],
-                        name=label,
-                        result=value,
-                    )
+            if label in read_data.measurement_labels:
+                well_to_measurements[well_pos].append(
+                    MeasurementData(random_uuid_str(), well_value, label)
                 )
+            else:
+                calculated_data[well_pos].append((label, well_value))
 
-    def _get_sources_for_calculated_data(
-        self, measurements: list[Measurement], calculated_data_label: str
-    ) -> list[Measurement]:
-
-        # Pathlength is a special case, its sources are always determined
-        # by the pathlength correction setting
-        if calculated_data_label.split(":")[-1] == "Pathlength":
-            pathlength_suffixes = ["[Test]", "[Ref]"]
-            sources = [
-                measurement
-                for measurement in measurements
-                if measurement.label.split(" ")[-1] in pathlength_suffixes
-            ]
-        else:
-            sources = [
-                measurement
-                for measurement in measurements
-                if measurement.label in calculated_data_label
-            ]
-
-        # if there are no matches in the measurement labels, use all measurements as source
-        return sources or measurements
-
-
-@dataclass(frozen=True)
-class PlateData:
-    header_data: HeaderData
-    read_data: ReadData
-    layout_data: LayoutData
-    results: Results
-    compartment_temperature: float | None
-
-    @staticmethod
-    def create(reader: LinesReader, file_name: str) -> PlateData:
-        header_data = HeaderData.create(reader, file_name)
-        read_data = ReadData.create(reader)
-        layout_data = LayoutData.create_default()
-        actual_temperature = ActualTemperature.create_default()
-        results = Results.create()
-
-        while reader.current_line_exists():
-            data_section = read_data_section(reader)
-            if data_section.startswith("Layout"):
-                layout_data = LayoutData.create(data_section)
-            elif data_section.startswith("Actual Temperature"):
-                actual_temperature = ActualTemperature.create(data_section)
-            elif data_section.startswith("Results"):
-                results.parse_results(
-                    data_section,
+    groups = [
+        MeasurementGroup(
+            plate_well_count=len(well_to_measurements),
+            analytical_method_identifier=header_data.protocol_file_path,
+            experimental_data_identifier=header_data.experiment_file_path,
+            measurements=[
+                _create_measurement(
+                    measurement,
+                    well_position,
+                    header_data,
                     read_data,
+                    sample_identifiers.get(well_position),
+                    actual_temperature,
                 )
-
-        return PlateData(
-            header_data=header_data,
-            read_data=read_data,
-            layout_data=layout_data,
-            results=results,
-            compartment_temperature=actual_temperature.value,
+                for measurement in measurements
+            ],
         )
+        for well_position, measurements in well_to_measurements.items()
+    ]
+
+    calculated_data_items = [
+        CalculatedDataItem(
+            identifier=random_uuid_str(),
+            data_sources=[
+                DataSource(
+                    identifier=measurement.identifier,
+                    feature=read_data.read_mode.value.lower(),
+                )
+                for measurement in _get_sources(
+                    label, well_to_measurements[well_position]
+                )
+            ],
+            unit=UNITLESS,
+            name=label,
+            value=value,
+        )
+        for well_position, well_calculated_data in calculated_data.items()
+        for label, value in well_calculated_data
+    ]
+
+    return groups, calculated_data_items
+
+
+def _get_sources(
+    calculated_data_label: str, measurements: list[MeasurementData]
+) -> list[MeasurementData]:
+    # Pathlength is a special case, its sources are always determined
+    # by the pathlength correction setting
+    if calculated_data_label.split(":")[-1] == "Pathlength":
+        pathlength_suffixes = ["[Test]", "[Ref]"]
+        sources = [
+            measurement
+            for measurement in measurements
+            if measurement.label.split(" ")[-1] in pathlength_suffixes
+        ]
+    else:
+        sources = [
+            measurement
+            for measurement in measurements
+            if measurement.label in calculated_data_label
+        ]
+
+    # if there are no matches in the measurement labels, use all measurements as source
+    return sources or measurements
+
+
+def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
+    return Metadata(
+        device_type=DEVICE_TYPE,
+        detection_type=read_data.read_mode.value,
+        device_identifier=NOT_APPLICABLE,
+        model_number=header_data.model_number or NOT_APPLICABLE,
+        equipment_serial_number=header_data.equipment_serial_number,
+        software_name=DEFAULT_SOFTWARE_NAME,
+        software_version=header_data.software_version,
+        file_name=header_data.file_name,
+        measurement_time=header_data.datetime,
+    )
+
+
+def _create_measurement(
+    measurement: MeasurementData,
+    well_position: str,
+    header_data: HeaderData,
+    read_data: ReadData,
+    sample_identifier: str | None,
+    actual_temperature: float | None,
+) -> Measurement:
+    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+    if read_data.read_mode == ReadMode.ABSORBANCE:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
+    elif read_data.read_mode == ReadMode.FLUORESCENCE:
+        measurement_type = MeasurementType.FLUORESCENCE
+    elif read_data.read_mode == ReadMode.LUMINESCENCE:
+        measurement_type = MeasurementType.LUMINESCENCE
+
+    detector_wavelength_setting: JsonFloat | None = None
+    if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
+        filter_data = None
+        detector_wavelength_setting = float(
+            measurement.label.split(":")[-1].split(" ")[0]
+        )
+    else:
+        filter_data = read_data.filter_sets[measurement.label]
+        detector_wavelength_setting = filter_data.detector_wavelength_setting
+
+    return Measurement(
+        type_=measurement_type,
+        identifier=measurement.identifier,
+        sample_identifier=sample_identifier
+        or f"{header_data.well_plate_identifier} {well_position}",
+        location_identifier=well_position,
+        well_plate_identifier=header_data.well_plate_identifier,
+        detector_wavelength_setting=detector_wavelength_setting,
+        detector_bandwidth_setting=filter_data.detector_bandwidth_setting
+        if filter_data
+        else None,
+        excitation_wavelength_setting=filter_data.excitation_wavelength_setting
+        if filter_data
+        else None,
+        excitation_bandwidth_setting=filter_data.excitation_bandwidth_setting
+        if filter_data
+        else None,
+        wavelength_filter_cutoff_setting=filter_data.wavelength_filter_cutoff_setting
+        if filter_data
+        else None,
+        detector_distance_setting=read_data.detector_distance,
+        scan_position_setting=filter_data.scan_position_setting
+        if filter_data
+        else None,
+        detector_gain_setting=filter_data.gain if filter_data else None,
+        number_of_averages=read_data.number_of_averages,
+        detector_carriage_speed=read_data.detector_carriage_speed,
+        absorbance=measurement.value
+        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+        else None,
+        fluorescence=measurement.value
+        if measurement_type == MeasurementType.FLUORESCENCE
+        else None,
+        luminescence=measurement.value
+        if measurement_type == MeasurementType.LUMINESCENCE
+        else None,
+        compartment_temperature=actual_temperature,
+    )
+
+
+def create_data(reader: SectionLinesReader, file_name: str) -> Data:
+    plates = list(reader.iter_sections("^Software Version"))
+
+    if not plates:
+        msg = "No plate data found in file."
+        raise AllotropeConversionError(msg)
+
+    if len(plates) > 1:
+        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
+
+    header_data = HeaderData.create(plates[0], file_name)
+    read_data = ReadData.create(plates[0])
+
+    section_lines = {}
+    while plates[0].current_line_exists():
+        data_section = read_data_section(plates[0])
+        section_lines[data_section[0].strip().split(":")[0]] = data_section
+
+    sample_identifiers = get_identifiers(section_lines.get("Layout"))
+    actual_temperature = get_temperature(section_lines.get("Actual Temperature"))
+    measurement_groups, calculated_data = create_results(
+        section_lines["Results"],
+        header_data,
+        read_data,
+        sample_identifiers,
+        actual_temperature,
+    )
+
+    return Data(
+        metadata=_create_metadata(header_data, read_data),
+        measurement_groups=measurement_groups,
+        calculated_data=calculated_data,
+    )
