@@ -16,20 +16,14 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     Referenceable,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_df_column,
     assert_not_empty_df,
     assert_not_none,
-    try_bool_from_series_or_none,
     try_float,
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_float_or_none,
     try_int,
-    try_int_from_series,
-    try_str_from_series,
-    try_str_from_series_or_none,
 )
 
 SAMPLE_ROLE_TYPES_MAP = {
@@ -65,20 +59,20 @@ class Header:
     heated_cover_serial_number: str | None
 
     @staticmethod
-    def create(header: pd.Series[str]) -> Header:
+    def create(header: SeriesData) -> Header:
         software_info = assert_not_none(
             re.match(
                 "(.*) v(.+)",
-                try_str_from_series(header, "Software Name and Version"),
+                header.try_str("Software Name and Version"),
             )
         )
 
-        stage_number_raw = str(header.get("PCR Stage/Step Number", ""))
+        stage_number_raw = header.try_str_or_default("PCR Stage/Step Number", "")
         stage_number = re.match(r"Stage (\d+)", stage_number_raw)
         pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
 
-        run_end_data = try_str_from_series_or_none(header, "Run End Data/Time")
-        run_end_date = try_str_from_series_or_none(header, "Run End Date/Time")
+        run_end_data = header.try_str_or_none("Run End Data/Time")
+        run_end_date = header.try_str_or_none("Run End Date/Time")
 
         return Header(
             measurement_time=assert_not_none(
@@ -90,7 +84,7 @@ class Header:
                     assert_not_none(
                         re.match(
                             "(96)|(384)",
-                            try_str_from_series(header, "Block Type"),
+                            header.try_str("Block Type"),
                         ),
                         msg="Unable to find plate well count",
                     ).group(),
@@ -99,34 +93,24 @@ class Header:
                 msg="Unable to interpret plate well count",
             ),
             device_identifier=(
-                try_str_from_series_or_none(header, "Instrument Name") or NOT_APPLICABLE
+                header.try_str_or_none("Instrument Name") or NOT_APPLICABLE
             ),
-            model_number=try_str_from_series_or_none(header, "Instrument Type")
+            model_number=header.try_str_or_none("Instrument Type")
             or NOT_APPLICABLE,
             device_serial_number=(
-                try_str_from_series_or_none(header, "Instrument Serial Number")
+                header.try_str_or_none("Instrument Serial Number")
                 or NOT_APPLICABLE
             ),
-            measurement_method_identifier=try_str_from_series(
-                header, "Quantification Cycle Method"
-            ),
+            measurement_method_identifier=header.try_str("Quantification Cycle Method"),
             pcr_detection_chemistry=(
-                try_str_from_series_or_none(header, "Chemistry") or NOT_APPLICABLE
+                header.try_str_or_none("Chemistry") or NOT_APPLICABLE
             ),
-            passive_reference_dye_setting=try_str_from_series_or_none(
-                header, "Passive Reference"
-            ),
-            barcode=try_str_from_series_or_none(header, "Barcode"),
-            analyst=try_str_from_series_or_none(header, "Operator"),
-            experimental_data_identifier=try_str_from_series_or_none(
-                header, "Experiment Name"
-            ),
-            block_serial_number=try_str_from_series_or_none(
-                header, "Block Serial Number"
-            ),
-            heated_cover_serial_number=try_str_from_series_or_none(
-                header, "Heated Cover Serial Number"
-            ),
+            passive_reference_dye_setting=header.try_str_or_none("Passive Reference"),
+            barcode=header.try_str_or_none("Barcode"),
+            analyst=header.try_str_or_none("Operator"),
+            experimental_data_identifier=header.try_str_or_none("Experiment Name"),
+            block_serial_number=header.try_str_or_none("Block Serial Number"),
+            heated_cover_serial_number=header.try_str_or_none("Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,
             software_name=software_info.group(1),
             software_version=software_info.group(2),
@@ -149,26 +133,24 @@ class WellItem(Referenceable):
     @staticmethod
     def create(
         contents: DesignQuantstudioContents,
-        data: pd.Series[str],
+        data: SeriesData,
         experiment_type: ExperimentType,
     ) -> WellItem:
-        identifier = try_int_from_series(data, "Well")
+        identifier = data.try_int("Well")
 
-        target_dna_description = try_str_from_series(
-            data,
+        target_dna_description = data.try_str(
             "Target",
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
-        well_position = try_str_from_series(
-            data,
+        well_position = data.try_str(
             "Well Position",
             msg=f"Unable to find well position for Well '{identifier}'.",
         )
 
-        sample_identifier = try_str_from_series_or_none(data, "Sample") or well_position
+        sample_identifier = data.try_str_or_none("Sample") or well_position
 
-        raw_sample_role_type = try_str_from_series_or_none(data, "Task")
+        raw_sample_role_type = data.try_str_or_none("Task")
         sample_role_type = (
             None
             if raw_sample_role_type is None
@@ -183,9 +165,9 @@ class WellItem(Referenceable):
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
-            reporter_dye_setting=try_str_from_series_or_none(data, "Reporter"),
+            reporter_dye_setting=data.try_str_or_none("Reporter"),
             well_location_identifier=well_position,
-            quencher_dye_setting=try_str_from_series_or_none(data, "Quencher"),
+            quencher_dye_setting=data.try_str_or_none("Quencher"),
             sample_role_type=sample_role_type,
             amplification_data=AmplificationData.create(
                 amp_data, identifier, target_dna_description
@@ -223,8 +205,8 @@ class Well:
         experiment_type: ExperimentType,
     ) -> Well:
         well_items = {
-            try_str_from_series(item_data, "Target"): WellItem.create(
-                contents, item_data, experiment_type
+            SeriesData(item_data).try_str("Target"): WellItem.create(
+                contents, SeriesData(item_data), experiment_type
             )
             for _, item_data in well_data.iterrows()
         }
@@ -530,12 +512,12 @@ class Result:
 
     @staticmethod
     def create(
-        target_data: pd.Series[str],
+        target_data: SeriesData,
         well_item_id: int,
         experiment_type: ExperimentType,
     ) -> Result:
         genotyping_determination_result = (
-            try_str_from_series_or_none(target_data, "Call")
+            target_data.try_str_or_none("Call")
             if experiment_type
             in (
                 ExperimentType.presence_absence_qPCR_experiment,
@@ -545,7 +527,7 @@ class Result:
         )
 
         genotyping_determination_method_setting = (
-            try_float_from_series_or_none(target_data, "Threshold")
+            target_data.try_float_or_none("Threshold")
             if experiment_type
             in (
                 ExperimentType.presence_absence_qPCR_experiment,
@@ -555,55 +537,40 @@ class Result:
         )
 
         return Result(
-            cycle_threshold_value_setting=try_float_from_series(
-                target_data,
+            cycle_threshold_value_setting=target_data.try_float(
                 "Threshold",
                 msg=f"Unable to find cycle threshold value setting for well {well_item_id}",
             ),
-            cycle_threshold_result=try_float_or_none(str(target_data.get("Cq"))),
-            automatic_cycle_threshold_enabled_setting=try_bool_from_series_or_none(
-                target_data, "Auto Threshold"
-            ),
-            automatic_baseline_determination_enabled_setting=try_bool_from_series_or_none(
-                target_data, "Auto Baseline"
-            ),
-            normalized_reporter_result=try_float_from_series_or_none(target_data, "Rn"),
-            baseline_corrected_reporter_result=try_float_from_series_or_none(
-                target_data, "Delta Rn"
-            ),
-            baseline_determination_start_cycle_setting=try_float_from_series_or_none(
-                target_data, "Baseline Start"
-            ),
-            baseline_determination_end_cycle_setting=try_float_from_series_or_none(
-                target_data, "Baseline End"
-            ),
+            cycle_threshold_result=target_data.try_float_or_none("Cq"),
+            automatic_cycle_threshold_enabled_setting=target_data.try_bool_or_none("Auto Threshold"),
+            automatic_baseline_determination_enabled_setting=target_data.try_bool_or_none("Auto Baseline"),
+            normalized_reporter_result=target_data.try_float_or_none("Rn"),
+            baseline_corrected_reporter_result=target_data.try_float_or_none("Delta Rn"),
+            baseline_determination_start_cycle_setting=target_data.try_float_or_none("Baseline Start"),
+            baseline_determination_end_cycle_setting=target_data.try_float_or_none("Baseline End"),
             genotyping_determination_result=genotyping_determination_result,
             genotyping_determination_method_setting=genotyping_determination_method_setting,
-            quantity=try_float_from_series_or_none(target_data, "Quantity"),
-            quantity_mean=try_float_from_series_or_none(target_data, "Quantity Mean"),
-            quantity_sd=try_float_from_series_or_none(target_data, "Quantity SD"),
-            ct_mean=try_float_from_series_or_none(target_data, "Cq Mean"),
-            eq_ct_mean=try_float_from_series_or_none(target_data, "EqCq Mean"),
-            adj_eq_ct_mean=try_float_from_series_or_none(
-                target_data, "Adjusted EqCq Mean"
-            ),
-            ct_sd=try_float_from_series_or_none(target_data, "Cq SD"),
-            ct_se=try_float_from_series_or_none(target_data, "Cq SE"),
-            delta_ct_mean=try_float_from_series_or_none(target_data, "Delta EqCq Mean"),
-            delta_ct_se=try_float_from_series_or_none(target_data, "Delta EqCq SE"),
-            delta_ct_sd=try_float_from_series_or_none(target_data, "Delta EqCq SD"),
-            delta_delta_ct=try_float_from_series_or_none(
-                target_data, "Delta Delta EqCq"
-            ),
-            rq=try_float_from_series_or_none(target_data, "Rq"),
-            rq_min=try_float_from_series_or_none(target_data, "Rq Min"),
-            rq_max=try_float_from_series_or_none(target_data, "Rq Max"),
-            rn_mean=try_float_from_series_or_none(target_data, "Rn Mean"),
-            rn_sd=try_float_from_series_or_none(target_data, "Rn SD"),
-            y_intercept=try_float_from_series_or_none(target_data, "Y-Intercept"),
-            r_squared=try_float_from_series_or_none(target_data, "R2"),
-            slope=try_float_from_series_or_none(target_data, "Slope"),
-            efficiency=try_float_from_series_or_none(target_data, "Efficiency"),
+            quantity=target_data.try_float_or_none("Quantity"),
+            quantity_mean=target_data.try_float_or_none("Quantity Mean"),
+            quantity_sd=target_data.try_float_or_none("Quantity SD"),
+            ct_mean=target_data.try_float_or_none("Cq Mean"),
+            eq_ct_mean=target_data.try_float_or_none("EqCq Mean"),
+            adj_eq_ct_mean=target_data.try_float_or_none("Adjusted EqCq Mean"),
+            ct_sd=target_data.try_float_or_none("Cq SD"),
+            ct_se=target_data.try_float_or_none("Cq SE"),
+            delta_ct_mean=target_data.try_float_or_none("Delta EqCq Mean"),
+            delta_ct_se=target_data.try_float_or_none("Delta EqCq SE"),
+            delta_ct_sd=target_data.try_float_or_none("Delta EqCq SD"),
+            delta_delta_ct=target_data.try_float_or_none("Delta Delta EqCq"),
+            rq=target_data.try_float_or_none("Rq"),
+            rq_min=target_data.try_float_or_none("Rq Min"),
+            rq_max=target_data.try_float_or_none("Rq Max"),
+            rn_mean=target_data.try_float_or_none("Rn Mean"),
+            rn_sd=target_data.try_float_or_none("Rn SD"),
+            y_intercept=target_data.try_float_or_none("Y-Intercept"),
+            r_squared=target_data.try_float_or_none("R2"),
+            slope=target_data.try_float_or_none("Slope"),
+            efficiency=target_data.try_float_or_none("Efficiency"),
         )
 
 

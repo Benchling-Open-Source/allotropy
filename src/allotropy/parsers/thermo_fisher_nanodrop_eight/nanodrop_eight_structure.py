@@ -17,13 +17,8 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.iterables import get_first_not_none
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_from_series_or_none,
-    try_non_nan_str_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
 
 # These may be reported in the results, and are stored as calculated data
 ABSORBANCE_RATIOS = [
@@ -41,30 +36,31 @@ class SpectroscopyRow:
     calculated_data: list[CalculatedDataItem]
 
     @staticmethod
-    def create(data: pd.Series[str]) -> SpectroscopyRow:
-        analyst = try_str_from_series_or_none(data, "user id")
-        timestamp = f'{try_str_from_series_or_none(data, "date")} {try_str_from_series_or_none(data, "time")}'
-        experiment_type = try_str_from_series_or_none(data, "na type")
+    def create(series: pd.Series[str]) -> SpectroscopyRow:
+        data = SeriesData(series)
+
+        analyst = data.try_str_or_none("user id")
+        timestamp = f'{data.try_str_or_none("date")} {data.try_str_or_none("time")}'
+        experiment_type = data.try_str_or_none("na type")
 
         sample_id = (
-            try_non_nan_str_from_series_or_none(data, "sample id") or NOT_APPLICABLE
-        )
-        well_plate_id = try_non_nan_str_from_series_or_none(data, "plate id")
-        location_id = try_str_from_series(data, "well")
+            data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE)
+        well_plate_id = data.try_non_nan_str_or_none("plate id")
+        location_id = data.try_str("well")
 
         is_na_experiment = experiment_type and "NA" in experiment_type
 
-        a260_absorbance = try_float_from_series_or_none(data, "a260")
+        a260_absorbance = data.try_float_or_none("a260")
         a280_absorbance = get_first_not_none(
-            lambda key: try_float_from_series_or_none(data, key), ["a280", "a280 10mm"]
+            lambda key: data.try_float_or_none(key), ["a280", "a280 10mm"]
         )
         measurements: list[Measurement] = []
 
         mass_concentration = get_first_not_none(
-            lambda key: try_float_from_series_or_none(data, key),
+            lambda key: data.try_float_or_none(key),
             ["conc.", "conc", "concentration"],
         )
-        unit = try_str_from_series_or_none(data, "units")
+        unit = data.try_str_or_none("units")
 
         # We only capture mass concentration on one measurement document
         # TODO(nstender): why not just capture in both? Seems relevant, and would make this so much simpler.
@@ -109,7 +105,7 @@ class SpectroscopyRow:
 
         absorbance_ratios = {}
         for numerator, denominator in ABSORBANCE_RATIOS:
-            ratio = try_float_from_series_or_none(data, f"{numerator}/{denominator}")
+            ratio = data.try_float_or_none(f"{numerator}/{denominator}")
             if ratio:
                 absorbance_ratios[(numerator, denominator)] = ratio
 

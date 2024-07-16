@@ -13,21 +13,17 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_MODEL_NUMBER,
     VICELL_BLU_SOFTWARE_NAME,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
 
 
-def _create_measurement_group(data: pd.Series[str]) -> MeasurementGroup:
-    total_cell_count = try_float_from_series_or_none(data, "Cell count")
+def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
+    data = SeriesData(series)
+    total_cell_count = data.try_float_or_none("Cell count")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
     )
-    viable_cell_count = try_float_from_series_or_none(data, "Viable cells")
+    viable_cell_count = data.try_float_or_none("Viable cells")
     viable_cell_count = (
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
@@ -36,42 +32,22 @@ def _create_measurement_group(data: pd.Series[str]) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                timestamp=try_str_from_series(data, "Analysis date/time"),
-                sample_identifier=try_str_from_series(data, "Sample ID"),
-                cell_type_processing_method=try_str_from_series_or_none(
-                    data, "Cell type"
-                ),
-                minimum_cell_diameter_setting=try_float_from_series_or_none(
-                    data, "Minimum Diameter (μm)"
-                ),
-                maximum_cell_diameter_setting=try_float_from_series_or_none(
-                    data, "Maximum Diameter (μm)"
-                ),
-                cell_density_dilution_factor=try_float_from_series_or_none(
-                    data, "Dilution"
-                ),
-                viability=try_float_from_series(data, "Viability (%)"),
-                viable_cell_density=try_float_from_series(
-                    data, "Viable (x10^6) cells/mL"
-                ),
+                timestamp=data.try_str("Analysis date/time"),
+                sample_identifier=data.try_str("Sample ID"),
+                cell_type_processing_method=data.try_str_or_none("Cell type"),
+                minimum_cell_diameter_setting=data.try_float_or_none("Minimum Diameter (μm)"),
+                maximum_cell_diameter_setting=data.try_float_or_none("Maximum Diameter (μm)"),
+                cell_density_dilution_factor=data.try_float_or_none("Dilution"),
+                viability=data.try_float("Viability (%)"),
+                viable_cell_density=data.try_float("Viable (x10^6) cells/mL"),
                 total_cell_count=total_cell_count,
-                total_cell_density=try_float_from_series_or_none(
-                    data, "Total (x10^6) cells/mL"
-                ),
-                average_total_cell_diameter=try_float_from_series_or_none(
-                    data, "Average diameter (μm)"
-                ),
-                average_live_cell_diameter=try_float_from_series_or_none(
-                    data, "Average viable diameter (μm)"
-                ),
+                total_cell_density=data.try_float_or_none("Total (x10^6) cells/mL"),
+                average_total_cell_diameter=data.try_float_or_none("Average diameter (μm)"),
+                average_live_cell_diameter=data.try_float_or_none("Average viable diameter (μm)"),
                 viable_cell_count=viable_cell_count,
-                average_total_cell_circularity=try_float_from_series_or_none(
-                    data, "Average circularity"
-                ),
-                average_viable_cell_circularity=try_float_from_series_or_none(
-                    data, "Average viable circularity"
-                ),
-                analyst=try_str_from_series_or_none(data, "Analysis by")
+                average_total_cell_circularity=data.try_float_or_none("Average circularity"),
+                average_viable_cell_circularity=data.try_float_or_none("Average viable circularity"),
+                analyst=data.try_str_or_none("Analysis by")
                 or DEFAULT_ANALYST,
             )
         ]

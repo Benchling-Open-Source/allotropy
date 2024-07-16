@@ -21,26 +21,18 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_txt_reader import ViCellXRTXTReader
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    assert_not_none,
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
+from allotropy.parsers.utils.values import assert_not_none
 
 
-def _create_measurement_group(data: pd.Series[str]) -> MeasurementGroup:
-    timestamp = assert_not_none(
-        try_str_from_series_or_none(data, "Sample date/time")
-        or try_str_from_series_or_none(data, "Sample date")
-    )
-    total_cell_count = try_float_from_series_or_none(data, "Total cells")
+def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
+    data = SeriesData(series)
+    total_cell_count = data.try_float_or_none("Total cells")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
     )
-    viable_cell_count = try_float_from_series_or_none(data, "Viable cells")
+    viable_cell_count = data.try_float_or_none("Viable cells")
     viable_cell_count = (
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
@@ -49,29 +41,17 @@ def _create_measurement_group(data: pd.Series[str]) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                timestamp=timestamp,
-                sample_identifier=try_str_from_series(data, "Sample ID"),
-                cell_type_processing_method=try_str_from_series_or_none(
-                    data, "Cell type"
-                ),
-                cell_density_dilution_factor=try_float_from_series_or_none(
-                    data, "Dilution factor"
-                ),
-                viability=try_float_from_series(data, "Viability (%)"),
-                viable_cell_density=try_float_from_series(
-                    data, "Viable cells/ml (x10^6)"
-                ),
+                timestamp=data.try_str("Sample date"),
+                sample_identifier=data.try_str("Sample ID"),
+                cell_type_processing_method=data.try_str_or_none("Cell type"),
+                cell_density_dilution_factor=data.try_float_or_none("Dilution factor"),
+                viability=data.try_float("Viability (%)"),
+                viable_cell_density=data.try_float("Viable cells/ml (x10^6)"),
                 total_cell_count=total_cell_count,
-                total_cell_density=try_float_from_series_or_none(
-                    data, "Total cells/ml (x10^6)"
-                ),
-                average_total_cell_diameter=try_float_from_series_or_none(
-                    data, "Avg. diam. (microns)"
-                ),
+                total_cell_density=data.try_float_or_none("Total cells/ml (x10^6)"),
+                average_total_cell_diameter=data.try_float_or_none("Avg. diam. (microns)"),
                 viable_cell_count=viable_cell_count,
-                average_total_cell_circularity=try_float_from_series_or_none(
-                    data, "Avg. circ."
-                ),
+                average_total_cell_circularity=data.try_float_or_none("Avg. circ."),
                 analyst=DEFAULT_ANALYST,
             )
         ]
@@ -87,7 +67,7 @@ def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
 
 
 def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
-    serial_number_str = try_str_from_series(reader.file_info, "serial")
+    serial_number_str = reader.file_info.try_str("serial")
     try:
         serial_number = serial_number_str[serial_number_str.rindex(":") + 1 :].strip()
     except ValueError:
@@ -95,7 +75,7 @@ def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
 
     match = re.match(
         MODEL_RE,
-        try_str_from_series(reader.file_info, "model"),
+        reader.file_info.try_str("model"),
         flags=re.IGNORECASE,
     )
     try:

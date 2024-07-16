@@ -33,6 +33,6 @@ def test_parse_file_missing_headers() -> None:
     test_filepath = f"{TESTDATA}/example01_missing_header_error.csv"
     # TODO: Handle the underlying error better in src
     with pytest.raises(
-        AllotropeConversionError, match="Unhandled error in PerkinElmerEnvisionParser"
+        AllotropeConversionError, match="Expected non-null value for Basic assay information."
     ):
         from_file(test_filepath, VENDOR_TYPE)

@@ -10,12 +10,10 @@ import pandas as pd
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
-    try_float_from_series,
-    try_str_from_series,
-    try_str_from_series_or_none,
 )
 
 LUMINEX_EMPTY_PATTERN = r"^[,\"\s]*$"
@@ -43,29 +41,27 @@ class Header:
 
     @classmethod
     def create(cls, header_data: pd.DataFrame) -> Header:
-        info_row = header_data.iloc[0]
-        raw_datetime = try_str_from_series(info_row, "BatchStartTime")
+        info_row = SeriesData(header_data.iloc[0])
+        raw_datetime = info_row.try_str("BatchStartTime")
 
         return Header(
             model_number=cls._get_model_number(header_data),
-            software_version=try_str_from_series(info_row, "Build"),
-            equipment_serial_number=try_str_from_series(info_row, "SN"),
-            analytical_method_identifier=try_str_from_series(info_row, "ProtocolName"),
-            method_version=try_str_from_series(info_row, "ProtocolVersion"),
-            experimental_data_identifier=try_str_from_series(info_row, "Batch"),
+            software_version=info_row.try_str("Build"),
+            equipment_serial_number=info_row.try_str("SN"),
+            analytical_method_identifier=info_row.try_str("ProtocolName"),
+            method_version=info_row.try_str("ProtocolVersion"),
+            experimental_data_identifier=info_row.try_str("Batch"),
             sample_volume_setting=cls._get_sample_volume_setting(info_row),
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
-            detector_gain_setting=try_str_from_series(info_row, "ProtocolReporterGain"),
-            data_system_instance_identifier=try_str_from_series(
-                info_row, "ComputerName"
-            ),
-            analyst=try_str_from_series_or_none(info_row, "Operator"),
+            detector_gain_setting=info_row.try_str("ProtocolReporterGain"),
+            data_system_instance_identifier=info_row.try_str("ComputerName"),
+            analyst=info_row.try_str_or_none("Operator"),
         )
 
     @classmethod
-    def _get_sample_volume_setting(cls, info_row: pd.Series[Any]) -> float:
-        sample_volume = try_str_from_series(info_row, "SampleVolume")
+    def _get_sample_volume_setting(cls, info_row: SeriesData) -> float:
+        sample_volume = info_row.try_str("SampleVolume")
 
         return try_float(sample_volume.split()[0], "sample volume setting")
 
@@ -155,34 +151,30 @@ class Measurement:
     @classmethod
     def create(
         cls,
-        median_data: pd.Series[Any],
+        median_data: SeriesData,
         count_data: pd.DataFrame,
-        bead_ids_data: pd.Series[str],
+        bead_ids_data: SeriesData,
         dilution_factor_data: pd.DataFrame,
         errors_data: pd.DataFrame,
     ) -> Measurement:
-        location = try_str_from_series(median_data, "Location")
-        dilution_factor_setting = try_float_from_series(
-            dilution_factor_data.loc[location], "Dilution Factor"
-        )
+        location = median_data.try_str("Location")
+        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).try_float("Dilution Factor")
         # analyte names are columns 3 through the penultimate
-        analyte_names = list(median_data.index)[2:-1]
+        analyte_names = list(median_data.series.index)[2:-1]
 
         well_location, location_id = cls._get_location_details(location)
 
         return Measurement(
-            sample_identifier=try_str_from_series(median_data, "Sample"),
+            sample_identifier=median_data.try_str("Sample"),
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=try_float_from_series(median_data, "Total Events"),
+            assay_bead_count=median_data.try_float("Total Events"),
             analytes=[
                 Analyte(
                     analyte_name=analyte,
-                    assay_bead_identifier=try_str_from_series(bead_ids_data, analyte),
-                    assay_bead_count=try_float_from_series(
-                        count_data.loc[location], analyte
-                    ),
-                    fluorescence=try_float_from_series(median_data, analyte),
+                    assay_bead_identifier=bead_ids_data.try_str(analyte),
+                    assay_bead_count=SeriesData(count_data.loc[location]).try_float(analyte),
+                    fluorescence=median_data.try_float(analyte)
                 )
                 for analyte in analyte_names
             ],
@@ -230,9 +222,9 @@ class MeasurementList:
         return MeasurementList(
             measurements=[
                 Measurement.create(
-                    median_data=median_data.iloc[i],
+                    median_data=SeriesData(median_data.iloc[i]),
                     count_data=count_data,
-                    bead_ids_data=bead_ids_data,
+                    bead_ids_data=SeriesData(bead_ids_data),
                     dilution_factor_data=dilution_factor_data,
                     errors_data=errors_data,
                 )

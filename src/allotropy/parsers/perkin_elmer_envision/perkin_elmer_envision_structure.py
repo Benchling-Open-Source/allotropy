@@ -30,17 +30,15 @@ from allotropy.allotrope.models.shared.components.plate_reader import SampleRole
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     num_to_chars,
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
 )
 
 
+# TODO(nstender): figure out how to integrate this with pandas util function
 def df_to_series(df: pd.DataFrame) -> pd.Series[Any]:
     df.columns = df.iloc[0]  # type: ignore[assignment]
     return pd.Series(df.iloc[-1], index=df.columns)
@@ -55,32 +53,18 @@ class PlateInfo:
     chamber_temperature_at_start: float | None
 
     @staticmethod
-    def get_series(reader: CsvReader) -> pd.Series[str]:
+    def get_series(reader: CsvReader) -> SeriesData:
         assert_not_none(
             reader.pop_if_match("^Plate information"),
             msg="Unable to find expected plate information",
         )
 
-        return df_to_series(
+        return SeriesData(df_to_series(
             assert_not_none(
                 reader.pop_csv_block_as_df(),
                 "Plate information CSV block",
             )
-        ).replace(np.nan, None)
-
-    @staticmethod
-    def get_plate_number(series: pd.Series[str]) -> str:
-        return try_str_from_series(
-            series,
-            "Plate",
-            msg="Unable to find plate number",
-        )
-
-    @staticmethod
-    def get_barcode(series: pd.Series[str], plate_number: str) -> str:
-        raw_barcode = try_str_from_series_or_none(series, "Barcode")
-        barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
-        return barcode or f"Plate {plate_number}"
+        ).replace(np.nan, None))
 
 
 @dataclass(frozen=True)
@@ -89,11 +73,10 @@ class CalculatedPlateInfo(PlateInfo):
     name: str
 
     @staticmethod
-    def create(series: pd.Series[str]) -> CalculatedPlateInfo:
-        plate_number = PlateInfo.get_plate_number(series)
+    def create(series: SeriesData) -> CalculatedPlateInfo:
+        plate_number = series.try_str("Plate", msg="Unable to find plate number")
 
-        formula = try_str_from_series(
-            series,
+        formula = series.try_str(
             "Formula",
             msg="Unable to find expected formula for calculated results section.",
         )
@@ -102,15 +85,16 @@ class CalculatedPlateInfo(PlateInfo):
             msg="Unable to find expected formula name for calculated results section.",
         ).group(1)
 
+        raw_barcode = series.try_str_or_none("Barcode")
+        barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
+        barcode = barcode or f"Plate {plate_number}"
+
         return CalculatedPlateInfo(
             number=plate_number,
-            barcode=PlateInfo.get_barcode(series, plate_number),
-            measurement_time=try_str_from_series_or_none(series, "Measurement date"),
-            measured_height=try_float_from_series_or_none(series, "Measured height"),
-            chamber_temperature_at_start=try_float_from_series_or_none(
-                series,
-                "Chamber temperature at start",
-            ),
+            barcode=barcode,
+            measurement_time=series.try_str_or_none("Measurement date"),
+            measured_height=series.try_float_or_none("Measured height"),
+            chamber_temperature_at_start=series.try_float_or_none("Chamber temperature at start",),
             formula=formula,
             name=name.strip(),
         )
@@ -123,24 +107,26 @@ class ResultPlateInfo(PlateInfo):
     emission_filter_id: str
 
     @staticmethod
-    def create(series: pd.Series[str]) -> ResultPlateInfo | None:
-        label = try_str_from_series_or_none(series, "Label")
+    def create(series: SeriesData) -> ResultPlateInfo | None:
+        label = series.try_str_or_none("Label")
         if label is None:
             return None
 
-        measinfo = try_str_from_series_or_none(series, "Measinfo")
+        measinfo = series.try_str_or_none("Measinfo")
         if measinfo is None:
             return None
 
-        plate_number = PlateInfo.get_plate_number(series)
-        barcode = PlateInfo.get_barcode(series, plate_number)
+        plate_number = series.try_str("Plate", msg="Unable to find plate number")
+        raw_barcode = series.try_str_or_none("Barcode")
+        barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
+        barcode = barcode or f"Plate {plate_number}"
 
         return ResultPlateInfo(
             plate_number,
             barcode,
-            try_str_from_series_or_none(series, "Measurement date"),
-            try_float_from_series_or_none(series, "Measured height"),
-            try_float_from_series_or_none(series, "Chamber temperature at start"),
+            series.try_str_or_none("Measurement date"),
+            series.try_float_or_none("Measured height"),
+            series.try_float_or_none("Chamber temperature at start"),
             label=label,
             measinfo=measinfo,
             emission_filter_id=assert_not_none(
@@ -181,23 +167,25 @@ class BackgroundInfoList:
             "background information",
         )
 
+        series_data = [SeriesData(series) for _, series in data.iterrows()]
+
         return BackgroundInfoList(
             background_info=[
                 BackgroundInfo(
                     plate_num=assert_not_none(
-                        try_str_from_series_or_none(series, "Plate"),
+                        series.try_str_or_none("Plate"),
                         msg="Unable to find plate number from background info.",
                     ),
                     label=assert_not_none(
-                        try_str_from_series_or_none(series, "Label"),
+                        series.try_str_or_none("Label"),
                         msg="Unable to find label from background info.",
                     ),
                     measinfo=assert_not_none(
-                        try_str_from_series_or_none(series, "MeasInfo"),
+                        series.try_str_or_none("MeasInfo"),
                         msg="Unable to find meas info from background info.",
                     ),
                 )
-                for _, series in data.iterrows()
+                for series in series_data
             ]
         )
 
@@ -360,10 +348,10 @@ class BasicAssayInfo:
         )
         data = data.T
         data.iloc[0] = data.iloc[0].replace(":.*", "", regex=True)
-        series = df_to_series(data)
+        series = SeriesData(df_to_series(data))
         return BasicAssayInfo(
-            try_str_from_series_or_none(series, "Protocol ID"),
-            try_str_from_series_or_none(series, "Assay ID"),
+            series.try_str_or_none("Protocol ID"),
+            series.try_str_or_none("Assay ID"),
         )
 
 
@@ -379,10 +367,7 @@ class PlateType:
             "Plate type",
         )
         return PlateType(
-            number_of_wells=try_float_from_series(
-                df_to_series(data.T),
-                "Number of the wells in the plate",
-            ),
+            number_of_wells=SeriesData(df_to_series(data.T)).try_float("Number of the wells in the plate"),
         )
 
 
@@ -501,9 +486,9 @@ class Filter:
             reader.pop_csv_block_as_df(),
             "Filter information",
         )
-        series = df_to_series(data.T)
-        name = str(series.index[0])
-        description = try_str_from_series(series, "Description")
+        series = SeriesData(df_to_series(data.T))
+        name = str(series.series.index[0])
+        description = series.try_str("Description")
 
         if search_result := search("Longpass=(\\d+)nm", description):
             return Filter(name, wavelength=float(search_result.group(1)))
@@ -554,7 +539,7 @@ class Labels:
             reader.pop_csv_block_as_df(),
             "Labels",
         )
-        series = df_to_series(data.T).replace(np.nan, None)
+        series = SeriesData(df_to_series(data.T).replace(np.nan, None))
         filters = create_filters(reader)
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
@@ -562,30 +547,25 @@ class Labels:
         }
 
         return Labels(
-            label=series.index[0],
+            label=series.series.index[0],
             excitation_filter=filters.get(
-                try_str_from_series_or_none(series, "Exc. filter") or NOT_APPLICABLE
-            ),
+                series.try_str_or_none("Exc. filter") or NOT_APPLICABLE),
             emission_filters={
                 "1st": filters.get(
-                    try_str_from_series_or_none(series, "Ems. filter")
+                    series.try_str_or_none("Ems. filter")
                     or NOT_APPLICABLE,
                 ),
                 "2nd": filters.get(
-                    try_str_from_series_or_none(series, "2nd ems. filter")
+                    series.try_str_or_none("2nd ems. filter")
                     or NOT_APPLICABLE
                 ),
             },
             scan_position_setting=filter_position_map.get(
-                try_str_from_series_or_none(series, "Using of emission filter")
+                series.try_str_or_none("Using of emission filter")
                 or NOT_APPLICABLE
             ),
-            number_of_flashes=try_float_from_series_or_none(
-                series, "Number of flashes"
-            ),
-            detector_gain_setting=try_str_from_series_or_none(
-                series, "Reference AD gain"
-            ),
+            number_of_flashes=series.try_float_or_none("Number of flashes"),
+            detector_gain_setting=series.try_str_or_none("Reference AD gain"),
         )
 
     def get_emission_filter(self, id_val: str) -> Filter | None:

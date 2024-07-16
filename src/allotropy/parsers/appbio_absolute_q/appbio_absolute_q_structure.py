@@ -10,12 +10,8 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     CALCULATED_DATA_REFERENCE,
     CalculatedDataSource,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_from_series,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
 
 
 @dataclass
@@ -71,15 +67,16 @@ class Group:
         }
 
     @staticmethod
-    def create(data: pd.Series[str]) -> Group:
-        well_identifier = try_str_from_series_or_none(data, "Well")
+    def create(series: pd.Series[str]) -> Group:
+        data = SeriesData(series)
+        well_identifier = data.try_str_or_none("Well")
         aggregation_type = AGGREGATION_LOOKUP[well_identifier]
 
         calculated_data_items = [
             CalculatedItem(
                 random_uuid_str(),
                 reference.name,
-                try_float_from_series(data, reference.column),
+                data.try_float(reference.column),
                 reference.unit,
                 reference.source,
                 reference.source_features,
@@ -92,8 +89,8 @@ class Group:
         }
         return Group(
             well_identifier=well_identifier,
-            group_identifier=try_str_from_series(data, "Group"),
-            target_identifier=try_str_from_series(data, "Target"),
+            group_identifier=data.try_str("Group"),
+            target_identifier=data.try_str("Target"),
             calculated_data=calculated_data_items,
             calculated_data_ids=calculated_data_ids,
         )
@@ -125,21 +122,22 @@ class WellItem:
         return f"{self.group_identifier}_{self.target_identifier}"
 
     @staticmethod
-    def create(data: pd.Series[str]) -> WellItem:
+    def create(series: pd.Series[str]) -> WellItem:
+        data = SeriesData(series)
         return WellItem(
-            name=try_str_from_series(data, "Name"),
+            name=data.try_str("Name"),
             measurement_identifier=random_uuid_str(),
-            well_identifier=try_str_from_series(data, "Well"),
-            plate_identifier=try_str_from_series(data, "Plate"),
-            group_identifier=try_str_from_series(data, "Group"),
-            target_identifier=try_str_from_series(data, "Target"),
-            run_identifier=try_str_from_series(data, "Run"),
-            instrument_identifier=try_str_from_series(data, "Instrument"),
-            timestamp=try_str_from_series(data, "Date"),
-            total_partition_count=round(try_float_from_series(data, "Total")),
-            reporter_dye_setting=try_str_from_series(data, "Dye"),
-            concentration=try_float_from_series(data, "Conc. cp/uL"),
-            positive_partition_count=round(try_float_from_series(data, "Positives")),
+            well_identifier=data.try_str("Well"),
+            plate_identifier=data.try_str("Plate"),
+            group_identifier=data.try_str("Group"),
+            target_identifier=data.try_str("Target"),
+            run_identifier=data.try_str("Run"),
+            instrument_identifier=data.try_str("Instrument"),
+            timestamp=data.try_str("Date"),
+            total_partition_count=round(data.try_float("Total")),
+            reporter_dye_setting=data.try_str("Dye"),
+            concentration=data.try_float("Conc. cp/uL"),
+            positive_partition_count=round(data.try_float("Positives")),
         )
 
 

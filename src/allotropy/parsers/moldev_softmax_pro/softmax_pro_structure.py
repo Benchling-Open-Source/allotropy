@@ -4,9 +4,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
-import math
 import re
-from typing import Any
 
 import pandas as pd
 
@@ -16,6 +14,7 @@ from allotropy.exceptions import (
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -26,49 +25,11 @@ from allotropy.parsers.utils.values import (
     try_int,
     try_int_or_none,
     try_non_nan_float_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
 )
 
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
-
-
-def can_parse_as_float_non_nan(value: Any) -> bool:
-    try:
-        number = float(value)
-    except ValueError:
-        return False
-    return not math.isnan(number)
-
-
-def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
-    return data.drop(
-        columns=[column for column in data.columns if re.match(pattern, column)]
-    )
-
-
-def try_str_from_series_multikey_or_none(
-    data: pd.Series[Any],
-    possible_keys: set[str],
-) -> str | None:
-    for key in possible_keys:
-        value = try_str_from_series_or_none(data, key)
-        if value is not None:
-            return value
-    return None
-
-
-def try_str_from_series_multikey(
-    data: pd.Series[Any],
-    possible_keys: set[str],
-    msg: str | None = None,
-) -> str:
-    return assert_not_none(
-        try_str_from_series_multikey_or_none(data, possible_keys),
-        msg=msg,
-    )
 
 
 NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
@@ -146,13 +107,14 @@ class GroupSampleData:
 
     @staticmethod
     def create(data: pd.DataFrame) -> GroupSampleData:
-        top_row = data.iloc[0]
-        identifier = str(top_row["Sample"])
+        row_data = [SeriesData(row) for _, row in data.iterrows()]
+        top_row = row_data[0]
+        identifier = top_row.try_str("Sample")
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         numeric_columns = [
             column
             for column in data.columns
-            if can_parse_as_float_non_nan(top_row[column])
+            if top_row.try_non_nan_float_or_none(column) is not None
         ]
 
         normal_columns = []
@@ -168,26 +130,25 @@ class GroupSampleData:
             data_elements=[
                 GroupDataElement(
                     sample=identifier,
-                    position=try_str_from_series_multikey(
-                        row,
+                    position=row.try_str_multikey(
                         {"Well", "Wells"},
                         msg="Unable to find well position in group data.",
                     ),
-                    plate=try_str_from_series(row, "WellPlateName"),
+                    plate=row.try_str("WellPlateName"),
                     entries=[
                         GroupDataElementEntry(
                             name=column_name,
-                            value=try_float(row[column_name], column_name),
+                            value=row.try_float(column_name)
                         )
                         for column_name in normal_columns
                     ],
                 )
-                for _, row in data.iterrows()
+                for row in row_data
             ],
             aggregated_entries=[
                 GroupDataElementEntry(
                     name=column_name,
-                    value=try_float(top_row[column_name], column_name),
+                    value=top_row.try_float(column_name),
                 )
                 for column_name in aggregated_columns
             ],
@@ -381,7 +342,7 @@ class PlateKineticData:
         rows = dimensions[1]
         lines = []
         # read number of rows in plate
-        for _row in range(rows):
+        for _ in range(rows):
             lines.append(reader.pop() or "")
         reader.drop_empty()
 
@@ -392,7 +353,7 @@ class PlateKineticData:
         )
         data.columns = pd.Index(columns)
 
-        # get temprature from the first column of the first row with value
+        # get temperature from the first column of the first row with value
         temperature = try_float_or_none(
             str(data.iloc[int(pd.to_numeric(data.first_valid_index())), 1])
         )

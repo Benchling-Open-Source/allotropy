@@ -2,8 +2,6 @@ from __future__ import annotations
 
 import re
 
-import pandas as pd
-
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     Data,
     ImageFeature,
@@ -15,14 +13,9 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    assert_not_none,
-    try_float_from_series_or_nan,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
+from allotropy.parsers.utils.values import assert_not_none
 
 IMAGE_FEATURES = [
     "Spot Forming Units (SFU)",
@@ -35,8 +28,7 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]+) ([0-9]+)",
-            try_str_from_series(contents.plate_info, key="Machine ID:"),
-        ),
+            contents.plate_info.try_str(key="Machine ID:"),),
         msg="Unable to interpret Machine ID",
     )
 
@@ -45,39 +37,35 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
         device_type="imager",
         detection_type="optical-imaging",
         software_name="Apex",
-        unc_path=try_str_from_series_or_none(contents.plate_info, key="Path:"),
-        software_version=try_str_from_series_or_none(
-            contents.plate_info, key="Software Version:"
-        ),
+        unc_path=contents.plate_info.try_str_or_none(key="Path:"),
+        software_version=contents.plate_info.try_str_or_none(key="Software Version:"),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
         file_name=file_name,
-        analyst=try_str_from_series_or_none(contents.plate_info, key="Saved By:"),
+        analyst=contents.plate_info.try_str_or_none(key="Saved By:"),
     )
 
 
-def _create_measurement(plate_data: pd.Series[str]) -> Measurement:
-    location_id = try_str_from_series(plate_data, "Well")
-    well_plate = try_str_from_series_or_none(plate_data, "Plate")
+def _create_measurement(plate_data: SeriesData) -> Measurement:
+    location_id = plate_data.try_str("Well")
+    well_plate = plate_data.try_str_or_none("Plate")
 
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
-        measurement_time=try_str_from_series(plate_data, "Read Date"),
+        measurement_time=plate_data.try_str("Read Date"),
         location_identifier=location_id,
         well_plate_identifier=well_plate,
         sample_identifier=f"{well_plate}_{location_id}",
-        exposure_duration_setting=try_float_from_series_or_none(plate_data, "Exposure"),
-        illumination_setting=try_float_from_series_or_none(
-            plate_data, "Preset Intensity"
-        ),
+        exposure_duration_setting=plate_data.try_float_or_none("Exposure"),
+        illumination_setting=plate_data.try_float_or_none("Preset Intensity"),
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
             features=[
                 ImageFeature(
                     identifier=random_uuid_str(),
                     feature=feature,
-                    result=try_float_from_series_or_nan(plate_data, feature),
+                    result=plate_data.try_float_or_nan(feature),
                 )
                 for feature in IMAGE_FEATURES
             ],
@@ -92,7 +80,7 @@ def _create_groups(contents: MabtechApexContents) -> list[MeasurementGroup]:
     return list(
         plate_data.apply(  # type: ignore[call-overload]
             lambda data: MeasurementGroup(
-                measurements=[_create_measurement(data)],
+                measurements=[_create_measurement(SeriesData(data))],
                 plate_well_count=96,
             ),
             axis="columns",

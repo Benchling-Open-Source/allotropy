@@ -425,7 +425,7 @@ class Result:
     efficiency: float | None
 
     @staticmethod
-    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, pd.Series[str]]:
+    def get_data(reader: LinesReader) -> tuple[pd.DataFrame, SeriesData]:
         assert_not_none(
             reader.drop_until(r"^\[Results\]"),
             msg="Unable to find 'Results' section in file.",
@@ -439,7 +439,7 @@ class Result:
         reader.drop_empty()
 
         if reader.match(r"\[.+\]"):
-            return data, pd.Series()
+            return data, SeriesData(pd.Series())
 
         metadata_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(metadata_lines))
@@ -449,7 +449,7 @@ class Result:
 
         reader.drop_empty()
 
-        return data, metadata.str.strip()
+        return data, SeriesData(metadata.str.strip())
 
     @staticmethod
     def create_genotyping(data_frame: pd.DataFrame, well_item: WellItem) -> Result:

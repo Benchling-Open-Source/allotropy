@@ -13,6 +13,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     MODEL_RE,
     XrVersion,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import assert_value_from_df
 from allotropy.types import IOType
 
@@ -66,15 +67,15 @@ class ViCellXRReader:
         ).to_list()
         return header_list
 
-    def _get_file_info(self) -> pd.Series[Any]:
+    def _get_file_info(self) -> SeriesData:
         info: pd.Series[Any] = self._read_excel(
             nrows=3, header=None, usecols=[0]
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
-        return info
+        return SeriesData(info)
 
     def _get_file_version(self) -> XrVersion:
-        match = re.match(MODEL_RE, self.file_info["model"], flags=re.IGNORECASE)
+        match = re.match(MODEL_RE, self.file_info.try_str("model"), flags=re.IGNORECASE)
         try:
             version = match.groupdict()["version"]  # type: ignore[union-attr]
         except AttributeError:
