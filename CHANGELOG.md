@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added Thermo Fisher Qubit Flex adapter
+- Added requirement document for Thermo Fisher Qubit Flex adapter
 
 ### Fixed
 
@@ -28,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added ThermoFisher Qubit4 adapter 
+- Added ThermoFisher Qubit4 adapter
 - Added requirement doc for ThermoFisher Qubit4 adapter
 - Added Roche Cedex HiRes adapter
 - Added requirement doc for Roche Cedex HiRes adapter
