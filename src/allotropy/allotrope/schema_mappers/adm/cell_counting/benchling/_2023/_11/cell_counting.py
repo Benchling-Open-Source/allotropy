@@ -136,7 +136,9 @@ class Mapper:
         return CellCountingDetectorMeasurementDocumentItem(
             measurement_time=self.get_date_time(measurement.timestamp),
             measurement_identifier=measurement.measurement_identifier,
-            sample_document=SampleDocument(sample_identifier=measurement.sample_identifier),
+            sample_document=SampleDocument(
+                sample_identifier=measurement.sample_identifier
+            ),
             device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItemModel(
