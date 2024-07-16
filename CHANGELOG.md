@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added digital PCR and solution analyzer parser requirement templates to /docs
+
 ### Fixed
 
 ### Changed
