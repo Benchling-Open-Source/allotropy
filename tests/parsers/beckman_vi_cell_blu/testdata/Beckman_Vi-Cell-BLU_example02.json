@@ -33,7 +33,7 @@
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             },
                                             "minimum cell diameter setting": {
@@ -112,7 +112,7 @@
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             },
                                             "minimum cell diameter setting": {
@@ -191,7 +191,7 @@
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             },
                                             "minimum cell diameter setting": {
@@ -270,7 +270,7 @@
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             },
                                             "minimum cell diameter setting": {
@@ -349,7 +349,7 @@
                                         "data processing document": {
                                             "cell type processing method": "HeLa (😢)",
                                             "cell density dilution factor": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             },
                                             "minimum cell diameter setting": {
@@ -405,7 +405,7 @@
             "file name": "Beckman_Vi-Cell-BLU_example02.csv",
             "software name": "Vi-Cell BLU",
             "ASM converter name": "allotropy_beckman_vi_cell_blu",
-            "ASM converter version": "0.1.17"
+            "ASM converter version": "0.1.38"
         }
     }
 }
