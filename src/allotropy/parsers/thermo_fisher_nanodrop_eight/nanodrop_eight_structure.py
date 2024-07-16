@@ -21,6 +21,7 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series_or_none,
     try_non_nan_str_from_series_or_none,
+    try_str_from_series,
     try_str_from_series_or_none,
 )
 
@@ -49,7 +50,7 @@ class SpectroscopyRow:
             try_non_nan_str_from_series_or_none(data, "sample id") or NOT_APPLICABLE
         )
         well_plate_id = try_non_nan_str_from_series_or_none(data, "plate id")
-        location_id = try_str_from_series_or_none(data, "well")
+        location_id = try_str_from_series(data, "well")
 
         is_na_experiment = experiment_type and "NA" in experiment_type
 
