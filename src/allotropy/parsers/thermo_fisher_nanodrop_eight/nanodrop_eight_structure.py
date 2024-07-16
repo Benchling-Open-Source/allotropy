@@ -38,7 +38,7 @@ class SpectroscopyRow:
     timestamp: str
     experiment_type: str | None
     measurements: list[Measurement]
-    absorbance_ratios: dict[tuple[int, int], float]
+    calculated_data: list[CalculatedDataItem]
 
     @staticmethod
     def create(data: pd.Series[str]) -> SpectroscopyRow:
@@ -58,7 +58,7 @@ class SpectroscopyRow:
         a280_absorbance = get_first_not_none(
             lambda key: try_float_from_series_or_none(data, key), ["a280", "a280 10mm"]
         )
-        measurements = []
+        measurements: list[Measurement] = []
 
         mass_concentration = get_first_not_none(
             lambda key: try_float_from_series_or_none(data, key),
@@ -113,12 +113,28 @@ class SpectroscopyRow:
             if ratio:
                 absorbance_ratios[(numerator, denominator)] = ratio
 
+        calculated_data = [
+            CalculatedDataItem(
+                identifier=random_uuid_str(),
+                name=f"A{numerator}/{denominator}",
+                value=ratio,
+                unit=UNITLESS,
+                data_sources=[
+                    DataSource(identifier=measurement.identifier, feature="absorbance")
+                    for measurement in measurements
+                    if measurement.detector_wavelength_setting
+                    in (numerator, denominator)
+                ],
+            )
+            for (numerator, denominator), ratio in absorbance_ratios.items()
+        ]
+
         return SpectroscopyRow(
             analyst,
             timestamp,
             experiment_type,
             measurements,
-            absorbance_ratios,
+            calculated_data,
         )
 
     @staticmethod
@@ -127,50 +143,27 @@ class SpectroscopyRow:
         return list(data.apply(SpectroscopyRow.create, axis="columns"))  # type: ignore[call-overload]
 
 
-def _create_metadata(file_name: str) -> Metadata:
-    return Metadata(
-        device_identifier="Nanodrop",
-        device_type="absorbance detector",
-        model_number="Nanodrop Eight",
-        file_name=file_name,
-    )
-
-
-def _create_measurement_groups(rows: list[SpectroscopyRow]) -> list[MeasurementGroup]:
-    return [
-        MeasurementGroup(
-            _measurement_time=row.timestamp,
-            analyst=row.analyst,
-            experiment_type=row.experiment_type,
-            measurements=row.measurements,
-        )
-        for row in rows
-    ]
-
-
-def _create_calculated_data(rows: list[SpectroscopyRow]) -> list[CalculatedDataItem]:
-    return [
-        CalculatedDataItem(
-            identifier=random_uuid_str(),
-            name=f"A{numerator}/{denominator}",
-            value=ratio,
-            unit=UNITLESS,
-            data_sources=[
-                DataSource(identifier=measurement.identifier, feature="absorbance")
-                for measurement in row.measurements
-                if measurement.detector_wavelength_setting in (numerator, denominator)
-            ],
-        )
-        for row in rows
-        for (numerator, denominator), ratio in row.absorbance_ratios.items()
-    ]
-
-
 def create_data(data: pd.DataFrame, file_name: str) -> Data:
     rows = SpectroscopyRow.create_rows(data)
 
     return Data(
-        metadata=_create_metadata(file_name),
-        measurement_groups=_create_measurement_groups(rows),
-        calculated_data=_create_calculated_data(rows),
+        metadata=Metadata(
+            device_identifier="Nanodrop",
+            device_type="absorbance detector",
+            model_number="Nanodrop Eight",
+            file_name=file_name,
+        ),
+        measurement_groups=[
+            MeasurementGroup(
+                _measurement_time=row.timestamp,
+                analyst=row.analyst,
+                experiment_type=row.experiment_type,
+                measurements=row.measurements,
+            )
+            for row in rows
+        ],
+        # NOTE: in current implementation, calculated data is reported at global level for some
+        # reason
+        # TODO(nstender): should we move this inside of measurements?
+        calculated_data=[item for row in rows for item in row.calculated_data],
     )
