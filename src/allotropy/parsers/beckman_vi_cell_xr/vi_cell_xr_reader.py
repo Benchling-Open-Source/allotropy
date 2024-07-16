@@ -9,6 +9,7 @@ from allotropy.allotrope.pandas_util import read_excel
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
     DEFAULT_VERSION,
+    HEADINGS_TO_PARSER_HEADINGS,
     MODEL_RE,
     XrVersion,
 )
@@ -33,18 +34,22 @@ class ViCellXRReader:
 
         header = self._get_file_header(header_row)
         skiprows = header_row + 1
-        date_header = DATE_HEADER[self.file_version]
 
         file_data = self._read_excel(skiprows=skiprows, names=header)
 
+        # rename the columns to match the existing parser that was based on xls(x) files
+        file_data.columns = pd.Index(
+            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns]
+        )
+
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
-        file_data[date_header] = pd.to_datetime(
-            assert_value_from_df(file_data, date_header),
+        file_data[DATE_HEADER] = pd.to_datetime(
+            assert_value_from_df(file_data, DATE_HEADER),
             format="%d %b %Y  %I:%M:%S %p",
             errors="coerce",
         )
-        file_data = file_data.dropna(subset=date_header)
+        file_data = file_data.dropna(subset=DATE_HEADER)
 
         return file_data
 

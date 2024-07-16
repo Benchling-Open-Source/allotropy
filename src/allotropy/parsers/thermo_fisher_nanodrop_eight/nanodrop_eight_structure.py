@@ -21,6 +21,7 @@ from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float_from_series_or_none,
+    try_non_nan_str_from_series_or_none,
     try_str_from_series_or_none,
 )
 
@@ -92,8 +93,10 @@ class SpectroscopyRow:
         timestamp = f'{try_str_from_series_or_none(data, "date")} {try_str_from_series_or_none(data, "time")}'
         experiment_type = try_str_from_series_or_none(data, "na type")
 
-        sample_id = try_str_from_series_or_none(data, "sample id") or NOT_APPLICABLE
-        well_plate_id = try_str_from_series_or_none(data, "plate id")
+        sample_id = (
+            try_non_nan_str_from_series_or_none(data, "sample id") or NOT_APPLICABLE
+        )
+        well_plate_id = try_non_nan_str_from_series_or_none(data, "plate id")
         location_id = try_str_from_series_or_none(data, "well")
 
         is_na_experiment = experiment_type and "NA" in experiment_type
