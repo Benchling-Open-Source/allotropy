@@ -537,13 +537,13 @@ def _create_measurement(
     sample_identifier: str | None,
     actual_temperature: float | None,
 ) -> Measurement:
-    match read_data.read_mode:
-        case ReadMode.ABSORBANCE:
-            measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
-        case ReadMode.FLUORESCENCE:
-            measurement_type = MeasurementType.FLUORESCENCE
-        case ReadMode.LUMINESCENCE:
-            measurement_type = MeasurementType.LUMINESCENCE
+    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+    if read_data.read_mode == ReadMode.ABSORBANCE:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
+    elif read_data.read_mode == ReadMode.FLUORESCENCE:
+        measurement_type = MeasurementType.FLUORESCENCE
+    elif read_data.read_mode == ReadMode.LUMINESCENCE:
+        measurement_type = MeasurementType.LUMINESCENCE
 
     detector_wavelength_setting: JsonFloat | None = None
     if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:

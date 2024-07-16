@@ -265,26 +265,26 @@ class Mapper:
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
-        match measurement.type_:
-            case MeasurementType.OPTICAL_IMAGING:
-                return self._get_optical_imaging_measurement_document(
-                    measurement, metadata
-                )
-            case MeasurementType.ULTRAVIOLET_ABSORBANCE:
-                return self._get_ultraviolet_absorbance_measurement_document(
-                    measurement, metadata
-                )
-            case MeasurementType.LUMINESCENCE:
-                return self._get_luminescence_measurement_document(
-                    measurement, metadata
-                )
-            case MeasurementType.FLUORESCENCE:
-                return self._get_fluorescence_measurement_document(
-                    measurement, metadata
-                )
-            case _:
-                msg = f"Invalid measurement type: {measurement.type}"
-                raise AllotropeConversionError(msg)
+        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+        if measurement.type_ == MeasurementType.OPTICAL_IMAGING:
+            return self._get_optical_imaging_measurement_document(
+                measurement, metadata
+            )
+        elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
+            return self._get_ultraviolet_absorbance_measurement_document(
+                measurement, metadata
+            )
+        elif measurement.type_ == MeasurementType.LUMINESCENCE:
+            return self._get_luminescence_measurement_document(
+                measurement, metadata
+            )
+        elif measurement.type_ == MeasurementType.FLUORESCENCE:
+            return self._get_fluorescence_measurement_document(
+                measurement, metadata
+            )
+        else:
+            msg = f"Invalid measurement type: {measurement.type}"
+            raise AllotropeConversionError(msg)
 
     def _get_optical_imaging_measurement_document(
         self, measurement: Measurement, metadata: Metadata

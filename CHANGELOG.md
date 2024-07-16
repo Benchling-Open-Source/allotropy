@@ -8,11 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added ThermoFisher Qubit4 adapter 
-- Added requirement doc for ThermoFisher Qubit4 adapter
 
 ### Fixed
-- Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
 
 ### Changed
 
@@ -21,6 +18,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.40] - 2024-07-15
+
+### Changed
+- Redefine stage number as optional in AppBio Quantstudio Design and Analysis
+
+## [0.1.39] - 2024-07-15
+
+### Added
+
+- Added ThermoFisher Qubit4 adapter 
+- Added requirement doc for ThermoFisher Qubit4 adapter
+- Added Roche Cedex HiRes adapter
+- Added requirement doc for Roche Cedex HiRes adapter
+
+### Fixed
+
+- Updated the `structure_custom_information_document` function to create dataclasses with default field values set to `None`. This change ensures that custom keys are omitted as they are not required keys.
+- Fixed encoding issues while reading units.json file in schemas.py script
+- Fixed encoding issues while reading test json files in testing/utils.py script
+
+### Changed
+- Updated NON_UNIQUE_IDENTIFIERS to have "group identifier" field
 
 ## [0.1.38] - 2024-07-11
 

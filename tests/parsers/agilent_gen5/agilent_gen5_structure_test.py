@@ -346,6 +346,7 @@ def test_create_layout_data_with_name_rows() -> None:
 
     assert sample_identifiers == {
         "A1": "Name_A1",
+        # NOTE: this tests that we fall back to Well ID if Name is not provided.
         "A2": "SPL9",
         "A3": "Name_A3",
         "B1": "Name_B1",

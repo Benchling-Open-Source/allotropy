@@ -7,6 +7,7 @@ from allotropy.allotrope.schema_parser.path_util import (
     get_schema_path_from_manifest,
     SHARED_SCHEMAS_DEFINITIONS_PATH,
 )
+from allotropy.constants import DEFAULT_ENCODING
 
 
 def get_shared_definitions() -> dict[str, Any]:
@@ -26,7 +27,10 @@ def add_definitions(schema: dict[str, Any]) -> dict[str, Any]:
         ("custom", "custom"),
     ]:
         existing = schema.get(f"${section}", {})
-        with open(Path(SHARED_SCHEMAS_DEFINITIONS_PATH, f"{file}.json")) as f:
+        with open(
+            Path(SHARED_SCHEMAS_DEFINITIONS_PATH, f"{file}.json"),
+            encoding=DEFAULT_ENCODING,
+        ) as f:
             additional = json.load(f)
         additional.update(existing)
         schema[f"${section}"] = additional
