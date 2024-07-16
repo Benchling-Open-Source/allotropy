@@ -49,7 +49,6 @@ def create_data(reader: LinesReader) -> Data:
                 header.experiment_type,
             )
 
-    print(results_metadata)
     endogenous_control = (
         results_metadata.try_str_or_none("Endogenous Control")
         or NOT_APPLICABLE
