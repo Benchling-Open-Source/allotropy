@@ -58,6 +58,7 @@ class MeasurementGroup:
     def analyst(self) -> str | None:
         if self._analyst is not None:
             return self._analyst
+        # If all measurements in the group have the same analyst set, set at the group level too.
         if (
             self.measurements
             and len({m.analyst for m in self.measurements}) == 1
@@ -130,12 +131,12 @@ class Mapper:
         )
 
     def _get_measurement_document(
-        self, row: Measurement, metadata: Metadata
+        self, measurement: Measurement, metadata: Metadata
     ) -> CellCountingDetectorMeasurementDocumentItem:
         return CellCountingDetectorMeasurementDocumentItem(
-            measurement_time=self.get_date_time(row.timestamp),
-            measurement_identifier=row.measurement_identifier,
-            sample_document=SampleDocument(sample_identifier=row.sample_identifier),
+            measurement_time=self.get_date_time(measurement.timestamp),
+            measurement_identifier=measurement.measurement_identifier,
+            sample_document=SampleDocument(sample_identifier=measurement.sample_identifier),
             device_control_aggregate_document=CellCountingDetectorDeviceControlAggregateDocument(
                 device_control_document=[
                     DeviceControlDocumentItemModel(
@@ -148,51 +149,51 @@ class Mapper:
                 processed_data_document=[
                     ProcessedDataDocumentItem(
                         data_processing_document=DataProcessingDocument(
-                            cell_type_processing_method=row.cell_type_processing_method,
+                            cell_type_processing_method=measurement.cell_type_processing_method,
                             minimum_cell_diameter_setting=quantity_or_none(
                                 TQuantityValueMicrometer,
-                                row.minimum_cell_diameter_setting,
+                                measurement.minimum_cell_diameter_setting,
                             ),
                             maximum_cell_diameter_setting=quantity_or_none(
                                 TQuantityValueMicrometer,
-                                row.maximum_cell_diameter_setting,
+                                measurement.maximum_cell_diameter_setting,
                             ),
                             cell_density_dilution_factor=quantity_or_none(
                                 TQuantityValueUnitless,
-                                row.cell_density_dilution_factor,
+                                measurement.cell_density_dilution_factor,
                             ),
                         ),
                         viability__cell_counter_=TQuantityValuePercent(
-                            value=row.viability
+                            value=measurement.viability
                         ),
                         viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
-                            value=row.viable_cell_density
+                            value=measurement.viable_cell_density
                         ),
                         total_cell_count=quantity_or_none(
-                            TQuantityValueCell, row.total_cell_count
+                            TQuantityValueCell, measurement.total_cell_count
                         ),
                         total_cell_density__cell_counter_=quantity_or_none(
                             TQuantityValueMillionCellsPerMilliliter,
-                            row.total_cell_density,
+                            measurement.total_cell_density,
                         ),
                         average_total_cell_diameter=quantity_or_none(
                             TQuantityValueMicrometer,
-                            row.average_total_cell_diameter,
+                            measurement.average_total_cell_diameter,
                         ),
                         average_live_cell_diameter__cell_counter_=quantity_or_none(
                             TQuantityValueMicrometer,
-                            row.average_live_cell_diameter,
+                            measurement.average_live_cell_diameter,
                         ),
                         viable_cell_count=quantity_or_none(
-                            TQuantityValueCell, row.viable_cell_count
+                            TQuantityValueCell, measurement.viable_cell_count
                         ),
                         average_total_cell_circularity=quantity_or_none(
                             TQuantityValueUnitless,
-                            row.average_total_cell_circularity,
+                            measurement.average_total_cell_circularity,
                         ),
                         average_viable_cell_circularity=quantity_or_none(
                             TQuantityValueUnitless,
-                            row.average_viable_cell_circularity,
+                            measurement.average_viable_cell_circularity,
                         ),
                     ),
                 ]
