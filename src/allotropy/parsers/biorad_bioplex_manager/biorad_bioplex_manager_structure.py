@@ -37,13 +37,15 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
     WELLS_TAG,
 )
 from allotropy.parsers.utils.values import (
+    try_float,
+    try_float_or_none,
+    try_int,
+)
+from allotropy.parsers.utils.xml import (
     get_attrib_from_xml,
     get_element_from_xml,
     get_val_from_xml,
     get_val_from_xml_or_none,
-    try_float,
-    try_float_or_none,
-    try_int,
 )
 
 SAMPLE_ROLE_TYPE_MAPPING = {
