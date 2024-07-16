@@ -59,8 +59,10 @@ class ViCellXRTXTReader:
     def _get_file_info(self) -> SeriesData:
         data = self.lines
 
-        return SeriesData(pd.Series(
-            [data[0], data[3], data[8]],
-            copy=False,
-            index=["model", "filepath", "serial"],
-        ))
+        return SeriesData(
+            pd.Series(
+                [data[0], data[3], data[8]],
+                copy=False,
+                index=["model", "filepath", "serial"],
+            )
+        )

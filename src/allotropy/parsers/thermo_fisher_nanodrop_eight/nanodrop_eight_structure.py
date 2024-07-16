@@ -43,8 +43,7 @@ class SpectroscopyRow:
         timestamp = f'{data.try_str_or_none("date")} {data.try_str_or_none("time")}'
         experiment_type = data.try_str_or_none("na type")
 
-        sample_id = (
-            data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE)
+        sample_id = data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE
         well_plate_id = data.try_non_nan_str_or_none("plate id")
         location_id = data.try_str("well")
 

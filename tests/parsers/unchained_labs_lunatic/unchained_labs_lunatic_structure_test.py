@@ -41,7 +41,9 @@ def test__create_measurement(
         "Plate ID": well_plate_identifier,
         "Plate Position": location_identifier,
     }
-    measurement = _create_measurement(SeriesData(pd.Series(well_plate_data)), wavelength_column)
+    measurement = _create_measurement(
+        SeriesData(pd.Series(well_plate_data)), wavelength_column
+    )
 
     assert measurement.detector_wavelength_setting == wavelength
     assert measurement.absorbance == absorbance_value
@@ -52,13 +54,15 @@ def test__create_measurement(
 
 @pytest.mark.short
 def test__create_measurement_with_no_wavelength_column() -> None:
-    well_plate_data = SeriesData(pd.Series(
-        {
-            "Sample name": "dummy name",
-            "Plate ID": "some plate",
-            "Plate Position": "B3",
-        }
-    ))
+    well_plate_data = SeriesData(
+        pd.Series(
+            {
+                "Sample name": "dummy name",
+                "Plate ID": "some plate",
+                "Plate Position": "B3",
+            }
+        )
+    )
     wavelength_column = "A250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
     with pytest.raises(AllotropeConversionError, match=msg):
@@ -102,7 +106,9 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
         "A260/A280": 24.9,
     }
     wavelength = "A260"
-    measurement = _create_measurement(SeriesData(pd.Series(well_plate_data)), wavelength)
+    measurement = _create_measurement(
+        SeriesData(pd.Series(well_plate_data)), wavelength
+    )
 
     calculated_data_dict = {
         data.name: data for data in (measurement.calculated_data or [])

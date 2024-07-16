@@ -53,13 +53,16 @@ class Row:
             excitation=data.try_str_or_none("Excitation"),
             emission=data.try_str("Emission"),
             dilution_factor=data.try_non_nan_float_or_none("Dilution Factor"),
-            original_sample_concentration=data.try_float_or_nan("Original sample conc."),
+            original_sample_concentration=data.try_float_or_nan(
+                "Original sample conc."
+            ),
             original_sample_unit=data.try_str_or_none("Units_Original sample conc."),
             qubit_tube_concentration=data.try_float_or_nan("Qubit® tube conc."),
             qubit_tube_unit=data.try_str_or_none("Units_Qubit® tube conc."),
             std_1_rfu=data.try_non_nan_float_or_none("Std 1 RFU"),
             std_2_rfu=data.try_non_nan_float_or_none("Std 2 RFU"),
-            std_3_rfu=data.try_non_nan_float_or_none("Std 3 RFU"),)
+            std_3_rfu=data.try_non_nan_float_or_none("Std 3 RFU"),
+        )
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Row]:

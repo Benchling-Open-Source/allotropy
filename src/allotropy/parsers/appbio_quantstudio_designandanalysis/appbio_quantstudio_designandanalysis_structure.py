@@ -95,11 +95,9 @@ class Header:
             device_identifier=(
                 header.try_str_or_none("Instrument Name") or NOT_APPLICABLE
             ),
-            model_number=header.try_str_or_none("Instrument Type")
-            or NOT_APPLICABLE,
+            model_number=header.try_str_or_none("Instrument Type") or NOT_APPLICABLE,
             device_serial_number=(
-                header.try_str_or_none("Instrument Serial Number")
-                or NOT_APPLICABLE
+                header.try_str_or_none("Instrument Serial Number") or NOT_APPLICABLE
             ),
             measurement_method_identifier=header.try_str("Quantification Cycle Method"),
             pcr_detection_chemistry=(
@@ -110,7 +108,9 @@ class Header:
             analyst=header.try_str_or_none("Operator"),
             experimental_data_identifier=header.try_str_or_none("Experiment Name"),
             block_serial_number=header.try_str_or_none("Block Serial Number"),
-            heated_cover_serial_number=header.try_str_or_none("Heated Cover Serial Number"),
+            heated_cover_serial_number=header.try_str_or_none(
+                "Heated Cover Serial Number"
+            ),
             pcr_stage_number=pcr_stage_number,
             software_name=software_info.group(1),
             software_version=software_info.group(2),
@@ -542,12 +542,22 @@ class Result:
                 msg=f"Unable to find cycle threshold value setting for well {well_item_id}",
             ),
             cycle_threshold_result=target_data.try_float_or_none("Cq"),
-            automatic_cycle_threshold_enabled_setting=target_data.try_bool_or_none("Auto Threshold"),
-            automatic_baseline_determination_enabled_setting=target_data.try_bool_or_none("Auto Baseline"),
+            automatic_cycle_threshold_enabled_setting=target_data.try_bool_or_none(
+                "Auto Threshold"
+            ),
+            automatic_baseline_determination_enabled_setting=target_data.try_bool_or_none(
+                "Auto Baseline"
+            ),
             normalized_reporter_result=target_data.try_float_or_none("Rn"),
-            baseline_corrected_reporter_result=target_data.try_float_or_none("Delta Rn"),
-            baseline_determination_start_cycle_setting=target_data.try_float_or_none("Baseline Start"),
-            baseline_determination_end_cycle_setting=target_data.try_float_or_none("Baseline End"),
+            baseline_corrected_reporter_result=target_data.try_float_or_none(
+                "Delta Rn"
+            ),
+            baseline_determination_start_cycle_setting=target_data.try_float_or_none(
+                "Baseline Start"
+            ),
+            baseline_determination_end_cycle_setting=target_data.try_float_or_none(
+                "Baseline End"
+            ),
             genotyping_determination_result=genotyping_determination_result,
             genotyping_determination_method_setting=genotyping_determination_method_setting,
             quantity=target_data.try_float_or_none("Quantity"),

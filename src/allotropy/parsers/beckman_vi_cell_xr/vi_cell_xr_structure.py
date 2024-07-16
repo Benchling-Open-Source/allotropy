@@ -49,7 +49,9 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
                 viable_cell_density=data.try_float("Viable cells/ml (x10^6)"),
                 total_cell_count=total_cell_count,
                 total_cell_density=data.try_float_or_none("Total cells/ml (x10^6)"),
-                average_total_cell_diameter=data.try_float_or_none("Avg. diam. (microns)"),
+                average_total_cell_diameter=data.try_float_or_none(
+                    "Avg. diam. (microns)"
+                ),
                 viable_cell_count=viable_cell_count,
                 average_total_cell_circularity=data.try_float_or_none("Avg. circ."),
                 analyst=DEFAULT_ANALYST,

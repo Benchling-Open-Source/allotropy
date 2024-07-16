@@ -94,9 +94,7 @@ class QiacuitydPCRParser(VendorParser):
                 device_control_document=device_control_documents
             )
             processed_data_aggregate_document = ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    self._get_processed_data_document(well_data)
-                ]
+                processed_data_document=[self._get_processed_data_document(well_data)]
             )
             measurement_document = self._get_measurement_document(
                 well_data,
@@ -145,7 +143,8 @@ class QiacuitydPCRParser(VendorParser):
         measurement_time = EPOCH
         target_dna_description = well_item.try_str(TARGET_COLUMN_NAME)
         total_partition_count = TQuantityValueNumber(
-            value=well_item.try_int(PARTITIONS_COLUMN_NAME))
+            value=well_item.try_int(PARTITIONS_COLUMN_NAME)
+        )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
             measurement_time=measurement_time,
@@ -180,7 +179,9 @@ class QiacuitydPCRParser(VendorParser):
         if well_location_identifier is not None:
             sample_document.well_location_identifier = well_location_identifier
 
-        well_plate_identifier = well_item.try_str_or_none(WELL_PLATE_IDENTIFIER_COLUMN_NAME)
+        well_plate_identifier = well_item.try_str_or_none(
+            WELL_PLATE_IDENTIFIER_COLUMN_NAME
+        )
         if well_plate_identifier is not None:
             sample_document.well_plate_identifier = well_plate_identifier
         return sample_document
@@ -190,12 +191,16 @@ class QiacuitydPCRParser(VendorParser):
             device_type=DEVICE_TYPE, device_identifier=DEVICE_IDENTIFIER
         )
 
-    def _get_processed_data_document(self, well_item: SeriesData) -> ProcessedDataDocumentItem:
+    def _get_processed_data_document(
+        self, well_item: SeriesData
+    ) -> ProcessedDataDocumentItem:
 
         number_concentration = TQuantityValueNumberPerMicroliter(
-            value=well_item.try_float(CONCENTRATION_COLUMN_NAME))
+            value=well_item.try_float(CONCENTRATION_COLUMN_NAME)
+        )
         positive_partition_count = TQuantityValueNumber(
-            value=well_item.try_int(POSITIVE_COUNT_COLUMN_NAME))
+            value=well_item.try_int(POSITIVE_COUNT_COLUMN_NAME)
+        )
         processed_data_document = ProcessedDataDocumentItem(
             number_concentration=number_concentration,
             positive_partition_count=positive_partition_count,

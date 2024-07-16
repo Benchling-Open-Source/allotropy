@@ -59,12 +59,14 @@ class PlateInfo:
             msg="Unable to find expected plate information",
         )
 
-        return SeriesData(df_to_series(
-            assert_not_none(
-                reader.pop_csv_block_as_df(),
-                "Plate information CSV block",
-            )
-        ).replace(np.nan, None))
+        return SeriesData(
+            df_to_series(
+                assert_not_none(
+                    reader.pop_csv_block_as_df(),
+                    "Plate information CSV block",
+                )
+            ).replace(np.nan, None)
+        )
 
 
 @dataclass(frozen=True)
@@ -94,7 +96,9 @@ class CalculatedPlateInfo(PlateInfo):
             barcode=barcode,
             measurement_time=series.try_str_or_none("Measurement date"),
             measured_height=series.try_float_or_none("Measured height"),
-            chamber_temperature_at_start=series.try_float_or_none("Chamber temperature at start",),
+            chamber_temperature_at_start=series.try_float_or_none(
+                "Chamber temperature at start",
+            ),
             formula=formula,
             name=name.strip(),
         )
@@ -367,7 +371,9 @@ class PlateType:
             "Plate type",
         )
         return PlateType(
-            number_of_wells=SeriesData(df_to_series(data.T)).try_float("Number of the wells in the plate"),
+            number_of_wells=SeriesData(df_to_series(data.T)).try_float(
+                "Number of the wells in the plate"
+            ),
         )
 
 
@@ -549,20 +555,18 @@ class Labels:
         return Labels(
             label=series.series.index[0],
             excitation_filter=filters.get(
-                series.try_str_or_none("Exc. filter") or NOT_APPLICABLE),
+                series.try_str_or_none("Exc. filter") or NOT_APPLICABLE
+            ),
             emission_filters={
                 "1st": filters.get(
-                    series.try_str_or_none("Ems. filter")
-                    or NOT_APPLICABLE,
+                    series.try_str_or_none("Ems. filter") or NOT_APPLICABLE,
                 ),
                 "2nd": filters.get(
-                    series.try_str_or_none("2nd ems. filter")
-                    or NOT_APPLICABLE
+                    series.try_str_or_none("2nd ems. filter") or NOT_APPLICABLE
                 ),
             },
             scan_position_setting=filter_position_map.get(
-                series.try_str_or_none("Using of emission filter")
-                or NOT_APPLICABLE
+                series.try_str_or_none("Using of emission filter") or NOT_APPLICABLE
             ),
             number_of_flashes=series.try_float_or_none("Number of flashes"),
             detector_gain_setting=series.try_str_or_none("Reference AD gain"),

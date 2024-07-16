@@ -131,14 +131,13 @@ class GroupSampleData:
                 GroupDataElement(
                     sample=identifier,
                     position=row.try_str_multikey(
-                        {"Well", "Wells"},
+                        ["Well", "Wells"],
                         msg="Unable to find well position in group data.",
                     ),
                     plate=row.try_str("WellPlateName"),
                     entries=[
                         GroupDataElementEntry(
-                            name=column_name,
-                            value=row.try_float(column_name)
+                            name=column_name, value=row.try_float(column_name)
                         )
                         for column_name in normal_columns
                     ],

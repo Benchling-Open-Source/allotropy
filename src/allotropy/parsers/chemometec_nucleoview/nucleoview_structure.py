@@ -40,17 +40,17 @@ class Row:
             equipment_serial_number=data.try_str_or_none("Instrument s/n"),
             software_version=data.try_str_or_none("Application SW version"),
             analyst=data.try_str_or_none("Operator") or DEFAULT_ANALYST,
-            timestamp=data.try_str_or_none("datetime")
-            or DEFAULT_EPOCH_TIMESTAMP,
+            timestamp=data.try_str_or_none("datetime") or DEFAULT_EPOCH_TIMESTAMP,
             sample_identifier=data.try_str("Sample ID"),
             multiplication_factor=data.try_float_or_none("Multiplication factor"),
             viability_percent=data.try_float("Viability (%)"),
             # Cell counts are measured in cells/mL, but reported in millions of cells/mL
             live_cell_count=data.try_float_or_nan("Live (cells/ml)") / 1e6,
             dead_cell_count=data.try_float_or_nan("Dead (cells/ml)") / 1e6,
-            total_cell_count=data.try_float_or_nan("Total (cells/ml)")
-            / 1e6,
-            estimated_cell_diameter=data.try_float_or_nan("Estimated cell diameter (um)"),
+            total_cell_count=data.try_float_or_nan("Total (cells/ml)") / 1e6,
+            estimated_cell_diameter=data.try_float_or_nan(
+                "Estimated cell diameter (um)"
+            ),
         )
 
     @staticmethod

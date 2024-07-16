@@ -158,7 +158,9 @@ class Measurement:
         errors_data: pd.DataFrame,
     ) -> Measurement:
         location = median_data.try_str("Location")
-        dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).try_float("Dilution Factor")
+        dilution_factor_setting = SeriesData(
+            dilution_factor_data.loc[location]
+        ).try_float("Dilution Factor")
         # analyte names are columns 3 through the penultimate
         analyte_names = list(median_data.series.index)[2:-1]
 
@@ -173,8 +175,10 @@ class Measurement:
                 Analyte(
                     analyte_name=analyte,
                     assay_bead_identifier=bead_ids_data.try_str(analyte),
-                    assay_bead_count=SeriesData(count_data.loc[location]).try_float(analyte),
-                    fluorescence=median_data.try_float(analyte)
+                    assay_bead_count=SeriesData(count_data.loc[location]).try_float(
+                        analyte
+                    ),
+                    fluorescence=median_data.try_float(analyte),
                 )
                 for analyte in analyte_names
             ],

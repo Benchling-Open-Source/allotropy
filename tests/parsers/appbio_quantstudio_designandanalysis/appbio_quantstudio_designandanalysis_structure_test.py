@@ -114,7 +114,9 @@ def test_results_builder() -> None:
     target_well_data = well_data[
         pd.Series(well_data.get("Target")) == target_dna_description
     ]
-    target_data = SeriesData(pd.Series(target_well_data.iloc[0], index=target_well_data.columns))
+    target_data = SeriesData(
+        pd.Series(target_well_data.iloc[0], index=target_well_data.columns)
+    )
     result = Result.create(target_data, well_item_id, experiment_type)
 
     assert isinstance(result, Result)
@@ -260,22 +262,24 @@ def get_raw_header_contents(
     block_serial_number: str | None = "1",
     heated_cover_serial_number: str | None = "2",
 ) -> SeriesData:
-    return SeriesData(pd.Series(
-        {
-            "Run End Data/Time": measurement_time,
-            "Block Type": plate_well_count,
-            "Instrument Name": device_identifier,
-            "Instrument Type": model_number,
-            "Instrument Serial Number": device_serial_number,
-            "Quantification Cycle Method": measurement_method_identifier,
-            "Chemistry": pcr_detection_chemistry,
-            "Passive Reference": passive_reference_dye_setting,
-            "Barcode": barcode,
-            "Operator": analyst,
-            "Experiment Name": experimental_data_identifier,
-            "PCR Stage/Step Number": pcr_stage_number,
-            "Software Name and Version": software_name_and_version,
-            "Block Serial Number": block_serial_number,
-            "Heated Cover Serial Number": heated_cover_serial_number,
-        }
-    ))
+    return SeriesData(
+        pd.Series(
+            {
+                "Run End Data/Time": measurement_time,
+                "Block Type": plate_well_count,
+                "Instrument Name": device_identifier,
+                "Instrument Type": model_number,
+                "Instrument Serial Number": device_serial_number,
+                "Quantification Cycle Method": measurement_method_identifier,
+                "Chemistry": pcr_detection_chemistry,
+                "Passive Reference": passive_reference_dye_setting,
+                "Barcode": barcode,
+                "Operator": analyst,
+                "Experiment Name": experimental_data_identifier,
+                "PCR Stage/Step Number": pcr_stage_number,
+                "Software Name and Version": software_name_and_version,
+                "Block Serial Number": block_serial_number,
+                "Heated Cover Serial Number": heated_cover_serial_number,
+            }
+        )
+    )
