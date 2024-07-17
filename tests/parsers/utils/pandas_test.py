@@ -62,6 +62,7 @@ def test_get_not_nan() -> None:
     assert data.get(str, "int_val", validate=SeriesData.NOT_NAN) == "1"
     assert data.get(float, "nan_val", validate=SeriesData.NOT_NAN) is None
     assert data.get(float, "int_val", validate=SeriesData.NOT_NAN) == 1.0
+    assert data.get(float, ["nan_val", "int_val"], validate=SeriesData.NOT_NAN) == 1.0
 
 
 @pytest.mark.short

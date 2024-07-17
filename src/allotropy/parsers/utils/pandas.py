@@ -70,10 +70,10 @@ class SeriesData:
     NOT_NAN = ValidateRawMode.NOT_NAN
 
     @staticmethod
-    def _validate_raw(v: Any, mode: ValidateRawMode | None) -> bool:
+    def _validate_raw(v: Any, mode: ValidateRawMode | None) -> Any:
         if mode is SeriesData.ValidateRawMode.NOT_NAN:
-            return not (v is None or pd.isna(v))
-        return v is not None
+            return None if (v is None or pd.isna(v)) else v
+        return v
 
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
@@ -83,6 +83,9 @@ class SeriesData:
         Get a value of the specified type with the specified key, raising an error if the
         key is not found, or if the value cannot be converted to the type.
         If a third argument is provided, it is an error message to provide if they key is not found.
+
+        value: float = series_data[float, key]
+        value: str = series_data[str, key, f"Failed to find {key} in my data"]
 
         Parameters:
         type (str, int, float, bool): The datatype to return.
@@ -158,9 +161,10 @@ class SeriesData:
         type: A value of the type provided or default value.
         """
         if not isinstance(key, str):
-            return get_first_not_none(lambda k: self.get(type_, k), key)
-        raw_value: Any = self.series.get(key)
-        raw_value = raw_value if self._validate_raw(raw_value, validate) else None
+            return get_first_not_none(
+                lambda k: self.get(type_, k, validate=validate), key
+            )
+        raw_value = self._validate_raw(self.series.get(key), validate)
         try:
             # bool needs special handling to convert
             if type_ is bool:
