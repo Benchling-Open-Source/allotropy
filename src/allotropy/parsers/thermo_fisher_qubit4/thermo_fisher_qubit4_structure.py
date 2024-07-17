@@ -4,19 +4,15 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    NaN,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.thermo_fisher_qubit4.constants import (
     UNSUPPORTED_WAVELENGTH_ERROR,
 )
-from allotropy.parsers.utils.values import (
-    try_float_from_series,
-    try_float_from_series_or_nan,
-    try_non_nan_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_default,
-    try_str_from_series_or_none,
-)
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 @dataclass
@@ -39,10 +35,9 @@ class Row:
     std_3_rfu: float | None
 
     @staticmethod
-    def create(data: pd.Series[str]) -> Row:
-        emission_wavelength = try_str_from_series_or_default(
-            data, "Emission", ""
-        ).lower()
+    def create(series: pd.Series[str]) -> Row:
+        data = SeriesData(series)
+        emission_wavelength = data.get(str, "Emission", "").lower()
         options = {
             "green": "Green RFU",
             "far red": "Far Red RFU",
@@ -52,34 +47,26 @@ class Row:
             raise AllotropeConversionError(message)
 
         return Row(
-            timestamp=try_str_from_series(data, "Test Date"),
-            assay_name=try_str_from_series_or_none(data, "Assay Name"),
-            fluorescence=try_float_from_series(data, options[emission_wavelength]),
-            batch_identifier=try_str_from_series_or_none(data, "Run ID"),
-            sample_identifier=try_str_from_series(data, "Test Name"),
-            sample_volume=try_non_nan_float_from_series_or_none(
-                data, "Sample Volume (µL)"
+            timestamp=data[str, "Test Date"],
+            assay_name=data.get(str, "Assay Name"),
+            fluorescence=data[float, options[emission_wavelength]],
+            batch_identifier=data.get(str, "Run ID"),
+            sample_identifier=data[str, "Test Name"],
+            sample_volume=data.get(
+                float, "Sample Volume (µL)", validate=SeriesData.NOT_NAN
             ),
-            excitation=try_str_from_series_or_none(data, "Excitation"),
-            emission=try_str_from_series(data, "Emission"),
-            dilution_factor=try_non_nan_float_from_series_or_none(
-                data, "Dilution Factor"
+            excitation=data.get(str, "Excitation"),
+            emission=data[str, "Emission"],
+            dilution_factor=data.get(
+                float, "Dilution Factor", validate=SeriesData.NOT_NAN
             ),
-            original_sample_concentration=try_float_from_series_or_nan(
-                data, "Original sample conc."
-            ),
-            original_sample_unit=try_str_from_series_or_none(
-                data, "Units_Original sample conc."
-            ),
-            qubit_tube_concentration=try_float_from_series_or_nan(
-                data, "Qubit® tube conc."
-            ),
-            qubit_tube_unit=try_str_from_series_or_none(
-                data, "Units_Qubit® tube conc."
-            ),
-            std_1_rfu=try_non_nan_float_from_series_or_none(data, "Std 1 RFU"),
-            std_2_rfu=try_non_nan_float_from_series_or_none(data, "Std 2 RFU"),
-            std_3_rfu=try_non_nan_float_from_series_or_none(data, "Std 3 RFU"),
+            original_sample_concentration=data.get(float, "Original sample conc.", NaN),
+            original_sample_unit=data.get(str, "Units_Original sample conc."),
+            qubit_tube_concentration=data.get(float, "Qubit® tube conc.", NaN),
+            qubit_tube_unit=data.get(str, "Units_Qubit® tube conc."),
+            std_1_rfu=data.get(float, "Std 1 RFU", validate=SeriesData.NOT_NAN),
+            std_2_rfu=data.get(float, "Std 2 RFU", validate=SeriesData.NOT_NAN),
+            std_3_rfu=data.get(float, "Std 3 RFU", validate=SeriesData.NOT_NAN),
         )
 
     @staticmethod

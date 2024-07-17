@@ -3,7 +3,6 @@ from __future__ import annotations
 import math
 import re
 from typing import Any, TypeVar
-from xml.etree import ElementTree
 
 import pandas as pd
 
@@ -18,7 +17,7 @@ PrimitiveValue = str | int | float
 
 
 def str_to_bool(value: str) -> bool:
-    return value.lower() in ("yes", "true", "t", "1")
+    return value.lower() in ("yes", "y", "true", "t", "1")
 
 
 def try_int(value: str | None, value_name: str) -> int:
@@ -60,7 +59,6 @@ def try_nan_float_or_none(value: str | float | None) -> JsonFloat | None:
 
 
 def try_non_nan_float_or_none(value: str | float | None) -> float | None:
-    # float_value = try_float_or_none(value) if isinstance(value, str) else value
     float_value = try_float_or_none(value)
     return None if float_value is None or math.isnan(float_value) else float_value
 
@@ -153,115 +151,6 @@ def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
         raise AllotropeConversionError(msg) from e
 
 
-def try_str_from_series_or_default(
-    data: pd.Series[Any],
-    key: str,
-    default: str,
-) -> str:
-    value = data.get(key)
-    return default if value is None else str(value)
-
-
-def try_str_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> str | None:
-    value = data.get(key)
-    return None if value is None else str(value)
-
-
-def try_non_nan_str_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> str | None:
-    value = data.get(key)
-    return None if (value is None or pd.isna(value)) else str(value)  # type: ignore[arg-type]
-
-
-def try_str_from_series(
-    series: pd.Series[Any],
-    key: str,
-    msg: str | None = None,
-) -> str:
-    return assert_not_none(try_str_from_series_or_none(series, key), key, msg)
-
-
-def try_int_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> int | None:
-    try:
-        value = data.get(key)
-        return try_int(str(value), key)
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to integer value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_int_from_series(
-    data: pd.Series[Any],
-    key: str,
-    msg: str | None = None,
-) -> int:
-    return assert_not_none(try_int_from_series_or_none(data, key), key, msg)
-
-
-def try_float_from_series_or_nan(
-    data: pd.Series[Any],
-    key: str,
-) -> JsonFloat:
-    try:
-        value = data.get(key)
-        return try_float_or_nan(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_float_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> float | None:
-    try:
-        value = data.get(key)
-        return try_float_or_none(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_non_nan_float_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> float | None:
-    try:
-        value = data.get(key)
-        return try_non_nan_float_or_none(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-        raise AllotropeConversionError(msg) from e
-
-
-def try_float_from_series(
-    data: pd.Series[Any],
-    key: str,
-    msg: str | None = None,
-) -> float:
-    return assert_not_none(try_float_from_series_or_none(data, key), key, msg)
-
-
-def try_bool_from_series_or_none(
-    data: pd.Series[Any],
-    key: str,
-) -> bool | None:
-    try:
-        value = data.get(key)
-        return None if value is None else str_to_bool(str(value))
-    except Exception as e:
-        msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
-        raise AllotropeConversionError(msg) from e
-
-
 def num_to_chars(n: int) -> str:
     d, m = divmod(n, 26)  # 26 is the number of ASCII letters
     return "" if n < 0 else num_to_chars(d - 1) + chr(m + 65)  # chr(65) = 'A'
@@ -269,53 +158,3 @@ def num_to_chars(n: int) -> str:
 
 def str_or_none(value: Any) -> str | None:
     return None if value is None else str(value)
-
-
-def get_element_from_xml(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
-) -> ElementTree.Element:
-    if tag_name_2 is not None:
-        tag_finder = tag_name + "/" + tag_name_2
-        xml_element = xml_object.find(tag_finder)
-    else:
-        tag_finder = tag_name
-        xml_element = xml_object.find(tag_finder)
-    if xml_element is not None:
-        return xml_element
-    else:
-        msg = f"Unable to find '{tag_finder}' from xml."
-        raise AllotropeConversionError(msg)
-
-
-def get_val_from_xml(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
-) -> str:
-    return str(get_element_from_xml(xml_object, tag_name, tag_name_2).text)
-
-
-def get_val_from_xml_or_none(
-    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
-) -> str | None:
-    try:
-        val_from_xml = get_element_from_xml(xml_object, tag_name, tag_name_2).text
-        if val_from_xml is not None:
-            return str(val_from_xml)
-        else:
-            return None
-    except AllotropeConversionError:
-        return None
-
-
-def get_attrib_from_xml(
-    xml_object: ElementTree.Element,
-    tag_name: str,
-    attrib_name: str,
-    tag_name_2: str | None = None,
-) -> str:
-    xml_element = get_element_from_xml(xml_object, tag_name, tag_name_2)
-    try:
-        attribute_val = xml_element.attrib[attrib_name]
-        return attribute_val
-    except KeyError as e:
-        msg = f"Unable to find '{attrib_name}' in {xml_element.attrib}"
-        raise AllotropeConversionError(msg) from e

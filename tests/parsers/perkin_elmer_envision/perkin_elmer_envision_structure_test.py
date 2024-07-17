@@ -26,6 +26,7 @@ from allotropy.parsers.perkin_elmer_envision.perkin_elmer_envision_structure imp
     ResultList,
     ResultPlateInfo,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 def get_reader_from_lines(lines: list[str]) -> CsvReader:
@@ -305,13 +306,15 @@ def test_create_plates_with_calculated_data() -> None:
 
 
 def test_create_calculated_plate_info() -> None:
-    data = pd.Series(
-        {
-            "Plate": "4",
-            "Measured height": "44.5",
-            "Formula": "Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
-            "Measurement date": "10/13/2022 3:08:06 PM",
-        }
+    data = SeriesData(
+        pd.Series(
+            {
+                "Plate": "4",
+                "Measured height": "44.5",
+                "Formula": "Calc 1: General = (X / Y) where X = AC HTRF Laser [Eu](1) Y = AC HTRF Laser [Eu](1)",
+                "Measurement date": "10/13/2022 3:08:06 PM",
+            }
+        )
     )
     calculated_plate_info = CalculatedPlateInfo.create(data)
 
@@ -329,12 +332,14 @@ def test_create_calculated_plate_info() -> None:
 
 
 def test_create_calculated_plate_info_with_no_formula() -> None:
-    data = pd.Series(
-        {
-            "Plate": "dummy",
-            "Measured height": "0",
-            "Measurement date": "10/13/2022 3:08:06 PM",
-        }
+    data = SeriesData(
+        pd.Series(
+            {
+                "Plate": "dummy",
+                "Measured height": "0",
+                "Measurement date": "10/13/2022 3:08:06 PM",
+            }
+        )
     )
     msg = "Unable to find expected formula for calculated results section."
     with pytest.raises(AllotropeConversionError, match=msg):
@@ -342,13 +347,15 @@ def test_create_calculated_plate_info_with_no_formula() -> None:
 
 
 def test_create_calculated_plate_info_with_invalid_formula() -> None:
-    data = pd.Series(
-        {
-            "Plate": "dummy",
-            "Measured height": "0",
-            "Formula": "invalid formula",
-            "Measurement date": "10/13/2022 3:08:06 PM",
-        }
+    data = SeriesData(
+        pd.Series(
+            {
+                "Plate": "dummy",
+                "Measured height": "0",
+                "Formula": "invalid formula",
+                "Measurement date": "10/13/2022 3:08:06 PM",
+            }
+        )
     )
     msg = "Unable to find expected formula name for calculated results section."
     with pytest.raises(AllotropeConversionError, match=msg):

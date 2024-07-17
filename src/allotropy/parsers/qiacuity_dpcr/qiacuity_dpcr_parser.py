@@ -27,15 +27,8 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_reader import QiacuitydPCRReader
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_from_series,
-    try_float_from_series_or_none,
-    try_int_from_series,
-    try_int_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
 from allotropy.parsers.vendor_parser import VendorParser
 
 BRAND_NAME = "Qiacuity Digital PCR System"
@@ -94,18 +87,17 @@ class QiacuitydPCRParser(VendorParser):
     def _get_dpcr_document(self, qiacuity_data: pd.DataFrame) -> DPCRDocumentItem:
         measurement_documents = []
         for _, well_item in qiacuity_data.iterrows():
-            sample_document = self._get_sample_document(well_item=well_item)
+            well_data = SeriesData(well_item)
+            sample_document = self._get_sample_document(well_data)
             device_control_documents = [self._get_device_control_document()]
             device_control_aggregate_document = DeviceControlAggregateDocument(
                 device_control_document=device_control_documents
             )
             processed_data_aggregate_document = ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    self._get_processed_data_document(well_item=well_item)
-                ]
+                processed_data_document=[self._get_processed_data_document(well_data)]
             )
             measurement_document = self._get_measurement_document(
-                well_item=well_item,
+                well_data,
                 sample_document=sample_document,
                 device_control_aggregate_document=device_control_aggregate_document,
                 processed_data_aggregate_document=processed_data_aggregate_document,
@@ -140,7 +132,7 @@ class QiacuitydPCRParser(VendorParser):
 
     def _get_measurement_document(
         self,
-        well_item: pd.Series[str],
+        well_item: SeriesData,
         sample_document: SampleDocument,
         device_control_aggregate_document: DeviceControlAggregateDocument,
         processed_data_aggregate_document: ProcessedDataAggregateDocument,
@@ -149,9 +141,9 @@ class QiacuitydPCRParser(VendorParser):
         measurement_id = random_uuid_str()
         # There is no measurement time in the file, so assign to unix epoch
         measurement_time = EPOCH
-        target_dna_description = try_str_from_series(well_item, TARGET_COLUMN_NAME)
+        target_dna_description = well_item[str, TARGET_COLUMN_NAME]
         total_partition_count = TQuantityValueNumber(
-            value=try_int_from_series(well_item, PARTITIONS_COLUMN_NAME)
+            value=well_item[int, PARTITIONS_COLUMN_NAME]
         )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
@@ -163,16 +155,12 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_aggregate_document=processed_data_aggregate_document,
         )
 
-    def _get_sample_document(self, well_item: pd.Series[str]) -> SampleDocument:
-        sample_identifier = try_str_from_series(
-            well_item, SAMPLE_IDENTIFIER_COLUMN_NAME
+    def _get_sample_document(self, well_item: SeriesData) -> SampleDocument:
+        sample_document = SampleDocument(
+            sample_identifier=well_item[str, SAMPLE_IDENTIFIER_COLUMN_NAME]
         )
 
-        sample_document = SampleDocument(sample_identifier=sample_identifier)
-
-        sample_role_type = try_str_from_series_or_none(
-            well_item, SAMPLE_TYPE_COLUMN_NAME
-        )
+        sample_role_type = well_item.get(str, SAMPLE_TYPE_COLUMN_NAME)
         # TODO: When the sample role type model is updated in this repo, we should update this
         # Map sample role types to valid sample role types from ASM
         if sample_role_type is not None:
@@ -186,16 +174,12 @@ class QiacuitydPCRParser(VendorParser):
                 )
                 raise AllotropeConversionError(error_message) from e
 
-        well_location_identifier = try_str_from_series_or_none(
-            well_item, WELL_COLUMN_NAME
-        )
+        well_location_identifier = well_item.get(str, WELL_COLUMN_NAME)
 
         if well_location_identifier is not None:
             sample_document.well_location_identifier = well_location_identifier
 
-        well_plate_identifier = try_str_from_series_or_none(
-            well_item, WELL_PLATE_IDENTIFIER_COLUMN_NAME
-        )
+        well_plate_identifier = well_item.get(str, WELL_PLATE_IDENTIFIER_COLUMN_NAME)
         if well_plate_identifier is not None:
             sample_document.well_plate_identifier = well_plate_identifier
         return sample_document
@@ -206,23 +190,21 @@ class QiacuitydPCRParser(VendorParser):
         )
 
     def _get_processed_data_document(
-        self, well_item: pd.Series[str]
+        self, well_item: SeriesData
     ) -> ProcessedDataDocumentItem:
 
         number_concentration = TQuantityValueNumberPerMicroliter(
-            value=try_float_from_series(well_item, CONCENTRATION_COLUMN_NAME)
+            value=well_item[float, CONCENTRATION_COLUMN_NAME]
         )
         positive_partition_count = TQuantityValueNumber(
-            value=try_int_from_series(well_item, POSITIVE_COUNT_COLUMN_NAME)
+            value=well_item[int, POSITIVE_COUNT_COLUMN_NAME]
         )
         processed_data_document = ProcessedDataDocumentItem(
             number_concentration=number_concentration,
             positive_partition_count=positive_partition_count,
         )
         # If the fluorescence intensity threshold setting exists, create a data processing document for it and add to processed data document
-        fluor_intensity_threshold = try_float_from_series_or_none(
-            well_item, FIT_SETTING_COLUMN_NAME
-        )
+        fluor_intensity_threshold = well_item.get(float, FIT_SETTING_COLUMN_NAME)
         if fluor_intensity_threshold is not None:
             data_processing_document = DataProcessingDocument(
                 flourescence_intensity_threshold_setting=TQuantityValueUnitless(
@@ -232,9 +214,7 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_document.data_processing_document = data_processing_document
 
         # Negative partition count is optional
-        negative_partition_count = try_int_from_series_or_none(
-            well_item, NEGATIVE_COUNT_COLUMN_NAME
-        )
+        negative_partition_count = well_item.get(int, NEGATIVE_COUNT_COLUMN_NAME)
 
         if negative_partition_count is not None:
             processed_data_document.negative_partition_count = TQuantityValueNumber(

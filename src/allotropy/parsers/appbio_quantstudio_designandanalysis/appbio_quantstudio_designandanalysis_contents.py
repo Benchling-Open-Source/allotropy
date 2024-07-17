@@ -8,6 +8,7 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -46,7 +47,7 @@ class DesignQuantstudioContents:
         error = "Unable to parse data header"
         raise AllotropeConversionError(error)
 
-    def _get_header(self, contents: dict[str, pd.DataFrame]) -> pd.Series[str]:
+    def _get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = assert_not_none(
             contents.get("Results"),
             msg="Unable to find 'Results' sheet.",
@@ -60,7 +61,7 @@ class DesignQuantstudioContents:
 
         header = pd.Series(data)
         header.index = header.index.str.strip()
-        return header
+        return SeriesData(header)
 
     def _get_data(self, contents: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
         data_structure = {}

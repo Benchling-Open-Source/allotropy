@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from io import StringIO
-from typing import Any
 
 import pandas as pd
 
@@ -11,6 +10,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     HEADINGS_TO_PARSER_HEADINGS,
 )
 from allotropy.parsers.lines_reader import read_to_lines
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 class ViCellXRTXTReader:
@@ -56,12 +56,13 @@ class ViCellXRTXTReader:
 
         return file_data
 
-    def _get_file_info(self) -> pd.Series[Any]:
+    def _get_file_info(self) -> SeriesData:
         data = self.lines
 
-        info: pd.Series[Any] = pd.Series(
-            [data[0], data[3], data[8]],
-            copy=False,
-            index=["model", "filepath", "serial"],
+        return SeriesData(
+            pd.Series(
+                [data[0], data[3], data[8]],
+                copy=False,
+                index=["model", "filepath", "serial"],
+            )
         )
-        return info

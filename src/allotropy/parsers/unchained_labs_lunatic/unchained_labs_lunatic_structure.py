@@ -4,6 +4,7 @@ from typing import Any
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataItem,
     Data,
@@ -22,19 +23,14 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_from_series_or_nan,
-    try_float_from_series_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
-)
 
 
 def _create_measurement(
-    well_plate_data: pd.Series[Any], wavelength_column: str
+    well_plate_data: SeriesData, wavelength_column: str
 ) -> Measurement:
-    if wavelength_column not in well_plate_data:
+    if wavelength_column not in well_plate_data.series:
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
         raise AllotropeConversionError(msg)
 
@@ -46,10 +42,10 @@ def _create_measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength_column[1:]),
-        absorbance=try_float_from_series_or_nan(well_plate_data, wavelength_column),
-        sample_identifier=try_str_from_series(well_plate_data, "Sample name"),
-        location_identifier=try_str_from_series(well_plate_data, "Plate Position"),
-        well_plate_identifier=try_str_from_series_or_none(well_plate_data, "Plate ID"),
+        absorbance=well_plate_data.get(float, wavelength_column, NaN),
+        sample_identifier=well_plate_data[str, "Sample name"],
+        location_identifier=well_plate_data[str, "Plate Position"],
+        well_plate_identifier=well_plate_data.get(str, "Plate ID"),
         calculated_data=_get_calculated_data(
             well_plate_data, wavelength_column, measurement_identifier
         ),
@@ -57,13 +53,13 @@ def _create_measurement(
 
 
 def _get_calculated_data(
-    well_plate_data: pd.Series[Any],
+    well_plate_data: SeriesData,
     wavelength_column: str,
     measurement_identifier: str,
 ) -> list[CalculatedDataItem]:
     calculated_data = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = try_float_from_series_or_none(well_plate_data, item["column"])
+        value = well_plate_data.get(float, item["column"])
         if value is None:
             continue
 
@@ -85,19 +81,18 @@ def _get_calculated_data(
 
 
 def _create_measurement_group(
-    plate_data: pd.Series[Any], wavelength_columns: list[str]
+    series: pd.Series[Any], wavelength_columns: list[str]
 ) -> MeasurementGroup:
-    date = plate_data.get("Date")
-    time = plate_data.get("Time")
+    plate_data = SeriesData(series)
+    date = plate_data.get(str, "Date")
+    time = plate_data.get(str, "Time")
 
     if not date or not time:
         raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
 
     return MeasurementGroup(
         _measurement_time=f"{date} {time}",
-        analytical_method_identifier=try_str_from_series_or_none(
-            plate_data, "Application"
-        ),
+        analytical_method_identifier=plate_data.get(str, "Application"),
         plate_well_count=96,
         measurements=[
             _create_measurement(plate_data, wavelength_column)
@@ -111,7 +106,7 @@ def _create_metadata(data: pd.DataFrame, file_name: str) -> Metadata:
         device_type="plate reader",
         model_number="Lunatic",
         product_manufacturer="Unchained Labs",
-        device_identifier=try_str_from_series(data.iloc[0], "Instrument ID"),
+        device_identifier=SeriesData(data.iloc[0])[str, "Instrument ID"],
         software_name="Lunatic and Stunner Analysis",
         file_name=file_name,
     )

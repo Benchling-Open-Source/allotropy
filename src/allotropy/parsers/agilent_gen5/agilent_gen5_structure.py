@@ -49,15 +49,13 @@ from allotropy.parsers.agilent_gen5.constants import (
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.pandas import df_to_series_data
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
-    df_to_series,
     try_float,
     try_float_or_nan,
     try_float_or_none,
-    try_str_from_series,
-    try_str_from_series_or_none,
 )
 
 
@@ -92,25 +90,20 @@ class HeaderData:
             keep_default_na=False,
             sep="\t",
         ).T
-        data = df_to_series(df, "Failed to parser header data")
+        data = df_to_series_data(df, "Failed to parser header data")
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
-        date = try_str_from_series_or_none(data, "Date")
-        time = try_str_from_series_or_none(data, "Time")
+        date = data.get(str, "Date")
+        time = data.get(str, "Time")
         return HeaderData(
-            software_version=try_str_from_series(data, "Software Version"),
-            experiment_file_path=try_str_from_series_or_none(
-                data, "Experiment File Path:"
-            ),
+            software_version=data[str, "Software Version"],
+            experiment_file_path=data.get(str, "Experiment File Path:"),
             file_name=file_name,
-            protocol_file_path=try_str_from_series_or_none(data, "Protocol File Path:"),
+            protocol_file_path=data.get(str, "Protocol File Path:"),
             datetime=f"{date} {time}" if date and time else None,
-            well_plate_identifier=plate_identifier
-            or try_str_from_series_or_none(data, "Plate Number"),
-            model_number=try_str_from_series_or_none(data, "Reader Type:"),
-            equipment_serial_number=try_str_from_series_or_none(
-                data, "Reader Serial Number:"
-            ),
+            well_plate_identifier=plate_identifier or data.get(str, "Plate Number"),
+            model_number=data.get(str, "Reader Type:"),
+            equipment_serial_number=data.get(str, "Reader Serial Number:"),
         )
 
 
