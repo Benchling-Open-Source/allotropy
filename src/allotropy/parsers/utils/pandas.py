@@ -104,8 +104,8 @@ class SeriesData:
             # bool needs special handling to convert
             if type_ is bool:
                 raw_value = "true" if str_to_bool(raw_value) else ""
-            value = type_(raw_value)
-        except ValueError:
+            value = None if raw_value is None else type_(raw_value)
+        except (TypeError, ValueError):
             value = None
         # If no default is provided, assert we got a value
         if default is UNSET:
