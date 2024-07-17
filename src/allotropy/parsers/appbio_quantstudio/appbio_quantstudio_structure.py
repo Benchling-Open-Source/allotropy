@@ -29,7 +29,6 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
-    try_float_or_none,
     try_int,
 )
 
@@ -136,19 +135,16 @@ class WellItem(Referenceable):
     @staticmethod
     def create_genotyping(data: SeriesData) -> tuple[WellItem, WellItem]:
         identifier = data[int, "Well"]
-        snp_name = assert_not_none(
-            data.get(str, "SNP Assay Name"),
-            msg=f"Unable to find snp name for well {identifier}",
-        )
+        snp_name = data[
+            str, "SNP Assay Name", f"Unable to find snp name for well {identifier}"
+        ]
         sample_identifier = data.get(str, "Sample Name", NOT_APPLICABLE)
-        allele1 = assert_not_none(
-            data.get(str, "Allele1 Name"),
-            msg=f"Unable to find allele 1 for well {identifier}",
-        )
-        allele2 = assert_not_none(
-            data.get(str, "Allele2 Name"),
-            msg=f"Unable to find allele 2 for well {identifier}",
-        )
+        allele1 = data[
+            str, "Allele1 Name", f"Unable to find allele 1 for well {identifier}"
+        ]
+        allele2 = data[
+            str, "Allele2 Name", f"Unable to find allele 2 for well {identifier}"
+        ]
 
         return (
             WellItem(
@@ -178,19 +174,15 @@ class WellItem(Referenceable):
     @staticmethod
     def create_generic(data: SeriesData) -> WellItem:
         identifier = data[int, "Well"]
-
-        target_dna_description = assert_not_none(
-            data.get(str, "Target Name"),
-            msg=f"Unable to find target dna description for well {identifier}",
-        )
-
-        sample_identifier = data.get(str, "Sample Name", NOT_APPLICABLE)
-
         return WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
-            target_dna_description=target_dna_description,
-            sample_identifier=sample_identifier,
+            target_dna_description=data[
+                str,
+                "Target Name",
+                f"Unable to find target dna description for well {identifier}",
+            ],
+            sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
             reporter_dye_setting=data.get(str, "Reporter"),
             position=data.get(str, "Well Position", NOT_APPLICABLE),
             well_location_identifier=data.get(str, "Well Position"),
@@ -459,19 +451,15 @@ class Result:
 
         _, raw_allele = well_item.target_dna_description.split("-")
         allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = assert_not_none(
-            data.get(float, f"{allele} Ct Threshold"),
-            msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
-        )
-
-        cycle_threshold_result = assert_not_none(
-            data.get(str, f"{allele} Ct"),
-            msg="Unable to find cycle threshold result",
-        )
 
         return Result(
-            cycle_threshold_value_setting=cycle_threshold_value_setting,
-            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            cycle_threshold_value_setting=data[
+                float,
+                f"{allele} Ct Threshold",
+                "Unable to find cycle threshold value setting for well {well_item.identifier}",
+            ],
+            # TODO(nstender): really seems like this should be NaN if invalid value. Keeping to preserve tests.
+            cycle_threshold_result=data.get(float, f"{allele} Ct"),
             automatic_cycle_threshold_enabled_setting=data.get(
                 bool, f"{allele} Automatic Ct Threshold"
             ),
@@ -516,17 +504,13 @@ class Result:
             msg=f"Expected exactly 1 row of results to be associated with target '{well_item.target_dna_description}' in well {well_item.identifier}.",
         )
 
-        cycle_threshold_result = assert_not_none(
-            data.get(str, "CT"),
-            msg="Unable to find cycle threshold result",
-        )
-
         return Result(
             cycle_threshold_value_setting=assert_not_none(
                 data.get(float, "Ct Threshold"),
                 msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
             ),
-            cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
+            # TODO(nstender): really seems like this should be NaN if invalid value. Keeping to preserve tests.
+            cycle_threshold_result=data.get(float, "CT"),
             automatic_cycle_threshold_enabled_setting=data.get(
                 bool, "Automatic Ct Threshold"
             ),

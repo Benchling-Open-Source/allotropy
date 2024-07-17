@@ -53,50 +53,58 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
 
 
 T = TypeVar("T", bool, float, int, str)
+# Need to use this instead of type[T] to get mypy to realize primitive can be called to return T
+Type_ = Callable[..., T]
+KeyOrKeys = Iterable[str]
+TypeAndKey = tuple[Type_[T], KeyOrKeys]
+TypeAndKeyAndMsg = tuple[Type_[T], KeyOrKeys, str]
 
 
 class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
-    def __getitem__(
-        self, type_and_key: tuple[Callable[..., T], str | Iterable[str]]
-    ) -> T:
+    def __getitem__(self, type_and_key: TypeAndKey[T] | TypeAndKeyAndMsg[T]) -> T:
         # Implements index operator
-        type_, key = type_and_key
-        return assert_not_none(self.get(type_, key), str(key))
+        if len(type_and_key) == 2:  # noqa: PLR2004
+            type_, key = type_and_key
+            msg = None
+        elif len(type_and_key) == 3:  # noqa: PLR2004
+            type_, key, msg = type_and_key
+        return assert_not_none(self.get(type_, key), str(key), msg=msg)
 
     # This overload tells typing that if default is "None" then get might return None
     @overload
     def get(
         self,
-        type_: Callable[..., T],
-        key: Iterable[str],
+        type_: Type_[T],
+        key: KeyOrKeys,
         default: Literal[None] = None,
     ) -> T | None:
         ...
 
     # This overload tells typing that if default matches T, get will return T
     @overload
-    def get(self, type_: Callable[..., T], key: Iterable[str], default: T) -> T:
+    def get(self, type_: Type_[T], key: KeyOrKeys, default: T) -> T:
         ...
 
     def get(
         self,
-        type_: Callable[..., T],
-        key: Iterable[str],
+        type_: Type_[T],
+        key: KeyOrKeys,
         default: T | None = None,
     ) -> T | None:
-        # Get value from series, if series is an iterable get the first non-null value
-        raw_value = (
-            self.series.get(key)
-            if isinstance(key, str)
-            else get_first_not_none(self.series.get, list(key))
-        )
+        if not isinstance(key, str):
+            return get_first_not_none(lambda k: self.get(type_, k), key)
+        raw_value = self.series.get(key)
         try:
             # bool needs special handling to convert
             if type_ is bool:
-                raw_value = "true" if str_to_bool(raw_value) else ""
+                raw_value = (
+                    None
+                    if raw_value is None
+                    else ("true" if str_to_bool(str(raw_value)) else "")
+                )
             value = None if raw_value is None else type_(raw_value)
         except ValueError:
             value = None

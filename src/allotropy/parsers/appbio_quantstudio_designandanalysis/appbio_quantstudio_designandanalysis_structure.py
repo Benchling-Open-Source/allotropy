@@ -71,14 +71,12 @@ class Header:
         stage_number = re.match(r"Stage (\d+)", stage_number_raw)
         pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
 
-        run_end_data = header.get(str, "Run End Data/Time")
-        run_end_date = header.get(str, "Run End Date/Time")
-
         return Header(
-            measurement_time=assert_not_none(
-                run_end_data or run_end_date,
-                msg="Unable to find measurement time.",
-            ),
+            measurement_time=header[
+                str,
+                ["Run End Date/Time", "Run End Data/Time"],
+                "Unable to find measurement time.",
+            ],
             plate_well_count=assert_not_none(
                 try_int(
                     assert_not_none(
@@ -132,21 +130,16 @@ class WellItem(Referenceable):
     ) -> WellItem:
         identifier = data[int, "Well"]
 
-        target_dna_description = assert_not_none(
-            data.get(str, "Target"),
-            msg=f"Unable to find target dna description for well {identifier}",
-        )
-        well_position = assert_not_none(
-            data.get(str, "Well Position"),
-            msg=f"Unable to find well position for Well '{identifier}'.",
-        )
-
-        raw_sample_role_type = data.get(str, "Task")
-        sample_role_type = (
-            None
-            if raw_sample_role_type is None
-            else SAMPLE_ROLE_TYPES_MAP.get(raw_sample_role_type)
-        )
+        target_dna_description = data[
+            str,
+            "Target",
+            f"Unable to find target dna description for well {identifier}",
+        ]
+        well_position = data[
+            str,
+            "Well Position",
+            f"Unable to find well position for Well '{identifier}'.",
+        ]
 
         amp_data = contents.get_non_empty_sheet("Amplification Data")
         melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
@@ -159,7 +152,9 @@ class WellItem(Referenceable):
             reporter_dye_setting=data.get(str, "Reporter"),
             well_location_identifier=well_position,
             quencher_dye_setting=data.get(str, "Quencher"),
-            sample_role_type=sample_role_type,
+            sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(
+                data.get(str, "Task", "__INVALID_KEY__")
+            ),
             amplification_data=AmplificationData.create(
                 amp_data, identifier, target_dna_description
             ),
@@ -527,10 +522,11 @@ class Result:
         )
 
         return Result(
-            cycle_threshold_value_setting=assert_not_none(
-                target_data.get(float, "Threshold"),
-                msg=f"Unable to find cycle threshold value setting for well {well_item_id}",
-            ),
+            cycle_threshold_value_setting=target_data[
+                float,
+                "Threshold",
+                f"Unable to find cycle threshold value setting for well {well_item_id}",
+            ],
             cycle_threshold_result=target_data.get(float, "Cq"),
             automatic_cycle_threshold_enabled_setting=target_data.get(
                 bool, "Auto Threshold", None

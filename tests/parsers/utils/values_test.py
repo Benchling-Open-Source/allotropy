@@ -13,26 +13,31 @@ from allotropy.parsers.utils.values import (
 )
 
 
+@pytest.mark.short
 def test_assert_not_none() -> None:
     x = 3
     assert assert_not_none(x) == x
 
 
+@pytest.mark.short
 def test_assert_not_none_fails() -> None:
     with pytest.raises(Exception, match="^Expected non-null value.$"):
         assert_not_none(None)
 
 
+@pytest.mark.short
 def test_assert_not_none_fails_with_message() -> None:
     with pytest.raises(Exception, match="^param_name was None$"):
         assert_not_none(None, msg="param_name was None")
 
 
+@pytest.mark.short
 def test_assert_not_none_fails_with_name() -> None:
     with pytest.raises(Exception, match="^Expected non-null value for param_name.$"):
         assert_not_none(None, "param_name")
 
 
+@pytest.mark.short
 def test_assert_not_none_fails_with_message_and_name() -> None:
     with pytest.raises(Exception, match="^param_name was None$"):
         assert_not_none(None, "param_name", "param_name was None")
@@ -56,6 +61,7 @@ def _try_float(value: str) -> float:
     return try_float(value, "param")
 
 
+@pytest.mark.short
 def test_try_float() -> None:
     assert _try_float("1.0") == 1.0
 
@@ -91,6 +97,7 @@ def _try_int(value: str | None) -> int:
     return try_int(value, "param")
 
 
+@pytest.mark.short
 def test_try_int() -> None:
     assert _try_int("1") == 1
 

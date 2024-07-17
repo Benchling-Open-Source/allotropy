@@ -75,28 +75,29 @@ class CalculatedPlateInfo(PlateInfo):
     name: str
 
     @staticmethod
-    def create(series: SeriesData) -> CalculatedPlateInfo:
-        plate_number = series[str, "Plate"]
-        formula = assert_not_none(
-            series.get(str, "Formula"),
-            msg="Unable to find expected formula for calculated results section.",
-        )
+    def create(data: SeriesData) -> CalculatedPlateInfo:
+        plate_number = data[str, "Plate"]
+        formula = data[
+            str,
+            "Formula",
+            "Unable to find expected formula for calculated results section.",
+        ]
 
         name = assert_not_none(
             search(r"^([^=]*)=", formula),
             msg="Unable to find expected formula name for calculated results section.",
         ).group(1)
 
-        raw_barcode = series.get(str, "Barcode")
+        raw_barcode = data.get(str, "Barcode")
         barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
         barcode = barcode or f"Plate {plate_number}"
 
         return CalculatedPlateInfo(
             number=plate_number,
             barcode=barcode,
-            measurement_time=series.get(str, "Measurement date"),
-            measured_height=series.get(float, "Measured height"),
-            chamber_temperature_at_start=series.get(
+            measurement_time=data.get(str, "Measurement date"),
+            measured_height=data.get(float, "Measured height"),
+            chamber_temperature_at_start=data.get(
                 float, "Chamber temperature at start"
             ),
             formula=formula,
@@ -176,18 +177,19 @@ class BackgroundInfoList:
         return BackgroundInfoList(
             background_info=[
                 BackgroundInfo(
-                    plate_num=assert_not_none(
-                        data.get(str, "Plate"),
-                        msg="Unable to find plate number from background info.",
-                    ),
-                    label=assert_not_none(
-                        data.get(str, "Label"),
-                        msg="Unable to find label from background info.",
-                    ),
-                    measinfo=assert_not_none(
-                        data.get(str, "MeasInfo"),
-                        msg="Unable to find meas info from background info.",
-                    ),
+                    plate_num=data[
+                        str,
+                        "Plate",
+                        "Unable to find plate number from background info.",
+                    ],
+                    label=data[
+                        str, "Label", "Unable to find label from background info."
+                    ],
+                    measinfo=data[
+                        str,
+                        "MeasInfo",
+                        "Unable to find meas info from background info.",
+                    ],
                 )
                 for data in row_data
             ]

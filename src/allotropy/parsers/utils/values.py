@@ -16,7 +16,7 @@ from allotropy.exceptions import AllotropeConversionError
 PrimitiveValue = str | int | float
 
 
-def str_to_bool(value: Any) -> bool:
+def str_to_bool(value: str) -> bool:
     return str(value).lower() in ("yes", "y", "true", "t", "1")
 
 
