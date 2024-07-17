@@ -87,17 +87,17 @@ class CalculatedPlateInfo(PlateInfo):
             msg="Unable to find expected formula name for calculated results section.",
         ).group(1)
 
-        raw_barcode = series.get(str, "Barcode", None)
+        raw_barcode = series.get(str, "Barcode")
         barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
         barcode = barcode or f"Plate {plate_number}"
 
         return CalculatedPlateInfo(
             number=plate_number,
             barcode=barcode,
-            measurement_time=series.get(str, "Measurement date", None),
-            measured_height=series.get(float, "Measured height", None),
+            measurement_time=series.get(str, "Measurement date"),
+            measured_height=series.get(float, "Measured height"),
             chamber_temperature_at_start=series.get(
-                float, "Chamber temperature at start", None
+                float, "Chamber temperature at start"
             ),
             formula=formula,
             name=name.strip(),
@@ -112,25 +112,25 @@ class ResultPlateInfo(PlateInfo):
 
     @staticmethod
     def create(series: SeriesData) -> ResultPlateInfo | None:
-        label = series.get(str, "Label", None)
+        label = series.get(str, "Label")
         if label is None:
             return None
 
-        measinfo = series.get(str, "Measinfo", None)
+        measinfo = series.get(str, "Measinfo")
         if measinfo is None:
             return None
 
         plate_number = series[str, "Plate"]
-        raw_barcode = series.get(str, "Barcode", None)
+        raw_barcode = series.get(str, "Barcode")
         barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
         barcode = barcode or f"Plate {plate_number}"
 
         return ResultPlateInfo(
             plate_number,
             barcode,
-            series.get(str, "Measurement date", None),
-            series.get(float, "Measured height", None),
-            series.get(float, "Chamber temperature at start", None),
+            series.get(str, "Measurement date"),
+            series.get(float, "Measured height"),
+            series.get(float, "Chamber temperature at start"),
             label=label,
             measinfo=measinfo,
             emission_filter_id=assert_not_none(
@@ -177,15 +177,15 @@ class BackgroundInfoList:
             background_info=[
                 BackgroundInfo(
                     plate_num=assert_not_none(
-                        series.get(str, "Plate", None),
+                        series.get(str, "Plate"),
                         msg="Unable to find plate number from background info.",
                     ),
                     label=assert_not_none(
-                        series.get(str, "Label", None),
+                        series.get(str, "Label"),
                         msg="Unable to find label from background info.",
                     ),
                     measinfo=assert_not_none(
-                        series.get(str, "MeasInfo", None),
+                        series.get(str, "MeasInfo"),
                         msg="Unable to find meas info from background info.",
                     ),
                 )
@@ -354,8 +354,8 @@ class BasicAssayInfo:
         data.iloc[0] = data.iloc[0].replace(":.*", "", regex=True)
         series = SeriesData(df_to_series(data))
         return BasicAssayInfo(
-            series.get(str, "Protocol ID", None),
-            series.get(str, "Assay ID", None),
+            series.get(str, "Protocol ID"),
+            series.get(str, "Assay ID"),
         )
 
 
@@ -563,8 +563,8 @@ class Labels:
             scan_position_setting=filter_position_map.get(
                 series.get(str, "Using of emission filter", NOT_APPLICABLE)
             ),
-            number_of_flashes=series.get(float, "Number of flashes", None),
-            detector_gain_setting=series.get(str, "Reference AD gain", None),
+            number_of_flashes=series.get(float, "Number of flashes"),
+            detector_gain_setting=series.get(str, "Reference AD gain"),
         )
 
     def get_emission_filter(self, id_val: str) -> Filter | None:

@@ -39,9 +39,9 @@ class SpectroscopyRow:
     def create(series: pd.Series[str]) -> SpectroscopyRow:
         data = SeriesData(series)
 
-        analyst = data.get(str, "user id", None)
-        timestamp = f'{data[str, "date"]} {data.get(str, "time", None)}'
-        experiment_type = data.get(str, "na type", None)
+        analyst = data.get(str, "user id")
+        timestamp = f'{data[str, "date"]} {data.get(str, "time")}'
+        experiment_type = data.get(str, "na type")
 
         sample_id = data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE
         well_plate_id = data.try_non_nan_str_or_none("plate id")
@@ -49,17 +49,17 @@ class SpectroscopyRow:
 
         is_na_experiment = experiment_type and "NA" in experiment_type
 
-        a260_absorbance = data.get(float, "a260", None)
+        a260_absorbance = data.get(float, "a260")
         a280_absorbance = get_first_not_none(
-            lambda key: data.get(float, key, None), ["a280", "a280 10mm"]
+            lambda key: data.get(float, key), ["a280", "a280 10mm"]
         )
         measurements: list[Measurement] = []
 
         mass_concentration = get_first_not_none(
-            lambda key: data.get(float, key, None),
+            lambda key: data.get(float, key),
             ["conc.", "conc", "concentration"],
         )
-        unit = data.get(str, "units", None)
+        unit = data.get(str, "units")
 
         # We only capture mass concentration on one measurement document
         # TODO(nstender): why not just capture in both? Seems relevant, and would make this so much simpler.
@@ -104,7 +104,7 @@ class SpectroscopyRow:
 
         absorbance_ratios = {}
         for numerator, denominator in ABSORBANCE_RATIOS:
-            ratio = data.get(float, f"{numerator}/{denominator}", None)
+            ratio = data.get(float, f"{numerator}/{denominator}")
             if ratio:
                 absorbance_ratios[(numerator, denominator)] = ratio
 

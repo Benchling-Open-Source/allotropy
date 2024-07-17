@@ -45,20 +45,20 @@ class Row:
 
         return Row(
             timestamp=data[str, "Test Date"],
-            assay_name=data.get(str, "Assay Name", None),
+            assay_name=data.get(str, "Assay Name"),
             fluorescence=data[float, options[emission_wavelength]],
-            batch_identifier=data.get(str, "Run ID", None),
+            batch_identifier=data.get(str, "Run ID"),
             sample_identifier=data[str, "Test Name"],
             sample_volume=data.try_non_nan_float_or_none("Sample Volume (µL)"),
-            excitation=data.get(str, "Excitation", None),
+            excitation=data.get(str, "Excitation"),
             emission=data[str, "Emission"],
             dilution_factor=data.try_non_nan_float_or_none("Dilution Factor"),
             original_sample_concentration=data.try_float_or_nan(
                 "Original sample conc."
             ),
-            original_sample_unit=data.get(str, "Units_Original sample conc.", None),
+            original_sample_unit=data.get(str, "Units_Original sample conc."),
             qubit_tube_concentration=data.try_float_or_nan("Qubit® tube conc."),
-            qubit_tube_unit=data.get(str, "Units_Qubit® tube conc.", None),
+            qubit_tube_unit=data.get(str, "Units_Qubit® tube conc."),
             std_1_rfu=data.try_non_nan_float_or_none("Std 1 RFU"),
             std_2_rfu=data.try_non_nan_float_or_none("Std 2 RFU"),
             std_3_rfu=data.try_non_nan_float_or_none("Std 3 RFU"),

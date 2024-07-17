@@ -19,11 +19,11 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
     data = SeriesData(series)
-    total_cell_count = data.get(float, "Cell count", None)
+    total_cell_count = data.get(float, "Cell count")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
     )
-    viable_cell_count = data.get(float, "Viable cells", None)
+    viable_cell_count = data.get(float, "Viable cells")
     viable_cell_count = (
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
@@ -34,30 +34,22 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
                 measurement_identifier=random_uuid_str(),
                 timestamp=data[str, "Analysis date/time"],
                 sample_identifier=data[str, "Sample ID"],
-                cell_type_processing_method=data.get(str, "Cell type", None),
-                minimum_cell_diameter_setting=data.get(
-                    float, "Minimum Diameter (μm)", None
-                ),
-                maximum_cell_diameter_setting=data.get(
-                    float, "Maximum Diameter (μm)", None
-                ),
-                cell_density_dilution_factor=data.get(float, "Dilution", None),
+                cell_type_processing_method=data.get(str, "Cell type"),
+                minimum_cell_diameter_setting=data.get(float, "Minimum Diameter (μm)"),
+                maximum_cell_diameter_setting=data.get(float, "Maximum Diameter (μm)"),
+                cell_density_dilution_factor=data.get(float, "Dilution"),
                 viability=data[float, "Viability (%)"],
                 viable_cell_density=data[float, "Viable (x10^6) cells/mL"],
                 total_cell_count=total_cell_count,
-                total_cell_density=data.get(float, "Total (x10^6) cells/mL", None),
-                average_total_cell_diameter=data.get(
-                    float, "Average diameter (μm)", None
-                ),
+                total_cell_density=data.get(float, "Total (x10^6) cells/mL"),
+                average_total_cell_diameter=data.get(float, "Average diameter (μm)"),
                 average_live_cell_diameter=data.get(
-                    float, "Average viable diameter (μm)", None
+                    float, "Average viable diameter (μm)"
                 ),
                 viable_cell_count=viable_cell_count,
-                average_total_cell_circularity=data.get(
-                    float, "Average circularity", None
-                ),
+                average_total_cell_circularity=data.get(float, "Average circularity"),
                 average_viable_cell_circularity=data.get(
-                    float, "Average viable circularity", None
+                    float, "Average viable circularity"
                 ),
                 analyst=data.get(str, "Analysis by", DEFAULT_ANALYST),
             )

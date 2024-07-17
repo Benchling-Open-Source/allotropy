@@ -69,7 +69,7 @@ class Group:
     @staticmethod
     def create(series: pd.Series[str]) -> Group:
         data = SeriesData(series)
-        well_identifier = data.get(str, "Well", None)
+        well_identifier = data.get(str, "Well")
         aggregation_type = AGGREGATION_LOOKUP[well_identifier]
 
         calculated_data_items = [

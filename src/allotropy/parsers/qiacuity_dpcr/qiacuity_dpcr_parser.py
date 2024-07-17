@@ -160,7 +160,7 @@ class QiacuitydPCRParser(VendorParser):
             sample_identifier=well_item[str, SAMPLE_IDENTIFIER_COLUMN_NAME]
         )
 
-        sample_role_type = well_item.get(str, SAMPLE_TYPE_COLUMN_NAME, None)
+        sample_role_type = well_item.get(str, SAMPLE_TYPE_COLUMN_NAME)
         # TODO: When the sample role type model is updated in this repo, we should update this
         # Map sample role types to valid sample role types from ASM
         if sample_role_type is not None:
@@ -174,14 +174,12 @@ class QiacuitydPCRParser(VendorParser):
                 )
                 raise AllotropeConversionError(error_message) from e
 
-        well_location_identifier = well_item.get(str, WELL_COLUMN_NAME, None)
+        well_location_identifier = well_item.get(str, WELL_COLUMN_NAME)
 
         if well_location_identifier is not None:
             sample_document.well_location_identifier = well_location_identifier
 
-        well_plate_identifier = well_item.get(
-            str, WELL_PLATE_IDENTIFIER_COLUMN_NAME, None
-        )
+        well_plate_identifier = well_item.get(str, WELL_PLATE_IDENTIFIER_COLUMN_NAME)
         if well_plate_identifier is not None:
             sample_document.well_plate_identifier = well_plate_identifier
         return sample_document
@@ -206,7 +204,7 @@ class QiacuitydPCRParser(VendorParser):
             positive_partition_count=positive_partition_count,
         )
         # If the fluorescence intensity threshold setting exists, create a data processing document for it and add to processed data document
-        fluor_intensity_threshold = well_item.get(float, FIT_SETTING_COLUMN_NAME, None)
+        fluor_intensity_threshold = well_item.get(float, FIT_SETTING_COLUMN_NAME)
         if fluor_intensity_threshold is not None:
             data_processing_document = DataProcessingDocument(
                 flourescence_intensity_threshold_setting=TQuantityValueUnitless(
@@ -216,7 +214,7 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_document.data_processing_document = data_processing_document
 
         # Negative partition count is optional
-        negative_partition_count = well_item.get(int, NEGATIVE_COUNT_COLUMN_NAME, None)
+        negative_partition_count = well_item.get(int, NEGATIVE_COUNT_COLUMN_NAME)
 
         if negative_partition_count is not None:
             processed_data_document.negative_partition_count = TQuantityValueNumber(

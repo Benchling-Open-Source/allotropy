@@ -38,18 +38,18 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
         device_type="imager",
         detection_type="optical-imaging",
         software_name="Apex",
-        unc_path=contents.plate_info.get(str, "Path:", None),
-        software_version=contents.plate_info.get(str, "Software Version:", None),
+        unc_path=contents.plate_info.get(str, "Path:"),
+        software_version=contents.plate_info.get(str, "Software Version:"),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
         file_name=file_name,
-        analyst=contents.plate_info.get(str, "Saved By:", None),
+        analyst=contents.plate_info.get(str, "Saved By:"),
     )
 
 
 def _create_measurement(plate_data: SeriesData) -> Measurement:
     location_id = plate_data[str, "Well"]
-    well_plate = plate_data.get(str, "Plate", None)
+    well_plate = plate_data.get(str, "Plate")
 
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
@@ -58,8 +58,8 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
         location_identifier=location_id,
         well_plate_identifier=well_plate,
         sample_identifier=f"{well_plate}_{location_id}",
-        exposure_duration_setting=plate_data.get(float, "Exposure", None),
-        illumination_setting=plate_data.get(float, "Preset Intensity", None),
+        exposure_duration_setting=plate_data.get(float, "Exposure"),
+        illumination_setting=plate_data.get(float, "Preset Intensity"),
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
             features=[

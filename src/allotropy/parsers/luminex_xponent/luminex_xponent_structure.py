@@ -56,7 +56,7 @@ class Header:
             measurement_time=raw_datetime,
             detector_gain_setting=info_row[str, "ProtocolReporterGain"],
             data_system_instance_identifier=info_row[str, "ComputerName"],
-            analyst=info_row.get(str, "Operator", None),
+            analyst=info_row.get(str, "Operator"),
         )
 
     @classmethod

@@ -52,7 +52,7 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     return df
 
 
-T = TypeVar("T")
+T = TypeVar("T", bool, float, int, str)
 
 
 class SeriesData:
@@ -109,4 +109,4 @@ class SeriesData:
         return try_non_nan_float_or_none(self.get(str, key))
 
     def try_float_or_nan(self, key: str) -> JsonFloat:
-        return try_float_or_nan(self.get(float, key, None))
+        return try_float_or_nan(self.get(float, key))

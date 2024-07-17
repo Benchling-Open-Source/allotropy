@@ -44,7 +44,7 @@ def _create_measurement(
         absorbance=well_plate_data.try_float_or_nan(wavelength_column),
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
-        well_plate_identifier=well_plate_data.get(str, "Plate ID", None),
+        well_plate_identifier=well_plate_data.get(str, "Plate ID"),
         calculated_data=_get_calculated_data(
             well_plate_data, wavelength_column, measurement_identifier
         ),
@@ -58,7 +58,7 @@ def _get_calculated_data(
 ) -> list[CalculatedDataItem]:
     calculated_data = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = well_plate_data.get(float, item["column"], None)
+        value = well_plate_data.get(float, item["column"])
         if value is None:
             continue
 
@@ -83,15 +83,15 @@ def _create_measurement_group(
     series: pd.Series[Any], wavelength_columns: list[str]
 ) -> MeasurementGroup:
     plate_data = SeriesData(series)
-    date = plate_data.get(str, "Date", None)
-    time = plate_data.get(str, "Time", None)
+    date = plate_data.get(str, "Date")
+    time = plate_data.get(str, "Time")
 
     if not date or not time:
         raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
 
     return MeasurementGroup(
         _measurement_time=f"{date} {time}",
-        analytical_method_identifier=plate_data.get(str, "Application", None),
+        analytical_method_identifier=plate_data.get(str, "Application"),
         plate_well_count=96,
         measurements=[
             _create_measurement(plate_data, wavelength_column)

@@ -28,11 +28,11 @@ from allotropy.parsers.utils.values import assert_not_none
 
 def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
     data = SeriesData(series)
-    total_cell_count = data.get(float, "Total cells", None)
+    total_cell_count = data.get(float, "Total cells")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
     )
-    viable_cell_count = data.get(float, "Viable cells", None)
+    viable_cell_count = data.get(float, "Viable cells")
     viable_cell_count = (
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
@@ -43,17 +43,15 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
                 measurement_identifier=random_uuid_str(),
                 timestamp=data[str, "Sample date"],
                 sample_identifier=data[str, "Sample ID"],
-                cell_type_processing_method=data.get(str, "Cell type", None),
-                cell_density_dilution_factor=data.get(float, "Dilution factor", None),
+                cell_type_processing_method=data.get(str, "Cell type"),
+                cell_density_dilution_factor=data.get(float, "Dilution factor"),
                 viability=data[float, "Viability (%)"],
                 viable_cell_density=data[float, "Viable cells/ml (x10^6)"],
                 total_cell_count=total_cell_count,
-                total_cell_density=data.get(float, "Total cells/ml (x10^6)", None),
-                average_total_cell_diameter=data.get(
-                    float, "Avg. diam. (microns)", None
-                ),
+                total_cell_density=data.get(float, "Total cells/ml (x10^6)"),
+                average_total_cell_diameter=data.get(float, "Avg. diam. (microns)"),
                 viable_cell_count=viable_cell_count,
-                average_total_cell_circularity=data.get(float, "Avg. circ.", None),
+                average_total_cell_circularity=data.get(float, "Avg. circ."),
                 analyst=DEFAULT_ANALYST,
             )
         ]

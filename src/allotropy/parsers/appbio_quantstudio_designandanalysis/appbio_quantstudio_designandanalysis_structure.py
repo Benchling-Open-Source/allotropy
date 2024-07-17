@@ -71,8 +71,8 @@ class Header:
         stage_number = re.match(r"Stage (\d+)", stage_number_raw)
         pcr_stage_number = None if stage_number is None else int(stage_number.group(1))
 
-        run_end_data = header.get(str, "Run End Data/Time", None)
-        run_end_date = header.get(str, "Run End Date/Time", None)
+        run_end_data = header.get(str, "Run End Data/Time")
+        run_end_date = header.get(str, "Run End Date/Time")
 
         return Header(
             measurement_time=assert_not_none(
@@ -99,14 +99,12 @@ class Header:
             ),
             measurement_method_identifier=header[str, "Quantification Cycle Method"],
             pcr_detection_chemistry=header.get(str, "Chemistry", NOT_APPLICABLE),
-            passive_reference_dye_setting=header.get(str, "Passive Reference", None),
-            barcode=header.get(str, "Barcode", None),
-            analyst=header.get(str, "Operator", None),
-            experimental_data_identifier=header.get(str, "Experiment Name", None),
-            block_serial_number=header.get(str, "Block Serial Number", None),
-            heated_cover_serial_number=header.get(
-                str, "Heated Cover Serial Number", None
-            ),
+            passive_reference_dye_setting=header.get(str, "Passive Reference"),
+            barcode=header.get(str, "Barcode"),
+            analyst=header.get(str, "Operator"),
+            experimental_data_identifier=header.get(str, "Experiment Name"),
+            block_serial_number=header.get(str, "Block Serial Number"),
+            heated_cover_serial_number=header.get(str, "Heated Cover Serial Number"),
             pcr_stage_number=pcr_stage_number,
             software_name=software_info.group(1),
             software_version=software_info.group(2),
@@ -143,7 +141,7 @@ class WellItem(Referenceable):
             msg=f"Unable to find well position for Well '{identifier}'.",
         )
 
-        raw_sample_role_type = data.get(str, "Task", None)
+        raw_sample_role_type = data.get(str, "Task")
         sample_role_type = (
             None
             if raw_sample_role_type is None
@@ -158,9 +156,9 @@ class WellItem(Referenceable):
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=data.get(str, "Sample", well_position),
-            reporter_dye_setting=data.get(str, "Reporter", None),
+            reporter_dye_setting=data.get(str, "Reporter"),
             well_location_identifier=well_position,
-            quencher_dye_setting=data.get(str, "Quencher", None),
+            quencher_dye_setting=data.get(str, "Quencher"),
             sample_role_type=sample_role_type,
             amplification_data=AmplificationData.create(
                 amp_data, identifier, target_dna_description
@@ -509,7 +507,7 @@ class Result:
         experiment_type: ExperimentType,
     ) -> Result:
         genotyping_determination_result = (
-            target_data.get(str, "Call", None)
+            target_data.get(str, "Call")
             if experiment_type
             in (
                 ExperimentType.presence_absence_qPCR_experiment,
@@ -519,7 +517,7 @@ class Result:
         )
 
         genotyping_determination_method_setting = (
-            target_data.get(float, "Threshold", None)
+            target_data.get(float, "Threshold")
             if experiment_type
             in (
                 ExperimentType.presence_absence_qPCR_experiment,
@@ -533,44 +531,44 @@ class Result:
                 target_data.get(float, "Threshold"),
                 msg=f"Unable to find cycle threshold value setting for well {well_item_id}",
             ),
-            cycle_threshold_result=target_data.get(float, "Cq", None),
+            cycle_threshold_result=target_data.get(float, "Cq"),
             automatic_cycle_threshold_enabled_setting=target_data.get(
                 bool, "Auto Threshold", None
             ),
             automatic_baseline_determination_enabled_setting=target_data.get(
                 bool, "Auto Baseline", None
             ),
-            normalized_reporter_result=target_data.get(float, "Rn", None),
-            baseline_corrected_reporter_result=target_data.get(float, "Delta Rn", None),
+            normalized_reporter_result=target_data.get(float, "Rn"),
+            baseline_corrected_reporter_result=target_data.get(float, "Delta Rn"),
             baseline_determination_start_cycle_setting=target_data.get(
-                float, "Baseline Start", None
+                float, "Baseline Start"
             ),
             baseline_determination_end_cycle_setting=target_data.get(
-                float, "Baseline End", None
+                float, "Baseline End"
             ),
             genotyping_determination_result=genotyping_determination_result,
             genotyping_determination_method_setting=genotyping_determination_method_setting,
-            quantity=target_data.get(float, "Quantity", None),
-            quantity_mean=target_data.get(float, "Quantity Mean", None),
-            quantity_sd=target_data.get(float, "Quantity SD", None),
-            ct_mean=target_data.get(float, "Cq Mean", None),
-            eq_ct_mean=target_data.get(float, "EqCq Mean", None),
-            adj_eq_ct_mean=target_data.get(float, "Adjusted EqCq Mean", None),
-            ct_sd=target_data.get(float, "Cq SD", None),
-            ct_se=target_data.get(float, "Cq SE", None),
-            delta_ct_mean=target_data.get(float, "Delta EqCq Mean", None),
-            delta_ct_se=target_data.get(float, "Delta EqCq SE", None),
-            delta_ct_sd=target_data.get(float, "Delta EqCq SD", None),
-            delta_delta_ct=target_data.get(float, "Delta Delta EqCq", None),
-            rq=target_data.get(float, "Rq", None),
-            rq_min=target_data.get(float, "Rq Min", None),
-            rq_max=target_data.get(float, "Rq Max", None),
-            rn_mean=target_data.get(float, "Rn Mean", None),
-            rn_sd=target_data.get(float, "Rn SD", None),
-            y_intercept=target_data.get(float, "Y-Intercept", None),
-            r_squared=target_data.get(float, "R2", None),
-            slope=target_data.get(float, "Slope", None),
-            efficiency=target_data.get(float, "Efficiency", None),
+            quantity=target_data.get(float, "Quantity"),
+            quantity_mean=target_data.get(float, "Quantity Mean"),
+            quantity_sd=target_data.get(float, "Quantity SD"),
+            ct_mean=target_data.get(float, "Cq Mean"),
+            eq_ct_mean=target_data.get(float, "EqCq Mean"),
+            adj_eq_ct_mean=target_data.get(float, "Adjusted EqCq Mean"),
+            ct_sd=target_data.get(float, "Cq SD"),
+            ct_se=target_data.get(float, "Cq SE"),
+            delta_ct_mean=target_data.get(float, "Delta EqCq Mean"),
+            delta_ct_se=target_data.get(float, "Delta EqCq SE"),
+            delta_ct_sd=target_data.get(float, "Delta EqCq SD"),
+            delta_delta_ct=target_data.get(float, "Delta Delta EqCq"),
+            rq=target_data.get(float, "Rq"),
+            rq_min=target_data.get(float, "Rq Min"),
+            rq_max=target_data.get(float, "Rq Max"),
+            rn_mean=target_data.get(float, "Rn Mean"),
+            rn_sd=target_data.get(float, "Rn SD"),
+            y_intercept=target_data.get(float, "Y-Intercept"),
+            r_squared=target_data.get(float, "R2"),
+            slope=target_data.get(float, "Slope"),
+            efficiency=target_data.get(float, "Efficiency"),
         )
 
 
