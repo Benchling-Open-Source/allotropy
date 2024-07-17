@@ -102,12 +102,18 @@ After forking the [`allotropy` repository][allotropy_repo]
 and creating a new branch for our work,
 we make a new parser by running `hatch run scripts:create-parser "example wayland yutani" "09/fluorescence"`
 
-This will create 4 files in that directory:
+This will create 4 files in the directory `src/parsers/example_wayland_yutani`
 
--   `example_weyland_yutani_structure.py` defines the classes that represent the data we pull from our CSV files.
--   `example_weyland_yutani_parser.py` contains code to read CSV file and produce objects of those classes.
--   `constants.py` contains constants specific to these classes.
--   an empty `__init__.py` file identifies this directory as a sub-package to Python.
+- `example_weyland_yutani_structure.py` defines the classes that represent the data we pull from our CSV files.
+- `example_weyland_yutani_parser.py` contains code to read CSV file and produce objects of those classes.
+- `constants.py` contains constants specific to these classes.
+- an empty `__init__.py` file identifies this directory as a sub-package to Python.
+
+It will also create a corresponding test directory: `tests/parsers/example_wayland_yutani`
+
+- `to_allotrope_test.py` is a base test that will automatically run a test case for every file in `testdata`
+- `testdata/` is a directory for example test data
+-  an empty `__init__.py` file identifies this directory as a sub-package to Python.
 
 ## Representing Data
 
@@ -273,6 +279,7 @@ is to copy and modify an existing parser.
 Once our classes and parser are defined,
 we add entries to `src/allotropy/parser_factory.py`
 to make them available to users of the package:
+(NOTE: this will be done automatically if using `hatch run scripts:create-parser`)
 
 1.  Import `ExampleWeylandYutaniParser`.
     We don't need to import the dataclasses it depends on,
@@ -287,26 +294,34 @@ to make them available to users of the package:
 ## Testing
 
 Tests for this new code go in `tests/parsers/example_weyland_yutani/`.
-To write these,
-we create two input CSV files,
-which we put in the `testdata` directory below our tests directory.
-We then use the script `csv-as-json`
-to convert these CSV files to JSON,
-inspect the JSON to make sure it's correct,
-and save it in the same `testdata` directory:
+To write these, we create two input CSV files, which we put in the `testdata` directory below our tests directory.
+
+The `ParserTest` test included in the generated `to_allotrope_test.py` discovers every file in `testdata` and
+tests against if by:
+
+1. Calling the parser specified by VENDOR on the file
+2. Comparing the output against expected output, contained in a file with the same name but a `json` extension.
+
+We can automatically generate the expected output by running `to_allotrope_test.py` without the corresponding
+expected output file:
 
 ```
-hatch run scripts:csv-as-json --infile tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.csv --vendor EXAMPLE_WEYLAND_YUTANI --outfile tests/parsers/example_weyland_yutani/testdata/Weyland_Yutani_simple_correct.json
+hatch run test tests/parsers/example_weyland_yutani/to_allotrope_test.py
 ```
 
-Our tests then compare the generated JSON against the saved files.
+The test will detect the missing expected output file and create it (if the parser runs successfully!)
+
+It is important to then inspect the output JSON to make sure it's correct.
+
+Once created, the runs of the test in the future will compare the output of the parser against the expected
+output file.
 
 If we make changes to our parser, we may need to update the results of the test file.
-We can do this via the script above, but we can also set `write_actual_to_expected_on_fail=True`
-in the test function `validate_contents` to overwrite the contents of the file.
+We can do this by setting `OVERWRITE_ON_FAILURE = True` in the parser and running the test again.
+The test will fail if the contents do not match, but it will then update the contents of the expected
+output file, and will pass on further runs (be sure to remove `OVERWRITE_ON_FAILURE` when done!)
 
-More complex parsers may require tests against helper methods,
-and will probably have many more input-output pairs to check.
+More complex parsers may require tests against helper methods, and will probably have many more input-output pairs to check.
 
 ## Exercises
 
