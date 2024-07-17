@@ -77,12 +77,11 @@ class CalculatedPlateInfo(PlateInfo):
     @staticmethod
     def create(series: SeriesData) -> CalculatedPlateInfo:
         plate_number = series[str, "Plate"]
-
-        formula = series.get(
-            str,
-            "Formula",
+        formula = assert_not_none(
+            series.get(str, "Formula"),
             msg="Unable to find expected formula for calculated results section.",
         )
+
         name = assert_not_none(
             search(r"^([^=]*)=", formula),
             msg="Unable to find expected formula name for calculated results section.",
@@ -367,14 +366,11 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until_inclusive("^Plate type")
-        data = assert_not_none(
-            reader.pop_csv_block_as_df(),
-            "Plate type",
+        data = SeriesData(
+            df_to_series(assert_not_none(reader.pop_csv_block_as_df(), "Plate type").T)
         )
         return PlateType(
-            number_of_wells=SeriesData(df_to_series(data.T)).get(
-                float, "Number of the wells in the plate"
-            ),
+            number_of_wells=data[float, "Number of the wells in the plate"]
         )
 
 

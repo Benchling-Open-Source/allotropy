@@ -135,15 +135,18 @@ class WellItem(Referenceable):
     @staticmethod
     def create_genotyping(data: SeriesData) -> tuple[WellItem, WellItem]:
         identifier = data[int, "Well"]
-        snp_name = data.get(
-            str, "SNP Assay Name", msg=f"Unable to find snp name for well {identifier}"
+        snp_name = assert_not_none(
+            data.get(str, "SNP Assay Name"),
+            msg=f"Unable to find snp name for well {identifier}",
         )
-        sample_identifier = data.get(str, "Sample Name", default=NOT_APPLICABLE)
-        allele1 = data.get(
-            str, "Allele1 Name", msg=f"Unable to find allele 1 for well {identifier}"
+        sample_identifier = data.get(str, "Sample Name", NOT_APPLICABLE)
+        allele1 = assert_not_none(
+            data.get(str, "Allele1 Name"),
+            msg=f"Unable to find allele 1 for well {identifier}",
         )
-        allele2 = data.get(
-            str, "Allele2 Name", msg=f"Unable to find allele 2 for well {identifier}"
+        allele2 = assert_not_none(
+            data.get(str, "Allele2 Name"),
+            msg=f"Unable to find allele 2 for well {identifier}",
         )
 
         return (
@@ -153,7 +156,7 @@ class WellItem(Referenceable):
                 target_dna_description=f"{snp_name}-{allele1}",
                 sample_identifier=sample_identifier,
                 reporter_dye_setting=data.get(str, "Allele1 Reporter", None),
-                position=data.get(str, "Well Position", default=NOT_APPLICABLE),
+                position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position", None),
                 quencher_dye_setting=data.get(str, "Quencher", None),
                 sample_role_type=data.get(str, "Task", None),
@@ -164,7 +167,7 @@ class WellItem(Referenceable):
                 target_dna_description=f"{snp_name}-{allele2}",
                 sample_identifier=sample_identifier,
                 reporter_dye_setting=data.get(str, "Allele2 Reporter", None),
-                position=data.get(str, "Well Position", default=NOT_APPLICABLE),
+                position=data.get(str, "Well Position", NOT_APPLICABLE),
                 well_location_identifier=data.get(str, "Well Position", None),
                 quencher_dye_setting=data.get(str, "Quencher", None),
                 sample_role_type=data.get(str, "Task", None),
@@ -175,17 +178,12 @@ class WellItem(Referenceable):
     def create_generic(data: SeriesData) -> WellItem:
         identifier = data[int, "Well"]
 
-        target_dna_description = data.get(
-            str,
-            "Target Name",
+        target_dna_description = assert_not_none(
+            data.get(str, "Target Name"),
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
-        sample_identifier = data.get(
-            str,
-            "Sample Name",
-            default=NOT_APPLICABLE,
-        )
+        sample_identifier = data.get(str, "Sample Name", NOT_APPLICABLE)
 
         return WellItem(
             uuid=random_uuid_str(),
@@ -193,7 +191,7 @@ class WellItem(Referenceable):
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
             reporter_dye_setting=data.get(str, "Reporter", None),
-            position=data.get(str, "Well Position", default=NOT_APPLICABLE),
+            position=data.get(str, "Well Position", NOT_APPLICABLE),
             well_location_identifier=data.get(str, "Well Position", None),
             quencher_dye_setting=data.get(str, "Quencher", None),
             sample_role_type=data.get(str, "Task", None),
@@ -460,9 +458,8 @@ class Result:
 
         _, raw_allele = well_item.target_dna_description.split("-")
         allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = data.get(
-            float,
-            f"{allele} Ct Threshold",
+        cycle_threshold_value_setting = assert_not_none(
+            data.get(float, f"{allele} Ct Threshold"),
             msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
@@ -528,9 +525,8 @@ class Result:
         )
 
         return Result(
-            cycle_threshold_value_setting=data.get(
-                float,
-                "Ct Threshold",
+            cycle_threshold_value_setting=assert_not_none(
+                data.get(float, "Ct Threshold"),
                 msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
             ),
             cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),

@@ -141,7 +141,7 @@ class QiacuitydPCRParser(VendorParser):
         measurement_id = random_uuid_str()
         # There is no measurement time in the file, so assign to unix epoch
         measurement_time = EPOCH
-        target_dna_description = well_item.get(str, TARGET_COLUMN_NAME)
+        target_dna_description = well_item[str, TARGET_COLUMN_NAME]
         total_partition_count = TQuantityValueNumber(
             value=well_item[int, PARTITIONS_COLUMN_NAME]
         )
@@ -156,9 +156,9 @@ class QiacuitydPCRParser(VendorParser):
         )
 
     def _get_sample_document(self, well_item: SeriesData) -> SampleDocument:
-        sample_identifier = well_item.get(str, SAMPLE_IDENTIFIER_COLUMN_NAME)
-
-        sample_document = SampleDocument(sample_identifier=sample_identifier)
+        sample_document = SampleDocument(
+            sample_identifier=well_item[str, SAMPLE_IDENTIFIER_COLUMN_NAME]
+        )
 
         sample_role_type = well_item.get(str, SAMPLE_TYPE_COLUMN_NAME, None)
         # TODO: When the sample role type model is updated in this repo, we should update this

@@ -130,11 +130,7 @@ class GroupSampleData:
             data_elements=[
                 GroupDataElement(
                     sample=identifier,
-                    position=row.get(
-                        str,
-                        ["Well", "Wells"],
-                        msg="Unable to find well position in group data.",
-                    ),
+                    position=row[str, ["Well", "Wells"]],
                     plate=row[str, "WellPlateName"],
                     entries=[
                         GroupDataElementEntry(

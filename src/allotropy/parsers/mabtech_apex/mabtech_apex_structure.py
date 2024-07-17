@@ -28,7 +28,7 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]+) ([0-9]+)",
-            contents.plate_info.get(str, key="Machine ID:"),
+            contents.plate_info[str, "Machine ID:"],
         ),
         msg="Unable to interpret Machine ID",
     )

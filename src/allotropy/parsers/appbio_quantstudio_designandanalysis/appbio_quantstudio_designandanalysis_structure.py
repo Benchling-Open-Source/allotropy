@@ -97,9 +97,7 @@ class Header:
             device_serial_number=header.get(
                 str, "Instrument Serial Number", NOT_APPLICABLE
             ),
-            measurement_method_identifier=header.get(
-                str, "Quantification Cycle Method"
-            ),
+            measurement_method_identifier=header[str, "Quantification Cycle Method"],
             pcr_detection_chemistry=header.get(str, "Chemistry", NOT_APPLICABLE),
             passive_reference_dye_setting=header.get(str, "Passive Reference", None),
             barcode=header.get(str, "Barcode", None),
@@ -136,19 +134,14 @@ class WellItem(Referenceable):
     ) -> WellItem:
         identifier = data[int, "Well"]
 
-        target_dna_description = data.get(
-            str,
-            "Target",
+        target_dna_description = assert_not_none(
+            data.get(str, "Target"),
             msg=f"Unable to find target dna description for well {identifier}",
         )
-
-        well_position = data.get(
-            str,
-            "Well Position",
+        well_position = assert_not_none(
+            data.get(str, "Well Position"),
             msg=f"Unable to find well position for Well '{identifier}'.",
         )
-
-        sample_identifier = data.get(str, "Sample", well_position)
 
         raw_sample_role_type = data.get(str, "Task", None)
         sample_role_type = (
@@ -164,7 +157,7 @@ class WellItem(Referenceable):
             uuid=random_uuid_str(),
             identifier=identifier,
             target_dna_description=target_dna_description,
-            sample_identifier=sample_identifier,
+            sample_identifier=data.get(str, "Sample", well_position),
             reporter_dye_setting=data.get(str, "Reporter", None),
             well_location_identifier=well_position,
             quencher_dye_setting=data.get(str, "Quencher", None),
@@ -190,9 +183,8 @@ class Well:
     multicomponent_data: MulticomponentData | None = None
 
     def get_well_item(self, target: str) -> WellItem:
-        well_item = self.items.get(target)
         return assert_not_none(
-            well_item,
+            self.items.get(target),
             msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
         )
 
@@ -537,9 +529,8 @@ class Result:
         )
 
         return Result(
-            cycle_threshold_value_setting=target_data.get(
-                float,
-                "Threshold",
+            cycle_threshold_value_setting=assert_not_none(
+                target_data.get(float, "Threshold"),
                 msg=f"Unable to find cycle threshold value setting for well {well_item_id}",
             ),
             cycle_threshold_result=target_data.get(float, "Cq", None),

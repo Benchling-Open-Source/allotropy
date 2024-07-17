@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Iterable
-from enum import Enum
 import re
-from typing import Any, overload, TypeVar
+from typing import Any, Literal, overload, TypeVar
 
 import pandas as pd
 
@@ -16,13 +15,6 @@ from allotropy.parsers.utils.values import (
     try_float_or_nan,
     try_non_nan_float_or_none,
 )
-
-
-class Unset(Enum):
-    UNSET = "UNSET"
-
-
-UNSET = Unset.UNSET
 
 
 def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
@@ -67,35 +59,30 @@ class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
-    def __getitem__(self, pos: tuple[Callable[..., T], str]) -> T:
-        return self.get(pos[0], pos[1])
-
-    @overload
-    def get(
-        self,
-        type_: Callable[..., T],
-        key: Iterable[str],
-        default: str | Unset = UNSET,
-        msg: str | None = None,
+    def __getitem__(
+        self, type_and_key: tuple[Callable[..., T], str | Iterable[str]]
     ) -> T:
-        pass
+        type_, key = type_and_key
+        return assert_not_none(self.get(type_, key), str(key))
 
     @overload
     def get(
         self,
         type_: Callable[..., T],
         key: Iterable[str],
-        default: None = None,
-        msg: str | None = None,
+        default: Literal[None] = None,
     ) -> T | None:
-        pass
+        ...
+
+    @overload
+    def get(self, type_: Callable[..., T], key: Iterable[str], default: T) -> T:
+        ...
 
     def get(
         self,
         type_: Callable[..., T],
         key: Iterable[str],
-        default: T | None | Unset = UNSET,
-        msg: str | None = None,
+        default: T | None = None,
     ) -> T | None:
         # Get value from series, if series is an iterable get the first non-null value
         raw_value = (
@@ -110,9 +97,6 @@ class SeriesData:
             value = None if raw_value is None else type_(raw_value)
         except ValueError:
             value = None
-        # If no default is provided, assert we got a value
-        if default is UNSET:
-            return assert_not_none(value, str(key), msg)
         return default if value is None else value
 
     # TODO(nstender): I can't figure out how to integrate these yet, leaving as "try_..."
