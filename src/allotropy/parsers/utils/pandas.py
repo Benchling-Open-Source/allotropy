@@ -12,6 +12,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_not_none,
+    str_to_bool,
     try_float_or_nan,
     try_non_nan_float_or_none,
 )
@@ -102,19 +103,7 @@ class SeriesData:
         try:
             # bool needs special handling to convert
             if type_ is bool:
-                raw_value = (
-                    "true"
-                    if str(raw_value).lower()
-                    in (
-                        "true",
-                        "yes",
-                        "y",
-                        "true",
-                        "t",
-                        "1",
-                    )
-                    else ""
-                )
+                raw_value = "true" if str_to_bool(raw_value) else ""
             value = type_(raw_value)
         except ValueError:
             value = None
