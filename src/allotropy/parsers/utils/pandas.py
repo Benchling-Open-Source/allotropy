@@ -62,9 +62,11 @@ class SeriesData:
     def __getitem__(
         self, type_and_key: tuple[Callable[..., T], str | Iterable[str]]
     ) -> T:
+        # Implements index operator
         type_, key = type_and_key
         return assert_not_none(self.get(type_, key), str(key))
 
+    # This overload tells typing that if default is "None" then get might return None
     @overload
     def get(
         self,
@@ -74,6 +76,7 @@ class SeriesData:
     ) -> T | None:
         ...
 
+    # This overload tells typing that if default matches T, get will return T
     @overload
     def get(self, type_: Callable[..., T], key: Iterable[str], default: T) -> T:
         ...
