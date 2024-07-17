@@ -166,30 +166,30 @@ class BackgroundInfoList:
         if title is None:
             return None
 
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(header=0),
             "background information",
         )
 
-        series_data = [SeriesData(series) for _, series in data.iterrows()]
+        row_data = [SeriesData(series) for _, series in data_frame.iterrows()]
 
         return BackgroundInfoList(
             background_info=[
                 BackgroundInfo(
                     plate_num=assert_not_none(
-                        series.get(str, "Plate"),
+                        data.get(str, "Plate"),
                         msg="Unable to find plate number from background info.",
                     ),
                     label=assert_not_none(
-                        series.get(str, "Label"),
+                        data.get(str, "Label"),
                         msg="Unable to find label from background info.",
                     ),
                     measinfo=assert_not_none(
-                        series.get(str, "MeasInfo"),
+                        data.get(str, "MeasInfo"),
                         msg="Unable to find meas info from background info.",
                     ),
                 )
-                for series in series_data
+                for data in row_data
             ]
         )
 
@@ -211,12 +211,14 @@ class CalculatedResultList:
         # Calculated results may or may not have a title
         reader.pop_if_match("^Calculated results")
 
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "results data",
         )
         series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+            data_frame.drop(0, axis=0).drop(0, axis=1)
+            if data_frame.iloc[1, 0] == "A"
+            else data_frame
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -252,12 +254,14 @@ class ResultList:
         # Results may or may not have a title
         reader.pop_if_match("^Results")
 
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "reader data",
         )
         series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+            data_frame.drop(0, axis=0).drop(0, axis=1)
+            if data_frame.iloc[1, 0] == "A"
+            else data_frame
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -346,17 +350,13 @@ class BasicAssayInfo:
     @staticmethod
     def create(reader: CsvReader) -> BasicAssayInfo:
         reader.drop_until_inclusive("^Basic assay information")
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "Basic assay information",
-        )
-        data = data.T
-        data.iloc[0] = data.iloc[0].replace(":.*", "", regex=True)
-        series = SeriesData(df_to_series(data))
-        return BasicAssayInfo(
-            series.get(str, "Protocol ID"),
-            series.get(str, "Assay ID"),
-        )
+        ).T
+        data_frame.iloc[0] = data_frame.iloc[0].replace(":.*", "", regex=True)
+        data = SeriesData(df_to_series(data_frame))
+        return BasicAssayInfo(data.get(str, "Protocol ID"), data.get(str, "Assay ID"))
 
 
 @dataclass(frozen=True)
@@ -366,9 +366,8 @@ class PlateType:
     @staticmethod
     def create(reader: CsvReader) -> PlateType:
         reader.drop_until_inclusive("^Plate type")
-        data = SeriesData(
-            df_to_series(assert_not_none(reader.pop_csv_block_as_df(), "Plate type").T)
-        )
+        data_frame = assert_not_none(reader.pop_csv_block_as_df(), "Plate type").T
+        data = SeriesData(df_to_series(data_frame))
         return PlateType(
             number_of_wells=data[float, "Number of the wells in the plate"]
         )
@@ -421,7 +420,7 @@ class PlateMap:
         *_, plate_n = assert_not_none(reader.pop(), "Platemap number").split(",")
         *_, group_n = assert_not_none(reader.pop(), "Platemap group").split(",")
 
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "Platemap data",
         ).replace(" ", "", regex=True)
@@ -430,7 +429,9 @@ class PlateMap:
         reader.drop_empty()
 
         series = (
-            data.drop(0, axis=0).drop(0, axis=1) if data.iloc[1, 0] == "A" else data
+            data_frame.drop(0, axis=0).drop(0, axis=1)
+            if data_frame.iloc[1, 0] == "A"
+            else data_frame
         )
         rows, cols = series.shape
         series.index = [num_to_chars(i) for i in range(rows)]  # type: ignore[assignment]
@@ -485,13 +486,13 @@ class Filter:
         ):
             return None
 
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "Filter information",
         )
-        series = SeriesData(df_to_series(data.T))
-        name = str(series.series.index[0])
-        description = series[str, "Description"]
+        data = SeriesData(df_to_series(data_frame.T))
+        name = str(data.series.index[0])
+        description = data[str, "Description"]
 
         if search_result := search("Longpass=(\\d+)nm", description):
             return Filter(name, wavelength=float(search_result.group(1)))
@@ -538,11 +539,11 @@ class Labels:
     @staticmethod
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
-        data = assert_not_none(
+        data_frame = assert_not_none(
             reader.pop_csv_block_as_df(),
             "Labels",
         )
-        series = SeriesData(df_to_series(data.T).replace(np.nan, None))
+        data = SeriesData(df_to_series(data_frame.T).replace(np.nan, None))
         filters = create_filters(reader)
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,
@@ -550,21 +551,19 @@ class Labels:
         }
 
         return Labels(
-            label=series.series.index[0],
-            excitation_filter=filters.get(
-                series.get(str, "Exc. filter", NOT_APPLICABLE)
-            ),
+            label=data.series.index[0],
+            excitation_filter=filters.get(data.get(str, "Exc. filter", NOT_APPLICABLE)),
             emission_filters={
                 "1st": filters.get(
-                    series.get(str, "Ems. filter", NOT_APPLICABLE),
+                    data.get(str, "Ems. filter", NOT_APPLICABLE),
                 ),
-                "2nd": filters.get(series.get(str, "2nd ems. filter", NOT_APPLICABLE)),
+                "2nd": filters.get(data.get(str, "2nd ems. filter", NOT_APPLICABLE)),
             },
             scan_position_setting=filter_position_map.get(
-                series.get(str, "Using of emission filter", NOT_APPLICABLE)
+                data.get(str, "Using of emission filter", NOT_APPLICABLE)
             ),
-            number_of_flashes=series.get(float, "Number of flashes"),
-            detector_gain_setting=series.get(str, "Reference AD gain"),
+            number_of_flashes=data.get(float, "Number of flashes"),
+            detector_gain_setting=data.get(str, "Reference AD gain"),
         )
 
     def get_emission_filter(self, id_val: str) -> Filter | None:

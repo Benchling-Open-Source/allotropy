@@ -473,10 +473,10 @@ class Result:
             cycle_threshold_value_setting=cycle_threshold_value_setting,
             cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
             automatic_cycle_threshold_enabled_setting=data.get(
-                bool, f"{allele} Automatic Ct Threshold", None
+                bool, f"{allele} Automatic Ct Threshold"
             ),
             automatic_baseline_determination_enabled_setting=data.get(
-                bool, f"{allele} Automatic Baseline", None
+                bool, f"{allele} Automatic Baseline"
             ),
             normalized_reporter_result=data.get(float, "Rn"),
             baseline_corrected_reporter_result=data.get(float, f"{allele} Delta Rn"),
@@ -528,10 +528,10 @@ class Result:
             ),
             cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
             automatic_cycle_threshold_enabled_setting=data.get(
-                bool, "Automatic Ct Threshold", None
+                bool, "Automatic Ct Threshold"
             ),
             automatic_baseline_determination_enabled_setting=data.get(
-                bool, "Automatic Baseline", None
+                bool, "Automatic Baseline"
             ),
             normalized_reporter_result=data.get(float, "Rn"),
             baseline_corrected_reporter_result=data.get(float, "Delta Rn"),
