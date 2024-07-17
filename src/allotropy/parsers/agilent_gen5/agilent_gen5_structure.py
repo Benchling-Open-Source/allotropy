@@ -93,18 +93,18 @@ class HeaderData:
         data = df_to_series_data(df, "Failed to parser header data")
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
-        date = data.try_str_or_none("Date")
-        time = data.try_str_or_none("Time")
+        date = data.get(str, "Date", None)
+        time = data.get(str, "Time", None)
         return HeaderData(
-            software_version=data.try_str("Software Version"),
-            experiment_file_path=data.try_str_or_none("Experiment File Path:"),
+            software_version=data.get(str, "Software Version"),
+            experiment_file_path=data.get(str, "Experiment File Path:", None),
             file_name=file_name,
-            protocol_file_path=data.try_str_or_none("Protocol File Path:"),
+            protocol_file_path=data.get(str, "Protocol File Path:", None),
             datetime=f"{date} {time}" if date and time else None,
             well_plate_identifier=plate_identifier
-            or data.try_str_or_none("Plate Number"),
-            model_number=data.try_str_or_none("Reader Type:"),
-            equipment_serial_number=data.try_str_or_none("Reader Serial Number:"),
+            or data.get(str, "Plate Number", None),
+            model_number=data.get(str, "Reader Type:", None),
+            equipment_serial_number=data.get(str, "Reader Serial Number:", None),
         )
 
 

@@ -42,9 +42,9 @@ def _create_measurement(
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength_column[1:]),
         absorbance=well_plate_data.try_float_or_nan(wavelength_column),
-        sample_identifier=well_plate_data.try_str("Sample name"),
-        location_identifier=well_plate_data.try_str("Plate Position"),
-        well_plate_identifier=well_plate_data.try_str_or_none("Plate ID"),
+        sample_identifier=well_plate_data.get(str, "Sample name"),
+        location_identifier=well_plate_data.get(str, "Plate Position"),
+        well_plate_identifier=well_plate_data.get(str, "Plate ID", None),
         calculated_data=_get_calculated_data(
             well_plate_data, wavelength_column, measurement_identifier
         ),
@@ -58,7 +58,7 @@ def _get_calculated_data(
 ) -> list[CalculatedDataItem]:
     calculated_data = []
     for item in CALCULATED_DATA_LOOKUP.get(wavelength_column, []):
-        value = well_plate_data.try_float_or_none(item["column"])
+        value = well_plate_data.get(float, item["column"], None)
         if value is None:
             continue
 
@@ -83,15 +83,15 @@ def _create_measurement_group(
     series: pd.Series[Any], wavelength_columns: list[str]
 ) -> MeasurementGroup:
     plate_data = SeriesData(series)
-    date = plate_data.try_str_or_none("Date")
-    time = plate_data.try_str_or_none("Time")
+    date = plate_data.get(str, "Date", None)
+    time = plate_data.get(str, "Time", None)
 
     if not date or not time:
         raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
 
     return MeasurementGroup(
         _measurement_time=f"{date} {time}",
-        analytical_method_identifier=plate_data.try_str_or_none("Application"),
+        analytical_method_identifier=plate_data.get(str, "Application", None),
         plate_well_count=96,
         measurements=[
             _create_measurement(plate_data, wavelength_column)
@@ -105,7 +105,7 @@ def _create_metadata(data: pd.DataFrame, file_name: str) -> Metadata:
         device_type="plate reader",
         model_number="Lunatic",
         product_manufacturer="Unchained Labs",
-        device_identifier=SeriesData(data.iloc[0]).try_str("Instrument ID"),
+        device_identifier=SeriesData(data.iloc[0]).get(str, "Instrument ID"),
         software_name="Lunatic and Stunner Analysis",
         file_name=file_name,
     )

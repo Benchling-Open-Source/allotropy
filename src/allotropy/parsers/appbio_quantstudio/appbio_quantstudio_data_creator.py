@@ -50,10 +50,10 @@ def create_data(reader: LinesReader) -> Data:
             )
 
     endogenous_control = (
-        results_metadata.try_str_or_none("Endogenous Control") or NOT_APPLICABLE
+        results_metadata.get(str, "Endogenous Control", None) or NOT_APPLICABLE
     )
     reference_sample = (
-        results_metadata.try_str_or_none("Reference Sample") or NOT_APPLICABLE
+        results_metadata.get(str, "Reference Sample", None) or NOT_APPLICABLE
     )
 
     return Data(

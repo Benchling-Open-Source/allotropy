@@ -69,14 +69,14 @@ class Group:
     @staticmethod
     def create(series: pd.Series[str]) -> Group:
         data = SeriesData(series)
-        well_identifier = data.try_str_or_none("Well")
+        well_identifier = data.get(str, "Well", None)
         aggregation_type = AGGREGATION_LOOKUP[well_identifier]
 
         calculated_data_items = [
             CalculatedItem(
                 random_uuid_str(),
                 reference.name,
-                data.try_float(reference.column),
+                data.get(float, reference.column),
                 reference.unit,
                 reference.source,
                 reference.source_features,
@@ -89,8 +89,8 @@ class Group:
         }
         return Group(
             well_identifier=well_identifier,
-            group_identifier=data.try_str("Group"),
-            target_identifier=data.try_str("Target"),
+            group_identifier=data.get(str, "Group"),
+            target_identifier=data.get(str, "Target"),
             calculated_data=calculated_data_items,
             calculated_data_ids=calculated_data_ids,
         )
@@ -125,19 +125,19 @@ class WellItem:
     def create(series: pd.Series[str]) -> WellItem:
         data = SeriesData(series)
         return WellItem(
-            name=data.try_str("Name"),
+            name=data.get(str, "Name"),
             measurement_identifier=random_uuid_str(),
-            well_identifier=data.try_str("Well"),
-            plate_identifier=data.try_str("Plate"),
-            group_identifier=data.try_str("Group"),
-            target_identifier=data.try_str("Target"),
-            run_identifier=data.try_str("Run"),
-            instrument_identifier=data.try_str("Instrument"),
-            timestamp=data.try_str("Date"),
-            total_partition_count=round(data.try_float("Total")),
-            reporter_dye_setting=data.try_str("Dye"),
-            concentration=data.try_float("Conc. cp/uL"),
-            positive_partition_count=round(data.try_float("Positives")),
+            well_identifier=data.get(str, "Well"),
+            plate_identifier=data.get(str, "Plate"),
+            group_identifier=data.get(str, "Group"),
+            target_identifier=data.get(str, "Target"),
+            run_identifier=data.get(str, "Run"),
+            instrument_identifier=data.get(str, "Instrument"),
+            timestamp=data.get(str, "Date"),
+            total_partition_count=round(data.get(float, "Total")),
+            reporter_dye_setting=data.get(str, "Dye"),
+            concentration=data.get(float, "Conc. cp/uL"),
+            positive_partition_count=round(data.get(float, "Positives")),
         )
 
 

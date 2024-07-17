@@ -34,7 +34,7 @@ class Row:
     @staticmethod
     def create(series: pd.Series[str]) -> Row:
         data = SeriesData(series)
-        emission_wavelength = data.try_str_or_default("Emission", "").lower()
+        emission_wavelength = data.get(str, "Emission", "").lower()
         options = {
             "green": "Green RFU",
             "far red": "Far Red RFU",
@@ -44,21 +44,21 @@ class Row:
             raise AllotropeConversionError(message)
 
         return Row(
-            timestamp=data.try_str("Test Date"),
-            assay_name=data.try_str_or_none("Assay Name"),
-            fluorescence=data.try_float(options[emission_wavelength]),
-            batch_identifier=data.try_str_or_none("Run ID"),
-            sample_identifier=data.try_str("Test Name"),
+            timestamp=data.get(str, "Test Date"),
+            assay_name=data.get(str, "Assay Name", None),
+            fluorescence=data.get(float, options[emission_wavelength]),
+            batch_identifier=data.get(str, "Run ID", None),
+            sample_identifier=data.get(str, "Test Name"),
             sample_volume=data.try_non_nan_float_or_none("Sample Volume (µL)"),
-            excitation=data.try_str_or_none("Excitation"),
-            emission=data.try_str("Emission"),
+            excitation=data.get(str, "Excitation", None),
+            emission=data.get(str, "Emission"),
             dilution_factor=data.try_non_nan_float_or_none("Dilution Factor"),
             original_sample_concentration=data.try_float_or_nan(
                 "Original sample conc."
             ),
-            original_sample_unit=data.try_str_or_none("Units_Original sample conc."),
+            original_sample_unit=data.get(str, "Units_Original sample conc.", None),
             qubit_tube_concentration=data.try_float_or_nan("Qubit® tube conc."),
-            qubit_tube_unit=data.try_str_or_none("Units_Qubit® tube conc."),
+            qubit_tube_unit=data.get(str, "Units_Qubit® tube conc.", None),
             std_1_rfu=data.try_non_nan_float_or_none("Std 1 RFU"),
             std_2_rfu=data.try_non_nan_float_or_none("Std 2 RFU"),
             std_3_rfu=data.try_non_nan_float_or_none("Std 3 RFU"),

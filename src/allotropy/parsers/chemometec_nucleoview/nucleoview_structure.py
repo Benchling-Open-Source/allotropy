@@ -35,15 +35,14 @@ class Row:
         if "Total (cells/ml)" not in data.series.index:
             return None
         return Row(
-            model_number=data.try_str_or_none("Instrument type")
-            or DEFAULT_MODEL_NUMBER,
-            equipment_serial_number=data.try_str_or_none("Instrument s/n"),
-            software_version=data.try_str_or_none("Application SW version"),
-            analyst=data.try_str_or_none("Operator") or DEFAULT_ANALYST,
-            timestamp=data.try_str_or_none("datetime") or DEFAULT_EPOCH_TIMESTAMP,
-            sample_identifier=data.try_str("Sample ID"),
-            multiplication_factor=data.try_float_or_none("Multiplication factor"),
-            viability_percent=data.try_float("Viability (%)"),
+            model_number=data.get(str, "Instrument type", None) or DEFAULT_MODEL_NUMBER,
+            equipment_serial_number=data.get(str, "Instrument s/n", None),
+            software_version=data.get(str, "Application SW version", None),
+            analyst=data.get(str, "Operator", None) or DEFAULT_ANALYST,
+            timestamp=data.get(str, "datetime", None) or DEFAULT_EPOCH_TIMESTAMP,
+            sample_identifier=data.get(str, "Sample ID"),
+            multiplication_factor=data.get(float, "Multiplication factor", None),
+            viability_percent=data.get(float, "Viability (%)"),
             # Cell counts are measured in cells/mL, but reported in millions of cells/mL
             live_cell_count=data.try_float_or_nan("Live (cells/ml)") / 1e6,
             dead_cell_count=data.try_float_or_nan("Dead (cells/ml)") / 1e6,

@@ -28,11 +28,11 @@ from allotropy.parsers.utils.values import assert_not_none
 
 def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
     data = SeriesData(series)
-    total_cell_count = data.try_float_or_none("Total cells")
+    total_cell_count = data.get(float, "Total cells", None)
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
     )
-    viable_cell_count = data.try_float_or_none("Viable cells")
+    viable_cell_count = data.get(float, "Viable cells", None)
     viable_cell_count = (
         viable_cell_count if viable_cell_count is None else round(viable_cell_count)
     )
@@ -41,19 +41,19 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                timestamp=data.try_str("Sample date"),
-                sample_identifier=data.try_str("Sample ID"),
-                cell_type_processing_method=data.try_str_or_none("Cell type"),
-                cell_density_dilution_factor=data.try_float_or_none("Dilution factor"),
-                viability=data.try_float("Viability (%)"),
-                viable_cell_density=data.try_float("Viable cells/ml (x10^6)"),
+                timestamp=data.get(str, "Sample date"),
+                sample_identifier=data.get(str, "Sample ID"),
+                cell_type_processing_method=data.get(str, "Cell type", None),
+                cell_density_dilution_factor=data.get(float, "Dilution factor", None),
+                viability=data.get(float, "Viability (%)"),
+                viable_cell_density=data.get(float, "Viable cells/ml (x10^6)"),
                 total_cell_count=total_cell_count,
-                total_cell_density=data.try_float_or_none("Total cells/ml (x10^6)"),
-                average_total_cell_diameter=data.try_float_or_none(
-                    "Avg. diam. (microns)"
+                total_cell_density=data.get(float, "Total cells/ml (x10^6)", None),
+                average_total_cell_diameter=data.get(
+                    float, "Avg. diam. (microns)", None
                 ),
                 viable_cell_count=viable_cell_count,
-                average_total_cell_circularity=data.try_float_or_none("Avg. circ."),
+                average_total_cell_circularity=data.get(float, "Avg. circ.", None),
                 analyst=DEFAULT_ANALYST,
             )
         ]
@@ -69,7 +69,7 @@ def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
 
 
 def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
-    serial_number_str = reader.file_info.try_str("serial")
+    serial_number_str = reader.file_info.get(str, "serial")
     try:
         serial_number = serial_number_str[serial_number_str.rindex(":") + 1 :].strip()
     except ValueError:
@@ -77,7 +77,7 @@ def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
 
     match = re.match(
         MODEL_RE,
-        reader.file_info.try_str("model"),
+        reader.file_info.get(str, "model"),
         flags=re.IGNORECASE,
     )
     try:

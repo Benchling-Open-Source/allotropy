@@ -28,7 +28,7 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]+) ([0-9]+)",
-            contents.plate_info.try_str(key="Machine ID:"),
+            contents.plate_info.get(str, key="Machine ID:"),
         ),
         msg="Unable to interpret Machine ID",
     )
@@ -38,28 +38,28 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
         device_type="imager",
         detection_type="optical-imaging",
         software_name="Apex",
-        unc_path=contents.plate_info.try_str_or_none(key="Path:"),
-        software_version=contents.plate_info.try_str_or_none(key="Software Version:"),
+        unc_path=contents.plate_info.get(str, "Path:", None),
+        software_version=contents.plate_info.get(str, "Software Version:", None),
         model_number=machine_id.group(1),
         equipment_serial_number=machine_id.group(2),
         file_name=file_name,
-        analyst=contents.plate_info.try_str_or_none(key="Saved By:"),
+        analyst=contents.plate_info.get(str, "Saved By:", None),
     )
 
 
 def _create_measurement(plate_data: SeriesData) -> Measurement:
-    location_id = plate_data.try_str("Well")
-    well_plate = plate_data.try_str_or_none("Plate")
+    location_id = plate_data.get(str, "Well")
+    well_plate = plate_data.get(str, "Plate", None)
 
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
-        measurement_time=plate_data.try_str("Read Date"),
+        measurement_time=plate_data.get(str, "Read Date"),
         location_identifier=location_id,
         well_plate_identifier=well_plate,
         sample_identifier=f"{well_plate}_{location_id}",
-        exposure_duration_setting=plate_data.try_float_or_none("Exposure"),
-        illumination_setting=plate_data.try_float_or_none("Preset Intensity"),
+        exposure_duration_setting=plate_data.get(float, "Exposure", None),
+        illumination_setting=plate_data.get(float, "Preset Intensity", None),
         processed_data=ProcessedData(
             identifier=random_uuid_str(),
             features=[

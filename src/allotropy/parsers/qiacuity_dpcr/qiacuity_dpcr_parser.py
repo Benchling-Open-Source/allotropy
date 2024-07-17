@@ -141,9 +141,9 @@ class QiacuitydPCRParser(VendorParser):
         measurement_id = random_uuid_str()
         # There is no measurement time in the file, so assign to unix epoch
         measurement_time = EPOCH
-        target_dna_description = well_item.try_str(TARGET_COLUMN_NAME)
+        target_dna_description = well_item.get(str, TARGET_COLUMN_NAME)
         total_partition_count = TQuantityValueNumber(
-            value=well_item.try_int(PARTITIONS_COLUMN_NAME)
+            value=well_item.get(int, PARTITIONS_COLUMN_NAME)
         )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
@@ -156,11 +156,11 @@ class QiacuitydPCRParser(VendorParser):
         )
 
     def _get_sample_document(self, well_item: SeriesData) -> SampleDocument:
-        sample_identifier = well_item.try_str(SAMPLE_IDENTIFIER_COLUMN_NAME)
+        sample_identifier = well_item.get(str, SAMPLE_IDENTIFIER_COLUMN_NAME)
 
         sample_document = SampleDocument(sample_identifier=sample_identifier)
 
-        sample_role_type = well_item.try_str_or_none(SAMPLE_TYPE_COLUMN_NAME)
+        sample_role_type = well_item.get(str, SAMPLE_TYPE_COLUMN_NAME, None)
         # TODO: When the sample role type model is updated in this repo, we should update this
         # Map sample role types to valid sample role types from ASM
         if sample_role_type is not None:
@@ -174,13 +174,13 @@ class QiacuitydPCRParser(VendorParser):
                 )
                 raise AllotropeConversionError(error_message) from e
 
-        well_location_identifier = well_item.try_str_or_none(WELL_COLUMN_NAME)
+        well_location_identifier = well_item.get(str, WELL_COLUMN_NAME, None)
 
         if well_location_identifier is not None:
             sample_document.well_location_identifier = well_location_identifier
 
-        well_plate_identifier = well_item.try_str_or_none(
-            WELL_PLATE_IDENTIFIER_COLUMN_NAME
+        well_plate_identifier = well_item.get(
+            str, WELL_PLATE_IDENTIFIER_COLUMN_NAME, None
         )
         if well_plate_identifier is not None:
             sample_document.well_plate_identifier = well_plate_identifier
@@ -196,17 +196,17 @@ class QiacuitydPCRParser(VendorParser):
     ) -> ProcessedDataDocumentItem:
 
         number_concentration = TQuantityValueNumberPerMicroliter(
-            value=well_item.try_float(CONCENTRATION_COLUMN_NAME)
+            value=well_item.get(float, CONCENTRATION_COLUMN_NAME)
         )
         positive_partition_count = TQuantityValueNumber(
-            value=well_item.try_int(POSITIVE_COUNT_COLUMN_NAME)
+            value=well_item.get(int, POSITIVE_COUNT_COLUMN_NAME)
         )
         processed_data_document = ProcessedDataDocumentItem(
             number_concentration=number_concentration,
             positive_partition_count=positive_partition_count,
         )
         # If the fluorescence intensity threshold setting exists, create a data processing document for it and add to processed data document
-        fluor_intensity_threshold = well_item.try_float_or_none(FIT_SETTING_COLUMN_NAME)
+        fluor_intensity_threshold = well_item.get(float, FIT_SETTING_COLUMN_NAME, None)
         if fluor_intensity_threshold is not None:
             data_processing_document = DataProcessingDocument(
                 flourescence_intensity_threshold_setting=TQuantityValueUnitless(
@@ -216,7 +216,7 @@ class QiacuitydPCRParser(VendorParser):
             processed_data_document.data_processing_document = data_processing_document
 
         # Negative partition count is optional
-        negative_partition_count = well_item.try_int_or_none(NEGATIVE_COUNT_COLUMN_NAME)
+        negative_partition_count = well_item.get(int, NEGATIVE_COUNT_COLUMN_NAME, None)
 
         if negative_partition_count is not None:
             processed_data_document.negative_partition_count = TQuantityValueNumber(

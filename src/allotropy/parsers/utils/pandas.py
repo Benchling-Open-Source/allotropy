@@ -67,6 +67,9 @@ class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
+    def __getitem__(self, pos: tuple[T, str]) -> T:
+        return self.get(pos[0], pos[1])
+
     @overload
     def get(
         self,
@@ -112,52 +115,12 @@ class SeriesData:
             return assert_not_none(value, str(key), msg)
         return default if value is None else value
 
-    def try_str_or_default(self, key: str, default: str) -> str:
-        return self.get(str, key, default)
-
-    def try_str_or_none(self, key: str) -> str | None:
-        return self.get(str, key, None)
-
-    def try_str(self, key: str, msg: str | None = None) -> str:
-        return self.get(str, key, msg=msg)
-
     def try_non_nan_str_or_none(self, key: str) -> str | None:
         value = self.series.get(key)
         return None if (value is None or pd.isna(value)) else str(value)  # type: ignore[arg-type]
-
-    def try_str_multikey_or_none(
-        self,
-        keys: list[str],
-    ) -> str | None:
-        return self.get(str, keys, None)
-
-    def try_str_multikey(
-        self,
-        keys: list[str],
-        msg: str | None = None,
-    ) -> str:
-        return self.get(str, keys, msg=msg)
-
-    def try_int_or_none(self, key: str) -> int | None:
-        return self.get(int, key, None)
-
-    def try_int(self, key: str, msg: str | None = None) -> int:
-        return self.get(int, key, msg=msg)
-
-    def try_float_or_none(self, key: str) -> float | None:
-        return self.get(float, key, None)
-
-    def try_float(self, key: str, msg: str | None = None) -> float:
-        return self.get(float, key, msg=msg)
 
     def try_non_nan_float_or_none(self, key: str) -> float | None:
         return try_non_nan_float_or_none(self.get(str, key))
 
     def try_float_or_nan(self, key: str) -> JsonFloat:
         return try_float_or_nan(self.get(float, key, None))
-
-    def try_bool_or_none(self, key: str) -> bool | None:
-        return self.get(bool, key, None)
-
-    def try_bool(self, key: str, msg: str | None = None) -> bool:
-        return self.get(bool, key, msg=msg)

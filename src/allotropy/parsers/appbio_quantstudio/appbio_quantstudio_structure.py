@@ -71,11 +71,11 @@ class Header:
 
         plate_well_count_search = re.search(
             "(96)|(384)",
-            data.try_str("Block Type"),
+            data[str, "Block Type"]
         )
 
         return Header(
-            measurement_time=data.try_str("Experiment Run End Time"),
+            measurement_time=data.get(str, "Experiment Run End Time"),
             plate_well_count=(
                 None
                 if plate_well_count_search is None
@@ -83,22 +83,22 @@ class Header:
             ),
             experiment_type=assert_not_none(
                 experiments_type_options.get(
-                    data.try_str("Experiment Type"),
+                    data.get(str, "Experiment Type"),
                 ),
                 msg="Unable to find valid experiment type",
             ),
             device_identifier=(
-                data.try_str_or_none("Instrument Name") or NOT_APPLICABLE
+                data.get(str, "Instrument Name", None) or NOT_APPLICABLE
             ),
-            model_number=data.try_str("Instrument Type"),
-            device_serial_number=data.try_str_or_none("Instrument Serial Number")
+            model_number=data.get(str, "Instrument Type"),
+            device_serial_number=data.get(str, "Instrument Serial Number", None)
             or NOT_APPLICABLE,
-            measurement_method_identifier=data.try_str("Quantification Cycle Method"),
-            pcr_detection_chemistry=data.try_str("Chemistry"),
-            passive_reference_dye_setting=data.try_str_or_none("Passive Reference"),
-            barcode=data.try_str_or_none("Experiment Barcode"),
-            analyst=data.try_str_or_none("Experiment User Name"),
-            experimental_data_identifier=data.try_str_or_none("Experiment Name"),
+            measurement_method_identifier=data.get(str, "Quantification Cycle Method"),
+            pcr_detection_chemistry=data.get(str, "Chemistry"),
+            passive_reference_dye_setting=data.get(str, "Passive Reference", None),
+            barcode=data.get(str, "Experiment Barcode", None),
+            analyst=data.get(str, "Experiment User Name", None),
+            experimental_data_identifier=data.get(str, "Experiment Name", None),
         )
 
 
@@ -139,18 +139,16 @@ class WellItem(Referenceable):
 
     @staticmethod
     def create_genotyping(data: SeriesData) -> tuple[WellItem, WellItem]:
-        identifier = data.try_int("Well")
-        snp_name = data.try_str(
-            "SNP Assay Name", msg=f"Unable to find snp name for well {identifier}"
+        identifier = data.get(int, "Well")
+        snp_name = data.get(
+            str, "SNP Assay Name", msg=f"Unable to find snp name for well {identifier}"
         )
-        sample_identifier = data.try_str_or_default(
-            "Sample Name", default=NOT_APPLICABLE
+        sample_identifier = data.get(str, "Sample Name", default=NOT_APPLICABLE)
+        allele1 = data.get(
+            str, "Allele1 Name", msg=f"Unable to find allele 1 for well {identifier}"
         )
-        allele1 = data.try_str(
-            "Allele1 Name", msg=f"Unable to find allele 1 for well {identifier}"
-        )
-        allele2 = data.try_str(
-            "Allele2 Name", msg=f"Unable to find allele 2 for well {identifier}"
+        allele2 = data.get(
+            str, "Allele2 Name", msg=f"Unable to find allele 2 for well {identifier}"
         )
 
         return (
@@ -159,39 +157,37 @@ class WellItem(Referenceable):
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele1}",
                 sample_identifier=sample_identifier,
-                reporter_dye_setting=data.try_str_or_none("Allele1 Reporter"),
-                position=data.try_str_or_default(
-                    "Well Position", default=NOT_APPLICABLE
-                ),
-                well_location_identifier=data.try_str_or_none("Well Position"),
-                quencher_dye_setting=data.try_str_or_none("Quencher"),
-                sample_role_type=data.try_str_or_none("Task"),
+                reporter_dye_setting=data.get(str, "Allele1 Reporter", None),
+                position=data.get(str, "Well Position", default=NOT_APPLICABLE),
+                well_location_identifier=data.get(str, "Well Position", None),
+                quencher_dye_setting=data.get(str, "Quencher", None),
+                sample_role_type=data.get(str, "Task", None),
             ),
             WellItem(
                 uuid=random_uuid_str(),
                 identifier=identifier,
                 target_dna_description=f"{snp_name}-{allele2}",
                 sample_identifier=sample_identifier,
-                reporter_dye_setting=data.try_str_or_none("Allele2 Reporter"),
-                position=data.try_str_or_default(
-                    "Well Position", default=NOT_APPLICABLE
-                ),
-                well_location_identifier=data.try_str_or_none("Well Position"),
-                quencher_dye_setting=data.try_str_or_none("Quencher"),
-                sample_role_type=data.try_str_or_none("Task"),
+                reporter_dye_setting=data.get(str, "Allele2 Reporter", None),
+                position=data.get(str, "Well Position", default=NOT_APPLICABLE),
+                well_location_identifier=data.get(str, "Well Position", None),
+                quencher_dye_setting=data.get(str, "Quencher", None),
+                sample_role_type=data.get(str, "Task", None),
             ),
         )
 
     @staticmethod
     def create_generic(data: SeriesData) -> WellItem:
-        identifier = data.try_int("Well")
+        identifier = data.get(int, "Well")
 
-        target_dna_description = data.try_str(
+        target_dna_description = data.get(
+            str,
             "Target Name",
             msg=f"Unable to find target dna description for well {identifier}",
         )
 
-        sample_identifier = data.try_str_or_default(
+        sample_identifier = data.get(
+            str,
             "Sample Name",
             default=NOT_APPLICABLE,
         )
@@ -201,11 +197,11 @@ class WellItem(Referenceable):
             identifier=identifier,
             target_dna_description=target_dna_description,
             sample_identifier=sample_identifier,
-            reporter_dye_setting=data.try_str_or_none("Reporter"),
-            position=data.try_str_or_default("Well Position", default=NOT_APPLICABLE),
-            well_location_identifier=data.try_str_or_none("Well Position"),
-            quencher_dye_setting=data.try_str_or_none("Quencher"),
-            sample_role_type=data.try_str_or_none("Task"),
+            reporter_dye_setting=data.get(str, "Reporter", None),
+            position=data.get(str, "Well Position", default=NOT_APPLICABLE),
+            well_location_identifier=data.get(str, "Well Position", None),
+            quencher_dye_setting=data.get(str, "Quencher", None),
+            sample_role_type=data.get(str, "Task", None),
         )
 
 
@@ -469,50 +465,51 @@ class Result:
 
         _, raw_allele = well_item.target_dna_description.split("-")
         allele = raw_allele.replace(" ", "")
-        cycle_threshold_value_setting = data.try_float(
+        cycle_threshold_value_setting = data.get(
+            float,
             f"{allele} Ct Threshold",
             msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
         )
 
         cycle_threshold_result = assert_not_none(
-            data.try_str_or_none(f"{allele} Ct"),
+            data.get(str, f"{allele} Ct", None),
             msg="Unable to find cycle threshold result",
         )
 
         return Result(
             cycle_threshold_value_setting=cycle_threshold_value_setting,
             cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=data.try_bool_or_none(
-                f"{allele} Automatic Ct Threshold"
+            automatic_cycle_threshold_enabled_setting=data.get(
+                bool, f"{allele} Automatic Ct Threshold", None
             ),
-            automatic_baseline_determination_enabled_setting=data.try_bool_or_none(
-                f"{allele} Automatic Baseline"
+            automatic_baseline_determination_enabled_setting=data.get(
+                bool, f"{allele} Automatic Baseline", None
             ),
-            normalized_reporter_result=data.try_float_or_none("Rn"),
-            baseline_corrected_reporter_result=data.try_float_or_none(
-                f"{allele} Delta Rn"
+            normalized_reporter_result=data.get(float, "Rn", None),
+            baseline_corrected_reporter_result=data.get(
+                float, f"{allele} Delta Rn", None
             ),
-            genotyping_determination_result=data.try_str_or_none("Call"),
-            genotyping_determination_method_setting=data.try_float_or_none(
-                "Threshold Value"
+            genotyping_determination_result=data.get(str, "Call", None),
+            genotyping_determination_method_setting=data.get(
+                float, "Threshold Value", None
             ),
-            quantity=data.try_float_or_none("Quantity"),
-            quantity_mean=data.try_float_or_none("Quantity Mean"),
-            quantity_sd=data.try_float_or_none("Quantity SD"),
-            ct_mean=data.try_float_or_none("Ct Mean"),
-            ct_sd=data.try_float_or_none("Ct SD"),
-            delta_ct_mean=data.try_float_or_none("Delta Ct Mean"),
-            delta_ct_se=data.try_float_or_none("Delta Ct SE"),
-            delta_delta_ct=data.try_float_or_none("Delta Delta Ct"),
-            rq=data.try_float_or_none("RQ"),
-            rq_min=data.try_float_or_none("RQ Min"),
-            rq_max=data.try_float_or_none("RQ Max"),
-            rn_mean=data.try_float_or_none("Rn Mean"),
-            rn_sd=data.try_float_or_none("Rn SD"),
-            y_intercept=data.try_float_or_none("Y-Intercept"),
-            r_squared=data.try_float_or_none("R(superscript 2)"),
-            slope=data.try_float_or_none("Slope"),
-            efficiency=data.try_float_or_none("Efficiency"),
+            quantity=data.get(float, "Quantity", None),
+            quantity_mean=data.get(float, "Quantity Mean", None),
+            quantity_sd=data.get(float, "Quantity SD", None),
+            ct_mean=data.get(float, "Ct Mean", None),
+            ct_sd=data.get(float, "Ct SD", None),
+            delta_ct_mean=data.get(float, "Delta Ct Mean", None),
+            delta_ct_se=data.get(float, "Delta Ct SE", None),
+            delta_delta_ct=data.get(float, "Delta Delta Ct", None),
+            rq=data.get(float, "RQ", None),
+            rq_min=data.get(float, "RQ Min", None),
+            rq_max=data.get(float, "RQ Max", None),
+            rn_mean=data.get(float, "Rn Mean", None),
+            rn_sd=data.get(float, "Rn SD", None),
+            y_intercept=data.get(float, "Y-Intercept", None),
+            r_squared=data.get(float, "R(superscript 2)", None),
+            slope=data.get(float, "Slope", None),
+            efficiency=data.get(float, "Efficiency", None),
         )
 
     @staticmethod
@@ -531,45 +528,46 @@ class Result:
         )
 
         cycle_threshold_result = assert_not_none(
-            data.try_str_or_none("CT"),
+            data.get(str, "CT", None),
             msg="Unable to find cycle threshold result",
         )
 
         return Result(
-            cycle_threshold_value_setting=data.try_float(
+            cycle_threshold_value_setting=data.get(
+                float,
                 "Ct Threshold",
                 msg=f"Unable to find cycle threshold value setting for well {well_item.identifier}",
             ),
             cycle_threshold_result=try_float_or_none(str(cycle_threshold_result)),
-            automatic_cycle_threshold_enabled_setting=data.try_bool_or_none(
-                "Automatic Ct Threshold"
+            automatic_cycle_threshold_enabled_setting=data.get(
+                bool, "Automatic Ct Threshold", None
             ),
-            automatic_baseline_determination_enabled_setting=data.try_bool_or_none(
-                "Automatic Baseline"
+            automatic_baseline_determination_enabled_setting=data.get(
+                bool, "Automatic Baseline", None
             ),
-            normalized_reporter_result=data.try_float_or_none("Rn"),
-            baseline_corrected_reporter_result=data.try_float_or_none("Delta Rn"),
-            genotyping_determination_result=data.try_str_or_none("Call"),
-            genotyping_determination_method_setting=data.try_float_or_none(
-                "Threshold Value"
+            normalized_reporter_result=data.get(float, "Rn", None),
+            baseline_corrected_reporter_result=data.get(float, "Delta Rn", None),
+            genotyping_determination_result=data.get(str, "Call", None),
+            genotyping_determination_method_setting=data.get(
+                float, "Threshold Value", None
             ),
-            quantity=data.try_float_or_none("Quantity"),
-            quantity_mean=data.try_float_or_none("Quantity Mean"),
-            quantity_sd=data.try_float_or_none("Quantity SD"),
-            ct_mean=data.try_float_or_none("Ct Mean"),
-            ct_sd=data.try_float_or_none("Ct SD"),
-            delta_ct_mean=data.try_float_or_none("Delta Ct Mean"),
-            delta_ct_se=data.try_float_or_none("Delta Ct SE"),
-            delta_delta_ct=data.try_float_or_none("Delta Delta Ct"),
-            rq=data.try_float_or_none("RQ"),
-            rq_min=data.try_float_or_none("RQ Min"),
-            rq_max=data.try_float_or_none("RQ Max"),
-            rn_mean=data.try_float_or_none("Rn Mean"),
-            rn_sd=data.try_float_or_none("Rn SD"),
-            y_intercept=data.try_float_or_none("Y-Intercept"),
-            r_squared=data.try_float_or_none("R(superscript 2)"),
-            slope=data.try_float_or_none("Slope"),
-            efficiency=data.try_float_or_none("Efficiency"),
+            quantity=data.get(float, "Quantity", None),
+            quantity_mean=data.get(float, "Quantity Mean", None),
+            quantity_sd=data.get(float, "Quantity SD", None),
+            ct_mean=data.get(float, "Ct Mean", None),
+            ct_sd=data.get(float, "Ct SD", None),
+            delta_ct_mean=data.get(float, "Delta Ct Mean", None),
+            delta_ct_se=data.get(float, "Delta Ct SE", None),
+            delta_delta_ct=data.get(float, "Delta Delta Ct", None),
+            rq=data.get(float, "RQ", None),
+            rq_min=data.get(float, "RQ Min", None),
+            rq_max=data.get(float, "RQ Max", None),
+            rn_mean=data.get(float, "Rn Mean", None),
+            rn_sd=data.get(float, "Rn SD", None),
+            y_intercept=data.get(float, "Y-Intercept", None),
+            r_squared=data.get(float, "R(superscript 2)", None),
+            slope=data.get(float, "Slope", None),
+            efficiency=data.get(float, "Efficiency", None),
         )
 
     @staticmethod

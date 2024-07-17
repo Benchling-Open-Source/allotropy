@@ -39,27 +39,27 @@ class SpectroscopyRow:
     def create(series: pd.Series[str]) -> SpectroscopyRow:
         data = SeriesData(series)
 
-        analyst = data.try_str_or_none("user id")
-        timestamp = f'{data.try_str_or_none("date")} {data.try_str_or_none("time")}'
-        experiment_type = data.try_str_or_none("na type")
+        analyst = data.get(str, "user id", None)
+        timestamp = f'{data.get(str, "date")} {data.get(str, "time", None)}'
+        experiment_type = data.get(str, "na type", None)
 
         sample_id = data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE
         well_plate_id = data.try_non_nan_str_or_none("plate id")
-        location_id = data.try_str("well")
+        location_id = data.get(str, "well")
 
         is_na_experiment = experiment_type and "NA" in experiment_type
 
-        a260_absorbance = data.try_float_or_none("a260")
+        a260_absorbance = data.get(float, "a260", None)
         a280_absorbance = get_first_not_none(
-            lambda key: data.try_float_or_none(key), ["a280", "a280 10mm"]
+            lambda key: data.get(float, key, None), ["a280", "a280 10mm"]
         )
         measurements: list[Measurement] = []
 
         mass_concentration = get_first_not_none(
-            lambda key: data.try_float_or_none(key),
+            lambda key: data.get(float, key, None),
             ["conc.", "conc", "concentration"],
         )
-        unit = data.try_str_or_none("units")
+        unit = data.get(str, "units", None)
 
         # We only capture mass concentration on one measurement document
         # TODO(nstender): why not just capture in both? Seems relevant, and would make this so much simpler.
@@ -104,7 +104,7 @@ class SpectroscopyRow:
 
         absorbance_ratios = {}
         for numerator, denominator in ABSORBANCE_RATIOS:
-            ratio = data.try_float_or_none(f"{numerator}/{denominator}")
+            ratio = data.get(float, f"{numerator}/{denominator}", None)
             if ratio:
                 absorbance_ratios[(numerator, denominator)] = ratio
 
