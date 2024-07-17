@@ -26,6 +26,10 @@ the library output are documented in the changelog.
 
 If your change affects existing test cases or adds new tests with new features, it should almost certainly have a `feat` or `fix` prefix.
 
+## Testing
+Every PR is run against all lint checks and tests before merging in git.
+Be sure to run `hatch run lint` and `hatch run test` before creating a PR to ensure your branch will pass checks.
+
 ## GPG keys and signed commits
 All commits to this repository must be signed. To set up commit signatures, please do the following:
 - Check for [existing GPG keys](https://docs.github.com/en/authentication/managing-commit-signature-verification/checking-for-existing-gpg-keys).
@@ -60,7 +64,7 @@ In this case we already have some code in the library to handle instruments of t
 1. A `Parser` class -- this implements [`VendorParser`](src/allotropy/parsers/vendor_parser.py) and does most of the work converting the instrument data to ASM.
 2. Either:
   - A `Structure` file that the `Parser` uses to build an in memory representation of the instrument data that can be serialized to ASM.
-  - A `Reader` file that the `Parser` uses to read directly from the file, if accessing the file data does not require much logic.
+  - A `Reader` file that the `Parser` uses to read the raw contents of the file, which is passed to the `Structure` classes.
 
 Run `hatch run scripts:create-parser NAME SCHEMA_REGEX` to create a set of starter files. Where `SCHEMA_REGEX` is a search pattern over schema paths to specify a schema to use.
 
