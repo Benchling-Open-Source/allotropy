@@ -79,7 +79,22 @@ class SeriesData:
         self.series = series
 
     def __getitem__(self, type_and_key: TypeAndKey[T] | TypeAndKeyAndMsg[T]) -> T:
-        # Implements index operator
+        """
+        Get a value of the specified type with the specified key, raising an error if the
+        key is not found, or if the value cannot be converted to the type.
+        If a third argument is provided, it is an error message to provide if they key is not found.
+
+        Parameters:
+        type (str, int, float, bool): The datatype to return.
+        key (str | Iterable[str]): The key (or iterable of keys) to use to lookup.
+        msg (str | None): The message to give as an error if lookup or conversion fails.
+
+        Returns:
+        type: A value of the type provided.
+
+        Raises
+        AllotropeConversionError: If the lookup or conversion to type fails.
+        """
         if len(type_and_key) == 2:  # noqa: PLR2004
             type_, key = type_and_key
             msg = None
@@ -127,6 +142,21 @@ class SeriesData:
         default: T | InvalidJsonFloat | None = None,
         validate: ValidateRawMode | None = None,
     ) -> T | InvalidJsonFloat | None:
+        """
+        Get a value of the specified type with the specified key, returning a default value if the
+        key is not found, or if the value cannot be converted to the type.
+        If validate is provided, it will be used to validate the raw value from the series, returning None
+        if the value fails validation.
+
+        Parameters:
+        type (str, int, float, bool): The datatype to return.
+        key (str | Iterable[str]): The key (or iterable of keys) to use to lookup.
+        default (type | InvalidJsonFloat | None): The value to return if lookup or conversion fails (default=None).
+        validate (ValidateRawMode): The method to use for validating raw value. Defaults to (value is not None).
+
+        Returns:
+        type: A value of the type provided or default value.
+        """
         if not isinstance(key, str):
             return get_first_not_none(lambda k: self.get(type_, k), key)
         raw_value: Any = self.series.get(key)

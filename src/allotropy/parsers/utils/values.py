@@ -17,7 +17,7 @@ PrimitiveValue = str | int | float
 
 
 def str_to_bool(value: str) -> bool:
-    return str(value).lower() in ("yes", "y", "true", "t", "1")
+    return value.lower() in ("yes", "y", "true", "t", "1")
 
 
 def try_int(value: str | None, value_name: str) -> int:
