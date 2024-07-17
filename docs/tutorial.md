@@ -309,7 +309,7 @@ expeted output file:
 hatch run test tests/parsers/example_weyland_yutani/to_allotrope_test.py
 ```
 
-The test will detect the missing expected output file and create it (if the parser successfully runs!)
+The test will detect the missing expected output file and create it (if the parser runs successfully!)
 
 It is important to then inspect the output JSON to make sure it's correct.
 
