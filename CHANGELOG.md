@@ -132,7 +132,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
-- Fixed empty space at begining of sample identifier in Revvity Kaleido
+- Fixed empty space at beginning of sample identifier in Revvity Kaleido
 
 ### Changed
 
