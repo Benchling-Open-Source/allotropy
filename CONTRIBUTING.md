@@ -70,6 +70,15 @@ See our [tutorial](docs/tutorial.md) for a deeper dive on contributing to the `a
 
 Please open an issue and talk to us about adding it. There is a bit more work involved in this case but we would still love to work with you to get the instrument type that you desire into the library!
 
+## README
+The README contains a list of all available parsers, organized by release state. When adding a new parser,
+it must be included in the README. This can be done automatically via:
+
+```sh
+hatch run scripts:update-readme
+```
+
+If the parser is not in the `RECOMMENDED` state, it must be added to `NON_READY_PARSERS` in `tests/parser_factory_test.py`
 
 # Error messaging
 
