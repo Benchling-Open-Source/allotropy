@@ -1,7 +1,8 @@
 from __future__ import annotations
 
+from enum import Enum
 import re
-from typing import Any
+from typing import Any, overload
 
 import pandas as pd
 
@@ -16,6 +17,13 @@ from allotropy.parsers.utils.values import (
     try_int,
     try_non_nan_float_or_none,
 )
+
+
+class Unset(Enum):
+    UNSET = "UNSET"
+
+
+UNSET = Unset.UNSET
 
 
 def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
@@ -57,16 +65,37 @@ class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
-    def try_str_or_default(self, key: str, default: str) -> str:
+    @overload
+    def get_str(
+        self, key: str, default: str | Unset = UNSET, msg: str | None = None
+    ) -> str:
+        pass
+
+    @overload
+    def get_str(
+        self, key: str, default: None = None, msg: str | None = None
+    ) -> str | None:
+        pass
+
+    def get_str(
+        self,
+        key: str,
+        default: str | None | Unset = UNSET,
+        msg: str | None = None,
+    ) -> str | None:
         value = self.series.get(key)
+        if default is UNSET:
+            assert_not_none(value, key, msg)
         return default if value is None else str(value)
 
+    def try_str_or_default(self, key: str, default: str) -> str:
+        return self.get_str(key, default)
+
     def try_str_or_none(self, key: str) -> str | None:
-        value = self.series.get(key)
-        return None if value is None else str(value)
+        return self.get_str(key, None)
 
     def try_str(self, key: str, msg: str | None = None) -> str:
-        return assert_not_none(self.try_str_or_none(key), key, msg)
+        return self.get_str(key, msg=msg)
 
     def try_non_nan_str_or_none(self, key: str) -> str | None:
         value = self.series.get(key)
