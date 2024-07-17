@@ -1,0 +1,28 @@
+{
+  "allowCompoundWords": true,
+  "words": [
+    "chardet",
+    "genotyping",
+    "gpgsign",
+    "iloc",
+    "infile",
+    "mypy",
+    "pydantic",
+    "pyproject",
+    "pytest",
+    "sdist"
+  ],
+  "flagWords": [
+    "hte",
+    "begining"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "companies",
+      "path": ".vscode/cspell_companies.txt"
+    }
+  ],
+  "dictionaries": [
+    "companies"
+  ]
+}

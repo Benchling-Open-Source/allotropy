@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Thermo Fisher Qubit Flex adapter
 - Added requirement document for Thermo Fisher Qubit Flex adapter
 
+- Added digital PCR and solution analyzer parser requirement templates to /docs
+
 ### Fixed
 
 ### Changed
@@ -57,7 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support non-numeric emission values for gen5 luminescence
 
 ### Changed
-- Allow no target DNA reference in AppBio Quantstudio design and anlysis
+- Allow no target DNA reference in AppBio Quantstudio design and analysis
 - Standardize use of "N/A" for strings where a non-applicable value is necessary
 - Update `None` filtering to preserve required keys when converting model to dictionary
 - Update ASM converter name field to specify the parser name instead of just "allotropy", this is intended to give better granularity on the adapter that did the conversion and not just the library version
@@ -132,7 +134,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed missing genotyping determination result in AppBio Quantstudio Design and Analysis
-- Fixed empty space at beginin of sample identifier in Revvity Kaleido
+- Fixed empty space at beginning of sample identifier in Revvity Kaleido
 
 ### Changed
 
@@ -143,7 +145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed path_util to work outside of allotropy corectly
+- Fixed path_util to work outside of allotropy correctly
 
 ## [0.1.32] - 2024-05-29
 
@@ -186,7 +188,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update multianalyte model minimum_assay_bead_count to be of type "number" insetead of "unitless"
+- Update multianalyte model minimum_assay_bead_count to be of type "number" instead of "unitless"
 - Update luminex and biorad bioplex to use updated multianalyte model
 - Remove inner calculated data documents from AppBio Quantstudio
 - Use global definition of calculated data documents in AppBio Quantstudio and Quantstudio Design and Analysis adapters
@@ -196,7 +198,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add Vendor display names
-- Added liquid-chromatograpy 2023/09 schema
+- Added liquid-chromatography 2023/09 schema
 
 ### Changed
 
@@ -426,7 +428,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor way to extract and validate information from pandas series in AppBio QuantStudio
 - Simplify CSV lines reader
 - Update PerkinElmer EnVision adapter to use the new plate-reader BENCHLING/2023/09 schema
-- Standaradize and clarify exception messages
+- Standardize and clarify exception messages
 
 ## [0.1.10] - 2023-11-14
 
@@ -500,16 +502,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Parser for AppBio Absoute Q dPCR exports
+- Parser for AppBio Absolute Q dPCR exports
 
 ### Fixed
 
 - Redefine calculated data documents references as required in AppBio QuantStudio parser
-- Update dPCR schema "experiement type" enum to have correct values
+- Update dPCR schema "experiment type" enum to have correct values
 
 ### Changed
 
-- Make "flourescence intensity threshold setting" optional in the dPCR schema
+- Make "fluorescence intensity threshold setting" optional in the dPCR schema
 - Changed the "calculated datum" property on the calculated data documents to allow different units
 
 ## [0.1.4] - 2023-10-03
