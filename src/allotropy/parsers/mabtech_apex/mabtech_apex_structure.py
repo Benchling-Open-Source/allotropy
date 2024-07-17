@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 
+from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     Data,
     ImageFeature,
@@ -66,7 +67,7 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
                 ImageFeature(
                     identifier=random_uuid_str(),
                     feature=feature,
-                    result=plate_data.try_float_or_nan(feature),
+                    result=plate_data.get(float, feature, NaN),
                 )
                 for feature in IMAGE_FEATURES
             ],

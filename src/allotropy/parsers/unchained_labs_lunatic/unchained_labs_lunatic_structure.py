@@ -4,6 +4,7 @@ from typing import Any
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataItem,
     Data,
@@ -41,7 +42,7 @@ def _create_measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength_column[1:]),
-        absorbance=well_plate_data.try_float_or_nan(wavelength_column),
+        absorbance=well_plate_data.get(float, wavelength_column, NaN),
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),

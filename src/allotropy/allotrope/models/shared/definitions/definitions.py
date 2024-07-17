@@ -74,7 +74,9 @@ class InvalidJsonFloat(Enum):
         return self
 
 
+# For convenience
 JsonFloat = float | InvalidJsonFloat
+NaN = InvalidJsonFloat.NaN
 
 
 @dataclass(frozen=True, kw_only=True)

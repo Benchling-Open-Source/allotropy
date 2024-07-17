@@ -1,19 +1,20 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Iterable
+from enum import Enum
 import re
 from typing import Any, Literal, overload, TypeVar
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    InvalidJsonFloat,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_not_none,
     str_to_bool,
-    try_float_or_nan,
-    try_non_nan_float_or_none,
 )
 
 
@@ -58,9 +59,22 @@ Type_ = Callable[..., T]
 KeyOrKeys = Iterable[str]
 TypeAndKey = tuple[Type_[T], KeyOrKeys]
 TypeAndKeyAndMsg = tuple[Type_[T], KeyOrKeys, str]
+ValidateRaw = Callable[[Any], bool] | None
 
 
 class SeriesData:
+    class ValidateRawMode(Enum):
+        # Return None for key is raw value is None or np.isna
+        NOT_NAN = "NOT_NAN"
+
+    NOT_NAN = ValidateRawMode.NOT_NAN
+
+    @staticmethod
+    def _validate_raw(v: Any, mode: ValidateRawMode | None) -> bool:
+        if mode is SeriesData.ValidateRawMode.NOT_NAN:
+            return not (v is None or pd.isna(v))
+        return v is not None
+
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
@@ -80,23 +94,43 @@ class SeriesData:
         type_: Type_[T],
         key: KeyOrKeys,
         default: Literal[None] = None,
+        validate: ValidateRawMode | None = None,
     ) -> T | None:
         ...
 
     # This overload tells typing that if default matches T, get will return T
     @overload
-    def get(self, type_: Type_[T], key: KeyOrKeys, default: T) -> T:
+    def get(
+        self,
+        type_: Type_[float],
+        key: KeyOrKeys,
+        default: InvalidJsonFloat,
+        validate: ValidateRawMode | None = None,
+    ) -> float | InvalidJsonFloat:
+        ...
+
+    # This overload tells typing that if default matches T, get will return T
+    @overload
+    def get(
+        self,
+        type_: Type_[T],
+        key: KeyOrKeys,
+        default: T,
+        validate: ValidateRawMode | None = None,
+    ) -> T:
         ...
 
     def get(
         self,
         type_: Type_[T],
         key: KeyOrKeys,
-        default: T | None = None,
-    ) -> T | None:
+        default: T | InvalidJsonFloat | None = None,
+        validate: ValidateRawMode | None = None,
+    ) -> T | InvalidJsonFloat | None:
         if not isinstance(key, str):
             return get_first_not_none(lambda k: self.get(type_, k), key)
-        raw_value = self.series.get(key)
+        raw_value: Any = self.series.get(key)
+        raw_value = raw_value if self._validate_raw(raw_value, validate) else None
         try:
             # bool needs special handling to convert
             if type_ is bool:
@@ -109,15 +143,3 @@ class SeriesData:
         except ValueError:
             value = None
         return default if value is None else value
-
-    # TODO(nstender): I can't figure out how to integrate these yet, leaving as "try_..."
-    # to signal this.
-    def try_non_nan_str_or_none(self, key: str) -> str | None:
-        value = self.series.get(key)
-        return None if (value is None or pd.isna(value)) else str(value)  # type: ignore[arg-type]
-
-    def try_non_nan_float_or_none(self, key: str) -> float | None:
-        return try_non_nan_float_or_none(self.get(str, key))
-
-    def try_float_or_nan(self, key: str) -> JsonFloat:
-        return try_float_or_nan(self.get(float, key))

@@ -43,8 +43,8 @@ class SpectroscopyRow:
         timestamp = f'{data[str, "date"]} {data.get(str, "time")}'
         experiment_type = data.get(str, "na type")
 
-        sample_id = data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE
-        well_plate_id = data.try_non_nan_str_or_none("plate id")
+        sample_id = data.get(str, "sample id", NOT_APPLICABLE, SeriesData.NOT_NAN)
+        well_plate_id = data.get(str, "plate id", validate=SeriesData.NOT_NAN)
         location_id = data[str, "well"]
 
         is_na_experiment = experiment_type and "NA" in experiment_type

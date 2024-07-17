@@ -114,7 +114,7 @@ class GroupSampleData:
         numeric_columns = [
             column
             for column in data.columns
-            if top_row.try_non_nan_float_or_none(column) is not None
+            if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
         ]
 
         normal_columns = []

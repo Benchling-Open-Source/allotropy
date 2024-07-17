@@ -4,7 +4,10 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    NaN,
+)
 from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_ANALYST,
     DEFAULT_EPOCH_TIMESTAMP,
@@ -44,11 +47,11 @@ class Row:
             multiplication_factor=data.get(float, "Multiplication factor"),
             viability_percent=data[float, "Viability (%)"],
             # Cell counts are measured in cells/mL, but reported in millions of cells/mL
-            live_cell_count=data.try_float_or_nan("Live (cells/ml)") / 1e6,
-            dead_cell_count=data.try_float_or_nan("Dead (cells/ml)") / 1e6,
-            total_cell_count=data.try_float_or_nan("Total (cells/ml)") / 1e6,
-            estimated_cell_diameter=data.try_float_or_nan(
-                "Estimated cell diameter (um)"
+            live_cell_count=data.get(float, "Live (cells/ml)", NaN) / 1e6,
+            dead_cell_count=data.get(float, "Dead (cells/ml)", NaN) / 1e6,
+            total_cell_count=data.get(float, "Total (cells/ml)", NaN) / 1e6,
+            estimated_cell_diameter=data.get(
+                float, "Estimated cell diameter (um)", NaN
             ),
         )
 
