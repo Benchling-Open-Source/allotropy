@@ -67,7 +67,7 @@ class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
-    def __getitem__(self, pos: tuple[T, str]) -> T:
+    def __getitem__(self, pos: tuple[Callable[..., T], str]) -> T:
         return self.get(pos[0], pos[1])
 
     @overload
@@ -115,6 +115,8 @@ class SeriesData:
             return assert_not_none(value, str(key), msg)
         return default if value is None else value
 
+    # TODO(nstender): I can't figure out how to integrate these yet, leaving as "try_..."
+    # to signal this.
     def try_non_nan_str_or_none(self, key: str) -> str | None:
         value = self.series.get(key)
         return None if (value is None or pd.isna(value)) else str(value)  # type: ignore[arg-type]

@@ -143,7 +143,7 @@ class QiacuitydPCRParser(VendorParser):
         measurement_time = EPOCH
         target_dna_description = well_item.get(str, TARGET_COLUMN_NAME)
         total_partition_count = TQuantityValueNumber(
-            value=well_item.get(int, PARTITIONS_COLUMN_NAME)
+            value=well_item[int, PARTITIONS_COLUMN_NAME]
         )
         return MeasurementDocumentItem(
             measurement_identifier=measurement_id,
@@ -196,10 +196,10 @@ class QiacuitydPCRParser(VendorParser):
     ) -> ProcessedDataDocumentItem:
 
         number_concentration = TQuantityValueNumberPerMicroliter(
-            value=well_item.get(float, CONCENTRATION_COLUMN_NAME)
+            value=well_item[float, CONCENTRATION_COLUMN_NAME]
         )
         positive_partition_count = TQuantityValueNumber(
-            value=well_item.get(int, POSITIVE_COUNT_COLUMN_NAME)
+            value=well_item[int, POSITIVE_COUNT_COLUMN_NAME]
         )
         processed_data_document = ProcessedDataDocumentItem(
             number_concentration=number_concentration,

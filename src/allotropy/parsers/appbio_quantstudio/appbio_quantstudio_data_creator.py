@@ -49,12 +49,8 @@ def create_data(reader: LinesReader) -> Data:
                 header.experiment_type,
             )
 
-    endogenous_control = (
-        results_metadata.get(str, "Endogenous Control", None) or NOT_APPLICABLE
-    )
-    reference_sample = (
-        results_metadata.get(str, "Reference Sample", None) or NOT_APPLICABLE
-    )
+    endogenous_control = results_metadata.get(str, "Endogenous Control", NOT_APPLICABLE)
+    reference_sample = results_metadata.get(str, "Reference Sample", NOT_APPLICABLE)
 
     return Data(
         header,

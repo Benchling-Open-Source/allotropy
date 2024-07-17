@@ -42,8 +42,8 @@ def _create_measurement(
         identifier=measurement_identifier,
         detector_wavelength_setting=float(wavelength_column[1:]),
         absorbance=well_plate_data.try_float_or_nan(wavelength_column),
-        sample_identifier=well_plate_data.get(str, "Sample name"),
-        location_identifier=well_plate_data.get(str, "Plate Position"),
+        sample_identifier=well_plate_data[str, "Sample name"],
+        location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID", None),
         calculated_data=_get_calculated_data(
             well_plate_data, wavelength_column, measurement_identifier
@@ -105,7 +105,7 @@ def _create_metadata(data: pd.DataFrame, file_name: str) -> Metadata:
         device_type="plate reader",
         model_number="Lunatic",
         product_manufacturer="Unchained Labs",
-        device_identifier=SeriesData(data.iloc[0]).get(str, "Instrument ID"),
+        device_identifier=SeriesData(data.iloc[0])[str, "Instrument ID"],
         software_name="Lunatic and Stunner Analysis",
         file_name=file_name,
     )

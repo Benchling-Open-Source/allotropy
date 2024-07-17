@@ -42,26 +42,26 @@ class Header:
     @classmethod
     def create(cls, header_data: pd.DataFrame) -> Header:
         info_row = SeriesData(header_data.iloc[0])
-        raw_datetime = info_row.get(str, "BatchStartTime")
+        raw_datetime = info_row[str, "BatchStartTime"]
 
         return Header(
             model_number=cls._get_model_number(header_data),
-            software_version=info_row.get(str, "Build"),
-            equipment_serial_number=info_row.get(str, "SN"),
-            analytical_method_identifier=info_row.get(str, "ProtocolName"),
-            method_version=info_row.get(str, "ProtocolVersion"),
-            experimental_data_identifier=info_row.get(str, "Batch"),
+            software_version=info_row[str, "Build"],
+            equipment_serial_number=info_row[str, "SN"],
+            analytical_method_identifier=info_row[str, "ProtocolName"],
+            method_version=info_row[str, "ProtocolVersion"],
+            experimental_data_identifier=info_row[str, "Batch"],
             sample_volume_setting=cls._get_sample_volume_setting(info_row),
             plate_well_count=cls._get_plate_well_count(header_data),
             measurement_time=raw_datetime,
-            detector_gain_setting=info_row.get(str, "ProtocolReporterGain"),
-            data_system_instance_identifier=info_row.get(str, "ComputerName"),
+            detector_gain_setting=info_row[str, "ProtocolReporterGain"],
+            data_system_instance_identifier=info_row[str, "ComputerName"],
             analyst=info_row.get(str, "Operator", None),
         )
 
     @classmethod
     def _get_sample_volume_setting(cls, info_row: SeriesData) -> float:
-        sample_volume = info_row.get(str, "SampleVolume")
+        sample_volume = info_row[str, "SampleVolume"]
 
         return try_float(sample_volume.split()[0], "sample volume setting")
 
@@ -157,7 +157,7 @@ class Measurement:
         dilution_factor_data: pd.DataFrame,
         errors_data: pd.DataFrame,
     ) -> Measurement:
-        location = median_data.get(str, "Location")
+        location = median_data[str, "Location"]
         dilution_factor_setting = SeriesData(dilution_factor_data.loc[location]).get(
             float, "Dilution Factor"
         )
@@ -167,10 +167,10 @@ class Measurement:
         well_location, location_id = cls._get_location_details(location)
 
         return Measurement(
-            sample_identifier=median_data.get(str, "Sample"),
+            sample_identifier=median_data[str, "Sample"],
             location_identifier=location_id,
             dilution_factor_setting=dilution_factor_setting,
-            assay_bead_count=median_data.get(float, "Total Events"),
+            assay_bead_count=median_data[float, "Total Events"],
             analytes=[
                 Analyte(
                     analyte_name=analyte,
@@ -178,7 +178,7 @@ class Measurement:
                     assay_bead_count=SeriesData(count_data.loc[location]).get(
                         float, analyte
                     ),
-                    fluorescence=median_data.get(float, analyte),
+                    fluorescence=median_data[float, analyte],
                 )
                 for analyte in analyte_names
             ],

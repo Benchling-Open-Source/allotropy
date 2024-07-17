@@ -32,8 +32,8 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                timestamp=data.get(str, "Analysis date/time"),
-                sample_identifier=data.get(str, "Sample ID"),
+                timestamp=data[str, "Analysis date/time"],
+                sample_identifier=data[str, "Sample ID"],
                 cell_type_processing_method=data.get(str, "Cell type", None),
                 minimum_cell_diameter_setting=data.get(
                     float, "Minimum Diameter (μm)", None
@@ -42,8 +42,8 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
                     float, "Maximum Diameter (μm)", None
                 ),
                 cell_density_dilution_factor=data.get(float, "Dilution", None),
-                viability=data.get(float, "Viability (%)"),
-                viable_cell_density=data.get(float, "Viable (x10^6) cells/mL"),
+                viability=data[float, "Viability (%)"],
+                viable_cell_density=data[float, "Viable (x10^6) cells/mL"],
                 total_cell_count=total_cell_count,
                 total_cell_density=data.get(float, "Total (x10^6) cells/mL", None),
                 average_total_cell_diameter=data.get(
@@ -59,7 +59,7 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
                 average_viable_cell_circularity=data.get(
                     float, "Average viable circularity", None
                 ),
-                analyst=data.get(str, "Analysis by", None) or DEFAULT_ANALYST,
+                analyst=data.get(str, "Analysis by", DEFAULT_ANALYST),
             )
         ]
     )

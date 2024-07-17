@@ -41,12 +41,12 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
-                timestamp=data.get(str, "Sample date"),
-                sample_identifier=data.get(str, "Sample ID"),
+                timestamp=data[str, "Sample date"],
+                sample_identifier=data[str, "Sample ID"],
                 cell_type_processing_method=data.get(str, "Cell type", None),
                 cell_density_dilution_factor=data.get(float, "Dilution factor", None),
-                viability=data.get(float, "Viability (%)"),
-                viable_cell_density=data.get(float, "Viable cells/ml (x10^6)"),
+                viability=data[float, "Viability (%)"],
+                viable_cell_density=data[float, "Viable cells/ml (x10^6)"],
                 total_cell_count=total_cell_count,
                 total_cell_density=data.get(float, "Total cells/ml (x10^6)", None),
                 average_total_cell_diameter=data.get(
@@ -69,7 +69,7 @@ def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
 
 
 def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
-    serial_number_str = reader.file_info.get(str, "serial")
+    serial_number_str = reader.file_info[str, "serial"]
     try:
         serial_number = serial_number_str[serial_number_str.rindex(":") + 1 :].strip()
     except ValueError:
@@ -77,7 +77,7 @@ def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
 
     match = re.match(
         MODEL_RE,
-        reader.file_info.get(str, "model"),
+        reader.file_info[str, "model"],
         flags=re.IGNORECASE,
     )
     try:

@@ -96,7 +96,7 @@ class HeaderData:
         date = data.get(str, "Date", None)
         time = data.get(str, "Time", None)
         return HeaderData(
-            software_version=data.get(str, "Software Version"),
+            software_version=data[str, "Software Version"],
             experiment_file_path=data.get(str, "Experiment File Path:", None),
             file_name=file_name,
             protocol_file_path=data.get(str, "Protocol File Path:", None),

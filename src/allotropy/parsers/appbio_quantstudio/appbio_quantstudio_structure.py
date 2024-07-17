@@ -69,13 +69,10 @@ class Header:
             "Presence/Absence": ExperimentType.presence_absence_qPCR_experiment,
         }
 
-        plate_well_count_search = re.search(
-            "(96)|(384)",
-            data[str, "Block Type"]
-        )
+        plate_well_count_search = re.search("(96)|(384)", data[str, "Block Type"])
 
         return Header(
-            measurement_time=data.get(str, "Experiment Run End Time"),
+            measurement_time=data[str, "Experiment Run End Time"],
             plate_well_count=(
                 None
                 if plate_well_count_search is None
@@ -83,18 +80,16 @@ class Header:
             ),
             experiment_type=assert_not_none(
                 experiments_type_options.get(
-                    data.get(str, "Experiment Type"),
+                    data[str, "Experiment Type"],
                 ),
                 msg="Unable to find valid experiment type",
             ),
-            device_identifier=(
-                data.get(str, "Instrument Name", None) or NOT_APPLICABLE
-            ),
-            model_number=data.get(str, "Instrument Type"),
+            device_identifier=(data.get(str, "Instrument Name", NOT_APPLICABLE)),
+            model_number=data[str, "Instrument Type"],
             device_serial_number=data.get(str, "Instrument Serial Number", None)
             or NOT_APPLICABLE,
-            measurement_method_identifier=data.get(str, "Quantification Cycle Method"),
-            pcr_detection_chemistry=data.get(str, "Chemistry"),
+            measurement_method_identifier=data[str, "Quantification Cycle Method"],
+            pcr_detection_chemistry=data[str, "Chemistry"],
             passive_reference_dye_setting=data.get(str, "Passive Reference", None),
             barcode=data.get(str, "Experiment Barcode", None),
             analyst=data.get(str, "Experiment User Name", None),
@@ -139,7 +134,7 @@ class WellItem(Referenceable):
 
     @staticmethod
     def create_genotyping(data: SeriesData) -> tuple[WellItem, WellItem]:
-        identifier = data.get(int, "Well")
+        identifier = data[int, "Well"]
         snp_name = data.get(
             str, "SNP Assay Name", msg=f"Unable to find snp name for well {identifier}"
         )
@@ -178,7 +173,7 @@ class WellItem(Referenceable):
 
     @staticmethod
     def create_generic(data: SeriesData) -> WellItem:
-        identifier = data.get(int, "Well")
+        identifier = data[int, "Well"]
 
         target_dna_description = data.get(
             str,

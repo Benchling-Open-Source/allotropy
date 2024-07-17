@@ -75,9 +75,7 @@ class ViCellXRReader:
         return SeriesData(info)
 
     def _get_file_version(self) -> XrVersion:
-        match = re.match(
-            MODEL_RE, self.file_info.get(str, "model"), flags=re.IGNORECASE
-        )
+        match = re.match(MODEL_RE, self.file_info[str, "model"], flags=re.IGNORECASE)
         try:
             version = match.groupdict()["version"]  # type: ignore[union-attr]
         except AttributeError:

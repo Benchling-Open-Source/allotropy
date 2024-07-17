@@ -48,13 +48,13 @@ def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
 
 
 def _create_measurement(plate_data: SeriesData) -> Measurement:
-    location_id = plate_data.get(str, "Well")
+    location_id = plate_data[str, "Well"]
     well_plate = plate_data.get(str, "Plate", None)
 
     return Measurement(
         type_=MeasurementType.OPTICAL_IMAGING,
         identifier=random_uuid_str(),
-        measurement_time=plate_data.get(str, "Read Date"),
+        measurement_time=plate_data[str, "Read Date"],
         location_identifier=location_id,
         well_plate_identifier=well_plate,
         sample_identifier=f"{well_plate}_{location_id}",

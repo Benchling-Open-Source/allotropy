@@ -40,12 +40,12 @@ class SpectroscopyRow:
         data = SeriesData(series)
 
         analyst = data.get(str, "user id", None)
-        timestamp = f'{data.get(str, "date")} {data.get(str, "time", None)}'
+        timestamp = f'{data[str, "date"]} {data.get(str, "time", None)}'
         experiment_type = data.get(str, "na type", None)
 
         sample_id = data.try_non_nan_str_or_none("sample id") or NOT_APPLICABLE
         well_plate_id = data.try_non_nan_str_or_none("plate id")
-        location_id = data.get(str, "well")
+        location_id = data[str, "well"]
 
         is_na_experiment = experiment_type and "NA" in experiment_type
 

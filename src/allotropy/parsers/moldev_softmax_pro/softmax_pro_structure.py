@@ -109,7 +109,7 @@ class GroupSampleData:
     def create(data: pd.DataFrame) -> GroupSampleData:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
         top_row = row_data[0]
-        identifier = top_row.get(str, "Sample")
+        identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
         numeric_columns = [
             column
@@ -135,10 +135,10 @@ class GroupSampleData:
                         ["Well", "Wells"],
                         msg="Unable to find well position in group data.",
                     ),
-                    plate=row.get(str, "WellPlateName"),
+                    plate=row[str, "WellPlateName"],
                     entries=[
                         GroupDataElementEntry(
-                            name=column_name, value=row.get(float, column_name)
+                            name=column_name, value=row[float, column_name]
                         )
                         for column_name in normal_columns
                     ],
@@ -148,7 +148,7 @@ class GroupSampleData:
             aggregated_entries=[
                 GroupDataElementEntry(
                     name=column_name,
-                    value=top_row.get(float, column_name),
+                    value=top_row[float, column_name],
                 )
                 for column_name in aggregated_columns
             ],

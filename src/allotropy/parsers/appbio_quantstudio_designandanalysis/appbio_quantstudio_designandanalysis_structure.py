@@ -63,7 +63,7 @@ class Header:
         software_info = assert_not_none(
             re.match(
                 "(.*) v(.+)",
-                header.get(str, "Software Name and Version"),
+                header[str, "Software Name and Version"],
             )
         )
 
@@ -84,7 +84,7 @@ class Header:
                     assert_not_none(
                         re.match(
                             "(96)|(384)",
-                            header.get(str, "Block Type"),
+                            header[str, "Block Type"],
                         ),
                         msg="Unable to find plate well count",
                     ).group(),
@@ -92,19 +92,15 @@ class Header:
                 ),
                 msg="Unable to interpret plate well count",
             ),
-            device_identifier=(
-                header.get(str, "Instrument Name", None) or NOT_APPLICABLE
-            ),
-            model_number=header.get(str, "Instrument Type", None) or NOT_APPLICABLE,
-            device_serial_number=(
-                header.get(str, "Instrument Serial Number", None) or NOT_APPLICABLE
+            device_identifier=header.get(str, "Instrument Name", NOT_APPLICABLE),
+            model_number=header.get(str, "Instrument Type", NOT_APPLICABLE),
+            device_serial_number=header.get(
+                str, "Instrument Serial Number", NOT_APPLICABLE
             ),
             measurement_method_identifier=header.get(
                 str, "Quantification Cycle Method"
             ),
-            pcr_detection_chemistry=(
-                header.get(str, "Chemistry", None) or NOT_APPLICABLE
-            ),
+            pcr_detection_chemistry=header.get(str, "Chemistry", NOT_APPLICABLE),
             passive_reference_dye_setting=header.get(str, "Passive Reference", None),
             barcode=header.get(str, "Barcode", None),
             analyst=header.get(str, "Operator", None),
@@ -138,7 +134,7 @@ class WellItem(Referenceable):
         data: SeriesData,
         experiment_type: ExperimentType,
     ) -> WellItem:
-        identifier = data.get(int, "Well")
+        identifier = data[int, "Well"]
 
         target_dna_description = data.get(
             str,
@@ -152,7 +148,7 @@ class WellItem(Referenceable):
             msg=f"Unable to find well position for Well '{identifier}'.",
         )
 
-        sample_identifier = data.get(str, "Sample", None) or well_position
+        sample_identifier = data.get(str, "Sample", well_position)
 
         raw_sample_role_type = data.get(str, "Task", None)
         sample_role_type = (
@@ -209,7 +205,7 @@ class Well:
         experiment_type: ExperimentType,
     ) -> Well:
         well_items = {
-            SeriesData(item_data).get(str, "Target"): WellItem.create(
+            SeriesData(item_data)[str, "Target"]: WellItem.create(
                 contents, SeriesData(item_data), experiment_type
             )
             for _, item_data in well_data.iterrows()

@@ -44,14 +44,14 @@ class Row:
             raise AllotropeConversionError(message)
 
         return Row(
-            timestamp=data.get(str, "Test Date"),
+            timestamp=data[str, "Test Date"],
             assay_name=data.get(str, "Assay Name", None),
-            fluorescence=data.get(float, options[emission_wavelength]),
+            fluorescence=data[float, options[emission_wavelength]],
             batch_identifier=data.get(str, "Run ID", None),
-            sample_identifier=data.get(str, "Test Name"),
+            sample_identifier=data[str, "Test Name"],
             sample_volume=data.try_non_nan_float_or_none("Sample Volume (µL)"),
             excitation=data.get(str, "Excitation", None),
-            emission=data.get(str, "Emission"),
+            emission=data[str, "Emission"],
             dilution_factor=data.try_non_nan_float_or_none("Dilution Factor"),
             original_sample_concentration=data.try_float_or_nan(
                 "Original sample conc."

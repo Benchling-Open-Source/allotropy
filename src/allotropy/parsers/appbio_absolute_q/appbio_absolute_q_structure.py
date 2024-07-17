@@ -76,7 +76,7 @@ class Group:
             CalculatedItem(
                 random_uuid_str(),
                 reference.name,
-                data.get(float, reference.column),
+                data[float, reference.column],
                 reference.unit,
                 reference.source,
                 reference.source_features,
@@ -89,8 +89,8 @@ class Group:
         }
         return Group(
             well_identifier=well_identifier,
-            group_identifier=data.get(str, "Group"),
-            target_identifier=data.get(str, "Target"),
+            group_identifier=data[str, "Group"],
+            target_identifier=data[str, "Target"],
             calculated_data=calculated_data_items,
             calculated_data_ids=calculated_data_ids,
         )
@@ -125,19 +125,19 @@ class WellItem:
     def create(series: pd.Series[str]) -> WellItem:
         data = SeriesData(series)
         return WellItem(
-            name=data.get(str, "Name"),
+            name=data[str, "Name"],
             measurement_identifier=random_uuid_str(),
-            well_identifier=data.get(str, "Well"),
-            plate_identifier=data.get(str, "Plate"),
-            group_identifier=data.get(str, "Group"),
-            target_identifier=data.get(str, "Target"),
-            run_identifier=data.get(str, "Run"),
-            instrument_identifier=data.get(str, "Instrument"),
-            timestamp=data.get(str, "Date"),
-            total_partition_count=round(data.get(float, "Total")),
-            reporter_dye_setting=data.get(str, "Dye"),
-            concentration=data.get(float, "Conc. cp/uL"),
-            positive_partition_count=round(data.get(float, "Positives")),
+            well_identifier=data[str, "Well"],
+            plate_identifier=data[str, "Plate"],
+            group_identifier=data[str, "Group"],
+            target_identifier=data[str, "Target"],
+            run_identifier=data[str, "Run"],
+            instrument_identifier=data[str, "Instrument"],
+            timestamp=data[str, "Date"],
+            total_partition_count=round(data[float, "Total"]),
+            reporter_dye_setting=data[str, "Dye"],
+            concentration=data[float, "Conc. cp/uL"],
+            positive_partition_count=round(data[float, "Positives"]),
         )
 
 

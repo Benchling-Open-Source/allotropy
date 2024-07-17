@@ -76,7 +76,7 @@ class CalculatedPlateInfo(PlateInfo):
 
     @staticmethod
     def create(series: SeriesData) -> CalculatedPlateInfo:
-        plate_number = series.get(str, "Plate", msg="Unable to find plate number")
+        plate_number = series[str, "Plate"]
 
         formula = series.get(
             str,
@@ -121,7 +121,7 @@ class ResultPlateInfo(PlateInfo):
         if measinfo is None:
             return None
 
-        plate_number = series.get(str, "Plate", msg="Unable to find plate number")
+        plate_number = series[str, "Plate"]
         raw_barcode = series.get(str, "Barcode", None)
         barcode = (raw_barcode or '=""').removeprefix('="').removesuffix('"')
         barcode = barcode or f"Plate {plate_number}"
@@ -495,7 +495,7 @@ class Filter:
         )
         series = SeriesData(df_to_series(data.T))
         name = str(series.series.index[0])
-        description = series.get(str, "Description")
+        description = series[str, "Description"]
 
         if search_result := search("Longpass=(\\d+)nm", description):
             return Filter(name, wavelength=float(search_result.group(1)))
@@ -556,18 +556,16 @@ class Labels:
         return Labels(
             label=series.series.index[0],
             excitation_filter=filters.get(
-                series.get(str, "Exc. filter", None) or NOT_APPLICABLE
+                series.get(str, "Exc. filter", NOT_APPLICABLE)
             ),
             emission_filters={
                 "1st": filters.get(
-                    series.get(str, "Ems. filter", None) or NOT_APPLICABLE,
+                    series.get(str, "Ems. filter", NOT_APPLICABLE),
                 ),
-                "2nd": filters.get(
-                    series.get(str, "2nd ems. filter", None) or NOT_APPLICABLE
-                ),
+                "2nd": filters.get(series.get(str, "2nd ems. filter", NOT_APPLICABLE)),
             },
             scan_position_setting=filter_position_map.get(
-                series.get(str, "Using of emission filter", None) or NOT_APPLICABLE
+                series.get(str, "Using of emission filter", NOT_APPLICABLE)
             ),
             number_of_flashes=series.get(float, "Number of flashes", None),
             detector_gain_setting=series.get(str, "Reference AD gain", None),
