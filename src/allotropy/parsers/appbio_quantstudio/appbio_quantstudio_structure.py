@@ -86,7 +86,9 @@ class Header:
             ),
             device_identifier=(data.get(str, "Instrument Name", NOT_APPLICABLE)),
             model_number=data[str, "Instrument Type"],
-            device_serial_number=data.get(str, "Instrument Serial Number", NOT_APPLICABLE),
+            device_serial_number=data.get(
+                str, "Instrument Serial Number", NOT_APPLICABLE
+            ),
             measurement_method_identifier=data[str, "Quantification Cycle Method"],
             pcr_detection_chemistry=data[str, "Chemistry"],
             passive_reference_dye_setting=data.get(str, "Passive Reference"),
