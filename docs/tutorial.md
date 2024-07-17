@@ -303,7 +303,7 @@ tests against if by:
 2. Comparing the output against expected output, contained in a file with the same name but a `json` extension.
 
 We can automatically generate the expected output by running `to_allotrope_test.py` without the corresponding
-expeted output file:
+expected output file:
 
 ```
 hatch run test tests/parsers/example_weyland_yutani/to_allotrope_test.py
