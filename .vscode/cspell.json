@@ -1,20 +1,27 @@
 {
   "allowCompoundWords": true,
   "words": [
-    "analyte",
-    "Bioplex",
     "chardet",
+    "genotyping",
+    "gpgsign",
     "iloc",
-    "MOLDEV",
-    "Nucleoview",
+    "infile",
+    "mypy",
+    "pydantic",
     "pyproject",
     "pytest",
-    "Qiacuity",
-    "Revvity",
-    "weyland",
-    "yutani"
+    "sdist"
   ],
   "flagWords": [
     "hte"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "companies",
+      "path": ".vscode/cspell_companies.txt"
+    }
+  ],
+  "dictionaries": [
+    "companies"
   ]
 }
