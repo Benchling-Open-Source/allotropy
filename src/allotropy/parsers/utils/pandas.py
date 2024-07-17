@@ -105,7 +105,7 @@ class SeriesData:
             if type_ is bool:
                 raw_value = "true" if str_to_bool(raw_value) else ""
             value = None if raw_value is None else type_(raw_value)
-        except (TypeError, ValueError):
+        except ValueError:
             value = None
         # If no default is provided, assert we got a value
         if default is UNSET:
@@ -151,20 +151,10 @@ class SeriesData:
         return self.get(float, key, msg=msg)
 
     def try_non_nan_float_or_none(self, key: str) -> float | None:
-        value = self.try_str_or_none(key)
-        try:
-            return try_non_nan_float_or_none(str(value))
-        except Exception as e:
-            msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-            raise AllotropeConversionError(msg) from e
+        return try_non_nan_float_or_none(self.get(str, key))
 
     def try_float_or_nan(self, key: str) -> JsonFloat:
-        value = self.try_str_or_none(key)
-        try:
-            return try_float_or_nan(str(value))
-        except Exception as e:
-            msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-            raise AllotropeConversionError(msg) from e
+        return try_float_or_nan(self.get(float, key, None))
 
     def try_bool_or_none(self, key: str) -> bool | None:
         return self.get(bool, key, None)

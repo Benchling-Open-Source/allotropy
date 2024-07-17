@@ -59,7 +59,6 @@ def try_nan_float_or_none(value: str | float | None) -> JsonFloat | None:
 
 
 def try_non_nan_float_or_none(value: str | float | None) -> float | None:
-    # float_value = try_float_or_none(value) if isinstance(value, str) else value
     float_value = try_float_or_none(value)
     return None if float_value is None or math.isnan(float_value) else float_value
 
