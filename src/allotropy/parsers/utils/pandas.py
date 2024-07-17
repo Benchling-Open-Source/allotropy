@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable
 from enum import Enum
 import re
-from typing import Any, overload
+from typing import Any, overload, TypeVar
 
 import pandas as pd
 
@@ -11,10 +12,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_not_none,
-    str_to_bool,
     try_float_or_nan,
-    try_float_or_none,
-    try_int,
     try_non_nan_float_or_none,
 )
 
@@ -61,41 +59,78 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     return df
 
 
+T = TypeVar("T")
+
+
 class SeriesData:
     def __init__(self, series: pd.Series[Any]) -> None:
         self.series = series
 
     @overload
-    def get_str(
-        self, key: str, default: str | Unset = UNSET, msg: str | None = None
-    ) -> str:
+    def get(
+        self,
+        type_: Callable[..., T],
+        key: Iterable[str],
+        default: str | Unset = UNSET,
+        msg: str | None = None,
+    ) -> T:
         pass
 
     @overload
-    def get_str(
-        self, key: str, default: None = None, msg: str | None = None
-    ) -> str | None:
+    def get(
+        self,
+        type_: Callable[..., T],
+        key: Iterable[str],
+        default: None = None,
+        msg: str | None = None,
+    ) -> T | None:
         pass
 
-    def get_str(
+    def get(
         self,
-        key: str,
-        default: str | None | Unset = UNSET,
+        type_: Callable[..., T],
+        key: Iterable[str],
+        default: T | None | Unset = UNSET,
         msg: str | None = None,
-    ) -> str | None:
-        value = self.series.get(key)
+    ) -> T | None:
+        # Get value from series, if series is an iterable get the first non-null value
+        raw_value = (
+            self.series.get(key)
+            if isinstance(key, str)
+            else get_first_not_none(self.series.get, list(key))
+        )
+        try:
+            # bool needs special handling to convert
+            if type_ is bool:
+                raw_value = (
+                    "true"
+                    if str(raw_value).lower()
+                    in (
+                        "true",
+                        "yes",
+                        "y",
+                        "true",
+                        "t",
+                        "1",
+                    )
+                    else ""
+                )
+            value = type_(raw_value)
+        except ValueError:
+            value = None
+        # If no default is provided, assert we got a value
         if default is UNSET:
-            assert_not_none(value, key, msg)
-        return default if value is None else str(value)
+            return assert_not_none(value, str(key), msg)
+        return default if value is None else value
 
     def try_str_or_default(self, key: str, default: str) -> str:
-        return self.get_str(key, default)
+        return self.get(str, key, default)
 
     def try_str_or_none(self, key: str) -> str | None:
-        return self.get_str(key, None)
+        return self.get(str, key, None)
 
     def try_str(self, key: str, msg: str | None = None) -> str:
-        return self.get_str(key, msg=msg)
+        return self.get(str, key, msg=msg)
 
     def try_non_nan_str_or_none(self, key: str) -> str | None:
         value = self.series.get(key)
@@ -105,36 +140,26 @@ class SeriesData:
         self,
         keys: list[str],
     ) -> str | None:
-        return get_first_not_none(self.try_str_or_none, keys)
+        return self.get(str, keys, None)
 
     def try_str_multikey(
         self,
         keys: list[str],
         msg: str | None = None,
     ) -> str:
-        return assert_not_none(self.try_str_multikey_or_none(keys), msg=msg)
+        return self.get(str, keys, msg=msg)
 
     def try_int_or_none(self, key: str) -> int | None:
-        value = self.try_str_or_none(key)
-        try:
-            return try_int(value, key)
-        except Exception as e:
-            msg = f"Unable to convert '{value}' (with key '{key}') to integer value."
-            raise AllotropeConversionError(msg) from e
+        return self.get(int, key, None)
 
     def try_int(self, key: str, msg: str | None = None) -> int:
-        return assert_not_none(self.try_int_or_none(key), key, msg)
+        return self.get(int, key, msg=msg)
 
     def try_float_or_none(self, key: str) -> float | None:
-        value = self.try_str_or_none(key)
-        try:
-            return try_float_or_none(str(value))
-        except Exception as e:
-            msg = f"Unable to convert '{value}' (with key '{key}') to float value."
-            raise AllotropeConversionError(msg) from e
+        return self.get(float, key, None)
 
     def try_float(self, key: str, msg: str | None = None) -> float:
-        return assert_not_none(self.try_float_or_none(key), key, msg)
+        return self.get(float, key, msg=msg)
 
     def try_non_nan_float_or_none(self, key: str) -> float | None:
         value = self.try_str_or_none(key)
@@ -153,12 +178,7 @@ class SeriesData:
             raise AllotropeConversionError(msg) from e
 
     def try_bool_or_none(self, key: str) -> bool | None:
-        value = self.try_str_or_none(key)
-        try:
-            return None if value is None else str_to_bool(str(value))
-        except Exception as e:
-            msg = f"Unable to convert '{value}' (with key '{key}') to boolean value."
-            raise AllotropeConversionError(msg) from e
+        return self.get(bool, key, None)
 
-    def try_bool(self, key: str, msg: str | None = None) -> float:
-        return assert_not_none(self.try_bool_or_none(key), key, msg)
+    def try_bool(self, key: str, msg: str | None = None) -> bool:
+        return self.get(bool, key, msg=msg)
