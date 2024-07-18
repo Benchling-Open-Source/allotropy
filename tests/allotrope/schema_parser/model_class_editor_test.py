@@ -489,8 +489,8 @@ class Item1:
 class Item:
     key: str
     other_key: Union[float,int,str]
-    special: Optional[int]
-    other_special: str|None
+    special: Optional[int]=None
+    other_special: str|None=None
 """,
     )
 

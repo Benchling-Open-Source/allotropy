@@ -218,7 +218,9 @@ class DataclassField:
         return DataclassField(
             name=self.name,
             # If default values disagree - this must be a now optional field, make it None
-            default_value=self.default_value if self.default_value == other.default_value else "None",
+            default_value=self.default_value
+            if self.default_value == other.default_value
+            else "None",
             # Note that combining required + not required == not required
             field_types=self.field_types | other.field_types,
         )
@@ -336,7 +338,9 @@ class DataClassLines(ClassLines):
         # parent classes must match
         if set(self.parent_class_names) != set(other.parent_class_names):
             # Special case for OrderedItem, which sometimes gets combined and sometimes does not.
-            if set(self.parent_class_names) | set(other.parent_class_names) != {"OrderedItem"}:
+            if set(self.parent_class_names) | set(other.parent_class_names) != {
+                "OrderedItem"
+            }:
                 return False
 
         # There must be some overlapping fields with the same values
@@ -356,12 +360,14 @@ class DataClassLines(ClassLines):
             if field_name not in self.fields:
                 self.fields[field_name] = other.fields[field_name]
                 self.fields[field_name].field_types.add("None")
+                self.fields[field_name].default_value = "None"
                 self.field_name_order.append(field_name)
 
         # For fields in this class not in the other, mark as optional
         for field_name in self.fields:
             if field_name not in other.fields:
                 self.fields[field_name].field_types.add("None")
+                self.fields[field_name].default_value = "None"
 
         # Merge fields by combining types into a single union.
         for field_name in self.fields.keys() & other.fields.keys():
@@ -375,7 +381,9 @@ class DataClassLines(ClassLines):
         # If parents do not match, and it is only ordered item, it is because one class got
         # ordered item merged in, so drop it.
         if set(self.parent_class_names) != set(other.parent_class_names):
-            if set(self.parent_class_names) | set(other.parent_class_names) == {"OrderedItem"}:
+            if set(self.parent_class_names) | set(other.parent_class_names) == {
+                "OrderedItem"
+            }:
                 self.parent_class_names = []
 
         return DataClassLines.create(
