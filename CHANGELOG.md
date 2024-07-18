@@ -8,10 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added Thermo Fisher Qubit Flex adapter
-- Added requirement document for Thermo Fisher Qubit Flex adapter
-
-- Added digital PCR and solution analyzer parser requirement templates to /docs
 
 ### Fixed
 
@@ -22,6 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.41] - 2024-07-18
+
+### Added
+
+- Added Thermo Fisher Qubit Flex adapter
+- Added requirement document for Thermo Fisher Qubit Flex adapter
+- Added digital PCR and solution analyzer parser requirement templates to /docs
 
 ## [0.1.40] - 2024-07-15
 
