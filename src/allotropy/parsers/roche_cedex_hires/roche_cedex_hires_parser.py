@@ -19,7 +19,7 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     DeviceSystemDocument,
     MeasurementAggregateDocument,
     Model,
-    ProcessedDataAggregateDocument1,
+    ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
 )
@@ -359,7 +359,7 @@ class RocheCedexHiResParser(VendorParser):
                                 )
                             ]
                         ),
-                        processed_data_aggregate_document=ProcessedDataAggregateDocument1(
+                        processed_data_aggregate_document=ProcessedDataAggregateDocument(
                             processed_data_document=[
                                 add_custom_information_document(
                                     ProcessedDataDocumentItem(
