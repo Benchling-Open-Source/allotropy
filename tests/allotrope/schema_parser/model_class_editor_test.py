@@ -426,7 +426,7 @@ class Item1:
     )
     assert lines.should_merge(other_lines)
 
-    # Extra required key will not match
+    # Extra required key will be added as optional
     other_lines_extra_required_key = data_class_lines_from_multistring(
         """
 @dataclass(frozen=True,kw_only=True)
@@ -435,7 +435,7 @@ class Item1:
     other_special: int
 """
     )
-    assert not lines.should_merge(other_lines_extra_required_key)
+    assert lines.should_merge(other_lines_extra_required_key)
 
     # Missing required key will not match
     other_lines_missing_required_key = data_class_lines_from_multistring(
@@ -763,21 +763,14 @@ import json
 class Item:
     key: str
     disagree: int|str
-    extra_key: str|None="test"
-
-
-@dataclass(frozen=True,kw_only=True)
-class Item2:
-    key: str
-    disagree: str
-    extra_key: str
+    extra_key: str|None=None
 
 
 @dataclass(frozen=True,kw_only=True)
 class Model:
     item: Item
     item1: Item
-    item2: Item2
+    item2: Item
     manifest: str=\"fake_manifest\"
 """
     assert editor.modify_file(model_file_contents) == expected
