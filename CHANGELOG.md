@@ -13,14 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Use "calamine" engine for reading excel where possible.
-- Relaxed conditions for schema model generator combining classes to handle cases where required key sets created a large number of class versions
-
 ### Deprecated
 
 ### Removed
 
 ### Security
+
+## [0.1.42] - 2024-07-19
+
+### Changed
+
+- Use "calamine" engine for reading excel where possible.
+- Relaxed conditions for schema model generator combining classes to handle cases where required key sets created a large number of class versions
 
 ## [0.1.41] - 2024-07-18
 
