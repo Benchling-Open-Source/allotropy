@@ -7,9 +7,8 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
+from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import create_reader_data
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_structure import create_data
-from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_txt_reader import ViCellXRTXTReader
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.vendor_parser import VendorParser
 
@@ -24,12 +23,7 @@ class ViCellXRParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        reader_cls = (
-            ViCellXRTXTReader
-            if named_file_contents.original_file_name.endswith("txt")
-            else ViCellXRReader
-        )
-        reader = reader_cls(named_file_contents)
+        reader = create_reader_data(named_file_contents)
         data = create_data(reader)
 
         mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
