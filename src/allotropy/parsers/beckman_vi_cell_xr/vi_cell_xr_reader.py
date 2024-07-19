@@ -21,7 +21,11 @@ from allotropy.parsers.utils.values import assert_value_from_df
 class ViCellXRReader:
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
-        self.engine = "calamine" if named_file_contents.original_file_name.endswith("xlsx") else None
+        self.engine = (
+            "calamine"
+            if named_file_contents.original_file_name.endswith("xlsx")
+            else None
+        )
         self.contents = named_file_contents.contents
         self.file_info = self._get_file_info()
         self.file_version = self._get_file_version()
