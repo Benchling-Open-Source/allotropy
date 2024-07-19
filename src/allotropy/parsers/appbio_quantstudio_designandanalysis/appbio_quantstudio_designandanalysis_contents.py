@@ -15,7 +15,6 @@ from allotropy.parsers.utils.values import (
 class DesignQuantstudioContents:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
-        # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
         raw_contents = pd.read_excel(  # type: ignore[call-overload]
             named_file_contents.contents,
             header=None,
