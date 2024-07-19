@@ -65,12 +65,12 @@ def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
     )
 
 
-def create_data(data: pd.DataFrame) -> Data:
+def create_data(data: pd.DataFrame, file_name: str) -> Data:
     metadata = Metadata(
         device_type="brightfield imager (cell counter)",
         detection_type="brightfield",
         model_number=DEFAULT_MODEL_NUMBER,
         software_name=VICELL_BLU_SOFTWARE_NAME,
+        file_name=file_name,
     )
-
     return Data(metadata, _create_measurement_groups(data))

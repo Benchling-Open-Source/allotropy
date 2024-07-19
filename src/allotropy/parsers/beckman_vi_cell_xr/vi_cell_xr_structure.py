@@ -65,7 +65,7 @@ def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
     )
 
 
-def create_data(reader_data: ViCellData) -> Data:
+def create_data(reader_data: ViCellData, file_name: str) -> Data:
     serial_number_str = reader_data.file_info[str, "serial"]
     try:
         serial_number = serial_number_str[serial_number_str.rindex(":") + 1 :].strip()
@@ -94,6 +94,7 @@ def create_data(reader_data: ViCellData) -> Data:
         equipment_serial_number=serial_number,
         software_name=SOFTWARE_NAME,
         software_version=version.value,
+        file_name=file_name,
     )
 
     return Data(metadata, _create_measurement_groups(reader_data.data))
