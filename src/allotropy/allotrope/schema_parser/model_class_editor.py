@@ -212,6 +212,10 @@ class DataclassField:
             types = f"{types}={self.default_value}"
         return f"{self.name}: {types}"
 
+    def make_optional(self) -> None:
+        self.field_types.add("None")
+        self.default_value = "None"
+
     def merge(self, other: DataclassField) -> DataclassField:
         return DataclassField(
             name=self.name,
@@ -363,15 +367,13 @@ class DataClassLines(ClassLines):
         for field_name in other.fields:
             if field_name not in self.fields:
                 self.fields[field_name] = other.fields[field_name]
-                self.fields[field_name].field_types.add("None")
-                self.fields[field_name].default_value = "None"
+                self.fields[field_name].make_optional()
                 self.field_name_order.append(field_name)
 
         # For fields in this class not in the other, mark as optional
         for field_name in self.fields:
             if field_name not in other.fields:
-                self.fields[field_name].field_types.add("None")
-                self.fields[field_name].default_value = "None"
+                self.fields[field_name].make_optional()
 
         # Merge fields by combining types into a single union.
         for field_name in self.fields.keys() & other.fields.keys():
