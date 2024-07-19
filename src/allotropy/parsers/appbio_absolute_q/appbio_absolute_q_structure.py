@@ -6,6 +6,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     CalculatedDataItem,
     Data,
@@ -24,7 +25,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -75,8 +76,7 @@ class Group:
         }
 
     @staticmethod
-    def create(series: pd.Series[str]) -> Group:
-        data = SeriesData(series)
+    def create(data: SeriesData) -> Group:
         well_identifier = data.get(str, "Well")
         aggregation_type = AGGREGATION_LOOKUP[well_identifier]
 
@@ -106,7 +106,7 @@ class Group:
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
         data = data.replace(np.nan, None)[data["Name"].isna()]
-        return list(data.apply(Group.create, axis="columns"))  # type: ignore[call-overload]
+        return map_rows(data, Group.create)
 
 
 @dataclass
@@ -130,8 +130,7 @@ class WellItem:
         return f"{self.group_identifier}_{self.target_identifier}"
 
     @staticmethod
-    def create(series: pd.Series[str]) -> WellItem:
-        data = SeriesData(series)
+    def create(data: SeriesData) -> WellItem:
         return WellItem(
             name=data[str, "Name"],
             measurement_identifier=random_uuid_str(),
@@ -157,7 +156,7 @@ class Well:
     def create_wells(data: pd.DataFrame) -> list[Well]:
         data = data.dropna(subset=["Name"]).replace(np.nan, None)
         return [
-            Well(list(well_data.apply(WellItem.create, axis="columns")))  # type: ignore[call-overload]
+            Well(map_rows(well_data, WellItem.create))
             for _, well_data in data.groupby("Well")
         ]
 
@@ -217,6 +216,7 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
             device_identifier=wells[0].items[0].instrument_identifier,
             brand_name=BRAND_NAME,
             device_type=DEVICE_TYPE,
+            container_type=ContainerType.well_plate,
             software_name=SOFTWARE_NAME,
             product_manufacturer=PRODUCT_MANUFACTURER,
             file_name=file_name,

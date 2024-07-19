@@ -17,6 +17,18 @@ from allotropy.parsers.utils.values import (
     str_to_bool,
 )
 
+MapType = TypeVar("MapType")
+
+
+def map_rows(
+    data_frame: pd.DataFrame, func: Callable[[SeriesData], MapType]
+) -> list[MapType]:
+    def run_with_data(series: pd.Series[str]) -> MapType:
+        return func(SeriesData(series))
+
+    # pandas can't find a matching overload for this, but it works and returns the correct type...
+    return list(data_frame.apply(run_with_data, axis="columns"))  # type: ignore[call-overload]
+
 
 def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
     return data.drop(
