@@ -28,7 +28,7 @@ class ViCellData:
 
 
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
-    reader = (
+    reader: ViCellXRReader | ViCellXRTXTReader = (
         ViCellXRTXTReader(named_file_contents)
         if named_file_contents.original_file_name.endswith("txt")
         else ViCellXRReader(named_file_contents)
