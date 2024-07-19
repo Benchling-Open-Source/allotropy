@@ -47,6 +47,7 @@ dependencies = [
   "pytz",
   "xlrd >= 2.0.0",
   "rfc3339-validator >= 0.1.4",
+  "python-calamine",
 ]
 
 [project.urls]

@@ -1,8 +1,5 @@
 from __future__ import annotations
 
-import re
-import warnings
-
 import numpy as np
 import pandas as pd
 
@@ -19,15 +16,12 @@ class DesignQuantstudioContents:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
         # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
-        with warnings.catch_warnings():
-            warnings.filterwarnings(
-                "ignore",
-                category=UserWarning,
-                module=re.escape("openpyxl.styles.stylesheet"),
-            )
-            raw_contents = pd.read_excel(
-                named_file_contents.contents, header=None, sheet_name=None
-            )
+        raw_contents = pd.read_excel(
+            named_file_contents.contents,
+            header=None,
+            sheet_name=None,
+            engine="calamine",
+        )
         return DesignQuantstudioContents(raw_contents)
 
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:

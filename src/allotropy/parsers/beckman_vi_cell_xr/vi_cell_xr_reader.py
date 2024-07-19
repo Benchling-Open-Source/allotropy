@@ -6,6 +6,7 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_excel
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
     DEFAULT_VERSION,
@@ -15,18 +16,19 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 )
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import assert_value_from_df
-from allotropy.types import IOType
 
 
 class ViCellXRReader:
-    def __init__(self, contents: IOType) -> None:
-        self.contents = contents
+    def __init__(self, named_file_contents: NamedFileContents) -> None:
+        # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
+        self.engine = "calamine" if named_file_contents.original_file_name.endswith("xlsx") else None
+        self.contents = named_file_contents.contents
         self.file_info = self._get_file_info()
         self.file_version = self._get_file_version()
         self.data = self._read_data()
 
     def _read_excel(self, **kwargs: Any) -> pd.DataFrame:
-        return read_excel(self.contents, **kwargs)
+        return read_excel(self.contents, engine=self.engine, **kwargs)
 
     def _read_data(self) -> pd.DataFrame:
         header_row = 4
