@@ -12,7 +12,7 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     DeviceSystemDocument,
     MeasurementAggregateDocument,
     Model,
-    ProcessedDataAggregateDocument1,
+    ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
 )
@@ -147,7 +147,7 @@ class Mapper:
                     )
                 ]
             ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument1(
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(
                 processed_data_document=[
                     ProcessedDataDocumentItem(
                         data_processing_document=DataProcessingDocument(
