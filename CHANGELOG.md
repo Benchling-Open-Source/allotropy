@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Relaxed conditions for schema model generator combining classes to handle cases where required key sets created a large number of class versions
+
 ### Deprecated
 
 ### Removed
