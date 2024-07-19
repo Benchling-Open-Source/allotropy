@@ -19,8 +19,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     SOFTWARE_NAME,
     XrVersion,
 )
-from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellXRReader
-from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_txt_reader import ViCellXRTXTReader
+from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
@@ -66,8 +65,8 @@ def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
     )
 
 
-def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
-    serial_number_str = reader.file_info[str, "serial"]
+def create_data(reader_data: ViCellData) -> Data:
+    serial_number_str = reader_data.file_info[str, "serial"]
     try:
         serial_number = serial_number_str[serial_number_str.rindex(":") + 1 :].strip()
     except ValueError:
@@ -75,7 +74,7 @@ def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
 
     match = re.match(
         MODEL_RE,
-        reader.file_info[str, "model"],
+        reader_data.file_info[str, "model"],
         flags=re.IGNORECASE,
     )
     try:
@@ -97,4 +96,4 @@ def create_data(reader: ViCellXRTXTReader | ViCellXRReader) -> Data:
         software_version=version.value,
     )
 
-    return Data(metadata, _create_measurement_groups(reader.data))
+    return Data(metadata, _create_measurement_groups(reader_data.data))
