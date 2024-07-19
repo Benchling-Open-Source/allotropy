@@ -24,7 +24,7 @@ from allotropy.parsers.utils.values import assert_value_from_df
 @dataclass
 class ViCellData:
     data: pd.DataFrame
-    file_info: pd.Series
+    file_info: SeriesData
 
 
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
@@ -37,6 +37,9 @@ def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
 
 
 class ViCellXRReader:
+    data: pd.DataFrame
+    series: SeriesData
+
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
         self.engine = (
@@ -110,6 +113,9 @@ class ViCellXRReader:
 
 
 class ViCellXRTXTReader:
+    data: pd.DataFrame
+    series: SeriesData
+
     def __init__(self, contents: NamedFileContents) -> None:
         self.lines = read_to_lines(contents)
         self.file_info = self._get_file_info()
