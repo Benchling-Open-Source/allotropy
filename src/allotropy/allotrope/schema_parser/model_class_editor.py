@@ -14,6 +14,7 @@ from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
     get_schema_definitions_mapping,
 )
+from allotropy.parsers.utils.values import assert_not_none
 
 SCHEMA_DIR_PATH = "src/allotropy/allotrope/schemas"
 SHARED_FOLDER_MODULE = "allotropy.allotrope.models.shared"
@@ -193,10 +194,7 @@ class DataclassField:
         type_string, default_value = (
             content.split("=") if "=" in content else (content, None)
         )
-        if not type_string:
-            msg = "This is impossible but type checker is dumb"
-            raise AssertionError(msg)
-        types = _parse_field_types(type_string)
+        types = _parse_field_types(assert_not_none(type_string))
 
         return DataclassField(name, default_value, types)
 
@@ -222,7 +220,13 @@ class DataclassField:
             if self.default_value == other.default_value
             else "None",
             # Note that combining required + not required == not required
-            field_types=self.field_types | other.field_types,
+            # When combining types, drop a general dict[str, Any] type. This happens when the schema
+            # does not specify any fields, but that's a mistake.
+            field_types={
+                type_
+                for type_ in self.field_types | other.field_types
+                if type_.lower() != "dict[str,any]"
+            },
         )
 
 
