@@ -80,6 +80,8 @@ class Group:
         well_identifier = data.get(str, "Well")
         aggregation_type = AGGREGATION_LOOKUP[well_identifier]
 
+        # TODO: if aggregation type is Replicate(Average), check for required columns
+        # Raise if column(s) do not exist
         calculated_data_items = [
             CalculatedItem(
                 random_uuid_str(),
