@@ -43,7 +43,7 @@ def get_full_schema_path(schema_path: Path) -> Path:
 
 def get_manifest_from_schema_path(schema_path: Path) -> str:
     rel_schema_path = get_rel_schema_path(schema_path)
-    if not str(rel_schema_path).startswith("adm/") or not str(rel_schema_path).endswith(
+    if not rel_schema_path.parts[0] == "adm" or not str(rel_schema_path).endswith(
         ".schema.json"
     ):
         msg = f"Invalid schema path: {rel_schema_path}"
