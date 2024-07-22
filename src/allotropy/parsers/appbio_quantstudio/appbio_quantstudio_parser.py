@@ -1,3 +1,6 @@
+from collections.abc import Callable
+from typing import TypeVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     BaselineCorrectedReporterDataCube,
     CalculatedDataDocumentItem,
@@ -37,24 +40,28 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TDatacubeStructure,
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+    Data,
+    DataCube,
+    Measurement,
+    Metadata,
+)
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     create_data,
 )
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
-    Data,
-    Well,
-    WellItem,
-)
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
+    assert_not_none,
     quantity_or_none,
     try_int_or_nan,
 )
 from allotropy.parsers.vendor_parser import VendorParser
 
+CubeClass = TypeVar("CubeClass")
 
 class AppBioQuantStudioParser(VendorParser):
     @property
@@ -72,42 +79,38 @@ class AppBioQuantStudioParser(VendorParser):
         file_name = named_file_contents.original_file_name
         return self._get_model(data, file_name)
 
-    def _get_model(self, data: Data, file_name: str) -> Model:
+    def _get_model(self, data: Data) -> Model:
         return Model(
             qPCR_aggregate_document=QPCRAggregateDocument(
                 device_system_document=DeviceSystemDocument(
-                    device_identifier=data.header.device_identifier,
-                    model_number=data.header.model_number,
-                    device_serial_number=data.header.device_serial_number,
+                    device_identifier=data.metadata.device_identifier,
+                    model_number=data.metadata.model_number,
+                    device_serial_number=data.metadata.device_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
-                    data_system_instance_identifier="localhost",
-                    file_name=file_name,
-                    UNC_path="",  # unknown
-                    software_name="Thermo QuantStudio",
-                    software_version="1.0",
+                    data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+                    file_name=data.metadata.file_name,
+                    UNC_path=data.metadata.unc_path,
+                    software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
                     ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 qPCR_document=[
                     QPCRDocumentItem(
-                        analyst=data.header.analyst,
+                        analyst=measurement_group.analyst,
                         measurement_aggregate_document=MeasurementAggregateDocument(
-                            experimental_data_identifier=data.header.experimental_data_identifier,
-                            experiment_type=data.header.experiment_type,
-                            container_type=ContainerType.qPCR_reaction_block,
-                            plate_well_count=TQuantityValueNumber(
-                                value=try_int_or_nan(data.header.plate_well_count)
-                            ),
+                            experimental_data_identifier=measurement_group.experimental_data_identifier,
+                            experiment_type=measurement_group.experiment_type,
+                            container_type=measurement_group.container_type,
+                            plate_well_count=TQuantityValueNumber(value=measurement_group.plate_well_count),
                             measurement_document=[
-                                self.get_measurement_document_item(
-                                    data, well, well_item
-                                )
-                                for well_item in well.items.values()
+                                self.get_measurement_document_item(measurement, data.metadata)
+                                for measurement in measurement_group.measurements
                             ],
                         ),
                     )
-                    for well in data.wells
+                    for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self.get_outer_calculated_data_aggregate_document(
                     data
@@ -156,225 +159,89 @@ class AppBioQuantStudioParser(VendorParser):
         )
 
     def get_measurement_document_item(
-        self, data: Data, well: Well, well_item: WellItem
+        self, measurement: Measurement, metadata: Metadata,
     ) -> MeasurementDocumentItem:
         return MeasurementDocumentItem(
-            measurement_identifier=well_item.uuid,
-            measurement_time=self._get_date_time(data.header.measurement_time),
-            target_DNA_description=well_item.target_dna_description,
+            measurement_identifier=measurement.identifier,
+            measurement_time=self._get_date_time(measurement.timestamp),
+            target_DNA_description=measurement.target_identifier,
             sample_document=SampleDocument(
-                sample_identifier=well_item.sample_identifier,
-                sample_role_type=well_item.sample_role_type,
-                well_location_identifier=well_item.well_location_identifier,
-                well_plate_identifier=data.header.barcode,
+                sample_identifier=measurement.sample_identifier,
+                sample_role_type=measurement.sample_role_type,
+                well_location_identifier=measurement.well_location_identifier,
+                well_plate_identifier=measurement.well_plate_identifier,
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    self.get_device_control_document_item(data, well_item),
-                ],
-            ),
-            processed_data_aggregate_document=ProcessedDataAggregateDocument(
-                processed_data_document=[
-                    self.get_processed_data_document(well_item),
-                ]
-            ),
-            reporter_dye_data_cube=self.get_reporter_dye_data_cube(well, well_item),
-            passive_reference_dye_data_cube=self.get_passive_reference_dye_data_cube(
-                data, well
-            ),
-            melting_curve_data_cube=self.get_melting_curve_data_cube(well),
-        )
-
-    def get_device_control_document_item(
-        self, data: Data, well_item: WellItem
-    ) -> DeviceControlDocumentItem:
-        return DeviceControlDocumentItem(
-            device_type="qPCR",
-            measurement_method_identifier=data.header.measurement_method_identifier,
-            total_cycle_number_setting=TQuantityValueNumber(
-                value=well_item.amplification_data.total_cycle_number_setting,
-            ),
-            PCR_detection_chemistry=data.header.pcr_detection_chemistry,
-            reporter_dye_setting=well_item.reporter_dye_setting,
-            quencher_dye_setting=well_item.quencher_dye_setting,
-            passive_reference_dye_setting=data.header.passive_reference_dye_setting,
-        )
-
-    def get_processed_data_document(
-        self, well_item: WellItem
-    ) -> ProcessedDataDocumentItem:
-        return ProcessedDataDocumentItem(
-            data_processing_document=DataProcessingDocument(
-                automatic_cycle_threshold_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-                cycle_threshold_value_setting=TQuantityValueUnitless(
-                    value=well_item.result.cycle_threshold_value_setting,
-                ),
-                automatic_baseline_determination_enabled_setting=well_item.result.automatic_baseline_determination_enabled_setting,
-                genotyping_determination_method_setting=quantity_or_none(
-                    TQuantityValueUnitless,
-                    well_item.result.genotyping_determination_method_setting,
-                ),
-            ),
-            cycle_threshold_result=TNullableQuantityValueUnitless(
-                value=well_item.result.cycle_threshold_result,
-            ),
-            normalized_reporter_result=quantity_or_none(
-                TQuantityValueUnitless, well_item.result.normalized_reporter_result
-            ),
-            baseline_corrected_reporter_result=quantity_or_none(
-                TQuantityValueUnitless,
-                well_item.result.baseline_corrected_reporter_result,
-            ),
-            genotyping_determination_result=well_item.result.genotyping_determination_result,
-            normalized_reporter_data_cube=NormalizedReporterDataCube(
-                label="normalized reporter",
-                cube_structure=TDatacubeStructure(
-                    dimensions=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.integer,
-                            concept="cycle count",
-                            unit="#",
+                    DeviceControlDocumentItem(
+                        device_type=metadata.device_type,
+                        measurement_method_identifier=metadata.measurement_method_identifier,
+                        total_cycle_number_setting=TQuantityValueNumber(
+                            value=measurement.total_cycle_number_setting,
                         ),
-                    ],
-                    measures=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.double,
-                            concept="normalized report result",
-                            unit=UNITLESS,
-                        ),
-                    ],
-                ),
-                data=TDatacubeData(
-                    dimensions=[well_item.amplification_data.cycle],
-                    measures=[well_item.amplification_data.rn],
-                ),
-            ),
-            baseline_corrected_reporter_data_cube=BaselineCorrectedReporterDataCube(
-                label="baseline corrected reporter",
-                cube_structure=TDatacubeStructure(
-                    dimensions=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.integer,
-                            concept="cycle count",
-                            unit="#",
-                        ),
-                    ],
-                    measures=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.double,
-                            concept="baseline corrected reporter result",
-                            unit=UNITLESS,
-                        ),
-                    ],
-                ),
-                data=TDatacubeData(
-                    dimensions=[well_item.amplification_data.cycle],
-                    measures=[well_item.amplification_data.delta_rn],
-                ),
-            ),
-        )
-
-    def get_reporter_dye_data_cube(
-        self, well: Well, well_item: WellItem
-    ) -> ReporterDyeDataCube | None:
-        if well.multicomponent_data is None or well_item.reporter_dye_setting is None:
-            return None
-
-        return ReporterDyeDataCube(
-            label="reporter dye",
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.integer,
-                        concept="cycle count",
-                        unit="#",
-                    ),
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="reporter dye fluorescence",
-                        unit="RFU",
-                    ),
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=[well.multicomponent_data.cycle],
-                measures=[
-                    well.multicomponent_data.get_column(well_item.reporter_dye_setting)
-                ],
-            ),
-        )
-
-    def get_passive_reference_dye_data_cube(
-        self, data: Data, well: Well
-    ) -> PassiveReferenceDyeDataCube | None:
-        if (
-            well.multicomponent_data is None
-            or data.header.passive_reference_dye_setting is None
-        ):
-            return None
-
-        return PassiveReferenceDyeDataCube(
-            label="passive reference dye",
-            cube_structure=TDatacubeStructure(
-                dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.integer,
-                        concept="cycle count",
-                        unit="#",
-                    ),
-                ],
-                measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="passive reference dye fluorescence",
-                        unit="RFU",
-                    ),
-                ],
-            ),
-            data=TDatacubeData(
-                dimensions=[well.multicomponent_data.cycle],
-                measures=[
-                    well.multicomponent_data.get_column(
-                        data.header.passive_reference_dye_setting
+                        PCR_detection_chemistry=measurement.pcr_detection_chemistry,
+                        reporter_dye_setting=measurement.reporter_dye_setting,
+                        quencher_dye_setting=measurement.quencher_dye_setting,
+                        passive_reference_dye_setting=measurement.passive_reference_dye_setting,
                     )
                 ],
             ),
+            processed_data_aggregate_document=ProcessedDataAggregateDocument(
+                processed_data_document=[self.get_processed_data_document(measurement)],
+            ),
+            reporter_dye_data_cube=self._get_data_cube(ReporterDyeDataCube, "reporter dye", measurement),
+            passive_reference_dye_data_cube=self._get_data_cube(PassiveReferenceDyeDataCube, "passive reference dye", measurement),
+            melting_curve_data_cube=self._get_data_cube(MeltingCurveDataCube, "melting curve", measurement),
         )
 
-    def get_melting_curve_data_cube(self, well: Well) -> MeltingCurveDataCube | None:
-        if well.melt_curve_raw_data is None:
-            return None
+    def get_processed_data_document(
+        self, measurement: Measurement
+    ) -> ProcessedDataDocumentItem:
+        return ProcessedDataDocumentItem(
+            data_processing_document=DataProcessingDocument(
+                automatic_cycle_threshold_enabled_setting=measurement.automatic_baseline_determination_enabled_setting,
+                cycle_threshold_value_setting=TQuantityValueUnitless(
+                    value=measurement.cycle_threshold_value_setting,
+                ),
+                automatic_baseline_determination_enabled_setting=measurement.automatic_baseline_determination_enabled_setting,
+                genotyping_determination_method_setting=quantity_or_none(
+                    TQuantityValueUnitless,
+                    measurement.genotyping_determination_method_setting,
+                ),
+            ),
+            cycle_threshold_result=TNullableQuantityValueUnitless(
+                value=measurement.cycle_threshold_result,
+            ),
+            normalized_reporter_result=quantity_or_none(
+                TQuantityValueUnitless, measurement.normalized_reporter_result
+            ),
+            baseline_corrected_reporter_result=quantity_or_none(
+                TQuantityValueUnitless,
+                measurement.baseline_corrected_reporter_result,
+            ),
+            genotyping_determination_result=measurement.genotyping_determination_result,
+            normalized_reporter_data_cube=self._get_data_cube(NormalizedReporterDataCube, "normalized reporter", measurement),
+            baseline_corrected_reporter_data_cube=self._get_data_cube(NormalizedReporterDataCube, "baseline corrected reporter", measurement),
+        )
 
-        return MeltingCurveDataCube(
-            label="melting curve",
+    def _get_data_cube(self, cube_class: Callable[..., CubeClass], label: str, measurement: Measurement) -> CubeClass | None:
+        data_cube = get_first_not_none(lambda cube: cube.label == label, measurement.data_cubes)
+        if not data_cube:
+            return None
+        return cube_class(
+            label=data_cube.label,
             cube_structure=TDatacubeStructure(
                 dimensions=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="temperature",
-                        unit="degrees C",
-                    ),
+                    TDatacubeComponent(component.type_, component.concept, component.unit)
+                    for component in data_cube.structure_dimensions
                 ],
                 measures=[
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="reporter dye fluorescence",
-                        unit=UNITLESS,
-                    ),
-                    TDatacubeComponent(
-                        field_componentDatatype=FieldComponentDatatype.double,
-                        concept="slope",
-                        unit=UNITLESS,
-                    ),
+                    TDatacubeComponent(component.type_, component.concept, component.unit)
+                    for component in data_cube.structure_measures
                 ],
             ),
             data=TDatacubeData(
-                dimensions=[well.melt_curve_raw_data.reading],
-                measures=[
-                    well.melt_curve_raw_data.fluorescence,
-                    well.melt_curve_raw_data.derivative,
-                ],
+                dimensions=data_cube.dimensions,
+                measures=data_cube.measures
             ),
         )
