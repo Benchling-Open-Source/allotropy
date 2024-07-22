@@ -13,7 +13,7 @@ from allotropy.parsers.chemometec_nucleoview.constants import (
     DEFAULT_EPOCH_TIMESTAMP,
     DEFAULT_MODEL_NUMBER,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 
 
 @dataclass
@@ -32,8 +32,7 @@ class Row:
     estimated_cell_diameter: JsonFloat
 
     @staticmethod
-    def create(series: pd.Series[str]) -> Row | None:
-        data = SeriesData(series)
+    def create(data: SeriesData) -> Row | None:
         # TODO: implement __in__?
         if "Total (cells/ml)" not in data.series.index:
             return None
@@ -57,4 +56,4 @@ class Row:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Row]:
-        return [row for row in data.apply(Row.create, axis="columns") if row]  # type: ignore[call-overload]
+        return [row for row in map_rows(data, Row.create) if row]

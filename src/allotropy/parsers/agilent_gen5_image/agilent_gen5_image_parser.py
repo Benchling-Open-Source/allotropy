@@ -28,5 +28,4 @@ class AgilentGen5ImageParser(VendorParser):
         data = create_data(
             SectionLinesReader(lines), named_file_contents.original_file_name
         )
-        mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
-        return mapper.map_model(data)
+        return self._get_mapper(Mapper).map_model(data)

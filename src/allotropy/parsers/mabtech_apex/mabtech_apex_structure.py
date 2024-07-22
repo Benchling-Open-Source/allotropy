@@ -14,7 +14,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -75,20 +75,17 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
     )
 
 
-def _create_groups(contents: MabtechApexContents) -> list[MeasurementGroup]:
-    # if Read Date is not present in file, return None, no measurement for given Well
-    plate_data = contents.data.dropna(subset="Read Date")
-
-    return list(
-        plate_data.apply(  # type: ignore[call-overload]
-            lambda data: MeasurementGroup(
-                measurements=[_create_measurement(SeriesData(data))],
-                plate_well_count=96,
-            ),
-            axis="columns",
-        )
+def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
+    return MeasurementGroup(
+        measurements=[_create_measurement(data)],
+        plate_well_count=96,
     )
 
 
 def create_data(contents: MabtechApexContents, file_name: str) -> Data:
-    return Data(_create_metadata(contents, file_name), _create_groups(contents))
+    # if Read Date is not present in file, return None, no measurement for given Well
+    plate_data = contents.data.dropna(subset="Read Date")
+    return Data(
+        _create_metadata(contents, file_name),
+        map_rows(plate_data, _create_measurement_group),
+    )

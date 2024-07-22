@@ -226,33 +226,7 @@ class Mapper:
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 plate_reader_document=[
-                    PlateReaderDocumentItem(
-                        analyst=data.metadata.analyst,
-                        measurement_aggregate_document=MeasurementAggregateDocument(
-                            analytical_method_identifier=measurement_group.analytical_method_identifier,
-                            experimental_data_identifier=measurement_group.experimental_data_identifier,
-                            container_type=ContainerType.well_plate,
-                            plate_well_count=TQuantityValueNumber(
-                                value=measurement_group.plate_well_count
-                            ),
-                            measurement_time=self.get_date_time(
-                                assert_not_none(
-                                    measurement_group.measurement_time
-                                    or data.metadata.measurement_time,
-                                    msg="Failed to parse valid timestamp",
-                                )
-                            ),
-                            measurement_document=[
-                                self._get_measurement_document_item(
-                                    measurement, data.metadata
-                                )
-                                for measurement in measurement_group.measurements
-                            ],
-                            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
-                                measurement_group.processed_data
-                            ),
-                        ),
-                    )
+                    self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
@@ -262,7 +236,35 @@ class Mapper:
             field_asm_manifest=self.MANIFEST,
         )
 
-    def _get_measurement_document_item(
+    def _get_technique_document(
+        self, measurement_group: MeasurementGroup, metadata: Metadata
+    ) -> PlateReaderDocumentItem:
+        return PlateReaderDocumentItem(
+            analyst=metadata.analyst,
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                analytical_method_identifier=measurement_group.analytical_method_identifier,
+                experimental_data_identifier=measurement_group.experimental_data_identifier,
+                container_type=ContainerType.well_plate,
+                plate_well_count=TQuantityValueNumber(
+                    value=measurement_group.plate_well_count
+                ),
+                measurement_time=self.get_date_time(
+                    assert_not_none(
+                        measurement_group.measurement_time or metadata.measurement_time,
+                        msg="Failed to parse valid timestamp",
+                    )
+                ),
+                measurement_document=[
+                    self._get_measurement_document(measurement, metadata)
+                    for measurement in measurement_group.measurements
+                ],
+                processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                    measurement_group.processed_data
+                ),
+            ),
+        )
+
+    def _get_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax

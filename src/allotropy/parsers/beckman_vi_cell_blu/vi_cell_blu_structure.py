@@ -13,12 +13,11 @@ from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_MODEL_NUMBER,
     VICELL_BLU_SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
-    data = SeriesData(series)
+def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     total_cell_count = data.get(float, "Cell count")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
@@ -57,20 +56,12 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
     )
 
 
-def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
-    return list(
-        data.apply(
-            _create_measurement_group, axis="columns"
-        )  # type:ignore[call-overload]
-    )
-
-
-def create_data(data: pd.DataFrame) -> Data:
+def create_data(data: pd.DataFrame, file_name: str) -> Data:
     metadata = Metadata(
         device_type="brightfield imager (cell counter)",
         detection_type="brightfield",
         model_number=DEFAULT_MODEL_NUMBER,
         software_name=VICELL_BLU_SOFTWARE_NAME,
+        file_name=file_name,
     )
-
-    return Data(metadata, _create_measurement_groups(data))
+    return Data(metadata, map_rows(data, _create_measurement_group))
