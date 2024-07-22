@@ -10,6 +10,7 @@ from allotropy.allotrope.models.plate_reader_benchling_2023_09_plate_reader impo
     ContainerType,
     DataSystemDocument,
     DeviceControlDocument,
+    DeviceSystemDocument,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
@@ -74,7 +75,7 @@ class BmgMarsParser(VendorParser):
         read_type = self._get_read_type(lines)
 
         reader = LinesReader(lines)
-        raw_header = list(reader.pop_until(r"Raw Data"))
+        raw_header = list(reader.pop_until("^,?Raw Data"))
         header = Header.create(raw_header)
 
         csv_data = list(reader.pop_until_empty())
@@ -83,7 +84,7 @@ class BmgMarsParser(VendorParser):
         data = get_plate_data(csv_data)
 
         return self._get_model(
-            header, data, filename, read_type, wavelength, plate_well_count
+            header, data, filename, read_type, wavelength, plate_well_count,
         )
 
     def _get_model(
@@ -101,8 +102,14 @@ class BmgMarsParser(VendorParser):
                 plate_reader_document=self._get_plate_reader_document(
                     data, read_type, header, wavelength, plate_well_count
                 ),
+                device_system_document=DeviceSystemDocument(
+                    device_identifier="N/A",
+                    model_number="N/A",
+                    product_manufacturer="BMG LABTECH",
+                ),
                 data_system_document=DataSystemDocument(
                     file_name=filename,
+                    UNC_path=header.path,
                     software_name="BMG MARS",
                     ASM_converter_name=ASM_CONVERTER_NAME,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
@@ -268,7 +275,7 @@ class BmgMarsParser(VendorParser):
                         measurement_time=measurement_time,
                         plate_well_count=plate_well_count,
                         measurement_document=measurement_docs_dict[well_location],
-                        analytical_method_identifier=header.test_name,
+                        experiment_type=header.test_name,
                         experimental_data_identifier=header.id2,
                         container_type=ContainerType.well_plate,
                     ),
