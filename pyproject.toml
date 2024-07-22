@@ -134,8 +134,8 @@ update-version = "scripts/update_version.py {args:}"
 [tool.hatch.envs.win-scripts]
 platforms = ["windows"]
 
-[tool.hatch.envs.scripts.win-scripts]
-setup-pre-push = "copy scripts\\pre-push-hook .git\\hooks\\pre-push; echo 'Copied to .git\\hooks\\pre-push'"
+[tool.hatch.envs.win-scripts.scripts]
+setup-pre-push = "copy scripts\\pre-push-hook .git\\hooks\\pre-push && echo Copied to .git\\hooks\\pre-push"
 generate-schemas = "python scripts\\generate_schemas.py {args:}"
 download-schema = "python scripts\\download_schema.py {args:}"
 create-parser = "python scripts\\create_parser.py {args:}"
