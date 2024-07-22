@@ -84,7 +84,12 @@ class BmgMarsParser(VendorParser):
         data = get_plate_data(csv_data)
 
         return self._get_model(
-            header, data, filename, read_type, wavelength, plate_well_count,
+            header,
+            data,
+            filename,
+            read_type,
+            wavelength,
+            plate_well_count,
         )
 
     def _get_model(
