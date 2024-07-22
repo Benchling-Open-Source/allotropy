@@ -4,7 +4,6 @@ from allotropy.allotrope.models.adm.cell_counting.benchling._2023._11.cell_count
     Model,
 )
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
-    Data,
     Mapper,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -24,11 +23,8 @@ class ViCellBluParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        return self._get_model(
-            data=create_data(ViCellBluReader.read(named_file_contents)),
-            filename=named_file_contents.original_file_name,
+        data = create_data(
+            ViCellBluReader.read(named_file_contents),
+            named_file_contents.original_file_name,
         )
-
-    def _get_model(self, data: Data, filename: str) -> Model:
-        mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
-        return mapper.map_model(data, filename)
+        return self._get_mapper(Mapper).map_model(data)

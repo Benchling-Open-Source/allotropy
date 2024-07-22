@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from collections.abc import Callable
+from typing import Any, TypeVar
 
 from pandas import Timestamp
 
@@ -9,6 +10,8 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.parsers.utils.values import assert_not_none
+
+MapperT = TypeVar("MapperT")
 
 
 class VendorParser(ABC):
@@ -34,6 +37,9 @@ class VendorParser(ABC):
     @abstractmethod
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Any:
         raise NotImplementedError
+
+    def _get_mapper(self, mapper_cls: Callable[..., MapperT]) -> MapperT:
+        return mapper_cls(self.get_asm_converter_name(), self._get_date_time)
 
     def get_asm_converter_name(self) -> str:
         """Returns the ASM converter name for this parser."""

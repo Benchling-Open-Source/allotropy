@@ -23,5 +23,4 @@ class MabtechApexParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = MabtechApexContents.create(named_file_contents)
         data = create_data(contents, named_file_contents.original_file_name)
-        mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
-        return mapper.map_model(data)
+        return self._get_mapper(Mapper).map_model(data)

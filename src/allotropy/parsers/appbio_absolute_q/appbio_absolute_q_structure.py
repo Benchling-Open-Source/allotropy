@@ -1,23 +1,32 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
 
+from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
+from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
+    CalculatedDataItem,
+    Data,
+    DataSource,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
+    BRAND_NAME,
     CALCULATED_DATA_REFERENCE,
     CalculatedDataSource,
+    DEVICE_TYPE,
+    PLATE_WELL_COUNT,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-
-@dataclass
-class DataSource:
-    identifier: str
-    feature: str
 
 
 @dataclass
@@ -67,11 +76,12 @@ class Group:
         }
 
     @staticmethod
-    def create(series: pd.Series[str]) -> Group:
-        data = SeriesData(series)
+    def create(data: SeriesData) -> Group:
         well_identifier = data.get(str, "Well")
         aggregation_type = AGGREGATION_LOOKUP[well_identifier]
 
+        # TODO: if aggregation type is Replicate(Average), check for required columns
+        # Raise if column(s) do not exist
         calculated_data_items = [
             CalculatedItem(
                 random_uuid_str(),
@@ -98,7 +108,7 @@ class Group:
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Group]:
         data = data.replace(np.nan, None)[data["Name"].isna()]
-        return [Group.create(row_data) for _, row_data in data.iterrows()]
+        return map_rows(data, Group.create)
 
 
 @dataclass
@@ -122,8 +132,7 @@ class WellItem:
         return f"{self.group_identifier}_{self.target_identifier}"
 
     @staticmethod
-    def create(series: pd.Series[str]) -> WellItem:
-        data = SeriesData(series)
+    def create(data: SeriesData) -> WellItem:
         return WellItem(
             name=data[str, "Name"],
             measurement_identifier=random_uuid_str(),
@@ -149,6 +158,71 @@ class Well:
     def create_wells(data: pd.DataFrame) -> list[Well]:
         data = data.dropna(subset=["Name"]).replace(np.nan, None)
         return [
-            Well(list(well_data.apply(WellItem.create, axis="columns")))  # type: ignore[call-overload]
+            Well(map_rows(well_data, WellItem.create))
             for _, well_data in data.groupby("Well")
         ]
+
+
+def create_data(data: pd.DataFrame, file_name: str) -> Data:
+    wells = Well.create_wells(data)
+    groups = Group.create_rows(data)
+
+    measurement_groups = [
+        MeasurementGroup(
+            experimental_data_identifier=well.items[0].run_identifier,
+            plate_well_count=PLATE_WELL_COUNT,
+            measurements=[
+                Measurement(
+                    identifier=item.measurement_identifier,
+                    sample_identifier=item.name,
+                    location_identifier=item.well_identifier,
+                    measurement_time=item.timestamp,
+                    plate_identifier=item.plate_identifier,
+                    target_identifier=item.target_identifier,
+                    total_partition_count=item.total_partition_count,
+                    concentration=item.concentration,
+                    positive_partition_count=item.positive_partition_count,
+                    reporter_dye_setting=item.reporter_dye_setting,
+                )
+                for item in well.items
+            ],
+        )
+        for well in wells
+    ]
+
+    # Map measurement ids to group keys
+    group_to_ids = defaultdict(list)
+    for well in wells:
+        for item in well.items:
+            group_to_ids[item.group_key].append(item.measurement_identifier)
+
+    calculated_data_documents = [
+        CalculatedDataItem(
+            identifier=calculated_data.identifier,
+            name=calculated_data.name,
+            value=calculated_data.value,
+            unit=calculated_data.unit,
+            data_sources=[
+                DataSource(source.identifier, source.feature)
+                for source in calculated_data.get_data_sources(
+                    group_to_ids[group.key], group.calculated_data_ids
+                )
+            ],
+        )
+        for group in groups
+        for calculated_data in group.calculated_data
+    ]
+
+    return Data(
+        Metadata(
+            device_identifier=wells[0].items[0].instrument_identifier,
+            brand_name=BRAND_NAME,
+            device_type=DEVICE_TYPE,
+            container_type=ContainerType.well_plate,
+            software_name=SOFTWARE_NAME,
+            product_manufacturer=PRODUCT_MANUFACTURER,
+            file_name=file_name,
+        ),
+        measurement_groups,
+        calculated_data=calculated_data_documents,
+    )

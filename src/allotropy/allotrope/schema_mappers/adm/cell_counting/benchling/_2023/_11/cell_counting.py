@@ -74,6 +74,7 @@ class Metadata:
     detection_type: str
     model_number: str
     software_name: str
+    file_name: str
     equipment_serial_number: str | None = None
     software_version: str | None = None
 
@@ -93,7 +94,7 @@ class Mapper:
         self.converter_name = asm_converter_name
         self.get_date_time = get_date_time
 
-    def map_model(self, data: Data, filename: str) -> Model:
+    def map_model(self, data: Data) -> Model:
         return Model(
             field_asm_manifest=self.MANIFEST,
             cell_counting_aggregate_document=CellCountingAggregateDocument(
@@ -102,22 +103,20 @@ class Mapper:
                     equipment_serial_number=data.metadata.equipment_serial_number,
                 ),
                 data_system_document=DataSystemDocument(
-                    file_name=filename,
+                    file_name=data.metadata.file_name,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 cell_counting_document=[
-                    self._get_cell_counting_document_item(
-                        measurement_group, data.metadata
-                    )
+                    self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
             ),
         )
 
-    def _get_cell_counting_document_item(
+    def _get_technique_document(
         self, measurement_group: MeasurementGroup, metadata: Metadata
     ) -> CellCountingDocumentItem:
         return CellCountingDocumentItem(
