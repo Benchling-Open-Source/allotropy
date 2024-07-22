@@ -1,0 +1,2875 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/plate-reader/BENCHLING/2023/09/plate-reader.manifest",
+    "plate reader aggregate document": {
+        "plate reader document": [
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5e06c676-da66-4566-a232-250350384a2b",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A1",
+                                "location identifier": "A1",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23864.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "916f1913-39d3-47ba-9d3d-505dafbb9ff9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A2",
+                                "location identifier": "A2",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23796.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7ba17f01-edd8-4393-a931-8171508ba4c9",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A3",
+                                "location identifier": "A3",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23934.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c736dd87-ddb0-4af1-8e83-647230a0f36c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A12",
+                                "location identifier": "A12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 231438.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "1af4130a-4c39-4780-b58c-f7ee5836df55",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A13",
+                                "location identifier": "A13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 228111.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a7849f25-d253-4959-84e2-5106df9b162d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A22",
+                                "location identifier": "A22",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24069.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5600defe-eed2-43cf-95c9-885994b7adf6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A23",
+                                "location identifier": "A23",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24096.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d534917b-b61e-4de0-8b54-f78e1b951e9e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 A24",
+                                "location identifier": "A24",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24098.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "fd6103a5-58f1-409e-8690-d24e984dde28",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B1",
+                                "location identifier": "B1",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23774.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "07417f55-8c19-4e3f-a7f4-5cff2e1d5110",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B2",
+                                "location identifier": "B2",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23887.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7faf3426-0ebe-474b-8370-0240d65edc30",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B3",
+                                "location identifier": "B3",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23810.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c3f77370-bd26-4bf3-9eb2-f04164aa1c2e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B12",
+                                "location identifier": "B12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 229790.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b5395b42-10da-4765-8f1f-ab27915208bd",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B13",
+                                "location identifier": "B13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 230207.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "8314b5ea-412b-4094-b229-0f7d7021d3aa",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B22",
+                                "location identifier": "B22",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24121.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "9f478b84-afa0-4e0e-a93e-fc42d62cb33e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B23",
+                                "location identifier": "B23",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24223.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b8ab9ab9-3e7a-4bd7-9df3-db7393eefc53",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 B24",
+                                "location identifier": "B24",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24106.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "05a9b69d-cf35-4fff-b6de-20de9f512bbf",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C1",
+                                "location identifier": "C1",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23879.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "4adae350-5794-4d86-b999-5f39b64aff07",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C2",
+                                "location identifier": "C2",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23687.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7cd35581-e459-425b-b3dd-8732a628fe8b",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C3",
+                                "location identifier": "C3",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23567.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c47e8adc-7fb8-43ad-ac2c-a07e1d8ec4d6",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C12",
+                                "location identifier": "C12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 2682.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "8146eb9b-9c2d-46be-b47d-562c0044c0b3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C13",
+                                "location identifier": "C13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 2677.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "03dacf8f-3431-46fe-a3e8-78357b43f2c0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C22",
+                                "location identifier": "C22",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24171.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7fbb298a-b142-4005-8cca-6fdff91d62d2",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C23",
+                                "location identifier": "C23",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24104.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "515c8a67-9e3b-43bf-86b8-227a2342c721",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 C24",
+                                "location identifier": "C24",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23987.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b608a385-df23-4191-8653-ac1bcfe3100b",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 D12",
+                                "location identifier": "D12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 2679.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5b6cf184-e0ba-4008-b8af-c21a2759a74a",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 D13",
+                                "location identifier": "D13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 2661.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "1c646af7-8165-40c8-8d42-09611a0905fb",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 E12",
+                                "location identifier": "E12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 371.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7a6ff5a1-71f8-49d6-a7c9-5559e4c4ed72",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 E13",
+                                "location identifier": "E13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 374.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5600bc1c-1b81-4381-9b3e-266b91a917df",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 F12",
+                                "location identifier": "F12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 372.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d45bb8a0-7edf-44b8-ad57-cccc2ca7496c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 F13",
+                                "location identifier": "F13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 375.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "35aa017b-b937-4f31-b6a9-cd8a940e7ecf",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 G12",
+                                "location identifier": "G12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 187.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "03b86901-c938-48fd-add1-bc733dd0f1ac",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 G13",
+                                "location identifier": "G13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 183.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "1b943b31-331c-435a-954c-b7547d167c87",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 H12",
+                                "location identifier": "H12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 187.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a20258ed-82eb-498f-a17e-605af3b49a1c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 H13",
+                                "location identifier": "H13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 188.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d402f138-254f-4296-9953-19b151130581",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 I12",
+                                "location identifier": "I12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 123.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f062f6ff-cbc9-4637-ae74-87b9bf4bab2a",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 I13",
+                                "location identifier": "I13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 118.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3ded842e-52bf-405d-924d-a42b7d1bcf87",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 J12",
+                                "location identifier": "J12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 120.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a65c9887-1270-4a51-bcd6-8dbc436522ec",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 J13",
+                                "location identifier": "J13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 120.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3ebe9ce0-4b84-4e34-a563-0def42f63714",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 K12",
+                                "location identifier": "K12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 120.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b38a2523-5a30-4987-a467-3c99a4380e95",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 K13",
+                                "location identifier": "K13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 124.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b25b0da7-0b4a-486b-a741-82b4bcaeb50c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 L12",
+                                "location identifier": "L12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 122.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "169e0314-599b-453e-955c-d65c37277457",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 L13",
+                                "location identifier": "L13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 121.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c20ae93a-80a6-4448-8bca-df78fa32be19",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 M12",
+                                "location identifier": "M12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 119.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "86e33b99-3d74-487b-940a-4e2e4cf5a550",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 M13",
+                                "location identifier": "M13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 121.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "39568ba3-baf0-4856-baa8-a7fa01f50649",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N1",
+                                "location identifier": "N1",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23478.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c29bf347-44ff-4075-bc8f-58883437de75",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N2",
+                                "location identifier": "N2",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23579.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "f0072df3-67b5-44a0-a9cb-61b3e17bf80d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N3",
+                                "location identifier": "N3",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23326.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "d1c7ee68-9934-40e6-aac6-99ef03b92e6c",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N12",
+                                "location identifier": "N12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 118.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3e8f0f08-abfd-4919-9eb0-92affc229e2f",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N13",
+                                "location identifier": "N13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 120.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "bdad8fdf-4af3-4fda-8339-619aea8f96c5",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N22",
+                                "location identifier": "N22",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23650.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "b8ede97b-ed26-415d-9ab4-7c13e9c95c55",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N23",
+                                "location identifier": "N23",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23767.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "cd5cad6a-dd81-4733-9da6-fec6d2b3b279",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 N24",
+                                "location identifier": "N24",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23705.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c0c076c6-2289-46e8-89ec-f5cc53ab6648",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O1",
+                                "location identifier": "O1",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23730.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "57606008-ba2f-4989-9261-17c2f2668970",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O2",
+                                "location identifier": "O2",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23719.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "4dc733ab-e41d-4ae8-a6d6-38b76fd2503a",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O3",
+                                "location identifier": "O3",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23988.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3107c974-058a-42b9-85e6-6ad0f902deda",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O12",
+                                "location identifier": "O12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 122.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5baeb6ab-2fc5-4128-a832-88b66f75a418",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O13",
+                                "location identifier": "O13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 121.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "122049fe-221d-45c5-820c-ab53ccc7f06e",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O22",
+                                "location identifier": "O22",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23904.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "7148a529-69f3-492a-a9c0-930b44c03459",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O23",
+                                "location identifier": "O23",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23959.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "5c89cb7c-9628-4c69-82e8-a99089edfc37",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 O24",
+                                "location identifier": "O24",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 24076.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "20385e47-e0a5-4b3d-90f7-4542e8aaa191",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P1",
+                                "location identifier": "P1",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23488.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "c96d0d6f-a09b-4698-b966-974ee73f7348",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P2",
+                                "location identifier": "P2",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23724.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "a10e5c2c-ec2b-479f-b79c-092655295cf7",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P3",
+                                "location identifier": "P3",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23895.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "59940316-e2f7-4eaf-95b0-24fc3ba2698f",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P12",
+                                "location identifier": "P12",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 120.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "3296b8cf-b047-4d74-80a5-b7ee1361fc2d",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P13",
+                                "location identifier": "P13",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 120.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "9d3ce4a9-a505-446c-ad18-3b6c3a55a5c3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P22",
+                                "location identifier": "P22",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23715.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "64832d22-dae4-4236-bb0b-395584e43dc3",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P23",
+                                "location identifier": "P23",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23502.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            },
+            {
+                "measurement aggregate document": {
+                    "measurement time": "2016-03-03T13:25:45+00:00",
+                    "plate well count": {
+                        "value": 384,
+                        "unit": "#"
+                    },
+                    "measurement document": [
+                        {
+                            "measurement identifier": "dba4bed5-5991-4acf-b749-ee25617eabcf",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "fluorescence detector",
+                                        "detection type": "fluorescence",
+                                        "detector wavelength setting": {
+                                            "value": 520.0,
+                                            "unit": "nm"
+                                        },
+                                        "excitation wavelength setting": {
+                                            "value": 485.0,
+                                            "unit": "nm"
+                                        }
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "472-0016 P24",
+                                "location identifier": "P24",
+                                "well plate identifier": "472-0016"
+                            },
+                            "fluorescence": {
+                                "value": 23949.0,
+                                "unit": "RFU"
+                            }
+                        }
+                    ],
+                    "experiment type": "472 QC 384 FI",
+                    "container type": "well plate"
+                },
+                "analyst": "USER"
+            }
+        ],
+        "device system document": {
+            "device identifier": "N/A",
+            "model number": "N/A",
+            "product manufacturer": "BMG LABTECH"
+        },
+        "data system document": {
+            "file name": "tests/parsers/bmg_mars/testdata/16-03-03 13-25-45 472 QC 384 FI.csv",
+            "UNC path": "C:\\Program Files (x86)\\BMG\\PHERAstar\\User\\Data",
+            "software name": "BMG MARS",
+            "ASM converter name": "allotropy",
+            "ASM converter version": "0.1.30"
+        }
+    }
+}
