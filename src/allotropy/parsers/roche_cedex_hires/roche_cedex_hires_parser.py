@@ -205,7 +205,7 @@ class RocheCedexHiResParser(VendorParser):
         Returns:
         ReleaseState: The current release state of the parser.
         """
-        return ReleaseState.WORKING_DRAFT
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         """

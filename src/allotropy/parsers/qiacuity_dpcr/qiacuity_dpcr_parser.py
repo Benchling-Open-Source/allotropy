@@ -63,8 +63,7 @@ class QiacuitydPCRParser(VendorParser):
 
     @property
     def release_state(self) -> ReleaseState:
-        # Waiting on more test data to validate before releasing
-        return ReleaseState.CANDIDATE_RELEASE
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents

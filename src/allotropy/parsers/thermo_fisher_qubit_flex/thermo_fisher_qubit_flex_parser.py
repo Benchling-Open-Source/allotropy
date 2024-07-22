@@ -196,7 +196,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
         """
         Provide the Release state of the Adapter
         """
-        return ReleaseState.WORKING_DRAFT
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         """

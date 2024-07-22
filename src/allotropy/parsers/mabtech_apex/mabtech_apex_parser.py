@@ -18,7 +18,7 @@ class MabtechApexParser(VendorParser):
 
     @property
     def release_state(self) -> ReleaseState:
-        return ReleaseState.CANDIDATE_RELEASE
+        return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = MabtechApexContents.create(named_file_contents)
