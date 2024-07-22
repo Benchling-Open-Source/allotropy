@@ -35,7 +35,7 @@ def _backup_file(path: PathType) -> None:
 def restore_backup(path: PathType) -> None:
     backup_path = _get_backup_path(path)
     if backup_path.exists():
-        backup_path.rename(path)
+        backup_path.replace(path)
 
 
 def _remove_backup(path: PathType) -> None:

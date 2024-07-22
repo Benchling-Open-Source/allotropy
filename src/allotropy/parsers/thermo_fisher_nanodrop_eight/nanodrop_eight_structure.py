@@ -17,7 +17,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.utils.iterables import get_first_not_none
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 # These may be reported in the results, and are stored as calculated data
@@ -36,9 +36,7 @@ class SpectroscopyRow:
     calculated_data: list[CalculatedDataItem]
 
     @staticmethod
-    def create(series: pd.Series[str]) -> SpectroscopyRow:
-        data = SeriesData(series)
-
+    def create(data: SeriesData) -> SpectroscopyRow:
         analyst = data.get(str, "user id")
         timestamp = f'{data[str, "date"]} {data.get(str, "time")}'
         experiment_type = data.get(str, "na type")
@@ -135,7 +133,7 @@ class SpectroscopyRow:
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[SpectroscopyRow]:
         data.columns = data.columns.str.lower()
-        return list(data.apply(SpectroscopyRow.create, axis="columns"))  # type: ignore[call-overload]
+        return map_rows(data, SpectroscopyRow.create)
 
 
 def create_data(data: pd.DataFrame, file_name: str) -> Data:
