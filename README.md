@@ -18,6 +18,7 @@ We currently have parser support for the following instruments:
   - AppBio AbsoluteQ
   - AppBio QuantStudio Design & Analysis
   - AppBio QuantStudio RT-PCR
+  - BMG MARS
   - Beckman PharmSpec
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
