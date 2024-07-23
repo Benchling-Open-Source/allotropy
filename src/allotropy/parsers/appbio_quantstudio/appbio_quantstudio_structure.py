@@ -156,15 +156,14 @@ class WellItem(Referenceable):
     @staticmethod
     def create_generic(data: SeriesData) -> WellItem:
         identifier = data[int, "Well"]
-        target_dna_description = data[
-            str,
-            "Target Name",
-            f"Unable to find target dna description for well {identifier}",
-        ]
         return WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
-            target_dna_description=target_dna_description,
+            target_dna_description=data[
+                str,
+                "Target Name",
+                f"Unable to find target dna description for well {identifier}",
+            ],
             sample_identifier=data.get(str, "Sample Name", NOT_APPLICABLE),
             reporter_dye_setting=data.get(str, "Reporter"),
             position=data.get(str, "Well Position", NOT_APPLICABLE),

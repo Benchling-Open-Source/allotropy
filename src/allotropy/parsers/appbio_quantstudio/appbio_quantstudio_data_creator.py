@@ -6,7 +6,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
-    CalculatedData as MapperCalculatedData,
+    CalculatedData,
     CalculatedDataItem,
     Data,
     DataCube,
@@ -199,8 +199,8 @@ def _create_metadata(header: Header, file_name: str) -> Metadata:
 def _create_calculated_data(
     calculated_data_documents: Iterable[CalculatedDocument],
     results_metadata: ResultMetadata,
-) -> MapperCalculatedData:
-    return MapperCalculatedData(
+) -> CalculatedData:
+    return CalculatedData(
         reference_sample_description=results_metadata.reference_sample_description,
         reference_dna_description=results_metadata.reference_dna_description,
         items=[
