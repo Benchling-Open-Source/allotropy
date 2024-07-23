@@ -14,8 +14,6 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
-    LuminescencePointDetectionDeviceControlAggregateDocument,
-    LuminescencePointDetectionDeviceControlDocumentItem,
     LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
@@ -32,7 +30,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNanometer,
     TQuantityValueNumber,
     TQuantityValueRelativeFluorescenceUnit,
-    TQuantityValueRelativeLightUnit,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
@@ -51,14 +48,13 @@ from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = (
     FluorescencePointDetectionMeasurementDocumentItems
-    | LuminescencePointDetectionMeasurementDocumentItems
     | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
     | OpticalImagingMeasurementDocumentItems
+    | LuminescencePointDetectionMeasurementDocumentItems
 )
 
 DeviceControlAggregateDocument = (
     FluorescencePointDetectionDeviceControlAggregateDocument
-    | LuminescencePointDetectionDeviceControlAggregateDocument
     | UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument
 )
 
@@ -139,7 +135,6 @@ class BmgMarsParser(VendorParser):
         ).group(0)
         patterns = {
             "Absorbance": ReadType.ABSORBANCE,
-            "Luminescence": ReadType.LUMINESCENCE,
             "Fluorescence": ReadType.FLUORESCENCE,
         }
 
@@ -187,19 +182,6 @@ class BmgMarsParser(VendorParser):
                     )
                 ]
             )
-        else:  # read_type is LUMINESCENCE
-            return LuminescencePointDetectionDeviceControlAggregateDocument(
-                device_control_document=[
-                    LuminescencePointDetectionDeviceControlDocumentItem(
-                        device_type="luminescence detector",
-                        detection_type="luminescence",
-                        detector_wavelength_setting=safe_value(
-                            TQuantityValueNanometer,
-                            wavelength.wavelength if wavelength.wavelength else None,
-                        ),
-                    )
-                ]
-            )
 
     def _get_measurement_document(
         self,
@@ -240,18 +222,6 @@ class BmgMarsParser(VendorParser):
                     )
                 ),
                 fluorescence=TQuantityValueRelativeFluorescenceUnit(value=result.value),
-            )
-        else:  # read_type is LUMINESCENCE
-            return LuminescencePointDetectionMeasurementDocumentItems(
-                measurement_identifier=result.uuid,
-                sample_document=sample_document,
-                device_control_aggregate_document=LuminescencePointDetectionDeviceControlAggregateDocument(
-                    device_control_document=cast(
-                        list[LuminescencePointDetectionDeviceControlDocumentItem],
-                        device_control_document,
-                    )
-                ),
-                luminescence=TQuantityValueRelativeLightUnit(value=result.value),
             )
 
     def _get_plate_reader_document(

@@ -22,7 +22,6 @@ RE_READ_TYPE = r"Fluorescence \(FP\)(?=,)|^Fluorescence(?=,)|^Fluorescence \(FI\
 class ReadType(Enum):
     ABSORBANCE = "Absorbance"
     FLUORESCENCE = "Fluorescence"
-    LUMINESCENCE = "Luminescence"
 
 
 @dataclass(frozen=True)
@@ -96,7 +95,7 @@ def get_plate_data(csv_data: list[str]) -> pd.DataFrame:
     )
     raw_data.rename(columns={0: "row"}, inplace=True)
     data = raw_data.melt(id_vars=["row"], var_name="col", value_name="value")
-    data.dropna(inplace=True)  # TODO: check what we should do here
+    data.dropna(inplace=True)
     data["uuid"] = [random_uuid_str() for _ in range(len(data))]
     return data
 
