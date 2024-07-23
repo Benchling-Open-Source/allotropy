@@ -10,12 +10,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add BMG MARS adapter
-- Change Cedex HiRes to recommended release state
-- Change Qubit Flex to recommended release state
-- Change Qubit 4 ASM to recommended release state
-- Change MabTech Apex to recommended release state
-- Change Qiacuity to recommended release state
-
 
 ### Fixed
 
@@ -26,6 +20,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.43] - 2024-07-22
+
+### Added
+
+- Change Cedex HiRes to recommended release state
+- Change Qubit Flex to recommended release state
+- Change Qubit 4 ASM to recommended release state
+- Change MabTech Apex to recommended release state
+- Change Qiacuity to recommended release state
 
 ## [0.1.42] - 2024-07-19
 
