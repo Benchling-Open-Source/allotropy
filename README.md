@@ -18,7 +18,6 @@ We currently have parser support for the following instruments:
   - AppBio AbsoluteQ
   - AppBio QuantStudio Design & Analysis
   - AppBio QuantStudio RT-PCR
-  - BMG MARS
   - Beckman PharmSpec
   - Beckman Vi-Cell BLU
   - Beckman Vi-Cell XR
@@ -43,6 +42,7 @@ We currently have parser support for the following instruments:
 ### Candidate Release
 
 ### Working Draft
+  - BMG MARS
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 
