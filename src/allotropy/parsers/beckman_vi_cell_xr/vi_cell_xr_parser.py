@@ -24,7 +24,5 @@ class ViCellXRParser(VendorParser):
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         reader = create_reader_data(named_file_contents)
-        data = create_data(reader)
-
-        mapper = Mapper(self.get_asm_converter_name(), self._get_date_time)
-        return mapper.map_model(data, named_file_contents.original_file_name)
+        data = create_data(reader, named_file_contents.original_file_name)
+        return self._get_mapper(Mapper).map_model(data)
