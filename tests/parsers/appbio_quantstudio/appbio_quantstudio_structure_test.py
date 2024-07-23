@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from io import BytesIO
 from pathlib import Path
 
@@ -7,22 +8,19 @@ import pandas as pd
 import pytest
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
+from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import (
+    Data,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
     create_data,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
-    Data,
     Header,
     Result,
-    WellItem,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-    Referenceable,
-)
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -36,23 +34,15 @@ TESTDATA = Path(Path(__file__).parent, "testdata")
 
 
 def rm_uuid(data: Data) -> Data:
-    for well in data.wells:
-        for well_item in well.items.values():
-            well_item.uuid = ""
+    for measurement_group in data.measurement_groups:
+        for measurement in measurement_group.measurements:
+            measurement.identifier = ""
 
-    for calc_doc in data.calculated_documents:
-        rm_uuid_calc_doc(calc_doc)
-
+    for calc_doc in data.calculated_data.items:
+        calc_doc.identifier = ""
+        for source in calc_doc.data_sources:
+            source.identifier = ""
     return data
-
-
-def rm_uuid_calc_doc(calc_doc: CalculatedDocument) -> None:
-    calc_doc.uuid = ""
-    for source in calc_doc.data_sources:
-        if isinstance(source.reference, CalculatedDocument):
-            rm_uuid_calc_doc(source.reference)
-        elif isinstance(source.reference, Referenceable):
-            source.reference.uuid = ""
 
 
 def _read_to_lines(io_: IOType, encoding: str | None = None) -> list[str]:
@@ -187,18 +177,9 @@ def test_results_builder() -> None:
             "Allele1 Ct": ["Undetermined"],
         }
     )
-    well_item = WellItem(
-        uuid="be566c58-41f3-40f8-900b-ef1dff20d264",
-        identifier=1,
-        position="A1",
-        target_dna_description="CYP19_2-Allele 1",
-        sample_identifier="NTC",
-        well_location_identifier="A1",
-        reporter_dye_setting="SYBR",
-        quencher_dye_setting=None,
-        sample_role_type="PC_ALLELE_1",
-    )
-    result = Result.create(data, well_item, ExperimentType.genotyping_qPCR_experiment)
+    result = Result.create_results(data, ExperimentType.genotyping_qPCR_experiment)[1][
+        "CYP19_2-Allele1"
+    ]
     assert isinstance(result, Result)
     assert result.cycle_threshold_value_setting == 0.219
     assert result.cycle_threshold_result is None
@@ -207,35 +188,39 @@ def test_results_builder() -> None:
 
 @pytest.mark.short
 @pytest.mark.parametrize(
-    "test_filepath,expected_data",
+    "test_filepath,create_expected_data_func",
     [
         (
             f"{TESTDATA}/exclude/appbio_quantstudio_test01.txt",
-            get_data(),
+            get_data,
         ),
         (
             f"{TESTDATA}/exclude/appbio_quantstudio_test02.txt",
-            get_data2(),
+            get_data2,
         ),
         (
             f"{TESTDATA}/exclude/appbio_quantstudio_test03.txt",
-            get_genotyping_data(),
+            get_genotyping_data,
         ),
         (
             f"{TESTDATA}/exclude/appbio_quantstudio_test04.txt",
-            get_rel_std_curve_data(),
+            get_rel_std_curve_data,
         ),
         (
             f"{TESTDATA}/exclude/appbio_quantstudio_test05.txt",
-            get_broken_calc_doc_data(),
+            get_broken_calc_doc_data,
         ),
     ],
 )
-def test_data_builder(test_filepath: str, expected_data: Data) -> None:
+def test_data_builder(
+    test_filepath: str, create_expected_data_func: Callable[[str], Data]
+) -> None:
     with open(test_filepath, "rb") as raw_contents:
         lines = _read_to_lines(raw_contents)
     reader = LinesReader(lines)
-    assert rm_uuid(create_data(reader)) == rm_uuid(expected_data)
+    assert rm_uuid(create_data(reader, test_filepath)) == rm_uuid(
+        create_expected_data_func(test_filepath)
+    )
 
 
 def get_raw_header_contents(
