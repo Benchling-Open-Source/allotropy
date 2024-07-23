@@ -26,23 +26,23 @@ We currently have parser support for the following instruments:
   - CTL ImmunoSpot
   - ChemoMetec Nucleoview
   - Luminex xPONENT
+  - Mabtech Apex
   - Methodical Mind
   - Molecular Devices SoftMax Pro
   - NovaBio Flex2
   - PerkinElmer Envision
+  - Qiacuity dPCR
   - Revvity Kaleido
   - Roche Cedex BioHT
+  - Roche Cedex HiRes
   - Thermo Fisher NanoDrop Eight
+  - Thermo Fisher Qubit 4
+  - Thermo Fisher Qubit Flex
   - Unchained Labs Lunatic
 
 ### Candidate Release
-  - Mabtech Apex
-  - Qiacuity dPCR
 
 ### Working Draft
-  - Roche Cedex HiRes
-  - Thermo Fisher Qubit 4
-  - Thermo Fisher Qubit Flex
 
 The parsers follow maturation levels of: Recommended, Candidate Release, Working Draft - see [release_state.py](https://github.com/Benchling-Open-Source/allotropy/blob/main/src/allotropy/parsers/release_state.py) for additional details.
 

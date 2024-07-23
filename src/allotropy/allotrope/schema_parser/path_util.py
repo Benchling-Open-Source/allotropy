@@ -1,6 +1,6 @@
 from collections.abc import Mapping
 import importlib
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from typing import Any
 
@@ -43,12 +43,12 @@ def get_full_schema_path(schema_path: Path) -> Path:
 
 def get_manifest_from_schema_path(schema_path: Path) -> str:
     rel_schema_path = get_rel_schema_path(schema_path)
-    if not str(rel_schema_path).startswith("adm/") or not str(rel_schema_path).endswith(
+    if not rel_schema_path.parts[0] == "adm" or not str(rel_schema_path).endswith(
         ".schema.json"
     ):
         msg = f"Invalid schema path: {rel_schema_path}"
         raise ValueError(msg)
-    return f"http://purl.allotrope.org/manifests/{str(rel_schema_path)[4:-12]}.manifest"
+    return f"http://purl.allotrope.org/manifests/{str(PurePosixPath(rel_schema_path))[4:-12]}.manifest"
 
 
 def get_schema_path_from_manifest(manifest: str) -> Path:

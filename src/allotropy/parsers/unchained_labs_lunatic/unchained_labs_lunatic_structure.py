@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Any
-
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
@@ -23,7 +21,7 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -81,21 +79,20 @@ def _get_calculated_data(
 
 
 def _create_measurement_group(
-    series: pd.Series[Any], wavelength_columns: list[str]
+    data: SeriesData, wavelength_columns: list[str]
 ) -> MeasurementGroup:
-    plate_data = SeriesData(series)
-    date = plate_data.get(str, "Date")
-    time = plate_data.get(str, "Time")
+    date = data.get(str, "Date")
+    time = data.get(str, "Time")
 
     if not date or not time:
         raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
 
     return MeasurementGroup(
         _measurement_time=f"{date} {time}",
-        analytical_method_identifier=plate_data.get(str, "Application"),
+        analytical_method_identifier=data.get(str, "Application"),
         plate_well_count=96,
         measurements=[
-            _create_measurement(plate_data, wavelength_column)
+            _create_measurement(data, wavelength_column)
             for wavelength_column in wavelength_columns
         ],
     )
@@ -117,14 +114,10 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
+    def make_group(data: SeriesData) -> MeasurementGroup:
+        return _create_measurement_group(data, wavelength_columns)
+
     return Data(
         metadata=_create_metadata(data, file_name),
-        measurement_groups=list(
-            data.apply(  # type: ignore[call-overload]
-                lambda plate_data: _create_measurement_group(
-                    plate_data, wavelength_columns
-                ),
-                axis="columns",
-            )
-        ),
+        measurement_groups=map_rows(data, make_group),
     )

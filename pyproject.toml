@@ -120,21 +120,35 @@ extra-dependencies = [
     "pygraphviz >= 1.11",
 ]
 
+[tool.hatch.envs.scripts]
+platforms = ["linux", "macos"]
+
 [tool.hatch.envs.scripts.scripts]
+script_path = "scripts/"
 setup-pre-push = "cp scripts/pre-push-hook .git/hooks/pre-push; echo 'Copied to .git/hooks/pre-push'"
 generate-schemas = "scripts/generate_schemas.py {args:}"
 download-schema = "scripts/download_schema.py {args:}"
-check-changelog = "scripts/check_changelog"
 create-parser = "scripts/create_parser.py {args:}"
 update-readme = "scripts/update_readme.py {args:}"
 update-version = "scripts/update_version.py {args:}"
+
+[tool.hatch.envs.win-scripts]
+platforms = ["windows"]
+
+[tool.hatch.envs.win-scripts.scripts]
+setup-pre-push = "copy scripts\\pre-push-hook .git\\hooks\\pre-push && echo Copied to .git\\hooks\\pre-push"
+generate-schemas = "python scripts\\generate_schemas.py {args:}"
+download-schema = "python scripts\\download_schema.py {args:}"
+create-parser = "python scripts\\create_parser.py {args:}"
+update-readme = "python scripts\\update_readme.py {args:}"
+update-version = "python scripts\\update_version.py {args:}"
 
 [tool.hatch.envs.viz.scripts]
 run = "scripts/visualization.py {args:}"
 
 [tool.hatch.envs.lint]
 extra-dependencies = [
-  # mypy sometimes can't find cattrs even though it's a project depenedency, so add explicitly here.
+  # mypy sometimes can't find cattrs even though it's a project dependency, so add explicitly here.
   "cattrs == 23.1.2",
   "more-itertools >= 10.1.0",
   "mypy == 1.8.0",

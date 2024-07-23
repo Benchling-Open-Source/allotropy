@@ -133,7 +133,7 @@ def test_create_well_plate() -> None:
         "Date": date,
         "Time": time,
     }
-    well_plate = _create_measurement_group(pd.Series(plate_data), ["A250"])
+    well_plate = _create_measurement_group(SeriesData(pd.Series(plate_data)), ["A250"])
     assert well_plate.analytical_method_identifier == analytical_method_identifier
     assert well_plate.measurement_time == f"{date} {time}"
     assert well_plate.measurements[0].absorbance == 23.45
@@ -149,19 +149,23 @@ def test_create_well_plate_with_two_measurements() -> None:
         "Date": "17/10/2016",
         "Time": "7:19:18",
     }
-    well_plate = _create_measurement_group(pd.Series(plate_data), ["A452", "A280"])
+    well_plate = _create_measurement_group(
+        SeriesData(pd.Series(plate_data)), ["A452", "A280"]
+    )
 
     assert len(well_plate.measurements) == 2
 
 
 @pytest.mark.short
 def test_create_well_plate_without_date_column_then_raise() -> None:
-    plate_data = pd.Series(
-        {
-            "Sample name": "dummy name",
-            "Plate Position": "some plate",
-            "Time": "7:19:18",
-        }
+    plate_data = SeriesData(
+        pd.Series(
+            {
+                "Sample name": "dummy name",
+                "Plate Position": "some plate",
+                "Time": "7:19:18",
+            }
+        )
     )
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
         _create_measurement_group(plate_data, [])

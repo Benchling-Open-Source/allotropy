@@ -2,8 +2,6 @@ from __future__ import annotations
 
 import re
 
-import pandas as pd
-
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
     Data,
     Measurement,
@@ -20,13 +18,12 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
 
-def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
-    data = SeriesData(series)
+def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     total_cell_count = data.get(float, "Total cells")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
@@ -57,15 +54,7 @@ def _create_measurement_group(series: pd.Series[str]) -> MeasurementGroup:
     )
 
 
-def _create_measurement_groups(data: pd.DataFrame) -> list[MeasurementGroup]:
-    return list(
-        data.apply(
-            _create_measurement_group, axis="columns"
-        )  # type:ignore[call-overload]
-    )
-
-
-def create_data(reader_data: ViCellData) -> Data:
+def create_data(reader_data: ViCellData, file_name: str) -> Data:
     serial_number_str = reader_data.file_info[str, "serial"]
     try:
         serial_number = serial_number_str[serial_number_str.rindex(":") + 1 :].strip()
@@ -94,6 +83,7 @@ def create_data(reader_data: ViCellData) -> Data:
         equipment_serial_number=serial_number,
         software_name=SOFTWARE_NAME,
         software_version=version.value,
+        file_name=file_name,
     )
 
-    return Data(metadata, _create_measurement_groups(reader_data.data))
+    return Data(metadata, map_rows(reader_data.data, _create_measurement_group))

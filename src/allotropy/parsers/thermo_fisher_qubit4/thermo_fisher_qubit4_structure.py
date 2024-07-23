@@ -12,7 +12,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.thermo_fisher_qubit4.constants import (
     UNSUPPORTED_WAVELENGTH_ERROR,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 
 
 @dataclass
@@ -35,8 +35,7 @@ class Row:
     std_3_rfu: float | None
 
     @staticmethod
-    def create(series: pd.Series[str]) -> Row:
-        data = SeriesData(series)
+    def create(data: SeriesData) -> Row:
         emission_wavelength = data.get(str, "Emission", "").lower()
         options = {
             "green": "Green RFU",
@@ -71,4 +70,4 @@ class Row:
 
     @staticmethod
     def create_rows(data: pd.DataFrame) -> list[Row]:
-        return list(data.apply(Row.create, axis="columns"))  # type: ignore[call-overload]
+        return map_rows(data, Row.create)
