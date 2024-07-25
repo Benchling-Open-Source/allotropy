@@ -121,7 +121,6 @@ class AgilentTapestationAnalysisParser(VendorParser):
                             device_control_aggregate_document=DeviceControlAggregateDocument(
                                 device_control_document=[
                                     DeviceControlDocumentItem(
-                                        device_identifier=metadata.device_identifier,
                                         device_type=DEVICE_TYPE,
                                         detection_type=DETECTION_TYPE,
                                     )
