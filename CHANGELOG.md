@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Fixed
+- Fixed tapestation analysis adapter to not inlude data region documents when there is no region data.
+- Removed `devide identifier` from `device control document` in the tapestation analysis adapter.
 
 ### Changed
 
