@@ -6,7 +6,7 @@
             "software name": "TapeStation Analysis Software",
             "software version": "3.2.0.22472",
             "ASM converter name": "allotropy_agilent_tapestation_analysis",
-            "ASM converter version": "0.1.35"
+            "ASM converter version": "0.1.43"
         },
         "electrophoresis document": [
             {
@@ -420,9 +420,6 @@
                                                     }
                                                 }
                                             ]
-                                        },
-                                        "data region aggregate document": {
-                                            "data region document": []
                                         }
                                     }
                                 ]

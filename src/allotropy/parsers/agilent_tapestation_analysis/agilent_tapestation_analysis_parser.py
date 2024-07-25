@@ -138,11 +138,9 @@ class AgilentTapestationAnalysisParser(VendorParser):
                                         peak_list=self._get_peak_list(
                                             sample.peak_list, metadata.unit_cls
                                         ),
-                                        data_region_aggregate_document=DataRegionAggregateDocument(
-                                            data_region_document=self._get_data_region_document(
-                                                sample.data_regions,
-                                                unit_cls=metadata.unit_cls,
-                                            )
+                                        data_region_aggregate_document=self._get_data_region_aggregate_document(
+                                            sample.data_regions,
+                                            unit_cls=metadata.unit_cls,
                                         ),
                                     )
                                 ]
@@ -192,23 +190,28 @@ class AgilentTapestationAnalysisParser(VendorParser):
             ]
         )
 
-    def _get_data_region_document(
+    def _get_data_region_aggregate_document(
         self, data_regions: list[DataRegion], unit_cls: UNIT_CLASSES
-    ) -> list[DataRegionDocumentItem]:
-        return [
-            DataRegionDocumentItem(
-                region_identifier=data_region.region_identifier,
-                region_name=data_region.region_name,
-                region_start=unit_cls(value=data_region.region_start),
-                region_end=unit_cls(value=data_region.region_end),
-                region_area=TQuantityValueUnitless(value=data_region.region_area),
-                relative_region_area=TQuantityValuePercent(
-                    value=data_region.relative_region_area
-                ),
-                comment=data_region.comment,
-            )
-            for data_region in data_regions
-        ]
+    ) -> DataRegionAggregateDocument | None:
+        if not data_regions:
+            return None
+
+        return DataRegionAggregateDocument(
+            data_region_document=[
+                DataRegionDocumentItem(
+                    region_identifier=data_region.region_identifier,
+                    region_name=data_region.region_name,
+                    region_start=unit_cls(value=data_region.region_start),
+                    region_end=unit_cls(value=data_region.region_end),
+                    region_area=TQuantityValueUnitless(value=data_region.region_area),
+                    relative_region_area=TQuantityValuePercent(
+                        value=data_region.relative_region_area
+                    ),
+                    comment=data_region.comment,
+                )
+                for data_region in data_regions
+            ]
+        )
 
     def _get_calculated_data_aggregate_document(
         self, samples: list[Sample]
