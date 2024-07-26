@@ -13,7 +13,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.values import try_str_from_series_or_none
 
 
 def create_data(reader: LinesReader) -> Data:
@@ -50,14 +49,8 @@ def create_data(reader: LinesReader) -> Data:
                 header.experiment_type,
             )
 
-    endogenous_control = (
-        try_str_from_series_or_none(results_metadata, "Endogenous Control")
-        or NOT_APPLICABLE
-    )
-    reference_sample = (
-        try_str_from_series_or_none(results_metadata, "Reference Sample")
-        or NOT_APPLICABLE
-    )
+    endogenous_control = results_metadata.get(str, "Endogenous Control", NOT_APPLICABLE)
+    reference_sample = results_metadata.get(str, "Reference Sample", NOT_APPLICABLE)
 
     return Data(
         header,

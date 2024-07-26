@@ -15,6 +15,7 @@ from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure i
     _create_measurement_group,
     create_data,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 @pytest.mark.parametrize(
@@ -40,7 +41,9 @@ def test__create_measurement(
         "Plate ID": well_plate_identifier,
         "Plate Position": location_identifier,
     }
-    measurement = _create_measurement(pd.Series(well_plate_data), wavelength_column)
+    measurement = _create_measurement(
+        SeriesData(pd.Series(well_plate_data)), wavelength_column
+    )
 
     assert measurement.detector_wavelength_setting == wavelength
     assert measurement.absorbance == absorbance_value
@@ -51,12 +54,14 @@ def test__create_measurement(
 
 @pytest.mark.short
 def test__create_measurement_with_no_wavelength_column() -> None:
-    well_plate_data = pd.Series(
-        {
-            "Sample name": "dummy name",
-            "Plate ID": "some plate",
-            "Plate Position": "B3",
-        }
+    well_plate_data = SeriesData(
+        pd.Series(
+            {
+                "Sample name": "dummy name",
+                "Plate ID": "some plate",
+                "Plate Position": "B3",
+            }
+        )
     )
     wavelength_column = "A250"
     msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
@@ -67,7 +72,7 @@ def test__create_measurement_with_no_wavelength_column() -> None:
 @pytest.mark.short
 def test__create_measurement_with_incorrect_wavelength_column_format() -> None:
     msg = INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG
-    well_plate_data = pd.Series({"Sample name": "dummy name"})
+    well_plate_data = SeriesData(pd.Series({"Sample name": "dummy name"}))
     with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
         _create_measurement(well_plate_data, "Sample name")
 
@@ -83,7 +88,7 @@ def test__get_calculated_data_from_measurement_for_unknown_wavelength() -> None:
         "A260 Concentration (ng/ul)": 4.5,
         "Background (A260)": 0.523,
     }
-    measurement = _create_measurement(pd.Series(well_plate_data), "A240")
+    measurement = _create_measurement(SeriesData(pd.Series(well_plate_data)), "A240")
 
     assert not measurement.calculated_data
 
@@ -101,7 +106,9 @@ def test__get_calculated_data_from_measurement_for_A260() -> None:  # noqa: N802
         "A260/A280": 24.9,
     }
     wavelength = "A260"
-    measurement = _create_measurement(pd.Series(well_plate_data), wavelength)
+    measurement = _create_measurement(
+        SeriesData(pd.Series(well_plate_data)), wavelength
+    )
 
     calculated_data_dict = {
         data.name: data for data in (measurement.calculated_data or [])
@@ -126,7 +133,7 @@ def test_create_well_plate() -> None:
         "Date": date,
         "Time": time,
     }
-    well_plate = _create_measurement_group(pd.Series(plate_data), ["A250"])
+    well_plate = _create_measurement_group(SeriesData(pd.Series(plate_data)), ["A250"])
     assert well_plate.analytical_method_identifier == analytical_method_identifier
     assert well_plate.measurement_time == f"{date} {time}"
     assert well_plate.measurements[0].absorbance == 23.45
@@ -142,19 +149,23 @@ def test_create_well_plate_with_two_measurements() -> None:
         "Date": "17/10/2016",
         "Time": "7:19:18",
     }
-    well_plate = _create_measurement_group(pd.Series(plate_data), ["A452", "A280"])
+    well_plate = _create_measurement_group(
+        SeriesData(pd.Series(plate_data)), ["A452", "A280"]
+    )
 
     assert len(well_plate.measurements) == 2
 
 
 @pytest.mark.short
 def test_create_well_plate_without_date_column_then_raise() -> None:
-    plate_data = pd.Series(
-        {
-            "Sample name": "dummy name",
-            "Plate Position": "some plate",
-            "Time": "7:19:18",
-        }
+    plate_data = SeriesData(
+        pd.Series(
+            {
+                "Sample name": "dummy name",
+                "Plate Position": "some plate",
+                "Time": "7:19:18",
+            }
+        )
     )
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
         _create_measurement_group(plate_data, [])

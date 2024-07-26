@@ -20,11 +20,13 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
+    try_float_or_nan,
+    try_float_or_none,
+)
+from allotropy.parsers.utils.xml import (
     get_element_from_xml,
     get_val_from_xml,
     get_val_from_xml_or_none,
-    try_float_or_nan,
-    try_float_or_none,
 )
 from allotropy.types import IOType
 

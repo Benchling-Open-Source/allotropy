@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import assert_not_none
 
 
@@ -21,7 +22,7 @@ class MabtechApexContents:
         self.plate_info = self._get_plate_info(contents)
         self.data = self._get_data(contents)
 
-    def _get_plate_info(self, contents: dict[str, pd.DataFrame]) -> pd.Series[str]:
+    def _get_plate_info(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = assert_not_none(
             contents.get("Plate Information"),
             msg="Unable to find 'Plate Information' sheet.",
@@ -33,8 +34,7 @@ class MabtechApexContents:
                 break
             data[str(title)] = None if value is None else str(value)
 
-        plate_info = pd.Series(data)
-        return plate_info
+        return SeriesData(pd.Series(data))
 
     def _get_data(self, contents: dict[str, pd.DataFrame]) -> pd.DataFrame:
         sheet = assert_not_none(

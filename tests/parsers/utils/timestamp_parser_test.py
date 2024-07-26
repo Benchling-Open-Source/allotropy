@@ -7,6 +7,7 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 
+@pytest.mark.short
 def test_timestamp_parser_init_fails_invalid_default_timezone() -> None:
     with pytest.raises(
         AllotropeConversionError, match="Invalid default timezone 'timezone'."

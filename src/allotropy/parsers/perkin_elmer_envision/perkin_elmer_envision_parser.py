@@ -91,11 +91,7 @@ class PerkinElmerEnvisionParser(VendorParser):
         lines = read_to_lines(named_file_contents)
         reader = CsvReader(lines)
         filename = named_file_contents.original_file_name
-        try:
-            return self._get_model(Data.create(reader), filename)
-        except Exception as error:
-            msg = "Unhandled error in PerkinElmerEnvisionParser"
-            raise AllotropeConversionError(msg) from error
+        return self._get_model(Data.create(reader), filename)
 
     def _get_model(self, data: Data, filename: str) -> Model:
         if data.number_of_wells is None:

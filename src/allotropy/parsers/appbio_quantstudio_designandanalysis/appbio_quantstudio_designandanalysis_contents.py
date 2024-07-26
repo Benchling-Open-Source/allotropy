@@ -1,13 +1,11 @@
 from __future__ import annotations
 
-import re
-import warnings
-
 import numpy as np
 import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import (
     assert_not_empty_df,
     assert_not_none,
@@ -17,16 +15,12 @@ from allotropy.parsers.utils.values import (
 class DesignQuantstudioContents:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
-        # We can get a warning that the workbook does not have a default style. We are OK with this, so suppress.
-        with warnings.catch_warnings():
-            warnings.filterwarnings(
-                "ignore",
-                category=UserWarning,
-                module=re.escape("openpyxl.styles.stylesheet"),
-            )
-            raw_contents = pd.read_excel(
-                named_file_contents.contents, header=None, sheet_name=None
-            )
+        raw_contents = pd.read_excel(  # type: ignore[call-overload]
+            named_file_contents.contents,
+            header=None,
+            sheet_name=None,
+            engine="calamine",
+        )
         return DesignQuantstudioContents(raw_contents)
 
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
@@ -46,7 +40,7 @@ class DesignQuantstudioContents:
         error = "Unable to parse data header"
         raise AllotropeConversionError(error)
 
-    def _get_header(self, contents: dict[str, pd.DataFrame]) -> pd.Series[str]:
+    def _get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = assert_not_none(
             contents.get("Results"),
             msg="Unable to find 'Results' sheet.",
@@ -60,7 +54,7 @@ class DesignQuantstudioContents:
 
         header = pd.Series(data)
         header.index = header.index.str.strip()
-        return header
+        return SeriesData(header)
 
     def _get_data(self, contents: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
         data_structure = {}

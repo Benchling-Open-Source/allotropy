@@ -59,7 +59,8 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
 )
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import get_val_from_xml, quantity_or_none
+from allotropy.parsers.utils.values import quantity_or_none
+from allotropy.parsers.utils.xml import get_val_from_xml
 from allotropy.parsers.vendor_parser import VendorParser
 
 

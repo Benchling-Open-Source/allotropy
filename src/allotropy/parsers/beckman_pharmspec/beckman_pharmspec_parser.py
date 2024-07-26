@@ -68,7 +68,7 @@ class PharmSpecParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        df = read_excel(named_file_contents.contents, header=None, engine="openpyxl")
+        df = read_excel(named_file_contents.contents, header=None, engine="calamine")
         data = PharmSpecData.create(df)
         return self._setup_model(data, named_file_contents.original_file_name)
 

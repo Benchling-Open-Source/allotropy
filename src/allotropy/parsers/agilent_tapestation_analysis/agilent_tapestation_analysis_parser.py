@@ -22,7 +22,7 @@ from allotropy.allotrope.models.adm.electrophoresis.benchling._2024._06.electrop
     Model,
     PeakItem,
     PeakList,
-    ProcessedDataAggregateDocument1,
+    ProcessedDataAggregateDocument,
     ProcessedDataDocumentItem,
     SampleDocument,
     TQuantityValueModel,
@@ -132,7 +132,7 @@ class AgilentTapestationAnalysisParser(VendorParser):
                                 description=sample.description,
                                 location_identifier=sample.location_identifier,
                             ),
-                            processed_data_aggregate_document=ProcessedDataAggregateDocument1(
+                            processed_data_aggregate_document=ProcessedDataAggregateDocument(
                                 processed_data_document=[
                                     ProcessedDataDocumentItem(
                                         peak_list=self._get_peak_list(
