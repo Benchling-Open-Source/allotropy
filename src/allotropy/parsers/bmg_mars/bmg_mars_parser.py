@@ -32,6 +32,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.bmg_mars.bmg_mars_structure import (
     get_plate_data,
@@ -133,15 +134,13 @@ class BmgMarsParser(VendorParser):
             re.search(RE_READ_TYPE, "\n".join(lines), flags=re.MULTILINE),
             msg="Read type not found.",
         ).group(0)
-        patterns = {
-            "Absorbance": ReadType.ABSORBANCE,
-            "Fluorescence": ReadType.FLUORESCENCE,
-        }
 
-        for key in patterns:
-            if key in read_type:
-                read_type_key = patterns[key]
-        return read_type_key
+        if "Absorbance" in read_type:
+            return ReadType.ABSORBANCE
+        elif "Fluorescence" in read_type:
+            return ReadType.FLUORESCENCE
+        else:
+            raise AllotropeConversionError(message="Unknown read type.")
 
     def _get_device_control_aggregate_document(
         self,
@@ -155,9 +154,8 @@ class BmgMarsParser(VendorParser):
                     UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                         device_type="absorbance detector",
                         detection_type="absorbance",
-                        detector_wavelength_setting=safe_value(
-                            TQuantityValueNanometer,
-                            wavelength.wavelength if wavelength.wavelength else None,
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            value=wavelength.wavelength
                         ),
                     )
                 ]
@@ -169,15 +167,11 @@ class BmgMarsParser(VendorParser):
                     FluorescencePointDetectionDeviceControlDocumentItem(
                         device_type="fluorescence detector",
                         detection_type="fluorescence",
-                        detector_wavelength_setting=safe_value(
-                            TQuantityValueNanometer,
-                            wavelength.wavelength if wavelength.wavelength else None,
+                        detector_wavelength_setting=TQuantityValueNanometer(
+                            value=wavelength.wavelength
                         ),
-                        excitation_wavelength_setting=safe_value(
-                            TQuantityValueNanometer,
-                            wavelength.ex_wavelength
-                            if wavelength.ex_wavelength
-                            else None,
+                        excitation_wavelength_setting=TQuantityValueNanometer(
+                            value=wavelength.ex_wavelength
                         ),
                     )
                 ]

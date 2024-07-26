@@ -10,6 +10,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import SeriesData
@@ -67,7 +68,7 @@ class Header:
 @dataclass(frozen=True)
 class Wavelength:
     wavelength: float
-    ex_wavelength: float | None = None
+    ex_wavelength: float | InvalidJsonFloat
 
     @staticmethod
     def create(csv_data: list[str]) -> Wavelength:
@@ -84,7 +85,10 @@ class Wavelength:
                 ex_wavelength=float(raw_wavelengths.group("wavelength1")),
             )
         else:  # wavelength 1 only
-            return Wavelength(wavelength=float(raw_wavelengths.group("wavelength1")))
+            return Wavelength(
+                wavelength=float(raw_wavelengths.group("wavelength1")),
+                ex_wavelength=InvalidJsonFloat.NaN,
+            )
 
 
 def get_plate_data(csv_data: list[str]) -> pd.DataFrame:
