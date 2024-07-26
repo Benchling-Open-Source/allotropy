@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Fixed
-
+- Add column normalization to vicell blu reader to fix unrecognized colums due to mismatching characters
 ### Changed
 
 ### Deprecated
