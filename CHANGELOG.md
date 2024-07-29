@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add BMG MARS adapter
 
 ### Fixed
-
+- Add column normalization to vicell blu reader to fix unrecognized colums due to mismatching characters
 ### Changed
 
 ### Deprecated
