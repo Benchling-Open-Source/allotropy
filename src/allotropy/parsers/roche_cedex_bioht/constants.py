@@ -55,7 +55,7 @@ INFO_HEADER = [
     "col6",
     "model number",
     "device serial number",
-    "col9",
+    "software version",
     "analyst",
 ]
 
@@ -159,3 +159,7 @@ ANALYTES_LOOKUP = {
 }
 
 SAMPLE_ROLE_TYPES = {"SAM": "Sample"}
+
+SOLUTION_ANALYZER = "solution-analyzer"
+OPTICAL_DENSITY = "optical_density"
+BELOW_TEST_RANGE = "< TEST RNG "

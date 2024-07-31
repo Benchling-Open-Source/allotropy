@@ -7,14 +7,18 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
+    BELOW_TEST_RANGE,
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 @dataclass(frozen=True)
@@ -23,6 +27,7 @@ class Title:
     analyst: str
     model_number: str | None
     device_serial_number: str | None
+    software_version: str | None = None
 
     @staticmethod
     def create(title_data: pd.Series) -> Title:
@@ -31,29 +36,31 @@ class Title:
             msg = "Unable to obtain analyst."
             raise AllotropeConversionError(msg)
 
-        device_serial_number = title_data.get("device serial number")
-        if device_serial_number is None:
-            msg = "Unable to obtain device serial number."
-            raise AllotropeConversionError(msg)
+        device_serial_number = title_data.get("device serial number") or NOT_APPLICABLE
+
+        software_version = title_data.get("software version") or NOT_APPLICABLE
 
         return Title(
             title_data.get("data processing time"),  # type: ignore[arg-type]
             analyst,  # type: ignore[arg-type]
             title_data.get("model number"),  # type: ignore[arg-type]
             str(device_serial_number),
+            software_version
         )
 
 
 @dataclass(frozen=True)
 class Analyte:
     name: str
-    concentration_value: float | None
+    concentration_value: JsonFloat
     unit: str | None
 
     @staticmethod
     def create(data: pd.Series) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
-        concentration_value: float | None = data.get("concentration value")  # type: ignore[assignment]
+        concentration_value = try_float_or_nan(data.get("concentration value"))
+        if data.get("flag") == BELOW_TEST_RANGE:
+            concentration_value = NaN
         unit: str | None = data.get("concentration unit")  # type: ignore[assignment]
 
         return Analyte(analyte_name, concentration_value, unit)
