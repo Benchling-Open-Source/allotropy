@@ -71,7 +71,7 @@ class Analyte:
 @dataclass(frozen=True)
 class Sample:
     identifier: str
-    role_type: str
+    sample_type: str
     measurement_time: str
     batch_identifier: str | None
     analytes: list[Analyte]
@@ -90,7 +90,7 @@ class Sample:
 
         return Sample(
             identifier=data["Sample ID"],
-            role_type=data["Sample Type"],
+            sample_type=data["Sample Type"],
             measurement_time=data["Date & Time"].isoformat(),
             batch_identifier=str(batch_identifier) if batch_identifier else None,
             analytes=sorted(

@@ -1,13 +1,18 @@
 from io import StringIO
 
-from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     AnalyteAggregateDocument,
-    AnalyteDocumentItem,
+    AnalyteDocument,
+    DataSystemDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     DeviceSystemDocument,
     MeasurementAggregateDocument,
-    MeasurementDocumentItem,
+    MeasurementDocument,
     Model,
     SampleDocument,
+    SolutionAnalyzerAggregateDocument,
+    SolutionAnalyzerDocumentItem
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TNullableQuantityValueGramPerLiter,
@@ -81,7 +86,7 @@ def get_data() -> Data:
             samples=[
                 Sample(
                     identifier="BP_R10_KP_008_D0",
-                    role_type="Spent Media",
+                    sample_type="Spent Media",
                     measurement_time="2022-06-24T14:34:52",
                     batch_identifier="KP_008",
                     analytes=sorted(
@@ -125,7 +130,7 @@ def get_model() -> Model:
                 device_serial_number=None,
             ),
             measurement_document=[
-                MeasurementDocumentItem(
+                MeasurementDocument(
                     sample_document=SampleDocument(
                         sample_identifier="BP_R10_KP_008_D0",
                         batch_identifier="KP_008",
@@ -134,55 +139,55 @@ def get_model() -> Model:
                     measurement_time="2022-06-24T14:34:52+00:00",
                     analyte_aggregate_document=AnalyteAggregateDocument(
                         analyte_document=[
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="ammonium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=0.48,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="bicarbonate",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=29.3,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="calcium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=0.82,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="glucose",
                                 molar_concentration=TNullableQuantityValueGramPerLiter(
                                     value=2.65,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="glutamate",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=0.33,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="glutamine",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=1.83,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="lactate",
                                 molar_concentration=TNullableQuantityValueGramPerLiter(
                                     value=0.18,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="potassium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=4.22,
                                 ),
                             ),
-                            AnalyteDocumentItem(
+                            AnalyteDocument(
                                 analyte_name="sodium",
                                 molar_concentration=TNullableQuantityValueMillimolePerLiter(
                                     value=151.6,
@@ -219,5 +224,5 @@ def get_model() -> Model:
             ],
             data_processing_time="2022-06-28T14:25:58+00:00",
         ),
-        manifest="http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
+        field_asm_manifest="http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
     )

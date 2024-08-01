@@ -1,17 +1,30 @@
-from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     AnalyteAggregateDocument,
-    AnalyteDocumentItem,
+    AnalyteDocument,
+    DataSystemDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     DeviceSystemDocument,
     MeasurementAggregateDocument,
-    MeasurementDocumentItem,
+    MeasurementDocument,
     Model,
     SampleDocument,
+    SolutionAnalyzerAggregateDocument,
+    SolutionAnalyzerDocumentItem,
 )
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
+
+# TODO: Validate these
+MODEL_NUMBER = "Flex2"
+SOFTWARE_NAME = "NovaBio Flex"
+SOFTWARE_VERSION = "Do we have this?"
+DEVICE_TYPE = "solution-analyzer"
+PRODUCT_MANUFACTURER = "Nova Biomedical"
 
 
 class NovaBioFlexParser(VendorParser):
@@ -24,40 +37,63 @@ class NovaBioFlexParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        return self._get_model(Data.create(named_file_contents))
+        return self._get_model(
+            Data.create(named_file_contents), named_file_contents.original_file_name
+        )
 
-    def _get_model(self, data: Data) -> Model:
+    def _get_model(self, data: Data, file_name: str) -> Model:
         return Model(
-            measurement_aggregate_document=MeasurementAggregateDocument(
-                measurement_identifier=random_uuid_str(),
-                data_processing_time=self._get_date_time(data.title.processing_time),
-                analyst=data.sample_list.analyst,
+            field_asm_manifest="http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
+            solution_analyzer_aggregate_document=SolutionAnalyzerAggregateDocument(
+                solution_analyzer_document=[
+                    SolutionAnalyzerDocumentItem(
+                        analyst=data.sample_list.analyst,
+                        measurement_aggregate_document=MeasurementAggregateDocument(
+                            data_processing_time=self._get_date_time(
+                                data.title.processing_time
+                            ),
+                            measurement_document=self._get_measurement_document(data),
+                        ),
+                    )
+                ],
                 device_system_document=DeviceSystemDocument(
-                    model_number="NovaBio Flex2",
+                    model_number=MODEL_NUMBER,
+                    product_manufacturer=PRODUCT_MANUFACTURER,
                     device_identifier=data.title.device_identifier,
                 ),
-                measurement_document=self._get_measurement_document(data),
+                data_system_document=DataSystemDocument(
+                    file_name=file_name,
+                    software_name=SOFTWARE_NAME,
+                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_version=ASM_CONVERTER_VERSION,
+                ),
             ),
         )
 
-    def _get_measurement_document(self, data: Data) -> list[MeasurementDocumentItem]:
+    def _get_measurement_document(self, data: Data) -> list[MeasurementDocument]:
         # get analytes and properties included in the output file
         return [
             self._get_measurement_from_sample(sample)
             for sample in data.sample_list.samples
         ]
 
-    def _get_measurement_from_sample(self, sample: Sample) -> MeasurementDocumentItem:
-        sample_measurement = MeasurementDocumentItem(
+    def _get_measurement_from_sample(self, sample: Sample) -> MeasurementDocument:
+        sample_measurement = MeasurementDocument(
+            measurement_identifier=random_uuid_str(),
+            measurement_time=self._get_date_time(sample.measurement_time),
             sample_document=SampleDocument(
                 sample_identifier=sample.identifier,
-                sample_role_type=sample.role_type,
+                description=sample.sample_type,
                 batch_identifier=sample.batch_identifier,
             ),
-            measurement_time=self._get_date_time(sample.measurement_time),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[
+                    DeviceControlDocumentItem(device_type=DEVICE_TYPE)
+                ]
+            ),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
-                    AnalyteDocumentItem(
+                    AnalyteDocument(
                         analyte_name=analyte.name,
                         molar_concentration=analyte.molar_concentration,
                     )
