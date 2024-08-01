@@ -1111,7 +1111,14 @@
           "type": "object",
           "properties": {
             "value": {
-              "type": "number"
+                "oneOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "enum": ["NaN", "+Infinity", "-Infinity"]
+                    }
+                ]
             },
             "unit": {
               "$ref": "#/$defs/tUnit"

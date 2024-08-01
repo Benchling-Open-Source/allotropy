@@ -36,9 +36,13 @@ class Title:
             msg = "Unable to obtain analyst."
             raise AllotropeConversionError(msg)
 
-        device_serial_number = title_data.get("device serial number") or NOT_APPLICABLE
+        device_serial_number = title_data.get("device serial number")
 
-        software_version = title_data.get("software version") or NOT_APPLICABLE
+        if device_serial_number is None:
+            msg = "Unable to obtain device serial number."
+            raise AllotropeConversionError(msg)
+
+        software_version = title_data.get("software version")
 
         return Title(
             title_data.get("data processing time"),  # type: ignore[arg-type]
@@ -59,7 +63,8 @@ class Analyte:
     def create(data: pd.Series) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
         concentration_value = try_float_or_nan(data.get("concentration value"))
-        if data.get("flag") == BELOW_TEST_RANGE:
+        flag = data.get("flag", "")
+        if BELOW_TEST_RANGE in flag:
             concentration_value = NaN
         unit: str | None = data.get("concentration unit")  # type: ignore[assignment]
 

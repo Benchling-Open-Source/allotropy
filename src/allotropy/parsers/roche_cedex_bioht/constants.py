@@ -162,4 +162,4 @@ SAMPLE_ROLE_TYPES = {"SAM": "Sample"}
 
 SOLUTION_ANALYZER = "solution-analyzer"
 OPTICAL_DENSITY = "optical_density"
-BELOW_TEST_RANGE = "< TEST RNG "
+BELOW_TEST_RANGE = "< TEST RNG"

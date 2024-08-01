@@ -82,10 +82,12 @@ class RocheCedexBiohtParser(VendorParser):
         return solution_analyzer_document
 
     def _get_measurement_document(self, sample: Sample) -> list[MeasurementDocument]:
-        measurement_document = [
-            self._create_sample_measurement(sample, include_analyte=False),
-            self._create_sample_measurement(sample, include_analyte=True)
-        ]
+        analytes = sample.analyte_list.analytes
+        measurement_document = []
+        if any([analyte.name == OPTICAL_DENSITY for analyte in analytes]):
+            measurement_document.append(self._create_sample_measurement(sample, include_analyte=False))
+        if len(analytes) > 1:
+            measurement_document.append(self._create_sample_measurement(sample, include_analyte=True))
         return measurement_document
 
     def _create_sample_measurement(self, sample: Sample, include_analyte) -> MeasurementDocument:

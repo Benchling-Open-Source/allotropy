@@ -173,6 +173,21 @@ def get_reader_samples() -> pd.DataFrame:
                 0,
                 "R",
             ],
+            [
+                40,
+                "2021-05-20 16:55:51",
+                "PPDTEST1",
+                "",
+                "Sample",
+                "        ",
+                "optical_density",
+                "        ",
+                "OD",
+                " ",
+                0.17138,
+                0,
+                "R",
+            ]
         ],
     )
 
@@ -298,7 +313,7 @@ def get_model() -> Model:
                 file_name="file_name.txt",
                 UNC_path="",
                 software_name="CEDEX BIO HT",
-                software_version=None,
+                software_version="6.0.0.1905 (1905)",
                 ASM_converter_name="allotropy_roche_cedex_bioht",
                 ASM_converter_version="0.1.43",
             ),
