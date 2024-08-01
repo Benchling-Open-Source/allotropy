@@ -6,7 +6,7 @@ import pytest
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
-    MOLAR_CONCENTRATION_CLS_BY_UNIT,
+    CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
@@ -63,15 +63,11 @@ def test_create_title_invalid_filename(filename: str) -> None:
 def test_create_analyte() -> None:
     nh4_analyte = Analyte.create("NH4+", 100)
     assert nh4_analyte.name == "ammonium"
-    assert nh4_analyte.molar_concentration == MOLAR_CONCENTRATION_CLS_BY_UNIT["mmol/L"](
-        value=100
-    )
+    assert nh4_analyte.concentration == CONCENTRATION_CLS_BY_UNIT["mmol/L"](value=100)
 
     gluc_analyte = Analyte.create("Gluc", 1.1)
     assert gluc_analyte.name == "glucose"
-    assert gluc_analyte.molar_concentration == MOLAR_CONCENTRATION_CLS_BY_UNIT["g/L"](
-        value=1.1
-    )
+    assert gluc_analyte.concentration == CONCENTRATION_CLS_BY_UNIT["g/L"](value=1.1)
 
 
 @pytest.mark.short

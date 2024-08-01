@@ -13,8 +13,13 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     SolutionAnalyzerDocumentItem,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.novabio_flex2.novabio_flex2_structure import Data, Sample
+from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
+    Analyte,
+    Data,
+    Sample,
+)
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.vendor_parser import VendorParser
@@ -22,7 +27,6 @@ from allotropy.parsers.vendor_parser import VendorParser
 # TODO: Validate these
 MODEL_NUMBER = "Flex2"
 SOFTWARE_NAME = "NovaBio Flex"
-SOFTWARE_VERSION = "Do we have this?"
 DEVICE_TYPE = "solution-analyzer"
 PRODUCT_MANUFACTURER = "Nova Biomedical"
 
@@ -45,17 +49,7 @@ class NovaBioFlexParser(VendorParser):
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
             solution_analyzer_aggregate_document=SolutionAnalyzerAggregateDocument(
-                solution_analyzer_document=[
-                    SolutionAnalyzerDocumentItem(
-                        analyst=data.sample_list.analyst,
-                        measurement_aggregate_document=MeasurementAggregateDocument(
-                            data_processing_time=self._get_date_time(
-                                data.title.processing_time
-                            ),
-                            measurement_document=self._get_measurement_document(data),
-                        ),
-                    )
-                ],
+                solution_analyzer_document=self._get_solution_analyzer_document(data),
                 device_system_document=DeviceSystemDocument(
                     model_number=MODEL_NUMBER,
                     product_manufacturer=PRODUCT_MANUFACTURER,
@@ -70,15 +64,53 @@ class NovaBioFlexParser(VendorParser):
             ),
         )
 
-    def _get_measurement_document(self, data: Data) -> list[MeasurementDocument]:
-        # get analytes and properties included in the output file
+    def _get_solution_analyzer_document(self, data: Data) -> list[MeasurementDocument]:
         return [
-            self._get_measurement_from_sample(sample)
+            SolutionAnalyzerDocumentItem(
+                analyst=data.sample_list.analyst,
+                measurement_aggregate_document=MeasurementAggregateDocument(
+                    data_processing_time=self._get_date_time(
+                        data.title.processing_time
+                    ),
+                    measurement_document=self._get_measurements_from_sample(sample),
+                ),
+            )
             for sample in data.sample_list.samples
         ]
 
-    def _get_measurement_from_sample(self, sample: Sample) -> MeasurementDocument:
-        sample_measurement = MeasurementDocument(
+    def _get_measurements_from_sample(
+        self, sample: Sample
+    ) -> list[MeasurementDocument]:
+        # get analytes and properties included in the output file
+        measurements = []
+        if sample.analytes:
+            measurements.append(self._get_analytes_measurement(sample))
+
+        if sample.properties:
+            measurement = MeasurementDocument(
+                measurement_identifier=random_uuid_str(),
+                measurement_time=self._get_date_time(sample.measurement_time),
+                sample_document=SampleDocument(
+                    sample_identifier=sample.identifier,
+                    description=sample.sample_type,
+                    batch_identifier=sample.batch_identifier,
+                ),
+                device_control_aggregate_document=DeviceControlAggregateDocument(
+                    device_control_document=[
+                        DeviceControlDocumentItem(device_type=DEVICE_TYPE)
+                    ]
+                ),
+            )
+            # TODO: break into other measurement types and report all properties
+            for name, property_ in sample.properties.items():
+                setattr(measurement, name, property_)
+
+            measurements.append(measurement)
+
+        return measurements
+
+    def _get_analytes_measurement(self, sample: Sample) -> MeasurementDocument:
+        return MeasurementDocument(
             measurement_identifier=random_uuid_str(),
             measurement_time=self._get_date_time(sample.measurement_time),
             sample_document=SampleDocument(
@@ -88,23 +120,34 @@ class NovaBioFlexParser(VendorParser):
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
                 device_control_document=[
-                    DeviceControlDocumentItem(device_type=DEVICE_TYPE)
+                    DeviceControlDocumentItem(
+                        device_type=DEVICE_TYPE,
+                        detection_type="metabolite-detection",
+                    )
                 ]
             ),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
-                    AnalyteDocument(
-                        analyte_name=analyte.name,
-                        molar_concentration=analyte.molar_concentration,
-                    )
-                    for analyte in sample.analytes
+                    self._get_analyte_document(analyte) for analyte in sample.analytes
                 ]
             ),
         )
 
-        # properties are not included under the analyte aggregate document
-        # and are added directly to the measurement document instead
-        for name, property_ in sample.properties.items():
-            setattr(sample_measurement, name, property_)
+    def _get_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
+        analyte_document = AnalyteDocument(analyte_name=analyte.name)
 
-        return sample_measurement
+        mappings = {
+            "mmol/L": "molar_concentration",
+            "g/L": "mass_concentration",
+            "mL/L": "volume_concentration",
+        }
+
+        try:
+            concentration_name = mappings[analyte.concentration.unit]
+        except KeyError as e:
+            msg = f"Unknow concentration unit {analyte.concentration.unit}"
+            raise AllotropeConversionError(msg)
+
+        setattr(analyte_document, concentration_name, analyte.concentration)
+
+        return analyte_document

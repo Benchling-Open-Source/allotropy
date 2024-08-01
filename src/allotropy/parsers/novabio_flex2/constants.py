@@ -22,12 +22,12 @@ INVALID_FILENAME_MESSAGE = (
     "or SampleResults<Analyzer ID>YYYY-MM-DD_HHMMSS.csv where <Analyzer ID> is defined in Settings"
 )
 
-MOLAR_CONCENTRATION_CLASSES = (
+CONCENTRATION_CLASSES = (
     TNullableQuantityValueMillimolePerLiter
     | TNullableQuantityValueGramPerLiter
     | TNullableQuantityValueUnitPerLiter
 )
-ALL_MOLAR_CONCENTRATION_CLASSES: list[
+ALL_CONCENTRATION_CLASSES: list[
     (
         type[TNullableQuantityValueMillimolePerLiter]
         | type[TNullableQuantityValueGramPerLiter]
@@ -38,9 +38,7 @@ ALL_MOLAR_CONCENTRATION_CLASSES: list[
     TNullableQuantityValueGramPerLiter,
     TNullableQuantityValueUnitPerLiter,
 ]
-MOLAR_CONCENTRATION_CLS_BY_UNIT = {
-    cls.unit: cls for cls in ALL_MOLAR_CONCENTRATION_CLASSES
-}
+CONCENTRATION_CLS_BY_UNIT = {cls.unit: cls for cls in ALL_CONCENTRATION_CLASSES}
 
 ANALYTE_MAPPINGS: dict[str, dict[str, str]] = {
     "NH4+": {
