@@ -97,7 +97,7 @@ def get_data_stream() -> StringIO:
             "  0.17138",
             "0",
             "R",
-        ]
+        ],
     ]
     title_text = "\t".join(title)
     body_text = "\n".join(["\t".join(row) for row in body])
@@ -187,7 +187,7 @@ def get_reader_samples() -> pd.DataFrame:
                 0.17138,
                 0,
                 "R",
-            ]
+            ],
         ],
     )
 
@@ -209,7 +209,7 @@ def get_data() -> Data:
                     analytes=[
                         Analyte("ammonia", 1.846, "mmol/L"),
                         Analyte("glutamine", 2.45, "mmol/L"),
-                        Analyte("optical_density", 0.17138, "OD")
+                        Analyte("optical_density", 0.17138, "OD"),
                     ],
                     molar_concentration_dict={
                         "ammonia": [
@@ -224,14 +224,16 @@ def get_data() -> Data:
                         ],
                     },
                     molar_concentration_nans={},
-                    non_aggregrable_dict=defaultdict(list, {
-                        "optical_density": [
-                            TNullableQuantityValueOpticalDensity(
-                                value=0.17138,
-                                unit="OD"
-                            )
-                        ]
-                    }),
+                    non_aggregrable_dict=defaultdict(
+                        list,
+                        {
+                            "optical_density": [
+                                TNullableQuantityValueOpticalDensity(
+                                    value=0.17138, unit="OD"
+                                )
+                            ]
+                        },
+                    ),
                     non_aggregable_nans={},
                     num_measurement_docs=1,
                 ),
@@ -286,14 +288,14 @@ def get_model() -> Model:
                                             molar_concentration=TQuantityValueMillimolePerLiter(
                                                 value=1.846,
                                                 unit="mmol/L",
-                                            )
+                                            ),
                                         ),
                                         AnalyteDocument(
                                             analyte_name="glutamine",
                                             molar_concentration=TQuantityValueMillimolePerLiter(
                                                 value=2.45,
                                                 unit="mmol/L",
-                                            )
+                                            ),
                                         ),
                                     ]
                                 ),
@@ -317,5 +319,5 @@ def get_model() -> Model:
                 ASM_converter_name="allotropy_roche_cedex_bioht",
                 ASM_converter_version="0.1.43",
             ),
-        )
+        ),
     )

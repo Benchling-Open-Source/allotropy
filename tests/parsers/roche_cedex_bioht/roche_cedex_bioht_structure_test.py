@@ -25,14 +25,18 @@ from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get
 )
 @pytest.mark.short
 def test_create_title(
-    processing_time: str, model_number: str, device_serial: int, analyst: str, software_version: str
+    processing_time: str,
+    model_number: str,
+    device_serial: int,
+    analyst: str,
+    software_version: str,
 ) -> None:
     title_data = {
         "data processing time": processing_time,
         "model number": model_number,
         "device serial number": device_serial,
         "analyst": analyst,
-        "software version": software_version
+        "software version": software_version,
     }
     title = Title.create(pd.Series(title_data))
 

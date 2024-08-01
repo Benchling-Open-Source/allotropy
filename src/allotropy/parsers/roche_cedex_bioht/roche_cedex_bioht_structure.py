@@ -48,7 +48,7 @@ class Title:
             analyst,  # type: ignore[arg-type]
             title_data.get("model number"),  # type: ignore[arg-type]
             str(device_serial_number),
-            software_version
+            software_version,
         )
 
 

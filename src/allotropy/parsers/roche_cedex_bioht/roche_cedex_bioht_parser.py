@@ -44,7 +44,9 @@ class RocheCedexBiohtParser(VendorParser):
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         contents = named_file_contents.contents
         reader = RocheCedexBiohtReader(contents)
-        return self._get_model(Data.create(reader), named_file_contents.original_file_name)
+        return self._get_model(
+            Data.create(reader), named_file_contents.original_file_name
+        )
 
     def _get_model(self, data: Data, file_name: str) -> Model:
         return Model(
@@ -64,10 +66,12 @@ class RocheCedexBiohtParser(VendorParser):
                     ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
-            )
+            ),
         )
 
-    def _get_solution_analyzer_document(self, data: Data) -> list[SolutionAnalyzerDocumentItem]:
+    def _get_solution_analyzer_document(
+        self, data: Data
+    ) -> list[SolutionAnalyzerDocumentItem]:
         solution_analyzer_document = []
         for sample in data.samples:
             solution_analyzer_document.append(
@@ -85,18 +89,22 @@ class RocheCedexBiohtParser(VendorParser):
         analytes = sample.analyte_list.analytes
         measurement_document = []
         if any(analyte.name == OPTICAL_DENSITY for analyte in analytes):
-            measurement_document.append(self._create_sample_measurement(sample, include_analyte=False))
+            measurement_document.append(
+                self._create_sample_measurement(sample, include_analyte=False)
+            )
         if len(analytes) > 1:
-            measurement_document.append(self._create_sample_measurement(sample, include_analyte=True))
+            measurement_document.append(
+                self._create_sample_measurement(sample, include_analyte=True)
+            )
         return measurement_document
 
-    def _create_sample_measurement(self, sample: Sample, include_analyte) -> MeasurementDocument:
+    def _create_sample_measurement(
+        self, sample: Sample, include_analyte
+    ) -> MeasurementDocument:
         absorbance = sample.analyte_list.non_aggregrable_dict
         if absorbance and OPTICAL_DENSITY in absorbance:
             optical_density = absorbance["optical_density"][0]
-            absorbance = TQuantityValueMilliAbsorbanceUnit(
-                    value=optical_density.value
-                )
+            absorbance = TQuantityValueMilliAbsorbanceUnit(value=optical_density.value)
         measurement_document = MeasurementDocument(
             measurement_identifier=random_uuid_str(),
             measurement_time=self._get_date_time(sample.measurement_time),
@@ -105,9 +113,9 @@ class RocheCedexBiohtParser(VendorParser):
                 batch_identifier=sample.batch,
             ),
             device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[DeviceControlDocumentItem(
-                    device_type=SOLUTION_ANALYZER
-                )]
+                device_control_document=[
+                    DeviceControlDocumentItem(device_type=SOLUTION_ANALYZER)
+                ]
             ),
         )
         if absorbance and not include_analyte:
@@ -128,7 +136,7 @@ class RocheCedexBiohtParser(VendorParser):
                     analyte_name=analyte.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
                         value=analyte.concentration_value
-                    )
+                    ),
                 )
             )
         return analyte_document
