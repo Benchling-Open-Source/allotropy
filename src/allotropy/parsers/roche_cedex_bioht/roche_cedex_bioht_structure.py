@@ -41,7 +41,7 @@ class Title:
             msg = "Unable to obtain device serial number."
             raise AllotropeConversionError(msg)
 
-        software_version = title_data.get("software version")
+        software_version = str(title_data.get("software version"))
 
         return Title(
             title_data.get("data processing time"),  # type: ignore[arg-type]
@@ -61,8 +61,8 @@ class Analyte:
     @staticmethod
     def create(data: pd.Series) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
-        concentration_value = try_float_or_nan(data.get("concentration value"))
-        flag = data.get("flag", "")
+        concentration_value = try_float_or_nan(str(data.get("concentration value")))
+        flag = str(data.get("flag", ""))
         if BELOW_TEST_RANGE in flag:
             concentration_value = NaN
         unit: str | None = data.get("concentration unit")  # type: ignore[assignment]
@@ -83,9 +83,9 @@ class AnalyteList:
     def create(data: pd.DataFrame) -> AnalyteList:
         analytes = [Analyte.create(analyte_data) for _, analyte_data in data.iterrows()]
         molar_concentration_dict = defaultdict(list)
-        molar_concentration_nans = {}
-        non_aggregrable_dict = defaultdict(list)
-        non_aggregable_nans = {}
+        molar_concentration_nans: dict = {}
+        non_aggregrable_dict: dict = defaultdict(list)
+        non_aggregable_nans: dict = {}
         num_measurement_docs = 1
 
         for analyte in analytes:
@@ -99,7 +99,7 @@ class AnalyteList:
                     )
                 else:
                     non_aggregrable_dict[analyte_name].append(
-                        analyte_cls(value=concentration_value)
+                        analyte_cls(value=concentration_value)  # type: ignore
                     )
 
                 num_measurement_docs = max(
@@ -115,7 +115,7 @@ class AnalyteList:
                     continue
 
                 molar_concentration_item = molar_concentration_item_cls(
-                    value=concentration_value
+                    value=concentration_value  # type: ignore
                 )
                 if concentration_value is None:
                     molar_concentration_nans[analyte_name] = molar_concentration_item

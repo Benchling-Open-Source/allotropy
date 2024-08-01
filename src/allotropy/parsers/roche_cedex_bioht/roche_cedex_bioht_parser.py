@@ -99,11 +99,12 @@ class RocheCedexBiohtParser(VendorParser):
         return measurement_document
 
     def _create_sample_measurement(
-        self, sample: Sample, include_analyte
+        self, sample: Sample, *, include_analyte: bool
     ) -> MeasurementDocument:
-        absorbance = sample.analyte_list.non_aggregrable_dict
-        if absorbance and OPTICAL_DENSITY in absorbance:
-            optical_density = absorbance["optical_density"][0]
+        non_aggregrable_dict = sample.analyte_list.non_aggregrable_dict
+        absorbance = None
+        if non_aggregrable_dict and OPTICAL_DENSITY in non_aggregrable_dict:
+            optical_density = non_aggregrable_dict["optical_density"][0]
             absorbance = TQuantityValueMilliAbsorbanceUnit(value=optical_density.value)
         measurement_document = MeasurementDocument(
             measurement_identifier=random_uuid_str(),
