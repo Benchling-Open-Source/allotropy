@@ -232,7 +232,9 @@ class WellSystemLevelMetadata:
     controller_version: str
     user: str
     analytical_method: str
+    plate_id: str
     regions_of_interest: list[str] = field(default_factory=list)
+
 
     @staticmethod
     def create(xml_well: ElementTree.Element) -> WellSystemLevelMetadata:
@@ -242,6 +244,7 @@ class WellSystemLevelMetadata:
         )
         user = get_val_from_xml(xml_well, "User")
         analytical_method = get_val_from_xml(xml_well, "RunProtocolDocumentLocation")
+        plate_id = get_val_from_xml(xml_well, "PlateID")
         regions = get_element_from_xml(xml_well, RUN_SETTINGS, REGIONS_OF_INTEREST)
         regions_of_interest = []
         for region in regions:
@@ -252,6 +255,7 @@ class WellSystemLevelMetadata:
             controller_version=controller_version,
             user=user,
             analytical_method=analytical_method,
+            plate_id=plate_id,
             regions_of_interest=regions_of_interest,
         )
 

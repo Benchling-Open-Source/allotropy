@@ -107,6 +107,7 @@ class BioradBioplexParser(VendorParser):
             experiment_type=experiment_type,
             plate_well_count=plate_well_count,
             analytical_method_identifier=well_system_metadata.analytical_method,
+            plate_id=well_system_metadata.plate_id
         )
 
         return Model(
@@ -143,6 +144,7 @@ class BioradBioplexParser(VendorParser):
         experiment_type: str | None,
         plate_well_count: int,
         analytical_method_identifier: str,
+        plate_id:str,
     ) -> list[MultiAnalyteProfilingDocumentItem]:
         sample_document_aggregated = SampleDocumentAggregate.create(samples_xml)
         multi_analyte_docs = []
@@ -159,7 +161,7 @@ class BioradBioplexParser(VendorParser):
                     value=device_well_settings.well_total_events
                 ),
                 sample_document=BioradBioplexParser._get_sample_document(
-                    sample, well_name
+                    sample, well_name, plate_id
                 ),
                 device_control_aggregate_document=BioradBioplexParser._get_device_control_aggregate(
                     device_well_settings, sample
@@ -190,12 +192,13 @@ class BioradBioplexParser(VendorParser):
         return multi_analyte_docs
 
     @staticmethod
-    def _get_sample_document(sample: SampleDocumentStructure, well_name: str) -> Any:
+    def _get_sample_document(sample: SampleDocumentStructure, well_name: str, well_plate_id: str) -> Any:
         return SampleDocument(
             description=sample.description,
             sample_identifier=sample.sample_identifier,
             location_identifier=well_name,
             sample_role_type=sample.sample_type,
+            well_plate_identifier=well_plate_id
         )
 
     @staticmethod
