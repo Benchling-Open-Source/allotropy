@@ -9,7 +9,6 @@ import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
     BELOW_TEST_RANGE,
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
