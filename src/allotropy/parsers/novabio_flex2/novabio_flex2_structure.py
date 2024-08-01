@@ -15,10 +15,10 @@ from allotropy.exceptions import (
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
-    FILENAME_REGEX,
-    INVALID_FILENAME_MESSAGE,
     CONCENTRATION_CLASSES,
     CONCENTRATION_CLS_BY_UNIT,
+    FILENAME_REGEX,
+    INVALID_FILENAME_MESSAGE,
     PROPERTY_MAPPINGS,
 )
 

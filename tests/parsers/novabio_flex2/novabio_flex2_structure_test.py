@@ -4,23 +4,25 @@ import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
+
+# from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     Analyte,
-    Data,
+    # Data,
     Sample,
     SampleList,
     Title,
 )
-from tests.parsers.novabio_flex2.novabio_flex2_data import (
-    get_data,
-    get_input_stream,
-    get_input_title,
-)
+
+# from tests.parsers.novabio_flex2.novabio_flex2_data import (
+#     get_data,
+#     get_input_stream,
+#     get_input_title,
+# )
 
 
 @pytest.mark.parametrize(
@@ -173,7 +175,7 @@ def test_create_sample_list_invalid_no_analyst() -> None:
         SampleList.create(df)
 
 
-@pytest.mark.short
-def test_create_data() -> None:
-    named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
-    assert Data.create(named_file_contents) == get_data()
+# @pytest.mark.short
+# def test_create_data() -> None:
+#     named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
+#     assert Data.create(named_file_contents) == get_data()

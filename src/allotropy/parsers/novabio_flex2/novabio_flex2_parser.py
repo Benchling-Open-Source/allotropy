@@ -64,7 +64,9 @@ class NovaBioFlexParser(VendorParser):
             ),
         )
 
-    def _get_solution_analyzer_document(self, data: Data) -> list[MeasurementDocument]:
+    def _get_solution_analyzer_document(
+        self, data: Data
+    ) -> list[SolutionAnalyzerDocumentItem]:
         return [
             SolutionAnalyzerDocumentItem(
                 analyst=data.sample_list.analyst,
@@ -146,7 +148,7 @@ class NovaBioFlexParser(VendorParser):
             concentration_name = mappings[analyte.concentration.unit]
         except KeyError as e:
             msg = f"Unknow concentration unit {analyte.concentration.unit}"
-            raise AllotropeConversionError(msg)
+            raise AllotropeConversionError(msg) from e
 
         setattr(analyte_document, concentration_name, analyte.concentration)
 

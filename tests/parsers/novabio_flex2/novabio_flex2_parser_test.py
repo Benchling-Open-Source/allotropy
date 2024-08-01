@@ -1,9 +1,10 @@
-import pytest
+# import pytest
 
 from allotropy.parser_factory import Vendor
-from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
-from allotropy.parsers.utils.timestamp_parser import TimestampParser
-from tests.parsers.novabio_flex2.novabio_flex2_data import get_data, get_model
+
+# from allotropy.parsers.novabio_flex2.novabio_flex2_parser import NovaBioFlexParser
+# from allotropy.parsers.utils.timestamp_parser import TimestampParser
+# from tests.parsers.novabio_flex2.novabio_flex2_data import get_data, get_model
 from tests.to_allotrope_test import ParserTest
 
 VENDOR_TYPE = Vendor.NOVABIO_FLEX2
