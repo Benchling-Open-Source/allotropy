@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Pandas version updated to 2.2.0 to have calamine engine
+
 ### Deprecated
 
 ### Removed
