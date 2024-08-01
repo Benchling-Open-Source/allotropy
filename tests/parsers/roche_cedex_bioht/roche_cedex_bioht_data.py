@@ -317,7 +317,7 @@ def get_model() -> Model:
                 software_name="CEDEX BIO HT",
                 software_version="6.0.0.1905 (1905)",
                 ASM_converter_name="allotropy_roche_cedex_bioht",
-                ASM_converter_version="0.1.43",
+                ASM_converter_version="0.1.44",
             ),
         ),
     )
