@@ -135,7 +135,9 @@ class BmgMarsParser(VendorParser):
             msg="Read type not found.",
         ).group(0)
 
-        if "Absorbance" in read_type:
+        if "Absorbance" in read_type and "Fluorescence" in read_type:
+            raise AllotropeConversionError(message="Multiple read types found.")
+        elif "Absorbance" in read_type:
             return ReadType.ABSORBANCE
         elif "Fluorescence" in read_type:
             return ReadType.FLUORESCENCE
