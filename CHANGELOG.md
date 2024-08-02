@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add luminescence point detection, absorption spectrum detection, fluorescence emission detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
 
 ### Fixed
 
@@ -18,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.45] - 2024-08-01
+
+### Changed
+
+- Pandas version updated to 2.2.0 to have calamine engine
 
 ## [0.1.44] - 2024-07-30
 

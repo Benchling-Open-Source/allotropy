@@ -11,15 +11,18 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     ContainerType,
     DataSystemDocument,
     DeviceSystemDocument,
+    FluorescenceEmissionSpectrumDetectionMeasurementDocumentItems,
     FluorescencePointDetectionDeviceControlAggregateDocument,
     FluorescencePointDetectionDeviceControlDocumentItem,
     FluorescencePointDetectionMeasurementDocumentItems,
+    LuminescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     SampleDocument,
     SpectrophotometryAggregateDocument,
     SpectrophotometryDocumentItem,
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
+    UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicrogramPerMicroliter,
@@ -288,8 +291,11 @@ class ThermoFisherQubitFlexParser(VendorParser):
     def _get_measurement_document(
         self, data: pd.DataFrame, i: int
     ) -> list[
-        FluorescencePointDetectionMeasurementDocumentItems
+        FluorescenceEmissionSpectrumDetectionMeasurementDocumentItems
+        | FluorescencePointDetectionMeasurementDocumentItems
+        | LuminescencePointDetectionMeasurementDocumentItems
         | UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+        | UltravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems
     ]:
         """
         Reads the content of the provided named file and returns it as a dictionary.
