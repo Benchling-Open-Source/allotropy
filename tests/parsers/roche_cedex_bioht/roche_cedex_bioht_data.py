@@ -24,6 +24,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimolePerLiter,
 )
+from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import SOLUTION_ANALYZER
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
@@ -317,7 +318,7 @@ def get_model() -> Model:
                 software_name="CEDEX BIO HT",
                 software_version="6.0.0.1905 (1905)",
                 ASM_converter_name="allotropy_roche_cedex_bioht",
-                ASM_converter_version="0.1.44",
+                ASM_converter_version=ASM_CONVERTER_VERSION,
             ),
         ),
     )
