@@ -1,0 +1,95 @@
+{
+    "$asm.manifest": "http://purl.allotrope.org/manifests/cell-counting/BENCHLING/2023/11/cell-counting.manifest",
+    "cell counting aggregate document": {
+        "cell counting document": [
+            {
+                "measurement aggregate document": {
+                    "measurement document": [
+                        {
+                            "measurement time": "2022-03-21T16:56:00+00:00",
+                            "measurement identifier": "BECKMAN_VI_CELL_BLU_TEST_ID_0",
+                            "device control aggregate document": {
+                                "device control document": [
+                                    {
+                                        "device type": "brightfield imager (cell counter)",
+                                        "detection type": "brightfield"
+                                    }
+                                ]
+                            },
+                            "sample document": {
+                                "sample identifier": "CLB001"
+                            },
+                            "processed data aggregate document": {
+                                "processed data document": [
+                                    {
+                                        "viability (cell counter)": {
+                                            "value": 96.9,
+                                            "unit": "%"
+                                        },
+                                        "viable cell density (cell counter)": {
+                                            "value": 0.75,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "data processing document": {
+                                            "cell type processing method": "Mammalian",
+                                            "cell density dilution factor": {
+                                                "value": 1.0,
+                                                "unit": "(unitless)"
+                                            },
+                                            "minimum cell diameter setting": {
+                                                "value": 6.0,
+                                                "unit": "μm"
+                                            },
+                                            "maximum cell diameter setting": {
+                                                "value": 30.0,
+                                                "unit": "μm"
+                                            }
+                                        },
+                                        "total cell density (cell counter)": {
+                                            "value": 0.78,
+                                            "unit": "10^6 cells/mL"
+                                        },
+                                        "average total cell diameter": {
+                                            "value": 18.51,
+                                            "unit": "μm"
+                                        },
+                                        "average live cell diameter (cell counter)": {
+                                            "value": 18.72,
+                                            "unit": "μm"
+                                        },
+                                        "total cell count": {
+                                            "value": 2191,
+                                            "unit": "cell"
+                                        },
+                                        "viable cell count": {
+                                            "value": 2123,
+                                            "unit": "cell"
+                                        },
+                                        "average total cell circularity": {
+                                            "value": 0.88,
+                                            "unit": "(unitless)"
+                                        },
+                                        "average viable cell circularity": {
+                                            "value": 0.88,
+                                            "unit": "(unitless)"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "analyst": "Vi-CELL"
+            }
+        ],
+        "device system document": {
+            "model number": "Vi-Cell BLU"
+        },
+        "data system document": {
+            "file name": "Beckman_Vi-Cell-BLU_different_mu_character.csv",
+            "software name": "Vi-Cell BLU",
+            "ASM converter name": "allotropy_beckman_vi_cell_blu",
+            "ASM converter version": "0.1.43"
+        }
+    }
+}
