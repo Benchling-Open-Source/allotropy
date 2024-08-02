@@ -235,7 +235,6 @@ class WellSystemLevelMetadata:
     plate_id: str
     regions_of_interest: list[str] = field(default_factory=list)
 
-
     @staticmethod
     def create(xml_well: ElementTree.Element) -> WellSystemLevelMetadata:
         serial_number = get_val_from_xml(xml_well, MACHINE_INFO, SERIAL_NUMBER)
