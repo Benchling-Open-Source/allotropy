@@ -16,6 +16,8 @@ NON_READY_PARSERS = {
     Vendor.THERMO_FISHER_QUBIT_FLEX,
     # We want to collect more test cases for this parser before marking as ready.
     Vendor.ROCHE_CEDEX_HIRES,
+    # Parser is under working draft
+    Vendor.BMG_MARS,
 }
 
 
