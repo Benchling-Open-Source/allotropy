@@ -45,7 +45,7 @@ def _try_float(value: str) -> float:
 def try_float(value: str, value_name: str) -> float:
     assert_not_none(value, value_name)
     try:
-        return _try_float(str(value))
+        return _try_float(value)
     except ValueError as e:
         msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
