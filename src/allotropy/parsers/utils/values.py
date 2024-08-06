@@ -46,6 +46,8 @@ def try_float(value: str, value_name: str) -> float:
 
 def try_float_or_none(value: str | float | None) -> float | None:
     try:
+        if isinstance(value, str) and value.count(",") == 1:
+            value = value.replace(",", ".")
         return float("" if value is None else value)
     except ValueError:
         return None
