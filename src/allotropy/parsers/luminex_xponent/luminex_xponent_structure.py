@@ -87,7 +87,7 @@ class Header:
             msg = "Unable to find plate well count in ProtocolPlate row."
             raise AllotropeConversionError(msg) from e
 
-        return try_float(plate_well_count, "plate well count")
+        return try_float(str(plate_well_count), "plate well count")
 
     @classmethod
     def _try_col_from_header(
