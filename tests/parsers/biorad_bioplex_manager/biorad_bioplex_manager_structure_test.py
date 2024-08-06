@@ -96,6 +96,7 @@ def test_well_sytem_level_metadata() -> None:
     well_system_xml = tree.getroot()
     well_system = WellSystemLevelMetadata.create(well_system_xml)
 
+    assert well_system.plate_id == "555"
     assert well_system.serial_number == "LX12345678912"
     assert well_system.controller_version == "2.6.1"
     assert well_system.user == "baz"
