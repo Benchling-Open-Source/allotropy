@@ -108,14 +108,6 @@ class Data:
     measurement_groups: list[MeasurementGroup]
     calculated_data: list[CalculatedDataItem] | None = None
 
-    def get_calculated_data_items(self) -> list[CalculatedDataItem]:
-        return (self.calculated_data or []) + [
-            calculated_data_item
-            for measurement_group in self.measurement_groups
-            for measurement in measurement_group.measurements
-            for calculated_data_item in (measurement.calculated_data or [])
-        ]
-
 
 class Mapper:
     MANIFEST = "http://purl.allotrope.org/manifests/pcr/BENCHLING/2023/09/dpcr.manifest"
@@ -145,7 +137,7 @@ class Mapper:
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
-                    data
+                    data.calculated_data
                 ),
             )
         )
@@ -221,9 +213,9 @@ class Mapper:
         )
 
     def _get_calculated_data_aggregate_document(
-        self, data: Data
+        self, calculated_data_items: list[CalculatedDataItem] | None
     ) -> TCalculatedDataAggregateDocument | None:
-        if not (calculated_data_document := data.get_calculated_data_items()):
+        if not calculated_data_items:
             return None
 
         return TCalculatedDataAggregateDocument(
@@ -245,6 +237,6 @@ class Mapper:
                         ]
                     ),
                 )
-                for calculated_data_item in calculated_data_document
+                for calculated_data_item in calculated_data_items
             ]
         )
