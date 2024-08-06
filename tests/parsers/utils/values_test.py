@@ -69,7 +69,7 @@ def _try_float(value: str) -> float:
         ("1,1", 1.1),
     ],
 )
-def test_try_float(value, expected) -> None:
+def test_try_float(value: str, expected: float) -> None:
     assert _try_float(value) == expected
 
 
