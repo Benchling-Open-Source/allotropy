@@ -45,7 +45,7 @@ from allotropy.parsers.agilent_gen5_image.constants import (
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
-    UNSUPORTED_READ_TYPE_ERROR,
+    UNSUPPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
@@ -238,7 +238,7 @@ class ReadData:
 
         read_type = cls._get_read_type("\n".join(procedure_details))
         if read_type != ReadType.IMAGE:
-            raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
+            raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
         section_lines_reader = SectionLinesReader(procedure_details)
 

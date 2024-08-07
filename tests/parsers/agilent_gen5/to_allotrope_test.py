@@ -7,8 +7,9 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.parser_factory import Vendor
 from allotropy.parsers.agilent_gen5.constants import (
     MULTIPLATE_FILE_ERROR,
+    MULTIPLE_READ_MODE_ERROR,
     NO_PLATE_DATA_ERROR,
-    UNSUPORTED_READ_TYPE_ERROR,
+    UNSUPPORTED_READ_TYPE_ERROR,
 )
 from allotropy.testing.utils import from_file, validate_contents
 from tests.to_allotrope_test import ParserTest
@@ -44,7 +45,7 @@ def test_to_allotrope_absorbance_no_pm_in_time() -> None:
     ],
 )
 def test_to_allotrope_unsupported_kinetic_file(filepath: str) -> None:
-    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+    with pytest.raises(AllotropeConversionError, match=UNSUPPORTED_READ_TYPE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
 
@@ -52,7 +53,7 @@ def test_to_allotrope_unsupported_spectral_scan_file() -> None:
     filepath = (
         f"{ABSORBANCE_PATH}/exclude/240307_114129_BNCH654563_spectralScan_example01.txt"
     )
-    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+    with pytest.raises(AllotropeConversionError, match=UNSUPPORTED_READ_TYPE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
 
@@ -60,7 +61,13 @@ def test_to_allotrope_unsupported_area_scan_file() -> None:
     filepath = (
         f"{ABSORBANCE_PATH}/exclude/240307_125255_BNCH786865_areaScan_example01.txt"
     )
-    with pytest.raises(AllotropeConversionError, match=UNSUPORTED_READ_TYPE_ERROR):
+    with pytest.raises(AllotropeConversionError, match=UNSUPPORTED_READ_TYPE_ERROR):
+        from_file(filepath, VENDOR_TYPE)
+
+
+def test_to_allotrope_unsupported_multiple_read_modes() -> None:
+    filepath = f"{TESTDATA}/multiple_read_modes_error.txt"
+    with pytest.raises(AllotropeConversionError, match=MULTIPLE_READ_MODE_ERROR):
         from_file(filepath, VENDOR_TYPE)
 
 
