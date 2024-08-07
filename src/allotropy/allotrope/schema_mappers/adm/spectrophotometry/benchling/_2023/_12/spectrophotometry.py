@@ -1,6 +1,7 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any
 
 from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
@@ -238,13 +239,16 @@ class Mapper:
             ),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detector_wavelength_setting=TQuantityValueNanometer(
-                            value=assert_not_none(  # type: ignore[arg-type]
-                                measurement.detector_wavelength_setting
+                    add_custom_information_document(
+                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detector_wavelength_setting=TQuantityValueNanometer(
+                                value=assert_not_none(  # type: ignore[arg-type]
+                                    measurement.detector_wavelength_setting
+                                ),
                             ),
                         ),
+                        self._get_device_control_custom_document(measurement),
                     )
                 ]
             ),
@@ -256,16 +260,7 @@ class Mapper:
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
-        custom_document = {
-            "sample volume setting": quantity_or_none(
-                TQuantityValueMicroliter, measurement.sample_volume_setting
-            ),
-            "excitation setting": measurement.excitation_wavelength_setting,
-            "emission setting": measurement.emission_wavelength_setting,
-            "dilution factor": quantity_or_none(
-                TQuantityValueUnitless, measurement.dilution_factor_setting
-            ),
-        }
+
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
@@ -282,7 +277,7 @@ class Mapper:
                                 measurement.detector_wavelength_setting,
                             ),
                         ),
-                        custom_document,
+                        self._get_device_control_custom_document(measurement),
                     )
                 ]
             ),
@@ -290,6 +285,20 @@ class Mapper:
                 value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
             ),
         )
+
+    def _get_device_control_custom_document(
+        self, measurement: Measurement
+    ) -> dict[str, Any]:
+        return {
+            "sample volume setting": quantity_or_none(
+                TQuantityValueMicroliter, measurement.sample_volume_setting
+            ),
+            "excitation setting": measurement.excitation_wavelength_setting,
+            "emission setting": measurement.emission_wavelength_setting,
+            "dilution factor": quantity_or_none(
+                TQuantityValueUnitless, measurement.dilution_factor_setting
+            ),
+        }
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         custom_document = {
