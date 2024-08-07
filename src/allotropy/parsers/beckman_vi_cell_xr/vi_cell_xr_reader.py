@@ -90,7 +90,7 @@ class ViCellXRReader:
         ).fillna("")
 
         header_list: list[str] = header.agg(
-            lambda x: " ".join(x).replace(" /ml", "/ml").strip()
+            lambda x: " ".join([str(v) for v in x]).replace(" /ml", "/ml").strip()
         ).to_list()
         return header_list
 
