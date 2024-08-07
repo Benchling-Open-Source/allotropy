@@ -36,11 +36,13 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     MULTIPLATE_FILE_ERROR,
+    MULTIPLE_READ_MODE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
     READ_HEIGHT_KEY,
     READ_SPEED_KEY,
+    UNSUPORTED_READ_MODE_ERROR,
     ReadMode,
     ReadType,
     UNSUPORTED_READ_TYPE_ERROR,
@@ -212,18 +214,15 @@ class ReadData:
 
     @staticmethod
     def get_read_mode(procedure_details: str) -> ReadMode:
-        if ReadMode.ABSORBANCE.value in procedure_details:
-            return ReadMode.ABSORBANCE
-        elif (
-            ReadMode.FLUORESCENCE.value in procedure_details
-            or ReadMode.ALPHALISA.value in procedure_details
-        ):
-            return ReadMode.FLUORESCENCE
-        elif ReadMode.LUMINESCENCE.value in procedure_details:
-            return ReadMode.LUMINESCENCE
+        read_modes = [read_mode for read_mode in ReadMode if read_mode.value in procedure_details]
+        if not read_modes:
+            raise AllotropeConversionError(UNSUPORTED_READ_MODE_ERROR)
+        if len(read_modes) > 1:
+            raise AllotropeConversionError(MULTIPLE_READ_MODE_ERROR)
 
-        msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
-        raise AllotropeConversionError(msg)
+        if read_modes[0] in (ReadMode.FLUORESCENCE, ReadMode.ALPHALISA):
+            return ReadMode.FLUORESCENCE
+        return read_modes[0]
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
