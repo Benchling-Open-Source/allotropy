@@ -26,7 +26,9 @@ from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 def _create_measurement(
-    well_plate_data: SeriesData, wavelength_column: str
+    well_plate_data: SeriesData,
+    wavelength_column: str,
+    calculated_data: list[CalculatedDataItem],
 ) -> Measurement:
     if wavelength_column not in well_plate_data.series:
         msg = NO_MEASUREMENT_IN_PLATE_ERROR_MSG.format(wavelength_column)
@@ -36,6 +38,9 @@ def _create_measurement(
         raise AllotropeConversionError(INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG)
 
     measurement_identifier = random_uuid_str()
+    calculated_data.extend(
+        _get_calculated_data(well_plate_data, wavelength_column, measurement_identifier)
+    )
     return Measurement(
         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
         identifier=measurement_identifier,
@@ -44,9 +49,6 @@ def _create_measurement(
         sample_identifier=well_plate_data[str, "Sample name"],
         location_identifier=well_plate_data[str, "Plate Position"],
         well_plate_identifier=well_plate_data.get(str, "Plate ID"),
-        calculated_data=_get_calculated_data(
-            well_plate_data, wavelength_column, measurement_identifier
-        ),
     )
 
 
@@ -79,7 +81,9 @@ def _get_calculated_data(
 
 
 def _create_measurement_group(
-    data: SeriesData, wavelength_columns: list[str]
+    data: SeriesData,
+    wavelength_columns: list[str],
+    calculated_data: list[CalculatedDataItem],
 ) -> MeasurementGroup:
     date = data.get(str, "Date")
     time = data.get(str, "Time")
@@ -92,7 +96,7 @@ def _create_measurement_group(
         analytical_method_identifier=data.get(str, "Application"),
         plate_well_count=96,
         measurements=[
-            _create_measurement(data, wavelength_column)
+            _create_measurement(data, wavelength_column, calculated_data)
             for wavelength_column in wavelength_columns
         ],
     )
@@ -114,10 +118,16 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
 
+    # TODO: we are reporting calculated data for measurements globally instead of in the measurement doc,
+    # which is why we have to pass this list to collect them. Why are we reporting globally when data is
+    # pertains to the individual measurements?
+    calculated_data: list[CalculatedDataItem] = []
+
     def make_group(data: SeriesData) -> MeasurementGroup:
-        return _create_measurement_group(data, wavelength_columns)
+        return _create_measurement_group(data, wavelength_columns, calculated_data)
 
     return Data(
         metadata=_create_metadata(data, file_name),
         measurement_groups=map_rows(data, make_group),
+        calculated_data=calculated_data,
     )
