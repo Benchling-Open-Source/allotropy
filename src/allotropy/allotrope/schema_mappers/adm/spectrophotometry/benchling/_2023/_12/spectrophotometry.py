@@ -242,10 +242,9 @@ class Mapper:
                     add_custom_information_document(
                         UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
                             device_type=metadata.device_type,
-                            detector_wavelength_setting=TQuantityValueNanometer(
-                                value=assert_not_none(  # type: ignore[arg-type]
-                                    measurement.detector_wavelength_setting
-                                ),
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
                             ),
                         ),
                         self._get_device_control_custom_document(measurement),
@@ -260,7 +259,6 @@ class Mapper:
     def _get_fluorescence_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> FluorescencePointDetectionMeasurementDocumentItems:
-
         return FluorescencePointDetectionMeasurementDocumentItems(
             measurement_identifier=measurement.identifier,
             sample_document=self._get_sample_document(measurement),
