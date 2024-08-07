@@ -97,7 +97,9 @@ class Measurement:
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
 
+    # Settings
     sample_volume_setting: float | None = None
+    detector_wavelength_setting: JsonFloat | None = None
     excitation_wavelength_setting: str | None = None
     emission_wavelength_setting: str | None = None
     dilution_factor_setting: float | None = None
@@ -116,9 +118,6 @@ class Measurement:
     # Processed data
     calculated_data: list[CalculatedDataItem] | None = None
     processed_data: ProcessedData | None = None
-
-    # Settings
-    detector_wavelength_setting: JsonFloat | None = None
 
 
 @dataclass(frozen=True)
