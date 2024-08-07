@@ -46,7 +46,9 @@ class ReadMode(str, Enum):
     ALPHALISA = "Alpha"
 
 
-UNSUPORTED_READ_MODE_ERROR = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
+UNSUPORTED_READ_MODE_ERROR = (
+    f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
+)
 
 
 class ReadType(str, Enum):

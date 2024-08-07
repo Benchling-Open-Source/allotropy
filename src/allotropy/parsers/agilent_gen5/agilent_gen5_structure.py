@@ -42,9 +42,9 @@ from allotropy.parsers.agilent_gen5.constants import (
     PATHLENGTH_CORRECTION_KEY,
     READ_HEIGHT_KEY,
     READ_SPEED_KEY,
-    UNSUPORTED_READ_MODE_ERROR,
     ReadMode,
     ReadType,
+    UNSUPORTED_READ_MODE_ERROR,
     UNSUPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
@@ -214,7 +214,9 @@ class ReadData:
 
     @staticmethod
     def get_read_mode(procedure_details: str) -> ReadMode:
-        read_modes = [read_mode for read_mode in ReadMode if read_mode.value in procedure_details]
+        read_modes = [
+            read_mode for read_mode in ReadMode if read_mode.value in procedure_details
+        ]
         if not read_modes:
             raise AllotropeConversionError(UNSUPORTED_READ_MODE_ERROR)
         if len(read_modes) > 1:
