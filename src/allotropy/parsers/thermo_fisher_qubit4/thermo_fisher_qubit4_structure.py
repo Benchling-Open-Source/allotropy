@@ -1,73 +1,101 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
-
 import pandas as pd
 
+from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    ContainerType,
+)
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
     NaN,
 )
+from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
+    Data,
+    Measurement,
+    MeasurementGroup,
+    MeasurementType,
+    Metadata,
+)
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.thermo_fisher_qubit4 import constants
 from allotropy.parsers.thermo_fisher_qubit4.constants import (
     UNSUPPORTED_WAVELENGTH_ERROR,
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-@dataclass
-class Row:
-    timestamp: str
-    assay_name: str | None
-    fluorescence: float
-    batch_identifier: str | None
-    sample_identifier: str
-    sample_volume: float | None
-    excitation: str | None
-    emission: str | None
-    dilution_factor: float | None
-    original_sample_concentration: JsonFloat | None
-    original_sample_unit: str | None
-    qubit_tube_concentration: JsonFloat | None
-    qubit_tube_unit: str | None
-    std_1_rfu: float | None
-    std_2_rfu: float | None
-    std_3_rfu: float | None
+def _get_emission_column(emission_wavelength_setting: str) -> str:
+    emission_wavelength_setting = emission_wavelength_setting.lower()
+    emission_wavelength_setting_to_measurement_column = {
+        "green": "Green RFU",
+        "far red": "Far Red RFU",
+    }
+    if (
+        emission_wavelength_setting
+        not in emission_wavelength_setting_to_measurement_column
+    ):
+        message = f"{UNSUPPORTED_WAVELENGTH_ERROR} {emission_wavelength_setting}"
+        raise AllotropeConversionError(message)
+    return emission_wavelength_setting_to_measurement_column[
+        emission_wavelength_setting
+    ]
 
-    @staticmethod
-    def create(data: SeriesData) -> Row:
-        emission_wavelength = data.get(str, "Emission", "").lower()
-        options = {
-            "green": "Green RFU",
-            "far red": "Far Red RFU",
-        }
-        if emission_wavelength not in options:
-            message = f"{UNSUPPORTED_WAVELENGTH_ERROR} {emission_wavelength}"
-            raise AllotropeConversionError(message)
 
-        return Row(
-            timestamp=data[str, "Test Date"],
-            assay_name=data.get(str, "Assay Name"),
-            fluorescence=data[float, options[emission_wavelength]],
-            batch_identifier=data.get(str, "Run ID"),
-            sample_identifier=data[str, "Test Name"],
-            sample_volume=data.get(
-                float, "Sample Volume (µL)", validate=SeriesData.NOT_NAN
-            ),
-            excitation=data.get(str, "Excitation"),
-            emission=data[str, "Emission"],
-            dilution_factor=data.get(
-                float, "Dilution Factor", validate=SeriesData.NOT_NAN
-            ),
-            original_sample_concentration=data.get(float, "Original sample conc.", NaN),
-            original_sample_unit=data.get(str, "Units_Original sample conc."),
-            qubit_tube_concentration=data.get(float, "Qubit® tube conc.", NaN),
-            qubit_tube_unit=data.get(str, "Units_Qubit® tube conc."),
-            std_1_rfu=data.get(float, "Std 1 RFU", validate=SeriesData.NOT_NAN),
-            std_2_rfu=data.get(float, "Std 2 RFU", validate=SeriesData.NOT_NAN),
-            std_3_rfu=data.get(float, "Std 3 RFU", validate=SeriesData.NOT_NAN),
-        )
+def create_measurement_group(data: SeriesData) -> MeasurementGroup:
+    return MeasurementGroup(
+        measurement_time=data[str, "Test Date"],
+        experiment_type=data.get(str, "Assay Name"),
+        measurements=[
+            Measurement(
+                type_=MeasurementType.FLUORESCENCE,
+                identifier=random_uuid_str(),
+                fluorescence=data[
+                    float, _get_emission_column(data.get(str, "Emission", ""))
+                ],
+                batch_identifier=data.get(str, "Run ID"),
+                sample_identifier=data[str, "Test Name"],
+                sample_volume_setting=data.get(
+                    float, "Sample Volume (µL)", validate=SeriesData.NOT_NAN
+                ),
+                excitation_wavelength_setting=data.get(str, "Excitation"),
+                emission_wavelength_setting=data[str, "Emission"],
+                dilution_factor_setting=data.get(
+                    float, "Dilution Factor", validate=SeriesData.NOT_NAN
+                ),
+                original_sample_concentration=data.get(
+                    float, "Original sample conc.", NaN
+                ),
+                original_sample_concentration_unit=data.get(
+                    str, "Units_Original sample conc."
+                ),
+                qubit_tube_concentration=data.get(float, "Qubit® tube conc.", NaN),
+                qubit_tube_concentration_units=data.get(str, "Units_Qubit® tube conc."),
+                standard_1_concentration=data.get(
+                    float, "Std 1 RFU", validate=SeriesData.NOT_NAN
+                ),
+                standard_2_concentration=data.get(
+                    float, "Std 2 RFU", validate=SeriesData.NOT_NAN
+                ),
+                standard_3_concentration=data.get(
+                    float, "Std 3 RFU", validate=SeriesData.NOT_NAN
+                ),
+            )
+        ],
+    )
 
-    @staticmethod
-    def create_rows(data: pd.DataFrame) -> list[Row]:
-        return map_rows(data, Row.create)
+
+def create_data(data_frame: pd.DataFrame, file_name: str) -> Data:
+    return Data(
+        metadata=Metadata(
+            file_name=file_name,
+            device_identifier=NOT_APPLICABLE,
+            model_number=constants.MODEL_NUMBER,
+            software_name=constants.QUBIT_SOFTWARE,
+            product_manufacturer=constants.PRODUCT_MANUFACTURER,
+            brand_name=constants.BRAND_NAME,
+            device_type=constants.DEVICE_TYPE,
+            container_type=ContainerType.tube,
+        ),
+        measurement_groups=map_rows(data_frame, create_measurement_group),
+    )

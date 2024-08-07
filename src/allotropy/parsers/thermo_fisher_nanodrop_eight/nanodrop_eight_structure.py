@@ -11,6 +11,7 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     DataSource,
     Measurement,
     MeasurementGroup,
+    MeasurementType,
     Metadata,
     ProcessedData,
     ProcessedDataFeature,
@@ -81,6 +82,7 @@ class SpectroscopyRow:
                 continue
             measurements.append(
                 Measurement(
+                    type_=MeasurementType.ULTRAVIOLET_ABSORBANCE,
                     identifier=random_uuid_str(),
                     absorbance=absorbance,
                     detector_wavelength_setting=wavelength,
@@ -148,7 +150,7 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
         ),
         measurement_groups=[
             MeasurementGroup(
-                _measurement_time=row.timestamp,
+                measurement_time=row.timestamp,
                 analyst=row.analyst,
                 experiment_type=row.experiment_type,
                 measurements=row.measurements,
