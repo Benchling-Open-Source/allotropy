@@ -44,8 +44,8 @@ from allotropy.parsers.agilent_gen5.constants import (
     READ_SPEED_KEY,
     ReadMode,
     ReadType,
-    UNSUPORTED_READ_MODE_ERROR,
-    UNSUPORTED_READ_TYPE_ERROR,
+    UNSUPPORTED_READ_MODE_ERROR,
+    UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
@@ -187,7 +187,7 @@ class ReadData:
         procedure_details = "\n".join(procedure_lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
-            raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
+            raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
         device_control_data = cls._get_device_control_data(procedure_details, read_mode)
@@ -218,7 +218,7 @@ class ReadData:
             read_mode for read_mode in ReadMode if read_mode.value in procedure_details
         ]
         if not read_modes:
-            raise AllotropeConversionError(UNSUPORTED_READ_MODE_ERROR)
+            raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
         if len(read_modes) > 1:
             raise AllotropeConversionError(MULTIPLE_READ_MODE_ERROR)
 
