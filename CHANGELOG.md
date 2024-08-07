@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add BMG MARS adapter
 
 ### Fixed
+- Handle comma as decimal place in float conversion utilities.
 
 ### Changed
 
