@@ -82,3 +82,8 @@ def test_to_allotrope_invalid_multiplate_file(filepath: str) -> None:
 def test_to_allotrope_invalid_plate_data() -> None:
     with pytest.raises(AllotropeConversionError, match=NO_PLATE_DATA_ERROR):
         from_file(f"{TESTDATA}/garbage_error.txt", VENDOR_TYPE)
+
+
+def test_to_allotrope_missing_results() -> None:
+    with pytest.raises(AllotropeConversionError):
+        from_file(f"{TESTDATA}/missing_results_error.txt", VENDOR_TYPE)

@@ -608,6 +608,10 @@ def create_data(reader: SectionLinesReader, file_name: str) -> Data:
 
     sample_identifiers = get_identifiers(section_lines.get("Layout"))
     actual_temperature = get_temperature(section_lines.get("Actual Temperature"))
+    if "Results" not in section_lines:
+        msg = "Missing 'Results' section"
+        raise AllotropeConversionError(msg)
+
     measurement_groups, calculated_data = create_results(
         section_lines["Results"],
         header_data,
