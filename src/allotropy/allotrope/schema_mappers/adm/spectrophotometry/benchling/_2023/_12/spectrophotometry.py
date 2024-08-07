@@ -254,6 +254,9 @@ class Mapper:
             absorbance=TQuantityValueMilliAbsorbanceUnit(
                 value=assert_not_none(measurement.absorbance)  # type: ignore[arg-type]
             ),
+            calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
+                measurement.calculated_data
+            ),
         )
 
     def _get_fluorescence_measurement_document(
