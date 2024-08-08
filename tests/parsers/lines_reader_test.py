@@ -3,6 +3,7 @@ import re
 
 import pytest
 
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 
@@ -45,16 +46,14 @@ def test_read_to_lines_with_encoding(encoding: str | None) -> None:
 
 
 def test_read_to_lines_with_encoding_that_is_invalid() -> None:
-    # TODO: should raise AllotropeConversionError
-    with pytest.raises(LookupError, match="unknown encoding: BAD ENCODING"):
+    with pytest.raises(AllotropeConversionError, match="Invalid encoding: 'BAD ENCODING'."):
         _read_to_lines("BAD ENCODING")
 
 
 def test_read_to_lines_with_encoding_that_is_valid_but_invalid_for_file() -> None:
     expected_regex_raw = "'utf-32-le' codec can't decode bytes in position 0-3: code point not in range(0x110000)"
     expected_regex = re.escape(expected_regex_raw)
-    # TODO: should raise AllotropeConversionError
-    with pytest.raises(UnicodeDecodeError, match=expected_regex):
+    with pytest.raises(AllotropeParsingError, match=expected_regex):
         _read_to_lines("UTF-32")
 
 

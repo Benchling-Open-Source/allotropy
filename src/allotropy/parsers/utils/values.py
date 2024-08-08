@@ -11,7 +11,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     JsonFloat,
     TQuantityValue,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 
 PrimitiveValue = str | int | float
 
@@ -121,8 +121,8 @@ def assert_not_none(
     value: T | None, name: str | None = None, msg: str | None = None
 ) -> T:
     if value is None:
-        error = msg or f"Expected non-null value{f' for {name}' if name else ''}."
-        raise AllotropeConversionError(error)
+        msg = msg or f"Expected non-null value{f' for {name}' if name else ''}."
+        raise AllotropeConversionError(msg)
     return value
 
 
@@ -133,7 +133,7 @@ def df_to_series(
     n_rows, _ = df.shape
     if n_rows == 1:
         return pd.Series(df.iloc[0], index=df.columns)
-    raise AllotropeConversionError(msg)
+    raise AllotropyParserError(msg)
 
 
 def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:

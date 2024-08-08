@@ -72,7 +72,7 @@ class Header:
         try:
             model_number = program_data.iloc[2]
         except IndexError as e:
-            msg = "Unable to find model number in Program row."
+            msg = "Unable to find model number in Program row, expected value at index 2"
             raise AllotropeConversionError(msg) from e
 
         return str(model_number)
@@ -84,7 +84,7 @@ class Header:
         try:
             plate_well_count = protocol_plate_data.iloc[3]
         except IndexError as e:
-            msg = "Unable to find plate well count in ProtocolPlate row."
+            msg = "Unable to find plate well count in ProtocolPlate row, expected value at index 3"
             raise AllotropeConversionError(msg) from e
 
         return try_float(str(plate_well_count), "plate well count")
@@ -94,7 +94,7 @@ class Header:
         cls, header_data: pd.DataFrame, key: str
     ) -> pd.Series[Any]:
         if key not in header_data:
-            msg = f"Unable to find {key} data on header block."
+            msg = f"Unable to find {key} data in header block."
             raise AllotropeConversionError(msg)
 
         return header_data[key]
@@ -121,7 +121,7 @@ class CalibrationItem:
         calibration_result = calibration_data[1].split(maxsplit=1)
 
         if len(calibration_result) != EXPECTED_CALIBRATION_RESULT_LEN:
-            msg = f"Invalid calibration result format, got: {calibration_data[1]}"
+            msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}"
             raise AllotropeConversionError(msg)
 
         return CalibrationItem(
@@ -335,7 +335,7 @@ class Data:
         try:
             min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
         except IndexError as e:
-            msg = "Unable to find minimum bead count setting in Samples info."
+            msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}"
             raise AllotropeConversionError(msg) from e
 
         return try_float(min_bead_count_setting, "minimum bead count setting")

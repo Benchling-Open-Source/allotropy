@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from xml.etree import ElementTree
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.biorad_bioplex_manager.constants import (
     ACQ_TIME,
     ANALYTE_NAME,
@@ -277,7 +277,7 @@ def validate_xml_structure(full_xml: ElementTree.Element) -> None:
     except ElementTree.ParseError as err:
         # Return all expected tags if XML parsing fails
         msg = "Error parsing xml"
-        raise AllotropeConversionError(msg) from err
+        raise AllotropyParserError(msg) from err
     if missing_tags:
         msg = f"Missing expected tags in xml: {missing_tags}"
         raise AllotropeConversionError(msg)

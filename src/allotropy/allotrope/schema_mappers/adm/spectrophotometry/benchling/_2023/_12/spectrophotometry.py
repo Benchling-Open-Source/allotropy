@@ -40,7 +40,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -225,7 +225,7 @@ class Mapper:
             return self._get_fluorescence_measurement_document(measurement, metadata)
         else:
             msg = f"Invalid measurement type: {measurement.type}"
-            raise AllotropeConversionError(msg)
+            raise AllotropyParserError(msg)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata

@@ -4,9 +4,13 @@ from dataclasses import dataclass
 from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    AllotropeParsingError,
+    get_key_or_error,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
-    NO_SCREEN_TAPE_ID_MATCH,
     NON_CALCULATED_DATA_TAGS_PEAK,
     NON_CALCULATED_DATA_TAGS_REGION,
     NON_CALCULATED_DATA_TAGS_SAMPLE,
@@ -106,7 +110,7 @@ class Metadata:
             peak_unit = peak_unit or ""
             return UNIT_CLASS_LOOKUP[peak_unit]
         except KeyError as e:
-            msg = f"Unrecognized Molecular Weight Unit: {peak_unit}"
+            msg = msg_for_error_on_unrecognized_value("Molecular Weight Unit", peak_unit, UNIT_CLASS_LOOKUP.keys())
             raise AllotropeConversionError(msg) from e
 
 
@@ -272,10 +276,7 @@ class SamplesList:
         samples = []
         for sample_element in samples_element.iter("Sample"):
             screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
-            if screen_tape_id not in screen_tapes:
-                msg = NO_SCREEN_TAPE_ID_MATCH.format(screen_tape_id)
-                raise AllotropeConversionError(msg)
-            samples.append(Sample.create(sample_element, screen_tapes[screen_tape_id]))
+            samples.append(Sample.create(sample_element, get_key_or_error("ScreenTape ID", screen_tape_id, screen_tapes)))
 
         return SamplesList(samples=samples)
 
@@ -291,7 +292,7 @@ class Data:
             root_element = ET.parse(contents).getroot()  # noqa: S314
         except ET.ParseError as e:
             msg = f"There was an error when trying to read the xml file: {e}"
-            raise AllotropeConversionError(message=msg) from e
+            raise AllotropeParsingError(msg) from e
 
         return Data(
             metadata=Metadata.create(root_element),

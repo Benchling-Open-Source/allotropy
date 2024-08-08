@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import pytest
 
@@ -126,7 +127,7 @@ def test_create_heder_without_required_col(required_col: str) -> None:
 
     error_msg = f"Expected non-null value for {required_col}."
     if required_col in ("Program", "ProtocolPlate"):
-        error_msg = f"Unable to find {required_col} data on header block."
+        error_msg = f"Unable to find {required_col} data in header block."
 
     with pytest.raises(AllotropeConversionError, match=error_msg):
         Header.create(data.drop(columns=[required_col]))
@@ -156,8 +157,8 @@ def test_create_calibration_item_invalid_line_format() -> None:
 def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_result = "bad_result"
     bad_line = f"Last CalReport,{bad_result}"
-    error = f"Invalid calibration result format, got: {bad_result}"
-    with pytest.raises(AllotropeConversionError, match=error):
+    error = f"Invalid calibration result format, expected to split into two values, got: ['{bad_result}']"
+    with pytest.raises(AllotropeConversionError, match=re.escape(error)):
         CalibrationItem.create(bad_line)
 
 

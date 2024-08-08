@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from collections import defaultdict
-import re
 from typing import Any, cast, TypeVar
 
 import pandas as pd
@@ -32,19 +31,17 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import valid_value_or_raise
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.bmg_mars.bmg_mars_structure import (
     get_plate_data,
     get_plate_well_count,
     Header,
-    RE_READ_TYPE,
     ReadType,
     Wavelength,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.release_state import ReleaseState
-from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 MeasurementDocumentItems = (
@@ -130,19 +127,12 @@ class BmgMarsParser(VendorParser):
         )
 
     def _get_read_type(self, lines: list[str]) -> ReadType:
-        read_type = assert_not_none(
-            re.search(RE_READ_TYPE, "\n".join(lines), flags=re.MULTILINE),
-            msg="Read type not found.",
-        ).group(0)
-
-        if "Absorbance" in read_type and "Fluorescence" in read_type:
-            raise AllotropeConversionError(message="Multiple read types found.")
-        elif "Absorbance" in read_type:
-            return ReadType.ABSORBANCE
-        elif "Fluorescence" in read_type:
-            return ReadType.FLUORESCENCE
-        else:
-            raise AllotropeConversionError(message="Unknown read type.")
+        content = "\n".join(lines).lower()
+        read_types = {
+            read_type for read_type in ReadType
+            if read_type.value.lower() in content
+        }
+        return valid_value_or_raise("read type", read_types, ReadType)
 
     def _get_device_control_aggregate_document(
         self,

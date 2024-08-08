@@ -34,8 +34,8 @@ def allotrope_model_from_io(
     try:
         vendor = Vendor(vendor_type)
     except ValueError as e:
-        error = f"Failed to create parser, unregistered vendor: {vendor_type}."
-        raise AllotropeConversionError(error) from e
+        msg = f"Failed to create parser, unregistered vendor: {vendor_type}."
+        raise AllotropeConversionError(msg) from e
     named_file_contents = NamedFileContents(contents, filename, encoding)
     parser = vendor.get_parser(default_timezone=default_timezone)
     return parser.to_allotrope(named_file_contents)

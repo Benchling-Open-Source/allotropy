@@ -1,7 +1,10 @@
 from enum import Enum
 import re
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.lines_reader import CsvReader, InvertedLinesReader
 from allotropy.parsers.revvity_kaleido.kaleido_structure import Data
 from allotropy.parsers.revvity_kaleido.kaleido_structure_v2 import create_data_v2
@@ -34,8 +37,6 @@ def create_data(reader: CsvReader) -> Data:
     elif version.startswith(Version.V3.value):
         return create_data_v3(version, reader)
     else:
-        valid_versions = ", ".join([f"v{v.value}.0+" for v in Version])
-        error = (
-            f"Bad Revvity Kaleido version found. Version supported are {valid_versions}"
-        )
-        raise AllotropeConversionError(error)
+        valid_versions = [f"v{v.value}.0+" for v in Version]
+        msg = msg_for_error_on_unrecognized_value("Revvity Kaleido version", version, valid_versions)
+        raise AllotropeConversionError(msg)

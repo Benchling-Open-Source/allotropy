@@ -10,6 +10,7 @@ import pandas as pd
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import (
     AllotropeConversionError,
+    get_key_or_error,
     msg_for_error_on_unrecognized_value,
 )
 from allotropy.named_file_contents import NamedFileContents
@@ -49,13 +50,7 @@ class Analyte:
 
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
-        if raw_name not in ANALYTE_MAPPINGS:
-            msg = msg_for_error_on_unrecognized_value(
-                "analyte name", raw_name, ANALYTE_MAPPINGS.keys()
-            )
-            raise AllotropeConversionError(msg)
-
-        mapping = ANALYTE_MAPPINGS[raw_name]
+        mapping = get_key_or_error("analyte name", raw_name, ANALYTE_MAPPINGS)
         return Analyte(
             mapping["name"],
             MOLAR_CONCENTRATION_CLS_BY_UNIT[mapping["unit"]](value=value),

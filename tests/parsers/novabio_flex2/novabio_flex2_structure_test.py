@@ -76,7 +76,7 @@ def test_create_analyte() -> None:
 
 @pytest.mark.short
 def test_create_invalid_analyte() -> None:
-    expected_regex_raw = "Unrecognized analyte name: 'FAKE'. Only ['Ca++', 'Gln', 'Glu', 'Gluc', 'HCO3', 'K+', 'Lac', 'NH4+', 'Na+'] are supported."
+    expected_regex_raw = "Unrecognized analyte name: 'FAKE'. Expecting one of ['Ca++', 'Gln', 'Glu', 'Gluc', 'HCO3', 'K+', 'Lac', 'NH4+', 'Na+']."
     expected_regex = re.escape(expected_regex_raw)
     with pytest.raises(AllotropeConversionError, match=expected_regex):
         Analyte.create("FAKE", 100)
