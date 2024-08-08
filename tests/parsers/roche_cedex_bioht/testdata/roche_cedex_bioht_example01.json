@@ -86,24 +86,6 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-09-15T16:57:30+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_2",
-                            "device control aggregate document": {
-                                "device control document": [
-                                    {
-                                        "device type": "solution-analyzer"
-                                    }
-                                ]
-                            },
-                            "sample document": {
-                                "sample identifier": "SMPL2"
-                            },
-                            "absorbance": {
-                                "value": "NaN",
-                                "unit": "mAU"
-                            }
-                        },
-                        {
-                            "measurement time": "2023-09-15T16:57:30+00:00",
                             "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
@@ -128,34 +110,6 @@
                                         "analyte name": "glutamine",
                                         "molar concentration": {
                                             "value": 2.4,
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "lactate",
-                                        "molar concentration": {
-                                            "value": "NaN",
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ldh",
-                                        "molar concentration": {
-                                            "value": "NaN",
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "total protein",
-                                        "molar concentration": {
-                                            "value": "NaN",
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "total protein",
-                                        "molar concentration": {
-                                            "value": "NaN",
                                             "unit": "mmol/L"
                                         }
                                     },
@@ -221,27 +175,6 @@
                                         "analyte name": "glutamine",
                                         "molar concentration": {
                                             "value": 2.43,
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "lactate",
-                                        "molar concentration": {
-                                            "value": "NaN",
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "ldh",
-                                        "molar concentration": {
-                                            "value": "NaN",
-                                            "unit": "mmol/L"
-                                        }
-                                    },
-                                    {
-                                        "analyte name": "total protein",
-                                        "molar concentration": {
-                                            "value": "NaN",
                                             "unit": "mmol/L"
                                         }
                                     },
@@ -344,7 +277,7 @@
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.43"
+            "ASM converter version": "0.1.45"
         }
     }
 }

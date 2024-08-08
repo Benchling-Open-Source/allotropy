@@ -16,6 +16,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimolePerLiter,
 )
+from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
@@ -70,7 +71,7 @@ class RocheCedexBiohtParser(VendorParser):
         )
 
     def _get_solution_analyzer_document(
-        self, data: Data
+            self, data: Data
     ) -> list[SolutionAnalyzerDocumentItem]:
         solution_analyzer_document = []
         for sample in data.samples:
@@ -83,6 +84,14 @@ class RocheCedexBiohtParser(VendorParser):
                     analyst=data.title.analyst,
                 )
             )
+        # TODO: Remove this once the solution analyzer schema is updated to handle NaN values
+        for solution_analyzer_document_item in list(solution_analyzer_document):
+            self.__drop_nan_from_measurement_documents(
+                solution_analyzer_document_item.measurement_aggregate_document.measurement_document)
+            # if the document does not have any measurement document, remove the document item
+            if not solution_analyzer_document_item.measurement_aggregate_document.measurement_document:
+                solution_analyzer_document.remove(solution_analyzer_document_item)
+
         return solution_analyzer_document
 
     def _get_measurement_document(self, sample: Sample) -> list[MeasurementDocument]:
@@ -99,7 +108,7 @@ class RocheCedexBiohtParser(VendorParser):
         return measurement_document
 
     def _create_sample_measurement(
-        self, sample: Sample, *, include_analyte: bool
+            self, sample: Sample, *, include_analyte: bool
     ) -> MeasurementDocument:
         non_aggregrable_dict = sample.analyte_list.non_aggregrable_dict
         absorbance = None
@@ -141,3 +150,18 @@ class RocheCedexBiohtParser(VendorParser):
                 )
             )
         return analyte_document
+
+    def __drop_nan_from_measurement_documents(self, measurement_documents: list[MeasurementDocument]):
+        for measurement_document in list(measurement_documents):
+            if measurement_document.absorbance and isinstance(measurement_document.absorbance.value, InvalidJsonFloat):
+                measurement_document.absorbance = None
+            if measurement_document.analyte_aggregate_document:
+                for analyte_document in list(measurement_document.analyte_aggregate_document.analyte_document):
+                    if isinstance(analyte_document.molar_concentration.value, InvalidJsonFloat):
+                        measurement_document.analyte_aggregate_document.analyte_document.remove(analyte_document)
+                if not measurement_document.analyte_aggregate_document.analyte_document:
+                    measurement_document.analyte_aggregate_document = None
+            # if document does not comply with uv-absorbance detection or metabolite detection, remove the document
+            if (not measurement_document.absorbance and
+                    not measurement_document.analyte_aggregate_document):
+                measurement_documents.remove(measurement_document)
