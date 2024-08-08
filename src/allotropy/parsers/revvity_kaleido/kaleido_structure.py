@@ -299,13 +299,15 @@ class Measurements:
             if element.title != "Channel":
                 continue
             try:
-                channels.append(Channel.create(
-                    name=elements[idx],
-                    excitation_wavelength=elements[idx + 1],
-                    excitation_power=elements[idx + 2],
-                    exposure_time=elements[idx + 3],
-                    additional_focus_offset=elements[idx + 4],
-                ))
+                channels.append(
+                    Channel.create(
+                        name=elements[idx],
+                        excitation_wavelength=elements[idx + 1],
+                        excitation_power=elements[idx + 2],
+                        exposure_time=elements[idx + 3],
+                        additional_focus_offset=elements[idx + 4],
+                    )
+                )
             except IndexError as e:
                 msg = f"Unable to get channel data for channel {element.value}"
                 raise AllotropeConversionError(msg) from e

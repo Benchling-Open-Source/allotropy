@@ -40,8 +40,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                     get_key_or_error(
                         "wavelength",
                         data.get(str, "Emission", "").lower(),
-                        EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN
-                    )
+                        EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN,
+                    ),
                 ],
                 batch_identifier=data.get(str, "Run ID"),
                 sample_identifier=data[str, "Test Name"],

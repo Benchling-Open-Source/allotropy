@@ -38,5 +38,7 @@ def create_data(reader: CsvReader) -> Data:
         return create_data_v3(version, reader)
     else:
         valid_versions = [f"v{v.value}.0+" for v in Version]
-        msg = msg_for_error_on_unrecognized_value("Revvity Kaleido version", version, valid_versions)
+        msg = msg_for_error_on_unrecognized_value(
+            "Revvity Kaleido version", version, valid_versions
+        )
         raise AllotropeConversionError(msg)

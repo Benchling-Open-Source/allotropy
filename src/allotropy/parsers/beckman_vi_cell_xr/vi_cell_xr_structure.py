@@ -76,7 +76,9 @@ def create_data(reader_data: ViCellData, file_name: str) -> Data:
     except (AttributeError, AllotropeConversionError):
         version = DEFAULT_VERSION
     except ValueError as e:
-        msg = msg_for_error_on_unrecognized_value("Beckman VI-Cell XR version", version_str, XrVersion)
+        msg = msg_for_error_on_unrecognized_value(
+            "Beckman VI-Cell XR version", version_str, XrVersion
+        )
         raise AllotropeConversionError(msg) from e
 
     metadata = Metadata(

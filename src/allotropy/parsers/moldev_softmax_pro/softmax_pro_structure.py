@@ -958,9 +958,11 @@ class BlockList:
 
                 export_format_to_data_format = {
                     ExportFormat.TIME_FORMAT.value: TimeData,
-                    ExportFormat.PLATE_FORMAT.value: PlateData
+                    ExportFormat.PLATE_FORMAT.value: PlateData,
                 }
-                data_format: TimeData | PlateData = get_key_or_error("export format", header.export_format, export_format_to_data_format)
+                data_format: TimeData | PlateData = get_key_or_error(
+                    "export format", header.export_format, export_format_to_data_format
+                )
                 block_data = data_format.create(sub_reader, header)
 
                 plate_blocks[header.name] = cls(

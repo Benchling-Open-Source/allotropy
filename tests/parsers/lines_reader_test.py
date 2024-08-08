@@ -46,7 +46,9 @@ def test_read_to_lines_with_encoding(encoding: str | None) -> None:
 
 
 def test_read_to_lines_with_encoding_that_is_invalid() -> None:
-    with pytest.raises(AllotropeConversionError, match="Invalid encoding: 'BAD ENCODING'."):
+    with pytest.raises(
+        AllotropeConversionError, match="Invalid encoding: 'BAD ENCODING'."
+    ):
         _read_to_lines("BAD ENCODING")
 
 

@@ -11,7 +11,6 @@ from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
-    msg_for_error_on_unrecognized_value,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (

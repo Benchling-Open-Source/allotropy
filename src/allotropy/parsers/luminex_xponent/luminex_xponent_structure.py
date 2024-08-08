@@ -72,7 +72,9 @@ class Header:
         try:
             model_number = program_data.iloc[2]
         except IndexError as e:
-            msg = "Unable to find model number in Program row, expected value at index 2"
+            msg = (
+                "Unable to find model number in Program row, expected value at index 2"
+            )
             raise AllotropeConversionError(msg) from e
 
         return str(model_number)

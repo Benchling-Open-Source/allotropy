@@ -30,9 +30,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
-    AllotropeConversionError,
     get_key_or_error,
-    msg_for_error_on_unrecognized_value,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
@@ -273,7 +271,9 @@ class BioradBioplexParser(VendorParser):
                 error_docs.append(
                     ErrorDocumentItem(
                         error=analyte.analyte_name,
-                        error_feature=get_key_or_error("error code", analyte.analyte_error_code, ERROR_MAPPING),
+                        error_feature=get_key_or_error(
+                            "error code", analyte.analyte_error_code, ERROR_MAPPING
+                        ),
                     ),
                 )
         return ErrorAggregateDocument(error_document=error_docs)

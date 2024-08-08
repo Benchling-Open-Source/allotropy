@@ -110,7 +110,9 @@ class Metadata:
             peak_unit = peak_unit or ""
             return UNIT_CLASS_LOOKUP[peak_unit]
         except KeyError as e:
-            msg = msg_for_error_on_unrecognized_value("Molecular Weight Unit", peak_unit, UNIT_CLASS_LOOKUP.keys())
+            msg = msg_for_error_on_unrecognized_value(
+                "Molecular Weight Unit", peak_unit, UNIT_CLASS_LOOKUP.keys()
+            )
             raise AllotropeConversionError(msg) from e
 
 
@@ -276,7 +278,12 @@ class SamplesList:
         samples = []
         for sample_element in samples_element.iter("Sample"):
             screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
-            samples.append(Sample.create(sample_element, get_key_or_error("ScreenTape ID", screen_tape_id, screen_tapes)))
+            samples.append(
+                Sample.create(
+                    sample_element,
+                    get_key_or_error("ScreenTape ID", screen_tape_id, screen_tapes),
+                )
+            )
 
         return SamplesList(samples=samples)
 

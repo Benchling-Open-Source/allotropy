@@ -36,7 +36,9 @@ def list_values(values: Collection[Any] | enum.EnumType) -> str:
 T = TypeVar("T")
 
 
-def valid_value_or_raise(name: str, values: set[T], valid_values: Collection[T] | enum.EnumType) -> str:
+def valid_value_or_raise(
+    name: str, values: set[T], valid_values: Collection[T] | enum.EnumType
+) -> str:
     if len(values) == 1:
         return values.pop()
     msg = f"Could not infer {name}, expecting exactly one of {list_values(valid_values)}, found {list_values(values)}"

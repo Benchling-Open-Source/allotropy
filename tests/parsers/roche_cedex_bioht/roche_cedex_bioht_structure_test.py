@@ -45,7 +45,9 @@ def test_create_title(
 @pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
     title_data = SeriesData(pd.Series({"device serial number": 1234}))
-    with pytest.raises(AllotropeConversionError, match="Expected non-null value for analyst"):
+    with pytest.raises(
+        AllotropeConversionError, match="Expected non-null value for analyst"
+    ):
         Title.create(title_data)
 
 

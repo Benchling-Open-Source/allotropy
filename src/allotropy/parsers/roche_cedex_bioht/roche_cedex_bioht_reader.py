@@ -27,13 +27,15 @@ class RocheCedexBiohtReader:
 
     def read_title_data(self, contents: IOType) -> SeriesData:
         contents.seek(0)
-        return SeriesData(read_csv(
-            contents,
-            delimiter="\t",
-            usecols=INFO_HEADER,
-            names=INFO_HEADER,
-            nrows=1,
-        ).T[0])
+        return SeriesData(
+            read_csv(
+                contents,
+                delimiter="\t",
+                usecols=INFO_HEADER,
+                names=INFO_HEADER,
+                nrows=1,
+            ).T[0]
+        )
 
     def read_samples_data(self, contents: IOType) -> pd.DataFrame:
         contents.seek(0)

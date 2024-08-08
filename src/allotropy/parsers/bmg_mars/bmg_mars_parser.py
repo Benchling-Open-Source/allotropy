@@ -129,8 +129,7 @@ class BmgMarsParser(VendorParser):
     def _get_read_type(self, lines: list[str]) -> ReadType:
         content = "\n".join(lines).lower()
         read_types = {
-            read_type for read_type in ReadType
-            if read_type.value.lower() in content
+            read_type for read_type in ReadType if read_type.value.lower() in content
         }
         return valid_value_or_raise("read type", read_types, ReadType)
 

@@ -583,10 +583,20 @@ class Data:
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:
         experiment_type_to_expected_sheets = {
             ExperimentType.standard_curve_qPCR_experiment: ["Standard Curve Result"],
-            ExperimentType.relative_standard_curve_qPCR_experiment: ["RQ Replicate Group Result"],
+            ExperimentType.relative_standard_curve_qPCR_experiment: [
+                "RQ Replicate Group Result"
+            ],
             ExperimentType.genotyping_qPCR_experiment: ["Genotyping Result"],
-            ExperimentType.melt_curve_qPCR_experiment: ["Melt Curve Raw", "Melt Curve Result"],
-            ExperimentType.presence_absence_qPCR_experiment: ["Sample Call", "Well Call", "Target Call", "Control Status"],
+            ExperimentType.melt_curve_qPCR_experiment: [
+                "Melt Curve Raw",
+                "Melt Curve Result",
+            ],
+            ExperimentType.presence_absence_qPCR_experiment: [
+                "Sample Call",
+                "Well Call",
+                "Target Call",
+                "Control Status",
+            ],
         }
 
         possible_experiment_types = {

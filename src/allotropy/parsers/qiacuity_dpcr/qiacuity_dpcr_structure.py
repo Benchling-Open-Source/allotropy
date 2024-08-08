@@ -27,7 +27,9 @@ def _create_measurements(data: SeriesData) -> Measurement:
     # TODO: When the sample role type model is updated in this repo, we should update this
     # Map sample role types to valid sample role types from ASM
     if sample_role_type is not None:
-        sample_role_type = get_key_or_error("sample type", sample_role_type, SAMPLE_ROLE_TYPE_MAPPING)
+        sample_role_type = get_key_or_error(
+            "sample type", sample_role_type, SAMPLE_ROLE_TYPE_MAPPING
+        )
 
     return Measurement(
         identifier=random_uuid_str(),
