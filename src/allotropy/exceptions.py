@@ -1,14 +1,25 @@
 from collections.abc import Collection
 from typing import Any
 
-_ERROR_MESSAGE = "message must not be empty"
+
+# Unexpected error when reading input data.
+class AllotropeParsingError(Exception):
+    pass
 
 
+# Unexpected error when validating output against schema.
+class AllotropeValidationError(Exception):
+    pass
+
+
+# Unexpected error when converting allotropy dataclass model to json.
+class AllotropeSerializationError(Exception):
+    pass
+
+
+# Expected error caused by bad input data, with a message telling user what the problem is.
 class AllotropeConversionError(Exception):
-    def __init__(self, message: str) -> None:
-        if not message or not message.strip():
-            raise ValueError(_ERROR_MESSAGE)
-        super().__init__(message)
+    pass
 
 
 def msg_for_error_on_unrecognized_value(

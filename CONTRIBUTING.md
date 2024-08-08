@@ -87,7 +87,7 @@ If the parser is not in the `RECOMMENDED` state, it must be added to `NON_READY_
 # Error messaging
 
 We ask that all error messages thrown in exceptions are written to be clear and useful to developers and end users. As such, please follow these guidelines. `AllotropeConversionError` and helper functions can be found in [`exceptions.py`](src/allotropy/exceptions.py) (and as always, we welcome any additions you may have).
-- Catch and raise all exceptions in this repo as `AllotropeConversionError`.
+- Catch and raise all errors caused by bad input in this repo as `AllotropeConversionError`.
 - Write all messages with proper capitalization and full punctuation.
 - As much as possible, include the exact text of the problematic line(s) or value(s) (in single quotes as needed, to add clarity).
 - As much as possible, explain why that text was problematic, or what the expected behavior would have been.
