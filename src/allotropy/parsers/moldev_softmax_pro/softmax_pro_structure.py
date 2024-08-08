@@ -12,7 +12,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
-    msg_for_error_on_unrecognized_value,
 )
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData
