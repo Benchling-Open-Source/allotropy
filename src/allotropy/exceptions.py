@@ -1,5 +1,4 @@
 from collections.abc import Collection
-import enum
 from enum import Enum
 from typing import Any, TypeVar
 
