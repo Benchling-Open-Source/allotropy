@@ -95,8 +95,8 @@ class AssayData:
             reader.drop_empty()
 
         if not plates:
-            error = "Unable to find plate information."
-            raise AllotropeConversionError(error)
+            msg = "Unable to find plate information."
+            raise AllotropeConversionError(msg)
 
         return AssayData(plates, identifier)
 

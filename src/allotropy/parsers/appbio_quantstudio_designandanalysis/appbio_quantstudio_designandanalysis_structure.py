@@ -467,8 +467,8 @@ class Result:
         reference_sample_array = assert_df_column(reference_data, "Sample").unique()
 
         if reference_sample_array.size != 1:
-            error = "Unable to infer reference sample, expecting a single row in sheet 'RQ Replicate Group Result' to have Rq == 1."
-            raise AllotropeConversionError(error)
+            msg = "Unable to infer reference sample, expecting a single row in sheet 'RQ Replicate Group Result' to have Rq == 1."
+            raise AllotropeConversionError(msg)
 
         return str(reference_sample_array[0])
 
@@ -494,8 +494,8 @@ class Result:
         if len(possible_ref_targets) == 1:
             return str(possible_ref_targets.pop())
 
-        error = "Unable to infer reference target, expecting a single unique value for Target in sheet 'RQ Replicate Group Result' where Rq is empty."
-        raise AllotropeConversionError(error)
+        msg = "Unable to infer reference target, expecting a single unique value for Target in sheet 'RQ Replicate Group Result' where Rq is empty."
+        raise AllotropeConversionError(msg)
 
     @staticmethod
     def create(

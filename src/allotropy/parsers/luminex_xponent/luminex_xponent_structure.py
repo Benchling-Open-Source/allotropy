@@ -86,7 +86,7 @@ class Header:
         try:
             plate_well_count = protocol_plate_data.iloc[3]
         except IndexError as e:
-            msg = "Unable to find plate well count in ProtocolPlate row, expected value at index 3"
+            msg = "Unable to find plate well count in ProtocolPlate row, expected value at index 3."
             raise AllotropeConversionError(msg) from e
 
         return try_float(str(plate_well_count), "plate well count")
@@ -117,13 +117,13 @@ class CalibrationItem:
         """
         calibration_data = calibration_line.replace('"', "").split(",")
         if len(calibration_data) < MINIMUM_CALIBRATION_LINE_COLS:
-            msg = f"Expected at least two columns on the calibration line, got: {calibration_line}"
+            msg = f"Expected at least two columns on the calibration line, got: {calibration_line}."
             raise AllotropeConversionError(msg)
 
         calibration_result = calibration_data[1].split(maxsplit=1)
 
         if len(calibration_result) != EXPECTED_CALIBRATION_RESULT_LEN:
-            msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}"
+            msg = f"Invalid calibration result format, expected to split into two values, got: {calibration_result}."
             raise AllotropeConversionError(msg)
 
         return CalibrationItem(
@@ -301,8 +301,8 @@ class Data:
                 n_columns = n_row_columns
 
         if n_columns < EXPECTED_HEADER_COLUMNS:
-            error = "Unable to parse header. Not enough data."
-            raise AllotropeConversionError(error)
+            msg = "Unable to parse header. Not enough data."
+            raise AllotropeConversionError(msg)
 
         header_data = read_csv(
             StringIO("\n".join(header_lines)),
@@ -337,7 +337,7 @@ class Data:
         try:
             min_bead_count_setting = samples_info.replace('"', "").split(",")[3]
         except IndexError as e:
-            msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}"
+            msg = f"Unable to find minimum bead count setting in Samples info: {samples_info}."
             raise AllotropeConversionError(msg) from e
 
         return try_float(min_bead_count_setting, "minimum bead count setting")
