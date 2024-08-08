@@ -343,7 +343,9 @@ class AmplificationData:
 
         cycle_number = assert_df_column(target_data, "Cycle Number")
         return AmplificationData(
-            total_cycle_number_setting=try_float(cycle_number.max(), "Cycle Number"),
+            total_cycle_number_setting=try_float(
+                str(cycle_number.max()), "Cycle Number"
+            ),
             cycle=cycle_number.tolist(),
             rn=assert_df_column(target_data, "Rn").tolist(),
             delta_rn=assert_df_column(target_data, "dRn").tolist(),

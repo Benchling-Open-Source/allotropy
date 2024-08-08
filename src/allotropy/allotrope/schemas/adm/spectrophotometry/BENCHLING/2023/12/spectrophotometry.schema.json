@@ -322,6 +322,15 @@
                             },
                             {
                               "$ref": "#/$defs/fluorescencePointDetectionMeasurementDocumentItems"
+                            },
+                            {
+                              "$ref": "#/$defs/luminescencePointDetectionMeasurementDocumentItems"
+                            },
+                            {
+                              "$ref": "#/$defs/ultravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems"
+                            },
+                            {
+                              "$ref": "#/$defs/fluorescenceEmissionSpectrumDetectionMeasurementDocumentItems"
                             }
                           ]
                         },
@@ -1004,6 +1013,383 @@
         "device type"
       ]
     },
+    "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/cube.schema": {
+      "$id": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/cube.schema",
+      "$defs": {
+        "tDatacube": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "cube-structure": {
+              "$ref": "#/$defs/tDatacubeStructure"
+            },
+            "data": {
+              "$ref": "#/$defs/tDatacubeData"
+            }
+          }
+        },
+        "tDatacubeData": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/tDimensionData"
+            },
+            {
+              "$ref": "#/$defs/tMeasureData"
+            }
+          ]
+        },
+        "tDimensionData": {
+          "properties": {
+            "dimensions": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "#/$defs/tDimensionArray"
+                  },
+                  {
+                    "$ref": "#/$defs/tFunction"
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "dimensions"
+          ]
+        },
+        "tMeasureData": {
+          "oneOf": [
+            {
+              "properties": {
+                "measures": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/tMeasureArray"
+                  }
+                }
+              },
+              "required": [
+                "measures"
+              ]
+            },
+            {
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/tTupleData"
+                  }
+                }
+              },
+              "required": [
+                "points"
+              ]
+            }
+          ]
+        },
+        "tTupleData": {
+          "$comment": "heterogenous array of data used in point arrays",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "tDimensionArray": {
+          "$comment": "homogenous array of data used in explicit dimension arrays",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/tNumberArray"
+            },
+            {
+              "$ref": "#/$defs/tBooleanArray"
+            },
+            {
+              "$ref": "#/$defs/tStringArray"
+            }
+          ]
+        },
+        "tMeasureArray": {
+          "$comment": "homogenous array of data used in explicit measure arrays, may contain null values",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/tNumberOrNullArray"
+            },
+            {
+              "$ref": "#/$defs/tBooleanOrNullArray"
+            },
+            {
+              "$ref": "#/$defs/tStringOrNullArray"
+            }
+          ]
+        },
+        "tNumberArray": {
+          "$comment": "homogenous array of numbers",
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "tNumberOrNullArray": {
+          "$comment": "homogenous array of numbers, may contain null values",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "tBooleanArray": {
+          "$comment": "homogenous array of booleans",
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "tBooleanOrNullArray": {
+          "$comment": "homogenous array of booleans, may contain null values",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "tStringArray": {
+          "$comment": "homogenous array of strings",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tStringOrNullArray": {
+          "$comment": "homogenous array of strings, may contain null values",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "tFunction": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "linear",
+                "logarithmic"
+              ],
+              "default": "linear"
+            },
+            "start": {
+              "type": "number",
+              "default": 1
+            },
+            "length": {
+              "type": "number"
+            },
+            "incr": {
+              "type": "number",
+              "default": 1
+            }
+          }
+        },
+        "tDatacubeStructure": {
+          "type": "object",
+          "properties": {
+            "dimensions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/tDatacubeComponent"
+              },
+              "uniqueItems": true
+            },
+            "measures": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/tDatacubeComponent"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          },
+          "required": [
+            "dimensions",
+            "measures"
+          ]
+        },
+        "tDatacubeComponent": {
+          "type": "object",
+          "properties": {
+            "@componentDatatype": {
+              "description": "Subset of XSD datatypes supported in simple models",
+              "default": "double",
+              "enum": [
+                "double",
+                "float",
+                "decimal",
+                "integer",
+                "byte",
+                "int",
+                "short",
+                "long",
+                "string",
+                "boolean",
+                "dateTime"
+              ]
+            },
+            "concept": {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema#/$defs/tClass"
+            },
+            "unit": {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/core.schema#/$defs/tUnit"
+            },
+            "scale": {
+              "enum": [
+                "nominal",
+                "ordinal",
+                "cardinal",
+                "interval",
+                "range"
+              ]
+            },
+            "$asm.fill-value": {
+              "type": [
+                "string",
+                "number",
+                "integer",
+                "boolean"
+              ]
+            }
+          },
+          "required": [
+            "@componentDatatype",
+            "concept"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/cFillValueIEEE"
+            },
+            {
+              "$ref": "#/$defs/cFillValueDecimal"
+            },
+            {
+              "$ref": "#/$defs/cFillValueBoolean"
+            },
+            {
+              "$ref": "#/$defs/cFillValueString"
+            }
+          ]
+        },
+        "cFillValueBoolean": {
+          "$comment": "constraint on fill values if component data type is boolean",
+          "if": {
+            "properties": {
+              "@componentDatatype": {
+                "const": "boolean"
+              }
+            }
+          },
+          "then": {
+            "$asm.fill-value": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "cFillValueIEEE": {
+          "$comment": "constraint on fill values if component data type is any numeric type",
+          "if": {
+            "properties": {
+              "@componentDatatype": {
+                "pattern": "double|float"
+              }
+            }
+          },
+          "then": {
+            "$asm.fill-value": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "const": "NaN"
+                },
+                {
+                  "const": "+Infinity"
+                },
+                {
+                  "const": "-Infinity"
+                }
+              ],
+              "default": 0.0
+            }
+          }
+        },
+        "cFillValueDecimal": {
+          "$comment": "constraint on fill values if component data type is any numeric type",
+          "if": {
+            "properties": {
+              "@componentDatatype": {
+                "pattern": "integer|decimal|long|int|short|byte"
+              }
+            }
+          },
+          "then": {
+            "$asm.fill-value": {
+              "type": "number",
+              "default": 0
+            }
+          }
+        },
+        "cFillValueString": {
+          "$comment": "constraint on fill values if component data type is string",
+          "if": {
+            "properties": {
+              "@componentDatatype": {
+                "pattern": "string|dateTime|date"
+              }
+            }
+          },
+          "then": {
+            "$asm.fill-value": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
     "ultravioletAbsorbancePointDetectionDeviceControlDocument": {
       "type": "array",
       "$asm.array-ordered": true,
@@ -1133,6 +1519,19 @@
         }
       }
     },
+    "fluorescencePointDetectionDeviceControlAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "device control document"
+      ],
+      "properties": {
+        "device control document": {
+          "$ref": "#/$defs/fluorescencePointDetectionDeviceControlDocument"
+        }
+      }
+    },
     "fluorescencePointDetectionDeviceControlDocument": {
       "type": "array",
       "$asm.array-ordered": true,
@@ -1187,19 +1586,6 @@
         ]
       },
       "minItems": 1
-    },
-    "fluorescencePointDetectionDeviceControlAggregateDocument": {
-      "type": "object",
-      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
-      "$asm.pattern": "aggregate datum",
-      "required": [
-        "device control document"
-      ],
-      "properties": {
-        "device control document": {
-          "$ref": "#/$defs/fluorescencePointDetectionDeviceControlDocument"
-        }
-      }
     },
     "fluorescencePointDetectionMeasurementDocumentItems": {
       "type": "object",
@@ -1259,6 +1645,445 @@
           "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
           "$asm.pattern": "quantity datum",
           "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+        }
+      }
+    },
+    "luminescencePointDetectionDeviceControlDocument": {
+      "type": "array",
+      "$asm.array-ordered": true,
+      "$asm.array-mixed": false,
+      "$asm.pattern": "indexed datum",
+      "items": {
+        "allOf": [
+          {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "detector wavelength setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002456",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "detector bandwidth setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002477",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              }
+            }
+          },
+          {
+            "$ref": "#/$defs/deviceControlDocument"
+          },
+          {
+            "properties": {
+              "@index": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "luminescencePointDetectionDeviceControlAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "device control document"
+      ],
+      "properties": {
+        "device control document": {
+          "$ref": "#/$defs/luminescencePointDetectionDeviceControlDocument"
+        }
+      }
+    },
+    "luminescencePointDetectionMeasurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "luminescence",
+        "sample document",
+        "device control aggregate document",
+        "measurement identifier"
+      ],
+      "properties": {
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "device control aggregate document": {
+          "$ref": "#/$defs/luminescencePointDetectionDeviceControlAggregateDocument"
+        },
+        "sample document": {
+          "$ref": "#/$defs/sampleDocument"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "processed data aggregate document": {
+          "$ref": "#/$defs/processedDataAggregateDocument"
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "compartment temperature": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+        },
+        "luminescence": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002507",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueRelativeLightUnit"
+        },
+        "mass concentration": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001661",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValuePicogramPerMilliliter"
+        }
+      }
+    },
+    "ultravioletAbsorbanceSpectrumDetectionDeviceControlDocument": {
+      "type": "array",
+      "$asm.array-ordered": true,
+      "$asm.array-mixed": false,
+      "$asm.pattern": "indexed datum",
+      "items": {
+        "allOf": [
+          {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+            }
+          },
+          {
+            "$ref": "#/$defs/deviceControlDocument"
+          },
+          {
+            "properties": {
+              "@index": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "ultravioletAbsorbanceSpectrumDetectionDeviceControlAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "device control document"
+      ],
+      "properties": {
+        "device control document": {
+          "$ref": "#/$defs/ultravioletAbsorbanceSpectrumDetectionDeviceControlDocument"
+        }
+      }
+    },
+    "ultravioletAbsorbanceSpectrumDetectionMeasurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "absorption spectrum data cube",
+        "sample document",
+        "device control aggregate document",
+        "measurement identifier"
+      ],
+      "properties": {
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "device control aggregate document": {
+          "$ref": "#/$defs/ultravioletAbsorbanceSpectrumDetectionDeviceControlAggregateDocument"
+        },
+        "sample document": {
+          "$ref": "#/$defs/sampleDocument"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "processed data aggregate document": {
+          "$ref": "#/$defs/processedDataAggregateDocument"
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "compartment temperature": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+        },
+        "absorption spectrum data cube": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002283",
+          "$asm.pattern": "datacube",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/cube.schema#/$defs/tDatacube"
+            },
+            {
+              "properties": {
+                "cube-structure": {
+                  "properties": {
+                    "dimensions": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "prefixItems": [
+                        {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "concept": {
+                                  "const": "wavelength"
+                                },
+                                "unit": {
+                                  "const": "nm"
+                                },
+                                "@componentDatatype": {
+                                  "const": "double"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "measures": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "contains": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "concept": {
+                                "const": "absorbance"
+                              },
+                              "unit": {
+                                "const": "mAU"
+                              },
+                              "@componentDatatype": {
+                                "const": "double"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "fluorescenceEmissionSpectrumDetectionDeviceControlDocument": {
+      "type": "array",
+      "$asm.array-ordered": true,
+      "$asm.array-mixed": false,
+      "$asm.pattern": "indexed datum",
+      "items": {
+        "allOf": [
+          {
+            "type": "object",
+            "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002723",
+            "$asm.pattern": "aggregate datum",
+            "properties": {
+              "wavelength filter cutoff setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002478",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "excitation bandwidth setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002548",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              },
+              "excitation wavelength setting": {
+                "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002479",
+                "$asm.pattern": "quantity datum",
+                "$ref": "#/$custom/tQuantityValueNanometer"
+              }
+            }
+          },
+          {
+            "$ref": "#/$defs/deviceControlDocument"
+          },
+          {
+            "properties": {
+              "@index": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "fluorescenceEmissionSpectrumDetectionDeviceControlAggregateDocument": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002722",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "device control document"
+      ],
+      "properties": {
+        "device control document": {
+          "$ref": "#/$defs/fluorescenceEmissionSpectrumDetectionDeviceControlDocument"
+        }
+      }
+    },
+    "fluorescenceEmissionSpectrumDetectionMeasurementDocumentItems": {
+      "type": "object",
+      "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002375",
+      "$asm.pattern": "aggregate datum",
+      "required": [
+        "fluorescence emission spectrum data cube",
+        "sample document",
+        "device control aggregate document",
+        "measurement identifier"
+      ],
+      "properties": {
+        "measurement time": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0000952",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#dateTimeStamp",
+          "$ref": "#/$defs/tDateTimeStampValue"
+        },
+        "measurement identifier": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0001121",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "device control aggregate document": {
+          "$ref": "#/$defs/fluorescenceEmissionSpectrumDetectionDeviceControlAggregateDocument"
+        },
+        "sample document": {
+          "$ref": "#/$defs/sampleDocument"
+        },
+        "detection type": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002534",
+          "$asm.pattern": "value datum",
+          "$asm.type": "http://www.w3.org/2001/XMLSchema#string",
+          "$ref": "#/$defs/tStringValue"
+        },
+        "processed data aggregate document": {
+          "$ref": "#/$defs/processedDataAggregateDocument"
+        },
+        "calculated data aggregate document": {
+          "$ref": "#/$defs/calculatedDataAggregateDocument"
+        },
+        "statistics aggregate document": {
+          "$ref": "#/$defs/statisticsAggregateDocument"
+        },
+        "compartment temperature": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002549",
+          "$asm.pattern": "quantity datum",
+          "$ref": "#/$custom/tQuantityValueDegreeCelsius"
+        },
+        "fluorescence emission spectrum data cube": {
+          "$asm.property-class": "http://purl.allotrope.org/ontologies/result#AFR_0002482",
+          "$asm.pattern": "datacube",
+          "allOf": [
+            {
+              "$ref": "http://purl.allotrope.org/json-schemas/adm/core/REC/2024/03/cube.schema#/$defs/tDatacube"
+            },
+            {
+              "properties": {
+                "cube-structure": {
+                  "properties": {
+                    "dimensions": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "prefixItems": [
+                        {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "concept": {
+                                  "const": "wavelength"
+                                },
+                                "unit": {
+                                  "const": "nm"
+                                },
+                                "@componentDatatype": {
+                                  "const": "double"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "measures": {
+                      "minItems": 1,
+                      "maxItems": 1,
+                      "contains": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "concept": {
+                                "const": "fluorescence"
+                              },
+                              "unit": {
+                                "const": "RFU"
+                              },
+                              "@componentDatatype": {
+                                "const": "double"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     },

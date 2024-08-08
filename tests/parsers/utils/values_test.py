@@ -62,8 +62,15 @@ def _try_float(value: str) -> float:
 
 
 @pytest.mark.short
-def test_try_float() -> None:
-    assert _try_float("1.0") == 1.0
+@pytest.mark.parametrize(
+    "value,expected",
+    [
+        ("1.1", 1.1),
+        ("1,1", 1.1),
+    ],
+)
+def test_try_float(value: str, expected: float) -> None:
+    assert _try_float(value) == expected
 
 
 @pytest.mark.short
@@ -87,6 +94,7 @@ def test_try_float_fails(value: str, expected_regex: str) -> None:
         ("", None),
         ("1", 1),
         ("1.1", 1.1),
+        ("1,1", 1.1),
     ],
 )
 def test_try_float_or_none(value: str | None, expected: int | None) -> None:

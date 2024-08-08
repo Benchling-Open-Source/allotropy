@@ -35,10 +35,17 @@ def try_int_or_none(value: str | None) -> int | None:
         return None
 
 
+def _try_float(value: str) -> float:
+    # NOTE: this will convert a string with commas for thousands into a decimal, potentially introducing
+    # an unexpected error, e.g. one thousand represented as 1,000 would get converted to 1.0
+    # However, numbers are not usually represented like this in scientific output (we have no example of it)
+    return float(value.replace(",", "."))
+
+
 def try_float(value: str, value_name: str) -> float:
     assert_not_none(value, value_name)
     try:
-        return float(value)
+        return _try_float(value)
     except ValueError as e:
         msg = f"Invalid float string: '{value}'."
         raise AllotropeConversionError(msg) from e
@@ -46,7 +53,7 @@ def try_float(value: str, value_name: str) -> float:
 
 def try_float_or_none(value: str | float | None) -> float | None:
     try:
-        return float("" if value is None else value)
+        return _try_float(str(value))
     except ValueError:
         return None
 
