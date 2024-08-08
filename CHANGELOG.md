@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cast data to str before using in AppBio QuantStudio parser
 
 ### Changed
+- Only return AllotropeConversionError when there is a problem with input data that we expect, add other errors for unexpected problems.
 
 ### Deprecated
 
