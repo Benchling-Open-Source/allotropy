@@ -7,14 +7,17 @@ from dataclasses import dataclass
 
 import pandas as pd
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.constants import (
+    BELOW_TEST_RANGE,
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
+from allotropy.parsers.utils.values import try_float_or_nan
 
 
 @dataclass(frozen=True)
@@ -23,6 +26,7 @@ class Title:
     analyst: str
     model_number: str | None
     device_serial_number: str | None
+    software_version: str | None = None
 
     @staticmethod
     def create(title_data: pd.Series) -> Title:
@@ -32,28 +36,35 @@ class Title:
             raise AllotropeConversionError(msg)
 
         device_serial_number = title_data.get("device serial number")
+
         if device_serial_number is None:
             msg = "Unable to obtain device serial number."
             raise AllotropeConversionError(msg)
+
+        software_version = str(title_data.get("software version"))
 
         return Title(
             title_data.get("data processing time"),  # type: ignore[arg-type]
             analyst,  # type: ignore[arg-type]
             title_data.get("model number"),  # type: ignore[arg-type]
             str(device_serial_number),
+            software_version,
         )
 
 
 @dataclass(frozen=True)
 class Analyte:
     name: str
-    concentration_value: float | None
+    concentration_value: JsonFloat
     unit: str | None
 
     @staticmethod
     def create(data: pd.Series) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
-        concentration_value: float | None = data.get("concentration value")  # type: ignore[assignment]
+        concentration_value = try_float_or_nan(str(data.get("concentration value")))
+        flag = str(data.get("flag", ""))
+        if BELOW_TEST_RANGE in flag:
+            concentration_value = NaN
         unit: str | None = data.get("concentration unit")  # type: ignore[assignment]
 
         return Analyte(analyte_name, concentration_value, unit)
@@ -72,9 +83,9 @@ class AnalyteList:
     def create(data: pd.DataFrame) -> AnalyteList:
         analytes = [Analyte.create(analyte_data) for _, analyte_data in data.iterrows()]
         molar_concentration_dict = defaultdict(list)
-        molar_concentration_nans = {}
-        non_aggregrable_dict = defaultdict(list)
-        non_aggregable_nans = {}
+        molar_concentration_nans: dict = {}
+        non_aggregrable_dict: dict = defaultdict(list)
+        non_aggregable_nans: dict = {}
         num_measurement_docs = 1
 
         for analyte in analytes:
@@ -88,7 +99,7 @@ class AnalyteList:
                     )
                 else:
                     non_aggregrable_dict[analyte_name].append(
-                        analyte_cls(value=concentration_value)
+                        analyte_cls(value=concentration_value)  # type: ignore
                     )
 
                 num_measurement_docs = max(
@@ -104,7 +115,7 @@ class AnalyteList:
                     continue
 
                 molar_concentration_item = molar_concentration_item_cls(
-                    value=concentration_value
+                    value=concentration_value  # type: ignore
                 )
                 if concentration_value is None:
                     molar_concentration_nans[analyte_name] = molar_concentration_item
