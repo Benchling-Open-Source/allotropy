@@ -29,7 +29,7 @@ class AllotropeConversionError(Exception):
     pass
 
 
-def list_values(values: Collection[Any] | enum.EnumType) -> list[str]:
+def list_values(values: Collection[Any] | type[Enum]) -> list[str]:
     return sorted([str(v.value if isinstance(v, Enum) else v) for v in values])
 
 
@@ -37,7 +37,7 @@ T = TypeVar("T")
 
 
 def valid_value_or_raise(
-    name: str, values: set[T], valid_values: Collection[T] | enum.EnumType
+    name: str, values: set[T], valid_values: Collection[T] | type[Enum]
 ) -> T:
     if len(values) == 1:
         return values.pop()
@@ -54,7 +54,7 @@ def get_key_or_error(name: str, key: str, mapping: dict[str, T]) -> T:
 
 
 def msg_for_error_on_unrecognized_value(
-    name: str, value: T, valid_values: Collection[T] | enum.EnumType | None = None
+    name: str, value: T, valid_values: Collection[T] | type[Enum] | None = None
 ) -> str:
     msg = f"Unrecognized {name}: '{value}'."
     if valid_values:
