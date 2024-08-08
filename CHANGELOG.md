@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Handle comma as decimal place in float conversion utilities.
 - Raise AllotropeConversionError on missing Results section in Agilent Gen5
+- Add error for multiple read modes in Agilent Gen5
 
 ### Changed
 
