@@ -984,7 +984,7 @@ class BlockList:
         start_line = reader.pop() or ""
         if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
-        msg = msg_for_error_on_unrecognized_value("start line", start_line)
+        msg = f"Unrecognized start line, expected a line starting with ##BLOCKS, got {start_line}"
         raise AllotropeConversionError(msg)
 
     @staticmethod
