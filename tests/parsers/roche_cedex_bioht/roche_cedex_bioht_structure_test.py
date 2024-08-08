@@ -44,7 +44,14 @@ def test_create_title(
 
 @pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
-    title_data = SeriesData(pd.Series({"device serial number": 1234, "data processing time": "2021-06-01 13:04:06"}))
+    title_data = SeriesData(
+        pd.Series(
+            {
+                "device serial number": 1234,
+                "data processing time": "2021-06-01 13:04:06",
+            }
+        )
+    )
     with pytest.raises(
         AllotropeConversionError, match="Expected non-null value for analyst"
     ):
@@ -53,7 +60,9 @@ def test_create_title_with_no_analyst() -> None:
 
 @pytest.mark.short
 def test_create_title_with_no_serial_number() -> None:
-    title_data = SeriesData(pd.Series({"analyst": "dummy", "data processing time": "2021-06-01 13:04:06"}))
+    title_data = SeriesData(
+        pd.Series({"analyst": "dummy", "data processing time": "2021-06-01 13:04:06"})
+    )
     with pytest.raises(
         AllotropeConversionError,
         match="Expected non-null value for device serial number.",
