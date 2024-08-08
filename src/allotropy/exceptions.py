@@ -29,7 +29,7 @@ class AllotropeConversionError(Exception):
     pass
 
 
-def list_values(values: Collection[Any] | enum.EnumType) -> str:
+def list_values(values: Collection[Any] | enum.EnumType) -> list[str]:
     return sorted([str(v.value if isinstance(v, Enum) else v) for v in values])
 
 
@@ -38,7 +38,7 @@ T = TypeVar("T")
 
 def valid_value_or_raise(
     name: str, values: set[T], valid_values: Collection[T] | enum.EnumType
-) -> str:
+) -> T:
     if len(values) == 1:
         return values.pop()
     msg = f"Could not infer {name}, expecting exactly one of {list_values(valid_values)}, found {list_values(values)}"

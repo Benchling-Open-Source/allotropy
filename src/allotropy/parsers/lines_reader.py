@@ -40,7 +40,7 @@ def determine_encoding(bytes_content: bytes, encoding: str | None) -> str:
 
     detected = chardet.detect(bytes_content)["encoding"]
     if not detected:
-        msg = f"Unable to detect text encoding for file with content: {bytes_content}"
+        msg = f"Unable to detect text encoding for file with content: {bytes_content!r}"
         raise AllotropeParsingError(msg)
     # Windows-1252 is a subset of UTF-8, and may lead to missing some data.
     if detected == "Windows-1252":
@@ -53,7 +53,7 @@ def _decode(bytes_content: bytes, encoding: str | None) -> str:
     try:
         return bytes_content.decode(encoding_to_use)
     except UnicodeDecodeError as e:
-        msg = f"Unable to decode bytes with encoding '{encoding_to_use}' with error: {e}, bytes: {bytes_content}"
+        msg = f"Unable to decode bytes with encoding '{encoding_to_use}' with error: {e}, bytes: {bytes_content!r}"
         raise AllotropeParsingError(msg) from e
     except LookupError as e:
         msg = f"Invalid encoding: '{encoding}'."

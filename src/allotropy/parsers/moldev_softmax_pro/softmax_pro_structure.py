@@ -960,7 +960,7 @@ class BlockList:
                     ExportFormat.TIME_FORMAT.value: TimeData,
                     ExportFormat.PLATE_FORMAT.value: PlateData,
                 }
-                data_format: TimeData | PlateData = get_key_or_error(
+                data_format: type[TimeData] | type[PlateData] = get_key_or_error(
                     "export format", header.export_format, export_format_to_data_format
                 )
                 block_data = data_format.create(sub_reader, header)

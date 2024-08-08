@@ -21,16 +21,16 @@ from allotropy.parsers.utils.pandas import SeriesData
 class Title:
     data_processing_time: str
     analyst: str
+    device_serial_number: str
     model_number: str | None
-    device_serial_number: str | None
 
     @staticmethod
     def create(title_data: SeriesData) -> Title:
         return Title(
-            title_data.get(str, "data processing time"),
+            title_data[str, "data processing time"],
             title_data[str, "analyst"],
-            title_data.get(str, "model number"),
             title_data[str, "device serial number"],
+            title_data.get(str, "model number"),
         )
 
 
