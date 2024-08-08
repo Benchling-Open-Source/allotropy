@@ -1,13 +1,20 @@
 from collections.abc import Callable
 from dataclasses import dataclass
+from enum import Enum
+from typing import Any
 
+from allotropy.allotrope.converter import add_custom_information_document
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     CalculatedDataAggregateDocument,
     CalculatedDataDocumentItem,
+    ContainerType,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
     DeviceSystemDocument,
+    FluorescencePointDetectionDeviceControlAggregateDocument,
+    FluorescencePointDetectionDeviceControlDocumentItem,
+    FluorescencePointDetectionMeasurementDocumentItems,
     MeasurementAggregateDocument,
     Model,
     ProcessedDataAggregateDocument,
@@ -20,8 +27,11 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
     UltravioletAbsorbancePointDetectionMeasurementDocumentItems,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueMicroliter,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueNanometer,
+    TQuantityValueRelativeFluorescenceUnit,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
@@ -30,8 +40,20 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+
+
+class MeasurementType(Enum):
+    ULTRAVIOLET_ABSORBANCE = "ULTRAVIOLET_ABSORBANCE"
+    FLUORESCENCE = "FLUORESCENCE"
+
+
+MeasurementDocumentItems = (
+    UltravioletAbsorbancePointDetectionMeasurementDocumentItems
+    | FluorescencePointDetectionMeasurementDocumentItems
+)
 
 
 @dataclass(frozen=True)
@@ -65,45 +87,49 @@ class CalculatedDataItem:
 
 @dataclass(frozen=True)
 class Measurement:
+    type_: MeasurementType
     # Measurement metadata
     identifier: str
     sample_identifier: str
-    location_identifier: str
+    location_identifier: str | None = None
+    batch_identifier: str | None = None
     analyst: str | None = None
     measurement_time: str | None = None
     well_plate_identifier: str | None = None
 
+    # Settings
+    sample_volume_setting: float | None = None
+    detector_wavelength_setting: JsonFloat | None = None
+    excitation_wavelength_setting: str | None = None
+    emission_wavelength_setting: str | None = None
+    dilution_factor_setting: float | None = None
+    original_sample_concentration: JsonFloat | None = None
+    original_sample_concentration_unit: str | None = None
+    qubit_tube_concentration: JsonFloat | None = None
+    qubit_tube_concentration_units: str | None = None
+    standard_1_concentration: float | None = None
+    standard_2_concentration: float | None = None
+    standard_3_concentration: float | None = None
+
     # Measurements
     absorbance: JsonFloat | None = None
+    fluorescence: JsonFloat | None = None
 
     # Processed data
     calculated_data: list[CalculatedDataItem] | None = None
     processed_data: ProcessedData | None = None
-
-    # Settings
-    detector_wavelength_setting: JsonFloat | None = None
 
 
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
     plate_well_count: float | None = None
-    _measurement_time: str | None = None
+    measurement_time: str | None = None
     experiment_type: str | None = None
     analyst: str | None = None
-    processed_data: ProcessedData | None = None
+    container_type: str | None = None
 
-    @property
-    def measurement_time(self) -> str | None:
-        if self._measurement_time is not None:
-            return self._measurement_time
-        if (
-            self.measurements
-            and len({m.measurement_time for m in self.measurements}) == 1
-            and self.measurements[0].measurement_time
-        ):
-            return self.measurements[0].measurement_time
-        return None
+    processed_data: ProcessedData | None = None
 
 
 @dataclass(frozen=True)
@@ -117,6 +143,8 @@ class Metadata:
     software_version: str | None = None
     equipment_serial_number: str | None = None
     product_manufacturer: str | None = None
+    brand_name: str | None = None
+    container_type: ContainerType | None = None
 
     file_name: str | None = None
     data_system_instance_id: str | None = None
@@ -147,28 +175,17 @@ class Mapper:
                 device_system_document=DeviceSystemDocument(
                     device_identifier=data.metadata.device_identifier,
                     model_number=data.metadata.model_number,
+                    brand_name=data.metadata.brand_name,
+                    product_manufacturer=data.metadata.product_manufacturer,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
                     ASM_converter_name=self.converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
+                    software_name=data.metadata.software_name,
                 ),
                 spectrophotometry_document=[
-                    SpectrophotometryDocumentItem(
-                        analyst=measurement_group.analyst,
-                        measurement_aggregate_document=MeasurementAggregateDocument(
-                            measurement_time=self.get_date_time(
-                                assert_not_none(measurement_group.measurement_time)
-                            ),
-                            experiment_type=measurement_group.experiment_type,
-                            measurement_document=[
-                                self._get_measurement_document_item(
-                                    measurement, data.metadata
-                                )
-                                for measurement in measurement_group.measurements
-                            ],
-                        ),
-                    )
+                    self._get_technique_document(measurement_group, data.metadata)
                     for measurement_group in data.measurement_groups
                 ],
                 calculated_data_aggregate_document=self._get_calculated_data_aggregate_document(
@@ -178,7 +195,39 @@ class Mapper:
             field_asm_manifest=self.MANIFEST,
         )
 
+    def _get_technique_document(
+        self, measurement_group: MeasurementGroup, metadata: Metadata
+    ) -> SpectrophotometryDocumentItem:
+        return SpectrophotometryDocumentItem(
+            analyst=measurement_group.analyst,
+            measurement_aggregate_document=MeasurementAggregateDocument(
+                measurement_time=self.get_date_time(
+                    assert_not_none(measurement_group.measurement_time)
+                ),
+                experiment_type=measurement_group.experiment_type,
+                container_type=metadata.container_type,
+                measurement_document=[
+                    self._get_measurement_document_item(measurement, metadata)
+                    for measurement in measurement_group.measurements
+                ],
+            ),
+        )
+
     def _get_measurement_document_item(
+        self, measurement: Measurement, metadata: Metadata
+    ) -> MeasurementDocumentItems:
+        # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+        if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
+            return self._get_ultraviolet_absorbance_measurement_document(
+                measurement, metadata
+            )
+        elif measurement.type_ == MeasurementType.FLUORESCENCE:
+            return self._get_fluorescence_measurement_document(measurement, metadata)
+        else:
+            msg = f"Invalid measurement type: {measurement.type}"
+            raise AllotropeConversionError(msg)
+
+    def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
     ) -> UltravioletAbsorbancePointDetectionMeasurementDocumentItems:
         return UltravioletAbsorbancePointDetectionMeasurementDocumentItems(
@@ -189,13 +238,15 @@ class Mapper:
             ),
             device_control_aggregate_document=UltravioletAbsorbancePointDetectionDeviceControlAggregateDocument(
                 device_control_document=[
-                    UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
-                        device_type=metadata.device_type,
-                        detector_wavelength_setting=TQuantityValueNanometer(
-                            value=assert_not_none(  # type: ignore[arg-type]
-                                measurement.detector_wavelength_setting
+                    add_custom_information_document(
+                        UltravioletAbsorbancePointDetectionDeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
                             ),
                         ),
+                        self._get_device_control_custom_document(measurement),
                     )
                 ]
             ),
@@ -207,11 +258,81 @@ class Mapper:
             ),
         )
 
+    def _get_fluorescence_measurement_document(
+        self, measurement: Measurement, metadata: Metadata
+    ) -> FluorescencePointDetectionMeasurementDocumentItems:
+        return FluorescencePointDetectionMeasurementDocumentItems(
+            measurement_identifier=measurement.identifier,
+            sample_document=self._get_sample_document(measurement),
+            processed_data_aggregate_document=self._get_processed_data_aggregate_document(
+                measurement.processed_data
+            ),
+            device_control_aggregate_document=FluorescencePointDetectionDeviceControlAggregateDocument(
+                device_control_document=[
+                    add_custom_information_document(
+                        FluorescencePointDetectionDeviceControlDocumentItem(
+                            device_type=metadata.device_type,
+                            detector_wavelength_setting=quantity_or_none(
+                                TQuantityValueNanometer,
+                                measurement.detector_wavelength_setting,
+                            ),
+                        ),
+                        self._get_device_control_custom_document(measurement),
+                    )
+                ]
+            ),
+            fluorescence=TQuantityValueRelativeFluorescenceUnit(
+                value=assert_not_none(measurement.fluorescence)  # type: ignore[arg-type]
+            ),
+        )
+
+    def _get_device_control_custom_document(
+        self, measurement: Measurement
+    ) -> dict[str, Any]:
+        return {
+            "sample volume setting": quantity_or_none(
+                TQuantityValueMicroliter, measurement.sample_volume_setting
+            ),
+            "excitation setting": measurement.excitation_wavelength_setting,
+            "emission setting": measurement.emission_wavelength_setting,
+            "dilution factor": quantity_or_none(
+                TQuantityValueUnitless, measurement.dilution_factor_setting
+            ),
+        }
+
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
-        return SampleDocument(
-            sample_identifier=measurement.sample_identifier,
-            well_plate_identifier=measurement.well_plate_identifier,
-            location_identifier=measurement.location_identifier,
+        custom_document = {
+            "original sample concentration": quantity_or_none(
+                get_quantity_class(measurement.original_sample_concentration_unit)
+                or TQuantityValueUnitless,
+                measurement.original_sample_concentration,
+            ),
+            "qubit tube concentration": quantity_or_none(
+                get_quantity_class(measurement.qubit_tube_concentration_units)
+                or TQuantityValueUnitless,
+                measurement.qubit_tube_concentration,
+            ),
+            "standard 1 concentration": quantity_or_none(
+                TQuantityValueRelativeFluorescenceUnit,
+                measurement.standard_1_concentration,
+            ),
+            "standard 2 concentration": quantity_or_none(
+                TQuantityValueRelativeFluorescenceUnit,
+                measurement.standard_2_concentration,
+            ),
+            "standard 3 concentration": quantity_or_none(
+                TQuantityValueRelativeFluorescenceUnit,
+                measurement.standard_3_concentration,
+            ),
+        }
+        return add_custom_information_document(
+            SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                batch_identifier=measurement.batch_identifier,
+                location_identifier=measurement.location_identifier,
+                well_plate_identifier=measurement.well_plate_identifier,
+            ),
+            custom_document,
         )
 
     def _get_processed_data_aggregate_document(
