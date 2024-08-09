@@ -48,6 +48,8 @@ from allotropy.allotrope.models.shared.definitions.units import (
     PicoAmpereTimesSecond,
     PicogramPerMilliliter,
     RelativeFluorescenceUnit,
+    RelativeFluorescenceUnitTimesMilliliter,
+    RelativeFluorescenceUnitTimesSecond,
     RelativeLightUnit,
     SecondTime,
     SquareCentimetersPerGram,
@@ -521,6 +523,34 @@ class TQuantityValueRelativeFluorescenceUnit(RelativeFluorescenceUnit, TQuantity
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueRelativeFluorescenceUnit(
     RelativeFluorescenceUnit, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRelativeFluorescenceUnitTimesMilliliter(
+    RelativeFluorescenceUnitTimesMilliliter, TQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter(
+    RelativeFluorescenceUnitTimesMilliliter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRelativeFluorescenceUnitTimesSecond(
+    RelativeFluorescenceUnitTimesSecond, TQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueRelativeFluorescenceUnitTimesSecond(
+    RelativeFluorescenceUnitTimesSecond, TNullableQuantityValue
 ):
     pass
 

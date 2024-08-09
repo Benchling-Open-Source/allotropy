@@ -839,6 +839,46 @@
       }
     ]
   },
+  "tQuantityValueRelativeFluorescenceUnitTimesMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesMilliliter"
+      }
+    ]
+  },
+  "tNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesMilliliter"
+      }
+    ]
+  },
+  "tQuantityValueRelativeFluorescenceUnitTimesSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesSecond"
+      }
+    ]
+  },
+  "tNullableQuantityValueRelativeFluorescenceUnitTimesSecond": {
+    "allOf": [
+      {
+        "$ref": "#/$defs/tNullableQuantityValue"
+      },
+      {
+        "$ref": "#/$defs/RelativeFluorescenceUnitTimesSecond"
+      }
+    ]
+  },
   "tQuantityValueRelativeLightUnit": {
     "allOf": [
       {

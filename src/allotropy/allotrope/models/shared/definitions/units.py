@@ -220,6 +220,16 @@ class RelativeFluorescenceUnit(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class RelativeFluorescenceUnitTimesMilliliter(HasUnit):
+    unit: str = "RFU.mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RelativeFluorescenceUnitTimesSecond(HasUnit):
+    unit: str = "RFU.s"
+
+
+@dataclass(frozen=True, kw_only=True)
 class RelativeLightUnit(HasUnit):
     unit: str = "RLU"
 

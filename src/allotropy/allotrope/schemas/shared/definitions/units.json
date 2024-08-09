@@ -503,6 +503,30 @@
       "unit"
     ]
   },
+  "RelativeFluorescenceUnitTimesMilliliter": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RFU.mL",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnitTimesMilliliter"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
+  "RelativeFluorescenceUnitTimesSecond": {
+    "properties": {
+      "unit": {
+        "type": "string",
+        "const": "RFU.s",
+        "$asm.unit-iri": "http://purl.allotrope.org/ontology/qudt-ext/unit#RelativeFluorescenceUnitTimesSecond"
+      }
+    },
+    "required": [
+      "unit"
+    ]
+  },
   "RelativeLightUnit": {
     "properties": {
       "unit": {
