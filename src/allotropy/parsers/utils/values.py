@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 import math
 import re
 from typing import Any, TypeVar
@@ -120,6 +121,16 @@ def assert_not_none(
 ) -> T:
     if value is None:
         msg = msg or f"Expected non-null value{f' for {name}' if name else ''}."
+        raise AllotropeConversionError(msg)
+    return value
+
+
+Type_ = Callable[..., T]
+
+
+def assert_is_type(value: Any, type_: Type_[T], msg: str | None = None) -> T:
+    if not isinstance(value, type_):
+        msg = msg or f"Expected value: '{value}' to be of type {type_}"
         raise AllotropeConversionError(msg)
     return value
 

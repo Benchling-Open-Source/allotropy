@@ -18,6 +18,7 @@ from allotropy.exceptions import (
 )
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
+    assert_is_type,
     assert_not_none,
     str_to_bool,
 )
@@ -92,8 +93,10 @@ def read_csv(
     except Exception as e:
         msg = f"Error calling pd.read_csv(): {e}"
         raise AllotropeParsingError(msg) from e
-    return _df_or_bust(
-        df_or_reader, "pd.read_csv() returned a TextFileReader, which is not supported."
+    return assert_is_type(
+        df_or_reader,
+        pd.DataFrame,
+        "pd.read_csv() returned a TextFileReader, which is not supported.",
     )
 
 
@@ -110,13 +113,21 @@ def read_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return _df_or_bust(df_or_dict, "Expected a single-sheet Excel file.")
+    return assert_is_type(
+        df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file."
+    )
 
 
-def _df_or_bust(possible_df: Any, error_message: str) -> pd.DataFrame:
-    if isinstance(possible_df, pd.DataFrame):
-        return possible_df
-    raise AllotropeConversionError(error_message)
+def read_multisheet_excel(
+    io: str | IOType,
+    **kwargs: Any,
+) -> dict[str, pd.DataFrame]:
+    try:
+        df_or_dict = pd.read_excel(io, sheet_name=None, **kwargs)
+    except Exception as e:
+        msg = f"Error calling pd.read_excel(): {e}"
+        raise AllotropeParsingError(msg) from e
+    return assert_is_type(df_or_dict, dict, "Expected a multi-sheet Excel file.")
 
 
 T = TypeVar("T", bool, float, int, str)

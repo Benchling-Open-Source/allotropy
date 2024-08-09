@@ -21,7 +21,12 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Experime
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
-from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    map_rows,
+    read_csv,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_int
 
@@ -180,10 +185,10 @@ class Well:
     items: list[WellItem]
 
     @staticmethod
-    def create_genotyping(series: pd.Series[Any]) -> Well:
+    def create_genotyping(data: SeriesData) -> Well:
         return Well(
-            identifier=try_int(str(series.name), "well id"),
-            items=list(WellItem.create_genotyping(SeriesData(series))),
+            identifier=try_int(str(data.series.name), "well id"),
+            items=list(WellItem.create_genotyping(data)),
         )
 
     @staticmethod
@@ -209,7 +214,7 @@ class Well:
         data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return list(data.apply(Well.create_genotyping, axis="columns"))  # type: ignore[call-overload]
+            return map_rows(data, Well.create_genotyping)
         else:
             return list(
                 map_wells(
