@@ -96,16 +96,27 @@ class RocheCedexBiohtParser(VendorParser):
         measurement_document = []
 
         for measurement_time, measurements in sample.measurements.items():
-            if doc := self._create_sample_measurement(sample, measurement_time, {k: v for k, v in measurements.items() if k == OPTICAL_DENSITY}):
+            if doc := self._create_sample_measurement(
+                sample,
+                measurement_time,
+                {k: v for k, v in measurements.items() if k == OPTICAL_DENSITY},
+            ):
                 measurement_document.append(doc)
-            if doc := self._create_sample_measurement(sample, measurement_time, {k: v for k, v in measurements.items() if k != OPTICAL_DENSITY}):
+            if doc := self._create_sample_measurement(
+                sample,
+                measurement_time,
+                {k: v for k, v in measurements.items() if k != OPTICAL_DENSITY},
+            ):
                 measurement_document.append(doc)
 
         return measurement_document
 
     def _create_sample_measurement(
-        self, sample: Sample, measurement_time: str, measurements: dict[str, Measurement]
-    ) -> MeasurementDocument:
+        self,
+        sample: Sample,
+        measurement_time: str,
+        measurements: dict[str, Measurement],
+    ) -> MeasurementDocument | None:
         if not measurements:
             return None
 
@@ -124,8 +135,10 @@ class RocheCedexBiohtParser(VendorParser):
         )
 
         if OPTICAL_DENSITY in measurements:
-            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(value=measurements[OPTICAL_DENSITY].concentration_value)
-            if measurement_document.absorbance.value in (None, NaN):
+            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
+                value=measurements[OPTICAL_DENSITY].concentration_value
+            )
+            if measurement_document.absorbance.value is NaN:
                 return None
         else:
             measurement_document.analyte_aggregate_document = AnalyteAggregateDocument(
@@ -137,7 +150,7 @@ class RocheCedexBiohtParser(VendorParser):
                         ),
                     )
                     for name in sorted(measurements)
-                    if measurements[name].concentration_value not in (None, NaN)
+                    if measurements[name].concentration_value is not NaN
                 ]
             )
             if not measurement_document.analyte_aggregate_document.analyte_document:

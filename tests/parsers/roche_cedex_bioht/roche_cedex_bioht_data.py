@@ -1,5 +1,4 @@
 # mypy: disallow_any_generics = False
-from collections import defaultdict
 from io import StringIO
 
 import pandas as pd
@@ -19,8 +18,6 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     SolutionAnalyzerDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueOpticalDensity,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimolePerLiter,
 )

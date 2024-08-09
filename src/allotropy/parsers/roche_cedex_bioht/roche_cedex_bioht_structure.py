@@ -25,8 +25,7 @@ class Title:
     data_processing_time: str
     analyst: str
     device_serial_number: str
-    model_number: str | None
-    device_serial_number: str | None
+    model_number: str | None = None
     software_version: str | None = None
 
     @staticmethod
@@ -44,12 +43,16 @@ class Title:
 class Measurement:
     name: str
     measurement_time: str
-    concentration_value: JsonFloat = None
+    concentration_value: JsonFloat
     unit: str | None = None
 
     @staticmethod
     def create(data: SeriesData) -> Measurement:
-        concentration_value = NaN if BELOW_TEST_RANGE in data.get(str, "flag", "") else data.get(float, "concentration value", NaN)
+        concentration_value = (
+            NaN
+            if BELOW_TEST_RANGE in data.get(str, "flag", "")
+            else data.get(float, "concentration value", NaN)
+        )
         return Measurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
@@ -75,14 +78,15 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, Measurement]]
         if time_diff > MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE:
             current_measurement_time = analyte.measurement_time
         if analyte.name in groups[current_measurement_time]:
-            if analyte.concentration_value in (None, NaN):
+            if analyte.concentration_value is NaN:
                 continue
             # NOTE: if this fails, it's probably because MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE is too big
             # and we're erroneously grouping two groups of measurements into one.
             # We could potentially make this more robust by just splitting into a new group if a duplicate
             # measurement is found, but cross that bridge when we come to it.
             if (
-                groups[current_measurement_time][analyte.name].concentration_value not in (None, NaN)
+                groups[current_measurement_time][analyte.name].concentration_value
+                is not NaN
             ):
                 msg = f"Duplicate measurement for {analyte.name} in the same measurement group: {analyte.concentration_value} vs {groups[current_measurement_time][analyte.name].concentration_value}"
                 raise AllotropyParserError(msg)
