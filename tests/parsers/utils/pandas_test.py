@@ -4,8 +4,54 @@ import pandas as pd
 import pytest
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
-from allotropy.exceptions import AllotropeConversionError
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
+from allotropy.parsers.utils.pandas import read_csv, read_excel, SeriesData
+
+EXPECTED_DATA_FRAME = pd.DataFrame({"Hello": ["World"]})
+TESTDATA = "tests/parsers/utils/testdata"
+CSV_FILE = f"{TESTDATA}/HelloWorld.csv"
+EXCEL_FILE = f"{TESTDATA}/HelloWorld.xlsx"
+EXCEL_FILE_TWO_SHEETS = f"{TESTDATA}/HelloWorldTwoSheets.xlsx"
+
+
+def test_read_csv() -> None:
+    pd.testing.assert_frame_equal(read_csv(CSV_FILE), EXPECTED_DATA_FRAME)
+
+
+def test_read_csv_fails_parsing() -> None:
+    expected_regex = re.escape(
+        "Error calling pd.read_csv(): 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte"
+    )
+    with pytest.raises(AllotropeParsingError, match=expected_regex):
+        read_csv(EXCEL_FILE)
+
+
+def test_read_csv_fails_invalid_output() -> None:
+    expected_regex = re.escape(
+        "pd.read_csv() returned a TextFileReader, which is not supported."
+    )
+    with pytest.raises(AllotropeConversionError, match=expected_regex):
+        read_csv(CSV_FILE, iterator=True)
+
+
+@pytest.mark.parametrize("filename", [EXCEL_FILE, EXCEL_FILE_TWO_SHEETS])
+def test_read_excel(filename: str) -> None:
+    pd.testing.assert_frame_equal(read_excel(filename), EXPECTED_DATA_FRAME)
+
+
+def test_read_excel_fails_parsing() -> None:
+    expected_regex = re.escape(
+        "Error calling pd.read_excel(): Missing column provided to 'parse_dates': 'MissingColumn' (sheet: 0)"
+    )
+    with pytest.raises(AllotropeParsingError, match=expected_regex):
+        read_excel(EXCEL_FILE, parse_dates=["MissingColumn"])
+
+
+def test_read_excel_fails_invalid_output() -> None:
+    with pytest.raises(
+        AllotropeConversionError, match="Expected a single-sheet Excel file."
+    ):
+        read_excel(EXCEL_FILE_TWO_SHEETS, sheet_name=[0, 1])
 
 
 @pytest.mark.short

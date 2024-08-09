@@ -6,16 +6,23 @@ import re
 from typing import Any, Literal, overload, TypeVar
 
 import pandas as pd
+from pandas._typing import FilePath, ReadCsvBuffer
 
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
 )
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    AllotropeParsingError,
+    AllotropyParserError,
+)
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
+    assert_is_type,
     assert_not_none,
     str_to_bool,
 )
+from allotropy.types import IOType
 
 MapType = TypeVar("MapType")
 
@@ -63,6 +70,64 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     if df.empty:
         raise AllotropeConversionError(msg)
     return df
+
+
+def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
+    try:
+        return df[key]
+    except KeyError as e:
+        msg = f"Unable to find key '{key}' in dataframe headers: {df.columns.tolist()}"
+        raise AllotropeConversionError(msg) from e
+
+
+def read_csv(
+    # types for filepath_or_buffer match those in pd.read_csv()
+    filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
+    **kwargs: Any,
+) -> pd.DataFrame:
+    """Wrap pd.read_csv() and raise AllotropeParsingError for failures.
+
+    pd.read_csv() can return a DataFrame or TextFileReader. The latter is intentionally not supported."""
+    try:
+        df_or_reader = pd.read_csv(filepath_or_buffer, **kwargs)
+    except Exception as e:
+        msg = f"Error calling pd.read_csv(): {e}"
+        raise AllotropeParsingError(msg) from e
+    return assert_is_type(
+        df_or_reader,
+        pd.DataFrame,
+        "pd.read_csv() returned a TextFileReader, which is not supported.",
+    )
+
+
+def read_excel(
+    # io is untyped in pd.read_excel(), but this seems reasonable.
+    io: str | IOType,
+    **kwargs: Any,
+) -> pd.DataFrame:
+    """Wrap pd.read_excel() and raise AllotropeParsingError for failures.
+
+    pd.read_excel() can return a DataFrame or a dictionary of DataFrames. The latter is intentionally not supported."""
+    try:
+        df_or_dict = pd.read_excel(io, **kwargs)
+    except Exception as e:
+        msg = f"Error calling pd.read_excel(): {e}"
+        raise AllotropeParsingError(msg) from e
+    return assert_is_type(
+        df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file."
+    )
+
+
+def read_multisheet_excel(
+    io: str | IOType,
+    **kwargs: Any,
+) -> dict[str, pd.DataFrame]:
+    try:
+        df_or_dict = pd.read_excel(io, sheet_name=None, **kwargs)
+    except Exception as e:
+        msg = f"Error calling pd.read_excel(): {e}"
+        raise AllotropeParsingError(msg) from e
+    return assert_is_type(df_or_dict, dict, "Expected a multi-sheet Excel file.")
 
 
 T = TypeVar("T", bool, float, int, str)

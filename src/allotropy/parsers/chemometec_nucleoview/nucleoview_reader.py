@@ -1,6 +1,6 @@
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
+from allotropy.parsers.utils.pandas import read_csv
 from allotropy.types import IOType
 
 

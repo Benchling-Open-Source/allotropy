@@ -7,10 +7,9 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
