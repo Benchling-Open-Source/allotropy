@@ -3,29 +3,34 @@ from enum import Enum
 from typing import Any, TypeVar
 
 
+# Base exception for errors raised by allotropy.
+class AllotropyError(Exception):
+    ...
+
+
 # Unexpected error when reading input data.
-class AllotropeParsingError(Exception):
-    pass
+class AllotropeParsingError(AllotropyError):
+    ...
 
 
 # Unexpected error when validating output against schema.
-class AllotropeValidationError(Exception):
-    pass
+class AllotropeValidationError(AllotropyError):
+    ...
 
 
 # Unexpected error when converting allotropy dataclass model to json.
-class AllotropeSerializationError(Exception):
-    pass
+class AllotropeSerializationError(AllotropyError):
+    ...
 
 
 # Expected error caused by a programming error, indicating a bug.
-class AllotropyParserError(Exception):
-    pass
+class AllotropyParserError(AllotropyError):
+    ...
 
 
 # Expected error caused by bad input data, with a message telling user what the problem is.
-class AllotropeConversionError(Exception):
-    pass
+class AllotropeConversionError(AllotropyError):
+    ...
 
 
 def list_values(values: Collection[Any] | type[Enum]) -> list[str]:

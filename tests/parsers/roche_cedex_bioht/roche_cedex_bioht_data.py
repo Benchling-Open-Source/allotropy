@@ -20,9 +20,8 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
-    Analyte,
-    AnalyteList,
     Data,
+    Measurement,
     Sample,
     Title,
 )
@@ -163,29 +162,16 @@ def get_data() -> Data:
         samples=[
             Sample(
                 name="PPDTEST1",
-                measurement_time="2021-05-20 16:55:51",
-                analyte_list=AnalyteList(
-                    analytes=[
-                        Analyte("ammonia", 1.846, "mmol/L"),
-                        Analyte("glutamine", 2.45, "mmol/L"),
-                    ],
-                    molar_concentration_dict={
-                        "ammonia": [
-                            TNullableQuantityValueMillimolePerLiter(
-                                value=1.846,
-                            )
-                        ],
-                        "glutamine": [
-                            TNullableQuantityValueMillimolePerLiter(
-                                value=2.45,
-                            )
-                        ],
-                    },
-                    molar_concentration_nans={},
-                    non_aggregrable_dict={},
-                    non_aggregable_nans={},
-                    num_measurement_docs=1,
-                ),
+                measurements={
+                    "2021-05-20 16:55:51": {
+                        "ammonia": Measurement(
+                            "ammonia", "2021-05-20 16:55:51", 1.846, "mmol/L"
+                        ),
+                        "glutamine": Measurement(
+                            "glutamine", "2021-05-20 16:55:51", 2.45, "mmol/L"
+                        ),
+                    }
+                },
             )
         ],
     )
