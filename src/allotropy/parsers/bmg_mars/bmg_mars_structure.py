@@ -17,8 +17,6 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
-RE_READ_TYPE = r"Fluorescence \(FP\)(?=,)|^Fluorescence(?=,)|^Fluorescence \(FI\)(?=,)|^Absorbance(?=,)|^Time resolved fluorescence \(dual emission\)(?=,)"
-
 
 class ReadType(Enum):
     ABSORBANCE = "Absorbance"

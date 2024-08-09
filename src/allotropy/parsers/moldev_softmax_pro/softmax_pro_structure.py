@@ -11,7 +11,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import (
     AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
+    get_key_or_error,
 )
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData
@@ -196,12 +196,12 @@ class GroupColumns:
         )
 
         if "Formula Name" not in data:
-            error = "Unable to find formula name in group block columns."
-            raise AllotropeConversionError(error)
+            msg = "Unable to find 'Formula Name' in group block columns."
+            raise AllotropeConversionError(msg)
 
         if "Formula" not in data:
-            error = "Unable to find formula in group block columns."
-            raise AllotropeConversionError(error)
+            msg = "Unable to find 'Formula' in group block columns."
+            raise AllotropeConversionError(msg)
 
         return GroupColumns(
             data=dict(zip(data["Formula Name"], data["Formula"], strict=True)),
@@ -613,13 +613,7 @@ class PlateBlock(ABC, Block):
             "Luminescence": LuminescencePlateBlock,
         }
         read_mode = header_series[5]
-        cls = plate_block_cls.get(read_mode or "")
-        if cls is None:
-            msg = msg_for_error_on_unrecognized_value(
-                "read mode", read_mode, plate_block_cls.keys()
-            )
-            raise AllotropeConversionError(msg)
-        return cls
+        return get_key_or_error("read mode", read_mode, plate_block_cls)
 
     @staticmethod
     @abstractmethod
@@ -633,28 +627,28 @@ class PlateBlock(ABC, Block):
     @classmethod
     def check_export_version(cls, export_version: str) -> None:
         if export_version != EXPORT_VERSION:
-            error = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
-            raise AllotropeConversionError(error)
+            msg = f"Unsupported export version {export_version}; only {EXPORT_VERSION} is supported."
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def check_read_type(cls, read_type: str) -> None:
         if read_type != ReadType.ENDPOINT.value:
-            error = "Only Endpoint measurements can be processed at this time."
-            raise AllotropeConversionError(error)
+            msg = f"Only Endpoint measurements can be processed at this time, got: {read_type}"
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def check_data_type(cls, data_type: str) -> None:
         if data_type not in (DataType.RAW.value, DataType.BOTH.value):
-            error = "The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates"
-            raise AllotropeConversionError(error)
+            msg = f"The SoftMax Pro file is required to include either 'Raw' or 'Both' (Raw and Reduced) data for all plates, got {data_type}."
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def check_num_wavelengths(
         cls, wavelengths: list[float], num_wavelengths: int
     ) -> None:
         if len(wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of wavelength values."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find expected number of wavelength values, expected {num_wavelengths}, found {len(wavelengths)}."
+            raise AllotropeConversionError(msg)
 
     @classmethod
     def get_num_wavelengths(cls, num_wavelengths_raw: str | None) -> int:
@@ -745,8 +739,8 @@ class FluorescencePlateBlock(PlateBlock):
         ]
 
         if len(excitation_wavelengths) != num_wavelengths:
-            error = "Unable to find expected number of excitation values."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find expected number of excitation values, expected {num_wavelengths}, found {len(excitation_wavelengths)}"
+            raise AllotropeConversionError(msg)
 
         # cutoff filters is an optional field in the input file
         # if present it contains a list of string numbers separated by spaces
@@ -761,16 +755,16 @@ class FluorescencePlateBlock(PlateBlock):
 
         # if there are cutoff filters check that the size match number of wavelengths
         if cutoff_filters is not None and len(cutoff_filters) != num_wavelengths:
-            error = "Unable to find expected number of cutoff filter values."
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find expected number of cutoff filter values, expected {num_wavelengths}, found {len(cutoff_filters)}."
+            raise AllotropeConversionError(msg)
 
         if raw_scan_position == "TRUE":
             scan_position = ScanPosition.BOTTOM
         elif raw_scan_position == "FALSE":
             scan_position = ScanPosition.TOP
         else:
-            error = f"{raw_scan_position} is not a valid scan position."
-            raise AllotropeConversionError(error)
+            msg = f"{raw_scan_position} is not a valid scan position, expected 'TRUE' or 'FALSE'."
+            raise AllotropeConversionError(msg)
 
         num_wells = try_int(num_wells_raw, "num_wells")
         num_columns = num_wells_to_n_columns(num_wells)
@@ -961,14 +955,14 @@ class BlockList:
                 cls = PlateBlock.get_plate_block_cls(header_series)
                 header = cls.parse_header(header_series)
 
-                block_data: TimeData | PlateData
-                if header.export_format == ExportFormat.TIME_FORMAT.value:
-                    block_data = TimeData.create(sub_reader, header)
-                elif header.export_format == ExportFormat.PLATE_FORMAT.value:
-                    block_data = PlateData.create(sub_reader, header)
-                else:
-                    error = f"unrecognized export format {header.export_format}"
-                    raise AllotropeConversionError(error)
+                export_format_to_data_format = {
+                    ExportFormat.TIME_FORMAT.value: TimeData,
+                    ExportFormat.PLATE_FORMAT.value: PlateData,
+                }
+                data_format: type[TimeData] | type[PlateData] = get_key_or_error(
+                    "export format", header.export_format, export_format_to_data_format
+                )
+                block_data = data_format.create(sub_reader, header)
 
                 plate_blocks[header.name] = cls(
                     block_type="Plate",
@@ -976,8 +970,8 @@ class BlockList:
                     block_data=block_data,
                 )
             elif not sub_reader.match("^Note"):
-                error = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
-                raise AllotropeConversionError(error)
+                msg = f"Expected block '{sub_reader.get()}' to start with Group, Plate or Note."
+                raise AllotropeConversionError(msg)
 
         return BlockList(
             plate_blocks=plate_blocks,
@@ -989,7 +983,7 @@ class BlockList:
         start_line = reader.pop() or ""
         if search_result := re.search(BLOCKS_LINE_REGEX, start_line):
             return int(search_result.group(1))
-        msg = msg_for_error_on_unrecognized_value("start line", start_line)
+        msg = f"Unrecognized start line, expected a line starting with ##BLOCKS, got {start_line}"
         raise AllotropeConversionError(msg)
 
     @staticmethod

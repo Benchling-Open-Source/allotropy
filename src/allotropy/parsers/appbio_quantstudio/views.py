@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Iterator
 from typing import Generic, TypeVar
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropyParserError
 
 T = TypeVar("T")
 
@@ -41,13 +41,13 @@ class ViewData(Generic[T]):
         if isinstance(item, ViewData):
             return item
         msg = f"Unable to find sub view data with keys: {keys}."
-        raise AllotropeConversionError(msg)
+        raise AllotropyParserError(msg)
 
     def get_leaf_item(self, *keys: str) -> list[T]:
         item = self.get_item(*keys)
         if isinstance(item, ViewData):
             msg = f"Unable to find leaf item of view data with keys: {keys}."
-            raise AllotropeConversionError(msg)
+            raise AllotropyParserError(msg)
         return item
 
 

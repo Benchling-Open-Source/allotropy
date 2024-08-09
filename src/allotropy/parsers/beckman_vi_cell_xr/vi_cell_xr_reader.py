@@ -7,7 +7,8 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_excel
+from allotropy.allotrope.pandas_util import read_csv, read_excel
+from allotropy.exceptions import AllotropyParserError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
@@ -17,13 +18,13 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import df_to_series, SeriesData
 from allotropy.parsers.utils.values import assert_value_from_df
 
 
 @dataclass
 class ViCellData:
-    data: pd.DataFrame
+    data: list[SeriesData]
     file_info: SeriesData
 
 
@@ -37,7 +38,7 @@ def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
 
 
 class ViCellXRReader:
-    data: pd.DataFrame
+    data: list[SeriesData]
     series: SeriesData
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
@@ -55,7 +56,7 @@ class ViCellXRReader:
     def _read_excel(self, **kwargs: Any) -> pd.DataFrame:
         return read_excel(self.contents, engine=self.engine, **kwargs)
 
-    def _read_data(self) -> pd.DataFrame:
+    def _read_data(self) -> list[SeriesData]:
         header_row = 4
         if self.file_version == XrVersion._2_04:
             header_row = 3
@@ -78,16 +79,19 @@ class ViCellXRReader:
             errors="coerce",
         )
         file_data = file_data.dropna(subset=DATE_HEADER)
-
-        return file_data
+        return [SeriesData(x) for _, x in file_data.iterrows()]
 
     def _get_file_header(self, header_row: int) -> list[str]:
         """Combine the two rows that forms the header."""
-        header = self._read_excel(
-            nrows=2,
-            skiprows=header_row,
-            header=None,
-        ).fillna("")
+        header = (
+            self._read_excel(
+                nrows=2,
+                skiprows=header_row,
+                header=None,
+            )
+            .fillna("")
+            .astype(str)
+        )
 
         header_list: list[str] = header.agg(
             lambda x: " ".join(x).replace(" /ml", "/ml").strip()
@@ -102,9 +106,15 @@ class ViCellXRReader:
         return SeriesData(info)
 
     def _get_file_version(self) -> XrVersion:
-        match = re.match(MODEL_RE, self.file_info[str, "model"], flags=re.IGNORECASE)
+        raw_model = self.file_info.get(str, "model")
+        if not raw_model:
+            msg = f"Unable to retrive model from file info: {self.file_info}"
+            raise AllotropyParserError(msg)
+        match = re.match(MODEL_RE, raw_model, flags=re.IGNORECASE)
+        if not match:
+            return DEFAULT_VERSION
         try:
-            version = match.groupdict()["version"]  # type: ignore[union-attr]
+            version = match.groupdict()["version"]
         except AttributeError:
             return DEFAULT_VERSION
         # TODO: raise exception for unsupported versions
@@ -113,7 +123,7 @@ class ViCellXRReader:
 
 
 class ViCellXRTXTReader:
-    data: pd.DataFrame
+    data: list[SeriesData]
     series: SeriesData
 
     def __init__(self, contents: NamedFileContents) -> None:
@@ -121,42 +131,26 @@ class ViCellXRTXTReader:
         self.file_info = self._get_file_info()
         self.data = self._read_data()
 
-    def _read_data(self) -> pd.DataFrame:
-        # generate long, single column dataframe
-        file_data = pd.DataFrame(data=StringIO("\n".join(self.lines)))
-
-        # strip whitespace
-        file_data[0] = file_data[0].str.strip()
-
-        # drop empty cells
-        file_data = file_data.replace("", None).dropna(axis=0, how="all")
-
-        # split on colon surrounded by any amount of space, limited to one split to avoid destroying datetimes
-        file_data = file_data[file_data.columns[0]].str.split(
-            r"\s*:\s*", n=1, expand=True
+    def _read_data(self) -> list[SeriesData]:
+        data_frame = read_csv(
+            StringIO("\n".join(self.lines)), sep=" :", index_col=0, engine="python"
         )
-
-        # pivot the long data of a single sample to a df that is 1 wide row
-        file_data["Pivot Index"] = 1
-        file_data = file_data.pivot(index="Pivot Index", columns=0)
-
-        # rename the columns to match the existing parser that was based on xls(x) files
-        file_data.columns = pd.Index(
-            [
-                HEADINGS_TO_PARSER_HEADINGS.get(name, name)
-                for name in [x[1] for x in file_data.columns]
-            ]
+        file_data = df_to_series(
+            data_frame.astype(str).T, "Failed to parse input file."
         )
-
+        file_data = file_data.str.strip().replace("", None)
+        file_data.index = pd.Index(
+            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.index]
+        )
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
         file_data[DATE_HEADER] = pd.to_datetime(
-            file_data[DATE_HEADER].astype(str),
+            file_data[DATE_HEADER],
             format="%d %b %Y  %I:%M:%S %p",
             errors="coerce",
         )
 
-        return file_data
+        return [SeriesData(file_data)]
 
     def _get_file_info(self) -> SeriesData:
         data = self.lines

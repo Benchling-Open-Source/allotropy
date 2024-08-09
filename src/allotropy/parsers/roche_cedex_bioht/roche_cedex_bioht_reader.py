@@ -12,6 +12,7 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
     INFO_HEADER,
     SAMPLE_ROLE_TYPES,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.types import IOType
 
 
@@ -24,15 +25,17 @@ class RocheCedexBiohtReader:
         self.title_data = self.read_title_data(contents)
         self.samples_data = self.read_samples_data(contents)
 
-    def read_title_data(self, contents: IOType) -> pd.Series[Any]:
+    def read_title_data(self, contents: IOType) -> SeriesData:
         contents.seek(0)
-        return read_csv(
-            contents,
-            delimiter="\t",
-            usecols=INFO_HEADER,
-            names=INFO_HEADER,
-            nrows=1,
-        ).T[0]
+        return SeriesData(
+            read_csv(
+                contents,
+                delimiter="\t",
+                usecols=INFO_HEADER,
+                names=INFO_HEADER,
+                nrows=1,
+            ).T[0]
+        )
 
     def read_samples_data(self, contents: IOType) -> pd.DataFrame:
         contents.seek(0)

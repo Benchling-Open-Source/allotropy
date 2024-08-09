@@ -8,7 +8,10 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
     MeasurementGroup,
     Metadata,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DEFAULT_ANALYST,
     DEFAULT_VERSION,
@@ -18,7 +21,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -73,7 +76,9 @@ def create_data(reader_data: ViCellData, file_name: str) -> Data:
     except (AttributeError, AllotropeConversionError):
         version = DEFAULT_VERSION
     except ValueError as e:
-        msg = f"Invalid Beckman VI-Cell XR version: {version_str}"
+        msg = msg_for_error_on_unrecognized_value(
+            "Beckman VI-Cell XR version", version_str, XrVersion
+        )
         raise AllotropeConversionError(msg) from e
 
     metadata = Metadata(
@@ -86,4 +91,4 @@ def create_data(reader_data: ViCellData, file_name: str) -> Data:
         file_name=file_name,
     )
 
-    return Data(metadata, map_rows(reader_data.data, _create_measurement_group))
+    return Data(metadata, [_create_measurement_group(row) for row in reader_data.data])

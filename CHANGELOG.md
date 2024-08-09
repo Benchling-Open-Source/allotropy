@@ -8,14 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add plate id field to biorad bioplex
 - Add luminescence point detection, absorption spectrum detection, fluorescence emission detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
-
 - Add BMG MARS adapter
 
 
 ### Fixed
+- Handle comma as decimal place in float conversion utilities
+- Raise AllotropeConversionError on missing Results section in Agilent Gen5
+- Add error for multiple read modes in Agilent Gen5
+- Cast data to str before using in AppBio QuantStudio parser
+- Simplify VI-Cell XR text file reader, removing bug in pivot operation
+- Fix edge case where there are multiple measurements for a property in Roche Cedex Bioht
 
 ### Changed
+- Only return AllotropeConversionError when there is a problem with input data that we expect, add other errors for unexpected problems.
 
 ### Deprecated
 
@@ -559,7 +566,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Remove duplication of calculated documents related to quantity measurements in AppBio QuantStudio
-- Rename "qPRC detection chemistry" to "PRC detection chemistry" in PCR schemas
+- Rename "qPCR detection chemistry" to "PRC detection chemistry" in PCR schemas
 - Add missing @dataclass annotation to TQuantityValueNumberPerMicroliter
 
 ## [0.1.3] - 2023-10-03

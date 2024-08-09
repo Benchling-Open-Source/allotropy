@@ -94,10 +94,6 @@ class PerkinElmerEnvisionParser(VendorParser):
         return self._get_model(Data.create(reader), filename)
 
     def _get_model(self, data: Data, filename: str) -> Model:
-        if data.number_of_wells is None:
-            msg = "Unable to determine the number of wells in the plate."
-            raise AllotropeConversionError(msg)
-
         read_type = self._get_read_type(data)
 
         return Model(

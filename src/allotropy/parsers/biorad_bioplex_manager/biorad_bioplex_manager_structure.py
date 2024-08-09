@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from xml.etree import ElementTree
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.biorad_bioplex_manager.constants import (
     ACQ_TIME,
     ANALYTE_NAME,
@@ -232,6 +232,7 @@ class WellSystemLevelMetadata:
     controller_version: str
     user: str
     analytical_method: str
+    plate_id: str
     regions_of_interest: list[str] = field(default_factory=list)
 
     @staticmethod
@@ -242,6 +243,7 @@ class WellSystemLevelMetadata:
         )
         user = get_val_from_xml(xml_well, "User")
         analytical_method = get_val_from_xml(xml_well, "RunProtocolDocumentLocation")
+        plate_id = get_val_from_xml(xml_well, "PlateID")
         regions = get_element_from_xml(xml_well, RUN_SETTINGS, REGIONS_OF_INTEREST)
         regions_of_interest = []
         for region in regions:
@@ -252,6 +254,7 @@ class WellSystemLevelMetadata:
             controller_version=controller_version,
             user=user,
             analytical_method=analytical_method,
+            plate_id=plate_id,
             regions_of_interest=regions_of_interest,
         )
 
@@ -274,7 +277,7 @@ def validate_xml_structure(full_xml: ElementTree.Element) -> None:
     except ElementTree.ParseError as err:
         # Return all expected tags if XML parsing fails
         msg = "Error parsing xml"
-        raise AllotropeConversionError(msg) from err
+        raise AllotropyParserError(msg) from err
     if missing_tags:
         msg = f"Missing expected tags in xml: {missing_tags}"
         raise AllotropeConversionError(msg)

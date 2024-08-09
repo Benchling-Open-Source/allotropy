@@ -36,6 +36,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     MULTIPLATE_FILE_ERROR,
+    MULTIPLE_READ_MODE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
@@ -43,7 +44,8 @@ from allotropy.parsers.agilent_gen5.constants import (
     READ_SPEED_KEY,
     ReadMode,
     ReadType,
-    UNSUPORTED_READ_TYPE_ERROR,
+    UNSUPPORTED_READ_MODE_ERROR,
+    UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
@@ -185,7 +187,7 @@ class ReadData:
         procedure_details = "\n".join(procedure_lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
-            raise AllotropeConversionError(UNSUPORTED_READ_TYPE_ERROR)
+            raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
         device_control_data = cls._get_device_control_data(procedure_details, read_mode)
@@ -212,18 +214,17 @@ class ReadData:
 
     @staticmethod
     def get_read_mode(procedure_details: str) -> ReadMode:
-        if ReadMode.ABSORBANCE.value in procedure_details:
-            return ReadMode.ABSORBANCE
-        elif (
-            ReadMode.FLUORESCENCE.value in procedure_details
-            or ReadMode.ALPHALISA.value in procedure_details
-        ):
-            return ReadMode.FLUORESCENCE
-        elif ReadMode.LUMINESCENCE.value in procedure_details:
-            return ReadMode.LUMINESCENCE
+        read_modes = [
+            read_mode for read_mode in ReadMode if read_mode.value in procedure_details
+        ]
+        if not read_modes:
+            raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
+        if len(read_modes) > 1:
+            raise AllotropeConversionError(MULTIPLE_READ_MODE_ERROR)
 
-        msg = f"Read mode not found; expected to find one of {sorted(ReadMode._member_names_)}."
-        raise AllotropeConversionError(msg)
+        if read_modes[0] in (ReadMode.FLUORESCENCE, ReadMode.ALPHALISA):
+            return ReadMode.FLUORESCENCE
+        return read_modes[0]
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
@@ -605,9 +606,13 @@ def create_data(reader: SectionLinesReader, file_name: str) -> Data:
     while plates[0].current_line_exists():
         data_section = read_data_section(plates[0])
         section_lines[data_section[0].strip().split(":")[0]] = data_section
+    if "Results" not in section_lines:
+        msg = "Missing 'Results' section"
+        raise AllotropeConversionError(msg)
 
     sample_identifiers = get_identifiers(section_lines.get("Layout"))
     actual_temperature = get_temperature(section_lines.get("Actual Temperature"))
+
     measurement_groups, calculated_data = create_results(
         section_lines["Results"],
         header_data,

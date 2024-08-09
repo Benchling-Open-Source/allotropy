@@ -11,7 +11,7 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     TransmittedLightSetting,
 )
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -117,7 +117,7 @@ class AnalysisResult:
                 reader.pop_csv_block_as_df(header=0, index_col=0),
                 msg="Unable to find results table.",
             )
-        except AllotropeConversionError:
+        except AllotropeParsingError:
             logging.warning(
                 f"Unable to read analysis result '{analysis_parameter}'. Ignoring"
             )
@@ -294,21 +294,24 @@ class Measurements:
 
     @staticmethod
     def create_channels(elements: list[MeasurementElement]) -> list[Channel]:
-        try:
-            return [
-                Channel.create(
-                    name=elements[idx],
-                    excitation_wavelength=elements[idx + 1],
-                    excitation_power=elements[idx + 2],
-                    exposure_time=elements[idx + 3],
-                    additional_focus_offset=elements[idx + 4],
+        channels: list[Channel] = []
+        for idx, element in enumerate(elements):
+            if element.title != "Channel":
+                continue
+            try:
+                channels.append(
+                    Channel.create(
+                        name=elements[idx],
+                        excitation_wavelength=elements[idx + 1],
+                        excitation_power=elements[idx + 2],
+                        exposure_time=elements[idx + 3],
+                        additional_focus_offset=elements[idx + 4],
+                    )
                 )
-                for idx, element in enumerate(elements)
-                if element.title == "Channel"
-            ]
-        except IndexError as e:
-            msg = "Unable to get channel elements from Measurement section."
-            raise AllotropeConversionError(msg) from e
+            except IndexError as e:
+                msg = f"Unable to get channel data for channel {element.value}"
+                raise AllotropeConversionError(msg) from e
+        return channels
 
     @staticmethod
     def try_element_or_none(
