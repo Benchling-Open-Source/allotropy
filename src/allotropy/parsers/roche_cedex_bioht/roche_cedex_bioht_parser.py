@@ -7,7 +7,6 @@ from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.ce
     Model,
     SampleDocument,
 )
-from allotropy.exceptions import get_key_or_error
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.roche_cedex_bioht.constants import (
@@ -19,7 +18,6 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -83,7 +81,9 @@ class RocheCedexBiohtParser(VendorParser):
                         doc, name, analyte_cls(value=measurement.concentration_value)
                     )
                 else:
-                    molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(measurement.unit or "")
+                    molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(
+                        measurement.unit or ""
+                    )
                     if not molar_concentration_item_cls:
                         continue
                     analyte_documents.append(
