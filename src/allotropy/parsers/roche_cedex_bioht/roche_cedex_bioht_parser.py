@@ -11,7 +11,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
-    NON_AGGREGABLE_PROPERTIES,
+    NON_ANALYTE_PROPERTIES,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
@@ -62,54 +62,35 @@ class RocheCedexBiohtParser(VendorParser):
     ) -> list[MeasurementDocumentItem]:
         docs: list[MeasurementDocumentItem] = []
 
-        for measurement_time, measurements in sample.analyte_list.measurements.items():
+        for measurement_time, measurements in sample.measurements.items():
             doc = MeasurementDocumentItem(
                 sample_document=SampleDocument(
                     sample_identifier=sample.name,
                     batch_identifier=sample.batch,
                 ),
                 measurement_time=self._get_date_time(measurement_time),
-                analyte_aggregate_document=AnalyteAggregateDocument(analyte_document=[]),
+                analyte_aggregate_document=AnalyteAggregateDocument(
+                    analyte_document=[]
+                ),
             )
             for name in sorted(measurements):
-                analyte = measurements[name]
-                if analyte_cls := NON_AGGREGABLE_PROPERTIES.get(name):
-                    setattr(doc, name, analyte_cls(value=analyte.concentration_value))
+                measurement = measurements[name]
+                if analyte_cls := NON_ANALYTE_PROPERTIES.get(name):
+                    setattr(
+                        doc, name, analyte_cls(value=measurement.concentration_value)
+                    )
                 else:
-                    molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(analyte.unit)
+                    molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(
+                        measurement.unit
+                    )
                     doc.analyte_aggregate_document.analyte_document.append(
                         AnalyteDocumentItem(
                             analyte_name=name,
-                            molar_concentration=molar_concentration_item_cls(value=analyte.concentration_value),
+                            molar_concentration=molar_concentration_item_cls(
+                                value=measurement.concentration_value
+                            ),
                         )
                     )
             docs.append(doc)
 
         return docs
-
-        sample_measurements = [
-            self._create_sample_measurement(sample)
-            for _ in range(sample.analyte_list.num_measurement_docs)
-        ]
-
-        for (
-            analyte_name,
-            molar_concentrations,
-        ) in sample.analyte_list.molar_concentration_dict.items():
-            for sample_measurement, molar_concentration in zip(
-                sample_measurements, molar_concentrations, strict=True
-            ):
-                sample_measurement.analyte_aggregate_document.analyte_document.append(  # type: ignore[union-attr]
-                    AnalyteDocumentItem(
-                        analyte_name=analyte_name,
-                        molar_concentration=molar_concentration,
-                    )
-                )
-
-        for analyte_name, values in sample.analyte_list.non_aggregrable_dict.items():
-            for sample_measurement, value in zip(
-                sample_measurements, values, strict=True
-            ):
-                setattr(sample_measurement, analyte_name, value)
-
-        return sample_measurements
