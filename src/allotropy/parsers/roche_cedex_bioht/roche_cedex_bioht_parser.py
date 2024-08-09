@@ -83,20 +83,13 @@ class RocheCedexBiohtParser(VendorParser):
                         doc, name, analyte_cls(value=measurement.concentration_value)
                     )
                 else:
-                    molar_concentration_item_cls = (
-                        get_key_or_error(
-                            "molar concentration unit",
-                            assert_not_none(
-                                measurement.unit,
-                                f"Expected unit to be specified for analyte {name}",
-                            ),
-                            MOLAR_CONCENTRATION_CLS_BY_UNIT,
-                        ),
-                    )
+                    molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(measurement.unit or "")
+                    if not molar_concentration_item_cls:
+                        continue
                     analyte_documents.append(
                         AnalyteDocumentItem(
                             analyte_name=name,
-                            molar_concentration=molar_concentration_item_cls(  # type: ignore[operator]
+                            molar_concentration=molar_concentration_item_cls(
                                 value=measurement.concentration_value
                             ),
                         )
