@@ -138,6 +138,7 @@ class RocheCedexBiohtParser(VendorParser):
             measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
                 value=measurements[OPTICAL_DENSITY].concentration_value
             )
+            # TODO: add error document and set to sentinel value once error docs are added.
             if measurement_document.absorbance.value is NaN:
                 return None
         else:
@@ -150,6 +151,7 @@ class RocheCedexBiohtParser(VendorParser):
                         ),
                     )
                     for name in sorted(measurements)
+                    # TODO: add error document and set to sentinel value once error docs are added.
                     if measurements[name].concentration_value is not NaN
                 ]
             )
