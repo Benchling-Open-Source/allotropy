@@ -1,14 +1,11 @@
 import pandas as pd
 import pytest
 
-from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueMilliOsmolesPerKilogram,
-)
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
-    Analyte,
-    AnalyteList,
+    create_measurements,
     Data,
+    Measurement,
     Sample,
     Title,
 )
@@ -71,74 +68,122 @@ def test_create_title_with_no_serial_number() -> None:
 
 
 @pytest.mark.short
-def test_create_analyte() -> None:
-    data = pd.Series(
-        {
-            "analyte name": "glutamine",
-            "concentration value": 2.45,
-            "concentration unit": "mmol/L",
-        }
+def test_create_measurement() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "analyte name": "glutamine",
+                "measurement time": "2021-05-20T16:55:51+00:00",
+                "concentration value": 2.45,
+                "concentration unit": "mmol/L",
+            }
+        )
     )
-    analyte = Analyte.create(data)
-    assert analyte.name == "glutamine"
-    assert analyte.concentration_value == 2.45
-    assert analyte.unit == "mmol/L"
+    measurement = Measurement.create(data)
+    assert measurement.name == "glutamine"
+    assert measurement.measurement_time == "2021-05-20T16:55:51+00:00"
+    assert measurement.concentration_value == 2.45
+    assert measurement.unit == "mmol/L"
 
 
 @pytest.mark.short
-def test_create_analyte_with_no_unit() -> None:
-    data = pd.Series(
-        {
-            "analyte name": "aspartate",
-            "concentration value": 1.45,
-        }
+def test_create_measurement_with_no_unit() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "analyte name": "aspartate",
+                "measurement time": "2021-05-20T16:55:51+00:00",
+                "concentration value": 1.45,
+            }
+        )
     )
-    analyte = Analyte.create(data)
-    assert analyte.name == "aspartate"
-    assert analyte.concentration_value == 1.45
-    assert analyte.unit is None
+    measurement = Measurement.create(data)
+    assert measurement.name == "aspartate"
+    assert measurement.measurement_time == "2021-05-20T16:55:51+00:00"
+    assert measurement.concentration_value == 1.45
+    assert measurement.unit is None
 
 
 @pytest.mark.short
-def test_create_analyte_list() -> None:
+def test_create_measurements() -> None:
     data = pd.DataFrame(
         {
             "analyte name": ["lactate", "glutamine", "osmolality"],
+            "measurement time": [
+                "2021-05-20T16:55:51+00:00",
+                "2021-05-20T16:56:51+00:00",
+                "2021-05-20T16:57:51+00:00",
+            ],
             "concentration unit": ["g/L", "mmol/L", "mosm/kg"],
             "concentration value": [2.45, 4.35, 3.7448],
         }
     )
-    analyte_list = AnalyteList.create(data)
+    measurements = create_measurements(data)
 
-    assert analyte_list.analytes == [
-        Analyte("lactate", 2.45, "g/L"),
-        Analyte("glutamine", 4.35, "mmol/L"),
-        Analyte("osmolality", 3.7448, "mosm/kg"),
-    ]
-    assert analyte_list.non_aggregrable_dict == {
-        "osmolality": [TNullableQuantityValueMilliOsmolesPerKilogram(value=3.7448)]
+    assert measurements == {
+        "2021-05-20T16:55:51+00:00": {
+            "lactate": Measurement("lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"),
+            "glutamine": Measurement(
+                "glutamine", "2021-05-20T16:56:51+00:00", 4.35, "mmol/L"
+            ),
+            "osmolality": Measurement(
+                "osmolality", "2021-05-20T16:57:51+00:00", 3.7448, "mosm/kg"
+            ),
+        }
     }
-    assert analyte_list.num_measurement_docs == 1
 
 
 @pytest.mark.short
-def test_create_analyte_list_more_than_one_mesurement_docs() -> None:
+def test_create_measurements_more_than_one_measurement_docs() -> None:
     data = pd.DataFrame(
         {
             "analyte name": ["lactate", "glutamine", "glutamine"],
+            "measurement time": [
+                "2021-05-20T16:55:51+00:00",
+                "2021-05-20T16:56:51+00:00",
+                "2021-05-21T16:57:51+00:00",
+            ],
             "concentration unit": ["g/L", "mmol/L", "mmol/L"],
             "concentration value": [2.45, 4.35, 3.45],
         },
     )
-    analyte_list = AnalyteList.create(data)
+    measurements = create_measurements(data)
 
-    assert analyte_list.analytes == [
-        Analyte("lactate", 2.45, "g/L"),
-        Analyte("glutamine", 4.35, "mmol/L"),
-        Analyte("glutamine", 3.45, "mmol/L"),
-    ]
-    assert analyte_list.num_measurement_docs == 2
-    assert analyte_list.non_aggregrable_dict == {}
+    assert measurements == {
+        "2021-05-20T16:55:51+00:00": {
+            "lactate": Measurement("lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"),
+            "glutamine": Measurement(
+                "glutamine", "2021-05-20T16:56:51+00:00", 4.35, "mmol/L"
+            ),
+        },
+        "2021-05-21T16:57:51+00:00": {
+            "glutamine": Measurement(
+                "glutamine", "2021-05-21T16:57:51+00:00", 3.45, "mmol/L"
+            ),
+        },
+    }
+
+
+@pytest.mark.short
+def test_create_measurements_duplicate_measurements() -> None:
+    data = pd.DataFrame(
+        {
+            "analyte name": ["lactate", "glutamine", "glutamine"],
+            "measurement time": [
+                "2021-05-20T16:55:51+00:00",
+                "2021-05-20T16:56:51+00:00",
+                "2021-05-20T16:57:51+00:00",
+            ],
+            "concentration unit": ["g/L", "mmol/L", "mmol/L"],
+            "concentration value": [2.45, 4.35, 3.45],
+        },
+    )
+
+    with pytest.raises(
+        AllotropyParserError,
+        match="Duplicate measurement for glutamine in the same measurement group.",
+    ):
+        create_measurements(data)
 
 
 @pytest.mark.short
@@ -164,8 +209,14 @@ def test_create_sample() -> None:
     )
     assert sample.name == "PPDTEST1"
     assert sample.batch == "batch_id"
-    assert sample.measurement_time == "2021-05-20 16:56:51"
-    assert len(sample.analyte_list.analytes) == 2
+    assert sample.measurements == {
+        "2021-05-20 16:55:51": {
+            "lactate": Measurement("lactate", "2021-05-20 16:55:51", 2.45, "g/L"),
+            "glutamine": Measurement(
+                "glutamine", "2021-05-20 16:56:51", 4.35, "mmol/L"
+            ),
+        }
+    }
 
 
 @pytest.mark.short
