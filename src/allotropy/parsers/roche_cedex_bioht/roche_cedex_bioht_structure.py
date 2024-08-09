@@ -69,7 +69,7 @@ class AnalyteList:
         previous_measurement_time = current_measurement_time
         for analyte in analytes:
             time_diff = parser.parse(analyte.measurement_time) - parser.parse(previous_measurement_time)
-            if time_diff > timedelta(hours=1):
+            if time_diff > timedelta(minutes=5):
                 current_measurement_time = analyte.measurement_time
             if analyte.concentration_value is None and analyte.name in measurements[current_measurement_time]:
                 continue
