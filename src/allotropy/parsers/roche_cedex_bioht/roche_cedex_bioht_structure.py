@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from datetime import timedelta
 
+from dateutil import parser
 import pandas as pd
 
 from allotropy.parsers.roche_cedex_bioht.constants import (
@@ -37,30 +39,43 @@ class Title:
 @dataclass(frozen=True)
 class Analyte:
     name: str
+    measurement_time: str
     concentration_value: float | None
     unit: str | None
 
     @staticmethod
     def create(data: pd.Series) -> Analyte:
         analyte_name: str = data.get("analyte name")  # type: ignore[assignment]
+        measurement_time: str = data.get("measurement time")  # type: ignore[assignment]
         concentration_value: float | None = data.get("concentration value")  # type: ignore[assignment]
         unit: str | None = data.get("concentration unit")  # type: ignore[assignment]
 
-        return Analyte(analyte_name, concentration_value, unit)
+        return Analyte(analyte_name, measurement_time, concentration_value, unit)
 
 
 @dataclass(frozen=True)
 class AnalyteList:
-    analytes: list[Analyte]
-    molar_concentration_dict: dict
-    molar_concentration_nans: dict
-    non_aggregrable_dict: dict
-    non_aggregable_nans: dict
-    num_measurement_docs: int
+    measurements: dict[str, dict[str, Analyte]]
 
     @staticmethod
     def create(data: pd.DataFrame) -> AnalyteList:
         analytes = [Analyte.create(analyte_data) for _, analyte_data in data.iterrows()]
+        analytes = sorted(analytes, key=lambda a: a.measurement_time)
+
+        # Dict from measurement time to data
+        measurements = defaultdict(dict)
+
+        current_measurement_time = analytes[0].measurement_time
+        for analyte in analytes:
+            time_diff = parser.parse(analyte.measurement_time) - parser.parse(current_measurement_time)
+            if time_diff > timedelta(hours=1):
+                current_measurement_time = analyte.measurement_time
+            if analyte.concentration_value is None and analyte.name in measurements[current_measurement_time]:
+                continue
+            measurements[current_measurement_time][analyte.name] = analyte
+
+        return AnalyteList(measurements)
+
         molar_concentration_dict = defaultdict(list)
         molar_concentration_nans = {}
         non_aggregrable_dict = defaultdict(list)
@@ -138,17 +153,13 @@ class AnalyteList:
 @dataclass(frozen=True)
 class Sample:
     name: str
-    measurement_time: str
     analyte_list: AnalyteList
     batch: str | None = None
 
     @staticmethod
     def create(name: str, batch: str | None, sample_data: pd.DataFrame) -> Sample:
-        measurement_time = str(sample_data.iloc[0]["measurement time"])
-
         return Sample(
             name,
-            measurement_time,
             AnalyteList.create(sample_data),
             batch=batch or None,
         )
