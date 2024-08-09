@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from dateutil import parser
 import pandas as pd
 
+from allotropy.exceptions import AllotropyParserError
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE,
 )
@@ -67,11 +68,19 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, Measurement]]
         )
         if time_diff > MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE:
             current_measurement_time = analyte.measurement_time
-        if (
-            analyte.concentration_value is None
-            and analyte.name in groups[current_measurement_time]
-        ):
-            continue
+        if analyte.name in groups[current_measurement_time]:
+            if analyte.concentration_value is None:
+                continue
+            # NOTE: if this fails, it's probably because MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE is too big
+            # and we're erroneously grouping two groups of measurements into one.
+            # We could potentially make this more robust by just splitting into a new group if a duplicate
+            # measurement is found, but cross that bridge when we come to it.
+            if (
+                groups[current_measurement_time][analyte.name].concentration_value
+                is not None
+            ):
+                msg = f"Duplicate measurement for {analyte.name} in the same measurement group."
+                raise AllotropyParserError(msg)
         groups[current_measurement_time][analyte.name] = analyte
         previous_measurement_time = analyte.measurement_time
 

@@ -94,7 +94,7 @@ class RocheCedexBiohtParser(VendorParser):
                             ),
                         )
                     )
-            doc.analyte_aggregate_document.analyte_document = analyte_documents or None
+            doc.analyte_aggregate_document.analyte_document = analyte_documents
             docs.append(doc)
 
         return docs

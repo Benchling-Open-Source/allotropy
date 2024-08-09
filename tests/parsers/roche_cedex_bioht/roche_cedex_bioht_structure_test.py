@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     create_measurements,
     Data,
@@ -134,7 +134,7 @@ def test_create_measurements() -> None:
 
 
 @pytest.mark.short
-def test_create_analyte_list_more_than_one_measurement_docs() -> None:
+def test_create_measurements_more_than_one_measurement_docs() -> None:
     data = pd.DataFrame(
         {
             "analyte name": ["lactate", "glutamine", "glutamine"],
@@ -162,6 +162,28 @@ def test_create_analyte_list_more_than_one_measurement_docs() -> None:
             ),
         },
     }
+
+
+@pytest.mark.short
+def test_create_measurements_duplicate_measurements() -> None:
+    data = pd.DataFrame(
+        {
+            "analyte name": ["lactate", "glutamine", "glutamine"],
+            "measurement time": [
+                "2021-05-20T16:55:51+00:00",
+                "2021-05-20T16:56:51+00:00",
+                "2021-05-20T16:57:51+00:00",
+            ],
+            "concentration unit": ["g/L", "mmol/L", "mmol/L"],
+            "concentration value": [2.45, 4.35, 3.45],
+        },
+    )
+
+    with pytest.raises(
+        AllotropyParserError,
+        match="Duplicate measurement for glutamine in the same measurement group.",
+    ):
+        create_measurements(data)
 
 
 @pytest.mark.short
