@@ -66,13 +66,15 @@ class AnalyteList:
         measurements = defaultdict(dict)
 
         current_measurement_time = analytes[0].measurement_time
+        previous_measurement_time = current_measurement_time
         for analyte in analytes:
-            time_diff = parser.parse(analyte.measurement_time) - parser.parse(current_measurement_time)
+            time_diff = parser.parse(analyte.measurement_time) - parser.parse(previous_measurement_time)
             if time_diff > timedelta(hours=1):
                 current_measurement_time = analyte.measurement_time
             if analyte.concentration_value is None and analyte.name in measurements[current_measurement_time]:
                 continue
             measurements[current_measurement_time][analyte.name] = analyte
+            previous_measurement_time = analyte.measurement_time
 
         return AnalyteList(measurements)
 
