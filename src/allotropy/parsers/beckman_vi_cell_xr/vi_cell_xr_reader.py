@@ -8,7 +8,6 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv, read_excel
-from allotropy.exceptions import AllotropyParserError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
@@ -25,7 +24,8 @@ from allotropy.parsers.utils.values import assert_value_from_df
 @dataclass
 class ViCellData:
     data: list[SeriesData]
-    file_info: SeriesData
+    serial_number: str | None
+    version: XrVersion
 
 
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
@@ -34,12 +34,27 @@ def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
         if named_file_contents.original_file_name.endswith("txt")
         else ViCellXRReader(named_file_contents)
     )
-    return ViCellData(reader.data, reader.file_info)
+    return ViCellData(reader.data, reader.serial_number, reader.version)
+
+
+def _get_file_version(version_str: str | None) -> XrVersion:
+    match = re.match(MODEL_RE, version_str or "", flags=re.IGNORECASE)
+    if not match:
+        return DEFAULT_VERSION
+    try:
+        # version_str = assert_not_none(match).groupdict()["version"]
+        version = match.groupdict()["version"]
+    except AttributeError:
+        return DEFAULT_VERSION
+    # TODO: raise exception for unsupported versions
+    version = ".".join(version.split(".")[0:2])
+    return XrVersion(version)
 
 
 class ViCellXRReader:
     data: list[SeriesData]
-    series: SeriesData
+    serial_number: str | None
+    version: XrVersion
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
@@ -49,8 +64,14 @@ class ViCellXRReader:
             else None
         )
         self.contents = named_file_contents.contents
-        self.file_info = self._get_file_info()
-        self.file_version = self._get_file_version()
+        file_info = self._get_file_info()
+        try:
+            self.serial_number = (
+                file_info.get(str, "serial", "").split(":", maxsplit=1)[1].strip()
+            )
+        except (IndexError, ValueError):
+            self.serial_number = None
+        self.version = _get_file_version(file_info.get(str, "model"))
         self.data = self._read_data()
 
     def _read_excel(self, **kwargs: Any) -> pd.DataFrame:
@@ -58,7 +79,7 @@ class ViCellXRReader:
 
     def _read_data(self) -> list[SeriesData]:
         header_row = 4
-        if self.file_version == XrVersion._2_04:
+        if self.version == XrVersion._2_04:
             header_row = 3
 
         header = self._get_file_header(header_row)
@@ -100,36 +121,24 @@ class ViCellXRReader:
 
     def _get_file_info(self) -> SeriesData:
         info: pd.Series[Any] = self._read_excel(
-            nrows=3, header=None, usecols=[0]
+            nrows=3,
+            header=None,
+            usecols=[0],
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
         return SeriesData(info)
 
-    def _get_file_version(self) -> XrVersion:
-        raw_model = self.file_info.get(str, "model")
-        if not raw_model:
-            msg = f"Unable to retrive model from file info: {self.file_info}"
-            raise AllotropyParserError(msg)
-        match = re.match(MODEL_RE, raw_model, flags=re.IGNORECASE)
-        if not match:
-            return DEFAULT_VERSION
-        try:
-            version = match.groupdict()["version"]
-        except AttributeError:
-            return DEFAULT_VERSION
-        # TODO: raise exception for unsupported versions
-        version = ".".join(version.split(".")[0:2])
-        return XrVersion(version)
-
 
 class ViCellXRTXTReader:
     data: list[SeriesData]
-    series: SeriesData
+    serial_number: str | None
+    version: XrVersion
 
     def __init__(self, contents: NamedFileContents) -> None:
         self.lines = read_to_lines(contents)
-        self.file_info = self._get_file_info()
         self.data = self._read_data()
+        self.serial_number = self.data[0].get(str, "Unit S/N")
+        self.version = _get_file_version(str(self.data[0].series.name))
 
     def _read_data(self) -> list[SeriesData]:
         data_frame = read_csv(
@@ -149,16 +158,4 @@ class ViCellXRTXTReader:
             format="%d %b %Y  %I:%M:%S %p",
             errors="coerce",
         )
-
         return [SeriesData(file_data)]
-
-    def _get_file_info(self) -> SeriesData:
-        data = self.lines
-
-        return SeriesData(
-            pd.Series(
-                [data[0], data[3], data[8]],
-                copy=False,
-                index=["model", "filepath", "serial"],
-            )
-        )
