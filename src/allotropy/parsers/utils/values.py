@@ -129,10 +129,10 @@ Type_ = Callable[..., T]
 
 
 def assert_is_type(value: Any, type_: Type_[T], msg: str | None = None) -> T:
-    if not isinstance(value, type_):
+    if type(value) is not type_:
         msg = msg or f"Expected value: '{value}' to be of type {type_}"
         raise AllotropeConversionError(msg)
-    return value
+    return value  # type:ignore[no-any-return]
 
 
 def num_to_chars(n: int) -> str:
