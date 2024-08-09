@@ -16,11 +16,13 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     Referenceable,
 )
-from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
+from allotropy.parsers.utils.pandas import (
     assert_df_column,
     assert_not_empty_df,
+    SeriesData,
+)
+from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
     try_int,

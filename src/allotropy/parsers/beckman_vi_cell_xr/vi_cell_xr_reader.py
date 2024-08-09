@@ -7,7 +7,6 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_excel
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
@@ -17,8 +16,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.values import assert_value_from_df
+from allotropy.parsers.utils.pandas import assert_value_from_df, read_excel, SeriesData
 
 
 @dataclass

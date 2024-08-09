@@ -8,10 +8,10 @@ from typing import Any, Literal
 import chardet
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.utils.pandas import read_csv
 
 EMPTY_STR_PATTERN = r"^\s*$"
 

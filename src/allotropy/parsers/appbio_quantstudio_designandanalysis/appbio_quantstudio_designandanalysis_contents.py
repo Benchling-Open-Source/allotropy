@@ -5,9 +5,8 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import assert_not_empty_df, SeriesData
 from allotropy.parsers.utils.values import (
-    assert_not_empty_df,
     assert_not_none,
 )
 

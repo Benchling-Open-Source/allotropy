@@ -4,14 +4,12 @@ import math
 import re
 from typing import Any, TypeVar
 
-import pandas as pd
-
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
     JsonFloat,
     TQuantityValue,
 )
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.exceptions import AllotropeConversionError
 
 PrimitiveValue = str | int | float
 
@@ -124,38 +122,6 @@ def assert_not_none(
         msg = msg or f"Expected non-null value{f' for {name}' if name else ''}."
         raise AllotropeConversionError(msg)
     return value
-
-
-def df_to_series(
-    df: pd.DataFrame,
-    msg: str,
-) -> pd.Series[Any]:
-    n_rows, _ = df.shape
-    if n_rows == 1:
-        return pd.Series(df.iloc[0], index=df.columns)
-    raise AllotropyParserError(msg)
-
-
-def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
-    df_column = df.get(column)
-    if df_column is None:
-        msg = f"Unable to find column '{column}'"
-        raise AllotropeConversionError(msg)
-    return pd.Series(df_column)
-
-
-def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
-    if df.empty:
-        raise AllotropeConversionError(msg)
-    return df
-
-
-def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
-    try:
-        return df[key]
-    except KeyError as e:
-        msg = f"Unable to find key '{key}' in dataframe headers: {df.columns.tolist()}"
-        raise AllotropeConversionError(msg) from e
 
 
 def num_to_chars(n: int) -> str:

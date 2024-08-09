@@ -18,11 +18,10 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
-from allotropy.parsers.utils.pandas import df_to_series_data, SeriesData
+from allotropy.parsers.utils.pandas import df_to_series_data, read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_int
 
