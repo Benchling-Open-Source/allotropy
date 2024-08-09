@@ -7,6 +7,7 @@ from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.ce
     Model,
     SampleDocument,
 )
+from allotropy.exceptions import get_key_or_error
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.roche_cedex_bioht.constants import (
@@ -18,6 +19,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import Data, Sample
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import assert_not_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -73,6 +75,7 @@ class RocheCedexBiohtParser(VendorParser):
                     analyte_document=[]
                 ),
             )
+            analyte_documents = []
             for name in sorted(measurements):
                 measurement = measurements[name]
                 if analyte_cls := NON_ANALYTE_PROPERTIES.get(name):
@@ -80,17 +83,25 @@ class RocheCedexBiohtParser(VendorParser):
                         doc, name, analyte_cls(value=measurement.concentration_value)
                     )
                 else:
-                    molar_concentration_item_cls = MOLAR_CONCENTRATION_CLS_BY_UNIT.get(
-                        measurement.unit
+                    molar_concentration_item_cls = (
+                        get_key_or_error(
+                            "molar concentration unit",
+                            assert_not_none(
+                                measurement.unit,
+                                f"Expected unit to be specified for analyte {name}",
+                            ),
+                            MOLAR_CONCENTRATION_CLS_BY_UNIT,
+                        ),
                     )
-                    doc.analyte_aggregate_document.analyte_document.append(
+                    analyte_documents.append(
                         AnalyteDocumentItem(
                             analyte_name=name,
-                            molar_concentration=molar_concentration_item_cls(
+                            molar_concentration=molar_concentration_item_cls(  # type: ignore[operator]
                                 value=measurement.concentration_value
                             ),
                         )
                     )
+            doc.analyte_aggregate_document.analyte_document = analyte_documents or None
             docs.append(doc)
 
         return docs
