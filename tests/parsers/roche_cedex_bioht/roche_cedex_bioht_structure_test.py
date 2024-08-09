@@ -12,6 +12,7 @@ from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
     Sample,
     Title,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get_reader
 
 
@@ -33,7 +34,7 @@ def test_create_title(
         "device serial number": device_serial,
         "analyst": analyst,
     }
-    title = Title.create(pd.Series(title_data))
+    title = Title.create(SeriesData(pd.Series(title_data)))
 
     assert title.data_processing_time == processing_time
     assert title.analyst == analyst
@@ -43,17 +44,28 @@ def test_create_title(
 
 @pytest.mark.short
 def test_create_title_with_no_analyst() -> None:
-    title_data = pd.Series({"device serial number": 1234})
-    with pytest.raises(AllotropeConversionError, match="Unable to obtain analyst."):
+    title_data = SeriesData(
+        pd.Series(
+            {
+                "device serial number": 1234,
+                "data processing time": "2021-06-01 13:04:06",
+            }
+        )
+    )
+    with pytest.raises(
+        AllotropeConversionError, match="Expected non-null value for analyst"
+    ):
         Title.create(title_data)
 
 
 @pytest.mark.short
 def test_create_title_with_no_serial_number() -> None:
-    title_data = pd.Series({"analyst": "dummy"})
+    title_data = SeriesData(
+        pd.Series({"analyst": "dummy", "data processing time": "2021-06-01 13:04:06"})
+    )
     with pytest.raises(
         AllotropeConversionError,
-        match="Unable to obtain device serial number.",
+        match="Expected non-null value for device serial number.",
     ):
         Title.create(title_data)
 

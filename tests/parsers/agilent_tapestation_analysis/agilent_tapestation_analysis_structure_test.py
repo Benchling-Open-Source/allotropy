@@ -1,3 +1,4 @@
+import re
 from unittest import mock
 import xml.etree.ElementTree as ET  # noqa: N817
 
@@ -16,10 +17,7 @@ from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis
     Sample,
     SamplesList,
 )
-from allotropy.parsers.agilent_tapestation_analysis.constants import (
-    NO_SCREEN_TAPE_ID_MATCH,
-    UNIT_CLASSES,
-)
+from allotropy.parsers.agilent_tapestation_analysis.constants import UNIT_CLASSES
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
@@ -64,8 +62,8 @@ def test_create_metadata_with_unit(unit: str, unit_class: UNIT_CLASSES) -> None:
 @pytest.mark.short
 def test_create_metadata_with_unknown_unit() -> None:
     unit = "not-a-unit"
-    msg = f"Unrecognized Molecular Weight Unit: {unit}"
-    with pytest.raises(AllotropeConversionError, match=msg):
+    msg = f"Unrecognized Molecular Weight Unit: '{unit}'. Expecting one of ['bp', 'kD', 'nt']."
+    with pytest.raises(AllotropeConversionError, match=re.escape(msg)):
         Metadata.create(get_metadata_xml(molecular_weight_unit=unit))
 
 
@@ -83,19 +81,21 @@ def test_create_metadata_with_din_version() -> None:
 
 @pytest.mark.short
 def test_create_samples_list_without_matching_screen_tape() -> None:
-    xml_str = """
+    sample_id = "01-S025-180717-01-899752"
+    screen_tape_id = "01-S025-200617-01-899752"
+    xml_str = f"""
     <File>
         <ScreenTapes>
-            <ScreenTape><ScreenTapeID>01-S025-200617-01-899752</ScreenTapeID></ScreenTape>
+            <ScreenTape><ScreenTapeID>{screen_tape_id}</ScreenTapeID></ScreenTape>
             <Empty/>
         </ScreenTapes>
         <Samples>
-            <Sample><ScreenTapeID>01-S025-180717-01-899752</ScreenTapeID></Sample>
+            <Sample><ScreenTapeID>{sample_id}</ScreenTapeID></Sample>
         </Samples>
     </File>
     """
-    error_msg = NO_SCREEN_TAPE_ID_MATCH.format("01-S025-180717-01-899752")
-    with pytest.raises(AllotropeConversionError, match=error_msg):
+    expected = f"Unrecognized ScreenTape ID: '{sample_id}'. Expecting one of ['{screen_tape_id}']."
+    with pytest.raises(AllotropeConversionError, match=re.escape(expected)):
         SamplesList.create(ET.fromstring(xml_str))  # noqa: S314
 
 

@@ -15,31 +15,16 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     MeasurementType,
     Metadata,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import get_key_or_error
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_qubit4 import constants
-from allotropy.parsers.thermo_fisher_qubit4.constants import (
-    UNSUPPORTED_WAVELENGTH_ERROR,
-)
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
-
-def _get_emission_column(emission_wavelength_setting: str) -> str:
-    emission_wavelength_setting = emission_wavelength_setting.lower()
-    emission_wavelength_setting_to_measurement_column = {
-        "green": "Green RFU",
-        "far red": "Far Red RFU",
-    }
-    if (
-        emission_wavelength_setting
-        not in emission_wavelength_setting_to_measurement_column
-    ):
-        message = f"{UNSUPPORTED_WAVELENGTH_ERROR} {emission_wavelength_setting}"
-        raise AllotropeConversionError(message)
-    return emission_wavelength_setting_to_measurement_column[
-        emission_wavelength_setting
-    ]
+EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
+    "green": "Green RFU",
+    "far red": "Far Red RFU",
+}
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
@@ -51,7 +36,12 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 type_=MeasurementType.FLUORESCENCE,
                 identifier=random_uuid_str(),
                 fluorescence=data[
-                    float, _get_emission_column(data.get(str, "Emission", ""))
+                    float,
+                    get_key_or_error(
+                        "wavelength",
+                        data.get(str, "Emission", "").lower(),
+                        EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN,
+                    ),
                 ],
                 batch_identifier=data.get(str, "Run ID"),
                 sample_identifier=data[str, "Test Name"],

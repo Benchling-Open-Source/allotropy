@@ -1,20 +1,61 @@
 from collections.abc import Collection
-from typing import Any
+from enum import Enum
+from typing import Any, TypeVar
 
-_ERROR_MESSAGE = "message must not be empty"
+
+# Unexpected error when reading input data.
+class AllotropeParsingError(Exception):
+    pass
 
 
+# Unexpected error when validating output against schema.
+class AllotropeValidationError(Exception):
+    pass
+
+
+# Unexpected error when converting allotropy dataclass model to json.
+class AllotropeSerializationError(Exception):
+    pass
+
+
+# Expected error caused by a programming error, indicating a bug.
+class AllotropyParserError(Exception):
+    pass
+
+
+# Expected error caused by bad input data, with a message telling user what the problem is.
 class AllotropeConversionError(Exception):
-    def __init__(self, message: str) -> None:
-        if not message or not message.strip():
-            raise ValueError(_ERROR_MESSAGE)
-        super().__init__(message)
+    pass
+
+
+def list_values(values: Collection[Any] | type[Enum]) -> list[str]:
+    return sorted([str(v.value if isinstance(v, Enum) else v) for v in values])
+
+
+T = TypeVar("T")
+
+
+def valid_value_or_raise(
+    name: str, values: set[T], valid_values: Collection[T] | type[Enum]
+) -> T:
+    if len(values) == 1:
+        return values.pop()
+    msg = f"Could not infer {name}, expecting exactly one of {list_values(valid_values)}, found {list_values(values)}"
+    raise AllotropeConversionError(msg)
+
+
+def get_key_or_error(name: str, key: str, mapping: dict[str, T]) -> T:
+    try:
+        return mapping[key]
+    except KeyError as e:
+        msg = msg_for_error_on_unrecognized_value(name, key, mapping.keys())
+        raise AllotropeConversionError(msg) from e
 
 
 def msg_for_error_on_unrecognized_value(
-    key: str, value: Any, valid_values: Collection[Any] | None = None
+    name: str, value: T, valid_values: Collection[T] | type[Enum] | None = None
 ) -> str:
-    msg = f"Unrecognized {key}: '{value}'."
+    msg = f"Unrecognized {name}: '{value}'."
     if valid_values:
-        msg += f" Only {sorted(valid_values)} are supported."
+        msg += f" Expecting one of {list_values(valid_values)}."
     return msg

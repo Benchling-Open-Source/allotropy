@@ -6,7 +6,10 @@ import jsonschema
 
 from allotropy.allotrope.converter import unstructure
 from allotropy.allotrope.schemas import get_schema_from_model
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    AllotropeSerializationError,
+    AllotropeValidationError,
+)
 
 
 def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
@@ -14,13 +17,13 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
         allotrope_dict = unstructure(model)
     except Exception as e:
         msg = f"Failed to serialize allotrope model: {e}"
-        raise AllotropeConversionError(msg) from e
+        raise AllotropeSerializationError(msg) from e
 
     try:
         allotrope_schema = get_schema_from_model(model)
     except Exception as e:
         msg = f"Failed to retrieve schema for model: {e}"
-        raise AllotropeConversionError(msg) from e
+        raise AllotropeSerializationError(msg) from e
 
     try:
         jsonschema.validate(
@@ -30,5 +33,5 @@ def serialize_and_validate_allotrope(model: Any) -> dict[str, Any]:
         )
     except Exception as e:
         msg = f"Failed to validate allotrope model against schema: {e}"
-        raise AllotropeConversionError(msg) from e
+        raise AllotropeValidationError(msg) from e
     return allotrope_dict

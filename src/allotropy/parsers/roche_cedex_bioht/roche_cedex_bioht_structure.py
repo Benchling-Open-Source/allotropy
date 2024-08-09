@@ -7,7 +7,6 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.roche_cedex_bioht.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     NON_AGGREGABLE_PROPERTIES,
@@ -15,32 +14,23 @@ from allotropy.parsers.roche_cedex_bioht.constants import (
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 @dataclass(frozen=True)
 class Title:
     data_processing_time: str
     analyst: str
+    device_serial_number: str
     model_number: str | None
-    device_serial_number: str | None
 
     @staticmethod
-    def create(title_data: pd.Series) -> Title:
-        analyst = title_data.get("analyst")
-        if analyst is None:
-            msg = "Unable to obtain analyst."
-            raise AllotropeConversionError(msg)
-
-        device_serial_number = title_data.get("device serial number")
-        if device_serial_number is None:
-            msg = "Unable to obtain device serial number."
-            raise AllotropeConversionError(msg)
-
+    def create(title_data: SeriesData) -> Title:
         return Title(
-            title_data.get("data processing time"),  # type: ignore[arg-type]
-            analyst,  # type: ignore[arg-type]
-            title_data.get("model number"),  # type: ignore[arg-type]
-            str(device_serial_number),
+            title_data[str, "data processing time"],
+            title_data[str, "analyst"],
+            title_data[str, "device serial number"],
+            title_data.get(str, "model number"),
         )
 
 

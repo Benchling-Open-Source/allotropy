@@ -29,7 +29,9 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TStatisticDatumRole,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import (
+    get_key_or_error,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.biorad_bioplex_manager.biorad_bioplex_manager_structure import (
     AnalyteDocumentData,
@@ -269,18 +271,9 @@ class BioradBioplexParser(VendorParser):
                 error_docs.append(
                     ErrorDocumentItem(
                         error=analyte.analyte_name,
-                        error_feature=BioradBioplexParser._get_error_str_from_code(
-                            analyte.analyte_error_code
+                        error_feature=get_key_or_error(
+                            "error code", analyte.analyte_error_code, ERROR_MAPPING
                         ),
                     ),
                 )
         return ErrorAggregateDocument(error_document=error_docs)
-
-    @staticmethod
-    def _get_error_str_from_code(error_code: str) -> str:
-        try:
-            error_str = ERROR_MAPPING[error_code]
-            return error_str
-        except KeyError as e:
-            msg = f"{error_code} is not a valid error code. Valid error codes are:{ERROR_MAPPING.keys()}"
-            raise AllotropeConversionError(msg) from e
