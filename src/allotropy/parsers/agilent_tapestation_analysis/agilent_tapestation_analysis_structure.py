@@ -4,23 +4,35 @@ from dataclasses import dataclass
 from xml.etree import ElementTree as ET  # noqa: N817
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.units import UNITLESS
+from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
+    CalculatedDataItem,
+    Data as MapperData,
+    DataSource,
+    Error,
+    Measurement,
+    MeasurementGroup,
+    Metadata as MapperMetadata,
+    ProcessedData,
+    ProcessedDataFeature,
+)
 from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropeParsingError,
     get_key_or_error,
     msg_for_error_on_unrecognized_value,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
+    BRAND_NAME,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
     NON_CALCULATED_DATA_TAGS_PEAK,
     NON_CALCULATED_DATA_TAGS_REGION,
     NON_CALCULATED_DATA_TAGS_SAMPLE,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
     UNIT_CLASS_LOOKUP,
-    UNIT_CLASSES,
-)
-from allotropy.parsers.utils.calculated_data_documents.definition import (
-    CalculatedDocument,
-    DataSource,
-    Referenceable,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
@@ -37,7 +49,7 @@ from allotropy.types import IOType
 
 def _get_calculated_data(
     element: ET.Element, excluded_tags: list[str], source_id: str, feature: str
-) -> list[CalculatedDocument]:
+) -> list[CalculatedDataItem]:
     calculated_data = []
     for node in element:
         if (name := node.tag) in excluded_tags:
@@ -45,12 +57,16 @@ def _get_calculated_data(
         if (value := try_float_or_none(node.text)) is None:
             continue
         calculated_data.append(
-            CalculatedDocument(
-                uuid=random_uuid_str(),
+            CalculatedDataItem(
+                identifier=random_uuid_str(),
                 name=name,
                 value=value,
+                unit=UNITLESS,
                 data_sources=[
-                    DataSource(feature=feature, reference=Referenceable(uuid=source_id))
+                    DataSource(
+                        identifier=source_id,
+                        feature=feature
+                    )
                 ],
             )
         )
@@ -60,7 +76,7 @@ def _get_calculated_data(
 
 @dataclass(frozen=True)
 class Metadata:
-    unit_cls: UNIT_CLASSES
+    unit: str
     analyst: str | None
     analytical_method_identifier: str | None
     data_system_instance_identifier: str | None
@@ -78,7 +94,7 @@ class Metadata:
         )
 
         return Metadata(
-            unit_cls=Metadata._get_unit_class(root_element),
+            unit=Metadata._get_unit_class(root_element),
             analyst=get_val_from_xml_or_none(environment, "Experimenter"),
             analytical_method_identifier=get_val_from_xml_or_none(
                 file_information, "Assay"
@@ -102,7 +118,7 @@ class Metadata:
     @staticmethod
     def _get_unit_class(
         root_element: ET.Element,
-    ) -> UNIT_CLASSES:
+    ) -> str:
         peak_unit = get_element_from_xml(
             root_element, "Assay/Units/MolecularWeightUnit"
         ).text
@@ -128,7 +144,7 @@ class Peak:
     relative_corrected_peak_area: JsonFloat
     peak_name: str | None
     comment: str | None
-    calculated_data: list[CalculatedDocument]
+    calculated_data: list[CalculatedDataItem]
 
     @staticmethod
     def create(peak_element: ET.Element) -> Peak:
@@ -174,7 +190,7 @@ class DataRegion:
     relative_region_area: JsonFloat
     region_name: str | None
     comment: str | None
-    calculated_data: list[CalculatedDocument]
+    calculated_data: list[CalculatedDataItem]
 
     @staticmethod
     def create(region_element: ET.Element, region_name: str) -> DataRegion:
@@ -213,7 +229,7 @@ class Sample:
     description: str | None
     peak_list: list[Peak]
     data_regions: list[DataRegion]
-    calculated_data: list[CalculatedDocument]
+    calculated_data: list[CalculatedDataItem]
     error: str | None
 
     @staticmethod
@@ -305,3 +321,87 @@ class Data:
             metadata=Metadata.create(root_element),
             samples_list=SamplesList.create(root_element),
         )
+
+
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    data = Data.create(named_file_contents.contents)
+
+    measurement_groups = [
+        MeasurementGroup(
+            measurements=[
+                Measurement(
+                    identifier=sample.measurement_identifier,
+                    measurement_time=sample.measurement_time,
+                    compartment_temperature=sample.compartment_temperature,
+                    sample_identifier=sample.sample_identifier,
+                    description=sample.description,
+                    location_identifier=sample.location_identifier,
+                    processed_data=ProcessedData(
+                        peaks=[
+                            ProcessedDataFeature(
+                                identifier=peak.peak_identifier,
+                                name=peak.peak_name,
+                                height=peak.peak_height,
+                                start=peak.peak_start,
+                                start_unit=data.metadata.unit,
+                                end=peak.peak_end,
+                                end_unit=data.metadata.unit,
+                                position=peak.peak_position,
+                                position_unit=data.metadata.unit,
+                                area=peak.peak_area,
+                                relative_area=peak.relative_peak_area,
+                                relative_corrected_area=peak.relative_corrected_peak_area,
+                                comment=peak.comment,
+                            )
+                            for peak in sample.peak_list
+                        ],
+                        data_regions=[
+                            ProcessedDataFeature(
+                                identifier=region.region_identifier,
+                                name=region.region_name,
+                                start=region.region_start,
+                                start_unit=data.metadata.unit,
+                                end=region.region_end,
+                                end_unit=data.metadata.unit,
+                                area=region.region_area,
+                                relative_area=region.relative_region_area,
+                                comment=region.comment,
+                            )
+                            for region in (sample.data_regions or [])
+                        ],
+                    ),
+                    errors=[Error(sample.error)] if sample.error else [],
+                )
+            ]
+        )
+        for sample in data.samples_list.samples
+    ]
+
+    calculated_data = []
+    for sample in data.samples_list.samples:
+        calculated_data.extend(sample.calculated_data)
+        for peak in sample.peak_list:
+            calculated_data.extend(peak.calculated_data)
+        for region in sample.data_regions:
+            calculated_data.extend(region.calculated_data)
+
+    return MapperData(
+        MapperMetadata(
+            data_system_instance_identifier=data.metadata.data_system_instance_identifier,
+            file_name=named_file_contents.original_file_name,
+            software_name=SOFTWARE_NAME,
+            software_version=data.metadata.software_version,
+            brand_name=BRAND_NAME,
+            product_manufacturer=PRODUCT_MANUFACTURER,
+            device_identifier=data.metadata.device_identifier,
+            equipment_serial_number=data.metadata.equipment_serial_number,
+            analyst=data.metadata.analyst,
+            analytical_method_identifier=data.metadata.analytical_method_identifier,
+            method_version=data.metadata.method_version,
+            experimental_data_identifier=data.metadata.experimental_data_identifier,
+            device_type=DEVICE_TYPE,
+            detection_type=DETECTION_TYPE,
+        ),
+        measurement_groups=measurement_groups,
+        calculated_data=calculated_data
+    )
