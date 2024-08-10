@@ -105,7 +105,9 @@ class ViCellXRReader:
         """Combine the two rows that forms the header."""
         header = (
             self._read_excel(
-                nrows=2, skiprows=header_row, header=None,
+                nrows=2,
+                skiprows=header_row,
+                header=None,
             )
             .fillna("")
             .astype(str)
@@ -118,7 +120,9 @@ class ViCellXRReader:
 
     def _get_file_info(self) -> SeriesData:
         info: pd.Series[Any] = self._read_excel(
-            nrows=3, header=None, usecols=[0],
+            nrows=3,
+            header=None,
+            usecols=[0],
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
         return SeriesData(info)
