@@ -158,7 +158,7 @@ class Well:
     @staticmethod
     def create_wells(data: pd.DataFrame) -> list[Well]:
         if "Name" not in data:
-            msg = "Input is missing required column 'Name'"
+            msg = "Input is missing required column 'Name'."
             raise AllotropeConversionError(msg)
         data = data.dropna(subset=["Name"]).replace(np.nan, None)
         return [

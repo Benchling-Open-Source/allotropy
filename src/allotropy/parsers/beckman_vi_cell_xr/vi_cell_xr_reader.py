@@ -18,7 +18,7 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
 )
 from allotropy.parsers.lines_reader import read_to_lines
 from allotropy.parsers.utils.pandas import df_to_series, SeriesData
-from allotropy.parsers.utils.values import assert_value_from_df
+from allotropy.parsers.utils.values import assert_not_none, assert_value_from_df
 
 
 @dataclass
@@ -42,13 +42,12 @@ def _get_file_version(version_str: str | None) -> XrVersion:
     if not match:
         return DEFAULT_VERSION
     try:
-        # version_str = assert_not_none(match).groupdict()["version"]
-        version = match.groupdict()["version"]
+        version = assert_not_none(match).groupdict()["version"]
+        # TODO: raise exception for unsupported versions
+        version = ".".join(version.split(".")[0:2])
+        return XrVersion(version)
     except AttributeError:
         return DEFAULT_VERSION
-    # TODO: raise exception for unsupported versions
-    version = ".".join(version.split(".")[0:2])
-    return XrVersion(version)
 
 
 class ViCellXRReader:
@@ -106,9 +105,7 @@ class ViCellXRReader:
         """Combine the two rows that forms the header."""
         header = (
             self._read_excel(
-                nrows=2,
-                skiprows=header_row,
-                header=None,
+                nrows=2, skiprows=header_row, header=None,
             )
             .fillna("")
             .astype(str)
@@ -121,9 +118,7 @@ class ViCellXRReader:
 
     def _get_file_info(self) -> SeriesData:
         info: pd.Series[Any] = self._read_excel(
-            nrows=3,
-            header=None,
-            usecols=[0],
+            nrows=3, header=None, usecols=[0],
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
         return SeriesData(info)
