@@ -157,8 +157,7 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
             )
             for row in rows
         ],
-        # NOTE: in current implementation, calculated data is reported at global level for some
-        # reason
+        # NOTE: in current implementation, calculated data is reported at global level for some reason.
         # TODO(nstender): should we move this inside of measurements?
         calculated_data=[item for row in rows for item in row.calculated_data],
     )

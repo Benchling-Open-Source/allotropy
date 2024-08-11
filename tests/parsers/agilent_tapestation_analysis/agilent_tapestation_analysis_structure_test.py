@@ -5,19 +5,13 @@ import xml.etree.ElementTree as ET  # noqa: N817
 import pytest
 
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TQuantityValueKiloDalton,
     TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
-    DataRegion,
     Metadata,
-    Peak,
-    Sample,
-    SamplesList,
 )
-from allotropy.parsers.agilent_tapestation_analysis.constants import UNIT_CLASSES
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     DataSource,
@@ -46,17 +40,17 @@ def test_create_metadata() -> None:
 
 
 @pytest.mark.parametrize(
-    "unit, unit_class",
+    "xml_unit, unit",
     (
-        ("nt", TQuantityValueNumber),
-        ("bp", TQuantityValueNumber),
-        ("kD", TQuantityValueKiloDalton),
+        ("nt", "#"),
+        ("bp", "#"),
+        ("kD", "kDa"),
     ),
 )
 @pytest.mark.short
-def test_create_metadata_with_unit(unit: str, unit_class: UNIT_CLASSES) -> None:
-    metadata = Metadata.create(get_metadata_xml(molecular_weight_unit=unit))
-    assert metadata.unit_cls == unit_class
+def test_create_metadata_with_unit(xml_unit: str, unit: str) -> None:
+    metadata = Metadata.create(get_metadata_xml(molecular_weight_unit=xml_unit))
+    assert metadata.unit == unit
 
 
 @pytest.mark.short
