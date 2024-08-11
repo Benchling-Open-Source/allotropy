@@ -33,12 +33,11 @@ from allotropy.parsers.agilent_tapestation_analysis.constants import (
     UNIT_CLASS_LOOKUP,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
-    try_float_or_nan,
-    try_float_or_none,
-)
+from allotropy.parsers.utils.values import try_float_or_none
 from allotropy.parsers.utils.xml import (
     get_element_from_xml,
+    get_float_from_xml_or_nan,
+    get_float_from_xml_or_none,
     get_val_from_xml,
     get_val_from_xml_or_none,
 )
@@ -59,12 +58,7 @@ def _get_calculated_data(
                 name=name,
                 value=value,
                 unit=UNITLESS,
-                data_sources=[
-                    DataSource(
-                        identifier=source_id,
-                        feature=feature
-                    )
-                ],
+                data_sources=[DataSource(identifier=source_id, feature=feature)],
             )
         )
 
@@ -113,85 +107,96 @@ def _get_description(xml_element: ET.Element) -> str | None:
 def _create_peak(peak_element: ET.Element, unit: str) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
-        height=try_float_or_nan(get_val_from_xml_or_none(peak_element, "Height")),
-        start=try_float_or_nan(get_val_from_xml_or_none(peak_element, "FromMW")),
+        height=get_float_from_xml_or_nan(peak_element, "Height"),
+        start=get_float_from_xml_or_nan(peak_element, "FromMW"),
         start_unit=unit,
-        end=try_float_or_nan(get_val_from_xml_or_none(peak_element, "ToMW")),
+        end=get_float_from_xml_or_nan(peak_element, "ToMW"),
         end_unit=unit,
-        position=try_float_or_nan(get_val_from_xml_or_none(peak_element, "Size")),
+        position=get_float_from_xml_or_nan(peak_element, "Size"),
         position_unit=unit,
-        area=try_float_or_nan(get_val_from_xml_or_none(peak_element, "Area")),
-        relative_area=try_float_or_nan(get_val_from_xml_or_none(peak_element, "PercentOfTotal")),
-        relative_corrected_area=try_float_or_nan(get_val_from_xml_or_none(
+        area=get_float_from_xml_or_nan(peak_element, "Area"),
+        relative_area=get_float_from_xml_or_nan(peak_element, "PercentOfTotal"),
+        relative_corrected_area=get_float_from_xml_or_nan(
             peak_element, "PercentIntegratedArea"
-        )),
+        ),
         name=get_val_from_xml_or_none(peak_element, "Number"),
         comment=_get_description(peak_element),
     )
 
 
-def _create_region(region_element: ET.Element, region_name: str, unit: str) -> ProcessedDataFeature:
+def _create_region(
+    region_element: ET.Element, region_name: str, unit: str
+) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
-        start=try_float_or_nan(get_val_from_xml_or_none(region_element, "From")),
+        start=get_float_from_xml_or_nan(region_element, "From"),
         start_unit=unit,
-        end=try_float_or_nan(get_val_from_xml_or_none(region_element, "To")),
+        end=get_float_from_xml_or_nan(region_element, "To"),
         end_unit=unit,
-        area=try_float_or_nan(get_val_from_xml_or_none(region_element, "Area")),
-        relative_area=try_float_or_nan(get_val_from_xml_or_none(
-            region_element, "PercentOfTotal"
-        )),
+        area=get_float_from_xml_or_nan(region_element, "Area"),
+        relative_area=get_float_from_xml_or_nan(region_element, "PercentOfTotal"),
         name=region_name,
         comment=get_val_from_xml_or_none(region_element, "Comment"),
     )
 
 
-def _create_measurement(sample_element: ET.Element, screen_tape: ET.Element, unit: str, calculated_data: list[CalculatedDataItem]) -> Measurement:
+def _create_measurement(
+    sample_element: ET.Element, screen_tape: ET.Element, unit: str
+) -> tuple[Measurement, list[CalculatedDataItem]]:
     measurement_id = random_uuid_str()
-    well_number = get_val_from_xml(sample_element, "WellNumber")
-    screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
-    error = get_val_from_xml_or_none(sample_element, "Alert")
-    if error is not None:
-        error = error.strip()
-
-    calculated_data.extend(_get_calculated_data(
-        element=sample_element,
-        excluded_tags=NON_CALCULATED_DATA_TAGS_SAMPLE,
-        source_id=measurement_id,
-        feature="sample",
-    ))
+    calculated_data: list[CalculatedDataItem] = []
+    calculated_data.extend(
+        _get_calculated_data(
+            element=sample_element,
+            excluded_tags=NON_CALCULATED_DATA_TAGS_SAMPLE,
+            source_id=measurement_id,
+            feature="sample",
+        )
+    )
     peaks: list[ProcessedDataFeature] = []
     for peak_element in get_element_from_xml(sample_element, "Peaks").iter("Peak"):
         peaks.append(_create_peak(peak_element, unit))
-        calculated_data.extend(_get_calculated_data(
-            element=peak_element,
-            excluded_tags=NON_CALCULATED_DATA_TAGS_PEAK,
-            source_id=peaks[-1].identifier,
-            feature="peak",
-        ))
+        calculated_data.extend(
+            _get_calculated_data(
+                element=peak_element,
+                excluded_tags=NON_CALCULATED_DATA_TAGS_PEAK,
+                source_id=peaks[-1].identifier,
+                feature="peak",
+            )
+        )
 
-    region_elements = sorted(
-        sample_element.find("Regions").iter("Region"),
-        key=lambda region: get_val_from_xml(region, "From"),
+    regions_element = sample_element.find("Regions")
+    region_elements = (
+        regions_element.iter("Region") if regions_element is not None else []
     )
     regions: list[ProcessedDataFeature] = []
-    for idx, region_element in enumerate(region_elements, start=1):
+    for idx, region_element in enumerate(
+        sorted(
+            region_elements,
+            key=lambda region: get_val_from_xml(region, "From"),
+        ),
+        start=1,
+    ):
         regions.append(_create_region(region_element, str(idx), unit))
-        calculated_data.extend(_get_calculated_data(
-            element=region_element,
-            excluded_tags=NON_CALCULATED_DATA_TAGS_REGION,
-            source_id=regions[-1].identifier,
-            feature="data region",
-        ))
+        calculated_data.extend(
+            _get_calculated_data(
+                element=region_element,
+                excluded_tags=NON_CALCULATED_DATA_TAGS_REGION,
+                source_id=regions[-1].identifier,
+                feature="data region",
+            )
+        )
 
-    return Measurement(
+    well_number = get_val_from_xml(sample_element, "WellNumber")
+    error = (get_val_from_xml_or_none(sample_element, "Alert") or "").strip() or None
+    measurement = Measurement(
         identifier=measurement_id,
         measurement_time=get_val_from_xml(screen_tape, "TapeRunDate"),
-        compartment_temperature=try_float_or_none(
-            get_val_from_xml_or_none(screen_tape, "ElectrophoresisTemp")
+        compartment_temperature=get_float_from_xml_or_none(
+            screen_tape, "ElectrophoresisTemp"
         ),
         location_identifier=well_number,
-        sample_identifier=f"{screen_tape_id}_{well_number}",
+        sample_identifier=f"{get_val_from_xml(sample_element, 'ScreenTapeID')}_{well_number}",
         description=_get_description(sample_element),
         processed_data=ProcessedData(
             peaks=peaks,
@@ -199,6 +204,7 @@ def _create_measurement(sample_element: ET.Element, screen_tape: ET.Element, uni
         ),
         errors=[Error(error=error)] if error else None,
     )
+    return measurement, calculated_data
 
 
 def _get_unit_class(
@@ -217,26 +223,28 @@ def _get_unit_class(
         raise AllotropeConversionError(msg) from e
 
 
-def _create_measurements(root_element: ET.Element, calculated_data: list[CalculatedDataItem]) -> list[Measurement]:
+def _create_measurement_groups(
+    root_element: ET.Element,
+) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     screen_tapes_element = get_element_from_xml(root_element, "ScreenTapes")
     screen_tapes = {
         get_val_from_xml(screen_tape, "ScreenTapeID"): screen_tape
         for screen_tape in screen_tapes_element.iter("ScreenTape")
     }
 
-    measurements = []
+    measurement_groups: list[MeasurementGroup] = []
+    calculated_data: list[CalculatedDataItem] = []
     for sample_element in get_element_from_xml(root_element, "Samples").iter("Sample"):
         screen_tape_id = get_val_from_xml(sample_element, "ScreenTapeID")
-        measurements.append(
-            _create_measurement(
-                sample_element,
-                get_key_or_error("ScreenTape ID", screen_tape_id, screen_tapes),
-                _get_unit_class(root_element),
-                calculated_data,
-            )
+        measurement, measurement_calculated_data = _create_measurement(
+            sample_element,
+            get_key_or_error("ScreenTape ID", screen_tape_id, screen_tapes),
+            _get_unit_class(root_element),
         )
+        measurement_groups.append(MeasurementGroup(measurements=[measurement]))
+        calculated_data.extend(measurement_calculated_data)
 
-    return measurements
+    return measurement_groups, calculated_data
 
 
 def create_data(named_file_contents: NamedFileContents) -> Data:
@@ -246,16 +254,11 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
         msg = f"There was an error when trying to read the xml file: {e}"
         raise AllotropeParsingError(msg) from e
 
-    # TODO(nstender): passing in calculated data by reference to collect calculated data globally, but it
-    # seems like this data should just be reported inside the measurement, which would remove the need for this.
-    calculated_data = []
+    measurement_groups, calculated_data = _create_measurement_groups(root_element)
     return Data(
         metadata=create_metadata(root_element, named_file_contents.original_file_name),
-        measurement_groups=[
-            MeasurementGroup(measurements=[measurement])
-            for measurement in _create_measurements(root_element, calculated_data)
-        ],
+        measurement_groups=measurement_groups,
         # NOTE: in current implementation, calculated data is reported at global level for some reason.
         # TODO(nstender): should we move this inside of measurements?
-        calculated_data=calculated_data
+        calculated_data=calculated_data,
     )
