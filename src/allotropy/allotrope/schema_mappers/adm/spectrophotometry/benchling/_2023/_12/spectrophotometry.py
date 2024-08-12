@@ -303,9 +303,7 @@ class Mapper:
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
         custom_document = {
             "original sample concentration": quantity_or_none(
-                get_quantity_class(
-                    measurement.original_sample_concentration_unit,
-                )
+                get_quantity_class(measurement.original_sample_concentration_unit)
                 or TQuantityValueUnitless,
                 measurement.original_sample_concentration,
             ),
