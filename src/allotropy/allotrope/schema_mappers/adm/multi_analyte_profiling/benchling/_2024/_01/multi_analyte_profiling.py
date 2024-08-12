@@ -26,13 +26,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import (
-    JsonFloat,
     TDateTimeValue,
     TStatisticDatumRole,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.parsers.utils.units import get_quantity_class
-from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
+from allotropy.parsers.utils.values import quantity_or_none
 
 
 @dataclass(frozen=True)
@@ -65,11 +63,7 @@ class Measurement:
     analytes: list[Analyte]
 
     # Optional metadata
-    description: str | None = None
     location_identifier: str | None = None
-
-    # Optional settings
-    compartment_temperature: float | None = None
 
     # Errors
     errors: list[Error] | None = None
@@ -90,18 +84,13 @@ class Calibration:
 @dataclass(frozen=True)
 class Metadata:
     device_type: str
-    device_identifier: str | None = None
+    file_name: str
+
     container_type: str | None = None
     model_number: str | None = None
     software_name: str | None = None
-    detection_type: str | None = None
-    unc_path: str | None = None
     software_version: str | None = None
     equipment_serial_number: str | None = None
-    product_manufacturer: str | None = None
-    brand_name: str | None = None
-
-    file_name: str | None = None
     data_system_instance_identifier: str | None = None
 
     analyst: str | None = None
@@ -137,15 +126,8 @@ class Mapper:
                 device_system_document=DeviceSystemDocument(
                     model_number=data.metadata.model_number,
                     equipment_serial_number=data.metadata.equipment_serial_number,
-                    calibration_aggregate_document=CalibrationAggregateDocument(
-                        calibration_document=[
-                            CalibrationDocumentItem(
-                                calibration_name=calibration.name,
-                                calibration_report=calibration.report,
-                                calibration_time=self.get_date_time(calibration.time),
-                            )
-                            for calibration in data.metadata.calibrations
-                        ]
+                    calibration_aggregate_document=self._get_calibration_aggregate_document(
+                        data.metadata.calibrations
                     ),
                 ),
                 data_system_document=DataSystemDocument(
@@ -174,14 +156,31 @@ class Mapper:
                 method_version=metadata.method_version,
                 experimental_data_identifier=metadata.experimental_data_identifier,
                 container_type=metadata.container_type,
-                plate_well_count=TQuantityValueNumber(
-                    value=metadata.plate_well_count
+                plate_well_count=quantity_or_none(
+                    TQuantityValueNumber, metadata.plate_well_count
                 ),
                 measurement_document=[
                     self._get_measurement_document_item(measurement, metadata)
                     for measurement in measurement_group.measurements
                 ],
             ),
+        )
+
+    def _get_calibration_aggregate_document(
+        self, calibrations: list[Calibration] | None
+    ) -> CalibrationAggregateDocument | None:
+        if not calibrations:
+            return None
+
+        return CalibrationAggregateDocument(
+            calibration_document=[
+                CalibrationDocumentItem(
+                    calibration_name=calibration.name,
+                    calibration_report=calibration.report,
+                    calibration_time=self.get_date_time(calibration.time),
+                )
+                for calibration in calibrations
+            ]
         )
 
     def _get_measurement_document_item(
@@ -197,22 +196,26 @@ class Mapper:
                 device_control_document=[
                     DeviceControlDocumentItem(
                         device_type=metadata.device_type,
-                        sample_volume_setting=TQuantityValueMicroliter(
-                            value=metadata.sample_volume_setting
+                        sample_volume_setting=quantity_or_none(
+                            TQuantityValueMicroliter, metadata.sample_volume_setting
                         ),
                         dilution_factor_setting=TQuantityValueUnitless(
                             value=measurement.dilution_factor_setting
                         ),
                         detector_gain_setting=metadata.detector_gain_setting,
-                        minimum_assay_bead_count_setting=TQuantityValueNumber(
-                            value=metadata.minimum_bead_count_setting
+                        minimum_assay_bead_count_setting=quantity_or_none(
+                            TQuantityValueNumber, metadata.minimum_bead_count_setting
                         ),
                     )
                 ]
             ),
             assay_bead_count=TQuantityValueNumber(value=measurement.assay_bead_count),
-            analyte_aggregate_document=self._get_analyte_aggregate_document(measurement.analytes),
-            error_aggregate_document=self._get_error_aggregate_document(measurement.errors),
+            analyte_aggregate_document=self._get_analyte_aggregate_document(
+                measurement.analytes
+            ),
+            error_aggregate_document=self._get_error_aggregate_document(
+                measurement.errors
+            ),
         )
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -221,10 +224,9 @@ class Mapper:
             location_identifier=measurement.location_identifier,
         )
 
-    def _get_analyte_aggregate_document(self, analytes: list[Analyte]) -> AnalyteAggregateDocument | None:
-        if not analytes:
-            return None
-
+    def _get_analyte_aggregate_document(
+        self, analytes: list[Analyte]
+    ) -> AnalyteAggregateDocument:
         return AnalyteAggregateDocument(
             analyte_document=[
                 AnalyteDocumentItem(

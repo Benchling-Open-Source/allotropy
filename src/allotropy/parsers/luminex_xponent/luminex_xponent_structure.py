@@ -404,14 +404,11 @@ def create_data(reader: CsvReader, file_name: str) -> MapperData:
                             name=analyte.analyte_name,
                             assay_bead_identifier=analyte.assay_bead_identifier,
                             assay_bead_count=analyte.assay_bead_count,
-                            fluorescence=analyte.fluorescence
+                            fluorescence=analyte.fluorescence,
                         )
                         for analyte in measurement.analytes
                     ],
-                    errors=[
-                        Error(error=error)
-                        for error in (measurement.errors or [])
-                    ]
+                    errors=[Error(error=error) for error in (measurement.errors or [])],
                 )
             ]
         )
