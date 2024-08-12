@@ -256,9 +256,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -521,9 +518,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -786,9 +780,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1051,9 +1042,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1316,9 +1304,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1581,9 +1566,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -1846,9 +1828,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2111,9 +2090,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2376,9 +2352,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2641,9 +2614,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -2906,9 +2876,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3167,9 +3134,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3432,9 +3396,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3697,9 +3658,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -3962,9 +3920,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4227,9 +4182,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4492,9 +4444,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -4757,9 +4706,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5022,9 +4968,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5287,9 +5230,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5552,9 +5492,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -5817,9 +5754,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6082,9 +6016,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6345,7 +6276,28 @@
                                 ]
                             },
                             "error aggregate document": {
-                                "error document": []
+                                "error document": [
+                                    {
+                                        "error": "kilo",
+                                        "error feature": "Low bead number"
+                                    },
+                                    {
+                                        "error": "lima",
+                                        "error feature": "Aggregated beads"
+                                    },
+                                    {
+                                        "error": "mike",
+                                        "error feature": "Classify efficiency"
+                                    },
+                                    {
+                                        "error": "november",
+                                        "error feature": "Region selection"
+                                    },
+                                    {
+                                        "error": "oscar",
+                                        "error feature": "Platform temperature"
+                                    }
+                                ]
                             }
                         }
                     ],
@@ -6608,9 +6560,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -6873,9 +6822,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7138,9 +7084,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7403,9 +7346,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7668,9 +7608,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -7933,9 +7870,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8198,9 +8132,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8463,9 +8394,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8728,9 +8656,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -8993,9 +8918,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9258,9 +9180,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9523,9 +9442,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -9788,9 +9704,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10053,9 +9966,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10318,9 +10228,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10583,9 +10490,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -10848,9 +10752,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11113,9 +11014,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11378,9 +11276,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11643,9 +11538,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -11908,9 +11800,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12173,9 +12062,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12438,9 +12324,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12703,9 +12586,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -12968,9 +12848,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13233,9 +13110,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13498,9 +13372,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -13763,9 +13634,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14028,9 +13896,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14293,9 +14158,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14558,9 +14420,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -14823,9 +14682,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15088,9 +14944,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15353,9 +15206,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15618,9 +15468,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -15883,9 +15730,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16148,9 +15992,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16413,9 +16254,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16678,9 +16516,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -16943,9 +16778,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17208,9 +17040,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17473,9 +17302,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -17738,9 +17564,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18003,9 +17826,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18268,9 +18088,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18533,9 +18350,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -18798,9 +18612,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19063,9 +18874,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19328,9 +19136,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19593,9 +19398,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -19858,9 +19660,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20123,9 +19922,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20388,9 +20184,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20653,9 +20446,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -20918,9 +20708,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21183,9 +20970,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21448,9 +21232,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21713,9 +21494,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -21978,9 +21756,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22243,9 +22018,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22508,9 +22280,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -22773,9 +22542,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23038,9 +22804,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23303,9 +23066,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23568,9 +23328,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -23833,9 +23590,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24098,9 +23852,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24363,9 +24114,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24628,9 +24376,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -24893,9 +24638,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25158,9 +24900,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25423,9 +25162,6 @@
                                         }
                                     }
                                 ]
-                            },
-                            "error aggregate document": {
-                                "error document": []
                             }
                         }
                     ],
@@ -25445,7 +25181,7 @@
             "software name": "“Bio-Plex Manager",
             "software version": "6.2.0.175",
             "ASM converter name": "allotropy_bio_rad_bio_plex_manager",
-            "ASM converter version": "0.1.43"
+            "ASM converter version": "0.1.45"
         }
     }
 }
