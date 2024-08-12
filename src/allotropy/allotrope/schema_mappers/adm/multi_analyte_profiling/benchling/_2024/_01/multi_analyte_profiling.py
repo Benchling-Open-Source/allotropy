@@ -58,7 +58,6 @@ class Measurement:
 
     # Settings
     assay_bead_count: float
-    dilution_factor_setting: float
 
     # Processed data
     analytes: list[Analyte]
@@ -70,6 +69,7 @@ class Measurement:
     sample_role_type: SampleRoleType | None = None
 
     # Optional settings
+    dilution_factor_setting: float | None = None
     sample_volume_setting: float | None = None
     detector_gain_setting: str | None = None
     minimum_assay_bead_count_setting: float | None = None
@@ -212,12 +212,12 @@ class Mapper:
                             TQuantityValueMicroliter, measurement.sample_volume_setting
                         ),
                         dilution_factor_setting=quantity_or_none(
-                            TQuantityValueUnitless,
-                            measurement.dilution_factor_setting
+                            TQuantityValueUnitless, measurement.dilution_factor_setting
                         ),
                         detector_gain_setting=measurement.detector_gain_setting,
                         minimum_assay_bead_count_setting=quantity_or_none(
-                            TQuantityValueNumber, measurement.minimum_assay_bead_count_setting
+                            TQuantityValueNumber,
+                            measurement.minimum_assay_bead_count_setting,
                         ),
                     )
                 ]

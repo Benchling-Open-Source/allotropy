@@ -377,7 +377,7 @@ def create_data(reader: CsvReader, file_name: str) -> MapperData:
                         analytes=measurement.analytes,
                         errors=measurement.errors,
                     )
-                ]
+                ],
             )
             for measurement in data.measurement_list.measurements
         ],

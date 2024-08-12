@@ -369,16 +369,14 @@ def _create_errors(
 
 
 def _create_measurement_groups(
-    samples_xml: Et.Element,
     wells_xml: Et.Element,
-    regions_of_interest: list[str],
-    plate_id: str,
+    sample_document_aggregate: SampleDocumentAggregate,
+    well_system_metadata: WellSystemLevelMetadata,
 ) -> list[MeasurementGroup]:
-    sample_document_aggregated = SampleDocumentAggregate.create(samples_xml)
     measurement_groups = []
     for well in wells_xml:
         well_name = get_well_name(well.attrib)
-        sample = sample_document_aggregated.samples_dict[well_name]
+        sample = sample_document_aggregate.samples_dict[well_name]
         device_well_settings = DeviceWellSettings.create(well)
 
         measurement = Measurement(
@@ -388,7 +386,7 @@ def _create_measurement_groups(
             sample_identifier=sample.sample_identifier,
             location_identifier=well_name,
             description=sample.description,
-            well_plate_identifier=plate_id,
+            well_plate_identifier=well_system_metadata.plate_id,
             sample_role_type=sample.sample_type,
             sample_volume_setting=device_well_settings.sample_volume_setting,
             dilution_factor_setting=sample.sample_dilution,
@@ -396,15 +394,14 @@ def _create_measurement_groups(
             minimum_assay_bead_count_setting=device_well_settings.minimum_assay_bead_count_setting,
             analytes=_create_analytes(
                 well,
-                sample_document_aggregated.analyte_region_dict,
-                regions_of_interest,
+                sample_document_aggregate.analyte_region_dict,
+                well_system_metadata.regions_of_interest,
             ),
             errors=_create_errors(sample.well_analyte_mapping),
         )
         measurement_groups.append(
             MeasurementGroup(
-                analyst=get_val_from_xml(well, USER),
-                measurements=[measurement]
+                analyst=get_val_from_xml(well, USER), measurements=[measurement]
             )
         )
 
@@ -417,19 +414,17 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
     root_xml = xml_tree.getroot()
     validate_xml_structure(root_xml)
 
-    software_version_value = root_xml.attrib[VERSION_ATTRIB]
-    for child in root_xml:
-        if child.tag == SAMPLES:
-            all_samples_xml = child
-        elif child.tag == PLATE_DIMENSIONS_TAG:
-            plate_well_count = int(child.attrib[TOTAL_WELLS_ATTRIB])
-        elif child.tag == DOC_LOCATION_TAG:
-            experimental_data_id = child.text
-        elif child.tag == DESCRIPTION_TAG:
-            experiment_type = child.text
-        elif child.tag == WELLS_TAG:
-            well_system_metadata = WellSystemLevelMetadata.create(child[0])
-            all_wells_xml = child
+    sample_document_aggregate = SampleDocumentAggregate.create(
+        get_element_from_xml(root_xml, SAMPLES)
+    )
+    plate_well_count = try_int(
+        get_element_from_xml(root_xml, PLATE_DIMENSIONS_TAG).attrib[TOTAL_WELLS_ATTRIB],
+        "plate well count",
+    )
+    experimental_data_id = get_element_from_xml(root_xml, DOC_LOCATION_TAG).text
+    experiment_type = get_element_from_xml(root_xml, DESCRIPTION_TAG).text
+    all_wells_xml = get_element_from_xml(root_xml, WELLS_TAG)
+    well_system_metadata = WellSystemLevelMetadata.create(all_wells_xml[0])
 
     return Data(
         metadata=Metadata(
@@ -438,7 +433,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
             firmware_version=well_system_metadata.controller_version,
             product_manufacturer=PRODUCT_MANUFACTURER,
             software_name=SOFTWARE_NAME,
-            software_version=software_version_value,
+            software_version=root_xml.attrib[VERSION_ATTRIB],
             container_type=CONTAINER_TYPE,
             device_type=DEVICE_TYPE,
             plate_well_count=plate_well_count,
@@ -447,9 +442,8 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
             experimental_data_identifier=experimental_data_id,
         ),
         measurement_groups=_create_measurement_groups(
-            samples_xml=all_samples_xml,
-            wells_xml=all_wells_xml,
-            regions_of_interest=well_system_metadata.regions_of_interest,
-            plate_id=well_system_metadata.plate_id,
+            all_wells_xml,
+            sample_document_aggregate,
+            well_system_metadata=well_system_metadata,
         ),
     )
