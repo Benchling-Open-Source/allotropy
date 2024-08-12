@@ -19,6 +19,7 @@ from allotropy.allotrope.models.adm.multi_analyte_profiling.benchling._2024._01.
     MultiAnalyteProfilingDocumentItem,
     SampleDocument,
 )
+from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicroliter,
     TQuantityValueNumber,
@@ -63,7 +64,15 @@ class Measurement:
     analytes: list[Analyte]
 
     # Optional metadata
+    description: str | None = None
     location_identifier: str | None = None
+    well_plate_identifier: str | None = None
+    sample_role_type: SampleRoleType | None = None
+
+    # Optional settings
+    sample_volume_setting: float | None = None
+    detector_gain_setting: str | None = None
+    minimum_assay_bead_count_setting: float | None = None
 
     # Errors
     errors: list[Error] | None = None
@@ -72,6 +81,7 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
+    analyst: str | None = None
 
 
 @dataclass(frozen=True)
@@ -86,20 +96,19 @@ class Metadata:
     device_type: str
     file_name: str
 
+    experiment_type: str | None = None
     container_type: str | None = None
     model_number: str | None = None
     software_name: str | None = None
     software_version: str | None = None
+    firmware_version: str | None = None
+    product_manufacturer: str | None = None
     equipment_serial_number: str | None = None
     data_system_instance_identifier: str | None = None
 
-    analyst: str | None = None
     analytical_method_identifier: str | None = None
     method_version: str | None = None
     experimental_data_identifier: str | None = None
-    sample_volume_setting: float | None = None
-    detector_gain_setting: str | None = None
-    minimum_bead_count_setting: float | None = None
     plate_well_count: float | None = None
 
     calibrations: list[Calibration] | None = None
@@ -125,6 +134,8 @@ class Mapper:
             multi_analyte_profiling_aggregate_document=MultiAnalyteProfilingAggregateDocument(
                 device_system_document=DeviceSystemDocument(
                     model_number=data.metadata.model_number,
+                    product_manufacturer=data.metadata.product_manufacturer,
+                    firmware_version=data.metadata.firmware_version,
                     equipment_serial_number=data.metadata.equipment_serial_number,
                     calibration_aggregate_document=self._get_calibration_aggregate_document(
                         data.metadata.calibrations
@@ -150,8 +161,9 @@ class Mapper:
         self, measurement_group: MeasurementGroup, metadata: Metadata
     ) -> MultiAnalyteProfilingDocumentItem:
         return MultiAnalyteProfilingDocumentItem(
-            analyst=metadata.analyst,
+            analyst=measurement_group.analyst,
             measurement_aggregate_document=MeasurementAggregateDocument(
+                experiment_type=metadata.experiment_type,
                 analytical_method_identifier=metadata.analytical_method_identifier,
                 method_version=metadata.method_version,
                 experimental_data_identifier=metadata.experimental_data_identifier,
@@ -197,14 +209,15 @@ class Mapper:
                     DeviceControlDocumentItem(
                         device_type=metadata.device_type,
                         sample_volume_setting=quantity_or_none(
-                            TQuantityValueMicroliter, metadata.sample_volume_setting
+                            TQuantityValueMicroliter, measurement.sample_volume_setting
                         ),
-                        dilution_factor_setting=TQuantityValueUnitless(
-                            value=measurement.dilution_factor_setting
+                        dilution_factor_setting=quantity_or_none(
+                            TQuantityValueUnitless,
+                            measurement.dilution_factor_setting
                         ),
-                        detector_gain_setting=metadata.detector_gain_setting,
+                        detector_gain_setting=measurement.detector_gain_setting,
                         minimum_assay_bead_count_setting=quantity_or_none(
-                            TQuantityValueNumber, metadata.minimum_bead_count_setting
+                            TQuantityValueNumber, measurement.minimum_assay_bead_count_setting
                         ),
                     )
                 ]
@@ -222,6 +235,8 @@ class Mapper:
         return SampleDocument(
             sample_identifier=measurement.sample_identifier,
             location_identifier=measurement.location_identifier,
+            sample_role_type=measurement.sample_role_type,
+            well_plate_identifier=measurement.well_plate_identifier,
         )
 
     def _get_analyte_aggregate_document(

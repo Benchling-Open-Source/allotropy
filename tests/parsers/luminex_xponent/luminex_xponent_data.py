@@ -1,8 +1,11 @@
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+    Analyte,
+    Calibration,
+    Error,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.lines_reader import CsvReader, read_to_lines
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
-    Analyte,
-    CalibrationItem,
     Data,
     Header,
     Measurement,
@@ -35,17 +38,17 @@ def get_data() -> Data:
             data_system_instance_identifier="ABCDEFG123456",  # ComputerName
         ),
         calibration_data=[
-            CalibrationItem(
+            Calibration(
                 name="F3DeCAL1 Calibration",
                 report="Passed",
                 time="05/17/2023 09:25:11",
             ),
-            CalibrationItem(
+            Calibration(
                 name="F3DCAL2 Calibration",
                 report="Failed",
                 time="05/17/2023 09:25:33",
             ),
-            CalibrationItem(
+            Calibration(
                 name="Fluidics Test",
                 report="Passed",
                 time="05/17/2023 09:28:43",
@@ -55,58 +58,66 @@ def get_data() -> Data:
         measurement_list=MeasurementList(
             measurements=[
                 Measurement(
+                    identifier="dummy_id",
                     sample_identifier="Unknown1",
                     location_identifier="A1",
-                    dilution_factor_setting=1,
+                    dilution_factor_setting=1.0,
                     assay_bead_count=881.0,
                     analytes=[
                         Analyte(
-                            analyte_name="alpha",
+                            identifier="dummy_id",
+                            name="alpha",
                             assay_bead_identifier="28",
-                            assay_bead_count=30,
+                            assay_bead_count=30.0,
                             fluorescence=10921.5,
                         ),
                         Analyte(
-                            analyte_name="bravo",
+                            identifier="dummy_id",
+                            name="bravo",
                             assay_bead_identifier="35",
-                            assay_bead_count=42,
-                            fluorescence=37214,
+                            assay_bead_count=42.0,
+                            fluorescence=37214.0,
                         ),
                         Analyte(
-                            analyte_name="charlie",
+                            identifier="dummy_id",
+                            name="charlie",
                             assay_bead_identifier="37",
-                            assay_bead_count=42,
-                            fluorescence=24978,
+                            assay_bead_count=42.0,
+                            fluorescence=24978.0,
                         ),
                     ],
                     errors=[
-                        "maximum count.  (0x4FF010AB)",
-                        "specified count.",
+                        Error("maximum count.  (0x4FF010AB)"),
+                        Error("specified count."),
                     ],
                 ),
                 Measurement(
+                    identifier="dummy_id",
                     sample_identifier="Unknown2",
                     location_identifier="B1",
-                    dilution_factor_setting=3,
+                    dilution_factor_setting=3.0,
                     assay_bead_count=728.0,
                     analytes=[
                         Analyte(
-                            analyte_name="alpha",
+                            identifier="dummy_id",
+                            name="alpha",
                             assay_bead_identifier="28",
-                            assay_bead_count=26,
-                            fluorescence=8244,
+                            assay_bead_count=26.0,
+                            fluorescence=8244.0,
                         ),
                         Analyte(
-                            analyte_name="bravo",
+                            identifier="dummy_id",
+                            name="bravo",
                             assay_bead_identifier="35",
-                            assay_bead_count=33,
-                            fluorescence=35052,
+                            assay_bead_count=33.0,
+                            fluorescence=35052.0,
                         ),
                         Analyte(
-                            analyte_name="charlie",
+                            identifier="dummy_id",
+                            name="charlie",
                             assay_bead_identifier="37",
-                            assay_bead_count=33,
-                            fluorescence=22609,
+                            assay_bead_count=33.0,
+                            fluorescence=22609.0,
                         ),
                     ],
                 ),

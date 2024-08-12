@@ -1,13 +1,18 @@
 import re
+from unittest import mock
 
 import pandas as pd
 import pytest
 
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+    Analyte,
+    Calibration,
+    Error,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
 from allotropy.parsers.luminex_xponent.luminex_xponent_structure import (
-    Analyte,
-    CalibrationItem,
+    create_calibration,
     Data,
     Header,
     Measurement,
@@ -139,11 +144,9 @@ def test_create_calibration_item() -> None:
     name = "Device Calibration"
     report = "Passed"
 
-    calibration_item = CalibrationItem.create(
-        f"Last {name},{report} 05/17/2023 09:25:11"
-    )
+    calibration_item = create_calibration(f"Last {name},{report} 05/17/2023 09:25:11")
 
-    assert calibration_item == CalibrationItem(name, report, "05/17/2023 09:25:11")
+    assert calibration_item == Calibration(name, report, "05/17/2023 09:25:11")
 
 
 @pytest.mark.short
@@ -151,7 +154,7 @@ def test_create_calibration_item_invalid_line_format() -> None:
     bad_line = "Bad line."
     error = f"Expected at least two columns on the calibration line, got: {bad_line}"
     with pytest.raises(AllotropeConversionError, match=error):
-        CalibrationItem.create(bad_line)
+        create_calibration(bad_line)
 
 
 @pytest.mark.short
@@ -160,37 +163,45 @@ def test_create_calibration_item_invalid_calibration_result() -> None:
     bad_line = f"Last CalReport,{bad_result}"
     error = f"Invalid calibration result format, expected to split into two values, got: ['{bad_result}']"
     with pytest.raises(AllotropeConversionError, match=re.escape(error)):
-        CalibrationItem.create(bad_line)
+        create_calibration(bad_line)
 
 
 @pytest.mark.short
 def test_create_measurement_list() -> None:
     reader = CsvReader(get_result_lines())
+    with mock.patch(
+        "allotropy.parsers.luminex_xponent.luminex_xponent_structure.random_uuid_str",
+        return_value="dummy_id",
+    ):
+        data = MeasurementList.create(reader)
 
-    assert MeasurementList.create(reader) == MeasurementList(
+    assert data == MeasurementList(
         measurements=[
             Measurement(
+                identifier="dummy_id",
                 sample_identifier="Unknown1",
                 location_identifier="A1",
-                dilution_factor_setting=1,
-                assay_bead_count=881,
+                dilution_factor_setting=1.0,
+                assay_bead_count=881.0,
                 analytes=[
                     Analyte(
-                        analyte_name="alpha",
+                        identifier="dummy_id",
+                        name="alpha",
                         assay_bead_identifier="28",
-                        assay_bead_count=30,
+                        assay_bead_count=30.0,
                         fluorescence=10921.5,
                     ),
                     Analyte(
-                        analyte_name="bravo",
+                        identifier="dummy_id",
+                        name="bravo",
                         assay_bead_identifier="35",
-                        assay_bead_count=42,
-                        fluorescence=37214,
+                        assay_bead_count=42.0,
+                        fluorescence=37214.0,
                     ),
                 ],
                 errors=[
-                    "Warning msg. (0x4FF010AB)",
-                    "Another Warning.",
+                    Error("Warning msg. (0x4FF010AB)"),
+                    Error("Another Warning."),
                 ],
             )
         ]
@@ -214,6 +225,8 @@ def test_create_measurement_list_without_required_table_then_raise(
 
 
 def test_create_data() -> None:
-    data = Data.create(get_reader())
-
-    assert data == get_data()
+    with mock.patch(
+        "allotropy.parsers.luminex_xponent.luminex_xponent_structure.random_uuid_str",
+        return_value="dummy_id",
+    ):
+        assert Data.create(get_reader()) == get_data()

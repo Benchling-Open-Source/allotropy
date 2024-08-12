@@ -2,24 +2,43 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from xml.etree import ElementTree
+import xml.etree.ElementTree as Et
 
 from allotropy.allotrope.models.shared.components.plate_reader import SampleRoleType
-from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+    Analyte,
+    Data,
+    Error,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    AllotropyParserError,
+    get_key_or_error,
+)
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.biorad_bioplex_manager.constants import (
     ACQ_TIME,
     ANALYTE_NAME,
     BEAD_COUNT,
+    BEAD_REGIONS,
     CODE,
     COLUMN_NUMBER,
+    CONTAINER_TYPE,
     DESCRIPTION_TAG,
+    DEVICE_TYPE,
     DILUTION,
     DOC_LOCATION_TAG,
+    ERROR_MAPPING,
     LABEL,
     MACHINE_INFO,
     MEDIAN,
     MEMBER_WELLS,
     MW_ANALYTES,
     PLATE_DIMENSIONS_TAG,
+    PRODUCT_MANUFACTURER,
     READING,
     REGION_COUNT,
     REGION_NUMBER,
@@ -32,10 +51,15 @@ from allotropy.parsers.biorad_bioplex_manager.constants import (
     SAMPLE_VOLUME,
     SAMPLES,
     SERIAL_NUMBER,
+    SOFTWARE_NAME,
     STOP_READING_CRITERIA,
     TOTAL_EVENTS,
+    TOTAL_WELLS_ATTRIB,
+    USER,
+    VERSION_ATTRIB,
     WELLS_TAG,
 )
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     try_float,
     try_float_or_none,
@@ -297,3 +321,135 @@ def map_sample_type(sample_type_tag: str) -> SampleRoleType:
     except KeyError as err:
         msg = f"{sample_type_tag} is not in the valid list of sample role types: {SAMPLE_ROLE_TYPE_MAPPING.keys()}"
         raise AllotropeConversionError(msg) from err
+
+
+def _create_analytes(
+    well: Et.Element,
+    analyte_region_dict: dict[str, str],
+    regions_of_interest: list[str],
+) -> list[Analyte]:
+    analytes = []
+    for atr in well:
+        if atr.tag == BEAD_REGIONS:
+            for bead in atr:
+                analyte_structure_doc = AnalyteDocumentData.create(
+                    bead_region_xml=bead,
+                    analyte_region_dict=analyte_region_dict,
+                    regions_of_interest=regions_of_interest,
+                )
+                if analyte_structure_doc is None:
+                    continue
+                analytes.append(
+                    Analyte(
+                        identifier=random_uuid_str(),
+                        name=analyte_structure_doc.analyte_name,
+                        assay_bead_identifier=analyte_structure_doc.assay_bead_identifier,
+                        assay_bead_count=analyte_structure_doc.assay_bead_count,
+                        fluorescence=analyte_structure_doc.fluorescence,
+                    )
+                )
+    return analytes
+
+
+def _create_errors(
+    well_analyte_mapping: WellAnalyteMapping,
+) -> list[Error]:
+    errors = []
+    for analyte in well_analyte_mapping.analytes:
+        if analyte.analyte_error_code != "0":
+            errors.append(
+                Error(
+                    error=analyte.analyte_name,
+                    feature=get_key_or_error(
+                        "error code", analyte.analyte_error_code, ERROR_MAPPING
+                    ),
+                ),
+            )
+    return errors
+
+
+def _create_measurement_groups(
+    samples_xml: Et.Element,
+    wells_xml: Et.Element,
+    regions_of_interest: list[str],
+    plate_id: str,
+) -> list[MeasurementGroup]:
+    sample_document_aggregated = SampleDocumentAggregate.create(samples_xml)
+    measurement_groups = []
+    for well in wells_xml:
+        well_name = get_well_name(well.attrib)
+        sample = sample_document_aggregated.samples_dict[well_name]
+        device_well_settings = DeviceWellSettings.create(well)
+
+        measurement = Measurement(
+            identifier=random_uuid_str(),
+            measurement_time=device_well_settings.acquisition_time,
+            assay_bead_count=device_well_settings.well_total_events,
+            sample_identifier=sample.sample_identifier,
+            location_identifier=well_name,
+            description=sample.description,
+            well_plate_identifier=plate_id,
+            sample_role_type=sample.sample_type,
+            sample_volume_setting=device_well_settings.sample_volume_setting,
+            dilution_factor_setting=sample.sample_dilution,
+            detector_gain_setting=device_well_settings.detector_gain_setting,
+            minimum_assay_bead_count_setting=device_well_settings.minimum_assay_bead_count_setting,
+            analytes=_create_analytes(
+                well,
+                sample_document_aggregated.analyte_region_dict,
+                regions_of_interest,
+            ),
+            errors=_create_errors(sample.well_analyte_mapping),
+        )
+        measurement_groups.append(
+            MeasurementGroup(
+                analyst=get_val_from_xml(well, USER),
+                measurements=[measurement]
+            )
+        )
+
+    return measurement_groups
+
+
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    contents = named_file_contents.contents.read()
+    xml_tree = Et.ElementTree(Et.fromstring(contents))  # noqa: S314
+    root_xml = xml_tree.getroot()
+    validate_xml_structure(root_xml)
+
+    software_version_value = root_xml.attrib[VERSION_ATTRIB]
+    for child in root_xml:
+        if child.tag == SAMPLES:
+            all_samples_xml = child
+        elif child.tag == PLATE_DIMENSIONS_TAG:
+            plate_well_count = int(child.attrib[TOTAL_WELLS_ATTRIB])
+        elif child.tag == DOC_LOCATION_TAG:
+            experimental_data_id = child.text
+        elif child.tag == DESCRIPTION_TAG:
+            experiment_type = child.text
+        elif child.tag == WELLS_TAG:
+            well_system_metadata = WellSystemLevelMetadata.create(child[0])
+            all_wells_xml = child
+
+    return Data(
+        metadata=Metadata(
+            file_name=named_file_contents.original_file_name,
+            equipment_serial_number=well_system_metadata.serial_number,
+            firmware_version=well_system_metadata.controller_version,
+            product_manufacturer=PRODUCT_MANUFACTURER,
+            software_name=SOFTWARE_NAME,
+            software_version=software_version_value,
+            container_type=CONTAINER_TYPE,
+            device_type=DEVICE_TYPE,
+            plate_well_count=plate_well_count,
+            experiment_type=experiment_type,
+            analytical_method_identifier=well_system_metadata.analytical_method,
+            experimental_data_identifier=experimental_data_id,
+        ),
+        measurement_groups=_create_measurement_groups(
+            samples_xml=all_samples_xml,
+            wells_xml=all_wells_xml,
+            regions_of_interest=well_system_metadata.regions_of_interest,
+            plate_id=well_system_metadata.plate_id,
+        ),
+    )
