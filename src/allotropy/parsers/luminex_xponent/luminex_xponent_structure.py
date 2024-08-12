@@ -373,7 +373,7 @@ def create_data(reader: CsvReader, file_name: str) -> MapperData:
                         dilution_factor_setting=measurement.dilution_factor_setting,
                         sample_volume_setting=data.header.sample_volume_setting,
                         detector_gain_setting=data.header.detector_gain_setting,
-                        minimum_bead_count_setting=data.minimum_bead_count_setting,
+                        minimum_assay_bead_count_setting=data.minimum_bead_count_setting,
                         analytes=measurement.analytes,
                         errors=measurement.errors,
                     )
