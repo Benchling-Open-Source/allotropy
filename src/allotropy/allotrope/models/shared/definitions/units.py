@@ -30,6 +30,11 @@ class CountsPerMilliliter(HasUnit):
 
 
 @dataclass(frozen=True, kw_only=True)
+class CountsPerSecond(HasUnit):
+    unit: str = "Counts/s"
+
+
+@dataclass(frozen=True, kw_only=True)
 class CountsTimesSecond(HasUnit):
     unit: str = "Counts.s"
 
@@ -232,6 +237,16 @@ class RelativeFluorescenceUnitTimesSecond(HasUnit):
 @dataclass(frozen=True, kw_only=True)
 class RelativeLightUnit(HasUnit):
     unit: str = "RLU"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RelativeLightUnitTimesMilliliter(HasUnit):
+    unit: str = "RLU.mL"
+
+
+@dataclass(frozen=True, kw_only=True)
+class RelativeLightUnitTimesSecond(HasUnit):
+    unit: str = "RLU.s"
 
 
 @dataclass(frozen=True, kw_only=True)
