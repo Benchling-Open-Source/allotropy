@@ -8,9 +8,24 @@ from typing import Any
 import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
+from allotropy.allotrope.schema_mappers.adm.multi_analyte_profiling.benchling._2024._01.multi_analyte_profiling import (
+    Analyte as MapperAnalyte,
+    Calibration,
+    Data as MapperData,
+    Error,
+    Measurement as MapperMeasurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.lines_reader import CsvReader
+from allotropy.parsers.luminex_xponent.constants import (
+    CONTAINER_TYPE,
+    DEVICE_TYPE,
+    SOFTWARE_NAME,
+)
 from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
@@ -341,3 +356,66 @@ class Data:
             raise AllotropeConversionError(msg) from e
 
         return try_float(min_bead_count_setting, "minimum bead count setting")
+
+
+def create_data(reader: CsvReader, file_name: str) -> MapperData:
+    data = Data.create(reader)
+
+    metadata = Metadata(
+        file_name=file_name,
+        device_type=DEVICE_TYPE,
+        container_type=CONTAINER_TYPE,
+        software_name=SOFTWARE_NAME,
+        software_version=data.header.software_version,
+        model_number=data.header.model_number,
+        equipment_serial_number=data.header.equipment_serial_number,
+        data_system_instance_identifier=data.header.data_system_instance_identifier,
+        analyst=data.header.analyst,
+        analytical_method_identifier=data.header.analytical_method_identifier,
+        experimental_data_identifier=data.header.experimental_data_identifier,
+        method_version=data.header.method_version,
+        plate_well_count=data.header.plate_well_count,
+        sample_volume_setting=data.header.sample_volume_setting,
+        detector_gain_setting=data.header.detector_gain_setting,
+        minimum_bead_count_setting=data.minimum_bead_count_setting,
+        calibrations=[
+            Calibration(
+                name=calibration_item.name,
+                report=calibration_item.report,
+                time=calibration_item.time,
+            )
+            for calibration_item in data.calibration_data
+        ],
+    )
+
+    measurement_groups = [
+        MeasurementGroup(
+            measurements=[
+                MapperMeasurement(
+                    identifier=random_uuid_str(),
+                    measurement_time=data.header.measurement_time,
+                    sample_identifier=measurement.sample_identifier,
+                    location_identifier=measurement.location_identifier,
+                    assay_bead_count=measurement.assay_bead_count,
+                    dilution_factor_setting=measurement.dilution_factor_setting,
+                    analytes=[
+                        MapperAnalyte(
+                            identifier=random_uuid_str(),
+                            name=analyte.analyte_name,
+                            assay_bead_identifier=analyte.assay_bead_identifier,
+                            assay_bead_count=analyte.assay_bead_count,
+                            fluorescence=analyte.fluorescence
+                        )
+                        for analyte in measurement.analytes
+                    ],
+                    errors=[
+                        Error(error=error)
+                        for error in (measurement.errors or [])
+                    ]
+                )
+            ]
+        )
+        for measurement in data.measurement_list.measurements
+    ]
+
+    return MapperData(metadata, measurement_groups)
