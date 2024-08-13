@@ -33,6 +33,7 @@ TDoubleValue = float | TDoubleValueItem
 TFloatValue = TDoubleValue
 TDecimalValue = TDoubleValue
 
+
 @dataclass(kw_only=True)
 class TDateTimeValueItem:
     field_type: TClass

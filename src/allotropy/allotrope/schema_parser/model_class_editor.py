@@ -276,7 +276,9 @@ class TypeName(ClassLines):
 
     @staticmethod
     def create(lines: list[str]) -> TypeName:
-        match = re.match("(\\S+) = \\(?([^).]+)\\)?", "".join([line.strip() for line in lines]))
+        match = re.match(
+            "(\\S+) = \\(?([^).]+)\\)?", "".join([line.strip() for line in lines])
+        )
         class_name = match.groups()[0]
         types = {type_.strip() for type_ in match.groups()[1].split("|")}
         lines = [f"{class_name} = {'|'.join(types)}"]
@@ -475,7 +477,7 @@ def create_class_lines(lines: list[str]) -> ClassLines:
             parent_class_names=parent_class_names,
             fields={},
             field_name_order=[],
-            is_frozen=is_frozen
+            is_frozen=is_frozen,
         )
 
     # Get fields of the dataclass
