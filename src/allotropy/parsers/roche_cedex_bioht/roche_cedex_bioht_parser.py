@@ -117,7 +117,13 @@ class RocheCedexBiohtParser(VendorParser):
 
         return measurement_document
 
-    def _create_analyte_document(self, measurement: Measurement) -> AnalyteDocument:
+    def _create_analyte_document(
+        self, measurement: Measurement
+    ) -> AnalyteDocument | None:
+        # TODO: add error document and set to sentinel value once error docs are added.
+        if measurement.concentration_value is NaN:
+            return None
+
         if measurement.unit == "g/L":
             return AnalyteDocument(
                 analyte_name=measurement.name,
@@ -145,6 +151,8 @@ class RocheCedexBiohtParser(VendorParser):
                     analyte_name=measurement.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
                         value=measurement.concentration_value * 0.0167
+                        if isinstance(measurement.concentration_value, float)
+                        else NaN
                     ),
                 )
             else:
@@ -187,13 +195,12 @@ class RocheCedexBiohtParser(VendorParser):
             if measurement_document.absorbance.value is NaN:
                 return None
         else:
+            analytes = [
+                self._create_analyte_document(measurements[name])
+                for name in sorted(measurements)
+            ]
             measurement_document.analyte_aggregate_document = AnalyteAggregateDocument(
-                analyte_document=[
-                    self._create_analyte_document(measurements[name])
-                    for name in sorted(measurements)
-                    # TODO: add error document and set to sentinel value once error docs are added.
-                    if measurements[name].concentration_value is not NaN
-                ]
+                analyte_document=[analyte for analyte in analytes if analyte],
             )
             if not measurement_document.analyte_aggregate_document.analyte_document:
                 return None
