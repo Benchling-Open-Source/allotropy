@@ -100,7 +100,7 @@ def test_create_sample() -> None:
 
     assert sample.identifier == "BP_R10_KP_008_D0"
     assert sample.role_type == "Spent Media"
-    assert sample.measurement_time == "2022-06-24T14:34:52"
+    assert sample.measurement_time == "2022-06-24 14:34:52"
     assert sample.batch_identifier == "KP_008"
     assert sorted(sample.analytes) == sorted(
         [
