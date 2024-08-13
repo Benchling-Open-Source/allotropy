@@ -15,12 +15,16 @@ from allotropy.exceptions import (
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
+    BLOOD_GAS_DETECTION_MAPPINGS,
+    CELL_COUNTER_MAPPINGS,
     CONCENTRATION_CLASSES,
     CONCENTRATION_CLS_BY_UNIT,
     FILENAME_REGEX,
     INVALID_FILENAME_MESSAGE,
-    PROPERTY_MAPPINGS,
+    OSMOLALITY_DETECTION_MAPPINGS,
+    PH_DETECTION_MAPPINGS,
 )
+from allotropy.parsers.utils.values import try_float_or_none
 
 
 @dataclass(frozen=True)
@@ -75,18 +79,20 @@ class Sample:
     measurement_time: str
     batch_identifier: str | None
     analytes: list[Analyte]
-    properties: dict[str, Any]
+    cell_counter_properties: dict[str, Any]
+    blood_gas_properties: dict[str, Any]
+    osmolality_properties: dict[str, Any]
+    ph_properties: dict[str, Any]
+    cell_type_processing_method: str | None
+    cell_density_dilution_factor: float | None
 
-    @staticmethod
-    def create(data: pd.Series[Any]) -> Sample:
-        properties: dict[str, Any] = {
-            property_name: property_dict["cls"](value=data[property_dict["col_name"]])
-            for property_name, property_dict in PROPERTY_MAPPINGS.items()
-            if property_dict["col_name"] in data
-            and data[property_dict["col_name"]] is not None
-        }
-
+    @classmethod
+    def create(cls, data: pd.Series[Any]) -> Sample:
         batch_identifier = data.get("Batch ID")
+        cell_type = data.get("Cell Type")
+        cell_density_dilution = data.get("Cell Density Dilution", "")
+        if cell_density_dilution:
+            cell_density_dilution = str(cell_density_dilution).split(":")[0]
 
         return Sample(
             identifier=data["Sample ID"],
@@ -100,8 +106,28 @@ class Sample:
                     if raw_name in data
                 ]
             ),
-            properties=properties,
+            cell_counter_properties=cls._get_properties(data, CELL_COUNTER_MAPPINGS),
+            blood_gas_properties=cls._get_properties(
+                data, BLOOD_GAS_DETECTION_MAPPINGS
+            ),
+            osmolality_properties=cls._get_properties(
+                data, OSMOLALITY_DETECTION_MAPPINGS
+            ),
+            ph_properties=cls._get_properties(data, PH_DETECTION_MAPPINGS),
+            cell_type_processing_method=str(cell_type) if cell_type else None,
+            cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
         )
+
+    @classmethod
+    def _get_properties(
+        cls, data: pd.Series[Any], property_mappings: dict[str, Any]
+    ) -> dict[str, Any]:
+        return {
+            property_name: property_dict["cls"](value=data[property_dict["col_name"]])
+            for property_name, property_dict in property_mappings.items()
+            if property_dict["col_name"] in data
+            and data[property_dict["col_name"]] is not None
+        }
 
 
 @dataclass(frozen=True)
@@ -117,14 +143,14 @@ class SampleList:
             msg = "Unable to find any sample."
             raise AllotropeConversionError(msg)
 
-        analyst = str(sample_data_rows[0].get("Operator"))
+        analyst = sample_data_rows[0].get("Operator")
 
         if analyst is None:
             msg = "Unable to find the Operator."
             raise AllotropeConversionError(msg)
 
         return SampleList(
-            analyst=analyst,
+            analyst=str(analyst),
             samples=[Sample.create(sample_data) for sample_data in sample_data_rows],
         )
 

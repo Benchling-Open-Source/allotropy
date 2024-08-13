@@ -1,18 +1,17 @@
 from typing import Any
 
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueCell,
-    TNullableQuantityValueGramPerLiter,
-    TNullableQuantityValueMicrometer,
-    TNullableQuantityValueMillimeterOfMercury,
-    TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueMillionCellsPerMilliliter,
-    TNullableQuantityValueMilliOsmolesPerKilogram,
-    TNullableQuantityValueOpticalDensity,
-    TNullableQuantityValuePercent,
-    TNullableQuantityValuePH,
-    TNullableQuantityValueTODO,
-    TNullableQuantityValueUnitPerLiter,
+    TQuantityValueCell,
+    TQuantityValueDegreeCelsius,
+    TQuantityValueGramPerLiter,
+    TQuantityValueMicrometer,
+    TQuantityValueMillimeterOfMercury,
+    TQuantityValueMillimolePerLiter,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueMilliOsmolesPerKilogram,
+    TQuantityValuePercent,
+    TQuantityValuePH,
+    TQuantityValueUnitPerLiter,
 )
 
 FILENAME_REGEX = r"^SampleResults(?P<device_identifier>.*)?(?P<processing_time>\d{4}-\d{2}-\d{2}_\d{6})\.csv$"
@@ -23,20 +22,20 @@ INVALID_FILENAME_MESSAGE = (
 )
 
 CONCENTRATION_CLASSES = (
-    TNullableQuantityValueMillimolePerLiter
-    | TNullableQuantityValueGramPerLiter
-    | TNullableQuantityValueUnitPerLiter
+    TQuantityValueMillimolePerLiter
+    | TQuantityValueGramPerLiter
+    | TQuantityValueUnitPerLiter
 )
 ALL_CONCENTRATION_CLASSES: list[
     (
-        type[TNullableQuantityValueMillimolePerLiter]
-        | type[TNullableQuantityValueGramPerLiter]
-        | type[TNullableQuantityValueUnitPerLiter]
+        type[TQuantityValueMillimolePerLiter]
+        | type[TQuantityValueGramPerLiter]
+        | type[TQuantityValueUnitPerLiter]
     )
 ] = [
-    TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueGramPerLiter,
-    TNullableQuantityValueUnitPerLiter,
+    TQuantityValueMillimolePerLiter,
+    TQuantityValueGramPerLiter,
+    TQuantityValueUnitPerLiter,
 ]
 CONCENTRATION_CLS_BY_UNIT = {cls.unit: cls for cls in ALL_CONCENTRATION_CLASSES}
 
@@ -79,65 +78,66 @@ ANALYTE_MAPPINGS: dict[str, dict[str, str]] = {
     },
 }
 
-PROPERTY_MAPPINGS: dict[str, dict[str, Any]] = {
-    "pco2": {
-        "col_name": "PCO2",
-        "cls": TNullableQuantityValueMillimeterOfMercury,
-    },
-    "co2_saturation": {
-        "col_name": "CO2 Saturation",
-        "cls": TNullableQuantityValuePercent,
-    },
-    "po2": {
+BLOOD_GAS_DETECTION_MAPPINGS: dict[str, dict[str, Any]] = {
+    "pO2": {
         "col_name": "PO2",
-        "cls": TNullableQuantityValueMillimeterOfMercury,
+        "cls": TQuantityValueMillimeterOfMercury,
     },
-    "o2_saturation": {
+    "pCO2": {
+        "col_name": "PCO2",
+        "cls": TQuantityValueMillimeterOfMercury,
+    },
+    "carbon_dioxide_saturation": {
+        "col_name": "CO2 Saturation",
+        "cls": TQuantityValuePercent,
+    },
+    "oxygen_saturation": {
         "col_name": "O2 Saturation",
-        "cls": TNullableQuantityValuePercent,
+        "cls": TQuantityValuePercent,
     },
-    "optical_density": {
-        "col_name": "Optical Density",
-        "cls": TNullableQuantityValueOpticalDensity,
-    },
+}
+
+PH_DETECTION_MAPPINGS: dict[str, dict[str, Any]] = {
     "pH": {
         "col_name": "pH",
-        "cls": TNullableQuantityValuePH,
+        "cls": TQuantityValuePH,
     },
+    "temperature": {
+        "col_name": "Vessel Temperature",
+        "cls": TQuantityValueDegreeCelsius,
+    },
+}
+
+OSMOLALITY_DETECTION_MAPPINGS: dict[str, dict[str, Any]] = {
     "osmolality": {
         "col_name": "Osm",
-        "cls": TNullableQuantityValueMilliOsmolesPerKilogram,
+        "cls": TQuantityValueMilliOsmolesPerKilogram,
     },
+}
+
+CELL_COUNTER_MAPPINGS = {
     "viability__cell_counter_": {
         "col_name": "Viability",
-        "cls": TNullableQuantityValuePercent,
+        "cls": TQuantityValuePercent,
     },
     "total_cell_density__cell_counter_": {
         "col_name": "Total Density",
-        "cls": TNullableQuantityValueMillionCellsPerMilliliter,
+        "cls": TQuantityValueMillionCellsPerMilliliter,
     },
     "viable_cell_density__cell_counter_": {
         "col_name": "Viable Density",
-        "cls": TNullableQuantityValueMillionCellsPerMilliliter,
+        "cls": TQuantityValueMillionCellsPerMilliliter,
     },
     "average_live_cell_diameter__cell_counter_": {
         "col_name": "Average Live Cell Diameter",
-        "cls": TNullableQuantityValueMicrometer,
+        "cls": TQuantityValueMicrometer,
     },
-    "average_total_cell_diameter__cell_counter_": {
-        "col_name": "Average Total Cell Diameter",
-        "cls": TNullableQuantityValueMicrometer,
-    },
-    "total_cell_diameter_distribution__cell_counter_": {
-        "col_name": "Total Cell Diameter Distribution",
-        "cls": TNullableQuantityValueTODO,
-    },
-    "viable_cell_count__cell_counter_": {
-        "col_name": "Total Live Count",
-        "cls": TNullableQuantityValueCell,
-    },
-    "total_cell_count__cell_counter_": {
+    "total_cell_count": {
         "col_name": "Total Cell Count",
-        "cls": TNullableQuantityValueCell,
+        "cls": TQuantityValueCell,
+    },
+    "viable_cell_count": {
+        "col_name": "Total Live Count",
+        "cls": TQuantityValueCell,
     },
 }
