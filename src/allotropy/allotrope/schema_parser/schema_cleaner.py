@@ -512,7 +512,6 @@ class SchemaCleaner:
         # If a schema is has properties on it and anyOf/oneOf/allOf composed components, it is essentially
         # an allOf with the parent schema and the rest, combine this way.
         schema = copy.deepcopy(schema)
-
         if _is_direct_object_schema(schema) and _is_composed_object_schema(schema):
             allof_values = [
                 _create_object_schema(
@@ -539,9 +538,6 @@ class SchemaCleaner:
                 cleaned |= self._combine_allof(clean_value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
-            # elif key == "anyOf":
-            #     clean_value = self._clean_value(value)
-            #     cleaned |= self._combine_anyof(clean_value)
             else:
                 cleaned[key] = self._clean_value(value)
 
@@ -549,8 +545,6 @@ class SchemaCleaner:
 
     def _clean_def_schema(self, schema: dict[str, Any]) -> dict[str, Any]:
         cleaned = {}
-        # if _is_direct_object_schema(schema) and _is_composed_object_schema(schema):
-        #     return self._clean_schema(schema)
         for key, value in schema.items():
             if _should_filter_key(key):
                 continue
