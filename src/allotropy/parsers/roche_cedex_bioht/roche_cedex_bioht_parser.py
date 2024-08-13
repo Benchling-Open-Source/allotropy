@@ -151,7 +151,9 @@ class RocheCedexBiohtParser(VendorParser):
                 msg = f"Unable to convert U/L -> mmol/L for {measurement.name}."
                 raise AllotropeConversionError(msg)
         else:
-            msg = msg_for_error_on_unrecognized_value("analyte unit", measurement.unit, ["g/L", "mL/L", "mmol/L"])
+            msg = msg_for_error_on_unrecognized_value(
+                "analyte unit", measurement.unit, ["g/L", "mL/L", "mmol/L"]
+            )
             raise AllotropeConversionError(msg)
 
     def _create_sample_measurement(
