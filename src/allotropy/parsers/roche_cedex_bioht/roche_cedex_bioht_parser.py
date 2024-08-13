@@ -13,11 +13,17 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     SolutionAnalyzerDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueGramPerLiter,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliterPerLiter,
     TQuantityValueMillimolePerLiter,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import (
+    AllotropeConversionError,
+    msg_for_error_on_unrecognized_value,
+)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
@@ -111,6 +117,43 @@ class RocheCedexBiohtParser(VendorParser):
 
         return measurement_document
 
+    def _create_analyte_document(self, measurement: Measurement) -> AnalyteDocument:
+        if measurement.unit == "g/L":
+            return AnalyteDocument(
+                analyte_name=measurement.name,
+                mass_concentration=TQuantityValueGramPerLiter(
+                    value=measurement.concentration_value
+                ),
+            )
+        elif measurement.unit == "mL/L":
+            return AnalyteDocument(
+                analyte_name=measurement.name,
+                volume_concentration=TQuantityValueMilliliterPerLiter(
+                    value=measurement.concentration_value
+                ),
+            )
+        elif measurement.unit == "mmol/L":
+            return AnalyteDocument(
+                analyte_name=measurement.name,
+                molar_concentration=TQuantityValueMillimolePerLiter(
+                    value=measurement.concentration_value
+                ),
+            )
+        elif measurement.unit == "U/L":
+            if measurement.name == "ldh":
+                return AnalyteDocument(
+                    analyte_name=measurement.name,
+                    molar_concentration=TQuantityValueMillimolePerLiter(
+                        value=measurement.concentration_value * 0.0167
+                    ),
+                )
+            else:
+                msg = f"Unable to convert U/L -> mmol/L for {measurement.name}."
+                raise AllotropeConversionError(msg)
+        else:
+            msg = msg_for_error_on_unrecognized_value("analyte unit", measurement.unit, ["g/L", "mL/L", "mmol/L"])
+            raise AllotropeConversionError(msg)
+
     def _create_sample_measurement(
         self,
         sample: Sample,
@@ -144,12 +187,7 @@ class RocheCedexBiohtParser(VendorParser):
         else:
             measurement_document.analyte_aggregate_document = AnalyteAggregateDocument(
                 analyte_document=[
-                    AnalyteDocument(
-                        analyte_name=name,
-                        molar_concentration=TQuantityValueMillimolePerLiter(
-                            value=measurements[name].concentration_value
-                        ),
-                    )
+                    self._create_analyte_document(measurements[name])
                     for name in sorted(measurements)
                     # TODO: add error document and set to sentinel value once error docs are added.
                     if measurements[name].concentration_value is not NaN
