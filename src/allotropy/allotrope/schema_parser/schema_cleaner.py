@@ -385,11 +385,14 @@ class SchemaCleaner:
                 if new_schemas
                 else [[schema] for schema in schemas_list]
             )
+
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
     def _combine_allof_schemas(
         self, schemas: list[dict[str, Any]]
     ) -> dict[str, Any] | list[dict[str, Any]]:
+        schemas = [self._clean_schema(schema) for schema in schemas]
+        schemas = [schema for schema in schemas if schema]
         if not all(_is_class_schema(schema) for schema in schemas):
             if any(_is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
@@ -509,6 +512,7 @@ class SchemaCleaner:
         # If a schema is has properties on it and anyOf/oneOf/allOf composed components, it is essentially
         # an allOf with the parent schema and the rest, combine this way.
         schema = copy.deepcopy(schema)
+
         if _is_direct_object_schema(schema) and _is_composed_object_schema(schema):
             allof_values = [
                 _create_object_schema(
@@ -535,9 +539,9 @@ class SchemaCleaner:
                 cleaned |= self._combine_allof(clean_value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
-            elif key == "anyOf":
-                clean_value = self._clean_value(value)
-                cleaned |= self._combine_anyof(clean_value)
+            # elif key == "anyOf":
+            #     clean_value = self._clean_value(value)
+            #     cleaned |= self._combine_anyof(clean_value)
             else:
                 cleaned[key] = self._clean_value(value)
 
@@ -545,6 +549,8 @@ class SchemaCleaner:
 
     def _clean_def_schema(self, schema: dict[str, Any]) -> dict[str, Any]:
         cleaned = {}
+        # if _is_direct_object_schema(schema) and _is_composed_object_schema(schema):
+        #     return self._clean_schema(schema)
         for key, value in schema.items():
             if _should_filter_key(key):
                 continue
