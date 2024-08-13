@@ -5,6 +5,8 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
@@ -20,10 +22,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 )
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import (
-    AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
-)
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
@@ -119,50 +117,47 @@ class RocheCedexBiohtParser(VendorParser):
 
     def _create_analyte_document(
         self, measurement: Measurement
-    ) -> AnalyteDocument | None:
-        # TODO: add error document and set to sentinel value once error docs are added.
-        if measurement.concentration_value is NaN:
-            return None
+    ) -> tuple[AnalyteDocument, str | None]:
+        value = (
+            measurement.concentration_value
+            if isinstance(measurement.concentration_value, float)
+            else -1
+        )
+        analyte = AnalyteDocument(
+            analyte_name=measurement.name,
+            molar_concentration=TQuantityValueMillimolePerLiter(value=value),
+        )
+        error = measurement.error
 
         if measurement.unit == "g/L":
-            return AnalyteDocument(
+            analyte = AnalyteDocument(
                 analyte_name=measurement.name,
-                mass_concentration=TQuantityValueGramPerLiter(
-                    value=measurement.concentration_value
-                ),
+                mass_concentration=TQuantityValueGramPerLiter(value=value),
             )
         elif measurement.unit == "mL/L":
-            return AnalyteDocument(
+            analyte = AnalyteDocument(
                 analyte_name=measurement.name,
-                volume_concentration=TQuantityValueMilliliterPerLiter(
-                    value=measurement.concentration_value
-                ),
+                volume_concentration=TQuantityValueMilliliterPerLiter(value=value),
             )
         elif measurement.unit == "mmol/L":
-            return AnalyteDocument(
+            analyte = AnalyteDocument(
                 analyte_name=measurement.name,
-                molar_concentration=TQuantityValueMillimolePerLiter(
-                    value=measurement.concentration_value
-                ),
+                molar_concentration=TQuantityValueMillimolePerLiter(value=value),
             )
         elif measurement.unit == "U/L":
             if measurement.name == "ldh":
-                return AnalyteDocument(
+                analyte = AnalyteDocument(
                     analyte_name=measurement.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
-                        value=measurement.concentration_value * 0.0167
-                        if isinstance(measurement.concentration_value, float)
-                        else NaN
+                        value=value * 0.0167 if value > 0 else value
                     ),
                 )
             else:
-                msg = f"Unable to convert U/L -> mmol/L for {measurement.name}."
-                raise AllotropeConversionError(msg)
+                error = f"Invalid unit for {measurement.name}: {measurement.unit}"
         else:
-            msg = msg_for_error_on_unrecognized_value(
-                "analyte unit", measurement.unit, ["g/L", "mL/L", "mmol/L"]
-            )
-            raise AllotropeConversionError(msg)
+            error = f"Invalid unit for analyte: {measurement.unit}, value values are: g/L, mL/L, mmol/L"
+
+        return analyte, error
 
     def _create_sample_measurement(
         self,
@@ -187,21 +182,39 @@ class RocheCedexBiohtParser(VendorParser):
             ),
         )
 
+        errors: list[ErrorDocumentItem] = []
         if OPTICAL_DENSITY in measurements:
-            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
-                value=measurements[OPTICAL_DENSITY].concentration_value
+            measurement = measurements[OPTICAL_DENSITY]
+            value = (
+                measurement.concentration_value
+                if measurement.concentration_value is not NaN
+                else -1
             )
-            # TODO: add error document and set to sentinel value once error docs are added.
-            if measurement_document.absorbance.value is NaN:
+            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
+                value=value
+            )
+
+            # TODO: always add value, add error to error document
+            if measurement.concentration_value is NaN:
                 return None
         else:
-            analytes = [
-                self._create_analyte_document(measurements[name])
-                for name in sorted(measurements)
-            ]
-            measurement_document.analyte_aggregate_document = AnalyteAggregateDocument(
-                analyte_document=[analyte for analyte in analytes if analyte],
-            )
-            if not measurement_document.analyte_aggregate_document.analyte_document:
+            analytes = []
+            for name in sorted(measurements):
+                analyte, error = self._create_analyte_document(measurements[name])
+                # TODO: always write analyte, add error to error document
+                if not error:
+                    analytes.append(analyte)
+
+            if analytes:
+                measurement_document.analyte_aggregate_document = (
+                    AnalyteAggregateDocument(analyte_document=analytes)
+                )
+            else:
                 return None
+
+        if errors:
+            measurement_document.error_aggregate_document = ErrorAggregateDocument(
+                error_document=errors
+            )
+
         return measurement_document
