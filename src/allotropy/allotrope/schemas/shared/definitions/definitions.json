@@ -64,6 +64,102 @@
             }
         ]
     },
+    "tIntegerValue": {
+        "description": "A arbitrary length integer value.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#integer",
+        "oneOf": [
+            {
+                "type": "integer"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
+    "tDecimalValue": {
+        "description": "A number value stored as an XSD decimal.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#decimal",
+        "oneOf": [
+            {
+                "type": "number"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
+    "tDoubleValue": {
+        "description": "A number value stored as an XSD double.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#double",
+        "oneOf": [
+            {
+                "type": "number"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
+    "tFloatValue": {
+        "description": "A number value stored as an XSD float.",
+        "$asm.type": "http://www.w3.org/2001/XMLSchema#float",
+        "oneOf": [
+            {
+                "type": "number"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "$ref": "#/$defs/tClass"
+                    },
+                    "value": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "value"
+                ]
+            }
+        ]
+    },
     "tBooleanValue": {
         "description": "A boolean value.",
         "$asm.type": "http://www.w3.org/2001/XMLSchema#boolean",
@@ -166,7 +262,11 @@
                         "type": "number"
                     },
                     {
-                        "enum": ["NaN", "+Infinity", "-Infinity"]
+                        "enum": [
+                            "NaN",
+                            "+Infinity",
+                            "-Infinity"
+                        ]
                     }
                 ]
             },

@@ -267,6 +267,26 @@ class ClassLines:
         return "".join(self.lines)
 
 
+@dataclass
+class TypeName(ClassLines):
+    """Represents a set of lines defining a type name."""
+
+    lines: list[str]
+    class_name: str
+    types: set[str]
+
+    @staticmethod
+    def create(lines: list[str]) -> TypeName:
+        match = re.match("(\\S+) = \\(?([^).]+)\\)?", "".join([line.strip() for line in lines]))
+        class_name = match.groups()[0]
+        types = {type_.strip() for type_ in match.groups()[1].split("|")}
+        lines = [f"{class_name} = {'|'.join(types)}"]
+        return TypeName(lines, class_name, types)
+
+    def should_merge(self, _: DataclassField | TypeName) -> bool:
+        return False
+
+
 @dataclass(eq=False)
 class DataClassLines(ClassLines):
     """Represents a set of lines defining a dataclass."""
@@ -307,6 +327,8 @@ class DataClassLines(ClassLines):
 
         for field_name in fixed_field_name_order:
             lines.append(f"    {fields[field_name].contents}")
+        if not fixed_field_name_order:
+            lines.append("    pass")
 
         return DataClassLines(
             lines=[line + "\n" for line in lines],
@@ -342,7 +364,14 @@ class DataClassLines(ClassLines):
             self.is_frozen,
         )
 
-    def should_merge(self, other: DataClassLines) -> bool:
+    def should_merge(self, other: DataClassLines | TypeName) -> bool:
+        if isinstance(other, TypeName):
+            return other.types == {self.class_name}
+
+        # Special case where one class is an empty rename of the other.
+        if not other.fields and set(other.parent_class_names) == {self.class_name}:
+            return True
+
         # parent classes must match
         if set(self.parent_class_names) != set(other.parent_class_names):
             # Special case for OrderedItem, which sometimes gets combined and sometimes does not.
@@ -351,17 +380,16 @@ class DataClassLines(ClassLines):
             }:
                 return False
 
-        # There must be some overlapping fields with the same values
-        if not any(
-            self.fields[name].contents == other.fields[name].contents
-            for name in self.fields.keys() & other.fields.keys()
-        ):
-            return False
-
         return True
 
-    def merge_similar(self, other: DataClassLines) -> DataClassLines:
+    def merge_similar(self, other: DataClassLines | TypeName) -> DataClassLines:
         # Merge another class that has similar fields with this one.
+
+        if isinstance(other, TypeName):
+            if other.types != {self.class_name}:
+                msg = f"Can't merge TypeName when not a perfect match: {self.class_name}, {other.class_name}."
+                raise AssertionError(msg)
+            return self
 
         # Add fields from the other class to this one.
         for field_name in other.fields:
@@ -422,17 +450,13 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     elif " = " in class_description:
         # Match type aliasing, e.g. TClass = str
         match = re.match("(\\S+) =", lines[0])
+        return TypeName.create(lines)
     if not match:
         msg = f"Could not determine class name for: {''.join(lines)}."
         raise AssertionError(msg)
     class_name = match.groups()[0]
 
     if not is_dataclass:
-        return ClassLines(lines, class_name)
-
-    # Handle case where dataclass is just a rename of another dataclass. We don't need to do anything with
-    # these, so just pass them.
-    if "pass" in lines[desc_end + 1] and ":" not in lines[desc_end + 1]:
         return ClassLines(lines, class_name)
 
     is_frozen = "frozen=True" in lines[0]
@@ -443,6 +467,17 @@ def create_class_lines(lines: list[str]) -> ClassLines:
     parent_class_names = (
         [name.strip() for name in match.groups()[0].split(",")] if match else []
     )
+
+    # Handle case where dataclass is just a rename of another dataclass. We don't need to do anything with
+    # these, so just pass them.
+    if "pass" in lines[desc_end + 1] and ":" not in lines[desc_end + 1]:
+        return DataClassLines.create(
+            name=class_name,
+            parent_class_names=parent_class_names,
+            fields={},
+            field_name_order=[],
+            is_frozen=is_frozen
+        )
 
     # Get fields of the dataclass
     fields: dict[str, DataclassField] = {}
@@ -544,20 +579,27 @@ class ModelClassEditor:
 
         for class_group in class_groups.values():
             sorted_class_names = sorted(class_group)
+            made_change = False
             for i in range(len(sorted_class_names) - 1):
                 class1 = classes[sorted_class_names[i]]
-                if not isinstance(class1, DataClassLines):
+                if not isinstance(class1, DataClassLines | TypeName):
                     continue
                 for j in range(i + 1, len(sorted_class_names)):
                     class2 = classes[sorted_class_names[j]]
-                    if not isinstance(class2, DataClassLines):
+                    if not isinstance(class2, DataClassLines | TypeName):
                         continue
+                    made_change = True
                     # If classes are equal or similar enough to merge, substitute.
                     if class1 == class2:
                         substitutions[class2.class_name] = class1.class_name
                     elif class1.should_merge(class2):
                         classes[class1.class_name] = class1.merge_similar(class2)
                         substitutions[class2.class_name] = class1.class_name
+                    elif class2.should_merge(class1):
+                        classes[class2.class_name] = class2.merge_similar(class1)
+                        substitutions[class1.class_name] = class2.class_name
+                    else:
+                        made_change = False
 
         return substitutions
 
