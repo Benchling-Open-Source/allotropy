@@ -10,6 +10,7 @@ from allotropy.allotrope.models.shared.definitions.units import (
     Centimeter,
     Counts,
     CountsPerMilliliter,
+    CountsPerSecond,
     CountsTimesSecond,
     CubicMillimeter,
     DegreeCelsius,
@@ -48,7 +49,11 @@ from allotropy.allotrope.models.shared.definitions.units import (
     PicoAmpereTimesSecond,
     PicogramPerMilliliter,
     RelativeFluorescenceUnit,
+    RelativeFluorescenceUnitTimesMilliliter,
+    RelativeFluorescenceUnitTimesSecond,
     RelativeLightUnit,
+    RelativeLightUnitTimesMilliliter,
+    RelativeLightUnitTimesSecond,
     SecondTime,
     SquareCentimetersPerGram,
     TODO,
@@ -96,6 +101,16 @@ class TQuantityValueCountsPerMilliliter(CountsPerMilliliter, TQuantityValue):
 class TNullableQuantityValueCountsPerMilliliter(
     CountsPerMilliliter, TNullableQuantityValue
 ):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueCountsPerSecond(CountsPerSecond, TQuantityValue):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueCountsPerSecond(CountsPerSecond, TNullableQuantityValue):
     pass
 
 
@@ -526,6 +541,34 @@ class TNullableQuantityValueRelativeFluorescenceUnit(
 
 
 @dataclass(frozen=True, kw_only=True)
+class TQuantityValueRelativeFluorescenceUnitTimesMilliliter(
+    RelativeFluorescenceUnitTimesMilliliter, TQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueRelativeFluorescenceUnitTimesMilliliter(
+    RelativeFluorescenceUnitTimesMilliliter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRelativeFluorescenceUnitTimesSecond(
+    RelativeFluorescenceUnitTimesSecond, TQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueRelativeFluorescenceUnitTimesSecond(
+    RelativeFluorescenceUnitTimesSecond, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
 class TQuantityValueRelativeLightUnit(RelativeLightUnit, TQuantityValue):
     pass
 
@@ -533,6 +576,34 @@ class TQuantityValueRelativeLightUnit(RelativeLightUnit, TQuantityValue):
 @dataclass(frozen=True, kw_only=True)
 class TNullableQuantityValueRelativeLightUnit(
     RelativeLightUnit, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRelativeLightUnitTimesMilliliter(
+    RelativeLightUnitTimesMilliliter, TQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueRelativeLightUnitTimesMilliliter(
+    RelativeLightUnitTimesMilliliter, TNullableQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TQuantityValueRelativeLightUnitTimesSecond(
+    RelativeLightUnitTimesSecond, TQuantityValue
+):
+    pass
+
+
+@dataclass(frozen=True, kw_only=True)
+class TNullableQuantityValueRelativeLightUnitTimesSecond(
+    RelativeLightUnitTimesSecond, TNullableQuantityValue
 ):
     pass
 

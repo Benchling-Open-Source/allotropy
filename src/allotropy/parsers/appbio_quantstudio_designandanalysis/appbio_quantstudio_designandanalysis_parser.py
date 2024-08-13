@@ -3,7 +3,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
     DataProcessingDocument,
-    DataProcessingDocument1,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -125,7 +124,7 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                         ],
                     ),
                     data_processing_document=(
-                        DataProcessingDocument1(
+                        DataProcessingDocument(
                             reference_DNA_description=data.reference_target,
                             reference_sample_description=data.reference_sample,
                         )
