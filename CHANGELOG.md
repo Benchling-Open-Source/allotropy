@@ -11,8 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix mis-reporting some analyte units in Roche Cedex Bioht parser
-
 ### Changed
 
 ### Deprecated
@@ -20,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Security
+
+## [0.1.47] - 2024-08-13
+
+### Fixed
+
+- Fix mis-reporting some analyte units in Roche Cedex Bioht parser
 
 ## [0.1.46] - 2024-08-13
 
