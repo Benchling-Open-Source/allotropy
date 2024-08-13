@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path, PureWindowsPath
+
 import numpy as np
 import pandas as pd
 
@@ -15,6 +17,10 @@ from allotropy.parsers.utils.values import (
 class DesignQuantstudioContents:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
+        if not named_file_contents.original_file_name.endswith("xlsx"):
+            extension = PureWindowsPath(named_file_contents.original_file_name).suffix
+            msg = f"Invalid file extension for AppBio QuantStudio Design & Analysis: '{extension}', must be 'xlsx'"
+            raise AllotropeConversionError(msg)
         raw_contents = pd.read_excel(  # type: ignore[call-overload]
             named_file_contents.contents,
             header=None,
