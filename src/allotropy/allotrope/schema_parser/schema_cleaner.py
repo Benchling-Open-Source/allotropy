@@ -391,8 +391,7 @@ class SchemaCleaner:
     def _combine_allof_schemas(
         self, schemas: list[dict[str, Any]]
     ) -> dict[str, Any] | list[dict[str, Any]]:
-        schemas = [self._clean_schema(schema) for schema in schemas]
-        schemas = [schema for schema in schemas if schema]
+        schemas = self._clean_value(schemas)
         if not all(_is_class_schema(schema) for schema in schemas):
             if any(_is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
