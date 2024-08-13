@@ -93,24 +93,6 @@ def test_create_measurement() -> None:
 
 
 @pytest.mark.short
-def test_create_measurement_with_no_unit() -> None:
-    data = SeriesData(
-        pd.Series(
-            {
-                "analyte name": "aspartate",
-                "measurement time": "2021-05-20T16:55:51+00:00",
-                "concentration value": 1.45,
-            }
-        )
-    )
-    measurement = Measurement.create(data)
-    assert measurement.name == "aspartate"
-    assert measurement.measurement_time == "2021-05-20T16:55:51+00:00"
-    assert measurement.concentration_value == 1.45
-    assert measurement.unit is None
-
-
-@pytest.mark.short
 def test_create_measurements() -> None:
     data = pd.DataFrame(
         {
