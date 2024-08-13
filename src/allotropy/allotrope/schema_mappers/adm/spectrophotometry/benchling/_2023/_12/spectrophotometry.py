@@ -344,7 +344,7 @@ class Mapper:
         return ProcessedDataAggregateDocument(
             processed_data_document=[
                 ProcessedDataDocumentItem(
-                    # NOTE: mypy is mad because mass_concentration asserts a subset of TQuantityValue
+                    # TODO(nstender): figure out how to limit possible classes from get_quantity_class for typing.
                     mass_concentration=quantity_or_none(
                         get_quantity_class(feature.unit), feature.result  # type: ignore[arg-type]
                     ),
