@@ -250,6 +250,8 @@ class SeriesData:
                     if raw_value is None
                     else ("true" if str_to_bool(str(raw_value)) else "")
                 )
+            if type_ is float and isinstance(raw_value, str) and "%" in raw_value:
+                raw_value = raw_value.strip("%")
             value = None if raw_value is None else type_(raw_value)
         except ValueError:
             value = None

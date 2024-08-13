@@ -15,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
     MeasurementGroup,
     Metadata,
 )
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
     BRAND_NAME,
@@ -156,6 +157,9 @@ class Well:
 
     @staticmethod
     def create_wells(data: pd.DataFrame) -> list[Well]:
+        if "Name" not in data:
+            msg = "Input is missing required column 'Name'."
+            raise AllotropeConversionError(msg)
         data = data.dropna(subset=["Name"]).replace(np.nan, None)
         return [
             Well(map_rows(well_data, WellItem.create))

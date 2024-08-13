@@ -1,21 +1,29 @@
 # mypy: disallow_any_generics = False
-
 from io import StringIO
 
 import pandas as pd
 
-from allotropy.allotrope.models.adm.cell_culture_analyzer.benchling._2023._09.cell_culture_analyzer import (
+from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     AnalyteAggregateDocument,
-    AnalyteDocumentItem,
+    AnalyteDocument,
+    DataSystemDocument,
+    DeviceControlAggregateDocument,
+    DeviceControlDocumentItem,
     DeviceSystemDocument,
     MeasurementAggregateDocument,
-    MeasurementDocumentItem,
+    MeasurementDocument,
     Model,
     SampleDocument,
+    SolutionAnalyzerAggregateDocument,
+    SolutionAnalyzerDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueMillimolePerLiter,
+    TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMillimolePerLiter,
 )
+from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.roche_cedex_bioht.constants import SOLUTION_ANALYZER
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
@@ -44,7 +52,7 @@ def get_data_stream() -> StringIO:
     body = [
         [
             "40",
-            "2021-05-20 16:55:51",
+            "2021-05-20 16:56:51",
             "PPDTEST1",
             "",
             "SAM",
@@ -72,6 +80,21 @@ def get_data_stream() -> StringIO:
             "0",
             "R",
         ],
+        [
+            "40",
+            "2021-05-20 16:57:51",
+            "PPDTEST1",
+            "",
+            "Sample",
+            "        ",
+            "ODB",
+            "        ",
+            "OD",
+            " ",
+            "  0.17138",
+            "0",
+            "R",
+        ],
     ]
     title_text = "\t".join(title)
     body_text = "\n".join(["\t".join(row) for row in body])
@@ -93,7 +116,7 @@ def get_reader_title() -> pd.Series:
             "col6": "2021-06-01",
             "model number": "CEDEX BIO HT",
             "device serial number": 620103,
-            "col9": "6.0.0.1905 (1905)",
+            "software version": "6.0.0.1905 (1905)",
             "analyst": "ADMIN",
         }
     )
@@ -119,7 +142,7 @@ def get_reader_samples() -> pd.DataFrame:
         data=[
             [
                 40,
-                "2021-05-20 16:55:51",
+                "2021-05-20 16:56:51",
                 "PPDTEST1",
                 "",
                 "Sample",
@@ -147,6 +170,21 @@ def get_reader_samples() -> pd.DataFrame:
                 0,
                 "R",
             ],
+            [
+                40,
+                "2021-05-20 16:57:51",
+                "PPDTEST1",
+                "",
+                "Sample",
+                "        ",
+                "optical_density",
+                "        ",
+                "OD",
+                " ",
+                0.17138,
+                0,
+                "R",
+            ],
         ],
     )
 
@@ -158,6 +196,7 @@ def get_data() -> Data:
             analyst="ADMIN",
             model_number="CEDEX BIO HT",
             device_serial_number="620103",
+            software_version="6.0.0.1905 (1905)",
         ),
         samples=[
             Sample(
@@ -168,7 +207,10 @@ def get_data() -> Data:
                             "ammonia", "2021-05-20 16:55:51", 1.846, "mmol/L"
                         ),
                         "glutamine": Measurement(
-                            "glutamine", "2021-05-20 16:55:51", 2.45, "mmol/L"
+                            "glutamine", "2021-05-20 16:56:51", 2.45, "mmol/L"
+                        ),
+                        "optical_density": Measurement(
+                            "optical_density", "2021-05-20 16:57:51", 0.17138, "OD"
                         ),
                     }
                 },
@@ -179,55 +221,80 @@ def get_data() -> Data:
 
 def get_model() -> Model:
     return Model(
-        measurement_aggregate_document=MeasurementAggregateDocument(
-            measurement_identifier="",
-            analyst="ADMIN",
-            device_system_document=DeviceSystemDocument(
-                device_identifier=None,
-                model_number="CEDEX BIO HT",
-                device_serial_number="620103",
-            ),
-            measurement_document=[
-                MeasurementDocumentItem(
-                    sample_document=SampleDocument(
-                        sample_identifier="PPDTEST1",
-                        batch_identifier=None,
-                    ),
-                    measurement_time="2021-05-20T16:55:51+00:00",
-                    analyte_aggregate_document=AnalyteAggregateDocument(
-                        analyte_document=[
-                            AnalyteDocumentItem(
-                                analyte_name="ammonia",
-                                molar_concentration=TNullableQuantityValueMillimolePerLiter(
-                                    value=1.846,
+        field_asm_manifest="http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
+        solution_analyzer_aggregate_document=SolutionAnalyzerAggregateDocument(
+            solution_analyzer_document=[
+                SolutionAnalyzerDocumentItem(
+                    measurement_aggregate_document=MeasurementAggregateDocument(
+                        measurement_document=[
+                            MeasurementDocument(
+                                measurement_identifier="ROCHE_CEDEX_BIOHT_TEST_ID_0",
+                                measurement_time="2021-05-20T16:55:51+00:00",
+                                sample_document=SampleDocument(
+                                    sample_identifier="PPDTEST1",
+                                ),
+                                device_control_aggregate_document=DeviceControlAggregateDocument(
+                                    device_control_document=[
+                                        DeviceControlDocumentItem(
+                                            device_type=SOLUTION_ANALYZER
+                                        )
+                                    ]
+                                ),
+                                absorbance=TQuantityValueMilliAbsorbanceUnit(
+                                    value=0.17138,
+                                    unit="mAU",
                                 ),
                             ),
-                            AnalyteDocumentItem(
-                                analyte_name="glutamine",
-                                molar_concentration=TNullableQuantityValueMillimolePerLiter(
-                                    value=2.45,
+                            MeasurementDocument(
+                                measurement_identifier="ROCHE_CEDEX_BIOHT_TEST_ID_1",
+                                measurement_time="2021-05-20T16:55:51+00:00",
+                                sample_document=SampleDocument(
+                                    sample_identifier="PPDTEST1",
+                                ),
+                                device_control_aggregate_document=DeviceControlAggregateDocument(
+                                    device_control_document=[
+                                        DeviceControlDocumentItem(
+                                            device_type=SOLUTION_ANALYZER
+                                        )
+                                    ]
+                                ),
+                                analyte_aggregate_document=AnalyteAggregateDocument(
+                                    analyte_document=[
+                                        AnalyteDocument(
+                                            analyte_name="ammonia",
+                                            molar_concentration=TQuantityValueMillimolePerLiter(
+                                                value=1.846,
+                                                unit="mmol/L",
+                                            ),
+                                        ),
+                                        AnalyteDocument(
+                                            analyte_name="glutamine",
+                                            molar_concentration=TQuantityValueMillimolePerLiter(
+                                                value=2.45,
+                                                unit="mmol/L",
+                                            ),
+                                        ),
+                                    ]
                                 ),
                             ),
-                        ]
+                        ],
+                        data_processing_time="2021-06-01 13:04:06",
                     ),
-                    pco2=None,
-                    co2_saturation=None,
-                    po2=None,
-                    o2_saturation=None,
-                    optical_density=None,
-                    pH=None,
-                    osmolality=None,
-                    viability__cell_counter_=None,
-                    total_cell_density__cell_counter_=None,
-                    viable_cell_density__cell_counter_=None,
-                    average_live_cell_diameter__cell_counter_=None,
-                    average_total_cell_diameter__cell_counter_=None,
-                    total_cell_diameter_distribution__cell_counter_=None,
-                    viable_cell_count__cell_counter_=None,
-                    total_cell_count__cell_counter_=None,
+                    analyst="ADMIN",
                 )
             ],
-            data_processing_time="2021-06-01T13:04:06+00:00",
+            device_system_document=DeviceSystemDocument(
+                model_number="CEDEX BIO HT",
+                equipment_serial_number="620103",
+                device_identifier=NOT_APPLICABLE,
+            ),
+            data_system_document=DataSystemDocument(
+                file_name="file_name.txt",
+                UNC_path="",
+                software_name="CEDEX BIO HT",
+                software_version="6.0.0.1905 (1905)",
+                ASM_converter_name="allotropy_roche_cedex_bioht",
+                ASM_converter_version=ASM_CONVERTER_VERSION,
+            ),
         ),
-        manifest="http://purl.allotrope.org/manifests/cell-culture-analyzer/BENCHLING/2023/09/cell-culture-analyzer.manifest",
     )

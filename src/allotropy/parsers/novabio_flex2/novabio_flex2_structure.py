@@ -20,7 +20,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
-from allotropy.parsers.utils.pandas import read_csv
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 
 
 @dataclass(frozen=True)
@@ -30,7 +30,7 @@ class Title:
 
     @staticmethod
     def create(filename: str) -> Title:
-        matches = re.match(FILENAME_REGEX, filename)
+        matches = re.match(FILENAME_REGEX, filename, flags=re.IGNORECASE)
 
         if not matches:
             raise AllotropeConversionError(INVALID_FILENAME_MESSAGE.format(filename))
@@ -72,26 +72,25 @@ class Sample:
     properties: dict[str, Any]
 
     @staticmethod
-    def create(data: pd.Series[Any]) -> Sample:
+    def create(series: pd.Series[Any]) -> Sample:
+        data = SeriesData(series)
         properties: dict[str, Any] = {
-            property_name: property_dict["cls"](value=data[property_dict["col_name"]])
+            property_name: property_dict["cls"](
+                value=data.get(float, property_dict["col_name"])
+            )
             for property_name, property_dict in PROPERTY_MAPPINGS.items()
-            if property_dict["col_name"] in data
-            and data[property_dict["col_name"]] is not None
+            if data.get(float, property_dict["col_name"]) is not None
         }
-
-        batch_identifier = data.get("Batch ID")
-
         return Sample(
-            identifier=data["Sample ID"],
-            role_type=data["Sample Type"],
-            measurement_time=data["Date & Time"].isoformat(),
-            batch_identifier=str(batch_identifier) if batch_identifier else None,
+            identifier=data[str, "Sample ID"],
+            role_type=data[str, "Sample Type"],
+            measurement_time=data[str, "Date & Time"],
+            batch_identifier=data.get(str, "Batch ID"),
             analytes=sorted(
                 [
-                    Analyte.create(raw_name, data[raw_name])
+                    Analyte.create(raw_name, data[float, raw_name])
                     for raw_name in ANALYTE_MAPPINGS
-                    if raw_name in data
+                    if data.get(float, raw_name) is not None
                 ]
             ),
             properties=properties,

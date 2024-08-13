@@ -19,6 +19,6 @@ class AppbioAbsoluteQParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        data_frame = read_csv(named_file_contents.contents, parse_dates=["Date"])
+        data_frame = read_csv(named_file_contents.contents)
         data = create_data(data_frame, named_file_contents.original_file_name)
         return self._get_mapper(Mapper).map_model(data)
