@@ -279,13 +279,28 @@ class TypeName(ClassLines):
         match = re.match(
             "(\\S+) = \\(?([^).]+)\\)?", "".join([line.strip() for line in lines])
         )
+        if not match:
+            msg = f"Could not parse type definition for {''.join(lines)}."
+            raise AssertionError(msg)
         class_name = match.groups()[0]
         types = {type_.strip() for type_ in match.groups()[1].split("|")}
         lines = [f"{class_name} = {'|'.join(types)}"]
         return TypeName(lines, class_name, types)
 
-    def should_merge(self, _: DataclassField | TypeName) -> bool:
+    def should_merge(self, _: DataClassLines | TypeName) -> bool:
         return False
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, TypeName):
+            return False
+
+        if self.base_class_name != other.base_class_name:
+            return False
+
+        if self.types != other.types:
+            return False
+
+        return True
 
 
 @dataclass(eq=False)
@@ -594,10 +609,14 @@ class ModelClassEditor:
                     # If classes are equal or similar enough to merge, substitute.
                     if class1 == class2:
                         substitutions[class2.class_name] = class1.class_name
-                    elif class1.should_merge(class2):
+                    elif isinstance(class1, DataClassLines) and class1.should_merge(
+                        class2
+                    ):
                         classes[class1.class_name] = class1.merge_similar(class2)
                         substitutions[class2.class_name] = class1.class_name
-                    elif class2.should_merge(class1):
+                    elif isinstance(class2, DataClassLines) and class2.should_merge(
+                        class1
+                    ):
                         classes[class2.class_name] = class2.merge_similar(class1)
                         substitutions[class1.class_name] = class2.class_name
                     else:
