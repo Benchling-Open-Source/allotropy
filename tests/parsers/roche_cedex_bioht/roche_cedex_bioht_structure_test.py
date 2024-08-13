@@ -14,22 +14,27 @@ from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get
 
 
 @pytest.mark.parametrize(
-    "processing_time,model_number,device_serial,analyst",
+    "processing_time,model_number,device_serial,analyst,software_version",
     [
-        ("2021-06-01 13:04:06", "CEDEX BIO HT", 12345, "Analyst1"),
-        ("2022-06-01 00:10:06", "CEDEX BIO HT", 99999, "Analyst2"),
-        ("2023-06-01 24:35:25", "CEDEX BIO HT", 00000, "Analyst3"),
+        ("2021-06-01 13:04:06", "CEDEX BIO HT", 12345, "Analyst1", "1.0.0"),
+        ("2022-06-01 00:10:06", "CEDEX BIO HT", 99999, "Analyst2", "1.1.1"),
+        ("2023-06-01 24:35:25", "CEDEX BIO HT", 00000, "Analyst3", "1.2.2"),
     ],
 )
 @pytest.mark.short
 def test_create_title(
-    processing_time: str, model_number: str, device_serial: int, analyst: str
+    processing_time: str,
+    model_number: str,
+    device_serial: int,
+    analyst: str,
+    software_version: str,
 ) -> None:
     title_data = {
         "data processing time": processing_time,
         "model number": model_number,
         "device serial number": device_serial,
         "analyst": analyst,
+        "software version": software_version,
     }
     title = Title.create(SeriesData(pd.Series(title_data)))
 
@@ -37,6 +42,7 @@ def test_create_title(
     assert title.analyst == analyst
     assert title.model_number == model_number
     assert title.device_serial_number == str(device_serial)
+    assert title.software_version == software_version
 
 
 @pytest.mark.short
