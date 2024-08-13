@@ -1,6 +1,8 @@
 from xml.etree import ElementTree
 
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.parsers.utils.values import try_float_or_nan, try_float_or_none
 
 
 def get_element_from_xml(
@@ -36,6 +38,18 @@ def get_val_from_xml_or_none(
             return None
     except AllotropeConversionError:
         return None
+
+
+def get_float_from_xml_or_nan(
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
+) -> JsonFloat:
+    return try_float_or_nan(get_val_from_xml_or_none(xml_object, tag_name, tag_name_2))
+
+
+def get_float_from_xml_or_none(
+    xml_object: ElementTree.Element, tag_name: str, tag_name_2: str | None = None
+) -> float | None:
+    return try_float_or_none(get_val_from_xml_or_none(xml_object, tag_name, tag_name_2))
 
 
 def get_attrib_from_xml(

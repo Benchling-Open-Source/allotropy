@@ -5,6 +5,8 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
     DeviceSystemDocument,
+    ErrorAggregateDocument,
+    ErrorDocumentItem,
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
@@ -13,7 +15,9 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     SolutionAnalyzerDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueGramPerLiter,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueMilliliterPerLiter,
     TQuantityValueMillimolePerLiter,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
@@ -111,6 +115,50 @@ class RocheCedexBiohtParser(VendorParser):
 
         return measurement_document
 
+    def _create_analyte_document(
+        self, measurement: Measurement
+    ) -> tuple[AnalyteDocument, str | None]:
+        value = (
+            measurement.concentration_value
+            if isinstance(measurement.concentration_value, float)
+            else -1
+        )
+        analyte = AnalyteDocument(
+            analyte_name=measurement.name,
+            molar_concentration=TQuantityValueMillimolePerLiter(value=value),
+        )
+        error = measurement.error
+
+        if measurement.unit == "g/L":
+            analyte = AnalyteDocument(
+                analyte_name=measurement.name,
+                mass_concentration=TQuantityValueGramPerLiter(value=value),
+            )
+        elif measurement.unit == "mL/L":
+            analyte = AnalyteDocument(
+                analyte_name=measurement.name,
+                volume_concentration=TQuantityValueMilliliterPerLiter(value=value),
+            )
+        elif measurement.unit == "mmol/L":
+            analyte = AnalyteDocument(
+                analyte_name=measurement.name,
+                molar_concentration=TQuantityValueMillimolePerLiter(value=value),
+            )
+        elif measurement.unit == "U/L":
+            if measurement.name == "ldh":
+                analyte = AnalyteDocument(
+                    analyte_name=measurement.name,
+                    molar_concentration=TQuantityValueMillimolePerLiter(
+                        value=value * 0.0167 if value > 0 else value
+                    ),
+                )
+            else:
+                error = f"Invalid unit for {measurement.name}: {measurement.unit}"
+        else:
+            error = f"Invalid unit for analyte: {measurement.unit}, value values are: g/L, mL/L, mmol/L"
+
+        return analyte, error
+
     def _create_sample_measurement(
         self,
         sample: Sample,
@@ -134,27 +182,39 @@ class RocheCedexBiohtParser(VendorParser):
             ),
         )
 
+        errors: list[ErrorDocumentItem] = []
         if OPTICAL_DENSITY in measurements:
-            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
-                value=measurements[OPTICAL_DENSITY].concentration_value
+            measurement = measurements[OPTICAL_DENSITY]
+            value = (
+                measurement.concentration_value
+                if measurement.concentration_value is not NaN
+                else -1
             )
-            # TODO: add error document and set to sentinel value once error docs are added.
-            if measurement_document.absorbance.value is NaN:
+            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
+                value=value
+            )
+
+            # TODO: always add value, add error to error document
+            if measurement.concentration_value is NaN:
                 return None
         else:
-            measurement_document.analyte_aggregate_document = AnalyteAggregateDocument(
-                analyte_document=[
-                    AnalyteDocument(
-                        analyte_name=name,
-                        molar_concentration=TQuantityValueMillimolePerLiter(
-                            value=measurements[name].concentration_value
-                        ),
-                    )
-                    for name in sorted(measurements)
-                    # TODO: add error document and set to sentinel value once error docs are added.
-                    if measurements[name].concentration_value is not NaN
-                ]
-            )
-            if not measurement_document.analyte_aggregate_document.analyte_document:
+            analytes = []
+            for name in sorted(measurements):
+                analyte, error = self._create_analyte_document(measurements[name])
+                # TODO: always write analyte, add error to error document
+                if not error:
+                    analytes.append(analyte)
+
+            if analytes:
+                measurement_document.analyte_aggregate_document = (
+                    AnalyteAggregateDocument(analyte_document=analytes)
+                )
+            else:
                 return None
+
+        if errors:
+            measurement_document.error_aggregate_document = ErrorAggregateDocument(
+                error_document=errors
+            )
+
         return measurement_document

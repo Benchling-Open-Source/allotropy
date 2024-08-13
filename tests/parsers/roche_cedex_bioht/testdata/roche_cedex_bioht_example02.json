@@ -29,9 +29,9 @@
                                     },
                                     {
                                         "analyte name": "glucose",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 6.32,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
@@ -43,23 +43,23 @@
                                     },
                                     {
                                         "analyte name": "lactate",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 0.02,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 88.09,
+                                            "value": 1.471103,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.6,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     }
                                 ]
@@ -97,9 +97,9 @@
                                     },
                                     {
                                         "analyte name": "glucose",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 6.71,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
@@ -111,9 +111,9 @@
                                     },
                                     {
                                         "analyte name": "total protein",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.7,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     }
                                 ]
@@ -151,9 +151,9 @@
                                     },
                                     {
                                         "analyte name": "glucose",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 6.71,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
@@ -165,9 +165,9 @@
                                     },
                                     {
                                         "analyte name": "total protein",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.8,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     }
                                 ]
@@ -205,9 +205,9 @@
                                     },
                                     {
                                         "analyte name": "glucose",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.09,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
@@ -219,15 +219,15 @@
                                     },
                                     {
                                         "analyte name": "lactate",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 1.89,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 334.84,
+                                            "value": 5.591828,
                                             "unit": "mmol/L"
                                         }
                                     }
@@ -251,7 +251,7 @@
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.45"
+            "ASM converter version": "0.1.46"
         }
     }
 }
