@@ -243,11 +243,10 @@ class ClassLines:
 
     @property
     def base_class_name(self) -> str:
-        match = re.match("([A-Za-z]*)[0-9]*", self.class_name)
-        if not match:
-            msg = f"Could not extract base class name from {self.class_name}"
-            raise AssertionError(msg)
-        return str(match.groups(0)[0])
+        match = re.match("([A-Za-z]*)[0-9]*$", self.class_name)
+        if match:
+            return str(match.groups(0)[0])
+        return self.class_name
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, ClassLines):
@@ -574,8 +573,9 @@ class ModelClassEditor:
 
     def _find_substitutions(
         self, classes: dict[str, ClassLines], class_groups: dict[str, set[str]]
-    ) -> dict[str, str]:
+    ) -> tuple[dict[str, str], dict[str, str]]:
         substitutions: dict[str, str] = {}
+        renames: dict[str, str] = {}
 
         for class_group in class_groups.values():
             sorted_class_names = sorted(class_group)
@@ -601,7 +601,19 @@ class ModelClassEditor:
                     else:
                         made_change = False
 
-        return substitutions
+            # If we are done combining classes for this group, rename to set number suffixes
+            # as low as possible.
+            if not made_change:
+                base_class_name = classes[sorted_class_names[0]].base_class_name
+                for idx, class_name in enumerate(sorted_class_names):
+                    # Don't fix names that are already going to be skipped.
+                    if class_name in self.classes_to_skip:
+                        continue
+                    rename = f"{base_class_name}{idx if idx > 0 else ''}"
+                    if rename != class_name:
+                        renames[class_name] = rename
+
+        return substitutions, renames
 
     def modify_file(self, file_contents: str) -> str:
         new_contents: list[str] = []
@@ -650,7 +662,7 @@ class ModelClassEditor:
             class_groups[class_lines.base_class_name].add(class_lines.class_name)
 
         # If there are identical/similar classes with numerical suffixes, remove them.
-        substitutions = self._find_substitutions(classes, class_groups)
+        substitutions, renames = self._find_substitutions(classes, class_groups)
 
         # Build the new file contents before we do substitutions and look for unused classes.
         for class_name in classes_in_order:
@@ -668,6 +680,12 @@ class ModelClassEditor:
                 rf"{substitutions[class_to_remove]}\g<1>",
                 new,
             )
+        for class_to_remove in sorted(renames.keys(), reverse=True):
+            new = re.sub(
+                f"{class_to_remove}([^0-9])",
+                rf"{renames[class_to_remove]}\g<1>",
+                new,
+            )
 
         # Check for classes that are no longer used
         unused_classes: set[str] = set()
@@ -678,7 +696,7 @@ class ModelClassEditor:
                 unused_classes.add(class_name)
 
         # If we changed anything, run through again to look for iterative removals
-        if unused_classes or substitutions:
+        if unused_classes or substitutions or renames:
             self.classes_to_skip = unused_classes
             self.imports_to_add = {}
             return self.modify_file(new)
