@@ -3,7 +3,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
     DataProcessingDocument,
-    DataProcessingDocument1,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -2212,7 +2211,7 @@ def get_rel_std_curve_model() -> Model:
                                 ),
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2235,7 +2234,7 @@ def get_rel_std_curve_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2258,7 +2257,7 @@ def get_rel_std_curve_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2285,7 +2284,7 @@ def get_rel_std_curve_model() -> Model:
                                 ),
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2312,7 +2311,7 @@ def get_rel_std_curve_model() -> Model:
                                 ),
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2339,7 +2338,7 @@ def get_rel_std_curve_model() -> Model:
                                 ),
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2362,7 +2361,7 @@ def get_rel_std_curve_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2385,7 +2384,7 @@ def get_rel_std_curve_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2408,7 +2407,7 @@ def get_rel_std_curve_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2714,7 +2713,7 @@ def get_broken_calc_doc_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
@@ -2737,7 +2736,7 @@ def get_broken_calc_doc_model() -> Model:
                                 )
                             ]
                         ),
-                        data_processing_document=DataProcessingDocument1(
+                        data_processing_document=DataProcessingDocument(
                             reference_DNA_description="RNaseP",
                             reference_sample_description="800",
                         ),
