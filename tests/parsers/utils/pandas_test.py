@@ -48,6 +48,19 @@ def test_get_bool() -> None:
 
 
 @pytest.mark.short
+def test_get_float() -> None:
+    data = SeriesData(
+        pd.Series(
+            {
+                "percent": "10.1%",
+            }
+        )
+    )
+
+    assert data.get(float, "percent") == 10.1
+
+
+@pytest.mark.short
 def test_get_not_nan() -> None:
     data = SeriesData(
         pd.Series(

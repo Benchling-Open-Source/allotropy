@@ -1,17 +1,8 @@
 from datetime import timedelta
 
 from allotropy.allotrope.models.shared.definitions.custom import (
-    TNullableQuantityValueCell,
     TNullableQuantityValueGramPerLiter,
-    TNullableQuantityValueMicrometer,
-    TNullableQuantityValueMillimeterOfMercury,
     TNullableQuantityValueMillimolePerLiter,
-    TNullableQuantityValueMillionCellsPerMilliliter,
-    TNullableQuantityValueMilliOsmolesPerKilogram,
-    TNullableQuantityValueOpticalDensity,
-    TNullableQuantityValuePercent,
-    TNullableQuantityValuePH,
-    TNullableQuantityValueTODO,
     TNullableQuantityValueUnitPerLiter,
 )
 
@@ -20,6 +11,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
 # Measurements with a time difference greater than MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE from the last
 # measurement recorded will be put into separate groups.
 MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE = timedelta(hours=1)
+
 
 MOLAR_CONCENTRATION_CLASSES: list[
     (
@@ -35,24 +27,6 @@ MOLAR_CONCENTRATION_CLASSES: list[
 
 MOLAR_CONCENTRATION_CLS_BY_UNIT = {cls.unit: cls for cls in MOLAR_CONCENTRATION_CLASSES}
 
-NON_ANALYTE_PROPERTIES = {
-    "pco2": TNullableQuantityValueMillimeterOfMercury,
-    "co2_saturation": TNullableQuantityValuePercent,
-    "po2": TNullableQuantityValueMillimeterOfMercury,
-    "o2_saturation": TNullableQuantityValuePercent,
-    "optical_density": TNullableQuantityValueOpticalDensity,
-    "pH": TNullableQuantityValuePH,
-    "osmolality": TNullableQuantityValueMilliOsmolesPerKilogram,
-    "viability__cell_counter_": TNullableQuantityValuePercent,
-    "total_cell_density__cell_counter_": TNullableQuantityValueMillionCellsPerMilliliter,
-    "viable_cell_density__cell_counter_": TNullableQuantityValueMillionCellsPerMilliliter,
-    "average_live_cell_diameter__cell_counter_": TNullableQuantityValueMicrometer,
-    "average_total_cell_diameter__cell_counter_": TNullableQuantityValueMicrometer,
-    "total_cell_diameter_distribution__cell_counter_": TNullableQuantityValueTODO,
-    "viable_cell_count__cell_counter_": TNullableQuantityValueCell,
-    "total_cell_count__cell_counter_": TNullableQuantityValueCell,
-}
-
 
 INFO_HEADER = [
     "row type",
@@ -63,7 +37,7 @@ INFO_HEADER = [
     "col6",
     "model number",
     "device serial number",
-    "col9",
+    "software version",
     "analyst",
 ]
 
@@ -167,3 +141,7 @@ ANALYTES_LOOKUP = {
 }
 
 SAMPLE_ROLE_TYPES = {"SAM": "Sample"}
+
+SOLUTION_ANALYZER = "solution-analyzer"
+OPTICAL_DENSITY = "optical_density"
+BELOW_TEST_RANGE = "< TEST RNG"

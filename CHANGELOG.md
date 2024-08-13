@@ -8,12 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Fixed
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Security
+
+## [0.1.46] - 2024-08-13
+
+### Added
+
 - Add plate id field to biorad bioplex
 - Add luminescence point detection, absorption spectrum detection, fluorescence emission detection measurement extension to Spectrophotometry BENCHLING/2023/12 schema
 - Add BMG MARS adapter
 - Added plate-reader REC/2024/06 schema
 
 ### Fixed
+
 - Handle comma as decimal place in float conversion utilities
 - Raise AllotropeConversionError on missing Results section in Agilent Gen5
 - Add error for multiple read modes in Agilent Gen5
@@ -22,19 +38,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix edge case where there are multiple measurements for a property in Roche Cedex Bioht
 
 ### Changed
+
 - Only return AllotropeConversionError when there is a problem with input data that we expect, add other errors for unexpected problems.
-
-### Deprecated
-
-### Removed
-
-### Security
 
 ## [0.1.45] - 2024-08-01
 
 ### Changed
 
 - Pandas version updated to 2.2.0 to have calamine engine
+
+- Updated Roche Cedex Bioht adapter to work with the Solution Analyzer ASM schema
 
 ## [0.1.44] - 2024-07-30
 

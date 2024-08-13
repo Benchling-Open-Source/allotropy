@@ -338,7 +338,7 @@ class AmplificationData:
 
         target_data = assert_not_empty_df(
             well_data[assert_df_column(well_data, "Target") == target_dna_description],
-            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id} .",
+            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
         )
 
         cycle_number = assert_df_column(target_data, "Cycle Number")
