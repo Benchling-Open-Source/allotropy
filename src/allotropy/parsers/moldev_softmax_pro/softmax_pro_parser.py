@@ -133,8 +133,8 @@ class SoftmaxproParser(VendorParser):
                 position,
             )
         else:
-            error = f"{plate_block_type} is not a valid plate block type."
-            raise AllotropeConversionError(error)
+            msg = f"{plate_block_type} is not a valid plate block type."
+            raise AllotropeConversionError(msg)
 
         return PlateReaderDocumentItem(
             measurement_aggregate_document=MeasurementAggregateDocument(

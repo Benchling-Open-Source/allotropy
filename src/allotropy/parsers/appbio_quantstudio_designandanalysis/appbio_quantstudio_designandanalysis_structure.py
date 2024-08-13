@@ -338,7 +338,7 @@ class AmplificationData:
 
         target_data = assert_not_empty_df(
             well_data[assert_df_column(well_data, "Target") == target_dna_description],
-            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id} .",
+            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
         )
 
         cycle_number = assert_df_column(target_data, "Cycle Number")
@@ -467,8 +467,8 @@ class Result:
         reference_sample_array = assert_df_column(reference_data, "Sample").unique()
 
         if reference_sample_array.size != 1:
-            error = "Unable to infer reference sample"
-            raise AllotropeConversionError(error)
+            msg = "Unable to infer reference sample, expecting a single row in sheet 'RQ Replicate Group Result' to have Rq == 1."
+            raise AllotropeConversionError(msg)
 
         return str(reference_sample_array[0])
 
@@ -494,8 +494,8 @@ class Result:
         if len(possible_ref_targets) == 1:
             return str(possible_ref_targets.pop())
 
-        error = "Unable to infer reference target."
-        raise AllotropeConversionError(error)
+        msg = "Unable to infer reference target, expecting a single unique value for Target in sheet 'RQ Replicate Group Result' where Rq is empty."
+        raise AllotropeConversionError(msg)
 
     @staticmethod
     def create(
@@ -581,29 +581,32 @@ class Data:
 
     @staticmethod
     def get_experiment_type(contents: DesignQuantstudioContents) -> ExperimentType:
-        if contents.get_non_empty_sheet_or_none("Standard Curve Result") is not None:
-            return ExperimentType.standard_curve_qPCR_experiment
+        experiment_type_to_expected_sheets = {
+            ExperimentType.standard_curve_qPCR_experiment: ["Standard Curve Result"],
+            ExperimentType.relative_standard_curve_qPCR_experiment: [
+                "RQ Replicate Group Result"
+            ],
+            ExperimentType.genotyping_qPCR_experiment: ["Genotyping Result"],
+            ExperimentType.melt_curve_qPCR_experiment: [
+                "Melt Curve Raw",
+                "Melt Curve Result",
+            ],
+            ExperimentType.presence_absence_qPCR_experiment: [
+                "Sample Call",
+                "Well Call",
+                "Target Call",
+                "Control Status",
+            ],
+        }
 
-        if (
-            contents.get_non_empty_sheet_or_none("RQ Replicate Group Result")
-            is not None
-        ):
-            return ExperimentType.relative_standard_curve_qPCR_experiment
+        possible_experiment_types = {
+            experiment_type
+            for experiment_type, expected_sheets in experiment_type_to_expected_sheets.items()
+            if all(contents.has_sheet(sheet_name) for sheet_name in expected_sheets)
+        }
 
-        if contents.get_non_empty_sheet_or_none("Genotyping Result") is not None:
-            return ExperimentType.genotyping_qPCR_experiment
+        if len(possible_experiment_types) == 1:
+            return possible_experiment_types.pop()
 
-        if all(
-            contents.get_non_empty_sheet_or_none(sheet) is not None
-            for sheet in ["Melt Curve Raw", "Melt Curve Result"]
-        ):
-            return ExperimentType.melt_curve_qPCR_experiment
-
-        if all(
-            contents.get_non_empty_sheet_or_none(sheet) is not None
-            for sheet in ["Sample Call", "Well Call", "Target Call", "Control Status"]
-        ):
-            return ExperimentType.presence_absence_qPCR_experiment
-
-        error = "Unable to infer experiment type"
-        raise AllotropeConversionError(error)
+        msg = f"Unable to infer experiment type from sheets in the input, expected exactly one set of sheets from: {list(experiment_type_to_expected_sheets.values())}, got {list(contents.data.keys())}"
+        raise AllotropeConversionError(msg)

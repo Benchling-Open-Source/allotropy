@@ -397,5 +397,5 @@ class KaleidoParser(VendorParser):
         elif "img" in experiment_type_lower:
             return ImagingMeasurementParser()
         else:
-            error = f"Unable to find valid experiment type in '{experiment_type}'"
-            raise AllotropeConversionError(error)
+            msg = f"Unable to find valid experiment type in '{experiment_type}'."
+            raise AllotropeConversionError(msg)

@@ -22,7 +22,7 @@ def test_handles_unrecognized_read_mode() -> None:
     with pytest.raises(
         AllotropeConversionError,
         match=re.escape(
-            "Unrecognized read mode: 'Time Resolved'. Only ['Absorbance', 'Fluorescence', 'Luminescence'] are supported."
+            "Unrecognized read mode: 'Time Resolved'. Expecting one of ['Absorbance', 'Fluorescence', 'Luminescence']."
         ),
     ):
         from_file(

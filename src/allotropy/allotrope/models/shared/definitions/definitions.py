@@ -20,6 +20,18 @@ class TIntValueItem:
 
 
 TIntValue = int | TIntValueItem
+TIntegerValue = TIntValue
+
+
+@dataclass(kw_only=True)
+class TDoubleValueItem:
+    value: float
+    field_type: str
+
+
+TDoubleValue = float | TDoubleValueItem
+TFloatValue = TDoubleValue
+TDecimalValue = TDoubleValue
 
 
 @dataclass(kw_only=True)
@@ -189,8 +201,8 @@ class TDatacubeData:
     def __post_init__(self) -> None:
         # Logic for enforcing oneOf
         if not (self.measures is None) ^ (self.points is None):
-            error = "Exactly one of measures or points must be set on a datacube."
-            raise AllotropeConversionError(error)
+            msg = "Exactly one of measures or points must be set on a datacube."
+            raise AllotropeConversionError(msg)
 
 
 @dataclass(kw_only=True)
@@ -198,3 +210,8 @@ class TDatacube:
     label: str | None = None
     cube_structure: TDatacubeStructure | None = None
     data: TDatacubeData | None = None
+
+
+@dataclass(kw_only=True)
+class OrderedItem:
+    field_index: int | None = None

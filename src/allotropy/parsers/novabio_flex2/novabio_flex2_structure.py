@@ -10,7 +10,7 @@ import pandas as pd
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import (
     AllotropeConversionError,
-    msg_for_error_on_unrecognized_value,
+    get_key_or_error,
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
@@ -24,6 +24,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     OSMOLALITY_DETECTION_MAPPINGS,
     PH_DETECTION_MAPPINGS,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import try_float_or_none
 
 
@@ -34,7 +35,7 @@ class Title:
 
     @staticmethod
     def create(filename: str) -> Title:
-        matches = re.match(FILENAME_REGEX, filename)
+        matches = re.match(FILENAME_REGEX, filename, flags=re.IGNORECASE)
 
         if not matches:
             raise AllotropeConversionError(INVALID_FILENAME_MESSAGE.format(filename))
@@ -53,13 +54,7 @@ class Analyte:
 
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
-        if raw_name not in ANALYTE_MAPPINGS:
-            msg = msg_for_error_on_unrecognized_value(
-                "analyte name", raw_name, ANALYTE_MAPPINGS.keys()
-            )
-            raise AllotropeConversionError(msg)
-
-        mapping = ANALYTE_MAPPINGS[raw_name]
+        mapping = get_key_or_error("analyte name", raw_name, ANALYTE_MAPPINGS)
         return Analyte(
             mapping["name"],
             CONCENTRATION_CLS_BY_UNIT[mapping["unit"]](value=value),
@@ -87,23 +82,22 @@ class Sample:
     cell_density_dilution_factor: float | None
 
     @classmethod
-    def create(cls, data: pd.Series[Any]) -> Sample:
-        batch_identifier = data.get("Batch ID")
-        cell_type = data.get("Cell Type")
-        cell_density_dilution = data.get("Cell Density Dilution", "")
+    def create(cls, series: pd.Series[Any]) -> Sample:
+        data = SeriesData(series)
+        cell_density_dilution = data.get(str, "Cell Density Dilution", "")
         if cell_density_dilution:
-            cell_density_dilution = str(cell_density_dilution).split(":")[0]
+            cell_density_dilution = cell_density_dilution.split(":")[0]
 
         return Sample(
-            identifier=data["Sample ID"],
-            sample_type=data["Sample Type"],
-            measurement_time=data["Date & Time"].isoformat(),
-            batch_identifier=str(batch_identifier) if batch_identifier else None,
+            identifier=data[str, "Sample ID"],
+            sample_type=data[str, "Sample Type"],
+            measurement_time=data[str, "Date & Time"],
+            batch_identifier=data.get(str, "Batch ID"),
             analytes=sorted(
                 [
-                    Analyte.create(raw_name, data[raw_name])
+                    Analyte.create(raw_name, data[float, raw_name])
                     for raw_name in ANALYTE_MAPPINGS
-                    if raw_name in data
+                    if data.get(float, raw_name) is not None
                 ]
             ),
             cell_counter_properties=cls._get_properties(data, CELL_COUNTER_MAPPINGS),
@@ -114,19 +108,20 @@ class Sample:
                 data, OSMOLALITY_DETECTION_MAPPINGS
             ),
             ph_properties=cls._get_properties(data, PH_DETECTION_MAPPINGS),
-            cell_type_processing_method=str(cell_type) if cell_type else None,
+            cell_type_processing_method=data.get(str, "Cell Type"),
             cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
         )
 
     @classmethod
     def _get_properties(
-        cls, data: pd.Series[Any], property_mappings: dict[str, Any]
+        cls, data: SeriesData, property_mappings: dict[str, Any]
     ) -> dict[str, Any]:
         return {
-            property_name: property_dict["cls"](value=data[property_dict["col_name"]])
+            property_name: property_dict["cls"](
+                value=data.get(float, property_dict["col_name"])
+            )
             for property_name, property_dict in property_mappings.items()
-            if property_dict["col_name"] in data
-            and data[property_dict["col_name"]] is not None
+            if data.get(float, property_dict["col_name"]) is not None
         }
 
 

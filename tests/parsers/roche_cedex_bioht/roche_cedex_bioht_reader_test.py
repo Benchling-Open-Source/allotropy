@@ -11,5 +11,5 @@ from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
 def test_data_reader() -> None:
     reader = get_reader()
 
-    assert reader.title_data.equals(get_reader_title())
+    assert reader.title_data.series.equals(get_reader_title())
     assert reader.samples_data.equals(get_reader_samples())

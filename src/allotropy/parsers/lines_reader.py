@@ -10,7 +10,7 @@ import pandas as pd
 
 from allotropy.allotrope.pandas_util import read_csv
 from allotropy.constants import CHARDET_ENCODING, DEFAULT_ENCODING
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 from allotropy.named_file_contents import NamedFileContents
 
 EMPTY_STR_PATTERN = r"^\s*$"
@@ -34,10 +34,14 @@ def determine_encoding(bytes_content: bytes, encoding: str | None) -> str:
     if encoding != CHARDET_ENCODING:
         return encoding
 
+    if not bytes_content:
+        msg = "Unable to detect encoding for empty bytes string, file may be empty."
+        raise AllotropeConversionError(msg)
+
     detected = chardet.detect(bytes_content)["encoding"]
     if not detected:
-        error = "Unable to detect text encoding for file. The file may be empty."
-        raise AllotropeConversionError(error)
+        msg = f"Unable to detect text encoding for file with content: {bytes_content!r}"
+        raise AllotropeParsingError(msg)
     # Windows-1252 is a subset of UTF-8, and may lead to missing some data.
     if detected == "Windows-1252":
         detected = "utf-8"
@@ -46,7 +50,14 @@ def determine_encoding(bytes_content: bytes, encoding: str | None) -> str:
 
 def _decode(bytes_content: bytes, encoding: str | None) -> str:
     encoding_to_use = determine_encoding(bytes_content, encoding)
-    return bytes_content.decode(encoding_to_use)
+    try:
+        return bytes_content.decode(encoding_to_use)
+    except UnicodeDecodeError as e:
+        msg = f"Unable to decode bytes with encoding '{encoding_to_use}' with error: {e}, bytes: {bytes_content!r}"
+        raise AllotropeParsingError(msg) from e
+    except LookupError as e:
+        msg = f"Invalid encoding: '{encoding}'."
+        raise AllotropeConversionError(msg) from e
 
 
 class LinesReader:

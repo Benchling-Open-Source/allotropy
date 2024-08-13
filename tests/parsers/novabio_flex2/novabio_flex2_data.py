@@ -69,7 +69,7 @@ def get_data() -> Data:
                 Sample(
                     identifier="BP_R10_KP_008_D0",
                     sample_type="Spent Media",
-                    measurement_time="2022-06-24T14:34:52",
+                    measurement_time="2022-06-24 14:34:52",
                     batch_identifier="KP_008",
                     analytes=sorted(
                         [

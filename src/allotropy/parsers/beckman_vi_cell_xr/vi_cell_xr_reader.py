@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_excel
+from allotropy.allotrope.pandas_util import read_csv, read_excel
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DATE_HEADER,
@@ -17,14 +17,15 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     XrVersion,
 )
 from allotropy.parsers.lines_reader import read_to_lines
-from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.values import assert_value_from_df
+from allotropy.parsers.utils.pandas import df_to_series, SeriesData
+from allotropy.parsers.utils.values import assert_not_none, assert_value_from_df
 
 
 @dataclass
 class ViCellData:
-    data: pd.DataFrame
-    file_info: SeriesData
+    data: list[SeriesData]
+    serial_number: str | None
+    version: XrVersion
 
 
 def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
@@ -33,12 +34,26 @@ def create_reader_data(named_file_contents: NamedFileContents) -> ViCellData:
         if named_file_contents.original_file_name.endswith("txt")
         else ViCellXRReader(named_file_contents)
     )
-    return ViCellData(reader.data, reader.file_info)
+    return ViCellData(reader.data, reader.serial_number, reader.version)
+
+
+def _get_file_version(version_str: str | None) -> XrVersion:
+    match = re.match(MODEL_RE, version_str or "", flags=re.IGNORECASE)
+    if not match:
+        return DEFAULT_VERSION
+    try:
+        version = assert_not_none(match).groupdict()["version"]
+        # TODO: raise exception for unsupported versions
+        version = ".".join(version.split(".")[0:2])
+        return XrVersion(version)
+    except AttributeError:
+        return DEFAULT_VERSION
 
 
 class ViCellXRReader:
-    data: pd.DataFrame
-    series: SeriesData
+    data: list[SeriesData]
+    serial_number: str | None
+    version: XrVersion
 
     def __init__(self, named_file_contents: NamedFileContents) -> None:
         # calamine is faster for reading xlsx, but does not read xls. For xls, let pandas pick engine.
@@ -48,16 +63,22 @@ class ViCellXRReader:
             else None
         )
         self.contents = named_file_contents.contents
-        self.file_info = self._get_file_info()
-        self.file_version = self._get_file_version()
+        file_info = self._get_file_info()
+        try:
+            self.serial_number = (
+                file_info.get(str, "serial", "").split(":", maxsplit=1)[1].strip()
+            )
+        except (IndexError, ValueError):
+            self.serial_number = None
+        self.version = _get_file_version(file_info.get(str, "model"))
         self.data = self._read_data()
 
     def _read_excel(self, **kwargs: Any) -> pd.DataFrame:
         return read_excel(self.contents, engine=self.engine, **kwargs)
 
-    def _read_data(self) -> pd.DataFrame:
+    def _read_data(self) -> list[SeriesData]:
         header_row = 4
-        if self.file_version == XrVersion._2_04:
+        if self.version == XrVersion._2_04:
             header_row = 3
 
         header = self._get_file_header(header_row)
@@ -78,93 +99,62 @@ class ViCellXRReader:
             errors="coerce",
         )
         file_data = file_data.dropna(subset=DATE_HEADER)
-
-        return file_data
+        return [SeriesData(x) for _, x in file_data.iterrows()]
 
     def _get_file_header(self, header_row: int) -> list[str]:
         """Combine the two rows that forms the header."""
-        header = self._read_excel(
-            nrows=2,
-            skiprows=header_row,
-            header=None,
-        ).fillna("")
+        header = (
+            self._read_excel(
+                nrows=2,
+                skiprows=header_row,
+                header=None,
+            )
+            .fillna("")
+            .astype(str)
+        )
 
         header_list: list[str] = header.agg(
-            lambda x: " ".join([str(v) for v in x]).replace(" /ml", "/ml").strip()
+            lambda x: " ".join(x).replace(" /ml", "/ml").strip()
         ).to_list()
         return header_list
 
     def _get_file_info(self) -> SeriesData:
         info: pd.Series[Any] = self._read_excel(
-            nrows=3, header=None, usecols=[0]
+            nrows=3,
+            header=None,
+            usecols=[0],
         ).squeeze()
         info.index = pd.Index(["model", "filepath", "serial"])
         return SeriesData(info)
 
-    def _get_file_version(self) -> XrVersion:
-        match = re.match(MODEL_RE, self.file_info[str, "model"], flags=re.IGNORECASE)
-        try:
-            version = match.groupdict()["version"]  # type: ignore[union-attr]
-        except AttributeError:
-            return DEFAULT_VERSION
-        # TODO: raise exception for unsupported versions
-        version = ".".join(version.split(".")[0:2])
-        return XrVersion(version)
-
 
 class ViCellXRTXTReader:
-    data: pd.DataFrame
-    series: SeriesData
+    data: list[SeriesData]
+    serial_number: str | None
+    version: XrVersion
 
     def __init__(self, contents: NamedFileContents) -> None:
         self.lines = read_to_lines(contents)
-        self.file_info = self._get_file_info()
         self.data = self._read_data()
+        self.serial_number = self.data[0].get(str, "Unit S/N")
+        self.version = _get_file_version(str(self.data[0].series.name))
 
-    def _read_data(self) -> pd.DataFrame:
-        # generate long, single column dataframe
-        file_data = pd.DataFrame(data=StringIO("\n".join(self.lines)))
-
-        # strip whitespace
-        file_data[0] = file_data[0].str.strip()
-
-        # drop empty cells
-        file_data = file_data.replace("", None).dropna(axis=0, how="all")
-
-        # split on colon surrounded by any amount of space, limited to one split to avoid destroying datetimes
-        file_data = file_data[file_data.columns[0]].str.split(
-            r"\s*:\s*", n=1, expand=True
+    def _read_data(self) -> list[SeriesData]:
+        data_frame = read_csv(
+            StringIO("\n".join(self.lines)), sep=" :", index_col=0, engine="python"
         )
-
-        # pivot the long data of a single sample to a df that is 1 wide row
-        file_data["Pivot Index"] = 1
-        file_data = file_data.pivot(index="Pivot Index", columns=0)
-
-        # rename the columns to match the existing parser that was based on xls(x) files
-        file_data.columns = pd.Index(
-            [
-                HEADINGS_TO_PARSER_HEADINGS.get(name, name)
-                for name in [x[1] for x in file_data.columns]
-            ]
+        file_data = df_to_series(
+            data_frame.astype(str).T, "Failed to parse input file."
         )
-
+        file_data = file_data.str.strip().replace("", None)
+        file_data.index = pd.Index(
+            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.index]
+        )
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
         file_data[DATE_HEADER] = pd.to_datetime(
-            file_data[DATE_HEADER].astype(str),
+            file_data[DATE_HEADER],
             format="%d %b %Y  %I:%M:%S %p",
             errors="coerce",
         )
-
-        return file_data
-
-    def _get_file_info(self) -> SeriesData:
-        data = self.lines
-
-        return SeriesData(
-            pd.Series(
-                [data[0], data[3], data[8]],
-                copy=False,
-                index=["model", "filepath", "serial"],
-            )
-        )
+        return [SeriesData(file_data)]

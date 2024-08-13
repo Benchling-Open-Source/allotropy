@@ -116,6 +116,11 @@ def add_custom_information_document(
     if not is_dataclass(custom_info_doc):
         msg = "Invalid custom_info_doc"
         raise ValueError(msg)
+
+    # Do not add custom info doc if all values are None
+    if all(value is None for value in asdict(custom_info_doc).values()):
+        return model
+
     model.custom_information_document = custom_info_doc  # type: ignore
     return model
 

@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 from allotropy.allotrope.pandas_util import read_csv, read_excel
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
 
 CSV_FILE = "HelloWorld.csv"
 EXCEL_FILE = "HelloWorld.xlsx"
@@ -39,7 +39,7 @@ def test_read_csv_fails_parsing() -> None:
     expected_regex = re.escape(
         "Error calling pd.read_csv(): 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte"
     )
-    with pytest.raises(AllotropeConversionError, match=expected_regex):
+    with pytest.raises(AllotropeParsingError, match=expected_regex):
         _read_csv(EXCEL_FILE)
 
 
@@ -60,7 +60,7 @@ def test_read_excel_fails_parsing() -> None:
     expected_regex = re.escape(
         "Error calling pd.read_excel(): Missing column provided to 'parse_dates': 'MissingColumn' (sheet: 0)"
     )
-    with pytest.raises(AllotropeConversionError, match=expected_regex):
+    with pytest.raises(AllotropeParsingError, match=expected_regex):
         _read_excel(EXCEL_FILE, parse_dates=["MissingColumn"])
 
 

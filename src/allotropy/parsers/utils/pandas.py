@@ -10,7 +10,7 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import (
     InvalidJsonFloat,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -43,7 +43,7 @@ def df_to_series(
     if index is None and n_rows == 1:
         index = 0
     if index is None or index >= n_rows:
-        raise AllotropeConversionError(msg)
+        raise AllotropyParserError(msg)
     return pd.Series(df.iloc[index], index=df.columns)
 
 
@@ -54,7 +54,7 @@ def df_to_series_data(df: pd.DataFrame, msg: str) -> SeriesData:
 def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
     df_column = df.get(column)
     if df_column is None:
-        msg = f"Unable to find column '{column}'"
+        msg = f"Unable to find column '{column}'."
         raise AllotropeConversionError(msg)
     return pd.Series(df_column)
 
@@ -185,6 +185,8 @@ class SeriesData:
                     if raw_value is None
                     else ("true" if str_to_bool(str(raw_value)) else "")
                 )
+            if type_ is float and isinstance(raw_value, str) and "%" in raw_value:
+                raw_value = raw_value.strip("%")
             value = None if raw_value is None else type_(raw_value)
         except ValueError:
             value = None

@@ -437,7 +437,6 @@ class Item1:
     )
     assert lines.should_merge(other_lines_extra_required_key)
 
-    # Missing required key will not match
     other_lines_missing_required_key = data_class_lines_from_multistring(
         """
 @dataclass(frozen=True,kw_only=True)
@@ -445,9 +444,8 @@ class Item1:
     other_special: Optional[int]
 """
     )
-    assert not lines.should_merge(other_lines_missing_required_key)
+    assert lines.should_merge(other_lines_missing_required_key)
 
-    # Shared key that does not agree on optional/required will not match
     other_lines_non_matching_shared_key = data_class_lines_from_multistring(
         """
 @dataclass(frozen=True,kw_only=True)
@@ -455,7 +453,27 @@ class Item1:
     key: str|None
 """
     )
-    assert not lines.should_merge(other_lines_non_matching_shared_key)
+    assert lines.should_merge(other_lines_non_matching_shared_key)
+
+
+def test__class_lines_dataclass_should_not_merge() -> None:
+    lines = data_class_lines_from_multistring(
+        """
+@dataclass(frozen=True,kw_only=True)
+class Item(Base1):
+    key: str
+"""
+    )
+
+    # Different base classes should not merge.
+    other_lines = data_class_lines_from_multistring(
+        """
+@dataclass(frozen=True,kw_only=True)
+class Item1(Base2):
+    key: str
+"""
+    )
+    assert not lines.should_merge(other_lines)
 
 
 def test__class_lines_merge_similar() -> None:
@@ -697,12 +715,8 @@ import json
 
 @dataclass(frozen=True,kw_only=True)
 class Item:
-    key: str
-
-
-@dataclass(frozen=True,kw_only=True)
-class Item12:
-    value: str
+    key: str|None=None
+    value: str|None=None
 
 
 @dataclass(frozen=True,kw_only=True)
@@ -716,7 +730,7 @@ class Model:
     item: Item
     thing: ParentItem
     manifest: str=\"fake_manifest\"
-    other_item: Item12|None
+    other_item: Item|None
 """
     assert editor.modify_file(model_file_contents) == expected
 

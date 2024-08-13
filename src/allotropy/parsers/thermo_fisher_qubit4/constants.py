@@ -11,6 +11,3 @@ DISPLAY_NAME = "Thermo Fisher Qubit 4"
 # Errors
 VALUE_ERROR = "Unable to find value for column"
 UNSUPPORTED_FILE_FORMAT_ERROR = "Unsupported file format. Expected xlsx. Actual: "
-UNSUPPORTED_WAVELENGTH_ERROR = (
-    "Unsupported wavelength. Expected Green or Far red. Actual: "
-)

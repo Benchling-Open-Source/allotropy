@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import PureWindowsPath
+
 import numpy as np
 import pandas as pd
 
@@ -15,6 +17,10 @@ from allotropy.parsers.utils.values import (
 class DesignQuantstudioContents:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> DesignQuantstudioContents:
+        if not named_file_contents.original_file_name.endswith("xlsx"):
+            extension = PureWindowsPath(named_file_contents.original_file_name).suffix
+            msg = f"Invalid file extension for AppBio QuantStudio Design & Analysis: '{extension}', must be 'xlsx'"
+            raise AllotropeConversionError(msg)
         raw_contents = pd.read_excel(  # type: ignore[call-overload]
             named_file_contents.contents,
             header=None,
@@ -34,11 +40,12 @@ class DesignQuantstudioContents:
         )
 
     def _get_header_size(self, sheet: pd.DataFrame) -> int:
+        # Find the first blank line
         for idx, * (title, *_) in sheet.itertuples():
             if title is None:
                 return int(idx)
-        error = "Unable to parse data header"
-        raise AllotropeConversionError(error)
+        msg = "Invalid file format, expected a blank line indicating the end of the header section."
+        raise AllotropeConversionError(msg)
 
     def _get_header(self, contents: dict[str, pd.DataFrame]) -> SeriesData:
         sheet = assert_not_none(
@@ -65,6 +72,9 @@ class DesignQuantstudioContents:
             data.columns = pd.Index(data.iloc[0])
             data_structure[name] = data.drop(0)
         return data_structure
+
+    def has_sheet(self, sheet_name: str) -> bool:
+        return sheet_name in self.data
 
     def get_sheet_or_none(self, sheet_name: str) -> pd.DataFrame | None:
         return self.data.get(sheet_name)
