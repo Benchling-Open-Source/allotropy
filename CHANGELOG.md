@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix mis-reporting some analyte units in Roche Cedex Bioht parser
+
 ### Changed
 
 ### Deprecated
@@ -46,7 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Pandas version updated to 2.2.0 to have calamine engine
-
 - Updated Roche Cedex Bioht adapter to work with the Solution Analyzer ASM schema
 
 ## [0.1.44] - 2024-07-30
