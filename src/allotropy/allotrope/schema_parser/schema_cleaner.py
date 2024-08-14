@@ -385,11 +385,13 @@ class SchemaCleaner:
                 if new_schemas
                 else [[schema] for schema in schemas_list]
             )
+
         return {key: [{"allOf": schemas} for schemas in new_schemas]}
 
     def _combine_allof_schemas(
         self, schemas: list[dict[str, Any]]
     ) -> dict[str, Any] | list[dict[str, Any]]:
+        schemas = self._clean_value(schemas)
         if not all(_is_class_schema(schema) for schema in schemas):
             if any(_is_class_schema(schema) for schema in schemas):
                 msg = f"_combine_allof_schemas can only be called with a list of object schema dictionaries: {schemas}"
@@ -535,9 +537,6 @@ class SchemaCleaner:
                 cleaned |= self._combine_allof(clean_value)
             elif key == "$ref":
                 cleaned[key] = self._clean_ref_value(value)
-            elif key == "anyOf":
-                clean_value = self._clean_value(value)
-                cleaned |= self._combine_anyof(clean_value)
             else:
                 cleaned[key] = self._clean_value(value)
 

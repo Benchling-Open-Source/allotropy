@@ -18,11 +18,15 @@ import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.calculated_data_documents.definition import Referenceable
-from allotropy.parsers.utils.pandas import df_to_series_data, SeriesData
+from allotropy.parsers.utils.pandas import (
+    df_to_series_data,
+    map_rows,
+    read_csv,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none, try_int
 
@@ -114,6 +118,10 @@ class WellItem(Referenceable):
     sample_role_type: str | None = None
     _result: Result | None = None
 
+    # Make hashable to allow for use of caching
+    def __hash__(self) -> int:
+        return hash(self.identifier)
+
     @property
     def result(self) -> Result:
         return assert_not_none(self._result)
@@ -181,10 +189,10 @@ class Well:
     items: list[WellItem]
 
     @staticmethod
-    def create_genotyping(series: pd.Series[Any]) -> Well:
+    def create_genotyping(data: SeriesData) -> Well:
         return Well(
-            identifier=try_int(str(series.name), "well id"),
-            items=list(WellItem.create_genotyping(SeriesData(series))),
+            identifier=try_int(str(data.series.name), "well id"),
+            items=list(WellItem.create_genotyping(data)),
         )
 
     @staticmethod
@@ -210,7 +218,7 @@ class Well:
         data = read_csv(csv_stream, sep="\t").replace(np.nan, None)
 
         if experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            return list(data.apply(Well.create_genotyping, axis="columns"))  # type: ignore[call-overload]
+            return map_rows(data, Well.create_genotyping)
         else:
             return list(
                 map_wells(

@@ -94,7 +94,7 @@ class DataSource:
 class CalculatedDataItem:
     identifier: str
     name: str
-    value: float
+    value: JsonFloat
     unit: str
     data_sources: list[DataSource]
 

@@ -85,6 +85,11 @@ def get_samples_xml(
             <TapeRunDate>2020-09-20T03:52:58-05:00</TapeRunDate>
         </ScreenTape>
     </ScreenTapes>
+    <Assay>
+        <Units>
+            <MolecularWeightUnit>nt</MolecularWeightUnit>
+        </Units>
+    </Assay>
     <Samples>
         <Sample>
             <WellNumber>A1</WellNumber>

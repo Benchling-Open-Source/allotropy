@@ -16,11 +16,13 @@ from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
     Referenceable,
 )
-from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import (
+from allotropy.parsers.utils.pandas import (
     assert_df_column,
     assert_not_empty_df,
+    SeriesData,
+)
+from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import (
     assert_not_none,
     try_float,
     try_int,
@@ -125,6 +127,10 @@ class WellItem(Referenceable):
     @classmethod
     def get_result_class(cls) -> type[Result]:
         return Result
+
+    # Make hashable to allow for use of caching
+    def __hash__(self) -> int:
+        return hash(self.identifier)
 
     @classmethod
     def create(
@@ -301,7 +307,7 @@ class AmplificationData:
 
         target_data = assert_not_empty_df(
             well_data[assert_df_column(well_data, "Target") == target_dna_description],
-            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id} .",
+            msg=f"Unable to find amplification data for target '{target_dna_description}' in well {well_item_id}.",
         )
 
         cycle_number = assert_df_column(target_data, "Cycle Number")

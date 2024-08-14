@@ -54,30 +54,30 @@
                                     },
                                     {
                                         "analyte name": "lactate",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 0.02,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 88.09,
+                                            "value": 1.471103,
                                             "unit": "mmol/L"
                                         }
                                     },
                                     {
                                         "analyte name": "total protein",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.6,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "data processing time": "2023-09-17 13:04:06"
+                    "data processing time": "2023-09-17T13:04:06+00:00"
                 },
                 "analyst": "ADMIN"
             },
@@ -86,7 +86,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-09-15T16:56:58+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_2",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -115,16 +115,16 @@
                                     },
                                     {
                                         "analyte name": "total protein",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.7,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "data processing time": "2023-09-17 13:04:06"
+                    "data processing time": "2023-09-17T13:04:06+00:00"
                 },
                 "analyst": "ADMIN"
             },
@@ -133,7 +133,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-09-15T16:58:34+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_4",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_3",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -151,7 +151,7 @@
                         },
                         {
                             "measurement time": "2023-09-15T16:58:34+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_5",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_4",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -180,16 +180,16 @@
                                     },
                                     {
                                         "analyte name": "total protein",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 4.8,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     }
                                 ]
                             }
                         }
                     ],
-                    "data processing time": "2023-09-17 13:04:06"
+                    "data processing time": "2023-09-17T13:04:06+00:00"
                 },
                 "analyst": "ADMIN"
             },
@@ -198,7 +198,7 @@
                     "measurement document": [
                         {
                             "measurement time": "2023-09-16T10:12:10+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_6",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_5",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -216,7 +216,7 @@
                         },
                         {
                             "measurement time": "2023-09-16T10:12:10+00:00",
-                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_7",
+                            "measurement identifier": "ROCHE_CEDEX_BIOHT_TEST_ID_6",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -245,15 +245,15 @@
                                     },
                                     {
                                         "analyte name": "lactate",
-                                        "molar concentration": {
+                                        "mass concentration": {
                                             "value": 1.89,
-                                            "unit": "mmol/L"
+                                            "unit": "g/L"
                                         }
                                     },
                                     {
                                         "analyte name": "ldh",
                                         "molar concentration": {
-                                            "value": 334.84,
+                                            "value": 5.591828,
                                             "unit": "mmol/L"
                                         }
                                     }
@@ -261,7 +261,7 @@
                             }
                         }
                     ],
-                    "data processing time": "2023-09-17 13:04:06"
+                    "data processing time": "2023-09-17T13:04:06+00:00"
                 },
                 "analyst": "ADMIN"
             }
@@ -277,7 +277,7 @@
             "software name": "CEDEX BIO HT",
             "software version": "6.0.0.1905 (1905)",
             "ASM converter name": "allotropy_roche_cedex_bioht",
-            "ASM converter version": "0.1.45"
+            "ASM converter version": "0.1.47"
         }
     }
 }

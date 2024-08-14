@@ -7,7 +7,6 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import (
     CalculatedDataDocumentItem,
     ContainerType,
     DataProcessingDocument,
-    DataProcessingDocument1,
     DataSourceAggregateDocument,
     DataSourceDocumentItem,
     DataSystemDocument,
@@ -314,7 +313,7 @@ class Mapper:
             return None
 
         if data.calculated_data.reference_sample_description:
-            data_processing_document = DataProcessingDocument1(
+            data_processing_document = DataProcessingDocument(
                 reference_DNA_description=data.calculated_data.reference_dna_description,
                 reference_sample_description=data.calculated_data.reference_sample_description,
             )
