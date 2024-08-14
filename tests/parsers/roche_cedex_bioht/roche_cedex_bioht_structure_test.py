@@ -1,16 +1,22 @@
+from unittest import mock
+
 import pandas as pd
 import pytest
 
 from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
+    create_data,
     create_measurements,
-    Data,
-    Measurement,
+    RawMeasurement,
     Sample,
     Title,
 )
 from allotropy.parsers.utils.pandas import SeriesData
-from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import get_data, get_reader
+from tests.parsers.roche_cedex_bioht.roche_cedex_bioht_data import (
+    get_data,
+    get_data_stream,
+)
 
 
 @pytest.mark.parametrize(
@@ -74,7 +80,7 @@ def test_create_title_with_no_serial_number() -> None:
 
 
 @pytest.mark.short
-def test_create_measurement() -> None:
+def test_create_raw_measurement() -> None:
     data = SeriesData(
         pd.Series(
             {
@@ -85,7 +91,7 @@ def test_create_measurement() -> None:
             }
         )
     )
-    measurement = Measurement.create(data)
+    measurement = RawMeasurement.create(data)
     assert measurement.name == "glutamine"
     assert measurement.measurement_time == "2021-05-20T16:55:51+00:00"
     assert measurement.concentration_value == 2.45
@@ -110,11 +116,13 @@ def test_create_measurements() -> None:
 
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
-            "lactate": Measurement("lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"),
-            "glutamine": Measurement(
+            "lactate": RawMeasurement(
+                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"
+            ),
+            "glutamine": RawMeasurement(
                 "glutamine", "2021-05-20T16:56:51+00:00", 4.35, "mmol/L"
             ),
-            "osmolality": Measurement(
+            "osmolality": RawMeasurement(
                 "osmolality", "2021-05-20T16:57:51+00:00", 3.7448, "mosm/kg"
             ),
         }
@@ -139,13 +147,15 @@ def test_create_measurements_more_than_one_measurement_docs() -> None:
 
     assert measurements == {
         "2021-05-20T16:55:51+00:00": {
-            "lactate": Measurement("lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"),
-            "glutamine": Measurement(
+            "lactate": RawMeasurement(
+                "lactate", "2021-05-20T16:55:51+00:00", 2.45, "g/L"
+            ),
+            "glutamine": RawMeasurement(
                 "glutamine", "2021-05-20T16:56:51+00:00", 4.35, "mmol/L"
             ),
         },
         "2021-05-21T16:57:51+00:00": {
-            "glutamine": Measurement(
+            "glutamine": RawMeasurement(
                 "glutamine", "2021-05-21T16:57:51+00:00", 3.45, "mmol/L"
             ),
         },
@@ -199,8 +209,8 @@ def test_create_sample() -> None:
     assert sample.batch == "batch_id"
     assert sample.measurements == {
         "2021-05-20 16:55:51": {
-            "lactate": Measurement("lactate", "2021-05-20 16:55:51", 2.45, "g/L"),
-            "glutamine": Measurement(
+            "lactate": RawMeasurement("lactate", "2021-05-20 16:55:51", 2.45, "g/L"),
+            "glutamine": RawMeasurement(
                 "glutamine", "2021-05-20 16:56:51", 4.35, "mmol/L"
             ),
         }
@@ -209,4 +219,10 @@ def test_create_sample() -> None:
 
 @pytest.mark.short
 def test_create_data() -> None:
-    assert Data.create(get_reader()) == get_data()
+    with mock.patch(
+        "allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure.random_uuid_str",
+        return_value="dummy_id",
+    ):
+        assert (
+            create_data(NamedFileContents(get_data_stream(), "dummy.txt")) == get_data()
+        )
