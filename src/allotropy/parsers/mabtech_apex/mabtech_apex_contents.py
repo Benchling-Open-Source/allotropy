@@ -4,14 +4,14 @@ import numpy as np
 import pandas as pd
 
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import read_multisheet_excel, SeriesData
 from allotropy.parsers.utils.values import assert_not_none
 
 
 class MabtechApexContents:
     @staticmethod
     def create(named_file_contents: NamedFileContents) -> MabtechApexContents:
-        raw_contents = pd.read_excel(named_file_contents.contents, sheet_name=None)
+        raw_contents = read_multisheet_excel(named_file_contents.contents)
         return MabtechApexContents(raw_contents)
 
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
