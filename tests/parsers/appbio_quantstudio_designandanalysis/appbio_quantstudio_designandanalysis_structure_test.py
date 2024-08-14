@@ -12,7 +12,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     Header,
     Result,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.structure import (
     StandardCurveWellList,
 )
 from allotropy.parsers.utils.pandas import SeriesData

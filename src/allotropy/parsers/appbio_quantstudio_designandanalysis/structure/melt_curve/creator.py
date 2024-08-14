@@ -5,30 +5,29 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     Data,
     Header,
+    WellList,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.genotyping import (
-    GenotypingWellList,
-)
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.creators.generic import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
 )
 
 
-class GenotypingCreator(Creator):
+class MeltCurveCreator(Creator):
     EXPECTED_SHEETS = [
-        "Genotyping Result",
+        "Melt Curve Raw",
+        "Melt Curve Result",
     ]
 
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = GenotypingWellList.create(
-            contents, header, ExperimentType.genotyping_qPCR_experiment
+        wells = WellList.create(
+            contents, header, ExperimentType.melt_curve_qPCR_experiment
         )
         return Data(
             header,
             wells,
-            experiment_type=ExperimentType.genotyping_qPCR_experiment,
+            experiment_type=ExperimentType.melt_curve_qPCR_experiment,
             calculated_documents=[],
             reference_target=None,
             reference_sample=None,

@@ -14,10 +14,10 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     SampleView,
     TargetView,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.structure import (
     RelativeStandardCurveWellList,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.creators.generic import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
 )
 

@@ -13,10 +13,10 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     SampleView,
     TargetView,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence.structure import (
     PresenceAbsenceWellList,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.creators.generic import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
 )
 
