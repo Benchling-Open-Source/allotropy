@@ -1,3 +1,4 @@
+from io import StringIO
 import re
 
 import pandas as pd
@@ -7,6 +8,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     CalculatedDataItem,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
@@ -137,7 +139,7 @@ def test_create_well_plate() -> None:
         "Time": time,
     }
     well_plate = _create_measurement_group(
-        SeriesData(pd.Series(plate_data)), ["A250"], []
+        SeriesData(pd.Series(plate_data)), ["A250"], [], None
     )
     assert well_plate.analytical_method_identifier == analytical_method_identifier
     assert well_plate.measurement_time == f"{date} {time}"
@@ -155,7 +157,7 @@ def test_create_well_plate_with_two_measurements() -> None:
         "Time": "7:19:18",
     }
     well_plate = _create_measurement_group(
-        SeriesData(pd.Series(plate_data)), ["A452", "A280"], []
+        SeriesData(pd.Series(plate_data)), ["A452", "A280"], [], None
     )
 
     assert len(well_plate.measurements) == 2
@@ -173,22 +175,18 @@ def test_create_well_plate_without_date_column_then_raise() -> None:
         )
     )
     with pytest.raises(AllotropeConversionError, match=NO_DATE_OR_TIME_ERROR_MSG):
-        _create_measurement_group(plate_data, [], [])
+        _create_measurement_group(plate_data, [], [], None)
 
 
 @pytest.mark.short
 def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
-    plate_data = {
-        "Sample name": ["batch_id"],
-        "Plate Position": ["Plate1"],
-        "Application": ["dummyApp"],
-        "Date": ["2021-05-20"],
-        "Time": ["16:55:51"],
-        "Instrument ID": [14],
-        "A260": [23.4],
-        "A260 Concentration (ng/ul)": [4.5],
-    }
-    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    contents = StringIO(
+        """
+Sample name,Plate Position,Application,Date,Time,Instrument ID,A260,A260 Concentration (ng/ul)
+batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5
+"""
+    )
+    data = create_data(NamedFileContents(contents, "filename.csv"))
     assert data.calculated_data
     calculated_data_item = data.calculated_data[0]
 
@@ -200,20 +198,13 @@ def test_get_calculated_data_items_from_data_with_the_right_values() -> None:
 
 @pytest.mark.short
 def test_get_calculated_data_items_from_data_create_right_ammount_of_items() -> None:
-    plate_data = {
-        "Sample name": ["batch_id"],
-        "Plate Position": ["Plate1"],
-        "Application": ["dummyApp"],
-        "Date": ["2021-05-20"],
-        "Time": ["16:55:51"],
-        "Instrument ID": [14],
-        "A260": [23.4],
-        "A260 Concentration (ng/ul)": [4.5],
-        "Background (A260)": [0.523],
-        "A260/A230": [2.5],
-        "A260/A280": [24.9],
-    }
-    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    contents = StringIO(
+        """
+Sample name,Plate Position,Application,Date,Time,Instrument ID,A260,A260 Concentration (ng/ul),Background (A260),A260/A230,A260/A280
+batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4,4.5,0.523,2.5,24.9
+"""
+    )
+    data = create_data(NamedFileContents(contents, "filename.csv"))
     assert data.calculated_data
     assert len(data.calculated_data) == 4
 
@@ -222,31 +213,27 @@ def test_get_calculated_data_items_from_data_create_right_ammount_of_items() -> 
 def test_get_calculated_data_items_from_data_with_no_calculated_data_columns() -> (
     None
 ):
-    plate_data = {
-        "Sample name": ["batch_id"],
-        "Plate Position": ["Plate1"],
-        "Application": ["dummyApp"],
-        "Date": ["2021-05-20"],
-        "Time": ["16:55:51"],
-        "Instrument ID": [14],
-        "A260": [23.4],
-    }
-    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    contents = StringIO(
+        """
+Sample name,Plate Position,Application,Date,Time,Instrument ID,A260
+batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
+"""
+    )
+    data = create_data(NamedFileContents(contents, "filename.csv"))
     assert not data.calculated_data
 
 
 @pytest.mark.short
 def test_create_data() -> None:
-    plate_data = {
-        "Sample name": ["batch_id", "batch_id", ""],
-        "Plate Position": ["Plate1", "Plate1", "Plate1"],
-        "Application": ["dummyApp", "dummyApp", "dummyApp"],
-        "Date": ["2021-05-20", "2021-05-20", "2023-05-20"],
-        "Time": ["16:55:51", "16:56:51", "16:55:51"],
-        "Instrument ID": [14, 14, 14],
-        "A250": [23.4, 32.6, 439],
-    }
-    data = create_data(pd.DataFrame(plate_data), "filename.txt")
+    contents = StringIO(
+        """
+Sample name,Plate Position,Application,Date,Time,Instrument ID,A250
+batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,23.4
+batch_id,Plate1,dummyApp,2021-05-20,16:55:51,14,32.6
+'',Plate1,dummyApp,2021-05-20,16:55:51,14,439
+"""
+    )
+    data = create_data(NamedFileContents(contents, "filename.csv"))
 
     assert data.metadata.device_identifier == "14"
     assert len(data.measurement_groups) == 3
