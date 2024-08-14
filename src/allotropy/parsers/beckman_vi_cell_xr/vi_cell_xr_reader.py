@@ -94,7 +94,10 @@ class ViCellXRReader:
 
         # rename the columns to match the existing parser that was based on xls(x) files
         # TODO: use replace function instead here for rename
-        set_columns(file_data, [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns])
+        set_columns(
+            file_data,
+            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns],
+        )
 
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
