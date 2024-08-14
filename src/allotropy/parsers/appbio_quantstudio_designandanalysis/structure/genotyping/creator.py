@@ -2,7 +2,7 @@ from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import Experime
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Data,
     Header,
 )

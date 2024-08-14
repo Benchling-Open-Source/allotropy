@@ -44,7 +44,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_data_creator import (
     create_data,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Data,
     Well,
     WellItem,

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     WellList,
 )
 

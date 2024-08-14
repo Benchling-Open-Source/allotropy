@@ -2,7 +2,7 @@ from collections.abc import Iterator
 
 from allotropy.parsers.appbio_quantstudio.decorators import cache
 from allotropy.parsers.appbio_quantstudio.views import ViewData
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     WellItem,
 )
 from allotropy.parsers.utils.calculated_data_documents.definition import (
