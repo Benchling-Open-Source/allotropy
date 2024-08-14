@@ -100,7 +100,7 @@ def get_data_stream() -> StringIO:
     return StringIO("\n".join([title_text, body_text]))
 
 
-def get_reader_title() -> pd.Series:
+def get_reader_title() -> pd.Series[str]:
     return pd.Series(
         {
             "row type": 0,
