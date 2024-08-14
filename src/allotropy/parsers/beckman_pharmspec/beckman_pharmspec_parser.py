@@ -30,7 +30,6 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliliter,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.pandas_util import read_excel
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
@@ -39,6 +38,7 @@ from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import (
 )
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
 from allotropy.parsers.release_state import ReleaseState
+from allotropy.parsers.utils.pandas import read_excel
 from allotropy.parsers.vendor_parser import VendorParser
 
 # This map is used to coerce the column names coming in the raw data

@@ -5,14 +5,13 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.roche_cedex_bioht.constants import (
     ANALYTES_LOOKUP,
     DATA_HEADER,
     INFO_HEADER,
     SAMPLE_ROLE_TYPES,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.types import IOType
 
 
