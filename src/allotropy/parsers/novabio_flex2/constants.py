@@ -103,7 +103,7 @@ PH_DETECTION_MAPPINGS: dict[str, dict[str, Any]] = {
         "cls": TQuantityValuePH,
     },
     "temperature": {
-        "col_name": "Vessel Temperature",
+        "col_name": "Vessel Temperature (°C)",
         "cls": TQuantityValueDegreeCelsius,
     },
 }
