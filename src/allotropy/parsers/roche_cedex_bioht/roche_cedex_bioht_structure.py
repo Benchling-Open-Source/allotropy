@@ -129,25 +129,6 @@ class Sample:
         )
 
 
-@dataclass(frozen=True)
-class Data:
-    title: Title
-    samples: list[Sample]
-
-    @staticmethod
-    def create(reader: RocheCedexBiohtReader) -> Data:
-        return Data(
-            title=Title.create(reader.title_data),
-            samples=[
-                Sample.create(name, batch, samples_data)
-                for (name, batch), samples_data in reader.samples_data.groupby(
-                    # A sample group is defined by both the sample and the batch identifier
-                    ["sample identifier", "batch identifier"]
-                )
-            ],
-        )
-
-
 def _create_measurements(
     sample: Sample,
     measurement_time: str,
@@ -209,18 +190,26 @@ def _create_measurement_groups(samples: list[Sample], title: Title):
 
 def create_data(named_file_contents: NamedFileContents) -> MapperData:
     reader = RocheCedexBiohtReader(named_file_contents.contents)
-    data = Data.create(reader)
+
+    title = Title.create(reader.title_data),
+    samples = [
+        Sample.create(name, batch, samples_data)
+        for (name, batch), samples_data in reader.samples_data.groupby(
+            # A sample group is defined by both the sample and the batch identifier
+            ["sample identifier", "batch identifier"]
+        )
+    ],
 
     return MapperData(
         Metadata(
             file_name=named_file_contents.original_file_name,
             device_type=SOLUTION_ANALYZER,
-            model_number=data.title.model_number,
-            equipment_serial_number=data.title.device_serial_number,
+            model_number=title.model_number,
+            equipment_serial_number=title.device_serial_number,
             device_identifier=NOT_APPLICABLE,
             unc_path="",
-            software_name=data.title.model_number,
-            software_version=data.title.software_version,
+            software_name=title.model_number,
+            software_version=title.software_version,
         ),
-        measurement_groups=_create_measurement_groups(data.samples, data.title)
+        measurement_groups=_create_measurement_groups(samples, title)
     )
