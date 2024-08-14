@@ -38,5 +38,5 @@ def create_data(contents: DesignQuantstudioContents) -> Data:
     if len(possible_creators) == 1:
         return possible_creators[0].create(contents)
 
-    msg = f"Unable to infer experiment type from sheets in the input"
+    msg = "Unable to infer experiment type from sheets in the input"
     raise AllotropeConversionError(msg)

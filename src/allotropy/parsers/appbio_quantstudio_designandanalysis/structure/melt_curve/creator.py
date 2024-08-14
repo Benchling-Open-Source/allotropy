@@ -1,19 +1,21 @@
+from typing import ClassVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
+    Creator,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Data,
     Header,
     WellList,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
-    Creator,
-)
 
 
 class MeltCurveCreator(Creator):
-    EXPECTED_SHEETS = [
+    EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Melt Curve Raw",
         "Melt Curve Result",
     ]

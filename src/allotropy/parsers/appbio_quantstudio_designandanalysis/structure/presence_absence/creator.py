@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_presence_absence_calc_docs,
@@ -5,24 +7,24 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
-    Data,
-    Header,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
     SampleView,
     TargetView,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence.structure import (
-    PresenceAbsenceWellList,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
+    Data,
+    Header,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence.structure import (
+    PresenceAbsenceWellList,
 )
 
 
 class PresenceAbsenceCreator(Creator):
-    EXPECTED_SHEETS = [
+    EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Sample Call",
         "Well Call",
         "Target Call",

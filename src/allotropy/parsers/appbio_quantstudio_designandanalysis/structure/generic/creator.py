@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import ClassVar
 
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
@@ -9,7 +10,7 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.st
 
 
 class Creator(ABC):
-    EXPECTED_SHEETS: list[str] = []
+    EXPECTED_SHEETS: ClassVar[list[str]] = []
 
     @classmethod
     def check_type(cls, contents: DesignQuantstudioContents) -> bool:

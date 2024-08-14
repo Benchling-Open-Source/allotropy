@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_relative_standard_curve_calc_docs,
@@ -5,25 +7,25 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
+from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
+    SampleView,
+    TargetView,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
+    Creator,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Data,
     Header,
     Result,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
-    SampleView,
-    TargetView,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.structure import (
     RelativeStandardCurveWellList,
-)
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
-    Creator,
 )
 
 
 class RelativeStandardCurveCreator(Creator):
-    EXPECTED_SHEETS = [
+    EXPECTED_SHEETS: ClassVar[list[str]] = [
         "RQ Replicate Group Result",
     ]
 

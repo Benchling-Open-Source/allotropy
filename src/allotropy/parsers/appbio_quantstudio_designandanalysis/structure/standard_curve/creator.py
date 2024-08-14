@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
     iter_standard_curve_calc_docs,
@@ -5,25 +7,25 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
-    Data,
-    Header,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
     SampleView,
     TargetRoleView,
     TargetView,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.structure import (
-    StandardCurveWellList,
-)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.creator import (
     Creator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
+    Data,
+    Header,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.structure import (
+    StandardCurveWellList,
 )
 
 
 class StandardCurveCreator(Creator):
-    EXPECTED_SHEETS = [
+    EXPECTED_SHEETS: ClassVar[list[str]] = [
         "Standard Curve Result",
     ]
 
