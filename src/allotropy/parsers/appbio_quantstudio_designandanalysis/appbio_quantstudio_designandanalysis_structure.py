@@ -220,86 +220,34 @@ class WellList:
     def __iter__(self) -> Iterator[Well]:
         return iter(self.wells)
 
-    @staticmethod
-    def get_well_result_data(
-        contents: DesignQuantstudioContents, experiment_type: ExperimentType
+    @classmethod
+    def get_data_sheet(cls) -> str:
+        return "Results"
+
+    @classmethod
+    def _add_data(
+        cls, data: pd.DataFrame, extra_data: pd.DataFrame, columns: list[str]
     ) -> pd.DataFrame:
-        data_sheet = (
-            "Standard Curve Result"
-            if experiment_type == ExperimentType.standard_curve_qPCR_experiment
-            else "Results"
-        )
+        new_data = data.copy()
+        new_data[columns] = None
+        for _, row in extra_data.iterrows():
+            sample_cond = new_data["Sample"] == row["Sample"]
+            target_cond = new_data["Target"] == row["Target"]
+            new_data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
+        return new_data
 
-        data = contents.get_non_empty_sheet(data_sheet)
+    @classmethod
+    def get_well_result_data(cls, contents: DesignQuantstudioContents) -> pd.DataFrame:
+        return contents.get_non_empty_sheet(cls.get_data_sheet())
 
-        def add_data(extra_data: pd.DataFrame, columns: list[str]) -> None:
-            data[columns] = None
-            for _, row in extra_data.iterrows():
-                sample_cond = data["Sample"] == row["Sample"]
-                target_cond = data["Target"] == row["Target"]
-                data.loc[sample_cond & target_cond, columns] = row[columns].to_list()
-
-        if experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-            add_data(
-                extra_data=contents.get_non_empty_sheet("Replicate Group Result"),
-                columns=[
-                    "Cq SE",
-                ],
-            )
-
-            add_data(
-                extra_data=contents.get_non_empty_sheet("RQ Replicate Group Result"),
-                columns=[
-                    "EqCq Mean",
-                    "Adjusted EqCq Mean",
-                    "Delta EqCq Mean",
-                    "Delta EqCq SD",
-                    "Delta EqCq SE",
-                    "Delta Delta EqCq",
-                    "Rq",
-                    "Rq Min",
-                    "Rq Max",
-                ],
-            )
-        elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
-            add_data(
-                extra_data=contents.get_non_empty_sheet("Target Call"),
-                columns=[
-                    "Call",
-                ],
-            )
-        elif experiment_type == ExperimentType.genotyping_qPCR_experiment:
-            genotyping_result = contents.get_non_empty_sheet("Genotyping Result")
-
-            # The genotyping result data does not contain a target column
-            # it can be constructed concatenating SNP assay column and the strings Allele 1/2
-            rows = []
-            for idx, row in genotyping_result.iterrows():
-                snp_assay = assert_not_none(
-                    row.get("SNP Assay"),
-                    msg=f"Unable to get SNP Assay from Genotyping Result row '{idx}'.",
-                )
-                for allele in ["Allele 1", "Allele 2"]:
-                    new_row = row.copy()
-                    new_row["Target"] = f"{snp_assay}-{allele}"
-                    rows.append(new_row)
-
-            add_data(
-                extra_data=pd.DataFrame(rows).reset_index(drop=True),
-                columns=[
-                    "Call",
-                ],
-            )
-
-        return data
-
-    @staticmethod
+    @classmethod
     def create(
+        cls,
         contents: DesignQuantstudioContents,
         header: Header,
         experiment_type: ExperimentType,
     ) -> WellList:
-        results_data = WellList.get_well_result_data(contents, experiment_type)
+        results_data = cls.get_well_result_data(contents)
         assert_df_column(results_data, "Well")
 
         return WellList(

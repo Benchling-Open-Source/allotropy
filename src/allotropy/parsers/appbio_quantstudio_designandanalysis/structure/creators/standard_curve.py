@@ -8,12 +8,14 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     Data,
     Header,
-    WellList,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
     SampleView,
     TargetRoleView,
     TargetView,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve import (
+    StandardCurveWellList,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.creators.generic import (
     Creator,
@@ -28,7 +30,7 @@ class StandardCurveCreator(Creator):
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = WellList.create(
+        wells = StandardCurveWellList.create(
             contents, header, ExperimentType.standard_curve_qPCR_experiment
         )
         well_items = wells.get_well_items()

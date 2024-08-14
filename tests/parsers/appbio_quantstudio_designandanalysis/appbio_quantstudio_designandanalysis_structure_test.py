@@ -11,7 +11,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
     Header,
     Result,
-    WellList,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve import (
+    StandardCurveWellList,
 )
 from allotropy.parsers.utils.pandas import SeriesData
 
@@ -106,10 +108,9 @@ def test_results_builder() -> None:
         },
     )
 
-    experiment_type = ExperimentType.standard_curve_qPCR_experiment
     target_dna_description = "RNaseP"
     well_item_id = 1
-    data = WellList.get_well_result_data(contents, experiment_type)
+    data = StandardCurveWellList.get_well_result_data(contents)
     well_data = data[pd.Series(data.get("Well")) == 1]
     target_well_data = well_data[
         pd.Series(well_data.get("Target")) == target_dna_description
@@ -117,7 +118,9 @@ def test_results_builder() -> None:
     target_data = SeriesData(
         pd.Series(target_well_data.iloc[0], index=target_well_data.columns)
     )
-    result = Result.create(target_data, well_item_id, experiment_type)
+    result = Result.create(
+        target_data, well_item_id, ExperimentType.standard_curve_qPCR_experiment
+    )
 
     assert isinstance(result, Result)
     assert result.automatic_baseline_determination_enabled_setting is True
