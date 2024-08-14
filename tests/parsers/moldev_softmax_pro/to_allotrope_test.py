@@ -19,7 +19,7 @@ class TestParser(ParserTest):
 
 
 def test_handles_header_size_mismatch() -> None:
-    with pytest.raises(AllotropeConversionError, match="Mismatch between data size"):
+    with pytest.raises(AllotropeConversionError, match="Invalid format - mismatch between # of columns"):
         from_file(
             f"{TESTDATA}/errors/header_size_mismatch.txt",
             VENDOR_TYPE,
