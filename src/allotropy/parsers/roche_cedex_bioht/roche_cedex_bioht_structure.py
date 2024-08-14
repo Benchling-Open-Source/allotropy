@@ -9,15 +9,27 @@ from dateutil import parser
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+    Data as MapperData,
+    Measurement as MapperMeasurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.exceptions import AllotropyParserError
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import (
     BELOW_TEST_RANGE,
     MAX_MEASUREMENT_TIME_GROUP_DIFFERENCE,
+    OPTICAL_DENSITY,
+    SOLUTION_ANALYZER,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
     RocheCedexBiohtReader,
 )
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 
 @dataclass(frozen=True)
@@ -134,3 +146,74 @@ class Data:
                 )
             ],
         )
+
+
+def _create_measurements(
+    sample: Sample,
+    measurement_time: str,
+    raw_measurements: dict[str, Measurement]
+) -> list[MapperMeasurement]:
+    measurements: list[Measurement] = []
+
+    analytes: list[Analyte] = []
+    for name in sorted(raw_measurements):
+        measurement = raw_measurements[name]
+        # TODO: report value and add error
+        if measurement.concentration_value is NaN:
+            continue
+
+        if name == OPTICAL_DENSITY:
+            measurements.append(MapperMeasurement(
+                identifier=random_uuid_str(),
+                measurement_time=measurement_time,
+                sample_identifier=sample.name,
+                batch_identifier=sample.batch,
+                absorbance=measurement.concentration_value,
+            ))
+        else:
+            analytes.append(Analyte(
+                name=measurement.name,
+                value=measurement.concentration_value,
+                unit=measurement.unit,
+            ))
+
+    if analytes:
+        measurements.append(MapperMeasurement(
+            identifier=random_uuid_str(),
+            measurement_time=measurement_time,
+            sample_identifier=sample.name,
+            batch_identifier=sample.batch,
+            analytes=analytes
+        ))
+
+    return measurements
+
+
+def create_data(named_file_contents: NamedFileContents) -> MapperData:
+    reader = RocheCedexBiohtReader(named_file_contents.contents)
+    data = Data.create(reader)
+
+    return MapperData(
+        Metadata(
+            file_name=named_file_contents.original_file_name,
+            device_type=SOLUTION_ANALYZER,
+            model_number=data.title.model_number,
+            equipment_serial_number=data.title.device_serial_number,
+            device_identifier=NOT_APPLICABLE,
+            unc_path="",
+            software_name=data.title.model_number,
+            software_version=data.title.software_version,
+        ),
+        measurement_groups=[
+            MeasurementGroup(
+                analyst=data.title.analyst,
+                data_processing_time=data.title.data_processing_time,
+                measurements=[
+                    measurement
+                    for measurement_time, sample_measurements in sample.measurements.items()
+                    for measurement in _create_measurements(sample, measurement_time, sample_measurements)
+                ]
+            )
+            for sample in data.samples
+        ]
+    )

@@ -21,23 +21,26 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMillimolePerLiter,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+    Data,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.constants import ASM_CONVERTER_VERSION
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.roche_cedex_bioht.constants import (
     OPTICAL_DENSITY,
-    SOLUTION_ANALYZER,
-)
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
-    RocheCedexBiohtReader,
 )
 from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
-    Data,
-    Measurement,
-    Sample,
+    create_data,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import quantity_or_none
 from allotropy.parsers.vendor_parser import VendorParser
 
 
@@ -51,27 +54,24 @@ class RocheCedexBiohtParser(VendorParser):
         return ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        contents = named_file_contents.contents
-        reader = RocheCedexBiohtReader(contents)
-        return self._get_model(
-            Data.create(reader), named_file_contents.original_file_name
-        )
+        data = create_data(named_file_contents)
+        return self._get_model(data)
 
-    def _get_model(self, data: Data, file_name: str) -> Model:
+    def _get_model(self, data: Data) -> Model:
         return Model(
             field_asm_manifest="http://purl.allotrope.org/manifests/solution-analyzer/REC/2024/03/solution-analyzer.manifest",
             solution_analyzer_aggregate_document=SolutionAnalyzerAggregateDocument(
                 solution_analyzer_document=self._get_solution_analyzer_document(data),
                 device_system_document=DeviceSystemDocument(
-                    model_number=data.title.model_number,
-                    equipment_serial_number=data.title.device_serial_number,
+                    model_number=data.metadata.model_number,
+                    equipment_serial_number=data.metadata.equipment_serial_number,
                     device_identifier=NOT_APPLICABLE,
                 ),
                 data_system_document=DataSystemDocument(
-                    file_name=file_name,
+                    file_name=data.metadata.file_name,
                     UNC_path="",
-                    software_name=data.title.model_number,
-                    software_version=data.title.software_version,
+                    software_name=data.metadata.software_name,
+                    software_version=data.metadata.software_version,
                     ASM_converter_name=self.get_asm_converter_name(),
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
@@ -82,139 +82,67 @@ class RocheCedexBiohtParser(VendorParser):
         self, data: Data
     ) -> list[SolutionAnalyzerDocumentItem]:
         solution_analyzer_document = []
-        for sample in data.samples:
-            if docs := self._get_measurement_document(sample):
-                solution_analyzer_document.append(
-                    SolutionAnalyzerDocumentItem(
-                        measurement_aggregate_document=MeasurementAggregateDocument(
-                            measurement_document=docs,
-                            data_processing_time=data.title.data_processing_time,
-                        ),
-                        analyst=data.title.analyst,
-                    )
+        for measurement_group in data.measurement_groups:
+            if not measurement_group.measurements:
+                continue
+            solution_analyzer_document.append(
+                SolutionAnalyzerDocumentItem(
+                    measurement_aggregate_document=MeasurementAggregateDocument(
+                        measurement_document=[self._create_measurements(measurement, data.metadata) for measurement in measurement_group.measurements],
+                        data_processing_time=self._get_date_time(measurement_group.data_processing_time),
+                    ),
+                    analyst=measurement_group.analyst,
                 )
+            )
 
         return solution_analyzer_document
 
-    def _get_measurement_document(self, sample: Sample) -> list[MeasurementDocument]:
-        measurement_document = []
-
-        for measurement_time, measurements in sample.measurements.items():
-            if doc := self._create_sample_measurement(
-                sample,
-                measurement_time,
-                {k: v for k, v in measurements.items() if k == OPTICAL_DENSITY},
-            ):
-                measurement_document.append(doc)
-            if doc := self._create_sample_measurement(
-                sample,
-                measurement_time,
-                {k: v for k, v in measurements.items() if k != OPTICAL_DENSITY},
-            ):
-                measurement_document.append(doc)
-
-        return measurement_document
-
-    def _create_analyte_document(
-        self, measurement: Measurement
-    ) -> tuple[AnalyteDocument, str | None]:
-        value = (
-            measurement.concentration_value
-            if isinstance(measurement.concentration_value, float)
-            else -1
+    def _create_measurements(
+        self,
+        measurement: Measurement,
+        metadata: Metadata
+    ) -> MeasurementDocument:
+        return MeasurementDocument(
+            measurement_identifier=measurement.identifier,
+            measurement_time=self._get_date_time(measurement.measurement_time),
+            sample_document=SampleDocument(
+                sample_identifier=measurement.sample_identifier,
+                batch_identifier=measurement.batch_identifier,
+            ),
+            device_control_aggregate_document=DeviceControlAggregateDocument(
+                device_control_document=[DeviceControlDocumentItem(device_type=metadata.device_type)]
+            ),
+            absorbance=quantity_or_none(TQuantityValueMilliAbsorbanceUnit, measurement.absorbance),
+            analyte_aggregate_document=AnalyteAggregateDocument(analyte_document=[self._create_analyte_document(analyte) for analyte in measurement.analytes]) if measurement.analytes else None
         )
-        analyte = AnalyteDocument(
-            analyte_name=measurement.name,
-            molar_concentration=TQuantityValueMillimolePerLiter(value=value),
-        )
-        error = measurement.error
 
-        if measurement.unit == "g/L":
-            analyte = AnalyteDocument(
-                analyte_name=measurement.name,
-                mass_concentration=TQuantityValueGramPerLiter(value=value),
+    def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
+        if analyte.unit == "g/L":
+            return AnalyteDocument(
+                analyte_name=analyte.name,
+                mass_concentration=TQuantityValueGramPerLiter(value=analyte.value),
             )
-        elif measurement.unit == "mL/L":
-            analyte = AnalyteDocument(
-                analyte_name=measurement.name,
-                volume_concentration=TQuantityValueMilliliterPerLiter(value=value),
+        elif analyte.unit == "mL/L":
+            return AnalyteDocument(
+                analyte_name=analyte.name,
+                volume_concentration=TQuantityValueMilliliterPerLiter(value=analyte.value),
             )
-        elif measurement.unit == "mmol/L":
-            analyte = AnalyteDocument(
-                analyte_name=measurement.name,
-                molar_concentration=TQuantityValueMillimolePerLiter(value=value),
+        elif analyte.unit == "mmol/L":
+            return AnalyteDocument(
+                analyte_name=analyte.name,
+                molar_concentration=TQuantityValueMillimolePerLiter(value=analyte.value),
             )
-        elif measurement.unit == "U/L":
-            if measurement.name == "ldh":
-                analyte = AnalyteDocument(
-                    analyte_name=measurement.name,
+        elif analyte.unit == "U/L":
+            if analyte.name == "ldh":
+                return AnalyteDocument(
+                    analyte_name=analyte.name,
                     molar_concentration=TQuantityValueMillimolePerLiter(
-                        value=value * 0.0167 if value > 0 else value
+                        value=analyte.value * 0.0167 if analyte.value > 0 else analyte.value
                     ),
                 )
             else:
-                error = f"Invalid unit for {measurement.name}: {measurement.unit}"
-        else:
-            error = f"Invalid unit for analyte: {measurement.unit}, value values are: g/L, mL/L, mmol/L"
+                msg = f"Invalid unit for {analyte.name}: {analyte.unit}"
+                raise AllotropeConversionError(msg)
 
-        return analyte, error
-
-    def _create_sample_measurement(
-        self,
-        sample: Sample,
-        measurement_time: str,
-        measurements: dict[str, Measurement],
-    ) -> MeasurementDocument | None:
-        if not measurements:
-            return None
-
-        measurement_document = MeasurementDocument(
-            measurement_identifier=random_uuid_str(),
-            measurement_time=self._get_date_time(measurement_time),
-            sample_document=SampleDocument(
-                sample_identifier=sample.name,
-                batch_identifier=sample.batch,
-            ),
-            device_control_aggregate_document=DeviceControlAggregateDocument(
-                device_control_document=[
-                    DeviceControlDocumentItem(device_type=SOLUTION_ANALYZER)
-                ]
-            ),
-        )
-
-        errors: list[ErrorDocumentItem] = []
-        if OPTICAL_DENSITY in measurements:
-            measurement = measurements[OPTICAL_DENSITY]
-            value = (
-                measurement.concentration_value
-                if measurement.concentration_value is not NaN
-                else -1
-            )
-            measurement_document.absorbance = TQuantityValueMilliAbsorbanceUnit(
-                value=value
-            )
-
-            # TODO: always add value, add error to error document
-            if measurement.concentration_value is NaN:
-                return None
-        else:
-            analytes = []
-            for name in sorted(measurements):
-                analyte, error = self._create_analyte_document(measurements[name])
-                # TODO: always write analyte, add error to error document
-                if not error:
-                    analytes.append(analyte)
-
-            if analytes:
-                measurement_document.analyte_aggregate_document = (
-                    AnalyteAggregateDocument(analyte_document=analytes)
-                )
-            else:
-                return None
-
-        if errors:
-            measurement_document.error_aggregate_document = ErrorAggregateDocument(
-                error_document=errors
-            )
-
-        return measurement_document
+        msg = f"Invalid unit for analyte: {analyte.unit}, value values are: g/L, mL/L, mmol/L"
+        raise AllotropeConversionError(msg)
