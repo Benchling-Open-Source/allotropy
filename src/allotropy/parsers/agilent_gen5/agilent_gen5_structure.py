@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 from __future__ import annotations
 
 from collections import defaultdict
@@ -25,6 +23,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 )
 from allotropy.exceptions import (
     AllotropeConversionError,
+    AllotropyParserError,
 )
 from allotropy.parsers.agilent_gen5.constants import (
     DEFAULT_SOFTWARE_NAME,
@@ -167,6 +166,86 @@ class FilterSet:
         return position_lookup.get(position) if position is not None else None
 
 
+@dataclass
+class DeviceControlData:
+    step_label: str | None
+    _list_data: dict[str, list[str]]
+    _single_data: dict[str, str]
+
+    LIST_KEYS = frozenset(
+        {
+            EMISSION_KEY,
+            EXCITATION_KEY,
+            OPTICS_KEY,
+            GAIN_KEY,
+            MIRROR_KEY,
+            WAVELENGTHS_KEY,
+        }
+    )
+
+    def __init__(self) -> None:
+        self.step_label = None
+        self._list_data = {key: [] for key in self.LIST_KEYS}
+        self._single_data = {}
+
+    def add(self, key: str, value: str | list[str]) -> None:
+        if key in self.LIST_KEYS:
+            if isinstance(value, str):
+                self._list_data[key].append(value)
+            else:
+                self._list_data[key].extend(value)
+        else:
+            if not isinstance(value, str):
+                msg = f"Unexpected list passed to key: {key}"
+                raise AllotropyParserError(msg)
+            self._single_data[key] = value
+
+    def get_list(self, key: str) -> list[str]:
+        return self._list_data.get(key, [])
+
+    def get(self, key: str) -> str | None:
+        return self._single_data.get(key)
+
+    @classmethod
+    def create(cls, procedure_details: str, read_mode: ReadMode) -> DeviceControlData:
+
+        device_control_data = DeviceControlData()
+        read_lines: list[str] = procedure_details.splitlines()
+
+        for line in read_lines:
+            strp_line = str(line.strip())
+            if strp_line.startswith("Read\t"):
+                device_control_data.step_label = cls._get_step_label(line, read_mode)
+                continue
+
+            elif strp_line.startswith(WAVELENGTHS_KEY):
+                wavelengths = strp_line.split(":  ")
+                device_control_data.add(WAVELENGTHS_KEY, wavelengths[1].split(", "))
+                continue
+
+            line_data: list[str] = strp_line.split(",  ")
+            for read_datum in line_data:
+                splitted_datum = read_datum.split(": ")
+                if len(splitted_datum) != 2:  # noqa: PLR2004
+                    continue
+                device_control_data.add(splitted_datum[0], splitted_datum[1])
+
+        return device_control_data
+
+    @classmethod
+    def _get_step_label(cls, read_line: str, read_mode: str) -> str | None:
+        split_line = read_line.strip().split("\t")
+        if len(split_line) != 2:  # noqa: PLR2004
+            msg = (
+                f"Expected the Read data line {split_line} to contain exactly 2 values."
+            )
+            raise AllotropeConversionError(msg)
+        if split_line[1] != f"{read_mode.title()} Endpoint":
+            return split_line[1]
+
+        return None
+
+
 @dataclass(frozen=True)
 class ReadData:
     read_mode: ReadMode
@@ -190,15 +269,15 @@ class ReadData:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
         read_mode = cls.get_read_mode(procedure_details)
-        device_control_data = cls._get_device_control_data(procedure_details, read_mode)
+        device_control_data = DeviceControlData.create(procedure_details, read_mode)
         measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
 
         number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
-        read_height = device_control_data.get(READ_HEIGHT_KEY, "")
+        read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
 
         return ReadData(
             read_mode=read_mode,
-            step_label=device_control_data.get("Step Label"),
+            step_label=device_control_data.step_label,
             measurement_labels=measurement_labels,
             detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
             # Absorbance attributes
@@ -242,8 +321,10 @@ class ReadData:
         raise AllotropeConversionError(msg)
 
     @classmethod
-    def _get_measurement_labels(cls, device_control_data: dict, read_mode: str) -> list:
-        step_label = device_control_data.get("Step Label")
+    def _get_measurement_labels(
+        cls, device_control_data: DeviceControlData, read_mode: str
+    ) -> list[str]:
+        step_label = device_control_data.step_label
         label_prefix = f"{step_label}:" if step_label else ""
         measurement_labels = []
 
@@ -253,8 +334,8 @@ class ReadData:
             )
 
         if read_mode == ReadMode.FLUORESCENCE:
-            excitations = device_control_data.get(EXCITATION_KEY, [])
-            emissions = device_control_data.get(EMISSION_KEY, [])
+            excitations: list[str] = device_control_data.get_list(EXCITATION_KEY)
+            emissions: list[str] = device_control_data.get_list(EMISSION_KEY)
             measurement_labels = [
                 f"{label_prefix}{excitation},{emission}"
                 for excitation, emission in zip(excitations, emissions, strict=True)
@@ -263,7 +344,7 @@ class ReadData:
                 measurement_labels = ["Alpha"]
 
         if read_mode == ReadMode.LUMINESCENCE:
-            emissions = device_control_data.get(EMISSION_KEY)
+            emissions = device_control_data.get_list(EMISSION_KEY)
             for emission in emissions:
                 label = "Lum" if emission in NAN_EMISSION_EXCITATION else emission
                 measurement_labels.append(f"{label_prefix}{label}")
@@ -272,13 +353,12 @@ class ReadData:
 
     @classmethod
     def _get_absorbance_measurement_labels(
-        cls, label_prefix: str | None, device_control_data: dict
-    ) -> list:
-        wavelengths = device_control_data.get(WAVELENGTHS_KEY, [])
+        cls, label_prefix: str | None, device_control_data: DeviceControlData
+    ) -> list[str]:
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
         measurement_labels = []
 
-        for wavelength in wavelengths:
+        for wavelength in device_control_data.get_list(WAVELENGTHS_KEY):
             label = f"{label_prefix}{wavelength}"
             measurement_labels.append(label)
 
@@ -291,74 +371,21 @@ class ReadData:
         return measurement_labels
 
     @classmethod
-    def _get_device_control_data(
-        cls, procedure_details: str, read_mode: ReadMode
-    ) -> dict:
-        list_keys = frozenset(
-            {
-                EMISSION_KEY,
-                EXCITATION_KEY,
-                OPTICS_KEY,
-                GAIN_KEY,
-                MIRROR_KEY,
-                WAVELENGTHS_KEY,
-            }
-        )
-        read_data_dict: dict = {label: [] for label in list_keys}
-        read_lines: list[str] = procedure_details.splitlines()
-
-        for line in read_lines:
-            strp_line = str(line.strip())
-            if strp_line.startswith("Read\t"):
-                read_data_dict["Step Label"] = cls._get_step_label(line, read_mode)
-                continue
-
-            elif strp_line.startswith(WAVELENGTHS_KEY):
-                wavelengths = strp_line.split(":  ")
-                read_data_dict[WAVELENGTHS_KEY].extend(wavelengths[1].split(", "))
-                continue
-
-            line_data: list[str] = strp_line.split(",  ")
-            for read_datum in line_data:
-                splitted_datum = read_datum.split(": ")
-                if len(splitted_datum) != 2:  # noqa: PLR2004
-                    continue
-                if splitted_datum[0] in list_keys:
-                    read_data_dict[splitted_datum[0]].append(splitted_datum[1])
-                else:
-                    read_data_dict[splitted_datum[0]] = splitted_datum[1]
-
-        return read_data_dict
-
-    @classmethod
-    def _get_step_label(cls, read_line: str, read_mode: str) -> str | None:
-        split_line = read_line.strip().split("\t")
-        if len(split_line) != 2:  # noqa: PLR2004
-            msg = (
-                f"Expected the Read data line {split_line} to contain exactly 2 values."
-            )
-            raise AllotropeConversionError(msg)
-        if split_line[1] != f"{read_mode.title()} Endpoint":
-            return split_line[1]
-
-        return None
-
-    @classmethod
     def _get_filter_sets(
         cls,
         measurement_labels: list[str],
-        device_control_data: dict,
+        device_control_data: DeviceControlData,
         read_mode: ReadMode,
     ) -> dict[str, FilterSet]:
         filter_data: dict[str, FilterSet] = {}
         if read_mode == ReadMode.ABSORBANCE:
             return filter_data
 
-        emissions = device_control_data.get(EMISSION_KEY, [])
-        excitations = device_control_data.get(EXCITATION_KEY, [])
-        mirrors = device_control_data.get(MIRROR_KEY, [])
-        optics = device_control_data.get(OPTICS_KEY, [])
-        gains = device_control_data.get(GAIN_KEY, [])
+        emissions = device_control_data.get_list(EMISSION_KEY)
+        excitations = device_control_data.get_list(EXCITATION_KEY)
+        mirrors = device_control_data.get_list(MIRROR_KEY)
+        optics = device_control_data.get_list(OPTICS_KEY)
+        gains = device_control_data.get_list(GAIN_KEY)
 
         for idx, label in enumerate(measurement_labels):
             mirror = None
@@ -428,10 +455,14 @@ def create_results(
     data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
-    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(list)
-    calculated_data: defaultdict[str, list] = defaultdict(list)
+    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
+        list[MeasurementData]
+    )
+    calculated_data: defaultdict[str, list[tuple[str, JsonFloat]]] = defaultdict(
+        list[tuple[str, JsonFloat]]
+    )
     for row_name, row in data.iterrows():
-        label = row.iloc[-1]
+        label = str(row.iloc[-1])
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_nan(value)

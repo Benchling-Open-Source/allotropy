@@ -1,4 +1,5 @@
 from collections.abc import Iterator
+from functools import cache
 
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
@@ -9,7 +10,6 @@ from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_views import (
     TargetRoleView,
     TargetView,
 )
-from allotropy.parsers.appbio_quantstudio.decorators import cache
 from allotropy.parsers.appbio_quantstudio.views import ViewData
 from allotropy.parsers.utils.calculated_data_documents.definition import (
     CalculatedDocument,
