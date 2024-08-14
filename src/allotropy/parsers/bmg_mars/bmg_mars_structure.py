@@ -11,9 +11,8 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueNumber,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import InvalidJsonFloat
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
