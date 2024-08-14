@@ -11,8 +11,8 @@ import pandas as pd
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     Analyte,
-    Data as MapperData,
-    Measurement as MapperMeasurement,
+    Data,
+    Measurement,
     MeasurementGroup,
     Metadata,
 )
@@ -52,7 +52,7 @@ class Title:
 
 
 @dataclass(frozen=True)
-class Measurement:
+class RawMeasurement:
     name: str
     measurement_time: str
     concentration_value: JsonFloat
@@ -60,7 +60,7 @@ class Measurement:
     error: str | None = None
 
     @staticmethod
-    def create(data: SeriesData) -> Measurement:
+    def create(data: SeriesData) -> RawMeasurement:
         error = data.get(str, "flag", "").strip()
         # TODO: handle other errors
         if BELOW_TEST_RANGE not in error:
@@ -70,7 +70,7 @@ class Measurement:
             if BELOW_TEST_RANGE in error
             else data.get(float, "concentration value", NaN)
         )
-        return Measurement(
+        return RawMeasurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
             concentration_value,
@@ -79,13 +79,13 @@ class Measurement:
         )
 
 
-def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, Measurement]]:
+def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, RawMeasurement]]:
     measurements = sorted(
-        map_rows(data, Measurement.create), key=lambda a: a.measurement_time
+        map_rows(data, RawMeasurement.create), key=lambda a: a.measurement_time
     )
 
     # Dict from measurement time to data
-    groups: defaultdict[str, dict[str, Measurement]] = defaultdict(dict)
+    groups: defaultdict[str, dict[str, RawMeasurement]] = defaultdict(dict)
 
     current_measurement_time = measurements[0].measurement_time
     previous_measurement_time = current_measurement_time
@@ -117,7 +117,7 @@ def create_measurements(data: pd.DataFrame) -> dict[str, dict[str, Measurement]]
 @dataclass(frozen=True)
 class Sample:
     name: str
-    measurements: dict[str, dict[str, Measurement]]
+    measurements: dict[str, dict[str, RawMeasurement]]
     batch: str | None = None
 
     @staticmethod
@@ -130,77 +130,88 @@ class Sample:
 
 
 def _create_measurements(
-    sample: Sample,
-    measurement_time: str,
-    raw_measurements: dict[str, Measurement]
-) -> list[MapperMeasurement]:
+    sample: Sample, measurement_time: str, raw_measurements: dict[str, RawMeasurement]
+) -> list[Measurement]:
     measurements: list[Measurement] = []
 
     analytes: list[Analyte] = []
     for name in sorted(raw_measurements):
         measurement = raw_measurements[name]
+        value = measurement.concentration_value
         # TODO: report value and add error
-        if measurement.concentration_value is NaN:
+        if value is NaN:
             continue
 
         if name == OPTICAL_DENSITY:
-            measurements.append(MapperMeasurement(
+            measurements.append(
+                Measurement(
+                    identifier=random_uuid_str(),
+                    measurement_time=measurement_time,
+                    sample_identifier=sample.name,
+                    batch_identifier=sample.batch,
+                    absorbance=value if isinstance(value, float) else -1,
+                )
+            )
+        else:
+            analytes.append(
+                Analyte(
+                    name=measurement.name,
+                    value=value if isinstance(value, float) else -1,
+                    unit=measurement.unit,
+                )
+            )
+
+    if analytes:
+        measurements.append(
+            Measurement(
                 identifier=random_uuid_str(),
                 measurement_time=measurement_time,
                 sample_identifier=sample.name,
                 batch_identifier=sample.batch,
-                absorbance=measurement.concentration_value,
-            ))
-        else:
-            analytes.append(Analyte(
-                name=measurement.name,
-                value=measurement.concentration_value,
-                unit=measurement.unit,
-            ))
-
-    if analytes:
-        measurements.append(MapperMeasurement(
-            identifier=random_uuid_str(),
-            measurement_time=measurement_time,
-            sample_identifier=sample.name,
-            batch_identifier=sample.batch,
-            analytes=analytes
-        ))
+                analytes=analytes,
+            )
+        )
 
     return measurements
 
 
-def _create_measurement_groups(samples: list[Sample], title: Title):
+def _create_measurement_groups(
+    samples: list[Sample], title: Title
+) -> list[MeasurementGroup]:
     groups: list[MeasurementGroup] = []
     for sample in samples:
         measurements = [
             measurement
             for measurement_time, sample_measurements in sample.measurements.items()
-            for measurement in _create_measurements(sample, measurement_time, sample_measurements)
+            for measurement in _create_measurements(
+                sample, measurement_time, sample_measurements
+            )
         ]
         if not measurements:
             continue
-        groups.append(MeasurementGroup(
-            analyst=title.analyst,
-            data_processing_time=title.data_processing_time,
-            measurements=measurements
-        ))
+        groups.append(
+            MeasurementGroup(
+                analyst=title.analyst,
+                data_processing_time=title.data_processing_time,
+                measurements=measurements,
+            )
+        )
     return groups
 
 
-def create_data(named_file_contents: NamedFileContents) -> MapperData:
+def create_data(named_file_contents: NamedFileContents) -> Data:
     reader = RocheCedexBiohtReader(named_file_contents.contents)
 
-    title = Title.create(reader.title_data),
+    title = Title.create(reader.title_data)
     samples = [
         Sample.create(name, batch, samples_data)
         for (name, batch), samples_data in reader.samples_data.groupby(
             # A sample group is defined by both the sample and the batch identifier
             ["sample identifier", "batch identifier"]
         )
-    ],
+    ]
 
-    return MapperData(
+    return Data(
         Metadata(
             file_name=named_file_contents.original_file_name,
             device_type=SOLUTION_ANALYZER,
@@ -211,5 +222,5 @@ def create_data(named_file_contents: NamedFileContents) -> MapperData:
             software_name=title.model_number,
             software_version=title.software_version,
         ),
-        measurement_groups=_create_measurement_groups(samples, title)
+        measurement_groups=_create_measurement_groups(samples, title),
     )
