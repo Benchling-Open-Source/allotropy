@@ -96,6 +96,9 @@ def get_data() -> Data:
                     },
                     ph_properties={
                         "pH": PH_DETECTION_MAPPINGS["pH"]["cls"](value=7.4),
+                        "temperature": PH_DETECTION_MAPPINGS["temperature"]["cls"](
+                            value=37.0
+                        ),
                     },
                     cell_type_processing_method="Workhog",
                     cell_density_dilution_factor=None,
