@@ -98,6 +98,7 @@ def _create_measurement_group(
     calculated_data: list[CalculatedDataItem],
     timestamp: str | None,
 ) -> MeasurementGroup:
+    # Support timestamp from metadata section, but overide with columns in data if specified.
     date = data.get(str, "Date")
     time = data.get(str, "Time")
     if date and time:
@@ -135,9 +136,12 @@ def _parse_contents(
     if extension == ".csv":
         data = read_csv(named_file_contents.contents).replace(np.nan, None)
         assert_not_empty_df(data, "Unable to parse data from empty dataset.")
+        # Use the first row in the data block for metadata, since it has all required columns.
         metadata_data = SeriesData(data.iloc[0])
     elif extension == ".xlsx":
         data = read_excel(named_file_contents.contents)
+
+        # Parse the metadata section out and turn it into a series.
         metadata = None
         for idx, row in data.iterrows():
             if row.iloc[0] == "Table":
