@@ -5,6 +5,7 @@ import re
 
 import pandas as pd
 
+from allotropy.parsers.utils.pandas import set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 # This map is used to coerce the column names coming in the raw data
@@ -167,7 +168,7 @@ class PharmSpecData:
         data = data.dropna(how="all").dropna(how="all", axis=1)
         data[0] = data[0].ffill()
         data = data.dropna(subset=1).reset_index(drop=True)
-        data.columns = pd.Index([x.strip() for x in data.loc[0]])
+        set_columns(data, [x.strip() for x in data.loc[0]])
         data = data.loc[1:, :]
         return data.rename(columns={x: COLUMN_MAP[x] for x in COLUMN_MAP})
 

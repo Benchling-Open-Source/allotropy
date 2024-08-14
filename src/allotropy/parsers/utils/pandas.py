@@ -43,6 +43,14 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
     )
 
 
+def set_columns(data: pd.DataFrame, column_names: Iterable[str]) -> None:
+    cols = list(column_names)
+    if data.shape[1] != len(cols):
+        msg = f"Mismatch between data size ({data.shape[1]}) and column labels ({len(cols)}), labels: {cols}."
+        raise AllotropeConversionError(msg)
+    data.columns = pd.Index(cols)
+
+
 def df_to_series(
     df: pd.DataFrame, msg: str, index: int | None = None
 ) -> pd.Series[Any]:

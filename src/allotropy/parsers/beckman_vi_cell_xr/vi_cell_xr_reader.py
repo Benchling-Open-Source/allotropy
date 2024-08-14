@@ -22,6 +22,7 @@ from allotropy.parsers.utils.pandas import (
     read_csv,
     read_excel,
     SeriesData,
+    set_columns,
 )
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -92,9 +93,8 @@ class ViCellXRReader:
         file_data = self._read_excel(skiprows=skiprows, names=header)
 
         # rename the columns to match the existing parser that was based on xls(x) files
-        file_data.columns = pd.Index(
-            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns]
-        )
+        # TODO: use replace function instead here for rename
+        set_columns(file_data, [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns])
 
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row

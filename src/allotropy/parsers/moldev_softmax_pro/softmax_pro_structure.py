@@ -14,7 +14,7 @@ from allotropy.exceptions import (
     get_key_or_error,
 )
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData
+from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -347,7 +347,7 @@ class PlateKineticData:
             reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
-        data.columns = pd.Index(columns)
+        set_columns(data, columns)
 
         # get temperature from the first column of the first row with value
         temperature = try_float_or_none(
@@ -504,7 +504,7 @@ class TimeWavelengthData:
             reader.pop_csv_block_as_df(sep="\t"),
             msg="unable to find raw data from time block.",
         )
-        data.columns = pd.Index(columns)
+        set_columns(data, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             kinetic_data=[
