@@ -122,6 +122,10 @@ class WellItem(Referenceable):
     result: Result
     melt_curve_data: MeltCurveData | None = None
 
+    # Make hashable to allow for use of caching
+    def __hash__(self) -> int:
+        return hash(self.identifier)
+
     @staticmethod
     def create(
         contents: DesignQuantstudioContents,

@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 from __future__ import annotations
 
 from collections import defaultdict
