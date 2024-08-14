@@ -48,7 +48,7 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
     TQuantityValue,
 )
 from allotropy.constants import ASM_CONVERTER_VERSION
-from allotropy.exceptions import AllotropyParserError
+from allotropy.exceptions import AllotropeConversionError, AllotropyParserError
 from allotropy.parsers.utils.units import get_quantity_class
 from allotropy.parsers.utils.values import assert_not_none, quantity_or_none
 
@@ -320,7 +320,7 @@ class Mapper:
     def _get_data_cube(self, measurement: Measurement) -> TDatacube:
         if not measurement.data_cube:
             msg = "Unable to find UV Absorption Spectrum data"
-            raise AllotropyParserError(msg)
+            raise AllotropeConversionError(msg)
         return TDatacube(
             label=measurement.data_cube.label,
             cube_structure=TDatacubeStructure(

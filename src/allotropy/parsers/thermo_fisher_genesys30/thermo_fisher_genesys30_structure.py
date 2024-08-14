@@ -35,7 +35,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
     """
     Structures the named_file_contents according to the mapper file
     :param named_file_contents: The contents of the file to convert
-    :return: The data according to spectrophotometer Data mapper
+    :return: The data according to spectrophotometer data mapper
     """
     filename = named_file_contents.original_file_name
 
