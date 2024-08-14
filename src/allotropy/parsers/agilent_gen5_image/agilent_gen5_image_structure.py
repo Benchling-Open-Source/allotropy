@@ -1,5 +1,3 @@
-# mypy: disallow_any_generics = False
-
 from __future__ import annotations
 
 from collections import defaultdict
@@ -57,18 +55,19 @@ from allotropy.parsers.utils.values import (
 )
 
 
-def parse_settings(settings: list[str]) -> dict:
+def parse_settings(settings: list[str]) -> tuple[dict[str, str], list[str]]:
     """Returns a dictionary containing all key values identified in a list of settings.
 
     If there are additional (non key value) settings, they are also returned under the
     'non_kv_settings' key.
 
     Supported settings lines format:
-        - key: value -> returned as {'key': 'value}
+        - key: value -> returned as {'key': 'value'}
         - key1: value1, key2: value2, ... -> returned as {'key1': 'value1', key2', 'value2', ...}
         - Non keyvalue setting -> returned as {'non_kv_settings': ['Non keyvalue setting', ...]}
     """
-    settings_dict: dict = {"non_kv_settings": []}
+    non_kv_settings: list[str] = []
+    settings_dict: dict[str, str] = {}
     for line in settings:
         strp_line = str(line.strip())
 
@@ -76,11 +75,11 @@ def parse_settings(settings: list[str]) -> dict:
         for read_datum in line_data:
             splitted_datum = read_datum.split(": ")
             if len(splitted_datum) == 1:
-                settings_dict["non_kv_settings"].append(splitted_datum[0])
+                non_kv_settings.append(splitted_datum[0])
             elif len(splitted_datum) == 2:  # noqa: PLR2004
                 settings_dict[splitted_datum[0]] = splitted_datum[1]
 
-    return settings_dict
+    return settings_dict, non_kv_settings
 
 
 @dataclass
@@ -99,8 +98,7 @@ class InstrumentSettings:
     def create(cls, settings_lines: list[str]) -> InstrumentSettings:
         channel_settings = cls._get_channel_line_settings(settings_lines[0])
 
-        settings_dict = parse_settings(settings_lines[1:])
-        non_kv_settings = settings_dict["non_kv_settings"]
+        settings_dict, non_kv_settings = parse_settings(settings_lines[1:])
 
         if exposure_duration := settings_dict.get("Integration time"):
             exposure_duration = str(exposure_duration).split()[0]
@@ -122,9 +120,9 @@ class InstrumentSettings:
         )
 
     @classmethod
-    def _get_channel_line_settings(cls, settings_header: str) -> dict:
+    def _get_channel_line_settings(cls, settings_header: str) -> dict[str, str]:
         if matches := re.match(CHANNEL_HEADER_REGEX, settings_header):
-            return matches.groupdict()
+            return {key: str(value) for key, value in matches.groupdict().items()}
         return {}
 
     @classmethod
@@ -162,7 +160,7 @@ class ReadSection:
         instrument_settings_list = cls._get_instrument_settings_list(reader)
 
         bottom_read_lines = list(reader.pop_until_empty())
-        read_settings = parse_settings(top_read_lines + bottom_read_lines)
+        read_settings, _ = parse_settings(top_read_lines + bottom_read_lines)
 
         if objective := read_settings.get("Objective"):
             objective = str(objective).replace("x", "")
@@ -214,7 +212,7 @@ class ReadSection:
         return settings_list
 
     @classmethod
-    def _get_image_count_setting(cls, read_settings: dict) -> float | None:
+    def _get_image_count_setting(cls, read_settings: dict[str, str]) -> float | None:
         montage_rows = read_settings.get("Montage rows")
         montage_columns = read_settings.get("columns")
         if montage_rows and montage_columns:

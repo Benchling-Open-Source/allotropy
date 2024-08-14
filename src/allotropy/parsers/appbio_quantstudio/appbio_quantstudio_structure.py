@@ -118,6 +118,10 @@ class WellItem(Referenceable):
     sample_role_type: str | None = None
     _result: Result | None = None
 
+    # Make hashable to allow for use of caching
+    def __hash__(self) -> int:
+        return hash(self.identifier)
+
     @property
     def result(self) -> Result:
         return assert_not_none(self._result)
