@@ -122,8 +122,13 @@ class WellItem(Referenceable):
     result: Result
     melt_curve_data: MeltCurveData | None = None
 
-    @staticmethod
+    @classmethod
+    def get_result_class(cls) -> type[Result]:
+        return Result
+
+    @classmethod
     def create(
+        cls,
         contents: DesignQuantstudioContents,
         data: SeriesData,
         experiment_type: ExperimentType,
@@ -143,6 +148,8 @@ class WellItem(Referenceable):
 
         amp_data = contents.get_non_empty_sheet("Amplification Data")
         melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+
+        result_class = cls.get_result_class()
 
         return WellItem(
             uuid=random_uuid_str(),
@@ -165,7 +172,7 @@ class WellItem(Referenceable):
                     melt_curve_data, identifier, target_dna_description
                 )
             ),
-            result=Result.create(data, identifier, experiment_type),
+            result=result_class.create(data, identifier, experiment_type),
         )
 
 
@@ -181,16 +188,22 @@ class Well:
             msg=f"Unable to find target DNA '{target}' for well {self.identifier}.",
         )
 
-    @staticmethod
+    @classmethod
+    def get_well_item_class(cls) -> type[WellItem]:
+        return WellItem
+
+    @classmethod
     def create(
+        cls,
         contents: DesignQuantstudioContents,
         header: Header,
         well_data: pd.DataFrame,
         identifier: int,
         experiment_type: ExperimentType,
     ) -> Well:
+        well_item_class = cls.get_well_item_class()
         well_items = {
-            SeriesData(item_data)[str, "Target"]: WellItem.create(
+            SeriesData(item_data)[str, "Target"]: well_item_class.create(
                 contents, SeriesData(item_data), experiment_type
             )
             for _, item_data in well_data.iterrows()
@@ -219,6 +232,10 @@ class WellList:
 
     def __iter__(self) -> Iterator[Well]:
         return iter(self.wells)
+
+    @classmethod
+    def get_well_class(cls) -> type[Well]:
+        return Well
 
     @classmethod
     def get_data_sheet(cls) -> str:
@@ -250,9 +267,10 @@ class WellList:
         results_data = cls.get_well_result_data(contents)
         assert_df_column(results_data, "Well")
 
+        well_class = cls.get_well_class()
         return WellList(
             wells=[
-                Well.create(
+                well_class.create(
                     contents,
                     header,
                     well_data,
@@ -408,6 +426,14 @@ class Result:
     slope: float | None
     efficiency: float | None
 
+    @classmethod
+    def get_genotyping_determination_result(cls, _: SeriesData) -> str | None:
+        return None
+
+    @classmethod
+    def get_genotyping_determination_method_setting(cls, _: SeriesData) -> float | None:
+        return None
+
     @staticmethod
     def get_reference_sample(contents: DesignQuantstudioContents) -> str:
         data = contents.get_non_empty_sheet("RQ Replicate Group Result")
@@ -445,32 +471,13 @@ class Result:
         msg = "Unable to infer reference target, expecting a single unique value for Target in sheet 'RQ Replicate Group Result' where Rq is empty."
         raise AllotropeConversionError(msg)
 
-    @staticmethod
+    @classmethod
     def create(
+        cls,
         target_data: SeriesData,
         well_item_id: int,
         experiment_type: ExperimentType,
     ) -> Result:
-        genotyping_determination_result = (
-            target_data.get(str, "Call")
-            if experiment_type
-            in (
-                ExperimentType.presence_absence_qPCR_experiment,
-                ExperimentType.genotyping_qPCR_experiment,
-            )
-            else None
-        )
-
-        genotyping_determination_method_setting = (
-            target_data.get(float, "Threshold")
-            if experiment_type
-            in (
-                ExperimentType.presence_absence_qPCR_experiment,
-                ExperimentType.genotyping_qPCR_experiment,
-            )
-            else None
-        )
-
         return Result(
             cycle_threshold_value_setting=target_data[
                 float,
@@ -492,8 +499,12 @@ class Result:
             baseline_determination_end_cycle_setting=target_data.get(
                 float, "Baseline End"
             ),
-            genotyping_determination_result=genotyping_determination_result,
-            genotyping_determination_method_setting=genotyping_determination_method_setting,
+            genotyping_determination_result=cls.get_genotyping_determination_result(
+                target_data
+            ),
+            genotyping_determination_method_setting=cls.get_genotyping_determination_method_setting(
+                target_data
+            ),
             quantity=target_data.get(float, "Quantity"),
             quantity_mean=target_data.get(float, "Quantity Mean"),
             quantity_sd=target_data.get(float, "Quantity SD"),

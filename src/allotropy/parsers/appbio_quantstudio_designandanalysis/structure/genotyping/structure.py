@@ -6,13 +6,45 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     DesignQuantstudioContents,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+    Result,
+    Well,
+    WellItem,
     WellList,
 )
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.values import assert_not_none
+
+
+class GenotypingResult(Result):
+    @classmethod
+    def get_genotyping_determination_result(cls, target_data: SeriesData) -> str | None:
+        return target_data.get(str, "Call")
+
+    @classmethod
+    def get_genotyping_determination_method_setting(
+        cls, target_data: SeriesData
+    ) -> float | None:
+        return target_data.get(float, "Threshold")
+
+
+class GenotypingWellItem(WellItem):
+    @classmethod
+    def get_result_class(cls) -> type[Result]:
+        return GenotypingResult
+
+
+class GenotypingWell(Well):
+    @classmethod
+    def get_well_item_class(cls) -> type[WellItem]:
+        return GenotypingWellItem
 
 
 @dataclass(frozen=True)
 class GenotypingWellList(WellList):
+    @classmethod
+    def get_well_class(cls) -> type[Well]:
+        return GenotypingWell
+
     @classmethod
     def get_well_result_data(cls, contents: DesignQuantstudioContents) -> pd.DataFrame:
         data = contents.get_non_empty_sheet(cls.get_data_sheet())

@@ -6,12 +6,44 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_d
     DesignQuantstudioContents,
 )
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+    Result,
+    Well,
+    WellItem,
     WellList,
 )
+from allotropy.parsers.utils.pandas import SeriesData
+
+
+class PresenceAbsenceResult(Result):
+    @classmethod
+    def get_genotyping_determination_result(cls, target_data: SeriesData) -> str | None:
+        return target_data.get(str, "Call")
+
+    @classmethod
+    def get_genotyping_determination_method_setting(
+        cls, target_data: SeriesData
+    ) -> float | None:
+        return target_data.get(float, "Threshold")
+
+
+class PresenceAbsenceWellItem(WellItem):
+    @classmethod
+    def get_result_class(cls) -> type[Result]:
+        return PresenceAbsenceResult
+
+
+class PresenceAbsenceWell(Well):
+    @classmethod
+    def get_well_item_class(cls) -> type[WellItem]:
+        return PresenceAbsenceWellItem
 
 
 @dataclass(frozen=True)
 class PresenceAbsenceWellList(WellList):
+    @classmethod
+    def get_well_class(cls) -> type[Well]:
+        return PresenceAbsenceWell
+
     @classmethod
     def get_well_result_data(cls, contents: DesignQuantstudioContents) -> pd.DataFrame:
         return cls._add_data(
