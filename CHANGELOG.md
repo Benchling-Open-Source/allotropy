@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Only return AllotropeConversionError when there is a problem with input data that we expect, add other errors for unexpected problems.
+- Split structure by experiment type in AppBio Quantstudio Design and Anlysis
 
 ### Deprecated
 
