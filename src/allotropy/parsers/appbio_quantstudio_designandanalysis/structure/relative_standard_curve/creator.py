@@ -30,9 +30,7 @@ class RelativeStandardCurveCreator(Creator):
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = RelativeStandardCurveWellList.create(
-            contents, header, ExperimentType.relative_standard_curve_qPCR_experiment
-        )
+        wells = RelativeStandardCurveWellList.create(contents, header)
         well_items = wells.get_well_items()
 
         r_sample = Result.get_reference_sample(contents)

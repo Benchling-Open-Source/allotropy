@@ -21,9 +21,7 @@ class MeltCurveCreator(Creator):
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = WellList.create(
-            contents, header, ExperimentType.melt_curve_qPCR_experiment
-        )
+        wells = WellList.create(contents, header)
         return Data(
             header,
             wells,

@@ -30,9 +30,7 @@ class StandardCurveCreator(Creator):
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = StandardCurveWellList.create(
-            contents, header, ExperimentType.standard_curve_qPCR_experiment
-        )
+        wells = StandardCurveWellList.create(contents, header)
         well_items = wells.get_well_items()
 
         return Data(

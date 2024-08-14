@@ -22,9 +22,7 @@ class GenotypingCreator(Creator):
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = GenotypingWellList.create(
-            contents, header, ExperimentType.genotyping_qPCR_experiment
-        )
+        wells = GenotypingWellList.create(contents, header)
         return Data(
             header,
             wells,

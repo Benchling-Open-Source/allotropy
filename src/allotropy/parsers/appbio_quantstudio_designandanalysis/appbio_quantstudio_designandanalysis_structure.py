@@ -131,7 +131,6 @@ class WellItem(Referenceable):
         cls,
         contents: DesignQuantstudioContents,
         data: SeriesData,
-        experiment_type: ExperimentType,
     ) -> WellItem:
         identifier = data[int, "Well"]
 
@@ -172,7 +171,7 @@ class WellItem(Referenceable):
                     melt_curve_data, identifier, target_dna_description
                 )
             ),
-            result=result_class.create(data, identifier, experiment_type),
+            result=result_class.create(data, identifier),
         )
 
 
@@ -199,12 +198,12 @@ class Well:
         header: Header,
         well_data: pd.DataFrame,
         identifier: int,
-        experiment_type: ExperimentType,
     ) -> Well:
         well_item_class = cls.get_well_item_class()
         well_items = {
             SeriesData(item_data)[str, "Target"]: well_item_class.create(
-                contents, SeriesData(item_data), experiment_type
+                contents,
+                SeriesData(item_data),
             )
             for _, item_data in well_data.iterrows()
         }
@@ -262,7 +261,6 @@ class WellList:
         cls,
         contents: DesignQuantstudioContents,
         header: Header,
-        experiment_type: ExperimentType,
     ) -> WellList:
         results_data = cls.get_well_result_data(contents)
         assert_df_column(results_data, "Well")
@@ -275,7 +273,6 @@ class WellList:
                     header,
                     well_data,
                     try_int(str(identifier), "well identifier"),
-                    experiment_type,
                 )
                 for identifier, well_data in results_data.groupby("Well")
             ]
@@ -476,7 +473,6 @@ class Result:
         cls,
         target_data: SeriesData,
         well_item_id: int,
-        experiment_type: ExperimentType,
     ) -> Result:
         return Result(
             cycle_threshold_value_setting=target_data[

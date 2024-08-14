@@ -118,9 +118,7 @@ def test_results_builder() -> None:
     target_data = SeriesData(
         pd.Series(target_well_data.iloc[0], index=target_well_data.columns)
     )
-    result = Result.create(
-        target_data, well_item_id, ExperimentType.standard_curve_qPCR_experiment
-    )
+    result = Result.create(target_data, well_item_id)
 
     assert isinstance(result, Result)
     assert result.automatic_baseline_determination_enabled_setting is True

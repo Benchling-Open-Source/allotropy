@@ -32,9 +32,7 @@ class PresenceAbsenceCreator(Creator):
     @classmethod
     def create(cls, contents: DesignQuantstudioContents) -> Data:
         header = Header.create(contents.header)
-        wells = PresenceAbsenceWellList.create(
-            contents, header, ExperimentType.presence_absence_qPCR_experiment
-        )
+        wells = PresenceAbsenceWellList.create(contents, header)
         well_items = wells.get_well_items()
         return Data(
             header,
