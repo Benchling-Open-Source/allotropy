@@ -50,7 +50,7 @@ from allotropy.parsers.agilent_gen5.constants import (
 from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.pandas import df_to_series_data
+from allotropy.parsers.utils.pandas import df_to_series_data, read_csv
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -84,7 +84,7 @@ class HeaderData:
     def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
         assert_not_none(reader.drop_until("^Software Version"), "Software Version")
         lines = [line for line in reader.pop_until("Procedure Details") if line]
-        df = pd.read_csv(
+        df = read_csv(
             StringIO("\n".join(lines)),
             header=None,
             index_col=0,
@@ -405,7 +405,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
     if not layout_lines:
         return {}
     # Create dataframe from tabular data and forward fill empty values in index
-    data = pd.read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
+    data = read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
     identifiers = {}
@@ -452,7 +452,7 @@ def create_results(
         raise AllotropeConversionError(msg)
 
     # Create dataframe from tabular data and forward fill empty values in index
-    data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+    data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
     well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(

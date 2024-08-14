@@ -7,9 +7,12 @@ import pandas as pd
 
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.utils.pandas import SeriesData
-from allotropy.parsers.utils.values import (
+from allotropy.parsers.utils.pandas import (
     assert_not_empty_df,
+    read_multisheet_excel,
+    SeriesData,
+)
+from allotropy.parsers.utils.values import (
     assert_not_none,
 )
 
@@ -21,19 +24,18 @@ class DesignQuantstudioContents:
             extension = PureWindowsPath(named_file_contents.original_file_name).suffix
             msg = f"Invalid file extension for AppBio QuantStudio Design & Analysis: '{extension}', must be 'xlsx'"
             raise AllotropeConversionError(msg)
-        raw_contents = pd.read_excel(  # type: ignore[call-overload]
-            named_file_contents.contents,
-            header=None,
-            sheet_name=None,
-            engine="calamine",
+        return DesignQuantstudioContents(
+            read_multisheet_excel(
+                named_file_contents.contents,
+                header=None,
+                engine="calamine",
+            )
         )
-        return DesignQuantstudioContents(raw_contents)
 
     def __init__(self, raw_contents: dict[str, pd.DataFrame]) -> None:
         contents = {
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }
-
         self.header = self._get_header(contents)
         self.data = self._get_data(
             contents,

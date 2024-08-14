@@ -6,8 +6,6 @@ from dataclasses import dataclass
 from io import StringIO
 import re
 
-import pandas as pd
-
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     TransmittedLightSetting,
 )
@@ -47,6 +45,7 @@ from allotropy.parsers.agilent_gen5_image.constants import (
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -275,7 +274,7 @@ def create_results(
         raise AllotropeConversionError(msg)
 
     # Create dataframe from tabular data and forward fill empty values in index
-    data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+    data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
     data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
     image_features = defaultdict(list)

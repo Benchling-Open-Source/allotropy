@@ -7,7 +7,6 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
@@ -21,7 +20,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     MOLAR_CONCENTRATION_CLS_BY_UNIT,
     PROPERTY_MAPPINGS,
 )
-from allotropy.parsers.utils.pandas import SeriesData
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 
 
 @dataclass(frozen=True)
