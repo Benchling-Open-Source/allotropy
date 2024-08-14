@@ -46,7 +46,7 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
 def set_columns(data: pd.DataFrame, column_names: Iterable[str]) -> None:
     cols = list(column_names)
     if data.shape[1] != len(cols):
-        msg = f"Mismatch between data size ({data.shape[1]}) and column labels ({len(cols)}), labels: {cols}."
+        msg = f"Invalid format - mismatch between # of columns ({data.shape[1]}) and # of labels ({len(cols)}), column labels: {cols}."
         raise AllotropeConversionError(msg)
     data.columns = pd.Index(cols)
 
