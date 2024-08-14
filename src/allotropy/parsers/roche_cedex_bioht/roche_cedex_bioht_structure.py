@@ -189,6 +189,24 @@ def _create_measurements(
     return measurements
 
 
+def _create_measurement_groups(samples: list[Sample], title: Title):
+    groups: list[MeasurementGroup] = []
+    for sample in samples:
+        measurements = [
+            measurement
+            for measurement_time, sample_measurements in sample.measurements.items()
+            for measurement in _create_measurements(sample, measurement_time, sample_measurements)
+        ]
+        if not measurements:
+            continue
+        groups.append(MeasurementGroup(
+            analyst=title.analyst,
+            data_processing_time=title.data_processing_time,
+            measurements=measurements
+        ))
+    return groups
+
+
 def create_data(named_file_contents: NamedFileContents) -> MapperData:
     reader = RocheCedexBiohtReader(named_file_contents.contents)
     data = Data.create(reader)
@@ -204,16 +222,5 @@ def create_data(named_file_contents: NamedFileContents) -> MapperData:
             software_name=data.title.model_number,
             software_version=data.title.software_version,
         ),
-        measurement_groups=[
-            MeasurementGroup(
-                analyst=data.title.analyst,
-                data_processing_time=data.title.data_processing_time,
-                measurements=[
-                    measurement
-                    for measurement_time, sample_measurements in sample.measurements.items()
-                    for measurement in _create_measurements(sample, measurement_time, sample_measurements)
-                ]
-            )
-            for sample in data.samples
-        ]
+        measurement_groups=_create_measurement_groups(data.samples, data.title)
     )
