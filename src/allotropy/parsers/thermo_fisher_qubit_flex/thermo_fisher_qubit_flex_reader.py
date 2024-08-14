@@ -2,11 +2,11 @@
 
 import pandas as pd
 
-from allotropy.allotrope.pandas_util import read_csv, read_excel
 from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
+from allotropy.parsers.utils.pandas import read_csv, read_excel
 
 
 class ThermoFisherQubitFlexReader:

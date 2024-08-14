@@ -1,13 +1,14 @@
 import numpy as np
 import pandas as pd
 
+from allotropy.parsers.utils.pandas import read_csv
 from allotropy.types import IOType
 
 
 class QiacuitydPCRReader:
     def __init__(self, contents: IOType):
         # Read in the file, skip first row since it does not have data in it.
-        qiacuity_dpcr_data = pd.read_csv(filepath_or_buffer=contents, header=1).replace(
+        qiacuity_dpcr_data = read_csv(filepath_or_buffer=contents, header=1).replace(
             np.nan, None
         )
         column_names = qiacuity_dpcr_data.columns.tolist()

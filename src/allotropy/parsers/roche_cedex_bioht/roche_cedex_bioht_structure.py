@@ -44,20 +44,26 @@ class Measurement:
     name: str
     measurement_time: str
     concentration_value: JsonFloat
-    unit: str | None = None
+    unit: str
+    error: str | None = None
 
     @staticmethod
     def create(data: SeriesData) -> Measurement:
+        error = data.get(str, "flag", "").strip()
+        # TODO: handle other errors
+        if BELOW_TEST_RANGE not in error:
+            error = ""
         concentration_value = (
             NaN
-            if BELOW_TEST_RANGE in data.get(str, "flag", "")
+            if BELOW_TEST_RANGE in error
             else data.get(float, "concentration value", NaN)
         )
         return Measurement(
             data[str, "analyte name"],
             data[str, "measurement time"],
             concentration_value,
-            data.get(str, "concentration unit"),
+            data[str, "concentration unit"],
+            error or None,
         )
 
 

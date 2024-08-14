@@ -5,7 +5,6 @@ import numpy as np
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
     Model,
 )
-from allotropy.allotrope.pandas_util import read_csv
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     Mapper,
 )
@@ -14,6 +13,7 @@ from allotropy.parsers.release_state import ReleaseState
 from allotropy.parsers.unchained_labs_lunatic.unchained_labs_lunatic_structure import (
     create_data,
 )
+from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.vendor_parser import VendorParser
 
 
