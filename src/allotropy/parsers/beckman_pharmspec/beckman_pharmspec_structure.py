@@ -26,7 +26,6 @@ from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-@staticmethod
 def _create_processed_data(data: SeriesData) -> ProcessedDataFeature:
     return ProcessedDataFeature(
         identifier=random_uuid_str(),
@@ -45,7 +44,7 @@ class Distribution:
     is_calculated: bool
 
     @staticmethod
-    def create(df: pd.DataFrame, name: str) -> list[Distribution]:
+    def create(df: pd.DataFrame, name: str) -> Distribution:
         return Distribution(
             name=name,
             features=map_rows(df, _create_processed_data),
@@ -60,7 +59,9 @@ class Distribution:
         return distributions
 
 
-def _create_calculated_data(distributions: list[Distribution]):
+def _create_calculated_data(
+    distributions: list[Distribution],
+) -> list[CalculatedDataItem]:
     particle_size_sources = defaultdict(list)
     for source in [
         feature
