@@ -14,6 +14,11 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueUnitPerLiter,
 )
 
+MODEL_NUMBER = "Flex2"
+SOFTWARE_NAME = "NovaBio Flex"
+DEVICE_TYPE = "solution-analyzer"
+PRODUCT_MANUFACTURER = "Nova Biomedical"
+
 FILENAME_REGEX = r"^SampleResults(?P<device_identifier>.*)?(?P<processing_time>\d{4}-\d{2}-\d{2}_\d{6})\.csv$"
 
 INVALID_FILENAME_MESSAGE = (

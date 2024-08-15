@@ -1,5 +1,6 @@
 from collections.abc import Callable
 from dataclasses import dataclass
+from typing import Any
 
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     AnalyteAggregateDocument,
@@ -18,10 +19,18 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     SolutionAnalyzerDocumentItem,
 )
 from allotropy.allotrope.models.shared.definitions.custom import (
+    TQuantityValueCell,
+    TQuantityValueDegreeCelsius,
     TQuantityValueGramPerLiter,
+    TQuantityValueMicrometer,
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMilliliterPerLiter,
+    TQuantityValueMillimeterOfMercury,
     TQuantityValueMillimolePerLiter,
+    TQuantityValueMillionCellsPerMilliliter,
+    TQuantityValueMilliOsmolesPerKilogram,
+    TQuantityValuePercent,
+    TQuantityValuePH,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -34,6 +43,12 @@ class Analyte:
     name: str
     value: float
     unit: str
+
+    def __lt__(self, other: Any):
+        if not isinstance(other, Analyte):
+            return False
+
+        return self.name < other.name
 
 
 @dataclass(frozen=True)
@@ -48,10 +63,27 @@ class Measurement:
     identifier: str
     measurement_time: str
     sample_identifier: str
+    description: str | None = None
     batch_identifier: str | None = None
+    detection_type: str | None = None
 
     # Measurements
     absorbance: float | None = None
+    pO2: float | None = None
+    pCO2: float | None = None
+    carbon_dioxide_saturation: float | None = None
+    oxygen_saturation: float | None = None
+    pH: float | None = None
+    temperature: float | None = None
+    osmolality: float | None = None
+    viability__cell_counter_: float | None = None
+    total_cell_density__cell_counter_: float | None = None
+    viable_cell_density__cell_counter_: float | None = None
+    average_live_cell_diameter__cell_counter_: float | None = None
+    total_cell_count: float | None = None
+    viable_cell_count: float | None = None
+    cell_type_processing_method: float | None = None
+    cell_density_dilution_factor: float | None = None
     analytes: list[Analyte] | None = None
 
     # Errors
@@ -159,9 +191,6 @@ class Mapper:
                     ),
                 ]
             ),
-            absorbance=quantity_or_none(
-                TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
-            ),
             analyte_aggregate_document=AnalyteAggregateDocument(
                 analyte_document=[
                     self._create_analyte_document(analyte)
@@ -172,6 +201,30 @@ class Mapper:
             else None,
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
+            ),
+            absorbance=quantity_or_none(
+                TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
+            ),
+            pO2=quantity_or_none(
+                TQuantityValueMillimeterOfMercury, measurement.pO2
+            ),
+            pCO2=quantity_or_none(
+                TQuantityValueMillimeterOfMercury, measurement.pCO2
+            ),
+            carbon_dioxide_saturation=quantity_or_none(
+                TQuantityValuePercent, measurement.carbon_dioxide_saturation
+            ),
+            oxygen_saturation=quantity_or_none(
+                TQuantityValuePercent, measurement.oxygen_saturation
+            ),
+            pH=quantity_or_none(
+                TQuantityValuePH, measurement.pH
+            ),
+            temperature=quantity_or_none(
+                TQuantityValueDegreeCelsius, measurement.temperature
+            ),
+            osmolality=quantity_or_none(
+                TQuantityValueMilliOsmolesPerKilogram, measurement.osmolality
             ),
         )
 
