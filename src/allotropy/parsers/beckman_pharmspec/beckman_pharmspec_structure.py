@@ -17,19 +17,9 @@ from allotropy.allotrope.schema_mappers.adm.light_obscuration._2023._12.light_ob
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
-from allotropy.parsers.utils.pandas import read_excel, SeriesData
+from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
-
-# This map is used to coerce the column names coming in the raw data
-# into names of the distribution properties.
-COLUMN_MAP = {
-    "Cumulative Counts/mL": "cumulative_particle_density",
-    "Cumulative Count": "cumulative_count",
-    "Particle Size(µm)": "particle_size",
-    "Differential Counts/mL": "differential_particle_density",
-    "Differential Count": "differential_count",
-}
 
 # This map is used to coerce the column names coming in the raw data
 # into names of the allotrope properties.
@@ -45,47 +35,30 @@ PROPERTY_LOOKUP = {
 VALID_CALCS = ["Average"]
 
 
-@dataclass(frozen=True, kw_only=True)
-class DistributionProperty:
-    value: float
-    distribution_property_id: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class DistributionRow:
-    distribution_row_id: str
-    properties: dict[str, DistributionProperty]
+@staticmethod
+def _create_processed_data(data: SeriesData) -> ProcessedDataFeature:
+    return ProcessedDataFeature(
+        identifier=random_uuid_str(),
+        particle_size=data[float, "Particle Size(µm)"],
+        cumulative_count=data[float, "Cumulative Count"],
+        cumulative_particle_density=data[float, "Cumulative Counts/mL"],
+        differential_particle_density=data.get(float, "Differential Counts/mL"),
+        differential_count=data.get(float, "Differential Count"),
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class Distribution:
     name: str
-    data: list[DistributionRow]
+    data: list[ProcessedDataFeature]
     is_calculated: bool
-    distribution_id: str
 
     @staticmethod
     def create(df: pd.DataFrame, name: str) -> Distribution:
-        data = []
-        cols = COLUMN_MAP.values()
-        for row in df.index:
-            data.append(
-                DistributionRow(
-                    properties={
-                        col: DistributionProperty(
-                            value=df.loc[row, col],
-                            distribution_property_id=random_uuid_str(),
-                        )
-                        for col in [x for x in cols if x in df.columns]
-                    },
-                    distribution_row_id=random_uuid_str()
-                )
-            )
         return Distribution(
             name=name,
-            data=data,
+            data=map_rows(df, _create_processed_data),
             is_calculated=name in VALID_CALCS,
-            distribution_id=random_uuid_str(),
         )
 
 
@@ -174,7 +147,7 @@ class PharmSpecData:
         data = data.dropna(subset=1).reset_index(drop=True)
         data.columns = pd.Index([str(x).strip() for x in data.loc[0]])
         data = data.loc[1:, :]
-        return data.rename(columns={x: COLUMN_MAP[x] for x in COLUMN_MAP}), header
+        return data, header
 
     @staticmethod
     def _create_distributions(df: pd.DataFrame) -> list[Distribution]:
@@ -201,24 +174,24 @@ def _create_calculated_data(data: PharmSpecData):
     for distribution in calcs:
         for row in distribution.data:
             for prop in PROPERTY_LOOKUP:
-                distribution_property = row.properties.get(prop)
-                if not distribution_property:
+                value = getattr(row, prop, None)
+                if value is None:
                     continue
                 source_rows = [
                     x
                     for source in sources
                     for x in source.data
-                    if row.properties.get("particle_size").value == x.properties.get("particle_size").value
+                    if row.particle_size == x.particle_size
                 ]
                 calculated_data.append(
                     CalculatedDataItem(
-                        identifier=distribution_property.distribution_property_id,
+                        identifier=random_uuid_str(),
                         name=f"{distribution.name}_{prop}".lower(),
-                        value=distribution_property.value,
+                        value=value,
                         unit=PROPERTY_LOOKUP[prop],
                         data_sources=[
                             DataSource(
-                                identifier=x.distribution_row_id,
+                                identifier=x.identifier,
                                 feature=prop.replace("_", " "),
                             )
                             for x in source_rows
@@ -256,17 +229,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
                         sample_identifier=data.header.sample_identifier,
                         processed_data=ProcessedData(
                             dilution_factor_setting=data.header.dilution_factor_setting,
-                            distributions=[
-                                ProcessedDataFeature(
-                                    identifier=row.distribution_row_id,
-                                    particle_size=assert_not_none(row.properties.get("particle_size")).value,
-                                    cumulative_count=assert_not_none(row.properties.get("cumulative_count")).value,
-                                    cumulative_particle_density=assert_not_none(row.properties.get("cumulative_particle_density")).value,
-                                    differential_particle_density=row.properties.get("differential_particle_density"),
-                                    differential_count=row.properties.get("differential_count"),
-                                )
-                                for row in distribution.data
-                            ]
+                            distributions=distribution.data,
                         )
                     )
                     for distribution in [x for x in data.distributions if not x.is_calculated]
