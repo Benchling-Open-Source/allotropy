@@ -191,8 +191,12 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
         return DeviceControlDocumentItem(
             device_type="qPCR",
             measurement_method_identifier=data.header.measurement_method_identifier,
-            total_cycle_number_setting=TQuantityValueNumber(
-                value=well_item.amplification_data.total_cycle_number_setting,
+            total_cycle_number_setting=(
+                TQuantityValueNumber(
+                    value=well_item.amplification_data.total_cycle_number_setting,
+                )
+                if well_item.amplification_data is not None
+                else None
             ),
             PCR_detection_chemistry=data.header.pcr_detection_chemistry,
             reporter_dye_setting=well_item.reporter_dye_setting,
@@ -216,51 +220,71 @@ class AppBioQuantStudioDesignandanalysisParser(VendorParser):
                 well_item.result.baseline_corrected_reporter_result,
             ),
             genotyping_determination_result=well_item.result.genotyping_determination_result,
-            normalized_reporter_data_cube=NormalizedReporterDataCube(
-                label="normalized reporter",
-                cube_structure=TDatacubeStructure(
-                    dimensions=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.integer,
-                            concept="cycle count",
-                            unit="#",
-                        ),
-                    ],
-                    measures=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.double,
-                            concept="normalized report result",
-                            unit="(unitless)",
-                        ),
-                    ],
-                ),
-                data=TDatacubeData(
-                    dimensions=[well_item.amplification_data.cycle],
-                    measures=[well_item.amplification_data.rn],
-                ),
+            normalized_reporter_data_cube=self.get_normalized_reported_data_cube(
+                well_item
             ),
-            baseline_corrected_reporter_data_cube=BaselineCorrectedReporterDataCube(
-                label="baseline corrected reporter",
-                cube_structure=TDatacubeStructure(
-                    dimensions=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.integer,
-                            concept="cycle count",
-                            unit="#",
-                        ),
-                    ],
-                    measures=[
-                        TDatacubeComponent(
-                            field_componentDatatype=FieldComponentDatatype.double,
-                            concept="baseline corrected reporter result",
-                            unit="(unitless)",
-                        ),
-                    ],
-                ),
-                data=TDatacubeData(
-                    dimensions=[well_item.amplification_data.cycle],
-                    measures=[well_item.amplification_data.delta_rn],
-                ),
+            baseline_corrected_reporter_data_cube=self.get_baseline_corrected_reporter_data_cube(
+                well_item
+            ),
+        )
+
+    def get_normalized_reported_data_cube(
+        self, well_item: WellItem
+    ) -> NormalizedReporterDataCube | None:
+        if well_item.amplification_data is None:
+            return None
+
+        return NormalizedReporterDataCube(
+            label="normalized reporter",
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.integer,
+                        concept="cycle count",
+                        unit="#",
+                    ),
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        concept="normalized report result",
+                        unit="(unitless)",
+                    ),
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=[well_item.amplification_data.cycle],
+                measures=[well_item.amplification_data.rn],
+            ),
+        )
+
+    def get_baseline_corrected_reporter_data_cube(
+        self, well_item: WellItem
+    ) -> BaselineCorrectedReporterDataCube | None:
+        if well_item.amplification_data is None:
+            return None
+
+        return BaselineCorrectedReporterDataCube(
+            label="baseline corrected reporter",
+            cube_structure=TDatacubeStructure(
+                dimensions=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.integer,
+                        concept="cycle count",
+                        unit="#",
+                    ),
+                ],
+                measures=[
+                    TDatacubeComponent(
+                        field_componentDatatype=FieldComponentDatatype.double,
+                        concept="baseline corrected reporter result",
+                        unit="(unitless)",
+                    ),
+                ],
+            ),
+            data=TDatacubeData(
+                dimensions=[well_item.amplification_data.cycle],
+                measures=[well_item.amplification_data.delta_rn],
             ),
         )
 
