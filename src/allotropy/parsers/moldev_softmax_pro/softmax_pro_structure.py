@@ -8,7 +8,7 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
@@ -88,7 +88,7 @@ class Block:
 @dataclass(frozen=True)
 class GroupDataElementEntry:
     name: str
-    value: float
+    value: JsonFloat
 
 
 @dataclass(frozen=True)
@@ -111,10 +111,13 @@ class GroupSampleData:
         top_row = row_data[0]
         identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        # Columns are considered "numeric" if the value of the first row is a float
+        # "Mask" and "Range?" are special cases that will be considered NaN.
         numeric_columns = [
             column
             for column in data.columns
             if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
+            or top_row.get(str, column) in ("Mask", "Range?")
         ]
 
         normal_columns = []
@@ -134,7 +137,7 @@ class GroupSampleData:
                     plate=row[str, "WellPlateName"],
                     entries=[
                         GroupDataElementEntry(
-                            name=column_name, value=row[float, column_name]
+                            name=column_name, value=row.get(float, column_name, NaN)
                         )
                         for column_name in normal_columns
                     ],
@@ -144,7 +147,7 @@ class GroupSampleData:
             aggregated_entries=[
                 GroupDataElementEntry(
                     name=column_name,
-                    value=top_row[float, column_name],
+                    value=top_row.get(float, column_name, NaN),
                 )
                 for column_name in aggregated_columns
             ],

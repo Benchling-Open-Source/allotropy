@@ -10,9 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added support for xlsx exports in Unchained Lunatic parser
+
 ### Fixed
 
+- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents
+
 ### Changed
+
 - BMG MARS moved to recommended state
 - Updated Roche NovaBio Flex2 adapter to work with the Solution Analyzer ASM schema
 
