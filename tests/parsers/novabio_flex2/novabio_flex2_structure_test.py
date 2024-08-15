@@ -6,8 +6,8 @@ import pytest
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
-    MOLAR_CONCENTRATION_CLS_BY_UNIT,
-    PROPERTY_MAPPINGS,
+    BLOOD_GAS_DETECTION_MAPPINGS,
+    CONCENTRATION_CLS_BY_UNIT,
 )
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     Analyte,
@@ -63,15 +63,11 @@ def test_create_title_invalid_filename(filename: str) -> None:
 def test_create_analyte() -> None:
     nh4_analyte = Analyte.create("NH4+", 100)
     assert nh4_analyte.name == "ammonium"
-    assert nh4_analyte.molar_concentration == MOLAR_CONCENTRATION_CLS_BY_UNIT["mmol/L"](
-        value=100
-    )
+    assert nh4_analyte.concentration == CONCENTRATION_CLS_BY_UNIT["mmol/L"](value=100)
 
     gluc_analyte = Analyte.create("Gluc", 1.1)
     assert gluc_analyte.name == "glucose"
-    assert gluc_analyte.molar_concentration == MOLAR_CONCENTRATION_CLS_BY_UNIT["g/L"](
-        value=1.1
-    )
+    assert gluc_analyte.concentration == CONCENTRATION_CLS_BY_UNIT["g/L"](value=1.1)
 
 
 @pytest.mark.short
@@ -99,7 +95,7 @@ def test_create_sample() -> None:
     sample = Sample.create(pd.Series(data=data))
 
     assert sample.identifier == "BP_R10_KP_008_D0"
-    assert sample.role_type == "Spent Media"
+    assert sample.sample_type == "Spent Media"
     assert sample.measurement_time == "2022-06-24 14:34:52"
     assert sample.batch_identifier == "KP_008"
     assert sorted(sample.analytes) == sorted(
@@ -108,9 +104,13 @@ def test_create_sample() -> None:
             Analyte.create("Ca++", 0.82),
         ]
     )
-    assert sample.properties == {
-        "co2_saturation": PROPERTY_MAPPINGS["co2_saturation"]["cls"](value=0),
-        "o2_saturation": PROPERTY_MAPPINGS["o2_saturation"]["cls"](value=100.0),
+    assert sample.blood_gas_properties == {
+        "carbon_dioxide_saturation": BLOOD_GAS_DETECTION_MAPPINGS[
+            "carbon_dioxide_saturation"
+        ]["cls"](value=0),
+        "oxygen_saturation": BLOOD_GAS_DETECTION_MAPPINGS["oxygen_saturation"]["cls"](
+            value=100.0
+        ),
     }
 
 
