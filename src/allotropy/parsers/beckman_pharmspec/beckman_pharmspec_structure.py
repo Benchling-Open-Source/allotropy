@@ -1,92 +1,101 @@
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
 import re
 
 import pandas as pd
 
-from allotropy.parsers.utils.pandas import set_columns
+from allotropy.allotrope.schema_mappers.adm.light_obscuration.benchling._2023._12.light_obscuration import (
+    CalculatedDataItem,
+    Data,
+    DataSource,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+    ProcessedData,
+    ProcessedDataFeature,
+)
+from allotropy.named_file_contents import NamedFileContents
+from allotropy.parsers.beckman_pharmspec.constants import (
+    PHARMSPEC_SOFTWARE_NAME,
+    UNIT_LOOKUP,
+    VALID_CALCS,
+)
+from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 
-# This map is used to coerce the column names coming in the raw data
-# into names of the distribution properties.
-COLUMN_MAP = {
-    "Cumulative Counts/mL": "cumulative_particle_density",
-    "Cumulative Count": "cumulative_count",
-    "Particle Size(µm)": "particle_size",
-    "Differential Counts/mL": "differential_particle_density",
-    "Differential Count": "differential_count",
-}
 
-
-VALID_CALCS = ["Average"]
-
-
-@dataclass(frozen=True, kw_only=True)
-class DistributionProperty:
-    name: str
-    value: float
-    distribution_property_id: str
-
-
-@dataclass(frozen=True, kw_only=True)
-class DistributionRow:
-    distribution_row_id: str
-    properties: list[DistributionProperty]
-
-    def get_property(self, name: str) -> DistributionProperty | None:
-        for prop in self.properties:
-            if prop.name == name:
-                return prop
-        return None
-
-    def matches_property_value(
-        self, prop_name: str, distribution_row: DistributionRow
-    ) -> bool:
-        prop = self.get_property(prop_name)
-        other_prop = distribution_row.get_property(prop_name)
-        if prop and other_prop:
-            if prop.value == other_prop.value:
-                return True
-        return False
+def _create_processed_data(data: SeriesData) -> ProcessedDataFeature:
+    return ProcessedDataFeature(
+        identifier=random_uuid_str(),
+        particle_size=data[float, "Particle Size(µm)"],
+        cumulative_count=data[float, "Cumulative Count"],
+        cumulative_particle_density=data[float, "Cumulative Counts/mL"],
+        differential_particle_density=data.get(float, "Differential Counts/mL"),
+        differential_count=data.get(float, "Differential Count"),
+    )
 
 
 @dataclass(frozen=True, kw_only=True)
 class Distribution:
     name: str
-    data: list[DistributionRow]
+    features: list[ProcessedDataFeature]
     is_calculated: bool
-    distribution_id: str
 
     @staticmethod
-    def create(df: pd.DataFrame, name: str, *, is_calculated: bool) -> Distribution:
-        data = []
-        cols = COLUMN_MAP.values()
-        for row in df.index:
-            row_data = []
-            for col in [x for x in cols if x in df.columns]:
-                row_data.append(
-                    DistributionProperty(
-                        name=col,
-                        value=df.loc[row, col],
-                        distribution_property_id=random_uuid_str(),
-                    )
-                )
-            data.append(
-                DistributionRow(
-                    properties=row_data, distribution_row_id=random_uuid_str()
-                )
-            )
+    def create(df: pd.DataFrame, name: str) -> Distribution:
         return Distribution(
             name=name,
-            data=data,
-            is_calculated=is_calculated,
-            distribution_id=random_uuid_str(),
+            features=map_rows(df, _create_processed_data),
+            is_calculated=name in VALID_CALCS,
         )
+
+    @staticmethod
+    def create_distributions(df: pd.DataFrame) -> list[Distribution]:
+        distributions = []
+        for g, gdf in df.groupby("Run No."):
+            distributions.append(Distribution.create(gdf, str(g)))
+        return distributions
+
+
+def _create_calculated_data(
+    distributions: list[Distribution],
+) -> list[CalculatedDataItem]:
+    particle_size_sources = defaultdict(list)
+    for source in [
+        feature
+        for distribution in distributions
+        if not distribution.is_calculated
+        for feature in distribution.features
+    ]:
+        particle_size_sources[source.particle_size].append(source)
+
+    return [
+        CalculatedDataItem(
+            identifier=random_uuid_str(),
+            name=f"{distribution.name}_{name}".lower(),
+            value=value,
+            unit=UNIT_LOOKUP[name],
+            data_sources=[
+                DataSource(
+                    identifier=x.identifier,
+                    feature=name.replace("_", " "),
+                )
+                for x in particle_size_sources[feature.particle_size]
+            ],
+        )
+        for distribution in distributions
+        for feature in distribution.features
+        if distribution.is_calculated
+        # Ignore "identifier" attribute, and skip empty values
+        for name, value in feature.__dict__.items()
+        if name != "identifier" and value is not None
+    ]
 
 
 @dataclass(frozen=True, kw_only=True)
-class Metadata:
+class Header:
     measurement_time: str
     flush_volume_setting: float
     detector_view_volume: float
@@ -95,7 +104,6 @@ class Metadata:
     sample_identifier: str
     dilution_factor_setting: float
     analyst: str
-    submitter: str | None = None
     equipment_serial_number: str
     detector_identifier: str
     detector_model_number: str
@@ -109,87 +117,88 @@ class Metadata:
         return "Unknown"
 
     @staticmethod
-    def create(df: pd.DataFrame) -> Metadata:
-        return Metadata(
-            measurement_time=pd.to_datetime(
-                str(df.at[8, 5]).replace(".", "-")
-            ).isoformat(timespec="microseconds")
-            + "Z",
+    def create(data: SeriesData) -> Header:
+        return Header(
+            measurement_time=data[str, "Sample Date"].replace(".", "-"),
             flush_volume_setting=0,
-            detector_view_volume=df.at[9, 5],
-            repetition_setting=int(df.at[11, 5]),
-            sample_volume_setting=df.at[11, 2],
-            sample_identifier=str(df.at[2, 2]),
-            dilution_factor_setting=df.at[13, 2],
-            analyst=str(df.at[6, 5]),
-            submitter=None,
-            software_version=Metadata._get_software_version_report_string(df.at[0, 2]),
-            equipment_serial_number=str(df.at[4, 5]),
+            detector_view_volume=data[float, "View Volume"],
+            repetition_setting=data[int, "No Of Runs"],
+            sample_volume_setting=data[float, "Sample Volume (mL)"],
+            sample_identifier=data[str, "Probe"],
+            dilution_factor_setting=data[float, "Dilution Factor"],
+            analyst=data[str, "Operator Name"],
+            software_version=Header._get_software_version_report_string(
+                data.series.iloc[0]
+            ),
+            equipment_serial_number=data[str, "Sensor Serial Number"],
             detector_identifier="",
-            detector_model_number=str(df.at[2, 5]),
+            detector_model_number=data[str, "Sensor Model"],
         )
 
 
-@dataclass(frozen=True, kw_only=True)
-class PharmSpecData:
-    metadata: Metadata
-    distributions: list[Distribution]
+def _extract_data(df: pd.DataFrame) -> tuple[pd.DataFrame, SeriesData]:
+    """Find the data in the raw dataframe. We identify the boundary of the data
+    by finding the index first row which contains the word 'Particle' and ending right before
+    the index of the first row containing 'Approver'.
+    """
+    start = df[df[1].str.contains("Particle", na=False)].index.values[0]
+    end = df[df[0].str.contains("Approver_", na=False)].index.values[0] - 1
 
-    @staticmethod
-    def _get_data_using_key_bounds(
-        df: pd.DataFrame, start_key: str, end_key: str
-    ) -> pd.DataFrame:
-        """Find the data in the raw dataframe. We identify the boundary of the data
-        by finding the index first row which contains the word 'Particle' and ending right before
-        the index of the first row containing 'Approver'.
+    # The header data is everything up to the start of the data.
+    # It is stored in two columns spread over the first 6 columns.
+    raw_header = df.loc[: start - 1].T
+    header_data = pd.concat([raw_header.loc[2], raw_header.loc[5]])
+    header_columns = pd.concat([raw_header.loc[0], raw_header.loc[3]])
+    header_data.index = pd.Index(header_columns)
+    header = SeriesData(header_data)
 
-        :param df: the raw dataframe
-        :param start_key: the key to start the slice
-        :parm end_key: the key to end the slice
-        :return: the dataframe slice between the stard and end bounds
-        """
-        start = df[df[1].str.contains(start_key, na=False)].index.values[0]
-        end = df[df[0].str.contains(end_key, na=False)].index.values[0] - 1
-        return df.loc[start:end, :]
+    data = df.loc[start:end, :]
+    data = data.dropna(how="all").dropna(how="all", axis=1)
+    data[0] = data[0].ffill()
+    data = data.dropna(subset=1).reset_index(drop=True)
+    set_columns(data, [str(x).strip() for x in data.loc[0]])
+    data = data.loc[1:, :]
 
-    @staticmethod
-    def _extract_data(df: pd.DataFrame) -> pd.DataFrame:
-        """Extract the Average data frame from the raw data. Initial use cases have focused on
-        only extracting the Average data, not the individual runs. The ASM does support multiple
-        Distribution objects, but they don't have names, so it's not possible to pick these out
-        after the fact. As such, this extraction only includes the Average data.
+    return data, header
 
-        :param df: the raw dataframe
-        :return: the average data frame
-        """
-        data = PharmSpecData._get_data_using_key_bounds(
-            df, start_key="Particle", end_key="Approver_"
-        )
-        data = data.dropna(how="all").dropna(how="all", axis=1)
-        data[0] = data[0].ffill()
-        data = data.dropna(subset=1).reset_index(drop=True)
-        set_columns(data, [x.strip() for x in data.loc[0]])
-        data = data.loc[1:, :]
-        return data.rename(columns={x: COLUMN_MAP[x] for x in COLUMN_MAP})
 
-    @staticmethod
-    def _create_distributions(df: pd.DataFrame) -> list[Distribution]:
-        distributions = []
-        for g, gdf in df.groupby("Run No."):
-            is_calculated = False
-            name = str(g)
-            if g in VALID_CALCS:
-                is_calculated = True
-            distribution = Distribution.create(
-                df=gdf, name=name, is_calculated=is_calculated
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    df = read_excel(named_file_contents.contents, header=None, engine="calamine")
+    dist_data, header_data = _extract_data(df)
+    distributions = Distribution.create_distributions(dist_data)
+    header = Header.create(header_data)
+
+    return Data(
+        Metadata(
+            file_name=named_file_contents.original_file_name,
+            software_name=PHARMSPEC_SOFTWARE_NAME,
+            software_version=header.software_version,
+            detector_identifier=header.detector_identifier,
+            detector_model_number=header.detector_model_number,
+            equipment_serial_number=header.equipment_serial_number,
+        ),
+        measurement_groups=[
+            MeasurementGroup(
+                analyst=header.analyst,
+                measurements=[
+                    Measurement(
+                        identifier=distribution.name,
+                        measurement_time=header.measurement_time,
+                        flush_volume_setting=header.flush_volume_setting,
+                        detector_view_volume=header.detector_view_volume,
+                        repetition_setting=header.repetition_setting,
+                        sample_volume_setting=header.sample_volume_setting,
+                        sample_identifier=header.sample_identifier,
+                        processed_data=ProcessedData(
+                            dilution_factor_setting=header.dilution_factor_setting,
+                            distributions=distribution.features,
+                        ),
+                    )
+                    for distribution in [
+                        x for x in distributions if not x.is_calculated
+                    ]
+                ],
             )
-            distributions.append(distribution)
-        return distributions
-
-    @staticmethod
-    def create(df: pd.DataFrame) -> PharmSpecData:
-        data = PharmSpecData._extract_data(df)
-        return PharmSpecData(
-            metadata=Metadata.create(df),
-            distributions=PharmSpecData._create_distributions(data),
-        )
+        ],
+        calculated_data=_create_calculated_data(distributions),
+    )

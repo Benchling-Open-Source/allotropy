@@ -14,13 +14,17 @@ from allotropy.exceptions import (
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
+    BLOOD_GAS_DETECTION_MAPPINGS,
+    CELL_COUNTER_MAPPINGS,
+    CONCENTRATION_CLASSES,
+    CONCENTRATION_CLS_BY_UNIT,
     FILENAME_REGEX,
     INVALID_FILENAME_MESSAGE,
-    MOLAR_CONCENTRATION_CLASSES,
-    MOLAR_CONCENTRATION_CLS_BY_UNIT,
-    PROPERTY_MAPPINGS,
+    OSMOLALITY_DETECTION_MAPPINGS,
+    PH_DETECTION_MAPPINGS,
 )
 from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.values import try_float_or_none
 
 
 @dataclass(frozen=True)
@@ -45,14 +49,14 @@ class Title:
 @dataclass(frozen=True)
 class Analyte:
     name: str
-    molar_concentration: MOLAR_CONCENTRATION_CLASSES
+    concentration: CONCENTRATION_CLASSES
 
     @staticmethod
     def create(raw_name: str, value: float) -> Analyte:
         mapping = get_key_or_error("analyte name", raw_name, ANALYTE_MAPPINGS)
         return Analyte(
             mapping["name"],
-            MOLAR_CONCENTRATION_CLS_BY_UNIT[mapping["unit"]](value=value),
+            CONCENTRATION_CLS_BY_UNIT[mapping["unit"]](value=value),
         )
 
     def __lt__(self, other: Any) -> bool:
@@ -65,25 +69,27 @@ class Analyte:
 @dataclass(frozen=True)
 class Sample:
     identifier: str
-    role_type: str
+    sample_type: str
     measurement_time: str
     batch_identifier: str | None
     analytes: list[Analyte]
-    properties: dict[str, Any]
+    cell_counter_properties: dict[str, Any]
+    blood_gas_properties: dict[str, Any]
+    osmolality_properties: dict[str, Any]
+    ph_properties: dict[str, Any]
+    cell_type_processing_method: str | None
+    cell_density_dilution_factor: float | None
 
-    @staticmethod
-    def create(series: pd.Series[Any]) -> Sample:
+    @classmethod
+    def create(cls, series: pd.Series[Any]) -> Sample:
         data = SeriesData(series)
-        properties: dict[str, Any] = {
-            property_name: property_dict["cls"](
-                value=data.get(float, property_dict["col_name"])
-            )
-            for property_name, property_dict in PROPERTY_MAPPINGS.items()
-            if data.get(float, property_dict["col_name"]) is not None
-        }
+        cell_density_dilution = data.get(str, "Cell Density Dilution", "")
+        if cell_density_dilution:
+            cell_density_dilution = cell_density_dilution.split(":")[0]
+
         return Sample(
             identifier=data[str, "Sample ID"],
-            role_type=data[str, "Sample Type"],
+            sample_type=data[str, "Sample Type"],
             measurement_time=data[str, "Date & Time"],
             batch_identifier=data.get(str, "Batch ID"),
             analytes=sorted(
@@ -93,8 +99,29 @@ class Sample:
                     if data.get(float, raw_name) is not None
                 ]
             ),
-            properties=properties,
+            cell_counter_properties=cls._get_properties(data, CELL_COUNTER_MAPPINGS),
+            blood_gas_properties=cls._get_properties(
+                data, BLOOD_GAS_DETECTION_MAPPINGS
+            ),
+            osmolality_properties=cls._get_properties(
+                data, OSMOLALITY_DETECTION_MAPPINGS
+            ),
+            ph_properties=cls._get_properties(data, PH_DETECTION_MAPPINGS),
+            cell_type_processing_method=data.get(str, "Cell Type"),
+            cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
         )
+
+    @classmethod
+    def _get_properties(
+        cls, data: SeriesData, property_mappings: dict[str, Any]
+    ) -> dict[str, Any]:
+        return {
+            property_name: property_dict["cls"](
+                value=data.get(float, property_dict["col_name"])
+            )
+            for property_name, property_dict in property_mappings.items()
+            if data.get(float, property_dict["col_name"]) is not None
+        }
 
 
 @dataclass(frozen=True)
@@ -117,8 +144,8 @@ class SampleList:
             raise AllotropeConversionError(msg)
 
         return SampleList(
-            str(analyst),
-            [Sample.create(sample_data) for sample_data in sample_data_rows],
+            analyst=str(analyst),
+            samples=[Sample.create(sample_data) for sample_data in sample_data_rows],
         )
 
 
