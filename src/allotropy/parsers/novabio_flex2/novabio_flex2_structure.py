@@ -83,7 +83,7 @@ class Sample:
                 [
                     Analyte(
                         ANALYTE_MAPPINGS[raw_name]["name"],
-                        data.get(float, raw_name),
+                        data[float, raw_name],
                         ANALYTE_MAPPINGS[raw_name]["unit"],
                     )
                     for raw_name in ANALYTE_MAPPINGS
@@ -138,62 +138,74 @@ class SampleList:
         )
 
 
-def _create_measurement(sample: Sample, **kwargs) -> Measurement:
+def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
     return Measurement(
         identifier=random_uuid_str(),
         measurement_time=sample.measurement_time,
         sample_identifier=sample.identifier,
         description=sample.sample_type,
         batch_identifier=sample.batch_identifier,
-        **kwargs
+        **kwargs,
     )
 
 
 def _get_measurements(sample: Sample) -> list[Measurement]:
     measurements = []
     if sample.analytes:
-        measurements.append(_create_measurement(
-            sample,
-            detection_type="metabolite-detection",
-            analytes=sample.analytes,
-        ))
+        measurements.append(
+            _create_measurement(
+                sample,
+                detection_type="metabolite-detection",
+                analytes=sample.analytes,
+            )
+        )
 
     if sample.cell_counter_properties:
-        measurements.append(_create_measurement(
-            sample,
-            detection_type="cell-counting",
-            cell_type_processing_method=sample.cell_type_processing_method,
-            cell_density_dilution_factor=sample.cell_density_dilution_factor,
-            **sample.cell_counter_properties
-        ))
+        measurements.append(
+            _create_measurement(
+                sample,
+                detection_type="cell-counting",
+                cell_type_processing_method=sample.cell_type_processing_method,
+                cell_density_dilution_factor=sample.cell_density_dilution_factor,
+                **sample.cell_counter_properties,
+            )
+        )
 
     if sample.blood_gas_properties:
-        measurements.append(_create_measurement(
-            sample,
-            detection_type="blood-gas-detection",
-            **sample.blood_gas_properties,
-        ))
+        measurements.append(
+            _create_measurement(
+                sample,
+                detection_type="blood-gas-detection",
+                **sample.blood_gas_properties,
+            )
+        )
 
     if sample.osmolality_properties:
-        measurements.append(_create_measurement(
-            sample,
-            detection_type="osmolality-detection",
-            **sample.osmolality_properties,
-        ))
+        measurements.append(
+            _create_measurement(
+                sample,
+                detection_type="osmolality-detection",
+                **sample.osmolality_properties,
+            )
+        )
 
     if sample.ph_properties:
-        measurements.append(_create_measurement(
-            sample,
-            detection_type="ph-detection",
-            **sample.ph_properties,
-        ))
+        measurements.append(
+            _create_measurement(
+                sample,
+                detection_type="ph-detection",
+                **sample.ph_properties,
+            )
+        )
 
     return measurements
 
 
-def create_data(named_file_contents: NamedFileContents):
+def create_data(named_file_contents: NamedFileContents) -> Data:
     # NOTE: calling parse_dates and removing NaN clears empty rows.
-    data = read_csv(named_file_contents.contents, parse_dates=["Date & Time"]).replace(np.nan, None)
+    data = read_csv(named_file_contents.contents, parse_dates=["Date & Time"]).replace(
+        np.nan, None
+    )
     title = Title.create(named_file_contents.original_file_name)
     sample_list = SampleList.create(data)
 
@@ -213,5 +225,5 @@ def create_data(named_file_contents: NamedFileContents):
                 measurements=_get_measurements(sample),
             )
             for sample in sample_list.samples
-        ]
+        ],
     )

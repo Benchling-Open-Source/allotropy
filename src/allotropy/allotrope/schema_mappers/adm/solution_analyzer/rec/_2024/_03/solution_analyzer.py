@@ -48,7 +48,7 @@ class Analyte:
     value: float
     unit: str
 
-    def __lt__(self, other: Any):
+    def __lt__(self, other: Any) -> bool:
         if not isinstance(other, Analyte):
             return False
 
@@ -73,11 +73,11 @@ class Measurement:
 
     # Measurements
     absorbance: float | None = None
-    pO2: float | None = None
-    pCO2: float | None = None
+    po2: float | None = None
+    pco2: float | None = None
     carbon_dioxide_saturation: float | None = None
     oxygen_saturation: float | None = None
-    pH: float | None = None
+    ph: float | None = None
     temperature: float | None = None
     osmolality: float | None = None
     viability: float | None = None
@@ -86,7 +86,7 @@ class Measurement:
     average_live_cell_diameter: float | None = None
     total_cell_count: float | None = None
     viable_cell_count: float | None = None
-    cell_type_processing_method: float | None = None
+    cell_type_processing_method: str | None = None
     cell_density_dilution_factor: float | None = None
     analytes: list[Analyte] | None = None
 
@@ -205,28 +205,24 @@ class Mapper:
             )
             if measurement.analytes
             else None,
-            processed_data_aggregate_document=self._create_processed_data_document(measurement),
+            processed_data_aggregate_document=self._create_processed_data_document(
+                measurement
+            ),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
             absorbance=quantity_or_none(
                 TQuantityValueMilliAbsorbanceUnit, measurement.absorbance
             ),
-            pO2=quantity_or_none(
-                TQuantityValueMillimeterOfMercury, measurement.pO2
-            ),
-            pCO2=quantity_or_none(
-                TQuantityValueMillimeterOfMercury, measurement.pCO2
-            ),
+            pO2=quantity_or_none(TQuantityValueMillimeterOfMercury, measurement.po2),
+            pCO2=quantity_or_none(TQuantityValueMillimeterOfMercury, measurement.pco2),
             carbon_dioxide_saturation=quantity_or_none(
                 TQuantityValuePercent, measurement.carbon_dioxide_saturation
             ),
             oxygen_saturation=quantity_or_none(
                 TQuantityValuePercent, measurement.oxygen_saturation
             ),
-            pH=quantity_or_none(
-                TQuantityValuePH, measurement.pH
-            ),
+            pH=quantity_or_none(TQuantityValuePH, measurement.ph),
             temperature=quantity_or_none(
                 TQuantityValueDegreeCelsius, measurement.temperature
             ),
@@ -279,7 +275,9 @@ class Mapper:
         msg = f"Invalid unit for analyte: {analyte.unit}, value values are: g/L, mL/L, mmol/L"
         raise AllotropeConversionError(msg)
 
-    def _create_processed_data_document(self, measurement: Measurement) -> ProcessedDataAggregateDocument | None:
+    def _create_processed_data_document(
+        self, measurement: Measurement
+    ) -> ProcessedDataAggregateDocument | None:
         processed_data_document = ProcessedDataDocumentItem(
             viability__cell_counter_=quantity_or_none(
                 TQuantityValuePercent, measurement.viability
@@ -304,7 +302,10 @@ class Mapper:
                 cell_density_dilution_factor=quantity_or_none(
                     TQuantityValueUnitless, measurement.cell_density_dilution_factor
                 ),
-            ) if measurement.cell_type_processing_method or measurement.cell_density_dilution_factor is not None else None
+            )
+            if measurement.cell_type_processing_method
+            or measurement.cell_density_dilution_factor is not None
+            else None,
         )
 
         if all(value is None for value in processed_data_document.__dict__.values()):

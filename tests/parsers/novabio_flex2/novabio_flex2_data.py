@@ -1,24 +1,17 @@
 from io import StringIO
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
 from allotropy.parsers.novabio_flex2.constants import (
-    BLOOD_GAS_DETECTION_MAPPINGS,
     DEVICE_TYPE,
     MODEL_NUMBER,
-    PH_DETECTION_MAPPINGS,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
-)
-from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
-    Analyte,
-    Data,
-    Sample,
-    SampleList,
-    Title,
 )
 
 
@@ -109,8 +102,8 @@ def get_data() -> Data:
                         batch_identifier="KP_008",
                         description="Spent Media",
                         detection_type="blood-gas-detection",
-                        pO2=191.6,
-                        pCO2=46.8,
+                        po2=191.6,
+                        pco2=46.8,
                         carbon_dioxide_saturation=6.6,
                         oxygen_saturation=100.0,
                     ),
@@ -121,10 +114,10 @@ def get_data() -> Data:
                         batch_identifier="KP_008",
                         description="Spent Media",
                         detection_type="ph-detection",
-                        pH=7.4,
+                        ph=7.4,
                         temperature=37.0,
-                    )
+                    ),
                 ],
             )
-        ]
+        ],
     )

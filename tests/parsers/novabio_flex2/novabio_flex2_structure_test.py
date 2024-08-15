@@ -4,16 +4,13 @@ from unittest import mock
 import pandas as pd
 import pytest
 
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.novabio_flex2.constants import (
-    BLOOD_GAS_DETECTION_MAPPINGS,
-    CONCENTRATION_CLS_BY_UNIT,
-)
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
-    Analyte,
     create_data,
-    Data,
     Sample,
     SampleList,
     Title,
