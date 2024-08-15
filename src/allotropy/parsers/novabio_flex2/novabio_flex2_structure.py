@@ -107,9 +107,9 @@ class Sample:
         cls, data: SeriesData, property_mappings: dict[str, Any]
     ) -> dict[str, Any]:
         return {
-            property_name: data.get(float, property_dict["col_name"])
-            for property_name, property_dict in property_mappings.items()
-            if data.get(float, property_dict["col_name"]) is not None
+            property_name: data.get(float, column_name)
+            for property_name, column_name in property_mappings.items()
+            if data.get(float, column_name) is not None
         }
 
 
