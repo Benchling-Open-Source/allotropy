@@ -147,8 +147,11 @@ def _parse_contents(
             if row.iloc[0] == "Table":
                 index = int(str(idx))
                 metadata = data[:index].T
-                data = data[index + 1 :]
+                data.columns = pd.Index(data.iloc[index + 1]).str.replace("\n", " ")
+                data = data[index + 2 :]
+                assert_not_empty_df(data, "Unable to parse data from empty dataset.")
                 break
+
         if metadata is None:
             msg = "Unable to identify the end of metadata section, expecting a row with 'Table' at start."
             raise AllotropeParsingError(msg)
@@ -159,11 +162,6 @@ def _parse_contents(
 
         metadata.columns = pd.Index(metadata.iloc[0])
         metadata_data = SeriesData(metadata.iloc[1])
-
-        assert_not_empty_df(data, "Unable to parse data from empty dataset.")
-        data.columns = pd.Index(
-            [str(column_name).replace("\n", " ") for column_name in data.iloc[0]]
-        )
     else:
         msg = f"Unsupported file extension: '{extension}' expected one of 'csv' or 'xlsx'."
         raise AllotropeConversionError(msg)
