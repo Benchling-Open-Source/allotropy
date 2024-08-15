@@ -18,14 +18,11 @@ from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
-    BLOOD_GAS_DETECTION_MAPPINGS,
-    CELL_COUNTER_MAPPINGS,
+    DETECTION_PROPERTY_MAPPING,
     DEVICE_TYPE,
     FILENAME_REGEX,
     INVALID_FILENAME_MESSAGE,
     MODEL_NUMBER,
-    OSMOLALITY_DETECTION_MAPPINGS,
-    PH_DETECTION_MAPPINGS,
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
@@ -60,12 +57,21 @@ class Sample:
     measurement_time: str
     batch_identifier: str | None
     analytes: list[Analyte]
-    cell_counter_properties: dict[str, Any]
-    blood_gas_properties: dict[str, Any]
-    osmolality_properties: dict[str, Any]
-    ph_properties: dict[str, Any]
-    cell_type_processing_method: str | None
-    cell_density_dilution_factor: float | None
+    po2: float | None = None
+    pco2: float | None = None
+    carbon_dioxide_saturation: float | None = None
+    oxygen_saturation: float | None = None
+    ph: float | None = None
+    temperature: float | None = None
+    osmolality: float | None = None
+    viability: float | None = None
+    total_cell_density: float | None = None
+    viable_cell_density: float | None = None
+    average_live_cell_diameter: float | None = None
+    total_cell_count: float | None = None
+    viable_cell_count: float | None = None
+    cell_type_processing_method: str | None = None
+    cell_density_dilution_factor: float | None = None
 
     @classmethod
     def create(cls, series: pd.Series[Any]) -> Sample:
@@ -90,15 +96,22 @@ class Sample:
                     if data.get(float, raw_name) is not None
                 ]
             ),
-            cell_counter_properties=cls._get_properties(data, CELL_COUNTER_MAPPINGS),
-            blood_gas_properties=cls._get_properties(
-                data, BLOOD_GAS_DETECTION_MAPPINGS
-            ),
-            osmolality_properties=cls._get_properties(
-                data, OSMOLALITY_DETECTION_MAPPINGS
-            ),
-            ph_properties=cls._get_properties(data, PH_DETECTION_MAPPINGS),
-            cell_type_processing_method=data.get(str, "Cell Type"),
+            viability=data.get(float, "Viability"),
+            total_cell_density=data.get(float, "Total Density"),
+            viable_cell_density=data.get(float, "Viable Density"),
+            average_live_cell_diameter=data.get(float, "Average Live Cell Diameter"),
+            total_cell_count=data.get(float, "Total Cell Count"),
+            viable_cell_count=data.get(float, "Total Live Count"),
+            osmolality=data.get(float, "Osm"),
+            ph=data.get(float, "pH"),
+            temperature=data.get(float, "Vessel Temperature (°C)"),
+            po2=data.get(float, "PO2"),
+            pco2=data.get(float, "PCO2"),
+            carbon_dioxide_saturation=data.get(float, "CO2 Saturation"),
+            oxygen_saturation=data.get(float, "O2 Saturation"),
+            cell_type_processing_method=data.get(str, "Cell Type")
+            if cell_density_dilution
+            else None,
             cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
         )
 
@@ -151,52 +164,28 @@ def _create_measurement(sample: Sample, **kwargs: Any) -> Measurement:
 
 def _get_measurements(sample: Sample) -> list[Measurement]:
     measurements = []
-    if sample.analytes:
-        measurements.append(
-            _create_measurement(
-                sample,
-                detection_type="metabolite-detection",
-                analytes=sample.analytes,
-            )
-        )
 
-    if sample.cell_counter_properties:
-        measurements.append(
-            _create_measurement(
-                sample,
-                detection_type="cell-counting",
-                cell_type_processing_method=sample.cell_type_processing_method,
-                cell_density_dilution_factor=sample.cell_density_dilution_factor,
-                **sample.cell_counter_properties,
+    # NOTE: only specifying this order to keep test results identical for refactor. Will remove in follow
+    # up change that moves this logic into schema mapper.
+    for detection_type in [
+        "metabolite-detection",
+        "cell-counting",
+        "blood-gas-detection",
+        "osmolality-detection",
+        "ph-detection",
+    ]:
+        kwargs = {
+            key: getattr(sample, key)
+            for key in DETECTION_PROPERTY_MAPPING[detection_type]
+        }
+        if any(value is not None for value in kwargs.values()):
+            measurements.append(
+                _create_measurement(
+                    sample,
+                    detection_type=detection_type,
+                    **kwargs,
+                )
             )
-        )
-
-    if sample.blood_gas_properties:
-        measurements.append(
-            _create_measurement(
-                sample,
-                detection_type="blood-gas-detection",
-                **sample.blood_gas_properties,
-            )
-        )
-
-    if sample.osmolality_properties:
-        measurements.append(
-            _create_measurement(
-                sample,
-                detection_type="osmolality-detection",
-                **sample.osmolality_properties,
-            )
-        )
-
-    if sample.ph_properties:
-        measurements.append(
-            _create_measurement(
-                sample,
-                detection_type="ph-detection",
-                **sample.ph_properties,
-            )
-        )
 
     return measurements
 

@@ -84,10 +84,8 @@ def test_create_sample() -> None:
             Analyte("calcium", 0.82, "mmol/L"),
         ]
     )
-    assert sample.blood_gas_properties == {
-        "carbon_dioxide_saturation": 0,
-        "oxygen_saturation": 100.0,
-    }
+    assert sample.carbon_dioxide_saturation == 0
+    assert sample.oxygen_saturation == 100.0
 
 
 @pytest.mark.short

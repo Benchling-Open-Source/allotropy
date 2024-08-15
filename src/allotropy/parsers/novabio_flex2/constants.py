@@ -49,27 +49,27 @@ ANALYTE_MAPPINGS = {
     },
 }
 
-BLOOD_GAS_DETECTION_MAPPINGS = {
-    "po2": "PO2",
-    "pco2": "PCO2",
-    "carbon_dioxide_saturation": "CO2 Saturation",
-    "oxygen_saturation": "O2 Saturation",
-}
-
-PH_DETECTION_MAPPINGS = {
-    "ph": "pH",
-    "temperature": "Vessel Temperature (°C)",
-}
-
-OSMOLALITY_DETECTION_MAPPINGS = {
-    "osmolality": "Osm",
-}
-
-CELL_COUNTER_MAPPINGS = {
-    "viability": "Viability",
-    "total_cell_density": "Total Density",
-    "viable_cell_density": "Viable Density",
-    "average_live_cell_diameter": "Average Live Cell Diameter",
-    "total_cell_count": "Total Cell Count",
-    "viable_cell_count": "Total Live Count",
+DETECTION_PROPERTY_MAPPING = {
+    "metabolite-detection": ["analytes"],
+    "blood-gas-detection": [
+        "po2",
+        "pco2",
+        "carbon_dioxide_saturation",
+        "oxygen_saturation",
+    ],
+    "ph-detection": [
+        "ph",
+        "temperature",
+    ],
+    "osmolality-detection": ["osmolality"],
+    "cell-counting": [
+        "viability",
+        "total_cell_density",
+        "viable_cell_density",
+        "average_live_cell_diameter",
+        "total_cell_count",
+        "viable_cell_count",
+        "cell_type_processing_method",
+        "cell_density_dilution_factor",
+    ],
 }
