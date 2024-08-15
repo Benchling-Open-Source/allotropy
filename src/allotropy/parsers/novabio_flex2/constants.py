@@ -121,19 +121,19 @@ OSMOLALITY_DETECTION_MAPPINGS: dict[str, dict[str, Any]] = {
 }
 
 CELL_COUNTER_MAPPINGS = {
-    "viability__cell_counter_": {
+    "viability": {
         "col_name": "Viability",
         "cls": TQuantityValuePercent,
     },
-    "total_cell_density__cell_counter_": {
+    "total_cell_density": {
         "col_name": "Total Density",
         "cls": TQuantityValueMillionCellsPerMilliliter,
     },
-    "viable_cell_density__cell_counter_": {
+    "viable_cell_density": {
         "col_name": "Viable Density",
         "cls": TQuantityValueMillionCellsPerMilliliter,
     },
-    "average_live_cell_diameter__cell_counter_": {
+    "average_live_cell_diameter": {
         "col_name": "Average Live Cell Diameter",
         "cls": TQuantityValueMicrometer,
     },

@@ -149,16 +149,16 @@ class NovaBioFlexParser(VendorParser):
     def _create_processed_data_document(self, measurement: Measurement) -> ProcessedDataAggregateDocument | None:
         processed_data_document = ProcessedDataDocumentItem(
             viability__cell_counter_=quantity_or_none(
-                TQuantityValuePercent, measurement.viability__cell_counter_
+                TQuantityValuePercent, measurement.viability
             ),
             total_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter, measurement.total_cell_density__cell_counter_
+                TQuantityValueMillionCellsPerMilliliter, measurement.total_cell_density
             ),
             viable_cell_density__cell_counter_=quantity_or_none(
-                TQuantityValueMillionCellsPerMilliliter, measurement.viable_cell_density__cell_counter_
+                TQuantityValueMillionCellsPerMilliliter, measurement.viable_cell_density
             ),
             average_live_cell_diameter__cell_counter_=quantity_or_none(
-                TQuantityValueMicrometer, measurement.average_live_cell_diameter__cell_counter_
+                TQuantityValueMicrometer, measurement.average_live_cell_diameter
             ),
             total_cell_count=quantity_or_none(
                 TQuantityValueCell, measurement.total_cell_count

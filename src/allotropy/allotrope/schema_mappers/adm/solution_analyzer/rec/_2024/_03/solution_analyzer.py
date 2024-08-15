@@ -76,10 +76,10 @@ class Measurement:
     pH: float | None = None
     temperature: float | None = None
     osmolality: float | None = None
-    viability__cell_counter_: float | None = None
-    total_cell_density__cell_counter_: float | None = None
-    viable_cell_density__cell_counter_: float | None = None
-    average_live_cell_diameter__cell_counter_: float | None = None
+    viability: float | None = None
+    total_cell_density: float | None = None
+    viable_cell_density: float | None = None
+    average_live_cell_diameter: float | None = None
     total_cell_count: float | None = None
     viable_cell_count: float | None = None
     cell_type_processing_method: float | None = None
