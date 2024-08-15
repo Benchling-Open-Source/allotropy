@@ -5,6 +5,7 @@ from typing import Any
 from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     AnalyteAggregateDocument,
     AnalyteDocument,
+    DataProcessingDocument,
     DataSystemDocument,
     DeviceControlAggregateDocument,
     DeviceControlDocumentItem,
@@ -14,6 +15,8 @@ from allotropy.allotrope.models.adm.solution_analyzer.rec._2024._03.solution_ana
     MeasurementAggregateDocument,
     MeasurementDocument,
     Model,
+    ProcessedDataAggregateDocument,
+    ProcessedDataDocumentItem,
     SampleDocument,
     SolutionAnalyzerAggregateDocument,
     SolutionAnalyzerDocumentItem,
@@ -31,6 +34,7 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliOsmolesPerKilogram,
     TQuantityValuePercent,
     TQuantityValuePH,
+    TQuantityValueUnitless,
 )
 from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
 from allotropy.constants import ASM_CONVERTER_VERSION
@@ -142,10 +146,11 @@ class Mapper:
                     model_number=data.metadata.model_number,
                     equipment_serial_number=data.metadata.equipment_serial_number,
                     device_identifier=data.metadata.device_identifier,
+                    product_manufacturer=data.metadata.product_manufacturer,
                 ),
                 data_system_document=DataSystemDocument(
                     file_name=data.metadata.file_name,
-                    UNC_path="",
+                    UNC_path=data.metadata.unc_path,
                     software_name=data.metadata.software_name,
                     software_version=data.metadata.software_version,
                     ASM_converter_name=self.converter_name,
@@ -188,6 +193,7 @@ class Mapper:
                 device_control_document=[
                     DeviceControlDocumentItem(
                         device_type=metadata.device_type,
+                        detection_type=measurement.detection_type,
                     ),
                 ]
             ),
@@ -199,6 +205,7 @@ class Mapper:
             )
             if measurement.analytes
             else None,
+            processed_data_aggregate_document=self._create_processed_data_document(measurement),
             error_aggregate_document=self._get_error_aggregate_document(
                 measurement.errors
             ),
@@ -232,6 +239,7 @@ class Mapper:
         return SampleDocument(
             sample_identifier=measurement.sample_identifier,
             batch_identifier=measurement.batch_identifier,
+            description=measurement.description,
         )
 
     def _create_analyte_document(self, analyte: Analyte) -> AnalyteDocument:
@@ -270,6 +278,41 @@ class Mapper:
 
         msg = f"Invalid unit for analyte: {analyte.unit}, value values are: g/L, mL/L, mmol/L"
         raise AllotropeConversionError(msg)
+
+    def _create_processed_data_document(self, measurement: Measurement) -> ProcessedDataAggregateDocument | None:
+        processed_data_document = ProcessedDataDocumentItem(
+            viability__cell_counter_=quantity_or_none(
+                TQuantityValuePercent, measurement.viability
+            ),
+            total_cell_density__cell_counter_=quantity_or_none(
+                TQuantityValueMillionCellsPerMilliliter, measurement.total_cell_density
+            ),
+            viable_cell_density__cell_counter_=quantity_or_none(
+                TQuantityValueMillionCellsPerMilliliter, measurement.viable_cell_density
+            ),
+            average_live_cell_diameter__cell_counter_=quantity_or_none(
+                TQuantityValueMicrometer, measurement.average_live_cell_diameter
+            ),
+            total_cell_count=quantity_or_none(
+                TQuantityValueCell, measurement.total_cell_count
+            ),
+            viable_cell_count=quantity_or_none(
+                TQuantityValueCell, measurement.viable_cell_count
+            ),
+            data_processing_document=DataProcessingDocument(
+                cell_type_processing_method=measurement.cell_type_processing_method,
+                cell_density_dilution_factor=quantity_or_none(
+                    TQuantityValueUnitless, measurement.cell_density_dilution_factor
+                ),
+            ) if measurement.cell_type_processing_method or measurement.cell_density_dilution_factor is not None else None
+        )
+
+        if all(value is None for value in processed_data_document.__dict__.values()):
+            return None
+
+        return ProcessedDataAggregateDocument(
+            processed_data_document=[processed_data_document]
+        )
 
     def _get_error_aggregate_document(
         self, errors: list[Error] | None

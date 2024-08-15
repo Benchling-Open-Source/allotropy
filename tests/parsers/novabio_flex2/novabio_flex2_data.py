@@ -1,8 +1,17 @@
 from io import StringIO
 
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.parsers.novabio_flex2.constants import (
     BLOOD_GAS_DETECTION_MAPPINGS,
+    DEVICE_TYPE,
+    MODEL_NUMBER,
     PH_DETECTION_MAPPINGS,
+    PRODUCT_MANUFACTURER,
+    SOFTWARE_NAME,
 )
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
     Analyte,
@@ -59,52 +68,63 @@ def get_input_stream() -> StringIO:
 
 def get_data() -> Data:
     return Data(
-        title=Title(
-            processing_time="2022-06-28 142558",
+        metadata=Metadata(
+            file_name="SampleResults2022-06-28_142558.csv",
+            device_type=DEVICE_TYPE,
+            model_number=MODEL_NUMBER,
+            product_manufacturer=PRODUCT_MANUFACTURER,
             device_identifier=None,
+            software_name=SOFTWARE_NAME,
         ),
-        sample_list=SampleList(
-            analyst="BioprocessingTeam",
-            samples=[
-                Sample(
-                    identifier="BP_R10_KP_008_D0",
-                    sample_type="Spent Media",
-                    measurement_time="2022-06-24 14:34:52",
-                    batch_identifier="KP_008",
-                    analytes=sorted(
-                        [
-                            Analyte.create("Gln", 1.83),
-                            Analyte.create("Glu", 0.33),
-                            Analyte.create("Gluc", 2.65),
-                            Analyte.create("Lac", 0.18),
-                            Analyte.create("NH4+", 0.48),
-                            Analyte.create("Na+", 151.6),
-                            Analyte.create("K+", 4.22),
-                            Analyte.create("Ca++", 0.82),
-                            Analyte.create("HCO3", 29.3),
-                        ]
-                    ),
-                    blood_gas_properties={
-                        "carbon_dioxide_saturation": BLOOD_GAS_DETECTION_MAPPINGS[
-                            "carbon_dioxide_saturation"
-                        ]["cls"](value=6.6),
-                        "oxygen_saturation": BLOOD_GAS_DETECTION_MAPPINGS[
-                            "oxygen_saturation"
-                        ]["cls"](value=100.0),
-                        "pO2": BLOOD_GAS_DETECTION_MAPPINGS["pO2"]["cls"](value=191.6),
-                        "pCO2": BLOOD_GAS_DETECTION_MAPPINGS["pCO2"]["cls"](value=46.8),
-                    },
-                    ph_properties={
-                        "pH": PH_DETECTION_MAPPINGS["pH"]["cls"](value=7.4),
-                        "temperature": PH_DETECTION_MAPPINGS["temperature"]["cls"](
-                            value=37.0
+        measurement_groups=[
+            MeasurementGroup(
+                analyst="BioprocessingTeam",
+                data_processing_time="2022-06-28 142558",
+                measurements=[
+                    Measurement(
+                        identifier="dummy_id",
+                        measurement_time="2022-06-24 14:34:52",
+                        sample_identifier="BP_R10_KP_008_D0",
+                        batch_identifier="KP_008",
+                        description="Spent Media",
+                        detection_type="metabolite-detection",
+                        analytes=sorted(
+                            [
+                                Analyte("ammonium", 0.48, "mmol/L"),
+                                Analyte("bicarbonate", 29.3, "mmol/L"),
+                                Analyte("calcium", 0.82, "mmol/L"),
+                                Analyte("glucose", 2.65, "g/L"),
+                                Analyte("glutamate", 0.33, "mmol/L"),
+                                Analyte("glutamine", 1.83, "mmol/L"),
+                                Analyte("lactate", 0.18, "g/L"),
+                                Analyte("potassium", 4.22, "mmol/L"),
+                                Analyte("sodium", 151.6, "mmol/L"),
+                            ]
                         ),
-                    },
-                    cell_type_processing_method="Workhog",
-                    cell_density_dilution_factor=None,
-                    cell_counter_properties={},
-                    osmolality_properties={},
-                )
-            ],
-        ),
+                    ),
+                    Measurement(
+                        identifier="dummy_id",
+                        measurement_time="2022-06-24 14:34:52",
+                        sample_identifier="BP_R10_KP_008_D0",
+                        batch_identifier="KP_008",
+                        description="Spent Media",
+                        detection_type="blood-gas-detection",
+                        pO2=191.6,
+                        pCO2=46.8,
+                        carbon_dioxide_saturation=6.6,
+                        oxygen_saturation=100.0,
+                    ),
+                    Measurement(
+                        identifier="dummy_id",
+                        measurement_time="2022-06-24 14:34:52",
+                        sample_identifier="BP_R10_KP_008_D0",
+                        batch_identifier="KP_008",
+                        description="Spent Media",
+                        detection_type="ph-detection",
+                        pH=7.4,
+                        temperature=37.0,
+                    )
+                ],
+            )
+        ]
     )
