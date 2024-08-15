@@ -8,7 +8,7 @@
                     "measurement document": [
                         {
                             "measurement identifier": "Run1",
-                            "measurement time": "2022-08-12T07:51:50.000000Z",
+                            "measurement time": "2022-08-12T07:51:50+00:00",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -17,7 +17,7 @@
                                             "unit": "mL"
                                         },
                                         "detector view volume": {
-                                            "value": 100,
+                                            "value": 100.0,
                                             "unit": "mL"
                                         },
                                         "repetition setting": 2,
@@ -36,7 +36,7 @@
                                     {
                                         "data processing document": {
                                             "dilution factor setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             }
                                         },
@@ -129,7 +129,7 @@
                         },
                         {
                             "measurement identifier": "Run2",
-                            "measurement time": "2022-08-12T07:51:50.000000Z",
+                            "measurement time": "2022-08-12T07:51:50+00:00",
                             "device control aggregate document": {
                                 "device control document": [
                                     {
@@ -138,7 +138,7 @@
                                             "unit": "mL"
                                         },
                                         "detector view volume": {
-                                            "value": 100,
+                                            "value": 100.0,
                                             "unit": "mL"
                                         },
                                         "repetition setting": 2,
@@ -157,7 +157,7 @@
                                     {
                                         "data processing document": {
                                             "dilution factor setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "(unitless)"
                                             }
                                         },
