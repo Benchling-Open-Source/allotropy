@@ -69,15 +69,16 @@ class Distribution:
         data = []
         cols = COLUMN_MAP.values()
         for row in df.index:
-            row_data = {}
-            for col in [x for x in cols if x in df.columns]:
-                row_data[col] = DistributionProperty(
-                    value=df.loc[row, col],
-                    distribution_property_id=random_uuid_str(),
-                )
             data.append(
                 DistributionRow(
-                    properties=row_data, distribution_row_id=random_uuid_str()
+                    properties={
+                        col: DistributionProperty(
+                            value=df.loc[row, col],
+                            distribution_property_id=random_uuid_str(),
+                        )
+                        for col in [x for x in cols if x in df.columns]
+                    },
+                    distribution_row_id=random_uuid_str()
                 )
             )
         return Distribution(
