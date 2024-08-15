@@ -120,7 +120,7 @@ class WellItem(Referenceable):
     well_location_identifier: str | None
     quencher_dye_setting: str | None
     sample_role_type: str | None
-    amplification_data: AmplificationData
+    amplification_data: AmplificationData | None
     result: Result
     melt_curve_data: MeltCurveData | None = None
 
@@ -131,6 +131,12 @@ class WellItem(Referenceable):
     # Make hashable to allow for use of caching
     def __hash__(self) -> int:
         return hash(self.identifier)
+
+    @classmethod
+    def get_amplification_data_sheet(
+        cls, contents: DesignQuantstudioContents
+    ) -> pd.DataFrame | None:
+        return contents.get_non_empty_sheet("Amplification Data")
 
     @classmethod
     def create(
@@ -151,11 +157,21 @@ class WellItem(Referenceable):
             f"Unable to find well position for Well '{identifier}'.",
         ]
 
-        amp_data = contents.get_non_empty_sheet("Amplification Data")
-        melt_curve_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+        amp_data = cls.get_amplification_data_sheet(contents)
+        amplification_data = (
+            AmplificationData.create(amp_data, identifier, target_dna_description)
+            if amp_data is not None
+            else None
+        )
+
+        melt_data = contents.get_non_empty_sheet_or_none("Melt Curve Raw")
+        melt_curve_data = (
+            MeltCurveData.create(melt_data, identifier, target_dna_description)
+            if melt_data is not None
+            else None
+        )
 
         result_class = cls.get_result_class()
-
         return WellItem(
             uuid=random_uuid_str(),
             identifier=identifier,
@@ -167,16 +183,8 @@ class WellItem(Referenceable):
             sample_role_type=SAMPLE_ROLE_TYPES_MAP.get(
                 data.get(str, "Task", "__INVALID_KEY__")
             ),
-            amplification_data=AmplificationData.create(
-                amp_data, identifier, target_dna_description
-            ),
-            melt_curve_data=(
-                None
-                if melt_curve_data is None
-                else MeltCurveData.create(
-                    melt_curve_data, identifier, target_dna_description
-                )
-            ),
+            amplification_data=amplification_data,
+            melt_curve_data=melt_curve_data,
             result=result_class.create(data, identifier),
         )
 

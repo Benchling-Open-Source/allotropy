@@ -14,6 +14,9 @@ from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.melt_curve
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence.creator import (
     PresenceAbsenceCreator,
 )
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_analysis.creator import (
+    PrimaryAnalysisCreator,
+)
 from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.creator import (
     RelativeStandardCurveCreator,
 )
@@ -31,6 +34,7 @@ def create_data(contents: DesignQuantstudioContents) -> Data:
             GenotypingCreator,
             MeltCurveCreator,
             PresenceAbsenceCreator,
+            PrimaryAnalysisCreator,
         ]
         if creator.check_type(contents)
     ]
