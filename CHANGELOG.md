@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 ### Changed
+- BMG MARS moved to recommended state
 - Updated Roche NovaBio Flex2 adapter to work with the Solution Analyzer ASM schema
 
 ### Deprecated
