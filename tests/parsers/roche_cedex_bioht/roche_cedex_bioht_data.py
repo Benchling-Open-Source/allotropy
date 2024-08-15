@@ -1,4 +1,5 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
+
 from io import StringIO
 
 import pandas as pd
@@ -99,7 +100,7 @@ def get_data_stream() -> StringIO:
     return StringIO("\n".join([title_text, body_text]))
 
 
-def get_reader_title() -> pd.Series:
+def get_reader_title() -> pd.Series[str]:
     return pd.Series(
         {
             "row type": 0,
