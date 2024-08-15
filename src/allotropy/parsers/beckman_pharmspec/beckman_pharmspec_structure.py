@@ -19,11 +19,10 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.constants import PHARMSPEC_SOFTWARE_NAME
 from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import assert_not_none
 
 # This map is used to coerce the column names coming in the raw data
 # into names of the allotrope properties.
-PROPERTY_LOOKUP = {
+UNIT_LOOKUP = {
     "particle_size": "μm",
     "cumulative_count": "(unitless)",
     "cumulative_particle_density": "Counts/mL",
@@ -173,8 +172,8 @@ def _create_calculated_data(data: PharmSpecData):
 
     for distribution in calcs:
         for row in distribution.data:
-            for prop in PROPERTY_LOOKUP:
-                value = getattr(row, prop, None)
+            for name, unit in UNIT_LOOKUP.items():
+                value = getattr(row, name, None)
                 if value is None:
                     continue
                 source_rows = [
@@ -186,13 +185,13 @@ def _create_calculated_data(data: PharmSpecData):
                 calculated_data.append(
                     CalculatedDataItem(
                         identifier=random_uuid_str(),
-                        name=f"{distribution.name}_{prop}".lower(),
+                        name=f"{distribution.name}_{name}".lower(),
                         value=value,
-                        unit=PROPERTY_LOOKUP[prop],
+                        unit=unit,
                         data_sources=[
                             DataSource(
                                 identifier=x.identifier,
-                                feature=prop.replace("_", " "),
+                                feature=name.replace("_", " "),
                             )
                             for x in source_rows
                         ]
