@@ -138,13 +138,14 @@ def read_multisheet_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
+    sheets: dict[str, pd.DataFrame] = assert_is_type(
+        df_or_dict, dict, "Expected a multi-sheet Excel file."
+    )
     return {
         sheet_name: _normalize_columns(
             assert_is_type(df, pd.DataFrame, "Expected all sheets to yield dataframes.")
         )
-        for sheet_name, df in assert_is_type(
-            df_or_dict, dict, "Expected a multi-sheet Excel file."
-        ).items()
+        for sheet_name, df in sheets.items()
     }
 
 
