@@ -14,7 +14,7 @@ from allotropy.allotrope.schema_parser.backup_manager import (
         "test.py",
         "directory/nested/test.py",
         "weird_extension.tmp.blah.py",
-    ]
+    ],
 )
 def test_get_backup_path(path: str) -> None:
     backup_path = _get_backup_path(path)

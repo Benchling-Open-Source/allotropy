@@ -2,7 +2,6 @@ from collections.abc import Iterator, Sequence
 from contextlib import contextmanager
 from itertools import zip_longest
 from pathlib import Path
-import re
 import shutil
 
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -25,7 +24,7 @@ def _get_backup_path(path: PathType) -> Path:
 
 def get_original_path(path: PathType) -> Path:
     _path = Path(path)
-    filename = path.stem
+    filename = _path.stem
     if filename.startswith("."):
         filename = f"{Path(Path(filename[1:]).stem).stem}{_path.suffix}"
     return Path(_path.parent, filename)
@@ -71,7 +70,7 @@ def backup_paths(
         raise
 
     if not restore:
-        for backup, original in zip(backup_paths, paths):
+        for backup, original in zip(backup_paths, paths, strict=True):
             if is_file_changed(backup):
                 shutil.copyfile(backup, str(original))
     for backup in backup_paths:
