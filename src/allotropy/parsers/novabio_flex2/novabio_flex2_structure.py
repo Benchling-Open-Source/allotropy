@@ -115,16 +115,6 @@ class Sample:
             cell_density_dilution_factor=try_float_or_none(str(cell_density_dilution)),
         )
 
-    @classmethod
-    def _get_properties(
-        cls, data: SeriesData, property_mappings: dict[str, Any]
-    ) -> dict[str, Any]:
-        return {
-            property_name: data.get(float, column_name)
-            for property_name, column_name in property_mappings.items()
-            if data.get(float, column_name) is not None
-        }
-
 
 @dataclass(frozen=True)
 class SampleList:
