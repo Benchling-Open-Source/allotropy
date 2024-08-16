@@ -4,8 +4,6 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from typing import Any
 
-from allotropy.allotrope.schema_parser.backup_manager import get_original_path
-
 ALLOTROPE_DIR: Path = Path(__file__).parent.parent
 ALLOTROPY_DIR: Path = ALLOTROPE_DIR.parent
 ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent

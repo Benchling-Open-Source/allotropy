@@ -48,8 +48,10 @@ def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
     )
 
 
-def get_shared_schema_info(schema: dict[str, Any]) -> tuple[set[str], dict[str, set[str]]]:
-    #with open(schema_path) as f:
+def get_shared_schema_info(
+    schema: dict[str, Any]
+) -> tuple[set[str], dict[str, set[str]]]:
+    # with open(schema_path) as f:
     #    schema = json.load(f)
 
     classes_to_skip = set()
@@ -541,7 +543,7 @@ class ModelClassEditor:
         manifest: str,
         classes_to_skip: set[str],
         imports_to_add: dict[str, set[str]],
-        schema_name: str
+        schema_name: str,
     ):
         self.manifest = manifest
         self.classes_to_skip = classes_to_skip

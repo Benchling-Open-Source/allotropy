@@ -162,7 +162,7 @@ def generate_schemas(
 
         with backup(model_path, restore=dry_run) as model_path:
             schema_cleaner = SchemaCleaner()
-            schema = schema_cleaner.clean_file(get_schema(schema_path))
+            schema = schema_cleaner.clean(get_schema(schema_path))
             unit_to_iri |= schema_cleaner.get_referenced_units()
             _generate_schema(model_path, schema)
 

@@ -29,9 +29,7 @@ def test_get_rel_schema_path() -> None:
 
 
 def test_get_rel_model_path() -> None:
-    assert (
-        get_rel_model_path(Path(MODEL_DIR_PATH, REL_MODEL_PATH)) == REL_MODEL_PATH
-    )
+    assert get_rel_model_path(Path(MODEL_DIR_PATH, REL_MODEL_PATH)) == REL_MODEL_PATH
     assert get_rel_model_path(REL_MODEL_PATH) == REL_MODEL_PATH
 
 

@@ -1,15 +1,12 @@
 from collections import defaultdict
 from collections.abc import Callable
 import copy
-import json
-from pathlib import Path
 import re
 from typing import Any
 import urllib.parse
 
 from allotropy.allotrope.schema_parser.update_units import unit_name_from_iri
 from allotropy.allotrope.schemas import (
-    get_schema,
     get_shared_definitions,
     get_shared_unit_definitions,
 )
@@ -632,9 +629,3 @@ class SchemaCleaner:
         cleaned["$defs"] = self._clean_defs(cleaned.get("$defs", {}))
 
         return self._clean_schema(cleaned)
-
-    def clean_file(self, schema: dict[str, Any]) -> None:
-        return self.clean(schema)
-
-        # with open(schema_path, "w") as f:
-        #     json.dump(schema, f, indent=2)
