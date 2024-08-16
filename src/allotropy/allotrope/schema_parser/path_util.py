@@ -4,6 +4,8 @@ from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from typing import Any
 
+from allotropy.allotrope.schema_parser.backup_manager import get_original_path
+
 ALLOTROPE_DIR: Path = Path(__file__).parent.parent
 ALLOTROPY_DIR: Path = ALLOTROPE_DIR.parent
 ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
@@ -27,7 +29,8 @@ GENERATED_SHARED_PATHS: list[Path] = [
 
 def get_rel_schema_path(schema_path: Path) -> Path:
     try:
-        return Path(str(schema_path).replace(".bak", "")).relative_to(SCHEMA_DIR_PATH)
+        # File may be a backup file if running generation script, replace here with original
+        return get_original_path(schema_path).relative_to(SCHEMA_DIR_PATH)
     except ValueError as err:
         if not Path(SCHEMA_DIR_PATH, schema_path).exists():
             msg = f"Invalid schema path: {schema_path}"

@@ -20,6 +20,13 @@ def _get_backup_path(path: PathType) -> Path:
     return Path(_path.parent, f".{_path.stem}.bak{_path.suffix}")
 
 
+def get_original_path(path: PathType) -> Path:
+    original_path = str(path)
+    if original_path.startswith("."):
+        original_path = original_path[1:]
+    return Path(original_path.replace(".bak", ""))
+
+
 def is_file_changed(path: PathType) -> bool:
     other_path = _get_backup_path(path)
     if other_path.exists():
@@ -28,10 +35,10 @@ def is_file_changed(path: PathType) -> bool:
 
 
 def _backup_file(path: PathType) -> Path:
+    backup_path = _get_backup_path(path)
     if Path(path).exists():
-        backup_path = _get_backup_path(path)
         shutil.copyfile(path, str(backup_path))
-        return backup_path
+    return backup_path
 
 
 def restore_backup(path: PathType) -> None:
@@ -40,16 +47,8 @@ def restore_backup(path: PathType) -> None:
         backup_path.replace(path)
 
 
-def _remove_backup(path: PathType) -> None:
-    _get_backup_path(path).unlink(missing_ok=True)
-
-
 def is_backup_file(path: PathType) -> bool:
     return ".bak" in Path(path).suffixes
-
-
-def overwrite(path: PathType) -> None:
-    shutil.copyfile(_get_backup_path(path), str(path))
 
 
 @contextmanager
@@ -66,14 +65,12 @@ def backup_paths(
 
     if not restore:
         for path in paths:
-            overwrite(path)
+            shutil.copyfile(_get_backup_path(path), str(path))
     for path in paths:
         _get_backup_path(path).unlink(missing_ok=True)
 
 
 @contextmanager
-def backup(
-    path: PathType, *, restore: bool | None = False
-) -> Iterator[list[Path]]:
+def backup(path: PathType, *, restore: bool | None = False) -> Iterator[Path]:
     with backup_paths([path], restore=restore) as working_path:
         yield working_path[0]
