@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Primary analysis experiment type in AppBio Quantstudio Design and Analysis
 
 - Added support for xlsx exports in Unchained Lunatic parser
 
@@ -17,14 +18,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- BMG MARS moved to recommended state
-- Updated Roche NovaBio Flex2 adapter to work with the Solution Analyzer ASM schema
-
 ### Deprecated
 
 ### Removed
 
 ### Security
+
+## [0.1.48] - 2024-08-15
+
+### Changed
+
+- BMG MARS moved to recommended state
+- Updated Roche NovaBio Flex2 adapter to work with the Solution Analyzer ASM schema
 
 ## [0.1.47] - 2024-08-13
 
@@ -53,6 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Only return AllotropeConversionError when there is a problem with input data that we expect, add other errors for unexpected problems.
+- Split structure by experiment type in AppBio Quantstudio Design and Anlysis
 
 ## [0.1.45] - 2024-08-01
 

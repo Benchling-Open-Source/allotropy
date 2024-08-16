@@ -614,7 +614,7 @@ class PlateBlock(ABC, Block):
             reader.pop_as_series(sep="\t"),
             msg="Unable to find plate block header.",
         )
-        return raw_header_series.replace("", None).str.strip()
+        return raw_header_series.astype(str).replace("", None).str.strip()
 
     @staticmethod
     def get_plate_block_cls(header_series: pd.Series[str]) -> type[PlateBlock]:
