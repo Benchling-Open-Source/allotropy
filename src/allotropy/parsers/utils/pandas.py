@@ -82,7 +82,11 @@ def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
 
 
 def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    return df.rename(columns=lambda col: unicodedata.normalize("NFKC", col) if isinstance(col, str) else col)
+    return df.rename(
+        columns=lambda col: unicodedata.normalize("NFKC", col)
+        if isinstance(col, str)
+        else col
+    )
 
 
 def read_csv(
@@ -98,11 +102,13 @@ def read_csv(
     except Exception as e:
         msg = f"Error calling pd.read_csv(): {e}"
         raise AllotropeParsingError(msg) from e
-    return _normalize_columns(assert_is_type(
-        df_or_reader,
-        pd.DataFrame,
-        "pd.read_csv() returned a TextFileReader, which is not supported.",
-    ))
+    return _normalize_columns(
+        assert_is_type(
+            df_or_reader,
+            pd.DataFrame,
+            "pd.read_csv() returned a TextFileReader, which is not supported.",
+        )
+    )
 
 
 def read_excel(
@@ -118,9 +124,9 @@ def read_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return _normalize_columns(assert_is_type(
-        df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file."
-    ))
+    return _normalize_columns(
+        assert_is_type(df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file.")
+    )
 
 
 def read_multisheet_excel(
