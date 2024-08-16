@@ -35,28 +35,39 @@ from allotropy.parsers.utils.values import quantity_or_none
 
 @dataclass
 class Measurement:
+    # Metadata
     measurement_identifier: str
     timestamp: str
     sample_identifier: str
+
+    # Measurements
     viability: float
     viable_cell_density: JsonFloat
+
+    # Optional metadata
     batch_identifier: str | None = None
     group_identifier: str | None = None
     sample_draw_time: str | None = None
-    dead_cell_density: JsonFloat | None = None
+
+    # Optional settings
     cell_type_processing_method: str | None = None
     minimum_cell_diameter_setting: float | None = None
     maximum_cell_diameter_setting: float | None = None
     cell_density_dilution_factor: float | None = None
+    sample_volume_setting: float | None = None
+
+    # Optional measurements
+    viable_cell_count: float | None = None
     total_cell_count: float | None = None
     total_cell_density: JsonFloat | None = None
+    dead_cell_count: float | None = None
+    dead_cell_density: JsonFloat | None = None
+
     average_total_cell_diameter: JsonFloat | None = None
     average_live_cell_diameter: float | None = None
-    viable_cell_count: float | None = None
-    dead_cell_count: float | None = None
     average_total_cell_circularity: float | None = None
     average_viable_cell_circularity: float | None = None
-    sample_volume_setting: float | None = None
+
     average_compactness: float | None = None
     average_area: float | None = None
     average_perimeter: float | None = None

@@ -34,13 +34,16 @@ class RocheCedexHiResReader:
         AllotropeConversionError: If the file format is not supported.
         """
         if named_file_contents.original_file_name.endswith(".csv"):
-            return read_csv(
+            df = read_csv(
                 named_file_contents.contents,
                 index_col=False,
                 encoding=DEFAULT_ENCODING,
             )
         elif named_file_contents.original_file_name.endswith(".xlsx"):
-            return read_excel(named_file_contents.contents.name)
+            df = read_excel(named_file_contents.contents.name)
         else:
             message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"
             raise AllotropeConversionError(message)
+
+        df.columns = df.columns.str.replace("identifer", "identifier", regex=True)
+        return df
