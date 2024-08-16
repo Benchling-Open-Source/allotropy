@@ -10,6 +10,7 @@ from typing import Any
 from allotropy.allotrope.schema_parser.backup_manager import get_original_path
 from allotropy.allotrope.schema_parser.path_util import (
     get_manifest_from_model_path,
+    get_manifest_from_schema_path,
     get_schema_path_from_model_path,
 )
 from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
@@ -736,9 +737,9 @@ class ModelClassEditor:
 
 def modify_file(model_path: Path, schema: dict[str, Any]) -> None:
     classes_to_skip, imports_to_add = get_shared_schema_info(schema)
-    manifest = get_manifest_from_model_path(get_original_path(model_path))
-    schema_name = get_schema_path_from_model_path(model_path).name
-    editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add, schema_name)
+    schema_path = get_schema_path_from_model_path(get_original_path(model_path))
+    manifest = get_manifest_from_schema_path(schema_path)
+    editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add, schema_path.name)
 
     with open(model_path) as f:
         contents = f.read()
