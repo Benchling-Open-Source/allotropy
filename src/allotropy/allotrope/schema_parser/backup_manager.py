@@ -26,7 +26,10 @@ def get_original_path(path: PathType) -> Path:
 
 
 def is_file_changed(path: PathType) -> bool:
-    other_path = _get_backup_path(path)
+    if is_backup_file(path):
+        other_path = get_original_path(path)
+    else:
+        other_path = _get_backup_path(path)
     if other_path.exists():
         return not _files_equal(path, other_path)
     return True
@@ -63,7 +66,8 @@ def backup_paths(
 
     if not restore:
         for path in paths:
-            shutil.copyfile(_get_backup_path(path), str(path))
+            if is_file_changed(path):
+                shutil.copyfile(_get_backup_path(path), str(path))
     for path in paths:
         _get_backup_path(path).unlink(missing_ok=True)
 
