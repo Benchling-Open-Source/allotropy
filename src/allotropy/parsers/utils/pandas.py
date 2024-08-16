@@ -73,7 +73,7 @@ def assert_not_empty_df(df: pd.DataFrame, msg: str) -> pd.DataFrame:
     return df
 
 
-def (df: pd.DataFrame, key: str) -> Any:
+def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
     try:
         return df[key]
     except KeyError as e:
@@ -139,8 +139,12 @@ def read_multisheet_excel(
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
     return {
-        sheet_name: _normalize_columns(assert_is_type(df, pd.DataFrame, "Expected all sheets to yield dataframes."))
-        for sheet_name, df in assert_is_type(df_or_dict, dict, "Expected a multi-sheet Excel file.").items()
+        sheet_name: _normalize_columns(
+            assert_is_type(df, pd.DataFrame, "Expected all sheets to yield dataframes.")
+        )
+        for sheet_name, df in assert_is_type(
+            df_or_dict, dict, "Expected a multi-sheet Excel file."
+        ).items()
     }
 
 
