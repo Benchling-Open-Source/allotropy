@@ -26,7 +26,6 @@ from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.thermo_fisher_genesys30 import constants
 from allotropy.parsers.utils.pandas import df_to_series_data, read_csv
 from allotropy.parsers.utils.uuids import random_uuid_str
-from allotropy.parsers.utils.values import try_float_or_none
 
 
 def create_data(named_file_contents: NamedFileContents) -> Data:
