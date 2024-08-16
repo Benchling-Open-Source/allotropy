@@ -45,5 +45,6 @@ class RocheCedexHiResReader:
             message = f"{constants.UNSUPPORTED_FILE_FORMAT_ERROR} '{named_file_contents.original_file_name}'"
             raise AllotropeConversionError(message)
 
+        # Fix typo found in some source files.
         df.columns = df.columns.str.replace("identifer", "identifier", regex=True)
         return df
