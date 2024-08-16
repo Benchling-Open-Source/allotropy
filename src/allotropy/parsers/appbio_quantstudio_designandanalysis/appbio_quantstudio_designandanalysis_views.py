@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 from allotropy.parsers.appbio_quantstudio.views import View
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     SAMPLE_ROLE_TYPES_MAP,
     WellItem,
 )
