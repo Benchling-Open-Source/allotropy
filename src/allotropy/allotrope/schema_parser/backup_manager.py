@@ -21,15 +21,17 @@ def _get_backup_path(path: PathType) -> Path:
 
 
 def is_file_changed(path: PathType) -> bool:
-    backup_path = _get_backup_path(path)
-    if backup_path.exists():
-        return not _files_equal(path, backup_path)
+    other_path = _get_backup_path(path)
+    if other_path.exists():
+        return not _files_equal(path, other_path)
     return True
 
 
-def _backup_file(path: PathType) -> None:
+def _backup_file(path: PathType) -> Path:
     if Path(path).exists():
-        shutil.copyfile(path, str(_get_backup_path(path)))
+        backup_path = _get_backup_path(path)
+        shutil.copyfile(path, str(backup_path))
+        return backup_path
 
 
 def restore_backup(path: PathType) -> None:
@@ -46,23 +48,32 @@ def is_backup_file(path: PathType) -> bool:
     return ".bak" in Path(path).suffixes
 
 
+def overwrite(path: PathType) -> None:
+    shutil.copyfile(_get_backup_path(path), str(path))
+
+
 @contextmanager
-def backup(
-    paths: Sequence[PathType] | PathType, *, restore: bool | None = False
-) -> Iterator[None]:
-    paths_ = paths if isinstance(paths, list) else [paths]
-    for path in paths_:
-        _backup_file(path)
+def backup_paths(
+    paths: Sequence[PathType], *, restore: bool | None = False
+) -> Iterator[list[Path]]:
+    backup_paths = [_backup_file(path) for path in paths]
     try:
-        yield
+        yield backup_paths
     except Exception:
-        for path in paths_:
-            restore_backup(path)
+        for path in paths:
+            _get_backup_path(path).unlink(missing_ok=True)
         raise
 
-    if restore:
-        for path in paths_:
-            restore_backup(path)
-    else:
-        for path in paths_:
-            _remove_backup(path)
+    if not restore:
+        for path in paths:
+            overwrite(path)
+    for path in paths:
+        _get_backup_path(path).unlink(missing_ok=True)
+
+
+@contextmanager
+def backup(
+    path: PathType, *, restore: bool | None = False
+) -> Iterator[list[Path]]:
+    with backup_paths([path], restore=restore) as working_path:
+        yield working_path[0]

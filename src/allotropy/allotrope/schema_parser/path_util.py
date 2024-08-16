@@ -27,7 +27,7 @@ GENERATED_SHARED_PATHS: list[Path] = [
 
 def get_rel_schema_path(schema_path: Path) -> Path:
     try:
-        return schema_path.relative_to(SCHEMA_DIR_PATH)
+        return Path(str(schema_path).replace(".bak", "")).relative_to(SCHEMA_DIR_PATH)
     except ValueError as err:
         if not Path(SCHEMA_DIR_PATH, schema_path).exists():
             msg = f"Invalid schema path: {schema_path}"

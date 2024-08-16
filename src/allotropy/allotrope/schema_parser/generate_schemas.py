@@ -13,8 +13,10 @@ from datamodel_code_generator import (
 
 from allotropy.allotrope.schema_parser.backup_manager import (
     backup,
+    backup_paths,
     is_backup_file,
     is_file_changed,
+    overwrite,
     restore_backup,
 )
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
@@ -36,7 +38,7 @@ def lint_file(model_path: Path) -> None:
     # due to unused imports.
     try:
         subprocess.check_call(
-            f"ruff {model_path} --fix",
+            f"ruff --ignore N999 {model_path} --fix",
             shell=True,  # noqa: S602
             stdout=subprocess.DEVNULL,
         )
@@ -62,7 +64,7 @@ def lint_file(model_path: Path) -> None:
     )
     # The second call to ruff checks for additional rules.
     subprocess.check_call(
-        f"ruff {model_path} --fix", shell=True, stdout=subprocess.DEVNULL  # noqa: S602
+        f"ruff {model_path} --ignore N999 --fix", shell=True, stdout=subprocess.DEVNULL  # noqa: S602
     )
     subprocess.check_call(
         f"black {model_path}", shell=True, stderr=subprocess.DEVNULL  # noqa: S602
@@ -139,7 +141,7 @@ def generate_schemas(
     :return: A list of model files that were changed.
     """
     unit_to_iri: dict[str, str] = {}
-    with backup(GENERATED_SHARED_PATHS, restore=dry_run):
+    with backup_paths(GENERATED_SHARED_PATHS, restore=dry_run) as working_generated_paths:
         schema_paths = list(Path(SCHEMA_DIR_PATH).rglob("*.json"))
         models_changed = []
         for schema_path in schema_paths:
@@ -154,19 +156,18 @@ def generate_schemas(
             )
             make_model_directories(model_path.parent)
 
-            with backup(model_path, restore=dry_run), backup(schema_path, restore=True):
+            with backup(model_path, restore=dry_run) as working_model_path, backup(schema_path, restore=True) as working_schema_path:
                 schema_cleaner = SchemaCleaner()
-                schema_cleaner.clean_file(str(schema_path))
+                schema_cleaner.clean_file(str(working_schema_path))
                 unit_to_iri |= schema_cleaner.get_referenced_units()
-                _generate_schema(model_path, schema_path)
+                _generate_schema(working_model_path, working_schema_path)
 
                 if is_file_changed(model_path):
                     models_changed.append(model_path.stem)
-                else:
-                    restore_backup(model_path)
 
-        update_unit_files(unit_to_iri)
-        for path in [UNITS_MODELS_PATH, CUSTOM_MODELS_PATH]:
-            lint_file(path)
+        update_unit_files(unit_to_iri, *working_generated_paths)
+        for path in working_generated_paths:
+            if path.suffix == ".py":
+                lint_file(path)
 
     return models_changed
