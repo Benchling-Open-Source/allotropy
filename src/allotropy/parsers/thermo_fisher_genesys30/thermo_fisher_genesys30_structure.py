@@ -4,8 +4,6 @@ from __future__ import annotations
 from datetime import datetime
 import io
 
-import pandas as pd
-
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     ContainerType,
 )
@@ -26,7 +24,7 @@ from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
 from allotropy.parsers.thermo_fisher_genesys30 import constants
-from allotropy.parsers.utils.pandas import df_to_series_data
+from allotropy.parsers.utils.pandas import df_to_series_data, read_csv
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
@@ -56,16 +54,22 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
 
     rawdata_list = list(reader.pop_until_empty())
     rawdata_string = io.StringIO("\n".join(rawdata_list))
-    rawdata_dataframe = pd.read_csv(rawdata_string, header=0, delimiter=delimiter)
+    rawdata_dataframe = read_csv(rawdata_string, header=0, delimiter=delimiter).astype(
+        str
+    )
 
     metadata_string = io.StringIO("\n".join(metadata_list))
-    metadata_dataframe = pd.read_csv(
-        metadata_string,
-        header=None,
-        delimiter=delimiter,
-        keep_default_na=False,
-        index_col=0,
-    ).T
+    metadata_dataframe = (
+        read_csv(
+            metadata_string,
+            header=None,
+            delimiter=delimiter,
+            keep_default_na=False,
+            index_col=0,
+        )
+        .astype(str)
+        .T
+    )
     metadata_dataframe.columns = metadata_dataframe.columns.str.strip()
     rawdata_dataframe.columns = rawdata_dataframe.columns.str.strip()
 
@@ -75,7 +79,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
 
     experiment_name = metadata.get(str, "Scan")
 
-    experiment_type, measurement_time = get_date_time(experiment_name)
+    experiment_type, measurement_time = get_experiment_type_and_time(experiment_name)
 
     return Data(
         metadata=Metadata(
@@ -116,8 +120,18 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
                                     unit="mAU",
                                 )
                             ],
-                            dimensions=[rawdata_dataframe["wavelength(nm)"].tolist()],
-                            measures=[rawdata_dataframe["ABS"].tolist()],
+                            dimensions=[
+                                rawdata_dataframe["wavelength(nm)"]
+                                .astype(float)
+                                .tolist()
+                            ],
+                            measures=[
+                                [
+                                    float(item)
+                                    for item in rawdata_dataframe["ABS"]
+                                    if item is not None
+                                ]
+                            ],
                         ),
                     ),
                 ],
@@ -126,7 +140,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
     )
 
 
-def get_date_time(experiment_name: str | None) -> tuple[str, str]:
+def get_experiment_type_and_time(experiment_name: str | None) -> tuple[str, str]:
     """
     Gets data and time of measurement from the experiment name
     :param experiment_name: The name of the experiment conducted
