@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterable
 from enum import Enum
 import re
 from typing import Any, Literal, overload, TypeVar
+import unicodedata
 
 import pandas as pd
 from pandas._typing import FilePath, ReadCsvBuffer
@@ -80,6 +81,10 @@ def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
         raise AllotropeConversionError(msg) from e
 
 
+def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    return df.rename(columns=lambda col: unicodedata.normalize("NFKC", col) if isinstance(col, str) else col)
+
+
 def read_csv(
     # types for filepath_or_buffer match those in pd.read_csv()
     filepath_or_buffer: FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str],
@@ -93,11 +98,11 @@ def read_csv(
     except Exception as e:
         msg = f"Error calling pd.read_csv(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(
+    return _normalize_columns(assert_is_type(
         df_or_reader,
         pd.DataFrame,
         "pd.read_csv() returned a TextFileReader, which is not supported.",
-    )
+    ))
 
 
 def read_excel(
@@ -113,9 +118,9 @@ def read_excel(
     except Exception as e:
         msg = f"Error calling pd.read_excel(): {e}"
         raise AllotropeParsingError(msg) from e
-    return assert_is_type(
+    return _normalize_columns(assert_is_type(
         df_or_dict, pd.DataFrame, "Expected a single-sheet Excel file."
-    )
+    ))
 
 
 def read_multisheet_excel(
