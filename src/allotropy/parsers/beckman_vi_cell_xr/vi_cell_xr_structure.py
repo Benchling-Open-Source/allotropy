@@ -30,6 +30,7 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
     return MeasurementGroup(
+        analyst=DEFAULT_ANALYST,
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
@@ -44,9 +45,8 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 average_total_cell_diameter=data.get(float, "Avg. diam. (microns)"),
                 viable_cell_count=viable_cell_count,
                 average_total_cell_circularity=data.get(float, "Avg. circ."),
-                analyst=DEFAULT_ANALYST,
             )
-        ]
+        ],
     )
 
 

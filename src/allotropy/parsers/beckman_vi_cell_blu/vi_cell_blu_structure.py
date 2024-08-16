@@ -28,6 +28,7 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
     return MeasurementGroup(
+        analyst=data.get(str, "Analysis by", DEFAULT_ANALYST),
         measurements=[
             Measurement(
                 measurement_identifier=random_uuid_str(),
@@ -50,9 +51,8 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 average_viable_cell_circularity=data.get(
                     float, "Average viable circularity"
                 ),
-                analyst=data.get(str, "Analysis by", DEFAULT_ANALYST),
             )
-        ]
+        ],
     )
 
 

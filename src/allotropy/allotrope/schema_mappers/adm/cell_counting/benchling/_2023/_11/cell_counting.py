@@ -23,7 +23,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValuePercent,
     TQuantityValueUnitless,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TDateTimeValue
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TDateTimeValue,
+)
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.utils.values import quantity_or_none
 
@@ -33,16 +36,16 @@ class Measurement:
     measurement_identifier: str
     timestamp: str
     sample_identifier: str
-    analyst: str
     viability: float
-    viable_cell_density: float
+    viable_cell_density: JsonFloat
+    dead_cell_density: JsonFloat | None = None
     cell_type_processing_method: str | None = None
     minimum_cell_diameter_setting: float | None = None
     maximum_cell_diameter_setting: float | None = None
     cell_density_dilution_factor: float | None = None
     total_cell_count: float | None = None
-    total_cell_density: float | None = None
-    average_total_cell_diameter: float | None = None
+    total_cell_density: JsonFloat | None = None
+    average_total_cell_diameter: JsonFloat | None = None
     average_live_cell_diameter: float | None = None
     viable_cell_count: float | None = None
     average_total_cell_circularity: float | None = None
@@ -52,20 +55,7 @@ class Measurement:
 @dataclass(frozen=True)
 class MeasurementGroup:
     measurements: list[Measurement]
-    _analyst: str | None = None
-
-    @property
-    def analyst(self) -> str | None:
-        if self._analyst is not None:
-            return self._analyst
-        # If all measurements in the group have the same analyst set, set at the group level too.
-        if (
-            self.measurements
-            and len({m.analyst for m in self.measurements}) == 1
-            and self.measurements[0].analyst
-        ):
-            return self.measurements[0].analyst
-        return None
+    analyst: str | None = None
 
 
 @dataclass
@@ -169,6 +159,10 @@ class Mapper:
                         ),
                         viable_cell_density__cell_counter_=TQuantityValueMillionCellsPerMilliliter(
                             value=measurement.viable_cell_density
+                        ),
+                        dead_cell_density__cell_counter_=quantity_or_none(
+                            TQuantityValueMillionCellsPerMilliliter,
+                            measurement.dead_cell_density,
                         ),
                         total_cell_count=quantity_or_none(
                             TQuantityValueCell, measurement.total_cell_count

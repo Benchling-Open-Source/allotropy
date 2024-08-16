@@ -1,6 +1,6 @@
 import pandas as pd
 
-from allotropy.parsers.utils.pandas import read_csv
+from allotropy.parsers.utils.pandas import assert_not_empty_df, read_csv
 from allotropy.types import IOType
 
 
@@ -13,4 +13,6 @@ class NucleoviewReader:
             {"Estimated cell diameter [um]": "Estimated cell diameter (um)"},
             axis="columns",
         )
-        return df
+        # Drop rows that do not report cell viability.
+        df = df.dropna(subset=["Viability (%)"])
+        return assert_not_empty_df(df, "Unable to parse data from empty dataset.")
