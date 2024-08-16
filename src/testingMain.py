@@ -7,8 +7,9 @@ from allotropy.to_allotrope import allotrope_from_file
 
 def main():
     instrument = "agilent_gen5"
+    directory = "multiple_read_modes"
     filename = "jira_cust_8062_bug"
-    filepath = f"../tests/parsers/{instrument}/testdata/{filename}.txt"
+    filepath = f"../tests/parsers/{instrument}/testdata/{directory}/{filename}.txt"
     print(filepath)
 
     allotropeDictionary = allotrope_from_file(filepath, Vendor.AGILENT_GEN5, encoding=CHARDET_ENCODING)

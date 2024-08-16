@@ -270,8 +270,8 @@ def test_create_filter_set() -> None:
     assert filterset.excitation_bandwidth_setting == 20
     assert filterset.wavelength_filter_cutoff_setting == 510
     assert (
-        filterset.scan_position_setting
-        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+            filterset.scan_position_setting
+            == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
     )
 
 
@@ -290,8 +290,8 @@ def test_create_filter_set_with_mirror() -> None:
     assert filterset.excitation_bandwidth_setting is None
     assert filterset.wavelength_filter_cutoff_setting is None
     assert (
-        filterset.scan_position_setting
-        == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
+            filterset.scan_position_setting
+            == ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_
     )
 
 
@@ -305,8 +305,8 @@ def test_create_filter_set_full_light() -> None:
     assert filterset.excitation_bandwidth_setting is None
     assert filterset.gain == "135"
     assert (
-        filterset.scan_position_setting
-        == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
+            filterset.scan_position_setting
+            == ScanPositionSettingPlateReader.top_scan_position__plate_reader_
     )
 
 
@@ -375,4 +375,50 @@ def test_create_layout_data_with_name_rows_name_row_first() -> None:
         "B1": "Name_B1",
         "B2": "Name_B2",
         "B3": "Name_B3",
+    }
+
+
+@pytest.mark.short
+def test_create_multiple_read_modes() -> None:
+    multiple_read_modes = [
+        "Procedure Details",
+        "Plate Type\t96 WELL PLATE (Use plate lid)",
+        "Read\tod",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  600",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+        "Read\tfluor",
+        "\tFluorescence Endpoint",
+        "\tFull Plate",
+        "\tFilter Set 1",
+        "\t\tExcitation: 579,  Emission: 616",
+        "\t\tOptics: Top,  Gain: extended",
+        "\tFilter Set 2",
+        "\t\tExcitation: 479,  Emission: 520",
+        "\t\tOptics: Top,  Gain: extended",
+    ]
+    reader = LinesReader(multiple_read_modes)
+
+    file_data = ReadData.create(reader)
+    assert file_data[0].read_mode == ReadMode.ABSORBANCE
+    assert file_data[0].step_label == "od"
+    assert file_data[0].measurement_labels == ["od:600"]
+    assert file_data[0].number_of_averages == 8
+
+    assert file_data[1].read_mode == ReadMode.FLUORESCENCE
+    assert file_data[1].step_label == "fluor"
+    assert file_data[1].filter_sets == {
+        "fluor:579,616": FilterSet(
+            excitation="579",
+            emission="616",
+            optics="Top",
+            gain="extended",
+        ),
+        "fluor:479,520": FilterSet(
+            excitation="479",
+            emission="520",
+            optics="Top",
+            gain="extended",
+        ),
     }
