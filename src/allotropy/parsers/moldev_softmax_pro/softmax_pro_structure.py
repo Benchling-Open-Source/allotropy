@@ -30,6 +30,7 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
+VALID_NAN_VALUES = ("Masked", "Range?")
 
 
 NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
@@ -105,8 +106,8 @@ class GroupSampleData:
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
 
-    @staticmethod
-    def create(data: pd.DataFrame) -> GroupSampleData:
+    @classmethod
+    def create(cls, data: pd.DataFrame) -> GroupSampleData:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
         top_row = row_data[0]
         identifier = top_row[str, "Sample"]
@@ -117,7 +118,7 @@ class GroupSampleData:
             column
             for column in data.columns
             if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
-            or top_row.get(str, column) in ("Masked", "Range?")
+            or top_row.get(str, column) in VALID_NAN_VALUES
         ]
 
         normal_columns = []
@@ -137,7 +138,8 @@ class GroupSampleData:
                     plate=row[str, "WellPlateName"],
                     entries=[
                         GroupDataElementEntry(
-                            name=column_name, value=row.get(float, column_name, NaN)
+                            name=column_name,
+                            value=cls._get_value_from_col(row, column_name),
                         )
                         for column_name in normal_columns
                     ],
@@ -147,11 +149,17 @@ class GroupSampleData:
             aggregated_entries=[
                 GroupDataElementEntry(
                     name=column_name,
-                    value=top_row.get(float, column_name, NaN),
+                    value=cls._get_value_from_col(top_row, column_name),
                 )
                 for column_name in aggregated_columns
             ],
         )
+
+    @classmethod
+    def _get_value_from_col(cls, data_row: SeriesData, column_name: str) -> JsonFloat:
+        if data_row.get(str, column_name) in VALID_NAN_VALUES:
+            return NaN
+        return data_row[float, column_name]
 
 
 @dataclass(frozen=True)
@@ -620,7 +628,8 @@ class PlateBlock(ABC, Block):
 
     @staticmethod
     @abstractmethod
-    def get_plate_block_type() -> str: ...
+    def get_plate_block_type() -> str:
+        ...
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:

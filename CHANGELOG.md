@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents
+- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents. Added exceptions for Masked and Range values which will be treated as NaN.
 
 ### Changed
 
