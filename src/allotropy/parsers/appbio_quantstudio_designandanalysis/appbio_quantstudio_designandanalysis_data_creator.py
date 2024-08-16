@@ -1,66 +1,46 @@
-from allotropy.allotrope.models.adm.pcr.benchling._2023._09.qpcr import ExperimentType
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_calculated_documents import (
-    iter_presence_absence_calc_docs,
-    iter_relative_standard_curve_calc_docs,
-    iter_standard_curve_calc_docs,
-)
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_contents import (
     DesignQuantstudioContents,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_structure import (
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.generic.structure import (
     Data,
-    Header,
-    Result,
-    WellList,
 )
-from allotropy.parsers.appbio_quantstudio_designandanalysis.appbio_quantstudio_designandanalysis_views import (
-    SampleView,
-    TargetRoleView,
-    TargetView,
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.genotyping.creator import (
+    GenotypingCreator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.melt_curve.creator import (
+    MeltCurveCreator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.presence_absence.creator import (
+    PresenceAbsenceCreator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.primary_analysis.creator import (
+    PrimaryAnalysisCreator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.relative_standard_curve.creator import (
+    RelativeStandardCurveCreator,
+)
+from allotropy.parsers.appbio_quantstudio_designandanalysis.structure.standard_curve.creator import (
+    StandardCurveCreator,
 )
 
 
 def create_data(contents: DesignQuantstudioContents) -> Data:
-    experiment_type = Data.get_experiment_type(contents)
-    header = Header.create(contents.header)
-    wells = WellList.create(contents, header, experiment_type)
-    well_items = wells.get_well_items()
+    possible_creators = [
+        creator
+        for creator in [
+            StandardCurveCreator,
+            RelativeStandardCurveCreator,
+            GenotypingCreator,
+            MeltCurveCreator,
+            PresenceAbsenceCreator,
+            PrimaryAnalysisCreator,
+        ]
+        if creator.check_type(contents)
+    ]
 
-    view_st_data = SampleView(sub_view=TargetView()).apply(well_items)
-    r_sample = None
-    r_target = None
+    if len(possible_creators) == 1:
+        return possible_creators[0].create(contents)
 
-    if experiment_type == ExperimentType.standard_curve_qPCR_experiment:
-        calculated_documents = list(
-            iter_standard_curve_calc_docs(
-                view_st_data,
-                view_tr_data=TargetRoleView().apply(well_items),
-            )
-        )
-    elif experiment_type == ExperimentType.relative_standard_curve_qPCR_experiment:
-        r_sample = Result.get_reference_sample(contents)
-        r_target = Result.get_reference_target(contents)
-        calculated_documents = list(
-            iter_relative_standard_curve_calc_docs(
-                view_st_data,
-                r_sample,
-                r_target,
-            )
-        )
-    elif experiment_type == ExperimentType.presence_absence_qPCR_experiment:
-        calculated_documents = list(
-            iter_presence_absence_calc_docs(
-                view_st_data,
-            )
-        )
-    else:
-        calculated_documents = []
-
-    return Data(
-        header,
-        wells,
-        experiment_type,
-        calculated_documents,
-        reference_target=r_target,
-        reference_sample=r_sample,
-    )
+    msg = "Unable to infer experiment type from sheets in the input"
+    raise AllotropeConversionError(msg)

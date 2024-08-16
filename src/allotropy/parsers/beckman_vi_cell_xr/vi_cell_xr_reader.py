@@ -93,11 +93,7 @@ class ViCellXRReader:
         file_data = self._read_excel(skiprows=skiprows, names=header)
 
         # rename the columns to match the existing parser that was based on xls(x) files
-        # TODO: use replace function instead here for rename
-        set_columns(
-            file_data,
-            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.columns],
-        )
+        file_data = file_data.rename(columns=HEADINGS_TO_PARSER_HEADINGS)
 
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
@@ -155,9 +151,7 @@ class ViCellXRTXTReader:
             data_frame.astype(str).T, "Failed to parse input file."
         )
         file_data = file_data.str.strip().replace("", None)
-        file_data.index = pd.Index(
-            [HEADINGS_TO_PARSER_HEADINGS.get(name, name) for name in file_data.index]
-        )
+        file_data = file_data.rename(index=HEADINGS_TO_PARSER_HEADINGS)
         # Do the datetime conversion and remove all rows that fail to pass as datetime
         # This fixes an issue where some files have a hidden invalid first row
         file_data[DATE_HEADER] = pd.to_datetime(

@@ -38,9 +38,7 @@ class DesignQuantstudioContents:
             str(name): df.replace(np.nan, None) for name, df in raw_contents.items()
         }
         self.header = self._get_header(contents)
-        self.data = self._get_data(
-            contents,
-        )
+        self.data = self._get_data(contents)
 
     def _get_header_size(self, sheet: pd.DataFrame) -> int:
         # Find the first blank line
