@@ -21,10 +21,8 @@ def _get_backup_path(path: PathType) -> Path:
 
 
 def get_original_path(path: PathType) -> Path:
-    original_path = str(path)
-    if original_path.startswith("."):
-        original_path = original_path[1:]
-    return Path(original_path.replace(".bak", ""))
+    _path = Path(path)
+    return Path(_path.parent, _path.name[1:].replace(".bak", ""))
 
 
 def is_file_changed(path: PathType) -> bool:

@@ -3,12 +3,15 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 import io
-import json
 from pathlib import Path
 import re
 from typing import Any
 
-from allotropy.allotrope.schema_parser.path_util import get_manifest_from_schema_path
+from allotropy.allotrope.schema_parser.backup_manager import get_original_path
+from allotropy.allotrope.schema_parser.path_util import (
+    get_manifest_from_model_path,
+    get_schema_path_from_model_path,
+)
 from allotropy.allotrope.schema_parser.schema_cleaner import _should_filter_key
 from allotropy.allotrope.schema_parser.schema_model import (
     get_all_schema_components,
@@ -45,9 +48,9 @@ def _schemas_equal(schema1: dict[str, Any], schema2: dict[str, Any]) -> bool:
     )
 
 
-def get_shared_schema_info(schema_path: Path) -> tuple[set[str], dict[str, set[str]]]:
-    with open(schema_path) as f:
-        schema = json.load(f)
+def get_shared_schema_info(schema: dict[str, Any]) -> tuple[set[str], dict[str, set[str]]]:
+    #with open(schema_path) as f:
+    #    schema = json.load(f)
 
     classes_to_skip = set()
     imports_to_add = defaultdict(set)
@@ -538,10 +541,12 @@ class ModelClassEditor:
         manifest: str,
         classes_to_skip: set[str],
         imports_to_add: dict[str, set[str]],
+        schema_name: str
     ):
         self.manifest = manifest
         self.classes_to_skip = classes_to_skip
         self.imports_to_add = imports_to_add
+        self.schema_name = schema_name
 
     def _handle_class_lines(
         self, class_name: str, classes: dict[str, ClassLines]
@@ -644,8 +649,10 @@ class ModelClassEditor:
         # Scan past comments and import lines.
         while True:
             line = f.readline()
+            if line.startswith("#   filename:"):
+                new_contents.append(f"#   filename:  {self.schema_name}\n")
             # TODO: this needs work to be more robust.
-            if (
+            elif (
                 line == "\n"
                 or line.startswith("#")
                 or line.startswith("from")
@@ -725,11 +732,11 @@ class ModelClassEditor:
         return new
 
 
-def modify_file(model_path: Path, schema_path: Path) -> None:
-    classes_to_skip, imports_to_add = get_shared_schema_info(schema_path)
-    manifest = get_manifest_from_schema_path(schema_path)
-
-    editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add)
+def modify_file(model_path: Path, schema: dict[str, Any]) -> None:
+    classes_to_skip, imports_to_add = get_shared_schema_info(schema)
+    manifest = get_manifest_from_model_path(get_original_path(model_path))
+    schema_name = get_schema_path_from_model_path(model_path).name
+    editor = ModelClassEditor(manifest, classes_to_skip, imports_to_add, schema_name)
 
     with open(model_path) as f:
         contents = f.read()

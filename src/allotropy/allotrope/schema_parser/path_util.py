@@ -29,13 +29,22 @@ GENERATED_SHARED_PATHS: list[Path] = [
 
 def get_rel_schema_path(schema_path: Path) -> Path:
     try:
-        # File may be a backup file if running generation script, replace here with original
-        return get_original_path(schema_path).relative_to(SCHEMA_DIR_PATH)
+        return schema_path.relative_to(SCHEMA_DIR_PATH)
     except ValueError as err:
         if not Path(SCHEMA_DIR_PATH, schema_path).exists():
             msg = f"Invalid schema path: {schema_path}"
             raise ValueError(msg) from err
         return schema_path
+
+
+def get_rel_model_path(model_path: Path) -> Path:
+    try:
+        return model_path.relative_to(MODEL_DIR_PATH)
+    except ValueError as err:
+        if not Path(MODEL_DIR_PATH, model_path).exists():
+            msg = f"Invalid model path: {model_path}"
+            raise ValueError(msg) from err
+        return model_path
 
 
 def get_full_schema_path(schema_path: Path) -> Path:
@@ -54,6 +63,10 @@ def get_manifest_from_schema_path(schema_path: Path) -> str:
     return f"http://purl.allotrope.org/manifests/{str(PurePosixPath(rel_schema_path))[4:-12]}.manifest"
 
 
+def get_manifest_from_model_path(model_path: Path) -> str:
+    return get_manifest_from_schema_path(get_schema_path_from_model_path(model_path))
+
+
 def get_schema_path_from_manifest(manifest: str) -> Path:
     match = re.match(r"http://purl.allotrope.org/manifests/(.*)\.manifest", manifest)
     if not match:
@@ -70,9 +83,10 @@ def get_schema_path_from_reference(reference: str) -> Path:
     return Path(f"{ref_match.groups()[0]}.json")
 
 
-def get_model_file_from_schema_path(schema_path: Path) -> Path:
+def get_model_path_from_schema_path(schema_path: Path) -> Path:
     rel_schema_path = PureWindowsPath(get_rel_schema_path(schema_path))
     schema_file = rel_schema_path.name
+    # TODO: remove lower?
     model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
     model_path = Path(
         *[
@@ -80,6 +94,19 @@ def get_model_file_from_schema_path(schema_path: Path) -> Path:
             for part in rel_schema_path.parent.parts
         ]
     )
+    return Path(model_path, model_file)
+
+
+def get_schema_path_from_model_path(model_path: Path) -> Path:
+    rel_model_path = PureWindowsPath(get_rel_model_path(model_path))
+    model_file = rel_model_path.name
+    model_file = model_file.replace(".py", ".schema.json").replace("_", "-")
+    model_path_parts = [
+        re.sub("^_([0-9]+)$", r"\1", part).replace("_", "-")
+        for part in rel_model_path.parent.parts
+    ]
+    model_path_parts[2] = model_path_parts[2].upper()
+    model_path = Path(*model_path_parts)
     return Path(model_path, model_file)
 
 
@@ -92,7 +119,7 @@ def get_import_path_from_path(model_path: Path) -> str:
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = get_model_file_from_schema_path(Path(schema_path))
+    model_file = get_model_path_from_schema_path(Path(schema_path))
     import_path = get_import_path_from_path(model_file)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model

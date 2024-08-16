@@ -1,6 +1,9 @@
+import json
 from pathlib import Path
 import re
 import subprocess
+import tempfile
+from typing import Any
 import warnings  # noqa: S404, RUF100
 
 from autoflake import fix_file  # type: ignore[import-untyped]
@@ -20,13 +23,14 @@ from allotropy.allotrope.schema_parser.backup_manager import (
 from allotropy.allotrope.schema_parser.model_class_editor import modify_file
 from allotropy.allotrope.schema_parser.path_util import (
     GENERATED_SHARED_PATHS,
-    get_model_file_from_schema_path,
+    get_model_path_from_schema_path,
     get_rel_schema_path,
     MODEL_DIR_PATH,
     SCHEMA_DIR_PATH,
 )
 from allotropy.allotrope.schema_parser.schema_cleaner import SchemaCleaner
 from allotropy.allotrope.schema_parser.update_units import update_unit_files
+from allotropy.allotrope.schemas import get_schema
 
 
 def lint_file(model_path: Path) -> None:
@@ -69,7 +73,7 @@ def lint_file(model_path: Path) -> None:
     )
 
 
-def _generate_schema(model_path: Path, schema_path: Path) -> None:
+def _generate_schema(model_path: Path, schema: dict[str, Any]) -> None:
     with warnings.catch_warnings():
         # We expect duplicated field names for variations with an anyOf schema.
         warnings.filterwarnings(
@@ -86,18 +90,23 @@ def _generate_schema(model_path: Path, schema_path: Path) -> None:
             ),
         )
         # Generate models
-        generate(
-            input_=schema_path,
-            output=model_path,
-            output_model_type=DataModelType.DataclassesDataclass,
-            input_file_type=InputFileType.JsonSchema,
-            # Specify base_class as empty when using dataclass
-            base_class="",
-            target_python_version=PythonVersion.PY_310,
-            use_union_operator=True,
-        )
+        with tempfile.NamedTemporaryFile("w") as fp:
+            json.dump(schema, fp)
+            fp.flush()
+
+            generate(
+                input_=Path(fp.name),
+                output=model_path,
+                output_model_type=DataModelType.DataclassesDataclass,
+                input_file_type=InputFileType.JsonSchema,
+                # Specify base_class as empty when using dataclass
+                base_class="",
+                target_python_version=PythonVersion.PY_310,
+                use_union_operator=True,
+            )
+
         # Import classes from shared files, remove unused classes, format.
-        modify_file(model_path, schema_path)
+        modify_file(model_path, schema)
         lint_file(model_path)
 
 
@@ -148,16 +157,14 @@ def generate_schemas(
         print(  # noqa: T201
             f"Generating models for schema: {get_rel_schema_path(schema_path)}..."
         )
-        model_path = Path(MODEL_DIR_PATH, get_model_file_from_schema_path(schema_path))
+        model_path = Path(MODEL_DIR_PATH, get_model_path_from_schema_path(schema_path))
         make_model_directories(model_path.parent)
 
-        with backup(model_path, restore=dry_run) as working_model_path, backup(
-            schema_path, restore=True
-        ) as working_schema_path:
+        with backup(model_path, restore=dry_run) as model_path:
             schema_cleaner = SchemaCleaner()
-            schema_cleaner.clean_file(str(working_schema_path))
+            schema = schema_cleaner.clean_file(get_schema(schema_path))
             unit_to_iri |= schema_cleaner.get_referenced_units()
-            _generate_schema(working_model_path, working_schema_path)
+            _generate_schema(model_path, schema)
 
             if is_file_changed(model_path):
                 models_changed.append(model_path.stem)

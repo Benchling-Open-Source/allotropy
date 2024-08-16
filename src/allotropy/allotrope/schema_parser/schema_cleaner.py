@@ -633,8 +633,8 @@ class SchemaCleaner:
 
         return self._clean_schema(cleaned)
 
-    def clean_file(self, schema_path: str) -> None:
-        schema = self.clean(get_schema(Path(schema_path)))
+    def clean_file(self, schema: dict[str, Any]) -> None:
+        return self.clean(schema)
 
-        with open(schema_path, "w") as f:
-            json.dump(schema, f, indent=2)
+        # with open(schema_path, "w") as f:
+        #     json.dump(schema, f, indent=2)
