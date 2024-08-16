@@ -117,7 +117,7 @@ class GroupSampleData:
             column
             for column in data.columns
             if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
-            or top_row.get(str, column) in ("Mask", "Range?")
+            or top_row.get(str, column) in ("Masked", "Range?")
         ]
 
         normal_columns = []
@@ -620,8 +620,7 @@ class PlateBlock(ABC, Block):
 
     @staticmethod
     @abstractmethod
-    def get_plate_block_type() -> str:
-        ...
+    def get_plate_block_type() -> str: ...
 
     @classmethod
     def parse_header(cls, header: pd.Series[str]) -> PlateHeader:
