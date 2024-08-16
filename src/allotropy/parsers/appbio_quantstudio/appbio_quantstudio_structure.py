@@ -60,9 +60,7 @@ class Header:
         lines = [line.replace("*", "", 1) for line in reader.pop_until(r"^\[.+\]")]
         csv_stream = StringIO("\n".join(lines))
         raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
-        series = pd.Series(raw_data["values"].values, index=raw_data["index"]).astype(
-            str
-        )
+        series = pd.Series(raw_data["values"].values, index=raw_data["index"]).astype(str)
         series.index = series.index.str.strip()
         series = series.str.strip().replace("NA", None)
 
@@ -379,7 +377,7 @@ class Result:
 
         metadata_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(metadata_lines))
-        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
+        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"]).astype(str)
         metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
         metadata.index = metadata.index.str.strip()
 
