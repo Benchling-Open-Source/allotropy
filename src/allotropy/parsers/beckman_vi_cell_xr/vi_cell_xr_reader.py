@@ -22,7 +22,6 @@ from allotropy.parsers.utils.pandas import (
     read_csv,
     read_excel,
     SeriesData,
-    set_columns,
 )
 from allotropy.parsers.utils.values import assert_not_none
 
