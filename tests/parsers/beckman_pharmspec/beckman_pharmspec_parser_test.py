@@ -13,6 +13,7 @@ from allotropy.allotrope.models.adm.light_obscuration.benchling._2023._12.light_
 )
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_parser import PharmSpecParser
+from allotropy.parsers.beckman_pharmspec.beckman_pharmspec_structure import Header
 from allotropy.parsers.utils.timestamp_parser import TimestampParser
 
 TESTDATA = f"{Path(__file__).parent}/testdata"
@@ -140,5 +141,4 @@ def test_get_model() -> None:
     ],
 )
 def test_get_software_version_report_string(title: str, version: str) -> None:
-    parser = PharmSpecParser(TimestampParser())
-    assert parser._get_software_version_report_string(title) == version
+    assert Header._get_software_version_report_string(title) == version

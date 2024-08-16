@@ -8,12 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added ThermoFisher Genesys 30 adapter 
+- Added ThermoFisher Genesys 30 adapter
 - Added requirement doc for ThermoFisher Genesys 30 adapter
 
+- Added support for xlsx exports in Unchained Lunatic parser
 ### Fixed
 
 ### Changed
+- BMG MARS moved to recommended state
+- Updated Roche NovaBio Flex2 adapter to work with the Solution Analyzer ASM schema
 - Updated the spectrophotometry mapper script to accommodate absorbance spectrum data cubes
 
 ### Deprecated

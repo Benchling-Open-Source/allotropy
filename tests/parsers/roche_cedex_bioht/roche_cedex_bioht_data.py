@@ -1,4 +1,5 @@
-# mypy: disallow_any_generics = False
+from __future__ import annotations
+
 from io import StringIO
 
 import pandas as pd
@@ -21,18 +22,16 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMilliAbsorbanceUnit,
     TQuantityValueMillimolePerLiter,
 )
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+    Data,
+    Measurement,
+    MeasurementGroup,
+    Metadata,
+)
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.roche_cedex_bioht.constants import SOLUTION_ANALYZER
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_reader import (
-    RocheCedexBiohtReader,
-)
-from allotropy.parsers.roche_cedex_bioht.roche_cedex_bioht_structure import (
-    Data,
-    Measurement,
-    Sample,
-    Title,
-)
 
 
 def get_data_stream() -> StringIO:
@@ -101,11 +100,7 @@ def get_data_stream() -> StringIO:
     return StringIO("\n".join([title_text, body_text]))
 
 
-def get_reader() -> RocheCedexBiohtReader:
-    return RocheCedexBiohtReader(get_data_stream())
-
-
-def get_reader_title() -> pd.Series:
+def get_reader_title() -> pd.Series[str]:
     return pd.Series(
         {
             "row type": 0,
@@ -191,29 +186,45 @@ def get_reader_samples() -> pd.DataFrame:
 
 def get_data() -> Data:
     return Data(
-        title=Title(
-            data_processing_time="2021-06-01 13:04:06",
-            analyst="ADMIN",
+        metadata=Metadata(
+            file_name="dummy.txt",
+            device_type=SOLUTION_ANALYZER,
+            software_name="CEDEX BIO HT",
             model_number="CEDEX BIO HT",
-            device_serial_number="620103",
+            equipment_serial_number="620103",
             software_version="6.0.0.1905 (1905)",
+            device_identifier=NOT_APPLICABLE,
+            unc_path="",
         ),
-        samples=[
-            Sample(
-                name="PPDTEST1",
-                measurements={
-                    "2021-05-20 16:55:51": {
-                        "ammonia": Measurement(
-                            "ammonia", "2021-05-20 16:55:51", 1.846, "mmol/L"
-                        ),
-                        "glutamine": Measurement(
-                            "glutamine", "2021-05-20 16:56:51", 2.45, "mmol/L"
-                        ),
-                        "optical_density": Measurement(
-                            "optical_density", "2021-05-20 16:57:51", 0.17138, "OD"
-                        ),
-                    }
-                },
+        measurement_groups=[
+            MeasurementGroup(
+                analyst="ADMIN",
+                data_processing_time="2021-06-01 13:04:06",
+                measurements=[
+                    Measurement(
+                        identifier="dummy_id",
+                        measurement_time="2021-05-20 16:55:51",
+                        sample_identifier="PPDTEST1",
+                        absorbance=0.17138,
+                    ),
+                    Measurement(
+                        identifier="dummy_id",
+                        measurement_time="2021-05-20 16:55:51",
+                        sample_identifier="PPDTEST1",
+                        analytes=[
+                            Analyte(
+                                name="ammonia",
+                                value=1.846,
+                                unit="mmol/L",
+                            ),
+                            Analyte(
+                                name="glutamine",
+                                value=2.45,
+                                unit="mmol/L",
+                            ),
+                        ],
+                    ),
+                ],
             )
         ],
     )
@@ -228,7 +239,7 @@ def get_model() -> Model:
                     measurement_aggregate_document=MeasurementAggregateDocument(
                         measurement_document=[
                             MeasurementDocument(
-                                measurement_identifier="ROCHE_CEDEX_BIOHT_TEST_ID_0",
+                                measurement_identifier="dummy_id",
                                 measurement_time="2021-05-20T16:55:51+00:00",
                                 sample_document=SampleDocument(
                                     sample_identifier="PPDTEST1",
@@ -246,7 +257,7 @@ def get_model() -> Model:
                                 ),
                             ),
                             MeasurementDocument(
-                                measurement_identifier="ROCHE_CEDEX_BIOHT_TEST_ID_1",
+                                measurement_identifier="dummy_id",
                                 measurement_time="2021-05-20T16:55:51+00:00",
                                 sample_document=SampleDocument(
                                     sample_identifier="PPDTEST1",
@@ -278,7 +289,7 @@ def get_model() -> Model:
                                 ),
                             ),
                         ],
-                        data_processing_time="2021-06-01 13:04:06",
+                        data_processing_time="2021-06-01T13:04:06+00:00",
                     ),
                     analyst="ADMIN",
                 )
@@ -289,7 +300,7 @@ def get_model() -> Model:
                 device_identifier=NOT_APPLICABLE,
             ),
             data_system_document=DataSystemDocument(
-                file_name="file_name.txt",
+                file_name="dummy.txt",
                 UNC_path="",
                 software_name="CEDEX BIO HT",
                 software_version="6.0.0.1905 (1905)",
