@@ -379,7 +379,9 @@ class Result:
 
         metadata_lines = list(reader.pop_until_empty())
         csv_stream = StringIO("\n".join(metadata_lines))
-        raw_data = read_csv(csv_stream, header=None, sep="=", names=["index", "values"])
+        raw_data = read_csv(
+            csv_stream, header=None, sep="=", names=["index", "values"]
+        ).astype(str)
         metadata = pd.Series(raw_data["values"].values, index=raw_data["index"])
         metadata.index = metadata.index.str.strip()
 

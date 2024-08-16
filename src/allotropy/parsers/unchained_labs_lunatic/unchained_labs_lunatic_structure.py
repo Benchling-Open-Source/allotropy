@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from pathlib import PureWindowsPath
+
+import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
@@ -12,17 +15,26 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     MeasurementType,
     Metadata,
 )
-from allotropy.exceptions import AllotropeConversionError
+from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
     INCORRECT_WAVELENGTH_COLUMN_FORMAT_ERROR_MSG,
     NO_DATE_OR_TIME_ERROR_MSG,
+    NO_DEVICE_IDENTIFIER_ERROR_MSG,
     NO_MEASUREMENT_IN_PLATE_ERROR_MSG,
     NO_WAVELENGTH_COLUMN_ERROR_MSG,
     WAVELENGTH_COLUMNS_RE,
 )
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import (
+    assert_not_empty_df,
+    map_rows,
+    read_csv,
+    read_excel,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import assert_not_none
 
 
 def _create_measurement(
@@ -84,15 +96,16 @@ def _create_measurement_group(
     data: SeriesData,
     wavelength_columns: list[str],
     calculated_data: list[CalculatedDataItem],
+    timestamp: str | None,
 ) -> MeasurementGroup:
+    # Support timestamp from metadata section, but overide with columns in data if specified.
     date = data.get(str, "Date")
     time = data.get(str, "Time")
-
-    if not date or not time:
-        raise AllotropeConversionError(NO_DATE_OR_TIME_ERROR_MSG)
+    if date and time:
+        timestamp = f"{date} {time}"
 
     return MeasurementGroup(
-        _measurement_time=f"{date} {time}",
+        _measurement_time=assert_not_none(timestamp, msg=NO_DATE_OR_TIME_ERROR_MSG),
         analytical_method_identifier=data.get(str, "Application"),
         plate_well_count=96,
         measurements=[
@@ -102,18 +115,63 @@ def _create_measurement_group(
     )
 
 
-def _create_metadata(data: pd.DataFrame, file_name: str) -> Metadata:
+def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
+    device_identifier = data.get(str, "Instrument ID") or data.get(str, "Instrument")
     return Metadata(
         device_type="plate reader",
         model_number="Lunatic",
         product_manufacturer="Unchained Labs",
-        device_identifier=SeriesData(data.iloc[0])[str, "Instrument ID"],
+        device_identifier=assert_not_none(
+            device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
+        ),
         software_name="Lunatic and Stunner Analysis",
         file_name=file_name,
     )
 
 
-def create_data(data: pd.DataFrame, file_name: str) -> Data:
+def _parse_contents(
+    named_file_contents: NamedFileContents,
+) -> tuple[pd.DataFrame, SeriesData]:
+    extension = PureWindowsPath(named_file_contents.original_file_name).suffix
+    if extension == ".csv":
+        data = read_csv(named_file_contents.contents).replace(np.nan, None)
+        assert_not_empty_df(data, "Unable to parse data from empty dataset.")
+        # Use the first row in the data block for metadata, since it has all required columns.
+        metadata_data = SeriesData(data.iloc[0])
+    elif extension == ".xlsx":
+        data = read_excel(named_file_contents.contents)
+
+        # Parse the metadata section out and turn it into a series.
+        metadata = None
+        for idx, row in data.iterrows():
+            if row.iloc[0] == "Table":
+                index = int(str(idx))
+                metadata = data[:index].T
+                data.columns = pd.Index(data.iloc[index + 1]).str.replace("\n", " ")
+                data = data[index + 2 :]
+                assert_not_empty_df(data, "Unable to parse data from empty dataset.")
+                break
+
+        if metadata is None:
+            msg = "Unable to identify the end of metadata section, expecting a row with 'Table' at start."
+            raise AllotropeParsingError(msg)
+
+        if metadata.shape[0] < 2:  # noqa: PLR2004
+            msg = "Unable to parse data after metadata section, expecting at least one row in table."
+            raise AllotropeConversionError(msg)
+
+        metadata.columns = pd.Index(metadata.iloc[0])
+        metadata_data = SeriesData(metadata.iloc[1])
+    else:
+        msg = f"Unsupported file extension: '{extension}' expected one of 'csv' or 'xlsx'."
+        raise AllotropeConversionError(msg)
+
+    return data, metadata_data
+
+
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    data, metadata_data = _parse_contents(named_file_contents)
+
     wavelength_columns = list(filter(WAVELENGTH_COLUMNS_RE.match, data.columns))
     if not wavelength_columns:
         raise AllotropeConversionError(NO_WAVELENGTH_COLUMN_ERROR_MSG)
@@ -124,10 +182,14 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
     calculated_data: list[CalculatedDataItem] = []
 
     def make_group(data: SeriesData) -> MeasurementGroup:
-        return _create_measurement_group(data, wavelength_columns, calculated_data)
+        return _create_measurement_group(
+            data, wavelength_columns, calculated_data, metadata_data.get(str, "Date")
+        )
 
     return Data(
-        metadata=_create_metadata(data, file_name),
+        metadata=_create_metadata(
+            metadata_data, named_file_contents.original_file_name
+        ),
         measurement_groups=map_rows(data, make_group),
         calculated_data=calculated_data,
     )
