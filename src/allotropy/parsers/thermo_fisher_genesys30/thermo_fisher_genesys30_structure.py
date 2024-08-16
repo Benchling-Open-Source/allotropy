@@ -98,7 +98,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
                         type_=MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM,
                         identifier=random_uuid_str(),
                         sample_identifier=NOT_APPLICABLE,
-                        operating_minimum=try_float_or_none(metadata.get(str, "Lower")),
+                        operating_minimum=metadata.get(float, "Lower"),
                         operating_maximum=try_float_or_none(metadata.get(str, "Upper")),
                         data_cube=DataCube(
                             label="absorption spectrum",
