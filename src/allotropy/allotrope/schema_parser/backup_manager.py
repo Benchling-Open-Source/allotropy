@@ -2,7 +2,10 @@ from collections.abc import Iterator, Sequence
 from contextlib import contextmanager
 from itertools import zip_longest
 from pathlib import Path
+import re
 import shutil
+
+from allotropy.parsers.utils.uuids import random_uuid_str
 
 PathType = Path | str
 
@@ -17,12 +20,15 @@ def _files_equal(path1: PathType, path2: PathType) -> bool:
 
 def _get_backup_path(path: PathType) -> Path:
     _path = Path(path)
-    return Path(_path.parent, f".{_path.stem}.bak{_path.suffix}")
+    return Path(_path.parent, f".{_path.stem}.{random_uuid_str()}.bak{_path.suffix}")
 
 
 def get_original_path(path: PathType) -> Path:
     _path = Path(path)
-    return Path(_path.parent, _path.name[1:].replace(".bak", ""))
+    filename = path.stem
+    if filename.startswith("."):
+        filename = f"{Path(Path(filename[1:]).stem).stem}{_path.suffix}"
+    return Path(_path.parent, filename)
 
 
 def is_file_changed(path: PathType) -> bool:
@@ -60,16 +66,16 @@ def backup_paths(
     try:
         yield backup_paths
     except Exception:
-        for path in paths:
-            _get_backup_path(path).unlink(missing_ok=True)
+        for backup in backup_paths:
+            backup.unlink(missing_ok=True)
         raise
 
     if not restore:
-        for path in paths:
-            if is_file_changed(path):
-                shutil.copyfile(_get_backup_path(path), str(path))
-    for path in paths:
-        _get_backup_path(path).unlink(missing_ok=True)
+        for backup, original in zip(backup_paths, paths):
+            if is_file_changed(backup):
+                shutil.copyfile(backup, str(original))
+    for backup in backup_paths:
+        backup.unlink(missing_ok=True)
 
 
 @contextmanager
