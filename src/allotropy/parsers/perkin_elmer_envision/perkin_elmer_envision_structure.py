@@ -348,7 +348,7 @@ class BasicAssayInfo:
         data_frame = assert_not_none(
             reader.pop_csv_block_as_df(index_col=0),
             "Basic assay information",
-        ).T.dropna(how="all")
+        ).T
         data_frame.columns = data_frame.columns.str.replace(":", "").str.strip()
         data = df_to_series_data(data_frame)
         return BasicAssayInfo(data.get(str, "Protocol ID"), data.get(str, "Assay ID"))
@@ -363,8 +363,8 @@ class PlateType:
         reader.drop_until_inclusive("^Plate type")
         data_frame = assert_not_none(
             reader.pop_csv_block_as_df(index_col=0), "Plate type"
-        ).T.dropna(how="all")
-        data = df_to_series_data(data_frame)
+        )
+        data = df_to_series_data(data_frame.T)
         return PlateType(
             number_of_wells=data[float, "Number of the wells in the plate"]
         )
@@ -486,8 +486,8 @@ class Filter:
         data_frame = assert_not_none(
             reader.pop_csv_block_as_df(index_col=0),
             "Filter information",
-        ).T.dropna(how="all")
-        data = df_to_series_data(data_frame)
+        )
+        data = df_to_series_data(data_frame.T)
         name = str(data.series.index[0])
         description = data[str, "Description"]
 
@@ -536,15 +536,11 @@ class Labels:
     @staticmethod
     def create(reader: CsvReader) -> Labels:
         reader.drop_until_inclusive("^Labels")
-        data_frame = (
-            assert_not_none(
-                reader.pop_csv_block_as_df(index_col=0),
-                "Labels",
-            )
-            .T.replace(np.nan, None)
-            .dropna(how="all")
+        data_frame = assert_not_none(
+            reader.pop_csv_block_as_df(index_col=0),
+            "Labels",
         )
-        data = df_to_series_data(data_frame)
+        data = df_to_series_data(data_frame.T.replace(np.nan, None))
         filters = create_filters(reader)
         filter_position_map = {
             "Bottom": ScanPositionSettingPlateReader.bottom_scan_position__plate_reader_,

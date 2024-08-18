@@ -43,6 +43,7 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
 
 
 def df_to_series(df: pd.DataFrame, index: int | None = None) -> pd.Series[Any]:
+    df = df.dropna(how="all")
     n_rows, _ = df.shape
     if index is None and n_rows != 1:
         msg = "Unable to convert DataFrame to series: data has more than 1 row and no index was provided."

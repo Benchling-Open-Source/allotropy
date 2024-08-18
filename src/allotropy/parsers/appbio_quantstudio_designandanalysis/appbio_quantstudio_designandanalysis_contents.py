@@ -48,8 +48,7 @@ class DesignQuantstudioContents:
             msg="Unable to find 'Results' sheet.",
         )
         df, _ = split_header_and_data(sheet, lambda row: row[0] is None)
-        df = parse_header_row(df.T).dropna(how="all")
-        return df_to_series_data(df, index=0)
+        return df_to_series_data(parse_header_row(df.T))
 
     def _get_data(self, contents: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
         data_structure = {}

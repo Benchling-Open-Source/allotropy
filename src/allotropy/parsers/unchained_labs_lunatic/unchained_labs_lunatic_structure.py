@@ -15,7 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     MeasurementType,
     Metadata,
 )
-from allotropy.exceptions import AllotropeConversionError, AllotropeParsingError
+from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.unchained_labs_lunatic.constants import (
     CALCULATED_DATA_LOOKUP,
@@ -28,10 +28,13 @@ from allotropy.parsers.unchained_labs_lunatic.constants import (
 )
 from allotropy.parsers.utils.pandas import (
     assert_not_empty_df,
+    df_to_series_data,
     map_rows,
+    parse_header_row,
     read_csv,
     read_excel,
     SeriesData,
+    split_header_and_data,
 )
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
@@ -137,36 +140,18 @@ def _parse_contents(
         data = read_csv(named_file_contents.contents).replace(np.nan, None)
         assert_not_empty_df(data, "Unable to parse data from empty dataset.")
         # Use the first row in the data block for metadata, since it has all required columns.
-        metadata_data = SeriesData(data.iloc[0])
+        metadata = df_to_series_data(data, index=0)
     elif extension == ".xlsx":
         data = read_excel(named_file_contents.contents)
-
-        # Parse the metadata section out and turn it into a series.
-        metadata = None
-        for idx, row in data.iterrows():
-            if row.iloc[0] == "Table":
-                index = int(str(idx))
-                metadata = data[:index].T
-                data.columns = pd.Index(data.iloc[index + 1]).str.replace("\n", " ")
-                data = data[index + 2 :]
-                assert_not_empty_df(data, "Unable to parse data from empty dataset.")
-                break
-
-        if metadata is None:
-            msg = "Unable to identify the end of metadata section, expecting a row with 'Table' at start."
-            raise AllotropeParsingError(msg)
-
-        if metadata.shape[0] < 2:  # noqa: PLR2004
-            msg = "Unable to parse data after metadata section, expecting at least one row in table."
-            raise AllotropeConversionError(msg)
-
-        metadata.columns = pd.Index(metadata.iloc[0])
-        metadata_data = SeriesData(metadata.iloc[1])
+        header, data = split_header_and_data(data, lambda row: row.iloc[0] == "Table")
+        metadata = df_to_series_data(parse_header_row(header.T))
+        data = parse_header_row(data)
+        data.columns = data.columns.str.replace("\n", " ")
     else:
         msg = f"Unsupported file extension: '{extension}' expected one of 'csv' or 'xlsx'."
         raise AllotropeConversionError(msg)
 
-    return data, metadata_data
+    return data, metadata
 
 
 def create_data(named_file_contents: NamedFileContents) -> Data:
