@@ -25,6 +25,7 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropyParserError,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.constants import (
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
@@ -620,9 +621,10 @@ def _create_measurement(
     )
 
 
-def create_data(reader: SectionLinesReader, file_name: str) -> Data:
-    plates = list(reader.iter_sections("^Software Version"))
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    reader = SectionLinesReader.create(named_file_contents)
 
+    plates = list(reader.iter_sections("^Software Version"))
     if not plates:
         msg = "No plate data found in file."
         raise AllotropeConversionError(msg)
@@ -630,7 +632,7 @@ def create_data(reader: SectionLinesReader, file_name: str) -> Data:
     if len(plates) > 1:
         raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
 
-    header_data = HeaderData.create(plates[0], file_name)
+    header_data = HeaderData.create(plates[0], named_file_contents.original_file_name)
     read_data = ReadData.create(plates[0])
 
     section_lines = {}

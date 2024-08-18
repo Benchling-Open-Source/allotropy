@@ -234,7 +234,7 @@ class ThermoFisherQubitFlexParser(VendorParser):
                     file_name=filename,
                     software_name=constants.SOFTWARE_NAME,
                     software_version=software_version,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(

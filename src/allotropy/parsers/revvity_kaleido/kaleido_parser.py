@@ -240,13 +240,8 @@ class ImagingMeasurementParser(MeasurementParser):
 
 
 class KaleidoParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "Revvity Kaleido"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "Revvity Kaleido"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
@@ -281,7 +276,7 @@ class KaleidoParser(VendorParser):
             file_name=file_name,
             software_name="Kaleido",
             software_version=version,
-            ASM_converter_name=self.get_asm_converter_name(),
+            ASM_converter_name=self.asm_converter_name,
             ASM_converter_version=ASM_CONVERTER_VERSION,
         )
 

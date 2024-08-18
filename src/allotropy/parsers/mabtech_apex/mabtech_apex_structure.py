@@ -12,6 +12,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
     ProcessedData,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
@@ -82,10 +83,12 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_data(contents: MabtechApexContents, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    contents = MabtechApexContents.create(named_file_contents)
+
     # if Read Date is not present in file, return None, no measurement for given Well
     plate_data = contents.data.dropna(subset="Read Date")
     return Data(
-        _create_metadata(contents, file_name),
+        _create_metadata(contents, named_file_contents.original_file_name),
         map_rows(plate_data, _create_measurement_group),
     )

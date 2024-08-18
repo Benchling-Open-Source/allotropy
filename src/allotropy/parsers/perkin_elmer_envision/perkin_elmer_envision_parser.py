@@ -79,13 +79,8 @@ DeviceControlAggregateDocument = (
 
 
 class PerkinElmerEnvisionParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "PerkinElmer Envision"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "PerkinElmer Envision"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         lines = read_to_lines(named_file_contents)
@@ -103,7 +98,7 @@ class PerkinElmerEnvisionParser(VendorParser):
                     file_name=filename,
                     software_name=data.software.software_name,
                     software_version=data.software.software_version,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 device_system_document=DeviceSystemDocument(

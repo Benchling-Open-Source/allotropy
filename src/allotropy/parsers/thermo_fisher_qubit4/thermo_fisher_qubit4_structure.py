@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import pandas as pd
-
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     ContainerType,
 )
@@ -16,8 +14,12 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     Metadata,
 )
 from allotropy.exceptions import get_key_or_error
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_qubit4 import constants
+from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_reader import (
+    ThermoFisherQubit4Reader,
+)
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -75,10 +77,10 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_data(data_frame: pd.DataFrame, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
     return Data(
         metadata=Metadata(
-            file_name=file_name,
+            file_name=named_file_contents.original_file_name,
             device_identifier=NOT_APPLICABLE,
             model_number=constants.MODEL_NUMBER,
             software_name=constants.QUBIT_SOFTWARE,
@@ -87,5 +89,7 @@ def create_data(data_frame: pd.DataFrame, file_name: str) -> Data:
             device_type=constants.DEVICE_TYPE,
             container_type=ContainerType.tube,
         ),
-        measurement_groups=map_rows(data_frame, create_measurement_group),
+        measurement_groups=map_rows(
+            ThermoFisherQubit4Reader.read(named_file_contents), create_measurement_group
+        ),
     )

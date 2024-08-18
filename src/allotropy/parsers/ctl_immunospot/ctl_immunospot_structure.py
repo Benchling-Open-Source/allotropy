@@ -15,6 +15,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -198,7 +199,8 @@ def _create_metadata(reader: LinesReader) -> Metadata:
     )
 
 
-def create_data(reader: LinesReader) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    reader = LinesReader.create(named_file_contents)
     metadata = _create_metadata(reader)
 
     reader.drop_empty()

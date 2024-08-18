@@ -21,6 +21,7 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     get_identifiers,
     HeaderData,
@@ -374,7 +375,9 @@ def _create_measurement(
     )
 
 
-def create_data(reader: SectionLinesReader, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    reader = SectionLinesReader.create(named_file_contents)
+
     plates = list(reader.iter_sections("^Software Version"))
 
     if not plates:
@@ -383,7 +386,7 @@ def create_data(reader: SectionLinesReader, file_name: str) -> Data:
     if len(plates) > 1:
         raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
 
-    header_data = HeaderData.create(plates[0], file_name)
+    header_data = HeaderData.create(plates[0], named_file_contents.original_file_name)
     read_data = ReadData.create(plates[0])
 
     section_lines = {}

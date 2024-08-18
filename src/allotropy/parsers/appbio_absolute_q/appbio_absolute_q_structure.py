@@ -16,6 +16,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import 
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
     BRAND_NAME,
@@ -26,7 +27,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import map_rows, read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -167,7 +168,8 @@ class Well:
         ]
 
 
-def create_data(data: pd.DataFrame, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    data = read_csv(named_file_contents.contents)
     wells = Well.create_wells(data)
     groups = Group.create_rows(data)
 
@@ -225,7 +227,7 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
             container_type=ContainerType.well_plate,
             software_name=SOFTWARE_NAME,
             product_manufacturer=PRODUCT_MANUFACTURER,
-            file_name=file_name,
+            file_name=named_file_contents.original_file_name,
         ),
         measurement_groups,
         calculated_data=calculated_data_documents,

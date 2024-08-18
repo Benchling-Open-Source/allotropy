@@ -64,6 +64,10 @@ class LinesReader:
     lines: list[str]
     current_line: int
 
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> LinesReader:
+        return LinesReader(read_to_lines(named_file_contents))
+
     def __init__(self, lines: list[str]) -> None:
         self.lines = lines
         self.current_line = 0

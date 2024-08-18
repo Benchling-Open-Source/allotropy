@@ -240,7 +240,7 @@ class RocheCedexHiResParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=filename,
                     software_name=constants.CEDEX_SOFTWARE,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
                 cell_counting_document=self._get_cell_counting_document(data),

@@ -36,13 +36,8 @@ PRODUCT_MANUFACTURER = "Nova Biomedical"
 
 
 class NovaBioFlexParser(VendorParser):
-    @property
-    def display_name(self) -> str:
-        return "NovaBio Flex2"
-
-    @property
-    def release_state(self) -> ReleaseState:
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = "NovaBio Flex2"
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         return self._get_model(
@@ -62,7 +57,7 @@ class NovaBioFlexParser(VendorParser):
                 data_system_document=DataSystemDocument(
                     file_name=file_name,
                     software_name=SOFTWARE_NAME,
-                    ASM_converter_name=self.get_asm_converter_name(),
+                    ASM_converter_name=self.asm_converter_name,
                     ASM_converter_version=ASM_CONVERTER_VERSION,
                 ),
             ),

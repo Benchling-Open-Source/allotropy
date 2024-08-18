@@ -9,12 +9,15 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DEFAULT_ANALYST,
     MODEL_NUMBER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
+from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import (
+    create_reader_data,
+)
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
@@ -50,7 +53,8 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-def create_data(reader_data: ViCellData, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    reader_data = create_reader_data(named_file_contents)
     if not reader_data.data:
         msg = "Cannot parse ASM from empty file."
         raise AllotropeConversionError(msg)
@@ -62,7 +66,7 @@ def create_data(reader_data: ViCellData, file_name: str) -> Data:
         equipment_serial_number=reader_data.serial_number,
         software_name=SOFTWARE_NAME,
         software_version=reader_data.version.value,
-        file_name=file_name,
+        file_name=named_file_contents.original_file_name,
     )
 
     return Data(metadata, [_create_measurement_group(row) for row in reader_data.data])

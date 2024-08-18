@@ -216,11 +216,9 @@ def test_data_builder(
     test_filepath: str, create_expected_data_func: Callable[[str], Data]
 ) -> None:
     with open(test_filepath, "rb") as raw_contents:
-        lines = _read_to_lines(raw_contents)
-    reader = LinesReader(lines)
-    assert rm_uuid(create_data(reader, test_filepath)) == rm_uuid(
-        create_expected_data_func(test_filepath)
-    )
+        assert rm_uuid(
+            create_data(NamedFileContents(raw_contents, test_filepath))
+        ) == rm_uuid(create_expected_data_func(test_filepath))
 
 
 def get_raw_header_contents(

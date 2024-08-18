@@ -16,7 +16,11 @@ from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._1
     ProcessedData,
     ProcessedDataFeature,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
+from allotropy.parsers.thermo_fisher_nanodrop_eight.nanodrop_eight_reader import (
+    NanoDropEightReader,
+)
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -138,7 +142,8 @@ class SpectroscopyRow:
         return map_rows(data, SpectroscopyRow.create)
 
 
-def create_data(data: pd.DataFrame, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    data = NanoDropEightReader.read(named_file_contents)
     rows = SpectroscopyRow.create_rows(data)
 
     return Data(
@@ -146,7 +151,7 @@ def create_data(data: pd.DataFrame, file_name: str) -> Data:
             device_identifier="Nanodrop",
             device_type="absorbance detector",
             model_number="Nanodrop Eight",
-            file_name=file_name,
+            file_name=named_file_contents.original_file_name,
         ),
         measurement_groups=[
             MeasurementGroup(

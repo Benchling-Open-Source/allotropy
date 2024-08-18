@@ -17,6 +17,7 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
     Metadata,
     ProcessedData,
 )
+from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_calculated_documents import (
     iter_calculated_data_documents,
 )
@@ -262,7 +263,9 @@ def _create_data(
     )
 
 
-def create_data(reader: LinesReader, file_name: str) -> Data:
+def create_data(named_file_contents: NamedFileContents) -> Data:
+    reader = LinesReader.create(named_file_contents)
+
     # Data sections must be read in order from the file.
     header = Header.create(reader)
     wells = Well.create(reader, header.experiment_type)
@@ -281,7 +284,7 @@ def create_data(reader: LinesReader, file_name: str) -> Data:
     )
 
     return _create_data(
-        file_name,
+        named_file_contents.original_file_name,
         header,
         wells,
         amp_data,
