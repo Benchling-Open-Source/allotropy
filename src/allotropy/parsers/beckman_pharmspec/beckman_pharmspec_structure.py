@@ -157,7 +157,7 @@ def _extract_data(df: pd.DataFrame) -> tuple[pd.DataFrame, SeriesData]:
     header_data.index = pd.Index(header_columns)
     header = SeriesData(header_data)
 
-    data = df.loc[start:end].dropna(how="all")
+    data = df.loc[start:end]
     data = parse_header_row(data)
     data["Run No."] = data["Run No."].ffill()
     data = data.dropna(subset="Particle Size(µm)")

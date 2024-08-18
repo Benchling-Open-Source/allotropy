@@ -56,6 +56,7 @@ def df_to_series(df: pd.DataFrame, index: int | None = None) -> pd.Series[Any]:
 
 
 def df_to_series_data(df: pd.DataFrame, index: int | None = None) -> SeriesData:
+    df.columns = df.columns.astype(str).str.strip()
     return SeriesData(df_to_series(df, index))
 
 
