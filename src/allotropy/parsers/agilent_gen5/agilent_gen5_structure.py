@@ -91,7 +91,7 @@ class HeaderData:
             keep_default_na=False,
             sep="\t",
         ).T
-        data = df_to_series_data(df, "Failed to parser header data")
+        data = df_to_series_data(df)
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
         date = data.get(str, "Date")

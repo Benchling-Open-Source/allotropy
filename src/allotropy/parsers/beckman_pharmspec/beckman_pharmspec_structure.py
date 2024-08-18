@@ -22,7 +22,12 @@ from allotropy.parsers.beckman_pharmspec.constants import (
     UNIT_LOOKUP,
     VALID_CALCS,
 )
-from allotropy.parsers.utils.pandas import map_rows, read_excel, SeriesData
+from allotropy.parsers.utils.pandas import (
+    map_rows,
+    parse_header_row,
+    read_excel,
+    SeriesData,
+)
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -152,13 +157,10 @@ def _extract_data(df: pd.DataFrame) -> tuple[pd.DataFrame, SeriesData]:
     header_data.index = pd.Index(header_columns)
     header = SeriesData(header_data)
 
-    data = df.loc[start:end, :]
-    data = data.dropna(how="all").dropna(how="all", axis=1)
-    data[0] = data[0].ffill()
-    data = data.dropna(subset=1).reset_index(drop=True)
-    data.columns = pd.Index([str(x).strip() for x in data.loc[0]])
-    data = data.loc[1:, :]
-
+    data = df.loc[start:end].dropna(how="all")
+    data = parse_header_row(data)
+    data["Run No."] = data["Run No."].ffill()
+    data = data.dropna(subset="Particle Size(µm)")
     return data, header
 
 

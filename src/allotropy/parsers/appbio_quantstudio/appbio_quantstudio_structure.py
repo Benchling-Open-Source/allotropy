@@ -404,9 +404,7 @@ class Result:
                 target_dna_description: result
                 for target_id, target_data in well_data.groupby(target_key)
                 for target_dna_description, result in Result.create_result(
-                    df_to_series_data(
-                        target_data, msg="Unable to find parser result data"
-                    ),
+                    df_to_series_data(target_data),
                     experiment_type,
                     str(target_id),
                 ).items()

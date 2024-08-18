@@ -14,7 +14,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import (
 from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropeParsingError,
-    AllotropyParserError,
 )
 from allotropy.parsers.utils.iterables import get_first_not_none
 from allotropy.parsers.utils.values import (
@@ -43,19 +42,20 @@ def rm_df_columns(data: pd.DataFrame, pattern: str) -> pd.DataFrame:
     )
 
 
-def df_to_series(
-    df: pd.DataFrame, msg: str, index: int | None = None
-) -> pd.Series[Any]:
+def df_to_series(df: pd.DataFrame, index: int | None = None) -> pd.Series[Any]:
     n_rows, _ = df.shape
-    if index is None and n_rows == 1:
-        index = 0
-    if index is None or index >= n_rows:
-        raise AllotropyParserError(msg)
+    if index is None and n_rows != 1:
+        msg = "Unable to convert DataFrame to series: data has more than 1 row and no index was provided."
+        raise AllotropeConversionError(msg)
+    index = index or 0
+    if index >= n_rows:
+        msg = f"Index {index} is greater than the number of rows in dataframe {n_rows}."
+        raise AllotropeConversionError(msg)
     return pd.Series(df.iloc[index], index=df.columns)
 
 
-def df_to_series_data(df: pd.DataFrame, msg: str) -> SeriesData:
-    return SeriesData(df_to_series(df, msg))
+def df_to_series_data(df: pd.DataFrame, index: int | None = None) -> SeriesData:
+    return SeriesData(df_to_series(df, index))
 
 
 def assert_df_column(df: pd.DataFrame, column: str) -> pd.Series[Any]:
@@ -78,6 +78,31 @@ def assert_value_from_df(df: pd.DataFrame, key: str) -> Any:
     except KeyError as e:
         msg = f"Unable to find key '{key}' in dataframe headers: {df.columns.tolist()}"
         raise AllotropeConversionError(msg) from e
+
+
+def parse_header_row(df: pd.DataFrame) -> pd.DataFrame:
+    # Set the first row of a dataframe as the columns. This is useful when the dataframe has already been
+    # parsed (e.g. when splitting a dataframe into two parts), and so the header/index_col arguments cannot
+    # be used to set the columns/index at read time.
+    df.columns = pd.Index(
+        assert_not_empty_df(df, "Cannot set parse header row for empty dataframe.")
+        .astype(str)
+        .iloc[0]
+    )
+    df.columns = df.astype(str).columns.str.strip()
+    return df[1:]
+
+
+def split_header_and_data(
+    df: pd.DataFrame, cond: Callable[[pd.Series[Any]], bool]
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    for idx, row in df.iterrows():
+        if cond(row):
+            header_end = int(str(idx))
+            return df[:header_end], df[header_end + 1 :]
+
+    msg = f"Unable to split header and data from dataframe: {df}"
+    raise AllotropeConversionError(msg)
 
 
 def read_csv(
