@@ -11,7 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Primary analysis experiment type in AppBio Quantstudio Design and Analysis
 
 - Added support for xlsx exports in Unchained Lunatic parser
+
 ### Fixed
+
+- Fix SoftMax Pro case where some columns were incorrectly identified as not numeric for calculated data documents. Added exceptions for Masked and Range values which will be treated as NaN.
 
 ### Changed
 
