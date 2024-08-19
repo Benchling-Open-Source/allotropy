@@ -227,7 +227,7 @@ def test_create_data() -> None:
         return_value="dummy_id",
     ):
         assert (
-            RocheCedexBiohtParser(TimestampParser())._create_data(
+            RocheCedexBiohtParser(TimestampParser()).create_data(
                 NamedFileContents(get_data_stream(), "dummy.txt")
             )
             == get_data()

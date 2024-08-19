@@ -23,7 +23,7 @@ class ViCellXRParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader_data = create_reader_data(named_file_contents)
         if not reader_data.data:
             msg = "Cannot parse ASM from empty file."

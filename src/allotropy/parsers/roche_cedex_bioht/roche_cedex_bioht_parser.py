@@ -24,7 +24,7 @@ class RocheCedexBiohtParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = RocheCedexBiohtReader(named_file_contents.contents)
 
         title = Title.create(reader.title_data)

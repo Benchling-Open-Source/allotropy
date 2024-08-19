@@ -21,7 +21,7 @@ class MabtechApexParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         contents = MabtechApexContents.create(named_file_contents)
 
         # if Read Date is not present in file, return None, no measurement for given Well

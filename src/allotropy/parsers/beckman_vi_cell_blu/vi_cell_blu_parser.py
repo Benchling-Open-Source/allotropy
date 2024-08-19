@@ -23,7 +23,7 @@ class ViCellBluParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         return Data(
             create_metadata(named_file_contents.original_file_name),
             map_rows(

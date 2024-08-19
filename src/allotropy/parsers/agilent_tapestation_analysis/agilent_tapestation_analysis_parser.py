@@ -22,7 +22,7 @@ class AgilentTapestationAnalysisParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         try:
             root_element = ET.parse(  # noqa: S314
                 named_file_contents.contents

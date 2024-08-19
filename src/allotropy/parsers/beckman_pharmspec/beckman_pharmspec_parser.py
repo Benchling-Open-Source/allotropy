@@ -25,7 +25,7 @@ class PharmSpecParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = BeckmanPharmspecReader(named_file_contents)
         distributions = Distribution.create_distributions(reader.data)
         header = Header.create(reader.header)

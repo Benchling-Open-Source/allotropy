@@ -24,7 +24,7 @@ class UnchainedLabsLunaticParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = UnchainedLabsLunaticReader(named_file_contents)
         measurement_groups, calculated_data = create_measurement_groups(
             reader.header, reader.data

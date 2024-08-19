@@ -31,7 +31,7 @@ class AppBioQuantStudioParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         reader = LinesReader.create(named_file_contents)
 
         # Data sections must be read in order from the file.

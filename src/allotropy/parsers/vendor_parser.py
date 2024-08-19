@@ -57,8 +57,8 @@ class MapperVendorParser(VendorParser, Generic[Data, Model]):
         return self.SCHEMA_MAPPER(self.asm_converter_name, self._get_date_time)
 
     @abstractmethod
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         raise NotImplementedError
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        return self._get_mapper().map_model(self._create_data(named_file_contents))
+        return self._get_mapper().map_model(self.create_data(named_file_contents))

@@ -23,7 +23,7 @@ class AppbioAbsoluteQParser(MapperVendorParser[Data, Model]):
     RELEASE_STATE = ReleaseState.RECOMMENDED
     SCHEMA_MAPPER = Mapper
 
-    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+    def create_data(self, named_file_contents: NamedFileContents) -> Data:
         data = read_csv(named_file_contents.contents)
         wells = Well.create_wells(data)
         groups = Group.create_rows(data)

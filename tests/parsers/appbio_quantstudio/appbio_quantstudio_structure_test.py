@@ -218,7 +218,7 @@ def test_data_builder(
 ) -> None:
     with open(test_filepath, "rb") as raw_contents:
         assert rm_uuid(
-            AppBioQuantStudioParser(TimestampParser())._create_data(
+            AppBioQuantStudioParser(TimestampParser()).create_data(
                 NamedFileContents(raw_contents, test_filepath)
             )
         ) == rm_uuid(create_expected_data_func(test_filepath))
