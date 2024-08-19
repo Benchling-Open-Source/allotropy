@@ -422,3 +422,71 @@ def test_create_multiple_read_modes() -> None:
             gain="extended",
         ),
     }
+
+
+@pytest.mark.short
+def test_create_three_read_modes() -> None:
+    multiple_read_modes = [
+        "Procedure Details",
+        "Plate Type\t96 WELL PLATE (Use plate lid)",
+        "Read\tod",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  600",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+        "Read\tfluor",
+        "\tFluorescence Endpoint",
+        "\tFull Plate",
+        "\tFilter Set 1",
+        "\t\tExcitation: 579,  Emission: 616",
+        "\t\tOptics: Top,  Gain: extended",
+        "\tFilter Set 2",
+        "\t\tExcitation: 479,  Emission: 520",
+        "\t\tOptics: Top,  Gain: extended",
+        "Read	LUM",
+        "\tLuminescence Endpoint",
+        "\tFull Plate",
+        "\tIntegration Time: 0:01.00 (MM:SS.ss)",
+        "\tFilter Set 2 (Blue)",
+        "\t    Emission: 460/40",
+        "\t    Mirror: Top 400 nm,  Gain: 136",
+        "\tRead Speed: Normal,  Delay: 100 msec",
+        "\tExtended Dynamic Range",
+        "\tRead Height: 4.5 mm",
+    ]
+    reader = LinesReader(multiple_read_modes)
+
+    file_data = ReadData.create(reader)
+    assert file_data[0].read_mode == ReadMode.ABSORBANCE
+    assert file_data[0].step_label == "od"
+    assert file_data[0].measurement_labels == ["od:600"]
+    assert file_data[0].number_of_averages == 8
+
+    assert file_data[1].read_mode == ReadMode.FLUORESCENCE
+    assert file_data[1].step_label == "fluor"
+    assert file_data[1].filter_sets == {
+        "fluor:579,616": FilterSet(
+            excitation="579",
+            emission="616",
+            optics="Top",
+            gain="extended",
+        ),
+        "fluor:479,520": FilterSet(
+            excitation="479",
+            emission="520",
+            optics="Top",
+            gain="extended",
+        ),
+    }
+
+    assert file_data[2].read_mode == ReadMode.LUMINESCENCE
+    assert file_data[2].step_label == "LUM"
+    assert file_data[2].measurement_labels == ["LUM:460/40"]
+    assert file_data[2].filter_sets == {
+        "LUM:460/40": FilterSet(
+            emission="460/40",
+            gain="136",
+        )
+    }
+    assert file_data[2].detector_carriage_speed == "Normal"
+    assert file_data[2].detector_distance == 4.5
