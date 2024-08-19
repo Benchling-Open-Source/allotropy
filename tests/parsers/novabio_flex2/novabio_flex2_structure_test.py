@@ -1,17 +1,16 @@
 import re
+from unittest import mock
 
 import pandas as pd
 import pytest
 
+from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
+    Analyte,
+)
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.novabio_flex2.constants import (
-    BLOOD_GAS_DETECTION_MAPPINGS,
-    CONCENTRATION_CLS_BY_UNIT,
-)
 from allotropy.parsers.novabio_flex2.novabio_flex2_structure import (
-    Analyte,
-    Data,
+    create_data,
     Sample,
     SampleList,
     Title,
@@ -60,25 +59,6 @@ def test_create_title_invalid_filename(filename: str) -> None:
 
 
 @pytest.mark.short
-def test_create_analyte() -> None:
-    nh4_analyte = Analyte.create("NH4+", 100)
-    assert nh4_analyte.name == "ammonium"
-    assert nh4_analyte.concentration == CONCENTRATION_CLS_BY_UNIT["mmol/L"](value=100)
-
-    gluc_analyte = Analyte.create("Gluc", 1.1)
-    assert gluc_analyte.name == "glucose"
-    assert gluc_analyte.concentration == CONCENTRATION_CLS_BY_UNIT["g/L"](value=1.1)
-
-
-@pytest.mark.short
-def test_create_invalid_analyte() -> None:
-    expected_regex_raw = "Unrecognized analyte name: 'FAKE'. Expecting one of ['Ca++', 'Gln', 'Glu', 'Gluc', 'HCO3', 'K+', 'Lac', 'NH4+', 'Na+']."
-    expected_regex = re.escape(expected_regex_raw)
-    with pytest.raises(AllotropeConversionError, match=expected_regex):
-        Analyte.create("FAKE", 100)
-
-
-@pytest.mark.short
 def test_create_sample() -> None:
     data = {
         "Sample ID": "BP_R10_KP_008_D0",
@@ -100,36 +80,12 @@ def test_create_sample() -> None:
     assert sample.batch_identifier == "KP_008"
     assert sorted(sample.analytes) == sorted(
         [
-            Analyte.create("Gln", 1.83),
-            Analyte.create("Ca++", 0.82),
+            Analyte("glutamine", 1.83, "mmol/L"),
+            Analyte("calcium", 0.82, "mmol/L"),
         ]
     )
-    assert sample.blood_gas_properties == {
-        "carbon_dioxide_saturation": BLOOD_GAS_DETECTION_MAPPINGS[
-            "carbon_dioxide_saturation"
-        ]["cls"](value=0),
-        "oxygen_saturation": BLOOD_GAS_DETECTION_MAPPINGS["oxygen_saturation"]["cls"](
-            value=100.0
-        ),
-    }
-
-
-@pytest.mark.short
-def test_sample_sorting() -> None:
-    analytes = [
-        Analyte.create("Gln", 1.83),
-        Analyte.create("Glu", 0.33),
-        Analyte.create("Gluc", 2.65),
-        Analyte.create("Lac", 0.18),
-        Analyte.create("NH4+", 0.48),
-    ]
-    assert sorted(analytes) == [
-        Analyte.create("NH4+", 0.48),
-        Analyte.create("Gluc", 2.65),
-        Analyte.create("Glu", 0.33),
-        Analyte.create("Gln", 1.83),
-        Analyte.create("Lac", 0.18),
-    ]
+    assert sample.carbon_dioxide_saturation == 0
+    assert sample.oxygen_saturation == 100.0
 
 
 @pytest.mark.short
@@ -180,4 +136,8 @@ def test_create_sample_list_invalid_no_analyst() -> None:
 @pytest.mark.short
 def test_create_data() -> None:
     named_file_contents = NamedFileContents(get_input_stream(), get_input_title())
-    assert Data.create(named_file_contents) == get_data()
+    with mock.patch(
+        "allotropy.parsers.novabio_flex2.novabio_flex2_structure.random_uuid_str",
+        return_value="dummy_id",
+    ):
+        assert create_data(named_file_contents) == get_data()
