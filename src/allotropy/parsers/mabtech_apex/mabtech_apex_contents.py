@@ -26,7 +26,7 @@ class MabtechApexContents:
         sheet = assert_not_none(
             contents.get("Plate Information"),
             msg="Unable to find 'Plate Information' sheet.",
-        ).dropna(axis=1, how="all")
+        ).dropna(axis="columns", how="all")
 
         data = {}
         for _, * (title, value, *_) in sheet.itertuples():
@@ -41,4 +41,4 @@ class MabtechApexContents:
             contents.get("Plate Database"), msg="Unable to find 'Plate Database' sheet."
         )
 
-        return sheet.dropna(axis=1, how="all")
+        return sheet.dropna(axis="columns", how="all")
