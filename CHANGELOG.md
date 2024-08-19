@@ -8,9 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Primary analysis experiment type in AppBio Quantstudio Design and Analysis
 
+- Primary analysis experiment type in AppBio Quantstudio Design and Analysis
 - Added support for xlsx exports in Unchained Lunatic parser
+- Add column special character normalization to pandas util (and so most parsers)
 
 ### Fixed
 
