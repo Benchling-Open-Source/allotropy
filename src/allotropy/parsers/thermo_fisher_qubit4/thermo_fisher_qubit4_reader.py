@@ -6,7 +6,7 @@ from allotropy.constants import DEFAULT_ENCODING
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.thermo_fisher_qubit4 import constants
-from allotropy.parsers.utils.pandas import read_csv, read_excel
+from allotropy.parsers.utils.pandas import read_csv, read_excel, set_columns
 
 
 class ThermoFisherQubit4Reader:
@@ -50,5 +50,5 @@ class ThermoFisherQubit4Reader:
             f"Units_{columns[i - 1]}" if "Units" in col else col
             for i, col in enumerate(columns)
         ]
-        dataframe.columns = pd.Index(new_columns)
+        set_columns(dataframe, new_columns)
         return dataframe
