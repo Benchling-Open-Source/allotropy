@@ -18,6 +18,16 @@ class TestParser(ParserTest):
     VENDOR = VENDOR_TYPE
 
 
+def test_handles_header_size_mismatch() -> None:
+    with pytest.raises(
+        AllotropeConversionError, match="Invalid format - mismatch between # of columns"
+    ):
+        from_file(
+            f"{TESTDATA}/errors/header_size_mismatch.txt",
+            VENDOR_TYPE,
+        )
+
+
 def test_handles_unrecognized_read_mode() -> None:
     with pytest.raises(
         AllotropeConversionError,
