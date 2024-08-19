@@ -8,13 +8,13 @@ import re
 
 import pandas as pd
 
-from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
+from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat, NaN
 from allotropy.exceptions import (
     AllotropeConversionError,
     get_key_or_error,
 )
 from allotropy.parsers.lines_reader import CsvReader
-from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData
+from allotropy.parsers.utils.pandas import rm_df_columns, SeriesData, set_columns
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
     assert_not_none,
@@ -30,6 +30,7 @@ from allotropy.parsers.utils.values import (
 BLOCKS_LINE_REGEX = r"^##BLOCKS=\s*(\d+)$"
 END_LINE_REGEX = "~End"
 EXPORT_VERSION = "1.3"
+VALID_NAN_VALUES = ("Masked", "Range?")
 
 
 NUM_WELLS_TO_PLATE_DIMENSIONS: dict[int, tuple[int, int]] = {
@@ -88,7 +89,7 @@ class Block:
 @dataclass(frozen=True)
 class GroupDataElementEntry:
     name: str
-    value: float
+    value: JsonFloat
 
 
 @dataclass(frozen=True)
@@ -105,16 +106,19 @@ class GroupSampleData:
     data_elements: list[GroupDataElement]
     aggregated_entries: list[GroupDataElementEntry]
 
-    @staticmethod
-    def create(data: pd.DataFrame) -> GroupSampleData:
+    @classmethod
+    def create(cls, data: pd.DataFrame) -> GroupSampleData:
         row_data = [SeriesData(row) for _, row in data.iterrows()]
         top_row = row_data[0]
         identifier = top_row[str, "Sample"]
         data = rm_df_columns(data, r"^Sample$|^Standard Value|^R$|^Unnamed: \d+$")
+        # Columns are considered "numeric" if the value of the first row is a float
+        # "Mask" and "Range?" are special cases that will be considered NaN.
         numeric_columns = [
             column
             for column in data.columns
             if top_row.get(float, column, validate=SeriesData.NOT_NAN) is not None
+            or top_row.get(str, column) in VALID_NAN_VALUES
         ]
 
         normal_columns = []
@@ -134,7 +138,8 @@ class GroupSampleData:
                     plate=row[str, "WellPlateName"],
                     entries=[
                         GroupDataElementEntry(
-                            name=column_name, value=row[float, column_name]
+                            name=column_name,
+                            value=cls._get_value_from_col(row, column_name),
                         )
                         for column_name in normal_columns
                     ],
@@ -144,11 +149,17 @@ class GroupSampleData:
             aggregated_entries=[
                 GroupDataElementEntry(
                     name=column_name,
-                    value=top_row[float, column_name],
+                    value=cls._get_value_from_col(top_row, column_name),
                 )
                 for column_name in aggregated_columns
             ],
         )
+
+    @classmethod
+    def _get_value_from_col(cls, data_row: SeriesData, column_name: str) -> JsonFloat:
+        if data_row.get(str, column_name) in VALID_NAN_VALUES:
+            return NaN
+        return data_row[float, column_name]
 
 
 @dataclass(frozen=True)
@@ -347,7 +358,7 @@ class PlateKineticData:
             reader.lines_as_df(lines=lines, sep="\t"),
             msg="unable to find data from plate block.",
         )
-        data.columns = pd.Index(columns)
+        set_columns(data, columns)
 
         # get temperature from the first column of the first row with value
         temperature = try_float_or_none(
@@ -504,7 +515,7 @@ class TimeWavelengthData:
             reader.pop_csv_block_as_df(sep="\t"),
             msg="unable to find raw data from time block.",
         )
-        data.columns = pd.Index(columns)
+        set_columns(data, columns)
         return TimeWavelengthData(
             wavelength=wavelength,
             kinetic_data=[
