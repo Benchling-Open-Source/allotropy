@@ -1,25 +1,22 @@
 from __future__ import annotations
 
-import pandas as pd
-
 from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.cell_counting import (
-    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.beckman_vi_cell_blu.constants import (
     DEFAULT_ANALYST,
     DEFAULT_MODEL_NUMBER,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
     VICELL_BLU_SOFTWARE_NAME,
 )
-from allotropy.parsers.beckman_vi_cell_blu.vi_cell_blu_reader import ViCellBluReader
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
+def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     total_cell_count = data.get(float, "Cell count")
     total_cell_count = (
         total_cell_count if total_cell_count is None else round(total_cell_count)
@@ -58,22 +55,11 @@ def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
     )
 
 
-# NOTE: this function is just to make testing easier.
-def _create_data(data: pd.DataFrame, file_name: str) -> Data:
-    return Data(
-        Metadata(
-            device_type="brightfield imager (cell counter)",
-            detection_type="brightfield",
-            model_number=DEFAULT_MODEL_NUMBER,
-            software_name=VICELL_BLU_SOFTWARE_NAME,
-            file_name=file_name,
-        ),
-        map_rows(data, _create_measurement_group),
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    return _create_data(
-        ViCellBluReader.read(named_file_contents),
-        named_file_contents.original_file_name,
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        device_type=DEVICE_TYPE,
+        detection_type=DETECTION_TYPE,
+        model_number=DEFAULT_MODEL_NUMBER,
+        software_name=VICELL_BLU_SOFTWARE_NAME,
+        file_name=file_name,
     )

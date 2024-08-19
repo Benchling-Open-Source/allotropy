@@ -142,6 +142,20 @@ class LinesReader:
                 yield line
 
 
+class SectionLinesReader(LinesReader):
+    @staticmethod
+    def create(named_file_contents: NamedFileContents) -> SectionLinesReader:
+        return SectionLinesReader(read_to_lines(named_file_contents))
+
+    def iter_sections(self, pattern: str) -> Iterator[LinesReader]:
+        self.drop_until(pattern)
+        while True:
+            if (initial_line := self.pop()) is None:
+                break
+            lines = [initial_line, *self.pop_until(pattern)]
+            yield LinesReader(lines)
+
+
 class InvertedLinesReader(LinesReader):
     def __init__(self, lines: list[str]) -> None:
         self.lines = lines

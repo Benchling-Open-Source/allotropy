@@ -185,21 +185,8 @@ class ThermoFisherQubitFlexParser(VendorParser):
     A class provides the allotrope model of the Thermo Fisher Qubit Flex files
     """
 
-    @property
-    def display_name(self) -> str:
-        """
-        Provide the display name of the Adapter
-
-        Returns: the Adapter display name as string
-        """
-        return constants.DISPLAY_NAME
-
-    @property
-    def release_state(self) -> ReleaseState:
-        """
-        Provide the Release state of the Adapter
-        """
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = constants.DISPLAY_NAME
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         """

@@ -1,3 +1,4 @@
+import pandas as pd
 import pytest
 
 from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reader import (
@@ -11,27 +12,28 @@ from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
     ReadData,
 )
 from allotropy.parsers.agilent_gen5.constants import ReadMode
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.utils.pandas import SeriesData
 
 
 @pytest.mark.short
 def test_create_header_data_no_well_plate_id_in_filename() -> None:
-    header_rows = [
-        "Software Version	3.12.08",
-        "",
-        "",
-        "Experiment File Path:	Experiments/singlePlate.xpt",
-        "Protocol File Path:	Protocols/defaultExport.prt",
-        "",
-        "Plate Number	Plate 1",
-        "Date	10/10/2022",
-        "Time	9:00:04 PM",
-        "Reader Type:	Synergy H1",
-        "Reader Serial Number:	Serial01",
-        "Reading Type	Manual",
-    ]
-    reader = LinesReader(header_rows)
-    header_data = HeaderData.create(reader, "dummy_filename.txt")
+    data = SeriesData(
+        pd.Series(
+            {
+                "Software Version": "3.12.08",
+                "Experiment File Path:": "Experiments/singlePlate.xpt",
+                "Protocol File Path:": "Protocols/defaultExport.prt",
+                "Plate Number": "Plate 1",
+                "Date": "10/10/2022",
+                "Time": "9:00:04 PM",
+                "Reader Type:": "Synergy H1",
+                "Reader Serial Number:": "Serial01",
+                "Reading Type": "Manual",
+            }
+        )
+    )
+
+    header_data = HeaderData.create(data, "dummy_filename.txt")
 
     assert header_data == HeaderData(
         software_version="3.12.08",
@@ -47,22 +49,24 @@ def test_create_header_data_no_well_plate_id_in_filename() -> None:
 
 @pytest.mark.short
 def test_create_header_data_with_well_plate_id_from_filename() -> None:
-    header_rows = [
-        "Software Version	3.12.08",
-        "Experiment File Path:	Experiments/singlePlate.xpt",
-        "Protocol File Path:	Protocols/defaultExport.prt",
-        "Plate Number	Plate 1",
-        "Date	10/10/2022",
-        "Time	9:00:04 PM",
-        "Reader Type:	Synergy H1",
-        "Reader Serial Number:	Serial01",
-        "Reading Type	Manual",
-    ]
     well_plate_id = "PLATEID123"
     matching_file_name = f"010307_114129_{well_plate_id}_std_01.txt"
 
-    reader = LinesReader(header_rows)
-    header_data = HeaderData.create(reader, matching_file_name)
+    data = SeriesData(
+        pd.Series(
+            {
+                "Software Version": "3.12.08",
+                "Experiment File Path:": "Experiments/singlePlate.xpt",
+                "Protocol File Path:": "Protocols/defaultExport.prt",
+                "Date": "10/10/2022",
+                "Time": "9:00:04 PM",
+                "Reader Type:": "Synergy H1",
+                "Reader Serial Number:": "Serial01",
+                "Reading Type": "Manual",
+            }
+        )
+    )
+    header_data = HeaderData.create(data, matching_file_name)
 
     assert header_data.well_plate_identifier == well_plate_id
 
@@ -74,9 +78,7 @@ def test_create_read_data_with_step_label() -> None:
         "Read	StepLabel",
         "\tAbsorbance Endpoint",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.step_label == "StepLabel"
 
@@ -87,9 +89,7 @@ def test_create_read_data_without_step_label() -> None:
         "Procedure Details",
         "Read	Absorbance Endpoint",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.step_label is None
 
@@ -106,9 +106,7 @@ def test_create_read_data_absorbance() -> None:
         "\t    Absorbance at 1 cm: 0.18",
         "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.read_mode == ReadMode.ABSORBANCE
     assert read_data.pathlength_correction == "977 / 900"
@@ -139,9 +137,7 @@ def test_create_read_data_luminescence_full_light() -> None:
         "\tExtended Dynamic Range",
         "\tRead Height: 4.5 mm",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.step_label == "LUM"
@@ -167,9 +163,7 @@ def test_create_read_data_luminescence_text_settings() -> None:
         "\tExtended Dynamic Range",
         "\tRead Height: 4.5 mm",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.detector_carriage_speed == "Normal"  # Read Speed
@@ -195,9 +189,7 @@ def test_create_read_data_luminescence_with_filter() -> None:
         "\tExtended Dynamic Range",
         "\tRead Height: 4.5 mm",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.read_mode == ReadMode.LUMINESCENCE
     assert read_data.step_label == "LUM"
@@ -226,9 +218,7 @@ def test_create_read_data_fluorescence() -> None:
         "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 10",
         "\tRead Height: 7 mm",
     ]
-    reader = LinesReader(absorbance_procedure_details)
-
-    read_data = ReadData.create(reader)
+    read_data = ReadData.create(absorbance_procedure_details)
 
     assert read_data.read_mode == ReadMode.FLUORESCENCE
     assert read_data.step_label == "DAPI/GFP"

@@ -13,14 +13,15 @@ from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.qpcr import 
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_data_creator import (
-    create_data,
+from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_parser import (
+    AppBioQuantStudioParser,
 )
 from allotropy.parsers.appbio_quantstudio.appbio_quantstudio_structure import (
     Header,
     Result,
 )
 from allotropy.parsers.lines_reader import LinesReader, read_to_lines
+from allotropy.parsers.utils.timestamp_parser import TimestampParser
 from allotropy.types import IOType
 from tests.parsers.appbio_quantstudio.appbio_quantstudio_data import (
     get_broken_calc_doc_data,
@@ -217,7 +218,9 @@ def test_data_builder(
 ) -> None:
     with open(test_filepath, "rb") as raw_contents:
         assert rm_uuid(
-            create_data(NamedFileContents(raw_contents, test_filepath))
+            AppBioQuantStudioParser(TimestampParser())._create_data(
+                NamedFileContents(raw_contents, test_filepath)
+            )
         ) == rm_uuid(create_expected_data_func(test_filepath))
 
 

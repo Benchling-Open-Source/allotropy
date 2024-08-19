@@ -14,7 +14,6 @@ from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
@@ -25,7 +24,6 @@ from allotropy.exceptions import (
     AllotropeConversionError,
     AllotropyParserError,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_gen5.constants import (
     DEFAULT_SOFTWARE_NAME,
     DEVICE_TYPE,
@@ -35,7 +33,6 @@ from allotropy.parsers.agilent_gen5.constants import (
     GAIN_KEY,
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
-    MULTIPLATE_FILE_ERROR,
     MULTIPLE_READ_MODE_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
@@ -48,26 +45,14 @@ from allotropy.parsers.agilent_gen5.constants import (
     UNSUPPORTED_READ_TYPE_ERROR,
     WAVELENGTHS_KEY,
 )
-from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import LinesReader
-from allotropy.parsers.utils.pandas import df_to_series_data, read_csv
+from allotropy.parsers.utils.pandas import read_csv, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
-    assert_not_none,
     try_float,
     try_float_or_nan,
     try_float_or_none,
 )
-
-
-def read_data_section(reader: LinesReader) -> list[str]:
-    data_section = [
-        reader.pop() or "",
-        *reader.pop_until_empty(),
-    ]
-    reader.drop_empty()
-    return data_section
 
 
 @dataclass(frozen=True)
@@ -82,17 +67,7 @@ class HeaderData:
     file_name: str
 
     @classmethod
-    def create(cls, reader: LinesReader, file_name: str) -> HeaderData:
-        assert_not_none(reader.drop_until("^Software Version"), "Software Version")
-        lines = [line for line in reader.pop_until("Procedure Details") if line]
-        df = read_csv(
-            StringIO("\n".join(lines)),
-            header=None,
-            index_col=0,
-            keep_default_na=False,
-            sep="\t",
-        ).T
-        data = df_to_series_data(df, "Failed to parser header data")
+    def create(cls, data: SeriesData, file_name: str) -> HeaderData:
         matches = re.match(FILENAME_REGEX, file_name)
         plate_identifier = matches.groupdict()["plate_identifier"] if matches else None
         date = data.get(str, "Date")
@@ -259,12 +234,8 @@ class ReadData:
     filter_sets: dict[str, FilterSet]
 
     @classmethod
-    def create(cls, reader: LinesReader) -> ReadData:
-        assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
-        reader.pop()
-        reader.drop_empty()
-        procedure_lines = read_data_section(reader)
-        procedure_details = "\n".join(procedure_lines)
+    def create(cls, lines: list[str]) -> ReadData:
+        procedure_details = "\n".join(lines)
         read_type = cls.get_read_type(procedure_details)
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
@@ -441,6 +412,72 @@ class MeasurementData:
     label: str
 
 
+def _create_measurement(
+    measurement: MeasurementData,
+    well_position: str,
+    header_data: HeaderData,
+    read_data: ReadData,
+    sample_identifier: str | None,
+    actual_temperature: float | None,
+) -> Measurement:
+    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+    if read_data.read_mode == ReadMode.ABSORBANCE:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
+    elif read_data.read_mode == ReadMode.FLUORESCENCE:
+        measurement_type = MeasurementType.FLUORESCENCE
+    elif read_data.read_mode == ReadMode.LUMINESCENCE:
+        measurement_type = MeasurementType.LUMINESCENCE
+
+    detector_wavelength_setting: JsonFloat | None = None
+    if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
+        filter_data = None
+        detector_wavelength_setting = float(
+            measurement.label.split(":")[-1].split(" ")[0]
+        )
+    else:
+        filter_data = read_data.filter_sets[measurement.label]
+        detector_wavelength_setting = filter_data.detector_wavelength_setting
+
+    return Measurement(
+        type_=measurement_type,
+        identifier=measurement.identifier,
+        sample_identifier=sample_identifier
+        or f"{header_data.well_plate_identifier} {well_position}",
+        location_identifier=well_position,
+        well_plate_identifier=header_data.well_plate_identifier,
+        detector_wavelength_setting=detector_wavelength_setting,
+        detector_bandwidth_setting=filter_data.detector_bandwidth_setting
+        if filter_data
+        else None,
+        excitation_wavelength_setting=filter_data.excitation_wavelength_setting
+        if filter_data
+        else None,
+        excitation_bandwidth_setting=filter_data.excitation_bandwidth_setting
+        if filter_data
+        else None,
+        wavelength_filter_cutoff_setting=filter_data.wavelength_filter_cutoff_setting
+        if filter_data
+        else None,
+        detector_distance_setting=read_data.detector_distance,
+        scan_position_setting=filter_data.scan_position_setting
+        if filter_data
+        else None,
+        detector_gain_setting=filter_data.gain if filter_data else None,
+        number_of_averages=read_data.number_of_averages,
+        detector_carriage_speed=read_data.detector_carriage_speed,
+        absorbance=measurement.value
+        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+        else None,
+        fluorescence=measurement.value
+        if measurement_type == MeasurementType.FLUORESCENCE
+        else None,
+        luminescence=measurement.value
+        if measurement_type == MeasurementType.LUMINESCENCE
+        else None,
+        compartment_temperature=actual_temperature,
+    )
+
+
 def create_results(
     result_lines: list[str],
     header_data: HeaderData,
@@ -541,7 +578,7 @@ def _get_sources(
     return sources or measurements
 
 
-def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
+def create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
         detection_type=read_data.read_mode.value,
@@ -552,110 +589,4 @@ def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
         software_version=header_data.software_version,
         file_name=header_data.file_name,
         measurement_time=header_data.datetime,
-    )
-
-
-def _create_measurement(
-    measurement: MeasurementData,
-    well_position: str,
-    header_data: HeaderData,
-    read_data: ReadData,
-    sample_identifier: str | None,
-    actual_temperature: float | None,
-) -> Measurement:
-    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-    if read_data.read_mode == ReadMode.ABSORBANCE:
-        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
-    elif read_data.read_mode == ReadMode.FLUORESCENCE:
-        measurement_type = MeasurementType.FLUORESCENCE
-    elif read_data.read_mode == ReadMode.LUMINESCENCE:
-        measurement_type = MeasurementType.LUMINESCENCE
-
-    detector_wavelength_setting: JsonFloat | None = None
-    if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
-        filter_data = None
-        detector_wavelength_setting = float(
-            measurement.label.split(":")[-1].split(" ")[0]
-        )
-    else:
-        filter_data = read_data.filter_sets[measurement.label]
-        detector_wavelength_setting = filter_data.detector_wavelength_setting
-
-    return Measurement(
-        type_=measurement_type,
-        identifier=measurement.identifier,
-        sample_identifier=sample_identifier
-        or f"{header_data.well_plate_identifier} {well_position}",
-        location_identifier=well_position,
-        well_plate_identifier=header_data.well_plate_identifier,
-        detector_wavelength_setting=detector_wavelength_setting,
-        detector_bandwidth_setting=filter_data.detector_bandwidth_setting
-        if filter_data
-        else None,
-        excitation_wavelength_setting=filter_data.excitation_wavelength_setting
-        if filter_data
-        else None,
-        excitation_bandwidth_setting=filter_data.excitation_bandwidth_setting
-        if filter_data
-        else None,
-        wavelength_filter_cutoff_setting=filter_data.wavelength_filter_cutoff_setting
-        if filter_data
-        else None,
-        detector_distance_setting=read_data.detector_distance,
-        scan_position_setting=filter_data.scan_position_setting
-        if filter_data
-        else None,
-        detector_gain_setting=filter_data.gain if filter_data else None,
-        number_of_averages=read_data.number_of_averages,
-        detector_carriage_speed=read_data.detector_carriage_speed,
-        absorbance=measurement.value
-        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
-        else None,
-        fluorescence=measurement.value
-        if measurement_type == MeasurementType.FLUORESCENCE
-        else None,
-        luminescence=measurement.value
-        if measurement_type == MeasurementType.LUMINESCENCE
-        else None,
-        compartment_temperature=actual_temperature,
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    reader = SectionLinesReader.create(named_file_contents)
-
-    plates = list(reader.iter_sections("^Software Version"))
-    if not plates:
-        msg = "No plate data found in file."
-        raise AllotropeConversionError(msg)
-
-    if len(plates) > 1:
-        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
-
-    header_data = HeaderData.create(plates[0], named_file_contents.original_file_name)
-    read_data = ReadData.create(plates[0])
-
-    section_lines = {}
-    while plates[0].current_line_exists():
-        data_section = read_data_section(plates[0])
-        section_lines[data_section[0].strip().split(":")[0]] = data_section
-    if "Results" not in section_lines:
-        msg = "Missing 'Results' section"
-        raise AllotropeConversionError(msg)
-
-    sample_identifiers = get_identifiers(section_lines.get("Layout"))
-    actual_temperature = get_temperature(section_lines.get("Actual Temperature"))
-
-    measurement_groups, calculated_data = create_results(
-        section_lines["Results"],
-        header_data,
-        read_data,
-        sample_identifiers,
-        actual_temperature,
-    )
-
-    return Data(
-        metadata=_create_metadata(header_data, read_data),
-        measurement_groups=measurement_groups,
-        calculated_data=calculated_data,
     )

@@ -4,7 +4,6 @@ import re
 
 from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    Data,
     ImageFeature,
     Measurement,
     MeasurementGroup,
@@ -12,10 +11,9 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     Metadata,
     ProcessedData,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.mabtech_apex.mabtech_apex_contents import MabtechApexContents
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import assert_not_none
 
@@ -26,7 +24,7 @@ IMAGE_FEATURES = [
 ]
 
 
-def _create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
+def create_metadata(contents: MabtechApexContents, file_name: str) -> Metadata:
     machine_id = assert_not_none(
         re.match(
             "([A-Z]+[a-z]+) ([0-9]+)",
@@ -76,19 +74,8 @@ def _create_measurement(plate_data: SeriesData) -> Measurement:
     )
 
 
-def _create_measurement_group(data: SeriesData) -> MeasurementGroup:
+def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     return MeasurementGroup(
         measurements=[_create_measurement(data)],
         plate_well_count=96,
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    contents = MabtechApexContents.create(named_file_contents)
-
-    # if Read Date is not present in file, return None, no measurement for given Well
-    plate_data = contents.data.dropna(subset="Read Date")
-    return Data(
-        _create_metadata(contents, named_file_contents.original_file_name),
-        map_rows(plate_data, _create_measurement_group),
     )

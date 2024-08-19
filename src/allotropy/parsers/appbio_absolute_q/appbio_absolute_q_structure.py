@@ -9,14 +9,12 @@ import pandas as pd
 from allotropy.allotrope.models.adm.pcr.benchling._2023._09.dpcr import ContainerType
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.appbio_absolute_q.constants import (
     AGGREGATION_LOOKUP,
     BRAND_NAME,
@@ -27,7 +25,7 @@ from allotropy.parsers.appbio_absolute_q.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import map_rows, read_csv, SeriesData
+from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
@@ -168,12 +166,20 @@ class Well:
         ]
 
 
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    data = read_csv(named_file_contents.contents)
-    wells = Well.create_wells(data)
-    groups = Group.create_rows(data)
+def create_metadata(device_identifier: str, file_name: str) -> Metadata:
+    return Metadata(
+        device_identifier=device_identifier,
+        brand_name=BRAND_NAME,
+        device_type=DEVICE_TYPE,
+        container_type=ContainerType.well_plate,
+        software_name=SOFTWARE_NAME,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        file_name=file_name,
+    )
 
-    measurement_groups = [
+
+def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
+    return [
         MeasurementGroup(
             experimental_data_identifier=well.items[0].run_identifier,
             plate_well_count=PLATE_WELL_COUNT,
@@ -196,13 +202,17 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
         for well in wells
     ]
 
+
+def create_calculated_data(
+    wells: list[Well], groups: list[Group]
+) -> list[CalculatedDataItem]:
     # Map measurement ids to group keys
     group_to_ids = defaultdict(list)
     for well in wells:
         for item in well.items:
             group_to_ids[item.group_key].append(item.measurement_identifier)
 
-    calculated_data_documents = [
+    return [
         CalculatedDataItem(
             identifier=calculated_data.identifier,
             name=calculated_data.name,
@@ -218,17 +228,3 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
         for group in groups
         for calculated_data in group.calculated_data
     ]
-
-    return Data(
-        Metadata(
-            device_identifier=wells[0].items[0].instrument_identifier,
-            brand_name=BRAND_NAME,
-            device_type=DEVICE_TYPE,
-            container_type=ContainerType.well_plate,
-            software_name=SOFTWARE_NAME,
-            product_manufacturer=PRODUCT_MANUFACTURER,
-            file_name=named_file_contents.original_file_name,
-        ),
-        measurement_groups,
-        calculated_data=calculated_data_documents,
-    )

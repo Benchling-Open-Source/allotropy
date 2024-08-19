@@ -10,7 +10,6 @@ from allotropy.allotrope.models.adm.plate_reader.benchling._2023._09.plate_reade
     TransmittedLightSetting,
 )
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    Data,
     ImageFeature,
     Measurement,
     MeasurementGroup,
@@ -21,35 +20,25 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
 from allotropy.exceptions import (
     AllotropeConversionError,
 )
-from allotropy.named_file_contents import NamedFileContents
-from allotropy.parsers.agilent_gen5.agilent_gen5_structure import (
-    get_identifiers,
-    HeaderData,
-    read_data_section,
-)
-from allotropy.parsers.agilent_gen5.section_reader import SectionLinesReader
+from allotropy.parsers.agilent_gen5.agilent_gen5_structure import HeaderData
 from allotropy.parsers.agilent_gen5_image.constants import (
     AUTOFOCUS_STRINGS,
     CHANNEL_HEADER_REGEX,
-    DEFAULT_EXPORT_FORMAT_ERROR,
     DEFAULT_SOFTWARE_NAME,
     DETECTION_TYPE,
     DetectionType,
     DETECTOR_DISTANCE_REGEX,
     DEVICE_TYPE,
-    MULTIPLATE_FILE_ERROR,
-    NO_PLATE_DATA_ERROR,
     ReadType,
     SETTINGS_SECTION_REGEX,
     TRANSMITTED_LIGHT_MAP,
     UNSUPPORTED_READ_TYPE_ERROR,
 )
 from allotropy.parsers.constants import NOT_APPLICABLE
-from allotropy.parsers.lines_reader import LinesReader
+from allotropy.parsers.lines_reader import LinesReader, SectionLinesReader
 from allotropy.parsers.utils.pandas import read_csv
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import (
-    assert_not_none,
     try_float,
     try_float_or_nan,
     try_float_or_none,
@@ -228,12 +217,7 @@ class ReadData:
     read_sections: list[ReadSection]
 
     @classmethod
-    def create(cls, reader: LinesReader) -> ReadData:
-        assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
-        reader.pop()
-        reader.drop_empty()
-        procedure_details = read_data_section(reader)
-
+    def create(cls, procedure_details: list[str]) -> ReadData:
         read_type = cls._get_read_type("\n".join(procedure_details))
         if read_type != ReadType.IMAGE:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
@@ -329,7 +313,7 @@ def create_results(
     return groups
 
 
-def _create_metadata(header_data: HeaderData) -> Metadata:
+def create_metadata(header_data: HeaderData) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
         detection_type=DETECTION_TYPE,
@@ -372,39 +356,4 @@ def _create_measurement(
         fluorescent_tag_setting=instrument_settings.fluorescent_tag,
         exposure_duration_setting=instrument_settings.exposure_duration,
         processed_data=processed_data,
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    reader = SectionLinesReader.create(named_file_contents)
-
-    plates = list(reader.iter_sections("^Software Version"))
-
-    if not plates:
-        raise AllotropeConversionError(NO_PLATE_DATA_ERROR)
-
-    if len(plates) > 1:
-        raise AllotropeConversionError(MULTIPLATE_FILE_ERROR)
-
-    header_data = HeaderData.create(plates[0], named_file_contents.original_file_name)
-    read_data = ReadData.create(plates[0])
-
-    section_lines = {}
-    while plates[0].current_line_exists():
-        data_section = read_data_section(plates[0])
-        section_lines[data_section[0].strip().split(":")[0]] = data_section
-
-    # If there is no results table, it might mean that the export format includes results in
-    # separate tables, or that there are no results at all (also bad format)
-    if "Results" not in section_lines:
-        raise AllotropeConversionError(DEFAULT_EXPORT_FORMAT_ERROR)
-
-    return Data(
-        metadata=_create_metadata(header_data),
-        measurement_groups=create_results(
-            section_lines["Results"],
-            header_data,
-            read_data,
-            get_identifiers(section_lines.get("Layout")),
-        ),
     )

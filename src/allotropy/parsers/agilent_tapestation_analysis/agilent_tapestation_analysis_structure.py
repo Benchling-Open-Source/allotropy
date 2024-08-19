@@ -5,7 +5,6 @@ from xml.etree import ElementTree as ET  # noqa: N817
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.electrophoresis import (
     CalculatedDataItem,
-    Data,
     DataSource,
     Error,
     Measurement,
@@ -16,11 +15,9 @@ from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.
 )
 from allotropy.exceptions import (
     AllotropeConversionError,
-    AllotropeParsingError,
     get_key_or_error,
     msg_for_error_on_unrecognized_value,
 )
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
     BRAND_NAME,
     DETECTION_TYPE,
@@ -223,7 +220,7 @@ def _get_unit_class(
         raise AllotropeConversionError(msg) from e
 
 
-def _create_measurement_groups(
+def create_measurement_groups(
     root_element: ET.Element,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     screen_tapes_element = get_element_from_xml(root_element, "ScreenTapes")
@@ -245,20 +242,3 @@ def _create_measurement_groups(
         calculated_data.extend(measurement_calculated_data)
 
     return measurement_groups, calculated_data
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    try:
-        root_element = ET.parse(named_file_contents.contents).getroot()  # noqa: S314
-    except ET.ParseError as e:
-        msg = f"There was an error when trying to read the xml file: {e}"
-        raise AllotropeParsingError(msg) from e
-
-    measurement_groups, calculated_data = _create_measurement_groups(root_element)
-    return Data(
-        metadata=create_metadata(root_element, named_file_contents.original_file_name),
-        measurement_groups=measurement_groups,
-        # NOTE: in current implementation, calculated data is reported at global level for some reason.
-        # TODO(nstender): should we move this inside of measurements?
-        calculated_data=calculated_data,
-    )

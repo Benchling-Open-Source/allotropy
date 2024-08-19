@@ -3,30 +3,36 @@ from __future__ import annotations
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     ContainerType,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import (
-    NaN,
-)
+from allotropy.allotrope.models.shared.definitions.definitions import NaN
 from allotropy.allotrope.schema_mappers.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
-    Data,
     Measurement,
     MeasurementGroup,
     MeasurementType,
     Metadata,
 )
 from allotropy.exceptions import get_key_or_error
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_qubit4 import constants
-from allotropy.parsers.thermo_fisher_qubit4.thermo_fisher_qubit4_reader import (
-    ThermoFisherQubit4Reader,
-)
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
     "green": "Green RFU",
     "far red": "Far Red RFU",
 }
+
+
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_identifier=NOT_APPLICABLE,
+        model_number=constants.MODEL_NUMBER,
+        software_name=constants.QUBIT_SOFTWARE,
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        brand_name=constants.BRAND_NAME,
+        device_type=constants.DEVICE_TYPE,
+        container_type=ContainerType.tube,
+    )
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
@@ -74,22 +80,4 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 ),
             )
         ],
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    return Data(
-        metadata=Metadata(
-            file_name=named_file_contents.original_file_name,
-            device_identifier=NOT_APPLICABLE,
-            model_number=constants.MODEL_NUMBER,
-            software_name=constants.QUBIT_SOFTWARE,
-            product_manufacturer=constants.PRODUCT_MANUFACTURER,
-            brand_name=constants.BRAND_NAME,
-            device_type=constants.DEVICE_TYPE,
-            container_type=ContainerType.tube,
-        ),
-        measurement_groups=map_rows(
-            ThermoFisherQubit4Reader.read(named_file_contents), create_measurement_group
-        ),
     )

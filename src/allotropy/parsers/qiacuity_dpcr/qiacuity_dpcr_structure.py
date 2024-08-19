@@ -1,13 +1,10 @@
 from __future__ import annotations
 
 from allotropy.allotrope.schema_mappers.adm.pcr.BENCHLING._2023._09.dpcr import (
-    Data,
     Measurement,
-    MeasurementGroup,
     Metadata,
 )
 from allotropy.exceptions import get_key_or_error
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.qiacuity_dpcr.constants import (
     BRAND_NAME,
     DEVICE_IDENTIFIER,
@@ -17,12 +14,22 @@ from allotropy.parsers.qiacuity_dpcr.constants import (
     SAMPLE_ROLE_TYPE_MAPPING,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.qiacuity_dpcr.qiacuity_dpcr_reader import QiacuitydPCRReader
-from allotropy.parsers.utils.pandas import map_rows, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def _create_measurements(data: SeriesData) -> Measurement:
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        device_identifier=DEVICE_IDENTIFIER,
+        brand_name=BRAND_NAME,
+        device_type=DEVICE_TYPE,
+        software_name=SOFTWARE_NAME,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        file_name=file_name,
+    )
+
+
+def create_measurements(data: SeriesData) -> Measurement:
     sample_role_type = data.get(str, "Type")
     # TODO: When the sample role type model is updated in this repo, we should update this
     # Map sample role types to valid sample role types from ASM
@@ -44,26 +51,4 @@ def _create_measurements(data: SeriesData) -> Measurement:
         positive_partition_count=data[int, "Partitions (positive)"],
         negative_partition_count=data.get(int, "Partitions (negative)"),
         flourescence_intensity_threshold_setting=data.get(float, "Threshold"),
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    reader = QiacuitydPCRReader(named_file_contents.contents)
-    return Data(
-        Metadata(
-            device_identifier=DEVICE_IDENTIFIER,
-            brand_name=BRAND_NAME,
-            device_type=DEVICE_TYPE,
-            software_name=SOFTWARE_NAME,
-            product_manufacturer=PRODUCT_MANUFACTURER,
-            file_name=named_file_contents.original_file_name,
-        ),
-        measurement_groups=[
-            MeasurementGroup(
-                measurements=map_rows(reader.well_data, _create_measurements),
-                # TODO: Hardcoded plate well count to 0 since it's a required field
-                #  ASM will be modified to optional in future version
-                plate_well_count=0,
-            )
-        ],
     )

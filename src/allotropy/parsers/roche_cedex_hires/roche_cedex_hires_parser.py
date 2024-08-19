@@ -187,25 +187,8 @@ class RocheCedexHiResParser(VendorParser):
         Constructs a CellCountingDocumentItem for a specific row of data.
     """
 
-    @property
-    def display_name(self) -> str:
-        """
-        Returns the display name of the parser.
-
-        Returns:
-        str: The display name of the parser.
-        """
-        return constants.DISPLAY_NAME
-
-    @property
-    def release_state(self) -> ReleaseState:
-        """
-        Returns the current release state of the parser.
-
-        Returns:
-        ReleaseState: The current release state of the parser.
-        """
-        return ReleaseState.RECOMMENDED
+    DISPLAY_NAME = constants.DISPLAY_NAME
+    RELEASE_STATE = ReleaseState.RECOMMENDED
 
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
         """

@@ -6,7 +6,6 @@ import re
 
 from allotropy.allotrope.models.shared.definitions.definitions import JsonFloat
 from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.plate_reader import (
-    Data,
     ImageFeature,
     Measurement,
     MeasurementGroup,
@@ -15,7 +14,6 @@ from allotropy.allotrope.schema_mappers.adm.plate_reader.benchling._2023._09.pla
     ProcessedData,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.lines_reader import LinesReader
 from allotropy.parsers.utils.uuids import random_uuid_str
@@ -102,12 +100,10 @@ class AssayData:
         return AssayData(plates, identifier)
 
 
-def _create_measurement_groups(
-    assay_data: AssayData, metadata: Metadata
+def create_measurement_groups(
+    assay_data: AssayData, file_name: str
 ) -> list[MeasurementGroup]:
-    well_plate_identifier = (
-        assay_data.identifier or Path(assert_not_none(metadata.file_name)).stem
-    )
+    well_plate_identifier = assay_data.identifier or Path(file_name).stem
     plate_well_count = len(assay_data.plates[0].wells)
     return [
         MeasurementGroup(
@@ -137,7 +133,7 @@ def _create_measurement_groups(
     ]
 
 
-def _create_metadata(reader: LinesReader) -> Metadata:
+def create_metadata(reader: LinesReader) -> Metadata:
     data = {}
     for i in range(3):  # for first three lines
         line = assert_not_none(
@@ -196,19 +192,4 @@ def _create_metadata(reader: LinesReader) -> Metadata:
             data.get("Authenticated user"),
             msg="Unable to find authenticated user.",
         ),
-    )
-
-
-def create_data(named_file_contents: NamedFileContents) -> Data:
-    reader = LinesReader.create(named_file_contents)
-    metadata = _create_metadata(reader)
-
-    reader.drop_empty()
-    reader.drop_until_empty()  # ignore assay info
-    reader.drop_empty()
-
-    assay_data = AssayData.create(reader)
-    return Data(
-        metadata=metadata,
-        measurement_groups=_create_measurement_groups(assay_data, metadata),
     )

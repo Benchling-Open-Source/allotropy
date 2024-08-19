@@ -52,11 +52,13 @@ class VendorParser(ABC):
 
 class MapperVendorParser(VendorParser, Generic[Data, Model]):
     SCHEMA_MAPPER: Callable[..., SchemaMapper[Data, Model]]
-    CREATE_DATA: Callable[[NamedFileContents], Data]
 
     def _get_mapper(self) -> SchemaMapper[Data, Model]:
         return self.SCHEMA_MAPPER(self.asm_converter_name, self._get_date_time)
 
+    @abstractmethod
+    def _create_data(self, named_file_contents: NamedFileContents) -> Data:
+        raise NotImplementedError
+
     def to_allotrope(self, named_file_contents: NamedFileContents) -> Model:
-        data = self.CREATE_DATA(named_file_contents)
-        return self._get_mapper().map_model(data)
+        return self._get_mapper().map_model(self._create_data(named_file_contents))

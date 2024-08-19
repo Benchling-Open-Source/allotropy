@@ -16,8 +16,8 @@ from allotropy.allotrope.schema_mappers.adm.electrophoresis.benchling._2024._06.
 )
 from allotropy.exceptions import AllotropeConversionError
 from allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure import (
-    _create_measurement_groups,
     _get_unit_class,
+    create_measurement_groups,
     create_metadata,
 )
 from allotropy.parsers.agilent_tapestation_analysis.constants import (
@@ -89,7 +89,7 @@ def test_create_metadata_with_din_version() -> None:
 
 
 @pytest.mark.short
-def test_create_measurement_groups_without_matching_screen_tape() -> None:
+def testcreate_measurement_groups_without_matching_screen_tape() -> None:
     sample_id = "01-S025-180717-01-899752"
     screen_tape_id = "01-S025-200617-01-899752"
     xml_str = f"""
@@ -105,11 +105,11 @@ def test_create_measurement_groups_without_matching_screen_tape() -> None:
     """
     expected = f"Unrecognized ScreenTape ID: '{sample_id}'. Expecting one of ['{screen_tape_id}']."
     with pytest.raises(AllotropeConversionError, match=re.escape(expected)):
-        _create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
+        create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
 
 @pytest.mark.short
-def test_create_measurement_groups_without_screen_tapes() -> None:
+def testcreate_measurement_groups_without_screen_tapes() -> None:
     xml_str = """
     <File>
         <Samples>
@@ -119,16 +119,16 @@ def test_create_measurement_groups_without_screen_tapes() -> None:
     """
     error_msg = "Unable to find 'ScreenTapes' from xml."
     with pytest.raises(AllotropeConversionError, match=error_msg):
-        _create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
+        create_measurement_groups(ET.fromstring(xml_str))  # noqa: S314
 
 
 @pytest.mark.short
-def test_create_measurement_groups() -> None:
+def testcreate_measurement_groups() -> None:
     with mock.patch(
         "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
         return_value="dummy_id",
     ):
-        groups, calc_docs = _create_measurement_groups(get_samples_xml())
+        groups, calc_docs = create_measurement_groups(get_samples_xml())
 
     assert groups == [
         MeasurementGroup(
@@ -184,12 +184,12 @@ def test_create_measurement_groups() -> None:
 
 
 @pytest.mark.short
-def test_create_measurement_groups_with_calculated_data() -> None:
+def testcreate_measurement_groups_with_calculated_data() -> None:
     with mock.patch(
         "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
         return_value="dummy_id",
     ):
-        _, calc_docs = _create_measurement_groups(
+        _, calc_docs = create_measurement_groups(
             get_samples_xml(with_calculated_data=True)
         )
 
@@ -257,20 +257,18 @@ def test_create_measurement_groups_with_calculated_data() -> None:
 
 
 @pytest.mark.short
-def test_create_measurement_groups_with_error() -> None:
-    groups, _ = _create_measurement_groups(
-        get_samples_xml(sample_error="Sample Error.")
-    )
+def testcreate_measurement_groups_with_error() -> None:
+    groups, _ = create_measurement_groups(get_samples_xml(sample_error="Sample Error."))
     assert assert_not_none(groups[0].measurements[0].errors)[0].error == "Sample Error."
 
 
 @pytest.mark.short
-def test_create_measurement_groups_with_regions() -> None:
+def testcreate_measurement_groups_with_regions() -> None:
     with mock.patch(
         "allotropy.parsers.agilent_tapestation_analysis.agilent_tapestation_analysis_structure.random_uuid_str",
         return_value="dummy_id",
     ):
-        groups, calc_docs = _create_measurement_groups(
+        groups, calc_docs = create_measurement_groups(
             get_samples_xml(with_regions=True)
         )
 
