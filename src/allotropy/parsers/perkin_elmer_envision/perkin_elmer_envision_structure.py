@@ -218,7 +218,7 @@ class CalculatedResultList:
             "results data",
         )
         series = (
-            data_frame.drop(0, axis=0).drop(0, axis=1)
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
             if data_frame.iloc[1, 0] == "A"
             else data_frame
         )
@@ -261,7 +261,7 @@ class ResultList:
             "reader data",
         )
         series = (
-            data_frame.drop(0, axis=0).drop(0, axis=1)
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
             if data_frame.iloc[1, 0] == "A"
             else data_frame
         )
@@ -431,7 +431,7 @@ class PlateMap:
         reader.drop_empty()
 
         series = (
-            data_frame.drop(0, axis=0).drop(0, axis=1)
+            data_frame.drop(0, axis="index").drop(0, axis="columns")
             if data_frame.iloc[1, 0] == "A"
             else data_frame
         )
