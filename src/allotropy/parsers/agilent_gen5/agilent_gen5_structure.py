@@ -412,72 +412,6 @@ class MeasurementData:
     label: str
 
 
-def _create_measurement(
-    measurement: MeasurementData,
-    well_position: str,
-    header_data: HeaderData,
-    read_data: ReadData,
-    sample_identifier: str | None,
-    actual_temperature: float | None,
-) -> Measurement:
-    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
-    if read_data.read_mode == ReadMode.ABSORBANCE:
-        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
-    elif read_data.read_mode == ReadMode.FLUORESCENCE:
-        measurement_type = MeasurementType.FLUORESCENCE
-    elif read_data.read_mode == ReadMode.LUMINESCENCE:
-        measurement_type = MeasurementType.LUMINESCENCE
-
-    detector_wavelength_setting: JsonFloat | None = None
-    if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
-        filter_data = None
-        detector_wavelength_setting = float(
-            measurement.label.split(":")[-1].split(" ")[0]
-        )
-    else:
-        filter_data = read_data.filter_sets[measurement.label]
-        detector_wavelength_setting = filter_data.detector_wavelength_setting
-
-    return Measurement(
-        type_=measurement_type,
-        identifier=measurement.identifier,
-        sample_identifier=sample_identifier
-        or f"{header_data.well_plate_identifier} {well_position}",
-        location_identifier=well_position,
-        well_plate_identifier=header_data.well_plate_identifier,
-        detector_wavelength_setting=detector_wavelength_setting,
-        detector_bandwidth_setting=filter_data.detector_bandwidth_setting
-        if filter_data
-        else None,
-        excitation_wavelength_setting=filter_data.excitation_wavelength_setting
-        if filter_data
-        else None,
-        excitation_bandwidth_setting=filter_data.excitation_bandwidth_setting
-        if filter_data
-        else None,
-        wavelength_filter_cutoff_setting=filter_data.wavelength_filter_cutoff_setting
-        if filter_data
-        else None,
-        detector_distance_setting=read_data.detector_distance,
-        scan_position_setting=filter_data.scan_position_setting
-        if filter_data
-        else None,
-        detector_gain_setting=filter_data.gain if filter_data else None,
-        number_of_averages=read_data.number_of_averages,
-        detector_carriage_speed=read_data.detector_carriage_speed,
-        absorbance=measurement.value
-        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
-        else None,
-        fluorescence=measurement.value
-        if measurement_type == MeasurementType.FLUORESCENCE
-        else None,
-        luminescence=measurement.value
-        if measurement_type == MeasurementType.LUMINESCENCE
-        else None,
-        compartment_temperature=actual_temperature,
-    )
-
-
 def create_results(
     result_lines: list[str],
     header_data: HeaderData,
@@ -589,4 +523,71 @@ def create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
         software_version=header_data.software_version,
         file_name=header_data.file_name,
         measurement_time=header_data.datetime,
+    )
+
+
+
+def _create_measurement(
+    measurement: MeasurementData,
+    well_position: str,
+    header_data: HeaderData,
+    read_data: ReadData,
+    sample_identifier: str | None,
+    actual_temperature: float | None,
+) -> Measurement:
+    # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+    if read_data.read_mode == ReadMode.ABSORBANCE:
+        measurement_type = MeasurementType.ULTRAVIOLET_ABSORBANCE
+    elif read_data.read_mode == ReadMode.FLUORESCENCE:
+        measurement_type = MeasurementType.FLUORESCENCE
+    elif read_data.read_mode == ReadMode.LUMINESCENCE:
+        measurement_type = MeasurementType.LUMINESCENCE
+
+    detector_wavelength_setting: JsonFloat | None = None
+    if measurement_type is MeasurementType.ULTRAVIOLET_ABSORBANCE:
+        filter_data = None
+        detector_wavelength_setting = float(
+            measurement.label.split(":")[-1].split(" ")[0]
+        )
+    else:
+        filter_data = read_data.filter_sets[measurement.label]
+        detector_wavelength_setting = filter_data.detector_wavelength_setting
+
+    return Measurement(
+        type_=measurement_type,
+        identifier=measurement.identifier,
+        sample_identifier=sample_identifier
+        or f"{header_data.well_plate_identifier} {well_position}",
+        location_identifier=well_position,
+        well_plate_identifier=header_data.well_plate_identifier,
+        detector_wavelength_setting=detector_wavelength_setting,
+        detector_bandwidth_setting=filter_data.detector_bandwidth_setting
+        if filter_data
+        else None,
+        excitation_wavelength_setting=filter_data.excitation_wavelength_setting
+        if filter_data
+        else None,
+        excitation_bandwidth_setting=filter_data.excitation_bandwidth_setting
+        if filter_data
+        else None,
+        wavelength_filter_cutoff_setting=filter_data.wavelength_filter_cutoff_setting
+        if filter_data
+        else None,
+        detector_distance_setting=read_data.detector_distance,
+        scan_position_setting=filter_data.scan_position_setting
+        if filter_data
+        else None,
+        detector_gain_setting=filter_data.gain if filter_data else None,
+        number_of_averages=read_data.number_of_averages,
+        detector_carriage_speed=read_data.detector_carriage_speed,
+        absorbance=measurement.value
+        if measurement_type == MeasurementType.ULTRAVIOLET_ABSORBANCE
+        else None,
+        fluorescence=measurement.value
+        if measurement_type == MeasurementType.FLUORESCENCE
+        else None,
+        luminescence=measurement.value
+        if measurement_type == MeasurementType.LUMINESCENCE
+        else None,
+        compartment_temperature=actual_temperature,
     )

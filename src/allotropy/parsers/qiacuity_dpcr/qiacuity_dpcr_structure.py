@@ -18,17 +18,6 @@ from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 
 
-def create_metadata(file_name: str) -> Metadata:
-    return Metadata(
-        device_identifier=DEVICE_IDENTIFIER,
-        brand_name=BRAND_NAME,
-        device_type=DEVICE_TYPE,
-        software_name=SOFTWARE_NAME,
-        product_manufacturer=PRODUCT_MANUFACTURER,
-        file_name=file_name,
-    )
-
-
 def create_measurements(data: SeriesData) -> Measurement:
     sample_role_type = data.get(str, "Type")
     # TODO: When the sample role type model is updated in this repo, we should update this
@@ -51,4 +40,15 @@ def create_measurements(data: SeriesData) -> Measurement:
         positive_partition_count=data[int, "Partitions (positive)"],
         negative_partition_count=data.get(int, "Partitions (negative)"),
         flourescence_intensity_threshold_setting=data.get(float, "Threshold"),
+    )
+
+
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        device_identifier=DEVICE_IDENTIFIER,
+        brand_name=BRAND_NAME,
+        device_type=DEVICE_TYPE,
+        software_name=SOFTWARE_NAME,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        file_name=file_name,
     )

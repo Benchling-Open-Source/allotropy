@@ -9,22 +9,12 @@ from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DEFAULT_ANALYST,
     MODEL_NUMBER,
     SOFTWARE_NAME,
+    DEVICE_TYPE,
+    DETECTION_TYPE,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
 from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
-
-
-def create_metadata(reader_data: ViCellData, file_name: str) -> Metadata:
-    return Metadata(
-        device_type="brightfield imager (cell counter)",
-        detection_type="brightfield",
-        model_number=MODEL_NUMBER,
-        equipment_serial_number=reader_data.serial_number,
-        software_name=SOFTWARE_NAME,
-        software_version=reader_data.version.value,
-        file_name=file_name,
-    )
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
@@ -55,4 +45,16 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 analyst=DEFAULT_ANALYST,
             )
         ]
+    )
+
+
+def create_metadata(reader_data: ViCellData, file_name: str) -> Metadata:
+    return Metadata(
+        device_type=DEVICE_TYPE,
+        detection_type=DETECTION_TYPE,
+        model_number=MODEL_NUMBER,
+        equipment_serial_number=reader_data.serial_number,
+        software_name=SOFTWARE_NAME,
+        software_version=reader_data.version.value,
+        file_name=file_name,
     )

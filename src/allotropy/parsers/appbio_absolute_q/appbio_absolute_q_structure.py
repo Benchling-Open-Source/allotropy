@@ -166,18 +166,6 @@ class Well:
         ]
 
 
-def create_metadata(device_identifier: str, file_name: str) -> Metadata:
-    return Metadata(
-        device_identifier=device_identifier,
-        brand_name=BRAND_NAME,
-        device_type=DEVICE_TYPE,
-        container_type=ContainerType.well_plate,
-        software_name=SOFTWARE_NAME,
-        product_manufacturer=PRODUCT_MANUFACTURER,
-        file_name=file_name,
-    )
-
-
 def create_measurement_groups(wells: list[Well]) -> list[MeasurementGroup]:
     return [
         MeasurementGroup(
@@ -228,3 +216,15 @@ def create_calculated_data(
         for group in groups
         for calculated_data in group.calculated_data
     ]
+
+
+def create_metadata(device_identifier: str, file_name: str) -> Metadata:
+    return Metadata(
+        device_identifier=device_identifier,
+        brand_name=BRAND_NAME,
+        device_type=DEVICE_TYPE,
+        container_type=ContainerType.well_plate,
+        software_name=SOFTWARE_NAME,
+        product_manufacturer=PRODUCT_MANUFACTURER,
+        file_name=file_name,
+    )

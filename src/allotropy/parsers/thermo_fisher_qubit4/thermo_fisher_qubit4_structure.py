@@ -22,19 +22,6 @@ EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
 }
 
 
-def create_metadata(file_name: str) -> Metadata:
-    return Metadata(
-        file_name=file_name,
-        device_identifier=NOT_APPLICABLE,
-        model_number=constants.MODEL_NUMBER,
-        software_name=constants.QUBIT_SOFTWARE,
-        product_manufacturer=constants.PRODUCT_MANUFACTURER,
-        brand_name=constants.BRAND_NAME,
-        device_type=constants.DEVICE_TYPE,
-        container_type=ContainerType.tube,
-    )
-
-
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
     return MeasurementGroup(
         measurement_time=data[str, "Test Date"],
@@ -80,4 +67,17 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 ),
             )
         ],
+    )
+
+
+def create_metadata(file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_identifier=NOT_APPLICABLE,
+        model_number=constants.MODEL_NUMBER,
+        software_name=constants.QUBIT_SOFTWARE,
+        product_manufacturer=constants.PRODUCT_MANUFACTURER,
+        brand_name=constants.BRAND_NAME,
+        device_type=constants.DEVICE_TYPE,
+        container_type=ContainerType.tube,
     )

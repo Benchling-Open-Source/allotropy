@@ -132,19 +132,6 @@ class Sample:
         ]
 
 
-def create_metadata(title: Title, file_name: str) -> Metadata:
-    return Metadata(
-        file_name=file_name,
-        device_type=SOLUTION_ANALYZER,
-        model_number=title.model_number,
-        equipment_serial_number=title.device_serial_number,
-        device_identifier=NOT_APPLICABLE,
-        unc_path="",
-        software_name=title.model_number,
-        software_version=title.software_version,
-    )
-
-
 def _create_measurements(
     sample: Sample, measurement_time: str, raw_measurements: dict[str, RawMeasurement]
 ) -> list[Measurement]:
@@ -213,3 +200,16 @@ def create_measurement_groups(
             )
         )
     return groups
+
+
+def create_metadata(title: Title, file_name: str) -> Metadata:
+    return Metadata(
+        file_name=file_name,
+        device_type=SOLUTION_ANALYZER,
+        model_number=title.model_number,
+        equipment_serial_number=title.device_serial_number,
+        device_identifier=NOT_APPLICABLE,
+        unc_path="",
+        software_name=title.model_number,
+        software_version=title.software_version,
+    )

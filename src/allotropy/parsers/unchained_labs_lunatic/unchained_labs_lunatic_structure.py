@@ -107,6 +107,22 @@ def _create_measurement_group(
     )
 
 
+def create_metadata(header: SeriesData, file_name: str) -> Metadata:
+    device_identifier = header.get(str, "Instrument ID") or header.get(
+        str, "Instrument"
+    )
+    return Metadata(
+        device_type="plate reader",
+        model_number="Lunatic",
+        product_manufacturer="Unchained Labs",
+        device_identifier=assert_not_none(
+            device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
+        ),
+        software_name="Lunatic and Stunner Analysis",
+        file_name=file_name,
+    )
+
+
 def create_measurement_groups(
     header: SeriesData, data: pd.DataFrame
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
@@ -125,19 +141,3 @@ def create_measurement_groups(
         )
 
     return map_rows(data, make_group), calculated_data
-
-
-def create_metadata(header: SeriesData, file_name: str) -> Metadata:
-    device_identifier = header.get(str, "Instrument ID") or header.get(
-        str, "Instrument"
-    )
-    return Metadata(
-        device_type="plate reader",
-        model_number="Lunatic",
-        product_manufacturer="Unchained Labs",
-        device_identifier=assert_not_none(
-            device_identifier, msg=NO_DEVICE_IDENTIFIER_ERROR_MSG
-        ),
-        software_name="Lunatic and Stunner Analysis",
-        file_name=file_name,
-    )

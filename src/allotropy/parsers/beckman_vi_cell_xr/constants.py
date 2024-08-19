@@ -23,6 +23,8 @@ HEADINGS_TO_PARSER_HEADINGS = {
 MODEL_RE = r"Vi-CELL XR (?P<version>\d{1,}\.\d{2,}(.\d{1,})?)"
 DEFAULT_VERSION = XrVersion._2_06
 
+DEVICE_TYPE = "brightfield imager (cell counter)"
+DETECTION_TYPE = "brightfield"
 DEFAULT_ANALYST = "Vi-Cell XR"
 MODEL_NUMBER = "Vi-Cell XR"
 SOFTWARE_NAME = "Vi-Cell XR"
