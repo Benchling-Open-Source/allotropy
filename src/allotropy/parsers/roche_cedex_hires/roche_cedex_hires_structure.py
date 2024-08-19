@@ -34,10 +34,14 @@ def _create_metadata(data: SeriesData, file_name: str) -> Metadata:
 
 def _create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     # Cell counts are measured in cells/mL, but reported in millions of cells/mL
-    viable_cell_density = float(Decimal(str(data[float, "Viable Cell Conc."])) / Decimal("1000000"))
+    viable_cell_density = float(
+        Decimal(str(data[float, "Viable Cell Conc."])) / Decimal("1000000")
+    )
     total_cell_density = data.get(float, "Total Cell Conc.")
     if total_cell_density:
-        total_cell_density = float(Decimal(str(total_cell_density)) / Decimal("1000000"))
+        total_cell_density = float(
+            Decimal(str(total_cell_density)) / Decimal("1000000")
+        )
     dead_cell_density = data.get(float, "Dead Cell Conc.")
     if dead_cell_density:
         dead_cell_density = float(Decimal(str(dead_cell_density)) / Decimal("1000000"))
