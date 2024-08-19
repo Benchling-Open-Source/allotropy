@@ -270,7 +270,7 @@ class MeasurementList:
             StringIO("\n".join(table_lines)),
             header=[0],
             index_col=[0],
-        ).dropna(how="all", axis=1)
+        ).dropna(how="all", axis="columns")
 
 
 @dataclass(frozen=True)

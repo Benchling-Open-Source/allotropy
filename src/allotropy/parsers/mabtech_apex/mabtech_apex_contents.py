@@ -43,4 +43,4 @@ class MabtechApexContents:
             contents.get("Plate Database"), msg="Unable to find 'Plate Database' sheet."
         )
 
-        return sheet.dropna(axis=1, how="all")
+        return sheet.dropna(axis="columns", how="all")
