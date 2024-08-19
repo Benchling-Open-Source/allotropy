@@ -153,7 +153,7 @@ def _extract_data(df: pd.DataFrame) -> tuple[pd.DataFrame, SeriesData]:
     header = SeriesData(header_data)
 
     data = df.loc[start:end, :]
-    data = data.dropna(how="all").dropna(how="all", axis=1)
+    data = data.dropna(how="all").dropna(how="all", axis="columns")
     data[0] = data[0].ffill()
     data = data.dropna(subset=1).reset_index(drop=True)
     set_columns(data, [str(x).strip() for x in data.loc[0]])
