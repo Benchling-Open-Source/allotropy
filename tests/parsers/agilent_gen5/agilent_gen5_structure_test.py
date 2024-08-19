@@ -405,6 +405,7 @@ def test_create_multiple_read_modes() -> None:
     assert file_data[0].step_label == "od"
     assert file_data[0].measurement_labels == ["od:600"]
     assert file_data[0].number_of_averages == 8
+    assert file_data[0].detector_carriage_speed == "Normal"
 
     assert file_data[1].read_mode == ReadMode.FLUORESCENCE
     assert file_data[1].step_label == "fluor"
@@ -461,6 +462,7 @@ def test_create_three_read_modes() -> None:
     assert file_data[0].step_label == "od"
     assert file_data[0].measurement_labels == ["od:600"]
     assert file_data[0].number_of_averages == 8
+    assert file_data[0].detector_carriage_speed == "Normal"
 
     assert file_data[1].read_mode == ReadMode.FLUORESCENCE
     assert file_data[1].step_label == "fluor"
@@ -490,3 +492,38 @@ def test_create_three_read_modes() -> None:
     }
     assert file_data[2].detector_carriage_speed == "Normal"
     assert file_data[2].detector_distance == 4.5
+
+@pytest.mark.short
+def test_create_two_same_read_modes() -> None:
+    multiple_read_modes = [
+        "Procedure Details",
+        "Plate Type\t96 WELL PLATE (Use plate lid)",
+        "Read\tod",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  600",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8",
+        "Read	260",
+        "\tAbsorbance Endpoint",
+        "\tFull Plate",
+        "\tWavelengths:  260, 280, 230",
+        "\tPathlength Correction: 977 / 900",
+        "\t    Absorbance at 1 cm: 0.18",
+        "\tRead Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8"
+    ]
+    reader = LinesReader(multiple_read_modes)
+
+    file_data = ReadData.create(reader)
+    assert file_data[0].read_mode == ReadMode.ABSORBANCE
+    assert file_data[0].step_label == "od"
+    assert file_data[0].measurement_labels == ["od:600"]
+    assert file_data[0].number_of_averages == 8
+    assert file_data[0].detector_carriage_speed == "Normal"
+
+    assert file_data[1].read_mode == ReadMode.ABSORBANCE
+    assert file_data[1].step_label == "260"
+    assert file_data[1].detector_carriage_speed == "Normal"
+    assert file_data[1].measurement_labels == ['260:260', '260:280', '260:230', '260:977 [Test]', '260:900 [Ref]']
+    assert file_data[1].number_of_averages == 8
+    assert file_data[1].pathlength_correction == "977 / 900"
+

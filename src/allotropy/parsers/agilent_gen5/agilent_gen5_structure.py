@@ -307,17 +307,39 @@ class ReadData:
 
     @staticmethod
     def get_read_modes(procedure_details: str) -> list[ReadMode]:
-        read_modes = [
-            read_mode for read_mode in ReadMode if read_mode.value in procedure_details
-        ]
+        read_modes = []
+        for read_mode in ReadMode:
+            # Construct the regex pattern for the current read mode
+            pattern = r"\t{} Endpoint".format(re.escape(read_mode.value))
+            # Use regex to find all occurrences of the read mode pattern in the procedure details
+            matches = re.findall(pattern, procedure_details)
+            if matches:
+                # Add the read_mode to the list for each match found
+                read_modes.extend([read_mode] * len(matches))
+
         if not read_modes:
             raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
 
+        # Replace ALPHALISA with FLUORESCENCE
         read_modes = [
             ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
             for read_mode in read_modes
         ]
+
         return read_modes
+
+    # def get_read_modes(procedure_details: str) -> list[ReadMode]:
+    #     read_modes = [
+    #         read_mode for read_mode in ReadMode if read_mode.value in procedure_details
+    #     ]
+    #     if not read_modes:
+    #         raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
+    #
+    #     read_modes = [
+    #         ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
+    #         for read_mode in read_modes
+    #     ]
+    #     return read_modes
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
