@@ -53,9 +53,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
 
     rawdata_list = list(reader.pop_until_empty())
     rawdata_string = io.StringIO("\n".join(rawdata_list))
-    rawdata_dataframe = read_csv(rawdata_string, header=0, delimiter=delimiter).astype(
-        str
-    )
+    rawdata_dataframe = read_csv(rawdata_string, header=0, delimiter=delimiter)
 
     metadata_string = io.StringIO("\n".join(metadata_list))
     metadata_dataframe = (
@@ -70,7 +68,7 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
         .T
     )
     metadata_dataframe.columns = metadata_dataframe.columns.str.strip()
-    rawdata_dataframe.columns = rawdata_dataframe.columns.str.strip()
+    rawdata_dataframe.columns = rawdata_dataframe.columns.astype(str).str.strip()
 
     metadata_dataframe = metadata_dataframe.head(1)
 
@@ -119,18 +117,8 @@ def create_data(named_file_contents: NamedFileContents) -> Data:
                                     unit="mAU",
                                 )
                             ],
-                            dimensions=[
-                                rawdata_dataframe["wavelength(nm)"]
-                                .astype(float)
-                                .tolist()
-                            ],
-                            measures=[
-                                [
-                                    float(item)
-                                    for item in rawdata_dataframe["ABS"]
-                                    if item is not None
-                                ]
-                            ],
+                            dimensions=[rawdata_dataframe["wavelength(nm)"].tolist()],
+                            measures=[rawdata_dataframe["ABS"].tolist()],
                         ),
                     ),
                 ],
