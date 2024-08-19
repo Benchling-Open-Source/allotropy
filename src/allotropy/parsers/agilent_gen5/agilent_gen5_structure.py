@@ -328,19 +328,6 @@ class ReadData:
 
         return read_modes
 
-    # def get_read_modes(procedure_details: str) -> list[ReadMode]:
-    #     read_modes = [
-    #         read_mode for read_mode in ReadMode if read_mode.value in procedure_details
-    #     ]
-    #     if not read_modes:
-    #         raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
-    #
-    #     read_modes = [
-    #         ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
-    #         for read_mode in read_modes
-    #     ]
-    #     return read_modes
-
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
         if ReadType.KINETIC.value in procedure_details:
