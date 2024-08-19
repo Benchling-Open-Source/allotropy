@@ -526,7 +526,6 @@ def create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
     )
 
 
-
 def _create_measurement(
     measurement: MeasurementData,
     well_position: str,

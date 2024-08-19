@@ -7,10 +7,10 @@ from allotropy.allotrope.schema_mappers.adm.cell_counting.benchling._2023._11.ce
 )
 from allotropy.parsers.beckman_vi_cell_xr.constants import (
     DEFAULT_ANALYST,
+    DETECTION_TYPE,
+    DEVICE_TYPE,
     MODEL_NUMBER,
     SOFTWARE_NAME,
-    DEVICE_TYPE,
-    DETECTION_TYPE,
 )
 from allotropy.parsers.beckman_vi_cell_xr.vi_cell_xr_reader import ViCellData
 from allotropy.parsers.utils.pandas import SeriesData
