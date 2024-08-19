@@ -37,12 +37,12 @@ def _create_measurement_groups(data: SeriesData) -> MeasurementGroup:
     viable_cell_density = float(
         Decimal(data[str, "Viable Cell Conc."]) / Decimal("1000000")
     )
-    total_cell_density = data.get(str, "Total Cell Conc.")
-    if total_cell_density:
-        total_cell_density = float(Decimal(total_cell_density) / Decimal("1000000"))
-    dead_cell_density = data.get(str, "Dead Cell Conc.")
-    if dead_cell_density:
-        dead_cell_density = float(Decimal(dead_cell_density) / Decimal("1000000"))
+    total_cell_density_val = data.get(str, "Total Cell Conc.")
+    if total_cell_density_val:
+        total_cell_density = float(Decimal(total_cell_density_val) / Decimal("1000000"))
+    dead_cell_density_val = data.get(str, "Dead Cell Conc.")
+    if dead_cell_density_val:
+        dead_cell_density = float(Decimal(dead_cell_density_val) / Decimal("1000000"))
 
     return MeasurementGroup(
         analyst=data.get(str, "Username"),
