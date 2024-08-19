@@ -104,10 +104,10 @@ def parse_header_row(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def split_header_and_data(
-    df: pd.DataFrame, cond: Callable[[pd.Series[Any]], bool]
+    df: pd.DataFrame, should_split_on_row: Callable[[pd.Series[Any]], bool]
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     for idx, row in df.iterrows():
-        if cond(row):
+        if should_split_on_row(row):
             header_end = int(str(idx))
             return df[:header_end], df[header_end + 1 :]
 
