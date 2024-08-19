@@ -34,7 +34,10 @@ from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueRelativeLightUnit,
 )
-from allotropy.allotrope.models.shared.definitions.definitions import TQuantityValue
+from allotropy.allotrope.models.shared.definitions.definitions import (
+    JsonFloat,
+    TQuantityValue,
+)
 from allotropy.allotrope.models.shared.definitions.units import UNITLESS
 from allotropy.constants import ASM_CONVERTER_VERSION
 from allotropy.exceptions import (
@@ -292,7 +295,7 @@ class SoftmaxproParser(VendorParser):
     def _build_calc_doc(
         self,
         name: str,
-        value: float,
+        value: JsonFloat,
         data_sources: list[DataSourceDocumentItem],
         description: str | None = None,
     ) -> CalculatedDataDocumentItem:
