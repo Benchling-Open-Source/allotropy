@@ -35,7 +35,7 @@ from allotropy.parsers.agilent_gen5.constants import (
     MEASUREMENTS_DATA_POINT_KEY,
     MIRROR_KEY,
     MULTIPLATE_FILE_ERROR,
-    MULTIPLE_READ_MODE_ERROR,
+    READ_DATA_MEASUREMENT_ERROR,
     NAN_EMISSION_EXCITATION,
     OPTICS_KEY,
     PATHLENGTH_CORRECTION_KEY,
@@ -258,7 +258,7 @@ class ReadData:
     filter_sets: dict[str, FilterSet]
 
     @classmethod
-    def create(cls, reader: LinesReader) -> ReadData:
+    def create(cls, reader: LinesReader) -> list[ReadData]:
         assert_not_none(reader.drop_until("^Procedure Details"), "Procedure Details")
         reader.pop()
         reader.drop_empty()
@@ -268,42 +268,65 @@ class ReadData:
         if read_type != ReadType.ENDPOINT:
             raise AllotropeConversionError(UNSUPPORTED_READ_TYPE_ERROR)
 
-        read_mode = cls.get_read_mode(procedure_details)
-        device_control_data = DeviceControlData.create(procedure_details, read_mode)
-        measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
+        read_modes = cls.get_read_modes(procedure_details)
+        read_data_list: [ReadData] = []
+        full_read_lines: list[str] = procedure_details.splitlines()
 
-        number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
-        read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
+        section_lines_reader = SectionLinesReader(full_read_lines)
+        read_sections = []
+        for read_section in section_lines_reader.iter_sections("^Read\t"):
+            read_sections.append(read_section)
 
-        return ReadData(
-            read_mode=read_mode,
-            step_label=device_control_data.step_label,
-            measurement_labels=measurement_labels,
-            detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
-            # Absorbance attributes
-            pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
-            number_of_averages=try_float_or_none(number_of_averages),
-            # Luminescence attributes
-            detector_distance=try_float_or_none(read_height.split(" ")[0]),
-            # Fluorescence attributes
-            filter_sets=cls._get_filter_sets(
-                measurement_labels, device_control_data, read_mode
-            ),
-        )
+        section = 0
+        for read_mode_idx in range(len(read_modes)):
+            read_mode = read_modes[read_mode_idx]
+            while section < len(read_sections):
+                join_read_section_lines = "\n".join(read_sections[section].lines)
+                device_control_data = DeviceControlData.create(join_read_section_lines, read_mode)
+                measurement_labels = cls._get_measurement_labels(device_control_data, read_mode)
+                number_of_averages = device_control_data.get(MEASUREMENTS_DATA_POINT_KEY)
+                read_height = device_control_data.get(READ_HEIGHT_KEY) or ""
+                read_data_list.append(ReadData(
+                    read_mode=read_mode,
+                    step_label=device_control_data.step_label,
+                    measurement_labels=measurement_labels,
+                    detector_carriage_speed=device_control_data.get(READ_SPEED_KEY),
+                    # Absorbance attributes
+                    pathlength_correction=device_control_data.get(PATHLENGTH_CORRECTION_KEY),
+                    number_of_averages=try_float_or_none(number_of_averages),
+                    # Luminescence attributes
+                    detector_distance=try_float_or_none(read_height.split(" ")[0]),
+                    # Fluorescence attributes
+                    filter_sets=cls._get_filter_sets(
+                        measurement_labels, device_control_data, read_mode
+                    ),
+                ))
+                section += 1
+                break
+        return read_data_list
 
     @staticmethod
-    def get_read_mode(procedure_details: str) -> ReadMode:
-        read_modes = [
-            read_mode for read_mode in ReadMode if read_mode.value in procedure_details
-        ]
+    def get_read_modes(procedure_details: str) -> list[ReadMode]:
+        read_modes = []
+        for read_mode in ReadMode:
+            # Construct the regex pattern for the current read mode
+            pattern = r"\t{} Endpoint".format(re.escape(read_mode.value))
+            # Use regex to find all occurrences of the read mode pattern in the procedure details
+            matches = re.findall(pattern, procedure_details)
+            if matches:
+                # Add the read_mode to the list for each match found
+                read_modes.extend([read_mode] * len(matches))
+
         if not read_modes:
             raise AllotropeConversionError(UNSUPPORTED_READ_MODE_ERROR)
-        if len(read_modes) > 1:
-            raise AllotropeConversionError(MULTIPLE_READ_MODE_ERROR)
 
-        if read_modes[0] in (ReadMode.FLUORESCENCE, ReadMode.ALPHALISA):
-            return ReadMode.FLUORESCENCE
-        return read_modes[0]
+        # Replace ALPHALISA with FLUORESCENCE
+        read_modes = [
+            ReadMode.FLUORESCENCE if read_mode == ReadMode.ALPHALISA else read_mode
+            for read_mode in read_modes
+        ]
+
+        return read_modes
 
     @staticmethod
     def get_read_type(procedure_details: str) -> ReadType:
@@ -322,7 +345,7 @@ class ReadData:
 
     @classmethod
     def _get_measurement_labels(
-        cls, device_control_data: DeviceControlData, read_mode: str
+            cls, device_control_data: DeviceControlData, read_mode: str
     ) -> list[str]:
         step_label = device_control_data.step_label
         label_prefix = f"{step_label}:" if step_label else ""
@@ -353,7 +376,7 @@ class ReadData:
 
     @classmethod
     def _get_absorbance_measurement_labels(
-        cls, label_prefix: str | None, device_control_data: DeviceControlData
+            cls, label_prefix: str | None, device_control_data: DeviceControlData
     ) -> list[str]:
         pathlength_correction = device_control_data.get(PATHLENGTH_CORRECTION_KEY)
         measurement_labels = []
@@ -372,10 +395,10 @@ class ReadData:
 
     @classmethod
     def _get_filter_sets(
-        cls,
-        measurement_labels: list[str],
-        device_control_data: DeviceControlData,
-        read_mode: ReadMode,
+            cls,
+            measurement_labels: list[str],
+            device_control_data: DeviceControlData,
+            read_mode: ReadMode,
     ) -> dict[str, FilterSet]:
         filter_data: dict[str, FilterSet] = {}
         if read_mode == ReadMode.ABSORBANCE:
@@ -406,7 +429,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
         return {}
     # Create dataframe from tabular data and forward fill empty values in index
     data = read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
-    data = data.set_index(data.index.to_series().ffill(axis="index").values)
+    data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
     identifiers = {}
     for row_name, row in data.iterrows():
@@ -415,7 +438,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
             well_pos = f"{row_name}{col_index + 1}"
             # Prefer Name to Well ID
             if not pd.isna(col) and (
-                label == "Name" or label == "Well ID" and well_pos not in identifiers
+                    label == "Name" or label == "Well ID" and well_pos not in identifiers
             ):
                 identifiers[well_pos] = col
     return identifiers
@@ -441,33 +464,32 @@ class MeasurementData:
 
 
 def create_results(
-    result_lines: list[str],
-    header_data: HeaderData,
-    read_data: ReadData,
-    sample_identifiers: dict[str, str],
-    actual_temperature: float | None,
+        result_lines: list[str],
+        header_data: HeaderData,
+        read_data: list[ReadData],
+        sample_identifiers: dict[str, str],
+        actual_temperature: float | None,
 ) -> tuple[list[MeasurementGroup], list[CalculatedDataItem]]:
     if result_lines[0].strip() != "Results":
         msg = f"Expected the first line of the results section '{result_lines[0]}' to be 'Results'."
         raise AllotropeConversionError(msg)
 
     # Create dataframe from tabular data and forward fill empty values in index
-    data = read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
-    data = data.set_index(data.index.to_series().ffill(axis="index").values)
+    data = pd.read_csv(StringIO("\n".join(result_lines[1:])), sep="\t")
+    data = data.set_index(data.index.to_series().ffill(axis=0).values)
 
-    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(
-        list[MeasurementData]
-    )
-    calculated_data: defaultdict[str, list[tuple[str, JsonFloat]]] = defaultdict(
-        list[tuple[str, JsonFloat]]
-    )
+    well_to_measurements: defaultdict[str, list[MeasurementData]] = defaultdict(list)
+    calculated_data: defaultdict[str, list] = defaultdict(list)
+    measurement_labels = []
+    for r_data in read_data:
+        measurement_labels.extend(r_data.measurement_labels)
     for row_name, row in data.iterrows():
-        label = str(row.iloc[-1])
+        label = row.iloc[-1]
         for col_index, value in enumerate(row.iloc[:-1]):
             well_pos = f"{row_name}{col_index + 1}"
             well_value = try_float_or_nan(value)
 
-            if label in read_data.measurement_labels:
+            if label in measurement_labels:
                 well_to_measurements[well_pos].append(
                     MeasurementData(random_uuid_str(), well_value, label)
                 )
@@ -484,7 +506,7 @@ def create_results(
                     measurement,
                     well_position,
                     header_data,
-                    read_data,
+                    get_read_data_from_measurement(measurement, read_data),
                     sample_identifiers.get(well_position),
                     actual_temperature,
                 )
@@ -500,7 +522,7 @@ def create_results(
             data_sources=[
                 DataSource(
                     identifier=measurement.identifier,
-                    feature=read_data.read_mode.value.lower(),
+                    feature=read_data[0].read_mode.value.lower(),
                 )
                 for measurement in _get_sources(
                     label, well_to_measurements[well_position]
@@ -517,8 +539,16 @@ def create_results(
     return groups, calculated_data_items
 
 
+def get_read_data_from_measurement(measurement: MeasurementData, read_data_list: list[ReadData]) -> ReadData:
+    for read_data in read_data_list:
+        if measurement.label in read_data.measurement_labels:
+            return read_data
+
+    raise AllotropeConversionError(READ_DATA_MEASUREMENT_ERROR.format(measurement.label))
+
+
 def _get_sources(
-    calculated_data_label: str, measurements: list[MeasurementData]
+        calculated_data_label: str, measurements: list[MeasurementData]
 ) -> list[MeasurementData]:
     # Pathlength is a special case, its sources are always determined
     # by the pathlength correction setting
@@ -540,10 +570,10 @@ def _get_sources(
     return sources or measurements
 
 
-def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
+def _create_metadata(header_data: HeaderData, read_data: list[ReadData]) -> Metadata:
     return Metadata(
         device_type=DEVICE_TYPE,
-        detection_type=read_data.read_mode.value,
+        detection_type=read_data[0].read_mode.value,
         device_identifier=NOT_APPLICABLE,
         model_number=header_data.model_number or NOT_APPLICABLE,
         equipment_serial_number=header_data.equipment_serial_number,
@@ -555,12 +585,12 @@ def _create_metadata(header_data: HeaderData, read_data: ReadData) -> Metadata:
 
 
 def _create_measurement(
-    measurement: MeasurementData,
-    well_position: str,
-    header_data: HeaderData,
-    read_data: ReadData,
-    sample_identifier: str | None,
-    actual_temperature: float | None,
+        measurement: MeasurementData,
+        well_position: str,
+        header_data: HeaderData,
+        read_data: ReadData,
+        sample_identifier: str | None,
+        actual_temperature: float | None,
 ) -> Measurement:
     # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
     if read_data.read_mode == ReadMode.ABSORBANCE:
@@ -584,7 +614,7 @@ def _create_measurement(
         type_=measurement_type,
         identifier=measurement.identifier,
         sample_identifier=sample_identifier
-        or f"{header_data.well_plate_identifier} {well_position}",
+                          or f"{header_data.well_plate_identifier} {well_position}",
         location_identifier=well_position,
         well_plate_identifier=header_data.well_plate_identifier,
         detector_wavelength_setting=detector_wavelength_setting,
