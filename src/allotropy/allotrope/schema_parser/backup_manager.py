@@ -26,6 +26,7 @@ def get_original_path(path: PathType) -> Path:
     _path = Path(path)
     filename = _path.stem
     if filename.startswith("."):
+        # Remove .<uuid>.bak from filename by removing two extensions (by calling .stem)
         filename = f"{Path(Path(filename[1:]).stem).stem}{_path.suffix}"
     return Path(_path.parent, filename)
 
@@ -65,8 +66,8 @@ def backup_paths(
     try:
         yield backup_paths
     except Exception:
-        for backup in backup_paths:
-            backup.unlink(missing_ok=True)
+        # for backup in backup_paths:
+        #   backup.unlink(missing_ok=True)
         raise
 
     if not restore:

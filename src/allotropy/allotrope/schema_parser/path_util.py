@@ -10,18 +10,14 @@ ROOT_DIR: Path = ALLOTROPE_DIR.parent.parent.parent
 SCHEMA_DIR_PATH: Path = Path(ALLOTROPE_DIR, "schemas")
 SHARED_SCHEMAS_PATH: Path = Path(SCHEMA_DIR_PATH, "shared")
 SHARED_SCHEMAS_DEFINITIONS_PATH: Path = Path(SHARED_SCHEMAS_PATH, "definitions")
-UNITS_SCHEMAS_PATH: Path = Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json")
-CUSTOM_SCHEMAS_PATH: Path = Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "custom.json")
 MODEL_DIR_PATH: Path = Path(ALLOTROPE_DIR, "models")
 SHARED_MODELS_PATH: Path = Path(MODEL_DIR_PATH, "shared")
 SHARED_MODELS_DEFINITIONS_PATH: Path = Path(SHARED_MODELS_PATH, "definitions")
-UNITS_MODELS_PATH: Path = Path(SHARED_MODELS_DEFINITIONS_PATH, "units.py")
-CUSTOM_MODELS_PATH: Path = Path(SHARED_MODELS_DEFINITIONS_PATH, "custom.py")
 GENERATED_SHARED_PATHS: list[Path] = [
-    UNITS_SCHEMAS_PATH,
-    UNITS_MODELS_PATH,
-    CUSTOM_SCHEMAS_PATH,
-    CUSTOM_MODELS_PATH,
+    Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "units.json"),
+    Path(SHARED_MODELS_DEFINITIONS_PATH, "units.py"),
+    Path(SHARED_SCHEMAS_DEFINITIONS_PATH, "custom.json"),
+    Path(SHARED_MODELS_DEFINITIONS_PATH, "custom.py"),
 ]
 
 
@@ -84,8 +80,7 @@ def get_schema_path_from_reference(reference: str) -> Path:
 def get_model_path_from_schema_path(schema_path: Path) -> Path:
     rel_schema_path = PureWindowsPath(get_rel_schema_path(schema_path))
     schema_file = rel_schema_path.name
-    # TODO: remove lower?
-    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_").lower()
+    model_file = schema_file.replace(".schema.json", ".py").replace("-", "_")
     model_path = Path(
         *[
             re.sub("^([0-9]+)$", r"_\1", part.lower().replace("-", "_"))
@@ -117,7 +112,7 @@ def get_import_path_from_path(model_path: Path) -> str:
 
 def get_model_class_from_schema(asm: Mapping[str, Any]) -> Any:
     schema_path = get_schema_path_from_manifest(asm["$asm.manifest"])
-    model_file = get_model_path_from_schema_path(Path(schema_path))
-    import_path = get_import_path_from_path(model_file)
+    model_path = get_model_path_from_schema_path(Path(schema_path))
+    import_path = get_import_path_from_path(model_path)
     # NOTE: it is safe to assume that every schema module has Model, as we generate this code.
     return importlib.import_module(import_path).Model

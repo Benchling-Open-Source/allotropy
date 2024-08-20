@@ -38,6 +38,8 @@ def lint_file(model_path: Path) -> None:
     # due to unused imports.
     try:
         subprocess.check_call(
+            # We must ignore N999, which checks filename for valid module path, because this is being
+            # called with a backup file named <real_model_path>.<uuid>.bak.py.
             f"ruff --ignore N999 {model_path} --fix",
             shell=True,  # noqa: S602
             stdout=subprocess.DEVNULL,
@@ -64,7 +66,7 @@ def lint_file(model_path: Path) -> None:
     )
     # The second call to ruff checks for additional rules.
     subprocess.check_call(
-        f"ruff {model_path} --ignore N999 --fix",
+        f"ruff --ignore N999 {model_path} --fix",
         shell=True,  # noqa: S602
         stdout=subprocess.DEVNULL,
     )
