@@ -439,7 +439,7 @@ def get_identifiers(layout_lines: list[str] | None) -> dict[str, str]:
         return {}
     # Create dataframe from tabular data and forward fill empty values in index
     data = read_csv(StringIO("\n".join(layout_lines[1:])), sep="\t")
-    data = data.set_index(data.index.to_series().ffill(axis=0).values)
+    data = data.set_index(data.index.to_series().ffill(axis="index").values)
 
     identifiers = {}
     for row_name, row in data.iterrows():
