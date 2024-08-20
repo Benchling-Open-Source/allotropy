@@ -66,8 +66,8 @@ def backup_paths(
     try:
         yield backup_paths
     except Exception:
-        # for backup in backup_paths:
-        #   backup.unlink(missing_ok=True)
+        for backup in backup_paths:
+            backup.unlink(missing_ok=True)
         raise
 
     if not restore:
