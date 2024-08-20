@@ -4,18 +4,15 @@ from dataclasses import dataclass
 import re
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from allotropy.allotrope.schema_mappers.adm.solution_analyzer.rec._2024._03.solution_analyzer import (
     Analyte,
-    Data,
     Measurement,
     MeasurementGroup,
     Metadata,
 )
 from allotropy.exceptions import AllotropeConversionError
-from allotropy.named_file_contents import NamedFileContents
 from allotropy.parsers.novabio_flex2.constants import (
     ANALYTE_MAPPINGS,
     DETECTION_PROPERTY_MAPPING,
@@ -26,7 +23,7 @@ from allotropy.parsers.novabio_flex2.constants import (
     PRODUCT_MANUFACTURER,
     SOFTWARE_NAME,
 )
-from allotropy.parsers.utils.pandas import read_csv, SeriesData
+from allotropy.parsers.utils.pandas import SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
 from allotropy.parsers.utils.values import try_float_or_none
 
@@ -191,7 +188,9 @@ def create_metadata(title: Title, file_name: str) -> Metadata:
     )
 
 
-def create_measurement_groups(title: Title, sample_list: SampleList) -> list[MeasurementGroup]:
+def create_measurement_groups(
+    title: Title, sample_list: SampleList
+) -> list[MeasurementGroup]:
     return [
         MeasurementGroup(
             analyst=sample_list.analyst,
