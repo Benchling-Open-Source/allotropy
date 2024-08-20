@@ -14,25 +14,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -58,7 +58,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 156,
+                                "value": 156.0,
                                 "unit": "RFU"
                             }
                         }
@@ -79,25 +79,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.83263823983",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -123,7 +123,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 164,
+                                "value": 164.0,
                                 "unit": "RFU"
                             }
                         }
@@ -144,25 +144,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.78503724659",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -188,7 +188,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 156,
+                                "value": 156.0,
                                 "unit": "RFU"
                             }
                         }
@@ -209,25 +209,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.80883774321",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -253,7 +253,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 162,
+                                "value": 162.0,
                                 "unit": "RFU"
                             }
                         }
@@ -274,25 +274,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -318,7 +318,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 150,
+                                "value": 150.0,
                                 "unit": "RFU"
                             }
                         }
@@ -339,25 +339,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.66603476348",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -383,7 +383,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 132,
+                                "value": 132.0,
                                 "unit": "RFU"
                             }
                         }
@@ -404,25 +404,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.47563079051",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -448,7 +448,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 125,
+                                "value": 125.0,
                                 "unit": "RFU"
                             }
                         }
@@ -469,25 +469,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.49943128713",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -513,7 +513,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 113,
+                                "value": 113.0,
                                 "unit": "RFU"
                             }
                         }
@@ -534,25 +534,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -578,7 +578,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 134,
+                                "value": 134.0,
                                 "unit": "RFU"
                             }
                         }
@@ -599,25 +599,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.83263823983",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -643,7 +643,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 139,
+                                "value": 139.0,
                                 "unit": "RFU"
                             }
                         }
@@ -664,25 +664,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.78503724659",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -708,7 +708,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 135,
+                                "value": 135.0,
                                 "unit": "RFU"
                             }
                         }
@@ -729,25 +729,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.80883774321",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -773,7 +773,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 138,
+                                "value": 138.0,
                                 "unit": "RFU"
                             }
                         }
@@ -794,25 +794,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -838,7 +838,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 134,
+                                "value": 134.0,
                                 "unit": "RFU"
                             }
                         }
@@ -859,25 +859,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.66603476348",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -903,7 +903,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 124,
+                                "value": 124.0,
                                 "unit": "RFU"
                             }
                         }
@@ -924,25 +924,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.47563079051",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -968,7 +968,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 116,
+                                "value": 116.0,
                                 "unit": "RFU"
                             }
                         }
@@ -989,25 +989,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.49943128713",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1033,7 +1033,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 111,
+                                "value": 111.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1054,25 +1054,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1098,7 +1098,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 144,
+                                "value": 144.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1119,25 +1119,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.83263823983",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1163,7 +1163,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 145,
+                                "value": 145.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1184,25 +1184,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.78503724659",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1228,7 +1228,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 142,
+                                "value": 142.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1249,25 +1249,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.80883774321",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1293,7 +1293,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 144,
+                                "value": 144.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1314,25 +1314,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1358,7 +1358,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 133,
+                                "value": 133.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1379,25 +1379,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.66603476348",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1423,7 +1423,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 120,
+                                "value": 120.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1444,25 +1444,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.47563079051",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1488,7 +1488,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 113,
+                                "value": 113.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1509,25 +1509,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.49943128713",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1553,7 +1553,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 110,
+                                "value": 110.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1574,25 +1574,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1618,7 +1618,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 128,
+                                "value": 128.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1639,25 +1639,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.83263823983",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1683,7 +1683,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 130,
+                                "value": 130.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1704,25 +1704,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.78503724659",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1748,7 +1748,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 125,
+                                "value": 125.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1769,25 +1769,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.80883774321",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1813,7 +1813,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 127,
+                                "value": 127.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1834,25 +1834,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1878,7 +1878,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 123,
+                                "value": 123.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1899,25 +1899,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.66603476348",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -1943,7 +1943,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 111,
+                                "value": 111.0,
                                 "unit": "RFU"
                             }
                         }
@@ -1964,25 +1964,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.47563079051",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2008,7 +2008,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 106,
+                                "value": 106.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2029,25 +2029,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.49943128713",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2073,7 +2073,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 104,
+                                "value": 104.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2094,25 +2094,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2138,7 +2138,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 126,
+                                "value": 126.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2159,25 +2159,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.83263823983",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2203,7 +2203,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 133,
+                                "value": 133.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2224,25 +2224,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.78503724659",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2268,7 +2268,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 127,
+                                "value": 127.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2289,25 +2289,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.80883774321",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2333,7 +2333,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 134,
+                                "value": 134.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2354,25 +2354,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2398,7 +2398,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 132,
+                                "value": 132.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2419,25 +2419,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.66603476348",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2463,7 +2463,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 118,
+                                "value": 118.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2484,25 +2484,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.47563079051",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2528,7 +2528,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 112,
+                                "value": 112.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2549,25 +2549,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.49943128713",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2593,7 +2593,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 108,
+                                "value": 108.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2614,25 +2614,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2658,7 +2658,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 125,
+                                "value": 125.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2679,25 +2679,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.83263823983",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.83263823983,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2723,7 +2723,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 132,
+                                "value": 132.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2744,25 +2744,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.78503724659",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.78503724659,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2788,7 +2788,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 130,
+                                "value": 130.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2809,25 +2809,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.80883774321",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.80883774321,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2853,7 +2853,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 137,
+                                "value": 137.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2874,25 +2874,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.76123674997",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.76123674997,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2918,7 +2918,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 130,
+                                "value": 130.0,
                                 "unit": "RFU"
                             }
                         }
@@ -2939,25 +2939,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.66603476348",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.66603476348,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -2983,7 +2983,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 115,
+                                "value": 115.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3004,25 +3004,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.47563079051",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.47563079051,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -3048,7 +3048,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 112,
+                                "value": 112.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3069,25 +3069,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 2,
+                                                "value": 2.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "1.49943128713",
+                                            "dilution factor": {
+                                                "value": 100.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "0.1-50.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "50.0-60.0",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "BLUE",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": 1.49943128713,
-                                            "dilution factor": {
-                                                "value": 100,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "50.0-60.0",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -3113,7 +3113,7 @@
                                 }
                             },
                             "fluorescence": {
-                                "value": 107,
+                                "value": 107.0,
                                 "unit": "RFU"
                             }
                         }
@@ -3133,7 +3133,7 @@
             "file name": "thermo_fisher_qubit_flex_example_02.xlsx",
             "software name": "Qubit Flex software",
             "ASM converter name": "allotropy_thermo_fisher_qubit_flex",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.48"
         }
     }
 }

@@ -14,25 +14,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "10.0-20.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "20.0-1000",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "1000-1200",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": "RED",
-                                            "dilution factor": {
-                                                "value": 200,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -43,7 +43,7 @@
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 528,
+                                        "value": 528.0,
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
@@ -87,25 +87,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "10.0-20.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "20.0-1000",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "1000-1200",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": "RED",
-                                            "dilution factor": {
-                                                "value": 200,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -116,7 +116,7 @@
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 610,
+                                        "value": 610.0,
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
@@ -160,25 +160,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "10.0-20.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "20.0-1000",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "1000-1200",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": "RED",
-                                            "dilution factor": {
-                                                "value": 200,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -189,7 +189,7 @@
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 534,
+                                        "value": 534.0,
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
@@ -233,25 +233,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "10.0-20.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "20.0-1000",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "1000-1200",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": "RED",
-                                            "dilution factor": {
-                                                "value": 200,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -262,7 +262,7 @@
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 372,
+                                        "value": 372.0,
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
@@ -306,25 +306,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "10.0-20.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "20.0-1000",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "1000-1200",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": "RED",
-                                            "dilution factor": {
-                                                "value": 200,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -335,7 +335,7 @@
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 546,
+                                        "value": 546.0,
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
@@ -379,25 +379,25 @@
                                         "device type": "fluorescence detector",
                                         "custom information document": {
                                             "sample volume setting": {
-                                                "value": 1,
+                                                "value": 1.0,
                                                 "unit": "μL"
+                                            },
+                                            "excitation setting": "RED",
+                                            "dilution factor": {
+                                                "value": 200.0,
+                                                "unit": "(unitless)"
                                             },
                                             "operating minimum": {
                                                 "value": "10.0-20.0",
-                                                "unit": "ng/µL"
-                                            },
-                                            "operating range": {
-                                                "value": "20.0-1000",
                                                 "unit": "ng/µL"
                                             },
                                             "operating maximum": {
                                                 "value": "1000-1200",
                                                 "unit": "ng/µL"
                                             },
-                                            "excitation setting": "RED",
-                                            "dilution factor": {
-                                                "value": 200,
-                                                "unit": "(unitless)"
+                                            "operating range": {
+                                                "value": "20.0-1000",
+                                                "unit": "ng/µL"
                                             }
                                         }
                                     }
@@ -408,7 +408,7 @@
                                 "batch identifier": "131222-164034",
                                 "custom information document": {
                                     "original sample concentration": {
-                                        "value": 486,
+                                        "value": 486.0,
                                         "unit": "ng/µL"
                                     },
                                     "qubit tube concentration": {
@@ -450,9 +450,8 @@
         "data system document": {
             "file name": "thermo_fisher_qubit_flex_example_01.csv",
             "software name": "Qubit Flex software",
-            "software version": "1.5.0",
             "ASM converter name": "allotropy_thermo_fisher_qubit_flex",
-            "ASM converter version": "0.1.38"
+            "ASM converter version": "0.1.48"
         }
     }
 }

@@ -1,5 +1,3 @@
-""" Parser file for ThermoFisher Qubit 4 Adapter """
-
 from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectrophotometry import (
     Model,
 )

@@ -32,6 +32,7 @@ from allotropy.allotrope.models.adm.spectrophotometry.benchling._2023._12.spectr
 from allotropy.allotrope.models.shared.definitions.custom import (
     TQuantityValueMicroliter,
     TQuantityValueMilliAbsorbanceUnit,
+    TQuantityValueNanogramPerMicroliter,
     TQuantityValueNanometer,
     TQuantityValueRelativeFluorescenceUnit,
     TQuantityValueUnitless,
@@ -133,8 +134,9 @@ class Measurement:
     excitation_wavelength_setting: str | None = None
     emission_wavelength_setting: str | None = None
     dilution_factor_setting: float | None = None
-    operating_minimum: float | None = None
-    operating_maximum: float | None = None
+    operating_minimum: str | None = None
+    operating_maximum: str | None = None
+    operating_range: str | None = None
     original_sample_concentration: JsonFloat | None = None
     original_sample_concentration_unit: str | None = None
     qubit_tube_concentration: JsonFloat | None = None
@@ -142,6 +144,10 @@ class Measurement:
     standard_1_concentration: float | None = None
     standard_2_concentration: float | None = None
     standard_3_concentration: float | None = None
+    last_read_standards: str | None = None
+    selected_samples: str | None = None
+    reagent_lot_number: str | None = None
+    calibrated_tubes: str | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -248,20 +254,26 @@ class Mapper:
     def _get_measurement_document_item(
         self, measurement: Measurement, metadata: Metadata
     ) -> MeasurementDocumentItems:
+        custom_document = {
+            "reagent lot number": measurement.reagent_lot_number,
+            "calibrated tubes": measurement.calibrated_tubes,
+        }
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
-            return self._get_ultraviolet_absorbance_measurement_document(
+            doc = self._get_ultraviolet_absorbance_measurement_document(
                 measurement, metadata
             )
         elif measurement.type_ == MeasurementType.FLUORESCENCE:
-            return self._get_fluorescence_measurement_document(measurement, metadata)
+            doc = self._get_fluorescence_measurement_document(measurement, metadata)
         elif measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE_SPECTRUM:
-            return self._get_ultraviolet_absorbance_spectrum_measurement_document(
+            doc = self._get_ultraviolet_absorbance_spectrum_measurement_document(
                 measurement, metadata
             )
         else:
             msg = f"Invalid measurement type: {measurement.type_}"
             raise AllotropyParserError(msg)
+
+        return add_custom_information_document(doc, custom_document)
 
     def _get_ultraviolet_absorbance_measurement_document(
         self, measurement: Measurement, metadata: Metadata
@@ -387,10 +399,13 @@ class Mapper:
                 TQuantityValueUnitless, measurement.dilution_factor_setting
             ),
             "operating minimum": quantity_or_none(
-                TQuantityValueNanometer, measurement.operating_minimum
+                TQuantityValueNanogramPerMicroliter, measurement.operating_minimum
             ),
             "operating maximum": quantity_or_none(
-                TQuantityValueNanometer, measurement.operating_maximum
+                TQuantityValueNanogramPerMicroliter, measurement.operating_maximum
+            ),
+            "operating range": quantity_or_none(
+                TQuantityValueNanogramPerMicroliter, measurement.operating_range
             ),
         }
 
@@ -418,6 +433,8 @@ class Mapper:
                 TQuantityValueRelativeFluorescenceUnit,
                 measurement.standard_3_concentration,
             ),
+            "last read standards": self.get_date_time(measurement.last_read_standards),
+            "selected samples": measurement.selected_samples,
         }
         return add_custom_information_document(
             SampleDocument(
