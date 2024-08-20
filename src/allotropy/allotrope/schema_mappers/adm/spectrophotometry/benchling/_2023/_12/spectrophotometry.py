@@ -134,8 +134,8 @@ class Measurement:
     excitation_wavelength_setting: str | None = None
     emission_wavelength_setting: str | None = None
     dilution_factor_setting: float | None = None
-    operating_minimum: str | None = None
-    operating_maximum: str | None = None
+    operating_minimum: float | None = None
+    operating_maximum: float | None = None
     operating_range: str | None = None
     original_sample_concentration: JsonFloat | None = None
     original_sample_concentration_unit: str | None = None
@@ -145,9 +145,9 @@ class Measurement:
     standard_2_concentration: float | None = None
     standard_3_concentration: float | None = None
     last_read_standards: str | None = None
-    selected_samples: str | None = None
-    reagent_lot_number: str | None = None
-    calibrated_tubes: str | None = None
+    selected_samples: int | None = None
+    reagent_lot_number: int | None = None
+    calibrated_tubes: int | None = None
 
     # Measurements
     absorbance: JsonFloat | None = None
@@ -259,6 +259,7 @@ class Mapper:
             "calibrated tubes": measurement.calibrated_tubes,
         }
         # TODO(switch-statement): use switch statement once Benchling can use 3.10 syntax
+        doc: MeasurementDocumentItems
         if measurement.type_ == MeasurementType.ULTRAVIOLET_ABSORBANCE:
             doc = self._get_ultraviolet_absorbance_measurement_document(
                 measurement, metadata
@@ -404,9 +405,7 @@ class Mapper:
             "operating maximum": quantity_or_none(
                 TQuantityValueNanogramPerMicroliter, measurement.operating_maximum
             ),
-            "operating range": quantity_or_none(
-                TQuantityValueNanogramPerMicroliter, measurement.operating_range
-            ),
+            "operating range": measurement.operating_range,
         }
 
     def _get_sample_document(self, measurement: Measurement) -> SampleDocument:
@@ -433,7 +432,9 @@ class Mapper:
                 TQuantityValueRelativeFluorescenceUnit,
                 measurement.standard_3_concentration,
             ),
-            "last read standards": self.get_date_time(measurement.last_read_standards),
+            "last read standards": self.get_date_time(measurement.last_read_standards)
+            if measurement.last_read_standards
+            else None,
             "selected samples": measurement.selected_samples,
         }
         return add_custom_information_document(

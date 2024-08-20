@@ -19,6 +19,7 @@ from allotropy.parsers.constants import NOT_APPLICABLE
 from allotropy.parsers.thermo_fisher_qubit_flex import constants
 from allotropy.parsers.utils.pandas import map_rows, SeriesData
 from allotropy.parsers.utils.uuids import random_uuid_str
+from allotropy.parsers.utils.values import try_float_or_none
 
 EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
     "green": "Green RFU",
@@ -27,6 +28,18 @@ EMISSION_WAVELENGTH_TO_MEASUREMENT_COLUMN = {
 
 
 def create_measurement_group(data: SeriesData) -> MeasurementGroup:
+    operating_minimum_range = data.get(str, "Extended Low Range")
+    operating_minimum = (
+        try_float_or_none(operating_minimum_range.split("-")[0])
+        if operating_minimum_range
+        else None
+    )
+    operating_maximum_range = data.get(str, "Extended High Range")
+    operating_maximum = (
+        try_float_or_none(operating_maximum_range.split("-")[-1])
+        if operating_maximum_range
+        else None
+    )
     return MeasurementGroup(
         measurement_time=data[str, "Test Date"],
         experiment_type=data.get(str, "Assay Name"),
@@ -63,12 +76,8 @@ def create_measurement_group(data: SeriesData) -> MeasurementGroup:
                 standard_3_concentration=data.get(
                     float, "Std 3 RFU", validate=SeriesData.NOT_NAN
                 ),
-                operating_minimum=data.get(
-                    str, "Extended Low Range", validate=SeriesData.NOT_NAN
-                ),
-                operating_maximum=data.get(
-                    str, "Extended High Range", validate=SeriesData.NOT_NAN
-                ),
+                operating_minimum=operating_minimum,
+                operating_maximum=operating_maximum,
                 operating_range=data.get(
                     str, "Core Range", validate=SeriesData.NOT_NAN
                 ),
